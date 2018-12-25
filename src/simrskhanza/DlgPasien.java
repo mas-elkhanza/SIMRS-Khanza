@@ -5088,7 +5088,6 @@ private void TTlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTlp
 private void TNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             TCari.setText(TNo.getText());
-            tampil();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             TNm.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){   
