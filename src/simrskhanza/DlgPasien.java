@@ -3015,7 +3015,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-11-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-12-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3150,7 +3150,7 @@ public class DlgPasien extends javax.swing.JDialog {
         TKtp.setBounds(712, 132, 130, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-11-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-12-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -5029,8 +5029,8 @@ private void CmbJkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cmb
 private void TNmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             TCari.setText(TNm.getText());
-            tampil();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            TCari.setText(TNm.getText());
             if(TNm.getText().toLowerCase().contains("tn.")){
                 CmbJk.setSelectedItem("LAKI-LAKI");
             }else if(TNm.getText().toLowerCase().contains("sdr.")){
@@ -5088,7 +5088,6 @@ private void TTlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTlp
 private void TNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             TCari.setText(TNo.getText());
-            tampil();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             TNm.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){   
