@@ -91,7 +91,8 @@ public final class var {
             anggota_militer_dirawat=false,set_input_parsial=false,lama_pelayanan_radiologi=false,lama_pelayanan_lab=false,bpjs_cek_sep=false,
             catatan_perawatan=false,surat_keluar=false,kegiatan_farmasi=false,stok_opname_logistik=false,sirkulasi_non_medis=false,
             rekap_lab_pertahun=false,perujuk_lab_pertahun=false,rekap_radiologi_pertahun=false,perujuk_radiologi_pertahun=false,
-            jumlah_porsi_diet=false,jumlah_macam_diet=false,payment_point2=false,pembayaran_akun_bayar2=false,hapus_nota_salah=false;
+            jumlah_porsi_diet=false,jumlah_macam_diet=false,payment_point2=false,pembayaran_akun_bayar2=false,hapus_nota_salah=false,
+            hais_perbangsal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -533,6 +534,7 @@ public final class var {
                         var.payment_point2=true;
                         var.pembayaran_akun_bayar2=true;
                         var.hapus_nota_salah=true;
+                        var.hais_perbangsal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -958,6 +960,7 @@ public final class var {
                         var.payment_point2=rs2.getBoolean("payment_point2");
                         var.pembayaran_akun_bayar2=rs2.getBoolean("pembayaran_akun_bayar2");
                         var.hapus_nota_salah=rs2.getBoolean("hapus_nota_salah");
+                        var.hais_perbangsal=rs2.getBoolean("hais_perbangsal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1381,6 +1384,7 @@ public final class var {
                         var.payment_point2=false;
                         var.pembayaran_akun_bayar2=false;
                         var.hapus_nota_salah=false;
+                        var.hais_perbangsal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1856,4 +1860,5 @@ public final class var {
     public static boolean getpayment_point2(){return var.payment_point2;}
     public static boolean getpembayaran_akun_bayar2(){return var.pembayaran_akun_bayar2;}
     public static boolean gethapus_nota_salah(){return var.hapus_nota_salah;}
+    public static boolean gethais_perbangsal(){return var.hais_perbangsal;}
 }   
