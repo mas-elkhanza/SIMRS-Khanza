@@ -370,7 +370,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
 
         ppTambah.setBackground(new java.awt.Color(255, 255, 255));
         ppTambah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTambah.setForeground(new java.awt.Color(100,80,80));
+        ppTambah.setForeground(new java.awt.Color(70,70,70));
         ppTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         ppTambah.setText("Tambah");
         ppTambah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -387,7 +387,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(100,80,80));
+        ppHapus.setForeground(new java.awt.Color(70,70,70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -411,7 +411,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -922,12 +922,11 @@ public class DlgReturBeli extends javax.swing.JDialog {
             Valid.textKosong(Hargaretur,"harga retur");
         }else{
             Sequel.menyimpan("tampreturbeli","'"+NoFaktur.getText()+"','"+Kdbar.getText()+"','"+nmbar.getText()+"','"+Satuanbar.getText()+
-                             "','0','0','"+Hargaretur.getText()+"','"+Jmlretur.getText()+"','"+Subtotal.getText()+"','"+NoBatch.getText()+"','"+jumlahretur+"','"+Kadaluwarsa.getText()+"'",
+                             "','0','0','"+Hargaretur.getText()+"','"+Jmlretur.getText()+"','"+Subtotal.getText()+"','"+NoBatch.getText()+"','"+jumlahretur+"','"+Kadaluwarsa.getText()+"','"+var.getkode()+"'",
                              "nama_brng='"+nmbar.getText()+"',satuan='"+Satuanbar.getText()+"',h_beli='0',jml_beli='0',h_retur='"+
                               Hargaretur.getText()+"',jml_retur='"+jumlahretur+"',total='"+Subtotal.getText()+"',no_batch='"+NoBatch.getText()+"',jml_retur2='"+jumlahretur+"'",
                              "kode_brng='"+Kdbar.getText()+"' and no_faktur='"+NoFaktur.getText()+"'");
                 
-            
             emptTeks();            
             tampil();
         }
@@ -1017,6 +1016,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
+                autonomer();
                 if(Sequel.menyimpantf("returbeli","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdsup.getText()+"','"+kdgudang.getText()+"'","data")==true){
                     try {
                         ps=koneksi.prepareStatement("select no_faktur, kode_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch, jml_retur2 from tampreturbeli");
@@ -1041,6 +1041,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             jur.simpanJurnal(NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),"U","RETUR PEMBELIAN DI "+nmgudang.getText().toUpperCase());
 
                             BtnBatalActionPerformed(evt); 
+                            autonomer();
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
                         } finally{
@@ -1053,6 +1054,47 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }               
                     } catch (Exception ex) {
                         System.out.println("Notif : "+ex);                    
+                    }
+                }else{
+                    autonomer();
+                    if(Sequel.menyimpantf("returbeli","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdsup.getText()+"','"+kdgudang.getText()+"'","data")==true){
+                        try {
+                            ps=koneksi.prepareStatement("select no_faktur, kode_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch, jml_retur2 from tampreturbeli");
+                            try {
+                                rs=ps.executeQuery();
+                                while(rs.next()){
+                                    if(Sequel.menyimpantf("detreturbeli","'"+NoRetur.getText()+"','"+rs.getString(1) +"','"+rs.getString(2) +"','"+rs.getString(3) +
+                                        "','"+rs.getString(4)+"','"+rs.getString(5)+"','"+rs.getString(6)+"','"+rs.getString(7)+"','"+rs.getString(8)+"','"+rs.getString(9)+"','"+rs.getString(10)+"'","data")==true){
+                                        Trackobat.catatRiwayat(rs.getString(2),0,rs.getDouble(10),"Retur Beli",var.getkode(),kdgudang.getText(),"Simpan");
+                                        Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','-"+rs.getString(10)+"'", 
+                                                    "stok=stok-'"+rs.getString(10)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                        if(aktifkanbatch.equals("yes")){
+                                            Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa-?",3,new String[]{
+                                                rs.getString(10),rs.getString(9),rs.getString(2)
+                                            });
+                                        } 
+                                    }                                    
+                                }
+
+                                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Ke_Suplayer from set_akun")+"','RETUR PEMBELIAN','0','"+ttlretur+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Ke_Suplayer from set_akun")+"','KAS DI TANGAN','"+ttlretur+"','0'","Rekening"); 
+                                jur.simpanJurnal(NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),"U","RETUR PEMBELIAN DI "+nmgudang.getText().toUpperCase());
+
+                                BtnBatalActionPerformed(evt); 
+                                autonomer();
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }               
+                        } catch (Exception ex) {
+                            System.out.println("Notif : "+ex);                    
+                        }
                     }
                 }
                 Sequel.AutoComitTrue();                    
@@ -1315,9 +1357,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select  no_faktur, kode_brng, nama_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch,	kadaluarsa from  tampreturbeli ");
+            ps=koneksi.prepareStatement("select  no_faktur, kode_brng, nama_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch,	kadaluarsa from  tampreturbeli where petugas=?");
             try {
                 ttlretur=0;
+                ps.setString(1,var.getkode());
                 rs=ps.executeQuery();
                 while(rs.next()){
                     ttlretur=ttlretur+rs.getDouble(9);
@@ -1410,9 +1453,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_beli,3),signed)),0) from returbeli where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
-                "RB"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
-        
+        autonomer();
         if(var.getjml2()>=1){
             Kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
@@ -1478,5 +1519,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+    }
+
+    private void autonomer() {
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_beli,3),signed)),0) from returbeli where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
+                "RB"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
     }
 }

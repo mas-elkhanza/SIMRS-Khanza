@@ -136,10 +136,10 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         LoadHTML2.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -198,7 +198,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -403,7 +403,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
-        TabRawat.setForeground(new java.awt.Color(100,80,80));
+        TabRawat.setForeground(new java.awt.Color(70,70,70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -458,10 +458,10 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#645050;}"+                    
-                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
             );
             bg.close();
             
@@ -853,8 +853,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='top' align='center'></td>"+
                                     "<td valign='top' align='center'></td>"+
                                 "</tr>"
-                            );    
-                            
+                            ); 
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi Poli : "+e);
@@ -869,26 +868,26 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                 }
                 if((jmlbaru+jmllama)>0){
                     htmlContent.append(
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Baru</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmlbaru+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Lama</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmllama+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Laki-Laki</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmllaki+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Perempuan</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmlper+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Total</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+(jmllama+jmlbaru)+"</td>"+
-                                "</tr>"
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Baru</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmlbaru+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Lama</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmllama+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Laki-Laki</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmllaki+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Perempuan</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmlper+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Total</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+(jmllama+jmlbaru)+"</td>"+
+                        "</tr>"
                      );
                 }
             } catch (Exception e) {

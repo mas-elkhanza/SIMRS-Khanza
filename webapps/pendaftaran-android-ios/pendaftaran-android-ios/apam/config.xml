@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.rshdbarabai.apam" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>APAM</name>
+    <description>
+        Aplikasi Pasien Dan Antrian Mandiri RSUD H. Damanhur - Barabai.
+    </description>
+    <author email="dentix.id@gmail.com" href="https://basoro.id">
+        drg. Faisol Basoro
+    </author>
+    <gap:config-file platform="android" parent="/manifest">
+      <supports-screens
+        android:xlargeScreens="false"
+        android:largeScreens="false"
+        android:smallScreens="false" />
+      <application android:theme="@android:style/Theme.NoTitleBar" ></application>
+    </gap:config-file>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <preference name="ShowSplashScreenSpinner" value="false"/>
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreenBackgroundColor" value="white" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#5b2e90" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi" />
+        <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi" />
+        <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi" />
+        <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
+        <splash src="res/splash.png" density="ldpi" />
+        <splash src="res/splash.png" density="mdpi" />
+        <splash src="res/splash.png" density="hdpi" />
+        <splash src="res/splash.png" density="xhdpi" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <icon src="res/icon/ios/icon-57.png" width="57" height="57" />
+        <icon src="res/icon/ios/icon-72.png" width="72" height="72" />
+        <icon src="res/icon/ios/icon-57-2x.png" width="114" height="114" />
+        <icon src="res/icon/ios/icon-72-2x.png" width="144" height="144" />
+        <splash src="res/screen/ios/icon-57.png" width="57" height="57" />
+        <splash src="res/screen/ios/icon-72.png" width="72" height="72" />
+        <splash src="res/screen/ios/icon-57-2x.png" width="114" height="114" />
+        <splash src="res/screen/ios/icon-72-2x.png" width="144" height="144" />
+    </platform>
+    <engine name="android" spec="^7.1.1" />
+    <engine name="ios" spec="^4.5.5" />
+</widget>

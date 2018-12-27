@@ -269,7 +269,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
 
         ppLokasi.setBackground(new java.awt.Color(255, 255, 255));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLokasi.setForeground(new java.awt.Color(100,80,80));
+        ppLokasi.setForeground(new java.awt.Color(70,70,70));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppLokasi.setText("Tampilkan Per Lokasi");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -293,7 +293,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemberian Obat Ke Pasien Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemberian Obat Ke Pasien Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -889,7 +889,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                     h31=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-31",rs.getString("kode_brng"));
                     
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng")+" "+rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),rs.getString("kategori"),rs.getString("golongan"),
+                        rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),rs.getString("kategori"),rs.getString("golongan"),
                         h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30,h31,
                         (h1+h2+h3+h4+h5+h6+h7+h8+h9+h10+h11+h12+h13+h14+h15+h16+h17+h18+h19+h20+h21+h22+h23+h24+h25+h26+h27+h28+h29+h30+h31)
                     });
@@ -1053,7 +1053,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                     h31=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-31",rs.getString("kode_brng"),lokasi);
                     
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng")+" "+rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),rs.getString("kategori"),rs.getString("golongan"),
+                        rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),rs.getString("kategori"),rs.getString("golongan"),
                         h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30,h31,
                         (h1+h2+h3+h4+h5+h6+h7+h8+h9+h10+h11+h12+h13+h14+h15+h16+h17+h18+h19+h20+h21+h22+h23+h24+h25+h26+h27+h28+h29+h30+h31)
                     });
