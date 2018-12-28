@@ -92,7 +92,7 @@ public final class var {
             catatan_perawatan=false,surat_keluar=false,kegiatan_farmasi=false,stok_opname_logistik=false,sirkulasi_non_medis=false,
             rekap_lab_pertahun=false,perujuk_lab_pertahun=false,rekap_radiologi_pertahun=false,perujuk_radiologi_pertahun=false,
             jumlah_porsi_diet=false,jumlah_macam_diet=false,payment_point2=false,pembayaran_akun_bayar2=false,hapus_nota_salah=false,
-            hais_perbangsal=false;
+            hais_perbangsal=false,ppn_obat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -535,6 +535,7 @@ public final class var {
                         var.pembayaran_akun_bayar2=true;
                         var.hapus_nota_salah=true;
                         var.hais_perbangsal=true;
+                        var.ppn_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -961,6 +962,7 @@ public final class var {
                         var.pembayaran_akun_bayar2=rs2.getBoolean("pembayaran_akun_bayar2");
                         var.hapus_nota_salah=rs2.getBoolean("hapus_nota_salah");
                         var.hais_perbangsal=rs2.getBoolean("hais_perbangsal");
+                        var.ppn_obat=rs2.getBoolean("ppn_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1385,6 +1387,7 @@ public final class var {
                         var.pembayaran_akun_bayar2=false;
                         var.hapus_nota_salah=false;
                         var.hais_perbangsal=false;
+                        var.ppn_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1861,4 +1864,5 @@ public final class var {
     public static boolean getpembayaran_akun_bayar2(){return var.pembayaran_akun_bayar2;}
     public static boolean gethapus_nota_salah(){return var.hapus_nota_salah;}
     public static boolean gethais_perbangsal(){return var.hais_perbangsal;}
+    public static boolean getppn_obat(){return var.ppn_obat;}
 }   

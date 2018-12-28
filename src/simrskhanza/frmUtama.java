@@ -265,6 +265,7 @@ import grafikanalisa.GrafikStatusRegPerTahun2;
 import grafikanalisa.GrafikStatusRegPerTanggal;
 import grafikanalisa.GrafikStatusRegPerTanggal2;
 import inventaris.InventarisBarangCSSD;
+import inventory.DlgCariPPNObat;
 import inventory.DlgCariPermintaan;
 import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgGolongan;
@@ -982,6 +983,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPaymentPoint2 = new widget.ButtonBig();
         btnPembayaranAkunBayar2 = new widget.ButtonBig();
         btnHAIsBangsal = new widget.ButtonBig();
+        btnPPNObat = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6286,6 +6288,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHAIsBangsal);
 
+        btnPPNObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_money_299107.png"))); // NOI18N
+        btnPPNObat.setText("PPN Obat");
+        btnPPNObat.setIconTextGap(0);
+        btnPPNObat.setName("btnPPNObat"); // NOI18N
+        btnPPNObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPPNObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPPNObatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPPNObat);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6294,7 +6308,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/12/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/12/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6372,7 +6386,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaBawah(new java.awt.Color(210, 240, 200));
+        internalFrame1.setWarnaAtas(new java.awt.Color(252, 252, 252));
+        internalFrame1.setWarnaBawah(new java.awt.Color(203, 233, 193));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -6647,7 +6662,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(210, 240, 200));
+        internalFrame4.setWarnaAtas(new java.awt.Color(203, 233, 193));
+        internalFrame4.setWarnaBawah(new java.awt.Color(252, 252, 252));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -13014,6 +13030,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnHAIsBangsalActionPerformed
 
+    private void btnPPNObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPNObatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgCariPPNObat aplikasi=new DlgCariPPNObat(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPPNObatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13282,6 +13309,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareReferensiStatusPulang;
     private widget.ButtonBig btnPCareReferensiSubspesialis;
     private widget.ButtonBig btnPCareReferensiTindakan;
+    private widget.ButtonBig btnPPNObat;
     private widget.ButtonBig btnPaketOperasi;
     private widget.ButtonBig btnPangkatPolri;
     private widget.ButtonBig btnPangkatTNI;
@@ -14296,6 +14324,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getkegiatan_farmasi()==true){
                 Panelmenu.add(btnKegiatanFarmasi);
+                jmlmenu++;
+            }
+            
+            if(var.getppn_obat()==true){
+                Panelmenu.add(btnPPNObat);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -16401,6 +16434,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getkegiatan_farmasi()==true){
             Panelmenu.add(btnKegiatanFarmasi);
+            jmlmenu++;
+        }
+        
+        if(var.getppn_obat()==true){
+            Panelmenu.add(btnPPNObat);
             jmlmenu++;
         }
 
@@ -18663,6 +18701,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getkegiatan_farmasi()==true){
             if(btnKegiatanFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKegiatanFarmasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getppn_obat()==true){
+            if(btnPPNObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPPNObat);
                 jmlmenu++;
             }                
         }
