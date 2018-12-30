@@ -197,10 +197,8 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
                                         String currentDir = systemProp.getProperty("user.dir");
 
                                         File dir = new File(currentDir);
-                                        System.out.println("data : "+dir);
                                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                         Valid.panggilUrl2(dir+"/merge.pdf");
-                                        engine.executeScript("history.back()");
                                         setCursor(Cursor.getDefaultCursor());
                                     } catch (Exception e) {
                                         System.out.println("Notif : "+e);
