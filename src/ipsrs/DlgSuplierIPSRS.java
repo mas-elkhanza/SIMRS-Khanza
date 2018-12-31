@@ -69,6 +69,7 @@ public class DlgSuplierIPSRS extends javax.swing.JDialog {
         Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));  
         Kota.setDocument(new batasInput((byte)20).getKata(Kota));    
         Telp.setDocument(new batasInput((byte)13).getOnlyAngka(Telp)); 
+        NoRek.setDocument(new batasInput((byte)20).getKata(NoRek));  
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

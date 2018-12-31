@@ -68,6 +68,8 @@ public class DlgSuplier extends javax.swing.JDialog {
         Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
         Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));  
         Kota.setDocument(new batasInput((byte)20).getKata(Kota));    
+        Bank.setDocument(new batasInput((byte)30).getKata(Bank));    
+        NoRek.setDocument(new batasInput((byte)20).getKata(NoRek));    
         Telp.setDocument(new batasInput((byte)13).getOnlyAngka(Telp)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.cariCepat().equals("aktif")){
