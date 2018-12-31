@@ -1791,10 +1791,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     });
                                     total=total+rs2.getDouble("total");
                                     jumlahtotal=jumlahtotal+rs2.getDouble("total");
-                                }
-                                if(total>0){
-                                    tabMode.addRow(new String[]{"","","Total Biaya Resep = "+ Valid.SetAngka(total),""}); 
-                                }
+                                }                                
                             } catch (Exception e) {
                                 System.out.println("Notifikasi Detail Racikan : "+e);
                             } finally{
@@ -1815,6 +1812,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         if(psracikan!=null){
                             psracikan.close();
                         }
+                    }
+                    if(total>0){
+                        tabMode.addRow(new String[]{"","","Total Biaya Resep = "+ Valid.SetAngka(total),""}); 
                     }
                 }                
                 rs.last();

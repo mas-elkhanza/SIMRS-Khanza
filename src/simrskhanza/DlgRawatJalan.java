@@ -1329,7 +1329,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1492,7 +1492,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1507,7 +1507,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1597,7 +1597,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1607,7 +1607,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
 
         internalFrame2.setBorder(null);
-        internalFrame2.setForeground(new java.awt.Color(70,70,70));
+        internalFrame2.setForeground(new java.awt.Color(70, 70, 70));
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1653,7 +1653,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawatTindakanDokter.setBackground(new java.awt.Color(255, 255, 253));
         TabRawatTindakanDokter.setBorder(null);
-        TabRawatTindakanDokter.setForeground(new java.awt.Color(70,70,70));
+        TabRawatTindakanDokter.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatTindakanDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatTindakanDokter.setName("TabRawatTindakanDokter"); // NOI18N
         TabRawatTindakanDokter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1751,7 +1751,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawatTindakanPetugas.setBackground(new java.awt.Color(255, 255, 253));
         TabRawatTindakanPetugas.setBorder(null);
-        TabRawatTindakanPetugas.setForeground(new java.awt.Color(70,70,70));
+        TabRawatTindakanPetugas.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatTindakanPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatTindakanPetugas.setName("TabRawatTindakanPetugas"); // NOI18N
         TabRawatTindakanPetugas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1880,7 +1880,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawatTindakanDokterPetugas.setBackground(new java.awt.Color(255, 255, 253));
         TabRawatTindakanDokterPetugas.setBorder(null);
-        TabRawatTindakanDokterPetugas.setForeground(new java.awt.Color(70,70,70));
+        TabRawatTindakanDokterPetugas.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatTindakanDokterPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatTindakanDokterPetugas.setName("TabRawatTindakanDokterPetugas"); // NOI18N
         TabRawatTindakanDokterPetugas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3103,7 +3103,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3355,7 +3355,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         BtnSKDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnSKDP.setText("Data SKDP");
-        BtnSKDP.setToolTipText("");
         BtnSKDP.setFocusPainted(false);
         BtnSKDP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnSKDP.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3373,7 +3372,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         BtnKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnKamar.setText("Kamar Inap");
-        BtnKamar.setToolTipText("");
         BtnKamar.setFocusPainted(false);
         BtnKamar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnKamar.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3391,7 +3389,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         BtnRujukInternal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnRujukInternal.setText("Rujuk Internal");
-        BtnRujukInternal.setToolTipText("");
         BtnRujukInternal.setFocusPainted(false);
         BtnRujukInternal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnRujukInternal.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3409,7 +3406,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         BtnRujukKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnRujukKeluar.setText("Rujuk Keluar");
-        BtnRujukKeluar.setToolTipText("");
         BtnRujukKeluar.setFocusPainted(false);
         BtnRujukKeluar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnRujukKeluar.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3427,7 +3423,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         BtnCatatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnCatatan.setText("Catatan Pasien");
-        BtnCatatan.setToolTipText("");
         BtnCatatan.setFocusPainted(false);
         BtnCatatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatan.setGlassColor(new java.awt.Color(255, 255, 255));

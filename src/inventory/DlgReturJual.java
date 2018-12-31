@@ -968,7 +968,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             Valid.textKosong(Hargaretur,"harga retur");
         }else{
             if(formvalid.equals("No")){
-                if(Double.parseDouble(Jmlretur.getText())<Sequel.cariIsiAngka("select sum(jml) from detail_pemberian_obat where no_rawat='"+norawat+"' and kode_brng='"+Kdbar.getText()+"'")){
+                if(Double.parseDouble(Jmlretur.getText())<=Sequel.cariIsiAngka("select sum(jml) from detail_pemberian_obat where no_rawat='"+norawat+"' and kode_brng='"+Kdbar.getText()+"'")){
                     Sequel.menyimpan("tampreturjual","'"+NoFaktur.getText()+"','"+Kdbar.getText()+"','"+nmbar.getText()+"','0','0','"+
                             Jmlretur.getText()+"','"+Hargaretur.getText()+"','"+Satuanbar.getText()+"','"+Subtotal.getText()+"','"+NoBatch.getText()+"','"+Kadaluwarsa.getText()+"','"+var.getkode()+"'",
                             "nama_brng='"+nmbar.getText()+"',satuan='"+Satuanbar.getText()+"',h_jual='0',jml_jual='0',h_retur='"+
