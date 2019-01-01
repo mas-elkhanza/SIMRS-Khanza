@@ -2098,8 +2098,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             try {                              
                 rssetpj=pssetpj.executeQuery();
                 while(rssetpj.next()){
-                    KodePj.setText(rssetpj.getString(1));
-                    NmDokterPj.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rssetpj.getString(1)));
+                    KodePj.setText(rssetpj.getString(2));
+                    NmDokterPj.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rssetpj.getString(2)));
                 }
             } catch (Exception e) {
                 System.out.println(e);
