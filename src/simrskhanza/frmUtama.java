@@ -6403,8 +6403,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(250, 255, 245));
-        internalFrame1.setWarnaBawah(new java.awt.Color(205, 225, 185));
+        internalFrame1.setWarnaAtas(new java.awt.Color(252, 255, 247));
+        internalFrame1.setWarnaBawah(new java.awt.Color(210, 230, 190));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -6679,8 +6679,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(205, 225, 185));
-        internalFrame4.setWarnaBawah(new java.awt.Color(250, 255, 245));
+        internalFrame4.setWarnaAtas(new java.awt.Color(210, 230, 190));
+        internalFrame4.setWarnaBawah(new java.awt.Color(252, 255, 247));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
