@@ -231,7 +231,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             );
             bg.close();
             
-            File f = new File("BulananHAIs.html");            
+            File f = new File("SaldoAkunPerBulan.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll(
                     "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
