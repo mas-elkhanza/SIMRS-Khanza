@@ -6,8 +6,6 @@
 package fungsi;
 
 
-import fungsi.koneksiDB;
-import fungsi.sekuel;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -483,7 +481,7 @@ public final class validasi {
 
     public void LoadTahun(JComboBox cmb){        
         cmb.removeAllItems();
-        for(i =year;i>=1980;i--){
+        for(i =(year+1);i>=1980;i--){
             cmb.addItem(i);
         }
         cmb.setSelectedItem(year);

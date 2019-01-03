@@ -2936,6 +2936,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
 
+        internalFrame2.setBackground(new java.awt.Color(254, 254, 254));
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
@@ -3015,7 +3016,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-12-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-01-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3150,7 +3151,7 @@ public class DlgPasien extends javax.swing.JDialog {
         TKtp.setBounds(712, 132, 130, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-12-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-01-2019" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -4061,6 +4062,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         TabRawat.addTab("Input Pasien", internalFrame2);
 
+        internalFrame4.setBackground(new java.awt.Color(254, 254, 254));
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
@@ -4093,6 +4095,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         TabRawat.addTab("Data Pasien", internalFrame4);
 
+        internalFrame5.setBackground(new java.awt.Color(254, 254, 254));
         internalFrame5.setBorder(null);
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
@@ -4125,6 +4128,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         TabRawat.addTab("Data Pasien TNI", internalFrame5);
 
+        internalFrame6.setBackground(new java.awt.Color(254, 254, 254));
         internalFrame6.setBorder(null);
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
