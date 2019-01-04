@@ -12,12 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgPasien.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/keuangan/DlgSaldoAkunPerBulan.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/keuangan/DlgJnsPerawatanRadiologi.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/keuangan/DlgRekapPembayaranPerPoli.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/kepegawaian/DlgBerkasKepegawaian.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/kepegawaian/DlgDokter.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgPemesanan.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/permintaan/DlgPermintaanLaboratorium.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/permintaan/DlgPermintaanRadiologi.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/fungsi/sekuel.java</file>
         </group>
     </open-files>
 </project-private>

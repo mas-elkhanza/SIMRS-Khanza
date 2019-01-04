@@ -992,7 +992,7 @@ public class DlgReturPiutang extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kdbar," tampreturpiutang","no_batch='"+NoBatch.getText()+"' and nota_piutang='"+NoFaktur.getText()+"' and kode_brng");
+            Valid.hapusTable(tabMode,Kdbar," tampreturpiutang","no_batch='"+NoBatch.getText()+"' and nota_piutang='"+NoFaktur.getText()+"' and petugas='"+var.getkode()+"' and kode_brng");
             tampil();
             emptTeks();
         }
@@ -1114,11 +1114,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        Sequel.queryu("delete from  tampreturpiutang");
+        Sequel.queryu("delete from  tampreturpiutang where petugas='"+var.getkode()+"'");
         tampil();
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_piutang,3),signed)),0) from returpiutang where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
-                "RP"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
-        
+                "RP"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur);     
     }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
