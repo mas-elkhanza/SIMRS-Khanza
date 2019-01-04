@@ -24,11 +24,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -186,7 +188,7 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
                                         ps.setString(1,norawat);
                                         rs=ps.executeQuery();
                                         while(rs.next()){
-                                            url = new URL("http://"+koneksiDB.HOST()+"/webapps/berkasrawat/"+rs.getString("lokasi_file"));
+                                            url = new URL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs.getString("lokasi_file"));
                                             InputStream is = url.openStream();
                                             ut.addSource(is);
                                         }
@@ -195,13 +197,15 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
                                         JOptionPane.showMessageDialog(null,"Proses gabung file selesai..!");
                                         Properties systemProp = System.getProperties();
                                         String currentDir = systemProp.getProperty("user.dir");
-
                                         File dir = new File(currentDir);
                                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                         Valid.panggilUrl2(dir+"/merge.pdf");
                                         setCursor(Cursor.getDefaultCursor());
-                                    } catch (Exception e) {
+                                    } catch (SQLException e) {
                                         System.out.println("Notif : "+e);
+                                    } catch (IOException e) {
+                                        System.out.println("Notif : "+e);
+                                        JOptionPane.showMessageDialog(null,"Gagal menggabungkan file, cek kembali file apakah sudah dalam bentuk PDF.\nAtau cek kembali hak akses file di server dokumen..!!");
                                     } finally{
                                         if(rs!=null){
                                             rs.close();

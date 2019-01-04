@@ -876,28 +876,28 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }                
                 jml=tbDokter.getRowCount();
                 if(aktifkanbatch.equals("yes")){
-                for(i=0;i<jml;i++){ 
-                    tbDokter.setValueAt("",i,0);
-                    tbDokter.setValueAt(true,i,5);
-                    tbDokter.setValueAt(0,i,8);
-                    tbDokter.setValueAt(0,i,9);
-                    tbDokter.setValueAt(0,i,10);
-                    tbDokter.setValueAt(0,i,11);
-                    tbDokter.setValueAt(0,i,12);
-                    tbDokter.setValueAt("",i,13);
+                    for(i=0;i<jml;i++){ 
+                        tbDokter.setValueAt("",i,0);
+                        tbDokter.setValueAt(true,i,5);
+                        tbDokter.setValueAt(0,i,8);
+                        tbDokter.setValueAt(0,i,9);
+                        tbDokter.setValueAt(0,i,10);
+                        tbDokter.setValueAt(0,i,11);
+                        tbDokter.setValueAt(0,i,12);
+                        tbDokter.setValueAt("",i,13);
+                    }
+                }else{
+                    for(i=0;i<jml;i++){ 
+                        tbDokter.setValueAt("",i,0);
+                        tbDokter.setValueAt(false,i,5);
+                        tbDokter.setValueAt(0,i,8);
+                        tbDokter.setValueAt(0,i,9);
+                        tbDokter.setValueAt(0,i,10);
+                        tbDokter.setValueAt(0,i,11);
+                        tbDokter.setValueAt(0,i,12);
+                        tbDokter.setValueAt("",i,13);
+                    }
                 }
-            }else{
-                for(i=0;i<jml;i++){ 
-                    tbDokter.setValueAt("",i,0);
-                    tbDokter.setValueAt(false,i,5);
-                    tbDokter.setValueAt(0,i,8);
-                    tbDokter.setValueAt(0,i,9);
-                    tbDokter.setValueAt(0,i,10);
-                    tbDokter.setValueAt(0,i,11);
-                    tbDokter.setValueAt(0,i,12);
-                    tbDokter.setValueAt("",i,13);
-                }
-            }
                 tampil();
                 LSubtotal.setText("0");
                 LPotongan.setText("0");
