@@ -331,11 +331,19 @@
                 if($kamar==""){
                     $kamar="0";
                 }
+                $obat_kronis=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where nm_perawatan like '%kronis%' no_rawat='".$norawat."' and status='Obat'");
+                $obat_kemoterapi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where nm_perawatan like '%kemo%' no_rawat='".$norawat."' and status='Obat'");
                 $obat=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Obat'")+
                        getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Retur Obat'")+
-                       getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Resep Pulang'"));
+                       getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Resep Pulang'")-$obat_kronis-$obat_kemoterapi);
                 if($obat==""){
                     $obat="0";
+                }
+                if($obat_kemoterapi==""){
+                    $obat_kemoterapi="0";
+                }        
+                if($obat_kronis==""){
+                    $obat_kronis="0";
                 }
                 $bmhp=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$norawat."' and status='Tambahan'");
                 if($bmhp==""){
@@ -426,6 +434,18 @@
                 </td>
             </tr>
             <tr class="head">
+                <td width="31%" >Biaya Obat Kronis</td><td width="">:</td>
+                <td width="67%">
+                    <input name="obat_kronis" class="text" type="text" class="inputbox" value="<?php echo $obat_kronis;?>" size="20" maxlength="15">
+                </td>
+            </tr>
+            <tr class="head">
+                <td width="31%" >Biaya Obat Kemoterapi</td><td width="">:</td>
+                <td width="67%">
+                    <input name="obat_kemoterapi" class="text" type="text" class="inputbox" value="<?php echo $obat_kemoterapi;?>" size="20" maxlength="15">
+                </td>
+            </tr>
+            <tr class="head">
                 <td width="31%" >Biaya Alkes</td><td width="">:</td>
                 <td width="67%">
                     <input name="alkes" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
@@ -494,6 +514,8 @@
                 $kamar             = trim($_POST['kamar']);
                 $rawat_intensif    = trim($_POST['rawat_intensif']);
                 $obat              = trim($_POST['obat']);
+                $obat_kronis       = trim($_POST['obat_kronis']);
+                $obat_kemoterapi   = trim($_POST['obat_kemoterapi']);
                 $alkes             = trim($_POST['alkes']);
                 $bmhp              = trim($_POST['bmhp']);
                 $sewa_alat         = trim($_POST['sewa_alat']);
@@ -518,7 +540,7 @@
                         $tarif_poli_eks,$nama_dokter,getKelasRS(),"","","#",$codernik,
                         $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                         $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
-                        $alkes,$bmhp,$sewa_alat);
+                        $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat);
                     echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
                 }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))){
                     echo 'Semua field harus isi..!!!';
