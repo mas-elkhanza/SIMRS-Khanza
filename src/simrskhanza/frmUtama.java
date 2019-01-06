@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import setting.DlgRunTeks;
 import laporan.DlgSirkulasiBerkas;
 import permintaan.DlgCariPermintaanLab;
 import permintaan.DlgBookingRegistrasi;
@@ -393,6 +394,7 @@ import laporan.DlgPerujukLabPerTahun;
 import laporan.DlgPerujukRadiologiPerTahun;
 import laporan.DlgRekapLabPerTahun;
 import laporan.DlgRekapRadiologiPerTahun;
+import setting.DlgRunTeksApotek;
 import setting.DlgSetInputParsial;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -986,6 +988,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnHAIsBangsal = new widget.ButtonBig();
         btnPPNObat = new widget.ButtonBig();
         btnSaldoAkunPerBulan = new widget.ButtonBig();
+        btnDisplayApotek = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1055,6 +1058,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnAnjungan = new javax.swing.JMenuItem();
         MnRekapHadir3 = new javax.swing.JMenuItem();
         MnRekapHadir4 = new javax.swing.JMenuItem();
+        MnRekapHadir5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         DlgLogin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -1578,7 +1582,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnVakum);
 
         btnDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/find.png"))); // NOI18N
-        btnDisplay.setText("Display Antrian");
+        btnDisplay.setText("Display Antrian Registrasi & Poli");
         btnDisplay.setIconTextGap(0);
         btnDisplay.setName("btnDisplay"); // NOI18N
         btnDisplay.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6317,6 +6321,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSaldoAkunPerBulan);
 
+        btnDisplayApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/find.png"))); // NOI18N
+        btnDisplayApotek.setText("Display Antrian Apotek");
+        btnDisplayApotek.setIconTextGap(0);
+        btnDisplayApotek.setName("btnDisplayApotek"); // NOI18N
+        btnDisplayApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDisplayApotek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisplayApotekActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDisplayApotek);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6325,7 +6341,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/01/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/01/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7257,6 +7273,21 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu7.add(MnRekapHadir4);
+
+        MnRekapHadir5.setBackground(new java.awt.Color(255, 255, 255));
+        MnRekapHadir5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRekapHadir5.setForeground(new java.awt.Color(90, 120, 80));
+        MnRekapHadir5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        MnRekapHadir5.setText("Antrian Apotek");
+        MnRekapHadir5.setIconTextGap(6);
+        MnRekapHadir5.setName("MnRekapHadir5"); // NOI18N
+        MnRekapHadir5.setPreferredSize(new java.awt.Dimension(250, 35));
+        MnRekapHadir5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRekapHadir5ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnRekapHadir5);
 
         MenuBar.add(jMenu7);
 
@@ -13069,6 +13100,28 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSaldoAkunPerBulanActionPerformed
 
+    private void MnRekapHadir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHadir5ActionPerformed
+        try {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Runtime.getRuntime().exec("java -jar antrianapotek.jar");
+            this.setCursor(Cursor.getDefaultCursor());
+        } catch (Exception e) {
+            System.out.print("Notifikasi : "+e);
+        }
+    }//GEN-LAST:event_MnRekapHadir5ActionPerformed
+
+    private void btnDisplayApotekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayApotekActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRunTeksApotek runteks=new DlgRunTeksApotek(this,false);
+        runteks.emptTeks();
+        runteks.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        runteks.setLocationRelativeTo(PanelUtama);
+        runteks.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDisplayApotekActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13116,6 +13169,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JMenuItem MnRekapHadir1;
     private javax.swing.JMenuItem MnRekapHadir3;
     private javax.swing.JMenuItem MnRekapHadir4;
+    private javax.swing.JMenuItem MnRekapHadir5;
     private javax.swing.JMenuItem MnSudahPulang;
     private javax.swing.JMenuItem MnSudahPulang1;
     private javax.swing.JMenuItem MnSudahPulang2;
@@ -13200,6 +13254,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDiagnosa;
     private widget.ButtonBig btnDiet;
     private widget.ButtonBig btnDisplay;
+    private widget.ButtonBig btnDisplayApotek;
     private widget.ButtonBig btnDokter;
     private widget.ButtonBig btnFrekuensiRalan;
     private widget.ButtonBig btnFrekuensiRanap;
@@ -13860,6 +13915,15 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }else if(jmlmenu<=410){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*78)));
+        }else if(jmlmenu<=415){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*79)));
+        }else if(jmlmenu<=420){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*80)));
+        }else if(jmlmenu<=425){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*81)));
         }                                                 
         Panelmenu.repaint(); 
         DlgHome.setVisible(true);               
@@ -15973,6 +16037,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                Panelmenu.add(btnDisplay); 
                jmlmenu++;
             }
+            
+            if(var.getdisplay_apotek()==true){
+               Panelmenu.add(btnDisplayApotek); 
+               jmlmenu++;
+            }
 
             if(var.getset_harga_obat()==true){
                 Panelmenu.add(btnSetupHarga);
@@ -18068,6 +18137,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getdisplay()==true){
            Panelmenu.add(btnDisplay); 
+           jmlmenu++;
+        }
+        
+        if(var.getdisplay_apotek()==true){
+           Panelmenu.add(btnDisplayApotek); 
            jmlmenu++;
         }
 
@@ -20977,6 +21051,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getdisplay()==true){
             if(btnDisplay.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDisplay); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getdisplay_apotek()==true){
+            if(btnDisplayApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDisplayApotek); 
                 jmlmenu++;
             }                
         }

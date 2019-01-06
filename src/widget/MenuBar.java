@@ -23,7 +23,7 @@ public class MenuBar extends JMenuBar {
     private BufferedImage gradientImage;
     private BufferedImage ligthImage;
     private final Color light = new Color(1F, 1F, 1F, 0.35F);
-    private final Color dark = new Color(1F, 1F, 1F, 0.25F);
+    private final Color dark = new Color(1F, 1F, 1F, 0.35F);
     //private Color black = Color.black;
     //private Color warna = Color.magenta.darker().darker().darker().darker();
     private final Color black = new Color(95,135,85);
@@ -31,7 +31,7 @@ public class MenuBar extends JMenuBar {
 
     public MenuBar() {
         super();
-        setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
     }
 
     @Override
