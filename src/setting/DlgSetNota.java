@@ -374,7 +374,7 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
-        TabSetting.setBackground(new java.awt.Color(255, 255, 253));
+        TabSetting.setBackground(new java.awt.Color(255, 255, 254));
         TabSetting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabSetting.setForeground(new java.awt.Color(70, 70, 70));
         TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
