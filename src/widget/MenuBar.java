@@ -31,7 +31,7 @@ public class MenuBar extends JMenuBar {
 
     public MenuBar() {
         super();
-        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        setBorder(BorderFactory.createEmptyBorder(5, 6,6, 6));
     }
 
     @Override
