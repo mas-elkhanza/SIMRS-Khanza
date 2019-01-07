@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>KhanzaHMS</comment>
+    <entry key="HOST">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="DATABASE">AZHNccBwSmSho84f+X8GyQ==</entry>
+    <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
+    <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CARICEPAT">nonaktif</entry>
+    <entry key="HYBRIDWEB">webapps</entry>
+    <entry key="PORTWEB">80</entry>
+    <entry key="ANTRIAN">player</entry>
+    <entry key="MENUTRANSPARAN">yes</entry>
+    <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/devWslokalrest</entry>
+    <entry key="SECRETKEYAPIBPJS">0qO2F4D0AF</entry>
+    <entry key="CONSIDAPIBPJS">1236</entry>
+    <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:8888/aplicaresws</entry>
+    <entry key="SECRETKEYAPIAPLICARE">1112</entry>
+    <entry key="CONSIDAPIAPLICARE">1000</entry>
+    <entry key="KAMARAKTIFRANAP"></entry>
+    <entry key="DOKTERAKTIFKASIRRALAN"></entry>
+    <entry key="POLIAKTIFKASIRRALAN"></entry>
+    <entry key="URUTNOREG">dokter</entry>
+    <entry key="JADWALDOKTERDIREGISTRASI">aktif</entry>    
+    <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>
+    <entry key="URLAPIINHEALTH">http://dummy.inhealth.co.id/pelkesws2</entry>
+    <entry key="TOKENINHEALTH">inh_aba40329b828c943e91f2e5c7f9f1f1b</entry>
+    <entry key="PEMBULATANHARGAOBAT">no</entry>
+    <entry key="CETAKRINCIANOBAT">yes</entry>
+</properties>

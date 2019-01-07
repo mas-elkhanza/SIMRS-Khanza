@@ -473,7 +473,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2018 18:28:18" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2018 21:05:21" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -697,7 +697,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
-        TabPilihRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabPilihRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabPilihRawat.setBorder(null);
         TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -763,7 +763,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         internalFrame2.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
-        TabRawatJalan.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawatJalan.setBackground(new java.awt.Color(255, 255, 254));
         TabRawatJalan.setBorder(null);
         TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -896,7 +896,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
-        TabRawatInap.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawatInap.setBackground(new java.awt.Color(255, 255, 254));
         TabRawatInap.setBorder(null);
         TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
