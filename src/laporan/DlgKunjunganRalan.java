@@ -859,9 +859,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
                     "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.tgl_daftar " +
                     "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab " +
-                    "inner join kecamatan inner join kabupaten on reg_periksa.kd_dokter=dokter.kd_dokter " +
+                    "inner join kabupaten on reg_periksa.kd_dokter=dokter.kd_dokter " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj " +
-                    "and reg_periksa.kd_poli=poliklinik.kd_poli and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
+                    "and reg_periksa.kd_poli=poliklinik.kd_poli and pasien.kd_kab=kabupaten.kd_kab " +
                     "where reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and poliklinik.nm_poli like ? or " +
                     "reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and dokter.nm_dokter like ? or " +
                     "reg_periksa.status_lanjut='Ralan' and reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and reg_periksa.no_rkm_medis like ? or " +

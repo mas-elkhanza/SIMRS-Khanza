@@ -7304,7 +7304,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="06/01/2019"/>
+            <StringItem index="0" value="07/01/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -7386,7 +7386,7 @@
         </Property>
         <Property name="name" type="java.lang.String" value="MenuBar" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[227, 30]"/>
+          <Dimension value="[227, 28]"/>
         </Property>
       </Properties>
       <SubComponents>
@@ -7409,7 +7409,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="jMenu1" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 30]"/>
+              <Dimension value="[80, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -7431,7 +7431,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnLogin" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7471,7 +7471,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnGantiPassword" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7496,7 +7496,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MenuKeluar" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7524,7 +7524,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="jMenu5" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[127, 30]"/>
+              <Dimension value="[127, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -7546,7 +7546,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnBelumDatang1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7571,7 +7571,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnBelumDatang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7596,7 +7596,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7621,7 +7621,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7646,7 +7646,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[170, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7674,7 +7674,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="jMenu6" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[89, 30]"/>
+              <Dimension value="[89, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -7696,7 +7696,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7721,7 +7721,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7746,7 +7746,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7771,7 +7771,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7796,7 +7796,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang6" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7821,7 +7821,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7846,7 +7846,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7871,7 +7871,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7896,7 +7896,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7921,7 +7921,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7946,7 +7946,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7971,7 +7971,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7996,7 +7996,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8021,7 +8021,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8046,7 +8046,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[240, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8074,7 +8074,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="jMenu7" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[138, 30]"/>
+              <Dimension value="[138, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -8096,7 +8096,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnAnjungan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[200, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8121,7 +8121,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[200, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8146,7 +8146,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[200, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8171,7 +8171,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 35]"/>
+                  <Dimension value="[200, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8199,7 +8199,7 @@
             </Property>
             <Property name="name" type="java.lang.String" value="jMenu4" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[124, 30]"/>
+              <Dimension value="[124, 28]"/>
             </Property>
           </Properties>
           <Events>

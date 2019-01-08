@@ -360,9 +360,9 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Mei</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Juni</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Juli</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Agutus</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Agustus</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>September</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Otober</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Oktober</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>November</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Desember</td>"+
                 "</tr>"+
