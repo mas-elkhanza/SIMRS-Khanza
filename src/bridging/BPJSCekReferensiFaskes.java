@@ -362,7 +362,6 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     
     public void tampil2(String faskes) {        
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = link+"/referensi/faskes/"+faskes+"/2";	
 
 	    HttpHeaders headers = new HttpHeaders();
