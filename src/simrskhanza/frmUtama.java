@@ -229,6 +229,7 @@ import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
+import bridging.SisruteCekReferensiAlasanRujuk;
 import bridging.SisruteCekReferensiFaskes;
 import grafikanalisa.GrafikDemografiRegistrasi;
 import grafikanalisa.GrafikKejadianIKPPerBulan;
@@ -991,6 +992,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSaldoAkunPerBulan = new widget.ButtonBig();
         btnDisplayApotek = new widget.ButtonBig();
         btnCekSisruteFaskes = new widget.ButtonBig();
+        btnCekSisruteAlasanRujuk = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6346,6 +6348,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnCekSisruteFaskes);
+
+        btnCekSisruteAlasanRujuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_todo_list_add_17451.png"))); // NOI18N
+        btnCekSisruteAlasanRujuk.setText("Referensi Alasan Rujuk Sisrute");
+        btnCekSisruteAlasanRujuk.setIconTextGap(0);
+        btnCekSisruteAlasanRujuk.setName("btnCekSisruteAlasanRujuk"); // NOI18N
+        btnCekSisruteAlasanRujuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekSisruteAlasanRujuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekSisruteAlasanRujukActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekSisruteAlasanRujuk);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -13147,6 +13161,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekSisruteFaskesActionPerformed
 
+    private void btnCekSisruteAlasanRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekSisruteAlasanRujukActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SisruteCekReferensiAlasanRujuk form=new SisruteCekReferensiAlasanRujuk(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekSisruteAlasanRujukActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13267,6 +13292,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekReferensiRuangRawatBPJS;
     private widget.ButtonBig btnCekReferensiSpesialistikBPJS;
     private widget.ButtonBig btnCekSEP;
+    private widget.ButtonBig btnCekSisruteAlasanRujuk;
     private widget.ButtonBig btnCekSisruteFaskes;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaftarPermintaanResep;
@@ -15591,6 +15617,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnCekSisruteFaskes);
                 jmlmenu++;
             }
+            
+            if(var.getsisrute_referensi_alasanrujuk()==true){
+                Panelmenu.add(btnCekSisruteAlasanRujuk);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
             if(var.getperusahaan_pasien()==true){
@@ -17701,6 +17732,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getsisrute_referensi_faskes()==true){
             Panelmenu.add(btnCekSisruteFaskes);
+            jmlmenu++;
+        }
+        
+        if(var.getsisrute_referensi_alasanrujuk()==true){
+            Panelmenu.add(btnCekSisruteAlasanRujuk);
             jmlmenu++;
         }
 
@@ -20434,6 +20470,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsisrute_referensi_faskes()==true){
             if(btnCekSisruteFaskes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekSisruteFaskes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsisrute_referensi_alasanrujuk()==true){
+            if(btnCekSisruteAlasanRujuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekSisruteAlasanRujuk);
                 jmlmenu++;
             }                
         }
