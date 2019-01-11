@@ -320,8 +320,11 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
     public void tampil(String faskes) {
         try {
             Valid.tabelKosong(tabMode);
-            URL = link+"/referensi/faskes";
-                	
+            if(faskes.equals("")){
+                URL = link+"/referensi/faskes";
+            }else{
+                URL = link+"/referensi/faskes?query="+faskes;
+            }    	
             HttpHeaders headers = new HttpHeaders();
 	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
@@ -342,22 +345,23 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        if(list.path("KODE").asText().toLowerCase().contains(faskes.toLowerCase())||
-                                list.path("NAMA").asText().toLowerCase().contains(faskes.toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                i+".",list.path("KODE").asText(),list.path("NAMA").asText()
-                            });
-                        }
+                        tabMode.addRow(new Object[]{
+                            i+".",list.path("KODE").asText(),list.path("NAMA").asText()
+                        });                        
                         i++;
                     }
                 }
             }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                JOptionPane.showMessageDialog(null,root.path("detail").asText());                
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server Kemenkes terputus....!");
+            }else if(ex.toString().contains("404")){
+                JOptionPane.showMessageDialog(rootPane,"Tidak ditemukan....!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(rootPane,"Server interenal error....!");
             }
         }
     }    

@@ -254,7 +254,7 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSisruteReferensiAlasanRujuk.jrxml","report","[ Pencarian Referensi Faskes ]",
+            Valid.MyReport("rptCariSisruteReferensiAlasanRujuk.jrxml","report","[ Pencarian Referensi Alasan Rujuk ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -351,12 +351,16 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
                     }
                 }
             }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                JOptionPane.showMessageDialog(null,root.path("detail").asText());                 
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server Kemenkes terputus....!");
+            }else if(ex.toString().contains("404")){
+                JOptionPane.showMessageDialog(rootPane,"Tidak ditemukan....!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(rootPane,"Server interenal error....!");
             }
         }
     }    

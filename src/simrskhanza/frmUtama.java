@@ -230,6 +230,7 @@ import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
 import bridging.SisruteCekReferensiAlasanRujuk;
+import bridging.SisruteCekReferensiDiagnosa;
 import bridging.SisruteCekReferensiFaskes;
 import grafikanalisa.GrafikDemografiRegistrasi;
 import grafikanalisa.GrafikKejadianIKPPerBulan;
@@ -993,6 +994,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnDisplayApotek = new widget.ButtonBig();
         btnCekSisruteFaskes = new widget.ButtonBig();
         btnCekSisruteAlasanRujuk = new widget.ButtonBig();
+        btnCekSisruteDiagnosa = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6360,6 +6362,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnCekSisruteAlasanRujuk);
+
+        btnCekSisruteDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnCekSisruteDiagnosa.setText("Referensi Diagnosa Sisrute");
+        btnCekSisruteDiagnosa.setIconTextGap(0);
+        btnCekSisruteDiagnosa.setName("btnCekSisruteDiagnosa"); // NOI18N
+        btnCekSisruteDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekSisruteDiagnosa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekSisruteDiagnosaActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekSisruteDiagnosa);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -13172,6 +13186,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekSisruteAlasanRujukActionPerformed
 
+    private void btnCekSisruteDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekSisruteDiagnosaActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SisruteCekReferensiDiagnosa form=new SisruteCekReferensiDiagnosa(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekSisruteDiagnosaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13293,6 +13318,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekReferensiSpesialistikBPJS;
     private widget.ButtonBig btnCekSEP;
     private widget.ButtonBig btnCekSisruteAlasanRujuk;
+    private widget.ButtonBig btnCekSisruteDiagnosa;
     private widget.ButtonBig btnCekSisruteFaskes;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaftarPermintaanResep;
@@ -15622,6 +15648,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnCekSisruteAlasanRujuk);
                 jmlmenu++;
             }
+            
+            if(var.getsisrute_referensi_diagnosa()==true){
+                Panelmenu.add(btnCekSisruteDiagnosa);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
             if(var.getperusahaan_pasien()==true){
@@ -17737,6 +17768,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getsisrute_referensi_alasanrujuk()==true){
             Panelmenu.add(btnCekSisruteAlasanRujuk);
+            jmlmenu++;
+        }
+
+        if(var.getsisrute_referensi_diagnosa()==true){
+            Panelmenu.add(btnCekSisruteDiagnosa);
             jmlmenu++;
         }
 
@@ -20477,6 +20513,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsisrute_referensi_alasanrujuk()==true){
             if(btnCekSisruteAlasanRujuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekSisruteAlasanRujuk);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsisrute_referensi_diagnosa()==true){
+            if(btnCekSisruteDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekSisruteDiagnosa);
                 jmlmenu++;
             }                
         }
