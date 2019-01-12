@@ -12,6 +12,8 @@
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="PORTWEB">80</entry>
     <entry key="ANTRIAN">player</entry>
+    <entry key="ALARMAPOTEK">yes</entry>
+    <entry key="FORMALARMAPOTEK">ralan + ranap</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://dvlp.bpjs-kesehatan.go.id/vclaim-rest</entry>
     <entry key="SECRETKEYAPIBPJS">3uX2876258</entry>
