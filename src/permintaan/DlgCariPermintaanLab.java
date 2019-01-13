@@ -1,4 +1,5 @@
 package permintaan;
+import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -7,18 +8,23 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -32,14 +38,15 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private int i;
+    private int i,nilai_detik,permintaanbaru=0;
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2,rs3;
+    private final Properties prop = new Properties();
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
-    private String tglsampel="",tglhasil="",norm="",kamar="",namakamar="",diagnosa="",la="",ld="",pa="",pd="";
+    private BackgroundMusic music;
+    private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",diagnosa="",la="",ld="",pa="",pd="";
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -317,6 +324,19 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            alarm=prop.getProperty("ALARMLAB");
+            formalarm=prop.getProperty("FORMALARMLAB");
+        } catch (Exception ex) {
+            alarm="no";
+            formalarm="ralan + ranap";
+        }
+        
+        if(alarm.equals("yes")){
+            jam();
+        }
     }
 
     /** This method is called from within the constructor to
@@ -1982,8 +2002,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             ps=koneksi.prepareStatement(
                     "select permintaan_lab.noorder,permintaan_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_lab.tgl_permintaan,"+
                     "if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,"+
-                    "permintaan_lab.tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
-                    "permintaan_lab.tgl_hasil,if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
+                    "if(permintaan_lab.tgl_sampel='0000-00-00','',permintaan_lab.tgl_sampel) as tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
+                    "if(permintaan_lab.tgl_hasil='0000-00-00','',permintaan_lab.tgl_hasil) as tgl_hasil,if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
                     "permintaan_lab.dokter_perujuk,dokter.nm_dokter,poliklinik.nm_poli from permintaan_lab "+
                     "inner join reg_periksa inner join pasien inner join dokter inner join poliklinik "+
                     "on permintaan_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2248,8 +2268,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             ps=koneksi.prepareStatement(
                     "select permintaan_lab.noorder,permintaan_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_lab.tgl_permintaan,"+
                     "if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,"+
-                    "permintaan_lab.tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
-                    "permintaan_lab.tgl_hasil,if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
+                    "if(permintaan_lab.tgl_sampel='0000-00-00','',permintaan_lab.tgl_sampel) as tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
+                    "if(permintaan_lab.tgl_hasil='0000-00-00','',permintaan_lab.tgl_hasil) as tgl_hasil,if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
                     "permintaan_lab.dokter_perujuk,dokter.nm_dokter,bangsal.nm_bangsal from permintaan_lab "+
                     "inner join reg_periksa inner join pasien inner join dokter inner join bangsal inner join kamar inner join kamar_inap "+
                     "on permintaan_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2462,5 +2482,51 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }            
+    }
+    
+    private void jam(){
+        ActionListener taskPerformer = new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                nol_detik = "";                
+                Date now = Calendar.getInstance().getTime();
+                nilai_detik = now.getSeconds();
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+                
+                detik = nol_detik + Integer.toString(nilai_detik);
+                if(detik.equals("05")){ 
+                    permintaanbaru=0; 
+                    if(formalarm.contains("ralan")){
+                        tampil();
+                        for(i=0;i<tbLabRalan.getRowCount();i++){ 
+                            if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;                                                                                                   
+                            }
+                        }
+                    }
+                    
+                    if(formalarm.contains("ranap")){
+                        tampil3();
+                        for(i=0;i<tbLabRanap.getRowCount();i++){ 
+                            if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;                                                                                                   
+                            }
+                        }
+                    }
+                      
+                    if(permintaanbaru>0){
+                        try {
+                            music = new BackgroundMusic("./suara/alarm.mp3");
+                            music.start();              
+                        } catch (Exception ex) {
+                            System.out.println(ex);
+                        }
+                    }                        
+                }
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
     }
 }
