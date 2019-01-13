@@ -276,8 +276,8 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(diagnosa.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan masukkan pencarian terlebih dahulu..!!!");
+        if(diagnosa.getText().trim().length()<3){
+            JOptionPane.showMessageDialog(null,"Silahkan masukkan pencarian terlebih dahulu. Minimal 3 karakter...!!!");
             diagnosa.requestFocus();
         }else{
             tampil(diagnosa.getText());
@@ -326,11 +326,7 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
     public void tampil(String faskes) {
         try {
             Valid.tabelKosong(tabMode);
-            if(faskes.equals("")){
-                URL = link+"/referensi/diagnosa";
-            }else{
-                URL = link+"/referensi/diagnosa/"+faskes;
-            }   
+            URL = link+"/referensi/diagnosa?query="+faskes;
                 	
             HttpHeaders headers = new HttpHeaders();
 	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
@@ -349,23 +345,15 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
             if(nameNode.asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("data");
-                if(faskes.equals("")){
-                    if(response.isArray()){
-                        i=1;
-                        for(JsonNode list:response){
-                            tabMode.addRow(new Object[]{
-                                    i+".",list.path("KODE").asText(),list.path("NAMA").asText()
-                            });
-                            i++;
-                        }
+                if(response.isArray()){
+                    i=1;
+                    for(JsonNode list:response){
+                        tabMode.addRow(new Object[]{
+                                i+".",list.path("KODE").asText(),list.path("NAMA").asText()
+                        });
+                        i++;
                     }
-                }else{
-                    i=1;                       
-                    tabMode.addRow(new Object[]{
-                            i+".",response.path("KODE").asText(),response.path("NAMA").asText()
-                    });
-                    i++;
-                }                    
+                }                  
             }else {
                 JOptionPane.showMessageDialog(null,root.path("detail").asText());               
             }   
