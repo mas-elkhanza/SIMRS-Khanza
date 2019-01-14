@@ -328,7 +328,6 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
 	    headers.add("Content-type","application/json");             
 	    headers.add("Content-length",null);            
 	    HttpEntity requestEntity = new HttpEntity(headers);
-            RestTemplate rest = new RestTemplate();
             //System.out.println(URL);
 	    //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
