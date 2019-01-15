@@ -72,23 +72,31 @@
     -->
     <target name="-post-compile">
         <mkdir dir="${build.dir}/report" />        
-        <mkdir dir="${build.dir}/setting" />        
+        <mkdir dir="${build.dir}/setting" />       
+        <mkdir dir="${build.dir}/suara" />        
         <copy todir="${build.dir}/report">
             <fileset dir="report/" includes="**/*.jrxml" />
         </copy>                
         <copy todir="${build.dir}/setting">
             <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />
         </copy>
+        <copy todir="${build.dir}/suara">
+            <fileset dir="suara/" includes="**/*.mp3" />
+        </copy>
     </target>
 
     <target name="-post-jar">
         <mkdir dir="${dist.dir}/report" />        
-        <mkdir dir="${dist.dir}/setting" />        
+        <mkdir dir="${dist.dir}/setting" />       
+        <mkdir dir="${dist.dir}/suara" />        
         <copy todir="${dist.dir}/report">
             <fileset dir="report/" includes="**/*.jrxml" />
         </copy>               
         <copy todir="${dist.dir}/setting">
             <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />
+        </copy> 
+        <copy todir="${dist.dir}/suara">
+            <fileset dir="suara/" includes="**/*.mp3" />
         </copy> 
     </target>
 </project>

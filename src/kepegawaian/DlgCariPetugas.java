@@ -310,7 +310,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
         //nama.setModal(true);
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);

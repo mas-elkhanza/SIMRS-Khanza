@@ -6,8 +6,6 @@
 package fungsi;
 
 
-import fungsi.koneksiDB;
-import fungsi.sekuel;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -483,7 +481,7 @@ public final class validasi {
 
     public void LoadTahun(JComboBox cmb){        
         cmb.removeAllItems();
-        for(i =year;i>=1980;i--){
+        for(i =(year+1);i>=1980;i--){
             cmb.addItem(i);
         }
         cmb.setSelectedItem(year);
@@ -930,6 +928,28 @@ public final class validasi {
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
                 for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");
+                rt.exec(new String[] { "sh", "-c", cmd.toString() });
+            } 
+        }catch (Exception e){
+            System.out.println("Notif Browser : "+e);
+        } 
+    }
+    
+    public void panggilUrl2(String url){
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime rt = Runtime.getRuntime();                                
+        try{ 
+            Properties prop = new Properties();
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            if(os.contains("win")) {
+                rt.exec( "rundll32 url.dll,FileProtocolHandler "+url);
+            }else if (os.contains("mac")) {
+                rt.exec( "open " +url);
+            }else if (os.contains("nix") || os.contains("nux")) {
+                String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
+                // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
+                StringBuilder cmd = new StringBuilder();
+                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append(url).append( "\" ");
                 rt.exec(new String[] { "sh", "-c", cmd.toString() });
             } 
         }catch (Exception e){

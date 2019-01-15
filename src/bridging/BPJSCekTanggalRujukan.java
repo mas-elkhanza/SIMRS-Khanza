@@ -14,18 +14,15 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -45,11 +42,8 @@ import org.springframework.http.MediaType;
  */
 public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
-    private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
     private int i=0;
     private String URL="",link="",norm="",statussep="",statuspasien="";
     private final Properties prop = new Properties();
@@ -335,7 +329,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -345,25 +339,17 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
             }
         });
 
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
-        tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbBangsalMouseClicked(evt);
-            }
-        });
-        tbBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbBangsalKeyPressed(evt);
-            }
-        });
         Scroll.setViewportView(tbBangsal);
 
         TabRawat.addTab("Rujukan PCare", Scroll);
 
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
@@ -512,26 +498,6 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
             dispose();
         }else{Valid.pindah(evt,BtnKeluar,Tanggal);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
-
-    private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
-        if(tabMode.getRowCount()!=0){
-            try {
-                getData();
-            } catch (java.lang.NullPointerException e) {
-            }
-        }
-}//GEN-LAST:event_tbBangsalMouseClicked
-
-    private void tbBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBangsalKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
-        }
-}//GEN-LAST:event_tbBangsalKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
@@ -933,11 +899,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
-    private void getData() {
-        int row=tbBangsal.getSelectedRow();
-        if(row!= -1){
-            
-        }
+    public void isCek(){
+        BtnCari1.setEnabled(var.getbpjs_sep());
     }
     
     private void jam(){

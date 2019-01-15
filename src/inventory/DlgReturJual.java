@@ -968,7 +968,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             Valid.textKosong(Hargaretur,"harga retur");
         }else{
             if(formvalid.equals("No")){
-                if(Double.parseDouble(Jmlretur.getText())<Sequel.cariIsiAngka("select sum(jml) from detail_pemberian_obat where no_rawat='"+norawat+"' and kode_brng='"+Kdbar.getText()+"'")){
+                if(Double.parseDouble(Jmlretur.getText())<=Sequel.cariIsiAngka("select sum(jml) from detail_pemberian_obat where no_rawat='"+norawat+"' and kode_brng='"+Kdbar.getText()+"'")){
                     Sequel.menyimpan("tampreturjual","'"+NoFaktur.getText()+"','"+Kdbar.getText()+"','"+nmbar.getText()+"','0','0','"+
                             Jmlretur.getText()+"','"+Hargaretur.getText()+"','"+Satuanbar.getText()+"','"+Subtotal.getText()+"','"+NoBatch.getText()+"','"+Kadaluwarsa.getText()+"','"+var.getkode()+"'",
                             "nama_brng='"+nmbar.getText()+"',satuan='"+Satuanbar.getText()+"',h_jual='0',jml_jual='0',h_retur='"+
@@ -1005,7 +1005,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kdbar," tampreturjual","no_batch='"+NoBatch.getText()+"' and nota_jual='"+NoFaktur.getText()+"' and kode_brng");
+            Valid.hapusTable(tabMode,Kdbar," tampreturjual","no_batch='"+NoBatch.getText()+"' and nota_jual='"+NoFaktur.getText()+"' and petugas='"+var.getkode()+"' and kode_brng");
             tampil();
             emptTeks();
         }
@@ -1077,8 +1077,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 if(Sequel.menyimpantf2("returjual","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdmem.getText()+"','"+kdgudang.getText()+"'","data")==true){
                     try {
-                        ps=koneksi.prepareStatement("select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,subtotal,no_batch from tampreturjual");
+                        ps=koneksi.prepareStatement("select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,subtotal,no_batch from tampreturjual where petugas=?");
                         try {
+                            ps.setString(1,var.getkode());
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 if(Sequel.menyimpantf("detreturjual","?,?,?,?,?,?,?,?,?,?","data barang sama",10,new String[]{
@@ -1121,8 +1122,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     int konfirm = JOptionPane.showConfirmDialog(rootPane,"No.Faktur sudah ada sebelumnya,\napa data mau ditambahkan ke No.Retur tersebut..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                     if (konfirm == JOptionPane.YES_OPTION) {
                         try {
-                            ps=koneksi.prepareStatement("select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,  subtotal from tampreturjual");
+                            ps=koneksi.prepareStatement("select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,subtotal,no_batch from tampreturjual where petugas=?");
                             try {
+                                ps.setString(1,var.getkode());
                                 rs=ps.executeQuery();
                                 while(rs.next()){
                                     if(Sequel.menyimpantf("detreturjual","?,?,?,?,?,?,?,?,?","data barang sama",9,new String[]{
@@ -1170,11 +1172,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        Sequel.queryu("delete from  tampreturjual");
+        Sequel.queryu("delete from tampreturjual where petugas='"+var.getkode()+"'");
         tampil();
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,3),signed)),0) from returjual where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
-                "RJ"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
-        
+        autonomor();
     }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed

@@ -1,4 +1,5 @@
 package inventory;
+import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -7,6 +8,8 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -15,11 +18,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -36,12 +42,13 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private ResultSet rs,rs2,rs3;
     private DlgCariObat dlgobt=new DlgCariObat(null,false);
     private DlgCariObat2 dlgobt2=new DlgCariObat2(null,false);
-    private String bangsal="",aktifkanparsial="no",kamar="";
+    private String bangsal="",aktifkanparsial="no",kamar="",alarm="",formalarm="",nol_detik,detik;
     private final Properties prop = new Properties();
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
-    private int jmlparsial=0;
+    private int jmlparsial=0,nilai_detik,resepbaru=0,i=0;
+    private BackgroundMusic music;
     
     /** Creates new form 
      * @param parent
@@ -297,10 +304,17 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            alarm=prop.getProperty("ALARMAPOTEK");
+            formalarm=prop.getProperty("FORMALARMAPOTEK");
         } catch (Exception ex) {
             aktifkanparsial="no";
+            alarm="no";
+            formalarm="ralan + ranap";
         }
-
+        
+        if(alarm.equals("yes")){
+            jam();
+        }
     }
 
     /** This method is called from within the constructor to
@@ -1908,5 +1922,51 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }  
+    }
+    
+    private void jam(){
+        ActionListener taskPerformer = new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                nol_detik = "";                
+                Date now = Calendar.getInstance().getTime();
+                nilai_detik = now.getSeconds();
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+                
+                detik = nol_detik + Integer.toString(nilai_detik);
+                if(detik.equals("05")){ 
+                    resepbaru=0; 
+                    if(formalarm.contains("ralan")){
+                        tampil();
+                        for(i=0;i<tbResepRalan.getRowCount();i++){ 
+                            if(tbResepRalan.getValueAt(i,7).toString().equals("Belum Terlayani")){
+                                resepbaru++;
+                            }
+                        }
+                    }
+                    
+                    if(formalarm.contains("ranap")){
+                        tampil3();
+                        for(i=0;i<tbResepRanap.getRowCount();i++){ 
+                            if(tbResepRanap.getValueAt(i,7).toString().equals("Belum Terlayani")){
+                                resepbaru++;
+                            }
+                        }
+                    }
+                      
+                    if(resepbaru>0){
+                        try {
+                            music = new BackgroundMusic("./suara/alarm.mp3");
+                            music.start();              
+                        } catch (Exception ex) {
+                            System.out.println(ex);
+                        }
+                    }                        
+                }
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
     }
 }

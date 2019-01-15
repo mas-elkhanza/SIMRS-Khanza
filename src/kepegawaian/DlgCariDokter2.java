@@ -328,7 +328,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
         //nm_dokter.setModal(true);
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        dokter.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
