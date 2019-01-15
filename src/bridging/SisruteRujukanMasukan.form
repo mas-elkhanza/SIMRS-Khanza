@@ -165,9 +165,6 @@
                       <Dimension value="[140, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbStatusItemStateChanged"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Label" name="jLabel10">
                   <Properties>
