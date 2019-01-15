@@ -12,7 +12,7 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="shift" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select * from temporary order by no asc]]>
+		<![CDATA[select * from temporary_payment order by no asc]]>
 	</queryString>
 	<field name="no" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
