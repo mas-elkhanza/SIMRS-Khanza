@@ -5,7 +5,6 @@
  */
 package bridging;
 
-import static bridging.tessaja2.api;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

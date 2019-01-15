@@ -12,9 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/laporan/DlgKunjunganRalan.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/laporan/DlgKunjunganRanap.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/SisruteCekReferensiAlasanRujuk.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/setting/database.xml</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/file.json</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/SisruteRujukanMasukan.java</file>
         </group>
     </open-files>
 </project-private>

@@ -92,7 +92,8 @@ public final class var {
             catatan_perawatan=false,surat_keluar=false,kegiatan_farmasi=false,stok_opname_logistik=false,sirkulasi_non_medis=false,
             rekap_lab_pertahun=false,perujuk_lab_pertahun=false,rekap_radiologi_pertahun=false,perujuk_radiologi_pertahun=false,
             jumlah_porsi_diet=false,jumlah_macam_diet=false,payment_point2=false,pembayaran_akun_bayar2=false,hapus_nota_salah=false,
-            hais_perbangsal=false,ppn_obat=false,saldo_akun_perbulan=false,display_apotek=false;
+            hais_perbangsal=false,ppn_obat=false,saldo_akun_perbulan=false,display_apotek=false,sisrute_referensi_faskes=false,
+            sisrute_referensi_alasanrujuk=false,sisrute_referensi_diagnosa=false,sisrute_rujukan_masuk=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -538,6 +539,10 @@ public final class var {
                         var.ppn_obat=true;
                         var.saldo_akun_perbulan=true;
                         var.display_apotek=true;
+                        var.sisrute_referensi_faskes=true;
+                        var.sisrute_referensi_alasanrujuk=true;
+                        var.sisrute_referensi_diagnosa=true;
+                        var.sisrute_rujukan_masuk=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -967,6 +972,10 @@ public final class var {
                         var.ppn_obat=rs2.getBoolean("ppn_obat");
                         var.saldo_akun_perbulan=rs2.getBoolean("saldo_akun_perbulan");
                         var.display_apotek=rs2.getBoolean("display_apotek");
+                        var.sisrute_referensi_faskes=rs2.getBoolean("sisrute_referensi_faskes");
+                        var.sisrute_referensi_alasanrujuk=rs2.getBoolean("sisrute_referensi_alasanrujuk");
+                        var.sisrute_referensi_diagnosa=rs2.getBoolean("sisrute_referensi_diagnosa");
+                        var.sisrute_rujukan_masuk=rs2.getBoolean("sisrute_rujukan_masuk");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1394,6 +1403,10 @@ public final class var {
                         var.ppn_obat=false;
                         var.saldo_akun_perbulan=false;
                         var.display_apotek=false;
+                        var.sisrute_referensi_faskes=false;
+                        var.sisrute_referensi_alasanrujuk=false;
+                        var.sisrute_referensi_diagnosa=false;
+                        var.sisrute_rujukan_masuk=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1873,4 +1886,8 @@ public final class var {
     public static boolean getppn_obat(){return var.ppn_obat;}
     public static boolean getsaldo_akun_perbulan(){return var.saldo_akun_perbulan;}
     public static boolean getdisplay_apotek(){return var.display_apotek;}
+    public static boolean getsisrute_referensi_faskes(){return var.sisrute_referensi_faskes;}
+    public static boolean getsisrute_referensi_alasanrujuk(){return var.sisrute_referensi_alasanrujuk;}
+    public static boolean getsisrute_referensi_diagnosa(){return var.sisrute_referensi_diagnosa;}
+    public static boolean getsisrute_rujukan_masuk(){return var.sisrute_rujukan_masuk;}
 }   
