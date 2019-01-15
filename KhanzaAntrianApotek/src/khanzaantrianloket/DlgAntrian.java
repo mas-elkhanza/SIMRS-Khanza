@@ -101,27 +101,28 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         DlgDisplay.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         DlgDisplay.setName("DlgDisplay"); // NOI18N
 
+        internalFrame5.setBackground(new java.awt.Color(250, 255, 250));
         internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 200, 100)), "::[ Informasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 32), new java.awt.Color(50, 100, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setPreferredSize(new java.awt.Dimension(500, 110));
-        internalFrame5.setWarnaAtas(new java.awt.Color(255, 255, 255));
-        internalFrame5.setWarnaBawah(new java.awt.Color(230, 255, 230));
+        internalFrame5.setWarnaBawah(new java.awt.Color(250, 255, 250));
         internalFrame5.setLayout(new java.awt.BorderLayout());
 
+        paneliklan.setBackground(new java.awt.Color(250, 255, 250));
         paneliklan.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/coba.gif"))); // NOI18N
         paneliklan.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         paneliklan.setPreferredSize(new java.awt.Dimension(200, 140));
         paneliklan.setRound(false);
-        paneliklan.setWarna(new java.awt.Color(150, 255, 150));
+        paneliklan.setWarna(new java.awt.Color(250, 255, 250));
         paneliklan.setLayout(null);
         internalFrame5.add(paneliklan, java.awt.BorderLayout.CENTER);
 
-        panelruntext.setBackground(new java.awt.Color(230, 255, 230));
+        panelruntext.setBackground(new java.awt.Color(250, 255, 250));
         panelruntext.setName("panelruntext"); // NOI18N
         panelruntext.setPreferredSize(new java.awt.Dimension(100, 100));
         panelruntext.setLayout(new java.awt.BorderLayout());
 
-        labelruntext.setBackground(new java.awt.Color(238, 255, 238));
+        labelruntext.setBackground(new java.awt.Color(250, 255, 250));
         labelruntext.setForeground(new java.awt.Color(50, 100, 50));
         labelruntext.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelruntext.setFont(new java.awt.Font("Tahoma", 0, 35)); // NOI18N
@@ -133,13 +134,14 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         DlgDisplay.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
 
+        form1.setBackground(new java.awt.Color(250, 255, 250));
         form1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 200, 100)), " Antrian Apotek", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 45), new java.awt.Color(50, 100, 50))); // NOI18N
         form1.setName("form1"); // NOI18N
         form1.setPreferredSize(new java.awt.Dimension(550, 150));
-        form1.setWarnaAtas(new java.awt.Color(255, 255, 255));
-        form1.setWarnaBawah(new java.awt.Color(230, 255, 230));
+        form1.setWarnaBawah(new java.awt.Color(250, 255, 250));
         form1.setLayout(new java.awt.GridLayout(2, 0));
 
+        labelantri1.setBackground(new java.awt.Color(250, 255, 250));
         labelantri1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 250, 150)), "No.Antrian :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 32), new java.awt.Color(50, 100, 50))); // NOI18N
         labelantri1.setForeground(new java.awt.Color(50, 100, 50));
         labelantri1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -149,6 +151,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         labelantri1.setPreferredSize(new java.awt.Dimension(300, 50));
         form1.add(labelantri1);
 
+        labelLoket.setBackground(new java.awt.Color(250, 255, 250));
         labelLoket.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 250, 150)), "Loket :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 32), new java.awt.Color(50, 100, 50))); // NOI18N
         labelLoket.setForeground(new java.awt.Color(50, 100, 50));
         labelLoket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

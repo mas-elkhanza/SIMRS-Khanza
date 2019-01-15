@@ -26,12 +26,12 @@ public class MenuBar extends JMenuBar {
     private final Color dark = new Color(1F, 1F, 1F, 0.35F);
     //private Color black = Color.black;
     //private Color warna = Color.magenta.darker().darker().darker().darker();
-    private final Color black = new Color(95,135,85);
-    private final Color warna = new Color(95,135,85);
+    private final Color black = new Color(90,130,80);
+    private final Color warna = new Color(90,130,80);
 
     public MenuBar() {
         super();
-        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        setBorder(BorderFactory.createEmptyBorder(5, 6,6, 6));
     }
 
     @Override
