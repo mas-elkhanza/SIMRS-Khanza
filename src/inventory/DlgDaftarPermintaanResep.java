@@ -43,8 +43,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private DlgCariObat dlgobt=new DlgCariObat(null,false);
     private DlgCariObat2 dlgobt2=new DlgCariObat2(null,false);
     private String bangsal="",aktifkanparsial="no",kamar="",alarm="",
-            formalarm="",nol_detik,detik,NoResep,TglPeresepan,JamPeresepan,
-            NoRawat,NoRM,Pasien,DokterPeresep,Status,KodeDokter,Ruang,KodeRuang;
+            formalarm="",nol_detik,detik,NoResep="",TglPeresepan="",JamPeresepan="",
+            NoRawat="",NoRM="",Pasien="",DokterPeresep="",Status="",KodeDokter="",Ruang="",KodeRuang="";
     private final Properties prop = new Properties();
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);

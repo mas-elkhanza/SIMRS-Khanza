@@ -47,7 +47,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private BackgroundMusic music;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",diagnosa="",la="",ld="",pa="",pd="",
-                    NoPermintaan,NoRawat,Pasien,Permintaan,JamPermintaan,Sampel,JamSampel,Hasil,JamHasil,KodeDokter,DokterPerujuk,Ruang;
+                    NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     
     /** Creates new form DlgProgramStudi
      * @param parent

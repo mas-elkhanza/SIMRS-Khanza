@@ -17,6 +17,7 @@
     <entry key="ALARMLAB">yes</entry>
     <entry key="FORMALARMLAB">ralan + ranap</entry>
     <entry key="ALARMRADIOLOGI">yes</entry>
+    <entry key="ALARMRSISRUTE">yes</entry>
     <entry key="FORMALARMRADIOLOGI">ralan + ranap</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://dvlp.bpjs-kesehatan.go.id/vclaim-rest</entry>
