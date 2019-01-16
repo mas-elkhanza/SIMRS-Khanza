@@ -29,6 +29,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -86,15 +88,15 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(160);
             }else if(i==3){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(85);
             }else if(i==4){
                 column.setPreferredWidth(160);
             }else if(i==5){
                 column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(25);
             }else if(i==8){
                 column.setPreferredWidth(100);
             }else if(i==9){
@@ -181,15 +183,16 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         Tanggal = new widget.Tanggal();
         jLabel12 = new widget.Label();
         cmbStatus = new widget.ComboBox();
-        jLabel10 = new widget.Label();
-        LCount = new widget.Label();
-        panelGlass5 = new widget.panelisi();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        jLabel11 = new widget.Label();
+        panelGlass5 = new widget.panelisi();
+        jLabel10 = new widget.Label();
+        LCount = new widget.Label();
+        BtnAll = new widget.Button();
         BtnEdit = new widget.Button();
         BtnCari1 = new widget.Button();
+        BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -233,41 +236,24 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setPreferredSize(new java.awt.Dimension(95, 23));
+        Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass8.add(Tanggal);
 
-        jLabel12.setText("Status Registrasi :");
+        jLabel12.setText("Stts.Reg :");
         jLabel12.setName("jLabel12"); // NOI18N
-        jLabel12.setPreferredSize(new java.awt.Dimension(120, 23));
+        jLabel12.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass8.add(jLabel12);
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Teregistrasi", "Belum Teregistrasi" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
         cmbStatus.setOpaque(false);
-        cmbStatus.setPreferredSize(new java.awt.Dimension(140, 23));
+        cmbStatus.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass8.add(cmbStatus);
-
-        jLabel10.setText("Record :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(75, 23));
-        panelGlass8.add(jLabel10);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(85, 23));
-        panelGlass8.add(LCount);
-
-        jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
-
-        panelGlass5.setName("panelGlass5"); // NOI18N
-        panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
-        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(67, 23));
-        panelGlass5.add(jLabel6);
+        panelGlass8.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(170, 23));
@@ -276,7 +262,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass5.add(TCari);
+        panelGlass8.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
@@ -293,11 +279,42 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnCari);
+        panelGlass8.add(BtnCari);
 
-        jLabel11.setName("jLabel11"); // NOI18N
-        jLabel11.setPreferredSize(new java.awt.Dimension(20, 23));
-        panelGlass5.add(jLabel11);
+        jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
+
+        panelGlass5.setName("panelGlass5"); // NOI18N
+        panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
+        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        jLabel10.setText("Record :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(55, 23));
+        panelGlass5.add(jLabel10);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelGlass5.add(LCount);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setText("Semua");
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass5.add(BtnAll);
 
         BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         BtnEdit.setMnemonic('G');
@@ -334,6 +351,19 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(BtnCari1);
+
+        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        BtnPrint.setMnemonic('T');
+        BtnPrint.setText("Cetak");
+        BtnPrint.setToolTipText("Alt+T");
+        BtnPrint.setName("BtnPrint"); // NOI18N
+        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrintActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(BtnPrint);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -443,6 +473,83 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_TCariKeyPressed
 
+    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            //TCari.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Sequel.AutoComitFalse();
+            Sequel.queryu("delete from temporary");
+            int row=tabMode.getRowCount();
+            for(int r=0;r<row;r++){  
+                Sequel.menyimpan("temporary","'0','"+
+                tabMode.getValueAt(r,0).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,6).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,13).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,20).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,21).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,22).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,23).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,24).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,25).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,26).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,27).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,28).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,29).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,30).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,31).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,32).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,33).toString().replaceAll("'","`")+"','"+
+                tabMode.getValueAt(r,34).toString().replaceAll("'","`")+"','',''","Rekap Harian Pengadaan Ipsrs"); 
+            }
+            Sequel.AutoComitTrue();
+            Map<String, Object> param = new HashMap<>();                 
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReport("rptCariSisruteRujukanMasuk.jrxml","report","[ Pencarian Rujukan Masuk Sisrute ]",
+                "select * from temporary order by no asc",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        } 
+    }//GEN-LAST:event_BtnPrintActionPerformed
+
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        TCari.setText("");
+        cmbStatus.setSelectedIndex(0);
+        tampil();
+    }//GEN-LAST:event_BtnAllActionPerformed
+
+    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            tampil();
+            TCari.setText("");
+        }else{
+            Valid.pindah(evt, BtnPrint, BtnKeluar);
+        }
+    }//GEN-LAST:event_BtnAllKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -460,10 +567,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
     private widget.Button BtnEdit;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPrint;
     private widget.CekBox ChkJln;
     private widget.Label LCount;
     private widget.ScrollPane Scroll;
@@ -472,7 +581,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.ComboBox cmbStatus;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
-    private widget.Label jLabel11;
     private widget.Label jLabel12;
     private widget.Label jLabel6;
     private javax.swing.JPanel jPanel3;
@@ -515,31 +623,40 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             statuspasien="Lama";
                         }
                         if(statusreg.contains(cmbStatus.getSelectedItem().toString().replaceAll("Semua",""))){
-                            tabMode.addRow(new Object[]{
-                                i+".",list.path("PASIEN").path("NORM").asText(),list.path("PASIEN").path("NAMA").asText(),
-                                list.path("PASIEN").path("KONTAK").asText(),list.path("PASIEN").path("ALAMAT").asText(),
-                                list.path("PASIEN").path("TEMPAT_LAHIR").asText(),list.path("PASIEN").path("TANGGAL_LAHIR").asText(),
-                                list.path("PASIEN").path("JENIS_KELAMIN").path("NAMA").asText().substring(0,1),
-                                list.path("PASIEN").path("NO_KARTU_JKN").asText(),list.path("PASIEN").path("NIK").asText(),
-                                list.path("RUJUKAN").path("NOMOR").asText(),list.path("RUJUKAN").path("FASKES_ASAL").path("KODE").asText(),
-                                list.path("RUJUKAN").path("FASKES_ASAL").path("NAMA").asText(),list.path("RUJUKAN").path("FASKES_TUJUAN").path("KODE").asText(),
-                                list.path("RUJUKAN").path("FASKES_TUJUAN").path("NAMA").asText(),list.path("RUJUKAN").path("JENIS_RUJUKAN").path("NAMA").asText(),
-                                list.path("RUJUKAN").path("ALASAN").asText(),list.path("RUJUKAN").path("ALASAN_LAINNYA").asText(),
-                                list.path("RUJUKAN").path("STATUS").path("NAMA").asText(),list.path("RUJUKAN").path("TANGGAL").asText(),
-                                list.path("RUJUKAN").path("DIAGNOSA").asText(),list.path("KONDISI_UMUM").path("ANAMNESIS_DAN_PEMERIKSAAN_FISIK").asText(),
-                                list.path("KONDISI_UMUM").path("KESADARAN").path("NAMA").asText(),list.path("KONDISI_UMUM").path("TEKANAN_DARAH").asText(),
-                                list.path("KONDISI_UMUM").path("FREKUENSI_NADI").asText(),list.path("KONDISI_UMUM").path("SUHU").asText(),
-                                list.path("KONDISI_UMUM").path("PERNAPASAN").asText(),list.path("KONDISI_UMUM").path("NYERI").path("NAMA").asText(),
-                                list.path("KONDISI_UMUM").path("KEADAAN_UMUM").asText(),list.path("KONDISI_UMUM").path("ALERGI").asText(),
-                                list.path("PENUNJANG").path("LABORATORIUM").asText(),list.path("PENUNJANG").path("RADIOLOGI").asText(),
-                                list.path("PENUNJANG").path("TERAPI_ATAU_TINDAKAN").asText(),statuspasien,statusreg
-                            });
-                            i++;
+                            if(list.path("PASIEN").path("NAMA").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                    list.path("PASIEN").path("NORM").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                    list.path("PASIEN").path("ALAMAT").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                    list.path("PASIEN").path("TANGGAL_LAHIR").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                    list.path("PASIEN").path("NO_KARTU_JKN").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                    list.path("PASIEN").path("NIK").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                    list.path("RUJUKAN").path("FASKES_ASAL").path("NAMA").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
+                                    list.path("RUJUKAN").path("NOMOR").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                                tabMode.addRow(new Object[]{
+                                    i+".",list.path("PASIEN").path("NORM").asText(),list.path("PASIEN").path("NAMA").asText(),
+                                    list.path("PASIEN").path("KONTAK").asText(),list.path("PASIEN").path("ALAMAT").asText(),
+                                    list.path("PASIEN").path("TEMPAT_LAHIR").asText(),list.path("PASIEN").path("TANGGAL_LAHIR").asText(),
+                                    list.path("PASIEN").path("JENIS_KELAMIN").path("NAMA").asText().substring(0,1),
+                                    list.path("PASIEN").path("NO_KARTU_JKN").asText(),list.path("PASIEN").path("NIK").asText(),
+                                    list.path("RUJUKAN").path("NOMOR").asText(),list.path("RUJUKAN").path("FASKES_ASAL").path("KODE").asText(),
+                                    list.path("RUJUKAN").path("FASKES_ASAL").path("NAMA").asText(),list.path("RUJUKAN").path("FASKES_TUJUAN").path("KODE").asText(),
+                                    list.path("RUJUKAN").path("FASKES_TUJUAN").path("NAMA").asText(),list.path("RUJUKAN").path("JENIS_RUJUKAN").path("NAMA").asText(),
+                                    list.path("RUJUKAN").path("ALASAN").asText(),list.path("RUJUKAN").path("ALASAN_LAINNYA").asText(),
+                                    list.path("RUJUKAN").path("STATUS").path("NAMA").asText(),list.path("RUJUKAN").path("TANGGAL").asText(),
+                                    list.path("RUJUKAN").path("DIAGNOSA").asText(),list.path("KONDISI_UMUM").path("ANAMNESIS_DAN_PEMERIKSAAN_FISIK").asText(),
+                                    list.path("KONDISI_UMUM").path("KESADARAN").path("NAMA").asText(),list.path("KONDISI_UMUM").path("TEKANAN_DARAH").asText(),
+                                    list.path("KONDISI_UMUM").path("FREKUENSI_NADI").asText(),list.path("KONDISI_UMUM").path("SUHU").asText(),
+                                    list.path("KONDISI_UMUM").path("PERNAPASAN").asText(),list.path("KONDISI_UMUM").path("NYERI").path("NAMA").asText(),
+                                    list.path("KONDISI_UMUM").path("KEADAAN_UMUM").asText(),list.path("KONDISI_UMUM").path("ALERGI").asText(),
+                                    list.path("PENUNJANG").path("LABORATORIUM").asText(),list.path("PENUNJANG").path("RADIOLOGI").asText(),
+                                    list.path("PENUNJANG").path("TERAPI_ATAU_TINDAKAN").asText(),statuspasien,statusreg
+                                });
+                                i++;
+                            }                                
                         }                            
                     }
                 }                                       
             }else {
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                JOptionPane.showMessageDialog(null,root.path("detail").asText());                 
             }   
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
