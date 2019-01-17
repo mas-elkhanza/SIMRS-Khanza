@@ -9013,4 +9013,20 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             }
         }
     }
+    
+    public void setPasien(String NamaPasien,String Kontak,String Alamat,
+            String TempatLahir,String TglLahir,String JK,String NoKartuJKN,String NIK){
+        this.TNm.setText(NamaPasien);
+        this.TTlp.setText(Kontak);
+        this.Alamat.setText(Alamat);
+        this.TTmp.setText(TempatLahir);
+        Valid.SetTgl(this.DTPLahir,TglLahir);
+        if(JK.equals("L")){
+            this.CmbJk.setSelectedItem("LAKI-LAKI");
+        }else{            
+            this.CmbJk.setSelectedItem("PEREMPUAN");
+        }
+        this.TNoPeserta.setText(NoKartuJKN);
+        this.TKtp.setText(NIK);
+    }
 }
