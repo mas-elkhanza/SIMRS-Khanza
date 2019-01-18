@@ -99,8 +99,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     public  DlgSatuanTNI satuantni=new DlgSatuanTNI(null,false);
     public  DlgPangkatTNI pangkattni=new DlgPangkatTNI(null,false);
     public  DlgJabatanTNI jabatantni=new DlgJabatanTNI(null,false);
-    private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
-            
+    private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);            
     public  DlgGolonganPolri golonganpolri=new DlgGolonganPolri(null,false);
     public  DlgSatuanPolri satuanpolri=new DlgSatuanPolri(null,false);
     public  DlgPangkatPolri pangkatpolri=new DlgPangkatPolri(null,false);
@@ -117,7 +116,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,jmlhari=0,
             p_propinsi=0,p_propinsipj=0;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-    private String BASENOREG="",URUTNOREG="",link="",klg="SAUDARA",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
+    private String nosisrute="",BASENOREG="",URUTNOREG="",link="",klg="SAUDARA",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
@@ -133,6 +132,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     private Period p;
     private long p2;
     private DlgPasien pasien=new DlgPasien(null,false);
+    private boolean empt=false;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -3775,6 +3775,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         pangkatpolri.dispose();
         jabatanpolri.dispose();
         pilihan.dispose();
+        var.setAktif(false);
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -3836,8 +3837,30 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_TBiayaKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        emptTeks();
-        BtnSimpan.setVisible(false);
+        if(empt==false){
+            emptTeks();
+            BtnSimpan.setVisible(false);
+        }else if(empt==true){            
+            ChkCari.setSelected(true);
+            chkPolri.setSelected(false);
+            chkTNI.setSelected(false);
+            chkTNI.setSelected(false);
+            chkPolri.setSelected(false);     
+            BtnGolonganPolri.setEnabled(false);
+            BtnSatuanPolri.setEnabled(false);
+            BtnJabatanPolri.setEnabled(false);
+            BtnPangkatPolri.setEnabled(false);
+            BtnGolonganTNI.setEnabled(false);
+            BtnSatuanTNI.setEnabled(false);
+            BtnJabatanTNI.setEnabled(false);
+            BtnPangkatTNI.setEnabled(false);
+            R5.setSelected(true);
+            LakaLantas.setSelectedIndex(0);
+            Katarak.setSelectedIndex(0);        
+            Suplesi.setSelectedIndex(0);
+            TNo.requestFocus();
+            isForm();
+        }  
     }//GEN-LAST:event_formWindowOpened
 
     private void MnDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDocumentActionPerformed
@@ -5433,7 +5456,6 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                 }); 
                 Valid.SetTgl(TanggalRujuk,response.path("tglKunjungan").asText());
                 isNumber();
-                isPoli();
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
                 ps=koneksi.prepareStatement(
@@ -5589,6 +5611,9 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     }
                 }
             }else {
+                emptTeks();
+                ChkCari.setSelected(false);
+                isForm();
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
         } catch (Exception ex) {
@@ -5820,6 +5845,8 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     if(statuspasien.equals("Lama")){
                         TBiaya.setText(rs.getString("registrasilama"));
                     }else if(statuspasien.equals("Baru")){
+                        TBiaya.setText(rs.getString("registrasi"));
+                    }else{
                         TBiaya.setText(rs.getString("registrasi"));
                     }
                 }
@@ -6079,7 +6106,11 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     klg,TBiaya.getText(),"Belum",statuspasien,"Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
-                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");             
+                    if(nosisrute.equals("")){
+                        Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");             
+                    }else{
+                        Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+nosisrute+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");   
+                    }
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
                     if(Sequel.cariInteger(
                             "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
@@ -6102,7 +6133,11 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     klg,Sequel.cariIsi("select registrasilama from poliklinik where kd_poli='IGDK'"),"Belum",statuspasien,"Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
-                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");                                     
+                    if(nosisrute.equals("")){
+                        Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");             
+                    }else{
+                        Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+nosisrute+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");   
+                    }
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
                     if(Sequel.cariInteger(
                             "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
@@ -6311,6 +6346,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                             prb="";
                         } 
                     }
+                    nosisrute="";
                 }                     
             }else{
                 Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
@@ -6341,5 +6377,15 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         BtnSimpan.setEnabled(var.getbpjs_sep());
         ppPengajuan.setEnabled(var.getbpjs_sep());
         ppPengajuan1.setEnabled(var.getbpjs_sep());
+    }
+    
+    public void SetNoKartu(String NoPeserta){
+        NoKartu.setText(NoPeserta);
+        tampil(NoPeserta);
+        empt=true;
+    }
+    
+    public void SetNoRujuk(String norujuk){
+        this.nosisrute=norujuk;
     }
 }
