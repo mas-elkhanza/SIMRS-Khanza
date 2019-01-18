@@ -180,7 +180,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(70,70,70));
+        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakBatang.setText("Grafik Batang 10 Penyakit Terbanyak");
         ppGrafikTerbanyakBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -197,7 +197,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerbanyakPie.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(70,70,70));
+        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakPie.setText("Grafik Pie 10 Penyakit Terbanyak");
         ppGrafikTerbanyakPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -214,7 +214,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerkecilBatang.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(70,70,70));
+        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilBatang.setText("Grafik Batang 10 Penyakit Tersedikit");
         ppGrafikTerkecilBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -231,7 +231,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerkecilPie.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilPie.setForeground(new java.awt.Color(70,70,70));
+        ppGrafikTerkecilPie.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilPie.setText("Grafik Pie 10 Penyakit Tersedikit");
         ppGrafikTerkecilPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -255,7 +255,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -407,8 +407,8 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {

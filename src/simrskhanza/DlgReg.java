@@ -107,7 +107,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private ResultSet rs;
     private int pilihan=0,i=0,kuota=0,jmlparsial=0;
     private Date cal=new Date();
-    private String aktifkanparsial="no",BASENOREG="",
+    private String nosisrute="",aktifkanparsial="no",BASENOREG="",
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
             validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
@@ -4951,8 +4951,8 @@ public final class DlgReg extends javax.swing.JDialog {
 
     private void BtnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPasienActionPerformed
         var.setform("DlgReg");
-        pasien.penjab.removeWindowListener(null);
-        pasien.penjab.getTable().removeKeyListener(null);
+        //pasien.penjab.removeWindowListener(null);
+        //pasien.penjab.getTable().removeKeyListener(null);
         pasien.emptTeks();
         pasien.isCek();
         pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -5090,12 +5090,36 @@ public final class DlgReg extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        Window[] wins = Window.getWindows();
-        for (Window win : wins) {
-            if (win instanceof JDialog) {
-                win.dispose();
-            }
-        }
+        pasien.dispose();
+        pasien.bahasa.dispose();
+        pasien.cacat.dispose();
+        pasien.golonganpolri.dispose();
+        pasien.golongantni.dispose();
+        pasien.jabatanpolri.dispose();
+        pasien.jabatantni.dispose();
+        pasien.kab.dispose();
+        pasien.kec.dispose();
+        pasien.kel.dispose();
+        pasien.pangkatpolri.dispose();
+        pasien.pangkattni.dispose();
+        pasien.penjab.dispose();
+        pasien.perusahaan.dispose();
+        pasien.prop.dispose();
+        pasien.satuanpolri.dispose();
+        pasien.satuantni.dispose();
+        pasien.suku.dispose();
+        dokter.dispose();
+        dokter.dokter.dispose();
+        dokter2.dokter.dispose();
+        poli.dispose();
+        poli2.dispose();
+        dlgrjk.dispose();
+        rujukmasuk.WindowPerujuk.dispose();   
+        DlgSakit.dispose();
+        DlgSakit2.dispose();
+        DlgDemografi.dispose();
+        DlgCatatan.dispose();
+        var.setAktif(false);
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -9492,7 +9516,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
             UpdateUmur();
             if(!AsalRujukan.getText().equals("")){
-                Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                if(nosisrute.equals("")){
+                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                }else{
+                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','"+nosisrute+"','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk"); 
+                    nosisrute="";
+                }                    
             }
             if(ChkTracker.isSelected()==true){
                 ctk();
@@ -9507,7 +9536,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                 UpdateUmur();
                 if(!AsalRujukan.getText().equals("")){
-                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                    if(nosisrute.equals("")){
+                        Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                    }else{
+                        Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','"+nosisrute+"','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk"); 
+                        nosisrute="";
+                    } 
                 }
                 if(ChkTracker.isSelected()==true){
                     ctk();
@@ -9522,7 +9556,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                     UpdateUmur();
                     if(!AsalRujukan.getText().equals("")){
-                        Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                        if(nosisrute.equals("")){
+                            Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                        }else{
+                            Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','"+nosisrute+"','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk"); 
+                            nosisrute="";
+                        } 
                     }
                     if(ChkTracker.isSelected()==true){
                         ctk();
@@ -9537,7 +9576,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                         UpdateUmur();
                         if(!AsalRujukan.getText().equals("")){
-                            Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                            if(nosisrute.equals("")){
+                                Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                            }else{
+                                Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','"+nosisrute+"','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk"); 
+                                nosisrute="";
+                            } 
                         }
                         if(ChkTracker.isSelected()==true){
                             ctk();
@@ -9552,7 +9596,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                 TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                             UpdateUmur();
                             if(!AsalRujukan.getText().equals("")){
-                                Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                                if(nosisrute.equals("")){
+                                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
+                                }else{
+                                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','"+nosisrute+"','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk"); 
+                                    nosisrute="";
+                                } 
                             }
                             if(ChkTracker.isSelected()==true){
                                 ctk();
@@ -9591,5 +9640,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbPetugas.requestFocus();
         } 
+    }
+    
+    public void SetPasien(String norm,String nosisrute,String FaskesAsal){
+        ChkInput.setSelected(true);
+        isForm(); 
+        TNoRM.setText(norm);
+        this.nosisrute=nosisrute;
+        AsalRujukan.setText(FaskesAsal);
+        isPas();
+    }
+    
+    public void setPasien(String NamaPasien,String Kontak,String Alamat,String TempatLahir,String TglLahir,
+            String JK,String NoKartuJKN,String NIK,String nosisrute,String FaskesAsal){
+        var.setform("DlgReg");
+        ChkInput.setSelected(true);
+        isForm(); 
+        pasien.emptTeks();
+        pasien.isCek();
+        this.nosisrute=nosisrute;
+        AsalRujukan.setText(FaskesAsal);
+        pasien.setPasien(NamaPasien, Kontak, Alamat, TempatLahir, TglLahir, JK, NoKartuJKN, NIK);
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.setLocationRelativeTo(internalFrame1);
+        pasien.setVisible(true);
     }
 }

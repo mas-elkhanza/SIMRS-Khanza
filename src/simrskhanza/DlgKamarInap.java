@@ -3757,7 +3757,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                            kmr+"and kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%' ";
                 }
 
-                i = 0;
                 try{
                     pilihancetak = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan yang mau dicetak!","Laporan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1", "Laporan 2","Lembar Bimbingan Rohani"},"Laporan 1");
                     switch (pilihancetak) {

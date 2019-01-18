@@ -1,6 +1,4 @@
 package laporan;
-import keuangan.Jurnal;
-import keuangan.*;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -28,7 +26,6 @@ import simrskhanza.DlgPenanggungJawab;
 public class DlgBulananHAIs extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;

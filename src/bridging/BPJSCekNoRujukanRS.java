@@ -5323,7 +5323,6 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 }); 
                 Valid.SetTgl(TanggalRujuk,response.path("tglKunjungan").asText());
                 isNumber();
-                isPoli();
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
                 ps=koneksi.prepareStatement(
@@ -5479,6 +5478,9 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                     }
                 }
             }else {
+                emptTeks();
+                ChkCari.setSelected(false);
+                isForm();
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
         } catch (Exception ex) {
@@ -5710,6 +5712,8 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                     if(statuspasien.equals("Lama")){
                         TBiaya.setText(rs.getString("registrasilama"));
                     }else if(statuspasien.equals("Baru")){
+                        TBiaya.setText(rs.getString("registrasi"));
+                    }else{
                         TBiaya.setText(rs.getString("registrasi"));
                     }
                 }

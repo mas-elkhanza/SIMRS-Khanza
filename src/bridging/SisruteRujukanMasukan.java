@@ -27,8 +27,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,6 +41,8 @@ import kepegawaian.DlgCariPegawai;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgReg;
 
 /**
  *
@@ -53,7 +53,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private int i=0,nilai_detik,rujukanbaru=0;
-    private String alarm="",URL="",link="",norm="",statusreg="",statuspasien="",norujuk="",nol_detik,detik;
+    private String pilihan="",alarm="",URL="",link="",norm="",statusreg="",statuspasien="",norujuk="",nol_detik,detik;
     private final Properties prop = new Properties();
     private SisruteApi api=new SisruteApi();
     private BackgroundMusic music;
@@ -63,7 +63,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
                 KodeTujuan="",NamaFaskesTujuan="",JenisRujukan="",Alasan="",AlasanLainnya="",Status="",
                 TglRujuk="",DignosaRujuk="",AnamnesisPemeriksaanFisik="",Kesadaran="",
                 Tensi="",Nadi="",Suhu="",Respirasi="",Nyeri="",KeadaanUmum="",Alergi="",
-                Laboratorium="",Radiologi="",TerapiTindakan="",SttsPasien="",SttsRegistrasi="";
+                Laboratorium="",Radiologi="",TerapiTindakan="",SttsPasien="",SttsRegistrasi="",NoRmRS="";
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -77,7 +77,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
                 "Kode Tujuan","Nama Faskes Tujuan","Jenis Rujukan","Alasan","Alasan Lainnya","Status",
                 "Tgl.Rujuk","Dignosa Rujuk","Anamnesis & Pemeriksaan Fisik","Kesadaran",
                 "Tensi","Nadi","Suhu","Respirasi","Nyeri","Keadaan Umum","Alergi",
-                "Laboratorium","Radiologi","Terapi/Tindakan","Stts.Pasien","Stts.Registrasi"
+                "Laboratorium","Radiologi","Terapi/Tindakan","Stts.Pasien","Stts.Registrasi","No.RmRS"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -86,7 +86,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 35; i++) {
+        for (i = 0; i < 36; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
@@ -158,6 +158,9 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==34){
                 column.setPreferredWidth(100);
+            }else if(i==35){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -210,6 +213,8 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         if(alarm.equals("yes")){
             jam();
         }
+        
+        var.setAktif(false);
     }    
 
     /** This method is called from within the constructor to
@@ -249,9 +254,8 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         jLabel10 = new widget.Label();
         LCount = new widget.Label();
         BtnAll = new widget.Button();
-        BtnSampel = new widget.Button();
-        BtnEdit = new widget.Button();
-        BtnCari1 = new widget.Button();
+        BtnJawab = new widget.Button();
+        BtnRegist = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
@@ -400,7 +404,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setPreferredSize(new java.awt.Dimension(95, 23));
+        Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass8.add(Tanggal);
 
         jLabel12.setText("Stts.Reg :");
@@ -411,7 +415,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Teregistrasi", "Belum Teregistrasi" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
         cmbStatus.setOpaque(false);
-        cmbStatus.setPreferredSize(new java.awt.Dimension(125, 23));
+        cmbStatus.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass8.add(cmbStatus);
 
         jLabel6.setText("Key Word :");
@@ -420,7 +424,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         panelGlass8.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(260, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(230, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -459,7 +463,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(40, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass5.add(LCount);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -480,59 +484,41 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         });
         panelGlass5.add(BtnAll);
 
-        BtnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
-        BtnSampel.setMnemonic('J');
-        BtnSampel.setText("Jawab");
-        BtnSampel.setToolTipText("Alt+J");
-        BtnSampel.setName("BtnSampel"); // NOI18N
-        BtnSampel.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnSampel.addActionListener(new java.awt.event.ActionListener() {
+        BtnJawab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
+        BtnJawab.setMnemonic('J');
+        BtnJawab.setText("Jawab");
+        BtnJawab.setToolTipText("Alt+J");
+        BtnJawab.setName("BtnJawab"); // NOI18N
+        BtnJawab.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnJawab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSampelActionPerformed(evt);
+                BtnJawabActionPerformed(evt);
             }
         });
-        BtnSampel.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnJawab.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSampelKeyPressed(evt);
+                BtnJawabKeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnSampel);
+        panelGlass5.add(BtnJawab);
 
-        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
-        BtnEdit.setMnemonic('G');
-        BtnEdit.setText("Regist");
-        BtnEdit.setToolTipText("Alt+G");
-        BtnEdit.setName("BtnEdit"); // NOI18N
-        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+        BtnRegist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
+        BtnRegist.setMnemonic('G');
+        BtnRegist.setText("Regist");
+        BtnRegist.setToolTipText("Alt+G");
+        BtnRegist.setName("BtnRegist"); // NOI18N
+        BtnRegist.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnRegist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
+                BtnRegistActionPerformed(evt);
             }
         });
-        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnRegist.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnEditKeyPressed(evt);
+                BtnRegistKeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnEdit);
-
-        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnCari1.setMnemonic('E');
-        BtnCari1.setText("Data SEP");
-        BtnCari1.setToolTipText("Alt+E");
-        BtnCari1.setName("BtnCari1"); // NOI18N
-        BtnCari1.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCari1ActionPerformed(evt);
-            }
-        });
-        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCari1KeyPressed(evt);
-            }
-        });
-        panelGlass5.add(BtnCari1);
+        panelGlass5.add(BtnRegist);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -586,6 +572,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
+    var.setAktif(false);
     tampil();
     this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
@@ -600,50 +587,144 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(tbBangsal.getSelectedRow()!= -1){
-            if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),41).toString().equals("")){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                BPJSCekNoRujukanPCare form=new BPJSCekNoRujukanPCare(null,false);
-                form.isCek();
-                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(internalFrame1);
-                form.SetRujukan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
-                form.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
+    private void BtnRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistActionPerformed
+        var.setAktif(true);
+        if(!No.equals("")){
+            if(SttsRegistrasi.trim().equals("Sudah Teregistrasi")){
+                JOptionPane.showMessageDialog(null,"Pasien sudah teregistrasi...!!");
+                var.setAktif(false);
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, SEP telah terbit...!!!!");
-                BtnCari.requestFocus();
-            }                    
+                try{
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Registrasi","Via IGD","Via Cek No.Kartu VClaim","Via Cek NIK VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim"},"Via Registrasi");
+                    switch (pilihan) {
+                        case "Via Registrasi":  
+                            if(SttsPasien.equals("Lama")){
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                DlgReg reg=new DlgReg(null,false);
+                                reg.emptTeks();    
+                                reg.isCek();
+                                reg.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                reg.setLocationRelativeTo(internalFrame1);
+                                reg.SetPasien(NoRmRS,KodeAsal+NoRujuk,NamaFaskesAsal);
+                                reg.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor()); 
+                            }else{
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                DlgReg reg=new DlgReg(null,false);
+                                reg.emptTeks();    
+                                reg.isCek();
+                                reg.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                reg.setLocationRelativeTo(internalFrame1);
+                                reg.setVisible(true);
+                                reg.setPasien(NamaPasien, Kontak, Alamat, TempatLahir, TglLahir, JK, NoKartuJKN, NIK,KodeAsal+NoRujuk,NamaFaskesAsal);
+                                this.setCursor(Cursor.getDefaultCursor()); 
+                            }
+                            break;
+                        case "Via IGD":
+                            if(SttsPasien.equals("Lama")){
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                DlgIGD reg=new DlgIGD(null,false);
+                                reg.emptTeks();    
+                                reg.isCek();
+                                reg.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                reg.setLocationRelativeTo(internalFrame1);
+                                reg.SetPasien(NoRmRS,KodeAsal+NoRujuk,NamaFaskesAsal);
+                                reg.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor()); 
+                            }else{
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                DlgIGD reg=new DlgIGD(null,false);
+                                reg.emptTeks();    
+                                reg.isCek();
+                                reg.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                reg.setLocationRelativeTo(internalFrame1);
+                                reg.setVisible(true);
+                                reg.setPasien(NamaPasien, Kontak, Alamat, TempatLahir, TglLahir, JK, NoKartuJKN, NIK,KodeAsal+NoRujuk,NamaFaskesAsal);
+                                this.setCursor(Cursor.getDefaultCursor()); 
+                            }
+                            break;
+                        case "Via Cek No.Kartu VClaim":
+                            if(NoKartuJKN.equals("")){
+                                Valid.textKosong(TCari,"No.Kartu JKN");
+                            }else{
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                BPJSCekKartu form=new BPJSCekKartu(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.SetNoKartu(NoKartuJKN);
+                                form.SetNoRujuk(KodeAsal+NoRujuk);
+                                form.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }                                
+                            break;
+                        case "Via Cek NIK VClaim":
+                            if(NIK.equals("")){
+                                Valid.textKosong(TCari,"No.KTP");
+                            }else{
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                BPJSCekNIK2 form=new BPJSCekNIK2(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.SetNoKTP(NIK);
+                                form.SetNoRujuk(KodeAsal+NoRujuk);
+                                form.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }     
+                            break;
+                        case "Via Cek Rujukan Kartu PCare di VClaim":
+                            if(NoKartuJKN.equals("")){
+                                Valid.textKosong(TCari,"No.Kartu JKN");
+                            }else{
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                BPJSCekRujukanKartuPCare form=new BPJSCekRujukanKartuPCare(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.SetNoKartu(NoKartuJKN);
+                                form.SetNoRujuk(KodeAsal+NoRujuk);
+                                form.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }    
+                            break;
+                        case "Via Cek Rujukan Kartu RS di VClaim":
+                            if(NoKartuJKN.equals("")){
+                                Valid.textKosong(TCari,"No.Kartu JKN");
+                            }else{
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                BPJSCekRujukanKartuRS form=new BPJSCekRujukanKartuRS(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.SetNoKartu(NoKartuJKN);
+                                form.SetNoRujuk(KodeAsal+NoRujuk);
+                                form.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
+                            } 
+                            break;
+                        default:
+                            var.setAktif(false);
+                            break;
+                    }
+                }catch(Exception e){
+                    var.setAktif(false);
+                }
+            }
         }else{            
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
-            BtnCari.requestFocus();
-        }  
-    }//GEN-LAST:event_BtnEditActionPerformed
+            var.setAktif(false);
+            TCari.requestFocus();
+        }   
+    }//GEN-LAST:event_BtnRegistActionPerformed
 
-    private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
+    private void BtnRegistKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnRegistKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnEditActionPerformed(null);
+            BtnRegistActionPerformed(null);
         }else{
             Valid.pindah(evt, BtnCari, BtnKeluar);
         }
-    }//GEN-LAST:event_BtnEditKeyPressed
-
-    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BPJSDataSEP form=new BPJSDataSEP(null,false);
-        form.isCek();
-        form.tampil();
-        form.tutupInput();
-        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.setLocationRelativeTo(internalFrame1);
-        form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnCari1ActionPerformed
-
-    private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
-        Valid.pindah(evt, BtnCari, BtnKeluar);
-    }//GEN-LAST:event_BtnCari1KeyPressed
+    }//GEN-LAST:event_BtnRegistKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -720,6 +801,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         cmbStatus.setSelectedIndex(0);
+        var.setAktif(false);
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -732,7 +814,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
+    private void BtnJawabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJawabActionPerformed
+        var.setAktif(true);
         if(!No.equals("")){
             if(NoRujuk.trim().equals("")){
                 Valid.textKosong(TCari,"No.Rujukan");
@@ -743,15 +826,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 CmbTerima.requestFocus();
                 this.setCursor(Cursor.getDefaultCursor());
             }
-        }else{            
+        }else{  
+            var.setAktif(false);
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
             TCari.requestFocus();
         }  
-    }//GEN-LAST:event_BtnSampelActionPerformed
+    }//GEN-LAST:event_BtnJawabActionPerformed
 
-    private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
+    private void BtnJawabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnJawabKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSampelKeyPressed
+    }//GEN-LAST:event_BtnJawabKeyPressed
 
     private void tbBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBangsalKeyPressed
         if(tabMode.getRowCount()!=0){
@@ -774,6 +858,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_tbBangsalMouseClicked
 
     private void BtnCloseIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn4ActionPerformed
+        var.setAktif(false);
         WindowAmbilSampel.dispose();
     }//GEN-LAST:event_BtnCloseIn4ActionPerformed
 
@@ -856,13 +941,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox AlasanBalasan;
     private widget.Button BtnAll;
     private widget.Button BtnCari;
-    private widget.Button BtnCari1;
     private widget.Button BtnCloseIn4;
-    private widget.Button BtnEdit;
+    private widget.Button BtnJawab;
     private widget.Button BtnKeluar;
     private widget.Button BtnPegawai;
     private widget.Button BtnPrint;
-    private widget.Button BtnSampel;
+    private widget.Button BtnRegist;
     private widget.Button BtnSimpan4;
     private widget.ComboBox CmbTerima;
     private widget.Label LCount;
@@ -890,8 +974,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     public void tampil(){        
         try {
-            URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
-
+            Valid.tabelKosong(tabMode);
+            URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
@@ -904,13 +988,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("status");
             System.out.println("Result : "+root.path("status").asText());
-            if(nameNode.asText().equals("200")){
-                Valid.tabelKosong(tabMode);
+            if(nameNode.asText().equals("200")){                
                 JsonNode response = root.path("data");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        norujuk=Sequel.cariIsi("select no_rujuk from rujuk_masuk where no_rujuk=?",list.path("RUJUKAN").path("NOMOR").asText());
+                        norujuk=Sequel.cariIsi("select no_rujuk from rujuk_masuk where no_rujuk=?",list.path("RUJUKAN").path("FASKES_ASAL").path("KODE").asText()+list.path("RUJUKAN").path("NOMOR").asText());
                         if(!norujuk.equals("")){
                             statusreg="Sudah Teregistrasi";
                         }else{
@@ -920,6 +1003,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         statuspasien="Baru";
                         if(!norm.equals("")){
                             statuspasien="Lama";
+                        }else{
+                            norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",list.path("PASIEN").path("NO_KARTU_JKN").asText());
+                            if(!norm.equals("")){
+                                statuspasien="Lama";
+                            }
                         }
                         if(statusreg.contains(cmbStatus.getSelectedItem().toString().replaceAll("Semua",""))){
                             if(list.path("PASIEN").path("NAMA").asText().toLowerCase().contains(TCari.getText().toLowerCase())||
@@ -947,7 +1035,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     list.path("KONDISI_UMUM").path("PERNAPASAN").asText(),list.path("KONDISI_UMUM").path("NYERI").path("NAMA").asText(),
                                     list.path("KONDISI_UMUM").path("KEADAAN_UMUM").asText(),list.path("KONDISI_UMUM").path("ALERGI").asText(),
                                     list.path("PENUNJANG").path("LABORATORIUM").asText(),list.path("PENUNJANG").path("RADIOLOGI").asText(),
-                                    list.path("PENUNJANG").path("TERAPI_ATAU_TINDAKAN").asText(),statuspasien,statusreg
+                                    list.path("PENUNJANG").path("TERAPI_ATAU_TINDAKAN").asText(),statuspasien,statusreg,norm
                                 });
                                 i++;
                             }                                
@@ -981,22 +1069,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")){ 
-                    rujukanbaru=0;                         
-                    tampil();
-                    for(i=0;i<tbBangsal.getRowCount();i++){ 
-                        if(tbBangsal.getValueAt(i,18).toString().toLowerCase().contains("belum direspon")){
-                            rujukanbaru++;                                                                                                   
+                    if(var.getAktif()==false){
+                        rujukanbaru=0;                         
+                        tampil();
+                        for(i=0;i<tbBangsal.getRowCount();i++){ 
+                            if(tbBangsal.getValueAt(i,18).toString().toLowerCase().contains("belum direspon")){
+                                rujukanbaru++;                                                                                                   
+                            }
                         }
-                    }
 
-                    if(rujukanbaru>0){
-                        try {
-                            music = new BackgroundMusic("./suara/alarm.mp3");
-                            music.start();              
-                        } catch (Exception ex) {
-                            System.out.println(ex);
-                        }
-                    }                         
+                        if(rujukanbaru>0){
+                            try {
+                                music = new BackgroundMusic("./suara/alarm.mp3");
+                                music.start();              
+                            } catch (Exception ex) {
+                                System.out.println(ex);
+                            }
+                        } 
+                    }                                                
                 }
             }
         };
@@ -1012,7 +1102,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else{
             BtnPegawai.setEnabled(true);
         }    
-        BtnCari1.setEnabled(var.getbpjs_sep());
     }
     
     private void getData() {
@@ -1052,6 +1141,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TerapiTindakan=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),32).toString();
             SttsPasien=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),33).toString();
             SttsRegistrasi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),34).toString();
+            NoRmRS=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),35).toString();
         }
     }
 
