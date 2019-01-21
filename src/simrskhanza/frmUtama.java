@@ -232,6 +232,7 @@ import bridging.ReklasifikasiRanap;
 import bridging.SisruteCekReferensiAlasanRujuk;
 import bridging.SisruteCekReferensiDiagnosa;
 import bridging.SisruteCekReferensiFaskes;
+import bridging.SisruteRujukanKeluar;
 import bridging.SisruteRujukanMasukan;
 import grafikanalisa.GrafikDemografiRegistrasi;
 import grafikanalisa.GrafikKejadianIKPPerBulan;
@@ -997,6 +998,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekSisruteAlasanRujuk = new widget.ButtonBig();
         btnCekSisruteDiagnosa = new widget.ButtonBig();
         btnRujukanMasukSisrute = new widget.ButtonBig();
+        btnRujukanKeluarSisrute = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6389,6 +6391,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRujukanMasukSisrute);
 
+        btnRujukanKeluarSisrute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
+        btnRujukanKeluarSisrute.setText("Rujukan Keluar Sisrute");
+        btnRujukanKeluarSisrute.setIconTextGap(0);
+        btnRujukanKeluarSisrute.setName("btnRujukanKeluarSisrute"); // NOI18N
+        btnRujukanKeluarSisrute.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRujukanKeluarSisrute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRujukanKeluarSisruteActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRujukanKeluarSisrute);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6397,7 +6411,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/01/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/01/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13223,6 +13237,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRujukanMasukSisruteActionPerformed
 
+    private void btnRujukanKeluarSisruteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRujukanKeluarSisruteActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SisruteRujukanKeluar form=new SisruteRujukanKeluar(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRujukanKeluarSisruteActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13621,6 +13647,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRujukMasuk;
     private widget.ButtonBig btnRujukPasien;
     private widget.ButtonBig btnRujukanKeluarBPJS;
+    private widget.ButtonBig btnRujukanKeluarSisrute;
     private widget.ButtonBig btnRujukanMasukSisrute;
     private widget.ButtonBig btnSKDPBPJS;
     private widget.ButtonBig btnSMS;
@@ -15683,6 +15710,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getsisrute_rujukan_masuk()==true){
                 Panelmenu.add(btnRujukanMasukSisrute);
+                jmlmenu++;
+            }
+            
+            if(var.getsisrute_rujukan_keluar()==true){
+                Panelmenu.add(btnRujukanKeluarSisrute);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -17810,6 +17842,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getsisrute_rujukan_masuk()==true){
             Panelmenu.add(btnRujukanMasukSisrute);
+            jmlmenu++;
+        }
+        
+        if(var.getsisrute_rujukan_keluar()==true){
+            Panelmenu.add(btnRujukanKeluarSisrute);
             jmlmenu++;
         }
 
@@ -20564,6 +20601,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsisrute_rujukan_masuk()==true){
             if(btnRujukanMasukSisrute.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRujukanMasukSisrute);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsisrute_rujukan_keluar()==true){
+            if(btnRujukanKeluarSisrute.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRujukanKeluarSisrute);
                 jmlmenu++;
             }                
         }
