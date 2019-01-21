@@ -1470,7 +1470,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ChkJln.setSelected(false);
             try {                    
                 koneksi.setAutoCommit(false);
-                autoNomor();
+                //autoNomor();
                 if(Sequel.menyimpantf2("permintaan_lab","?,?,?,?,?,?,?,?,?,?","No.Permintaan",10,new String[]{
                         TNoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                         CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 

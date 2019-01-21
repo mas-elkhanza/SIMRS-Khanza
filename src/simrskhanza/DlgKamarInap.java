@@ -5369,8 +5369,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='Sehat'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5383,8 +5387,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='Rujuk'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5398,8 +5406,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='APS'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5412,8 +5424,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='+'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5426,8 +5442,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='Meninggal'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5441,8 +5461,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='Sembuh'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5455,8 +5479,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='Membaik'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5469,8 +5497,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='Pulang Paksa'");
             Sequel.mengedit("kamar","kd_kamar='"+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),19).toString()+"'","status='KOSONG'");  
@@ -5484,8 +5516,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='-'");
             tampil();
@@ -6437,8 +6473,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(norawat.getText().trim().equals("")){
-                     JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-                     tbKamIn.requestFocus();
+             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+             tbKamIn.requestFocus();
+        }else if(TOut.getText().trim().length()==0){
+             JOptionPane.showMessageDialog(null,"Maaf, pasien ini belum dipulangkan ...!!!");
+             emptTeks();
+             tbKamIn.requestFocus();
         }else{
             Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='Status Belum Lengkap'");
             tampil();
@@ -6602,7 +6642,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         dlgki.setLocationRelativeTo(internalFrame1);
                         dlgki.isCek();
                         dlgki.setNoRm(rs2.getString("no_rawat2"),Valid.SetTgl2(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()),"1. Ranap","","");
-                        dlgki.tampil();
                         dlgki.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }else{
@@ -6630,7 +6669,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             dlgki.setLocationRelativeTo(internalFrame1);
             dlgki.isCek();
             dlgki.setNoRm(norawat.getText(),Valid.SetTgl2(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString()),"1. Ranap","","");
-            dlgki.tampil();
             dlgki.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }        
