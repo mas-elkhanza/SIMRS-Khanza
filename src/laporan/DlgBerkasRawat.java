@@ -12,15 +12,25 @@
 package laporan;
 
 import fungsi.koneksiDB;
+import fungsi.sekuel;
 import fungsi.validasi;
+import fungsi.var;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -49,6 +59,8 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import org.apache.pdfbox.io.MemoryUsageSetting;
+import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import simrskhanza.DlgPilihanCetakDokumen;
 
 /**
@@ -66,13 +78,13 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
     private final JProgressBar progressBar = new JProgressBar();
     private final Properties prop = new Properties(); 
     private final validasi Valid=new validasi();
-    private String halaman="";
+    private sekuel Sequel=new sekuel();
+    private String halaman="",norawat="";
     private PreparedStatement ps;
     private ResultSet rs;
     private final validasi validasi=new validasi();
     private final Connection koneksi=koneksiDB.condb();
     private final DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
-    
     public DlgBerkasRawat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -164,6 +176,44 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
                                     setCursor(Cursor.getDefaultCursor());
                                 }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
                                     dispose();
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("GABUNG")){
+                                    norawat=Sequel.cariIsi("select no_rawat from temppanggilnorawat");
+                                    ps=koneksi.prepareStatement("SELECT berkas_digital_perawatan.lokasi_file "+
+                                                  "from berkas_digital_perawatan inner join master_berkas_digital "+
+                                                  "on berkas_digital_perawatan.kode=master_berkas_digital.kode "+
+                                                  "where berkas_digital_perawatan.no_rawat=? ORDER BY master_berkas_digital.nama ASC ");
+                                    try {
+                                        PDFMergerUtility ut = new PDFMergerUtility();
+                                        URL url;
+                                        ps.setString(1,norawat);
+                                        rs=ps.executeQuery();
+                                        while(rs.next()){
+                                            url = new URL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs.getString("lokasi_file"));
+                                            InputStream is = url.openStream();
+                                            ut.addSource(is);
+                                        }
+                                        ut.setDestinationFileName("merge.pdf");
+                                        ut.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
+                                        JOptionPane.showMessageDialog(null,"Proses gabung file selesai..!");
+                                        Properties systemProp = System.getProperties();
+                                        String currentDir = systemProp.getProperty("user.dir");
+                                        File dir = new File(currentDir);
+                                        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                        Valid.panggilUrl2(dir+"/merge.pdf");
+                                        setCursor(Cursor.getDefaultCursor());
+                                    } catch (SQLException e) {
+                                        System.out.println("Notif : "+e);
+                                    } catch (IOException e) {
+                                        System.out.println("Notif : "+e);
+                                        JOptionPane.showMessageDialog(null,"Gagal menggabungkan file, cek kembali file apakah sudah dalam bentuk PDF.\nAtau cek kembali hak akses file di server dokumen..!!");
+                                    } finally{
+                                        if(rs!=null){
+                                            rs.close();
+                                        }
+                                        if(ps!=null){
+                                            ps.close();
+                                        }
+                                    }                                    
                                 }
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi : "+ex);
@@ -239,7 +289,7 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout());
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);

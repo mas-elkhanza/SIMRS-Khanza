@@ -173,7 +173,7 @@
      function bukainput($sql){
         bukakoneksi();
         $result=mysqli_query(bukakoneksi(),$sql)
-        or die(mysqli_error()."<br/><font color=red><b>Gagal</b> menjalankan perintah query !");
+        or die(/*mysqli_error().*/"<br/><font color=red><b>Gagal</b> menjalankan perintah query !");
         mysqli_close(bukakoneksi());
         return $result;
      }
@@ -196,6 +196,11 @@
 
              $command = bukainput("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
         echo  "<img src='images/simpan.gif' />&nbsp;&nbsp; <font size='9'>Data $pesan berhasil disimpan</font>";
+        return $command;
+     }
+     
+     function Tambah3($tabelname,$attrib) {
+        $command = bukainput("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
         return $command;
      }
 

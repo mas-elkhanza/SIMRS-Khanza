@@ -8,6 +8,7 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.sekuel;
+import fungsi.sekuel;
 import java.io.FileInputStream;
 import java.util.Properties;
 import javax.swing.JOptionPane;
