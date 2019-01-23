@@ -1,6 +1,7 @@
 package laporan;
 import keuangan.Jurnal;
 import fungsi.WarnaTable;
+import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -18,6 +19,7 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -56,7 +58,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Penyakit","Nama Penyakit","Diagnosa Lain","Lk2(Hidup)","Pr(Hidup)","Lk2(Mati)","Pr(Mati)","Jumlah"};
+        Object[] row={"Kode","Nama Penyakit","Diagnosa Lain","Lk2(Hidup)","Pr(Hidup)","Lk2(Mati)","Pr(Mati)","Jumlah"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
               Class[] types = new Class[] {
@@ -76,16 +78,28 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         for (int m = 0; m < 8; m++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(m);
             if(m==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(60);
             }else if(m==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(350);
             }else if(m==2){
                 column.setPreferredWidth(400);
             }else{
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(60);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
+        
+        TCari.setDocument(new batasInput((int)90).getKata(TCari));
+        if(koneksiDB.cariCepat().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {tampil();}
+                @Override
+                public void removeUpdate(DocumentEvent e) {tampil();}
+                @Override
+                public void changedUpdate(DocumentEvent e) {tampil();}
+            });
+        } 
         
         poli.addWindowListener(new WindowListener() {
             @Override
@@ -320,7 +334,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        jLabel7 = new widget.Label();
+        label9 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         PanelInput = new javax.swing.JPanel();
@@ -460,9 +474,9 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tg.Rawat :");
+        label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(60, 23));
+        label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi1.add(label11);
 
         Tgl1.setEditable(false);
@@ -489,7 +503,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         panelisi1.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(155, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(135, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -531,9 +545,11 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         });
         panelisi1.add(BtnAll);
 
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(25, 23));
-        panelisi1.add(jLabel7);
+        label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label9.setText("Record : 0");
+        label9.setName("label9"); // NOI18N
+        label9.setPreferredSize(new java.awt.Dimension(80, 30));
+        panelisi1.add(label9);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -729,13 +745,13 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         label21.setName("label21"); // NOI18N
         label21.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(label21);
-        label21.setBounds(429, 10, 87, 23);
+        label21.setBounds(449, 10, 87, 23);
 
         nmkabupaten.setEditable(false);
         nmkabupaten.setName("nmkabupaten"); // NOI18N
         nmkabupaten.setPreferredSize(new java.awt.Dimension(215, 23));
         FormInput.add(nmkabupaten);
-        nmkabupaten.setBounds(519, 10, 260, 23);
+        nmkabupaten.setBounds(539, 10, 260, 23);
 
         BtnSeek5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek5.setMnemonic('3');
@@ -753,19 +769,19 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSeek5);
-        BtnSeek5.setBounds(782, 10, 28, 23);
+        BtnSeek5.setBounds(802, 10, 28, 23);
 
         label22.setText("Kecamatan :");
         label22.setName("label22"); // NOI18N
         label22.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(label22);
-        label22.setBounds(429, 40, 87, 23);
+        label22.setBounds(449, 40, 87, 23);
 
         nmkecamatan.setEditable(false);
         nmkecamatan.setName("nmkecamatan"); // NOI18N
         nmkecamatan.setPreferredSize(new java.awt.Dimension(215, 23));
         FormInput.add(nmkecamatan);
-        nmkecamatan.setBounds(519, 40, 260, 23);
+        nmkecamatan.setBounds(539, 40, 260, 23);
 
         BtnSeek6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek6.setMnemonic('3');
@@ -783,7 +799,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSeek6);
-        BtnSeek6.setBounds(782, 40, 28, 23);
+        BtnSeek6.setBounds(802, 40, 28, 23);
 
         BtnSeek7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek7.setMnemonic('3');
@@ -801,19 +817,19 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSeek7);
-        BtnSeek7.setBounds(782, 70, 28, 23);
+        BtnSeek7.setBounds(802, 70, 28, 23);
 
         nmkelurahan.setEditable(false);
         nmkelurahan.setName("nmkelurahan"); // NOI18N
         nmkelurahan.setPreferredSize(new java.awt.Dimension(215, 23));
         FormInput.add(nmkelurahan);
-        nmkelurahan.setBounds(519, 70, 260, 23);
+        nmkelurahan.setBounds(539, 70, 260, 23);
 
         label23.setText("Kelurahan :");
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(label23);
-        label23.setBounds(429, 70, 87, 23);
+        label23.setBounds(449, 70, 87, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1861,7 +1877,6 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel6;
-    private widget.Label jLabel7;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kddokter;
     private widget.TextBox kdpenjab;
@@ -1874,6 +1889,7 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Label label21;
     private widget.Label label22;
     private widget.Label label23;
+    private widget.Label label9;
     private widget.TextBox nmdokter;
     private widget.TextBox nmkabupaten;
     private widget.TextBox nmkecamatan;
@@ -2094,7 +2110,8 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
                 if(ps!=null){
                     ps.close();
                 }
-            }                    
+            }    
+            label9.setText("Record : "+tabMode.getRowCount());
         }catch(SQLException e){
             System.out.println("Catatan  "+e);
         }
