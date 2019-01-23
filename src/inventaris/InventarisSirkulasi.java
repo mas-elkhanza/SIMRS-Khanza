@@ -245,9 +245,9 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         jLabel17 = new widget.Label();
         StatusCari = new widget.ComboBox();
         jLabel27 = new widget.Label();
-        TglPinjam2 = new widget.Tanggal();
-        jLabel22 = new widget.Label();
         TglPinjam1 = new widget.Tanggal();
+        jLabel22 = new widget.Label();
+        TglPinjam2 = new widget.Tanggal();
         Scroll = new widget.ScrollPane();
         tbKamIn = new widget.Table();
 
@@ -446,7 +446,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
 
         tgl.setEditable(false);
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-08-2018" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2018" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -495,7 +495,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Iventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Iventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -723,32 +723,8 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 23));
         panelCari.add(jLabel27);
 
-        TglPinjam2.setEditable(false);
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-08-2018" }));
-        TglPinjam2.setDisplayFormat("dd-MM-yyyy");
-        TglPinjam2.setName("TglPinjam2"); // NOI18N
-        TglPinjam2.setOpaque(false);
-        TglPinjam2.setPreferredSize(new java.awt.Dimension(134, 23));
-        TglPinjam2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TglPinjam1ItemStateChanged(evt);
-            }
-        });
-        TglPinjam2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglPinjam2KeyPressed(evt);
-            }
-        });
-        panelCari.add(TglPinjam2);
-
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("s.d");
-        jLabel22.setName("jLabel22"); // NOI18N
-        jLabel22.setPreferredSize(new java.awt.Dimension(35, 23));
-        panelCari.add(jLabel22);
-
         TglPinjam1.setEditable(false);
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-08-2018" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2018" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -764,6 +740,30 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
             }
         });
         panelCari.add(TglPinjam1);
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("s.d");
+        jLabel22.setName("jLabel22"); // NOI18N
+        jLabel22.setPreferredSize(new java.awt.Dimension(35, 23));
+        panelCari.add(jLabel22);
+
+        TglPinjam2.setEditable(false);
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2018" }));
+        TglPinjam2.setDisplayFormat("dd-MM-yyyy");
+        TglPinjam2.setName("TglPinjam2"); // NOI18N
+        TglPinjam2.setOpaque(false);
+        TglPinjam2.setPreferredSize(new java.awt.Dimension(134, 23));
+        TglPinjam2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TglPinjam1ItemStateChanged(evt);
+            }
+        });
+        TglPinjam2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglPinjam2KeyPressed(evt);
+            }
+        });
+        panelCari.add(TglPinjam2);
 
         PanelCariUtama.add(panelCari, java.awt.BorderLayout.PAGE_START);
 

@@ -73,7 +73,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i=0,pilihan=0;
     private final Properties prop = new Properties();
-    private String link,laborat="";
+    private String link="",requestJson="",URL="",cari="",cari2="";
+    private SisruteApi api=new SisruteApi();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private SisruteCekReferensiFaskes faskes=new SisruteCekReferensiFaskes(null,false);
     private SisruteCekReferensiAlasanRujuk alasanrujuk=new SisruteCekReferensiAlasanRujuk(null,false);
@@ -301,7 +302,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            link=prop.getProperty("URLAPISISRUTE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -1254,7 +1255,77 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-         
+        try {
+            URL = link+"/rujukan";	
+            System.out.println(URL);
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	    headers.add("X-signature",api.getHmac()); 
+	    headers.add("Content-type","application/json");
+            requestJson ="{" +
+                            "\"PASIEN\": {" +
+                                "\"NORM\": 11223345," +
+                                "\"NIK\": \"7371140101010003\"," +
+                                "\"NO_KARTU_JKN\": \"0000001234501\"," +
+                                "\"NAMA\": \"Rahmat Hidayat\"," +
+                                "\"JENIS_KELAMIN\": \"1\"," +
+                                "\"TANGGAL_LAHIR\": \"1980-01-03\"," +
+                                "\"TEMPAT_LAHIR\": \"Makassar\"," +
+                                "\"ALAMAT\": \"Pettarani\"," +
+                                "\"KONTAK\": \"085123123122\"" +
+                            "}," +
+                            "\"RUJUKAN\": {" +
+                                "\"JENIS_RUJUKAN\": \"2\"," +
+                                "\"TANGGAL\": \"2018-08-29 10:00:00\"," +
+                                "\"FASKES_TUJUAN\": \"3404015\"," +
+                                "\"ALASAN\": \"1\"," +
+                                "\"ALASAN_LAINNYA\": \"Pusing\"," +
+                                "\"DIAGNOSA\": \"I10\"," +
+                                "\"DOKTER\": {" +
+                                    "\"NIK\": \"7371140101010111\"," +
+                                    "\"NAMA\": \"Dr. Raffi\"" +
+                                "}," +
+                                "\"PETUGAS\": {" +
+                                    "\"NIK\": \"7371140101010112\"," +
+                                    "\"NAMA\": \"Enal\"" +
+                                "}" +
+                            "}," +
+                            "\"KONDISI_UMUM\": {" +
+                                "\"ANAMNESIS_DAN_PEMERIKSAAN_FISIK\": \"\"," +
+                                "\"KESADARAN\": \"1\"," +
+                                "\"TEKANAN_DARAH\": \"120/90\"," +
+                                "\"FREKUENSI_NADI\": \"50\"," +
+                                "\"SUHU\": \"37\"," +
+                                "\"PERNAPASAN\": \"25\"," +
+                                "\"KEADAAN_UMUM\": \"sesak, gelisah\"," +
+                                "\"NYERI\": 0," +
+                                "\"ALERGI\": \"-\"" +
+                            "}," +
+                            "\"PENUNJANG\": {" +
+                                "\"LABORATORIUM\": \"WBC:11,2;HB:15,6;PLT:215;\"," +
+                                "\"RADIOLOGI\": \"EKG:Sinus Takikardi;Foto Thorax:Cor dan pulmo normal;\"," +
+                                "\"TERAPI_ATAU_TINDAKAN\": \"TRP:LOADING NACL 0.9% 500 CC;INJ. RANITIDIN 50 MG;#TDK:TERPASANG INTUBASI ET NO 8 BATAS BIBIR 21CM;\"" +
+                            "}" +
+                        "}";              
+	    headers.add("Content-length",Integer.toString(requestJson.length())); 
+            System.out.println(Integer.toString(requestJson.length()));
+            System.out.println(requestJson);
+	    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            JsonNode nameNode = root.path("status");
+            JOptionPane.showMessageDialog(null,root.path("detail").asText());
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server Kemenkes terputus....!");
+            }else if(ex.toString().contains("404")){
+                JOptionPane.showMessageDialog(rootPane,"Tidak ditemukan....!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(rootPane,"Server interenal error....!");
+            }
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1894,8 +1965,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     ps2=koneksi.prepareStatement(
-                        "select suhu_tubuh, tensi, nadi, respirasi, tinggi, berat, gcs, "+
-                        "keluhan, pemeriksaan, alergi, imun_ke, rtl from pemeriksaan_ralan where no_rawat=?");
+                        "select suhu_tubuh, tensi, nadi, respirasi, tinggi, berat, gcs,keluhan, pemeriksaan, "+
+                        "alergi, imun_ke, rtl from pemeriksaan_ralan where no_rawat=? order by tgl_perawatan desc limit 1");
                     try {
                         ps2.setString(1,NoRawat);
                         rs2=ps2.executeQuery();
@@ -1926,11 +1997,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     try {
                         ps2.setString(1,NoRawat);
                         rs2=ps2.executeQuery();
-                        laborat="";
+                        cari="";
                         while(rs2.next()){                            
-                            laborat=laborat+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
+                            cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
-                        Laborat.setText(laborat);
+                        Laborat.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{
@@ -1941,6 +2012,96 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                             ps2.close();
                         }
                     }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select databarang.nama_brng from detail_pemberian_obat inner join databarang "+
+                        "on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("nama_brng")+";";
+                        }
+                        if(!cari.equals("")){
+                            cari="TRP:"+cari;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    cari2="";
+                    ps2=koneksi.prepareStatement(
+                        "select jns_perawatan.nm_perawatan from jns_perawatan inner join rawat_jl_dr "+
+                        "on jns_perawatan.kd_jenis_prw=rawat_jl_dr.kd_jenis_prw where no_rawat=? group by jns_perawatan.nm_perawatan");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            cari2=cari2+rs2.getString("nm_perawatan")+";";
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select jns_perawatan.nm_perawatan from jns_perawatan inner join rawat_jl_pr "+
+                        "on jns_perawatan.kd_jenis_prw=rawat_jl_pr.kd_jenis_prw where no_rawat=? group by jns_perawatan.nm_perawatan");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            cari2=cari2+rs2.getString("nm_perawatan")+";";
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select jns_perawatan.nm_perawatan from jns_perawatan inner join rawat_jl_drpr "+
+                        "on jns_perawatan.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw where no_rawat=? group by jns_perawatan.nm_perawatan");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            cari2=cari2+rs2.getString("nm_perawatan")+";";
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    if(!cari2.equals("")){
+                        cari2="#TDK:"+cari2;
+                    }
+                    TerapiTindakan.setText(cari+cari2);
                 }
             } catch (Exception ex) {
                 System.out.println(ex);
