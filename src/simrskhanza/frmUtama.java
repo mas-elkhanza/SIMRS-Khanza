@@ -13243,6 +13243,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         SisruteRujukanKeluar form=new SisruteRujukanKeluar(this,false);
         form.isCek();
+        form.tutupInput();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
