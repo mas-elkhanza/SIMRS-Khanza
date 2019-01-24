@@ -2437,5 +2437,207 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         }
     }
     
-    
+    public void setPasien2(String NoRawat){
+        TNoRw.setText(NoRawat);
+        try {
+            ps=koneksi.prepareStatement(
+                "select reg_periksa.no_rawat,nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) asal,"+
+                "pasien.no_rkm_medis,pasien.no_ktp,pasien.no_peserta,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.no_tlp, "+
+                "pegawai.nama,pegawai.no_ktp from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
+                "inner join kabupaten inner join propinsi inner join pegawai "+
+                "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_prop=propinsi.kd_prop "+
+                "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and pegawai.nik=reg_periksa.kd_dokter "+
+                "where reg_periksa.no_rawat=?");
+            try {            
+                ps.setString(1,NoRawat);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    TPasien.setText(rs.getString("nm_pasien"));
+                    NoKTP.setText(rs.getString("no_ktp"));
+                    NoKartu.setText(rs.getString("no_peserta"));
+                    JK.setText(rs.getString("jk"));
+                    TmpLahir.setText(rs.getString("tmp_lahir"));
+                    TglLahir.setText(rs.getString("tgl_lahir"));
+                    Kontak.setText(rs.getString("no_tlp"));
+                    Alamat.setText(rs.getString("asal"));
+                    KdDokter.setText(rs.getString("no_ktp"));
+                    DokterPerujuk.setText(rs.getString("nama"));
+                    ps2=koneksi.prepareStatement(
+                        "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from penyakit "+
+                        "inner join diagnosa_pasien on penyakit.kd_penyakit=diagnosa_pasien.kd_penyakit "+
+                        "where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and diagnosa_pasien.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            KdDiagnosa.setText(rs2.getString("kd_penyakit"));
+                            NmDiagnosa.setText(rs2.getString("nm_penyakit"));
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select suhu_tubuh, tensi, nadi, respirasi, tinggi, berat, gcs,keluhan, pemeriksaan, "+
+                        "alergi from pemeriksaan_ranap where no_rawat=? order by tgl_perawatan desc limit 1");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            Anamnesis.setText(rs2.getString("pemeriksaan"));
+                            SuhuBadan.setText(rs2.getString("suhu_tubuh"));
+                            TekananDarah.setText(rs2.getString("tensi"));
+                            FrekuensiNadi.setText(rs2.getString("nadi"));
+                            Respirasi.setText(rs2.getString("respirasi"));
+                            Alergi.setText(rs2.getString("alergi"));
+                            KeadaanUmum.setText(rs2.getString("keluhan"));
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select template_laboratorium.Pemeriksaan,detail_periksa_lab.nilai from template_laboratorium "+
+                        "inner join detail_periksa_lab on template_laboratorium.id_template=detail_periksa_lab.id_template "+
+                        "where detail_periksa_lab.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
+                        }
+                        Laborat.setText(cari);
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select databarang.nama_brng from detail_pemberian_obat inner join databarang "+
+                        "on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("nama_brng")+";";
+                        }
+                        if(!cari.equals("")){
+                            cari="TRP:"+cari;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    cari2="";
+                    ps2=koneksi.prepareStatement(
+                        "select jns_perawatan.nm_perawatan from jns_perawatan inner join rawat_inap_dr "+
+                        "on jns_perawatan.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where no_rawat=? group by jns_perawatan.nm_perawatan");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            cari2=cari2+rs2.getString("nm_perawatan")+";";
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select jns_perawatan.nm_perawatan from jns_perawatan inner join rawat_inap_pr "+
+                        "on jns_perawatan.kd_jenis_prw=rawat_inap_pr.kd_jenis_prw where no_rawat=? group by jns_perawatan.nm_perawatan");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            cari2=cari2+rs2.getString("nm_perawatan")+";";
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select jns_perawatan.nm_perawatan from jns_perawatan inner join rawat_inap_drpr "+
+                        "on jns_perawatan.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where no_rawat=? group by jns_perawatan.nm_perawatan");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            cari2=cari2+rs2.getString("nm_perawatan")+";";
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    if(!cari2.equals("")){
+                        cari2="#TDK:"+cari2;
+                    }
+                    TerapiTindakan.setText(cari+cari2);
+                }
+                JenisRujukan.requestFocus();
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }finally{
+                if(rs != null ){
+                    rs.close();
+                }                
+                if(ps != null ){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
