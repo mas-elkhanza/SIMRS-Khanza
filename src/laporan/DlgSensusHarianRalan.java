@@ -750,28 +750,15 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 Sequel.AutoComitFalse();
                 Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabmode.getRowCount();r++){ 
-                    Sequel.menyimpan("temporary","'0','"+
-                        tabmode.getValueAt(r,0).toString()+"','"+
-                        tabmode.getValueAt(r,1).toString()+"','"+
-                        tabmode.getValueAt(r,2).toString()+"','"+
-                        tabmode.getValueAt(r,3).toString()+"','"+
-                        tabmode.getValueAt(r,4).toString()+"','"+
-                        tabmode.getValueAt(r,5).toString()+"','"+
-                        tabmode.getValueAt(r,6).toString()+"','"+
-                        tabmode.getValueAt(r,7).toString()+"','"+
-                        tabmode.getValueAt(r,8).toString()+"','"+
-                        tabmode.getValueAt(r,9).toString()+"','"+
-                        tabmode.getValueAt(r,10).toString()+"','"+
-                        tabmode.getValueAt(r,11).toString()+"','"+
-                        tabmode.getValueAt(r,12).toString()+"','"+
-                        tabmode.getValueAt(r,13).toString()+"','"+
-                        tabmode.getValueAt(r,14).toString()+"','"+
-                        tabmode.getValueAt(r,15).toString()+"','"+
-                        tabmode.getValueAt(r,16).toString()+"','"+
-                        tabmode.getValueAt(r,17).toString()+"','"+
-                        tabmode.getValueAt(r,18).toString()+"','"+
-                        tabmode.getValueAt(r,19).toString()+"','"+
-                        tabmode.getValueAt(r,20).toString()+"','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                    Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
+                            tabmode.getValueAt(r,0).toString(),tabmode.getValueAt(r,1).toString(),tabmode.getValueAt(r,2).toString(),
+                            tabmode.getValueAt(r,3).toString(),tabmode.getValueAt(r,4).toString(),tabmode.getValueAt(r,5).toString(),
+                            tabmode.getValueAt(r,6).toString(),tabmode.getValueAt(r,7).toString(),tabmode.getValueAt(r,8).toString(),
+                            tabmode.getValueAt(r,9).toString(),tabmode.getValueAt(r,10).toString(),tabmode.getValueAt(r,11).toString(),
+                            tabmode.getValueAt(r,12).toString(),tabmode.getValueAt(r,13).toString(),tabmode.getValueAt(r,14).toString(),
+                            tabmode.getValueAt(r,15).toString(),tabmode.getValueAt(r,16).toString(),tabmode.getValueAt(r,17).toString(),
+                            tabmode.getValueAt(r,18).toString(),tabmode.getValueAt(r,19).toString(),tabmode.getValueAt(r,20).toString()
+                    });
                 }
                 Sequel.AutoComitTrue(); 
                 Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
@@ -785,28 +772,15 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 Sequel.AutoComitFalse();
                 Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabmode2.getRowCount();r++){ 
-                    Sequel.menyimpan("temporary","'0','"+
-                        tabmode2.getValueAt(r,0).toString()+"','"+
-                        tabmode2.getValueAt(r,1).toString()+"','"+
-                        tabmode2.getValueAt(r,2).toString()+"','"+
-                        tabmode2.getValueAt(r,3).toString()+"','"+
-                        tabmode2.getValueAt(r,4).toString()+"','"+
-                        tabmode2.getValueAt(r,5).toString()+"','"+
-                        tabmode2.getValueAt(r,6).toString()+"','"+
-                        tabmode2.getValueAt(r,7).toString()+"','"+
-                        tabmode2.getValueAt(r,8).toString()+"','"+
-                        tabmode2.getValueAt(r,9).toString()+"','"+
-                        tabmode2.getValueAt(r,10).toString()+"','"+
-                        tabmode2.getValueAt(r,11).toString()+"','"+
-                        tabmode2.getValueAt(r,12).toString()+"','"+
-                        tabmode2.getValueAt(r,13).toString()+"','"+
-                        tabmode2.getValueAt(r,14).toString()+"','"+
-                        tabmode2.getValueAt(r,15).toString()+"','"+
-                        tabmode2.getValueAt(r,16).toString()+"','"+
-                        tabmode2.getValueAt(r,17).toString()+"','"+
-                        tabmode2.getValueAt(r,18).toString()+"','"+
-                        tabmode2.getValueAt(r,19).toString()+"','"+
-                        tabmode2.getValueAt(r,20).toString()+"','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                    Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
+                            tabmode2.getValueAt(r,0).toString(),tabmode2.getValueAt(r,1).toString(),tabmode2.getValueAt(r,2).toString(),
+                            tabmode2.getValueAt(r,3).toString(),tabmode2.getValueAt(r,4).toString(),tabmode2.getValueAt(r,5).toString(),
+                            tabmode2.getValueAt(r,6).toString(),tabmode2.getValueAt(r,7).toString(),tabmode2.getValueAt(r,8).toString(),
+                            tabmode2.getValueAt(r,9).toString(),tabmode2.getValueAt(r,10).toString(),tabmode2.getValueAt(r,11).toString(),
+                            tabmode2.getValueAt(r,12).toString(),tabmode2.getValueAt(r,13).toString(),tabmode2.getValueAt(r,14).toString(),
+                            tabmode2.getValueAt(r,15).toString(),tabmode2.getValueAt(r,16).toString(),tabmode2.getValueAt(r,17).toString(),
+                            tabmode2.getValueAt(r,18).toString(),tabmode2.getValueAt(r,19).toString(),tabmode2.getValueAt(r,20).toString()
+                    });
                 }
                 Sequel.AutoComitTrue(); 
                 Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
