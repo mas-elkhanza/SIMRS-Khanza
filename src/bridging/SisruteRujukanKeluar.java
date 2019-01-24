@@ -1543,7 +1543,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 if(root.path("status").asText().equals("200")){                    
                     Sequel.meghapus3("sisrute_rujukan_keluar","no_rawat",TNoRw.getText());          
                     Sequel.meghapus3("rujuk","no_rawat",TNoRw.getText());
-                    emptTeks();                    
+                    emptTeks();
+                    tampil();
                 }
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
@@ -1746,21 +1747,21 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 "sisrute_rujukan_keluar.nadi,sisrute_rujukan_keluar.suhu,sisrute_rujukan_keluar.respirasi,"+
                 "sisrute_rujukan_keluar.keadaan_umum,sisrute_rujukan_keluar.tingkat_nyeri,sisrute_rujukan_keluar.alergi,"+
                 "sisrute_rujukan_keluar.laboratorium,sisrute_rujukan_keluar.radiologi,sisrute_rujukan_keluar.terapitindakan from sisrute_rujukan_keluar where "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.no_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.no_ktp like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.no_peserta like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.alamat like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.jns_rujukan like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.nm_faskes_tujuan like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.alasan_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.kd_diagnosa like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.diagnosa_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.petugas_entry like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+" and "+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+" and sisrute_rujukan_keluar.kesadaran like '%"+TCari.getText().trim()+"%' "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rujuk like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_ktp like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_peserta like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.alamat like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.jns_rujukan like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.nm_faskes_tujuan like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.alasan_rujuk like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.kd_diagnosa like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.diagnosa_rujuk like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.petugas_entry like '%"+TCari.getText().trim()+"%' or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.kesadaran like '%"+TCari.getText().trim()+"%' "+
                 "order by sisrute_rujukan_keluar.tgl_rujuk desc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
