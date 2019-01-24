@@ -2670,8 +2670,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            tampil();
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
         }
