@@ -103,7 +103,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TCari.setDocument(new batasInput((int)90).getKata(TCari));
+        TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override

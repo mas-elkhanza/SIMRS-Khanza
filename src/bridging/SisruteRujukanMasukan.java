@@ -885,6 +885,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 	    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+            JsonNode nameNode = root.path("status");
             JOptionPane.showMessageDialog(null,root.path("detail").asText());
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);

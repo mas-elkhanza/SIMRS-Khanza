@@ -147,7 +147,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
         }
         tbBangsal2.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TCari.setDocument(new batasInput((int)90).getKata(TCari));
+        TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -866,27 +866,27 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        Map<String, Object> param = new HashMap<>();         
-        param.put("namars",var.getnamars());
-        param.put("alamatrs",var.getalamatrs());
-        param.put("kotars",var.getkabupatenrs());
-        param.put("propinsirs",var.getpropinsirs());
-        param.put("kontakrs",var.getkontakrs());
-        param.put("emailrs",var.getemailrs());   
-        param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
-        param.put("lama",lama);   
-        param.put("baru",baru);   
-        param.put("total",(lama+baru));   
-        param.put("laki",laki);   
-        param.put("perempuan",per);   
-        param.put("tanggal",Tgl2.getDate());  
-        if(TabRawat.getSelectedIndex()==0){
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
-            }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
-                Sequel.queryu("truncate table temporary");
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            //TCari.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            Sequel.AutoComitFalse();
+            Map<String, Object> param = new HashMap<>();         
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());   
+            param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
+            param.put("lama",lama);   
+            param.put("baru",baru);   
+            param.put("total",(lama+baru));   
+            param.put("laki",laki);   
+            param.put("perempuan",per);   
+            param.put("tanggal",Tgl2.getDate());   
+            Sequel.queryu("truncate table temporary");
+            if(TabRawat.getSelectedIndex()==0){
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
                         Sequel.menyimpan("temporary","'0','"+
@@ -905,17 +905,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue(); 
-                Valid.MyReport("rptKunjunganRanap.jrxml","report","::[ Laporan Kunjungan Rawat Inap ]::",
-                    "select * from temporary order by no asc",param);
-            }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if(tabMode2.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
-            }else if(tabMode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
-                Sequel.queryu("truncate table temporary");
+            }else if(TabRawat.getSelectedIndex()==1){
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
                         Sequel.menyimpan("temporary","'0','"+
@@ -934,11 +924,11 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                                     tabMode2.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue(); 
-                Valid.MyReport("rptKunjunganRanap.jrxml","report","::[ Laporan Kunjungan Rawat Inap ]::",
-                    "select * from temporary order by no asc",param);
-            }            
-        }        
+            }
+            Sequel.AutoComitTrue();   
+            Valid.MyReport("rptKunjunganRanap.jrxml","report","::[ Laporan Kunjungan Rawat Inap ]::",
+                "select * from temporary order by no asc",param);
+        }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -1056,12 +1046,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkamarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?", nmkamar,kdkamar.getText());
+            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", nmkamar,kdkamar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?", nmkamar,kdkamar.getText());
+            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", nmkamar,kdkamar.getText());
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?", nmkamar,kdkamar.getText());
+            Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", nmkamar,kdkamar.getText());
             Tgl2.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek2ActionPerformed(null);
