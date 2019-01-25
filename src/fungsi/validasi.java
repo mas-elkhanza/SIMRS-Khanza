@@ -995,6 +995,15 @@ public final class validasi {
         return s;
     }
     
+    public String MaxTeks(String original,int max){
+        if(original.length()>=max){
+            s=original.substring(0,(max-1));
+        }else{
+            s=original;
+        }
+        return original;
+    }
+    
     public void SetTgl(JDateTimePicker dtp,String tgl){            
         try {
            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);

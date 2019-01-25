@@ -46,7 +46,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private BackgroundMusic music;
-    private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",diagnosa="",la="",ld="",pa="",pd="",
+    private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",
                     NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     
     /** Creates new form DlgProgramStudi
@@ -1037,10 +1037,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         if(TabPilihRawat.getSelectedIndex()==0){
             CrDokter.setText("");
             CrPoli.setText("");
+            TCari.setText("");
             pilihRalan();
         }else if(TabPilihRawat.getSelectedIndex()==1){
             CrDokter2.setText("");
             Kamar.setText("");
+            TCari.setText("");
             pilihRanap();
         }
     }//GEN-LAST:event_BtnAllActionPerformed
@@ -1361,14 +1363,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void MnCetakHasilLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakHasilLabActionPerformed
         if(TabPilihRawat.getSelectedIndex()==0){
-            System.out.println("NoRawat : "+NoRawat);
             if(!NoRawat.equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     Sequel.AutoComitFalse();
-                    Sequel.queryu("delete from temporary_permintaan_lab");
+                    Sequel.queryu("truncate table temporary_permintaan_lab");
                     try {
                         ps2=koneksi.prepareStatement(
                                 "select permintaan_pemeriksaan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan "+
@@ -1451,10 +1452,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     kamar="Poli";
                     namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
                             "where reg_periksa.no_rawat=?",NoRawat);
-                    diagnosa=Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=?",NoRawat);
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
-                    param.put("diagnosa",diagnosa);
                     param.put("jam",JamPermintaan);
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1564,10 +1563,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
                             " where kamar.kd_kamar=? ",kamar);            
                     kamar="Kamar";  
-                    diagnosa=Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=?",NoRawat);
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
-                    param.put("diagnosa",diagnosa);
                     param.put("jam",JamPermintaan);
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());

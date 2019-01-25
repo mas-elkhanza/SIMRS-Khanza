@@ -93,7 +93,7 @@ public final class var {
             rekap_lab_pertahun=false,perujuk_lab_pertahun=false,rekap_radiologi_pertahun=false,perujuk_radiologi_pertahun=false,
             jumlah_porsi_diet=false,jumlah_macam_diet=false,payment_point2=false,pembayaran_akun_bayar2=false,hapus_nota_salah=false,
             hais_perbangsal=false,ppn_obat=false,saldo_akun_perbulan=false,display_apotek=false,sisrute_referensi_faskes=false,
-            sisrute_referensi_alasanrujuk=false,sisrute_referensi_diagnosa=false,sisrute_rujukan_masuk=false;
+            sisrute_referensi_alasanrujuk=false,sisrute_referensi_diagnosa=false,sisrute_rujukan_masuk=false,sisrute_rujukan_keluar=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -543,6 +543,7 @@ public final class var {
                         var.sisrute_referensi_alasanrujuk=true;
                         var.sisrute_referensi_diagnosa=true;
                         var.sisrute_rujukan_masuk=true;
+                        var.sisrute_rujukan_keluar=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -976,6 +977,7 @@ public final class var {
                         var.sisrute_referensi_alasanrujuk=rs2.getBoolean("sisrute_referensi_alasanrujuk");
                         var.sisrute_referensi_diagnosa=rs2.getBoolean("sisrute_referensi_diagnosa");
                         var.sisrute_rujukan_masuk=rs2.getBoolean("sisrute_rujukan_masuk");
+                        var.sisrute_rujukan_keluar=rs2.getBoolean("sisrute_rujukan_keluar");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1407,6 +1409,7 @@ public final class var {
                         var.sisrute_referensi_alasanrujuk=false;
                         var.sisrute_referensi_diagnosa=false;
                         var.sisrute_rujukan_masuk=false;
+                        var.sisrute_rujukan_keluar=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1892,4 +1895,5 @@ public final class var {
     public static boolean getsisrute_rujukan_masuk(){return var.sisrute_rujukan_masuk;}
     public static boolean getAktif(){return var.aktif;}
     public static void setAktif(boolean status){var.aktif=status;} 
+    public static boolean getsisrute_rujukan_keluar(){return var.sisrute_rujukan_keluar;}
 }   
