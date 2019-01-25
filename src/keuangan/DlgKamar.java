@@ -47,7 +47,7 @@ public final class DlgKamar extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String asalform="";
+    private String asalform="",ubah_status_kamar=Sequel.cariIsi("select ubah_status_kamar from set_jam_minimal");
 
     /** Creates new form DlgKamar
      * @param parent
@@ -1172,11 +1172,15 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
         TKd.setEditable(var.getkamar());
         TTarif.setEditable(var.getkamar());
         kd_bangsal.setEditable(var.getkamar());
-        Kelas.setEnabled(var.getkamar());
+        Kelas.setEnabled(var.getkamar());        
         asalform=var.getform();
         if(var.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
+            BtnEdit.setEnabled(true);
         }else{
+            if(ubah_status_kamar.equals("No")){
+                BtnEdit.setEnabled(false);
+            }
             MnRestore.setEnabled(false);
         }
      }
