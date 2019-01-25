@@ -748,9 +748,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 //TCari.requestFocus();
             }else if(tabmode.getRowCount()!=0){
                 Sequel.AutoComitFalse();
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("truncate table temporary_sensus_harian");
                 for(int r=0;r<tabmode.getRowCount();r++){ 
-                    Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
+                    Sequel.menyimpan("temporary_sensus_harian","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
                             tabmode.getValueAt(r,0).toString(),tabmode.getValueAt(r,1).toString(),tabmode.getValueAt(r,2).toString(),
                             tabmode.getValueAt(r,3).toString(),tabmode.getValueAt(r,4).toString(),tabmode.getValueAt(r,5).toString(),
                             tabmode.getValueAt(r,6).toString(),tabmode.getValueAt(r,7).toString(),tabmode.getValueAt(r,8).toString(),
@@ -762,7 +762,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 }
                 Sequel.AutoComitTrue(); 
                 Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
-                    "select * from temporary order by no asc",param);
+                    "select * from temporary_sensus_harian order by no asc",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabmode2.getRowCount()==0){
@@ -770,9 +770,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 //TCari.requestFocus();
             }else if(tabmode2.getRowCount()!=0){
                 Sequel.AutoComitFalse();
-                Sequel.queryu("truncate table temporary");
+                Sequel.queryu("truncate table temporary_sensus_harian");
                 for(int r=0;r<tabmode2.getRowCount();r++){ 
-                    Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
+                    Sequel.menyimpan("temporary_sensus_harian","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
                             tabmode2.getValueAt(r,0).toString(),tabmode2.getValueAt(r,1).toString(),tabmode2.getValueAt(r,2).toString(),
                             tabmode2.getValueAt(r,3).toString(),tabmode2.getValueAt(r,4).toString(),tabmode2.getValueAt(r,5).toString(),
                             tabmode2.getValueAt(r,6).toString(),tabmode2.getValueAt(r,7).toString(),tabmode2.getValueAt(r,8).toString(),
@@ -784,7 +784,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 }
                 Sequel.AutoComitTrue(); 
                 Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
-                    "select * from temporary order by no asc",param);
+                    "select * from temporary_sensus_harian order by no asc",param);
             }            
         }        
         this.setCursor(Cursor.getDefaultCursor());
@@ -794,7 +794,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnPrintActionPerformed(null);
         }else{
-            //Valid.pindah(evt, BtnHapus, BtnAll);
+            Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnPrintKeyPressed
 
