@@ -750,6 +750,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
+        FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setPreferredSize(new java.awt.Dimension(100, 257));
@@ -763,6 +764,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         TNoRw.setBackground(new java.awt.Color(245, 250, 240));
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
+        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoRwKeyPressed(evt);
+            }
+        });
         FormInput.add(TNoRw);
         TNoRw.setBounds(93, 12, 152, 23);
 
@@ -803,7 +809,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalDaftar.setEditable(false);
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2019" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -969,6 +975,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel15);
         jLabel15.setBounds(37, 182, 90, 23);
 
+        TinggiBadan.setText("0");
         TinggiBadan.setHighlighter(null);
         TinggiBadan.setName("TinggiBadan"); // NOI18N
         TinggiBadan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -979,6 +986,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(TinggiBadan);
         TinggiBadan.setBounds(130, 182, 60, 23);
 
+        BeratBadan.setText("0");
         BeratBadan.setHighlighter(null);
         BeratBadan.setName("BeratBadan"); // NOI18N
         BeratBadan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1004,6 +1012,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel17);
         jLabel17.setBounds(247, 182, 90, 23);
 
+        Sistole.setText("0");
         Sistole.setHighlighter(null);
         Sistole.setName("Sistole"); // NOI18N
         Sistole.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1014,6 +1023,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(Sistole);
         Sistole.setBounds(340, 182, 60, 23);
 
+        Diastole.setText("0");
         Diastole.setHighlighter(null);
         Diastole.setName("Diastole"); // NOI18N
         Diastole.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1058,6 +1068,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel38);
         jLabel38.setBounds(464, 162, 110, 23);
 
+        Respiratory.setText("0");
         Respiratory.setHighlighter(null);
         Respiratory.setName("Respiratory"); // NOI18N
         Respiratory.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1080,6 +1091,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel40);
         jLabel40.setBounds(650, 192, 80, 23);
 
+        Heartrate.setText("0");
         Heartrate.setHighlighter(null);
         Heartrate.setName("Heartrate"); // NOI18N
         Heartrate.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1116,7 +1128,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalKunjungan.setEditable(false);
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2019" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1222,7 +1234,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalPulang.setEditable(false);
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2019" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1430,7 +1442,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalEstRujuk.setEditable(false);
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2019" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -1498,6 +1510,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         chkKunjungan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chkKunjunganItemStateChanged(evt);
+            }
+        });
+        chkKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                chkKunjunganKeyPressed(evt);
             }
         });
         FormInput.add(chkKunjungan);
@@ -1777,7 +1794,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1792,7 +1809,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1985,7 +2002,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-         
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"Pasien");
+        }else if(NoKartu.getText().trim().equals("")){
+            Valid.textKosong(NoKartu,"No.Kartu");
+        }else if(KdPoliTujuan.getText().trim().equals("")||NmPoliTujuan.getText().trim().equals("")){
+            Valid.textKosong(btnPoliTujuan,"Poli Tujuan");
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -2093,7 +2116,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatKeyPressed
 
     private void KeluhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanKeyPressed
-        
+        Valid.pindah(evt,btnPoliTujuan,TinggiBadan);
     }//GEN-LAST:event_KeluhanKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -2139,15 +2162,16 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }
                 }                 
             } 
+            TNoRw.requestFocus();
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void TanggalDaftarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalDaftarKeyPressed
-        
+        Valid.pindah(evt,TNoRw,JenisKunjungan);
     }//GEN-LAST:event_TanggalDaftarKeyPressed
 
     private void JenisKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisKunjunganKeyPressed
-        
+        Valid.pindah(evt,TanggalDaftar,Perawatan);
     }//GEN-LAST:event_JenisKunjunganKeyPressed
 
     private void TNoRMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNoRMActionPerformed
@@ -2182,7 +2206,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void PerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerawatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,JenisKunjungan,btnPoliTujuan);
     }//GEN-LAST:event_PerawatanKeyPressed
 
     private void btnPoliTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliTujuanActionPerformed
@@ -2193,35 +2217,35 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPoliTujuanActionPerformed
 
     private void btnPoliTujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliTujuanKeyPressed
-        
+        Valid.pindah(evt,Perawatan,Keluhan);
     }//GEN-LAST:event_btnPoliTujuanKeyPressed
 
     private void TinggiBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinggiBadanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Keluhan,BeratBadan);
     }//GEN-LAST:event_TinggiBadanKeyPressed
 
     private void BeratBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BeratBadanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TinggiBadan,Sistole);
     }//GEN-LAST:event_BeratBadanKeyPressed
 
     private void SistoleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistoleKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BeratBadan,Diastole);
     }//GEN-LAST:event_SistoleKeyPressed
 
     private void DiastoleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiastoleKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sistole,Respiratory);
     }//GEN-LAST:event_DiastoleKeyPressed
 
     private void RespiratoryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RespiratoryKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Diastole,Heartrate);
     }//GEN-LAST:event_RespiratoryKeyPressed
 
     private void HeartrateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HeartrateKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Respiratory,chkKunjungan);
     }//GEN-LAST:event_HeartrateKeyPressed
 
     private void TanggalKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKunjunganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,chkKunjungan,TanggalPulang);
     }//GEN-LAST:event_TanggalKunjunganKeyPressed
 
     private void BtnKesadaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKesadaranActionPerformed
@@ -2231,7 +2255,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKesadaranActionPerformed
 
     private void BtnKesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKesadaranKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TanggalPulang,Terapi);
     }//GEN-LAST:event_BtnKesadaranKeyPressed
 
     private void TerapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerapiKeyPressed
@@ -2249,7 +2273,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnStatusPulangKeyPressed
 
     private void TanggalPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPulangKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TanggalKunjungan,BtnKesadaran);
     }//GEN-LAST:event_TanggalPulangKeyPressed
 
     private void BtnTenagaMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTenagaMedisActionPerformed
@@ -2556,6 +2580,62 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }        
     }//GEN-LAST:event_chkKhususItemStateChanged
 
+    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isRawat();
+            if(var.getform().equals("DlgReg")||var.getform().equals("DlgIGD")||var.getform().equals("DlgKamarInap")){
+                NoKartu.setText(Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis=?",TNoRM.getText()));
+                if(NoKartu.getText().trim().equals("")){
+                    JOptionPane.showMessageDialog(null,"Pasien tidak mempunyai kepesertaan BPJS");
+                    dispose();
+                }else{
+                    try {
+                        HttpHeaders headers = new HttpHeaders();
+                        headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                        headers.add("X-Signature",api.getHmac());
+                        String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
+                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                        HttpEntity requestEntity = new HttpEntity(headers);
+                        //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                        ObjectMapper mapper = new ObjectMapper();
+                        JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                        JsonNode nameNode = root.path("metaData");
+                        //System.out.println("code : "+nameNode.path("code").asText());
+                        //System.out.println("message : "+nameNode.path("message").asText());
+                        if(nameNode.path("message").asText().equals("OK")){
+                            JsonNode response = root.path("response");
+                            if(response.path("ketAktif").asText().equals("AKTIF")){
+                                TPasien.setText(response.path("nama").asText());
+                                TglLahir.setText(response.path("tglLahir").asText());
+                                JK.setText(response.path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
+                                JenisPeserta.setText(response.path("jnsPeserta").path("nama").asText());
+                                Status.setText(response.path("ketAktif").asText());                            
+                            }else{
+                                JOptionPane.showMessageDialog(null,response.path("ketAktif").asText());
+                                dispose();
+                            }                            
+                        }else {
+                            dispose();
+                        }  
+                    } catch (Exception ex) {
+                        System.out.println("Notifikasi : "+ex);
+                        if(ex.toString().contains("UnknownHostException")){
+                            JOptionPane.showMessageDialog(rootPane,"Koneksi ke server PCARE terputus...!");
+                        }
+                    }                 
+                } 
+            }
+            TanggalDaftar.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnSimpan.requestFocus();
+        }
+    }//GEN-LAST:event_TNoRwKeyPressed
+
+    private void chkKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chkKunjunganKeyPressed
+        Valid.pindah(evt,Heartrate,TanggalKunjungan);
+    }//GEN-LAST:event_chkKunjunganKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2717,7 +2797,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void isRawat() {
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());  
-        Keluhan.setText("-");
     }
     
     private void emptTeks(){
