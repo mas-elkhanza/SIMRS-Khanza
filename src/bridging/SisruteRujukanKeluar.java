@@ -2695,7 +2695,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rawat,nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) asal,"+
                 "pasien.no_rkm_medis,pasien.no_ktp,pasien.no_peserta,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.no_tlp, "+
-                "pegawai.nama,pegawai.no_ktp from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
+                "pegawai.nama,pegawai.no_ktp as ktpdokter from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
                 "inner join kabupaten inner join propinsi inner join pegawai "+
                 "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_prop=propinsi.kd_prop "+
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
@@ -2714,7 +2714,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     Kontak.setText(rs.getString("no_tlp"));
                     Alamat.setText(rs.getString("asal"));
-                    KdDokter.setText(rs.getString("no_ktp"));
+                    KdDokter.setText(rs.getString("ktpdokter"));
                     DokterPerujuk.setText(rs.getString("nama"));
                     ps2=koneksi.prepareStatement(
                         "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from penyakit "+
@@ -2873,7 +2873,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     if(!cari2.equals("")){
-                        cari2="#TDK:"+cari2;
+                        if(cari.equals("")){
+                            cari2="TDK:"+cari2;
+                        }else{
+                            cari2="#TDK:"+cari2;
+                        } 
                     }
                     TerapiTindakan.setText(cari+cari2);
                 }
@@ -2900,7 +2904,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rawat,nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) asal,"+
                 "pasien.no_rkm_medis,pasien.no_ktp,pasien.no_peserta,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.no_tlp, "+
-                "pegawai.nama,pegawai.no_ktp from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
+                "pegawai.nama,pegawai.no_ktp as ktpdokter from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
                 "inner join kabupaten inner join propinsi inner join pegawai "+
                 "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_prop=propinsi.kd_prop "+
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
@@ -2919,7 +2923,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     Kontak.setText(rs.getString("no_tlp"));
                     Alamat.setText(rs.getString("asal"));
-                    KdDokter.setText(rs.getString("no_ktp"));
+                    KdDokter.setText(rs.getString("ktpdokter"));
                     DokterPerujuk.setText(rs.getString("nama"));
                     ps2=koneksi.prepareStatement(
                         "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from penyakit "+
