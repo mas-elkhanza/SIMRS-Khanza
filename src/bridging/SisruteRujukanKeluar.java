@@ -1541,11 +1541,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                                 "}" +
                             "}";              
                 headers.add("Content-length",Integer.toString(requestJson.length())); 
-                //System.out.println(requestJson);
+                System.out.println(requestJson);
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
                 ObjectMapper mapper = new ObjectMapper();
                 requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
-                //System.out.println(requestJson);
+                System.out.println(requestJson);
                 JsonNode root = mapper.readTree(requestJson);
                 JOptionPane.showMessageDialog(null,root.path("detail").asText());
                 if(root.path("status").asText().equals("200")){
@@ -1747,11 +1747,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                                 "}";              
                     headers.add("Content-length",Integer.toString(requestJson.length())); 
                     //System.out.println(Integer.toString(requestJson.length()));
-                    //System.out.println(requestJson);
+                    System.out.println(requestJson);
                     HttpEntity requestEntity = new HttpEntity(requestJson,headers);
                     ObjectMapper mapper = new ObjectMapper();
                     requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
-                    //System.out.println(requestJson);
+                    System.out.println(requestJson);
                     JsonNode root = mapper.readTree(requestJson);
                     JOptionPane.showMessageDialog(null,root.path("detail").asText());
                     if(root.path("status").asText().equals("200")){
@@ -3078,7 +3078,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     if(!cari2.equals("")){
-                        cari2="#TDK:"+cari2;
+                        if(cari.equals("")){
+                            cari2="TDK:"+cari2;
+                        }else{
+                            cari2="#TDK:"+cari2;
+                        }                            
                     }
                     TerapiTindakan.setText(cari+cari2);
                 }
