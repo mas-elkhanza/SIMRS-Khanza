@@ -1250,24 +1250,20 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }else if(tabMode.getRowCount()==0){
             Valid.textKosong(TCariPeriksa,"Data Pemeriksaan");
         }else{
-            if(var.getkode().equals("Admin Utama")){
+            jmlparsial=0;
+            if(aktifkanparsial.equals("yes")){
+                jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Penjab.getText());
+            }
+            if(jmlparsial>0){     
                 simpan();
             }else{
-                jmlparsial=0;
-                if(aktifkanparsial.equals("yes")){
-                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Penjab.getText());
-                }
-                if(jmlparsial>0){     
-                    simpan();
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCariPeriksa.requestFocus();
                 }else{
-                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                        TCariPeriksa.requestFocus();
-                    }else{
-                        simpan();
-                    }
-                }                    
-            }
+                    simpan();
+                }
+            }  
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 

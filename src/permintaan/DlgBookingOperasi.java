@@ -885,7 +885,10 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         }else if(NmOperasi.getText().trim().equals("")){
             Valid.textKosong(KdOperasi,"Operasi");
         }else{
-            if(var.getkode().equals("Admin Utama")){
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                TCari.requestFocus();
+            }else{
                 if(Sequel.menyimpantf("booking_operasi","?,?,?,?,?,?,?","data", 7,new String[]{
                     TNoRw.getText(),KdOperasi.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                     JamMulai.getSelectedItem()+":"+MenitMulai.getSelectedItem()+":"+DetikMulai.getSelectedItem(),
@@ -894,23 +897,8 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
                     })==true){
                     tampil();
                     emptTeks();
-                }  
-            }else{
-                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                    TCari.requestFocus();
-                }else{
-                    if(Sequel.menyimpantf("booking_operasi","?,?,?,?,?,?,?","data", 7,new String[]{
-                        TNoRw.getText(),KdOperasi.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
-                        JamMulai.getSelectedItem()+":"+MenitMulai.getSelectedItem()+":"+DetikMulai.getSelectedItem(),
-                        JamSelesai.getSelectedItem()+":"+MenitSelesai.getSelectedItem()+":"+DetikSelesai.getSelectedItem(),
-                        Status.getSelectedItem().toString(),KdDokter.getText()
-                        })==true){
-                        tampil();
-                        emptTeks();
-                    }
-                }   
-            }
+                }
+            }   
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1221,8 +1209,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbObat.requestFocus();
-        }else{
-            if(var.getkode().equals("Admin Utama")){
+        }else{            
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
+            }else{
                 var.setstatus(true);
                 DlgKamarInap kamarinap=new DlgKamarInap(null,false);
                 kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1231,19 +1221,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 kamarinap.isCek();
                 kamarinap.setNoRm(TNoRw.getText());
                 kamarinap.setVisible(true);
-            }else{
-                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
-                }else{
-                    var.setstatus(true);
-                    DlgKamarInap kamarinap=new DlgKamarInap(null,false);
-                    kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    kamarinap.setLocationRelativeTo(internalFrame1);
-                    kamarinap.emptTeks();
-                    kamarinap.isCek();
-                    kamarinap.setNoRm(TNoRw.getText());
-                    kamarinap.setVisible(true);
-                }
             }
         }
     }//GEN-LAST:event_MnKamarInapActionPerformed
@@ -1253,25 +1230,16 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            if(var.getkode().equals("Admin Utama")){
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                TCari.requestFocus();
+            }else{ 
                 DlgTagihanOperasi dlgro=new DlgTagihanOperasi(null,false);
                 dlgro.SetCariOperasi(KdOperasi.getText(),KdDokter.getText(),NmDokter.getText());
                 dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.setNoRm(TNoRw.getText(),TPasien.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
                 dlgro.setVisible(true);
-            }else{
-                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                    TCari.requestFocus();
-                }else{ 
-                    DlgTagihanOperasi dlgro=new DlgTagihanOperasi(null,false);
-                    dlgro.SetCariOperasi(KdOperasi.getText(),KdDokter.getText(),NmDokter.getText());
-                    dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    dlgro.setLocationRelativeTo(internalFrame1);
-                    dlgro.setNoRm(TNoRw.getText(),TPasien.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-                    dlgro.setVisible(true);
-                }
             }
         }
     }//GEN-LAST:event_MnOperasiActionPerformed

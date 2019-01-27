@@ -1006,7 +1006,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }catch (Exception ex) {
                 System.out.println("Notifikasi Bridging : "+ex);
                 if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
                 }
             }              
         }

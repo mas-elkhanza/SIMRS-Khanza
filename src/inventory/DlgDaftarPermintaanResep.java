@@ -1091,23 +1091,19 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
                     }else {
-                        if(var.getkode().equals("Admin Utama")){
-                            panggilform();                        
+                        jmlparsial=0;
+                        if(aktifkanparsial.equals("yes")){
+                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",NoRawat));
+                        }
+                        if(jmlparsial>0){
+                            panggilform();
                         }else{
-                            jmlparsial=0;
-                            if(aktifkanparsial.equals("yes")){
-                                jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",NoRawat));
+                            if(Sequel.cariRegistrasi(NoRawat)>0){
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                            }else{ 
+                                panggilform();                             
                             }
-                            if(jmlparsial>0){
-                                panggilform();
-                            }else{
-                                if(Sequel.cariRegistrasi(NoRawat)>0){
-                                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                                }else{ 
-                                    panggilform();                             
-                                }
-                            }                            
-                        }                    
+                        }               
                     }
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
@@ -1124,16 +1120,12 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
-                    }else {
-                        if(var.getkode().equals("Admin Utama")){
-                            panggilform2();                        
-                        }else{                            
-                            if(Sequel.cariRegistrasi(NoRawat)>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                            }else{ 
-                                panggilform2();                             
-                            }                           
-                        }                    
+                    }else {                           
+                        if(Sequel.cariRegistrasi(NoRawat)>0){
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                        }else{ 
+                            panggilform2();                             
+                        }                
                     }
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){

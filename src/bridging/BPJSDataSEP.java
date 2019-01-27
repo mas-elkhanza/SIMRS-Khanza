@@ -2547,7 +2547,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                              TNoRw.getText(),NmPpkRujukan.getText(),NoRujukan.getText(),
                              tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
                          });
-                         emptTeks();                         
+                         emptTeks(); 
+                         TabRawat.setSelectedIndex(1);
                          tampil();          
                     }else{
                         JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
@@ -2911,25 +2912,16 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     if (reply == JOptionPane.YES_OPTION) {
                         var.setstatus(false);
                         DlgKamarInap kamarinap=new DlgKamarInap(null,false);
-                        if(var.getkode().equals("Admin Utama")){
+                        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
+                        }else{ 
                             kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             kamarinap.setLocationRelativeTo(internalFrame1);
                             kamarinap.emptTeks();
                             kamarinap.isCek();
-                            kamarinap.setNoRm(TNoRw.getText());  
-                            kamarinap.setVisible(true);
-                        }else{
-                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
-                            }else{ 
-                                kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                kamarinap.setLocationRelativeTo(internalFrame1);
-                                kamarinap.emptTeks();
-                                kamarinap.isCek();
-                                kamarinap.setNoRm(TNoRw.getText()); 
-                                kamarinap.setVisible(true);                    
-                            }
-                        }      
+                            kamarinap.setNoRm(TNoRw.getText()); 
+                            kamarinap.setVisible(true);                    
+                        }  
                     }
                     WindowUpdatePulang.dispose();
                 }else{
@@ -4387,8 +4379,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         } 
                      }
                         
-                     emptTeks();                         
-                     tampil();
+                     emptTeks();
                  }                     
             }else{
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
