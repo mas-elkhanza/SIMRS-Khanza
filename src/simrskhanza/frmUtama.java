@@ -1084,7 +1084,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 12), new java.awt.Color(60, 60, 60))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(190, 240, 180));
+        internalFrame3.setWarnaAtas(new java.awt.Color(185, 235, 175));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.lightGray);
@@ -5516,7 +5516,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnJadwalOperasi);
 
         btnMapingPoliBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Pink_Time_Machine_B_66659.png"))); // NOI18N
-        btnMapingPoliBPJS.setText("Mapping Poli RS & BPJS");
+        btnMapingPoliBPJS.setText("Mapping Poli VClaim");
         btnMapingPoliBPJS.setIconTextGap(0);
         btnMapingPoliBPJS.setName("btnMapingPoliBPJS"); // NOI18N
         btnMapingPoliBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5948,7 +5948,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCareFaskesThalasemia);
 
         btnPCareMapingObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
-        btnPCareMapingObat.setText("Mapping Obat RS & PCare");
+        btnPCareMapingObat.setText("Mapping Obat PCare");
         btnPCareMapingObat.setIconTextGap(0);
         btnPCareMapingObat.setName("btnPCareMapingObat"); // NOI18N
         btnPCareMapingObat.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5960,7 +5960,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCareMapingObat);
 
         btnPCareMapingTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_111220.png"))); // NOI18N
-        btnPCareMapingTindakan.setText("Tarif Ralan RS & PCare");
+        btnPCareMapingTindakan.setText("Tarif Ralan PCare");
         btnPCareMapingTindakan.setIconTextGap(0);
         btnPCareMapingTindakan.setName("btnPCareMapingTindakan"); // NOI18N
         btnPCareMapingTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5984,7 +5984,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCareClubProlanis);
 
         btnPCareMapingPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_home_61629.png"))); // NOI18N
-        btnPCareMapingPoli.setText("Mapping Poli RS & PCare");
+        btnPCareMapingPoli.setText("Mapping Poli PCare");
         btnPCareMapingPoli.setIconTextGap(0);
         btnPCareMapingPoli.setName("btnPCareMapingPoli"); // NOI18N
         btnPCareMapingPoli.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6008,7 +6008,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCareKegiatanKelompok);
 
         btnPCareMapingTindakanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_book_285636.png"))); // NOI18N
-        btnPCareMapingTindakanRanap.setText("Tarif Ranap RS & PCare");
+        btnPCareMapingTindakanRanap.setText("Tarif Ranap PCare");
         btnPCareMapingTindakanRanap.setIconTextGap(0);
         btnPCareMapingTindakanRanap.setName("btnPCareMapingTindakanRanap"); // NOI18N
         btnPCareMapingTindakanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6056,7 +6056,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCarePendaftaran);
 
         btnPCareMapingDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_45573.png"))); // NOI18N
-        btnPCareMapingDokter.setText("Mapping Dokter RS & PCare");
+        btnPCareMapingDokter.setText("Mapping Dokter PCare");
         btnPCareMapingDokter.setIconTextGap(0);
         btnPCareMapingDokter.setName("btnPCareMapingDokter"); // NOI18N
         btnPCareMapingDokter.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6411,7 +6411,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/01/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/01/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);

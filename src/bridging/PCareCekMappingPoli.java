@@ -41,7 +41,7 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private PCareCekMappingPoli poli=new PCareCekMappingPoli(null,false);
+    private PCareMapingPoli poli=new PCareMapingPoli(null,false);
 
     /** Creates new form DlgKamar
      * @param parent
@@ -54,7 +54,7 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Kode Unit RS","Nama Unit RS","Kode Unit BPJS","Nama Unit BPJS"}){
+            "Kode Unit","Nama Unit","Kode Unit PCare","Nama Unit PCare"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);

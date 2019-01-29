@@ -50,7 +50,7 @@ import simrskhanza.DlgResumePerawatan;
  * @author perpustakaan
  */
 public final class SisruteRujukanKeluar extends javax.swing.JDialog {
-    private DefaultTableModel tabMode;
+    private DefaultTableModel tabMode,tabMode2;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -58,7 +58,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i=0,pilihan=0;
     private final Properties prop = new Properties();
-    private String penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
+    private String StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
     private SisruteApi api=new SisruteApi();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private SisruteCekReferensiFaskes faskes=new SisruteCekReferensiFaskes(null,false);
@@ -168,6 +168,35 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode2=new DefaultTableModel(null,new Object[]{
+                "No.Rujuk","No.RM","Nama Pasien","Nama Faskes Tujuan","Status Direspon","Status Diterima"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbObat2.setModel(tabMode2);
+
+        //tbObat2.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat2.getBackground()));
+        tbObat2.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObat2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 6; i++) {
+            TableColumn column = tbObat2.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(105);
+            }else if(i==1){
+                column.setPreferredWidth(75);
+            }else if(i==2){
+                column.setPreferredWidth(160);
+            }else if(i==3){
+                column.setPreferredWidth(160);
+            }else if(i==4){
+                column.setPreferredWidth(100);
+            }else if(i==5){
+                column.setPreferredWidth(170);
+            }
+        }
+        tbObat2.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         AlasanLainnya.setDocument(new batasInput((byte)50).getKata(AlasanLainnya));
@@ -440,9 +469,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         Radiologi = new widget.TextBox();
         jLabel48 = new widget.Label();
         TerapiTindakan = new widget.TextBox();
+        BtnCari1 = new widget.Button();
         internalFrame4 = new widget.InternalFrame();
-        Scroll = new widget.ScrollPane();
-        tbObat = new widget.Table();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
         DTPCari1 = new widget.Tanggal();
@@ -453,6 +481,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+        TabRujukan = new javax.swing.JTabbedPane();
+        Scroll = new widget.ScrollPane();
+        tbObat = new widget.Table();
+        Scroll2 = new widget.ScrollPane();
+        tbObat2 = new widget.Table();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -554,7 +587,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         FormInput.add(TPasien);
-        TPasien.setBounds(355, 10, 384, 23);
+        TPasien.setBounds(355, 10, 354, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setBackground(new java.awt.Color(245, 250, 240));
@@ -575,7 +608,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel22.setBounds(380, 150, 90, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2019 15:41:50" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019 09:52:19" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1119,6 +1152,19 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         FormInput.add(TerapiTindakan);
         TerapiTindakan.setBounds(104, 490, 636, 23);
 
+        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari1.setMnemonic('2');
+        BtnCari1.setToolTipText("Alt+2");
+        BtnCari1.setName("BtnCari1"); // NOI18N
+        BtnCari1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCari1ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnCari1);
+        BtnCari1.setBounds(711, 10, 28, 23);
+
         Scroll1.setViewportView(FormInput);
 
         internalFrame2.add(Scroll1, java.awt.BorderLayout.CENTER);
@@ -1128,28 +1174,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
-
-        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        Scroll.setName("Scroll"); // NOI18N
-        Scroll.setOpaque(true);
-
-        tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setComponentPopupMenu(jPopupMenu1);
-        tbObat.setName("tbObat"); // NOI18N
-        tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbObatMouseClicked(evt);
-            }
-        });
-        tbObat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbObatKeyPressed(evt);
-            }
-        });
-        Scroll.setViewportView(tbObat);
-
-        internalFrame4.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass9.setBorder(null);
         panelGlass9.setName("panelGlass9"); // NOI18N
@@ -1163,7 +1187,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1178,7 +1202,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1228,6 +1252,63 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         panelGlass9.add(LCount);
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
+
+        TabRujukan.setBackground(new java.awt.Color(255, 255, 254));
+        TabRujukan.setBorder(null);
+        TabRujukan.setForeground(new java.awt.Color(70, 70, 70));
+        TabRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabRujukan.setName("TabRujukan"); // NOI18N
+        TabRujukan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabRujukanMouseClicked(evt);
+            }
+        });
+
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll.setName("Scroll"); // NOI18N
+        Scroll.setOpaque(true);
+
+        tbObat.setAutoCreateRowSorter(true);
+        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(jPopupMenu1);
+        tbObat.setName("tbObat"); // NOI18N
+        tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbObatMouseClicked(evt);
+            }
+        });
+        tbObat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbObatKeyPressed(evt);
+            }
+        });
+        Scroll.setViewportView(tbObat);
+
+        TabRujukan.addTab("Rujukan Keluar", Scroll);
+
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+
+        tbObat2.setAutoCreateRowSorter(true);
+        tbObat2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat2.setComponentPopupMenu(jPopupMenu1);
+        tbObat2.setName("tbObat2"); // NOI18N
+        tbObat2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbObat2MouseClicked(evt);
+            }
+        });
+        tbObat2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbObat2KeyPressed(evt);
+            }
+        });
+        Scroll2.setViewportView(tbObat2);
+
+        TabRujukan.addTab("Respon Faskes Rujukan", Scroll2);
+
+        internalFrame4.add(TabRujukan, java.awt.BorderLayout.CENTER);
 
         TabRawat.addTab("Data Rujukan Keluar Sisrute", internalFrame4);
 
@@ -1460,11 +1541,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                                 "}" +
                             "}";              
                 headers.add("Content-length",Integer.toString(requestJson.length())); 
-                //System.out.println(requestJson);
+                System.out.println(requestJson);
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
                 ObjectMapper mapper = new ObjectMapper();
                 requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
-                //System.out.println(requestJson);
+                System.out.println(requestJson);
                 JsonNode root = mapper.readTree(requestJson);
                 JOptionPane.showMessageDialog(null,root.path("detail").asText());
                 if(root.path("status").asText().equals("200")){
@@ -1516,49 +1597,54 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbObat.getSelectedRow()!= -1){
-            try {
-                URL = link+"/rujukan/batal/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
-                System.out.println(URL);
-                HttpHeaders headers = new HttpHeaders();
-                headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-                headers.add("X-signature",api.getHmac()); 
-                headers.add("Content-type","application/json");
-                requestJson ="{" +
-                                "\"PETUGAS\": {" +
-                                    "\"NIK\": \""+KdPetugas.getText()+"\"," +
-                                    "\"NAMA\": \""+PetugasEntry.getText()+"\"" +
-                                "}" +                                
-                            "}";              
-                headers.add("Content-length",Integer.toString(requestJson.length())); 
-                //System.out.println(Integer.toString(requestJson.length()));
-                System.out.println(requestJson);
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
-                System.out.println(requestJson);
-                JsonNode root = mapper.readTree(requestJson);
-                JOptionPane.showMessageDialog(null,root.path("detail").asText());
-                if(root.path("status").asText().equals("200")){                    
-                    Sequel.meghapus3("sisrute_rujukan_keluar","no_rawat",TNoRw.getText());          
-                    Sequel.meghapus3("rujuk","no_rawat",TNoRw.getText());
-                    emptTeks();
-                    tampil();
+        if(TabRujukan.getSelectedIndex()==0){
+            if(tbObat.getSelectedRow()!= -1){
+                try {
+                    URL = link+"/rujukan/batal/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
+                    System.out.println(URL);
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+                    headers.add("X-signature",api.getHmac()); 
+                    headers.add("Content-type","application/json");
+                    requestJson ="{" +
+                                    "\"PETUGAS\": {" +
+                                        "\"NIK\": \""+KdPetugas.getText()+"\"," +
+                                        "\"NAMA\": \""+PetugasEntry.getText()+"\"" +
+                                    "}" +                                
+                                "}";              
+                    headers.add("Content-length",Integer.toString(requestJson.length())); 
+                    //System.out.println(Integer.toString(requestJson.length()));
+                    System.out.println(requestJson);
+                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
+                    ObjectMapper mapper = new ObjectMapper();
+                    requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
+                    System.out.println(requestJson);
+                    JsonNode root = mapper.readTree(requestJson);
+                    JOptionPane.showMessageDialog(null,root.path("detail").asText());
+                    if(root.path("status").asText().equals("200")){                    
+                        Sequel.meghapus3("sisrute_rujukan_keluar","no_rawat",TNoRw.getText());          
+                        Sequel.meghapus3("rujuk","no_rawat",TNoRw.getText());
+                        emptTeks();
+                        tampil();
+                    }
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                    if(ex.toString().contains("UnknownHostException")){
+                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server Kemenkes terputus....!");
+                    }else if(ex.toString().contains("404")){
+                        JOptionPane.showMessageDialog(rootPane,"Tidak ditemukan....!");
+                    }else if(ex.toString().contains("500")){
+                        JOptionPane.showMessageDialog(rootPane,"Server interenal error....!");
+                    }
                 }
-            } catch (Exception ex) {
-                System.out.println("Notifikasi : "+ex);
-                if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(rootPane,"Koneksi ke server Kemenkes terputus....!");
-                }else if(ex.toString().contains("404")){
-                    JOptionPane.showMessageDialog(rootPane,"Tidak ditemukan....!");
-                }else if(ex.toString().contains("500")){
-                    JOptionPane.showMessageDialog(rootPane,"Server interenal error....!");
-                }
-            }
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
+            } 
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
-        } 
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+            TabRujukan.setSelectedIndex(0);
+        }        
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1661,11 +1747,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                                 "}";              
                     headers.add("Content-length",Integer.toString(requestJson.length())); 
                     //System.out.println(Integer.toString(requestJson.length()));
-                    //System.out.println(requestJson);
+                    System.out.println(requestJson);
                     HttpEntity requestEntity = new HttpEntity(requestJson,headers);
                     ObjectMapper mapper = new ObjectMapper();
                     requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
-                    //System.out.println(requestJson);
+                    System.out.println(requestJson);
                     JsonNode root = mapper.readTree(requestJson);
                     JOptionPane.showMessageDialog(null,root.path("detail").asText());
                     if(root.path("status").asText().equals("200")){
@@ -1721,50 +1807,56 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-            Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSisruteRujukanKeluar.jrxml","report","::[ Data Bridging SEP ]::",
-                "select sisrute_rujukan_keluar.no_rawat,sisrute_rujukan_keluar.no_rujuk,sisrute_rujukan_keluar.no_rkm_medis,"+
-                "sisrute_rujukan_keluar.nm_pasien,sisrute_rujukan_keluar.no_ktp,sisrute_rujukan_keluar.no_peserta,"+
-                "sisrute_rujukan_keluar.jk,sisrute_rujukan_keluar.tgl_lahir,sisrute_rujukan_keluar.tmp_lahir,"+
-                "sisrute_rujukan_keluar.alamat,sisrute_rujukan_keluar.no_tlp,sisrute_rujukan_keluar.jns_rujukan,"+
-                "sisrute_rujukan_keluar.tgl_rujuk,sisrute_rujukan_keluar.kd_faskes_tujuan,sisrute_rujukan_keluar.nm_faskes_tujuan,"+
-                "sisrute_rujukan_keluar.kd_alasan,sisrute_rujukan_keluar.alasan_rujuk,sisrute_rujukan_keluar.alasan_lainnya,"+
-                "sisrute_rujukan_keluar.kd_diagnosa,sisrute_rujukan_keluar.diagnosa_rujuk,sisrute_rujukan_keluar.nik_dokter,"+
-                "sisrute_rujukan_keluar.dokter_perujuk,sisrute_rujukan_keluar.nik_petugas,sisrute_rujukan_keluar.petugas_entry,"+
-                "sisrute_rujukan_keluar.anamnesis_pemeriksaan,sisrute_rujukan_keluar.kesadaran,sisrute_rujukan_keluar.tekanan_darah,"+
-                "sisrute_rujukan_keluar.nadi,sisrute_rujukan_keluar.suhu,sisrute_rujukan_keluar.respirasi,"+
-                "sisrute_rujukan_keluar.keadaan_umum,sisrute_rujukan_keluar.tingkat_nyeri,sisrute_rujukan_keluar.alergi,"+
-                "sisrute_rujukan_keluar.laboratorium,sisrute_rujukan_keluar.radiologi,sisrute_rujukan_keluar.terapitindakan from sisrute_rujukan_keluar where "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_ktp like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_peserta like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.alamat like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.jns_rujukan like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.nm_faskes_tujuan like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.alasan_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.kd_diagnosa like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.diagnosa_rujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.petugas_entry like '%"+TCari.getText().trim()+"%' or "+
-                "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.kesadaran like '%"+TCari.getText().trim()+"%' "+
-                "order by sisrute_rujukan_keluar.tgl_rujuk desc",param);
+        if(TabRujukan.getSelectedIndex()==0){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){            
+                Map<String, Object> param = new HashMap<>(); 
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptCariSisruteRujukanKeluar.jrxml","report","::[ Data Bridging SEP ]::",
+                    "select sisrute_rujukan_keluar.no_rawat,sisrute_rujukan_keluar.no_rujuk,sisrute_rujukan_keluar.no_rkm_medis,"+
+                    "sisrute_rujukan_keluar.nm_pasien,sisrute_rujukan_keluar.no_ktp,sisrute_rujukan_keluar.no_peserta,"+
+                    "sisrute_rujukan_keluar.jk,sisrute_rujukan_keluar.tgl_lahir,sisrute_rujukan_keluar.tmp_lahir,"+
+                    "sisrute_rujukan_keluar.alamat,sisrute_rujukan_keluar.no_tlp,sisrute_rujukan_keluar.jns_rujukan,"+
+                    "sisrute_rujukan_keluar.tgl_rujuk,sisrute_rujukan_keluar.kd_faskes_tujuan,sisrute_rujukan_keluar.nm_faskes_tujuan,"+
+                    "sisrute_rujukan_keluar.kd_alasan,sisrute_rujukan_keluar.alasan_rujuk,sisrute_rujukan_keluar.alasan_lainnya,"+
+                    "sisrute_rujukan_keluar.kd_diagnosa,sisrute_rujukan_keluar.diagnosa_rujuk,sisrute_rujukan_keluar.nik_dokter,"+
+                    "sisrute_rujukan_keluar.dokter_perujuk,sisrute_rujukan_keluar.nik_petugas,sisrute_rujukan_keluar.petugas_entry,"+
+                    "sisrute_rujukan_keluar.anamnesis_pemeriksaan,sisrute_rujukan_keluar.kesadaran,sisrute_rujukan_keluar.tekanan_darah,"+
+                    "sisrute_rujukan_keluar.nadi,sisrute_rujukan_keluar.suhu,sisrute_rujukan_keluar.respirasi,"+
+                    "sisrute_rujukan_keluar.keadaan_umum,sisrute_rujukan_keluar.tingkat_nyeri,sisrute_rujukan_keluar.alergi,"+
+                    "sisrute_rujukan_keluar.laboratorium,sisrute_rujukan_keluar.radiologi,sisrute_rujukan_keluar.terapitindakan from sisrute_rujukan_keluar where "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rujuk like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_ktp like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.no_peserta like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.alamat like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.jns_rujukan like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.nm_faskes_tujuan like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.alasan_rujuk like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.kd_diagnosa like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.diagnosa_rujuk like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.petugas_entry like '%"+TCari.getText().trim()+"%' or "+
+                    "sisrute_rujukan_keluar.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and sisrute_rujukan_keluar.kesadaran like '%"+TCari.getText().trim()+"%' "+
+                    "order by sisrute_rujukan_keluar.tgl_rujuk desc",param);
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }else if(TabRujukan.getSelectedIndex()==1){
+            JOptionPane.showMessageDialog(null,"Silahkan tampilkan data yang mau dicetak..!!");
+            TabRujukan.setSelectedIndex(0);
         }
-        this.setCursor(Cursor.getDefaultCursor());
+            
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -2116,6 +2208,30 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ppRiwayatBtnPrintActionPerformed
 
+    private void TabRujukanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRujukanMouseClicked
+        tampil();
+    }//GEN-LAST:event_TabRujukanMouseClicked
+
+    private void tbObat2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObat2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbObat2MouseClicked
+
+    private void tbObat2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObat2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbObat2KeyPressed
+
+    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
+        if(TNoRw.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data rujukan terlebih dahulu");
+        }else{
+            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                setPasien2(TNoRw.getText());
+            }else {
+                setPasien(TNoRw.getText());
+            }
+        }
+    }//GEN-LAST:event_BtnCari1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2141,6 +2257,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnCari1;
     private widget.Button BtnDiagnosa;
     private widget.Button BtnDokter;
     private widget.Button BtnEdit;
@@ -2178,12 +2295,14 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox Respirasi;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
+    private widget.ScrollPane Scroll2;
     private widget.TextBox SuhuBadan;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
+    private javax.swing.JTabbedPane TabRujukan;
     private widget.Tanggal TanggalRujuk;
     private widget.TextBox TekananDarah;
     private widget.TextBox TerapiTindakan;
@@ -2233,9 +2352,18 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppRiwayat;
     private widget.Table tbObat;
+    private widget.Table tbObat2;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {        
+        if(TabRujukan.getSelectedIndex()==0){
+            tampilData();
+        }else if(TabRujukan.getSelectedIndex()==1){
+            tampilData2();
+        }
+    }
+    
+    private void tampilData(){
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
@@ -2348,10 +2476,128 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         }
         LCount.setText(""+tabMode.getRowCount()); 
     }
-
-    private void isRawat() {
-        Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());  
-    }
+    
+    private void tampilData2(){
+        Valid.tabelKosong(tabMode2);
+        try{
+            ps=koneksi.prepareStatement(
+                "select sisrute_rujukan_keluar.no_rujuk,sisrute_rujukan_keluar.no_rkm_medis,"+
+                "sisrute_rujukan_keluar.nm_pasien,sisrute_rujukan_keluar.nm_faskes_tujuan from sisrute_rujukan_keluar where "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.no_rawat like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.no_rujuk like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.no_rkm_medis like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.nm_pasien like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.no_ktp like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.no_peserta like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.alamat like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.jns_rujukan like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.nm_faskes_tujuan like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.alasan_rujuk like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.kd_diagnosa like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.diagnosa_rujuk like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.dokter_perujuk like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.petugas_entry like ? or "+
+                "sisrute_rujukan_keluar.tgl_rujuk between ? and ? and sisrute_rujukan_keluar.kesadaran like ? "+
+                "order by sisrute_rujukan_keluar.tgl_rujuk desc");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
+                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(39,"%"+TCari.getText().trim()+"%");
+                ps.setString(40,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(41,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(42,"%"+TCari.getText().trim()+"%");
+                ps.setString(43,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(44,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(45,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    StatusDirespon="";StatusDiterima="";
+                    try {
+                        Valid.tabelKosong(tabMode);
+                        URL = link+"/rujukan?nomor="+rs.getString("no_rujuk")+"&create=true";
+                        HttpHeaders headers = new HttpHeaders();
+                        headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+                        headers.add("X-signature",api.getHmac()); 
+                        headers.add("Content-type","application/json");             
+                        headers.add("Content-length",null);            
+                        HttpEntity requestEntity = new HttpEntity(headers);
+                        ObjectMapper mapper = new ObjectMapper();
+                        JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                        JsonNode nameNode = root.path("status");
+                        System.out.println("Result : "+root.path("status").asText());
+                        if(nameNode.asText().equals("200")){                
+                            JsonNode response = root.path("data");
+                            if(response.isArray()){
+                                for(JsonNode list:response){
+                                    StatusDirespon=list.path("RUJUKAN").path("STATUS").path("NAMA").asText();
+                                    if(!list.path("RUJUKAN").path("STATUS_DITERIMA").path("NAMA").asText().equals("")){
+                                        StatusDiterima=list.path("RUJUKAN").path("STATUS_DITERIMA").path("NAMA").asText()+", "+list.path("RUJUKAN").path("STATUS_DITERIMA").path("KETERANGAN").asText();
+                                    }                                        
+                                }
+                            }    
+                        }  
+                    } catch (Exception ex) {
+                        System.out.println("Notifikasi : "+ex);
+                    }
+                    tabMode2.addRow(new Object[]{
+                        rs.getString("no_rujuk"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_faskes_tujuan"),StatusDirespon,StatusDiterima
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }   
+                if(ps!=null){
+                    ps.close();
+                }   
+            }                
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode2.getRowCount()); 
+    }    
     
     private void emptTeks(){
         TNoRw.setText("");
@@ -2449,7 +2695,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rawat,nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) asal,"+
                 "pasien.no_rkm_medis,pasien.no_ktp,pasien.no_peserta,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.no_tlp, "+
-                "pegawai.nama,pegawai.no_ktp from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
+                "pegawai.nama,pegawai.no_ktp as ktpdokter from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
                 "inner join kabupaten inner join propinsi inner join pegawai "+
                 "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_prop=propinsi.kd_prop "+
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
@@ -2468,7 +2714,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     Kontak.setText(rs.getString("no_tlp"));
                     Alamat.setText(rs.getString("asal"));
-                    KdDokter.setText(rs.getString("no_ktp"));
+                    KdDokter.setText(rs.getString("ktpdokter"));
                     DokterPerujuk.setText(rs.getString("nama"));
                     ps2=koneksi.prepareStatement(
                         "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from penyakit "+
@@ -2627,7 +2873,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     if(!cari2.equals("")){
-                        cari2="#TDK:"+cari2;
+                        if(cari.equals("")){
+                            cari2="TDK:"+cari2;
+                        }else{
+                            cari2="#TDK:"+cari2;
+                        } 
                     }
                     TerapiTindakan.setText(cari+cari2);
                 }
@@ -2654,7 +2904,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rawat,nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) asal,"+
                 "pasien.no_rkm_medis,pasien.no_ktp,pasien.no_peserta,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.no_tlp, "+
-                "pegawai.nama,pegawai.no_ktp from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
+                "pegawai.nama,pegawai.no_ktp as ktpdokter from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
                 "inner join kabupaten inner join propinsi inner join pegawai "+
                 "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_prop=propinsi.kd_prop "+
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
@@ -2673,7 +2923,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     Kontak.setText(rs.getString("no_tlp"));
                     Alamat.setText(rs.getString("asal"));
-                    KdDokter.setText(rs.getString("no_ktp"));
+                    KdDokter.setText(rs.getString("ktpdokter"));
                     DokterPerujuk.setText(rs.getString("nama"));
                     ps2=koneksi.prepareStatement(
                         "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from penyakit "+
@@ -2832,7 +3082,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     if(!cari2.equals("")){
-                        cari2="#TDK:"+cari2;
+                        if(cari.equals("")){
+                            cari2="TDK:"+cari2;
+                        }else{
+                            cari2="#TDK:"+cari2;
+                        }                            
                     }
                     TerapiTindakan.setText(cari+cari2);
                 }
