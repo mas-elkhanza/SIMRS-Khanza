@@ -14,7 +14,10 @@
         <group>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/PCareDataPendaftaran.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/BPJSDataSEP.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgPasien.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/setting/database.xml</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgTagihanOperasi.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgKasirRalan.java</file>
         </group>
     </open-files>
 </project-private>
