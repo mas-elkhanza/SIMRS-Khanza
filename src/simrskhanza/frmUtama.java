@@ -49,6 +49,7 @@ import bridging.BPJSCekReferensiSpesialistik;
 import bridging.BPJSCekRiwayatRujukanRS;
 import bridging.BPJSCekRujukanKartuPCare;
 import bridging.BPJSCekRujukanKartuRS;
+import bridging.BPJSCekSKDP;
 import bridging.BPJSCekTanggalRujukan;
 import bridging.BPJSDataSEP;
 import bridging.BPJSMapingPoli;
@@ -999,6 +1000,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekSisruteDiagnosa = new widget.ButtonBig();
         btnRujukanMasukSisrute = new widget.ButtonBig();
         btnRujukanKeluarSisrute = new widget.ButtonBig();
+        btnCekBPJSSKDP = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6403,6 +6405,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRujukanKeluarSisrute);
 
+        btnCekBPJSSKDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-preview_23216.png"))); // NOI18N
+        btnCekBPJSSKDP.setText("Cek SKDP VClaim");
+        btnCekBPJSSKDP.setIconTextGap(0);
+        btnCekBPJSSKDP.setName("btnCekBPJSSKDP"); // NOI18N
+        btnCekBPJSSKDP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSSKDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSSKDPActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekBPJSSKDP);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6411,7 +6425,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/01/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/01/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13250,6 +13264,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRujukanKeluarSisruteActionPerformed
 
+    private void btnCekBPJSSKDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekBPJSSKDPActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekSKDP form=new BPJSCekSKDP(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekBPJSSKDPActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13350,6 +13376,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekBPJSRiwayatRujukanRS;
     private widget.ButtonBig btnCekBPJSRujukanKartuPCare;
     private widget.ButtonBig btnCekBPJSRujukanKartuRS;
+    private widget.ButtonBig btnCekBPJSSKDP;
     private widget.ButtonBig btnCekBPJSTanggalRujukan;
     private widget.ButtonBig btnCekEligibilitasInhealth;
     private widget.ButtonBig btnCekEntryRalan;
@@ -15366,6 +15393,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getbpjs_cek_nik()==true){
                 Panelmenu.add(btnCekBPJSNik);
+                jmlmenu++;
+            }
+            
+            if(var.getbpjs_cek_skdp()==true){
+                Panelmenu.add(btnCekBPJSSKDP);
                 jmlmenu++;
             }
 
@@ -17498,6 +17530,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getbpjs_cek_nik()==true){
             Panelmenu.add(btnCekBPJSNik);
+            jmlmenu++;
+        }
+        
+        if(var.getbpjs_cek_skdp()==true){
+            Panelmenu.add(btnCekBPJSSKDP);
             jmlmenu++;
         }
 
@@ -20123,6 +20160,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
+        if(var.getbpjs_cek_skdp()==true){
+            if(btnCekBPJSSKDP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekBPJSSKDP);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getbpjs_cek_riwayat()==true){
             if(btnCekBPJSRiwayatRujukanPCare.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSRiwayatRujukanPCare);
