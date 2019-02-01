@@ -136,7 +136,6 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -328,8 +327,7 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
 	    headers.add("Content-type","application/json");             
 	    headers.add("Content-length",null);            
 	    HttpEntity requestEntity = new HttpEntity(headers);
-            //System.out.println(URL);
-	    //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("status");

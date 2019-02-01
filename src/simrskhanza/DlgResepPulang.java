@@ -617,17 +617,22 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         }else if(Total.getText().trim().equals("")){
             Valid.textKosong(Jml,"Total");
         }else{
-            if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?","No.Rawat dan Obat",9,new String[]{
-                    TNoRw.getText(),KdBarang.getText(),Jml.getText(),HrgaObat.getText(),Total.getText(),
-                    Dosis.getText(),Sequel.cariIsi("select current_date()"),
-                    Sequel.cariIsi("select current_time()"),var.getkdbangsal()
-                })==true){
-                Trackobat.catatRiwayat(KdBarang.getText(),0,Valid.SetAngka(Jml.getText()),"Resep Pulang",var.getkode(),var.getkdbangsal(),"Simpan");
-                Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','-"+Jml.getText()+"'", 
-                                 "stok=stok-'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
-                tampil();
-                BtnBatalActionPerformed(evt);
-            }                
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                TCari.requestFocus();
+            }else{
+                if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?","No.Rawat dan Obat",9,new String[]{
+                        TNoRw.getText(),KdBarang.getText(),Jml.getText(),HrgaObat.getText(),Total.getText(),
+                        Dosis.getText(),Sequel.cariIsi("select current_date()"),
+                        Sequel.cariIsi("select current_time()"),var.getkdbangsal()
+                    })==true){
+                    Trackobat.catatRiwayat(KdBarang.getText(),0,Valid.SetAngka(Jml.getText()),"Resep Pulang",var.getkode(),var.getkdbangsal(),"Simpan");
+                    Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','-"+Jml.getText()+"'", 
+                                     "stok=stok-'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
+                    tampil();
+                    BtnBatalActionPerformed(evt);
+                } 
+            }                               
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -665,13 +670,18 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         }else if(TPasien.getText().trim().equals("")){
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
-           Sequel.queryu2("delete from resep_pulang where no_rawat=? and kode_brng=?",2,new String[]{
-               TNoRw.getText(),KdBarang.getText()
-           });
-           Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(Jml.getText()),0,"Resep Pulang",var.getkode(),var.getkdbangsal(),"Hapus");
-           Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','"+Jml.getText()+"'", 
-                            "stok=stok+'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
-           tampil();
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                TCari.requestFocus();
+            }else{
+                Sequel.queryu2("delete from resep_pulang where no_rawat=? and kode_brng=?",2,new String[]{
+                    TNoRw.getText(),KdBarang.getText()
+                });
+                Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(Jml.getText()),0,"Resep Pulang",var.getkode(),var.getkdbangsal(),"Hapus");
+                Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','"+Jml.getText()+"'", 
+                                 "stok=stok+'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
+                tampil();
+            }                
         }
 
         BtnBatalActionPerformed(evt);

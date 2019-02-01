@@ -20,11 +20,11 @@ public class tessaja4 {
     public static PcareApi api=new PcareApi();
     public static void tessaja() throws FileNotFoundException, IOException{
         prop.loadFromXML(new FileInputStream("setting/database.xml"));
-        System.out.println("X-cons-id:"+prop.getProperty("CONSIDAPIPCARE"));
-	System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));            
-	System.out.println("X-Signature:"+api.getHmac());
-        String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
-        System.out.println("X-Authorization:Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+        System.out.println("X-cons-id:"+prop.getProperty("IDSISRUTE"));
+	System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString())); 
+	System.out.println("X-signature:"+api.getHmac()); 
+	System.out.println("Content-type:application/json");             
+	System.out.println("Content-length:"+null); 
     }
     public static void main(String[] args) throws IOException {
         tessaja();

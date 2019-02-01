@@ -285,7 +285,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
         //diet.setModal(true);
         diet.emptTeks();
         diet.isCek();
-        diet.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         diet.setLocationRelativeTo(internalFrame1);
         diet.setAlwaysOnTop(false);
         diet.setVisible(true);

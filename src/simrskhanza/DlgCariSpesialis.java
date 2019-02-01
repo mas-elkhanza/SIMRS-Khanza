@@ -287,7 +287,7 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
         //png_jawab.setModal(true);
         png_jawab.emptTeks();
         png_jawab.isCek();
-        png_jawab.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        png_jawab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         png_jawab.setLocationRelativeTo(internalFrame1);
         png_jawab.setAlwaysOnTop(false);
         png_jawab.setVisible(true);

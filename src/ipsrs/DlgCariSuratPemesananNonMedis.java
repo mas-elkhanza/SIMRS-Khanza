@@ -940,16 +940,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
             Valid.textKosong(TCari,"pilihan data");
         }else{
-            Sequel.queryu("update surat_pemesanan_medis set status='Sudah Datang' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            aplikasi.tampikan=false;
-            aplikasi.isCek();
-            aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-            aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            aplikasi.setLocationRelativeTo(internalFrame1);
-            aplikasi.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
-            tampil();
+            if(Sequel.cariIsi("select status from surat_pemesanan_non_medis where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()).equals("Sudah Datang")){
+                JOptionPane.showMessageDialog(null,"Data pemesanan sudah tervalidasi..!!");
+            }else{
+                Sequel.queryu("update surat_pemesanan_non_medis set status='Sudah Datang' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                aplikasi.tampikan=false;
+                aplikasi.isCek();
+                aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                aplikasi.setLocationRelativeTo(internalFrame1);
+                aplikasi.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+                tampil();
+            }                
         }
     }//GEN-LAST:event_ppDatangActionPerformed
 

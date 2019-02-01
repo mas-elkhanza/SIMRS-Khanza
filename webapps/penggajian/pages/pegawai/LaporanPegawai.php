@@ -31,7 +31,7 @@
         $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;   
         $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
-                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai
+                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,photo,no_ktp from pegawai
                  where
                  nik like '%".$keyword."%' or
                  nama like '%".$keyword."%' or
@@ -60,7 +60,7 @@
         $jumlah=mysqli_num_rows($hasil);
 
         if(mysqli_num_rows($hasil)!=0) {
-            echo "<table  border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+            echo "<table width='3120px'  border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
 				<caption><h1 class=title>DAFTAR PEGAWAI/KARYAWAN</h1><br></caption>
                     <tr class='head'>
                                  <td width='80px'><div align='center'>NIP</div></td>
@@ -86,6 +86,8 @@
                                  <td width='80px'><div align='center'>Stts Aktif</div></td>
                                  <td width='70px'><div align='center'>Wajib Masuk</div></td>
                                  <td width='100px'><div align='center'>Mulai Kontrak</div></td>
+                                 <td width='120px'><div align='center'>Photo</div></td>
+                                 <td width='100px'><div align='center'>No.KTP</div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
 			$_sql2         = "SELECT normal-$jumlahlibur,jmlhr,normal FROM set_tahun";
@@ -105,6 +107,12 @@
 			 }else if(!($baris[23]==0)){
 			     $jmlmsk=$baris2[0];
 			 }
+                         $gb="-";
+                         if($baris["photo"]=="pages/pegawai/photo/"){
+                            $gb="-";                            
+                         }else{
+                            $gb="<img src='".str_replace("pages/pegawai/photo/","photo/",$baris["photo"])."' width='120px' height='120px'>";
+                         }
                         echo "<tr class='isi'>
                                  <td>$baris[1]&nbsp;</td>
                                  <td>$baris[2]&nbsp;</td>
@@ -129,6 +137,8 @@
                                   <td>$baris[22]&nbsp;</td>
                                   <td>$jmlmsk&nbsp;</td>
                                   <td>$baris[24]</td>
+                                  <td>$gb</a></td>
+                                  <td>".$baris["no_ktp"]."</a></td>
                                </tr>";
                     }
             echo "</table>";

@@ -314,23 +314,19 @@ public class DlgCopyResep extends javax.swing.JDialog {
             if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
                 JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep yang mau dicopy ..!!");
             }else {
-                if(var.getkode().equals("Admin Utama")){
-                    panggilform();                        
+                jmlparsial=0;
+                if(aktifkanparsial.equals("yes")){
+                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",kode_pj);
+                }
+                if(jmlparsial>0){
+                    panggilform();
                 }else{
-                    jmlparsial=0;
-                    if(aktifkanparsial.equals("yes")){
-                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",kode_pj);
+                    if(Sequel.cariRegistrasi(norawat)>0){
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                    }else{ 
+                        panggilform();                             
                     }
-                    if(jmlparsial>0){
-                        panggilform();
-                    }else{
-                        if(Sequel.cariRegistrasi(norawat)>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                        }else{ 
-                            panggilform();                             
-                        }
-                    }                            
-                }                    
+                }                
             }
         }
 }//GEN-LAST:event_BtnTambahActionPerformed
@@ -361,23 +357,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
                 JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep yang mau dicopy ..!!");
             }else {
-                if(var.getkode().equals("Admin Utama")){
-                    panggilform2();                        
+                jmlparsial=0;
+                if(aktifkanparsial.equals("yes")){
+                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",kode_pj);
+                }
+                if(jmlparsial>0){
+                    panggilform2();
                 }else{
-                    jmlparsial=0;
-                    if(aktifkanparsial.equals("yes")){
-                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",kode_pj);
+                    if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                    }else{ 
+                        panggilform2();                             
                     }
-                    if(jmlparsial>0){
-                        panggilform2();
-                    }else{
-                        if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                        }else{ 
-                            panggilform2();                             
-                        }
-                    }                            
-                }                    
+                }                
             }
         }
     }//GEN-LAST:event_BtnEditActionPerformed

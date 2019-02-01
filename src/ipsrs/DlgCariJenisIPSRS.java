@@ -308,7 +308,7 @@ public final class DlgCariJenisIPSRS extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         nm_jenis.emptTeks();
         nm_jenis.isCek();
-        nm_jenis.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        nm_jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         nm_jenis.setLocationRelativeTo(internalFrame1);
         nm_jenis.setAlwaysOnTop(false);
         nm_jenis.setVisible(true);

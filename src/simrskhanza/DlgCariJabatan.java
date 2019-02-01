@@ -278,7 +278,7 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //jabatan.setModal(true);
         jabatan.emptTeks();
-        jabatan.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        jabatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jabatan.setLocationRelativeTo(internalFrame1);
         jabatan.setAlwaysOnTop(false);
         jabatan.setVisible(true);

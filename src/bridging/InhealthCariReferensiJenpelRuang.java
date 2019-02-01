@@ -325,7 +325,7 @@ public final class InhealthCariReferensiJenpelRuang extends javax.swing.JDialog 
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //bangsal.setModal(true);
         bangsal.emptTeks();
-        bangsal.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
