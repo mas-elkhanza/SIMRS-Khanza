@@ -494,7 +494,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
                         }                  
 
-                        psobatsimpan= koneksi.prepareStatement("insert into detail_pemberian_obat values(?,?,?,?,?,?,?,?,?,?,?,?)");
+                        psobatsimpan= koneksi.prepareStatement("insert into detail_pemberian_obat values(?,?,?,?,?,?,?,?,?,?,?,?,'')");
                         try {
                             if(pagi>0){
                                 psobatsimpan.setString(1,Valid.SetTgl(Tanggal.getSelectedItem()+""));

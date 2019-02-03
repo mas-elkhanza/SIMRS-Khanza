@@ -1,7 +1,6 @@
 <?php
 	include_once "conf/command.php";
-        echo "User : ".$_GET['usere']."Password ".$_GET['passwordte'];
-  	/*if (@$_GET['act']=="login"){
+     if (@$_GET['act']=="login"){
             if(($_GET['usere']=="admin")&&($_GET['passwordte']=="akusayangsamakamu")) {
                 session_start();
                 $_SESSION['ses_admin']="admin";
@@ -23,6 +22,6 @@
             }
 	    header("Location:".$url);
             
-	}*/
+	}
     
 ?>
