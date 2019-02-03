@@ -2483,8 +2483,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 isReset();
             } catch (Exception e) {
                 System.out.println(e);
-            }                
-        }
+            }    
+            ChkJln.setSelected(true);
+        }        
     }
 
 }

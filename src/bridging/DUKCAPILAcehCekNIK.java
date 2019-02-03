@@ -105,6 +105,9 @@ public class DUKCAPILAcehCekNIK {
             }
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server Dukcapil terputus...!");
+            }
         }
     }
     

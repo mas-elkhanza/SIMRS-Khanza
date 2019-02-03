@@ -1310,7 +1310,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
             } catch (Exception e) {
                 System.out.println(e);
-            }                
+            }    
+            ChkJln.setSelected(true);            
         }
     }
 

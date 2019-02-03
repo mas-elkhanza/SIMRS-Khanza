@@ -520,7 +520,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         DlgObatPenyakit obatpenyakit=new DlgObatPenyakit(null,false);
         obatpenyakit.emptTeks();
         obatpenyakit.isCek();
-        obatpenyakit.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        obatpenyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         obatpenyakit.setLocationRelativeTo(internalFrame1);
         obatpenyakit.setAlwaysOnTop(false);
         obatpenyakit.setVisible(true);

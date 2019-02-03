@@ -1297,6 +1297,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu3 = new javax.swing.JMenuItem();
         MnKartu4 = new javax.swing.JMenuItem();
         MnKartu5 = new javax.swing.JMenuItem();
+        MnKartu6 = new javax.swing.JMenuItem();
         Barcode = new javax.swing.JMenu();
         MnBarcodeRM = new javax.swing.JMenuItem();
         MnBarcodeRM1 = new javax.swing.JMenuItem();
@@ -1564,7 +1565,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu1.setText("Kartu Pasien 1");
         MnKartu1.setName("MnKartu1"); // NOI18N
-        MnKartu1.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnKartu1.setPreferredSize(new java.awt.Dimension(150, 26));
         MnKartu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu1ActionPerformed(evt);
@@ -1578,7 +1579,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu2.setText("Kartu Pasien 2");
         MnKartu2.setName("MnKartu2"); // NOI18N
-        MnKartu2.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnKartu2.setPreferredSize(new java.awt.Dimension(150, 26));
         MnKartu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu2ActionPerformed(evt);
@@ -1592,7 +1593,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu3.setText("Kartu Pasien 3");
         MnKartu3.setName("MnKartu3"); // NOI18N
-        MnKartu3.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnKartu3.setPreferredSize(new java.awt.Dimension(150, 26));
         MnKartu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu3ActionPerformed(evt);
@@ -1606,7 +1607,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu4.setText("Kartu Pasien 4");
         MnKartu4.setName("MnKartu4"); // NOI18N
-        MnKartu4.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnKartu4.setPreferredSize(new java.awt.Dimension(150, 26));
         MnKartu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu4ActionPerformed(evt);
@@ -1620,13 +1621,27 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu5.setText("Kartu Pasien 5");
         MnKartu5.setName("MnKartu5"); // NOI18N
-        MnKartu5.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnKartu5.setPreferredSize(new java.awt.Dimension(150, 26));
         MnKartu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu5ActionPerformed(evt);
             }
         });
         KartuPasien.add(MnKartu5);
+
+        MnKartu6.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKartu6.setForeground(new java.awt.Color(70, 70, 70));
+        MnKartu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKartu6.setText("Kartu Pasien 6");
+        MnKartu6.setName("MnKartu6"); // NOI18N
+        MnKartu6.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnKartu6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKartu6ActionPerformed(evt);
+            }
+        });
+        KartuPasien.add(MnKartu6);
 
         jPopupMenu1.add(KartuPasien);
 
@@ -3031,7 +3046,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-01-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3166,7 +3181,7 @@ public class DlgPasien extends javax.swing.JDialog {
         TKtp.setBounds(712, 132, 130, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-01-2019" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2019" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -7518,6 +7533,32 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }//GEN-LAST:event_MnCover1ActionPerformed
 
+    private void MnKartu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKartu6ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNo.requestFocus();
+        }else if(TNm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPasien.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();                 
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs()); 
+            Valid.MyReport("rptKartuBerobat8.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                   "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.nm_ibu,"+
+                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga, pasien.no_peserta from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_kel=kelurahan.kd_kel "+
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnKartu6ActionPerformed
+
     /**
      * @data args the command line arguments
      */
@@ -7664,6 +7705,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private javax.swing.JMenuItem MnKartu3;
     private javax.swing.JMenuItem MnKartu4;
     private javax.swing.JMenuItem MnKartu5;
+    private javax.swing.JMenuItem MnKartu6;
     private javax.swing.JMenuItem MnKartuStatus;
     private javax.swing.JMenuItem MnLaporanAnestesia;
     private javax.swing.JMenuItem MnLaporanIGD;

@@ -1569,7 +1569,8 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
             } catch (Exception e) {
                 System.out.println(e);
-            }                
+            }  
+            ChkJln.setSelected(true);
         }                 
     }
 

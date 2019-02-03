@@ -21,8 +21,8 @@
     <entry key="FORMALARMRADIOLOGI">ralan + ranap</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
-    <entry key="SECRETKEYAPIBPJS">3oUEBAF783</entry>
-    <entry key="CONSIDAPIBPJS">1844</entry>
+    <entry key="SECRETKEYAPIBPJS">3oUEBAF783121</entry>
+    <entry key="CONSIDAPIBPJS">184412123</entry>
     <entry key="URLAPIAPLICARE">http://api.bpjs-kesehatan.go.id/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">9yU9F682BF</entry>
     <entry key="CONSIDAPIAPLICARE">3024</entry>

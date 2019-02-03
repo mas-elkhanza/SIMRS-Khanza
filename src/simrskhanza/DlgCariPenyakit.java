@@ -350,7 +350,7 @@ public final class DlgCariPenyakit extends javax.swing.JDialog {
         //nm_dokter.setModal(true);
         penyakit.emptTeks();
         penyakit.isCek();
-        penyakit.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setAlwaysOnTop(false);
         penyakit.setVisible(true);
