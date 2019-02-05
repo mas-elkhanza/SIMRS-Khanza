@@ -276,6 +276,7 @@ import inventaris.InventarisBarangCSSD;
 import inventory.DlgCariPPNObat;
 import inventory.DlgCariPermintaan;
 import inventory.DlgDaftarPermintaanResep;
+import inventory.DlgDataBatch;
 import inventory.DlgGolongan;
 import inventory.DlgKategori;
 import inventory.DlgKegiatanFarmasi;
@@ -13291,7 +13292,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnCekBPJSSKDPActionPerformed
 
     private void btnDataBatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataBatchActionPerformed
-        // TODO add your handling code here:
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataBatch form=new DlgDataBatch(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnDataBatchActionPerformed
 
     /**
@@ -14103,6 +14113,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }else if(jmlmenu<=425){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*81)));
+        }else if(jmlmenu<=430){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*82)));
+        }else if(jmlmenu<=435){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*83)));
         }                                                 
         Panelmenu.repaint(); 
         DlgHome.setVisible(true);               
