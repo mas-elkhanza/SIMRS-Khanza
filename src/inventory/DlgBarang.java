@@ -1537,6 +1537,7 @@ public class DlgBarang extends javax.swing.JDialog {
                 Sequel.mengedit("databarang","kode_brng='"+tbDokter.getValueAt(i, 1).toString()+"'","status='0'");
             }
         }
+        
         tampil();
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
