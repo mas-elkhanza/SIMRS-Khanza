@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import inventory.DlgObatPenyakit;
 import setting.DlgRunTeks;
 import laporan.DlgSirkulasiBerkas;
 import permintaan.DlgCariPermintaanLab;
@@ -1001,6 +1002,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRujukanMasukSisrute = new widget.ButtonBig();
         btnRujukanKeluarSisrute = new widget.ButtonBig();
         btnCekBPJSSKDP = new widget.ButtonBig();
+        btnDataBatch = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1084,7 +1086,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame2.setWarnaBawah(new java.awt.Color(70, 110, 20));
         internalFrame2.setLayout(null);
 
-        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 12), new java.awt.Color(60, 60, 60))); // NOI18N
+        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setWarnaAtas(new java.awt.Color(185, 235, 175));
         internalFrame3.setLayout(null);
@@ -6417,6 +6419,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSSKDP);
 
+        btnDataBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
+        btnDataBatch.setText("Data Batch");
+        btnDataBatch.setIconTextGap(0);
+        btnDataBatch.setName("btnDataBatch"); // NOI18N
+        btnDataBatch.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataBatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataBatchActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDataBatch);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6425,7 +6439,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/01/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/02/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13276,6 +13290,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekBPJSSKDPActionPerformed
 
+    private void btnDataBatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataBatchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDataBatchActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13403,6 +13421,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaftarPermintaanResep;
     private widget.ButtonBig btnDaruratStok;
+    private widget.ButtonBig btnDataBatch;
     private widget.ButtonBig btnDataHAIs;
     private widget.ButtonBig btnDataPenjualan;
     private widget.ButtonBig btnDataPenyerahanDarah;
@@ -14567,6 +14586,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getrekap_pemesanan()==true){
                 Panelmenu.add(btnRekapPenerimaanObat);
+                jmlmenu++;
+            }
+            
+            if(var.getdata_batch()==true){
+                Panelmenu.add(btnDataBatch);
                 jmlmenu++;
             }
             
@@ -16720,6 +16744,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
+        if(var.getdata_batch()==true){
+            Panelmenu.add(btnDataBatch);
+            jmlmenu++;
+        }
+
         if(var.getriwayat_data_batch()==true){
             Panelmenu.add(btnRiwayatBatch);
             jmlmenu++;
@@ -19020,6 +19049,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getrekap_pemesanan()==true){
             if(btnRekapPenerimaanObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPenerimaanObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getdata_batch()==true){
+            if(btnDataBatch.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDataBatch);
                 jmlmenu++;
             }                
         }

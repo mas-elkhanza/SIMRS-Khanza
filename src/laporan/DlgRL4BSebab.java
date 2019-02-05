@@ -519,7 +519,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_penyakit")+"</td>"+
                             "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
                             "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
                             "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
