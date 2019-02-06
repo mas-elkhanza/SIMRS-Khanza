@@ -94,7 +94,7 @@ public final class var {
             jumlah_porsi_diet=false,jumlah_macam_diet=false,payment_point2=false,pembayaran_akun_bayar2=false,hapus_nota_salah=false,
             hais_perbangsal=false,ppn_obat=false,saldo_akun_perbulan=false,display_apotek=false,sisrute_referensi_faskes=false,
             sisrute_referensi_alasanrujuk=false,sisrute_referensi_diagnosa=false,sisrute_rujukan_masuk=false,sisrute_rujukan_keluar=false,
-            bpjs_cek_skdp=false,data_batch=false;
+            bpjs_cek_skdp=false,data_batch=false,kunjungan_permintaan_lab=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -547,6 +547,7 @@ public final class var {
                         var.sisrute_rujukan_keluar=true;
                         var.bpjs_cek_skdp=true;
                         var.data_batch=true;
+                        var.kunjungan_permintaan_lab=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -983,6 +984,7 @@ public final class var {
                         var.sisrute_rujukan_keluar=rs2.getBoolean("sisrute_rujukan_keluar");
                         var.bpjs_cek_skdp=rs2.getBoolean("bpjs_cek_skdp");
                         var.data_batch=rs2.getBoolean("data_batch");
+                        var.kunjungan_permintaan_lab=rs2.getBoolean("kunjungan_permintaan_lab");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1417,6 +1419,7 @@ public final class var {
                         var.sisrute_rujukan_keluar=false;
                         var.bpjs_cek_skdp=false;
                         var.data_batch=false;
+                        var.kunjungan_permintaan_lab=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1905,4 +1908,5 @@ public final class var {
     public static boolean getsisrute_rujukan_keluar(){return var.sisrute_rujukan_keluar;}
     public static boolean getbpjs_cek_skdp(){return var.bpjs_cek_skdp;}
     public static boolean getdata_batch(){return var.data_batch;}
+    public static boolean getkunjungan_permintaan_lab(){return var.kunjungan_permintaan_lab;}
 }   

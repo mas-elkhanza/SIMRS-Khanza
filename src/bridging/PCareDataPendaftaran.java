@@ -3186,7 +3186,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"kdDiag3\": "+diagnosa3+"," +
                                     "\"kdPoliRujukInternal\": null," +
                                     "\"rujukLanjut\": null," +
-                                    "\"kdTacc\": null," +
+                                    "\"kdTacc\": 0," +
                                     "\"alasanTacc\": null" +
                                   "}";
                     System.out.println(requestJson);
