@@ -137,25 +137,37 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }
                 }
             });

@@ -87,11 +87,41 @@ public final class SuratKeluar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==1){
+                            try {
+                                loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                            } catch (Exception ex) {
+                                System.out.println("Notifikasi : "+ex);
+                            }
+                        }                            
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==1){
+                            try {
+                                loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                            } catch (Exception ex) {
+                                System.out.println("Notifikasi : "+ex);
+                            }
+                        }
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==1){
+                            try {
+                                loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login3.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
+                            } catch (Exception ex) {
+                                System.out.println("Notifikasi : "+ex);
+                            }
+                        }
+                    }
+                }
             });
         } 
         
@@ -872,9 +902,6 @@ public final class SuratKeluar extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){        
-        
-    }
     
     
 }

@@ -90,11 +90,23 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Dokter.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Dokter.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        tampil(Dokter.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Dokter.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        tampil(Dokter.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Dokter.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        tampil(Dokter.getText());
+                    }
+                }
             });
         } 
         

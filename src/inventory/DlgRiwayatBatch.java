@@ -57,11 +57,23 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {btnCariActionPerformed(null);}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        btnCariActionPerformed(null);
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {btnCariActionPerformed(null);}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        btnCariActionPerformed(null);
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {btnCariActionPerformed(null);}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        btnCariActionPerformed(null);
+                    }
+                }
 
             });
         }

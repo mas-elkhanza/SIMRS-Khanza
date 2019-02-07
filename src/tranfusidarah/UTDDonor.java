@@ -245,27 +245,63 @@ public final class UTDDonor extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             TCariMedis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilMedis();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilMedis();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilMedis();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
             });
             TCariNonMedis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
             });
         }
 

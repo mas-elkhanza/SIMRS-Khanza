@@ -82,11 +82,23 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Propinsi.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Propinsi.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        tampil(Propinsi.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Propinsi.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        tampil(Propinsi.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Propinsi.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Propinsi.getText().length()>2){
+                        tampil(Propinsi.getText());
+                    }
+                }
             });
         } 
         

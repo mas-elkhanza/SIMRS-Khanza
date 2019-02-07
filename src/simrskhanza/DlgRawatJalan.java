@@ -800,15 +800,21 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    TampilkanData();
+                    if(TCari.getText().length()>2){
+                        TampilkanData();
+                    }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    TampilkanData();
+                    if(TCari.getText().length()>2){
+                        TampilkanData();
+                    }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    TampilkanData();
+                    if(TCari.getText().length()>2){
+                        TampilkanData();
+                    }
                 }
             });
         }  

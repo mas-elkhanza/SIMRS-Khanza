@@ -12,11 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/setting/DlgUser.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/laporan/DlgKunjunganLabRanap.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/laporan/DlgKunjunganLabRalan.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/report/rptKunjunganLabRanap.jrxml</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgProyeksiBeriObat2.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/keuangan/DlgCariDaftarOperasi.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/keuangan/DlgCariPerawatanRalan.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/keuangan/DlgCariJurnal.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/setting/database.xml</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/kepegawaian/DlgRiwayatJabatan.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgBahasa.java</file>
         </group>
     </open-files>
 </project-private>

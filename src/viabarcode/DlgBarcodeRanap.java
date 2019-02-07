@@ -118,17 +118,6 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         }
         tbTindakan.setDefaultRenderer(Object.class, new WarnaTable());
         TCariTindakan.setDocument(new batasInput((byte)100).getKata(TCariTindakan));
-        if(koneksiDB.cariCepat().equals("aktif")){
-            TCariTindakan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {tampiltindakan();}
-                @Override
-                public void removeUpdate(DocumentEvent e) {tampiltindakan();}
-                @Override
-                public void changedUpdate(DocumentEvent e) {tampiltindakan();}
-            });
-        }  
-        
         Object[] row2={"K","Jml","Kode Barang","Nama Barang","Satuan","Letak Barang","Harga(Rp)","Stok","Jenis Obat","Embalase","Tuslah","Hbeli"};
         tabModeObat=new DefaultTableModel(null,row2){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -189,13 +178,47 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class,warna);
         TCariObat.setDocument(new batasInput((byte)100).getKata(TCariObat));
         if(koneksiDB.cariCepat().equals("aktif")){
+            TCariTindakan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariTindakan.getText().length()>2){
+                        tampiltindakan();
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariTindakan.getText().length()>2){
+                        tampiltindakan();
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariTindakan.getText().length()>2){
+                        tampiltindakan();
+                    }
+                }
+            });
             TCariObat.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilobat();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariObat.getText().length()>2){
+                        tampilobat();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilobat();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariObat.getText().length()>2){
+                        tampilobat();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilobat();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariObat.getText().length()>2){
+                        tampilobat();
+                    }if(TCariObat.getText().length()>2){
+                        tampilobat();
+                    }
+                }
             });
         }
         

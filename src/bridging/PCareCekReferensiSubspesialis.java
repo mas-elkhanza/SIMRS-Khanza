@@ -89,11 +89,23 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Subspesialis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Subspesialis.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Subspesialis.getText().length()>2){
+                        tampil(Subspesialis.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Subspesialis.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Subspesialis.getText().length()>2){
+                        tampil(Subspesialis.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Subspesialis.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Subspesialis.getText().length()>2){
+                        tampil(Subspesialis.getText());
+                    }
+                }
             });
         } 
         

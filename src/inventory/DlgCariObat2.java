@@ -284,11 +284,23 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariActionPerformed(null);
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariActionPerformed(null);
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariActionPerformed(null);
+                    }
+                }
             });
         }
         jam();

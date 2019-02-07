@@ -562,19 +562,43 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariBayarActionPerformed(null);
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariBayarActionPerformed(null);
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariBayarActionPerformed(null);
+                    }
+                }
             });
             TCari1.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {btnCariPiutangActionPerformed(null);}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari1.getText().length()>2){
+                        btnCariPiutangActionPerformed(null);
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {btnCariPiutangActionPerformed(null);}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari1.getText().length()>2){
+                        btnCariPiutangActionPerformed(null);
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {btnCariPiutangActionPerformed(null);}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari1.getText().length()>2){
+                        btnCariPiutangActionPerformed(null);
+                    }
+                }
             });
         } 
         

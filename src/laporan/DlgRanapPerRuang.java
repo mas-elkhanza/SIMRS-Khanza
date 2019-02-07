@@ -105,26 +105,32 @@ public final class DlgRanapPerRuang extends javax.swing.JDialog {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
-                    }
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
+                    }                        
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
                     }
                 }
             });

@@ -171,29 +171,49 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
+                    }else if(TabRawat.getSelectedIndex()==1){
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
             });

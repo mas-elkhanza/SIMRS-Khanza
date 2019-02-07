@@ -86,11 +86,23 @@ public final class BPJSCekReferensiProsedur extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Poli.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil(Poli.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Poli.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil(Poli.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Poli.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil(Poli.getText());
+                    }
+                }
             });
         } 
         try {

@@ -187,22 +187,43 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCariPaket.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariPaket.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariPaket.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariPaket.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
-        }  
-        
-        if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil2();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil2();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil2();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil2();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil2();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil2();
+                    }
+                }
             });
         }  
         

@@ -87,11 +87,23 @@ public final class PCareCekReferensiObat extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(diagnosa.getText().length()>2){
+                        tampil(diagnosa.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(diagnosa.getText().length()>2){
+                        tampil(diagnosa.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(diagnosa.getText().length()>2){
+                        tampil(diagnosa.getText());
+                    }
+                }
             });
         } 
         

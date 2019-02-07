@@ -547,50 +547,56 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampilDr();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampilPr();
-                    }else if(TabRawat.getSelectedIndex()==2){
-                        tampilDrPr();
-                    }else if(TabRawat.getSelectedIndex()==3){
-                        tampilPemeriksaan();
-                    }else if(TabRawat.getSelectedIndex()==4){
-                        tampilPemeriksaanObstetri();
-                    }else if(TabRawat.getSelectedIndex()==5){
-                        tampilPemeriksaanGinekologi();
-                    }
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampilDr();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampilPr();
+                        }else if(TabRawat.getSelectedIndex()==2){
+                            tampilDrPr();
+                        }else if(TabRawat.getSelectedIndex()==3){
+                            tampilPemeriksaan();
+                        }else if(TabRawat.getSelectedIndex()==4){
+                            tampilPemeriksaanObstetri();
+                        }else if(TabRawat.getSelectedIndex()==5){
+                            tampilPemeriksaanGinekologi();
+                        }
+                    }                        
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampilDr();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampilPr();
-                    }else if(TabRawat.getSelectedIndex()==2){
-                        tampilDrPr();
-                    }else if(TabRawat.getSelectedIndex()==3){
-                        tampilPemeriksaan();
-                    }else if(TabRawat.getSelectedIndex()==4){
-                        tampilPemeriksaanObstetri();
-                    }else if(TabRawat.getSelectedIndex()==5){
-                        tampilPemeriksaanGinekologi();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampilDr();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampilPr();
+                        }else if(TabRawat.getSelectedIndex()==2){
+                            tampilDrPr();
+                        }else if(TabRawat.getSelectedIndex()==3){
+                            tampilPemeriksaan();
+                        }else if(TabRawat.getSelectedIndex()==4){
+                            tampilPemeriksaanObstetri();
+                        }else if(TabRawat.getSelectedIndex()==5){
+                            tampilPemeriksaanGinekologi();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampilDr();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampilPr();
-                    }else if(TabRawat.getSelectedIndex()==2){
-                        tampilDrPr();
-                    }else if(TabRawat.getSelectedIndex()==3){
-                        tampilPemeriksaan();
-                    }else if(TabRawat.getSelectedIndex()==4){
-                        tampilPemeriksaanObstetri();
-                    }else if(TabRawat.getSelectedIndex()==5){
-                        tampilPemeriksaanGinekologi();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampilDr();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampilPr();
+                        }else if(TabRawat.getSelectedIndex()==2){
+                            tampilDrPr();
+                        }else if(TabRawat.getSelectedIndex()==3){
+                            tampilPemeriksaan();
+                        }else if(TabRawat.getSelectedIndex()==4){
+                            tampilPemeriksaanObstetri();
+                        }else if(TabRawat.getSelectedIndex()==5){
+                            tampilPemeriksaanGinekologi();
+                        }
                     }
                 }
             });

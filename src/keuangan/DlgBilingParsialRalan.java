@@ -109,11 +109,23 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariBayarActionPerformed(null);
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariBayarActionPerformed(null);
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        BtnCariBayarActionPerformed(null);
+                    }
+                }
             });
         } 
         
