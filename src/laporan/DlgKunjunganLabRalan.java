@@ -825,22 +825,21 @@ public final class DlgKunjunganLabRalan extends javax.swing.JDialog {
             param.put("tanggal",Tgl2.getDate());   
             Sequel.queryu("truncate table temporary");
             for(int r=0;r<tabMode.getRowCount();r++){ 
-                if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                    Sequel.menyimpan("temporary","'0','"+
-                                    tabMode.getValueAt(r,0).toString()+"','"+
-                                    tabMode.getValueAt(r,1).toString()+"','"+
-                                    tabMode.getValueAt(r,2).toString()+"','"+
-                                    tabMode.getValueAt(r,3).toString()+"','"+
-                                    tabMode.getValueAt(r,4).toString()+"','"+
-                                    tabMode.getValueAt(r,5).toString()+"','"+
-                                    tabMode.getValueAt(r,6).toString()+"','"+
-                                    tabMode.getValueAt(r,7).toString()+"','"+
-                                    tabMode.getValueAt(r,8).toString()+"','"+
-                                    tabMode.getValueAt(r,9).toString()+"','"+
-                                    tabMode.getValueAt(r,10).toString()+"','"+
-                                    tabMode.getValueAt(r,11).toString()+"','"+
-                                    tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
-                }                    
+                Sequel.menyimpan("temporary","'0','"+
+                    tabMode.getValueAt(r,0).toString()+"','"+
+                    tabMode.getValueAt(r,1).toString()+"','"+
+                    tabMode.getValueAt(r,2).toString()+"','"+
+                    tabMode.getValueAt(r,3).toString()+"','"+
+                    tabMode.getValueAt(r,4).toString()+"','"+
+                    tabMode.getValueAt(r,5).toString()+"','"+
+                    tabMode.getValueAt(r,6).toString()+"','"+
+                    tabMode.getValueAt(r,7).toString()+"','"+
+                    tabMode.getValueAt(r,8).toString()+"','"+
+                    tabMode.getValueAt(r,9).toString()+"','"+
+                    tabMode.getValueAt(r,10).toString()+"','"+
+                    tabMode.getValueAt(r,11).toString()+"','"+
+                    tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran"
+                );
             }
             Sequel.AutoComitTrue();   
             Valid.MyReport("rptKunjunganLabRalan.jrxml","report","::[ Laporan Kunjungan Laboratorium Rawat Jalan ]::",
@@ -1214,9 +1213,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     
                     tindakan="";
                     ps2=koneksi.prepareStatement(
-                        "select template_laboratorium.Pemeriksaan from detail_periksa_lab inner join template_laboratorium "+
-                        "on template_laboratorium.id_template=detail_periksa_lab.id_template where detail_periksa_lab.nilai_rujukan <>'' "+
-                        "and detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=? ");
+                        "select trim(template_laboratorium.Pemeriksaan) from detail_periksa_lab inner join template_laboratorium "+
+                        "on template_laboratorium.id_template=detail_periksa_lab.id_template where "+
+                        "detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=? ");
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         ps2.setString(2,rs.getString("tgl_periksa"));
@@ -1247,7 +1246,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     });                
                     i++;
                 }
-                if(i>=1){
+                if(i>1){
                     tabMode.addRow(new Object[]{
                         ">>","Total : ",jmlnolab,(i-1),"",laki,per,"",jmldiagnosa,"","","",""
                     });

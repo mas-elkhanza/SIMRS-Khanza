@@ -397,6 +397,7 @@ import laporan.DlgHAIsPerBangsal;
 import laporan.DlgJumlahMacamDiet;
 import laporan.DlgJumlahPorsiDiet;
 import laporan.DlgKunjunganLabRalan;
+import laporan.DlgKunjunganLabRanap;
 import laporan.DlgPelayananLab;
 import laporan.DlgPelayananRadiologi;
 import laporan.DlgPerujukLabPerTahun;
@@ -1006,6 +1007,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekBPJSSKDP = new widget.ButtonBig();
         btnDataBatch = new widget.ButtonBig();
         btnKunjunganLabRalan = new widget.ButtonBig();
+        btnKunjunganLabRanap = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6445,6 +6447,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnKunjunganLabRalan);
+
+        btnKunjunganLabRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganLabRanap.setText("Kunjungan Lab Ranap");
+        btnKunjunganLabRanap.setIconTextGap(0);
+        btnKunjunganLabRanap.setName("btnKunjunganLabRanap"); // NOI18N
+        btnKunjunganLabRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganLabRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganLabRanapActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnKunjunganLabRanap);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -13330,6 +13344,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKunjunganLabRalanActionPerformed
 
+    private void btnKunjunganLabRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKunjunganLabRanapActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKunjunganLabRanap aplikasi=new DlgKunjunganLabRanap(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnKunjunganLabRanapActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13558,6 +13584,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnKeuntunganObatRanap;
     private widget.ButtonBig btnKonversi;
     private widget.ButtonBig btnKunjunganLabRalan;
+    private widget.ButtonBig btnKunjunganLabRanap;
     private widget.ButtonBig btnKunjunganRalan;
     private widget.ButtonBig btnKunjunganRanap;
     private widget.ButtonBig btnLabaRugi;
@@ -15140,6 +15167,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getkunjungan_permintaan_lab()==true){  
                 Panelmenu.add(btnKunjunganLabRalan); 
+                jmlmenu++;
+            }
+            
+            if(var.getkunjungan_permintaan_lab2()==true){  
+                Panelmenu.add(btnKunjunganLabRanap); 
                 jmlmenu++;
             }
 
@@ -17289,6 +17321,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getkunjungan_permintaan_lab()==true){  
             Panelmenu.add(btnKunjunganLabRalan); 
+            jmlmenu++;
+        }
+        
+        if(var.getkunjungan_permintaan_lab2()==true){  
+            Panelmenu.add(btnKunjunganLabRanap); 
             jmlmenu++;
         }
 
@@ -19802,6 +19839,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getkunjungan_permintaan_lab()==true){  
             if(btnKunjunganLabRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganLabRalan); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getkunjungan_permintaan_lab2()==true){  
+            if(btnKunjunganLabRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKunjunganLabRanap); 
                 jmlmenu++;
             }                
         }
