@@ -11,6 +11,7 @@
 
 package simrskhanza;
 
+import inventory.DlgObatPenyakit;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -224,7 +225,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Obat Penyakit/Alkes Dibutuhkan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Obat Penyakit/Alkes Dibutuhkan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -412,7 +413,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018-07-12" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018-10-13" }));
         DTPBeri.setDisplayFormat("yyyy-MM-dd");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -520,7 +521,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         DlgObatPenyakit obatpenyakit=new DlgObatPenyakit(null,false);
         obatpenyakit.emptTeks();
         obatpenyakit.isCek();
-        obatpenyakit.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        obatpenyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         obatpenyakit.setLocationRelativeTo(internalFrame1);
         obatpenyakit.setAlwaysOnTop(false);
         obatpenyakit.setVisible(true);

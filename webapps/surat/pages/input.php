@@ -68,7 +68,7 @@
                             :&nbsp;<input name="tujuan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                         </td>
-                        <td width="15%" >tembusan</td>
+                        <td width="15%" >Tembusan</td>
                         <td width="35%">
                             :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi14'));" type=text id="TxtIsi14" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi14" style="color:#CC0000; font-size:10px;"></span>
@@ -154,7 +154,7 @@
                             </select>
                             <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
                         </td>
-                        <td width="15%" >keterangan</td>
+                        <td width="15%" >Keterangan</td>
                         <td width="35%">
                             :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi17'));" type=text id="TxtIsi17" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi17" style="color:#CC0000; font-size:10px;"></span>

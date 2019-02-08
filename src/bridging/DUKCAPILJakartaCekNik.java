@@ -8,6 +8,7 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.sekuel;
+import fungsi.sekuel;
 import java.io.FileInputStream;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -109,7 +110,7 @@ public class DUKCAPILJakartaCekNik {
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : "+ex);
             if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null,"Koneksi ke server Dukcapil terputus...!");
             }
         }
     }

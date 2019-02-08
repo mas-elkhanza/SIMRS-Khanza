@@ -89,11 +89,23 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Subspesialis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Subspesialis.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Subspesialis.getText().length()>2){
+                        tampil(Subspesialis.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Subspesialis.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Subspesialis.getText().length()>2){
+                        tampil(Subspesialis.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Subspesialis.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Subspesialis.getText().length()>2){
+                        tampil(Subspesialis.getText());
+                    }
+                }
             });
         } 
         
@@ -174,14 +186,13 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Subspesialis PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Subspesialis PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 

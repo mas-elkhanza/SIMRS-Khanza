@@ -41,7 +41,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     private ResultSet rs,rsjamshift,rsakunbayar;
     private double all=0,bayar=0;
     private int i,kolom=0,no=0;
-    private String shift="",tanggal2="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="";
+    private String shift="",tanggal2="",nopemasukanlain="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="";
     private StringBuilder htmlContent;
     private String[] akunbayar;
     private double[] totalbayar;
@@ -60,19 +60,43 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             User.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         InputModalAwal.setDocument(new batasInput((byte)16).getOnlyAngka(InputModalAwal));
@@ -132,7 +156,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         WindowModalAwal.setUndecorated(true);
         WindowModalAwal.setResizable(false);
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Modal Awal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Modal Awal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame2.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setWarnaBawah(new java.awt.Color(240, 245, 235));
@@ -194,13 +218,8 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -257,7 +276,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(70,70,70));
+        jLabel11.setForeground(new java.awt.Color(70, 70, 70));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setName("jLabel11"); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(30, 23));
@@ -413,10 +432,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         }else{Valid.pindah(evt,BtnKeluar,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
-
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         tampil();
@@ -529,7 +544,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     private widget.panelisi panelGlass6;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){
+    private void tampil(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         try{        
             htmlContent = new StringBuilder();
@@ -597,6 +612,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                 norawatinap="";
                                 norawatjalan="";
                                 notajual="";
+                                nopemasukanlain="";
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     norawatinap=rs.getString("no_nota");
@@ -608,8 +624,13 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         nonota=Sequel.cariIsi("select nota_jual from penjualan where nota_jual=?",rs.getString("no_nota"));
                                         if(!nonota.equals("")){
                                             notajual=rs.getString("no_nota");
-                                        }else {
-                                            notajual="";
+                                        }else if(nonota.equals("")){
+                                            nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                            if(!nonota.equals("")){
+                                                nopemasukanlain=rs.getString("no_nota");
+                                            }else{
+                                                nopemasukanlain="";
+                                            }
                                         }                                            
                                     }
                                 }
@@ -635,6 +656,9 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(total) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+notajual+"' and penjualan.nama_bayar='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
+                                        }else if(!nopemasukanlain.equals("")){
+                                            bayar=Sequel.cariIsiAngka("select sum(besar) from pemasukan_lain inner join kategori_pemasukan_lain inner join akun_bayar on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori and kategori_pemasukan_lain.kd_rek2=akun_bayar.kd_rek  where pemasukan_lain.no_masuk='"+nopemasukanlain+"' and akun_bayar.nama_bayar='"+akunbayar[i]+"'");
+                                            htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else{
                                             bayar=0;
                                             htmlContent.append("<td valign='middle' align='right'>Pemasukan Lain</td>");
@@ -649,6 +673,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                 norawatinap="";
                                 norawatjalan="";
                                 notajual="";
+                                nopemasukanlain="";
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     norawatinap=rs.getString("no_nota");
@@ -660,9 +685,14 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         nonota=Sequel.cariIsi("select nota_jual from penjualan where nota_jual=?",rs.getString("no_nota"));
                                         if(!nonota.equals("")){
                                             notajual=rs.getString("no_nota");
-                                        }else {
-                                            notajual="";
-                                        }                                            
+                                        }else if(nonota.equals("")){
+                                            nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                            if(!nonota.equals("")){
+                                                nopemasukanlain=rs.getString("no_nota");
+                                            }else{
+                                                nopemasukanlain="";
+                                            }
+                                        }                                             
                                     }
                                 }
                                 if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
@@ -687,10 +717,13 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(total) from detailjual inner join penjualan on penjualan.no_nota=detailjual.no_nota where penjualan.no_nota='"+notajual+"' and penjualan.nama_bayar='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
+                                        }else if(!nopemasukanlain.equals("")){
+                                            bayar=Sequel.cariIsiAngka("select sum(besar) from pemasukan_lain inner join kategori_pemasukan_lain inner join akun_bayar on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori and kategori_pemasukan_lain.kd_rek2=akun_bayar.kd_rek  where pemasukan_lain.no_masuk='"+nopemasukanlain+"' and akun_bayar.nama_bayar='"+akunbayar[i]+"'");
+                                            htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else{
                                             bayar=0;
                                             htmlContent.append("<td valign='middle' align='right'>Pemasukan Lain</td>");
-                                        }  
+                                        }   
                                         totalbayar[i]=totalbayar[i]+bayar;
                                     }
                                     htmlContent.append( 

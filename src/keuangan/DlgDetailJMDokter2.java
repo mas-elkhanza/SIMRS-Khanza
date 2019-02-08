@@ -132,11 +132,23 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {prosesCari();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        prosesCari();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {prosesCari();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        prosesCari();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {prosesCari();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        prosesCari();
+                    }
+                }
             });
         } 
         carabayar.addWindowListener(new WindowListener() {
@@ -235,7 +247,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail J.M Dokter 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail J.M Dokter 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1350,6 +1362,49 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 pstindakan.close();
                             }
                         }
+                        
+                        //tindakan perawat
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan.nm_perawatan,petugas.nama, "+
+                                "rawat_jl_pr.tgl_perawatan,count(rawat_jl_pr.no_rawat) as jumlah, "+
+                                "rawat_jl_pr.tarif_tindakanpr,sum(rawat_jl_pr.tarif_tindakanpr) as totaljm,"+
+                                "(rawat_jl_pr.material+rawat_jl_pr.bhp+rawat_jl_pr.kso+rawat_jl_pr.menejemen) as sarana,"+
+                                "sum(rawat_jl_pr.material+rawat_jl_pr.bhp+rawat_jl_pr.kso+rawat_jl_pr.menejemen) as totalsarana "+
+                                "from rawat_jl_pr inner join jns_perawatan inner join petugas on "+
+                                "rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
+                                "rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat=? "+
+                                "group by rawat_jl_pr.kd_jenis_prw,rawat_jl_pr.tgl_perawatan");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                tabMode.addRow(new Object[]{
+                                    rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
+                                    rsreg.getString("tgl_registrasi"),tglkeluar,
+                                    dpjp,rstindakan.getString("nama"),"","",
+                                    rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Ralan",
+                                    namaruangan,rstindakan.getString("nm_perawatan"),
+                                    rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
+                                    rstindakan.getDouble("tarif_tindakanpr"),
+                                    (rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakanpr")),
+                                    rstindakan.getDouble("totalsarana"),rstindakan.getDouble("totaljm"),
+                                    (rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana")),
+                                    rstindakan.getString("tgl_perawatan")                                    
+                                });
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Ralan dr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
                     }
                     
                     if(chkRanap.isSelected()==true){
@@ -1427,9 +1482,52 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     (rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana")),
                                     rstindakan.getString("tgl_perawatan")                                    
                                 });
-                            }                           
+                            }   
+                            
                         } catch (Exception e) {
                             System.out.println("Notif Inap dr pr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                        
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan_inap.nm_perawatan,petugas.nama, "+
+                                "rawat_inap_pr.tgl_perawatan,count(rawat_inap_pr.no_rawat) as jumlah, "+
+                                "rawat_inap_pr.tarif_tindakanpr,sum(rawat_inap_pr.tarif_tindakanpr) as totaljm,"+
+                                "(rawat_inap_pr.material+rawat_inap_pr.bhp+rawat_inap_pr.kso+rawat_inap_pr.menejemen) as sarana,"+
+                                "sum(rawat_inap_pr.material+rawat_inap_pr.bhp+rawat_inap_pr.kso+rawat_inap_pr.menejemen) as totalsarana "+
+                                "from rawat_inap_pr inner join jns_perawatan_inap inner join petugas on "+
+                                "rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
+                                "rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat=? "+
+                                "group by rawat_inap_pr.kd_jenis_prw,rawat_inap_pr.tgl_perawatan");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                tabMode.addRow(new Object[]{
+                                    rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
+                                    rsreg.getString("tgl_registrasi"),tglkeluar,
+                                    dpjp,rstindakan.getString("nama"),"","",
+                                    rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Ranap",
+                                    namaruangan,rstindakan.getString("nm_perawatan"),
+                                    rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
+                                    rstindakan.getDouble("tarif_tindakanpr"),
+                                    (rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakanpr")),
+                                    rstindakan.getDouble("totalsarana"),rstindakan.getDouble("totaljm"),
+                                    (rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana")),
+                                    rstindakan.getString("tgl_perawatan")                                    
+                                });
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Inap dr : "+e);
                         } finally{
                             if(rstindakan!=null){
                                 rstindakan.close();

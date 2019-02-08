@@ -22,12 +22,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -42,6 +44,10 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private final Properties prop = new Properties();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private String namaruang="";
 
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -201,11 +207,23 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
     }
@@ -994,6 +1012,9 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         nm_ruangcari.setText("");
+        if(namaruang.equals("")){
+            nm_ruangcari.setText("");
+        }
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1240,56 +1261,67 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
-        String sql="select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
-                   "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn,"+
-                   "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis,inventaris.asal_barang,inventaris.tgl_pengadaan,"+
-                   "inventaris.harga,inventaris.status_barang,inventaris_ruang.nama_ruang,inventaris.no_rak,inventaris.no_box "+
-                   "from inventaris inner join inventaris_barang inner join inventaris_produsen inner join inventaris_ruang "+
-                   "inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk "+
-                   "on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen and inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                   "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
-                   "and inventaris_barang.kode_barang=inventaris.kode_barang and inventaris.id_ruang=inventaris_ruang.id_ruang "+
-                   "where inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.no_inventaris like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.asal_barang like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.tgl_pengadaan like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.status_barang like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.jml_barang like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' order by inventaris_barang.kode_barang,inventaris.no_inventaris";
-        Valid.tabelKosong(tabMode);
-        try{            
-            ResultSet rs=koneksiDB.condb().prepareStatement(sql).executeQuery();
-            nilai_inven=0;
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString("no_inventaris"),
-                               rs.getString("kode_barang"),
-                               rs.getString("nama_barang"),
-                               rs.getString("nama_produsen"),
-                               rs.getString("nama_merk"),
-                               rs.getString("thn_produksi").substring(0,4),
-                               rs.getString("isbn"),
-                               rs.getString("nama_kategori"),
-                               rs.getString("nama_jenis"),
-                               rs.getString("asal_barang"),
-                               rs.getString("tgl_pengadaan"),
-                               Valid.SetAngka(rs.getDouble("harga")),
-                               rs.getString("status_barang"),
-                               rs.getString("nama_ruang"),
-                               rs.getString("no_rak"),
-                               rs.getString("no_box")});
-                nilai_inven=nilai_inven+rs.getDouble("harga");
+        try {
+            ps=koneksiDB.condb().prepareStatement("select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
+                        "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn,"+
+                        "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis,inventaris.asal_barang,inventaris.tgl_pengadaan,"+
+                        "inventaris.harga,inventaris.status_barang,inventaris_ruang.nama_ruang,inventaris.no_rak,inventaris.no_box "+
+                        "from inventaris inner join inventaris_barang inner join inventaris_produsen inner join inventaris_ruang "+
+                        "inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk "+
+                        "on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen and inventaris_barang.id_merk=inventaris_merk.id_merk "+
+                        "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
+                        "and inventaris_barang.kode_barang=inventaris.kode_barang and inventaris.id_ruang=inventaris_ruang.id_ruang "+
+                        "where inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.no_inventaris like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.asal_barang like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.tgl_pengadaan like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris.status_barang like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.jml_barang like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' "+
+                         "or inventaris_ruang.nama_ruang like '%"+nm_ruangcari.getText().trim()+"%' and inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' order by inventaris_barang.kode_barang,inventaris.no_inventaris");
+             Valid.tabelKosong(tabMode);
+             try{            
+                rs=ps.executeQuery();
+                nilai_inven=0;
+                while(rs.next()){
+                     tabMode.addRow(new Object[]{rs.getString("no_inventaris"),
+                                    rs.getString("kode_barang"),
+                                    rs.getString("nama_barang"),
+                                    rs.getString("nama_produsen"),
+                                    rs.getString("nama_merk"),
+                                    rs.getString("thn_produksi").substring(0,4),
+                                    rs.getString("isbn"),
+                                    rs.getString("nama_kategori"),
+                                    rs.getString("nama_jenis"),
+                                    rs.getString("asal_barang"),
+                                    rs.getString("tgl_pengadaan"),
+                                    Valid.SetAngka(rs.getDouble("harga")),
+                                    rs.getString("status_barang"),
+                                    rs.getString("nama_ruang"),
+                                    rs.getString("no_rak"),
+                                    rs.getString("no_box")});
+                     nilai_inven=nilai_inven+rs.getDouble("harga");
+                }
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
-            System.out.println("Notifikasi : "+e);
-        }
-        LCount.setText(tabMode.getRowCount()+" | "+Valid.SetAngka(nilai_inven));
+            LCount.setText(tabMode.getRowCount()+" | "+Valid.SetAngka(nilai_inven));
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }        
     }
 
     public void emptTeks() {
@@ -1354,6 +1386,27 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     }
     
     public void isCek(){
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            namaruang=prop.getProperty("KAMARAKTIFRANAP");
+        } catch (Exception ex) {
+            namaruang="";
+        }
+        
+        if(!namaruang.equals("")){
+            if(var.getkode().equals("Admin Utama")){
+                nm_ruangcari.setText("");
+                btnRuang1.setEnabled(true);
+                nm_ruangcari.setEditable(true);
+            }else{
+                nm_ruangcari.setText(namaruang);
+                btnRuang1.setEnabled(false);
+                nm_ruangcari.setEditable(false);
+            }                
+        }else{
+            btnRuang1.setEnabled(true);
+            nm_ruangcari.setEditable(true);
+        }
         BtnSimpan.setEnabled(var.getinventaris_inventaris());
         BtnHapus.setEnabled(var.getinventaris_inventaris());
         BtnEdit.setEnabled(var.getinventaris_inventaris());
@@ -1362,36 +1415,47 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     }
     
     private void isBarang(){
-              try {                    
-                    PreparedStatement ps=koneksiDB.condb().prepareStatement(
-                       "select inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
-                       "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk,"+
-                       "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis "+
-                       "from inventaris_barang inner join inventaris_produsen "+
-                       "inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk "+
-                       "on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
-                       "and inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                       "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
-                       "and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
-                       "where inventaris_barang.kode_barang=?");
-                    ps.setString(1,kode_barang.getText());
-                    ResultSet rs=ps.executeQuery();
-                    if(rs.next()){
-                        nama_barang.setText(rs.getString("nama_barang"));
-                        nm_produsen.setText(rs.getString("nama_produsen"));
-                        nm_merk.setText(rs.getString("nama_merk"));
-                        nm_kategori.setText(rs.getString("nama_kategori"));
-                        nm_jenis.setText(rs.getString("nama_jenis"));
-                    }else{
-                        nama_barang.setText("");
-                        nm_produsen.setText("");
-                        nm_merk.setText("");
-                        nm_kategori.setText("");
-                        nm_jenis.setText("");
-                    }
-                } catch (SQLException ex) {
-                    System.out.println(ex);
+        try {                    
+            ps=koneksiDB.condb().prepareStatement(
+               "select inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
+               "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk,"+
+               "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis "+
+               "from inventaris_barang inner join inventaris_produsen "+
+               "inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk "+
+               "on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
+               "and inventaris_barang.id_merk=inventaris_merk.id_merk "+
+               "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
+               "and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
+               "where inventaris_barang.kode_barang=?");
+            try {
+                ps.setString(1,kode_barang.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    nama_barang.setText(rs.getString("nama_barang"));
+                    nm_produsen.setText(rs.getString("nama_produsen"));
+                    nm_merk.setText(rs.getString("nama_merk"));
+                    nm_kategori.setText(rs.getString("nama_kategori"));
+                    nm_jenis.setText(rs.getString("nama_jenis"));
+                }else{
+                    nama_barang.setText("");
+                    nm_produsen.setText("");
+                    nm_merk.setText("");
+                    nm_kategori.setText("");
+                    nm_jenis.setText("");
                 }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }   
 
     

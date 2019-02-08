@@ -56,12 +56,11 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);
 
-
-        Object[] row={
-            "Tanggal","No.Rawat","No.R.M.","Nama Pasien","ETT","CVL","IVL","UC","VAP",
-            "IAD","PLEB","ISK","ILO","Deku","Sputum","Darah","Urine","Antibiotik"
-        };
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "Tanggal","No.Rawat","No.R.M.","Nama Pasien","ETT","CVL",
+                "IVL","UC","VAP","IAD","PLEB","ISK","ILO","HAP","Tinea",
+                "Scabies","Deku","Sputum","Darah","Urine","Antibiotik","Kamar","Kode kamar"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
@@ -70,7 +69,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 18; i++) {
+        for (i = 0; i < 23; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(75);
@@ -99,15 +98,26 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }else if(i==12){
                 column.setPreferredWidth(35);
             }else if(i==13){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(35);
             }else if(i==14){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(35);
             }else if(i==15){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(45);
             }else if(i==16){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(50);
             }else if(i==17){
                 column.setPreferredWidth(130);
+            }else if(i==18){
+                column.setPreferredWidth(130);
+            }else if(i==19){
+                column.setPreferredWidth(130);
+            }else if(i==20){
+                column.setPreferredWidth(130);
+            }else if(i==21){
+                column.setPreferredWidth(150);
+            }else if(i==22){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -131,11 +141,23 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
         
@@ -213,13 +235,20 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         jLabel23 = new widget.Label();
         jLabel24 = new widget.Label();
         ILO = new widget.TextBox();
+        HAP = new widget.TextBox();
+        jLabel25 = new widget.Label();
+        jLabel26 = new widget.Label();
+        Tania = new widget.TextBox();
+        jLabel27 = new widget.Label();
+        Scabies = new widget.TextBox();
+        Kamar = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data HAIs ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data HAIs ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -393,7 +422,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -408,7 +437,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -467,13 +496,13 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 185));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 195));
         FormInput.setLayout(null);
 
         jLabel3.setText("CVL :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(416, 50, 40, 23);
+        jLabel3.setBounds(447, 45, 40, 23);
 
         CVL.setHighlighter(null);
         CVL.setName("CVL"); // NOI18N
@@ -483,13 +512,13 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(CVL);
-        CVL.setBounds(460, 50, 40, 23);
+        CVL.setBounds(490, 45, 40, 23);
 
         jLabel8.setText("Infeksi RS :");
         jLabel8.setName("jLabel8"); // NOI18N
         jLabel8.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel8);
-        jLabel8.setBounds(140, 80, 100, 23);
+        jLabel8.setBounds(230, 75, 130, 23);
 
         ETT.setHighlighter(null);
         ETT.setName("ETT"); // NOI18N
@@ -499,7 +528,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(ETT);
-        ETT.setBounds(369, 50, 40, 23);
+        ETT.setBounds(400, 45, 40, 23);
 
         jLabel4.setText("No.Rawat :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -514,7 +543,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(75, 10, 141, 23);
+        TNoRw.setBounds(75, 10, 130, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
@@ -525,11 +554,11 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(340, 10, 340, 23);
+        TPasien.setBounds(309, 10, 309, 23);
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -544,7 +573,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         jLabel12.setText("ETT :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(330, 50, 35, 23);
+        jLabel12.setBounds(362, 45, 35, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
@@ -555,12 +584,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRM);
-        TNoRM.setBounds(218, 10, 120, 23);
+        TNoRM.setBounds(207, 10, 100, 23);
 
         jLabel13.setText("Deku :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(0, 80, 71, 23);
+        jLabel13.setBounds(0, 70, 71, 23);
 
         Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IYA", "TIDAK" }));
         Deku.setName("Deku"); // NOI18N
@@ -571,12 +600,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(Deku);
-        Deku.setBounds(75, 80, 70, 23);
+        Deku.setBounds(75, 70, 70, 23);
 
         jLabel5.setText("IVL :");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
-        jLabel5.setBounds(511, 50, 35, 23);
+        jLabel5.setBounds(537, 45, 40, 23);
 
         IVL.setHighlighter(null);
         IVL.setName("IVL"); // NOI18N
@@ -586,12 +615,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(IVL);
-        IVL.setBounds(550, 50, 40, 23);
+        IVL.setBounds(580, 45, 40, 23);
 
         jLabel9.setText("UC :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(601, 50, 35, 23);
+        jLabel9.setBounds(627, 45, 50, 23);
 
         UC.setHighlighter(null);
         UC.setName("UC"); // NOI18N
@@ -601,12 +630,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(UC);
-        UC.setBounds(640, 50, 40, 23);
+        UC.setBounds(680, 45, 40, 23);
 
         jLabel10.setText("VAP :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(239, 90, 35, 23);
+        jLabel10.setBounds(362, 80, 35, 23);
 
         VAP.setHighlighter(null);
         VAP.setName("VAP"); // NOI18N
@@ -616,12 +645,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(VAP);
-        VAP.setBounds(278, 90, 40, 23);
+        VAP.setBounds(400, 80, 40, 23);
 
         jLabel11.setText("IAD :");
         jLabel11.setName("jLabel11"); // NOI18N
         FormInput.add(jLabel11);
-        jLabel11.setBounds(330, 90, 35, 23);
+        jLabel11.setBounds(447, 80, 40, 23);
 
         IAD.setHighlighter(null);
         IAD.setName("IAD"); // NOI18N
@@ -631,12 +660,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(IAD);
-        IAD.setBounds(369, 90, 40, 23);
+        IAD.setBounds(490, 80, 40, 23);
 
         jLabel14.setText("PLEB :");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(416, 90, 40, 23);
+        jLabel14.setBounds(537, 80, 40, 23);
 
         PLEB.setHighlighter(null);
         PLEB.setName("PLEB"); // NOI18N
@@ -646,12 +675,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(PLEB);
-        PLEB.setBounds(460, 90, 40, 23);
+        PLEB.setBounds(580, 80, 40, 23);
 
         jLabel15.setText("ISK :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(511, 90, 35, 23);
+        jLabel15.setBounds(627, 80, 50, 23);
 
         ISK.setHighlighter(null);
         ISK.setName("ISK"); // NOI18N
@@ -661,7 +690,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(ISK);
-        ISK.setBounds(550, 90, 40, 23);
+        ISK.setBounds(680, 80, 40, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
@@ -673,12 +702,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         jLabel17.setName("jLabel17"); // NOI18N
         jLabel17.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel17);
-        jLabel17.setBounds(195, 40, 130, 23);
+        jLabel17.setBounds(230, 40, 130, 23);
 
         jLabel18.setText("Sputum :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(0, 120, 71, 23);
+        jLabel18.setBounds(0, 100, 71, 23);
 
         Sputum.setHighlighter(null);
         Sputum.setName("Sputum"); // NOI18N
@@ -688,7 +717,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sputum);
-        Sputum.setBounds(75, 120, 260, 23);
+        Sputum.setBounds(75, 100, 240, 23);
 
         Urine.setHighlighter(null);
         Urine.setName("Urine"); // NOI18N
@@ -698,12 +727,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(Urine);
-        Urine.setBounds(420, 120, 260, 23);
+        Urine.setBounds(75, 160, 240, 23);
 
         jLabel20.setText("Urine :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(345, 120, 71, 23);
+        jLabel20.setBounds(0, 160, 71, 23);
 
         Antibiotik.setHighlighter(null);
         Antibiotik.setName("Antibiotik"); // NOI18N
@@ -713,12 +742,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(Antibiotik);
-        Antibiotik.setBounds(420, 150, 260, 23);
+        Antibiotik.setBounds(490, 145, 230, 23);
 
         jLabel22.setText("Antibiotik :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(345, 150, 71, 23);
+        jLabel22.setBounds(416, 145, 71, 23);
 
         Darah.setHighlighter(null);
         Darah.setName("Darah"); // NOI18N
@@ -728,17 +757,17 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(Darah);
-        Darah.setBounds(75, 150, 260, 23);
+        Darah.setBounds(75, 130, 240, 23);
 
         jLabel23.setText("Darah :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(0, 150, 71, 23);
+        jLabel23.setBounds(0, 130, 71, 23);
 
         jLabel24.setText("ILO :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(601, 90, 35, 23);
+        jLabel24.setBounds(362, 110, 35, 23);
 
         ILO.setHighlighter(null);
         ILO.setName("ILO"); // NOI18N
@@ -748,7 +777,63 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             }
         });
         FormInput.add(ILO);
-        ILO.setBounds(640, 90, 40, 23);
+        ILO.setBounds(400, 110, 40, 23);
+
+        HAP.setHighlighter(null);
+        HAP.setName("HAP"); // NOI18N
+        HAP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HAPKeyPressed(evt);
+            }
+        });
+        FormInput.add(HAP);
+        HAP.setBounds(490, 110, 40, 23);
+
+        jLabel25.setText("HAP :");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(447, 110, 40, 23);
+
+        jLabel26.setText("Tinea :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(537, 110, 40, 23);
+
+        Tania.setHighlighter(null);
+        Tania.setName("Tania"); // NOI18N
+        Tania.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TaniaKeyPressed(evt);
+            }
+        });
+        FormInput.add(Tania);
+        Tania.setBounds(580, 110, 40, 23);
+
+        jLabel27.setText("Scabies :");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(627, 110, 50, 23);
+
+        Scabies.setHighlighter(null);
+        Scabies.setName("Scabies"); // NOI18N
+        Scabies.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ScabiesKeyPressed(evt);
+            }
+        });
+        FormInput.add(Scabies);
+        Scabies.setBounds(680, 110, 40, 23);
+
+        Kamar.setEditable(false);
+        Kamar.setHighlighter(null);
+        Kamar.setName("Kamar"); // NOI18N
+        Kamar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KamarKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kamar);
+        Kamar.setBounds(620, 10, 100, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -822,11 +907,18 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             Valid.textKosong(ISK,"ISK");
         }else if(ILO.getText().trim().equals("")){
             Valid.textKosong(ILO,"ILO");
+        }else if(HAP.getText().trim().equals("")){
+            Valid.textKosong(HAP,"HAP");
+        }else if(Tania.getText().trim().equals("")){
+            Valid.textKosong(Tania,"Tania");
+        }else if(Scabies.getText().trim().equals("")){
+            Valid.textKosong(Scabies,"Scabies");
         }else{
-            if(Sequel.menyimpantf("data_HAIs","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
+            if(Sequel.menyimpantf("data_HAIs","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",20,new String[]{
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),TNoRw.getText(),ETT.getText(),CVL.getText(),
                     IVL.getText(),UC.getText(),VAP.getText(),IAD.getText(),PLEB.getText(),ISK.getText(),ILO.getText(),
-                    Deku.getSelectedItem().toString(),Sputum.getText(),Darah.getText(),Urine.getText(),Antibiotik.getText()
+                    HAP.getText(),Tania.getText(),Scabies.getText(),Deku.getSelectedItem().toString(),
+                    Sputum.getText(),Darah.getText(),Urine.getText(),Antibiotik.getText(),Kamar.getText()
                 })==true){
                     tampil();
                     emptTeks();
@@ -897,11 +989,18 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             Valid.textKosong(ISK,"ISK");
         }else if(ILO.getText().trim().equals("")){
             Valid.textKosong(ILO,"ILO");
+        }else if(HAP.getText().trim().equals("")){
+            Valid.textKosong(HAP,"HAP");
+        }else if(Tania.getText().trim().equals("")){
+            Valid.textKosong(Tania,"Tania");
+        }else if(Scabies.getText().trim().equals("")){
+            Valid.textKosong(Scabies,"Scabies");
         }else{         
-            Sequel.mengedit("data_HAIs","tanggal=? and no_rawat=?","tanggal=?,no_rawat=?,ETT=?,CVL=?,IVL=?,UC=?,VAP=?,IAD=?,PLEB=?,ISK=?,ILO=?,DEKU=?,SPUTUM=?,DARAH=?,URINE=?,ANTIBIOTIK=?",18,new String[]{
+            Sequel.mengedit("data_HAIs","tanggal=? and no_rawat=?","tanggal=?,no_rawat=?,ETT=?,CVL=?,IVL=?,UC=?,VAP=?,IAD=?,PLEB=?,ISK=?,ILO=?,DEKU=?,SPUTUM=?,DARAH=?,URINE=?,ANTIBIOTIK=?,HAP=?,Tinea=?,Scabies=?",21,new String[]{
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),TNoRw.getText(),ETT.getText(),CVL.getText(),
                 IVL.getText(),UC.getText(),VAP.getText(),IAD.getText(),PLEB.getText(),ISK.getText(),ILO.getText(),
                 Deku.getSelectedItem().toString(),Sputum.getText(),Darah.getText(),Urine.getText(),Antibiotik.getText(),
+                HAP.getText(),Tania.getText(),Scabies.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
             });
             if(tabMode.getRowCount()!=0){tampil();}
@@ -1057,24 +1156,40 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     }//GEN-LAST:event_ISKKeyPressed
 
     private void SputumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SputumKeyPressed
-        Valid.pindah(evt,ILO,Urine);
+        Valid.pindah(evt,Scabies,Darah);
     }//GEN-LAST:event_SputumKeyPressed
 
     private void UrineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrineKeyPressed
-        Valid.pindah(evt,Sputum,Darah);
+        Valid.pindah(evt,Darah,Antibiotik);
     }//GEN-LAST:event_UrineKeyPressed
 
     private void AntibiotikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AntibiotikKeyPressed
-        Valid.pindah(evt,Darah,BtnSimpan);
+        Valid.pindah(evt,Urine,BtnSimpan);
     }//GEN-LAST:event_AntibiotikKeyPressed
 
     private void DarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DarahKeyPressed
-        Valid.pindah(evt,Urine,Antibiotik);
+        Valid.pindah(evt,Sputum,Urine);
     }//GEN-LAST:event_DarahKeyPressed
 
     private void ILOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ILOKeyPressed
-        Valid.pindah(evt,ISK,Sputum);
+        Valid.pindah(evt,ISK,HAP);
     }//GEN-LAST:event_ILOKeyPressed
+
+    private void HAPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HAPKeyPressed
+        Valid.pindah(evt,ILO,Tania);
+    }//GEN-LAST:event_HAPKeyPressed
+
+    private void TaniaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TaniaKeyPressed
+        Valid.pindah(evt,HAP,Scabies);
+    }//GEN-LAST:event_TaniaKeyPressed
+
+    private void ScabiesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ScabiesKeyPressed
+        Valid.pindah(evt,Tania,Sputum);
+    }//GEN-LAST:event_ScabiesKeyPressed
+
+    private void KamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KamarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KamarKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1110,13 +1225,16 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     private widget.ComboBox Deku;
     private widget.TextBox ETT;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox HAP;
     private widget.TextBox IAD;
     private widget.TextBox ILO;
     private widget.TextBox ISK;
     private widget.TextBox IVL;
+    private widget.TextBox Kamar;
     private widget.Label LCount;
     private widget.TextBox PLEB;
     private javax.swing.JPanel PanelInput;
+    private widget.TextBox Scabies;
     private widget.ScrollPane Scroll;
     private widget.TextBox Sputum;
     private widget.TextBox TCari;
@@ -1124,6 +1242,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
+    private widget.TextBox Tania;
     private widget.TextBox UC;
     private widget.TextBox Urine;
     private widget.TextBox VAP;
@@ -1143,6 +1262,9 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     private widget.Label jLabel22;
     private widget.Label jLabel23;
     private widget.Label jLabel24;
+    private widget.Label jLabel25;
+    private widget.Label jLabel26;
+    private widget.Label jLabel27;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
@@ -1162,12 +1284,15 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select data_HAIs.tanggal,data_HAIs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                     "data_HAIs.ETT,data_HAIs.CVL,data_HAIs.IVL,data_HAIs.UC,data_HAIs.VAP,data_HAIs.IAD,"+
-                    "data_HAIs.PLEB,data_HAIs.ISK,data_HAIs.ILO,data_HAIs.DEKU,data_HAIs.SPUTUM,data_HAIs.DARAH,data_HAIs.URINE,"+
-                    "data_HAIs.ANTIBIOTIK from data_HAIs inner join reg_periksa inner join pasien on "+
-                    "data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                    "data_HAIs.PLEB,data_HAIs.ISK,data_HAIs.ILO,data_HAIs.HAP,data_HAIs.Tinea,data_HAIs.Scabies,"+
+                    "data_HAIs.DEKU,data_HAIs.SPUTUM,data_HAIs.DARAH,data_HAIs.URINE,data_HAIs.ANTIBIOTIK,"+
+                    "concat(data_HAIs.kd_kamar,', ',bangsal.nm_bangsal),data_HAIs.kd_kamar from data_HAIs inner join reg_periksa "+
+                    "inner join pasien inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar "+
+                    "and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
                     "data_HAIs.tanggal between ? and ? and data_HAIs.no_rawat like ? or "+
                     "data_HAIs.tanggal between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                    "data_HAIs.tanggal between ? and ? and  pasien.nm_pasien like ? order by data_HAIs.tanggal ");
+                    "data_HAIs.tanggal between ? and ? and bangsal.nm_bangsal like ? or "+
+                    "data_HAIs.tanggal between ? and ? and pasien.nm_pasien like ? order by data_HAIs.tanggal ");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -1178,6 +1303,9 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
                 ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(9,"%"+TCari.getText()+"%");
+                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
@@ -1186,7 +1314,9 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
                         rs.getString(7),rs.getString(8),rs.getString(9),
                         rs.getString(10),rs.getString(11),rs.getString(12),
                         rs.getString(13),rs.getString(14),rs.getString(15),
-                        rs.getString(16),rs.getString(17),rs.getString(18)
+                        rs.getString(16),rs.getString(17),rs.getString(18),
+                        rs.getString(19),rs.getString(20),rs.getString(21),
+                        rs.getString(22),rs.getString(23)
                     });
                 }
             } catch (Exception e) {
@@ -1216,7 +1346,10 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         IAD.setText("0");
         PLEB.setText("0");
         ISK.setText("0");
+        HAP.setText("0");
         ILO.setText("0");
+        Tania.setText("0");
+        Scabies.setText("0");
         Sputum.setText("");
         Urine.setText("");
         Darah.setText("");
@@ -1240,11 +1373,15 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
             PLEB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             ISK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             ILO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Deku.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Sputum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Darah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Urine.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Antibiotik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            HAP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Tania.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Scabies.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Deku.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Sputum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Darah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Urine.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Antibiotik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Kamar.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
         }
     }
@@ -1266,12 +1403,13 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         isPsien();              
         ChkInput.setSelected(true);
         isForm();
+        Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",Kamar,TNoRw.getText());
     }
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,206));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,216));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

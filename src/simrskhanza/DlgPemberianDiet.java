@@ -83,11 +83,23 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         
@@ -143,33 +155,6 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        try {
-            ps=koneksi.prepareStatement("select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
-                "concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),detail_beri_diet.tanggal,detail_beri_diet.waktu,diet.nama_diet " +
-                "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
-                "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
-                "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
-                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "and detail_beri_diet.kd_diet=diet.kd_diet " +
-                "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and detail_beri_diet.no_rawat like ? or "+
-                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "+
-                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? "+
-                "order by bangsal.nm_bangsal,diet.nama_diet");
-            ps2=koneksi.prepareStatement("select diet.nama_diet, count(diet.nama_diet) as jumlah " +
-                "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
-                "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
-                "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
-                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "and detail_beri_diet.kd_diet=diet.kd_diet " +
-                "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and detail_beri_diet.no_rawat like ? or "+
-                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "+
-                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? "+
-                "group by diet.nama_diet order by bangsal.nm_bangsal,diet.nama_diet");
-        }catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
-        }
     }
     
     private DlgCariDiet diet=new DlgCariDiet(null,false);
@@ -185,6 +170,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnLabelDiet = new javax.swing.JMenuItem();
+        MnLabelDiet1 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -235,7 +221,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         MnLabelDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelDiet.setText("Label Diet");
         MnLabelDiet.setName("MnLabelDiet"); // NOI18N
-        MnLabelDiet.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLabelDiet.setPreferredSize(new java.awt.Dimension(150, 28));
         MnLabelDiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLabelDietActionPerformed(evt);
@@ -243,11 +229,25 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnLabelDiet);
 
+        MnLabelDiet1.setBackground(new java.awt.Color(255, 255, 255));
+        MnLabelDiet1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLabelDiet1.setForeground(java.awt.Color.darkGray);
+        MnLabelDiet1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLabelDiet1.setText("Semua Label Diet");
+        MnLabelDiet1.setName("MnLabelDiet1"); // NOI18N
+        MnLabelDiet1.setPreferredSize(new java.awt.Dimension(150, 28));
+        MnLabelDiet1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLabelDiet1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnLabelDiet1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Diet Harian Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Diet Harian Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -463,7 +463,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -478,7 +478,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -519,6 +519,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
+        PanelInput.setBackground(new java.awt.Color(255, 255, 255));
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
@@ -581,7 +582,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -740,9 +741,6 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
@@ -909,6 +907,34 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_MnLabelDietActionPerformed
 
+    private void MnLabelDiet1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLabelDiet1ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnBatal.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptLabelDiet.jrxml","report","::[ Label Diet ]::",
+                "select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
+                "concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),detail_beri_diet.tanggal,detail_beri_diet.waktu,diet.nama_diet " +
+                "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
+                "on detail_beri_diet.no_rawat=reg_periksa.no_rawat and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
+                "and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and detail_beri_diet.kd_diet=diet.kd_diet " +
+                "where detail_beri_diet.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_beri_diet.waktu like '%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and detail_beri_diet.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                "detail_beri_diet.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_beri_diet.waktu like '%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                "detail_beri_diet.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_beri_diet.waktu like '%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%' and bangsal.nm_bangsal like '%"+NmBangsalCari.getText().trim()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
+                "order by bangsal.nm_bangsal,diet.nama_diet",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnLabelDiet1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -944,6 +970,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdDiet;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnLabelDiet;
+    private javax.swing.JMenuItem MnLabelDiet1;
     private widget.TextBox NmBangsalCari;
     private widget.TextBox NmDiet;
     private javax.swing.JPanel PanelInput;
@@ -974,29 +1001,52 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void tampil() {     
         try{
             Valid.tabelKosong(tabMode);
-            ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-            ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-            ps.setString(3,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
-            ps.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-            ps.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-            ps.setString(8,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
-            ps.setString(9,"%"+NmBangsalCari.getText().trim()+"%");
-            ps.setString(10,"%"+TCari.getText().trim()+"%");
-            ps.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-            ps.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-            ps.setString(13,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
-            ps.setString(14,"%"+NmBangsalCari.getText().trim()+"%");
-            ps.setString(15,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new String[]{
-                    rs.getString(1),rs.getString(2)+", "+rs.getString(3),
-                    rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),
-                    Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=? order by tgl_masuk desc",rs.getString(1))
-                });
-            }
+            ps=koneksi.prepareStatement("select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
+                "concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),detail_beri_diet.tanggal,detail_beri_diet.waktu,diet.nama_diet " +
+                "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
+                "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
+                "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
+                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "and detail_beri_diet.kd_diet=diet.kd_diet " +
+                "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and detail_beri_diet.no_rawat like ? or "+
+                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "+
+                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? "+
+                "order by bangsal.nm_bangsal,diet.nama_diet");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(3,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
+                ps.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(8,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
+                ps.setString(9,"%"+NmBangsalCari.getText().trim()+"%");
+                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                ps.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(13,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
+                ps.setString(14,"%"+NmBangsalCari.getText().trim()+"%");
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2)+", "+rs.getString(3),
+                        rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),
+                        Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=? order by tgl_masuk desc",rs.getString(1))
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1005,26 +1055,48 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         try{
             if(tabMode.getRowCount()>0){
                 tabMode.addRow(new String[]{"","","","","","",""});
-            }            
-            ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-            ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-            ps2.setString(3,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
-            ps2.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
-            ps2.setString(5,"%"+TCari.getText().trim()+"%");
-            ps2.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-            ps2.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-            ps2.setString(8,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
-            ps2.setString(9,"%"+NmBangsalCari.getText().trim()+"%");
-            ps2.setString(10,"%"+TCari.getText().trim()+"%");
-            ps2.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-            ps2.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-            ps2.setString(13,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
-            ps2.setString(14,"%"+NmBangsalCari.getText().trim()+"%");
-            ps2.setString(15,"%"+TCari.getText().trim()+"%");
-            rs=ps2.executeQuery();
-            i=1;
-            while(rs.next()){
-                 tabMode.addRow(new String[]{"",i+". "+rs.getString(1),": "+rs.getString(2),"","","",""});i++;                   
+            }   
+            ps2=koneksi.prepareStatement("select diet.nama_diet, count(diet.nama_diet) as jumlah " +
+                "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
+                "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
+                "and detail_beri_diet.kd_kamar=kamar.kd_kamar "+
+                "and kamar.kd_bangsal=bangsal.kd_bangsal "+
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "and detail_beri_diet.kd_diet=diet.kd_diet " +
+                "where detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and detail_beri_diet.no_rawat like ? or "+
+                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "+
+                "detail_beri_diet.tanggal between ? and ? and detail_beri_diet.waktu like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? "+
+                "group by diet.nama_diet order by bangsal.nm_bangsal,diet.nama_diet");
+            try {
+                ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps2.setString(3,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
+                ps2.setString(4,"%"+NmBangsalCari.getText().trim()+"%");
+                ps2.setString(5,"%"+TCari.getText().trim()+"%");
+                ps2.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps2.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps2.setString(8,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
+                ps2.setString(9,"%"+NmBangsalCari.getText().trim()+"%");
+                ps2.setString(10,"%"+TCari.getText().trim()+"%");
+                ps2.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps2.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps2.setString(13,"%"+cmbJamCari.getSelectedItem().toString().replaceAll("Semua","").trim()+"%");
+                ps2.setString(14,"%"+NmBangsalCari.getText().trim()+"%");
+                ps2.setString(15,"%"+TCari.getText().trim()+"%");
+                rs=ps2.executeQuery();
+                i=1;
+                while(rs.next()){
+                     tabMode.addRow(new String[]{"",i+". "+rs.getString(1),": "+rs.getString(2),"","","",""});i++;                   
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps2!=null){
+                    ps2.close();
+                }
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
