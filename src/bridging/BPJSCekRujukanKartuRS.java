@@ -99,6 +99,13 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     private Period p;
     private long p2;
     private boolean empt=false;
+    private HttpHeaders headers= new HttpHeaders();
+    private HttpHeaders headers2= new HttpHeaders();
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -3877,30 +3884,27 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         if(tbKamar.getRowCount()>0){
             try {
                 URL = link+"/Sep/pengajuanSEP";
-
-                HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
-                "\"request\": {" +
-                "\"t_sep\": {" +
-                "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
-                "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
-                "\"keterangan\": \""+Catatan.getText()+"\"," +
-                "\"user\": \""+user+"\"" +
-                "}" +
-                "}" +
+                    "\"request\": {" +
+                        "\"t_sep\": {" +
+                            "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
+                            "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
+                            "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
+                            "\"keterangan\": \""+Catatan.getText()+"\"," +
+                            "\"user\": \""+user+"\"" +
+                        "}" +
+                    "}" +
                 "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3924,30 +3928,27 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         if(tbKamar.getRowCount()>0){
             try {
                 URL = link+"/Sep/aprovalSEP";
-
-                HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
-                "\"request\": {" +
-                "\"t_sep\": {" +
-                "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
-                "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
-                "\"keterangan\": \""+Catatan.getText()+"\"," +
-                "\"user\": \""+user+"\"" +
-                "}" +
-                "}" +
+                    "\"request\": {" +
+                        "\"t_sep\": {" +
+                            "\"noKartu\": \""+TNoPeserta.getText()+"\"," +
+                            "\"tglSep\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
+                            "\"jnsPelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\"," +
+                            "\"keterangan\": \""+Catatan.getText()+"\"," +
+                            "\"user\": \""+user+"\"" +
+                        "}" +
+                    "}" +
                 "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -5303,20 +5304,16 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     public void tampil(String nomorrujukan) {
         try {
             URL = link+"/Rujukan/RS/Peserta/"+nomorrujukan;	
-
-	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-            
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    requestEntity = new HttpEntity(headers);
+	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response").path("rujukan");
+                response = root.path("response").path("rujukan");
                 tabMode.addRow(new Object[]{
                     "Diagnosa",": "+response.path("diagnosa").path("kode").asText()+" "+response.path("diagnosa").path("nama").asText()
                 });                   
@@ -5946,7 +5943,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
            kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));
         }
         
-        Sequel.AutoComitFalse();                
         if(statuspasien.equals("Baru")){
             autoNomor();
             if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
@@ -6044,7 +6040,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }    
             inputRegistrasi();                                
         }                
-        Sequel.AutoComitTrue();
     }
     
     private void inputRegistrasi(){
@@ -6194,12 +6189,12 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             if(LakaLantas.getSelectedIndex()==1){
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
-            URL = link+"/SEP/1.1/insert";
-            HttpHeaders headers = new HttpHeaders();
+            
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
+            URL = link+"/SEP/1.1/insert";
             requestJson ="{" +
                           "\"request\":" +
                              "{" +
@@ -6255,14 +6250,15 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                                    "}" +
                              "}" +
                          "}";
-            //System.out.println("JSON : "+requestJson);
-            HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            System.out.println("JSON : "+requestJson);
+            requestEntity = new HttpEntity(requestJson,headers);
+            requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
+            System.out.println("JSON : "+requestJson);
+            root = mapper.readTree(requestJson);
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            JsonNode response = root.path("response").path("sep").path("noSep");
+            response = root.path("response").path("sep").path("noSep");
             if(nameNode.path("code").asText().equals("200")){
                 nosep=response.asText();
                 System.out.println("No.SEP : "+nosep);
@@ -6282,8 +6278,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     if(JenisPelayanan.getSelectedIndex()==1){
                         try {
                             URL = link+"/Sep/updtglplg";	
-
-                            HttpHeaders headers2 = new HttpHeaders();
                             headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                             headers2.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
                             headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -6299,20 +6293,19 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                                                    "}" +
                                              "}" +
                                          "}";
-                            HttpEntity requestEntity2 = new HttpEntity(requestJson,headers2);
-                            ObjectMapper mapper2 = new ObjectMapper();
-                            JsonNode root2 = mapper2.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity2, String.class).getBody());
-                            JsonNode nameNode2 = root2.path("metaData");
-                            System.out.println("code : "+nameNode2.path("code").asText());
-                            System.out.println("message : "+nameNode2.path("message").asText());
-                            JsonNode response2 = root2.path("response");
-                            if(nameNode2.path("code").asText().equals("200")){
+                            requestEntity = new HttpEntity(requestJson,headers2);
+                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                            nameNode = root.path("metaData");
+                            System.out.println("code : "+nameNode.path("code").asText());
+                            System.out.println("message : "+nameNode.path("message").asText());
+                            response = root.path("response");
+                            if(nameNode.path("code").asText().equals("200")){
                                 Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                                      Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
                                      response.asText()
                                 }); 
                             }else{
-                                JOptionPane.showMessageDialog(null,nameNode2.path("message").asText());
+                                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                             }
                         }catch (Exception ex) {
                             System.out.println("Notifikasi Bridging : "+ex);
@@ -6353,7 +6346,9 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
                 Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
                 Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
-                Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+                if(statuspasien.equals("Baru")){
+                    Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+                }
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
         }catch (Exception ex) {
@@ -6361,7 +6356,9 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
             Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
             Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
-            Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+            if(statuspasien.equals("Baru")){
+                Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
+            }
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");

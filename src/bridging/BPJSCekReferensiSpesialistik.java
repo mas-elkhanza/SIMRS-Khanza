@@ -46,6 +46,12 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
     private int i=0;
     private BPJSApi api=new BPJSApi();
     private String URL="",link="";
+    private HttpHeaders headers ;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper;
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -106,7 +112,13 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPIBPJS");
-            URL = link+"/referensi/spesialistik";
+            URL = link+"/referensi/spesialistik";headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
+	    mapper = new ObjectMapper();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -284,16 +296,8 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");

@@ -9590,7 +9590,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
                 kddokter.getText(),TNoRM.getText(),kdpoli.getText(),TPngJwb.getText(),TAlmt.getText(),THbngn.getText(),TBiaya.getText(),"Belum",
                 TStatus.getText(),"Ralan",kdpnj.getText(),umur,sttsumur,"Belum Bayar",status})==true){
-            UpdateUmur();
             if(!AsalRujukan.getText().equals("")){
                 if(nosisrute.equals("")){
                     Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0','"+AsalRujukan.getText()+"','-','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
@@ -9689,11 +9688,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }                
         } 
         Sequel.AutoComitTrue();
-        if(TabRawat.getSelectedIndex()==0){
-            if(ceksukses==true){
+        if(ceksukses==true){
+            UpdateUmur();    
+            if(TabRawat.getSelectedIndex()==0){
                 tampil();
-            }
+            }                
         }
+            
             
     }
 

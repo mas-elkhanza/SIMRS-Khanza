@@ -86,7 +86,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private BPJSCekReferensiKabupaten kabupaten=new BPJSCekReferensiKabupaten(null,false);
     private BPJSCekReferensiKecamatan kecamatan=new BPJSCekReferensiKecamatan(null,false);
     private String prb="",no_peserta="",link="", requestJson,URL="",jkel="",duplikat="",user="",penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",kddokter="",tglkkl="0000-00-00";
-    
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper;
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -575,6 +580,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPIBPJS");
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+            headers.add("X-Signature",api.getHmac());
+            mapper = new ObjectMapper();            
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -2469,12 +2480,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     }
                     
                     URL = link+"/SEP/1.1/Update";	
-
-                    HttpHeaders headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                    headers.add("X-Signature",api.getHmac());
                     requestJson ="{" +
                                   "\"request\":" +
                                      "{" +
@@ -2526,13 +2531,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                            "}" +
                                      "}" +
                                  "}";
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    requestEntity = new HttpEntity(requestJson,headers);
+                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
-                    JsonNode response = root.path("response");
+                    response = root.path("response");
                     if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit("bridging_sep",
                              "no_sep=?","no_sep=?,no_rawat=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
@@ -2889,12 +2893,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }else{
             try {
                 URL = link+"/Sep/updtglplg";	
-
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
                 requestJson ="{" +
                               "\"request\":" +
                                  "{" +
@@ -2906,13 +2904,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                        "}" +
                                  "}" +
                              "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                          Valid.SetTgl(TanggalPulang.getSelectedItem()+"")+" "+TanggalPulang.getSelectedItem().toString().substring(11,19),
@@ -2973,12 +2970,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(!NoKartu.getText().equals("")){
             try {
                 URL = link+"/Sep/pengajuanSEP";	
-
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
                                     "\"request\": {" +
                                         "\"t_sep\": {" +
@@ -2990,13 +2981,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                         "}" +
                                     "}" +
                                 "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3083,12 +3073,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(!NoKartu.getText().equals("")){
             try {
                 URL = link+"/Sep/aprovalSEP";	
-
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
                                     "\"request\": {" +
                                         "\"t_sep\": {" +
@@ -3100,13 +3084,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                         "}" +
                                     "}" +
                                 "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
@@ -3163,11 +3146,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }else{  
             try {
                 URL = link+"/Rujukan/insert";	
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
                 requestJson ="{" +
                                 "\"request\": {" +
                                     "\"t_rujukan\": {" +
@@ -3183,13 +3161,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                     "}" +
                                 "}" +
                             "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
                     if(Sequel.menyimpantf2("bridging_rujukan_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rujukan",13,new String[]{
                             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(TanggalRujukKeluar.getSelectedItem()+""),
@@ -3498,22 +3475,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(!NoSEP.getText().equals("")){
             try {
                 URL = link+"/SEP/"+NoSEP.getText();	
-
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
-                HttpEntity requestEntity = new HttpEntity(headers);
-                
+                requestEntity = new HttpEntity(headers);
                 //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("message").asText().equals("Sukses")){
-                    JsonNode response = root.path("response");
+                    response = root.path("response");
                     Catatan.setText(response.path("catatan").asText());
                     NmPenyakit.setText(response.path("diagnosa").asText());
                     if(response.path("jnsPelayanan").asText().toLowerCase().contains("inap")){
@@ -4195,17 +4164,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            URL = link+"/SEP/Delete";	
-            
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
+            URL = link+"/SEP/Delete";
             requestJson ="{\"request\":{\"t_sep\":{\"noSep\":\""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\",\"user\":\""+user+"\"}}}";            
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            requestEntity = new HttpEntity(requestJson,headers);
+            root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
@@ -4253,12 +4216,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
             
-            URL = link+"/SEP/1.1/insert";
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
+            URL = link+"/SEP/1.1/insert";            
             requestJson ="{" +
                           "\"request\":" +
                              "{" +
@@ -4315,13 +4273,12 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                              "}" +
                          "}";
             //System.out.println("JSON : "+requestJson);
-            HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            requestEntity = new HttpEntity(requestJson,headers);
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            JsonNode response = root.path("response").path("sep").path("noSep");
+            response = root.path("response").path("sep").path("noSep");
             if(nameNode.path("code").asText().equals("200")){
                  System.out.println("SEP : "+response.asText());
                  if(Sequel.menyimpantf("bridging_sep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","SEP",44,new String[]{
@@ -4344,12 +4301,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      if(JenisPelayanan.getSelectedIndex()==1){
                         try {
                             URL = link+"/Sep/updtglplg";	
-
-                            HttpHeaders headers2 = new HttpHeaders();
-                            headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                            headers2.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                            headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                            headers2.add("X-Signature",api.getHmac());
                             requestJson ="{" +
                                           "\"request\":" +
                                              "{" +
@@ -4361,14 +4312,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                                    "}" +
                                              "}" +
                                          "}";
-                            HttpEntity requestEntity2 = new HttpEntity(requestJson,headers2);
-                            ObjectMapper mapper2 = new ObjectMapper();
-                            JsonNode root2 = mapper2.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity2, String.class).getBody());
-                            JsonNode nameNode2 = root2.path("metaData");
-                            System.out.println("code : "+nameNode2.path("code").asText());
-                            System.out.println("message : "+nameNode2.path("message").asText());
-                            JsonNode response2 = root2.path("response");
-                            if(nameNode2.path("code").asText().equals("200")){
+                            requestEntity = new HttpEntity(requestJson,headers);
+                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                            nameNode = root.path("metaData");
+                            System.out.println("code : "+nameNode.path("code").asText());
+                            System.out.println("message : "+nameNode.path("message").asText());
+                            response = root.path("response");
+                            if(nameNode.path("code").asText().equals("200")){
                                 Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                                      Valid.SetTgl(TanggalSEP.getSelectedItem()+""),
                                      response.asText()
@@ -4376,7 +4326,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                 emptTeks();                         
                                 tampil();     
                             }else{
-                                JOptionPane.showMessageDialog(null,nameNode2.path("message").asText());
+                                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                             }
                         }catch (Exception ex) {
                             System.out.println("Notifikasi Bridging : "+ex);
