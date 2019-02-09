@@ -2798,6 +2798,27 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     ps2=koneksi.prepareStatement(
+                        "select hasil_radiologi.hasil from hasil_radiologi where hasil_radiologi.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("hasil")+";";
+                        }
+                        Radiologi.setText(cari);
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
                         "select databarang.nama_brng from detail_pemberian_obat inner join databarang "+
                         "on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat=?");
                     try {
