@@ -707,7 +707,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (i == JOptionPane.YES_OPTION) {
-                Sequel.AutoComitFalse();
+                
                 for(i=0;i<tbDokter.getRowCount();i++){  
                         try {
                             if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
@@ -721,7 +721,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         } catch (Exception e) {
                         }                    
                 }
-                Sequel.AutoComitTrue();
+                
                 for(index=0;index<tbDokter.getRowCount();index++){   
                     tbDokter.setValueAt(null,index,0);        
                     tbDokter.setValueAt(0,index,4);
@@ -936,7 +936,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }else if(tbKamar.getSelectedRow()<= -1){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from utd_penunjang_rusak where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+
                 "and nip='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
                 "and tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' "+
@@ -947,7 +947,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"'");
             
             BtnCari2ActionPerformed(evt);
-            Sequel.AutoComitTrue();
+            
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 

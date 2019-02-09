@@ -812,7 +812,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 int row=tabMode.getRowCount();
                 for(i=0;i<row;i++){  
@@ -828,7 +828,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
                 Sequel.menyimpan("temporary","'0','Jml.Total :','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
-                Sequel.AutoComitTrue();
+                
                 Map<String, Object> param = new HashMap<>();    
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -892,7 +892,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
   }else{
      try {
-         Sequel.AutoComitFalse();
+         
          psdetailpengeluaran=koneksi.prepareStatement("select kode_brng,jumlah,total from ipsrsdetailpengeluaran where no_keluar=? ");
          try {
             psdetailpengeluaran.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
@@ -909,7 +909,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Ipsrs from set_akun"),"KAS DI TANGAN",""+total,"0"}); 
             jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGGUNAAN BARANG NON MEDIS");
             Sequel.queryu2("delete from ipsrspengeluaran where no_keluar=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
-            Sequel.AutoComitTrue();
+            
             tampil();
          } catch (Exception e) {
              System.out.println("Notif : "+e);

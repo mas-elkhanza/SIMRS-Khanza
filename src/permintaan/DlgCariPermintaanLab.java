@@ -1075,7 +1075,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1105,7 +1105,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode.getValueAt(i,10).toString()+"','"+
                             tabMode.getValueAt(i,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1122,7 +1122,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode2.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode2.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1156,7 +1156,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         tabMode2.getValueAt(i,14).toString()+"','"+
                                         tabMode2.getValueAt(i,15).toString()+"','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1175,7 +1175,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode3.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode3.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1205,7 +1205,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode3.getValueAt(i,10).toString()+"','"+
                             tabMode3.getValueAt(i,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1222,7 +1222,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode4.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_lab");
                     int row=tabMode4.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1256,7 +1256,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         tabMode4.getValueAt(i,14).toString()+"','"+
                                         tabMode4.getValueAt(i,15).toString()+"','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1380,7 +1380,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("truncate table temporary_permintaan_lab");
                     try {
                         ps2=koneksi.prepareStatement(
@@ -1447,7 +1447,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }            
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("noperiksa",NoPermintaan);
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",NoRawat);
@@ -1490,7 +1490,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_lab");
                     try {
                         ps2=koneksi.prepareStatement(
@@ -1557,7 +1557,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }            
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("noperiksa",NoPermintaan);
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",NoRawat);

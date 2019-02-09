@@ -493,7 +493,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
@@ -510,7 +510,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
             }
             Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','TOTAL PIUTANG','',':','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.AutoComitTrue();
+            
             
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
@@ -653,7 +653,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
             koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
-            Sequel.AutoComitFalse();
+            
             row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
@@ -673,7 +673,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     
                 }
             }
-            Sequel.AutoComitTrue();
+            
             tampil();
         }
         this.setCursor(Cursor.getDefaultCursor());

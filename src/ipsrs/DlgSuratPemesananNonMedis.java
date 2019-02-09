@@ -1090,7 +1090,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                Sequel.AutoComitFalse();
+                
                 if(Sequel.menyimpantf2("surat_pemesanan_non_medis","?,?,?,?,?,?,?,?,?,?,?","No.Pemesanan",11,new String[]{
                     NoPemesanan.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                     ""+sbttl,""+ttldisk,""+ttl,
@@ -1130,7 +1130,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 }else{
                     JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Pemesanan sudah ada sebelumnya...!!");
                 }
-                Sequel.AutoComitTrue();
+                
                 autoNomor();
             }
         }
@@ -1178,7 +1178,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pemesanan...!!!!");
             tbDokter.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
@@ -1195,7 +1195,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pemesanan"); 
                 }                    
             }
-            Sequel.AutoComitFalse();
+            
             
             Map<String, Object> param = new HashMap<>();    
                 param.put("namars",var.getnamars());

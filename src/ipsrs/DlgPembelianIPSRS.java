@@ -717,7 +717,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                Sequel.AutoComitFalse();
+                
                 if(Sequel.menyimpantf("ipsrspembelian","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                         NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
                         ""+ppn,""+meterai,""+(ttl+ppn+meterai),Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
@@ -752,7 +752,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     Meterai.setText("0");
                     getData();
                 }                        
-                Sequel.AutoComitTrue();        
+                        
                 autoNomor();
             }
         }        

@@ -2538,7 +2538,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCariPaket.requestFocus();
             }else{
-                Sequel.AutoComitFalse();
+                
                 ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;
                 for(i=0;i<tbtindakan.getRowCount();i++){
                     if(tabMode.getValueAt(i,0).toString().equals("true")){
@@ -2634,7 +2634,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                     jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(tgl.getSelectedItem()+""),"U","OPERASI RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());                                              
                 }
-                Sequel.AutoComitTrue();
+                
                 for(int r=0;r<tbtindakan.getRowCount();r++){
                     tbtindakan.setValueAt(false,r,0);
                 }

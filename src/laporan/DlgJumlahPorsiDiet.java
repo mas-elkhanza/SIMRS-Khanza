@@ -218,7 +218,7 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("truncate table temporary_gizi");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -257,7 +257,7 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,32).toString()+"','"+
                                 tabMode.getValueAt(r,33).toString()+"','','','',''","Rekap Gizi"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();   
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());

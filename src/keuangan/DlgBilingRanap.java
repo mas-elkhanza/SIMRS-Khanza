@@ -2753,7 +2753,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             }
         }
         if(i>0){
-            Sequel.AutoComitFalse();
+            
             Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
             
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2880,7 +2880,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");
            this.setCursor(Cursor.getDefaultCursor());
-           Sequel.AutoComitTrue();
+           
            JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
            Valid.tabelKosong(tabModeAkunBayar);
            Valid.tabelKosong(tabModeAkunPiutang);
@@ -3166,7 +3166,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(norawatubahlama.getText().trim().equals("")||(tbUbahLama.getRowCount()<=0)){
             Valid.textKosong(norawatubahlama,"Data");
         }else{
-            Sequel.AutoComitFalse();
+            
             for(int r=0;r<tbUbahLama.getRowCount();r++){
                 if(Valid.SetAngka(tbUbahLama.getValueAt(r,6).toString())>-1){                    
                     Sequel.mengedit("kamar_inap","no_rawat='"+norawatubahlama.getText()+"' and kd_kamar='"+tbUbahLama.getValueAt(r,0)+"'",
@@ -3176,7 +3176,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                            "ttl_biaya="+tbUbahLama.getValueAt(r,6).toString()+"*trf_kamar");                       
                 }
             }
-            Sequel.AutoComitTrue();
+            
                        
             isRawat();
             isKembali();

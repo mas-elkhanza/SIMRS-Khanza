@@ -263,7 +263,7 @@ public final class DlgCekEntryRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();         
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -292,7 +292,7 @@ public final class DlgCekEntryRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }                    
             }
-            Sequel.AutoComitTrue();   
+               
             Valid.MyReport("rptCekEntryRalan.jrxml",param,"::[ Laporan Pengecekan Entry Ralan ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());

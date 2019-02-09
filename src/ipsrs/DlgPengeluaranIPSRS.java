@@ -515,7 +515,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 if(Sequel.menyimpantf("ipsrspengeluaran","?,?,?,?","No.Keluar",4,new String[]{NoKeluar.getText(),Valid.SetTgl(TglKeluar.getSelectedItem()+""),kdptg.getText(),Keterangan.getText()})==true){
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){  
                              if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
@@ -532,7 +532,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Ipsrs from set_akun"),"PERSEDIAAN BARANG",""+(ttl),"0"});
                         Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Ipsrs from set_akun"),"KAS DI TANGAN","0",""+(ttl)}); 
                         jur.simpanJurnal(NoKeluar.getText(),Valid.SetTgl(TglKeluar.getSelectedItem()+""),"U","PENGGUNAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)");
-                        Sequel.AutoComitTrue();
+                        
                     } catch (Exception ex) {
                         System.out.println(ex);
                     }                

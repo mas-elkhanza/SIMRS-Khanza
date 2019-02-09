@@ -398,7 +398,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             for(int r=0;r<tbBangsal.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -414,7 +414,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                                     tbBangsal.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
                                     tbBangsal.getValueAt(r,10).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());

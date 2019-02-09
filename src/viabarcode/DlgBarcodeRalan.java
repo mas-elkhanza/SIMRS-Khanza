@@ -534,7 +534,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
         if(NoRawat.getText().trim().equals("")||kd_dokter.equals("")){
             Valid.textKosong(TCariTindakan,"Data");
         }else{
-            Sequel.AutoComitFalse();
+            
             for(i=0;i<tbTindakan.getRowCount();i++){ 
                 if(tbTindakan.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?,'Belum'", "Tindakan",11,new String[]{
@@ -619,7 +619,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                     }
                 }
             }
-            Sequel.AutoComitTrue();
+            
             NoRawat.setText("");
             TCariObat.setText("");
             TCariTindakan.setText("");

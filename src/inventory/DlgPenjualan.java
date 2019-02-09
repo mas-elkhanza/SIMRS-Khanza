@@ -1372,7 +1372,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     catatan.getText(),Jenisjual.getSelectedItem().toString(),Double.toString(besarppn),status,kdgudang.getText(),
                     Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),CmbAkun.getSelectedItem().toString()}
                    )==true){
-                        Sequel.AutoComitFalse();
+                        
                         for(i=0;i<tabMode.getRowCount();i++){  
                             try {
                                 if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
@@ -1468,7 +1468,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             BtnNotaActionPerformed(null);
                         }
                         autoNomor();
-                        Sequel.AutoComitTrue();
+                        
                         
                         Valid.tabelKosong(tabModeObatRacikan);
                         
@@ -1531,7 +1531,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         catatan.getText(),Jenisjual.getSelectedItem().toString(),Double.toString(besarppn),status,kdgudang.getText(),
                         Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),CmbAkun.getSelectedItem().toString()}
                        )==true){
-                            Sequel.AutoComitFalse();
+                            
                             for(i=0;i<tabMode.getRowCount();i++){  
                                 try {
                                     if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
@@ -1627,7 +1627,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 BtnNotaActionPerformed(null);
                             }
                             autoNomor();
-                            Sequel.AutoComitTrue();
+                            
 
                             Valid.tabelKosong(tabModeObatRacikan);
 
@@ -1722,7 +1722,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penjualan...!!!!");
             tbDokter.requestFocus();
         }else {
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 try {
@@ -1778,7 +1778,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 } catch (Exception e) {
                 }                
             }
-            Sequel.AutoComitTrue();
+            
             Valid.panggilUrl("billing/NotaApotek.php?nonota="+NoNota.getText()+"&besarppn="+besarppn+"&bayar="+Bayar.getText()+"&tanggal="+Valid.SetTgl(Tgl.getSelectedItem()+"")+"&catatan="+catatan.getText().replaceAll(" ","_")+"&petugas="+nmptg.getText().replaceAll(" ","_")+"&pasien="+nmmem.getText().replaceAll(" ","_")+"&norm="+kdmem.getText().replaceAll(" ","_"));
         }
         this.setCursor(Cursor.getDefaultCursor());

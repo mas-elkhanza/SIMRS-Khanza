@@ -753,7 +753,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabmode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("truncate table temporary_sensus_harian");
                 for(int r=0;r<tabmode.getRowCount();r++){ 
                     Sequel.menyimpan("temporary_sensus_harian","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
@@ -766,7 +766,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                             tabmode.getValueAt(r,18).toString(),tabmode.getValueAt(r,19).toString(),tabmode.getValueAt(r,20).toString()
                     });
                 }
-                Sequel.AutoComitTrue(); 
+                 
                 Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
                     "select * from temporary_sensus_harian order by no asc",param);
             }
@@ -775,7 +775,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabmode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("truncate table temporary_sensus_harian");
                 for(int r=0;r<tabmode2.getRowCount();r++){ 
                     Sequel.menyimpan("temporary_sensus_harian","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','',''",21,new String[]{
@@ -788,7 +788,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                             tabmode2.getValueAt(r,18).toString(),tabmode2.getValueAt(r,19).toString(),tabmode2.getValueAt(r,20).toString()
                     });
                 }
-                Sequel.AutoComitTrue(); 
+                 
                 Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
                     "select * from temporary_sensus_harian order by no asc",param);
             }            

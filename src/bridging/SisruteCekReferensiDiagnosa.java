@@ -35,8 +35,6 @@ import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -50,6 +48,12 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
     private int i=0;
     private SisruteApi api=new SisruteApi();
     private String URL="",link="";
+    private HttpHeaders headers ;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper;
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -108,6 +112,13 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
+            mapper = new ObjectMapper();
+            headers = new HttpHeaders();
+	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	    headers.add("X-signature",api.getHmac()); 
+	    headers.add("Content-type","application/json");             
+	    headers.add("Content-length",null); 
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -247,7 +258,7 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -256,7 +267,7 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -339,21 +350,13 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             URL = link+"/referensi/diagnosa?query="+faskes;
                 	
-            HttpHeaders headers = new HttpHeaders();
-	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	    headers.add("X-signature",api.getHmac()); 
-	    headers.add("Content-type","application/json");             
-	    headers.add("Content-length",null);            
-	    HttpEntity requestEntity = new HttpEntity(headers);
-            //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("status");
+            requestEntity = new HttpEntity(headers);
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("status");
             System.out.println("Result : "+root.path("status").asText());
             if(nameNode.asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("data");
+                response = root.path("data");
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
