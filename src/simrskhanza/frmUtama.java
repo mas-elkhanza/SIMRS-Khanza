@@ -398,6 +398,7 @@ import laporan.DlgJumlahMacamDiet;
 import laporan.DlgJumlahPorsiDiet;
 import laporan.DlgKunjunganLabRalan;
 import laporan.DlgKunjunganLabRanap;
+import laporan.DlgKunjunganRadRalan;
 import laporan.DlgPelayananLab;
 import laporan.DlgPelayananRadiologi;
 import laporan.DlgPerujukLabPerTahun;
@@ -1020,6 +1021,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnDataBatch = new widget.ButtonBig();
         btnKunjunganLabRalan = new widget.ButtonBig();
         btnKunjunganLabRanap = new widget.ButtonBig();
+        btnKunjunganRadRalan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6472,6 +6474,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKunjunganLabRanap);
 
+        btnKunjunganRadRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganRadRalan.setText("Kunjungan Radiologi Ralan");
+        btnKunjunganRadRalan.setIconTextGap(0);
+        btnKunjunganRadRalan.setName("btnKunjunganRadRalan"); // NOI18N
+        btnKunjunganRadRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganRadRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganRadRalanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnKunjunganRadRalan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6480,7 +6494,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/02/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/02/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13368,6 +13382,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKunjunganLabRanapActionPerformed
 
+    private void btnKunjunganRadRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKunjunganRadRalanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKunjunganRadRalan aplikasi=new DlgKunjunganRadRalan(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnKunjunganRadRalanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13597,6 +13623,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnKonversi;
     private widget.ButtonBig btnKunjunganLabRalan;
     private widget.ButtonBig btnKunjunganLabRanap;
+    private widget.ButtonBig btnKunjunganRadRalan;
     private widget.ButtonBig btnKunjunganRalan;
     private widget.ButtonBig btnKunjunganRanap;
     private widget.ButtonBig btnLabaRugi;
@@ -15184,6 +15211,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getkunjungan_permintaan_lab2()==true){  
                 Panelmenu.add(btnKunjunganLabRanap); 
+                jmlmenu++;
+            }
+            
+            if(var.getkunjungan_permintaan_radiologi()==true){  
+                Panelmenu.add(btnKunjunganRadRalan); 
                 jmlmenu++;
             }
 
@@ -17338,6 +17370,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getkunjungan_permintaan_lab2()==true){  
             Panelmenu.add(btnKunjunganLabRanap); 
+            jmlmenu++;
+        }
+        
+        if(var.getkunjungan_permintaan_radiologi()==true){  
+            Panelmenu.add(btnKunjunganRadRalan); 
             jmlmenu++;
         }
 
@@ -19858,6 +19895,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getkunjungan_permintaan_lab2()==true){  
             if(btnKunjunganLabRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganLabRanap); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getkunjungan_permintaan_radiologi()==true){  
+            if(btnKunjunganRadRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKunjunganRadRalan); 
                 jmlmenu++;
             }                
         }
