@@ -1,29 +1,25 @@
-{
-    "status": 200,
-    "success": true,
-    "total": 1,
-    "data": [
-        {
-            
-            "KONDISI_UMUM": {
-                
-                "": "120/90",
-                "": "50",
-                "": "37",
-                "": "25",
-                "": {
-                    "KODE": "1",
-                    "": "Ringan"
-                },
-                "": "sesak, gelisah",
-                "": "-"
-            },
-            "": {
-                "": "WBC:11,2;HB:15,6;PLT:215;",
-                "": "EKG:Sinus Takikardi;Foto Thorax:Cor dan pulmo normal;",
-                "": "TRP:LOADING NACL 0.9% 500 CC;INJ. RANITIDIN 50 MG;#TDK:TERPASANG INTUBASI ET NO 8 BATAS BIBIR 21CM;"
-            }
-        }
-    ],
-    "detail": "Rujukan ditemukan"
+{ 
+  "noKunjungan": null,
+  "noKartu": "0000026975891",
+  "tglDaftar": "03-02-2019",
+  "kdPoli": "001",
+  "keluhan": "-",
+  "kdSadar": "01",
+  "sistole": 0,
+  "diastole": 0,
+  "beratBadan": 0,
+  "tinggiBadan": 0,
+  "respRate": 0,
+  "heartRate": 0,
+  "terapi": "-",
+  "kdStatusPulang": "0",
+  "tglPulang": "03-02-2019",
+  "kdDokter": "254166",
+  "kdDiag1": "Z00.0",
+  "kdDiag2": null,
+  "kdDiag3": null,
+  "kdPoliRujukInternal": null,
+  "rujukLanjut": null,
+  "kdTacc": 0,
+  "alasanTacc": null
 }

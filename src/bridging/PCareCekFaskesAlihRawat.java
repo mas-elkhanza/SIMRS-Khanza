@@ -383,7 +383,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){
@@ -401,7 +401,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
                     tabMode.getValueAt(r,10).toString()+"','"+
                     tabMode.getValueAt(r,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs");
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());

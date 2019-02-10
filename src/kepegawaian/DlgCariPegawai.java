@@ -38,7 +38,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
 
         Object[] row={"NIP","Nama","J.K.","Jabatan","Kode Jenjang","Departemen","Bidang","Status","Status Karyawan",
                       "NPWP","Pendidikan","Tmp.Lahir","Tgl.Lahir","Alamat","Kota","Mulai Kerja","Kode Ms Kerja",
-                      "Kode Index","BPD","Rekening","Stts Aktif","Wajib Masuk","Mulai Kontrak"};
+                      "Kode Index","BPD","Rekening","Stts Aktif","Wajib Masuk","Mulai Kontrak","No.KTP"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -47,7 +47,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 23; i++) {
+        for (int i = 0; i < 24; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -79,11 +79,23 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
     }
@@ -333,7 +345,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         try{
             ps=koneksi.prepareStatement("select nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,"+
                  "npwp, pendidikan, tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,"+
-                 "indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai "+
+                 "indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,no_ktp from pegawai "+
                  "where stts_aktif<>'KELUAR' and nik like ? or "+
                  "stts_aktif<>'KELUAR' and nama like ? or "+
                  "stts_aktif<>'KELUAR' and jk like ? or "+
@@ -405,7 +417,8 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                                    rs.getString(20),
                                    rs.getString(21),
                                    rs.getString(22),
-                                   rs.getString(23)});
+                                   rs.getString(23),
+                                   rs.getString(24)});
                 }
             } catch (Exception e) {
                 System.out.println("Note : "+e);

@@ -167,7 +167,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Hitung ALOS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Hitung ALOS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -260,8 +260,8 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -336,7 +336,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -361,7 +361,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptHitungAlos.jrxml","report","::[ Data Hitung BOR ]::",
                     "select * from temporary order by no asc",param);
             }
@@ -370,7 +370,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -395,7 +395,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode2.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptHitungAlos.jrxml","report","::[ Data Hitung BOR ]::",
                     "select * from temporary order by no asc",param);
             }

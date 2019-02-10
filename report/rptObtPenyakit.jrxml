@@ -12,7 +12,7 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[select obat_penyakit.kd_penyakit,nm_penyakit,ciri_ciri,penyakit.keterangan, 
-                               nm_kategori,ciri_umum, obat_penyakit.kode_brng,nama_brng,jenis.nama,h_retail,referensi 
+                               nm_kategori,ciri_umum, obat_penyakit.kode_brng,nama_brng,jenis.nama,h_beli,referensi 
                                from obat_penyakit,penyakit,kategori_penyakit,databarang,jenis 
                                where penyakit.kd_ktg=kategori_penyakit.kd_ktg and 
                                obat_penyakit.kd_penyakit=penyakit.kd_penyakit and 
@@ -47,7 +47,7 @@
 	<field name="nama" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="h_retail" class="java.lang.Double">
+	<field name="h_beli" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="referensi" class="java.lang.String">

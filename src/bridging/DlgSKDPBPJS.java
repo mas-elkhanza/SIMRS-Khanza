@@ -119,11 +119,23 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         
@@ -1040,7 +1052,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("truncate table temporary_booking_registrasi");
             for(i=0;i<tabMode.getRowCount();i++){ 
                 Sequel.menyimpan("temporary_booking_registrasi","'0','"+
@@ -1063,7 +1075,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
                     tabMode.getValueAt(i,16).toString()+"','"+
                     tabMode.getValueAt(i,17).toString()+"','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue(); 
+             
             Valid.MyReport("rptSKDPBPJS.jrxml","report","::[ Laporan Daftar SKDP BPJS ]::",
                 "select * from temporary_booking_registrasi order by no asc",param);
         }

@@ -256,11 +256,23 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilobat();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampilobat();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilobat();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampilobat();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilobat();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampilobat();
+                    }
+                }
             });
         }
         
@@ -1008,7 +1020,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

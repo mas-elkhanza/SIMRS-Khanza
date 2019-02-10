@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -749,6 +750,14 @@ public final class validasi {
         }
     }
     
+    public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JCheckBox kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextField kanan,JTextField bawah){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();
@@ -858,6 +867,14 @@ public final class validasi {
     }
 
     public void pindah(java.awt.event.KeyEvent evt,JComboBox kiri,JDateTimePicker kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
+    public void pindah(java.awt.event.KeyEvent evt,JCheckBox kiri,JDateTimePicker kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -993,6 +1010,15 @@ public final class validasi {
         }catch (Exception e) {
         }   
         return s;
+    }
+    
+    public String MaxTeks(String original,int max){
+        if(original.length()>=max){
+            s=original.substring(0,(max-1));
+        }else{
+            s=original;
+        }
+        return original;
     }
     
     public void SetTgl(JDateTimePicker dtp,String tgl){            
