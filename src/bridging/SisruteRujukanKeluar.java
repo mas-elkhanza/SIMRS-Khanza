@@ -60,6 +60,12 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private String StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
     private SisruteApi api=new SisruteApi();
+    private HttpHeaders headers = new HttpHeaders();
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private SisruteCekReferensiFaskes faskes=new SisruteCekReferensiFaskes(null,false);
     private SisruteCekReferensiAlasanRujuk alasanrujuk=new SisruteCekReferensiAlasanRujuk(null,false);
@@ -214,11 +220,23 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -1490,7 +1508,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             try {
                 URL = link+"/rujukan";	
                 System.out.println(URL);
-                HttpHeaders headers = new HttpHeaders();
                 headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-signature",api.getHmac()); 
@@ -1542,11 +1559,10 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                             "}";              
                 headers.add("Content-length",Integer.toString(requestJson.length())); 
                 System.out.println(requestJson);
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
+                requestEntity = new HttpEntity(requestJson,headers);
                 requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestJson);
-                JsonNode root = mapper.readTree(requestJson);
+                root = mapper.readTree(requestJson);
                 JOptionPane.showMessageDialog(null,root.path("detail").asText());
                 if(root.path("status").asText().equals("200")){
                     if(Sequel.menyimpantf("sisrute_rujukan_keluar","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Nomor Rujuk",36,new String[]{
@@ -1602,7 +1618,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 try {
                     URL = link+"/rujukan/batal/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
-                    HttpHeaders headers = new HttpHeaders();
                     headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
@@ -1616,11 +1631,10 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     headers.add("Content-length",Integer.toString(requestJson.length())); 
                     //System.out.println(Integer.toString(requestJson.length()));
                     System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    requestEntity = new HttpEntity(requestJson,headers);
                     requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
+                    root = mapper.readTree(requestJson);
                     JOptionPane.showMessageDialog(null,root.path("detail").asText());
                     if(root.path("status").asText().equals("200")){                    
                         Sequel.meghapus3("sisrute_rujukan_keluar","no_rawat",TNoRw.getText());          
@@ -1695,7 +1709,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 try {
                     URL = link+"/rujukan/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
-                    HttpHeaders headers = new HttpHeaders();
                     headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
@@ -1748,11 +1761,10 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     headers.add("Content-length",Integer.toString(requestJson.length())); 
                     //System.out.println(Integer.toString(requestJson.length()));
                     System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    requestEntity = new HttpEntity(requestJson,headers);
                     requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
+                    root = mapper.readTree(requestJson);
                     JOptionPane.showMessageDialog(null,root.path("detail").asText());
                     if(root.path("status").asText().equals("200")){
                         if(Sequel.mengedittf("sisrute_rujukan_keluar","no_rawat=?","no_rujuk=?,no_rkm_medis=?,nm_pasien=?,no_ktp=?,no_peserta=?,jk=?,tgl_lahir=?,tmp_lahir=?,alamat=?,no_tlp=?,jns_rujukan=?,tgl_rujuk=?,kd_faskes_tujuan=?,nm_faskes_tujuan=?,kd_alasan=?,alasan_rujuk=?,alasan_lainnya=?,kd_diagnosa=?,diagnosa_rujuk=?,nik_dokter=?,dokter_perujuk=?,nik_petugas=?,petugas_entry=?,anamnesis_pemeriksaan=?,kesadaran=?,tekanan_darah=?,nadi=?,suhu=?,respirasi=?,keadaan_umum=?,tingkat_nyeri=?,alergi=?,laboratorium=?,radiologi=?,terapitindakan=?",36,new String[]{
@@ -2554,19 +2566,17 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     try {
                         Valid.tabelKosong(tabMode);
                         URL = link+"/rujukan?nomor="+rs.getString("no_rujuk")+"&create=true";
-                        HttpHeaders headers = new HttpHeaders();
                         headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                         headers.add("X-signature",api.getHmac()); 
                         headers.add("Content-type","application/json");             
                         headers.add("Content-length",null);            
-                        HttpEntity requestEntity = new HttpEntity(headers);
-                        ObjectMapper mapper = new ObjectMapper();
-                        JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                        JsonNode nameNode = root.path("status");
+                        requestEntity = new HttpEntity(headers);
+                        root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                        nameNode = root.path("status");
                         System.out.println("Result : "+root.path("status").asText());
                         if(nameNode.asText().equals("200")){                
-                            JsonNode response = root.path("data");
+                            response = root.path("data");
                             if(response.isArray()){
                                 for(JsonNode list:response){
                                     StatusDirespon=list.path("RUJUKAN").path("STATUS").path("NAMA").asText();
@@ -2776,6 +2786,27 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                             cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
                         Laborat.setText(cari);
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select hasil_radiologi.hasil from hasil_radiologi where hasil_radiologi.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("hasil")+";";
+                        }
+                        Radiologi.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{

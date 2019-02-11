@@ -116,11 +116,23 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -702,7 +714,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         }else if(pemasukan.getText().trim().equals("")||pemasukan.getText().trim().equals("0")){
             Valid.textKosong(pemasukan,"Pengeluaran");
         }else{
-            Sequel.AutoComitFalse();            
+                        
             try {
                 if(Sequel.menyimpantf("pemasukan_lain","?,?,?,?,?,?,?","Pemasukan",7,new String[]{
                     Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
@@ -735,7 +747,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
             }            
-            Sequel.AutoComitTrue();
+            
             tampil();
             emptTeks();
         }
@@ -769,7 +781,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(Keterangan.getText().trim().equals(""))){
             if(tbResep.getSelectedRow()>-1){
-                Sequel.AutoComitFalse();                
+                                
                 try {
                     if(Sequel.queryu2tf("delete from pemasukan_lain where no_masuk=?",1,new String[]{
                         tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
@@ -800,7 +812,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }
-                Sequel.AutoComitTrue();
+                
                 tampil();
                 emptTeks();
             }                
@@ -1001,7 +1013,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             tbResep.requestFocus();
         }else {
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
@@ -1021,7 +1033,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (Exception e) {
                 }                
             }
-            Sequel.AutoComitTrue();
+            
             Valid.panggilUrl("billing/LaporanKeuangan.php?kode="+Nomor.getText()+"&Tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"&nama="+NmKategori.getText().replaceAll(" ","_")+"&petugas="+NmPtg.getText().replaceAll(" ","_")+"&keperluan="+Keperluan.getText().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&nom="+pemasukan.getText().replaceAll(" ","_")+"&kategori="+NmKategori.getText().replaceAll(" ","_"));
         }
         this.setCursor(Cursor.getDefaultCursor());

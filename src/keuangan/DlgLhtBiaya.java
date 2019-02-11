@@ -255,7 +255,7 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -289,7 +289,7 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
                     "'','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran"
                 );         
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());

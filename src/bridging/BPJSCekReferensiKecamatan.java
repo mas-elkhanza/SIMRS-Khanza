@@ -50,6 +50,13 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     private int i=0;
     private BPJSApi api=new BPJSApi();
     private String URL="",link="";
+    private HttpHeaders headers ;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper;
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
+    
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -86,11 +93,23 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Kabupaten.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Kabupaten.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Kabupaten.getText().length()>2){
+                        tampil(Kabupaten.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Kabupaten.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Kabupaten.getText().length()>2){
+                        tampil(Kabupaten.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Kabupaten.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Kabupaten.getText().length()>2){
+                        tampil(Kabupaten.getText());
+                    }
+                }
             });
         } 
         
@@ -133,6 +152,13 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPIBPJS");
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
+	    mapper = new ObjectMapper();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -357,20 +383,11 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     public void tampil(String poli) {
         try {
             URL = link+"/referensi/kecamatan/kabupaten/"+KdKab.getText();	
-
-	    HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

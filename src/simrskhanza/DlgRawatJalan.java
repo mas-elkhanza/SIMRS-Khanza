@@ -800,15 +800,21 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    TampilkanData();
+                    if(TCari.getText().length()>2){
+                        TampilkanData();
+                    }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    TampilkanData();
+                    if(TCari.getText().length()>2){
+                        TampilkanData();
+                    }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    TampilkanData();
+                    if(TCari.getText().length()>2){
+                        TampilkanData();
+                    }
                 }
             });
         }  
@@ -3726,7 +3732,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 }else{
-                    Sequel.AutoComitFalse();
+                    
                     for(i=0;i<tbRawatDr.getRowCount();i++){
                         if(tbRawatDr.getValueAt(i,0).toString().equals("true")){                            
                             if(Sequel.cariRegistrasi(tbRawatDr.getValueAt(i,1).toString())>0){
@@ -3741,7 +3747,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }                            
                     }
-                    Sequel.AutoComitTrue();
+                    
                     tampilDr();
                 }   break;
             case 1:
@@ -3749,7 +3755,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 }else{
-                    Sequel.AutoComitFalse();
+                    
                     for(i=0;i<tbRawatPr.getRowCount();i++){
                         if(tbRawatPr.getValueAt(i,0).toString().equals("true")){
                             if(Sequel.cariRegistrasi(tbRawatPr.getValueAt(i,1).toString())>0){
@@ -3764,7 +3770,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }
                     }
-                    Sequel.AutoComitTrue();
+                    
                     tampilPr();
                 }   break;
             case 2:
@@ -3772,7 +3778,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 }else{
-                    Sequel.AutoComitFalse();
+                    
                     for(i=0;i<tbRawatDrPr.getRowCount();i++){
                         if(tbRawatDrPr.getValueAt(i,0).toString().equals("true")){                            
                             if(Sequel.cariRegistrasi(tbRawatDrPr.getValueAt(i,1).toString())>0){
@@ -3788,7 +3794,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }                            
                     }
-                    Sequel.AutoComitTrue();
+                    
                     tampilDrPr();
                 }   break;
             case 3:

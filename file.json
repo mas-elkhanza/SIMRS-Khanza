@@ -1,53 +1,25 @@
-{
-    "status":200,
-    "success":true,
-    "total":1,
-        "data":[{
-                    "PASIEN":{
-                            "NORM":"150415",
-                            "NAMA":" Ny Rohani",
-                            "KONTAK":" 085399753691",
-                            "ALAMAT":" lembang galung bantaeng",
-                            "TEMPAT_LAHIR":"Bantaeng",
-                            "TANGGAL_LAHIR":"0000-00-00",
-                            "JENIS_KELAMIN":{
-                                "KODE":2,
-                                "NAMA":"Perempuan"
-                            },
-                            "NO_KARTU_JKN":"0002447279403",
-                            "NIK":""
-                    },
-                    "RUJUKAN":{
-                        "NOMOR":"7303010190124201",
-                        "FASKES_ASAL":{
-                            "KODE":"7303010",
-                            "NAMA":"RSU Prof.Dr. A Makkatutu"
-                        },
-                        "FASKES_TUJUAN":{
-                            "KODE":"7371325",
-                            "NAMA":"RSUP. Dr. Wahidin Sudirohusodo"
-                        },
-                        "JENIS_RUJUKAN":{
-                            "KODE":"2",
-                            "NAMA":"Rawat Darurat\/Inap"
-                        },
-                        "ALASAN":{
-                            "KODE":"1",
-                            "NAMA":"Penanganan \/ perawatan lanjut pasien (medik)"
-                        },
-                        "ALASAN_LAINNYA":"post op ca. ovarium bula april 2018 , riwayat kemoterapi sebanyak 6 kali .selesai bulan september 2018. ",
-                        "STATUS":{
-                            "KODE":"1",
-                            "NAMA":"Sudah direspon"
-                        },
-                        "STATUS_DITERIMA":{
-                            "KODE":"1",
-                            "NAMA":"Diterima",
-                            "KETERANGAN":"SILAHKAN RUJUK"
-                        },
-                        "TANGGAL":"2019-01-24 15:38:30",
-                        "DOKTER":{
-                            "NIK":null,
-                            "NAMA":null
-                        },
-                        "PETUGAS":{"NIK":null,"NAMA":null},"DIAGNOSA":""},"KONDISI_UMUM":{"ANAMNESIS_DAN_PEMERIKSAAN_FISIK":"","KESADARAN":{"KODE":"1","NAMA":"Sadar"},"TEKANAN_DARAH":"140\/80 mmHg","FREKUENSI_NADI":"80x\/menit","SUHU":"36,5*C","PERNAPASAN":"26x\/menit","NYERI":{"KODE":"3","NAMA":"Berat"},"KEADAAN_UMUM":"","ALERGI":"tidak ada riwayat alergi"},"PENUNJANG":{"LABORATORIUM":"Hematologi dewasa : Hemoglobin : 12,7 gr%, Leukosit : 13.200\/mm, Eritrosit : 4.020.000\/mm3, Trombosit 708.000\/mm3, Hematokrit 37,3%, MCV: 92.8 fl, \r\ndiff : MCH : 31.6 pg, MCHC : 34.0 G\/DL, Limfosit % : 15.0 %, Neutrofil % : 80.0 %, MXD : 5.0%. \r\nHemostatis : CT : 6:00 menit, BT 2:00 menit \r\nserologi immunologi gol. darah B\r\nKimia klinik GDS 105 mg\/dl, creatinin 0.84 mg\/dl, albumin 2.5 g\/dl,SGOT 14 U\/L, SGPT 17 U\/L\r\n\r\n","RADIOLOGI":"- hepar\/ lien, GB dan pancreas normal\r\n_ kedua ginjal normal\r\n- VU : sulit dinilai, volume urine minimal \r\n_ tampak cairan bebas intra cavum peritoneum\r\ntidak tampak signifikan massa patologik intra abdomen\r\n\r\nKESAN ACITES","TERAPI_ATAU_TINDAKAN":"INJ. ketorolac I amp\/ 8 jam \/ IV, farbion 1 amp\/ 24 jam . inj. forosemid 1 amp\/ 8 jam \r\nranitidin 2x1 curcuma 3x1, sucralfat 3x1 "}}],"detail":"Rujukan ditemukan"}1
+{ 
+  "noKunjungan": null,
+  "noKartu": "0000026975891",
+  "tglDaftar": "03-02-2019",
+  "kdPoli": "001",
+  "keluhan": "-",
+  "kdSadar": "01",
+  "sistole": 0,
+  "diastole": 0,
+  "beratBadan": 0,
+  "tinggiBadan": 0,
+  "respRate": 0,
+  "heartRate": 0,
+  "terapi": "-",
+  "kdStatusPulang": "0",
+  "tglPulang": "03-02-2019",
+  "kdDokter": "254166",
+  "kdDiag1": "Z00.0",
+  "kdDiag2": null,
+  "kdDiag3": null,
+  "kdPoliRujukInternal": null,
+  "rujukLanjut": null,
+  "kdTacc": 0,
+  "alasanTacc": null
+}

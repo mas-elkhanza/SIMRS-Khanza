@@ -105,26 +105,32 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
-                    }
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
+                    }                        
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
                     }
                 }
             });
@@ -434,7 +440,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -460,7 +466,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptPenyakitRanapCaraBayar.jrxml","report","::[ Laporan Penyakit Rawat Inap Per Cara Bayar ]::",
                     "select * from temporary order by no asc",param);
             }
@@ -471,7 +477,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -497,7 +503,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
                                         tabMode2.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptPenyakitRanapCaraBayar.jrxml","report","::[ Laporan Penyakit Rawat Inap Per Cara Bayar ]::",
                     "select * from temporary order by no asc",param);
             }

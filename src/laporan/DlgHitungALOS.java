@@ -336,7 +336,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -361,7 +361,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptHitungAlos.jrxml","report","::[ Data Hitung BOR ]::",
                     "select * from temporary order by no asc",param);
             }
@@ -370,7 +370,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -395,7 +395,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode2.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptHitungAlos.jrxml","report","::[ Data Hitung BOR ]::",
                     "select * from temporary order by no asc",param);
             }

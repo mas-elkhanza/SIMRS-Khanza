@@ -221,22 +221,46 @@ public class PanelDiagnosa extends widget.panelisi {
         if(koneksiDB.cariCepat().equals("aktif")){
             Diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Diagnosa.getText().length()>2){
+                        tampildiagnosa();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Diagnosa.getText().length()>2){
+                        tampildiagnosa();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Diagnosa.getText().length()>2){
+                        tampildiagnosa();
+                    }
+                }
             });
         } 
         
         if(koneksiDB.cariCepat().equals("aktif")){
             Prosedur.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Prosedur.getText().length()>2){
+                        tampilprosedure();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Prosedur.getText().length()>2){
+                        tampilprosedure();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Prosedur.getText().length()>2){
+                        tampilprosedure();
+                    }
+                }
             });
         } 
     }

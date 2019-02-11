@@ -347,7 +347,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 Map<String, Object> param = new HashMap<>();
                 param.put("tanggal",Tgl2.getDate());
@@ -377,7 +377,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
 
-                Sequel.AutoComitTrue();
+                
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
                     param.put("kotars",var.getkabupatenrs());
@@ -390,7 +390,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 Map<String, Object> param = new HashMap<>();
                 param.put("tanggal",Tgl2.getDate());
@@ -420,7 +420,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                                     tabMode2.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
 
-                Sequel.AutoComitTrue();
+                
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
                     param.put("kotars",var.getkabupatenrs());

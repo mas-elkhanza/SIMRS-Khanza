@@ -11,6 +11,7 @@
 
 package simrskhanza;
 
+import inventory.DlgObatPenyakit;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -611,7 +612,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else{
             try {
                 int row=tabMode.getRowCount();
-                Sequel.AutoComitFalse();
+                
                 for(int r=0;r<row;r++){ 
                     if(Valid.SetAngka(tabMode.getValueAt(r,4).toString())>0){
                         if(Sequel.menyimpantf("detail_pemberian_obat","'"+DTPBeri.getSelectedItem()+"','"+
@@ -630,7 +631,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }                        
                     }                           
                 }                
-                Sequel.AutoComitTrue();
+                
                 JOptionPane.showMessageDialog(null,"Proses menyimpan berhasil...!");
                 dispose();
             } catch (Exception ex) {

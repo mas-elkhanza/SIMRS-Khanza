@@ -6025,7 +6025,7 @@ public class PanelResume extends widget.panelisi {
                 }else if(tabModeRegistrasi.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
                     Sequel.queryu("delete from temporary_resume");
-                    Sequel.AutoComitFalse();
+                    
                     for(int i=0;i<tabModeRegistrasi.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resume","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                             "0",tabModeRegistrasi.getValueAt(i,0).toString(),tabModeRegistrasi.getValueAt(i,1).toString(),tabModeRegistrasi.getValueAt(i,2).toString(),
@@ -6034,7 +6034,7 @@ public class PanelResume extends widget.panelisi {
                             "","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();  
                         param.put("namars",var.getnamars());
                         param.put("alamatrs",var.getalamatrs());
