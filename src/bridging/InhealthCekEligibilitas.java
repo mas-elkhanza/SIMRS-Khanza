@@ -3182,7 +3182,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -3190,7 +3190,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -5172,7 +5172,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             klg="ANAK";
         }    
 
-        Sequel.AutoComitFalse();                
+                        
         Sequel.queryu4("insert into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText().replaceAll("KELURAHAN","-")});
         Sequel.queryu4("insert into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText().replaceAll("KECAMATAN","-")});
         Sequel.queryu4("insert into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
@@ -5244,7 +5244,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
 
             inputRegistrasi();                                
         }                
-        Sequel.AutoComitTrue();
+        
     }
     
     private void UpdateUmur(){

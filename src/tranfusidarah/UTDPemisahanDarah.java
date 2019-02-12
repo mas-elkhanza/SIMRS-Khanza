@@ -226,35 +226,83 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             TCariMedis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilMedis();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilMedis();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilMedis();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
             });
             TCariNonMedis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
             });
             Komponen.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilKomponen();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Komponen.getText().length()>2){
+                        tampilKomponen();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilKomponen();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Komponen.getText().length()>2){
+                        tampilKomponen();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilKomponen();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Komponen.getText().length()>2){
+                        tampilKomponen();
+                    }
+                }
             });
             
             TCari.setDocument(new batasInput((byte)100).getKata(TCari));
@@ -1411,7 +1459,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(jml==0){
             Valid.textKosong(Komponen,"Data Komponen Darah");
         }else{            
-            Sequel.AutoComitFalse();
+            
             if(Sequel.menyimpantf("utd_pemisahan_komponen","?,?,?,?","Nomor Donor",4,new String[]{
                 NomorDonor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Dinas.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
@@ -1471,7 +1519,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 tampil();
                 JOptionPane.showMessageDialog(null,"Proses simpan selesai..!!!");
             }
-            Sequel.AutoComitTrue();            
+                        
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1510,7 +1558,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         pscekmedis=koneksi.prepareStatement(sqlpscekmedis);
                         try {
                             pscekmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1530,7 +1578,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_medis_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {
@@ -1554,7 +1602,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         psceknonmedis=koneksi.prepareStatement(sqlpsceknonmedis);
                         try {
                             psceknonmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1574,7 +1622,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_penunjang_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {
@@ -1598,7 +1646,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         pscekmedis=koneksi.prepareStatement(sqlpscekmedis);
                         try {
                             pscekmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1637,7 +1685,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_penunjang_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {

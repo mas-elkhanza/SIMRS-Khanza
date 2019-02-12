@@ -101,11 +101,23 @@ public final class DlgPoli extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(" order by kd_poli");}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil(" order by kd_poli");
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(" order by kd_poli");}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil(" order by kd_poli");
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(" order by kd_poli");}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil(" order by kd_poli");
+                    }
+                }
             });
         }  
     }

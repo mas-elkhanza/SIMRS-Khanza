@@ -122,7 +122,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[I]Perujuk Radiologi Per Tahun","[I]Rekap Bulanan Porsi Diet","[I]Rekap Bulanan Macam Diet","[H]Payment Point 2","[H]Pembayaran Per Akun Bayar 2",
                     "[H]Hapus Nota Salah","[A]Asesmen Awal Rawat Inap","[L]HAIs Per Kamar/Bangsal","[D]PPN Obat","[J]Saldo Akun Per Bulan","[P]Display Antrian Apotek",
                     "[K]Referensi Faskes Sisrute","[K]Referensi Alasan Rujuk Sisrute","[K]Referensi Diagnosa Sisrute","[K]Rujukan Masuk Sisrute","[K]Rujukan Keluar Sisrute",
-                    "[K]Cek SKDP VClaim"
+                    "[K]Cek SKDP VClaim","[D]Data Batch","[I]Kunjungan Lab Ralan","[I]Kunjungan Lab Ranap","[I]Kunjungan Radiologi Ralan","[I]Kunjungan Radiologi Ranap"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -244,6 +244,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -257,7 +258,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 432;i++) {
+        for (i = 0; i < 437;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -757,6 +758,16 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(129);
             }else if(i==431){
                 column.setPreferredWidth(100);
+            }else if(i==432){
+                column.setPreferredWidth(75);
+            }else if(i==433){
+                column.setPreferredWidth(118);
+            }else if(i==434){
+                column.setPreferredWidth(123);
+            }else if(i==435){
+                column.setPreferredWidth(145);
+            }else if(i==436){
+                column.setPreferredWidth(149);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1194,7 +1205,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1668,7 +1679,12 @@ public class DlgUser extends javax.swing.JDialog {
                     "sisrute_referensi_diagnosa='"+tbUser.getValueAt(i,428).toString()+"',"+
                     "sisrute_rujukan_masuk='"+tbUser.getValueAt(i,429).toString()+"',"+
                     "sisrute_rujukan_keluar='"+tbUser.getValueAt(i,430).toString()+"',"+
-                    "bpjs_cek_skdp='"+tbUser.getValueAt(i,431).toString()+"'");
+                    "bpjs_cek_skdp='"+tbUser.getValueAt(i,431).toString()+"',"+
+                    "data_batch='"+tbUser.getValueAt(i,432).toString()+"',"+
+                    "kunjungan_permintaan_lab='"+tbUser.getValueAt(i,433).toString()+"',"+
+                    "kunjungan_permintaan_lab2='"+tbUser.getValueAt(i,434).toString()+"',"+
+                    "kunjungan_permintaan_radiologi='"+tbUser.getValueAt(i,435).toString()+"',"+
+                    "kunjungan_permintaan_radiologi2='"+tbUser.getValueAt(i,436).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1969,7 +1985,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "jumlah_porsi_diet,jumlah_macam_diet,payment_point2,pembayaran_akun_bayar2,hapus_nota_salah,"+
                         "pengkajian_askep,hais_perbangsal,ppn_obat,saldo_akun_perbulan,display_apotek,sisrute_referensi_faskes,"+
                         "sisrute_referensi_alasanrujuk,sisrute_referensi_diagnosa,sisrute_rujukan_masuk,sisrute_rujukan_keluar,"+
-                        "bpjs_cek_skdp from user order by AES_DECRYPT(id_user,'nur')");
+                        "bpjs_cek_skdp,data_batch,kunjungan_permintaan_lab,kunjungan_permintaan_lab2,kunjungan_permintaan_radiologi,"+
+                        "kunjungan_permintaan_radiologi2 from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2412,7 +2429,12 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("sisrute_referensi_diagnosa"),
                                rs.getBoolean("sisrute_rujukan_masuk"),
                                rs.getBoolean("sisrute_rujukan_keluar"),
-                               rs.getBoolean("bpjs_cek_skdp")
+                               rs.getBoolean("bpjs_cek_skdp"),
+                               rs.getBoolean("data_batch"),
+                               rs.getBoolean("kunjungan_permintaan_lab"),
+                               rs.getBoolean("kunjungan_permintaan_lab2"),
+                               rs.getBoolean("kunjungan_permintaan_radiologi"),
+                               rs.getBoolean("kunjungan_permintaan_radiologi2")
                             });
                         }   
                     } catch (Exception e) {
@@ -2845,7 +2867,12 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("sisrute_referensi_diagnosa"),
                            rs.getBoolean("sisrute_rujukan_masuk"),
                            rs.getBoolean("sisrute_rujukan_keluar"),
-                           rs.getBoolean("bpjs_cek_skdp")
+                           rs.getBoolean("bpjs_cek_skdp"),
+                           rs.getBoolean("data_batch"),
+                           rs.getBoolean("kunjungan_permintaan_lab"),
+                           rs.getBoolean("kunjungan_permintaan_lab2"),
+                           rs.getBoolean("kunjungan_permintaan_radiologi"),
+                           rs.getBoolean("kunjungan_permintaan_radiologi2")
                         });
                     }                                             
                  }

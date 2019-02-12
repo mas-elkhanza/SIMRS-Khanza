@@ -274,7 +274,7 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();            
             param.put("tkr1l",(tkr1l+tkr1p));
             param.put("tth1s4l",(tth1s4l+tth1s4p));
@@ -317,7 +317,7 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();   
+               
             Valid.MyReport("rptDkkPenyakitMenularRalan.jrxml","report","::[ Penyakit Menular Rawat Jalan ]::",
                 "select * from temporary order by no asc",param);
         }

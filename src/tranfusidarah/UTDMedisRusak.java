@@ -81,17 +81,6 @@ public class UTDMedisRusak extends javax.swing.JDialog {
 
         nip.setDocument(new batasInput((byte)10).getKata(nip));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
-                @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
-                @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
-            });
-        }
-        
         tabMode2=new DefaultTableModel(null,new Object[]{
                 "Kode Barang","Nama Barang","Jml","Harga","Subtotal","Petugas","","Tanggal","Keterangan"
             }){
@@ -128,13 +117,45 @@ public class UTDMedisRusak extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         TCari2.setDocument(new batasInput((byte)100).getKata(TCari2));    
         if(koneksiDB.cariCepat().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
+            });
             TCari2.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil2();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari2.getText().length()>2){
+                        tampil2();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil2();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari2.getText().length()>2){
+                        tampil2();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil2();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari2.getText().length()>2){
+                        tampil2();
+                    }
+                }
             });
         }
         
@@ -686,7 +707,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (i == JOptionPane.YES_OPTION) {
-                Sequel.AutoComitFalse();
+                
                 for(i=0;i<tbDokter.getRowCount();i++){  
                         try {
                             if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
@@ -700,7 +721,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         } catch (Exception e) {
                         }                    
                 }
-                Sequel.AutoComitTrue();
+                
                 for(index=0;index<tbDokter.getRowCount();index++){   
                     tbDokter.setValueAt(null,index,0);        
                     tbDokter.setValueAt(0,index,4);
@@ -915,7 +936,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }else if(tbKamar.getSelectedRow()<= -1){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from utd_medis_rusak where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+
                 "and nip='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
                 "and tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' "+
@@ -926,7 +947,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"'");
             
             BtnCari2ActionPerformed(evt);
-            Sequel.AutoComitTrue();
+            
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
