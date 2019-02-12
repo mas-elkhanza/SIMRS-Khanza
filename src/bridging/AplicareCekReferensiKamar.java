@@ -49,9 +49,9 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
     private int i=0;
     private BPJSApiAplicare api=new BPJSApiAplicare();
     private String URL="";
-    private HttpHeaders headers ;
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -114,14 +114,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIAPLICARE")+"/rest/ref/kelas";	
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();
+            URL = prop.getProperty("URLAPIAPLICARE")+"/rest/ref/kelas";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }     
@@ -343,6 +336,12 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
 
     public void tampil() {        
         try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metadata");
             //System.out.println("code : "+nameNode.path("code").asText());

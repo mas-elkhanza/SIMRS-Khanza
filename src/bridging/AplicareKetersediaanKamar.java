@@ -59,7 +59,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private String requestJson,URL="",kodeppk=Sequel.cariIsi("select kode_ppk from setting");
     private BPJSApiAplicare api=new BPJSApiAplicare();
-    private HttpHeaders headers = new HttpHeaders();
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper= new ObjectMapper();
     private JsonNode root;
@@ -770,6 +770,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
             Valid.textKosong(TersediaWanita,"Tersedia Wanita");
         }else{
             try {
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -832,6 +833,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
         for(i=0;i<tbJnsPerawatan.getRowCount();i++){ 
             if(tbJnsPerawatan.getValueAt(i,0).toString().equals("true")){
                 try {
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -889,7 +891,8 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
         }else if(TersediaWanita.getText().trim().equals("")){
             Valid.textKosong(TersediaWanita,"Tersedia Wanita");
         }else{
-            try {                
+            try {     
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
