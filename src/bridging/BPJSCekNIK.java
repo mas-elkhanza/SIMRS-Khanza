@@ -34,7 +34,7 @@ public class BPJSCekNIK {
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     private BPJSApi api=new BPJSApi();
-    private HttpHeaders headers = new HttpHeaders();
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();   
     private JsonNode root;
@@ -53,6 +53,7 @@ public class BPJSCekNIK {
     
     public void tampil(String nik) {
         try {
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));

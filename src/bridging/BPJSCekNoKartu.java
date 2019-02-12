@@ -40,7 +40,7 @@ public class BPJSCekNoKartu {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private HttpHeaders headers = new HttpHeaders();
+    private HttpHeaders headers;
         
     public BPJSCekNoKartu(){
         super();
@@ -54,6 +54,7 @@ public class BPJSCekNoKartu {
     
     public void tampil(String nokartu) {
         try {
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
