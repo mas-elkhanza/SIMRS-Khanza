@@ -1985,17 +1985,17 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             Valid.textKosong(btnPoliTujuan,"Poli Tujuan");
         }else if(Keluhan.getText().trim().equals("")){
             Valid.textKosong(Keluhan,"Keluhan");
-        }else if(TinggiBadan.getText().trim().equals("")){
+        }else if(TinggiBadan.getText().trim().equals("")||TinggiBadan.getText().trim().equals("0")){
             Valid.textKosong(TinggiBadan,"Tinggi Badan");
-        }else if(BeratBadan.getText().trim().equals("")){
+        }else if(BeratBadan.getText().trim().equals("")||BeratBadan.getText().trim().equals("0")){
             Valid.textKosong(BeratBadan,"Berat Badan");
-        }else if(Sistole.getText().trim().equals("")){
+        }else if(Sistole.getText().trim().equals("")||Sistole.getText().trim().equals("0")){
             Valid.textKosong(Sistole,"Sistole");
-        }else if(Diastole.getText().trim().equals("")){
+        }else if(Diastole.getText().trim().equals("")||Diastole.getText().trim().equals("0")){
             Valid.textKosong(Diastole,"Diastole");
-        }else if(Respiratory.getText().trim().equals("")){
+        }else if(Respiratory.getText().trim().equals("")||Respiratory.getText().trim().equals("0")){
             Valid.textKosong(Respiratory,"Respiratory Rate");
-        }else if(Heartrate.getText().trim().equals("")){
+        }else if(Heartrate.getText().trim().equals("")||Heartrate.getText().trim().equals("0")){
             Valid.textKosong(Heartrate,"Heart Rate");
         }else if((chkKunjungan.isSelected()==true)&&(NmSadar.getText().equals(""))){
             Valid.textKosong(BtnKesadaran,"Kesadaran");

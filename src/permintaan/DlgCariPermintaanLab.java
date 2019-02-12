@@ -46,6 +46,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private BackgroundMusic music;
+    private Date now;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",
                     NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     
@@ -2557,44 +2558,42 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                nol_detik = "";                
-                Date now = Calendar.getInstance().getTime();
-                nilai_detik = now.getSeconds();
-                if (nilai_detik <= 9) {
-                    nol_detik = "0";
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            nol_detik = "";
+            now = Calendar.getInstance().getTime();
+            nilai_detik = now.getSeconds();
+            if (nilai_detik <= 9) {
+                nol_detik = "0";
+            }
+            
+            detik = nol_detik + Integer.toString(nilai_detik);
+            if(detik.equals("05")){
+                permintaanbaru=0;
+                if(formalarm.contains("ralan")){
+                    tampil();
+                    for(i=0;i<tbLabRalan.getRowCount();i++){
+                        if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
+                            permintaanbaru++;
+                        }
+                    }
                 }
                 
-                detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("05")){ 
-                    permintaanbaru=0; 
-                    if(formalarm.contains("ralan")){
-                        tampil();
-                        for(i=0;i<tbLabRalan.getRowCount();i++){ 
-                            if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
-                                permintaanbaru++;                                                                                                   
-                            }
+                if(formalarm.contains("ranap")){
+                    tampil3();
+                    for(i=0;i<tbLabRanap.getRowCount();i++){
+                        if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
+                            permintaanbaru++;
                         }
                     }
-                    
-                    if(formalarm.contains("ranap")){
-                        tampil3();
-                        for(i=0;i<tbLabRanap.getRowCount();i++){ 
-                            if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
-                                permintaanbaru++;                                                                                                   
-                            }
-                        }
+                }
+                
+                if(permintaanbaru>0){
+                    try {
+                        music = new BackgroundMusic("./suara/alarm.mp3");
+                        music.start();
+                    } catch (Exception ex) {
+                        System.out.println(ex);
                     }
-                      
-                    if(permintaanbaru>0){
-                        try {
-                            music = new BackgroundMusic("./suara/alarm.mp3");
-                            music.start();              
-                        } catch (Exception ex) {
-                            System.out.println(ex);
-                        }
-                    }                        
                 }
             }
         };

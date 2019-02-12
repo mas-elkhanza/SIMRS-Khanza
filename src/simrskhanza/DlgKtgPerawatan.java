@@ -109,14 +109,7 @@ public final class DlgKtgPerawatan extends javax.swing.JDialog {
                     }
                 }
             });
-        } 
-        try {
-            ps=koneksi.prepareStatement(
-                "select * from kategori_perawatan where kd_kategori like ? "+
-                "or nm_kategori like ? ");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        }         
     }
 
     /** This method is called from within the constructor to
@@ -596,13 +589,27 @@ public final class DlgKtgPerawatan extends javax.swing.JDialog {
     private void tampil(){
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
-             }
-        }catch(SQLException e){
+            ps=koneksi.prepareStatement(
+                "select * from kategori_perawatan where kd_kategori like ? "+
+                "or nm_kategori like ? ");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

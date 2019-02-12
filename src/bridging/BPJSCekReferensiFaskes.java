@@ -112,7 +112,8 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
         }   
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");headers = new HttpHeaders();
+            link=prop.getProperty("URLAPIBPJS");
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
