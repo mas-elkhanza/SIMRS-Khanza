@@ -82,7 +82,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PCareCekReferensiProvider provider=new PCareCekReferensiProvider(null,false);
     private PCareCekReferensiKhusus khusus=new PCareCekReferensiKhusus(null,false);
     private PcareApi api=new PcareApi();
-    private String URL="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="";
+    private String URL="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -530,6 +536,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             URL=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -2009,12 +2016,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             Valid.textKosong(BtnDiagnosa1,"Diagnosa 1");
         }else{
             try {
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 kunjungansakit="true";
                 if(JenisKunjungan.getSelectedItem().toString().equals("Kunjungan Sehat")){
@@ -2037,16 +2043,15 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
                              "}";
                 System.out.println(requestJson);
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
+                requestEntity = new HttpEntity(requestJson,headers);
                 requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestJson);
-                JsonNode root = mapper.readTree(requestJson);
-                JsonNode nameNode = root.path("metaData");
+                root = mapper.readTree(requestJson);
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     System.out.println("noUrut : "+response.asText());
                     if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",19,new String[]{
                         TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),ProviderPeserta.getText(),
@@ -2135,12 +2140,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else{
                 try {
                     bodyWithDeleteRequest2();                    
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                     kunjungansakit="true";
                     if(JenisKunjungan.getSelectedItem().toString().equals("Kunjungan Sehat")){
@@ -2163,16 +2167,15 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
                                  "}";
                     System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    requestEntity = new HttpEntity(requestJson,headers);
                     requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
-                    JsonNode nameNode = root.path("metaData");
+                    root = mapper.readTree(requestJson);
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("201")){
-                        JsonNode response = root.path("response").path("message");
+                        response = root.path("response").path("message");
                         System.out.println("noUrut : "+response.asText());
                         if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",19,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),ProviderPeserta.getText(),
@@ -2346,21 +2349,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 dispose();
             }else{
                 try {
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                    HttpEntity requestEntity = new HttpEntity(headers);
+                    requestEntity = new HttpEntity(headers);
                     //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     //System.out.println("code : "+nameNode.path("code").asText());
                     //System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("message").asText().equals("OK")){
-                        JsonNode response = root.path("response");
+                        response = root.path("response");
                         if(response.path("ketAktif").asText().equals("AKTIF")){
                             TPasien.setText(response.path("nama").asText());
                             TglLahir.setText(response.path("tglLahir").asText());
@@ -2810,21 +2811,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     dispose();
                 }else{
                     try {
-                        HttpHeaders headers = new HttpHeaders();
+                        headers = new HttpHeaders();
                         headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                         headers.add("X-Signature",api.getHmac());
-                        String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                         headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                        HttpEntity requestEntity = new HttpEntity(headers);
+                        requestEntity = new HttpEntity(headers);
                         //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                        ObjectMapper mapper = new ObjectMapper();
-                        JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
-                        JsonNode nameNode = root.path("metaData");
+                        root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                        nameNode = root.path("metaData");
                         //System.out.println("code : "+nameNode.path("code").asText());
                         //System.out.println("message : "+nameNode.path("message").asText());
                         if(nameNode.path("message").asText().equals("OK")){
-                            JsonNode response = root.path("response");
+                            response = root.path("response");
                             if(response.path("ketAktif").asText().equals("AKTIF")){
                                 TPasien.setText(response.path("nama").asText());
                                 TglLahir.setText(response.path("tglLahir").asText());
@@ -3159,12 +3158,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void simpanKunjungan() {
         try {
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             if(chkKunjungan.isSelected()==true){
                 if(ChkRujukLanjut.isSelected()==false){
@@ -3202,16 +3200,15 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"alasanTacc\": null" +
                                   "}";
                     System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    requestEntity = new HttpEntity(requestJson,headers);
                     requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
-                    JsonNode nameNode = root.path("metaData");
+                    root = mapper.readTree(requestJson);
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("201")){
-                        JsonNode response = root.path("response").path("message");
+                        response = root.path("response").path("message");
                         if(Sequel.menyimpantf2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",29,new String[]{
                             TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                             NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
@@ -3313,16 +3310,14 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())+"/noUrut/"+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"/kdPoli/"+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())+"/noUrut/"+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"/kdPoli/"+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
@@ -3365,16 +3360,15 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())+"/noUrut/"+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"/kdPoli/"+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            mapper = new ObjectMapper();
+            root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())+"/noUrut/"+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"/kdPoli/"+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){

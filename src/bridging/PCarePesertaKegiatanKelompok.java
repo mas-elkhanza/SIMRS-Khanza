@@ -45,7 +45,13 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
     private int i,a;
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private String URL="",link="";
+    private String URL="",link="",otorisasi;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     private final Properties prop = new Properties();
     private PcareApi api=new PcareApi();
     private StringBuilder htmlContent;
@@ -135,6 +141,7 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -562,17 +569,15 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(tbDokter.getSelectedRow()!= -1){
             try {
                 URL = link+"/kelompok/peserta/"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"/"+tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString();
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                HttpEntity requestEntity = new HttpEntity(headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("200")){

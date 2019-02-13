@@ -48,7 +48,13 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private PcareApi api=new PcareApi();
-    private String URL="",link="";
+    private String URL="",link="",otorisasi;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     
     /** Creates new form DlgKamar
      * @param parent
@@ -116,6 +122,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -357,22 +364,20 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         try {
             URL = link+"/tindakan/kdTkp/"+jenis+"/0/10000";	
 
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-	    HttpEntity requestEntity = new HttpEntity(headers);
+	    requestEntity = new HttpEntity(headers);
 	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
