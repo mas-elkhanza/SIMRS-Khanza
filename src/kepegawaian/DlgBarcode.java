@@ -99,13 +99,7 @@ public final class DlgBarcode extends javax.swing.JDialog {
                 }
             });
         }  
-        try{
-            ps=koneksi.prepareStatement("select  pegawai.id,pegawai.nik,pegawai.nama,barcode.barcode  from pegawai "+
-                    "left outer join barcode on pegawai.id=barcode.id where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like ? or  pegawai.stts_aktif<>'KELUAR' and pegawai.nama like ? "+
-                    "or  pegawai.stts_aktif<>'KELUAR' and barcode.barcode like ? ");
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        
     }
     
     /** This method is called from within the constructor to
@@ -707,18 +701,31 @@ public final class DlgBarcode extends javax.swing.JDialog {
 
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4)};
-                tabMode.addRow(data);
-             }
+        try{ 
+            ps=koneksi.prepareStatement("select  pegawai.id,pegawai.nik,pegawai.nama,barcode.barcode  from pegawai "+
+                    "left outer join barcode on pegawai.id=barcode.id where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like ? or  pegawai.stts_aktif<>'KELUAR' and pegawai.nama like ? "+
+                    "or  pegawai.stts_aktif<>'KELUAR' and barcode.barcode like ? ");
+            try{
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),
+                        rs.getString(3),rs.getString(4)
+                    });
+                 }
+            }catch(Exception ex){
+                System.out.println(ex);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }

@@ -64,7 +64,7 @@ import org.springframework.web.client.RestTemplate;
  * @author perpustakaan
  */
 public final class PCareDataPendaftaran extends javax.swing.JDialog {
-    private DefaultTableModel tabMode;
+    private DefaultTableModel tabMode,tabMode2;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -82,7 +82,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PCareCekReferensiProvider provider=new PCareCekReferensiProvider(null,false);
     private PCareCekReferensiKhusus khusus=new PCareCekReferensiKhusus(null,false);
     private PcareApi api=new PcareApi();
-    private String URL="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="";
+    private String URL="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi;
+    private HttpHeaders headers,headers2;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -98,12 +104,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
-        tbObat.setModel(tabMode);
-        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbPendaftaran.setModel(tabMode);
+        tbPendaftaran.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPendaftaran.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 19; i++) {
-            TableColumn column = tbObat.getColumnModel().getColumn(i);
+            TableColumn column = tbPendaftaran.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
             }else if(i==1){
@@ -135,7 +141,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(i==13){
                 column.setPreferredWidth(35);
             }else if(i==14){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(110);
             }else if(i==15){
                 column.setPreferredWidth(65);
             }else if(i==16){
@@ -147,7 +153,88 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 column.setPreferredWidth(45);
             }
         }
-        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        tbPendaftaran.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode2=new DefaultTableModel(null,new Object[]{
+                "No.Rawat","No.Kunjungan","Tgl.Daftar","No.RM","Nm.Pasien","No.Kartu",
+                "Kd.Poli","Nm.Poli","Keluhan","Kd.Sadar","Kesadaran","Sis","Dias","B.B.",
+                "T.B.","Respiratory Rate","Heart Rate","Terapi","Kd.Pulang","Stts.Pulang",
+                "Tgl.Pulang","Kode Dokter","Nama Dokter","ICDX 1","Nama Diagnosa 1", 
+                "ICDX 2","Nama Diagnosa 2","ICDX 3", "Nama Diagnosa 3"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbKunjungan.setModel(tabMode2);
+        tbKunjungan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbKunjungan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 29; i++) {
+            TableColumn column = tbKunjungan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(105);
+            }else if(i==1){
+                column.setPreferredWidth(125);
+            }else if(i==2){
+                column.setPreferredWidth(65);
+            }else if(i==3){
+                column.setPreferredWidth(70);
+            }else if(i==4){
+                column.setPreferredWidth(170);
+            }else if(i==5){
+                column.setPreferredWidth(90);
+            }else if(i==6){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==7){
+                column.setPreferredWidth(140);
+            }else if(i==8){
+                column.setPreferredWidth(140);
+            }else if(i==9){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==10){
+                column.setPreferredWidth(100);
+            }else if(i==11){
+                column.setPreferredWidth(35);
+            }else if(i==12){
+                column.setPreferredWidth(35);
+            }else if(i==13){
+                column.setPreferredWidth(35);
+            }else if(i==14){
+                column.setPreferredWidth(35);
+            }else if(i==15){
+                column.setPreferredWidth(110);
+            }else if(i==16){
+                column.setPreferredWidth(65);
+            }else if(i==17){
+                column.setPreferredWidth(140);
+            }else if(i==18){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setPreferredWidth(65);
+            }else if(i==21){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==22){
+                column.setPreferredWidth(140);
+            }else if(i==23){
+                column.setPreferredWidth(45);
+            }else if(i==24){
+                column.setPreferredWidth(150);
+            }else if(i==25){
+                column.setPreferredWidth(45);
+            }else if(i==26){
+                column.setPreferredWidth(150);
+            }else if(i==27){
+                column.setPreferredWidth(45);
+            }else if(i==28){
+                column.setPreferredWidth(150);
+            }
+        }
+        tbKunjungan.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
@@ -530,6 +617,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             URL=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -664,7 +752,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         AlasanTACC = new widget.ComboBox();
         internalFrame4 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbObat = new widget.Table();
+        tbPendaftaran = new widget.Table();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
         DTPCari1 = new widget.Tanggal();
@@ -675,6 +763,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+        internalFrame5 = new widget.InternalFrame();
+        Scroll2 = new widget.ScrollPane();
+        tbKunjungan = new widget.Table();
+        panelGlass10 = new widget.panelisi();
+        jLabel42 = new widget.Label();
+        DTPCari3 = new widget.Tanggal();
+        jLabel43 = new widget.Label();
+        DTPCari4 = new widget.Tanggal();
+        jLabel9 = new widget.Label();
+        TCari1 = new widget.TextBox();
+        BtnCari1 = new widget.Button();
+        jLabel10 = new widget.Label();
+        LCount1 = new widget.Label();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -784,7 +885,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalDaftar.setEditable(false);
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-02-2019" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1103,7 +1204,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalKunjungan.setEditable(false);
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-02-2019" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1209,7 +1310,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalPulang.setEditable(false);
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-02-2019" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1417,7 +1518,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalEstRujuk.setEditable(false);
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-02-2019" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -1740,20 +1841,20 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setName("tbObat"); // NOI18N
-        tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbPendaftaran.setAutoCreateRowSorter(true);
+        tbPendaftaran.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPendaftaran.setName("tbPendaftaran"); // NOI18N
+        tbPendaftaran.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbObatMouseClicked(evt);
+                tbPendaftaranMouseClicked(evt);
             }
         });
-        tbObat.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbPendaftaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbObatKeyPressed(evt);
+                tbPendaftaranKeyPressed(evt);
             }
         });
-        Scroll.setViewportView(tbObat);
+        Scroll.setViewportView(tbPendaftaran);
 
         internalFrame4.add(Scroll, java.awt.BorderLayout.CENTER);
 
@@ -1762,14 +1863,14 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel19.setText("Tgl. SEP :");
+        jLabel19.setText("Tgl.Daftar :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
+        jLabel19.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1784,7 +1885,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1797,7 +1898,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(195, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -1835,7 +1936,112 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.addTab("Data Pendaftaran PCare", internalFrame4);
+        TabRawat.addTab("Data Pendaftaran", internalFrame4);
+
+        internalFrame5.setBorder(null);
+        internalFrame5.setName("internalFrame5"); // NOI18N
+        internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+
+        tbKunjungan.setAutoCreateRowSorter(true);
+        tbKunjungan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKunjungan.setName("tbKunjungan"); // NOI18N
+        tbKunjungan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbKunjunganMouseClicked(evt);
+            }
+        });
+        tbKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbKunjunganKeyPressed(evt);
+            }
+        });
+        Scroll2.setViewportView(tbKunjungan);
+
+        internalFrame5.add(Scroll2, java.awt.BorderLayout.CENTER);
+
+        panelGlass10.setBorder(null);
+        panelGlass10.setName("panelGlass10"); // NOI18N
+        panelGlass10.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        jLabel42.setText("Tgl.Kunjungan :");
+        jLabel42.setName("jLabel42"); // NOI18N
+        jLabel42.setPreferredSize(new java.awt.Dimension(85, 23));
+        panelGlass10.add(jLabel42);
+
+        DTPCari3.setEditable(false);
+        DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
+        DTPCari3.setDisplayFormat("dd-MM-yyyy");
+        DTPCari3.setName("DTPCari3"); // NOI18N
+        DTPCari3.setOpaque(false);
+        DTPCari3.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass10.add(DTPCari3);
+
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel43.setText("s.d.");
+        jLabel43.setName("jLabel43"); // NOI18N
+        jLabel43.setPreferredSize(new java.awt.Dimension(23, 23));
+        panelGlass10.add(jLabel43);
+
+        DTPCari4.setEditable(false);
+        DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2019" }));
+        DTPCari4.setDisplayFormat("dd-MM-yyyy");
+        DTPCari4.setName("DTPCari4"); // NOI18N
+        DTPCari4.setOpaque(false);
+        DTPCari4.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass10.add(DTPCari4);
+
+        jLabel9.setText("Key Word :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass10.add(jLabel9);
+
+        TCari1.setName("TCari1"); // NOI18N
+        TCari1.setPreferredSize(new java.awt.Dimension(175, 23));
+        TCari1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCari1KeyPressed(evt);
+            }
+        });
+        panelGlass10.add(TCari1);
+
+        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari1.setMnemonic('3');
+        BtnCari1.setToolTipText("Alt+3");
+        BtnCari1.setName("BtnCari1"); // NOI18N
+        BtnCari1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCari1ActionPerformed(evt);
+            }
+        });
+        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCari1KeyPressed(evt);
+            }
+        });
+        panelGlass10.add(BtnCari1);
+
+        jLabel10.setText("Record :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelGlass10.add(jLabel10);
+
+        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount1.setText("0");
+        LCount1.setName("LCount1"); // NOI18N
+        LCount1.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass10.add(LCount1);
+
+        internalFrame5.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
+
+        TabRawat.addTab("Data Kunjungan", internalFrame5);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1985,17 +2191,17 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             Valid.textKosong(btnPoliTujuan,"Poli Tujuan");
         }else if(Keluhan.getText().trim().equals("")){
             Valid.textKosong(Keluhan,"Keluhan");
-        }else if(TinggiBadan.getText().trim().equals("")){
+        }else if(TinggiBadan.getText().trim().equals("")||TinggiBadan.getText().trim().equals("0")){
             Valid.textKosong(TinggiBadan,"Tinggi Badan");
-        }else if(BeratBadan.getText().trim().equals("")){
+        }else if(BeratBadan.getText().trim().equals("")||BeratBadan.getText().trim().equals("0")){
             Valid.textKosong(BeratBadan,"Berat Badan");
-        }else if(Sistole.getText().trim().equals("")){
+        }else if(Sistole.getText().trim().equals("")||Sistole.getText().trim().equals("0")){
             Valid.textKosong(Sistole,"Sistole");
-        }else if(Diastole.getText().trim().equals("")){
+        }else if(Diastole.getText().trim().equals("")||Diastole.getText().trim().equals("0")){
             Valid.textKosong(Diastole,"Diastole");
-        }else if(Respiratory.getText().trim().equals("")){
+        }else if(Respiratory.getText().trim().equals("")||Respiratory.getText().trim().equals("0")){
             Valid.textKosong(Respiratory,"Respiratory Rate");
-        }else if(Heartrate.getText().trim().equals("")){
+        }else if(Heartrate.getText().trim().equals("")||Heartrate.getText().trim().equals("0")){
             Valid.textKosong(Heartrate,"Heart Rate");
         }else if((chkKunjungan.isSelected()==true)&&(NmSadar.getText().equals(""))){
             Valid.textKosong(BtnKesadaran,"Kesadaran");
@@ -2009,12 +2215,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             Valid.textKosong(BtnDiagnosa1,"Diagnosa 1");
         }else{
             try {
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 kunjungansakit="true";
                 if(JenisKunjungan.getSelectedItem().toString().equals("Kunjungan Sehat")){
@@ -2037,16 +2242,15 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
                              "}";
                 System.out.println(requestJson);
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
+                requestEntity = new HttpEntity(requestJson,headers);
                 requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestJson);
-                JsonNode root = mapper.readTree(requestJson);
-                JsonNode nameNode = root.path("metaData");
+                root = mapper.readTree(requestJson);
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     System.out.println("noUrut : "+response.asText());
                     if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",19,new String[]{
                         TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),ProviderPeserta.getText(),
@@ -2068,6 +2272,18 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 System.out.println("Notifikasi Bridging : "+ex);
                 if(ex.toString().contains("UnknownHostException")){
                     JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                }else if(ex.toString().contains("500")){
+                    JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                }else if(ex.toString().contains("401")){
+                    JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                }else if(ex.toString().contains("408")){
+                    JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                }else if(ex.toString().contains("424")){
+                    JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                }else if(ex.toString().contains("412")){
+                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                }else if(ex.toString().contains("204")){
+                    JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                 }
             } 
         }
@@ -2088,13 +2304,25 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbObat.getSelectedRow()!= -1){
+        if(tbPendaftaran.getSelectedRow()!= -1){
             try {
                 bodyWithDeleteRequest();
             }catch (Exception ex) {
                 System.out.println("Notifikasi Bridging : "+ex);
                 if(ex.toString().contains("UnknownHostException")){
                     JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                }else if(ex.toString().contains("500")){
+                    JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                }else if(ex.toString().contains("401")){
+                    JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                }else if(ex.toString().contains("408")){
+                    JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                }else if(ex.toString().contains("424")){
+                    JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                }else if(ex.toString().contains("412")){
+                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                }else if(ex.toString().contains("204")){
+                    JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                 }
             }
         }else{
@@ -2111,7 +2339,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(tbObat.getSelectedRow()!= -1){
+        if(tbPendaftaran.getSelectedRow()!= -1){
             if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
                 Valid.textKosong(TNoRw,"Pasien");
             }else if(NoKartu.getText().trim().equals("")){
@@ -2135,12 +2363,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else{
                 try {
                     bodyWithDeleteRequest2();                    
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                     kunjungansakit="true";
                     if(JenisKunjungan.getSelectedItem().toString().equals("Kunjungan Sehat")){
@@ -2163,16 +2390,15 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
                                  "}";
                     System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    requestEntity = new HttpEntity(requestJson,headers);
                     requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
-                    JsonNode nameNode = root.path("metaData");
+                    root = mapper.readTree(requestJson);
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("201")){
-                        JsonNode response = root.path("response").path("message");
+                        response = root.path("response").path("message");
                         System.out.println("noUrut : "+response.asText());
                         if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",19,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),ProviderPeserta.getText(),
@@ -2194,6 +2420,18 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     System.out.println("Notifikasi Bridging : "+ex);
                     if(ex.toString().contains("UnknownHostException")){
                         JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                    }else if(ex.toString().contains("500")){
+                        JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                    }else if(ex.toString().contains("401")){
+                        JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                    }else if(ex.toString().contains("408")){
+                        JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                    }else if(ex.toString().contains("424")){
+                        JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                    }else if(ex.toString().contains("412")){
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                    }else if(ex.toString().contains("204")){
+                        JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }
                 }
             }
@@ -2231,33 +2469,65 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-            Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPCarePendaftaran.jrxml","report","::[ Data Bridging SEP ]::",
-                 "select pcare_pendaftaran.no_rawat,pcare_pendaftaran.tglDaftar,pcare_pendaftaran.no_rkm_medis,"+
-                "pcare_pendaftaran.nm_pasien,pcare_pendaftaran.kdProviderPeserta,pcare_pendaftaran.noKartu,"+
-                "pcare_pendaftaran.kdPoli,pcare_pendaftaran.nmPoli,pcare_pendaftaran.keluhan,pcare_pendaftaran.kunjSakit,"+
-                "pcare_pendaftaran.sistole,pcare_pendaftaran.diastole,pcare_pendaftaran.beratBadan,pcare_pendaftaran.tinggiBadan,"+
-                "pcare_pendaftaran.respRate,pcare_pendaftaran.heartRate,pcare_pendaftaran.rujukBalik,pcare_pendaftaran.kdTkp,"+
-                "pcare_pendaftaran.noUrut from pcare_pendaftaran where "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.noKartu like '%"+TCari.getText().trim()+"%' or "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.nmPoli like '%"+TCari.getText().trim()+"%' or "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.kunjSakit like '%"+TCari.getText().trim()+"%' or "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.kdTkp like '%"+TCari.getText().trim()+"%' or "+
-                "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.keluhan like '%"+TCari.getText().trim()+"%' order by pcare_pendaftaran.tglDaftar",param);
+        if(TabRawat.getSelectedIndex()==1){
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){            
+                Map<String, Object> param = new HashMap<>(); 
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptPCarePendaftaran.jrxml","report","::[ Data Pendaftaran PCare ]::",
+                    "select pcare_pendaftaran.no_rawat,pcare_pendaftaran.tglDaftar,pcare_pendaftaran.no_rkm_medis,"+
+                    "pcare_pendaftaran.nm_pasien,pcare_pendaftaran.kdProviderPeserta,pcare_pendaftaran.noKartu,"+
+                    "pcare_pendaftaran.kdPoli,pcare_pendaftaran.nmPoli,pcare_pendaftaran.keluhan,pcare_pendaftaran.kunjSakit,"+
+                    "pcare_pendaftaran.sistole,pcare_pendaftaran.diastole,pcare_pendaftaran.beratBadan,pcare_pendaftaran.tinggiBadan,"+
+                    "pcare_pendaftaran.respRate,pcare_pendaftaran.heartRate,pcare_pendaftaran.rujukBalik,pcare_pendaftaran.kdTkp,"+
+                    "pcare_pendaftaran.noUrut from pcare_pendaftaran where "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.noKartu like '%"+TCari.getText().trim()+"%' or "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.nmPoli like '%"+TCari.getText().trim()+"%' or "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.kunjSakit like '%"+TCari.getText().trim()+"%' or "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.kdTkp like '%"+TCari.getText().trim()+"%' or "+
+                    "pcare_pendaftaran.tglDaftar between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_pendaftaran.keluhan like '%"+TCari.getText().trim()+"%' order by pcare_pendaftaran.tglDaftar",param);
+            }
+        }else if(TabRawat.getSelectedIndex()==2){
+            if(tabMode2.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                TCari1.requestFocus();
+            }else if(tabMode2.getRowCount()!=0){            
+                Map<String, Object> param = new HashMap<>(); 
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptPCareKunjungan.jrxml","report","::[ Data Kunjungan PCare ]::",
+                    "select no_rawat, noKunjungan, tglDaftar, no_rkm_medis, nm_pasien, noKartu,"+
+                    "kdPoli, nmPoli, keluhan, kdSadar, nmSadar, sistole, diastole, beratBadan, "+
+                    "tinggiBadan, respRate, heartRate, terapi, kdStatusPulang, nmStatusPulang, "+
+                    "tglPulang, kdDokter, nmDokter, kdDiag1, nmDiag1, kdDiag2, nmDiag2, kdDiag3, "+
+                    "nmDiag3 from pcare_kunjungan_umum where "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and no_rawat like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and noKunjungan like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and no_rkm_medis like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and nm_pasien like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and noKartu like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and nmPoli like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and nmSadar like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and nmStatusPulang like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and nmDokter like '%"+TCari1.getText().trim()+"%' or "+
+                    "tglDaftar between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' and nmDiag1 like '%"+TCari1.getText().trim()+"%' order by tglDaftar",param);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2294,7 +2564,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        TabRawatMouseClicked(null);
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -2306,7 +2576,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
+    private void tbPendaftaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPendaftaranMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
                getData();
@@ -2316,9 +2586,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                TabRawat.setSelectedIndex(0);
             }
         }
-}//GEN-LAST:event_tbObatMouseClicked
+}//GEN-LAST:event_tbPendaftaranMouseClicked
 
-    private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
+    private void tbPendaftaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPendaftaranKeyPressed
         if(tabMode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
@@ -2332,7 +2602,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 }
             }   
         }
-}//GEN-LAST:event_tbObatKeyPressed
+}//GEN-LAST:event_tbPendaftaranKeyPressed
 
     private void KeluhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanKeyPressed
         Valid.pindah(evt,btnPoliTujuan,TinggiBadan);
@@ -2346,21 +2616,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 dispose();
             }else{
                 try {
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                    HttpEntity requestEntity = new HttpEntity(headers);
+                    requestEntity = new HttpEntity(headers);
                     //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     //System.out.println("code : "+nameNode.path("code").asText());
                     //System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("message").asText().equals("OK")){
-                        JsonNode response = root.path("response");
+                        response = root.path("response");
                         if(response.path("ketAktif").asText().equals("AKTIF")){
                             TPasien.setText(response.path("nama").asText());
                             TglLahir.setText(response.path("tglLahir").asText());
@@ -2378,7 +2646,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                     if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server PCARE terputus...!");
+                        JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                    }else if(ex.toString().contains("500")){
+                        JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                    }else if(ex.toString().contains("401")){
+                        JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                    }else if(ex.toString().contains("408")){
+                        JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                    }else if(ex.toString().contains("424")){
+                        JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                    }else if(ex.toString().contains("412")){
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                    }else if(ex.toString().contains("204")){
+                        JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }
                 }                 
             } 
@@ -2401,6 +2681,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
             tampil();
+        }else if(TabRawat.getSelectedIndex()==2){
+            tampil2();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -2810,21 +3092,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     dispose();
                 }else{
                     try {
-                        HttpHeaders headers = new HttpHeaders();
+                        headers = new HttpHeaders();
                         headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                         headers.add("X-Signature",api.getHmac());
-                        String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                         headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                        HttpEntity requestEntity = new HttpEntity(headers);
+                        requestEntity = new HttpEntity(headers);
                         //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                        ObjectMapper mapper = new ObjectMapper();
-                        JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
-                        JsonNode nameNode = root.path("metaData");
+                        root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                        nameNode = root.path("metaData");
                         //System.out.println("code : "+nameNode.path("code").asText());
                         //System.out.println("message : "+nameNode.path("message").asText());
                         if(nameNode.path("message").asText().equals("OK")){
-                            JsonNode response = root.path("response");
+                            response = root.path("response");
                             if(response.path("ketAktif").asText().equals("AKTIF")){
                                 TPasien.setText(response.path("nama").asText());
                                 TglLahir.setText(response.path("tglLahir").asText());
@@ -2842,7 +3122,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
                         if(ex.toString().contains("UnknownHostException")){
-                            JOptionPane.showMessageDialog(rootPane,"Koneksi ke server PCARE terputus...!");
+                            JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                        }else if(ex.toString().contains("500")){
+                            JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                        }else if(ex.toString().contains("401")){
+                            JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                        }else if(ex.toString().contains("408")){
+                            JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                        }else if(ex.toString().contains("424")){
+                            JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                        }else if(ex.toString().contains("412")){
+                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                        }else if(ex.toString().contains("204")){
+                            JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                         }
                     }                 
                 } 
@@ -2856,6 +3148,32 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void chkKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chkKunjunganKeyPressed
         Valid.pindah(evt,Heartrate,TanggalKunjungan);
     }//GEN-LAST:event_chkKunjunganKeyPressed
+
+    private void tbKunjunganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKunjunganMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbKunjunganMouseClicked
+
+    private void tbKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKunjunganKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbKunjunganKeyPressed
+
+    private void TCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCari1KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            BtnCari1ActionPerformed(null);
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            BtnCari1.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnKeluar.requestFocus();
+        }
+    }//GEN-LAST:event_TCari1KeyPressed
+
+    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
+        tampil2();
+    }//GEN-LAST:event_BtnCari1ActionPerformed
+
+    private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCari1KeyPressed
 
     /**
     * @param args the command line arguments
@@ -2879,6 +3197,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnCari1;
     private widget.Button BtnDiagnosa1;
     private widget.Button BtnDiagnosa2;
     private widget.Button BtnDiagnosa3;
@@ -2900,6 +3219,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.CekBox ChkRujukLanjut;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.Tanggal DTPCari3;
+    private widget.Tanggal DTPCari4;
     private widget.TextBox Diastole;
     private widget.PanelBiasa FormInput;
     private widget.TextBox Heartrate;
@@ -2921,6 +3242,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.TextBox KdTenagaMedis;
     private widget.TextBox Keluhan;
     private widget.Label LCount;
+    private widget.Label LCount1;
     private widget.Label LabelPoli;
     private widget.Label LabelPoli10;
     private widget.Label LabelPoli11;
@@ -2952,10 +3274,12 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.TextBox Respiratory;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
+    private widget.ScrollPane Scroll2;
     private widget.TextBox Sistole;
     private widget.TextBox Status;
     private widget.ComboBox TACC;
     private widget.TextBox TCari;
+    private widget.TextBox TCari1;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
@@ -2975,6 +3299,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame4;
+    private widget.InternalFrame internalFrame5;
+    private widget.Label jLabel10;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
@@ -3004,13 +3330,18 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.Label jLabel4;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
+    private widget.Label jLabel42;
+    private widget.Label jLabel43;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
+    private widget.Label jLabel9;
+    private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private widget.Table tbObat;
+    private widget.Table tbKunjungan;
+    private widget.Table tbPendaftaran;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {        
@@ -3085,6 +3416,86 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             System.out.println("Notif : "+e);
         }
     }
+    
+    public void tampil2() {        
+        Valid.tabelKosong(tabMode2);
+        try {
+            ps=koneksi.prepareStatement(
+                "select no_rawat, noKunjungan, tglDaftar, no_rkm_medis, nm_pasien, noKartu,"+
+                "kdPoli, nmPoli, keluhan, kdSadar, nmSadar, sistole, diastole, beratBadan, "+
+                "tinggiBadan, respRate, heartRate, terapi, kdStatusPulang, nmStatusPulang, "+
+                "tglPulang, kdDokter, nmDokter, kdDiag1, nmDiag1, kdDiag2, nmDiag2, kdDiag3, "+
+                "nmDiag3 from pcare_kunjungan_umum where "+
+                "tglDaftar between ? and ? and no_rawat like ? or "+
+                "tglDaftar between ? and ? and noKunjungan like ? or "+
+                "tglDaftar between ? and ? and no_rkm_medis like ? or "+
+                "tglDaftar between ? and ? and nm_pasien like ? or "+
+                "tglDaftar between ? and ? and noKartu like ? or "+
+                "tglDaftar between ? and ? and nmPoli like ? or "+
+                "tglDaftar between ? and ? and nmSadar like ? or "+
+                "tglDaftar between ? and ? and nmStatusPulang like ? or "+
+                "tglDaftar between ? and ? and nmDokter like ? or "+
+                "tglDaftar between ? and ? and nmDiag1 like ? order by tglDaftar");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari1.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari1.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari1.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari1.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari1.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(17,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(18,"%"+TCari1.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(20,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(21,"%"+TCari1.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(23,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(24,"%"+TCari1.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(26,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(27,"%"+TCari1.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(DTPCari3.getSelectedItem()+""));
+                ps.setString(29,Valid.SetTgl(DTPCari4.getSelectedItem()+""));
+                ps.setString(30,"%"+TCari1.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode2.addRow(new String[]{
+                        rs.getString("no_rawat"),rs.getString("noKunjungan"),rs.getString("tglDaftar"),
+                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("noKartu"),
+                        rs.getString("kdPoli"),rs.getString("nmPoli"),rs.getString("keluhan"),
+                        rs.getString("kdSadar"),rs.getString("nmSadar"),rs.getString("sistole"),
+                        rs.getString("diastole"),rs.getString("beratBadan"),rs.getString("tinggiBadan"),
+                        rs.getString("respRate"),rs.getString("heartRate"),rs.getString("terapi"),
+                        rs.getString("kdStatusPulang"),rs.getString("nmStatusPulang"),rs.getString("tglPulang"),
+                        rs.getString("kdDokter"),rs.getString("nmDokter"),rs.getString("kdDiag1"),
+                        rs.getString("nmDiag1"),rs.getString("kdDiag2"),rs.getString("nmDiag2"),
+                        rs.getString("kdDiag3"),rs.getString("nmDiag3")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+    }
 
     private void isRawat() {
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());  
@@ -3133,39 +3544,38 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }
     
     private void getData() {
-        if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+        if(tbPendaftaran.getSelectedRow()!= -1){
+            TNoRw.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),0).toString());
+            TNoRM.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),2).toString());
+            TPasien.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),3).toString());
             TglLahir.setText(Sequel.cariIsi("select tgl_lahir from pasien where no_rkm_medis=?",TNoRM.getText()));
             JK.setText(Sequel.cariIsi("select jk from pasien where no_rkm_medis=?",TNoRM.getText()).replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
             JenisPeserta.setText(Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
-            ProviderPeserta.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            NoKartu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            KdPoliTujuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            NmPoliTujuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Keluhan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            JenisKunjungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Sistole.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Diastole.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            BeratBadan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            TinggiBadan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Respiratory.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Heartrate.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Perawatan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Valid.SetTgl(TanggalDaftar,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            ProviderPeserta.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),4).toString());
+            NoKartu.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString());
+            KdPoliTujuan.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString());
+            NmPoliTujuan.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),7).toString());
+            Keluhan.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),8).toString());
+            JenisKunjungan.setSelectedItem(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),9).toString());
+            Sistole.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),10).toString());
+            Diastole.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),11).toString());
+            BeratBadan.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),12).toString());
+            TinggiBadan.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),13).toString());
+            Respiratory.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),14).toString());
+            Heartrate.setText(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),15).toString());
+            Perawatan.setSelectedItem(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),17).toString());
+            Valid.SetTgl(TanggalDaftar,tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),1).toString());
         }
     }
 
     private void simpanKunjungan() {
         try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
-            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            headers2 = new HttpHeaders();
+            headers2.setContentType(MediaType.APPLICATION_JSON);
+            headers2.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+            headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+            headers2.add("X-Signature",api.getHmac());
+            headers2.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             if(chkKunjungan.isSelected()==true){
                 if(ChkRujukLanjut.isSelected()==false){
                     diagnosa2="null";
@@ -3190,33 +3600,32 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"respRate\": "+Respiratory.getText()+"," +
                                     "\"heartRate\": "+Heartrate.getText()+"," +
                                     "\"terapi\": \""+Terapi.getText()+"\"," +
-                                    "\"kdStatusPulang\": \""+KdStatusPulang.getText()+"\"," +
+                                    "\"kdStatusPulang\": \"3\"," +
                                     "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                     "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
                                     "\"kdDiag1\": \""+KdDiagnosa1.getText()+"\"," +
                                     "\"kdDiag2\": "+diagnosa2+"," +
                                     "\"kdDiag3\": "+diagnosa3+"," +
-                                    "\"kdPoliRujukInternal\": null," +
+                                    "\"kdPoliRujukInternal\":null," +
                                     "\"rujukLanjut\": null," +
                                     "\"kdTacc\": 0," +
                                     "\"alasanTacc\": null" +
                                   "}";
                     System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    requestEntity = new HttpEntity(requestJson,headers2);
                     requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
-                    JsonNode nameNode = root.path("metaData");
+                    root = mapper.readTree(requestJson);
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("201")){
-                        JsonNode response = root.path("response").path("message");
+                        response = root.path("response").path("message");
                         if(Sequel.menyimpantf2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",29,new String[]{
                             TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
                             NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
                             Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
-                            Valid.MaxTeks(Terapi.getText(),400),KdStatusPulang.getText(),NmStatusPulang.getText(),Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                            Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
                             KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
                             Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
                         })==true){
@@ -3269,6 +3678,18 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+            }else if(ex.toString().contains("401")){
+                JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+            }else if(ex.toString().contains("408")){
+                JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+            }else if(ex.toString().contains("424")){
+                JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+            }else if(ex.toString().contains("412")){
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+            }else if(ex.toString().contains("204")){
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
         }                         
     }
@@ -3313,20 +3734,18 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())+"/noUrut/"+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"/kdPoli/"+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),1).toString())+"/noUrut/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),18).toString()+"/kdPoli/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
-                Sequel.meghapus("pcare_pendaftaran","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Sequel.meghapus("pcare_pendaftaran","no_rawat",tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),0).toString());
                 tampil();
                 emptTeks();
             }else{
@@ -3365,20 +3784,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())+"/noUrut/"+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"/kdPoli/"+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            mapper = new ObjectMapper();
+            root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),1).toString())+"/noUrut/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),18).toString()+"/kdPoli/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){
-                Sequel.meghapus("pcare_pendaftaran","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Sequel.meghapus("pcare_pendaftaran","no_rawat",tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),0).toString());
             }else{
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }

@@ -36,7 +36,7 @@ public class BPJSCekNIK {
     private BPJSApi api=new BPJSApi();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();   
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -45,14 +45,7 @@ public class BPJSCekNIK {
         super();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            link=prop.getProperty("URLAPIBPJS");
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();            
+            link=prop.getProperty("URLAPIBPJS");   
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -60,6 +53,12 @@ public class BPJSCekNIK {
     
     public void tampil(String nik) {
         try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
             URL = link+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");

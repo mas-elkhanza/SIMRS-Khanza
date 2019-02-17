@@ -46,6 +46,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private BackgroundMusic music;
     private ResultSet rs,rs2;
+    private Date now;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",diagnosa="";
     
     /** Creates new form DlgProgramStudi
@@ -2299,44 +2300,42 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     }
     
     private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                nol_detik = "";                
-                Date now = Calendar.getInstance().getTime();
-                nilai_detik = now.getSeconds();
-                if (nilai_detik <= 9) {
-                    nol_detik = "0";
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            nol_detik = "";
+            now = Calendar.getInstance().getTime();
+            nilai_detik = now.getSeconds();
+            if (nilai_detik <= 9) {
+                nol_detik = "0";
+            }
+            
+            detik = nol_detik + Integer.toString(nilai_detik);
+            if(detik.equals("05")){
+                permintaanbaru=0;
+                if(formalarm.contains("ralan")){
+                    tampil();
+                    for(i=0;i<tbRadiologiRalan.getRowCount();i++){
+                        if((!tbRadiologiRalan.getValueAt(i,0).toString().equals(""))&&tbRadiologiRalan.getValueAt(i,5).toString().equals("")){
+                            permintaanbaru++;
+                        }
+                    }
                 }
                 
-                detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("05")){ 
-                    permintaanbaru=0; 
-                    if(formalarm.contains("ralan")){
-                        tampil();
-                        for(i=0;i<tbRadiologiRalan.getRowCount();i++){ 
-                            if((!tbRadiologiRalan.getValueAt(i,0).toString().equals(""))&&tbRadiologiRalan.getValueAt(i,5).toString().equals("")){
-                                permintaanbaru++;                                                                                                   
-                            }
+                if(formalarm.contains("ranap")){
+                    tampil3();
+                    for(i=0;i<tbRadiologiRanap.getRowCount();i++){
+                        if((!tbRadiologiRanap.getValueAt(i,0).toString().equals(""))&&tbRadiologiRanap.getValueAt(i,5).toString().equals("")){
+                            permintaanbaru++;
                         }
                     }
-                    
-                    if(formalarm.contains("ranap")){
-                        tampil3();
-                        for(i=0;i<tbRadiologiRanap.getRowCount();i++){ 
-                            if((!tbRadiologiRanap.getValueAt(i,0).toString().equals(""))&&tbRadiologiRanap.getValueAt(i,5).toString().equals("")){
-                                permintaanbaru++;                                                                                                   
-                            }
-                        }
+                }
+                
+                if(permintaanbaru>0){
+                    try {
+                        music = new BackgroundMusic("./suara/alarm.mp3");
+                        music.start();
+                    } catch (Exception ex) {
+                        System.out.println(ex);
                     }
-                      
-                    if(permintaanbaru>0){
-                        try {
-                            music = new BackgroundMusic("./suara/alarm.mp3");
-                            music.start();              
-                        } catch (Exception ex) {
-                            System.out.println(ex);
-                        }
-                    }                        
                 }
             }
         };

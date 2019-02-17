@@ -111,12 +111,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
                 }
             });
         } 
-        try{
-            ps=koneksi.prepareStatement("select kd_pj, png_jawab "+
-                " from penjab where  kd_pj like ? or png_jawab like ? order by png_jawab ");
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+        
     }
 
 
@@ -785,13 +780,26 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+            ps=koneksi.prepareStatement("select kd_pj, png_jawab "+
+                    " from penjab where  kd_pj like ? or png_jawab like ? order by png_jawab ");
+            try{
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
+                }
+            }catch(Exception ex){
+                System.out.println(ex);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

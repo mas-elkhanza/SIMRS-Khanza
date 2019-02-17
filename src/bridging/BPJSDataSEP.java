@@ -88,7 +88,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private String prb="",no_peserta="",link="", requestJson,URL="",jkel="",duplikat="",user="",penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",kddokter="",tglkkl="0000-00-00";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -580,12 +580,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPIBPJS");
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-            headers.add("X-Signature",api.getHmac());
-            mapper = new ObjectMapper();            
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -2479,6 +2473,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
                     }
                     
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                    headers.add("X-Signature",api.getHmac());
                     URL = link+"/SEP/1.1/Update";	
                     requestJson ="{" +
                                   "\"request\":" +
@@ -2892,6 +2891,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             Valid.textKosong(Catatan, "Catatan");
         }else{
             try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers.add("X-Signature",api.getHmac());
                 URL = link+"/Sep/updtglplg";	
                 requestJson ="{" +
                               "\"request\":" +
@@ -2969,6 +2973,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         if(!NoKartu.getText().equals("")){
             try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers.add("X-Signature",api.getHmac());
                 URL = link+"/Sep/pengajuanSEP";	
                 requestJson =" {" +
                                     "\"request\": {" +
@@ -3072,6 +3081,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         if(!NoKartu.getText().equals("")){
             try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers.add("X-Signature",api.getHmac());
                 URL = link+"/Sep/aprovalSEP";	
                 requestJson =" {" +
                                     "\"request\": {" +
@@ -3145,6 +3159,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             Valid.textKosong(KdPoli1, "Poli Tujuan");        
         }else{  
             try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers.add("X-Signature",api.getHmac());
                 URL = link+"/Rujukan/insert";	
                 requestJson ="{" +
                                 "\"request\": {" +
@@ -3474,6 +3493,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         if(!NoSEP.getText().equals("")){
             try {
+                headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers.add("X-Signature",api.getHmac());
                 URL = link+"/SEP/"+NoSEP.getText();	
                 requestEntity = new HttpEntity(headers);
                 //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -4164,6 +4188,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+            headers.add("X-Signature",api.getHmac());
             URL = link+"/SEP/Delete";
             requestJson ="{\"request\":{\"t_sep\":{\"noSep\":\""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\",\"user\":\""+user+"\"}}}";            
             requestEntity = new HttpEntity(requestJson,headers);
@@ -4216,6 +4245,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
             
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+            headers.add("X-Signature",api.getHmac());
             URL = link+"/SEP/1.1/insert";            
             requestJson ="{" +
                           "\"request\":" +
@@ -4300,6 +4334,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      });
                      if(JenisPelayanan.getSelectedIndex()==1){
                         try {
+                            headers = new HttpHeaders();
+                            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                            headers.add("X-Signature",api.getHmac());
                             URL = link+"/Sep/updtglplg";	
                             requestJson ="{" +
                                           "\"request\":" +

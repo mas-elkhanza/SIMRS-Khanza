@@ -51,7 +51,7 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
     private String URL="",link="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -113,13 +113,6 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
-            mapper = new ObjectMapper();
-            headers = new HttpHeaders();
-	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	    headers.add("X-signature",api.getHmac()); 
-	    headers.add("Content-type","application/json");             
-	    headers.add("Content-length",null); 
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -344,7 +337,12 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
         try {
             Valid.tabelKosong(tabMode);
             URL = link+"/referensi/alasanrujukan";
-                	
+            headers = new HttpHeaders();
+	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	    headers.add("X-signature",api.getHmac()); 
+	    headers.add("Content-type","application/json");             
+	    headers.add("Content-length",null); 	
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("status");
