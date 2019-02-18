@@ -46,9 +46,9 @@ public final class BPJSCekReferensiCaraKeluar extends javax.swing.JDialog {
     private int i=0;
     private BPJSApi api=new BPJSApi();
     private String URL;
-    private HttpHeaders headers ;
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -111,14 +111,7 @@ public final class BPJSCekReferensiCaraKeluar extends javax.swing.JDialog {
            
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));   
-            URL = prop.getProperty("URLAPIBPJS")+"/referensi/carakeluar";
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();
+            URL = prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -295,7 +288,13 @@ public final class BPJSCekReferensiCaraKeluar extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
+	    root = mapper.readTree(api.getRest().exchange(URL+"/referensi/carakeluar", HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);

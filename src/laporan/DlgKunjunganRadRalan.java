@@ -1227,7 +1227,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps2=koneksi.prepareStatement(
                         "select trim(jns_perawatan_radiologi.nm_perawatan) from jns_perawatan_radiologi inner join periksa_radiologi "+
                         "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "+
-                        "periksa_radiologi.no_rawat=? and periksa_radiologi.tgl_periksa=? and periksa_radiologi.jam=? ");
+                        "periksa_radiologi.status='Ralan' and periksa_radiologi.no_rawat=? and periksa_radiologi.tgl_periksa=? and periksa_radiologi.jam=? ");
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         ps2.setString(2,rs.getString("tgl_periksa"));

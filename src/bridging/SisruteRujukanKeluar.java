@@ -60,7 +60,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private String StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
     private SisruteApi api=new SisruteApi();
-    private HttpHeaders headers = new HttpHeaders();
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
@@ -1508,6 +1508,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             try {
                 URL = link+"/rujukan";	
                 System.out.println(URL);
+                headers = new HttpHeaders();
                 headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-signature",api.getHmac()); 
@@ -1618,6 +1619,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 try {
                     URL = link+"/rujukan/batal/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
+                    headers = new HttpHeaders();
                     headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
@@ -1709,6 +1711,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 try {
                     URL = link+"/rujukan/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
+                    headers = new HttpHeaders();
                     headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
@@ -2566,6 +2569,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     try {
                         Valid.tabelKosong(tabMode);
                         URL = link+"/rujukan?nomor="+rs.getString("no_rujuk")+"&create=true";
+                        headers = new HttpHeaders();
                         headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                         headers.add("X-signature",api.getHmac()); 
