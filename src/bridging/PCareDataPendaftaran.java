@@ -639,9 +639,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         ProviderPeserta = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnRujukan = new javax.swing.JMenu();
-        MnRujuk = new javax.swing.JMenuItem();
-        MnRujukMasuk = new javax.swing.JMenuItem();
         MnGelang = new javax.swing.JMenu();
         MnGelang1 = new javax.swing.JMenuItem();
         MnGelang2 = new javax.swing.JMenuItem();
@@ -657,6 +654,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnBarcode2 = new javax.swing.JMenuItem();
         MnBarcode = new javax.swing.JMenuItem();
         MnBarcodeRM9 = new javax.swing.JMenuItem();
+        MnPemberianObat = new javax.swing.JMenuItem();
+        MnTIndakan = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
         MnBilling = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -815,54 +814,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ProviderPeserta.setName("ProviderPeserta"); // NOI18N
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnRujukan.setBackground(new java.awt.Color(252, 255, 250));
-        MnRujukan.setForeground(new java.awt.Color(70, 70, 70));
-        MnRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRujukan.setText("Rujukan");
-        MnRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRujukan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnRujukan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRujukan.setIconTextGap(5);
-        MnRujukan.setName("MnRujukan"); // NOI18N
-        MnRujukan.setOpaque(true);
-        MnRujukan.setPreferredSize(new java.awt.Dimension(220, 26));
-
-        MnRujuk.setBackground(new java.awt.Color(255, 255, 255));
-        MnRujuk.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRujuk.setForeground(new java.awt.Color(70, 70, 70));
-        MnRujuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRujuk.setText("Rujukan Keluar");
-        MnRujuk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnRujuk.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRujuk.setIconTextGap(5);
-        MnRujuk.setName("MnRujuk"); // NOI18N
-        MnRujuk.setPreferredSize(new java.awt.Dimension(160, 26));
-        MnRujuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnRujukActionPerformed(evt);
-            }
-        });
-        MnRujukan.add(MnRujuk);
-
-        MnRujukMasuk.setBackground(new java.awt.Color(255, 255, 255));
-        MnRujukMasuk.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRujukMasuk.setForeground(new java.awt.Color(70, 70, 70));
-        MnRujukMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRujukMasuk.setText("Rujukan Masuk");
-        MnRujukMasuk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnRujukMasuk.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRujukMasuk.setIconTextGap(5);
-        MnRujukMasuk.setName("MnRujukMasuk"); // NOI18N
-        MnRujukMasuk.setPreferredSize(new java.awt.Dimension(160, 26));
-        MnRujukMasuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnRujukMasukActionPerformed(evt);
-            }
-        });
-        MnRujukan.add(MnRujukMasuk);
-
-        jPopupMenu1.add(MnRujukan);
 
         MnGelang.setBackground(new java.awt.Color(252, 255, 250));
         MnGelang.setForeground(new java.awt.Color(70, 70, 70));
@@ -1117,6 +1068,40 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         jPopupMenu1.add(MnGelang);
 
+        MnPemberianObat.setBackground(new java.awt.Color(255, 255, 255));
+        MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPemberianObat.setForeground(new java.awt.Color(70, 70, 70));
+        MnPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPemberianObat.setText("Pemberian Obat");
+        MnPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPemberianObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPemberianObat.setIconTextGap(5);
+        MnPemberianObat.setName("MnPemberianObat"); // NOI18N
+        MnPemberianObat.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnPemberianObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPemberianObatActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnPemberianObat);
+
+        MnTIndakan.setBackground(new java.awt.Color(255, 255, 255));
+        MnTIndakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnTIndakan.setForeground(new java.awt.Color(70, 70, 70));
+        MnTIndakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnTIndakan.setText("Pemberian Tindakan");
+        MnTIndakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnTIndakan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnTIndakan.setIconTextGap(5);
+        MnTIndakan.setName("MnTIndakan"); // NOI18N
+        MnTIndakan.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnTIndakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnTIndakanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnTIndakan);
+
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 255));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
@@ -1246,7 +1231,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalDaftar.setEditable(false);
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1565,7 +1550,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalKunjungan.setEditable(false);
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1671,7 +1656,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalPulang.setEditable(false);
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1879,7 +1864,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalEstRujuk.setEditable(false);
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -2230,7 +2215,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2245,7 +2230,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2335,7 +2320,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari3.setEditable(false);
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2350,7 +2335,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari4.setEditable(false);
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2019" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -4043,42 +4028,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnGelang1ActionPerformed
 
-    private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukMasukActionPerformed
-        if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-            tbKunjungan.requestFocus();
-        }else{
-            DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
-            rujukmasuk.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            rujukmasuk.setLocationRelativeTo(internalFrame1);
-            rujukmasuk.emptTeks();
-            rujukmasuk.isCek();
-            rujukmasuk.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
-            rujukmasuk.tampil();
-            rujukmasuk.setVisible(true);
-            //this.dispose();
-        }
-    }//GEN-LAST:event_MnRujukMasukActionPerformed
-
-    private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukActionPerformed
-        if(tabMode2.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            TCari1.requestFocus();
-        }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-            tbKunjungan.requestFocus();
-        }else{
-            DlgRujuk dlgrjk=new DlgRujuk(null,false);
-            dlgrjk.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            dlgrjk.setLocationRelativeTo(internalFrame1);
-            dlgrjk.emptTeks();
-            dlgrjk.isCek();
-            dlgrjk.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
-            dlgrjk.tampil();
-            dlgrjk.setVisible(true);
-        }
-    }//GEN-LAST:event_MnRujukActionPerformed
-
     private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingActionPerformed
         if(tabMode2.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
@@ -4090,6 +4039,14 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             
         }
     }//GEN-LAST:event_MnBillingActionPerformed
+
+    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObatActionPerformed
+        
+    }//GEN-LAST:event_MnPemberianObatActionPerformed
+
+    private void MnTIndakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTIndakanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnTIndakanActionPerformed
 
     /**
     * @param args the command line arguments
@@ -4187,9 +4144,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnLabelTracker1;
     private javax.swing.JMenuItem MnLabelTracker2;
     private javax.swing.JMenuItem MnLabelTracker3;
-    private javax.swing.JMenuItem MnRujuk;
-    private javax.swing.JMenuItem MnRujukMasuk;
-    private javax.swing.JMenu MnRujukan;
+    private javax.swing.JMenuItem MnPemberianObat;
+    private javax.swing.JMenuItem MnTIndakan;
     private widget.TextBox NmDiagnosa1;
     private widget.TextBox NmDiagnosa2;
     private widget.TextBox NmDiagnosa3;
@@ -4510,6 +4466,24 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnEdit.setEnabled(var.getbridging_pcare_daftar());
         BtnHapus.setEnabled(var.getbridging_pcare_daftar());
         BtnPrint.setEnabled(var.getbridging_pcare_daftar());
+        if((var.getbilling_ralan()==true)||(var.getbilling_ranap()==true)){
+            MnBilling.setEnabled(true);
+        }else{
+            MnBilling.setEnabled(false);
+        }
+        
+        if(var.getberi_obat()==true){
+            MnPemberianObat.setEnabled(true);
+        }else{
+            MnPemberianObat.setEnabled(false);
+        }
+        
+        if((var.gettindakan_ralan()==true)||(var.gettindakan_ranap()==true)){
+            MnTIndakan.setEnabled(true);
+        }else{
+            MnTIndakan.setEnabled(false);
+        }
+        ppRiwayat.setEnabled(var.getresume_pasien());            
     }
     
     public void tutupInput(){
