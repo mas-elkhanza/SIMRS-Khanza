@@ -52,7 +52,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement psobat,pscarikapasitas,psobatasuransi,psstok,ps2,psbatch;
+    private PreparedStatement psobat,pscarikapasitas,psstok,ps2,psbatch;
     private ResultSet rsobat,carikapasitas,rsstok,rs2,rsbatch;
     private double h_belicari=0, hargacari=0, sisacari=0,x=0,y=0,embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
                    tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase"),kenaikan=0,stokbarang=0,ttl=0,ppnobat=0;
@@ -60,7 +60,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private boolean[] pilih; 
     private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri,kategori,golongan,no,nobatch,nofaktur,kadaluarsa;
-    private String aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
+    private String sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgBarang barang=new DlgBarang(null,false);
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -1981,26 +1981,35 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         try {
             if(kenaikan>0){
                 if(aktifkanbatch.equals("yes")){
-                    psobatasuransi=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
-                        " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,"+
-                        " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
-                        " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where data_batch.sisa>0 and databarang.kode_brng like ? or "+
+                    if(aktifpcare.equals("yes")){
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,"+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,"+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }
+                    psobat=koneksi.prepareStatement(
+                        sql+" where data_batch.sisa>0 and databarang.kode_brng like ? or "+
                         " data_batch.sisa>0 and databarang.nama_brng like ? or "+
                         " data_batch.sisa>0 and kategori_barang.nama like ? or "+
                         " data_batch.sisa>0 and golongan_barang.nama like ? or "+
                         " data_batch.sisa>0 and data_batch.no_batch like ? or "+
                         " data_batch.sisa>0 and jenis.nama like ? order by data_batch.tgl_kadaluarsa asc");
                     try{
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabModeobat.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),
@@ -2015,28 +2024,36 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }else{
-                    psobatasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                        " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where databarang.status='1' and databarang.kode_brng like ? or "+
+                    if(aktifpcare.equals("yes")){
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }
+                    psobat=koneksi.prepareStatement(
+                        sql+" where databarang.status='1' and databarang.kode_brng like ? or "+
                         " databarang.status='1' and databarang.nama_brng like ? or "+
                         " databarang.status='1' and kategori_barang.nama like ? or "+
                         " databarang.status='1' and golongan_barang.nama like ? or "+
                         " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try{
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabModeobat.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),
@@ -2050,19 +2067,28 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }                    
             }else{
                 if(aktifkanbatch.equals("yes")){
-                    psobat=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,data_batch.karyawan,data_batch.ralan,data_batch.beliluar,"+
-                        " databarang.letak_barang,data_batch.utama,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan, "+
-                        " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
-                        " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where data_batch.sisa>0 and databarang.kode_brng like ? or "+
+                    if(aktifpcare.equals("yes")){
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,data_batch.karyawan,data_batch.ralan,data_batch.beliluar,"+
+                            " databarang.letak_barang,data_batch.utama,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan, "+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,data_batch.karyawan,data_batch.ralan,data_batch.beliluar,"+
+                            " databarang.letak_barang,data_batch.utama,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan, "+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";                        
+                    }
+                    psobat=koneksi.prepareStatement(
+                        sql+" where data_batch.sisa>0 and databarang.kode_brng like ? or "+
                         " data_batch.sisa>0 and databarang.nama_brng like ? or "+
                         " data_batch.sisa>0 and kategori_barang.nama like ? or "+
                         " data_batch.sisa>0 and golongan_barang.nama like ? or "+
@@ -2118,11 +2144,19 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                 }else{
-                    psobat=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,databarang.karyawan,databarang.ralan,databarang.beliluar,"+
-                        " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where databarang.status='1' and databarang.kode_brng like ? or "+
+                    if(aktifpcare.equals("yes")){
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,databarang.karyawan,databarang.ralan,databarang.beliluar,"+
+                            " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,databarang.karyawan,databarang.ralan,databarang.beliluar,"+
+                            " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }
+                    psobat=koneksi.prepareStatement(
+                        sql+" where databarang.status='1' and databarang.kode_brng like ? or "+
                         " databarang.status='1' and databarang.nama_brng like ? or "+
                         " databarang.status='1' and kategori_barang.nama like ? or "+
                         " databarang.status='1' and golongan_barang.nama like ? or "+
@@ -2186,7 +2220,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             Valid.tabelKosong(tabModeDetailObatRacikan);
             if(kenaikan>0){
                 if(aktifkanbatch.equals("yes")){
-                    psobatasuransi=koneksi.prepareStatement(
+                    psobat=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, "+
                         "databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli, "+
@@ -2202,18 +2236,18 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         " resep_dokter.no_resep=? and databarang.status='1' and golongan_barang.nama like ? or "+
                         " resep_dokter.no_resep=? and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try{
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,no_resep);
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,no_resep);
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,no_resep);
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(8,no_resep);
-                        psobatasuransi.setString(9,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(10,no_resep);
-                        psobatasuransi.setString(11,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,no_resep);
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,no_resep);
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,no_resep);
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(8,no_resep);
+                        psobat.setString(9,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(10,no_resep);
+                        psobat.setString(11,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             no_batchcari="";tgl_kadaluarsacari="";no_fakturcari="";h_belicari=0;hargacari=0;sisacari=0;
                             psbatch=koneksi.prepareStatement(
@@ -2255,12 +2289,12 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     } 
                 }else{
-                    psobatasuransi=koneksi.prepareStatement(
+                    psobat=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, "+
                         "databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli, "+
@@ -2276,18 +2310,18 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         " resep_dokter.no_resep=? and databarang.status='1' and golongan_barang.nama like ? or "+
                         " resep_dokter.no_resep=? and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try{
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,no_resep);
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,no_resep);
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,no_resep);
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(8,no_resep);
-                        psobatasuransi.setString(9,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(10,no_resep);
-                        psobatasuransi.setString(11,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,no_resep);
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,no_resep);
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,no_resep);
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(8,no_resep);
+                        psobat.setString(9,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(10,no_resep);
+                        psobat.setString(11,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabModeobat.addRow(new Object[] {false,rsobat.getString("jml"),rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),
@@ -2301,8 +2335,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     } 
                 }                                                          
@@ -3116,27 +3150,35 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         try {
             if(kenaikan>0){
                 if(aktifkanbatch.equals("yes")){
-                    psobatasuransi=koneksi.prepareStatement(
-                        "select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
-                        " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas, "+
-                        " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
-                        " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where data_batch.sisa>0 and databarang.kode_brng like ? or "+
+                    if(aktifpcare.equals("yes")){
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas, "+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas, "+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }
+                    psobat=koneksi.prepareStatement(
+                        sql+" where data_batch.sisa>0 and databarang.kode_brng like ? or "+
                         " data_batch.sisa>0 and databarang.nama_brng like ? or "+
                         " data_batch.sisa>0 and kategori_barang.nama like ? or "+
                         " data_batch.sisa>0 and golongan_barang.nama like ? or "+
                         " data_batch.sisa>0 and data_batch.no_batch like ? or "+
                         " data_batch.sisa>0 and jenis.nama like ? order by data_batch.tgl_kadaluarsa asc");
                     try {
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabModeDetailObatRacikan.addRow(new Object[] {
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),0).toString(),
@@ -3154,28 +3196,36 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rsobat != null){
                             rsobat.close();
                         }                    
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }else{
-                    psobatasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                        " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where databarang.status='1' and databarang.kode_brng like ? or "+
+                    if(aktifpcare.equals("yes")){
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                            " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }
+                    psobat=koneksi.prepareStatement(
+                        sql+" where databarang.status='1' and databarang.kode_brng like ? or "+
                         " databarang.status='1' and databarang.nama_brng like ? or "+
                         " databarang.status='1' and kategori_barang.nama like ? or "+
                         " databarang.status='1' and golongan_barang.nama like ? or "+
                         " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try {
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabModeDetailObatRacikan.addRow(new Object[] {
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),0).toString(),
@@ -3192,20 +3242,28 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         if(rsobat != null){
                             rsobat.close();
                         }                    
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }                    
             }else{
                 if(aktifkanbatch.equals("yes")){
+                    if(aktifpcare.equals("yes")){
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,data_batch.karyawan,data_batch.ralan,data_batch.beliluar,"+
+                            " databarang.letak_barang,data_batch.utama,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas,  "+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,data_batch.karyawan,data_batch.ralan,data_batch.beliluar,"+
+                            " databarang.letak_barang,data_batch.utama,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas,  "+
+                            " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
+                            " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }
                     psobat=koneksi.prepareStatement(
-                        "select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,data_batch.karyawan,data_batch.ralan,data_batch.beliluar,"+
-                        " databarang.letak_barang,data_batch.utama,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas,  "+
-                        " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
-                        " from data_batch inner join databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and data_batch.kode_brng=databarang.kode_brng and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where data_batch.sisa>0 and databarang.kode_brng like ? or "+
+                        sql+" where data_batch.sisa>0 and databarang.kode_brng like ? or "+
                         " data_batch.sisa>0 and databarang.nama_brng like ? or "+
                         " data_batch.sisa>0 and kategori_barang.nama like ? or "+
                         " data_batch.sisa>0 and golongan_barang.nama like ? or "+
@@ -3273,11 +3331,19 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                 }else{
-                    psobat=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,databarang.karyawan,databarang.ralan,databarang.beliluar,"+
-                        " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas  "+
-                        " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                        " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
-                        " where databarang.status='1' and databarang.kode_brng like ? or "+
+                    if(aktifpcare.equals("yes")){
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,databarang.karyawan,databarang.ralan,databarang.beliluar,"+
+                            " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas  "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang inner join maping_obat_pcare on maping_obat_pcare.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }else{
+                        sql="select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,databarang.karyawan,databarang.ralan,databarang.beliluar,"+
+                            " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas  "+
+                            " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                            " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode ";
+                    }
+                    psobat=koneksi.prepareStatement(
+                        sql+" where databarang.status='1' and databarang.kode_brng like ? or "+
                         " databarang.status='1' and databarang.nama_brng like ? or "+
                         " databarang.status='1' and kategori_barang.nama like ? or "+
                         " databarang.status='1' and golongan_barang.nama like ? or "+

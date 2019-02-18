@@ -52,7 +52,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
-    private PreparedStatement psobat,pscarikapasitas,psobatasuransi,psstok,psrekening,ps2,psbatch;
+    private PreparedStatement psobat,pscarikapasitas,psstok,psrekening,ps2,psbatch;
     private ResultSet rsobat,carikapasitas,rsstok,rsrekening,rs2,rsbatch;
     private Jurnal jur=new Jurnal();
     private double h_belicari=0, hargacari=0, sisacari=0,x=0,y=0,embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
@@ -62,7 +62,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
     private String[] no,kodebarang,namabarang,kodesatuan,letakbarang,namajenis,industri,aturan,kategori,golongan,nobatch,nofaktur,kadaluarsa;
     private DlgBarang barang=new DlgBarang(null,false);
-    private String no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private String sql="",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -1860,7 +1860,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         try{
             if(kenaikan>0){
                 if(aktifkanbatch.equals("yes")){
-                    psobatasuransi=koneksi.prepareStatement(
+                    psobat=koneksi.prepareStatement(
                         "select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan, "+
                         " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
@@ -1873,14 +1873,14 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         " data_batch.sisa>0 and data_batch.no_batch like ? or "+
                         " data_batch.sisa>0 and jenis.nama like ? order by data_batch.tgl_kadaluarsa");
                     try {
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                 rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),                                   
@@ -1895,12 +1895,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }else{
-                    psobatasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                    psobat=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
                         " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
                         " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
@@ -1910,13 +1910,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         " databarang.status='1' and golongan_barang.nama like ? or "+
                         " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try {
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                                 tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                    rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),                                   
@@ -1930,8 +1930,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }                                                         
@@ -2595,7 +2595,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         try {
             if(kenaikan>0){
                 if(aktifkanbatch.equals("yes")){
-                    psobatasuransi=koneksi.prepareStatement(
+                    psobat=koneksi.prepareStatement(
                         "select data_batch.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(data_batch.h_beli+(data_batch.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,data_batch.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas, "+
                         " data_batch.no_batch,data_batch.no_faktur,data_batch.tgl_kadaluarsa,data_batch.sisa "+
@@ -2608,14 +2608,14 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         " data_batch.sisa>0 and data_batch.no_batch like ? or "+
                         " data_batch.sisa>0 and jenis.nama like ? order by data_batch.tgl_kadaluarsa");
                     try{
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabModeDetailObatRacikan.addRow(new Object[] {
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),0).toString(),
@@ -2633,12 +2633,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }else{
-                    psobatasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                    psobat=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.kapasitas "+
                         " from databarang inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
                         " and industrifarmasi.kode_industri=databarang.kode_industri and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "+
@@ -2648,13 +2648,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         " databarang.status='1' and golongan_barang.nama like ? or "+
                         " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try{
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabModeDetailObatRacikan.addRow(new Object[] {
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),0).toString(),
@@ -2671,8 +2671,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     }
                 }
@@ -2911,7 +2911,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             Valid.tabelKosong(tabModeDetailObatRacikan);
             if(kenaikan>0){
                 if(aktifkanbatch.equals("yes")){
-                    psobatasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                    psobat=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,"+
                         " resep_dokter.jml, resep_dokter.aturan_pakai from databarang inner join jenis inner join industrifarmasi inner join golongan_barang "+
                         " inner join kategori_barang inner join resep_dokter on databarang.kdjns=jenis.kdjns "+
@@ -2923,18 +2923,18 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         " resep_dokter.no_resep=? and databarang.status='1' and golongan_barang.nama like ? or "+
                         " resep_dokter.no_resep=? and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try {
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,no_resep);
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,no_resep);
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,no_resep);
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(8,no_resep);
-                        psobatasuransi.setString(9,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(10,no_resep);
-                        psobatasuransi.setString(11,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,no_resep);
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,no_resep);
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,no_resep);
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(8,no_resep);
+                        psobat.setString(9,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(10,no_resep);
+                        psobat.setString(11,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             no_batchcari="";tgl_kadaluarsacari="";no_fakturcari="";h_belicari=0;hargacari=0;sisacari=0;
                             psbatch=koneksi.prepareStatement(
@@ -2976,12 +2976,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     } 
                 }else{
-                    psobatasuransi=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                    psobat=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
                         " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,kategori_barang.nama as kategori,golongan_barang.nama as golongan,"+
                         " resep_dokter.jml, resep_dokter.aturan_pakai from databarang inner join jenis inner join industrifarmasi inner join golongan_barang "+
                         " inner join kategori_barang inner join resep_dokter on databarang.kdjns=jenis.kdjns "+
@@ -2993,18 +2993,18 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         " resep_dokter.no_resep=? and databarang.status='1' and golongan_barang.nama like ? or "+
                         " resep_dokter.no_resep=? and databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
                     try {
-                        psobatasuransi.setDouble(1,kenaikan);
-                        psobatasuransi.setString(2,no_resep);
-                        psobatasuransi.setString(3,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(4,no_resep);
-                        psobatasuransi.setString(5,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(6,no_resep);
-                        psobatasuransi.setString(7,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(8,no_resep);
-                        psobatasuransi.setString(9,"%"+TCari.getText().trim()+"%");
-                        psobatasuransi.setString(10,no_resep);
-                        psobatasuransi.setString(11,"%"+TCari.getText().trim()+"%");
-                        rsobat=psobatasuransi.executeQuery();
+                        psobat.setDouble(1,kenaikan);
+                        psobat.setString(2,no_resep);
+                        psobat.setString(3,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(4,no_resep);
+                        psobat.setString(5,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(6,no_resep);
+                        psobat.setString(7,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(8,no_resep);
+                        psobat.setString(9,"%"+TCari.getText().trim()+"%");
+                        psobat.setString(10,no_resep);
+                        psobat.setString(11,"%"+TCari.getText().trim()+"%");
+                        rsobat=psobat.executeQuery();
                         while(rsobat.next()){
                             tabMode.addRow(new Object[] {false,rsobat.getString("jml"),rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),                                   
@@ -3018,8 +3018,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         if(rsobat != null){
                             rsobat.close();
                         }
-                        if(psobatasuransi != null){
-                            psobatasuransi.close();
+                        if(psobat != null){
+                            psobat.close();
                         }
                     } 
                 }                                    
