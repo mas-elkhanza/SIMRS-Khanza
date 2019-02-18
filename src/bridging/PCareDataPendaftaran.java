@@ -20,6 +20,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
+import inventory.DlgCariObat;
+import inventory.DlgCariObat2;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -58,8 +60,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujukMasuk;
 
 
 /**
@@ -85,7 +85,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PCareCekReferensiProvider provider=new PCareCekReferensiProvider(null,false);
     private PCareCekReferensiKhusus khusus=new PCareCekReferensiKhusus(null,false);
     private PcareApi api=new PcareApi();
-    private String URL="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi;
+    private String URL="",bangsal="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi,kamar="";
     private HttpHeaders headers,headers2;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -657,7 +657,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnPemberianObat = new javax.swing.JMenuItem();
         MnTIndakan = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
-        MnBilling = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         TabRawat = new javax.swing.JTabbedPane();
         internalFrame2 = new widget.InternalFrame();
@@ -825,7 +824,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.setIconTextGap(5);
         MnGelang.setName("MnGelang"); // NOI18N
         MnGelang.setOpaque(true);
-        MnGelang.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnGelang.setPreferredSize(new java.awt.Dimension(170, 26));
         MnGelang.setRequestFocusEnabled(false);
 
         MnGelang1.setBackground(new java.awt.Color(255, 255, 255));
@@ -837,7 +836,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang1.setIconTextGap(5);
         MnGelang1.setName("MnGelang1"); // NOI18N
-        MnGelang1.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnGelang1.setPreferredSize(new java.awt.Dimension(180, 26));
         MnGelang1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnGelang1ActionPerformed(evt);
@@ -854,7 +853,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang2.setIconTextGap(5);
         MnGelang2.setName("MnGelang2"); // NOI18N
-        MnGelang2.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnGelang2.setPreferredSize(new java.awt.Dimension(180, 26));
         MnGelang2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnGelang2ActionPerformed(evt);
@@ -871,7 +870,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang3.setIconTextGap(5);
         MnGelang3.setName("MnGelang3"); // NOI18N
-        MnGelang3.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnGelang3.setPreferredSize(new java.awt.Dimension(180, 26));
         MnGelang3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnGelang3ActionPerformed(evt);
@@ -888,7 +887,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang4.setIconTextGap(5);
         MnGelang4.setName("MnGelang4"); // NOI18N
-        MnGelang4.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnGelang4.setPreferredSize(new java.awt.Dimension(180, 26));
         MnGelang4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnGelang4ActionPerformed(evt);
@@ -905,7 +904,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang5.setIconTextGap(5);
         MnGelang5.setName("MnGelang5"); // NOI18N
-        MnGelang5.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnGelang5.setPreferredSize(new java.awt.Dimension(180, 26));
         MnGelang5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnGelang5ActionPerformed(evt);
@@ -922,7 +921,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang6.setIconTextGap(5);
         MnGelang6.setName("MnGelang6"); // NOI18N
-        MnGelang6.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnGelang6.setPreferredSize(new java.awt.Dimension(180, 26));
         MnGelang6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnGelang6ActionPerformed(evt);
@@ -939,7 +938,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnLabelTracker.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnLabelTracker.setIconTextGap(5);
         MnLabelTracker.setName("MnLabelTracker"); // NOI18N
-        MnLabelTracker.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnLabelTracker.setPreferredSize(new java.awt.Dimension(180, 26));
         MnLabelTracker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLabelTrackerActionPerformed(evt);
@@ -956,7 +955,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnLabelTracker1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnLabelTracker1.setIconTextGap(5);
         MnLabelTracker1.setName("MnLabelTracker1"); // NOI18N
-        MnLabelTracker1.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnLabelTracker1.setPreferredSize(new java.awt.Dimension(180, 26));
         MnLabelTracker1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLabelTracker1ActionPerformed(evt);
@@ -973,7 +972,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnLabelTracker2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnLabelTracker2.setIconTextGap(5);
         MnLabelTracker2.setName("MnLabelTracker2"); // NOI18N
-        MnLabelTracker2.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnLabelTracker2.setPreferredSize(new java.awt.Dimension(180, 26));
         MnLabelTracker2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLabelTracker2ActionPerformed(evt);
@@ -990,7 +989,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnLabelTracker3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnLabelTracker3.setIconTextGap(5);
         MnLabelTracker3.setName("MnLabelTracker3"); // NOI18N
-        MnLabelTracker3.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnLabelTracker3.setPreferredSize(new java.awt.Dimension(180, 26));
         MnLabelTracker3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLabelTracker3ActionPerformed(evt);
@@ -1007,7 +1006,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnBarcode1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBarcode1.setIconTextGap(5);
         MnBarcode1.setName("MnBarcode1"); // NOI18N
-        MnBarcode1.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnBarcode1.setPreferredSize(new java.awt.Dimension(180, 26));
         MnBarcode1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcode1ActionPerformed(evt);
@@ -1024,7 +1023,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnBarcode2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBarcode2.setIconTextGap(5);
         MnBarcode2.setName("MnBarcode2"); // NOI18N
-        MnBarcode2.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnBarcode2.setPreferredSize(new java.awt.Dimension(180, 26));
         MnBarcode2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcode2ActionPerformed(evt);
@@ -1041,7 +1040,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnBarcode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBarcode.setIconTextGap(5);
         MnBarcode.setName("MnBarcode"); // NOI18N
-        MnBarcode.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnBarcode.setPreferredSize(new java.awt.Dimension(180, 26));
         MnBarcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeActionPerformed(evt);
@@ -1058,7 +1057,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnBarcodeRM9.setToolTipText("L");
         MnBarcodeRM9.setIconTextGap(5);
         MnBarcodeRM9.setName("MnBarcodeRM9"); // NOI18N
-        MnBarcodeRM9.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnBarcodeRM9.setPreferredSize(new java.awt.Dimension(180, 26));
         MnBarcodeRM9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM9ActionPerformed(evt);
@@ -1077,7 +1076,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnPemberianObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPemberianObat.setIconTextGap(5);
         MnPemberianObat.setName("MnPemberianObat"); // NOI18N
-        MnPemberianObat.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnPemberianObat.setPreferredSize(new java.awt.Dimension(170, 26));
         MnPemberianObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPemberianObatActionPerformed(evt);
@@ -1094,7 +1093,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnTIndakan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnTIndakan.setIconTextGap(5);
         MnTIndakan.setName("MnTIndakan"); // NOI18N
-        MnTIndakan.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnTIndakan.setPreferredSize(new java.awt.Dimension(170, 26));
         MnTIndakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnTIndakanActionPerformed(evt);
@@ -1111,30 +1110,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ppRiwayat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppRiwayat.setIconTextGap(5);
         ppRiwayat.setName("ppRiwayat"); // NOI18N
-        ppRiwayat.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppRiwayat.setPreferredSize(new java.awt.Dimension(170, 26));
         ppRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppRiwayatBtnPrintActionPerformed(evt);
             }
         });
         jPopupMenu1.add(ppRiwayat);
-
-        MnBilling.setBackground(new java.awt.Color(255, 255, 255));
-        MnBilling.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBilling.setForeground(new java.awt.Color(70, 70, 70));
-        MnBilling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnBilling.setText("Billing Total");
-        MnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnBilling.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnBilling.setIconTextGap(5);
-        MnBilling.setName("MnBilling"); // NOI18N
-        MnBilling.setPreferredSize(new java.awt.Dimension(130, 26));
-        MnBilling.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnBillingActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnBilling);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -4028,7 +4010,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnGelang1ActionPerformed
 
-    private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingActionPerformed
+    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObatActionPerformed
         if(tabMode2.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari1.requestFocus();
@@ -4036,12 +4018,46 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbKunjungan.requestFocus();
         }else{
-            
+            if(tbKunjungan.getSelectedRow()!= -1){
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                }else{
+                    if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                        kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",TNoRw.getText());
+                        bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",kamar));
+                        if(bangsal.equals("")){
+                            if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                                var.setkdbangsal(Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",kamar));
+                            }else{
+                                var.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                            }
+                        }else{
+                            var.setkdbangsal(bangsal);
+                        }
+                        DlgCariObat2 dlgobt2=new DlgCariObat2(null,false);
+                        dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        dlgobt2.setLocationRelativeTo(internalFrame1);
+                        dlgobt2.setNoRm(TNoRw.getText(),DTPCari1.getDate());
+                        dlgobt2.setPCare("yes");
+                        dlgobt2.isCek();
+                        dlgobt2.tampil();
+                        dlgobt2.setVisible(true);
+                    }else {
+                        DlgCariObat dlgobt=new DlgCariObat(null,false);
+                        dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),
+                                        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
+                                        Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
+                        dlgobt.setPCare("yes");
+                        dlgobt.isCek();
+                        dlgobt.setDokter("","");
+                        dlgobt.tampilobat();
+                        dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        dlgobt.setLocationRelativeTo(internalFrame1);
+                        dlgobt.setVisible(true);
+                    }
+                }                    
+            }                
         }
-    }//GEN-LAST:event_MnBillingActionPerformed
-
-    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObatActionPerformed
-        
     }//GEN-LAST:event_MnPemberianObatActionPerformed
 
     private void MnTIndakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTIndakanActionPerformed
@@ -4132,7 +4148,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnBarcode1;
     private javax.swing.JMenuItem MnBarcode2;
     private javax.swing.JMenuItem MnBarcodeRM9;
-    private javax.swing.JMenuItem MnBilling;
     private javax.swing.JMenu MnGelang;
     private javax.swing.JMenuItem MnGelang1;
     private javax.swing.JMenuItem MnGelang2;
@@ -4466,11 +4481,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnEdit.setEnabled(var.getbridging_pcare_daftar());
         BtnHapus.setEnabled(var.getbridging_pcare_daftar());
         BtnPrint.setEnabled(var.getbridging_pcare_daftar());
-        if((var.getbilling_ralan()==true)||(var.getbilling_ranap()==true)){
-            MnBilling.setEnabled(true);
-        }else{
-            MnBilling.setEnabled(false);
-        }
         
         if(var.getberi_obat()==true){
             MnPemberianObat.setEnabled(true);

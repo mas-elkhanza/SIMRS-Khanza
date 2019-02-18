@@ -60,7 +60,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private boolean[] pilih; 
     private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri,kategori,golongan,no,nobatch,nofaktur,kadaluarsa;
-    private String no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
+    private String aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgBarang barang=new DlgBarang(null,false);
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -2925,6 +2925,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void setNoRm(String norwt,String norm,String nama,String tanggal, String jam) {        
+        aktifpcare="no";
         TNoRw.setText(norwt);
         LblNoRawat.setText(norwt);
         LblNoRM.setText(norm);
@@ -3609,5 +3610,9 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 System.out.println("Notif : "+e);
             }
         }            
+    }
+    
+    public void setPCare(String aktif){
+        aktifpcare=aktif;
     }
 }

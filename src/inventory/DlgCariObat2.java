@@ -62,7 +62,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
     private String[] no,kodebarang,namabarang,kodesatuan,letakbarang,namajenis,industri,aturan,kategori,golongan,nobatch,nofaktur,kadaluarsa;
     private DlgBarang barang=new DlgBarang(null,false);
-    private String no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="",aktifkanbatch="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private String no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -2299,6 +2299,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }
     
     public void setNoRm(String norwt,Date tanggal,String jam,String menit,String detik,boolean status) {        
+        aktifpcare="no";
         TNoRw.setText(norwt);
         DTPTgl.setDate(tanggal);
         cmbJam.setSelectedItem(jam);
@@ -2327,7 +2328,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         TCari.requestFocus();
     } 
     
-    public void setNoRm(String norwt,Date tanggal) {        
+    public void setNoRm(String norwt,Date tanggal) {       
+        aktifpcare="no";
         TNoRw.setText(norwt);
         DTPTgl.setDate(tanggal);
         ChkJln.setSelected(true);
@@ -3665,5 +3667,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 System.out.println("Notif : "+e);
             }
         }            
+    }
+    
+    public void setPCare(String aktif){
+        aktifpcare=aktif;
     }
 }
