@@ -604,14 +604,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
                 if(hari>0){
                     kamar=Sequel.cariInteger("select count(*) from kamar  where statusdata='1'");
-                    jumlahhari=Sequel.cariInteger("select (to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"'))");
+                    jumlahhari=Sequel.cariInteger("select (to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"'))")+1;
                     tabMode2.addRow(new Object[]{"","","","Jumlah Hari Perawatan",":","","",hari,""});
                     tabMode2.addRow(new Object[]{"","","","Jumlah Kamar",":","","",kamar,""});
                     tabMode2.addRow(new Object[]{"","","","Jumlah Hari Dalam Periode",":","","",jumlahhari,""});
                     tabMode2.addRow(new Object[]{"","","","Perhitungan BOR ",": ("+hari+"/("+kamar+" X "+jumlahhari+")) X 100%","","",Valid.SetAngka4((hari/(kamar*jumlahhari))*100)+" %",""});
                 }                    
             } catch (Exception e) {
-                System.out.println("laporan.DlgHitungBOR.tampil() : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
