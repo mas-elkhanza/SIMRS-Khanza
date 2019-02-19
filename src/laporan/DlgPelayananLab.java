@@ -312,7 +312,7 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();         
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -336,7 +336,7 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
                     tabMode.getValueAt(r,9).toString()+"','"+
                     tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();   
+               
             Valid.MyReport("rptPelayananLab.jrxml","report","::[ Laporan Lama Pelayanan Laboratorium ]::",
                 "select * from temporary_lama_pelayanan_radiologi order by no asc",param);
         }

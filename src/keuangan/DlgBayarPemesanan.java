@@ -740,7 +740,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
             Valid.textKosong(no_bukti,"No.Bukti");
         }else{            
             try {
-                Sequel.AutoComitFalse();    
+                    
                 if(sisahutang>0){
                     koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
                     Sequel.queryu("delete from tampjurnal");
@@ -766,7 +766,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane,"Maaf sudah dilakukan pembayaran..!!!");
                     TCari.requestFocus();
                 }                   
-                Sequel.AutoComitTrue();
+                
            }catch (Exception ex) {
                System.out.println(ex);
            }                     
@@ -785,7 +785,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         try {
-            Sequel.AutoComitFalse();  
+              
             Sequel.queryu2("delete from bayar_pemesanan where tgl_bayar=? and no_faktur=? and "+
                     "nip=? and besar_bayar=? and keterangan=? and nama_bayar=? and no_bukti=?",7,new String[]{
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),       
@@ -810,7 +810,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
             }else{
                 Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
             }
-            Sequel.AutoComitTrue();
+            
         }catch (Exception ex) {
             System.out.println(ex);
         }              

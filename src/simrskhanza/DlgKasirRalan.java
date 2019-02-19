@@ -5316,11 +5316,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             Valid.textKosong(kdpenjab,"Jenis Bayar");
         }else{
             //String kdpj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norawat.getText());
-            Sequel.AutoComitFalse();
+            
             //Sequel.meghapus("ubah_penjab","no_rawat",norawat.getText());
             Sequel.mengedit("reg_periksa","no_rawat=?"," kd_pj=?",2,new String[]{kdpenjab.getText(),TNoRw.getText()});
             //Sequel.menyimpan("ubah_penjab","?,?,?,?","Ubah Jenis Bayar",4,new String[]{norawat.getText(),now,kdpj,kdpenjab.getText()});
-            Sequel.AutoComitTrue();
+            
             tampilkasir();
             WindowCaraBayar.dispose();
         }
@@ -5670,7 +5670,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
@@ -5723,7 +5723,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             Sequel.queryu("delete from permintaan_radiologi where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from pcare_pendaftaran where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.AutoComitTrue();
+            
             tampilkasir();
         }
     }//GEN-LAST:event_MnHapusSemuaActionPerformed
@@ -5822,8 +5822,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 Valid.editTable(tabModekasir,"reg_periksa","no_rawat",TNoRw,"stts='Dirawat'"); 
-                if(MnKamarInap.isSelected()==true){
-                    MnKamarInapActionPerformed(evt);
+                if(MnKamarInap.isEnabled()==true){
+                    MnKamarInapActionPerformed(null);
+                    if(tabModekasir.getRowCount()!=0){tampilkasir();}
+                }else{
                     if(tabModekasir.getRowCount()!=0){tampilkasir();}
                 }                    
             }            

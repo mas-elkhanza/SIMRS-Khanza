@@ -2605,7 +2605,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(NoSKL,"No.SKL");
         }else{
             if(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_rkm_medis=?",NoRm.getText()).isEmpty()){   
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu4("insert into cacat_fisik values(?,?)",2,new String[]{"0","-"});
                 Sequel.queryu4("insert into penjab values(?,?)",2,new String[]{"-","-"});
                 Sequel.queryu4("insert into kelurahan values(?,?)",2,new String[]{"0","-"});
@@ -2737,7 +2737,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                     }
                 }
-                Sequel.AutoComitTrue();
+                
             }else{
                 if(Sequel.menyimpantf("pasien_bayi","'"+NoRm.getText()+"','"+
                         UmurIbu.getText()+"','"+
@@ -3145,7 +3145,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         nikplpr,nmplpr,almtplpr,krjplpr,niks1,nms1,almts1,krjs1,niks2,nms2,almts2,
                         krjs2,umribu,umrayah,umrplpr,umrs1,umrs2)==true){
                     if(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_rkm_medis=?",NoRm.getText())==""){   
-                        Sequel.AutoComitFalse();
+                        
                         Sequel.queryu4("insert into cacat_fisik values(?,?)",2,new String[]{"0","-"});
                         Sequel.queryu4("insert into penjab values(?,?)",2,new String[]{"-","-"});
                         Sequel.queryu4("insert into kelurahan values(?,?)",2,new String[]{"0","-"});
@@ -3291,7 +3291,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 }
                             }
                         }
-                        Sequel.AutoComitTrue();
+                        
                     }else{
                         if(Sequel.menyimpantf("pasien_bayi","'"+NoRm.getText()+"','"+
                                 UmurIbu.getText()+"','"+

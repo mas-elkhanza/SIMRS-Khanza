@@ -510,7 +510,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 //TCari.requestFocus();
             }else if(tabMode3.getRowCount()!=0){
                 Sequel.queryu("truncate table temporary");
-                Sequel.AutoComitFalse();
+                
                 for(int r=0;r<tabMode3.getRowCount();r++){ 
                         Sequel.menyimpan("temporary","'0','"+
                                     tabMode3.getValueAt(r,0).toString()+"','"+
@@ -520,7 +520,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,4).toString()))+"','"+
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
-                Sequel.AutoComitTrue();
+                
                 Valid.MyReport("rptPPNRalan.jrxml","report","::[ Laporan PPN Obat Ralan ]::",
                     "select * from temporary order by no asc",param);
             }                

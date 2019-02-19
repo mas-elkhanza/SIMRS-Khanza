@@ -1459,7 +1459,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(jml==0){
             Valid.textKosong(Komponen,"Data Komponen Darah");
         }else{            
-            Sequel.AutoComitFalse();
+            
             if(Sequel.menyimpantf("utd_pemisahan_komponen","?,?,?,?","Nomor Donor",4,new String[]{
                 NomorDonor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Dinas.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
@@ -1519,7 +1519,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 tampil();
                 JOptionPane.showMessageDialog(null,"Proses simpan selesai..!!!");
             }
-            Sequel.AutoComitTrue();            
+                        
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1558,7 +1558,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         pscekmedis=koneksi.prepareStatement(sqlpscekmedis);
                         try {
                             pscekmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1578,7 +1578,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_medis_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {
@@ -1602,7 +1602,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         psceknonmedis=koneksi.prepareStatement(sqlpsceknonmedis);
                         try {
                             psceknonmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1622,7 +1622,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_penunjang_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {
@@ -1646,7 +1646,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         pscekmedis=koneksi.prepareStatement(sqlpscekmedis);
                         try {
                             pscekmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1685,7 +1685,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_penunjang_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {

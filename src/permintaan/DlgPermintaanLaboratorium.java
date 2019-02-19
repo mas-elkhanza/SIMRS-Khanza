@@ -853,7 +853,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         }else if(jml==0){
             Valid.textKosong(Pemeriksaan,"Data Permintaan");
         }else{
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("truncate table temporary_permintaan_lab");
             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -864,7 +864,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                     });
                 }                
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();
             param.put("noperiksa",TNoPermintaan.getText());
             param.put("norm",TNoRM.getText());

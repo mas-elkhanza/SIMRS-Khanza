@@ -436,7 +436,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("truncate table temporary_payment");
             for(int r=0;r<tabMode.getRowCount();r++){  
                 Sequel.menyimpan("temporary_payment","'0',?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''",7,new String[]{
@@ -446,7 +446,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                     tabMode.getValueAt(r,6).toString()                    
                 });
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());

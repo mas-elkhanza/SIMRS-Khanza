@@ -796,7 +796,7 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();         
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -855,7 +855,7 @@ public final class DlgKunjunganLabRanap extends javax.swing.JDialog {
                     tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran"
                 );
             }
-            Sequel.AutoComitTrue();   
+               
             Valid.MyReport("rptKunjunganLabRanap.jrxml","report","::[ Laporan Kunjungan Laboratorium Rawat Jalan ]::",
                 "select * from temporary order by no asc",param);
         }

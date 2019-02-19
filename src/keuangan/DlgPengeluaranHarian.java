@@ -668,7 +668,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         }else if(Pengeluaran.getText().trim().equals("")||Pengeluaran.getText().trim().equals("0")){
             Valid.textKosong(Pengeluaran,"Pengeluaran");
         }else{
-            Sequel.AutoComitFalse();            
+                        
             try {
                 Sequel.menyimpan("pengeluaran_harian","?,?,?,?,?","Pengeluaran",5,new String[]{
                     Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
@@ -685,7 +685,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
             }            
-            Sequel.AutoComitTrue();
+            
             tampil();
             emptTeks();
         }
@@ -719,7 +719,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(Keterangan.getText().trim().equals(""))){
             if(tbResep.getSelectedRow()>-1){
-                Sequel.AutoComitFalse();                
+                                
                 try {
                     Sequel.queryu2("delete from pengeluaran_harian where tanggal=? and keterangan=?",2,new String[]{
                         tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),Keterangan.getText()
@@ -735,7 +735,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }
-                Sequel.AutoComitTrue();
+                
                 tampil();
                 emptTeks();
             }                

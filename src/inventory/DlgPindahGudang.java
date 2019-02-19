@@ -566,7 +566,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.AutoComitFalse();
+        
         Valid.hapusTable(tabMode,kdbarang,"mutasibarang","kd_bangsaldari='"+kddari.getText()+
                         "' and kd_bangsalke='"+kdke.getText()+"' and tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' and kode_brng");
         Trackobat.catatRiwayat(kdbarang.getText(),Valid.SetAngka(jumlah.getText()),0,"Mutasi",var.getkode(),kddari.getText(),"Hapus");
@@ -576,7 +576,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         Sequel.menyimpan("gudangbarang","'"+kdbarang.getText()+"','"+kdke.getText()+"','-"+jumlah.getText()+"'", 
                             "stok=stok-"+jumlah.getText()+"","kode_brng='"+kdbarang.getText()+"' and kd_bangsal='"+kdke.getText()+"'");
         BtnCariActionPerformed(evt);
-        Sequel.AutoComitTrue();
+        
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

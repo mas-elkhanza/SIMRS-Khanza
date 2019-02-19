@@ -1498,7 +1498,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1513,7 +1513,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3109,7 +3109,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-02-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3732,7 +3732,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 }else{
-                    Sequel.AutoComitFalse();
+                    
                     for(i=0;i<tbRawatDr.getRowCount();i++){
                         if(tbRawatDr.getValueAt(i,0).toString().equals("true")){                            
                             if(Sequel.cariRegistrasi(tbRawatDr.getValueAt(i,1).toString())>0){
@@ -3747,7 +3747,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }                            
                     }
-                    Sequel.AutoComitTrue();
+                    
                     tampilDr();
                 }   break;
             case 1:
@@ -3755,7 +3755,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 }else{
-                    Sequel.AutoComitFalse();
+                    
                     for(i=0;i<tbRawatPr.getRowCount();i++){
                         if(tbRawatPr.getValueAt(i,0).toString().equals("true")){
                             if(Sequel.cariRegistrasi(tbRawatPr.getValueAt(i,1).toString())>0){
@@ -3770,7 +3770,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }
                     }
-                    Sequel.AutoComitTrue();
+                    
                     tampilPr();
                 }   break;
             case 2:
@@ -3778,7 +3778,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 }else{
-                    Sequel.AutoComitFalse();
+                    
                     for(i=0;i<tbRawatDrPr.getRowCount();i++){
                         if(tbRawatDrPr.getValueAt(i,0).toString().equals("true")){                            
                             if(Sequel.cariRegistrasi(tbRawatDrPr.getValueAt(i,1).toString())>0){
@@ -3794,7 +3794,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }                            
                     }
-                    Sequel.AutoComitTrue();
+                    
                     tampilDrPr();
                 }   break;
             case 3:
@@ -4909,6 +4909,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(TabRawatTindakanDokter.getSelectedIndex()==0){
             TCari.setText("");
         }else if(TabRawatTindakanDokter.getSelectedIndex()==1){
+            TCari.setText("");
             TCariPasien.setText(TNoRM.getText());
         }
         TCari.requestFocus();
@@ -4961,6 +4962,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(TabRawatTindakanPetugas.getSelectedIndex()==0){
             TCari.setText("");
         }else if(TabRawatTindakanPetugas.getSelectedIndex()==1){
+            TCari.setText("");
             TCariPasien.setText(TNoRM.getText());
         }
         TCari.requestFocus();
@@ -4992,6 +4994,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(TabRawatTindakanDokterPetugas.getSelectedIndex()==0){
             TCari.setText("");
         }else if(TabRawatTindakanDokterPetugas.getSelectedIndex()==1){
+            TCari.setText("");
             TCariPasien.setText(TNoRM.getText());
         }
         TCari.requestFocus();

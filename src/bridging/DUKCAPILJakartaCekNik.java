@@ -8,7 +8,6 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.sekuel;
-import fungsi.sekuel;
 import java.io.FileInputStream;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -27,33 +26,41 @@ import org.springframework.web.client.RestTemplate;
 public class DUKCAPILJakartaCekNik {
     private final Properties prop = new Properties();
     private final sekuel Sequel=new sekuel();
-    private final Properties prop2 = new Properties();
     public String DSC_JENIS_PKRJN,NM_PROP,UMUR,NAMA_LGKP,NO_AKTA_LHR,
             AKTA_LHR,JENIS_PKRJN,TGL_LHR,TMPT_LHR,NM_KEC,NO_KEL,
             NO_KK,NM_KAB,NO_RT,NIK,NO_KAB,NM_KEL,ALAMAT,JENIS_KLMIN,
             NO_RW,NO_PROP,NO_KEC,DSC_STAT_KWN,DSC_STAT_HBKEL,DSC_GOL_DRH;
+    private String URL;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private RestTemplate rest = new RestTemplate();
+    private String data;
+    private JSONObject xmlJSONObj;
+    private String jsonPrettyPrintString;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
     
     public DUKCAPILJakartaCekNik(){
         super();
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void tampil(String nik) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLDUKCAPILJAKARTA")+"?usernm="+prop.getProperty("USERDUKCAPILJAKARTA")+"&pass="+prop.getProperty("PASSDUKCAPILJAKARTA")+"&app=SILaporLahir&pget=Kelahiran&pusr=admin&proc=GETNIK&nik="+nik+"&pkey="+Sequel.cariIsi("select md5(concat('"+prop.getProperty("VAR1DUKCAPILJAKARTA")+"',md5(date_format(current_date(),'%d%m%Y')),'"+prop.getProperty("VAR2DUKCAPILJAKARTA")+"'))");	
-
-	    HttpHeaders headers = new HttpHeaders();
+            URL = prop.getProperty("URLDUKCAPILJAKARTA")+"?usernm="+prop.getProperty("USERDUKCAPILJAKARTA")+"&pass="+prop.getProperty("PASSDUKCAPILJAKARTA")+"&app=SILaporLahir&pget=Kelahiran&pusr=admin&proc=GETNIK&nik="+nik+"&pkey="+Sequel.cariIsi("select md5(concat('"+prop.getProperty("VAR1DUKCAPILJAKARTA")+"',md5(date_format(current_date(),'%d%m%Y')),'"+prop.getProperty("VAR2DUKCAPILJAKARTA")+"'))");
+	    headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_XML);
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    RestTemplate rest = new RestTemplate();
-            String data=rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody();
-            
-            JSONObject xmlJSONObj = XML.toJSONObject(data);
-            String jsonPrettyPrintString = xmlJSONObj.toString(4);
-            //System.out.println(jsonPrettyPrintString);
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(jsonPrettyPrintString);
-            JsonNode nameNode = root.path("DATA");
+	    requestEntity = new HttpEntity(headers);
+	    data=rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody();
+            xmlJSONObj = XML.toJSONObject(data);
+            jsonPrettyPrintString = xmlJSONObj.toString(4);
+            root = mapper.readTree(jsonPrettyPrintString);
+            nameNode = root.path("DATA");
             try {
                 DSC_JENIS_PKRJN=nameNode.path("DSC_JENIS_PKRJN").asText();
                 NM_PROP=nameNode.path("NM_PROP").asText();

@@ -978,14 +978,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 }else if(tabMode2.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
                     Sequel.queryu("delete from temporary_resep");
-                    Sequel.AutoComitFalse();
+                    
                     for(int i=0;i<tabMode2.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                             "0",tabMode2.getValueAt(i,0).toString(),tabMode2.getValueAt(i,1).toString(),tabMode2.getValueAt(i,2).toString(),
                             tabMode2.getValueAt(i,3).toString(),tabMode2.getValueAt(i,4).toString(),tabMode2.getValueAt(i,5).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();  
                         param.put("namars",var.getnamars());
                         param.put("alamatrs",var.getalamatrs());
@@ -1029,14 +1029,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 }else if(tabMode4.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
                     Sequel.queryu("delete from temporary_resep");
-                    Sequel.AutoComitFalse();
+                    
                     for(int i=0;i<tabMode4.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                             "0",tabMode4.getValueAt(i,0).toString(),tabMode4.getValueAt(i,1).toString(),tabMode4.getValueAt(i,2).toString(),
                             tabMode4.getValueAt(i,3).toString(),tabMode4.getValueAt(i,4).toString(),tabMode4.getValueAt(i,5).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();  
                         param.put("namars",var.getnamars());
                         param.put("alamatrs",var.getalamatrs());

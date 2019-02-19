@@ -237,7 +237,7 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             Map<String, Object> param = new HashMap<>();
             param.put("tanggal",Tgl2.getDate());
@@ -264,7 +264,7 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();  
+              
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
                 param.put("kotars",var.getkabupatenrs());

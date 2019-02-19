@@ -2683,7 +2683,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             }
         }
         if(i>0){
-            Sequel.AutoComitFalse();
+            
             Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
@@ -2868,7 +2868,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");
             this.setCursor(Cursor.getDefaultCursor());
-            Sequel.AutoComitTrue();
+            
             JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
             Valid.tabelKosong(tabModeAkunBayar);
             Valid.tabelKosong(tabModeAkunPiutang);
