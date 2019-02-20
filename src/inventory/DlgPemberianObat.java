@@ -84,10 +84,11 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Tgl.Beri","Jam Beri","No.Rawat","No.R.M.",
-                      "Nama Pasien","Kode Obat","Nama Obat/Alkes","Embalase",
-                      "Tuslah","Jml","Biaya Obat","Total","Harga Beli","Gudang","No.Batch"};
-        tabModePO=new DefaultTableModel(null,row){
+        tabModePO=new DefaultTableModel(null,new Object[]{
+                "Tgl.Beri","Jam Beri","No.Rawat","No.R.M.",
+                "Nama Pasien","Kode Obat","Nama Obat/Alkes","Embalase",
+                "Tuslah","Jml","Biaya Obat","Total","Harga Beli","Gudang","No.Batch"
+            }){
             @Override 
             public boolean isCellEditable(int rowIndex, int colIndex){return false;}
             Class[] types = new Class[]{
@@ -1926,9 +1927,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             BtnObat2.setEnabled(false);
             BtnObat3.setEnabled(true);
         }
+        BtnBatalActionPerformed(null);
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl2);
-        BtnBatalActionPerformed(null);
     }
     
     public void setNoRm2(String norwt, Date tgl1, Date tgl2,String statuspasien) {

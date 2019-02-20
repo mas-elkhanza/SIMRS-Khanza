@@ -22,7 +22,6 @@ import fungsi.validasi;
 import fungsi.var;
 import inventory.DlgCariObat;
 import inventory.DlgCariObat2;
-import inventory.DlgPemberianObat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -2629,7 +2628,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }else if(ex.toString().contains("424")){
                         JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                     }else if(ex.toString().contains("412")){
-                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                     }else if(ex.toString().contains("204")){
                         JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }
@@ -2780,7 +2779,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(ex.toString().contains("424")){
                             JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                         }else if(ex.toString().contains("412")){
-                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                         }else if(ex.toString().contains("204")){
                             JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                         }
@@ -2889,7 +2888,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(ex.toString().contains("424")){
                             JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                         }else if(ex.toString().contains("412")){
-                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                         }else if(ex.toString().contains("204")){
                             JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                         }
@@ -3121,7 +3120,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }else if(ex.toString().contains("424")){
                         JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                     }else if(ex.toString().contains("412")){
-                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                     }else if(ex.toString().contains("204")){
                         JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }
@@ -3597,7 +3596,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(ex.toString().contains("424")){
                             JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                         }else if(ex.toString().contains("412")){
-                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                         }else if(ex.toString().contains("204")){
                             JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                         }
@@ -4100,16 +4099,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             tbKunjungan.requestFocus();
         }else{
             if(tbKunjungan.getSelectedRow()!= -1){
-                DlgPemberianObat dlgrwinap=new DlgPemberianObat(null,false);
+                PCareDataPemberianObat dlgrwinap=new PCareDataPemberianObat(null,false);
                 dlgrwinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgrwinap.setLocationRelativeTo(internalFrame1);
                 dlgrwinap.isCek();
-                if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
-                    dlgrwinap.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ranap"); 
-                }else{
-                    dlgrwinap.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ralan"); 
-                }                    
-                dlgrwinap.tampilPO();
+                dlgrwinap.setNoRm(TNoRw.getText(),DTPCari3.getDate(),DTPCari4.getDate()); 
                 dlgrwinap.setVisible(true);
             }
         }
@@ -4732,7 +4726,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(ex.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(ex.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(ex.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
@@ -4808,7 +4802,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(e.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(e.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
@@ -4872,7 +4866,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(e.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(e.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
@@ -4936,7 +4930,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(e.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(e.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }

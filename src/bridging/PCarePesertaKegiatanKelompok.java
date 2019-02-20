@@ -603,7 +603,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }else if(ex.toString().contains("424")){
                     JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                 }else if(ex.toString().contains("412")){
-                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                 }else if(ex.toString().contains("204")){
                     JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                 }
