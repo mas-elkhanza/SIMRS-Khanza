@@ -1137,7 +1137,6 @@ public final class validasi {
         }else{
             return Math.round(number);
         }
-
     }
 
        

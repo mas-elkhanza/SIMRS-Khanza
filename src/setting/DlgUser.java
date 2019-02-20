@@ -1999,7 +1999,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }    
                     try {
                         if(rs.getString(1).toLowerCase().contains(TCari.getText().toLowerCase())||
-                                user.toLowerCase().contains(TCari.getText().toLowerCase())){
+                                user.toLowerCase().contains(TCari.getText().toLowerCase())||
+                                jabatan.toLowerCase().contains(TCari.getText().toLowerCase())){
                             tabMode.addRow(new Object[]{rs.getString(1),
                                user,jabatan,rs.getString(2),
                                rs.getBoolean("penyakit"),

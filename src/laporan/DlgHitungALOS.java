@@ -607,7 +607,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode2.addRow(new Object[]{"","","","Perhitungan ALOS ",": "+hari+"/"+pasien,"","",Valid.SetAngka4((hari/pasien)),""});
                 }                    
             } catch (Exception e) {
-                System.out.println("laporan.DlgHitungBOR.tampil() : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
