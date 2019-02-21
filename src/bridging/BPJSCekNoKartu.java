@@ -35,33 +35,38 @@ public class BPJSCekNoKartu {
     Date date = new Date();
     private BPJSApi api=new BPJSApi();
     private String URL="";
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
+    private HttpHeaders headers;
         
     public BPJSCekNoKartu(){
         super();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/";	
-	} catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("E : "+e);
         }
     }
     
     public void tampil(String nokartu) {
-        try {            
-	    HttpHeaders headers = new HttpHeaders();
+        try {
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
 	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL+nokartu+"/tglSEP/"+dateFormat.format(date), HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    requestEntity = new HttpEntity(headers);
+            root = mapper.readTree(api.getRest().exchange(URL+nokartu+"/tglSEP/"+dateFormat.format(date), HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
             if(nameNode.path("code").asText().equals("200")){
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();
                 cobnmAsuransi=response.path("peserta").path("cob").path("nmAsuransi").asText();

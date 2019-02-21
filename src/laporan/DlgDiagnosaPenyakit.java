@@ -53,21 +53,27 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-                    panelDiagnosa1.pilihTab();
-                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                    if(TCari.getText().length()>2){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.pilihTab();
+                        LCount.setText(panelDiagnosa1.getRecord()+"");
+                    }                        
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-                    panelDiagnosa1.pilihTab();
-                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                    if(TCari.getText().length()>2){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.pilihTab();
+                        LCount.setText(panelDiagnosa1.getRecord()+"");
+                    } 
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-                    panelDiagnosa1.pilihTab();
-                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                    if(TCari.getText().length()>2){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.pilihTab();
+                        LCount.setText(panelDiagnosa1.getRecord()+"");
+                    } 
                 }
             });
         } 

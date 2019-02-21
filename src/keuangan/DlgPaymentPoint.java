@@ -96,19 +96,43 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             User.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         InputModalAwal.setDocument(new batasInput((byte)16).getOnlyAngka(InputModalAwal));
@@ -221,11 +245,6 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Payment Point ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -412,7 +431,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("truncate table temporary_payment");
             for(int r=0;r<tabMode.getRowCount();r++){  
                 Sequel.menyimpan("temporary_payment","'0',?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''",7,new String[]{
@@ -422,7 +441,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                     tabMode.getValueAt(r,6).toString()                    
                 });
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -455,10 +474,6 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
             dispose();
         }else{Valid.pindah(evt,BtnKeluar,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");

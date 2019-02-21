@@ -99,11 +99,23 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
     }    
@@ -149,7 +161,7 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Lama Pelayanan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Lama Pelayanan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -300,7 +312,7 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();         
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -324,7 +336,7 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
                     tabMode.getValueAt(r,9).toString()+"','"+
                     tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();   
+               
             Valid.MyReport("rptPelayananLab.jrxml","report","::[ Laporan Lama Pelayanan Laboratorium ]::",
                 "select * from temporary_lama_pelayanan_radiologi order by no asc",param);
         }

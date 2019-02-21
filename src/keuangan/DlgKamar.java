@@ -47,7 +47,7 @@ public final class DlgKamar extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String asalform="";
+    private String asalform="",ubah_status_kamar=Sequel.cariIsi("select ubah_status_kamar from set_jam_minimal");
 
     /** Creates new form DlgKamar
      * @param parent
@@ -111,11 +111,23 @@ public final class DlgKamar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         panelCari.setVisible(false);
@@ -605,7 +617,7 @@ public final class DlgKamar extends javax.swing.JDialog {
         panelGlass4.add(jLabel9);
         jLabel9.setBounds(440, 12, 90, 23);
 
-        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISI", "KOSONG" }));
+        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISI", "KOSONG", "DIBERSIHKAN", "DIBOOKING" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
         CmbStatus.setOpaque(false);
         CmbStatus.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1172,11 +1184,15 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
         TKd.setEditable(var.getkamar());
         TTarif.setEditable(var.getkamar());
         kd_bangsal.setEditable(var.getkamar());
-        Kelas.setEnabled(var.getkamar());
+        Kelas.setEnabled(var.getkamar());        
         asalform=var.getform();
         if(var.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
+            BtnEdit.setEnabled(true);
         }else{
+            if(ubah_status_kamar.equals("No")){
+                BtnEdit.setEnabled(false);
+            }
             MnRestore.setEnabled(false);
         }
      }

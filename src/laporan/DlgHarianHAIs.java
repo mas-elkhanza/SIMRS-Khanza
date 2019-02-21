@@ -628,7 +628,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         jmldarah=jmldarah+1;
                     }
                     if(!rs.getString("ANTIBIOTIK").equals("")){
-                        antibiotik=0;
+                        antibiotik=1;
                         jmlANTIBIOTIK=jmlANTIBIOTIK+1;
                     }
                     
@@ -666,7 +666,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' align='center'>"+sputum+"</td>"+
                             "<td valign='middle' align='center'>"+darah+"</td>"+
                             "<td valign='middle' align='center'>"+urine+"</td>"+
-                            "<td valign='middle' align='left'>"+antibiotik+"</td>"+
+                            "<td valign='middle' align='center'>"+antibiotik+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("ruang")+"</td>"+
                         "</tr>"
                     );
@@ -692,7 +692,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' align='center'>"+jmlsputum+"</td>"+
                             "<td valign='middle' align='center'>"+jmldarah+"</td>"+
                             "<td valign='middle' align='center'>"+jmlurine+"</td>"+
-                            "<td valign='middle' align='left'>"+jmlANTIBIOTIK+"</td>"+
+                            "<td valign='middle' align='center'>"+jmlANTIBIOTIK+"</td>"+
                             "<td valign='middle' align='center'>&nbsp;</td>"+
                         "</tr>"
                     );

@@ -58,7 +58,13 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private int i=0;
     private final Properties prop = new Properties();
     private PCareClubProlanis barang=new PCareClubProlanis(null,false);
-    private String URL="",link="",requestJson="";
+    private String URL="",link="",requestJson="",otorisasi;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     private PcareApi api=new PcareApi();
     private DlgPasien pasien=new DlgPasien(null,false);
     private double total=0;
@@ -134,11 +140,23 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -265,6 +283,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -965,12 +984,11 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         }else{
             try {
                 URL = link+"/kelompok/kegiatan";
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 requestJson ="{" +
                                 "\"eduId\":null," +
@@ -984,14 +1002,13 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                                 "\"keterangan\":\""+Keterangan.getText()+"\"," +
                                 "\"biaya\": "+Biaya.getText() +
                               "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     System.out.println("Edu ID : "+response.asText());
                     if(Sequel.menyimpantf("pcare_kegiatan_kelompok","?,?,?,?,?,?,?,?,?,?,?","Edu ID",11,new String[]{
                         response.asText(),kdClub.getText(),NmClub.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Kegiatan.getSelectedItem().toString(),
@@ -1006,7 +1023,19 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }catch (Exception ex) {
                 System.out.println("Notifikasi Bridging : "+ex);
                 if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                }else if(ex.toString().contains("500")){
+                    JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                }else if(ex.toString().contains("401")){
+                    JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                }else if(ex.toString().contains("408")){
+                    JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                }else if(ex.toString().contains("424")){
+                    JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                }else if(ex.toString().contains("412")){
+                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+                }else if(ex.toString().contains("204")){
+                    JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                 }
             }              
         }
@@ -1038,17 +1067,15 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             if(tbJnsPerawatan.getSelectedRow()!= -1){
                 try {
                     URL = link+"/kelompok/kegiatan/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString();
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                    HttpEntity requestEntity = new HttpEntity(headers);
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    requestEntity = new HttpEntity(headers);
+                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("200")){
@@ -1061,7 +1088,19 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                 }catch (Exception ex) {
                     System.out.println("Notifikasi Bridging : "+ex);
                     if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                        JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                    }else if(ex.toString().contains("500")){
+                        JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                    }else if(ex.toString().contains("401")){
+                        JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                    }else if(ex.toString().contains("408")){
+                        JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                    }else if(ex.toString().contains("424")){
+                        JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                    }else if(ex.toString().contains("412")){
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+                    }else if(ex.toString().contains("204")){
+                        JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }
                 }    
             }
@@ -1093,17 +1132,15 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             if(tbJnsPerawatan.getSelectedRow()!= -1){
                 try {
                     URL = link+"/kelompok/kegiatan/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString();
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
-                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                    HttpEntity requestEntity = new HttpEntity(headers);
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    requestEntity = new HttpEntity(headers);
+                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("code").asText().equals("200")){
@@ -1122,12 +1159,11 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }
             try {
                 URL = link+"/kelompok/kegiatan";
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 requestJson ="{" +
                                 "\"eduId\":null," +
@@ -1141,14 +1177,13 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                                 "\"keterangan\":\""+Keterangan.getText()+"\"," +
                                 "\"biaya\": "+Biaya.getText() +
                               "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     System.out.println("Edu ID : "+response.asText());
                     if(Sequel.menyimpantf("pcare_kegiatan_kelompok","?,?,?,?,?,?,?,?,?,?,?","Edu ID",11,new String[]{
                         response.asText(),kdClub.getText(),NmClub.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Kegiatan.getSelectedItem().toString(),
@@ -1352,25 +1387,23 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         }else{
             try {
                 URL = link+"/kelompok/peserta";
-                HttpHeaders headers = new HttpHeaders();
+                headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
-                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
                 headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                 requestJson ="{" +
                                 "\"eduId\":\""+EduId.getText()+"\"," +
                                 "\"noKartu\":\""+NoKartu.getText()+"\"" +
                               "}";
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                JsonNode nameNode = root.path("metaData");
+                requestEntity = new HttpEntity(requestJson,headers);
+                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 if(nameNode.path("code").asText().equals("201")){
-                    JsonNode response = root.path("response").path("message");
+                    response = root.path("response").path("message");
                     if(Sequel.menyimpantf("pcare_peserta_kegiatan_kelompok","?,?","Edu ID",2,new String[]{
                         EduId.getText(),NoRM.getText()
                     })==true){                                                 

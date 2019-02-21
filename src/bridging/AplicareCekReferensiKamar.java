@@ -49,6 +49,12 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
     private int i=0;
     private BPJSApiAplicare api=new BPJSApiAplicare();
     private String URL="";
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -86,17 +92,29 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Kelas.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Kelas.getText().length()>2){
+                        tampil();
+                    }                    
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Kelas.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Kelas.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIAPLICARE")+"/rest/ref/kelas";	
+            URL = prop.getProperty("URLAPIAPLICARE")+"/rest/ref/kelas";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }     
@@ -237,7 +255,6 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -246,7 +263,6 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
-            Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -320,20 +336,19 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
 
     public void tampil() {        
         try {
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metadata");
+	    requestEntity = new HttpEntity(headers);
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metadata");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

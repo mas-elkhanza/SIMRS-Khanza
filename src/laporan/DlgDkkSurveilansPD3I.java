@@ -152,7 +152,7 @@ public final class DlgDkkSurveilansPD3I extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Data AFP & PD3I ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Data AFP & PD3I ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -274,7 +274,7 @@ public final class DlgDkkSurveilansPD3I extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             for(int r=0;r<tabMode.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -291,7 +291,7 @@ public final class DlgDkkSurveilansPD3I extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>(); 
                 param.put("namars",var.getnamars());
                 param.put("kotars",var.getkabupatenrs());

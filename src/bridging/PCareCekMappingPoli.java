@@ -41,7 +41,7 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private PCareCekMappingPoli poli=new PCareCekMappingPoli(null,false);
+    private PCareMapingPoli poli=new PCareMapingPoli(null,false);
 
     /** Creates new form DlgKamar
      * @param parent
@@ -54,7 +54,7 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Kode Unit RS","Nama Unit RS","Kode Unit BPJS","Nama Unit BPJS"}){
+            "Kode Unit","Nama Unit","Kode Unit PCare","Nama Unit PCare"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -81,11 +81,23 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Poli.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
               
@@ -254,7 +266,7 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         poli.isCek();
-        poli.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);

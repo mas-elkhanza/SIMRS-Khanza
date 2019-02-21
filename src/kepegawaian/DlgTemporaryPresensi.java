@@ -103,11 +103,23 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -460,7 +472,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
             if(tbTemporary.getValueAt(i,0).toString().equals("true")){
                 Sequel.queryu2("insert into rekap_presensi values(?,?,?,?,?,?,?,?,?)", 9,new String[]{
@@ -474,7 +486,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 });
             }
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_BtnTambahActionPerformed
 
@@ -487,7 +499,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
             if(tbTemporary.getValueAt(i,0).toString().equals("true")){
                 Sequel.queryu2("delete from temporary_presensi where id=? and jam_datang=?",2,new String[]{
@@ -495,7 +507,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 });
             }
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -576,7 +588,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void ppVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppVerifyActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
             if(Double.parseDouble(tbTemporary.getValueAt(i,9).toString())>16){
                 Sequel.queryu2("insert into rekap_presensi values(?,?,?,?,?,?,?,?,?)", 9,new String[]{
@@ -590,12 +602,12 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 });
             }
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_ppVerifyActionPerformed
 
     private void ppVerifySemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppVerifySemuaActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
                 Sequel.queryu2("insert into rekap_presensi values(?,?,?,?,?,?,?,?,?)", 9,new String[]{
                     tbTemporary.getValueAt(i,1).toString(),tbTemporary.getValueAt(i,4).toString(),
@@ -607,18 +619,18 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                     tbTemporary.getValueAt(i,1).toString(),tbTemporary.getValueAt(i,5).toString()
                 });
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_ppVerifySemuaActionPerformed
 
     private void ppHapusSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusSemuaActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
                 Sequel.queryu2("delete from temporary_presensi where id=? and jam_datang=?",2,new String[]{
                     tbTemporary.getValueAt(i,1).toString(),tbTemporary.getValueAt(i,5).toString()
                 });
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_ppHapusSemuaActionPerformed
 

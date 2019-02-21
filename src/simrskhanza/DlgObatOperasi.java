@@ -89,11 +89,23 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         satuan.addWindowListener(new WindowListener() {
@@ -120,18 +132,6 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
-        try {
-            ps=koneksi.prepareStatement("select obatbhp_ok.kd_obat, obatbhp_ok.nm_obat, kodesatuan.satuan, "+
-                   "obatbhp_ok.hargasatuan from obatbhp_ok inner join kodesatuan "+
-                   "on obatbhp_ok.kode_sat=kodesatuan.kode_sat "+
-                   "where obatbhp_ok.kd_obat like ? or "+
-                   "obatbhp_ok.nm_obat like ? or "+
-                   "kodesatuan.satuan like ? "+
-                   "order by obatbhp_ok.kd_obat");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
     
     private DlgCariSatuan satuan=new DlgCariSatuan(null,false);
@@ -756,16 +756,35 @@ private void BtnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void tampil() {        
         Valid.tabelKosong(tabMode2);
         try{
-            ps.setString(1,"%"+TCari.getText()+"%");
-            ps.setString(2,"%"+TCari.getText()+"%");
-            ps.setString(3,"%"+TCari.getText()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode2.addRow(new String[]{rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4)});
+            ps=koneksi.prepareStatement("select obatbhp_ok.kd_obat, obatbhp_ok.nm_obat, kodesatuan.satuan, "+
+               "obatbhp_ok.hargasatuan from obatbhp_ok inner join kodesatuan "+
+               "on obatbhp_ok.kode_sat=kodesatuan.kode_sat "+
+               "where obatbhp_ok.kd_obat like ? or "+
+               "obatbhp_ok.nm_obat like ? or "+
+               "kodesatuan.satuan like ? "+
+               "order by obatbhp_ok.kd_obat");
+            try {
+                ps.setString(1,"%"+TCari.getText()+"%");
+                ps.setString(2,"%"+TCari.getText()+"%");
+                ps.setString(3,"%"+TCari.getText()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode2.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),
+                        rs.getString(3),rs.getString(4)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
+                
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

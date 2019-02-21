@@ -149,11 +149,23 @@ public class DlgPembelian extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }            
         
@@ -827,7 +839,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {
-                    Sequel.AutoComitFalse();
+                    
                     if(Sequel.menyimpantf2("pembelian","?,?,?,?,?,?,?,?,?,?,?","No.Faktur",11,new String[]{
                             NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),
                             ""+sbttl,""+ttldisk,""+ttl,""+ppn,""+(ttl+ppn),kdgudang.getText(),
@@ -870,34 +882,34 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else{
                         JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Faktur sudah ada sebelumnya...!!");
                     }                         
-                    Sequel.AutoComitTrue();
+                    
                 } catch (Exception ex) {
                     System.out.println(ex);                    
                 }                
                 jml=tbDokter.getRowCount();
                 if(aktifkanbatch.equals("yes")){
-                for(i=0;i<jml;i++){ 
-                    tbDokter.setValueAt("",i,0);
-                    tbDokter.setValueAt(true,i,5);
-                    tbDokter.setValueAt(0,i,8);
-                    tbDokter.setValueAt(0,i,9);
-                    tbDokter.setValueAt(0,i,10);
-                    tbDokter.setValueAt(0,i,11);
-                    tbDokter.setValueAt(0,i,12);
-                    tbDokter.setValueAt("",i,13);
+                    for(i=0;i<jml;i++){ 
+                        tbDokter.setValueAt("",i,0);
+                        tbDokter.setValueAt(true,i,5);
+                        tbDokter.setValueAt(0,i,8);
+                        tbDokter.setValueAt(0,i,9);
+                        tbDokter.setValueAt(0,i,10);
+                        tbDokter.setValueAt(0,i,11);
+                        tbDokter.setValueAt(0,i,12);
+                        tbDokter.setValueAt("",i,13);
+                    }
+                }else{
+                    for(i=0;i<jml;i++){ 
+                        tbDokter.setValueAt("",i,0);
+                        tbDokter.setValueAt(false,i,5);
+                        tbDokter.setValueAt(0,i,8);
+                        tbDokter.setValueAt(0,i,9);
+                        tbDokter.setValueAt(0,i,10);
+                        tbDokter.setValueAt(0,i,11);
+                        tbDokter.setValueAt(0,i,12);
+                        tbDokter.setValueAt("",i,13);
+                    }
                 }
-            }else{
-                for(i=0;i<jml;i++){ 
-                    tbDokter.setValueAt("",i,0);
-                    tbDokter.setValueAt(false,i,5);
-                    tbDokter.setValueAt(0,i,8);
-                    tbDokter.setValueAt(0,i,9);
-                    tbDokter.setValueAt(0,i,10);
-                    tbDokter.setValueAt(0,i,11);
-                    tbDokter.setValueAt(0,i,12);
-                    tbDokter.setValueAt("",i,13);
-                }
-            }
                 tampil();
                 LSubtotal.setText("0");
                 LPotongan.setText("0");
@@ -1390,7 +1402,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             "",rs.getString(3),rs.getString(1),
                             rs.getString(2),rs.getString(3),true,
                             rs.getString(5),rs.getDouble(4),0,0,0,0,0,"",
-                            null,null,null,null,null,null,null,null,null,null,null
+                            0,0,0,0,0,0,0,0,0,0,0
                         });
                     } 
                 }else{
@@ -1399,7 +1411,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             "",rs.getString(3),rs.getString(1),
                             rs.getString(2),rs.getString(3),false,
                             rs.getString(5),rs.getDouble(4),0,0,0,0,0,"",
-                            null,null,null,null,null,null,null,null,null,null,null
+                            0,0,0,0,0,0,0,0,0,0,0
                         });
                     } 
                 }                                               
@@ -1482,26 +1494,25 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
  
     private void simpanbatch(){
-        if(aktifkanbatch.equals("yes")){
-            if((!tbDokter.getValueAt(i,13).toString().equals(""))&&(!tbDokter.getValueAt(i,14).toString().equals(""))&&
-                (!tbDokter.getValueAt(i,15).toString().equals(""))&&(!tbDokter.getValueAt(i,16).toString().equals(""))&&
-                (!tbDokter.getValueAt(i,17).toString().equals(""))&&(!tbDokter.getValueAt(i,18).toString().equals(""))&&
-                (!tbDokter.getValueAt(i,19).toString().equals(""))&&(!tbDokter.getValueAt(i,20).toString().equals(""))&&
-                (!tbDokter.getValueAt(i,21).toString().equals(""))&&(!tbDokter.getValueAt(i,22).toString().equals(""))&&
-                (!tbDokter.getValueAt(i,23).toString().equals(""))&&(!tbDokter.getValueAt(i,24).toString().equals(""))){
-                Sequel.menyimpan2("data_batch","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Batch",19,new String[]{
-                    tbDokter.getValueAt(i,13).toString(),tbDokter.getValueAt(i,2).toString(), 
-                    Valid.SetTgl(TglBeli.getSelectedItem()+""),Valid.SetTgl(tbDokter.getValueAt(i,6).toString()), 
-                    "Pengadaan",NoFaktur.getText(), tbDokter.getValueAt(i,24).toString(),
-                    tbDokter.getValueAt(i,14).toString(),tbDokter.getValueAt(i,15).toString(),
-                    tbDokter.getValueAt(i,16).toString(),tbDokter.getValueAt(i,17).toString(),
-                    tbDokter.getValueAt(i,18).toString(),tbDokter.getValueAt(i,19).toString(),
-                    tbDokter.getValueAt(i,20).toString(),tbDokter.getValueAt(i,21).toString(),
-                    tbDokter.getValueAt(i,22).toString(),tbDokter.getValueAt(i,23).toString(),
-                    tbDokter.getValueAt(i,12).toString(),tbDokter.getValueAt(i,12).toString()
-                });
-            }
-        }  
+        if((!tbDokter.getValueAt(i,13).toString().equals(""))&&(!tbDokter.getValueAt(i,14).toString().equals(""))&&
+            (!tbDokter.getValueAt(i,15).toString().equals(""))&&(!tbDokter.getValueAt(i,16).toString().equals(""))&&
+            (!tbDokter.getValueAt(i,17).toString().equals(""))&&(!tbDokter.getValueAt(i,18).toString().equals(""))&&
+            (!tbDokter.getValueAt(i,19).toString().equals(""))&&(!tbDokter.getValueAt(i,20).toString().equals(""))&&
+            (!tbDokter.getValueAt(i,21).toString().equals(""))&&(!tbDokter.getValueAt(i,22).toString().equals(""))&&
+            (!tbDokter.getValueAt(i,23).toString().equals(""))&&(!tbDokter.getValueAt(i,24).toString().equals(""))){
+            Sequel.menyimpan2("data_batch","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Batch",19,new String[]{
+                tbDokter.getValueAt(i,13).toString(),tbDokter.getValueAt(i,2).toString(), 
+                Valid.SetTgl(TglBeli.getSelectedItem()+""),Valid.SetTgl(tbDokter.getValueAt(i,6).toString()), 
+                "Pengadaan",NoFaktur.getText(), tbDokter.getValueAt(i,24).toString(),
+                tbDokter.getValueAt(i,14).toString(),tbDokter.getValueAt(i,15).toString(),
+                tbDokter.getValueAt(i,16).toString(),tbDokter.getValueAt(i,17).toString(),
+                tbDokter.getValueAt(i,18).toString(),tbDokter.getValueAt(i,19).toString(),
+                tbDokter.getValueAt(i,20).toString(),tbDokter.getValueAt(i,21).toString(),
+                tbDokter.getValueAt(i,22).toString(),tbDokter.getValueAt(i,23).toString(),
+                tbDokter.getValueAt(i,12).toString(),tbDokter.getValueAt(i,12).toString()
+            });
+        }
+        
         if(var.getobat()==true){
             if(tbDokter.getValueAt(i,5).toString().equals("true")){
                 Sequel.mengedit("databarang","kode_brng=?","expire=?,h_beli=?,ralan=?,kelas1=?,kelas2=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?",13,new String[]{
@@ -1514,8 +1525,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     tbDokter.getValueAt(i,2).toString()
                 });  
             }
-        }            
-            
+        }   
     }
     
     private void setKonversi(int baris){        

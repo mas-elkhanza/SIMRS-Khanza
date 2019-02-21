@@ -77,6 +77,12 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
     private String URL="",requestJson,user="",link="";
     private final Properties prop = new Properties();
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -141,11 +147,23 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
         
@@ -789,7 +807,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
             }else{  
                 try {
                     URL = link+"/Rujukan/update";	
-                    HttpHeaders headers = new HttpHeaders();
+                    headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                     headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -809,13 +827,12 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                                         "}" +
                                     "}" +
                                   "}";
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
-                    JsonNode nameNode = root.path("metaData");
+                    requestEntity = new HttpEntity(requestJson,headers);
+                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                    nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
-                    JsonNode response = root.path("response");
+                    response = root.path("response");
                     if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit3("bridging_rujukan_bpjs","no_rujukan=?","ppkDirujuk=?,tipeRujukan=?,jnsPelayanan=?,catatan=?,diagRujukan=?,poliRujukan=?,nm_ppkDirujuk=?,nama_diagRujukan=?,nama_poliRujukan=?",10,new String[]{
                             KdPpkRujukan1.getText(),TipeRujukan.getSelectedItem().toString(),JenisPelayanan1.getSelectedItem().toString().substring(0,1),
@@ -1263,7 +1280,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         try {
             URL = link+"/Rujukan/delete";	
 
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -1276,9 +1293,8 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                                 "}" +
                             "}" +
                          "}";            
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            root = mapper.readTree(restTemplate.exchange(URL, HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("code").asText().equals("200")){

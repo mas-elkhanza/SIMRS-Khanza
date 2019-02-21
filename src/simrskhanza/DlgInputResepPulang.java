@@ -94,11 +94,23 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }         
     }
@@ -482,7 +494,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");
         }else{    
-            Sequel.AutoComitFalse();
+            
             for(i=0;i<tbKamar.getRowCount();i++){ 
                 if(Valid.SetAngka(tbKamar.getValueAt(i,0).toString())>0){
                     if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?","data",9,new String[]{
@@ -497,7 +509,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                 }
             }  
-            Sequel.AutoComitTrue();
+            
             dispose();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed

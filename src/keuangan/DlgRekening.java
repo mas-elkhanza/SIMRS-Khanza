@@ -91,11 +91,23 @@ public final class DlgRekening extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil2();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil2();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil2();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil2();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil2();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil2();
+                    }
+                }
             });
         }  
         
@@ -799,7 +811,7 @@ public final class DlgRekening extends javax.swing.JDialog {
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(TCari.getText().trim().equals("")){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 int row=tabMode.getRowCount();
                 for(int i=0;i<row;i++){  
@@ -809,7 +821,7 @@ public final class DlgRekening extends javax.swing.JDialog {
                                     tabMode.getValueAt(i,4).toString()+"','"+
                                     tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
                 }
-                Sequel.AutoComitTrue();  
+                  
                 Valid.MyReport("rptRekening2.jrxml","report","::[ Data Rekening ]::",
                     "select * from temporary order by no asc",param);
             }else{

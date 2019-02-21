@@ -102,11 +102,23 @@ public class DlgHemodialisa extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilPO();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampilPO();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilPO();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampilPO();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilPO();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampilPO();
+                    }
+                }
             });
         } 
         ChkInput.setSelected(false);

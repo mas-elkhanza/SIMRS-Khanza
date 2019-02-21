@@ -106,11 +106,23 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             
             Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -918,7 +930,7 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
             JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau dicetak notanya...!!!!");
             tbKamar.requestFocus();
         }else if(tabMode.getRowCount()!=0){  
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             Sequel.menyimpan("temporary","'0','No.Rawat',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),5).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','Tgl.Bayar',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),0).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
@@ -926,7 +938,7 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
             Sequel.menyimpan("temporary","'0','Nama Pasien',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),2).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','Keterangan',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),4).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','Besar Cicilan',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),3).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.AutoComitTrue();
+            
             Valid.panggilUrl("billing/LaporanPiutang.php?petugas="+var.getkode().replaceAll(" ","_")+"&tanggal="+Tanggal.getSelectedItem().toString().replaceAll(" ","_"));
         }
         this.setCursor(Cursor.getDefaultCursor());    

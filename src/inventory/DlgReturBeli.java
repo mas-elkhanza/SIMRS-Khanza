@@ -945,7 +945,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kdbar," tampreturbeli","no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"' and kode_brng");
+            Valid.hapusTable(tabMode,Kdbar," tampreturbeli","no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"' and petugas='"+var.getkode()+"' and kode_brng");
             tampil();
             emptTeks();
         }
@@ -1015,12 +1015,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                Sequel.AutoComitFalse();
+                
                 autonomer();
                 if(Sequel.menyimpantf("returbeli","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdsup.getText()+"','"+kdgudang.getText()+"'","data")==true){
                     try {
-                        ps=koneksi.prepareStatement("select no_faktur, kode_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch, jml_retur2 from tampreturbeli");
+                        ps=koneksi.prepareStatement("select no_faktur, kode_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch, jml_retur2 from tampreturbeli where petugas=?");
                         try {
+                            ps.setString(1,var.getkode());
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 if(Sequel.menyimpantf("detreturbeli","'"+NoRetur.getText()+"','"+rs.getString(1) +"','"+rs.getString(2) +"','"+rs.getString(3) +
@@ -1059,8 +1060,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     autonomer();
                     if(Sequel.menyimpantf("returbeli","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdsup.getText()+"','"+kdgudang.getText()+"'","data")==true){
                         try {
-                            ps=koneksi.prepareStatement("select no_faktur, kode_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch, jml_retur2 from tampreturbeli");
+                            ps=koneksi.prepareStatement("select no_faktur, kode_brng, satuan, h_beli, jml_beli, h_retur, jml_retur, total,no_batch, jml_retur2 from tampreturbeli where petugas=?");
                             try {
+                                ps.setString(1,var.getkode());
                                 rs=ps.executeQuery();
                                 while(rs.next()){
                                     if(Sequel.menyimpantf("detreturbeli","'"+NoRetur.getText()+"','"+rs.getString(1) +"','"+rs.getString(2) +"','"+rs.getString(3) +
@@ -1097,7 +1099,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                 }
-                Sequel.AutoComitTrue();                    
+                                    
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1111,11 +1113,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        Sequel.queryu("delete from  tampreturbeli");
+        Sequel.queryu("delete from tampreturbeli where petugas='"+var.getkode()+"'");
         tampil();
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_beli,3),signed)),0) from returbeli where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
-                "RB"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
-        
+        autonomer();
     }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
