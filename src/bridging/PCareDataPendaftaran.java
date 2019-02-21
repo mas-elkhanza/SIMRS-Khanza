@@ -655,6 +655,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnBarcode = new javax.swing.JMenuItem();
         MnBarcodeRM9 = new javax.swing.JMenuItem();
         MnPemberianObat = new javax.swing.JMenuItem();
+        MnPemberianObat1 = new javax.swing.JMenuItem();
         MnTIndakan = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -1084,6 +1085,23 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnPemberianObat);
 
+        MnPemberianObat1.setBackground(new java.awt.Color(255, 255, 255));
+        MnPemberianObat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPemberianObat1.setForeground(new java.awt.Color(70, 70, 70));
+        MnPemberianObat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPemberianObat1.setText("Data Pemberian Obat");
+        MnPemberianObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPemberianObat1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPemberianObat1.setIconTextGap(5);
+        MnPemberianObat1.setName("MnPemberianObat1"); // NOI18N
+        MnPemberianObat1.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnPemberianObat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPemberianObat1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnPemberianObat1);
+
         MnTIndakan.setBackground(new java.awt.Color(255, 255, 255));
         MnTIndakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnTIndakan.setForeground(new java.awt.Color(70, 70, 70));
@@ -1213,7 +1231,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalDaftar.setEditable(false);
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1532,7 +1550,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalKunjungan.setEditable(false);
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1638,7 +1656,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalPulang.setEditable(false);
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1846,7 +1864,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalEstRujuk.setEditable(false);
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -2197,7 +2215,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2212,7 +2230,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2302,7 +2320,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari3.setEditable(false);
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2317,7 +2335,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari4.setEditable(false);
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2019" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2019" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -2541,79 +2559,87 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }else if((chkKunjungan.isSelected()==true)&&(NmDiagnosa1.getText().equals(""))){
             Valid.textKosong(BtnDiagnosa1,"Diagnosa 1");
         }else{
-            try {
-                headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
-                headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
-                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                headers.add("X-Signature",api.getHmac());
-                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-                kunjungansakit="true";
-                if(JenisKunjungan.getSelectedItem().toString().equals("Kunjungan Sehat")){
-                    kunjungansakit="false";
+            if(Sequel.cariInteger("select count(no_rawat) from pcare_pendaftaran where no_rawat=?",TNoRw.getText())==0){
+                try {
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                    headers.add("X-Signature",api.getHmac());
+                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                    kunjungansakit="true";
+                    if(JenisKunjungan.getSelectedItem().toString().equals("Kunjungan Sehat")){
+                        kunjungansakit="false";
+                    }
+                    requestJson ="{" +
+                                    "\"kdProviderPeserta\": \""+ProviderPeserta.getText()+"\"," +
+                                    "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
+                                    "\"noKartu\": \""+NoKartu.getText()+"\"," +
+                                    "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
+                                    "\"keluhan\": \""+Keluhan.getText()+"\"," +
+                                    "\"kunjSakit\": "+kunjungansakit+"," +
+                                    "\"sistole\": "+Sistole.getText()+"," +
+                                    "\"diastole\": "+Diastole.getText()+"," +
+                                    "\"beratBadan\": "+BeratBadan.getText()+"," +
+                                    "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
+                                    "\"respRate\": "+Respiratory.getText()+"," +
+                                    "\"heartRate\": "+Heartrate.getText()+"," +
+                                    "\"rujukBalik\": 0," +
+                                    "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
+                                 "}";
+                    System.out.println(requestJson);
+                    requestEntity = new HttpEntity(requestJson,headers);
+                    requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
+                    System.out.println(requestJson);
+                    root = mapper.readTree(requestJson);
+                    nameNode = root.path("metaData");
+                    System.out.println("code : "+nameNode.path("code").asText());
+                    System.out.println("message : "+nameNode.path("message").asText());
+                    if(nameNode.path("code").asText().equals("201")){
+                        response = root.path("response").path("message");
+                        System.out.println("noUrut : "+response.asText());
+                        if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",19,new String[]{
+                            TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),ProviderPeserta.getText(),
+                            NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
+                            Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
+                            Perawatan.getSelectedItem().toString(),response.asText()
+                        })==true){  
+                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",15,new String[]{
+                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                BeratBadan.getText(),"", Keluhan.getText(),"","","-",""
+                            });                        
+                            simpanKunjungan();
+                            emptTeks();
+                        }                     
+                    }else{
+                        JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                    }
+                }catch (Exception ex) {
+                    System.out.println("Notifikasi Bridging : "+ex);
+                    if(ex.toString().contains("UnknownHostException")){
+                        JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+                    }else if(ex.toString().contains("500")){
+                        JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+                    }else if(ex.toString().contains("401")){
+                        JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+                    }else if(ex.toString().contains("408")){
+                        JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+                    }else if(ex.toString().contains("424")){
+                        JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+                    }else if(ex.toString().contains("412")){
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+                    }else if(ex.toString().contains("204")){
+                        JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+                    }
+                } 
+            }else{
+                if(Sequel.cariInteger("select count(no_rawat) from pcare_kunjungan_umum where no_rawat=?",TNoRw.getText())==0){
+                    simpanKunjungan();
+                    emptTeks();
                 }
-                requestJson ="{" +
-                                "\"kdProviderPeserta\": \""+ProviderPeserta.getText()+"\"," +
-                                "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
-                                "\"noKartu\": \""+NoKartu.getText()+"\"," +
-                                "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
-                                "\"keluhan\": \""+Keluhan.getText()+"\"," +
-                                "\"kunjSakit\": "+kunjungansakit+"," +
-                                "\"sistole\": "+Sistole.getText()+"," +
-                                "\"diastole\": "+Diastole.getText()+"," +
-                                "\"beratBadan\": "+BeratBadan.getText()+"," +
-                                "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
-                                "\"respRate\": "+Respiratory.getText()+"," +
-                                "\"heartRate\": "+Heartrate.getText()+"," +
-                                "\"rujukBalik\": 0," +
-                                "\"kdTkp\": \""+Perawatan.getSelectedItem().toString().substring(0,2)+"\"" +
-                             "}";
-                System.out.println(requestJson);
-                requestEntity = new HttpEntity(requestJson,headers);
-                requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
-                System.out.println(requestJson);
-                root = mapper.readTree(requestJson);
-                nameNode = root.path("metaData");
-                System.out.println("code : "+nameNode.path("code").asText());
-                System.out.println("message : "+nameNode.path("message").asText());
-                if(nameNode.path("code").asText().equals("201")){
-                    response = root.path("response").path("message");
-                    System.out.println("noUrut : "+response.asText());
-                    if(Sequel.menyimpantf("pcare_pendaftaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Urut",19,new String[]{
-                        TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),ProviderPeserta.getText(),
-                        NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Keluhan.getText(),JenisKunjungan.getSelectedItem().toString(),
-                        Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
-                        Perawatan.getSelectedItem().toString(),response.asText()
-                    })==true){  
-                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",15,new String[]{
-                            TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                            "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                            BeratBadan.getText(),"", Keluhan.getText(),"","","-",""
-                        });                        
-                        simpanKunjungan();
-                        emptTeks();
-                    }                     
-                }else{
-                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                }
-            }catch (Exception ex) {
-                System.out.println("Notifikasi Bridging : "+ex);
-                if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
-                }else if(ex.toString().contains("500")){
-                    JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
-                }else if(ex.toString().contains("401")){
-                    JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
-                }else if(ex.toString().contains("408")){
-                    JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
-                }else if(ex.toString().contains("424")){
-                    JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
-                }else if(ex.toString().contains("412")){
-                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
-                }else if(ex.toString().contains("204")){
-                    JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
-                }
-            } 
+            }
+                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -2753,7 +2779,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(ex.toString().contains("424")){
                             JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                         }else if(ex.toString().contains("412")){
-                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                         }else if(ex.toString().contains("204")){
                             JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                         }
@@ -2862,7 +2888,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(ex.toString().contains("424")){
                             JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                         }else if(ex.toString().contains("412")){
-                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                         }else if(ex.toString().contains("204")){
                             JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                         }
@@ -3094,7 +3120,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }else if(ex.toString().contains("424")){
                         JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                     }else if(ex.toString().contains("412")){
-                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                     }else if(ex.toString().contains("204")){
                         JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }
@@ -3570,7 +3596,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         }else if(ex.toString().contains("424")){
                             JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                         }else if(ex.toString().contains("412")){
-                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                            JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                         }else if(ex.toString().contains("204")){
                             JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                         }
@@ -4038,7 +4064,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgobt2.setLocationRelativeTo(internalFrame1);
                         dlgobt2.setNoRm(TNoRw.getText(),DTPCari1.getDate());
-                        dlgobt2.setPCare("yes");
+                        dlgobt2.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
                         dlgobt2.isCek();
                         dlgobt2.tampil();
                         dlgobt2.setVisible(true);
@@ -4047,7 +4073,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),
                                         Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
-                        dlgobt.setPCare("yes");
+                        dlgobt.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
                         dlgobt.isCek();
                         dlgobt.setDokter("","");
                         dlgobt.tampilobat();
@@ -4063,6 +4089,25 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void MnTIndakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTIndakanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MnTIndakanActionPerformed
+
+    private void MnPemberianObat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObat1ActionPerformed
+        if(tabMode2.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari1.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKunjungan.requestFocus();
+        }else{
+            if(tbKunjungan.getSelectedRow()!= -1){
+                PCareDataPemberianObat dlgrwinap=new PCareDataPemberianObat(null,false);
+                dlgrwinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dlgrwinap.setLocationRelativeTo(internalFrame1);
+                dlgrwinap.isCek();
+                dlgrwinap.setNoRm(TNoRw.getText(),DTPCari3.getDate(),DTPCari4.getDate()); 
+                dlgrwinap.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_MnPemberianObat1ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -4160,6 +4205,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnLabelTracker2;
     private javax.swing.JMenuItem MnLabelTracker3;
     private javax.swing.JMenuItem MnPemberianObat;
+    private javax.swing.JMenuItem MnPemberianObat1;
     private javax.swing.JMenuItem MnTIndakan;
     private widget.TextBox NmDiagnosa1;
     private widget.TextBox NmDiagnosa2;
@@ -4680,7 +4726,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(ex.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(ex.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(ex.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
@@ -4756,7 +4802,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(e.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(e.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
@@ -4820,7 +4866,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(e.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(e.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
@@ -4884,7 +4930,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(e.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(e.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }

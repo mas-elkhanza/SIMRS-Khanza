@@ -617,7 +617,7 @@ public final class DlgKamar extends javax.swing.JDialog {
         panelGlass4.add(jLabel9);
         jLabel9.setBounds(440, 12, 90, 23);
 
-        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISI", "KOSONG" }));
+        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISI", "KOSONG", "DIBERSIHKAN", "DIBOOKING" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
         CmbStatus.setOpaque(false);
         CmbStatus.addKeyListener(new java.awt.event.KeyAdapter() {

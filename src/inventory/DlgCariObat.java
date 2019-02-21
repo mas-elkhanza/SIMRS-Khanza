@@ -12,6 +12,9 @@
 
 package inventory;
 
+import bridging.PcareApi;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -40,6 +43,11 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import org.apache.commons.codec.binary.Base64;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import simrskhanza.DlgCariBangsal;
 import widget.Button;
 
@@ -60,7 +68,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private boolean[] pilih; 
     private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri,kategori,golongan,no,nobatch,nofaktur,kadaluarsa;
-    private String sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
+    private String signa1="1",signa2="1",nokunjungan="",kdObatSK="",requestJson="",URL="",otorisasi,sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgBarang barang=new DlgBarang(null,false);
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -70,6 +78,15 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private WarnaTable2 warna3=new WarnaTable2();
     private riwayatobat Trackobat=new riwayatobat();
     private final Properties prop = new Properties();
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
+    private PcareApi api=new PcareApi();
+    private String[] arrSplit;
+    
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -400,6 +417,8 @@ public final class DlgCariObat extends javax.swing.JDialog {
             }else{
                 ppStok.setVisible(false);
             }
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
+            URL=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
@@ -1257,6 +1276,31 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     ""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,2).toString()
                                                 });
                                             }
+                                            if(aktifpcare.equals("yes")){
+                                                arrSplit = tbObat.getValueAt(i,11).toString().toLowerCase().split("x");
+                                                signa1="1";
+                                                try {
+                                                    if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                                        signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                                    }
+                                                } catch (Exception e) {
+                                                    signa1="1";
+                                                }
+                                                signa2="1";
+                                                try {
+                                                    if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                                        signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                                    }
+                                                } catch (Exception e) {
+                                                    signa2="1";
+                                                } 
+                                                simpanObatPCare(
+                                                    nokunjungan,"false",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbObat.getValueAt(i,2).toString()),
+                                                    signa1,signa2,""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),"0","",TNoRw.getText(),
+                                                    Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                                    tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
+                                                );
+                                            }
                                         }else{
                                             JOptionPane.showMessageDialog(null,"Gagal Menyimpan, Kemungkinan ada data sama/kapasitas tidak ditemukan..!!");
                                         }  
@@ -1281,6 +1325,31 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa-?",3,new String[]{
                                                     ""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,2).toString()
                                                 });
+                                            }
+                                            if(aktifpcare.equals("yes")){
+                                                arrSplit = tbObat.getValueAt(i,11).toString().toLowerCase().split("x");
+                                                signa1="1";
+                                                try {
+                                                    if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                                        signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                                    }
+                                                } catch (Exception e) {
+                                                    signa1="1";
+                                                }
+                                                signa2="1";
+                                                try {
+                                                    if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                                        signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                                    }
+                                                } catch (Exception e) {
+                                                    signa2="1";
+                                                } 
+                                                simpanObatPCare(
+                                                    nokunjungan,"false",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbObat.getValueAt(i,2).toString()),
+                                                    signa1,signa2,""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),"0","",TNoRw.getText(),
+                                                    Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                                    tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
+                                                );
                                             }
                                         }                                   
                                     }
@@ -1315,6 +1384,32 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa-?",3,new String[]{
                                             ""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,2).toString()
                                         });
+                                    }
+                                    if(aktifpcare.equals("yes")){
+                                        arrSplit = tbObat.getValueAt(i,11).toString().toLowerCase().split("x");
+                                        signa1="1";
+                                        try {
+                                            if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                                signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                            }
+                                        } catch (Exception e) {
+                                            signa1="1";
+                                        }
+                                        signa2="1";
+                                        try {
+                                            if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                                signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                            }
+                                        } catch (Exception e) {
+                                            signa2="1";
+                                        }   
+                                        
+                                        simpanObatPCare(
+                                            nokunjungan,"false",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbObat.getValueAt(i,2).toString()),
+                                            signa1,signa2,""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),"0","",TNoRw.getText(),
+                                            Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                            tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
+                                        );
                                     }
                                 }                                   
                             }                      
@@ -1359,6 +1454,33 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa-?",3,new String[]{
                                             ""+Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()),tbDetailObatRacikan.getValueAt(i,16).toString(),tbDetailObatRacikan.getValueAt(i,1).toString()
                                         });
+                                    }
+                                    if(aktifpcare.equals("yes")){
+                                        arrSplit = Sequel.cariIsi("select aturan_pakai from obat_racikan where tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' and "+
+                                                    "jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"' and "+
+                                                    "no_rawat='"+TNoRw.getText()+"' and no_racik='"+tbDetailObatRacikan.getValueAt(i,0).toString()+"'").toLowerCase().split("x");
+                                        signa1="1";
+                                        try {
+                                            if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                                signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                            }
+                                        } catch (Exception e) {
+                                            signa1="1";
+                                        }
+                                        signa2="1";
+                                        try {
+                                            if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                                signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                            }
+                                        } catch (Exception e) {
+                                            signa2="2";
+                                        } 
+                                        simpanObatPCare(
+                                            nokunjungan,"true",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbDetailObatRacikan.getValueAt(i,1).toString()),
+                                            signa1,signa2,""+Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()),"0","",TNoRw.getText(),
+                                            Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                            tbDetailObatRacikan.getValueAt(i,1).toString(),tbDetailObatRacikan.getValueAt(i,16).toString()
+                                        );
                                     }
                                 }  
                             }   
@@ -3678,7 +3800,71 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }            
     }
     
-    public void setPCare(String aktif){
+    public void setPCare(String aktif,String nokunjung){
         aktifpcare=aktif;
+        nokunjungan=nokunjung;
+    }
+    
+    private void simpanObatPCare(String noKunjungan,String racikan,String kdObat,String signa1,String signa2,String jmlObat,String jmlPermintaan,String nmObatNonDPHO,String no_rawat,String tgl_perawatan,String jam,String kode_brng,String no_batch){
+        try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+            headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+            headers.add("X-Signature",api.getHmac());
+            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+            requestJson ="{" +
+                "\"kdObatSK\": 0," +
+                "\"noKunjungan\": \""+noKunjungan+"\"," +
+                "\"racikan\": "+racikan+"," +
+                "\"kdRacikan\": null," +
+                "\"obatDPHO\": true," +
+                "\"kdObat\": \""+kdObat+"\"," +
+                "\"signa1\": "+signa1+"," +
+                "\"signa2\": "+signa2+"," +
+                "\"jmlObat\": "+jmlObat+"," +
+                "\"jmlPermintaan\": "+jmlPermintaan+"," +
+                "\"nmObatNonDPHO\": \""+nmObatNonDPHO+"\"" +
+             "}";
+            System.out.println(requestJson);
+            requestEntity = new HttpEntity(requestJson,headers);
+            requestJson=api.getRest().exchange(URL+"/obat/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+            System.out.println(requestJson);
+            root = mapper.readTree(requestJson);
+            nameNode = root.path("metaData");
+            System.out.println("code : "+nameNode.path("code").asText());
+            System.out.println("message : "+nameNode.path("message").asText()); 
+            if(nameNode.path("code").asText().equals("201")){
+                response = root.path("response");
+                kdObatSK="";
+                if(response.isArray()){
+                    for(JsonNode list:response){
+                        if(list.path("field").asText().equals("kdObatSK")){
+                            kdObatSK=list.path("message").asText();
+                        }
+                    }
+                }
+                Sequel.menyimpan2("pcare_obat_diberikan","?,?,?,?,?,?,?",7,new String[]{
+                    no_rawat,noKunjungan,kdObatSK,tgl_perawatan,jam,kode_brng,no_batch
+                });
+            }
+        }catch (Exception ex) {
+            System.out.println("Notifikasi Bridging : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+            }else if(ex.toString().contains("401")){
+                JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+            }else if(ex.toString().contains("408")){
+                JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+            }else if(ex.toString().contains("424")){
+                JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+            }else if(ex.toString().contains("412")){
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+            }else if(ex.toString().contains("204")){
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }
+        } 
     }
 }

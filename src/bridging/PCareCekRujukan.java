@@ -65,7 +65,8 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
 
         this.setLocation(10,2);
         setSize(628,674);
-        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode ICD X","Nama Penyakit"}){
+        Object[] row={"","",""};
+        tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -74,16 +75,15 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (i = 0; i < 2; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(170);
             }else if(i==1){
-                column.setPreferredWidth(140);
-            }else if(i==2){
-                column.setPreferredWidth(470);
+                column.setPreferredWidth(450);
             }
         }
+        
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
          
         diagnosa.setDocument(new batasInput((byte)100).getKata(diagnosa));
@@ -342,7 +342,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
 
     public void tampil(String diagnosa) {
         try {
-            URL = link+"/v1/kunjungan/rujukan/"+diagnosa;
+            URL = link+"/kunjungan/rujukan/"+diagnosa;
             headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -353,18 +353,66 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("message").asText().equals("OK")){
+           if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = root.path("response");
-                if(response.path("list").isArray()){
-                    i=1;
-                    for(JsonNode list:response.path("list")){
-                        tabMode.addRow(new Object[]{
-                            i+".",list.path("kdDiag").asText(),list.path("nmDiag").asText()
-                        });
-                        i++;
-                    }
-                }
+                tabMode.addRow(new Object[]{
+                    "No.Rujukan",": "+response.path("noRujukan").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "PPK",": "+response.path("ppk").path("kdPPK").asText()+" "+response.path("ppk").path("nmPPK").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Alamat PPK",": "+response.path("ppk").path("alamat").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "Kantor Cabang",": "+response.path("ppk").path("kc").path("kdKC").asText()+" "+response.path("ppk").path("kc").path("nmKC").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Alamat KC",": "+response.path("ppk").path("kc").path("alamat").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Telp KC",": "+response.path("ppk").path("kc").path("telp").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "Fax KC",": "+response.path("ppk").path("kc").path("fax").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "Kota KC",": "+response.path("ppk").path("kc").path("dati").path("kdDati").asText()+" "+response.path("ppk").path("kc").path("dati").path("nmDati").asText()
+                });                 
+                tabMode.addRow(new Object[]{
+                    "Regional KC",": "+response.path("ppk").path("kc").path("kdKR").path("kdKR").asText()+" "+response.path("ppk").path("kc").path("kdKR").path("nmKR").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Tgl.Kunjungan",": "+response.path("tglKunjungan").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Poli Kunjungan",": "+response.path("poli").path("kdPoli").asText()+" "+response.path("poli").path("nmPoli").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "No.Kartu",": "+response.path("nokaPst").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nama Peserta",": "+response.path("nmPst").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Tgl.Lahir",": "+response.path("tglLahir").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "J.K.",": "+response.path("sex").asText().replaceAll("P","Perempuan").replaceAll("L","Laki-Laki")
+                });
+                tabMode.addRow(new Object[]{
+                    "Diagnosa",": "+response.path("diag1").path("kdDiag").asText()+" "+response.path("diag1").path("nmDiag").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Dokter",": "+response.path("dokter").path("kdDokter").asText()+" "+response.path("dokter").path("nmDokter").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "TACC",": "+response.path("tacc").path("nmTacc").asText()+", "+response.path("tacc").path("alasanTacc").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Info Denda",": "+response.path("infoDenda").asText()
+                });
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }  
@@ -381,7 +429,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
             }else if(ex.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(ex.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(ex.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }

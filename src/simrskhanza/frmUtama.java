@@ -81,6 +81,7 @@ import bridging.PCareCekReferensiSubspesialis;
 import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
 import bridging.PCareClubProlanis;
+import bridging.PCareDataPemberianObat;
 import bridging.PCareDataPendaftaran;
 import bridging.PCareKegiatanKelompok;
 import bridging.PCareMapingDokter;
@@ -408,6 +409,36 @@ import laporan.DlgRekapLabPerTahun;
 import laporan.DlgRekapRadiologiPerTahun;
 import setting.DlgRunTeksApotek;
 import setting.DlgSetInputParsial;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgBahasa;
+import simrskhanza.DlgCacatFisik;
+import simrskhanza.DlgCariPeriksaLab;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgGolonganPolri;
+import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgJabatanPolri;
+import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgJadwal;
+import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgLhtCatatanPasien;
+import simrskhanza.DlgPangkatPolri;
+import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPenelusuranLogin;
+import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgRawatJalan;
+import simrskhanza.DlgResepPulang;
+import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujukMasuk;
+import simrskhanza.DlgSatuanPolri;
+import simrskhanza.DlgSatuanTNI;
+import simrskhanza.DlgSuku;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
 import surat.SuratBalas;
@@ -1024,6 +1055,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnKunjunganLabRanap = new widget.ButtonBig();
         btnKunjunganRadRalan = new widget.ButtonBig();
         btnKunjunganRadRanap = new widget.ButtonBig();
+        btnPCareBeriObat = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6500,6 +6532,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKunjunganRadRanap);
 
+        btnPCareBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/first_aid_kit.png"))); // NOI18N
+        btnPCareBeriObat.setText("Pemberian Obat PCare");
+        btnPCareBeriObat.setIconTextGap(0);
+        btnPCareBeriObat.setName("btnPCareBeriObat"); // NOI18N
+        btnPCareBeriObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareBeriObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareBeriObatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareBeriObat);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6508,7 +6552,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/02/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/02/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13420,6 +13464,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKunjunganRadRanapActionPerformed
 
+    private void btnPCareBeriObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareBeriObatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareDataPemberianObat form=new PCareDataPemberianObat(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareBeriObatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13677,6 +13733,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnOpnameIPSRS;
+    private widget.ButtonBig btnPCareBeriObat;
     private widget.ButtonBig btnPCareClubProlanis;
     private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
@@ -15906,6 +15963,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_pemberian_obat()==true){
+                Panelmenu.add(btnPCareBeriObat);
+                jmlmenu++;
+            }
+            
             if(var.getsisrute_referensi_faskes()==true){
                 Panelmenu.add(btnCekSisruteFaskes);
                 jmlmenu++;
@@ -18065,6 +18127,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getpcare_cek_rujukan()==true){
             Panelmenu.add(btnCekPCareRujukan);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_pemberian_obat()==true){
+            Panelmenu.add(btnPCareBeriObat);
             jmlmenu++;
         }
         
@@ -20858,6 +20925,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_cek_rujukan()==true){
             if(btnCekPCareRujukan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekPCareRujukan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_pemberian_obat()==true){
+            if(btnPCareBeriObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareBeriObat);
                 jmlmenu++;
             }                
         }
