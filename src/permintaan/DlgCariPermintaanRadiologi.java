@@ -47,6 +47,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
     private BackgroundMusic music;
     private ResultSet rs,rs2;
     private Date now;
+    private boolean aktif=false;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",diagnosa="";
     
     /** Creates new form DlgProgramStudi
@@ -492,7 +493,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2018 18:28:55" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019 11:13:31" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -508,6 +509,12 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
             }
         });
 
@@ -1837,6 +1844,14 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
         pilihRanap();
     }//GEN-LAST:event_TabRawatInapMouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
+
     /**
     * @param args the command line arguments
     */
@@ -2301,40 +2316,42 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     
     private void jam(){
         ActionListener taskPerformer = (ActionEvent e) -> {
-            nol_detik = "";
-            now = Calendar.getInstance().getTime();
-            nilai_detik = now.getSeconds();
-            if (nilai_detik <= 9) {
-                nol_detik = "0";
-            }
-            
-            detik = nol_detik + Integer.toString(nilai_detik);
-            if(detik.equals("05")){
-                permintaanbaru=0;
-                if(formalarm.contains("ralan")){
-                    tampil();
-                    for(i=0;i<tbRadiologiRalan.getRowCount();i++){
-                        if((!tbRadiologiRalan.getValueAt(i,0).toString().equals(""))&&tbRadiologiRalan.getValueAt(i,5).toString().equals("")){
-                            permintaanbaru++;
+            if(aktif==true){
+                nol_detik = "";
+                now = Calendar.getInstance().getTime();
+                nilai_detik = now.getSeconds();
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+
+                detik = nol_detik + Integer.toString(nilai_detik);
+                if(detik.equals("05")){
+                    permintaanbaru=0;
+                    if(formalarm.contains("ralan")){
+                        tampil();
+                        for(i=0;i<tbRadiologiRalan.getRowCount();i++){
+                            if((!tbRadiologiRalan.getValueAt(i,0).toString().equals(""))&&tbRadiologiRalan.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;
+                            }
                         }
                     }
-                }
-                
-                if(formalarm.contains("ranap")){
-                    tampil3();
-                    for(i=0;i<tbRadiologiRanap.getRowCount();i++){
-                        if((!tbRadiologiRanap.getValueAt(i,0).toString().equals(""))&&tbRadiologiRanap.getValueAt(i,5).toString().equals("")){
-                            permintaanbaru++;
+
+                    if(formalarm.contains("ranap")){
+                        tampil3();
+                        for(i=0;i<tbRadiologiRanap.getRowCount();i++){
+                            if((!tbRadiologiRanap.getValueAt(i,0).toString().equals(""))&&tbRadiologiRanap.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;
+                            }
                         }
                     }
-                }
-                
-                if(permintaanbaru>0){
-                    try {
-                        music = new BackgroundMusic("./suara/alarm.mp3");
-                        music.start();
-                    } catch (Exception ex) {
-                        System.out.println(ex);
+
+                    if(permintaanbaru>0){
+                        try {
+                            music = new BackgroundMusic("./suara/alarm.mp3");
+                            music.start();
+                        } catch (Exception ex) {
+                            System.out.println(ex);
+                        }
                     }
                 }
             }

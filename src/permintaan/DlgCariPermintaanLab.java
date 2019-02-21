@@ -47,6 +47,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private BackgroundMusic music;
     private Date now;
+    private boolean aktif=false;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",
                     NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     
@@ -503,7 +504,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2019 06:16:55" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019 10:55:25" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -519,6 +520,12 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
             }
         });
 
@@ -1952,6 +1959,14 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         pilihRanap();
     }//GEN-LAST:event_TabRawatInapMouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
+
     /**
     * @param args the command line arguments
     */
@@ -2559,43 +2574,45 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     
     private void jam(){
         ActionListener taskPerformer = (ActionEvent e) -> {
-            nol_detik = "";
-            now = Calendar.getInstance().getTime();
-            nilai_detik = now.getSeconds();
-            if (nilai_detik <= 9) {
-                nol_detik = "0";
-            }
-            
-            detik = nol_detik + Integer.toString(nilai_detik);
-            if(detik.equals("05")){
-                permintaanbaru=0;
-                if(formalarm.contains("ralan")){
-                    tampil();
-                    for(i=0;i<tbLabRalan.getRowCount();i++){
-                        if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
-                            permintaanbaru++;
+            if(aktif==true){
+                nol_detik = "";
+                now = Calendar.getInstance().getTime();
+                nilai_detik = now.getSeconds();
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+
+                detik = nol_detik + Integer.toString(nilai_detik);
+                if(detik.equals("05")){
+                    permintaanbaru=0;
+                    if(formalarm.contains("ralan")){
+                        tampil();
+                        for(i=0;i<tbLabRalan.getRowCount();i++){
+                            if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;
+                            }
+                        }
+                    }
+
+                    if(formalarm.contains("ranap")){
+                        tampil3();
+                        for(i=0;i<tbLabRanap.getRowCount();i++){
+                            if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;
+                            }
+                        }
+                    }
+
+                    if(permintaanbaru>0){
+                        try {
+                            music = new BackgroundMusic("./suara/alarm.mp3");
+                            music.start();
+                        } catch (Exception ex) {
+                            System.out.println(ex);
                         }
                     }
                 }
-                
-                if(formalarm.contains("ranap")){
-                    tampil3();
-                    for(i=0;i<tbLabRanap.getRowCount();i++){
-                        if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
-                            permintaanbaru++;
-                        }
-                    }
-                }
-                
-                if(permintaanbaru>0){
-                    try {
-                        music = new BackgroundMusic("./suara/alarm.mp3");
-                        music.start();
-                    } catch (Exception ex) {
-                        System.out.println(ex);
-                    }
-                }
-            }
+            }                
         };
         // Timer
         new Timer(1000, taskPerformer).start();
