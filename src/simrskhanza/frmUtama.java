@@ -6552,7 +6552,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/02/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/02/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6872,7 +6872,7 @@ public class frmUtama extends javax.swing.JFrame {
         BtnLog.setIconTextGap(3);
         BtnLog.setMargin(new java.awt.Insets(1, 2, 1, 0));
         BtnLog.setName("BtnLog"); // NOI18N
-        BtnLog.setPreferredSize(new java.awt.Dimension(75, 40));
+        BtnLog.setPreferredSize(new java.awt.Dimension(79, 40));
         BtnLog.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnLog.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnLog.addActionListener(new java.awt.event.ActionListener() {
