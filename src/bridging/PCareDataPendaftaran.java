@@ -47,6 +47,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.DlgCariPerawatanRalan;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -92,6 +93,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private String kdptg,nmptg;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -4087,7 +4089,34 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_MnPemberianObatActionPerformed
 
     private void MnTIndakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTIndakanActionPerformed
-        // TODO add your handling code here:
+        if(tabMode2.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari1.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKunjungan.requestFocus();
+        }else{
+            if(tbKunjungan.getSelectedRow()!= -1){
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                }else{
+                    if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                        
+                    }else {
+                        DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
+                        kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
+                        nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
+                        dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                        dlgrwjl.isCek();
+                        dlgrwjl.tampil();
+                        dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                        dlgrwjl.setLocationRelativeTo(internalFrame1);
+                        dlgrwjl.setAlwaysOnTop(false);
+                        dlgrwjl.setVisible(true); 
+                    }
+                }                    
+            }                
+        }
     }//GEN-LAST:event_MnTIndakanActionPerformed
 
     private void MnPemberianObat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObat1ActionPerformed
