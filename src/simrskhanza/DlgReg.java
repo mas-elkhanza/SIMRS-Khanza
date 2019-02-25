@@ -1037,10 +1037,10 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel9 = new widget.Label();
         DTPReg = new widget.Tanggal();
         jLabel20 = new widget.Label();
-        jLabel21 = new widget.Label();
         TPngJwb = new widget.TextBox();
         TNoRM = new widget.TextBox();
         TNoReg = new widget.TextBox();
+        jLabel21 = new widget.Label();
         CmbJam = new widget.ComboBox();
         CmbMenit = new widget.ComboBox();
         CmbDetik = new widget.ComboBox();
@@ -4403,11 +4403,6 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel20);
         jLabel20.setBounds(416, 42, 100, 23);
 
-        jLabel21.setText("Almt Png. Jwb :");
-        jLabel21.setName("jLabel21"); // NOI18N
-        FormInput.add(jLabel21);
-        jLabel21.setBounds(416, 72, 100, 23);
-
         TPngJwb.setHighlighter(null);
         TPngJwb.setName("TPngJwb"); // NOI18N
         TPngJwb.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -4437,6 +4432,11 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         FormInput.add(TNoReg);
         TNoReg.setBounds(74, 12, 120, 23);
+
+        jLabel21.setText("Almt Png. Jwb :");
+        jLabel21.setName("jLabel21"); // NOI18N
+        FormInput.add(jLabel21);
+        jLabel21.setBounds(426, 72, 90, 23);
 
         CmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         CmbJam.setName("CmbJam"); // NOI18N
@@ -4604,7 +4604,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel18.setText("Jenis Bayar :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(416, 102, 100, 23);
+        jLabel18.setBounds(426, 102, 90, 23);
 
         kdpnj.setHighlighter(null);
         kdpnj.setName("kdpnj"); // NOI18N
@@ -4636,7 +4636,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel23.setText("Asal Rujukan :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(416, 132, 100, 23);
+        jLabel23.setBounds(426, 132, 90, 23);
 
         AsalRujukan.setName("AsalRujukan"); // NOI18N
         AsalRujukan.addKeyListener(new java.awt.event.KeyAdapter() {

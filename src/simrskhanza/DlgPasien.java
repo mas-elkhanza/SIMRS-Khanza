@@ -1907,7 +1907,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekKepesertaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekKepesertaan.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan VClaim");
         MnCekKepesertaan.setName("MnCekKepesertaan"); // NOI18N
-        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekKepesertaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekKepesertaanActionPerformed(evt);
@@ -1920,7 +1920,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekNIK.setText("Pencarian Peserta Berdasarkan NIK/No.KTP VClaim");
         MnCekNIK.setName("MnCekNIK"); // NOI18N
-        MnCekNIK.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekNIK.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekNIK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekNIKActionPerformed(evt);
@@ -1933,7 +1933,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekKepesertaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekKepesertaan1.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan PCare");
         MnCekKepesertaan1.setName("MnCekKepesertaan1"); // NOI18N
-        MnCekKepesertaan1.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekKepesertaan1.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekKepesertaan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekKepesertaan1ActionPerformed(evt);
@@ -1946,7 +1946,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekNIK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekNIK1.setText("Pencarian Peserta Berdasarkan NIK/No.KTP PCare");
         MnCekNIK1.setName("MnCekNIK1"); // NOI18N
-        MnCekNIK1.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekNIK1.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekNIK1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekNIK1ActionPerformed(evt);
@@ -2511,7 +2511,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnViaBPJSNik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaBPJSNik.setText("Cek Via NIK Web Servis BPJS VClaim");
         MnViaBPJSNik.setName("MnViaBPJSNik"); // NOI18N
-        MnViaBPJSNik.setPreferredSize(new java.awt.Dimension(280, 25));
+        MnViaBPJSNik.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaBPJSNik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaBPJSNikActionPerformed(evt);
@@ -2524,7 +2524,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnViaBPJSNoKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaBPJSNoKartu.setText("Cek Via No Kartu Web Servis BPJS VClaim");
         MnViaBPJSNoKartu.setName("MnViaBPJSNoKartu"); // NOI18N
-        MnViaBPJSNoKartu.setPreferredSize(new java.awt.Dimension(280, 25));
+        MnViaBPJSNoKartu.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaBPJSNoKartu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaBPJSNoKartuActionPerformed(evt);
@@ -2537,7 +2537,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnViaDukcapilNikDKI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaDukcapilNikDKI.setText("Cek Via NIK Web Servis DUKCAPIL Jakarta");
         MnViaDukcapilNikDKI.setName("MnViaDukcapilNikDKI"); // NOI18N
-        MnViaDukcapilNikDKI.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaDukcapilNikDKI.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaDukcapilNikDKI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaDukcapilNikDKIActionPerformed(evt);
@@ -2550,7 +2550,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnViaDukcapilNikAceh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaDukcapilNikAceh.setText("Cek Via NIK Web Servis DUKCAPIL Aceh");
         MnViaDukcapilNikAceh.setName("MnViaDukcapilNikAceh"); // NOI18N
-        MnViaDukcapilNikAceh.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaDukcapilNikAceh.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaDukcapilNikAceh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaDukcapilNikAcehActionPerformed(evt);
@@ -2563,7 +2563,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnViaDukcapilNikBatam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaDukcapilNikBatam.setText("Cek Via NIK Web Servis DUKCAPIL Batam");
         MnViaDukcapilNikBatam.setName("MnViaDukcapilNikBatam"); // NOI18N
-        MnViaDukcapilNikBatam.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaDukcapilNikBatam.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaDukcapilNikBatam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaDukcapilNikBatamActionPerformed(evt);
@@ -2972,7 +2972,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmp);
-        TTmp.setBounds(102, 102, 188, 23);
+        TTmp.setBounds(102, 102, 187, 23);
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         CmbJk.setName("CmbJk"); // NOI18N
@@ -3019,7 +3019,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3151,7 +3151,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(712, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3199,35 +3199,30 @@ public class DlgPasien extends javax.swing.JDialog {
 
         buttonGroup1.add(R5);
         R5.setText("Saudara");
-        R5.setIconTextGap(0);
         R5.setName("R5"); // NOI18N
         FormInput.add(R5);
         R5.setBounds(210, 222, 100, 23);
 
         buttonGroup1.add(R4);
         R4.setText("Suami");
-        R4.setIconTextGap(0);
         R4.setName("R4"); // NOI18N
         FormInput.add(R4);
         R4.setBounds(101, 222, 100, 23);
 
         buttonGroup1.add(R3);
         R3.setText("Istri");
-        R3.setIconTextGap(0);
         R3.setName("R3"); // NOI18N
         FormInput.add(R3);
         R3.setBounds(308, 192, 100, 23);
 
         buttonGroup1.add(R2);
         R2.setText("Ibu");
-        R2.setIconTextGap(0);
         R2.setName("R2"); // NOI18N
         FormInput.add(R2);
         R2.setBounds(210, 192, 100, 23);
 
         buttonGroup1.add(R1);
         R1.setText("Ayah");
-        R1.setIconTextGap(0);
         R1.setName("R1"); // NOI18N
         R1.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(R1);
@@ -3577,7 +3572,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         buttonGroup1.add(R6);
         R6.setText("Anak");
-        R6.setIconTextGap(0);
         R6.setName("R6"); // NOI18N
         FormInput.add(R6);
         R6.setBounds(308, 222, 100, 23);
