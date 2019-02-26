@@ -423,7 +423,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         jLabel20.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi2.add(jLabel20);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
@@ -438,7 +437,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelisi2.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
@@ -625,7 +623,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabPilihRawat.setBorder(null);
         TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
@@ -640,7 +637,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame2.setLayout(new java.awt.BorderLayout());
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatJalan.setBorder(null);
         TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
@@ -770,7 +766,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame3.setLayout(new java.awt.BorderLayout());
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatInap.setBorder(null);
         TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N

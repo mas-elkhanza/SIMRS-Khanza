@@ -115,8 +115,6 @@ public class DlgCopyResep extends javax.swing.JDialog {
 
         ChkTanggal.setBorder(null);
         ChkTanggal.setText("Tgl.Resep :");
-        ChkTanggal.setBorderPainted(true);
-        ChkTanggal.setBorderPaintedFlat(true);
         ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setName("ChkTanggal"); // NOI18N
@@ -129,7 +127,6 @@ public class DlgCopyResep extends javax.swing.JDialog {
         });
         panelisi1.add(ChkTanggal);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
@@ -144,7 +141,6 @@ public class DlgCopyResep extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelisi1.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
