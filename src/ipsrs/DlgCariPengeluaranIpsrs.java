@@ -548,7 +548,6 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 80, 23);
 
-        TglBeli1.setEditable(false);
         TglBeli1.setDisplayFormat("dd-MM-yyyy");
         TglBeli1.setName("TglBeli1"); // NOI18N
         TglBeli1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -601,7 +600,6 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
         panelisi3.add(label12);
         label12.setBounds(179, 40, 27, 23);
 
-        TglBeli2.setEditable(false);
         TglBeli2.setDisplayFormat("dd-MM-yyyy");
         TglBeli2.setName("TglBeli2"); // NOI18N
         TglBeli2.addKeyListener(new java.awt.event.KeyAdapter() {
