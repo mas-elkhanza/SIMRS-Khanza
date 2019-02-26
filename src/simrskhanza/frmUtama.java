@@ -433,7 +433,7 @@ import simrskhanza.DlgPemberianDiet;
 import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPerusahaan;
 import simrskhanza.DlgRawatJalan;
-import simrskhanza.DlgResepPulang;
+import inventory.DlgResepPulang;
 import simrskhanza.DlgResumePerawatan;
 import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRujukMasuk;
