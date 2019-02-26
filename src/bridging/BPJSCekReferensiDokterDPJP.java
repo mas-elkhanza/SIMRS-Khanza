@@ -290,8 +290,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);

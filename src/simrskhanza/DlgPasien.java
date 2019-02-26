@@ -2870,7 +2870,7 @@ public class DlgPasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel11);
 
         Carialamat.setName("Carialamat"); // NOI18N
-        Carialamat.setPreferredSize(new java.awt.Dimension(340, 23));
+        Carialamat.setPreferredSize(new java.awt.Dimension(335, 23));
         Carialamat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CarialamatKeyPressed(evt);
@@ -2924,7 +2924,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         cmbHlm.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100", "200", "300", "400", "500", "1000", "Semua" }));
         cmbHlm.setName("cmbHlm"); // NOI18N
-        cmbHlm.setPreferredSize(new java.awt.Dimension(80, 23));
+        cmbHlm.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(cmbHlm);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
@@ -3019,7 +3019,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3151,7 +3151,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(712, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3361,9 +3361,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(BtnKabupaten);
         BtnKabupaten.setBounds(651, 222, 28, 23);
 
-        ChkDaftar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
-        ChkDaftar.setBorderPainted(true);
-        ChkDaftar.setBorderPaintedFlat(true);
+        ChkDaftar.setBorder(null);
         ChkDaftar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkDaftar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkDaftar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -3554,10 +3552,8 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TNoPeserta);
         TNoPeserta.setBounds(496, 72, 150, 23);
 
-        ChkRM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
+        ChkRM.setBorder(null);
         ChkRM.setSelected(true);
-        ChkRM.setBorderPainted(true);
-        ChkRM.setBorderPaintedFlat(true);
         ChkRM.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkRM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkRM.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

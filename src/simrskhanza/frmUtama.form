@@ -560,14 +560,15 @@
                 </Component>
                 <Component class="widget.CekBox" name="ChkInput">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/picture/143.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="73"/>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+I"/>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="focusable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -7492,7 +7493,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="24/02/2019"/>
+            <StringItem index="0" value="26/02/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

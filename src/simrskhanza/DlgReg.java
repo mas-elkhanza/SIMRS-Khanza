@@ -3177,7 +3177,6 @@ public final class DlgReg extends javax.swing.JDialog {
         panelBiasa2.setName("panelBiasa2"); // NOI18N
         panelBiasa2.setLayout(null);
 
-        TglSakit1.setEditable(false);
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
         TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
@@ -3225,7 +3224,6 @@ public final class DlgReg extends javax.swing.JDialog {
         panelBiasa2.add(jLabel32);
         jLabel32.setBounds(176, 10, 20, 23);
 
-        TglSakit2.setEditable(false);
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
         TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
@@ -4516,10 +4514,8 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(THbngn);
         THbngn.setBounds(750, 42, 130, 23);
 
-        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
+        ChkJln.setBorder(null);
         ChkJln.setSelected(true);
-        ChkJln.setBorderPainted(true);
-        ChkJln.setBorderPaintedFlat(true);
         ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -4659,9 +4655,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(btnPenjab1);
         btnPenjab1.setBounds(852, 132, 28, 23);
 
-        ChkTracker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkTracker.setBorderPainted(true);
-        ChkTracker.setBorderPaintedFlat(true);
+        ChkTracker.setBorder(null);
         ChkTracker.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkTracker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkTracker.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

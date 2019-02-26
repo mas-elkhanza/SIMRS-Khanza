@@ -294,9 +294,8 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass6.add(jLabel22);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -432,7 +431,6 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
 
         Khusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "THA THALASEMIA", "HEM HEMOFILI" }));
         Khusus.setName("Khusus"); // NOI18N
-        Khusus.setOpaque(false);
         Khusus.setPreferredSize(new java.awt.Dimension(170, 23));
         panelGlass7.add(Khusus);
 

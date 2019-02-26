@@ -3189,10 +3189,8 @@ public final class DlgIGD extends javax.swing.JDialog {
         FormInput.add(THbngn);
         THbngn.setBounds(750, 42, 130, 23);
 
-        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
+        ChkJln.setBorder(null);
         ChkJln.setSelected(true);
-        ChkJln.setBorderPainted(true);
-        ChkJln.setBorderPaintedFlat(true);
         ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -3296,9 +3294,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         FormInput.add(btnPenjab1);
         btnPenjab1.setBounds(852, 132, 28, 23);
 
-        ChkTracker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkTracker.setBorderPainted(true);
-        ChkTracker.setBorderPaintedFlat(true);
+        ChkTracker.setBorder(null);
         ChkTracker.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkTracker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkTracker.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

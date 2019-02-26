@@ -1375,12 +1375,11 @@ public class frmUtama extends javax.swing.JFrame {
         });
         panelisi2.add(TCari);
 
+        ChkInput.setBorder(null);
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setSelected(true);
         ChkInput.setToolTipText("Alt+I");
-        ChkInput.setBorderPainted(true);
-        ChkInput.setBorderPaintedFlat(true);
         ChkInput.setFocusable(false);
         ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -6552,7 +6551,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/02/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/02/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);

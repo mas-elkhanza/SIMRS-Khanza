@@ -190,9 +190,8 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass6.add(jLabel19);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);

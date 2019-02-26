@@ -492,7 +492,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="24-02-2019 16:09:07"/>
+            <StringItem index="0" value="26-02-2019 23:34:44"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -752,13 +752,12 @@
                         </Component>
                         <Component class="widget.Tanggal" name="TanggalDaftar">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="32" green="46" red="32" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="24-02-2019"/>
+                                <StringItem index="0" value="26-02-2019"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -929,7 +928,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="230" y="102" width="108" height="23"/>
+                              <AbsoluteConstraints x="200" y="102" width="108" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -948,7 +947,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="341" y="102" width="150" height="23"/>
+                              <AbsoluteConstraints x="311" y="102" width="150" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -968,7 +967,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="577" y="102" width="150" height="23"/>
+                              <AbsoluteConstraints x="547" y="102" width="180" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -979,7 +978,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="504" y="102" width="70" height="23"/>
+                              <AbsoluteConstraints x="474" y="102" width="70" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1348,13 +1347,12 @@
                         </Component>
                         <Component class="widget.Tanggal" name="TanggalKunjungan">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="32" green="46" red="32" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="24-02-2019"/>
+                                <StringItem index="0" value="26-02-2019"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1534,13 +1532,12 @@
                         </Component>
                         <Component class="widget.Tanggal" name="TanggalPulang">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="32" green="46" red="32" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="24-02-2019"/>
+                                <StringItem index="0" value="26-02-2019"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1904,13 +1901,12 @@
                         </Component>
                         <Component class="widget.Tanggal" name="TanggalEstRujuk">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="32" green="46" red="32" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="24-02-2019"/>
+                                <StringItem index="0" value="26-02-2019"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2366,7 +2362,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="103" y="530" width="170" height="23"/>
+                              <AbsoluteConstraints x="103" y="530" width="200" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2377,7 +2373,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="290" y="530" width="80" height="23"/>
+                              <AbsoluteConstraints x="320" y="530" width="80" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2394,7 +2390,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="373" y="530" width="355" height="23"/>
+                              <AbsoluteConstraints x="403" y="530" width="325" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2488,13 +2484,12 @@
                     </Component>
                     <Component class="widget.Tanggal" name="DTPCari1">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="32" green="46" red="32" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="24-02-2019"/>
+                            <StringItem index="0" value="26-02-2019"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2517,13 +2512,12 @@
                     </Component>
                     <Component class="widget.Tanggal" name="DTPCari2">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="32" green="46" red="32" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="24-02-2019"/>
+                            <StringItem index="0" value="26-02-2019"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2681,13 +2675,12 @@
                     </Component>
                     <Component class="widget.Tanggal" name="DTPCari3">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="32" green="46" red="32" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="24-02-2019"/>
+                            <StringItem index="0" value="26-02-2019"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2710,13 +2703,12 @@
                     </Component>
                     <Component class="widget.Tanggal" name="DTPCari4">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="32" green="46" red="32" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="24-02-2019"/>
+                            <StringItem index="0" value="26-02-2019"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
