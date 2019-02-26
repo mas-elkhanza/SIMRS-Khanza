@@ -645,9 +645,11 @@
             <Component class="widget.ComboBox" name="CmbStatus">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
+                  <StringArray count="4">
                     <StringItem index="0" value="ISI"/>
                     <StringItem index="1" value="KOSONG"/>
+                    <StringItem index="2" value="DIBERSIHKAN"/>
+                    <StringItem index="3" value="DIBOOKING"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="CmbStatus" noResource="true"/>

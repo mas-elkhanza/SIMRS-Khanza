@@ -520,7 +520,7 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame14.add(Scroll12, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Registrasi", internalFrame14);
+        TabRawat.addTab("Kunjungan", internalFrame14);
 
         internalFrame15.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame15.setBorder(null);

@@ -55,7 +55,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private BPJSCekReferensiPoli spesialis=new BPJSCekReferensiPoli(null,false);
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -155,13 +155,6 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
             link=prop.getProperty("URLAPIBPJS");
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -467,8 +460,13 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     public void tampil(String poli) {
         try {
             Valid.tabelKosong(tabMode);
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
-
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){

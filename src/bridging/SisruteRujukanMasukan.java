@@ -58,12 +58,13 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private SisruteApi api=new SisruteApi();
     private BackgroundMusic music;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    private HttpHeaders headers = new HttpHeaders();
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private boolean aktif=false;
     private String requestJson="",No="",RMFaskes="",NamaPasien="",Kontak="",Alamat="",TempatLahir="",TglLahir="",
                 JK="",NoKartuJKN="",NIK="",NoRujuk="",KodeAsal="",NamaFaskesAsal="",
                 KodeTujuan="",NamaFaskesTujuan="",JenisRujukan="",Alasan="",AlasanLainnya="",Status="",
@@ -368,6 +369,14 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Masuk Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -871,6 +880,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnSimpan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan4ActionPerformed
         try {
             URL = link+"/rujukan/jawab/"+NoRujuk;	
+            headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
 	    headers.add("X-signature",api.getHmac()); 
@@ -922,6 +932,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         pegawai.setAlwaysOnTop(false);
         pegawai.setVisible(true);
     }//GEN-LAST:event_BtnPegawaiActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
 
     /**
     * @param args the command line arguments
@@ -978,6 +996,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try {
             Valid.tabelKosong(tabMode);
             URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");
+            headers = new HttpHeaders();
 	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
 	    headers.add("X-signature",api.getHmac()); 
@@ -1057,9 +1076,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     
     private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                nol_detik = "";                
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            if(aktif==true){
+                nol_detik = "";
                 Date now = Calendar.getInstance().getTime();
                 nilai_detik = now.getSeconds();
                 if (nilai_detik <= 9) {
@@ -1067,25 +1086,25 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
 
                 detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("05")){ 
+                if(detik.equals("05")){
                     if(var.getAktif()==false){
-                        rujukanbaru=0;                         
+                        rujukanbaru=0;
                         tampil();
-                        for(i=0;i<tbBangsal.getRowCount();i++){ 
+                        for(i=0;i<tbBangsal.getRowCount();i++){
                             if(tbBangsal.getValueAt(i,18).toString().toLowerCase().contains("belum direspon")){
-                                rujukanbaru++;                                                                                                   
+                                rujukanbaru++;
                             }
                         }
 
                         if(rujukanbaru>0){
                             try {
                                 music = new BackgroundMusic("./suara/alarm.mp3");
-                                music.start();              
+                                music.start();
                             } catch (Exception ex) {
                                 System.out.println(ex);
                             }
-                        } 
-                    }                                                
+                        }                                                
+                    }
                 }
             }
         };

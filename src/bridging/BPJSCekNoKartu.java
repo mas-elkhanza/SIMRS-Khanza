@@ -36,30 +36,30 @@ public class BPJSCekNoKartu {
     private BPJSApi api=new BPJSApi();
     private String URL="";
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private HttpHeaders headers;
         
     public BPJSCekNoKartu(){
         super();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/";	
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();
-	} catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("E : "+e);
         }
     }
     
     public void tampil(String nokartu) {
         try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL+nokartu+"/tglSEP/"+dateFormat.format(date), HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());

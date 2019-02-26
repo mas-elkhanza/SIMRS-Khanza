@@ -35,7 +35,7 @@
                     $Blnlahir       =substr($baris[14],5,2);
                     $Tgllahir       =substr($baris[14],8,2);
                     
-                    $tgl_lahir      = $Thnlahir+"-"+$Blnlahir+"-"+$Tgllahir;
+                    $tgl_lahir      = $Thnlahir."-".$Blnlahir."-".$Tgllahir;
 
                     $alamat         = $baris[15];
                     $kota           = $baris[16];                    
@@ -44,7 +44,7 @@
                     $BlnMulai       =substr($baris[17],5,2);
                     $TglMulai       =substr($baris[17],8,2);
 
-                    $mulai_kerja    = $ThnMulai+"-"+$BlnMulai+"-"+$TglMulai;
+                    $mulai_kerja    = $ThnMulai."-".$BlnMulai."-".$TglMulai;
 
                     $ms_kerja       = $baris[18];
                     $indexins       = $baris[19];
@@ -58,7 +58,7 @@
                     $TglKontrak     =substr($baris[26],8,2);                    
                     $no_ktp         = $baris[29]; 
 
-                    $mulai_kontrak  = $ThnKontrak+"-"+$BlnKontrak+"-"+$TglKontrak;
+                    $mulai_kontrak  = $ThnKontrak."-".$BlnKontrak."-".$TglKontrak;
                     $photo         = $baris[28];                   
                 }
                 

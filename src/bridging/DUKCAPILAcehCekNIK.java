@@ -30,17 +30,26 @@ public class DUKCAPILAcehCekNIK {
             requestJson="",stringbalik="";
     private final Properties prop = new Properties();
     private sekuel Sequel=new sekuel();
-    
+    private String URL;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private RestTemplate rest = new RestTemplate();	            
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
     public DUKCAPILAcehCekNIK(){
         super();
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            URL = prop.getProperty("URLDUKCAPILACEH")+"/CALL_NIK";
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
     }
     
     public void tampil(String nik) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLDUKCAPILACEH")+"/CALL_NIK";	
-
-	    HttpHeaders headers = new HttpHeaders();
+	    headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("Accept","application/json");
             requestJson="{"+
@@ -50,14 +59,11 @@ public class DUKCAPILAcehCekNIK {
                             "\"IP_USER\":\""+prop.getProperty("IPUSERDUKCAPILACEH")+"\"" +
                             "}"; 
             //System.out.println("JSON dikirim : "+requestJson);
-	    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-	    RestTemplate rest = new RestTemplate();	
-            
-            ObjectMapper mapper = new ObjectMapper();
+	    requestEntity = new HttpEntity(requestJson,headers);	    
             stringbalik=rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
             //System.out.println("string balik : "+stringbalik);
-            JsonNode root = mapper.readTree(stringbalik);
-            JsonNode nameNode = root.path("content");
+            root = mapper.readTree(stringbalik);
+            nameNode = root.path("content");
             if(nameNode.isArray()){
                 for(JsonNode list:nameNode){                    
                     try {

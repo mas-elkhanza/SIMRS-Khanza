@@ -52,7 +52,7 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     private String URL="",link="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -152,13 +152,6 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPIBPJS");
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -382,6 +375,12 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/kecamatan/kabupaten/"+KdKab.getText();	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");

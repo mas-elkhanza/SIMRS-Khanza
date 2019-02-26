@@ -49,9 +49,9 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
     private int i=0;
     private BPJSApi api=new BPJSApi();
     private String URL="",link="";
-    private HttpHeaders headers ;
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -115,13 +115,6 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPIBPJS");
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -345,6 +338,12 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/poli/"+poli;	
             //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());

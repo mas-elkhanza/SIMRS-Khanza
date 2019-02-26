@@ -44,7 +44,7 @@ import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaRadiologi;
 import simrskhanza.DlgRawatInap;
 import simrskhanza.DlgRawatJalan;
-import simrskhanza.DlgResepPulang;
+import inventory.DlgResepPulang;
 import simrskhanza.DlgTagihanOperasi;
 
 /**
@@ -123,7 +123,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpsralandokter="select jns_perawatan.nm_perawatan,rawat_jl_dr.biaya_rawat as total_byrdr,count(rawat_jl_dr.kd_jenis_prw) as jml, "+
                     "sum(rawat_jl_dr.biaya_rawat) as biaya,"+
                     "sum(rawat_jl_dr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_dr.material) as totalmaterial,"+
+                    "(sum(rawat_jl_dr.material)+sum(rawat_jl_dr.menejemen)+sum(rawat_jl_dr.kso)) as totalmaterial,"+
                     "rawat_jl_dr.tarif_tindakandr,"+
                     "sum(rawat_jl_dr.tarif_tindakandr) as totaltarif_tindakandr  "+
                     "from rawat_jl_dr inner join jns_perawatan inner join kategori_perawatan "+
@@ -133,7 +133,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpsralandrpr="select jns_perawatan.nm_perawatan,rawat_jl_drpr.biaya_rawat as total_byrdr,count(rawat_jl_drpr.kd_jenis_prw) as jml, "+
                     "sum(rawat_jl_drpr.biaya_rawat) as biaya,"+
                     "sum(rawat_jl_drpr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_drpr.material) as totalmaterial,"+
+                    "(sum(rawat_jl_drpr.material)+sum(rawat_jl_drpr.menejemen)+sum(rawat_jl_drpr.kso)) as totalmaterial,"+
                     "rawat_jl_drpr.tarif_tindakandr,"+
                     "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr,"+
                     "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr  "+
@@ -144,7 +144,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpsranapdokter="select jns_perawatan_inap.nm_perawatan,rawat_inap_dr.biaya_rawat as total_byrdr,count(rawat_inap_dr.kd_jenis_prw) as jml, "+
                     "sum(rawat_inap_dr.biaya_rawat) as biaya,"+
                     "sum(rawat_inap_dr.bhp) as totalbhp,"+
-                    "sum(rawat_inap_dr.material) as totalmaterial,"+
+                    "(sum(rawat_inap_dr.material)+sum(rawat_inap_dr.menejemen)+sum(rawat_inap_dr.kso)) as totalmaterial,"+
                     "rawat_inap_dr.tarif_tindakandr,"+
                     "sum(rawat_inap_dr.tarif_tindakandr) as totaltarif_tindakandr "+
                     "from rawat_inap_dr inner join jns_perawatan_inap inner join kategori_perawatan "+
@@ -154,7 +154,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpsranapdrpr="select jns_perawatan_inap.nm_perawatan,rawat_inap_drpr.biaya_rawat as total_byrdr,count(rawat_inap_drpr.kd_jenis_prw) as jml, "+
                     "sum(rawat_inap_drpr.biaya_rawat) as biaya,"+
                     "sum(rawat_inap_drpr.bhp) as totalbhp,"+
-                    "sum(rawat_inap_drpr.material) as totalmaterial,"+
+                    "(sum(rawat_inap_drpr.material)+sum(rawat_inap_drpr.menejemen)+sum(rawat_inap_drpr.kso)) as totalmaterial,"+
                     "rawat_inap_drpr.tarif_tindakandr,"+
                     "sum(rawat_inap_drpr.tarif_tindakanpr) as totaltarif_tindakanpr, "+
                     "sum(rawat_inap_drpr.tarif_tindakandr) as totaltarif_tindakandr "+

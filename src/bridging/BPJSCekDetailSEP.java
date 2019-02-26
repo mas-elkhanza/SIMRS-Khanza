@@ -44,9 +44,9 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private BPJSApi api=new BPJSApi();
     private String URL="";
-    private HttpHeaders headers ;
+    private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -85,13 +85,6 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = prop.getProperty("URLAPIBPJS")+"/SEP/";
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
-	    mapper = new ObjectMapper();		
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -252,6 +245,12 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
 
     public void tampil(String sep) {
         try {
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	    headers.add("X-Signature",api.getHmac());
+	    requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL+sep, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
