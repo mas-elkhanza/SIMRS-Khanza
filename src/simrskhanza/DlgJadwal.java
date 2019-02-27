@@ -452,7 +452,7 @@ public class DlgJadwal extends javax.swing.JDialog {
         jLabel3.setText("Dokter :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelBiasa1.add(jLabel3);
-        jLabel3.setBounds(0, 12, 80, 23);
+        jLabel3.setBounds(0, 12, 70, 23);
 
         nmdokter.setEditable(false);
         nmdokter.setHighlighter(null);
@@ -463,22 +463,22 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(nmdokter);
-        nmdokter.setBounds(186, 12, 389, 23);
+        nmdokter.setBounds(186, 12, 397, 23);
 
         jLabel4.setText("Hari Kerja :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelBiasa1.add(jLabel4);
-        jLabel4.setBounds(0, 42, 80, 23);
+        jLabel4.setBounds(0, 42, 70, 23);
 
         jLabel9.setText("Jam :");
         jLabel9.setName("jLabel9"); // NOI18N
         panelBiasa1.add(jLabel9);
-        jLabel9.setBounds(157, 42, 35, 23);
+        jLabel9.setBounds(160, 42, 36, 23);
 
         jLabel10.setText("Poliklinik :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelBiasa1.add(jLabel10);
-        jLabel10.setBounds(0, 72, 80, 23);
+        jLabel10.setBounds(140, 71, 66, 23);
 
         TPoli.setEditable(false);
         TPoli.setHighlighter(null);
@@ -489,11 +489,10 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(TPoli);
-        TPoli.setBounds(186, 72, 389, 23);
+        TPoli.setBounds(311, 72, 272, 23);
 
         cmbHari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU", "AKHAD" }));
         cmbHari.setName("cmbHari"); // NOI18N
-        cmbHari.setOpaque(false);
         cmbHari.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbHariItemStateChanged(evt);
@@ -505,79 +504,73 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(cmbHari);
-        cmbHari.setBounds(84, 42, 70, 23);
+        cmbHari.setBounds(74, 42, 80, 23);
 
         cmbJam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam1.setName("cmbJam1"); // NOI18N
-        cmbJam1.setOpaque(false);
         cmbJam1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbJam1KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbJam1);
-        cmbJam1.setBounds(196, 42, 45, 23);
+        cmbJam1.setBounds(199, 42, 62, 23);
 
         cmbMnt1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt1.setName("cmbMnt1"); // NOI18N
-        cmbMnt1.setOpaque(false);
         cmbMnt1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbMnt1KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbMnt1);
-        cmbMnt1.setBounds(243, 42, 45, 23);
+        cmbMnt1.setBounds(264, 42, 62, 23);
 
         cmbDtk1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk1.setName("cmbDtk1"); // NOI18N
-        cmbDtk1.setOpaque(false);
         cmbDtk1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbDtk1KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbDtk1);
-        cmbDtk1.setBounds(290, 42, 45, 23);
+        cmbDtk1.setBounds(329, 42, 62, 23);
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("s.d.");
         jLabel11.setName("jLabel11"); // NOI18N
         panelBiasa1.add(jLabel11);
-        jLabel11.setBounds(336, 42, 25, 23);
+        jLabel11.setBounds(394, 42, 25, 23);
 
         cmbJam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam2.setName("cmbJam2"); // NOI18N
-        cmbJam2.setOpaque(false);
         cmbJam2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbJam2KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbJam2);
-        cmbJam2.setBounds(360, 42, 45, 23);
+        cmbJam2.setBounds(422, 42, 62, 23);
 
         cmbMnt2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt2.setName("cmbMnt2"); // NOI18N
-        cmbMnt2.setOpaque(false);
         cmbMnt2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbMnt2KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbMnt2);
-        cmbMnt2.setBounds(407, 42, 45, 23);
+        cmbMnt2.setBounds(487, 42, 62, 23);
 
         cmbDtk2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk2.setName("cmbDtk2"); // NOI18N
-        cmbDtk2.setOpaque(false);
         cmbDtk2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbDtk2KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbDtk2);
-        cmbDtk2.setBounds(454, 42, 45, 23);
+        cmbDtk2.setBounds(552, 42, 62, 23);
 
         btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDokter.setMnemonic('1');
@@ -589,7 +582,7 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(btnDokter);
-        btnDokter.setBounds(577, 12, 28, 23);
+        btnDokter.setBounds(586, 12, 28, 23);
 
         kddokter.setHighlighter(null);
         kddokter.setName("kddokter"); // NOI18N
@@ -599,7 +592,7 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(kddokter);
-        kddokter.setBounds(84, 12, 100, 23);
+        kddokter.setBounds(74, 12, 110, 23);
 
         KdPoli.setHighlighter(null);
         KdPoli.setName("KdPoli"); // NOI18N
@@ -609,7 +602,7 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(KdPoli);
-        KdPoli.setBounds(84, 72, 100, 23);
+        KdPoli.setBounds(209, 72, 100, 23);
 
         BtnPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPoli.setMnemonic('2');
@@ -621,12 +614,12 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnPoli);
-        BtnPoli.setBounds(577, 72, 28, 23);
+        BtnPoli.setBounds(586, 72, 28, 23);
 
         jLabel12.setText("Kuota :");
         jLabel12.setName("jLabel12"); // NOI18N
         panelBiasa1.add(jLabel12);
-        jLabel12.setBounds(501, 42, 50, 23);
+        jLabel12.setBounds(0, 72, 70, 23);
 
         Kuota.setHighlighter(null);
         Kuota.setName("Kuota"); // NOI18N
@@ -636,7 +629,7 @@ public class DlgJadwal extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(Kuota);
-        Kuota.setBounds(555, 42, 50, 23);
+        Kuota.setBounds(74, 72, 50, 23);
 
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
