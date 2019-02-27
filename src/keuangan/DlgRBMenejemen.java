@@ -269,7 +269,6 @@ public class DlgRBMenejemen extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        chkRalan.setBorder(null);
         chkRalan.setSelected(true);
         chkRalan.setText("Ralan");
         chkRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -283,7 +282,6 @@ public class DlgRBMenejemen extends javax.swing.JDialog {
         });
         panelisi1.add(chkRalan);
 
-        chkRanap.setBorder(null);
         chkRanap.setSelected(true);
         chkRanap.setText("Ranap");
         chkRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -297,7 +295,6 @@ public class DlgRBMenejemen extends javax.swing.JDialog {
         });
         panelisi1.add(chkRanap);
 
-        chkOperasi.setBorder(null);
         chkOperasi.setSelected(true);
         chkOperasi.setText("Operasi");
         chkOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -311,13 +308,12 @@ public class DlgRBMenejemen extends javax.swing.JDialog {
         });
         panelisi1.add(chkOperasi);
 
-        chkLaborat.setBorder(null);
         chkLaborat.setSelected(true);
         chkLaborat.setText("Laboratorium");
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkLaborat.setName("chkLaborat"); // NOI18N
         chkLaborat.setOpaque(false);
-        chkLaborat.setPreferredSize(new java.awt.Dimension(95, 30));
+        chkLaborat.setPreferredSize(new java.awt.Dimension(100, 30));
         chkLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkLaboratActionPerformed(evt);
@@ -325,7 +321,6 @@ public class DlgRBMenejemen extends javax.swing.JDialog {
         });
         panelisi1.add(chkLaborat);
 
-        chkRadiologi.setBorder(null);
         chkRadiologi.setSelected(true);
         chkRadiologi.setText("Radiologi");
         chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

@@ -164,7 +164,7 @@ public class DlgClosingKasir extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jam Closing Shift Kasir ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jam Closing Shift Kasir ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -382,94 +382,88 @@ public class DlgClosingKasir extends javax.swing.JDialog {
         jLabel4.setText("Shift :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelBiasa1.add(jLabel4);
-        jLabel4.setBounds(0, 12, 50, 23);
+        jLabel4.setBounds(0, 12, 45, 23);
 
         jLabel9.setText("Jam :");
         jLabel9.setName("jLabel9"); // NOI18N
         panelBiasa1.add(jLabel9);
-        jLabel9.setBounds(196, 12, 50, 23);
+        jLabel9.setBounds(146, 12, 50, 23);
 
         cmbShift.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pagi", "Siang", "Sore", "Malam" }));
         cmbShift.setName("cmbShift"); // NOI18N
-        cmbShift.setOpaque(false);
         cmbShift.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbShiftKeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbShift);
-        cmbShift.setBounds(54, 12, 140, 23);
+        cmbShift.setBounds(49, 12, 100, 23);
 
         cmbJam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam1.setName("cmbJam1"); // NOI18N
-        cmbJam1.setOpaque(false);
         cmbJam1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbJam1KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbJam1);
-        cmbJam1.setBounds(250, 12, 50, 23);
+        cmbJam1.setBounds(200, 12, 62, 23);
 
         cmbMnt1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt1.setName("cmbMnt1"); // NOI18N
-        cmbMnt1.setOpaque(false);
         cmbMnt1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbMnt1KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbMnt1);
-        cmbMnt1.setBounds(304, 12, 50, 23);
+        cmbMnt1.setBounds(265, 12, 62, 23);
 
         cmbDtk1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk1.setName("cmbDtk1"); // NOI18N
-        cmbDtk1.setOpaque(false);
         cmbDtk1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbDtk1KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbDtk1);
-        cmbDtk1.setBounds(358, 12, 50, 23);
+        cmbDtk1.setBounds(330, 12, 62, 23);
 
-        jLabel11.setText("S.d. :");
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("s.d.");
         jLabel11.setName("jLabel11"); // NOI18N
         panelBiasa1.add(jLabel11);
-        jLabel11.setBounds(416, 12, 30, 23);
+        jLabel11.setBounds(395, 12, 26, 23);
 
         cmbJam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam2.setName("cmbJam2"); // NOI18N
-        cmbJam2.setOpaque(false);
         cmbJam2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbJam2KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbJam2);
-        cmbJam2.setBounds(447, 12, 50, 23);
+        cmbJam2.setBounds(424, 12, 62, 23);
 
         cmbMnt2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt2.setName("cmbMnt2"); // NOI18N
-        cmbMnt2.setOpaque(false);
         cmbMnt2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbMnt2KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbMnt2);
-        cmbMnt2.setBounds(501, 12, 50, 23);
+        cmbMnt2.setBounds(489, 12, 62, 23);
 
         cmbDtk2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk2.setName("cmbDtk2"); // NOI18N
-        cmbDtk2.setOpaque(false);
         cmbDtk2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbDtk2KeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbDtk2);
-        cmbDtk2.setBounds(555, 12, 50, 23);
+        cmbDtk2.setBounds(554, 12, 62, 23);
 
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 

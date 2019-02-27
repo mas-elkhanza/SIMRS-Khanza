@@ -197,7 +197,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         MnUrut1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut1.setName("MnUrut1"); // NOI18N
-        MnUrut1.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUrut1.setPreferredSize(new java.awt.Dimension(250, 26));
         MnUrut1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUrut1ActionPerformed(evt);
@@ -213,7 +213,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         MnUrut2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut2.setName("MnUrut2"); // NOI18N
-        MnUrut2.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUrut2.setPreferredSize(new java.awt.Dimension(250, 26));
         MnUrut2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUrut2ActionPerformed(evt);
