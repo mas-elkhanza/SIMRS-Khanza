@@ -301,7 +301,6 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBarcode.setBackground(new java.awt.Color(242, 242, 242));
         ppBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBarcode.setForeground(new java.awt.Color(70, 70, 70));
         ppBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
