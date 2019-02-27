@@ -524,7 +524,6 @@ public class DlgJurnal extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(201, 10, 85, 23);
 
-        TglJurnal.setEditable(false);
         TglJurnal.setDisplayFormat("dd-MM-yyyy");
         TglJurnal.setName("TglJurnal"); // NOI18N
         TglJurnal.addKeyListener(new java.awt.event.KeyAdapter() {

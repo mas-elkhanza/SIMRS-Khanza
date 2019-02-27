@@ -387,7 +387,6 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
         panelisi4.add(nama_petugas);
         nama_petugas.setBounds(480, 10, 200, 23);
 
-        tgl_bayar.setEditable(false);
         tgl_bayar.setDisplayFormat("dd-MM-yyyy");
         tgl_bayar.setName("tgl_bayar"); // NOI18N
         tgl_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -434,7 +433,6 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
         jLabel10.setBounds(0, 70, 77, 23);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nama_bayarKeyPressed(evt);
@@ -632,7 +630,6 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
         label33.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi5.add(label33);
 
-        TglCari1.setEditable(false);
         TglCari1.setDisplayFormat("dd-MM-yyyy");
         TglCari1.setName("TglCari1"); // NOI18N
         TglCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -649,7 +646,6 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
         label37.setPreferredSize(new java.awt.Dimension(25, 23));
         panelisi5.add(label37);
 
-        TglCari2.setEditable(false);
         TglCari2.setDisplayFormat("dd-MM-yyyy");
         TglCari2.setName("TglCari2"); // NOI18N
         TglCari2.setPreferredSize(new java.awt.Dimension(90, 23));

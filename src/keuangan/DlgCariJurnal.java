@@ -463,7 +463,6 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(226, 12, 75, 23);
 
-        TglJurnal2.setEditable(false);
         TglJurnal2.setDisplayFormat("dd-MM-yyyy");
         TglJurnal2.setName("TglJurnal2"); // NOI18N
         TglJurnal2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -478,7 +477,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi3.add(label32);
-        label32.setBounds(566, 12, 90, 23);
+        label32.setBounds(546, 12, 90, 23);
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Umum", "Penyesuaian" }));
         Jenis.setName("Jenis"); // NOI18N
@@ -489,7 +488,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Jenis);
-        Jenis.setBounds(660, 12, 110, 23);
+        Jenis.setBounds(640, 12, 130, 23);
 
         label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label12.setText("s.d.");
@@ -498,7 +497,6 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         panelisi3.add(label12);
         label12.setBounds(402, 12, 27, 23);
 
-        TglJurnal1.setEditable(false);
         TglJurnal1.setDisplayFormat("dd-MM-yyyy");
         TglJurnal1.setName("TglJurnal1"); // NOI18N
         TglJurnal1.addKeyListener(new java.awt.event.KeyAdapter() {
