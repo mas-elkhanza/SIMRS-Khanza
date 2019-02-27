@@ -240,7 +240,6 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         label12.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass5.add(label12);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -253,7 +252,6 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
-        CmbStatus.setOpaque(false);
         CmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass5.add(CmbStatus);
 

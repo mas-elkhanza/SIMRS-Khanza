@@ -292,7 +292,6 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSubAkun.setBackground(new java.awt.Color(255, 255, 255));
         MnSubAkun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSubAkun.setForeground(new java.awt.Color(70, 70, 70));
         MnSubAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -309,7 +308,6 @@ public final class DlgRekening extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnSubAkun);
 
-        MnJadikanSub.setBackground(new java.awt.Color(255, 255, 255));
         MnJadikanSub.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnJadikanSub.setForeground(new java.awt.Color(70, 70, 70));
         MnJadikanSub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -326,7 +324,6 @@ public final class DlgRekening extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnJadikanSub);
 
-        MnJadikanUtama.setBackground(new java.awt.Color(255, 255, 255));
         MnJadikanUtama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnJadikanUtama.setForeground(new java.awt.Color(70, 70, 70));
         MnJadikanUtama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -465,7 +462,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(407, 12, 100, 23);
+        label32.setBounds(407, 12, 80, 23);
 
         Kd.setHighlighter(null);
         Kd.setName("Kd"); // NOI18N
@@ -502,13 +499,13 @@ public final class DlgRekening extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tipe);
-        Tipe.setBounds(510, 12, 110, 23);
+        Tipe.setBounds(490, 12, 130, 23);
 
         label33.setText("Balance :");
         label33.setName("label33"); // NOI18N
         label33.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label33);
-        label33.setBounds(407, 42, 100, 23);
+        label33.setBounds(407, 42, 80, 23);
 
         Balan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Debet", "Kredit" }));
         Balan.setName("Balan"); // NOI18N
@@ -519,7 +516,7 @@ public final class DlgRekening extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Balan);
-        Balan.setBounds(510, 42, 110, 23);
+        Balan.setBounds(490, 42, 130, 23);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
