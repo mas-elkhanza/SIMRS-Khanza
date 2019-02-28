@@ -604,6 +604,12 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()
                             });
                         }
+                        Sequel.queryu2("delete from pcare_obat_diberikan where "+
+                            "no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString()+"' "+
+                            "and kode_brng='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()+"' "+
+                            "and tgl_perawatan='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"' "+
+                            "and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+"' "+
+                            "and no_batch='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),16).toString()+"'");
                         tampil();
                     }
                 }else{

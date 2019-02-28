@@ -857,7 +857,9 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                 if(aktifpcare.equals("yes")){
                                                     simpanTindakanPCare(
                                                         nokunjungan,Sequel.cariIsi("select kd_tindakan_pcare from maping_tindakan_pcare where kd_jenis_prw=?",tbTindakan.getValueAt(i,1).toString()),TNoRw.getText(),
-                                                        Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),tbTindakan.getValueAt(i,1).toString()
+                                                        Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),tbTindakan.getValueAt(i,1).toString(),
+                                                        tbTindakan.getValueAt(i,5).toString(),tbTindakan.getValueAt(i,6).toString(),tbTindakan.getValueAt(i,7).toString(),"0",tbTindakan.getValueAt(i,9).toString(),
+                                                        tbTindakan.getValueAt(i,10).toString(),tbTindakan.getValueAt(i,4).toString()
                                                     );
                                                 }
                                             } catch (Exception e) {
@@ -887,7 +889,9 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                 if(aktifpcare.equals("yes")){
                                                     simpanTindakanPCare(
                                                         nokunjungan,Sequel.cariIsi("select kd_tindakan_pcare from maping_tindakan_pcare where kd_jenis_prw=?",tbTindakan.getValueAt(i,1).toString()),TNoRw.getText(),
-                                                        Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),tbTindakan.getValueAt(i,1).toString()
+                                                        Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),tbTindakan.getValueAt(i,1).toString(),
+                                                        tbTindakan.getValueAt(i,5).toString(),tbTindakan.getValueAt(i,6).toString(),"0",tbTindakan.getValueAt(i,8).toString(),tbTindakan.getValueAt(i,9).toString(),
+                                                        tbTindakan.getValueAt(i,10).toString(),tbTindakan.getValueAt(i,4).toString()
                                                     );
                                                 }
                                             } catch (Exception e) {
@@ -922,7 +926,9 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                     if(aktifpcare.equals("yes")){
                                                         simpanTindakanPCare(
                                                             nokunjungan,Sequel.cariIsi("select kd_tindakan_pcare from maping_tindakan_pcare where kd_jenis_prw=?",tbTindakan.getValueAt(i,1).toString()),TNoRw.getText(),
-                                                            Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),tbTindakan.getValueAt(i,1).toString()
+                                                            Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),tbTindakan.getValueAt(i,1).toString(),
+                                                            tbTindakan.getValueAt(i,5).toString(),tbTindakan.getValueAt(i,6).toString(),tbTindakan.getValueAt(i,7).toString(),tbTindakan.getValueAt(i,8).toString(),tbTindakan.getValueAt(i,9).toString(),
+                                                            tbTindakan.getValueAt(i,10).toString(),tbTindakan.getValueAt(i,4).toString()
                                                         );
                                                     }
                                                 } catch (Exception e) {
@@ -1509,7 +1515,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         nokunjungan=nokunjung;
     }
     
-    private void simpanTindakanPCare(String noKunjungan,String kdTindakan,String no_rawat,String tgl_perawatan,String jam,String kd_jenis_prw){
+    private void simpanTindakanPCare(String noKunjungan,String kdTindakan,String no_rawat,String tgl_perawatan,String jam,String kd_jenis_prw,String material,String bhp,String tarif_tindakandr,String tarif_tindakanpr,String kso,String menejemen,String biaya_rawat){
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -1535,8 +1541,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             System.out.println("message : "+nameNode.path("message").asText()); 
             if(nameNode.path("code").asText().equals("201")){
                 response = root.path("response");
-                Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?",6,new String[]{
-                    no_rawat, noKunjungan, response.path("message").asText(), tgl_perawatan, jam, kd_jenis_prw
+                Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                    no_rawat, noKunjungan, response.path("message").asText(), tgl_perawatan, jam, kd_jenis_prw,
+                    material, bhp, tarif_tindakandr, tarif_tindakanpr, kso, menejemen, biaya_rawat
                 });
             }
         }catch (Exception ex) {

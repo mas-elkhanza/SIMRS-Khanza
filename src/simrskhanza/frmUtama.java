@@ -82,6 +82,7 @@ import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
 import bridging.PCareClubProlanis;
 import bridging.PCareDataPemberianObat;
+import bridging.PCareDataPemberianTindakan;
 import bridging.PCareDataPendaftaran;
 import bridging.PCareKegiatanKelompok;
 import bridging.PCareMapingDokter;
@@ -1057,6 +1058,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnKunjunganRadRalan = new widget.ButtonBig();
         btnKunjunganRadRanap = new widget.ButtonBig();
         btnPCareBeriObat = new widget.ButtonBig();
+        btnPCareBeriTindakan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1375,7 +1377,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         panelisi2.add(TCari);
 
-        ChkInput.setBorder(null);
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setSelected(true);
@@ -6542,6 +6543,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareBeriObat);
+
+        btnPCareBeriTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
+        btnPCareBeriTindakan.setText("Pemberian Tindakan PCare");
+        btnPCareBeriTindakan.setIconTextGap(0);
+        btnPCareBeriTindakan.setName("btnPCareBeriTindakan"); // NOI18N
+        btnPCareBeriTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareBeriTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareBeriTindakanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareBeriTindakan);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -13472,6 +13485,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnRekapBulanan3ActionPerformed
 
+    private void btnPCareBeriTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareBeriTindakanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareDataPemberianTindakan form=new PCareDataPemberianTindakan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareBeriTindakanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13731,6 +13756,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnOpnameIPSRS;
     private widget.ButtonBig btnPCareBeriObat;
+    private widget.ButtonBig btnPCareBeriTindakan;
     private widget.ButtonBig btnPCareClubProlanis;
     private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
@@ -15965,6 +15991,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_pemberian_tindakan()==true){
+                Panelmenu.add(btnPCareBeriTindakan);
+                jmlmenu++;
+            }
+            
             if(var.getsisrute_referensi_faskes()==true){
                 Panelmenu.add(btnCekSisruteFaskes);
                 jmlmenu++;
@@ -18129,6 +18160,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_pemberian_obat()==true){
             Panelmenu.add(btnPCareBeriObat);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_pemberian_tindakan()==true){
+            Panelmenu.add(btnPCareBeriTindakan);
             jmlmenu++;
         }
         
@@ -20929,6 +20965,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_pemberian_obat()==true){
             if(btnPCareBeriObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareBeriObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_pemberian_tindakan()==true){
+            if(btnPCareBeriTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareBeriTindakan);
                 jmlmenu++;
             }                
         }
