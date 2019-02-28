@@ -4090,6 +4090,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         );
                         perawatan.setPetugas(kdptg,nmptg,"","","","","","","","","","","","");
                         perawatan.emptTeks();
+                        perawatan.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
                         perawatan.isCek();
                         perawatan.tampil();
                         perawatan.setSize(this.getWidth()-20,this.getHeight()-20);
@@ -4100,6 +4101,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                         nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
                         dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                        dlgrwjl.setPCare("yes",tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString());
                         dlgrwjl.isCek();
                         dlgrwjl.tampil();
                         dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

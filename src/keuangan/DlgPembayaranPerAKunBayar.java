@@ -775,28 +775,14 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
-            }else if(kolom>2){
+            }else if(kolom>0){
                 LoadHTML.setText(
                         "<html>"+
-                          "<table width='1200px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='"+Integer.toString(700+(kolom*90))+"px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
-            }else if(kolom>6){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='1700px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }else if(kolom>12){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2100px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }                
+            }            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
