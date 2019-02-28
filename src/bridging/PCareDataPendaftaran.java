@@ -4552,18 +4552,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnEdit.setEnabled(var.getbridging_pcare_daftar());
         BtnHapus.setEnabled(var.getbridging_pcare_daftar());
         BtnPrint.setEnabled(var.getbridging_pcare_daftar());
-        
-        if(var.getberi_obat()==true){
-            MnPemberianObat.setEnabled(true);
-        }else{
-            MnPemberianObat.setEnabled(false);
-        }
-        
-        if((var.gettindakan_ralan()==true)||(var.gettindakan_ranap()==true)){
-            MnTIndakan.setEnabled(true);
-        }else{
-            MnTIndakan.setEnabled(false);
-        }
+        MnPemberianObat1.setEnabled(var.getpcare_pemberian_obat());
+        MnPemberianObat.setEnabled(var.getpcare_pemberian_obat());
+        MnTIndakan.setEnabled(var.getpcare_pemberian_tindakan());
         ppRiwayat.setEnabled(var.getresume_pasien());            
     }
     
