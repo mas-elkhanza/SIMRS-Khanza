@@ -21,9 +21,6 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="ppBersihkan">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
@@ -48,9 +45,6 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="ppSemua">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
@@ -436,14 +430,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tgl.Datang :"/>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="ChkTanggalDatang" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
+                      <Dimension value="[93, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -452,7 +444,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglDatang1">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglDatang1" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -475,7 +466,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglDatang2">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglDatang2" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -490,7 +480,7 @@
                   <Properties>
                     <Property name="name" type="java.lang.String" value="label21" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[75, 23]"/>
+                      <Dimension value="[70, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -500,14 +490,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tgl.Tempo"/>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="ChkTanggalTempo" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[77, 23]"/>
+                      <Dimension value="[85, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -516,7 +504,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglTempo1">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglTempo1" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -539,7 +526,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglTempo2">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglTempo2" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -661,7 +647,6 @@
             </Component>
             <Component class="widget.Tanggal" name="tgl_bayar">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="tgl_bayar" noResource="true"/>
               </Properties>
@@ -709,7 +694,6 @@
                   <StringArray count="0"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="nama_bayar" noResource="true"/>
-                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nama_bayarKeyPressed"/>

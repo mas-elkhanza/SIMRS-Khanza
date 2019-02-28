@@ -317,7 +317,6 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(73, 23));
         panelisi2.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -329,7 +328,6 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label21.setPreferredSize(new java.awt.Dimension(25, 23));
         panelisi2.add(label21);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -594,7 +592,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label26);
-        label26.setBounds(230, 162, 130, 23);
+        label26.setBounds(230, 162, 129, 23);
 
         kelas1.setName("kelas1"); // NOI18N
         kelas1.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -620,7 +618,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label28.setName("label28"); // NOI18N
         label28.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label28);
-        label28.setBounds(230, 192, 130, 23);
+        label28.setBounds(230, 192, 129, 23);
 
         kelas2.setName("kelas2"); // NOI18N
         kelas2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -652,7 +650,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label27.setName("label27"); // NOI18N
         label27.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label27);
-        label27.setBounds(0, 192, 108, 23);
+        label27.setBounds(0, 192, 107, 23);
 
         ralan.setName("ralan"); // NOI18N
         ralan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -694,7 +692,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label29.setName("label29"); // NOI18N
         label29.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label29);
-        label29.setBounds(0, 162, 108, 23);
+        label29.setBounds(0, 162, 107, 23);
 
         beli.setName("beli"); // NOI18N
         beli.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -740,13 +738,13 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label30.setName("label30"); // NOI18N
         label30.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label30);
-        label30.setBounds(500, 12, 160, 23);
+        label30.setBounds(500, 12, 159, 23);
 
         label33.setText("Hrg Rnp Utama/BPJS : Rp.");
         label33.setName("label33"); // NOI18N
         label33.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label33);
-        label33.setBounds(500, 42, 160, 23);
+        label33.setBounds(500, 42, 159, 23);
 
         utama.setName("utama"); // NOI18N
         utama.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -792,13 +790,13 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label34.setName("label34"); // NOI18N
         label34.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label34);
-        label34.setBounds(500, 72, 160, 23);
+        label34.setBounds(500, 72, 159, 23);
 
         label35.setText("Hrg Rnp Kelas VVIP : Rp.");
         label35.setName("label35"); // NOI18N
         label35.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label35);
-        label35.setBounds(500, 102, 160, 23);
+        label35.setBounds(500, 102, 159, 23);
 
         kelasvvip.setName("kelasvvip"); // NOI18N
         kelasvvip.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -824,7 +822,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label36);
-        label36.setBounds(480, 132, 180, 23);
+        label36.setBounds(480, 132, 179, 23);
 
         beliluar.setName("beliluar"); // NOI18N
         beliluar.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -870,13 +868,13 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label37.setName("label37"); // NOI18N
         label37.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label37);
-        label37.setBounds(480, 162, 180, 23);
+        label37.setBounds(480, 162, 179, 23);
 
         label38.setText("Hrg Karyawan : Rp.");
         label38.setName("label38"); // NOI18N
         label38.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label38);
-        label38.setBounds(480, 192, 180, 23);
+        label38.setBounds(480, 192, 179, 23);
 
         karyawan.setName("karyawan"); // NOI18N
         karyawan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -898,7 +896,6 @@ public class DlgDataBatch extends javax.swing.JDialog {
         FormInput.add(karyawan);
         karyawan.setBounds(660, 192, 110, 23);
 
-        DTPExpired.setEditable(false);
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
         DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2019" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
@@ -920,7 +917,6 @@ public class DlgDataBatch extends javax.swing.JDialog {
 
         AsalBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Penerimaan", "Pengadaan" }));
         AsalBarang.setName("AsalBarang"); // NOI18N
-        AsalBarang.setOpaque(false);
         AsalBarang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AsalBarangKeyPressed(evt);
@@ -961,7 +957,6 @@ public class DlgDataBatch extends javax.swing.JDialog {
         FormInput.add(label17);
         label17.setBounds(267, 72, 100, 23);
 
-        TanggalDatang.setEditable(false);
         TanggalDatang.setForeground(new java.awt.Color(50, 70, 50));
         TanggalDatang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2019" }));
         TanggalDatang.setDisplayFormat("dd-MM-yyyy");

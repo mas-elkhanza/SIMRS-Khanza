@@ -211,15 +211,13 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass7.add(label11);
 
-        ThnCari.setBorder(null);
         ThnCari.setName("ThnCari"); // NOI18N
         ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass7.add(ThnCari);
 
-        BlnCari.setBorder(null);
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(50, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass7.add(BlnCari);
 
         label12.setText("Departemen :");

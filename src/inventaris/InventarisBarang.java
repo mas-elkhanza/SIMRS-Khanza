@@ -351,7 +351,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Koleksi Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Koleksi Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -609,7 +609,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
         label7.setText("Tahun Produksi :");
         label7.setName("label7"); // NOI18N
         FormInput.add(label7);
-        label7.setBounds(175, 70, 100, 23);
+        label7.setBounds(175, 70, 90, 23);
 
         isbn.setName("isbn"); // NOI18N
         isbn.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -636,14 +636,13 @@ public final class InventarisBarang extends javax.swing.JDialog {
         label9.setBounds(0, 70, 90, 23);
 
         thn_produksi.setName("thn_produksi"); // NOI18N
-        thn_produksi.setOpaque(false);
         thn_produksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 thn_produksiKeyPressed(evt);
             }
         });
         FormInput.add(thn_produksi);
-        thn_produksi.setBounds(279, 70, 75, 23);
+        thn_produksi.setBounds(269, 70, 85, 23);
 
         label19.setText("Produsen :");
         label19.setName("label19"); // NOI18N

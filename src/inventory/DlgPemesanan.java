@@ -353,7 +353,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -668,7 +667,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 75, 23);
 
-        TglPesan.setEditable(false);
         TglPesan.setDisplayFormat("dd-MM-yyyy");
         TglPesan.setName("TglPesan"); // NOI18N
         TglPesan.addActionListener(new java.awt.event.ActionListener() {
@@ -784,7 +782,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
         panelisi3.add(btnGudang);
         btnGudang.setBounds(734, 70, 28, 23);
 
-        TglTempo.setEditable(false);
         TglTempo.setDisplayFormat("dd-MM-yyyy");
         TglTempo.setName("TglTempo"); // NOI18N
         TglTempo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -807,7 +804,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
         panelisi3.add(label22);
         label22.setBounds(180, 40, 60, 23);
 
-        TglFaktur.setEditable(false);
         TglFaktur.setDisplayFormat("dd-MM-yyyy");
         TglFaktur.setName("TglFaktur"); // NOI18N
         TglFaktur.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1588,7 +1584,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         rs.getString(2),rs.getString("satbar"),false,rs.getString(5),
                         rs.getDouble(4),rs.getDouble("subtotal"),rs.getDouble("dis"),
                         rs.getDouble("besardis"),rs.getDouble("total"),rs.getDouble("jumlah2"),"",
-                        null,null,null,null,null,null,null,null,null,null,null
+                        0,0,0,0,0,0,0,0,0,0,0
                     });
                 } 
                 getData();

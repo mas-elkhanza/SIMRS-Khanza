@@ -354,10 +354,9 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
-        Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi4.add(Tgl1);
 
         label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -366,10 +365,9 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi4.add(Tgl2);
 
         label19.setText("Cara Bayar :");

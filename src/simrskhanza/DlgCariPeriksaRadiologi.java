@@ -362,7 +362,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCetakNota.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakNota.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -376,7 +375,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakNota);
 
-        MnLihatHasil.setBackground(new java.awt.Color(255, 255, 255));
         MnLihatHasil.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLihatHasil.setForeground(new java.awt.Color(70, 70, 70));
         MnLihatHasil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -390,7 +388,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnLihatHasil);
 
-        MnLihatGambar.setBackground(new java.awt.Color(255, 255, 255));
         MnLihatGambar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLihatGambar.setForeground(new java.awt.Color(70, 70, 70));
         MnLihatGambar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -404,7 +401,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnLihatGambar);
 
-        MnUbahDokterPetugas.setBackground(new java.awt.Color(255, 255, 255));
         MnUbahDokterPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUbahDokterPetugas.setForeground(new java.awt.Color(70, 70, 70));
         MnUbahDokterPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -723,7 +719,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 75, 23);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -811,7 +806,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         panelisi3.add(label18);
         label18.setBounds(178, 40, 30, 23);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.addKeyListener(new java.awt.event.KeyAdapter() {

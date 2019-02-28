@@ -420,9 +420,8 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -435,9 +434,8 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -556,9 +554,8 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         FormInput.add(TPasien);
         TPasien.setBounds(309, 10, 309, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -593,14 +590,13 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
 
         Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IYA", "TIDAK" }));
         Deku.setName("Deku"); // NOI18N
-        Deku.setOpaque(false);
         Deku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DekuKeyPressed(evt);
             }
         });
         FormInput.add(Deku);
-        Deku.setBounds(75, 70, 70, 23);
+        Deku.setBounds(75, 70, 100, 23);
 
         jLabel5.setText("IVL :");
         jLabel5.setName("jLabel5"); // NOI18N

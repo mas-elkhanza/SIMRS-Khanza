@@ -270,7 +270,6 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
 
         internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame2.setLayout(null);
 
         BtnCloseIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -456,9 +455,8 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         internalFrame2.add(label12);
         label12.setBounds(367, 55, 80, 23);
 
-        tgl.setEditable(false);
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2018" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-01-2019" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -735,8 +733,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 23));
         panelCari.add(jLabel27);
 
-        TglPinjam1.setEditable(false);
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2018" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-01-2019" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -759,8 +756,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(35, 23));
         panelCari.add(jLabel22);
 
-        TglPinjam2.setEditable(false);
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2018" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-01-2019" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);

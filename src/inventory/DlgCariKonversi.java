@@ -71,7 +71,7 @@ public final class DlgCariKonversi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Calculator Konversi Satuan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Calculator Konversi Satuan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -98,7 +98,7 @@ public final class DlgCariKonversi extends javax.swing.JDialog {
         nmsat1.setHighlighter(null);
         nmsat1.setName("nmsat1"); // NOI18N
         panelisi4.add(nmsat1);
-        nmsat1.setBounds(126, 12, 150, 23);
+        nmsat1.setBounds(146, 12, 130, 23);
 
         kdsat1.setName("kdsat1"); // NOI18N
         kdsat1.setPreferredSize(new java.awt.Dimension(45, 23));
@@ -113,7 +113,7 @@ public final class DlgCariKonversi extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdsat1);
-        kdsat1.setBounds(64, 12, 60, 23);
+        kdsat1.setBounds(64, 12, 80, 23);
 
         label11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label11.setText("=");
@@ -140,13 +140,13 @@ public final class DlgCariKonversi extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdsat2);
-        kdsat2.setBounds(351, 12, 60, 23);
+        kdsat2.setBounds(351, 12, 80, 23);
 
         nmsat2.setEditable(false);
         nmsat2.setHighlighter(null);
         nmsat2.setName("nmsat2"); // NOI18N
         panelisi4.add(nmsat2);
-        nmsat2.setBounds(413, 12, 150, 23);
+        nmsat2.setBounds(433, 12, 130, 23);
 
         BtnKeluar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar1.setMnemonic('K');

@@ -182,7 +182,6 @@ public class frmPengaduan extends javax.swing.JFrame {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,8 +221,6 @@ public class frmPengaduan extends javax.swing.JFrame {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi3.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi3.add(Tgl1);
@@ -233,8 +230,6 @@ public class frmPengaduan extends javax.swing.JFrame {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelisi3.add(label18);
 
-        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi3.add(Tgl2);

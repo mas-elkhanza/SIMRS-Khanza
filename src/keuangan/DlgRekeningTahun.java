@@ -344,7 +344,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(437, 12, 110, 23);
+        label32.setBounds(437, 12, 90, 23);
 
         Kd.setHighlighter(null);
         Kd.setName("Kd"); // NOI18N
@@ -375,7 +375,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tahun);
-        Tahun.setBounds(550, 12, 70, 23);
+        Tahun.setBounds(530, 12, 90, 23);
 
         label33.setText("Saldo Awal : Rp");
         label33.setName("label33"); // NOI18N

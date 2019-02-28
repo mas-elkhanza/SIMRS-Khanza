@@ -364,7 +364,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -381,7 +380,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppDokter.setBackground(new java.awt.Color(255, 255, 255));
         ppDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppDokter.setForeground(new java.awt.Color(70, 70, 70));
         ppDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -398,7 +396,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         });
         Popup.add(ppDokter);
 
-        ppPetugas.setBackground(new java.awt.Color(255, 255, 255));
         ppPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPetugas.setForeground(new java.awt.Color(70, 70, 70));
         ppPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -415,7 +412,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         });
         Popup.add(ppPetugas);
 
-        ppPetugasDokter.setBackground(new java.awt.Color(255, 255, 255));
         ppPetugasDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPetugasDokter.setForeground(new java.awt.Color(70, 70, 70));
         ppPetugasDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -690,9 +686,8 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(710, 74));
         FormInput.setLayout(null);
 
-        DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);

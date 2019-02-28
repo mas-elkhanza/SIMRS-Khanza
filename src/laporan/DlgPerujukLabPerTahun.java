@@ -153,7 +153,7 @@ public final class DlgPerujukLabPerTahun extends javax.swing.JDialog {
         panelGlass5.add(label11);
 
         ThnCari.setName("ThnCari"); // NOI18N
-        ThnCari.setPreferredSize(new java.awt.Dimension(70, 23));
+        ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass5.add(ThnCari);
 
         jLabel6.setText("Key Word :");

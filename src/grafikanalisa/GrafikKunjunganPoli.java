@@ -77,7 +77,7 @@ public class GrafikKunjunganPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Grafik Kunjungan Registrasi Per Poli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Grafik Kunjungan Registrasi Per Poli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -94,9 +94,8 @@ public class GrafikKunjunganPoli extends javax.swing.JDialog {
         jLabel33.setPreferredSize(new java.awt.Dimension(105, 23));
         panelGlass5.add(jLabel33);
 
-        Tanggal1.setEditable(false);
         Tanggal1.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-12-2017" }));
+        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2017" }));
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
         Tanggal1.setOpaque(false);
@@ -109,9 +108,8 @@ public class GrafikKunjunganPoli extends javax.swing.JDialog {
         jLabel32.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(jLabel32);
 
-        Tanggal2.setEditable(false);
         Tanggal2.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-12-2017" }));
+        Tanggal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2017" }));
         Tanggal2.setDisplayFormat("dd-MM-yyyy");
         Tanggal2.setName("Tanggal2"); // NOI18N
         Tanggal2.setOpaque(false);

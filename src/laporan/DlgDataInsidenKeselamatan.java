@@ -249,7 +249,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnPrint = new widget.Button();
-        BtnAll = new widget.Button();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
@@ -259,8 +260,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        jLabel7 = new widget.Label();
-        LCount = new widget.Label();
+        BtnAll = new widget.Button();
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
         jLabel4 = new widget.Label();
@@ -432,23 +432,16 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnPrint);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnAll);
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass8.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass8.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -474,14 +467,13 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel19.setText("Tanggal :");
+        jLabel19.setText("Kejadian :");
         jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-10-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -494,9 +486,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-10-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -505,11 +496,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(310, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -534,16 +525,22 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         });
         panelGlass9.add(BtnCari);
 
-        jLabel7.setText("Record :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass9.add(jLabel7);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(LCount);
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(BtnAll);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -582,11 +579,10 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(351, 10, 370, 23);
+        TPasien.setBounds(361, 10, 424, 23);
 
-        Kejadian.setEditable(false);
         Kejadian.setForeground(new java.awt.Color(50, 70, 50));
-        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-10-2018" }));
+        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         Kejadian.setDisplayFormat("dd-MM-yyyy");
         Kejadian.setName("Kejadian"); // NOI18N
         Kejadian.setOpaque(false);
@@ -607,7 +603,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRM);
-        TNoRM.setBounds(247, 10, 102, 23);
+        TNoRM.setBounds(247, 10, 112, 23);
 
         jLabel16.setText("Kejadian :");
         jLabel16.setName("jLabel16"); // NOI18N
@@ -623,7 +619,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Lokasi);
-        Lokasi.setBounds(464, 70, 257, 23);
+        Lokasi.setBounds(465, 70, 320, 23);
 
         jLabel23.setText("Lokasi :");
         jLabel23.setName("jLabel23"); // NOI18N
@@ -632,57 +628,51 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         JamKejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         JamKejadian.setName("JamKejadian"); // NOI18N
-        JamKejadian.setOpaque(false);
         JamKejadian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JamKejadianKeyPressed(evt);
             }
         });
         FormInput.add(JamKejadian);
-        JamKejadian.setBounds(197, 40, 45, 23);
+        JamKejadian.setBounds(197, 40, 62, 23);
 
         MenitKejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         MenitKejadian.setName("MenitKejadian"); // NOI18N
-        MenitKejadian.setOpaque(false);
         MenitKejadian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MenitKejadianKeyPressed(evt);
             }
         });
         FormInput.add(MenitKejadian);
-        MenitKejadian.setBounds(244, 40, 45, 23);
+        MenitKejadian.setBounds(262, 40, 62, 23);
 
         DetikKejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         DetikKejadian.setName("DetikKejadian"); // NOI18N
-        DetikKejadian.setOpaque(false);
         DetikKejadian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DetikKejadianKeyPressed(evt);
             }
         });
         FormInput.add(DetikKejadian);
-        DetikKejadian.setBounds(291, 40, 45, 23);
+        DetikKejadian.setBounds(327, 40, 62, 23);
 
-        ChkKejadian.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
+        ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
-        ChkKejadian.setBorderPainted(true);
-        ChkKejadian.setBorderPaintedFlat(true);
         ChkKejadian.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkKejadian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(338, 40, 23, 23);
+        ChkKejadian.setBounds(392, 40, 23, 23);
 
         jLabel17.setText("Lapor :");
         jLabel17.setName("jLabel17"); // NOI18N
         jLabel17.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel17);
-        jLabel17.setBounds(362, 40, 99, 23);
+        jLabel17.setBounds(420, 40, 50, 23);
 
-        Lapor.setEditable(false);
         Lapor.setForeground(new java.awt.Color(50, 70, 50));
-        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-10-2018" }));
+        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         Lapor.setDisplayFormat("dd-MM-yyyy");
         Lapor.setName("Lapor"); // NOI18N
         Lapor.setOpaque(false);
@@ -692,51 +682,46 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Lapor);
-        Lapor.setBounds(464, 40, 90, 23);
+        Lapor.setBounds(474, 40, 90, 23);
 
         JamLapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         JamLapor.setName("JamLapor"); // NOI18N
-        JamLapor.setOpaque(false);
         JamLapor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JamLaporKeyPressed(evt);
             }
         });
         FormInput.add(JamLapor);
-        JamLapor.setBounds(557, 40, 45, 23);
+        JamLapor.setBounds(567, 40, 62, 23);
 
         MenitLapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         MenitLapor.setName("MenitLapor"); // NOI18N
-        MenitLapor.setOpaque(false);
         MenitLapor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MenitLaporKeyPressed(evt);
             }
         });
         FormInput.add(MenitLapor);
-        MenitLapor.setBounds(604, 40, 45, 23);
+        MenitLapor.setBounds(632, 40, 62, 23);
 
         DetikLapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         DetikLapor.setName("DetikLapor"); // NOI18N
-        DetikLapor.setOpaque(false);
         DetikLapor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DetikLaporKeyPressed(evt);
             }
         });
         FormInput.add(DetikLapor);
-        DetikLapor.setBounds(651, 40, 45, 23);
+        DetikLapor.setBounds(697, 40, 62, 23);
 
-        ChkLapor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
+        ChkLapor.setBorder(null);
         ChkLapor.setSelected(true);
-        ChkLapor.setBorderPainted(true);
-        ChkLapor.setBorderPaintedFlat(true);
         ChkLapor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkLapor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkLapor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkLapor.setName("ChkLapor"); // NOI18N
         FormInput.add(ChkLapor);
-        ChkLapor.setBounds(698, 40, 23, 23);
+        ChkLapor.setBounds(762, 40, 23, 23);
 
         jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -788,7 +773,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel25.setText("Akibat :");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(362, 130, 99, 23);
+        jLabel25.setBounds(401, 130, 60, 23);
 
         Akibat.setHighlighter(null);
         Akibat.setName("Akibat"); // NOI18N
@@ -798,7 +783,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Akibat);
-        Akibat.setBounds(464, 130, 257, 23);
+        Akibat.setBounds(465, 130, 320, 23);
 
         btnInsiden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnInsiden.setMnemonic('2');
@@ -810,12 +795,12 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnInsiden);
-        btnInsiden.setBounds(693, 100, 28, 23);
+        btnInsiden.setBounds(757, 100, 28, 23);
 
         NmInsiden.setEditable(false);
         NmInsiden.setName("NmInsiden"); // NOI18N
         FormInput.add(NmInsiden);
-        NmInsiden.setBounds(176, 100, 286, 23);
+        NmInsiden.setBounds(176, 100, 349, 23);
 
         KodeInsiden.setHighlighter(null);
         KodeInsiden.setName("KodeInsiden"); // NOI18N
@@ -835,17 +820,17 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Dampak.setEditable(false);
         Dampak.setName("Dampak"); // NOI18N
         FormInput.add(Dampak);
-        Dampak.setBounds(556, 100, 135, 23);
+        Dampak.setBounds(619, 100, 135, 23);
 
         Jenis.setEditable(false);
         Jenis.setName("Jenis"); // NOI18N
         FormInput.add(Jenis);
-        Jenis.setBounds(464, 100, 90, 23);
+        Jenis.setBounds(527, 100, 90, 23);
 
-        jLabel26.setText("Identifikasi Masalah :");
+        jLabel26.setText("Identifikasi :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(362, 160, 120, 23);
+        jLabel26.setBounds(381, 160, 80, 23);
 
         Tindakan.setHighlighter(null);
         Tindakan.setName("Tindakan"); // NOI18N
@@ -870,7 +855,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Identifikasi);
-        Identifikasi.setBounds(485, 160, 236, 23);
+        Identifikasi.setBounds(465, 160, 320, 23);
 
         jLabel28.setText("Tindak Lanjut :");
         jLabel28.setName("jLabel28"); // NOI18N

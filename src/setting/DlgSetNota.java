@@ -219,21 +219,21 @@ public class DlgSetNota extends javax.swing.JDialog {
         jLabel33 = new widget.Label();
         BesarBiaya = new widget.TextBox();
         jLabel34 = new widget.Label();
-        chkLaborat = new widget.CekBox();
+        chkObat = new widget.CekBox();
         chkRadiologi = new widget.CekBox();
         chkOperasi = new widget.CekBox();
-        chkObat = new widget.CekBox();
-        chkRanapDokter = new widget.CekBox();
-        chkRanapParamedis = new widget.CekBox();
         chkRalanDokter = new widget.CekBox();
-        chkRalanParamedis = new widget.CekBox();
-        chkTambahan = new widget.CekBox();
-        chkKamar = new widget.CekBox();
+        chkRanapParamedis = new widget.CekBox();
+        chkLaborat = new widget.CekBox();
+        chkRanapDokter = new widget.CekBox();
         chkRegistrasi = new widget.CekBox();
+        chkKamar = new widget.CekBox();
+        chkTambahan = new widget.CekBox();
+        chkRalanParamedis = new widget.CekBox();
+        chkPotongan = new widget.CekBox();
+        chkRetur = new widget.CekBox();
         chkHarian = new widget.CekBox();
         chkResepPulang = new widget.CekBox();
-        chkRetur = new widget.CekBox();
-        chkPotongan = new widget.CekBox();
         jLabel35 = new widget.Label();
         internalFrame4 = new widget.InternalFrame();
         Scroll2 = new widget.ScrollPane();
@@ -245,22 +245,22 @@ public class DlgSetNota extends javax.swing.JDialog {
         NamaService1 = new widget.TextBox();
         jLabel36 = new widget.Label();
         BesarBiaya1 = new widget.TextBox();
+        chkObat1 = new widget.CekBox();
+        chkOperasi1 = new widget.CekBox();
+        chkRadiologi1 = new widget.CekBox();
         jLabel37 = new widget.Label();
         chkLaborat1 = new widget.CekBox();
-        chkRadiologi1 = new widget.CekBox();
-        chkOperasi1 = new widget.CekBox();
-        chkObat1 = new widget.CekBox();
-        chkRanapDokter1 = new widget.CekBox();
-        chkRanapParamedis1 = new widget.CekBox();
         chkRalanDokter1 = new widget.CekBox();
-        chkRalanParamedis1 = new widget.CekBox();
-        chkTambahan1 = new widget.CekBox();
-        chkKamar1 = new widget.CekBox();
+        chkRanapParamedis1 = new widget.CekBox();
+        chkRanapDokter1 = new widget.CekBox();
         chkRegistrasi1 = new widget.CekBox();
-        chkHarian1 = new widget.CekBox();
-        chkResepPulang1 = new widget.CekBox();
-        chkRetur1 = new widget.CekBox();
+        chkKamar1 = new widget.CekBox();
+        chkTambahan1 = new widget.CekBox();
+        chkRalanParamedis1 = new widget.CekBox();
         chkPotongan1 = new widget.CekBox();
+        chkRetur1 = new widget.CekBox();
+        chkResepPulang1 = new widget.CekBox();
+        chkHarian1 = new widget.CekBox();
         jLabel38 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -467,7 +467,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesRalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesRalan.setName("cmbYesRalan"); // NOI18N
-        cmbYesRalan.setOpaque(false);
         cmbYesRalan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesRalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -475,7 +474,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesRalan);
-        cmbYesRalan.setBounds(588, 12, 60, 23);
+        cmbYesRalan.setBounds(588, 12, 70, 23);
 
         jLabel7.setText("Lebar Kwitansi Rawat Jalan :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -616,7 +615,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesRanap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesRanap.setName("cmbYesRanap"); // NOI18N
-        cmbYesRanap.setOpaque(false);
         cmbYesRanap.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -624,11 +622,10 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesRanap);
-        cmbYesRanap.setBounds(588, 42, 60, 23);
+        cmbYesRanap.setBounds(588, 42, 70, 23);
 
         cmbYesRincianRalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesRincianRalan.setName("cmbYesRincianRalan"); // NOI18N
-        cmbYesRincianRalan.setOpaque(false);
         cmbYesRincianRalan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesRincianRalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -636,7 +633,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesRincianRalan);
-        cmbYesRincianRalan.setBounds(588, 72, 60, 23);
+        cmbYesRincianRalan.setBounds(588, 72, 70, 23);
 
         jLabel20.setText("Tampilkan Rincian Tindakan Dokter Ralan :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -650,7 +647,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesRincianRanap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesRincianRanap.setName("cmbYesRincianRanap"); // NOI18N
-        cmbYesRincianRanap.setOpaque(false);
         cmbYesRincianRanap.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesRincianRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -658,11 +654,10 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesRincianRanap);
-        cmbYesRincianRanap.setBounds(588, 102, 60, 23);
+        cmbYesRincianRanap.setBounds(588, 102, 70, 23);
 
         cmbYesCentangDokterRalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesCentangDokterRalan.setName("cmbYesCentangDokterRalan"); // NOI18N
-        cmbYesCentangDokterRalan.setOpaque(false);
         cmbYesCentangDokterRalan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesCentangDokterRalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -670,7 +665,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesCentangDokterRalan);
-        cmbYesCentangDokterRalan.setBounds(168, 282, 60, 23);
+        cmbYesCentangDokterRalan.setBounds(168, 282, 70, 23);
 
         jLabel22.setText("Centang Dokter di Nota Ralan :");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -680,7 +675,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesCentangDokterRanap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesCentangDokterRanap.setName("cmbYesCentangDokterRanap"); // NOI18N
-        cmbYesCentangDokterRanap.setOpaque(false);
         cmbYesCentangDokterRanap.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesCentangDokterRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -688,7 +682,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesCentangDokterRanap);
-        cmbYesCentangDokterRanap.setBounds(168, 312, 60, 23);
+        cmbYesCentangDokterRanap.setBounds(168, 312, 70, 23);
 
         jLabel23.setText("Centang Dokter di Nota Ranap :");
         jLabel23.setName("jLabel23"); // NOI18N
@@ -703,7 +697,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesAdministrasiRanap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesAdministrasiRanap.setName("cmbYesAdministrasiRanap"); // NOI18N
-        cmbYesAdministrasiRanap.setOpaque(false);
         cmbYesAdministrasiRanap.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesAdministrasiRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -711,7 +704,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesAdministrasiRanap);
-        cmbYesAdministrasiRanap.setBounds(168, 252, 60, 23);
+        cmbYesAdministrasiRanap.setBounds(168, 252, 70, 23);
 
         jLabel25.setText("Tampilkan Rincian Operasi :");
         jLabel25.setName("jLabel25"); // NOI18N
@@ -720,7 +713,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesRincianOperasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesRincianOperasi.setName("cmbYesRincianOperasi"); // NOI18N
-        cmbYesRincianOperasi.setOpaque(false);
         cmbYesRincianOperasi.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesRincianOperasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -728,7 +720,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesRincianOperasi);
-        cmbYesRincianOperasi.setBounds(168, 222, 60, 23);
+        cmbYesRincianOperasi.setBounds(168, 222, 70, 23);
 
         jLabel26.setText("Tampilkan PPN Obat 10 % di Nota Ralan :");
         jLabel26.setName("jLabel26"); // NOI18N
@@ -737,7 +729,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesPPNRalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesPPNRalan.setName("cmbYesPPNRalan"); // NOI18N
-        cmbYesPPNRalan.setOpaque(false);
         cmbYesPPNRalan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesPPNRalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -745,7 +736,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesPPNRalan);
-        cmbYesPPNRalan.setBounds(588, 132, 60, 23);
+        cmbYesPPNRalan.setBounds(588, 132, 70, 23);
 
         jLabel27.setText("Tampilkan PPN Obat 10 % di Nota Ranap :");
         jLabel27.setName("jLabel27"); // NOI18N
@@ -754,7 +745,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesPPNRanap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesPPNRanap.setName("cmbYesPPNRanap"); // NOI18N
-        cmbYesPPNRanap.setOpaque(false);
         cmbYesPPNRanap.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesPPNRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -762,7 +752,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesPPNRanap);
-        cmbYesPPNRanap.setBounds(588, 162, 60, 23);
+        cmbYesPPNRanap.setBounds(588, 162, 70, 23);
 
         jLabel28.setText("Tampilkan Tombol Nota di Billing Rawat Jalan :");
         jLabel28.setName("jLabel28"); // NOI18N
@@ -771,7 +761,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesTombolNotaRalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesTombolNotaRalan.setName("cmbYesTombolNotaRalan"); // NOI18N
-        cmbYesTombolNotaRalan.setOpaque(false);
         cmbYesTombolNotaRalan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesTombolNotaRalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -779,7 +768,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesTombolNotaRalan);
-        cmbYesTombolNotaRalan.setBounds(588, 192, 60, 23);
+        cmbYesTombolNotaRalan.setBounds(588, 192, 70, 23);
 
         jLabel29.setText("Tampilkan Tombol Nota di Billing Rawat Inap :");
         jLabel29.setName("jLabel29"); // NOI18N
@@ -788,7 +777,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesTombolNotaRanap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesTombolNotaRanap.setName("cmbYesTombolNotaRanap"); // NOI18N
-        cmbYesTombolNotaRanap.setOpaque(false);
         cmbYesTombolNotaRanap.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesTombolNotaRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -796,7 +784,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesTombolNotaRanap);
-        cmbYesTombolNotaRanap.setBounds(588, 222, 60, 23);
+        cmbYesTombolNotaRanap.setBounds(588, 222, 70, 23);
 
         jLabel30.setText("Verifikasi Penjualan Obat Bebas di Kasir :");
         jLabel30.setName("jLabel30"); // NOI18N
@@ -805,7 +793,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesTombolPenjualan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesTombolPenjualan.setName("cmbYesTombolPenjualan"); // NOI18N
-        cmbYesTombolPenjualan.setOpaque(false);
         cmbYesTombolPenjualan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesTombolPenjualan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -813,7 +800,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesTombolPenjualan);
-        cmbYesTombolPenjualan.setBounds(588, 252, 60, 23);
+        cmbYesTombolPenjualan.setBounds(588, 252, 70, 23);
 
         jLabel39.setText("Verifikasi Penjualan Darah UTD di Kasir :");
         jLabel39.setName("jLabel39"); // NOI18N
@@ -822,7 +809,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesTombolPenyerahanDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesTombolPenyerahanDarah.setName("cmbYesTombolPenyerahanDarah"); // NOI18N
-        cmbYesTombolPenyerahanDarah.setOpaque(false);
         cmbYesTombolPenyerahanDarah.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesTombolPenyerahanDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -830,7 +816,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesTombolPenyerahanDarah);
-        cmbYesTombolPenyerahanDarah.setBounds(588, 282, 60, 23);
+        cmbYesTombolPenyerahanDarah.setBounds(588, 282, 70, 23);
 
         jLabel40.setText("Cetak Nota/Kwitansi Saat Menyimpan di Penjualan Obat Bebas :");
         jLabel40.setName("jLabel40"); // NOI18N
@@ -839,7 +825,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesCetakPenjualan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesCetakPenjualan.setName("cmbYesCetakPenjualan"); // NOI18N
-        cmbYesCetakPenjualan.setOpaque(false);
         cmbYesCetakPenjualan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesCetakPenjualan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -847,11 +832,10 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesCetakPenjualan);
-        cmbYesCetakPenjualan.setBounds(588, 312, 60, 23);
+        cmbYesCetakPenjualan.setBounds(588, 312, 70, 23);
 
         cmbYesTombolNotaPenjualan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesTombolNotaPenjualan.setName("cmbYesTombolNotaPenjualan"); // NOI18N
-        cmbYesTombolNotaPenjualan.setOpaque(false);
         cmbYesTombolNotaPenjualan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesTombolNotaPenjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -864,7 +848,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesTombolNotaPenjualan);
-        cmbYesTombolNotaPenjualan.setBounds(588, 342, 60, 23);
+        cmbYesTombolNotaPenjualan.setBounds(588, 342, 70, 23);
 
         jLabel41.setText("Tampilkan Tombol Nota di Penjualan Obat Bebas :");
         jLabel41.setName("jLabel41"); // NOI18N
@@ -878,7 +862,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesCentangObatRalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesCentangObatRalan.setName("cmbYesCentangObatRalan"); // NOI18N
-        cmbYesCentangObatRalan.setOpaque(false);
         cmbYesCentangObatRalan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesCentangObatRalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -886,7 +869,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesCentangObatRalan);
-        cmbYesCentangObatRalan.setBounds(168, 342, 60, 23);
+        cmbYesCentangObatRalan.setBounds(168, 342, 70, 23);
 
         jLabel43.setText("Centang Obat di Nota Ranap :");
         jLabel43.setName("jLabel43"); // NOI18N
@@ -895,7 +878,6 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         cmbYesCentangObatRanap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYesCentangObatRanap.setName("cmbYesCentangObatRanap"); // NOI18N
-        cmbYesCentangObatRanap.setOpaque(false);
         cmbYesCentangObatRanap.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYesCentangObatRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -903,7 +885,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbYesCentangObatRanap);
-        cmbYesCentangObatRanap.setBounds(168, 372, 60, 23);
+        cmbYesCentangObatRanap.setBounds(168, 372, 70, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1008,47 +990,9 @@ public class DlgSetNota extends javax.swing.JDialog {
         jLabel34.setText(")");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput2.add(jLabel34);
-        jLabel34.setBounds(530, 132, 35, 23);
+        jLabel34.setBounds(550, 132, 35, 23);
 
-        chkLaborat.setSelected(true);
-        chkLaborat.setText("Laboratorium +");
-        chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkLaborat.setName("chkLaborat"); // NOI18N
-        chkLaborat.setOpaque(false);
-        chkLaborat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkLaboratActionPerformed(evt);
-            }
-        });
-        FormInput2.add(chkLaborat);
-        chkLaborat.setBounds(225, 42, 101, 23);
-
-        chkRadiologi.setSelected(true);
-        chkRadiologi.setText("Radiologi +");
-        chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRadiologi.setName("chkRadiologi"); // NOI18N
-        chkRadiologi.setOpaque(false);
-        chkRadiologi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRadiologiActionPerformed(evt);
-            }
-        });
-        FormInput2.add(chkRadiologi);
-        chkRadiologi.setBounds(320, 42, 80, 23);
-
-        chkOperasi.setSelected(true);
-        chkOperasi.setText("Operasi +");
-        chkOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkOperasi.setName("chkOperasi"); // NOI18N
-        chkOperasi.setOpaque(false);
-        chkOperasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOperasiActionPerformed(evt);
-            }
-        });
-        FormInput2.add(chkOperasi);
-        chkOperasi.setBounds(395, 42, 74, 23);
-
+        chkObat.setBorder(null);
         chkObat.setSelected(true);
         chkObat.setText("Obat +");
         chkObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1060,34 +1004,37 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput2.add(chkObat);
-        chkObat.setBounds(464, 42, 74, 23);
+        chkObat.setBounds(478, 42, 80, 23);
 
-        chkRanapDokter.setSelected(true);
-        chkRanapDokter.setText("Ranap Dokter +");
-        chkRanapDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRanapDokter.setName("chkRanapDokter"); // NOI18N
-        chkRanapDokter.setOpaque(false);
-        chkRanapDokter.addActionListener(new java.awt.event.ActionListener() {
+        chkRadiologi.setBorder(null);
+        chkRadiologi.setSelected(true);
+        chkRadiologi.setText("Radiologi +");
+        chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRadiologi.setName("chkRadiologi"); // NOI18N
+        chkRadiologi.setOpaque(false);
+        chkRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRanapDokterActionPerformed(evt);
+                chkRadiologiActionPerformed(evt);
             }
         });
-        FormInput2.add(chkRanapDokter);
-        chkRanapDokter.setBounds(225, 72, 105, 23);
+        FormInput2.add(chkRadiologi);
+        chkRadiologi.setBounds(324, 42, 92, 23);
 
-        chkRanapParamedis.setSelected(true);
-        chkRanapParamedis.setText("Ranap Paramedis +");
-        chkRanapParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRanapParamedis.setName("chkRanapParamedis"); // NOI18N
-        chkRanapParamedis.setOpaque(false);
-        chkRanapParamedis.addActionListener(new java.awt.event.ActionListener() {
+        chkOperasi.setBorder(null);
+        chkOperasi.setSelected(true);
+        chkOperasi.setText("Operasi +");
+        chkOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkOperasi.setName("chkOperasi"); // NOI18N
+        chkOperasi.setOpaque(false);
+        chkOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRanapParamedisActionPerformed(evt);
+                chkOperasiActionPerformed(evt);
             }
         });
-        FormInput2.add(chkRanapParamedis);
-        chkRanapParamedis.setBounds(323, 72, 120, 23);
+        FormInput2.add(chkOperasi);
+        chkOperasi.setBounds(405, 42, 86, 23);
 
+        chkRalanDokter.setBorder(null);
         chkRalanDokter.setSelected(true);
         chkRalanDokter.setText("Ralan Dokter +");
         chkRalanDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1099,47 +1046,51 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput2.add(chkRalanDokter);
-        chkRalanDokter.setBounds(438, 72, 99, 23);
+        chkRalanDokter.setBounds(446, 72, 120, 23);
 
-        chkRalanParamedis.setSelected(true);
-        chkRalanParamedis.setText("Ralan Paramedis +");
-        chkRalanParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRalanParamedis.setName("chkRalanParamedis"); // NOI18N
-        chkRalanParamedis.setOpaque(false);
-        chkRalanParamedis.addActionListener(new java.awt.event.ActionListener() {
+        chkRanapParamedis.setBorder(null);
+        chkRanapParamedis.setSelected(true);
+        chkRanapParamedis.setText("Ranap Paramedis +");
+        chkRanapParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRanapParamedis.setName("chkRanapParamedis"); // NOI18N
+        chkRanapParamedis.setOpaque(false);
+        chkRanapParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRalanParamedisActionPerformed(evt);
+                chkRanapParamedisActionPerformed(evt);
             }
         });
-        FormInput2.add(chkRalanParamedis);
-        chkRalanParamedis.setBounds(225, 102, 118, 23);
+        FormInput2.add(chkRanapParamedis);
+        chkRanapParamedis.setBounds(326, 72, 130, 23);
 
-        chkTambahan.setSelected(true);
-        chkTambahan.setText("Tambahan +");
-        chkTambahan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkTambahan.setName("chkTambahan"); // NOI18N
-        chkTambahan.setOpaque(false);
-        chkTambahan.addActionListener(new java.awt.event.ActionListener() {
+        chkLaborat.setBorder(null);
+        chkLaborat.setSelected(true);
+        chkLaborat.setText("Laboratorium +");
+        chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkLaborat.setName("chkLaborat"); // NOI18N
+        chkLaborat.setOpaque(false);
+        chkLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkTambahanActionPerformed(evt);
+                chkLaboratActionPerformed(evt);
             }
         });
-        FormInput2.add(chkTambahan);
-        chkTambahan.setBounds(336, 102, 87, 23);
+        FormInput2.add(chkLaborat);
+        chkLaborat.setBounds(225, 42, 110, 23);
 
-        chkKamar.setSelected(true);
-        chkKamar.setText("Kamar +");
-        chkKamar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkKamar.setName("chkKamar"); // NOI18N
-        chkKamar.setOpaque(false);
-        chkKamar.addActionListener(new java.awt.event.ActionListener() {
+        chkRanapDokter.setBorder(null);
+        chkRanapDokter.setSelected(true);
+        chkRanapDokter.setText("Ranap Dokter +");
+        chkRanapDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRanapDokter.setName("chkRanapDokter"); // NOI18N
+        chkRanapDokter.setOpaque(false);
+        chkRanapDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkKamarActionPerformed(evt);
+                chkRanapDokterActionPerformed(evt);
             }
         });
-        FormInput2.add(chkKamar);
-        chkKamar.setBounds(418, 102, 67, 23);
+        FormInput2.add(chkRanapDokter);
+        chkRanapDokter.setBounds(225, 72, 117, 23);
 
+        chkRegistrasi.setBorder(null);
         chkRegistrasi.setSelected(true);
         chkRegistrasi.setText("Registrasi +");
         chkRegistrasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1151,47 +1102,51 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput2.add(chkRegistrasi);
-        chkRegistrasi.setBounds(480, 102, 90, 23);
+        chkRegistrasi.setBounds(491, 102, 95, 23);
 
-        chkHarian.setSelected(true);
-        chkHarian.setText("Harian +");
-        chkHarian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkHarian.setName("chkHarian"); // NOI18N
-        chkHarian.setOpaque(false);
-        chkHarian.addActionListener(new java.awt.event.ActionListener() {
+        chkKamar.setBorder(null);
+        chkKamar.setSelected(true);
+        chkKamar.setText("Kamar +");
+        chkKamar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkKamar.setName("chkKamar"); // NOI18N
+        chkKamar.setOpaque(false);
+        chkKamar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkHarianActionPerformed(evt);
+                chkKamarActionPerformed(evt);
             }
         });
-        FormInput2.add(chkHarian);
-        chkHarian.setBounds(225, 132, 69, 23);
+        FormInput2.add(chkKamar);
+        chkKamar.setBounds(426, 102, 74, 23);
 
-        chkResepPulang.setSelected(true);
-        chkResepPulang.setText("Resep Pulang -");
-        chkResepPulang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkResepPulang.setName("chkResepPulang"); // NOI18N
-        chkResepPulang.setOpaque(false);
-        chkResepPulang.addActionListener(new java.awt.event.ActionListener() {
+        chkTambahan.setBorder(null);
+        chkTambahan.setSelected(true);
+        chkTambahan.setText("Tambahan +");
+        chkTambahan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkTambahan.setName("chkTambahan"); // NOI18N
+        chkTambahan.setOpaque(false);
+        chkTambahan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkResepPulangActionPerformed(evt);
+                chkTambahanActionPerformed(evt);
             }
         });
-        FormInput2.add(chkResepPulang);
-        chkResepPulang.setBounds(288, 132, 100, 23);
+        FormInput2.add(chkTambahan);
+        chkTambahan.setBounds(341, 102, 94, 23);
 
-        chkRetur.setSelected(true);
-        chkRetur.setText("Retur Obat -");
-        chkRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRetur.setName("chkRetur"); // NOI18N
-        chkRetur.setOpaque(false);
-        chkRetur.addActionListener(new java.awt.event.ActionListener() {
+        chkRalanParamedis.setBorder(null);
+        chkRalanParamedis.setSelected(true);
+        chkRalanParamedis.setText("Ralan Paramedis +");
+        chkRalanParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRalanParamedis.setName("chkRalanParamedis"); // NOI18N
+        chkRalanParamedis.setOpaque(false);
+        chkRalanParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkReturActionPerformed(evt);
+                chkRalanParamedisActionPerformed(evt);
             }
         });
-        FormInput2.add(chkRetur);
-        chkRetur.setBounds(381, 132, 87, 23);
+        FormInput2.add(chkRalanParamedis);
+        chkRalanParamedis.setBounds(225, 102, 130, 23);
 
+        chkPotongan.setBorder(null);
         chkPotongan.setSelected(true);
         chkPotongan.setText("Potongan");
         chkPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1203,7 +1158,49 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput2.add(chkPotongan);
-        chkPotongan.setBounds(463, 132, 78, 23);
+        chkPotongan.setBounds(474, 132, 78, 23);
+
+        chkRetur.setBorder(null);
+        chkRetur.setSelected(true);
+        chkRetur.setText("Retur Obat -");
+        chkRetur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRetur.setName("chkRetur"); // NOI18N
+        chkRetur.setOpaque(false);
+        chkRetur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkReturActionPerformed(evt);
+            }
+        });
+        FormInput2.add(chkRetur);
+        chkRetur.setBounds(390, 132, 94, 23);
+
+        chkHarian.setBorder(null);
+        chkHarian.setSelected(true);
+        chkHarian.setText("Harian +");
+        chkHarian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkHarian.setName("chkHarian"); // NOI18N
+        chkHarian.setOpaque(false);
+        chkHarian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHarianActionPerformed(evt);
+            }
+        });
+        FormInput2.add(chkHarian);
+        chkHarian.setBounds(225, 132, 75, 23);
+
+        chkResepPulang.setBorder(null);
+        chkResepPulang.setSelected(true);
+        chkResepPulang.setText("Resep Pulang -");
+        chkResepPulang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkResepPulang.setName("chkResepPulang"); // NOI18N
+        chkResepPulang.setOpaque(false);
+        chkResepPulang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkResepPulangActionPerformed(evt);
+            }
+        });
+        FormInput2.add(chkResepPulang);
+        chkResepPulang.setBounds(292, 132, 106, 23);
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel35.setText("% X  (");
@@ -1310,51 +1307,7 @@ public class DlgSetNota extends javax.swing.JDialog {
         FormInput3.add(BesarBiaya1);
         BesarBiaya1.setBounds(152, 42, 40, 23);
 
-        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel37.setText(")");
-        jLabel37.setName("jLabel37"); // NOI18N
-        FormInput3.add(jLabel37);
-        jLabel37.setBounds(530, 132, 35, 23);
-
-        chkLaborat1.setSelected(true);
-        chkLaborat1.setText("Laboratorium +");
-        chkLaborat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkLaborat1.setName("chkLaborat1"); // NOI18N
-        chkLaborat1.setOpaque(false);
-        chkLaborat1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkLaborat1ActionPerformed(evt);
-            }
-        });
-        FormInput3.add(chkLaborat1);
-        chkLaborat1.setBounds(225, 42, 101, 23);
-
-        chkRadiologi1.setSelected(true);
-        chkRadiologi1.setText("Radiologi +");
-        chkRadiologi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRadiologi1.setName("chkRadiologi1"); // NOI18N
-        chkRadiologi1.setOpaque(false);
-        chkRadiologi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRadiologi1ActionPerformed(evt);
-            }
-        });
-        FormInput3.add(chkRadiologi1);
-        chkRadiologi1.setBounds(320, 42, 80, 23);
-
-        chkOperasi1.setSelected(true);
-        chkOperasi1.setText("Operasi +");
-        chkOperasi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkOperasi1.setName("chkOperasi1"); // NOI18N
-        chkOperasi1.setOpaque(false);
-        chkOperasi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOperasi1ActionPerformed(evt);
-            }
-        });
-        FormInput3.add(chkOperasi1);
-        chkOperasi1.setBounds(395, 42, 74, 23);
-
+        chkObat1.setBorder(null);
         chkObat1.setSelected(true);
         chkObat1.setText("Obat +");
         chkObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1366,34 +1319,57 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput3.add(chkObat1);
-        chkObat1.setBounds(464, 42, 74, 23);
+        chkObat1.setBounds(478, 42, 84, 23);
 
-        chkRanapDokter1.setSelected(true);
-        chkRanapDokter1.setText("Ranap Dokter +");
-        chkRanapDokter1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRanapDokter1.setName("chkRanapDokter1"); // NOI18N
-        chkRanapDokter1.setOpaque(false);
-        chkRanapDokter1.addActionListener(new java.awt.event.ActionListener() {
+        chkOperasi1.setBorder(null);
+        chkOperasi1.setSelected(true);
+        chkOperasi1.setText("Operasi +");
+        chkOperasi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkOperasi1.setName("chkOperasi1"); // NOI18N
+        chkOperasi1.setOpaque(false);
+        chkOperasi1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRanapDokter1ActionPerformed(evt);
+                chkOperasi1ActionPerformed(evt);
             }
         });
-        FormInput3.add(chkRanapDokter1);
-        chkRanapDokter1.setBounds(225, 72, 105, 23);
+        FormInput3.add(chkOperasi1);
+        chkOperasi1.setBounds(405, 42, 84, 23);
 
-        chkRanapParamedis1.setSelected(true);
-        chkRanapParamedis1.setText("Ranap Paramedis +");
-        chkRanapParamedis1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRanapParamedis1.setName("chkRanapParamedis1"); // NOI18N
-        chkRanapParamedis1.setOpaque(false);
-        chkRanapParamedis1.addActionListener(new java.awt.event.ActionListener() {
+        chkRadiologi1.setBorder(null);
+        chkRadiologi1.setSelected(true);
+        chkRadiologi1.setText("Radiologi +");
+        chkRadiologi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRadiologi1.setName("chkRadiologi1"); // NOI18N
+        chkRadiologi1.setOpaque(false);
+        chkRadiologi1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRanapParamedis1ActionPerformed(evt);
+                chkRadiologi1ActionPerformed(evt);
             }
         });
-        FormInput3.add(chkRanapParamedis1);
-        chkRanapParamedis1.setBounds(323, 72, 120, 23);
+        FormInput3.add(chkRadiologi1);
+        chkRadiologi1.setBounds(324, 42, 90, 23);
 
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel37.setText(")");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput3.add(jLabel37);
+        jLabel37.setBounds(550, 132, 35, 23);
+
+        chkLaborat1.setBorder(null);
+        chkLaborat1.setSelected(true);
+        chkLaborat1.setText("Laboratorium +");
+        chkLaborat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkLaborat1.setName("chkLaborat1"); // NOI18N
+        chkLaborat1.setOpaque(false);
+        chkLaborat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLaborat1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkLaborat1);
+        chkLaborat1.setBounds(225, 42, 110, 23);
+
+        chkRalanDokter1.setBorder(null);
         chkRalanDokter1.setSelected(true);
         chkRalanDokter1.setText("Ralan Dokter +");
         chkRalanDokter1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1405,47 +1381,37 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput3.add(chkRalanDokter1);
-        chkRalanDokter1.setBounds(438, 72, 99, 23);
+        chkRalanDokter1.setBounds(446, 72, 108, 23);
 
-        chkRalanParamedis1.setSelected(true);
-        chkRalanParamedis1.setText("Ralan Paramedis +");
-        chkRalanParamedis1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRalanParamedis1.setName("chkRalanParamedis1"); // NOI18N
-        chkRalanParamedis1.setOpaque(false);
-        chkRalanParamedis1.addActionListener(new java.awt.event.ActionListener() {
+        chkRanapParamedis1.setBorder(null);
+        chkRanapParamedis1.setSelected(true);
+        chkRanapParamedis1.setText("Ranap Paramedis +");
+        chkRanapParamedis1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRanapParamedis1.setName("chkRanapParamedis1"); // NOI18N
+        chkRanapParamedis1.setOpaque(false);
+        chkRanapParamedis1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRalanParamedis1ActionPerformed(evt);
+                chkRanapParamedis1ActionPerformed(evt);
             }
         });
-        FormInput3.add(chkRalanParamedis1);
-        chkRalanParamedis1.setBounds(225, 102, 118, 23);
+        FormInput3.add(chkRanapParamedis1);
+        chkRanapParamedis1.setBounds(326, 72, 129, 23);
 
-        chkTambahan1.setSelected(true);
-        chkTambahan1.setText("Tambahan +");
-        chkTambahan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkTambahan1.setName("chkTambahan1"); // NOI18N
-        chkTambahan1.setOpaque(false);
-        chkTambahan1.addActionListener(new java.awt.event.ActionListener() {
+        chkRanapDokter1.setBorder(null);
+        chkRanapDokter1.setSelected(true);
+        chkRanapDokter1.setText("Ranap Dokter +");
+        chkRanapDokter1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRanapDokter1.setName("chkRanapDokter1"); // NOI18N
+        chkRanapDokter1.setOpaque(false);
+        chkRanapDokter1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkTambahan1ActionPerformed(evt);
+                chkRanapDokter1ActionPerformed(evt);
             }
         });
-        FormInput3.add(chkTambahan1);
-        chkTambahan1.setBounds(336, 102, 87, 23);
+        FormInput3.add(chkRanapDokter1);
+        chkRanapDokter1.setBounds(225, 72, 115, 23);
 
-        chkKamar1.setSelected(true);
-        chkKamar1.setText("Kamar +");
-        chkKamar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkKamar1.setName("chkKamar1"); // NOI18N
-        chkKamar1.setOpaque(false);
-        chkKamar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkKamar1ActionPerformed(evt);
-            }
-        });
-        FormInput3.add(chkKamar1);
-        chkKamar1.setBounds(418, 102, 67, 23);
-
+        chkRegistrasi1.setBorder(null);
         chkRegistrasi1.setSelected(true);
         chkRegistrasi1.setText("Registrasi +");
         chkRegistrasi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1457,47 +1423,51 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput3.add(chkRegistrasi1);
-        chkRegistrasi1.setBounds(480, 102, 90, 23);
+        chkRegistrasi1.setBounds(491, 102, 100, 23);
 
-        chkHarian1.setSelected(true);
-        chkHarian1.setText("Harian +");
-        chkHarian1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkHarian1.setName("chkHarian1"); // NOI18N
-        chkHarian1.setOpaque(false);
-        chkHarian1.addActionListener(new java.awt.event.ActionListener() {
+        chkKamar1.setBorder(null);
+        chkKamar1.setSelected(true);
+        chkKamar1.setText("Kamar +");
+        chkKamar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkKamar1.setName("chkKamar1"); // NOI18N
+        chkKamar1.setOpaque(false);
+        chkKamar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkHarian1ActionPerformed(evt);
+                chkKamar1ActionPerformed(evt);
             }
         });
-        FormInput3.add(chkHarian1);
-        chkHarian1.setBounds(225, 132, 69, 23);
+        FormInput3.add(chkKamar1);
+        chkKamar1.setBounds(426, 102, 76, 23);
 
-        chkResepPulang1.setSelected(true);
-        chkResepPulang1.setText("Resep Pulang -");
-        chkResepPulang1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkResepPulang1.setName("chkResepPulang1"); // NOI18N
-        chkResepPulang1.setOpaque(false);
-        chkResepPulang1.addActionListener(new java.awt.event.ActionListener() {
+        chkTambahan1.setBorder(null);
+        chkTambahan1.setSelected(true);
+        chkTambahan1.setText("Tambahan +");
+        chkTambahan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkTambahan1.setName("chkTambahan1"); // NOI18N
+        chkTambahan1.setOpaque(false);
+        chkTambahan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkResepPulang1ActionPerformed(evt);
+                chkTambahan1ActionPerformed(evt);
             }
         });
-        FormInput3.add(chkResepPulang1);
-        chkResepPulang1.setBounds(288, 132, 100, 23);
+        FormInput3.add(chkTambahan1);
+        chkTambahan1.setBounds(341, 102, 96, 23);
 
-        chkRetur1.setSelected(true);
-        chkRetur1.setText("Retur Obat -");
-        chkRetur1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkRetur1.setName("chkRetur1"); // NOI18N
-        chkRetur1.setOpaque(false);
-        chkRetur1.addActionListener(new java.awt.event.ActionListener() {
+        chkRalanParamedis1.setBorder(null);
+        chkRalanParamedis1.setSelected(true);
+        chkRalanParamedis1.setText("Ralan Paramedis +");
+        chkRalanParamedis1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRalanParamedis1.setName("chkRalanParamedis1"); // NOI18N
+        chkRalanParamedis1.setOpaque(false);
+        chkRalanParamedis1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkRetur1ActionPerformed(evt);
+                chkRalanParamedis1ActionPerformed(evt);
             }
         });
-        FormInput3.add(chkRetur1);
-        chkRetur1.setBounds(381, 132, 87, 23);
+        FormInput3.add(chkRalanParamedis1);
+        chkRalanParamedis1.setBounds(225, 102, 127, 23);
 
+        chkPotongan1.setBorder(null);
         chkPotongan1.setSelected(true);
         chkPotongan1.setText("Potongan");
         chkPotongan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1509,7 +1479,49 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
         FormInput3.add(chkPotongan1);
-        chkPotongan1.setBounds(463, 132, 78, 23);
+        chkPotongan1.setBounds(474, 132, 86, 23);
+
+        chkRetur1.setBorder(null);
+        chkRetur1.setSelected(true);
+        chkRetur1.setText("Retur Obat -");
+        chkRetur1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRetur1.setName("chkRetur1"); // NOI18N
+        chkRetur1.setOpaque(false);
+        chkRetur1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRetur1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRetur1);
+        chkRetur1.setBounds(390, 132, 96, 23);
+
+        chkResepPulang1.setBorder(null);
+        chkResepPulang1.setSelected(true);
+        chkResepPulang1.setText("Resep Pulang -");
+        chkResepPulang1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkResepPulang1.setName("chkResepPulang1"); // NOI18N
+        chkResepPulang1.setOpaque(false);
+        chkResepPulang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkResepPulang1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkResepPulang1);
+        chkResepPulang1.setBounds(292, 132, 110, 23);
+
+        chkHarian1.setBorder(null);
+        chkHarian1.setSelected(true);
+        chkHarian1.setText("Harian +");
+        chkHarian1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkHarian1.setName("chkHarian1"); // NOI18N
+        chkHarian1.setOpaque(false);
+        chkHarian1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHarian1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkHarian1);
+        chkHarian1.setBounds(225, 132, 79, 23);
 
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel38.setText("% X  (");
