@@ -287,7 +287,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHapus.setText("Hapus Penjualan");
+        ppHapus.setText("Hapus Stok Keluar");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setIconTextGap(8);

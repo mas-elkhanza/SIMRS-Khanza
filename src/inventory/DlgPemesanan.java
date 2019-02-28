@@ -1584,7 +1584,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         rs.getString(2),rs.getString("satbar"),false,rs.getString(5),
                         rs.getDouble(4),rs.getDouble("subtotal"),rs.getDouble("dis"),
                         rs.getDouble("besardis"),rs.getDouble("total"),rs.getDouble("jumlah2"),"",
-                        null,null,null,null,null,null,null,null,null,null,null
+                        0,0,0,0,0,0,0,0,0,0,0
                     });
                 } 
                 getData();
