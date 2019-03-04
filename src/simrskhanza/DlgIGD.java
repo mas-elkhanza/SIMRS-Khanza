@@ -783,7 +783,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPermintaan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPermintaan.setIconTextGap(5);
         MnPermintaan.setName("MnPermintaan"); // NOI18N
-        MnPermintaan.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnPermintaan.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnJadwalOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnJadwalOperasi.setForeground(new java.awt.Color(70, 70, 70));
@@ -793,7 +793,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnJadwalOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnJadwalOperasi.setIconTextGap(5);
         MnJadwalOperasi.setName("MnJadwalOperasi"); // NOI18N
-        MnJadwalOperasi.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnJadwalOperasi.setPreferredSize(new java.awt.Dimension(170, 26));
         MnJadwalOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnJadwalOperasiActionPerformed(evt);
@@ -809,7 +809,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnSKDPBPJS.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSKDPBPJS.setIconTextGap(5);
         MnSKDPBPJS.setName("MnSKDPBPJS"); // NOI18N
-        MnSKDPBPJS.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnSKDPBPJS.setPreferredSize(new java.awt.Dimension(170, 26));
         MnSKDPBPJS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSKDPBPJSActionPerformed(evt);
@@ -825,7 +825,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPermintaanLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPermintaanLab.setIconTextGap(5);
         MnPermintaanLab.setName("MnPermintaanLab"); // NOI18N
-        MnPermintaanLab.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnPermintaanLab.setPreferredSize(new java.awt.Dimension(170, 26));
         MnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPermintaanLabActionPerformed(evt);
@@ -841,7 +841,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPermintaanRadiologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPermintaanRadiologi.setIconTextGap(5);
         MnPermintaanRadiologi.setName("MnPermintaanRadiologi"); // NOI18N
-        MnPermintaanRadiologi.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnPermintaanRadiologi.setPreferredSize(new java.awt.Dimension(170, 26));
         MnPermintaanRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPermintaanRadiologiActionPerformed(evt);
@@ -859,7 +859,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnKamarInap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnKamarInap.setIconTextGap(5);
         MnKamarInap.setName("MnKamarInap"); // NOI18N
-        MnKamarInap.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnKamarInap.setPreferredSize(new java.awt.Dimension(250, 26));
         MnKamarInap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKamarInapActionPerformed(evt);
@@ -876,7 +876,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnTindakan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnTindakan.setIconTextGap(5);
         MnTindakan.setName("MnTindakan"); // NOI18N
-        MnTindakan.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnTindakan.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
@@ -953,7 +953,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnObat.setIconTextGap(5);
         MnObat.setName("MnObat"); // NOI18N
-        MnObat.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnObat.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnResepDOkter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnResepDOkter.setForeground(new java.awt.Color(70, 70, 70));
@@ -963,7 +963,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnResepDOkter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnResepDOkter.setIconTextGap(5);
         MnResepDOkter.setName("MnResepDOkter"); // NOI18N
-        MnResepDOkter.setPreferredSize(new java.awt.Dimension(150, 23));
+        MnResepDOkter.setPreferredSize(new java.awt.Dimension(160, 23));
         MnResepDOkter.setRequestFocusEnabled(false);
         MnResepDOkter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -980,7 +980,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnNoResep.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnNoResep.setIconTextGap(5);
         MnNoResep.setName("MnNoResep"); // NOI18N
-        MnNoResep.setPreferredSize(new java.awt.Dimension(150, 23));
+        MnNoResep.setPreferredSize(new java.awt.Dimension(160, 23));
         MnNoResep.setRequestFocusEnabled(false);
         MnNoResep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -997,7 +997,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPemberianObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPemberianObat.setIconTextGap(5);
         MnPemberianObat.setName("MnPemberianObat"); // NOI18N
-        MnPemberianObat.setPreferredSize(new java.awt.Dimension(150, 23));
+        MnPemberianObat.setPreferredSize(new java.awt.Dimension(160, 23));
         MnPemberianObat.setRequestFocusEnabled(false);
         MnPemberianObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1017,7 +1017,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPilihBilling.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPilihBilling.setIconTextGap(5);
         MnPilihBilling.setName("MnPilihBilling"); // NOI18N
-        MnPilihBilling.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnPilihBilling.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnBillingParsial.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBillingParsial.setForeground(new java.awt.Color(70, 70, 70));
@@ -1062,7 +1062,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnRujukan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRujukan.setIconTextGap(5);
         MnRujukan.setName("MnRujukan"); // NOI18N
-        MnRujukan.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnRujukan.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnRujuk.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRujuk.setForeground(new java.awt.Color(70, 70, 70));
@@ -1123,7 +1123,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu1.setIconTextGap(5);
         jMenu1.setName("jMenu1"); // NOI18N
-        jMenu1.setPreferredSize(new java.awt.Dimension(240, 26));
+        jMenu1.setPreferredSize(new java.awt.Dimension(250, 26));
         jMenu1.setRequestFocusEnabled(false);
 
         MnLaporanRekapKunjunganPoli.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1249,7 +1249,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu2.setIconTextGap(5);
         jMenu2.setName("jMenu2"); // NOI18N
-        jMenu2.setPreferredSize(new java.awt.Dimension(240, 26));
+        jMenu2.setPreferredSize(new java.awt.Dimension(250, 26));
         jMenu2.setRequestFocusEnabled(false);
 
         ppGrafikPerpoli.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1408,7 +1408,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu4.setIconTextGap(5);
         jMenu4.setName("jMenu4"); // NOI18N
-        jMenu4.setPreferredSize(new java.awt.Dimension(240, 26));
+        jMenu4.setPreferredSize(new java.awt.Dimension(250, 26));
         jMenu4.setRequestFocusEnabled(false);
 
         MnCetakSuratSakit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1636,7 +1636,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnStatus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnStatus.setIconTextGap(5);
         MnStatus.setName("MnStatus"); // NOI18N
-        MnStatus.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnStatus.setPreferredSize(new java.awt.Dimension(250, 26));
 
         ppBerkas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBerkas.setForeground(new java.awt.Color(70, 70, 70));
@@ -1821,7 +1821,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu3.setIconTextGap(5);
         jMenu3.setName("jMenu3"); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(240, 26));
+        jMenu3.setPreferredSize(new java.awt.Dimension(250, 26));
         jMenu3.setRequestFocusEnabled(false);
 
         MnCheckList.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1833,7 +1833,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCheckList.setIconTextGap(5);
         MnCheckList.setName("MnCheckList"); // NOI18N
-        MnCheckList.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnCheckList.setPreferredSize(new java.awt.Dimension(330, 26));
         MnCheckList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCheckListActionPerformed(evt);
@@ -1849,7 +1849,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCheckList1.setIconTextGap(5);
         MnCheckList1.setName("MnCheckList1"); // NOI18N
-        MnCheckList1.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnCheckList1.setPreferredSize(new java.awt.Dimension(330, 26));
         MnCheckList1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCheckList1ActionPerformed(evt);
@@ -1865,7 +1865,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCheckList2.setIconTextGap(5);
         MnCheckList2.setName("MnCheckList2"); // NOI18N
-        MnCheckList2.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnCheckList2.setPreferredSize(new java.awt.Dimension(330, 26));
         MnCheckList2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCheckList2ActionPerformed(evt);
@@ -1881,7 +1881,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCheckList3.setIconTextGap(5);
         MnCheckList3.setLabel("Chekc List Kelengkapan Pendaftaran Kiri+Tracker");
         MnCheckList3.setName("MnCheckList3"); // NOI18N
-        MnCheckList3.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnCheckList3.setPreferredSize(new java.awt.Dimension(330, 26));
         MnCheckList3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCheckList3ActionPerformed(evt);
@@ -1900,7 +1900,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu5.setIconTextGap(5);
         jMenu5.setName("jMenu5"); // NOI18N
-        jMenu5.setPreferredSize(new java.awt.Dimension(240, 26));
+        jMenu5.setPreferredSize(new java.awt.Dimension(250, 26));
         jMenu5.setRequestFocusEnabled(false);
 
         MnCheckList4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1980,7 +1980,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnGelang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang.setIconTextGap(5);
         MnGelang.setName("MnGelang"); // NOI18N
-        MnGelang.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnGelang.setPreferredSize(new java.awt.Dimension(250, 26));
         MnGelang.setRequestFocusEnabled(false);
 
         MnGelang1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -2218,7 +2218,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnHapusData.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusData.setIconTextGap(5);
         MnHapusData.setName("MnHapusData"); // NOI18N
-        MnHapusData.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnHapusData.setPreferredSize(new java.awt.Dimension(250, 26));
         MnHapusData.setRequestFocusEnabled(false);
 
         MnHapusTagihanOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -2262,7 +2262,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnBridging.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBridging.setIconTextGap(5);
         MnBridging.setName("MnBridging"); // NOI18N
-        MnBridging.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnBridging.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSEP.setForeground(new java.awt.Color(70, 70, 70));
@@ -2272,7 +2272,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnSEP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSEP.setIconTextGap(5);
         MnSEP.setName("MnSEP"); // NOI18N
-        MnSEP.setPreferredSize(new java.awt.Dimension(160, 26));
+        MnSEP.setPreferredSize(new java.awt.Dimension(180, 26));
         MnSEP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSEPActionPerformed(evt);
@@ -2288,7 +2288,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnSJP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSJP.setIconTextGap(5);
         MnSJP.setName("MnSJP"); // NOI18N
-        MnSJP.setPreferredSize(new java.awt.Dimension(160, 26));
+        MnSJP.setPreferredSize(new java.awt.Dimension(180, 26));
         MnSJP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSJPActionPerformed(evt);
@@ -2304,7 +2304,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnRujukSisrute.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRujukSisrute.setIconTextGap(5);
         MnRujukSisrute.setName("MnRujukSisrute"); // NOI18N
-        MnRujukSisrute.setPreferredSize(new java.awt.Dimension(160, 26));
+        MnRujukSisrute.setPreferredSize(new java.awt.Dimension(180, 26));
         MnRujukSisrute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRujukSisruteActionPerformed(evt);
@@ -2321,7 +2321,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MenuInputData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuInputData.setIconTextGap(5);
         MenuInputData.setName("MenuInputData"); // NOI18N
-        MenuInputData.setPreferredSize(new java.awt.Dimension(200, 26));
+        MenuInputData.setPreferredSize(new java.awt.Dimension(250, 26));
 
         MnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDiagnosa.setForeground(new java.awt.Color(70, 70, 70));
@@ -2397,7 +2397,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         ppRiwayat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppRiwayat.setIconTextGap(5);
         ppRiwayat.setName("ppRiwayat"); // NOI18N
-        ppRiwayat.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppRiwayat.setPreferredSize(new java.awt.Dimension(250, 26));
         ppRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppRiwayatBtnPrintActionPerformed(evt);
@@ -2422,7 +2422,7 @@ public final class DlgIGD extends javax.swing.JDialog {
 
         TglSakit1.setEditable(false);
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -2470,7 +2470,7 @@ public final class DlgIGD extends javax.swing.JDialog {
 
         TglSakit2.setEditable(false);
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -2953,7 +2953,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2967,7 +2967,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3059,7 +3059,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -3189,10 +3189,8 @@ public final class DlgIGD extends javax.swing.JDialog {
         FormInput.add(THbngn);
         THbngn.setBounds(750, 42, 130, 23);
 
-        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
+        ChkJln.setBorder(null);
         ChkJln.setSelected(true);
-        ChkJln.setBorderPainted(true);
-        ChkJln.setBorderPaintedFlat(true);
         ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -3296,9 +3294,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         FormInput.add(btnPenjab1);
         btnPenjab1.setBounds(852, 132, 28, 23);
 
-        ChkTracker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkTracker.setBorderPainted(true);
-        ChkTracker.setBorderPaintedFlat(true);
+        ChkTracker.setBorder(null);
         ChkTracker.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkTracker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkTracker.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

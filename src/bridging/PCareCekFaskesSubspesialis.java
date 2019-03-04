@@ -250,9 +250,8 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(jLabel21);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);

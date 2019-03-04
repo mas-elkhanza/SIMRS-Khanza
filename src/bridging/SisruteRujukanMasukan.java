@@ -318,14 +318,13 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
 
         CmbTerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Diterima", "0. Tidak Diterima" }));
         CmbTerima.setName("CmbTerima"); // NOI18N
-        CmbTerima.setOpaque(false);
         CmbTerima.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbTerimaKeyPressed(evt);
             }
         });
         internalFrame5.add(CmbTerima);
-        CmbTerima.setBounds(65, 22, 140, 23);
+        CmbTerima.setBounds(65, 22, 230, 23);
 
         jLabel8.setText("Status :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -416,7 +415,6 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         jLabel11.setPreferredSize(new java.awt.Dimension(54, 23));
         panelGlass8.add(jLabel11);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -429,7 +427,6 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Teregistrasi", "Belum Teregistrasi" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-        cmbStatus.setOpaque(false);
         cmbStatus.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass8.add(cmbStatus);
 

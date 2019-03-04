@@ -191,7 +191,6 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -208,7 +207,6 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -322,7 +320,7 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkLaborat.setName("chkLaborat"); // NOI18N
         chkLaborat.setOpaque(false);
-        chkLaborat.setPreferredSize(new java.awt.Dimension(90, 30));
+        chkLaborat.setPreferredSize(new java.awt.Dimension(95, 30));
         chkLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkLaboratActionPerformed(evt);

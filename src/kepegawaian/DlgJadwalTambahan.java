@@ -368,7 +368,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(55, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         BlnCari.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 BlnCariItemStateChanged(evt);
@@ -378,11 +378,11 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
 
         label12.setText("Departemen :");
         label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(130, 23));
+        label12.setPreferredSize(new java.awt.Dimension(120, 23));
         panelBiasa1.add(label12);
 
         Departemen.setName("Departemen"); // NOI18N
-        Departemen.setPreferredSize(new java.awt.Dimension(220, 23));
+        Departemen.setPreferredSize(new java.awt.Dimension(230, 23));
         Departemen.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DepartemenItemStateChanged(evt);

@@ -33,7 +33,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnPermintaan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -54,7 +54,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnJadwalOperasi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 26]"/>
+                  <Dimension value="[170, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -78,7 +78,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnSKDPBPJS" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 26]"/>
+                  <Dimension value="[170, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -102,7 +102,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnPermintaanLab" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 26]"/>
+                  <Dimension value="[170, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -126,7 +126,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnPermintaanRadiologi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 26]"/>
+                  <Dimension value="[170, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -152,7 +152,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnKamarInap" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -179,7 +179,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnTindakan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -301,7 +301,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnObat" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -322,7 +322,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnResepDOkter" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 23]"/>
+                  <Dimension value="[160, 23]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -347,7 +347,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnNoResep" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 23]"/>
+                  <Dimension value="[160, 23]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -372,7 +372,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnPemberianObat" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 23]"/>
+                  <Dimension value="[160, 23]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -402,7 +402,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnPilihBilling" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -476,7 +476,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnRujukan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -574,7 +574,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu1" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -769,7 +769,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu2" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -1013,7 +1013,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu4" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -1358,7 +1358,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnStatus" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -1647,7 +1647,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu3" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -1670,7 +1670,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnCheckList" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[300, 26]"/>
+                  <Dimension value="[330, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1694,7 +1694,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnCheckList1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[300, 26]"/>
+                  <Dimension value="[330, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1718,7 +1718,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnCheckList2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[300, 26]"/>
+                  <Dimension value="[330, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1742,7 +1742,7 @@
                 <Property name="label" type="java.lang.String" value="Chekc List Kelengkapan Pendaftaran Kiri+Tracker"/>
                 <Property name="name" type="java.lang.String" value="MnCheckList3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[300, 26]"/>
+                  <Dimension value="[330, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1771,7 +1771,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu5" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -1896,7 +1896,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnGelang" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -2259,7 +2259,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnHapusData" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
@@ -2332,7 +2332,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnBridging" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -2353,7 +2353,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnSEP" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[160, 26]"/>
+                  <Dimension value="[180, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -2377,7 +2377,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnSJP" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[160, 26]"/>
+                  <Dimension value="[180, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -2401,7 +2401,7 @@
                 <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnRujukSisrute" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[160, 26]"/>
+                  <Dimension value="[180, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -2428,7 +2428,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MenuInputData" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -2547,7 +2547,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="ppRiwayat" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 26]"/>
+              <Dimension value="[250, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -2624,7 +2624,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="24-02-2019"/>
+                        <StringItem index="0" value="27-02-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2712,7 +2712,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="24-02-2019"/>
+                        <StringItem index="0" value="27-02-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3561,7 +3561,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="24-02-2019"/>
+                        <StringItem index="0" value="27-02-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3589,7 +3589,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="24-02-2019"/>
+                        <StringItem index="0" value="27-02-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3766,7 +3766,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="24-02-2019"/>
+                        <StringItem index="0" value="27-02-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4136,15 +4136,9 @@
                 <Component class="widget.CekBox" name="ChkJln">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder>
-                          <Color PropertyName="color" blue="c3" green="d7" red="c3" type="rgb"/>
-                        </LineBorder>
-                      </Border>
+                      <Border info="null"/>
                     </Property>
                     <Property name="selected" type="boolean" value="true"/>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="1"/>
                     </Property>
@@ -4321,14 +4315,8 @@
                 <Component class="widget.CekBox" name="ChkTracker">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder>
-                          <Color PropertyName="color" blue="c3" green="d7" red="c3" type="rgb"/>
-                        </LineBorder>
-                      </Border>
+                      <Border info="null"/>
                     </Property>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="1"/>
                     </Property>

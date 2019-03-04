@@ -169,7 +169,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRestore.setForeground(new java.awt.Color(70, 70, 70));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -452,7 +451,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
 
         CmbKategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenaga klinis Dokter Umum", "Tenaga klinis Dokter Spesialis", "Tenaga klinis Perawat dan Bidan", "Tenaga klinis Profesi Lain", "Tenaga Non Klinis" }));
         CmbKategori.setName("CmbKategori"); // NOI18N
-        CmbKategori.setOpaque(false);
         CmbKategori.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbKategoriKeyPressed(evt);

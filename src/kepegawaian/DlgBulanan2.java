@@ -191,20 +191,18 @@ public final class DlgBulanan2 extends javax.swing.JDialog {
         panelGlass7.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tahun & Bulan :");
+        label11.setText("Periode :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(90, 23));
+        label11.setPreferredSize(new java.awt.Dimension(58, 23));
         panelGlass7.add(label11);
 
-        ThnCari.setBorder(null);
         ThnCari.setName("ThnCari"); // NOI18N
         ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass7.add(ThnCari);
 
-        BlnCari.setBorder(null);
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(50, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass7.add(BlnCari);
 
         label12.setText("Departemen :");
@@ -213,7 +211,7 @@ public final class DlgBulanan2 extends javax.swing.JDialog {
         panelGlass7.add(label12);
 
         Departemen.setName("Departemen"); // NOI18N
-        Departemen.setPreferredSize(new java.awt.Dimension(130, 23));
+        Departemen.setPreferredSize(new java.awt.Dimension(190, 23));
         panelGlass7.add(Departemen);
 
         jLabel6.setText("Key Word :");
@@ -223,7 +221,7 @@ public final class DlgBulanan2 extends javax.swing.JDialog {
         panelGlass7.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(190, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);

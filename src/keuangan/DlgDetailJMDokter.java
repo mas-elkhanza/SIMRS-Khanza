@@ -204,7 +204,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 255));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanSeleksi.setForeground(java.awt.Color.darkGray);
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -221,7 +220,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanSeleksi);
 
-        ppTampilkanRanapGabung.setBackground(new java.awt.Color(255, 255, 255));
         ppTampilkanRanapGabung.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanRanapGabung.setForeground(java.awt.Color.darkGray);
         ppTampilkanRanapGabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -282,7 +280,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -299,7 +296,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -403,6 +399,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        chkRalan.setBorder(null);
         chkRalan.setSelected(true);
         chkRalan.setText("Ralan");
         chkRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -416,6 +413,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         });
         panelisi1.add(chkRalan);
 
+        chkRadiologi.setBorder(null);
         chkRadiologi.setSelected(true);
         chkRadiologi.setText("Radiologi");
         chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -429,12 +427,13 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         });
         panelisi1.add(chkRadiologi);
 
+        chkLaborat.setBorder(null);
         chkLaborat.setSelected(true);
         chkLaborat.setText("Laboratorium");
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkLaborat.setName("chkLaborat"); // NOI18N
         chkLaborat.setOpaque(false);
-        chkLaborat.setPreferredSize(new java.awt.Dimension(95, 30));
+        chkLaborat.setPreferredSize(new java.awt.Dimension(100, 30));
         chkLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkLaboratActionPerformed(evt);
@@ -442,6 +441,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         });
         panelisi1.add(chkLaborat);
 
+        chkOperasi.setBorder(null);
         chkOperasi.setSelected(true);
         chkOperasi.setText("Operasi");
         chkOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -455,6 +455,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         });
         panelisi1.add(chkOperasi);
 
+        chkRanap.setBorder(null);
         chkRanap.setSelected(true);
         chkRanap.setText("Ranap");
         chkRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
