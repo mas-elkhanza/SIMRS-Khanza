@@ -1061,6 +1061,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareBeriObat = new widget.ButtonBig();
         btnPCareBeriTindakan = new widget.ButtonBig();
         btnPembayaranAkunBayar3 = new widget.ButtonBig();
+        btnPasswordAsuransi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6570,6 +6571,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembayaranAkunBayar3);
 
+        btnPasswordAsuransi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
+        btnPasswordAsuransi.setText("Password Asuransi");
+        btnPasswordAsuransi.setIconTextGap(0);
+        btnPasswordAsuransi.setName("btnPasswordAsuransi"); // NOI18N
+        btnPasswordAsuransi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasswordAsuransi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasswordAsuransiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPasswordAsuransi);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6578,7 +6591,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/03/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13556,6 +13569,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPembayaranAkunBayar3ActionPerformed
 
+    private void btnPasswordAsuransiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasswordAsuransiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPasswordAsuransiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13845,6 +13862,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnParkirMasuk;
     private widget.ButtonBig btnPasien;
     private widget.ButtonBig btnPasienMati;
+    private widget.ButtonBig btnPasswordAsuransi;
     private widget.ButtonBig btnPaymentPoint;
     private widget.ButtonBig btnPaymentPoint2;
     private widget.ButtonBig btnPegawai;
@@ -16627,6 +16645,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnSetInputParsial);
                 jmlmenu++;
             }
+            
+            if(var.getpassword_asuransi()==true){
+                Panelmenu.add(btnPasswordAsuransi);
+                jmlmenu++;
+            }
         }    
     }
 
@@ -18797,6 +18820,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getset_input_parsial()==true){
             Panelmenu.add(btnSetInputParsial);
+            jmlmenu++;
+        }
+        
+        if(var.getpassword_asuransi()==true){
+            Panelmenu.add(btnPasswordAsuransi);
             jmlmenu++;
         }
     }
@@ -21835,6 +21863,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getset_input_parsial()==true){
             if(btnSetInputParsial.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetInputParsial);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpassword_asuransi()==true){
+            if(btnPasswordAsuransi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPasswordAsuransi);
                 jmlmenu++;
             }                
         }

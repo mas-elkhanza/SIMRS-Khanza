@@ -95,7 +95,8 @@ public final class var {
             hais_perbangsal=false,ppn_obat=false,saldo_akun_perbulan=false,display_apotek=false,sisrute_referensi_faskes=false,
             sisrute_referensi_alasanrujuk=false,sisrute_referensi_diagnosa=false,sisrute_rujukan_masuk=false,sisrute_rujukan_keluar=false,
             bpjs_cek_skdp=false,data_batch=false,kunjungan_permintaan_lab=false,kunjungan_permintaan_lab2=false,kunjungan_permintaan_radiologi=false,
-            kunjungan_permintaan_radiologi2=false,pcare_pemberian_obat=false,pcare_pemberian_tindakan=false,pembayaran_akun_bayar3=false;
+            kunjungan_permintaan_radiologi2=false,pcare_pemberian_obat=false,pcare_pemberian_tindakan=false,pembayaran_akun_bayar3=false,
+            password_asuransi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -555,6 +556,7 @@ public final class var {
                         var.pcare_pemberian_obat=true;
                         var.pcare_pemberian_tindakan=true;
                         var.pembayaran_akun_bayar3=true;
+                        var.password_asuransi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -998,6 +1000,7 @@ public final class var {
                         var.pcare_pemberian_obat=rs2.getBoolean("pcare_pemberian_obat");
                         var.pcare_pemberian_tindakan=rs2.getBoolean("pcare_pemberian_tindakan");
                         var.pembayaran_akun_bayar3=rs2.getBoolean("pembayaran_akun_bayar3");
+                        var.password_asuransi=rs2.getBoolean("password_asuransi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1439,6 +1442,7 @@ public final class var {
                         var.pcare_pemberian_obat=false;
                         var.pcare_pemberian_tindakan=false;
                         var.pembayaran_akun_bayar3=false;
+                        var.password_asuransi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1934,4 +1938,5 @@ public final class var {
     public static boolean getpcare_pemberian_obat(){return var.pcare_pemberian_obat;}
     public static boolean getpcare_pemberian_tindakan(){return var.pcare_pemberian_tindakan;}
     public static boolean getpembayaran_akun_bayar3(){return var.pembayaran_akun_bayar3;}
+    public static boolean getpassword_asuransi(){return var.password_asuransi;}
 }   
