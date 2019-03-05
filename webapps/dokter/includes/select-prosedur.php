@@ -18,7 +18,7 @@ include_once('../config.php');
  
 $q = $_GET['q'];
 
-$sql = query("SELECT kode AS id, deskripsi_pendek AS text FROM icd9 WHERE (kode LIKE '%".$q."%' OR deskripsi_pendek LIKE '%".$q."%')");
+$sql = query("SELECT kode AS id, deskripsi_panjang AS text FROM icd9 WHERE (kode LIKE '%".$q."%' OR deskripsi_panjang LIKE '%".$q."%')");
 $json = [];
 
 while($row = fetch_assoc($sql)){
@@ -27,3 +27,4 @@ while($row = fetch_assoc($sql)){
 echo json_encode($json);
 
 ?>
+

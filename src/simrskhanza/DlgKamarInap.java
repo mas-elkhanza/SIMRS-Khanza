@@ -558,6 +558,30 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        reg.dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {;}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(var.getform().equals("DlgKamarInap")){
+                    if(reg.dokter.getTable().getSelectedRow()!= -1){  
+                        CrDokter3.setText(reg.dokter.getTable().getValueAt(reg.dokter.getTable().getSelectedRow(),1).toString());
+                        CrDokter3.requestFocus();
+                    }                
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
         reg.getButton().addActionListener((ActionEvent e) -> {
             if(var.getform().equals("DlgKamarInap")){
                 norawat.setText(reg.getTextField().getText());
@@ -710,6 +734,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPengantarPulang = new javax.swing.JMenuItem();
         MnFormulirPenerimaan = new javax.swing.JMenuItem();
         MnFormulirPenerimaan1 = new javax.swing.JMenuItem();
+        MnCetakSuratSakit1 = new javax.swing.JMenuItem();
         MnUpdateHari = new javax.swing.JMenuItem();
         MnDPJP = new javax.swing.JMenuItem();
         MnDPJPRanap = new javax.swing.JMenuItem();
@@ -801,6 +826,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
         BtnHapusGabung = new widget.Button();
         NoRawatGabung = new widget.TextBox();
         btnPasienRanapGabung1 = new widget.Button();
+        DlgSakit2 = new javax.swing.JDialog();
+        internalFrame7 = new widget.InternalFrame();
+        panelBiasa4 = new widget.PanelBiasa();
+        jLabel38 = new widget.Label();
+        BtnPrint5 = new widget.Button();
+        BtnKeluar4 = new widget.Button();
+        NomorSurat = new widget.TextBox();
+        BtnSeek5 = new widget.Button();
+        CrDokter3 = new widget.TextBox();
+        jLabel36 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -2112,6 +2147,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         MnLaporan.add(MnFormulirPenerimaan1);
 
+        MnCetakSuratSakit1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratSakit1.setForeground(new java.awt.Color(70, 70, 70));
+        MnCetakSuratSakit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratSakit1.setText("Surat Keterangan Rawat Inap");
+        MnCetakSuratSakit1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCetakSuratSakit1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCetakSuratSakit1.setIconTextGap(5);
+        MnCetakSuratSakit1.setName("MnCetakSuratSakit1"); // NOI18N
+        MnCetakSuratSakit1.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnCetakSuratSakit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakSuratSakit1ActionPerformed(evt);
+            }
+        });
+        MnLaporan.add(MnCetakSuratSakit1);
+
         jPopupMenu1.add(MnLaporan);
 
         MnUpdateHari.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -3058,6 +3109,85 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         WindowRanapGabung.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
+        DlgSakit2.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DlgSakit2.setName("DlgSakit2"); // NOI18N
+        DlgSakit2.setUndecorated(true);
+        DlgSakit2.setResizable(false);
+
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame7.setName("internalFrame7"); // NOI18N
+        internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelBiasa4.setName("panelBiasa4"); // NOI18N
+        panelBiasa4.setLayout(null);
+
+        jLabel38.setText("Nomor Surat Keterangan :");
+        jLabel38.setName("jLabel38"); // NOI18N
+        panelBiasa4.add(jLabel38);
+        jLabel38.setBounds(7, 10, 140, 23);
+
+        BtnPrint5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        BtnPrint5.setMnemonic('T');
+        BtnPrint5.setText("Cetak");
+        BtnPrint5.setToolTipText("Alt+T");
+        BtnPrint5.setName("BtnPrint5"); // NOI18N
+        BtnPrint5.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrint5ActionPerformed(evt);
+            }
+        });
+        panelBiasa4.add(BtnPrint5);
+        BtnPrint5.setBounds(10, 80, 100, 30);
+
+        BtnKeluar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar4.setMnemonic('K');
+        BtnKeluar4.setText("Keluar");
+        BtnKeluar4.setToolTipText("Alt+K");
+        BtnKeluar4.setName("BtnKeluar4"); // NOI18N
+        BtnKeluar4.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluar4ActionPerformed(evt);
+            }
+        });
+        panelBiasa4.add(BtnKeluar4);
+        BtnKeluar4.setBounds(430, 80, 100, 30);
+
+        NomorSurat.setHighlighter(null);
+        NomorSurat.setName("NomorSurat"); // NOI18N
+        panelBiasa4.add(NomorSurat);
+        NomorSurat.setBounds(150, 10, 370, 23);
+
+        BtnSeek5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSeek5.setMnemonic('6');
+        BtnSeek5.setToolTipText("ALt+6");
+        BtnSeek5.setName("BtnSeek5"); // NOI18N
+        BtnSeek5.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnSeek5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeek5ActionPerformed(evt);
+            }
+        });
+        panelBiasa4.add(BtnSeek5);
+        BtnSeek5.setBounds(492, 40, 28, 23);
+
+        CrDokter3.setEditable(false);
+        CrDokter3.setName("CrDokter3"); // NOI18N
+        CrDokter3.setPreferredSize(new java.awt.Dimension(300, 23));
+        panelBiasa4.add(CrDokter3);
+        CrDokter3.setBounds(150, 40, 340, 23);
+
+        jLabel36.setText("Dokter Png. Jawab :");
+        jLabel36.setName("jLabel36"); // NOI18N
+        jLabel36.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelBiasa4.add(jLabel36);
+        jLabel36.setBounds(7, 40, 140, 23);
+
+        internalFrame7.add(panelBiasa4, java.awt.BorderLayout.CENTER);
+
+        DlgSakit2.getContentPane().add(internalFrame7, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -3315,7 +3445,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3338,7 +3468,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3365,7 +3495,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2019" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -3388,7 +3518,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2019" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -8216,6 +8346,50 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }//GEN-LAST:event_MnFormulirPenerimaan1ActionPerformed
 
+    private void MnCetakSuratSakit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratSakit1ActionPerformed
+        DlgSakit2.setSize(550,151);
+        DlgSakit2.setLocationRelativeTo(internalFrame1);
+        DlgSakit2.setVisible(true);
+    }//GEN-LAST:event_MnCetakSuratSakit1ActionPerformed
+
+    private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint5ActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("nomersurat",NomorSurat.getText());
+            param.put("dokterpj",CrDokter3.getText());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSuratSakit2.jrxml","report","::[ Surat Sakit ]::",
+                "select reg_periksa.no_rkm_medis,dokter.nm_dokter,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.jk," +
+                " pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.pekerjaan,pasien.alamat" +
+                " from reg_periksa inner join pasien inner join dokter" +
+                " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter  "+
+                "where reg_periksa.no_rawat='"+TNoRw1.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnPrint5ActionPerformed
+
+    private void BtnKeluar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar4ActionPerformed
+        DlgSakit2.dispose();
+    }//GEN-LAST:event_BtnKeluar4ActionPerformed
+
+    private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
+        var.setform("DlgKamarInap");
+        reg.dokter.isCek();
+        reg.dokter.TCari.requestFocus();
+        reg.dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        reg.dokter.setLocationRelativeTo(internalFrame1);
+        reg.dokter.setVisible(true);
+    }//GEN-LAST:event_BtnSeek5ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8245,8 +8419,11 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Button BtnHapusGabung;
     private widget.Button BtnIn;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKeluar4;
     private widget.Button BtnOut;
     private widget.Button BtnPrint;
+    private widget.Button BtnPrint5;
+    private widget.Button BtnSeek5;
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpan4;
     private widget.Button BtnSimpanGabung;
@@ -8257,10 +8434,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.ComboBox CmbTahunpindah;
     private widget.ComboBox CmbTgl;
     private widget.ComboBox CmbTglpindah;
+    private widget.TextBox CrDokter3;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Tanggal DTPCari3;
     private widget.Tanggal DTPCari4;
+    private javax.swing.JDialog DlgSakit2;
     private widget.TextBox JamMasuk;
     private widget.Label LCount;
     private widget.Label LblStts;
@@ -8273,6 +8452,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnBilling;
     private javax.swing.JMenuItem MnCekKepesertaan;
     private javax.swing.JMenuItem MnCekNIK;
+    private javax.swing.JMenuItem MnCetakSuratSakit1;
     private javax.swing.JMenuItem MnDPJP;
     private javax.swing.JMenuItem MnDPJPRanap;
     private javax.swing.JMenuItem MnDeposit;
@@ -8350,6 +8530,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.TextBox NmBayi;
     private widget.TextBox NoRawatGabung;
     private widget.TextBox NoRmBayi;
+    private widget.TextBox NomorSurat;
     private javax.swing.JPanel PanelCariUtama;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
@@ -8410,6 +8591,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame5;
     private widget.InternalFrame internalFrame6;
+    private widget.InternalFrame internalFrame7;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
@@ -8437,7 +8619,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Label jLabel33;
     private widget.Label jLabel34;
     private widget.Label jLabel35;
+    private widget.Label jLabel36;
     private widget.Label jLabel37;
+    private widget.Label jLabel38;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -8449,6 +8633,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.TextBox nmpenjab;
     private widget.TextBox norawat;
     private widget.TextBox norawatpindah;
+    private widget.PanelBiasa panelBiasa4;
     private widget.panelisi panelCari;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass11;

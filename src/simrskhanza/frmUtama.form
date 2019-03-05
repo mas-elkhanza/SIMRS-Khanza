@@ -7490,6 +7490,22 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPCareBeriTindakanActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="widget.ButtonBig" name="btnPembayaranAkunBayar3">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1404046811_money.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Pembayaran Per Akun Bayar 3"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnPembayaranAkunBayar3" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPembayaranAkunBayar3ActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -7506,7 +7522,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="28/02/2019"/>
+            <StringItem index="0" value="05/03/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -7597,6 +7613,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="0" red="14" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -7609,7 +7628,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
+            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu1" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 28]"/>
             </Property>
@@ -7703,6 +7724,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="0" red="14" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -7715,7 +7739,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
+            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu5" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[127, 28]"/>
             </Property>
@@ -7838,6 +7864,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="0" red="14" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -7850,7 +7879,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
+            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu6" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[89, 28]"/>
             </Property>
@@ -7871,7 +7902,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7893,7 +7924,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7915,7 +7946,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7937,7 +7968,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7959,7 +7990,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -7981,7 +8012,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang6" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8003,7 +8034,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8025,7 +8056,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8047,7 +8078,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8069,7 +8100,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8091,7 +8122,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8113,7 +8144,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8135,7 +8166,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8157,7 +8188,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8179,7 +8210,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8201,7 +8232,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[240, 30]"/>
+                  <Dimension value="[250, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8215,6 +8246,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="0" red="14" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -8227,7 +8261,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
+            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu7" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[138, 28]"/>
             </Property>
@@ -8248,7 +8284,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnAnjungan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[200, 30]"/>
+                  <Dimension value="[210, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8270,7 +8306,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[200, 30]"/>
+                  <Dimension value="[210, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8292,7 +8328,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[200, 30]"/>
+                  <Dimension value="[210, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8314,7 +8350,7 @@
                 <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[200, 30]"/>
+                  <Dimension value="[210, 30]"/>
                 </Property>
               </Properties>
               <Events>
@@ -8328,6 +8364,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="0" red="14" type="rgb"/>
             </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
@@ -8340,7 +8379,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
+            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu4" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[124, 28]"/>
             </Property>
@@ -8413,11 +8454,14 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
         <Property name="alignment" type="int" value="0"/>
         <Property name="horizontalGap" type="int" value="0"/>
-        <Property name="verticalGap" type="int" value="2"/>
+        <Property name="verticalGap" type="int" value="1"/>
       </Layout>
       <SubComponents>
         <Component class="widget.ButtonBig" name="BtnMenu">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/menu.png"/>
             </Property>
@@ -8427,9 +8471,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="BtnMenu" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8451,15 +8495,25 @@
               <Color blue="50" green="82" red="5a" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="50" green="82" red="5a" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
             <Property name="name" type="java.lang.String" value="jSeparator4" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1, 37]"/>
+              <Dimension value="[1, 38]"/>
             </Property>
           </Properties>
         </Component>
         <Component class="widget.ButtonBig" name="BtnToolReg">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/PatientFile.png"/>
             </Property>
@@ -8469,9 +8523,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="BtnToolReg" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8486,6 +8540,9 @@
         </Component>
         <Component class="widget.ButtonBig" name="btnToolIGD">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/Doctor.png"/>
             </Property>
@@ -8495,9 +8552,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="btnToolIGD" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8519,15 +8576,25 @@
               <Color blue="50" green="82" red="5a" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="50" green="82" red="5a" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
             <Property name="name" type="java.lang.String" value="jSeparator5" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1, 37]"/>
+              <Dimension value="[1, 38]"/>
             </Property>
           </Properties>
         </Component>
         <Component class="widget.ButtonBig" name="btnToolBcdRalan">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/barralan.png"/>
             </Property>
@@ -8537,9 +8604,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="btnToolBcdRalan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8554,6 +8621,9 @@
         </Component>
         <Component class="widget.ButtonBig" name="btnToolBcdRanap">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/barranap.png"/>
             </Property>
@@ -8563,9 +8633,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="btnToolBcdRanap" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8580,6 +8650,9 @@
         </Component>
         <Component class="widget.ButtonBig" name="btnToolLab">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/addressbook-search24.png"/>
             </Property>
@@ -8588,9 +8661,9 @@
             <Property name="toolTipText" type="java.lang.String" value="Alt+O"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="btnToolLab" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8605,6 +8678,9 @@
         </Component>
         <Component class="widget.ButtonBig" name="btnToolRad">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/Surgeon.png"/>
             </Property>
@@ -8613,9 +8689,9 @@
             <Property name="toolTipText" type="java.lang.String" value="Alt+A"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="btnToolRad" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8630,6 +8706,9 @@
         </Component>
         <Component class="widget.ButtonBig" name="BtnToolJualObat">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/shopping-cart-insert24.png"/>
             </Property>
@@ -8638,9 +8717,9 @@
             <Property name="toolTipText" type="java.lang.String" value="Alt+J"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="BtnToolJualObat" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8662,15 +8741,25 @@
               <Color blue="50" green="82" red="5a" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="50" green="82" red="5a" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
             <Property name="name" type="java.lang.String" value="jSeparator9" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1, 37]"/>
+              <Dimension value="[1, 38]"/>
             </Property>
           </Properties>
         </Component>
         <Component class="widget.ButtonBig" name="BtnToolKamnap">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/home24.png"/>
             </Property>
@@ -8680,9 +8769,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="BtnToolKamnap" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8697,6 +8786,9 @@
         </Component>
         <Component class="widget.ButtonBig" name="BtnToolKasir">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/addressbook-edit24.png"/>
             </Property>
@@ -8706,9 +8798,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="BtnToolKasir" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8730,15 +8822,25 @@
               <Color blue="50" green="82" red="5a" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="50" green="82" red="5a" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
             <Property name="name" type="java.lang.String" value="jSeparator7" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1, 37]"/>
+              <Dimension value="[1, 38]"/>
             </Property>
           </Properties>
         </Component>
         <Component class="widget.ButtonBig" name="BtnLog">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/login2.png"/>
             </Property>
@@ -8747,9 +8849,9 @@
             <Property name="toolTipText" type="java.lang.String" value="Alt+L"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="BtnLog" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8764,6 +8866,9 @@
         </Component>
         <Component class="widget.ButtonBig" name="BtnClose">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/Delete.png"/>
             </Property>
@@ -8772,9 +8877,9 @@
             <Property name="toolTipText" type="java.lang.String" value="Alt+U"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="3"/>
+            <Property name="iconTextGap" type="int" value="2"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[1, 2, 1, 0]"/>
+              <Insets value="[0, 0, 0, 0]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="BtnClose" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8843,6 +8948,13 @@
               <Color blue="50" green="82" red="5a" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="50" green="82" red="5a" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
             <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8876,6 +8988,13 @@
               <Color blue="50" green="82" red="5a" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="50" green="82" red="5a" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
             <Property name="name" type="java.lang.String" value="jSeparator2" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -8909,6 +9028,13 @@
               <Color blue="50" green="82" red="5a" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder>
+                  <Color PropertyName="color" blue="50" green="82" red="5a" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
             <Property name="name" type="java.lang.String" value="jSeparator3" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

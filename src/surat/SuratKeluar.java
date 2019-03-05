@@ -73,8 +73,6 @@ public final class SuratKeluar extends javax.swing.JDialog {
     public SuratKeluar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(8,1);
-        setSize(885,674);
         
         initComponents2();
         try {

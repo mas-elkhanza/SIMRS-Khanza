@@ -763,13 +763,13 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         chkLaborat = new widget.CekBox();
         chkTarifDokter = new widget.CekBox();
         chkTarifPrm = new widget.CekBox();
+        chkRadiologi = new widget.CekBox();
         chkTambahan = new widget.CekBox();
         chkObat = new widget.CekBox();
-        chkRadiologi = new widget.CekBox();
         jLabel12 = new widget.Label();
+        chkSarpras = new widget.CekBox();
         TagihanPPn = new widget.TextBox();
         chkAdministrasi = new widget.CekBox();
-        chkSarpras = new widget.CekBox();
         scrollPane3 = new widget.ScrollPane();
         tbAkunBayar = new widget.Table();
         jLabel6 = new widget.Label();
@@ -1668,7 +1668,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2018 15:11:59" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 07:22:10" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1747,7 +1747,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelBayar.add(jLabel9);
         jLabel9.setBounds(0, 37, 110, 23);
 
-        chkPotongan.setBorder(null);
         chkPotongan.setSelected(true);
         chkPotongan.setText("Potongan");
         chkPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1761,7 +1760,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelBayar.add(chkPotongan);
         chkPotongan.setBounds(395, 8, 90, 23);
 
-        chkLaborat.setBorder(null);
         chkLaborat.setSelected(true);
         chkLaborat.setText("Laboratorium");
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1773,9 +1771,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkLaborat);
-        chkLaborat.setBounds(15, 8, 90, 23);
+        chkLaborat.setBounds(15, 8, 95, 23);
 
-        chkTarifDokter.setBorder(null);
         chkTarifDokter.setSelected(true);
         chkTarifDokter.setText("Tarif Dokter");
         chkTarifDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1789,7 +1786,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelBayar.add(chkTarifDokter);
         chkTarifDokter.setBounds(205, 8, 90, 23);
 
-        chkTarifPrm.setBorder(null);
         chkTarifPrm.setSelected(true);
         chkTarifPrm.setText("Tarif Paramedis");
         chkTarifPrm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1803,35 +1799,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelBayar.add(chkTarifPrm);
         chkTarifPrm.setBounds(585, 8, 120, 23);
 
-        chkTambahan.setBorder(null);
-        chkTambahan.setSelected(true);
-        chkTambahan.setText("Tambahan");
-        chkTambahan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkTambahan.setName("chkTambahan"); // NOI18N
-        chkTambahan.setOpaque(false);
-        chkTambahan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkTambahanActionPerformed(evt);
-            }
-        });
-        panelBayar.add(chkTambahan);
-        chkTambahan.setBounds(300, 8, 90, 23);
-
-        chkObat.setBorder(null);
-        chkObat.setSelected(true);
-        chkObat.setText("Obat");
-        chkObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkObat.setName("chkObat"); // NOI18N
-        chkObat.setOpaque(false);
-        chkObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkObatActionPerformed(evt);
-            }
-        });
-        panelBayar.add(chkObat);
-        chkObat.setBounds(490, 8, 90, 23);
-
-        chkRadiologi.setBorder(null);
         chkRadiologi.setSelected(true);
         chkRadiologi.setText("Radiologi");
         chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1845,35 +1812,38 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelBayar.add(chkRadiologi);
         chkRadiologi.setBounds(110, 8, 90, 23);
 
+        chkTambahan.setSelected(true);
+        chkTambahan.setText("Tambahan");
+        chkTambahan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkTambahan.setName("chkTambahan"); // NOI18N
+        chkTambahan.setOpaque(false);
+        chkTambahan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTambahanActionPerformed(evt);
+            }
+        });
+        panelBayar.add(chkTambahan);
+        chkTambahan.setBounds(300, 8, 90, 23);
+
+        chkObat.setSelected(true);
+        chkObat.setText("Obat");
+        chkObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkObat.setName("chkObat"); // NOI18N
+        chkObat.setOpaque(false);
+        chkObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkObatActionPerformed(evt);
+            }
+        });
+        panelBayar.add(chkObat);
+        chkObat.setBounds(490, 8, 90, 23);
+
         jLabel12.setText("Tagihan + PPN : Rp.");
         jLabel12.setName("jLabel12"); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel12);
         jLabel12.setBounds(532, 37, 110, 23);
 
-        TagihanPPn.setEditable(false);
-        TagihanPPn.setText("0");
-        TagihanPPn.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        TagihanPPn.setHighlighter(null);
-        TagihanPPn.setName("TagihanPPn"); // NOI18N
-        panelBayar.add(TagihanPPn);
-        TagihanPPn.setBounds(642, 37, 230, 23);
-
-        chkAdministrasi.setBorder(null);
-        chkAdministrasi.setSelected(true);
-        chkAdministrasi.setText("Administrasi");
-        chkAdministrasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkAdministrasi.setName("chkAdministrasi"); // NOI18N
-        chkAdministrasi.setOpaque(false);
-        chkAdministrasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAdministrasiActionPerformed(evt);
-            }
-        });
-        panelBayar.add(chkAdministrasi);
-        chkAdministrasi.setBounds(710, 8, 90, 23);
-
-        chkSarpras.setBorder(null);
         chkSarpras.setSelected(true);
         chkSarpras.setText("Sarpras");
         chkSarpras.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1886,6 +1856,27 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         });
         panelBayar.add(chkSarpras);
         chkSarpras.setBounds(805, 8, 90, 23);
+
+        TagihanPPn.setEditable(false);
+        TagihanPPn.setText("0");
+        TagihanPPn.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        TagihanPPn.setHighlighter(null);
+        TagihanPPn.setName("TagihanPPn"); // NOI18N
+        panelBayar.add(TagihanPPn);
+        TagihanPPn.setBounds(642, 37, 230, 23);
+
+        chkAdministrasi.setSelected(true);
+        chkAdministrasi.setText("Administrasi");
+        chkAdministrasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAdministrasi.setName("chkAdministrasi"); // NOI18N
+        chkAdministrasi.setOpaque(false);
+        chkAdministrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAdministrasiActionPerformed(evt);
+            }
+        });
+        panelBayar.add(chkAdministrasi);
+        chkAdministrasi.setBounds(710, 8, 95, 23);
 
         scrollPane3.setComponentPopupMenu(PopupBayar);
         scrollPane3.setName("scrollPane3"); // NOI18N
