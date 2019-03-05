@@ -18,12 +18,7 @@ include_once('../config.php');
  
 $q = $_GET['q'];
  
-$sql = query("SELECT databarang.kode_brng AS id, databarang.nama_brng AS text 
-			  FROM databarang, gudangbarang 
-				WHERE (databarang.kode_brng LIKE '%".$q."%' OR databarang.nama_brng LIKE '%".$q."%')
-				and gudangbarang.kode_brng = databarang.kode_brng 
-				and gudangbarang.stok > 0
-			");
+$sql = query("SELECT kode_brng AS id, nama_brng AS text FROM databarang WHERE (kode_brng LIKE '%".$q."%' OR nama_brng LIKE '%".$q."%')");
 $json = [];
 
 while($row = fetch_assoc($sql)){

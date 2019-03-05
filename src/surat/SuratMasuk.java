@@ -73,9 +73,6 @@ public final class SuratMasuk extends javax.swing.JDialog {
     public SuratMasuk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(8,1);
-        setSize(885,674);
-        
         initComponents2();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));                                
