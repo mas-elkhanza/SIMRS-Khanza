@@ -52,7 +52,10 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="af" green="eb" red="b9" type="rgb"/>
+                  <Color blue="aa" green="e6" red="b4" type="rgb"/>
+                </Property>
+                <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fd" green="ff" red="fe" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -453,7 +456,7 @@
                   <Dimension value="[100, 40]"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fd" green="fe" red="ff" type="rgb"/>
+                  <Color blue="fe" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -7538,7 +7541,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="06/03/2019"/>
+            <StringItem index="0" value="07/03/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -8458,7 +8461,7 @@
           <Color blue="fb" green="ff" red="fd" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="be" green="e6" red="d2" type="rgb"/>
+          <Color blue="c3" green="eb" red="d7" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -8912,6 +8915,9 @@
     </Container>
     <Container class="widget.InternalFrame" name="internalFrame4">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="c3" green="eb" red="d7" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -8920,7 +8926,7 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="be" green="e6" red="d2" type="rgb"/>
+          <Color blue="c6" green="ee" red="da" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="fb" green="ff" red="fd" type="rgb"/>
