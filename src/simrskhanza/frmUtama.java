@@ -424,7 +424,7 @@ import simrskhanza.DlgIGD;
 import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgJabatanPolri;
 import simrskhanza.DlgJabatanTNI;
-import simrskhanza.DlgJadwal;
+import kepegawaian.DlgJadwal;
 import simrskhanza.DlgKasirRalan;
 import simrskhanza.DlgLhtCatatanPasien;
 import simrskhanza.DlgPangkatPolri;
@@ -436,6 +436,7 @@ import simrskhanza.DlgPerusahaan;
 import simrskhanza.DlgRawatJalan;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
+import setting.DlgPasswordAsuransi;
 import simrskhanza.DlgResumePerawatan;
 import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRujukMasuk;
@@ -1061,6 +1062,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareBeriObat = new widget.ButtonBig();
         btnPCareBeriTindakan = new widget.ButtonBig();
         btnPembayaranAkunBayar3 = new widget.ButtonBig();
+        btnPasswordAsuransi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1147,7 +1149,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(185, 235, 175));
+        internalFrame3.setWarnaAtas(new java.awt.Color(180, 230, 170));
+        internalFrame3.setWarnaBawah(new java.awt.Color(254, 255, 253));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.lightGray);
@@ -1332,7 +1335,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
-        panelisi2.setWarnaBawah(new java.awt.Color(255, 254, 253));
+        panelisi2.setWarnaBawah(new java.awt.Color(255, 255, 254));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
 
         label36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -6570,6 +6573,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembayaranAkunBayar3);
 
+        btnPasswordAsuransi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
+        btnPasswordAsuransi.setText("Password Asuransi");
+        btnPasswordAsuransi.setIconTextGap(0);
+        btnPasswordAsuransi.setName("btnPasswordAsuransi"); // NOI18N
+        btnPasswordAsuransi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasswordAsuransi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasswordAsuransiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPasswordAsuransi);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6578,7 +6593,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/03/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6657,7 +6672,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
         internalFrame1.setWarnaAtas(new java.awt.Color(253, 255, 251));
-        internalFrame1.setWarnaBawah(new java.awt.Color(210, 230, 190));
+        internalFrame1.setWarnaBawah(new java.awt.Color(215, 235, 195));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -6945,10 +6960,11 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.PAGE_START);
 
+        internalFrame4.setBackground(new java.awt.Color(215, 235, 195));
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(210, 230, 190));
+        internalFrame4.setWarnaAtas(new java.awt.Color(218, 238, 198));
         internalFrame4.setWarnaBawah(new java.awt.Color(253, 255, 251));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
@@ -13556,6 +13572,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPembayaranAkunBayar3ActionPerformed
 
+    private void btnPasswordAsuransiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasswordAsuransiActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPasswordAsuransi form=new DlgPasswordAsuransi(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPasswordAsuransiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13845,6 +13872,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnParkirMasuk;
     private widget.ButtonBig btnPasien;
     private widget.ButtonBig btnPasienMati;
+    private widget.ButtonBig btnPasswordAsuransi;
     private widget.ButtonBig btnPaymentPoint;
     private widget.ButtonBig btnPaymentPoint2;
     private widget.ButtonBig btnPegawai;
@@ -16627,6 +16655,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnSetInputParsial);
                 jmlmenu++;
             }
+            
+            if(var.getpassword_asuransi()==true){
+                Panelmenu.add(btnPasswordAsuransi);
+                jmlmenu++;
+            }
         }    
     }
 
@@ -18797,6 +18830,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getset_input_parsial()==true){
             Panelmenu.add(btnSetInputParsial);
+            jmlmenu++;
+        }
+        
+        if(var.getpassword_asuransi()==true){
+            Panelmenu.add(btnPasswordAsuransi);
             jmlmenu++;
         }
     }
@@ -21835,6 +21873,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getset_input_parsial()==true){
             if(btnSetInputParsial.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetInputParsial);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpassword_asuransi()==true){
+            if(btnPasswordAsuransi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPasswordAsuransi);
                 jmlmenu++;
             }                
         }
