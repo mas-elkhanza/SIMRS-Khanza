@@ -6594,7 +6594,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/03/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6672,8 +6672,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(253, 255, 251));
-        internalFrame1.setWarnaBawah(new java.awt.Color(215, 235, 195));
+        internalFrame1.setWarnaAtas(new java.awt.Color(254, 255, 252));
+        internalFrame1.setWarnaBawah(new java.awt.Color(210, 230, 190));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -6965,8 +6965,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(218, 238, 198));
-        internalFrame4.setWarnaBawah(new java.awt.Color(253, 255, 251));
+        internalFrame4.setWarnaAtas(new java.awt.Color(215, 235, 195));
+        internalFrame4.setWarnaBawah(new java.awt.Color(254, 255, 252));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N

@@ -718,7 +718,8 @@ public class DlgJadwal extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         for(int i=0;i<tbJadwal.getRowCount();i++){ 
             if(tbJadwal.getValueAt(i,0).toString().equals("true")){
-                Sequel.queryu("delete from jadwal where kd_dokter='"+tbJadwal.getValueAt(i,1).toString()+"' and hari_kerja='"+tbJadwal.getValueAt(i,3).toString()+"'");
+                Sequel.queryu("delete from jadwal where kd_dokter='"+tbJadwal.getValueAt(i,1).toString()+"' and hari_kerja='"+tbJadwal.getValueAt(i,3).toString()+"' "+
+                              "and jam_mulai='"+tbJadwal.getValueAt(i,4).toString()+"'");
             }
         } 
         tampil();
