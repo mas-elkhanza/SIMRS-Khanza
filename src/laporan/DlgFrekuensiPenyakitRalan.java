@@ -379,6 +379,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -395,6 +396,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakBatang);
 
+        ppGrafikTerbanyakPie.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerbanyakPie.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -411,6 +413,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakPie);
 
+        ppGrafikTerkecilBatang.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerkecilBatang.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -427,6 +430,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerkecilBatang);
 
+        ppGrafikTerkecilPie.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerkecilPie.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N

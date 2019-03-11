@@ -220,7 +220,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -378,7 +378,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(Resus);
         Resus.setBounds(294, 72, 65, 23);
 
-        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         Aftap.setDisplayFormat("dd-MM-yyyy");
         Aftap.setName("Aftap"); // NOI18N
         Aftap.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -395,7 +395,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(label32);
         label32.setBounds(0, 72, 85, 23);
 
-        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         Kadaluarsa.setDisplayFormat("dd-MM-yyyy");
         Kadaluarsa.setName("Kadaluarsa"); // NOI18N
         Kadaluarsa.addKeyListener(new java.awt.event.KeyAdapter() {

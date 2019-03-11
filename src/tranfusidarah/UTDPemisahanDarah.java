@@ -589,7 +589,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         label32.setBounds(220, 12, 57, 23);
 
         Tanggal.setEditable(false);
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -776,6 +776,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -792,6 +793,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPMedis);
 
+        ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -808,6 +810,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjang);
 
+        ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjangDanMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjangDanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -824,6 +827,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjangDanMedis);
 
+        ppHapusBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -840,6 +844,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPMedis);
 
+        ppHapusBHPNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusBHPNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -856,6 +861,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPNonMedis);
 
+        ppHapusBHPMedisDanNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedisDanNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedisDanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -872,6 +878,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPMedisDanNonMedis);
 
+        ppHapusPemisahan.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusPemisahan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusPemisahan.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusPemisahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -917,7 +924,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TanggalCari1.setDisplayFormat("dd-MM-yyyy");
         TanggalCari1.setName("TanggalCari1"); // NOI18N
         TanggalCari1.setOpaque(false);
@@ -931,7 +938,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2018" }));
+        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TanggalCari2.setDisplayFormat("dd-MM-yyyy");
         TanggalCari2.setName("TanggalCari2"); // NOI18N
         TanggalCari2.setOpaque(false);

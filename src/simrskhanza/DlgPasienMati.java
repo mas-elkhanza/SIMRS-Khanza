@@ -272,6 +272,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnCetakSuratMati.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakSuratMati.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakSuratMati.setForeground(java.awt.Color.darkGray);
         MnCetakSuratMati.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -285,6 +286,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakSuratMati);
 
+        MnAngkutJenazah.setBackground(new java.awt.Color(255, 255, 254));
         MnAngkutJenazah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnAngkutJenazah.setForeground(java.awt.Color.darkGray);
         MnAngkutJenazah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

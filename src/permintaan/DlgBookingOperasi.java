@@ -256,6 +256,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnKamarInap.setBackground(new java.awt.Color(255, 255, 254));
         MnKamarInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKamarInap.setForeground(new java.awt.Color(70, 70, 70));
         MnKamarInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -272,6 +273,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnKamarInap);
 
+        MnOperasi.setBackground(new java.awt.Color(255, 255, 254));
         MnOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnOperasi.setForeground(new java.awt.Color(70, 70, 70));
         MnOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -288,6 +290,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnOperasi);
 
+        ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -525,7 +528,6 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
 
-        R1.setBorder(null);
         buttonGroup1.add(R1);
         R1.setSelected(true);
         R1.setText("Menunggu");
@@ -535,7 +537,6 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         R1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelCari.add(R1);
 
-        R2.setBorder(null);
         buttonGroup1.add(R2);
         R2.setText("Tanggal :");
         R2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -587,7 +588,6 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         R4.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R4);
 
-        R3.setBorder(null);
         buttonGroup1.add(R3);
         R3.setText("Selesai :");
         R3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

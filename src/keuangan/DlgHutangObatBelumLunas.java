@@ -272,6 +272,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -288,6 +289,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
+        ppSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSemua.setForeground(new java.awt.Color(70, 70, 70));
         ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -514,7 +516,6 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        ChkTanggalDatang.setBorder(null);
         ChkTanggalDatang.setText("Tgl.Datang :");
         ChkTanggalDatang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggalDatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -558,7 +559,6 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         label21.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi5.add(label21);
 
-        ChkTanggalTempo.setBorder(null);
         ChkTanggalTempo.setText("Tgl.Tempo");
         ChkTanggalTempo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggalTempo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);

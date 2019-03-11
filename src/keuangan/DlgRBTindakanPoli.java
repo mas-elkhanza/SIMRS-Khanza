@@ -265,6 +265,7 @@ public class DlgRBTindakanPoli extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppTampilkanPasien.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanPasien.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -281,6 +282,7 @@ public class DlgRBTindakanPoli extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanPasien);
 
+        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanSeleksi.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

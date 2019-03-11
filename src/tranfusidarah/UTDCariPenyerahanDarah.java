@@ -250,6 +250,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppCetakNota.setBackground(new java.awt.Color(255, 255, 254));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppCetakNota.setForeground(new java.awt.Color(70, 70, 70));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -266,6 +267,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppCetakNota);
 
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -282,6 +284,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapus);
 
+        ppVerif.setBackground(new java.awt.Color(255, 255, 254));
         ppVerif.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppVerif.setForeground(new java.awt.Color(70, 70, 70));
         ppVerif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -298,6 +301,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppVerif);
 
+        ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -314,6 +318,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPMedis);
 
+        ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -330,6 +335,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjang);
 
+        ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjangDanMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjangDanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -346,6 +352,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjangDanMedis);
 
+        ppHapusBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -362,6 +369,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPMedis);
 
+        ppHapusBHPNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusBHPNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -378,6 +386,7 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPNonMedis);
 
+        ppHapusBHPMedisDanNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedisDanNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedisDanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
