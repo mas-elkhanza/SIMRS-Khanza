@@ -113,7 +113,7 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String kdkel="",kdkec="",kdkab="",kdprop="",nosisrute="",BASENOREG="",URUTNOREG="",klg="SAUDARA",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
-            umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
+            umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",norawat="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",
             kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",penjamin="",link="",
             jasaraharja="",BPJS="",Taspen="",Asabri="",status="Baru",propinsi="",propinsipj="",
@@ -5138,6 +5138,13 @@ public final class BPJSCekSKDP extends javax.swing.JDialog {
             kddokter.setText(Sequel.cariIsi("select kd_dokter from skdp_bpjs where no_antrian=? order by tanggal_rujukan desc limit 1",noskdp));
             TDokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter.getText()));
             NoRujukan.setText(Sequel.cariIsi("select no_sep from bridging_sep where no_kartu=? order by tglsep desc limit 1",NoKartu.getText()));
+            norawat=Sequel.cariIsi("select no_rawat from bridging_sep where no_sep=?",NoRujukan.getText());
+            kdpoli.setText(Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norawat));
+            KdPoli.setText(Sequel.cariIsi("select kd_poli_bpjs from maping_poli_bpjs where kd_poli_rs=?",kdpoli.getText()));
+            NmPoli.setText(Sequel.cariIsi("select nm_poli_bpjs from maping_poli_bpjs where kd_poli_rs=?",kdpoli.getText()));
+            KdDPJP.setText(Sequel.cariIsi("select kddpjp from bridging_sep where no_sep=?",NoRujukan.getText()));
+            KdDPJP.setText(Sequel.cariIsi("select nmdpdjp from bridging_sep where no_sep=?",NoRujukan.getText()));
+            isPoli();
             cekViaBPJSKartu.tampil(NoKartu.getText());
             if(cekViaBPJSKartu.informasi.equals("OK")){
                 Valid.tabelKosong(tabMode);             
