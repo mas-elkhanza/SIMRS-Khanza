@@ -365,6 +365,7 @@ public class DlgPembelian extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1083,8 +1084,10 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         if(tbDokter.getRowCount()!=0){
             try {
                 if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==10)){
+                    setKonversi(tbDokter.getSelectedRow());
                     getData();
                 }else if(tbDokter.getSelectedColumn()==9){
+                    setKonversi(tbDokter.getSelectedRow());
                     try {
                         tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())*
                             (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString())/100),tbDokter.getSelectedRow(),10);
@@ -1165,10 +1168,12 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 case KeyEvent.VK_ENTER:
                     try {
                         if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==10)){
+                            setKonversi(tbDokter.getSelectedRow());
                             getData();
                             TCari.setText("");
                             TCari.requestFocus();
                         }else if(tbDokter.getSelectedColumn()==8){
+                            setKonversi(tbDokter.getSelectedRow());
                             try {
                                 tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())*
                                     (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())/100),tbDokter.getSelectedRow(),9);
@@ -1181,6 +1186,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             TCari.setText("");
                             TCari.requestFocus();
                         }else if(tbDokter.getSelectedColumn()==9){
+                            setKonversi(tbDokter.getSelectedRow());
                             try {
                                 tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())*
                                     (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString())/100),tbDokter.getSelectedRow(),10);
@@ -1193,6 +1199,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } break;
                 case KeyEvent.VK_RIGHT:
                     if(tbDokter.getSelectedColumn()==9){
+                        setKonversi(tbDokter.getSelectedRow());
                         try {
                             tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())*
                                 (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString())/100),tbDokter.getSelectedRow(),10);
@@ -1201,8 +1208,10 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                         getData();
                     }else if(tbDokter.getSelectedColumn()==1){
+                        setKonversi(tbDokter.getSelectedRow());
                         getData();
                     }else if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==6)||(tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==13)){
+                        setKonversi(tbDokter.getSelectedRow());
                         getData();
                     } break;
                 default:

@@ -709,7 +709,6 @@ public class DlgReturBeli extends javax.swing.JDialog {
         panelisi4.add(label22);
         label22.setBounds(170, 40, 80, 23);
 
-        Kadaluwarsa.setEditable(false);
         Kadaluwarsa.setName("Kadaluwarsa"); // NOI18N
         Kadaluwarsa.setPreferredSize(new java.awt.Dimension(80, 23));
         Kadaluwarsa.addKeyListener(new java.awt.event.KeyAdapter() {

@@ -760,6 +760,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
+        ppSEP.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSEP.setForeground(new java.awt.Color(70, 70, 70));
         ppSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -776,6 +777,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppSEP);
 
+        ppSEP1.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSEP1.setForeground(new java.awt.Color(70, 70, 70));
         ppSEP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -792,6 +794,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppSEP1);
 
+        ppSEP2.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSEP2.setForeground(new java.awt.Color(70, 70, 70));
         ppSEP2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -808,6 +811,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppSEP2);
 
+        ppSEP3.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSEP3.setForeground(new java.awt.Color(70, 70, 70));
         ppSEP3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -824,6 +828,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppSEP3);
 
+        ppPulang.setBackground(new java.awt.Color(255, 255, 254));
         ppPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPulang.setForeground(new java.awt.Color(70, 70, 70));
         ppPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -840,6 +845,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppPulang);
 
+        ppDetailSEPPeserta.setBackground(new java.awt.Color(255, 255, 254));
         ppDetailSEPPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppDetailSEPPeserta.setForeground(new java.awt.Color(70, 70, 70));
         ppDetailSEPPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -856,6 +862,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppDetailSEPPeserta);
 
+        ppRujukan.setBackground(new java.awt.Color(255, 255, 254));
         ppRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRujukan.setForeground(new java.awt.Color(70, 70, 70));
         ppRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -872,6 +879,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppRujukan);
 
+        ppRiwayatPerawatan.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayatPerawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayatPerawatan.setForeground(new java.awt.Color(70, 70, 70));
         ppRiwayatPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1163,6 +1171,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         Popup1.setName("Popup1"); // NOI18N
 
+        ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan.setForeground(new java.awt.Color(70, 70, 70));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1179,6 +1188,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup1.add(ppPengajuan);
 
+        ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan1.setForeground(new java.awt.Color(70, 70, 70));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1195,6 +1205,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup1.add(ppPengajuan1);
 
+        ppAmbilSep.setBackground(new java.awt.Color(255, 255, 254));
         ppAmbilSep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppAmbilSep.setForeground(new java.awt.Color(70, 70, 70));
         ppAmbilSep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
