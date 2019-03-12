@@ -93,7 +93,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(10, 260, 90, 40);
+        jButton1.setBounds(10, 260, 80, 34);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,7 +177,10 @@ public class frmUtama extends javax.swing.JFrame {
                 String detik = nol_detik + Integer.toString(nilai_detik);
                 TeksArea.append(jam+":"+menit+":"+detik+"\n");
                 if(menit.equals("01")&&detik.equals("01")){
-                    TeksArea.setText("");
+                    if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
+                        TeksArea.setText("");
+                    }
+                        
                     try {
                         TeksArea.append("Memulai update aplicare\n");
                         ps=koneksi.prepareStatement(
@@ -205,6 +208,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                   "\"tersediawanita\":\""+rs.getString("tersediawanita")+"\","+ 
                                                   "\"tersediapriawanita\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kode_kelas_aplicare")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\""+
                                                   "}";
+                                    TeksArea.append("JSON dikirim : "+requestEntity);
                                     requestEntity = new HttpEntity(requestJson,headers);
                                     //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
@@ -212,7 +216,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     //System.out.println("code : "+nameNode.path("code").asText());
                                     //System.out.println("message : "+nameNode.path("message").asText());
                                     response = root.path("response");
-                                    System.out.println(nameNode.path("message").asText());
+                                    TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText());
                                 }catch (Exception ex) {
                                     System.out.println("Notifikasi Bridging : "+ex);
                                 }
