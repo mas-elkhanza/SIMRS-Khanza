@@ -39,7 +39,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
+              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -322,7 +322,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                  <BorderConstraints direction="Last"/>
+                  <BorderConstraints direction="Center"/>
                 </Constraint>
               </Constraints>
 

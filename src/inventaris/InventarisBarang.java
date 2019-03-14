@@ -260,11 +260,23 @@ public final class InventarisBarang extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
     }
@@ -339,7 +351,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Koleksi Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Koleksi Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -357,6 +369,9 @@ public final class InventarisBarang extends javax.swing.JDialog {
         tbJnsPerawatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbJnsPerawatanKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbJnsPerawatanKeyReleased(evt);
             }
         });
         Scroll.setViewportView(tbJnsPerawatan);
@@ -594,7 +609,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
         label7.setText("Tahun Produksi :");
         label7.setName("label7"); // NOI18N
         FormInput.add(label7);
-        label7.setBounds(175, 70, 100, 23);
+        label7.setBounds(175, 70, 90, 23);
 
         isbn.setName("isbn"); // NOI18N
         isbn.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -621,14 +636,13 @@ public final class InventarisBarang extends javax.swing.JDialog {
         label9.setBounds(0, 70, 90, 23);
 
         thn_produksi.setName("thn_produksi"); // NOI18N
-        thn_produksi.setOpaque(false);
         thn_produksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 thn_produksiKeyPressed(evt);
             }
         });
         FormInput.add(thn_produksi);
-        thn_produksi.setBounds(279, 70, 75, 23);
+        thn_produksi.setBounds(269, 70, 85, 23);
 
         label19.setText("Produsen :");
         label19.setName("label19"); // NOI18N
@@ -1000,12 +1014,7 @@ public final class InventarisBarang extends javax.swing.JDialog {
 
     private void tbJnsPerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyPressed
         if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+            if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCari.setText("");
                 TCari.requestFocus();
             }
@@ -1052,7 +1061,7 @@ private void kode_produsenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
 private void btnProdusenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdusenActionPerformed
     produsen.isCek();
-    produsen.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    produsen.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     produsen.setLocationRelativeTo(internalFrame1);
     produsen.setVisible(true);
 }//GEN-LAST:event_btnProdusenActionPerformed
@@ -1073,7 +1082,7 @@ private void id_merkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_i
 
 private void btnMerkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMerkActionPerformed
     merk.isCek();
-    merk.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    merk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     merk.setLocationRelativeTo(internalFrame1);
     merk.setVisible(true);
 }//GEN-LAST:event_btnMerkActionPerformed
@@ -1094,7 +1103,7 @@ private void id_kategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
     kategori.isCek();
-    kategori.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     kategori.setLocationRelativeTo(internalFrame1);
     kategori.setAlwaysOnTop(false);
     kategori.setVisible(true);
@@ -1116,7 +1125,7 @@ private void id_jenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
     jenis.isCek();
-    jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     jenis.setLocationRelativeTo(internalFrame1);
     jenis.setAlwaysOnTop(false);
     jenis.setVisible(true);
@@ -1125,6 +1134,17 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
     }//GEN-LAST:event_formWindowOpened
+
+    private void tbJnsPerawatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbJnsPerawatanKeyReleased
 
     /**
     * @param args the command line arguments

@@ -14,13 +14,13 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppBarcode">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f2" green="f2" red="f2" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="64" green="64" red="82" type="rgb"/>
+              <Color blue="46" green="46" red="46" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/b_print.png"/>
@@ -79,7 +79,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
+              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -124,6 +124,7 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbJnsPerawatanMouseClicked"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbJnsPerawatanKeyPressed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbJnsPerawatanKeyReleased"/>
               </Events>
             </Component>
           </SubComponents>
@@ -486,7 +487,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="367" y="10" width="100" height="23"/>
+                      <AbsoluteConstraints x="337" y="10" width="100" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -568,10 +569,9 @@
                 </Component>
                 <Component class="widget.Tanggal" name="tgl_pengadaan">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-07-2018"/>
+                        <StringItem index="0" value="11-03-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -583,7 +583,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="470" y="10" width="100" height="23"/>
+                      <AbsoluteConstraints x="440" y="10" width="100" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -594,7 +594,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="540" y="10" width="90" height="23"/>
+                      <AbsoluteConstraints x="540" y="10" width="60" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -612,14 +612,13 @@
                     </Property>
                     <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="status_barang" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="status_barangKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="633" y="10" width="95" height="23"/>
+                      <AbsoluteConstraints x="603" y="10" width="125" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -737,7 +736,6 @@
                     </Property>
                     <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="asal_barang" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="asal_barangKeyPressed"/>
@@ -759,7 +757,7 @@
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
+                          <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -870,7 +868,6 @@
                         </Property>
                         <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="no_box" noResource="true"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="no_boxKeyPressed"/>
@@ -990,7 +987,6 @@
                         </Property>
                         <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
                         <Property name="name" type="java.lang.String" value="no_rak" noResource="true"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="no_rakKeyPressed"/>

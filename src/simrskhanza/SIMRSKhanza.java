@@ -5,7 +5,6 @@
  */
 package simrskhanza;
 
-import AESsecurity.EnkripsiAES;
 import usu.widget.util.WidgetUtilities;
 
 /**
@@ -21,7 +20,6 @@ public class SIMRSKhanza {
         WidgetUtilities.invokeLater(() -> {
            frmUtama utama=frmUtama.getInstance();
            utama.isWall();
-           //utama.setIconImage(new javax.swing.ImageIcon( getClass(). getResource("/picture/home.PNG")).getImage());
            utama.setVisible(true);
        });
     }

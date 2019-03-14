@@ -170,11 +170,23 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -288,7 +300,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         WindowPerujuk.setUndecorated(true);
         WindowPerujuk.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perujuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perujuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -403,7 +415,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnBalasanRujukan.setBackground(new java.awt.Color(255, 255, 255));
+        MnBalasanRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnBalasanRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBalasanRujukan.setForeground(java.awt.Color.darkGray);
         MnBalasanRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -417,7 +429,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnBalasanRujukan);
 
-        MnBalasanRujukan1.setBackground(new java.awt.Color(255, 255, 255));
+        MnBalasanRujukan1.setBackground(new java.awt.Color(255, 255, 254));
         MnBalasanRujukan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBalasanRujukan1.setForeground(java.awt.Color.darkGray);
         MnBalasanRujukan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -431,7 +443,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnBalasanRujukan1);
 
-        MnBalasanRujukan2.setBackground(new java.awt.Color(255, 255, 255));
+        MnBalasanRujukan2.setBackground(new java.awt.Color(255, 255, 254));
         MnBalasanRujukan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBalasanRujukan2.setForeground(java.awt.Color.darkGray);
         MnBalasanRujukan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -447,7 +459,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
 
         DTPReg.setEditable(false);
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -456,7 +468,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rujukan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rujukan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -474,8 +486,8 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
             }
         });
         tbObat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbObatKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbObatKeyReleased(evt);
             }
         });
         Scroll.setViewportView(tbObat);
@@ -628,9 +640,8 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -643,9 +654,8 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -898,7 +908,6 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
 
         KategoriRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Bedah", "Non-Bedah", "Kebidanan", "Anak" }));
         KategoriRujuk.setName("KategoriRujuk"); // NOI18N
-        KategoriRujuk.setOpaque(false);
         KategoriRujuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KategoriRujukKeyPressed(evt);
@@ -1168,17 +1177,6 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatMouseClicked
 
-    private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
-        }
-}//GEN-LAST:event_tbObatKeyPressed
-
 private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TAlamatKeyPressed
     Valid.pindah(evt,TRujukan,kdDiagnosa);
 }//GEN-LAST:event_TAlamatKeyPressed
@@ -1226,7 +1224,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         var.setform("DlgRujukMasuk");
         tampil2();
         TCariPerujuk.requestFocus();
-        WindowPerujuk.setSize(this.getWidth()-40,this.getHeight()-40);
+        WindowPerujuk.setSize(this.getWidth()-20,this.getHeight()-20);
         WindowPerujuk.setLocationRelativeTo(internalFrame1);
         WindowPerujuk.setVisible(true);
     }//GEN-LAST:event_btnCariRujukActionPerformed
@@ -1492,7 +1490,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
         penyakit.isCek();
         penyakit.emptTeks();
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnDokterActionPerformed
@@ -1654,6 +1652,17 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     "and reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+TNoRw.getText()+"'",param);            
         }
     }//GEN-LAST:event_MnBalasanRujukan2ActionPerformed
+
+    private void tbObatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbObatKeyReleased
 
     /**
     * @param args the command line arguments

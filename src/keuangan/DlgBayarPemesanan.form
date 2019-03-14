@@ -49,7 +49,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
+              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -236,7 +236,6 @@
             </Component>
             <Component class="widget.Tanggal" name="tgl_bayar">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="tgl_bayar" noResource="true"/>
               </Properties>
@@ -312,14 +311,10 @@
             </Component>
             <Component class="widget.ComboBox" name="nama_bayar">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="64" green="64" red="82" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="nama_bayar" noResource="true"/>
-                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nama_bayarKeyPressed"/>
@@ -611,7 +606,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglCari1">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglCari1" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -634,7 +628,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglCari2">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglCari2" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -697,9 +690,6 @@
         </Container>
         <Container class="widget.ScrollPane" name="Scroll">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -715,9 +705,6 @@
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="name" type="java.lang.String" value="tbKamar" noResource="true"/>
               </Properties>
               <Events>

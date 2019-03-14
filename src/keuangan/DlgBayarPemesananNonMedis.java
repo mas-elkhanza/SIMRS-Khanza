@@ -131,11 +131,23 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         petugas.addWindowListener(new WindowListener() {
@@ -285,7 +297,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -376,7 +388,6 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         panelisi4.add(nama_petugas);
         nama_petugas.setBounds(480, 10, 200, 23);
 
-        tgl_bayar.setEditable(false);
         tgl_bayar.setDisplayFormat("dd-MM-yyyy");
         tgl_bayar.setName("tgl_bayar"); // NOI18N
         tgl_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -422,9 +433,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         panelisi4.add(jLabel10);
         jLabel10.setBounds(0, 70, 77, 23);
 
-        nama_bayar.setForeground(new java.awt.Color(130,100,100));
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nama_bayarKeyPressed(evt);
@@ -622,7 +631,6 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         label33.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi5.add(label33);
 
-        TglCari1.setEditable(false);
         TglCari1.setDisplayFormat("dd-MM-yyyy");
         TglCari1.setName("TglCari1"); // NOI18N
         TglCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -639,7 +647,6 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         label37.setPreferredSize(new java.awt.Dimension(25, 23));
         panelisi5.add(label37);
 
-        TglCari2.setEditable(false);
         TglCari2.setDisplayFormat("dd-MM-yyyy");
         TglCari2.setName("TglCari2"); // NOI18N
         TglCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -730,7 +737,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
             Valid.textKosong(no_bukti,"No.Bukti");
         }else{            
             try {
-                Sequel.AutoComitFalse();    
+                    
                 if(sisahutang>0){
                     koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
                     Sequel.queryu("delete from tampjurnal");
@@ -756,7 +763,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane,"Maaf sudah dilakukan pembayaran..!!!");
                     TCari.requestFocus();
                 }                   
-                Sequel.AutoComitTrue();
+                
            }catch (Exception ex) {
                System.out.println(ex);
            }                     
@@ -775,7 +782,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         try {
-            Sequel.AutoComitFalse();  
+              
             Sequel.queryu2("delete from bayar_pemesanan_non_medis where tgl_bayar=? and no_faktur=? and "+
                     "nip=? and besar_bayar=? and keterangan=? and nama_bayar=? and no_bukti=?",7,new String[]{
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),       
@@ -800,7 +807,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
             }else{
                 Sequel.mengedit("ipsrspemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
             }
-            Sequel.AutoComitTrue();
+            
         }catch (Exception ex) {
             System.out.println(ex);
         }              
@@ -986,7 +993,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -1033,7 +1040,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);

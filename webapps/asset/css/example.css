@@ -1,0 +1,23 @@
+
+
+h1 {
+	text-align: center;
+	font-size: 3em;
+}
+
+.content {
+	display: block;
+	width: 1200px;
+	background: #ef4812;
+	padding: 1em;
+	overflow: hidden;
+	margin: 0 auto;
+
+}
+.content *{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+	font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;
+}

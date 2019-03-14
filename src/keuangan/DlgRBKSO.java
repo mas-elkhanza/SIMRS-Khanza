@@ -150,7 +150,7 @@ public class DlgRBKSO extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Bulanan KSO ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Bulanan KSO ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -183,7 +183,6 @@ public class DlgRBKSO extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -200,7 +199,6 @@ public class DlgRBKSO extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -270,6 +268,7 @@ public class DlgRBKSO extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        chkRalan.setBorder(null);
         chkRalan.setSelected(true);
         chkRalan.setText("Ralan");
         chkRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -283,6 +282,7 @@ public class DlgRBKSO extends javax.swing.JDialog {
         });
         panelisi1.add(chkRalan);
 
+        chkRanap.setBorder(null);
         chkRanap.setSelected(true);
         chkRanap.setText("Ranap");
         chkRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -296,6 +296,7 @@ public class DlgRBKSO extends javax.swing.JDialog {
         });
         panelisi1.add(chkRanap);
 
+        chkLaborat.setBorder(null);
         chkLaborat.setSelected(true);
         chkLaborat.setText("Laboratorium");
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -309,6 +310,7 @@ public class DlgRBKSO extends javax.swing.JDialog {
         });
         panelisi1.add(chkLaborat);
 
+        chkRadiologi.setBorder(null);
         chkRadiologi.setSelected(true);
         chkRadiologi.setText("Radiologi");
         chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -394,7 +396,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -405,7 +407,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian BulananDokter"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -469,7 +471,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void btnBangsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalActionPerformed
         penjab.isCek();       
-        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);

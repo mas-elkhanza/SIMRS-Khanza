@@ -94,11 +94,23 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }         
     }
@@ -147,8 +159,8 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppOrder.setBackground(new java.awt.Color(242, 242, 242));
-        ppOrder.setForeground(new java.awt.Color(130,100,100));
+        ppOrder.setBackground(new java.awt.Color(250, 255, 245));
+        ppOrder.setForeground(new java.awt.Color(70, 70, 70));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -156,9 +168,8 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrder.setName("ppOrder"); // NOI18N
         ppOrder.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        ppOrderKode.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppOrderKode.setForeground(new java.awt.Color(130,100,100));
+        ppOrderKode.setForeground(new java.awt.Color(70, 70, 70));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderKode.setText("Kode Obat");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -173,9 +184,8 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         });
         ppOrder.add(ppOrderKode);
 
-        ppOrderNama.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppOrderNama.setForeground(new java.awt.Color(130,100,100));
+        ppOrderNama.setForeground(new java.awt.Color(70, 70, 70));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderNama.setText("Nama Obat");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -192,9 +202,8 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         Popup.add(ppOrder);
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
+        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -209,9 +218,8 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppHapusObat.setBackground(new java.awt.Color(255, 255, 255));
         ppHapusObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusObat.setForeground(new java.awt.Color(130,100,100));
+        ppHapusObat.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapusObat.setText("Hapus Obat Terpilih");
         ppHapusObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -262,7 +270,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -470,7 +478,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());           
@@ -482,7 +490,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");
         }else{    
-            Sequel.AutoComitFalse();
+            
             for(i=0;i<tbKamar.getRowCount();i++){ 
                 if(Valid.SetAngka(tbKamar.getValueAt(i,0).toString())>0){
                     if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?","data",9,new String[]{
@@ -497,7 +505,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                 }
             }  
-            Sequel.AutoComitTrue();
+            
             dispose();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed

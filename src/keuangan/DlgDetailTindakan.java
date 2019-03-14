@@ -930,7 +930,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -943,7 +943,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         label9.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label9);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -960,7 +959,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1058,7 +1056,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(130,100,100));
+        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1822,7 +1820,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;
@@ -1914,7 +1912,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;
@@ -2323,7 +2321,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;
@@ -2414,7 +2412,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;

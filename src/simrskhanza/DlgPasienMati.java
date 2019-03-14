@@ -116,11 +116,23 @@ public class DlgPasienMati extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
          pasien.addWindowListener(new WindowListener() {
@@ -225,14 +237,14 @@ public class DlgPasienMati extends javax.swing.JDialog {
         BtnBatal = new widget.Button();
         BtnHapus = new widget.Button();
         BtnPrint = new widget.Button();
-        BtnAll = new widget.Button();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        jLabel7 = new widget.Label();
-        LCount = new widget.Label();
+        BtnAll = new widget.Button();
         panelBiasa1 = new widget.PanelBiasa();
         jLabel8 = new widget.Label();
         jLabel4 = new widget.Label();
@@ -260,7 +272,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCetakSuratMati.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakSuratMati.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakSuratMati.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakSuratMati.setForeground(java.awt.Color.darkGray);
         MnCetakSuratMati.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -274,7 +286,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakSuratMati);
 
-        MnAngkutJenazah.setBackground(new java.awt.Color(255, 255, 255));
+        MnAngkutJenazah.setBackground(new java.awt.Color(255, 255, 254));
         MnAngkutJenazah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnAngkutJenazah.setForeground(java.awt.Color.darkGray);
         MnAngkutJenazah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -297,7 +309,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pasien Meninggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pasien Meninggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -315,8 +327,8 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         tbMati.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbMatiKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbMatiKeyReleased(evt);
             }
         });
         Scroll.setViewportView(tbMati);
@@ -404,23 +416,16 @@ public class DlgPasienMati extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnPrint);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnAll);
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass8.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass8.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -452,7 +457,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(500, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -477,16 +482,22 @@ public class DlgPasienMati extends javax.swing.JDialog {
         });
         panelGlass9.add(BtnCari);
 
-        jLabel7.setText("Record :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(80, 23));
-        panelGlass9.add(jLabel7);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(LCount);
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(BtnAll);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -499,7 +510,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         jLabel8.setText("Jam :");
         jLabel8.setName("jLabel8"); // NOI18N
         panelBiasa1.add(jLabel8);
-        jLabel8.setBounds(209, 10, 40, 23);
+        jLabel8.setBounds(209, 10, 39, 23);
 
         jLabel4.setText("No.Rekam Medik :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -519,17 +530,17 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(TKtg);
-        TKtg.setBounds(118, 130, 506, 23);
+        TKtg.setBounds(118, 130, 536, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         panelBiasa1.add(TPasien);
-        TPasien.setBounds(230, 40, 363, 23);
+        TPasien.setBounds(230, 40, 393, 23);
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -566,50 +577,47 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnSeek);
-        BtnSeek.setBounds(596, 40, 28, 23);
+        BtnSeek.setBounds(626, 40, 28, 23);
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam.setName("cmbJam"); // NOI18N
-        cmbJam.setOpaque(false);
         cmbJam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbJamKeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbJam);
-        cmbJam.setBounds(251, 10, 45, 23);
+        cmbJam.setBounds(251, 10, 62, 23);
 
         cmbMnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt.setName("cmbMnt"); // NOI18N
-        cmbMnt.setOpaque(false);
         cmbMnt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbMntKeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbMnt);
-        cmbMnt.setBounds(298, 10, 45, 23);
+        cmbMnt.setBounds(316, 10, 62, 23);
 
         cmbDtk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk.setName("cmbDtk"); // NOI18N
-        cmbDtk.setOpaque(false);
         cmbDtk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbDtkKeyPressed(evt);
             }
         });
         panelBiasa1.add(cmbDtk);
-        cmbDtk.setBounds(345, 10, 45, 23);
+        cmbDtk.setBounds(381, 10, 62, 23);
 
         jLabel10.setText("Tgl.Meninggal :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelBiasa1.add(jLabel10);
         jLabel10.setBounds(0, 10, 115, 23);
 
-        jLabel5.setText("Tmp.Meninggal :");
+        jLabel5.setText("Di :");
         jLabel5.setName("jLabel5"); // NOI18N
         panelBiasa1.add(jLabel5);
-        jLabel5.setBounds(391, 10, 90, 23);
+        jLabel5.setBounds(455, 10, 20, 23);
 
         jLabel11.setText("ICD-X ( Langsung ) :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -644,7 +652,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(icd1);
-        icd1.setBounds(230, 70, 124, 23);
+        icd1.setBounds(230, 70, 154, 23);
 
         icd2.setHighlighter(null);
         icd2.setName("icd2"); // NOI18N
@@ -654,7 +662,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(icd2);
-        icd2.setBounds(230, 100, 124, 23);
+        icd2.setBounds(230, 100, 154, 23);
 
         icd3.setHighlighter(null);
         icd3.setName("icd3"); // NOI18N
@@ -664,7 +672,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(icd3);
-        icd3.setBounds(500, 70, 124, 23);
+        icd3.setBounds(500, 70, 154, 23);
 
         icd4.setHighlighter(null);
         icd4.setName("icd4"); // NOI18N
@@ -674,18 +682,17 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(icd4);
-        icd4.setBounds(500, 100, 124, 23);
+        icd4.setBounds(500, 100, 154, 23);
 
         tmptmeninggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Rumah Sakit", "Puskesmas", "Rumah Bersalin", "Rumah Tempat Tinggal", "Lain-lain (Termasuk Doa)", "Tidak tahu" }));
         tmptmeninggal.setName("tmptmeninggal"); // NOI18N
-        tmptmeninggal.setOpaque(false);
         tmptmeninggal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tmptmeninggalKeyPressed(evt);
             }
         });
         panelBiasa1.add(tmptmeninggal);
-        tmptmeninggal.setBounds(484, 10, 140, 23);
+        tmptmeninggal.setBounds(478, 10, 176, 23);
 
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
@@ -702,7 +709,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         var.setform("DlgPasienMati");
         pasien.emptTeks();
         pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
 }//GEN-LAST:event_BtnSeekActionPerformed
@@ -873,17 +880,6 @@ public class DlgPasienMati extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbMatiMouseClicked
 
-    private void tbMatiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMatiKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
-        }
-}//GEN-LAST:event_tbMatiKeyPressed
-
 private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratMatiActionPerformed
       if(TPasien.getText().trim().equals("")){
           JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");                
@@ -963,6 +959,17 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private void TKtgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKtgKeyPressed
         Valid.pindah(evt,icd4,BtnSimpan);
     }//GEN-LAST:event_TKtgKeyPressed
+
+    private void tbMatiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbMatiKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbMatiKeyReleased
 
     /**
     * @param args the command line arguments

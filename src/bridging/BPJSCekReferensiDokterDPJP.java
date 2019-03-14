@@ -50,9 +50,15 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String URL="";
+    private String URL="",link="";
     private BPJSApi api=new BPJSApi();
-    private BPJSCekReferensiSpesialistik spesialis=new BPJSCekReferensiSpesialistik(null,false);
+    private BPJSCekReferensiPoli spesialis=new BPJSCekReferensiPoli(null,false);
+    private HttpHeaders headers ;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -90,11 +96,23 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             Dokter.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Dokter.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        tampil(Dokter.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Dokter.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        tampil(Dokter.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Dokter.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Dokter.getText().length()>2){
+                        tampil(Dokter.getText());
+                    }
+                }
             });
         } 
         
@@ -135,7 +153,8 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -177,7 +196,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -185,7 +204,6 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -272,8 +290,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-08-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -336,7 +353,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -345,7 +362,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -398,7 +415,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     }//GEN-LAST:event_DTPCari1KeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        spesialis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        spesialis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         spesialis.setLocationRelativeTo(internalFrame1);
         spesialis.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
@@ -442,23 +459,20 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     public void tampil(String poli) {
         try {
             Valid.tabelKosong(tabMode);
-            URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
-
-	    HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    requestEntity = new HttpEntity(headers);
+            URL = link+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
+	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 tabMode.addRow(new Object[]{
                     "A","Rawat Inap",""
                 });
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
@@ -486,18 +500,10 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     
     public void tampil2(String poli) {
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/pelayanan/2/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
+            URL = link+"/referensi/dokter/pelayanan/2/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
 
-	    HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 tabMode.addRow(new Object[]{
                     "","",""
@@ -505,7 +511,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "B","Rawat Jalan",""
                 });
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
@@ -529,6 +535,11 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
             }
         }
+    }
+    
+    public void setPoli(String KodePoli,String NamaPoli){
+        KdSep.setText(KodePoli);
+        NmSep.setText(NamaPoli);
     }
 
     public JTable getTable(){

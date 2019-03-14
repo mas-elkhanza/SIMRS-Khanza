@@ -49,7 +49,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
+              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -520,7 +520,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglJurnal2">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglJurnal2" noResource="true"/>
               </Properties>
@@ -550,7 +549,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglJurnal1">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglJurnal1" noResource="true"/>
               </Properties>

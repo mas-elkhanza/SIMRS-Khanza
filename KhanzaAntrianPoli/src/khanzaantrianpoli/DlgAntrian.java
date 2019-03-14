@@ -413,7 +413,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         ppAntri1.setBackground(new java.awt.Color(255, 255, 255));
         ppAntri1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppAntri1.setForeground(new java.awt.Color(130,100,100));
+        ppAntri1.setForeground(new java.awt.Color(70,70,70));
         ppAntri1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/011.png"))); // NOI18N
         ppAntri1.setText("Masukkan Antrian");
         ppAntri1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -430,7 +430,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         ppUndo1.setBackground(new java.awt.Color(255, 255, 255));
         ppUndo1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUndo1.setForeground(new java.awt.Color(130,100,100));
+        ppUndo1.setForeground(new java.awt.Color(70,70,70));
         ppUndo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/101.png"))); // NOI18N
         ppUndo1.setText("Batal Periksa");
         ppUndo1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -450,7 +450,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         ppAntri2.setBackground(new java.awt.Color(255, 255, 255));
         ppAntri2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppAntri2.setForeground(new java.awt.Color(130,100,100));
+        ppAntri2.setForeground(new java.awt.Color(70,70,70));
         ppAntri2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/011.png"))); // NOI18N
         ppAntri2.setText("Masukkan Antrian");
         ppAntri2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -467,7 +467,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         ppUndo2.setBackground(new java.awt.Color(255, 255, 255));
         ppUndo2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUndo2.setForeground(new java.awt.Color(130,100,100));
+        ppUndo2.setForeground(new java.awt.Color(70,70,70));
         ppUndo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/101.png"))); // NOI18N
         ppUndo2.setText("Batal Periksa");
         ppUndo2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -487,7 +487,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         ppAntri3.setBackground(new java.awt.Color(255, 255, 255));
         ppAntri3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppAntri3.setForeground(new java.awt.Color(130,100,100));
+        ppAntri3.setForeground(new java.awt.Color(70,70,70));
         ppAntri3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/011.png"))); // NOI18N
         ppAntri3.setText("Masukkan Antrian");
         ppAntri3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -504,7 +504,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         ppUndo3.setBackground(new java.awt.Color(255, 255, 255));
         ppUndo3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUndo3.setForeground(new java.awt.Color(130,100,100));
+        ppUndo3.setForeground(new java.awt.Color(70,70,70));
         ppUndo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/101.png"))); // NOI18N
         ppUndo3.setText("Batal Periksa");
         ppUndo3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -524,7 +524,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         ppClose.setBackground(new java.awt.Color(255, 255, 255));
         ppClose.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppClose.setForeground(new java.awt.Color(130,100,100));
+        ppClose.setForeground(new java.awt.Color(70,70,70));
         ppClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/101.png"))); // NOI18N
         ppClose.setText("Tutup Display");
         ppClose.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -966,7 +966,7 @@ private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         pilihan=1;
         poli.emptTeks();
-        poli.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -975,7 +975,7 @@ private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
        pilihan=2;
         poli.emptTeks();
-        poli.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -985,7 +985,7 @@ private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=3;
         poli.emptTeks();
 
-        poli.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -1142,7 +1142,7 @@ private void ppUndo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
        pilihan=1;
        dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
@@ -1151,7 +1151,7 @@ private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void BtnSeek6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek6ActionPerformed
       pilihan=2;
        dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
@@ -1161,7 +1161,7 @@ private void BtnSeek7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
       pilihan=3;
        dokter.emptTeks();
 
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);

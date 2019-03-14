@@ -84,9 +84,13 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {                        
                         echo "<tr class='isi'>
-                               <td valign='top'>
+                               <td valign='midle'>
                                     <center>
-                                        <a href=?act=Detail&action=TAMBAH&no_rawat=".$baris["no_rawat"].">[Detail]</a>
+                                        <a href=?act=Detail&action=TAMBAH&no_rawat=".$baris["no_rawat"].">[Detail Berkas]</a>
+                                    </center>
+                                    <br>
+                                    <center>
+                                        <a href=?act=List&keyword=".str_replace(" ","_",$keyword)."&carabayar=".str_replace(" ","_",$carabayar)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=GABUNG&no_rawat=".$baris["no_rawat"].">[Gabung PDF]</a>
                                     </center>
                                </td>
                                <td bgcolor='#FF0040' valign='top'>
@@ -157,8 +161,14 @@
             echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=Keluar'>";
 	}
         
-        if($action!="no"){                 
+        if ($action=="GABUNG") { 
+            HapusAll("temppanggilnorawat");
+            Tambah3(" temppanggilnorawat "," '$no_rawat'");
             echo "<meta http-equiv='refresh' content='1;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&carabayar=".str_replace(" ","_",$carabayar)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";                 
+        }else{
+            if($action!="no"){                 
+                echo "<meta http-equiv='refresh' content='1;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&carabayar=".str_replace(" ","_",$carabayar)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";                 
+            }
         }
     ?>
     </div>

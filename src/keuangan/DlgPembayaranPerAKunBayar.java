@@ -41,7 +41,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     private ResultSet rs,rsjamshift,rsakunbayar;
     private double all=0,bayar=0;
     private int i,kolom=0,no=0;
-    private String shift="",tanggal2="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="";
+    private String shift="",tanggal2="",nopemasukanlain="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="";
     private StringBuilder htmlContent;
     private String[] akunbayar;
     private double[] totalbayar;
@@ -60,32 +60,55 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             User.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(User.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
-        InputModalAwal.setDocument(new batasInput((byte)16).getOnlyAngka(InputModalAwal));
         LoadHTML.setEditable(true);
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#826464;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#826464;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -102,12 +125,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WindowModalAwal = new javax.swing.JDialog();
-        internalFrame2 = new widget.InternalFrame();
-        InputModalAwal = new widget.TextBox();
-        jLabel8 = new widget.Label();
-        BtnCloseIn = new widget.Button();
-        BtnSimpan2 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label17 = new widget.Label();
@@ -127,80 +144,11 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
 
-        WindowModalAwal.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        WindowModalAwal.setName("WindowModalAwal"); // NOI18N
-        WindowModalAwal.setUndecorated(true);
-        WindowModalAwal.setResizable(false);
-
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Modal Awal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
-        internalFrame2.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaBawah(new java.awt.Color(240, 245, 235));
-        internalFrame2.setLayout(null);
-
-        InputModalAwal.setHighlighter(null);
-        InputModalAwal.setName("InputModalAwal"); // NOI18N
-        InputModalAwal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                InputModalAwalKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(InputModalAwal);
-        InputModalAwal.setBounds(84, 27, 170, 23);
-
-        jLabel8.setText("Modal Awal :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        internalFrame2.add(jLabel8);
-        jLabel8.setBounds(0, 27, 80, 23);
-
-        BtnCloseIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnCloseIn.setMnemonic('U');
-        BtnCloseIn.setText("Tutup");
-        BtnCloseIn.setToolTipText("Alt+U");
-        BtnCloseIn.setName("BtnCloseIn"); // NOI18N
-        BtnCloseIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseInActionPerformed(evt);
-            }
-        });
-        BtnCloseIn.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCloseInKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnCloseIn);
-        BtnCloseIn.setBounds(380, 25, 100, 30);
-
-        BtnSimpan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan2.setMnemonic('S');
-        BtnSimpan2.setText("Simpan");
-        BtnSimpan2.setToolTipText("Alt+S");
-        BtnSimpan2.setName("BtnSimpan2"); // NOI18N
-        BtnSimpan2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpan2ActionPerformed(evt);
-            }
-        });
-        BtnSimpan2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpan2KeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnSimpan2);
-        BtnSimpan2.setBounds(275, 25, 100, 30);
-
-        WindowModalAwal.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -257,7 +205,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(130,100,100));
+        jLabel11.setForeground(new java.awt.Color(70, 70, 70));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setName("jLabel11"); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(30, 23));
@@ -305,12 +253,11 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(55, 45));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tanggal Tagihan :");
+        label11.setText("Tanggal Bayar :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -323,7 +270,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
 
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
-        CmbStatus.setOpaque(false);
         CmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(CmbStatus);
 
@@ -363,11 +309,11 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
             File g = new File("fileakunbayar.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#826464;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#826464;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"
             );
             bg.close();
             
@@ -413,10 +359,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         }else{Valid.pindah(evt,BtnKeluar,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
-
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         tampil();
@@ -454,34 +396,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TCariKeyPressed
 
-    private void InputModalAwalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InputModalAwalKeyPressed
-        Valid.pindah(evt,BtnCloseIn,TCari);
-    }//GEN-LAST:event_InputModalAwalKeyPressed
-
-    private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
-        WindowModalAwal.dispose();
-    }//GEN-LAST:event_BtnCloseInActionPerformed
-
-    private void BtnCloseInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCloseInKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            WindowModalAwal.dispose();
-        }else{Valid.pindah(evt, BtnSimpan2, InputModalAwal);}
-    }//GEN-LAST:event_BtnCloseInKeyPressed
-
-    private void BtnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan2ActionPerformed
-        if(InputModalAwal.getText().trim().equals("")){
-            Valid.textKosong(InputModalAwal,"Modal Awal");
-        }else{
-            Sequel.queryu("delete from set_modal_payment");
-            Sequel.menyimpan("set_modal_payment","'"+InputModalAwal.getText()+"'","Modal Awal");
-            WindowModalAwal.setVisible(false);
-        }
-    }//GEN-LAST:event_BtnSimpan2ActionPerformed
-
-    private void BtnSimpan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan2KeyPressed
-        Valid.pindah(evt,InputModalAwal,BtnCloseIn);
-    }//GEN-LAST:event_BtnSimpan2KeyPressed
-
     private void UserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_UserKeyPressed
@@ -505,22 +419,16 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
-    private widget.Button BtnCloseIn;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.Button BtnSimpan2;
     private widget.ComboBox CmbStatus;
-    private widget.TextBox InputModalAwal;
     private widget.editorpane LoadHTML;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.TextBox User;
-    private javax.swing.JDialog WindowModalAwal;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
     private javax.swing.JLabel jLabel11;
-    private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.Label label11;
     private widget.Label label17;
@@ -529,7 +437,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     private widget.panelisi panelGlass6;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){
+    private void tampil(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         try{        
             htmlContent = new StringBuilder();
@@ -597,6 +505,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                 norawatinap="";
                                 norawatjalan="";
                                 notajual="";
+                                nopemasukanlain="";
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     norawatinap=rs.getString("no_nota");
@@ -608,8 +517,13 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         nonota=Sequel.cariIsi("select nota_jual from penjualan where nota_jual=?",rs.getString("no_nota"));
                                         if(!nonota.equals("")){
                                             notajual=rs.getString("no_nota");
-                                        }else {
-                                            notajual="";
+                                        }else if(nonota.equals("")){
+                                            nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                            if(!nonota.equals("")){
+                                                nopemasukanlain=rs.getString("no_nota");
+                                            }else{
+                                                nopemasukanlain="";
+                                            }
                                         }                                            
                                     }
                                 }
@@ -635,6 +549,9 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(total) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual where penjualan.nota_jual='"+notajual+"' and penjualan.nama_bayar='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
+                                        }else if(!nopemasukanlain.equals("")){
+                                            bayar=Sequel.cariIsiAngka("select sum(besar) from pemasukan_lain inner join kategori_pemasukan_lain inner join akun_bayar on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori and kategori_pemasukan_lain.kd_rek2=akun_bayar.kd_rek  where pemasukan_lain.no_masuk='"+nopemasukanlain+"' and akun_bayar.nama_bayar='"+akunbayar[i]+"'");
+                                            htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else{
                                             bayar=0;
                                             htmlContent.append("<td valign='middle' align='right'>Pemasukan Lain</td>");
@@ -649,6 +566,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                 norawatinap="";
                                 norawatjalan="";
                                 notajual="";
+                                nopemasukanlain="";
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     norawatinap=rs.getString("no_nota");
@@ -660,9 +578,14 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         nonota=Sequel.cariIsi("select nota_jual from penjualan where nota_jual=?",rs.getString("no_nota"));
                                         if(!nonota.equals("")){
                                             notajual=rs.getString("no_nota");
-                                        }else {
-                                            notajual="";
-                                        }                                            
+                                        }else if(nonota.equals("")){
+                                            nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                            if(!nonota.equals("")){
+                                                nopemasukanlain=rs.getString("no_nota");
+                                            }else{
+                                                nopemasukanlain="";
+                                            }
+                                        }                                             
                                     }
                                 }
                                 if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
@@ -687,10 +610,13 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select sum(total) from detailjual inner join penjualan on penjualan.no_nota=detailjual.no_nota where penjualan.no_nota='"+notajual+"' and penjualan.nama_bayar='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
+                                        }else if(!nopemasukanlain.equals("")){
+                                            bayar=Sequel.cariIsiAngka("select sum(besar) from pemasukan_lain inner join kategori_pemasukan_lain inner join akun_bayar on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori and kategori_pemasukan_lain.kd_rek2=akun_bayar.kd_rek  where pemasukan_lain.no_masuk='"+nopemasukanlain+"' and akun_bayar.nama_bayar='"+akunbayar[i]+"'");
+                                            htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else{
                                             bayar=0;
                                             htmlContent.append("<td valign='middle' align='right'>Pemasukan Lain</td>");
-                                        }  
+                                        }   
                                         totalbayar[i]=totalbayar[i]+bayar;
                                     }
                                     htmlContent.append( 
@@ -744,28 +670,14 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
-            }else if(kolom>2){
+            }else if(kolom>0){
                 LoadHTML.setText(
                         "<html>"+
-                          "<table width='1200px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='"+Integer.toString(700+(kolom*90))+"px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
-            }else if(kolom>6){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='1700px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }else if(kolom>12){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2100px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }                
+            }            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

@@ -177,7 +177,7 @@ public class DlgBilingPiutang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rincian Piutang Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rincian Piutang Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -325,7 +325,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         i=Sequel.cariInteger("select count(no_rawat) from bayar_piutang where no_rawat=?",TNoRw.getText());
         if(i==0){
-            Sequel.AutoComitFalse();
+            
             jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau menghapus PIUTANG ini ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");  
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");  
@@ -444,7 +444,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
                 this.setCursor(Cursor.getDefaultCursor());
             }
-            Sequel.AutoComitTrue();
+            
             JOptionPane.showMessageDialog(null,"Proses hapus selesai, silahkan lakukan refresh\ndi form Data Tagihan Piutang Pasien..!!");
             this.dispose();
         }else{

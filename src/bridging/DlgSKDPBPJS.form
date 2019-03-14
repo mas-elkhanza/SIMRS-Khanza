@@ -16,13 +16,13 @@
         <MenuItem class="javax.swing.JMenuItem" name="MnSurat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="64" green="64" red="82" type="rgb"/>
+              <Color blue="46" green="46" red="46" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -81,7 +81,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
+              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -122,7 +122,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbObatMouseClicked"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbObatKeyPressed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbObatKeyReleased"/>
               </Events>
             </Component>
           </SubComponents>
@@ -437,10 +437,9 @@
                 </Component>
                 <Component class="widget.Tanggal" name="DTPCari1">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-08-2018"/>
+                        <StringItem index="0" value="11-03-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -467,10 +466,9 @@
                 </Component>
                 <Component class="widget.Tanggal" name="DTPCari2">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-08-2018"/>
+                        <StringItem index="0" value="11-03-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -510,10 +508,9 @@
                 </Component>
                 <Component class="widget.Tanggal" name="DTPCari3">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-08-2018"/>
+                        <StringItem index="0" value="11-03-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -540,10 +537,9 @@
                 </Component>
                 <Component class="widget.Tanggal" name="DTPCari4">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-08-2018"/>
+                        <StringItem index="0" value="11-03-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -702,16 +698,15 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TanggalSurat">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="32" green="46" red="32" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-08-2018"/>
+                        <StringItem index="0" value="11-03-2019 01:28:21"/>
                       </StringArray>
                     </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
+                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy hh:mm:ss"/>
                     <Property name="name" type="java.lang.String" value="TanggalSurat" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -720,7 +715,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="474" y="10" width="90" height="23"/>
+                      <AbsoluteConstraints x="474" y="10" width="132" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -734,14 +729,13 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Status" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="StatusKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="630" y="10" width="110" height="23"/>
+                      <AbsoluteConstraints x="610" y="160" width="130" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -796,7 +790,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="566" y="10" width="60" height="23"/>
+                      <AbsoluteConstraints x="546" y="160" width="60" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -979,16 +973,15 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TanggalPeriksa">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="32" green="46" red="32" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-08-2018"/>
+                        <StringItem index="0" value="11-03-2019 01:28:21"/>
                       </StringArray>
                     </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
+                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy hh:mm:ss"/>
                     <Property name="name" type="java.lang.String" value="TanggalPeriksa" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
@@ -998,7 +991,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="96" y="160" width="90" height="23"/>
+                      <AbsoluteConstraints x="96" y="160" width="132" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1009,7 +1002,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="201" y="160" width="80" height="23"/>
+                      <AbsoluteConstraints x="226" y="160" width="60" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1025,7 +1018,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="285" y="160" width="90" height="23"/>
+                      <AbsoluteConstraints x="290" y="160" width="85" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

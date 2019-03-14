@@ -5,8 +5,6 @@
  */
 package bridging;
 
-import static bridging.tessaja2.api;
-
 /**
  *
  * @author khanzasoft

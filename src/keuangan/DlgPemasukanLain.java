@@ -116,11 +116,23 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -247,7 +259,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        cetakkwitansi.setBackground(new java.awt.Color(255, 255, 255));
+        cetakkwitansi.setBackground(new java.awt.Color(255, 255, 254));
         cetakkwitansi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         cetakkwitansi.setForeground(java.awt.Color.darkGray);
         cetakkwitansi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -270,7 +282,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemasukan Lain-Lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemasukan Lain-Lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -434,9 +446,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -449,9 +460,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -594,7 +604,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         btnKategori.setBounds(409, 12, 28, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2017 14:23:31" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 09:00:40" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -702,7 +712,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         }else if(pemasukan.getText().trim().equals("")||pemasukan.getText().trim().equals("0")){
             Valid.textKosong(pemasukan,"Pengeluaran");
         }else{
-            Sequel.AutoComitFalse();            
+                        
             try {
                 if(Sequel.menyimpantf("pemasukan_lain","?,?,?,?,?,?,?","Pemasukan",7,new String[]{
                     Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
@@ -735,7 +745,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
             }            
-            Sequel.AutoComitTrue();
+            
             tampil();
             emptTeks();
         }
@@ -769,7 +779,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(Keterangan.getText().trim().equals(""))){
             if(tbResep.getSelectedRow()>-1){
-                Sequel.AutoComitFalse();                
+                                
                 try {
                     if(Sequel.queryu2tf("delete from pemasukan_lain where no_masuk=?",1,new String[]{
                         tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
@@ -800,7 +810,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
                 }
-                Sequel.AutoComitTrue();
+                
                 tampil();
                 emptTeks();
             }                
@@ -937,7 +947,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         var.setform("DlgPemasukanLain");
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.isCek();
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
@@ -976,7 +986,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         kategori.emptTeks();
         kategori.tampil();
         kategori.isCek();
-        kategori.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kategori.setLocationRelativeTo(internalFrame1);
         kategori.setVisible(true);
     }//GEN-LAST:event_btnKategoriActionPerformed
@@ -1001,7 +1011,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             tbResep.requestFocus();
         }else {
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
@@ -1021,7 +1031,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (Exception e) {
                 }                
             }
-            Sequel.AutoComitTrue();
+            
             Valid.panggilUrl("billing/LaporanKeuangan.php?kode="+Nomor.getText()+"&Tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"&nama="+NmKategori.getText().replaceAll(" ","_")+"&petugas="+NmPtg.getText().replaceAll(" ","_")+"&keperluan="+Keperluan.getText().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&nom="+pemasukan.getText().replaceAll(" ","_")+"&kategori="+NmKategori.getText().replaceAll(" ","_"));
         }
         this.setCursor(Cursor.getDefaultCursor());

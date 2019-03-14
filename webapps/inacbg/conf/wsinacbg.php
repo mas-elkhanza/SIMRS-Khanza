@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "bb9c35715b9fb91f3bfc8f921f64301c3af82135a829fa618a688d43e843fb8c";   
+       $keyRS = "489f71100d84fc2c3fb06ad89225cb37fc15f44eb9478700cb42b93cb7d6513c";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.1.142/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.1.123/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "CS";
+        $kelasRS = "DS";
         return $kelasRS;
     }
 
@@ -177,12 +177,20 @@
         if($kamar==""){
             $kamar="0";
         }
+        $obat_kronis=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where nm_perawatan like '%kronis%' and no_rawat='".$no_rawat."' and status='Obat'");
+        $obat_kemoterapi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where nm_perawatan like '%kemo%' and no_rawat='".$no_rawat."' and status='Obat'");
         $obat=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Obat'")+
                getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Retur Obat'")+
-               getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Resep Pulang'"));
+               getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Resep Pulang'")-$obat_kronis-$obat_kemoterapi);
         if($obat==""){
             $obat="0";
-        }
+        }        
+        if($obat_kemoterapi==""){
+            $obat_kemoterapi="0";
+        }        
+        if($obat_kronis==""){
+            $obat_kronis="0";
+        }        
         $bmhp=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Tambahan'");
         if($bmhp==""){
             $bmhp="0";
@@ -232,6 +240,8 @@
                                 "kamar": "'.$kamar.'",
                                 "rawat_intensif": "0",
                                 "obat": "'.$obat.'",
+                                "obat_kronis": "'.$obat_kronis.'",
+                                "obat_kemoterapi": "'.$obat_kemoterapi.'",
                                 "alkes": "0",
                                 "bmhp": "'.$bmhp.'",
                                 "sewa_alat": "'.$sewa_alat.'"
@@ -260,7 +270,7 @@
                             $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,
                             $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
-                            $alkes,$bmhp,$sewa_alat){	
+                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat){	
         $request ='{
                         "metadata": {
                             "method": "set_claim_data",
@@ -300,6 +310,8 @@
                                 "kamar": "'.$kamar.'",
                                 "rawat_intensif": "'.$rawat_intensif.'",
                                 "obat": "'.$obat.'",
+                                "obat_kronis": "'.$obat_kronis.'",
+                                "obat_kemoterapi": "'.$obat_kemoterapi.'",
                                 "alkes": "'.$alkes.'",
                                 "bmhp": "'.$bmhp.'",
                                 "sewa_alat": "'.$sewa_alat.'"
@@ -365,7 +377,7 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage1", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','0'");
+            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
@@ -383,7 +395,7 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage12", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','0'");
+            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
@@ -415,7 +427,7 @@
                    }';
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
-            KirimKlaimIndividualKeDC($nomor_sep);
+            //KirimKlaimIndividualKeDC($nomor_sep);
         }
     }
     
@@ -440,7 +452,8 @@
                         "data": {
                             "start_dt":"'.$start_dt.'",
                             "stop_dt":"'.$stop_dt.'",
-                            "jenis_rawat":"'.$jenis_rawat.'"
+                            "jenis_rawat":"'.$jenis_rawat.'",
+                            "date_type":"2"
                         }
                    }';
         $msg= Request($request);

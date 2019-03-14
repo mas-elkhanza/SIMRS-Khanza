@@ -45,10 +45,10 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
     private int i=0;
-    private String URL="";
+    private String URL="",link="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper;
+    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
@@ -152,11 +152,23 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -168,8 +180,8 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(faskes.getTable().getSelectedRow()!= -1){                   
-                    KdPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),3).toString());
-                    NmPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),4).toString());
+                    KdPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),1).toString());
+                    NmPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),2).toString());
                 }  
                 KdPpkRujukan.requestFocus();
             }
@@ -269,9 +281,10 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));                        
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
-            System.out.println("Notif : "+e);
+            System.out.println("E : "+e);
         }
                 
     }
@@ -324,7 +337,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Monitoring Verifikasi Klaim SEP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Monitoring Verifikasi Klaim SEP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -356,9 +369,8 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(0, 10, 90, 23);
+        label11.setBounds(0, 10, 70, 23);
 
-        TglSEP1.setEditable(false);
         TglSEP1.setDisplayFormat("dd-MM-yyyy");
         TglSEP1.setName("TglSEP1"); // NOI18N
         TglSEP1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -367,7 +379,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglSEP1);
-        TglSEP1.setBounds(93, 10, 110, 23);
+        TglSEP1.setBounds(73, 10, 110, 23);
 
         label16.setText("PPK Rujukan :");
         label16.setName("label16"); // NOI18N
@@ -436,9 +448,8 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label12);
-        label12.setBounds(206, 10, 27, 23);
+        label12.setBounds(186, 10, 27, 23);
 
-        TglSEP2.setEditable(false);
         TglSEP2.setDisplayFormat("dd-MM-yyyy");
         TglSEP2.setName("TglSEP2"); // NOI18N
         TglSEP2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -447,7 +458,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglSEP2);
-        TglSEP2.setBounds(235, 10, 110, 23);
+        TglSEP2.setBounds(215, 10, 110, 23);
 
         label14.setText("Poli Tujuan :");
         label14.setName("label14"); // NOI18N
@@ -480,53 +491,50 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         panelisi3.add(btnPoli);
         btnPoli.setBounds(734, 70, 28, 23);
 
-        jLabel13.setText("Jns.Pelayanan :");
+        jLabel13.setText("Pelayanan :");
         jLabel13.setName("jLabel13"); // NOI18N
         panelisi3.add(jLabel13);
-        jLabel13.setBounds(0, 40, 90, 23);
+        jLabel13.setBounds(0, 40, 70, 23);
 
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Rawat Inap", "2. Rawat Jalan" }));
         JenisPelayanan.setName("JenisPelayanan"); // NOI18N
-        JenisPelayanan.setOpaque(false);
         JenisPelayanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisPelayananKeyPressed(evt);
             }
         });
         panelisi3.add(JenisPelayanan);
-        JenisPelayanan.setBounds(93, 40, 110, 23);
+        JenisPelayanan.setBounds(73, 40, 125, 23);
 
         jLabel15.setText("Kelas :");
         jLabel15.setName("jLabel15"); // NOI18N
         panelisi3.add(jLabel15);
-        jLabel15.setBounds(207, 40, 40, 23);
+        jLabel15.setBounds(202, 40, 40, 23);
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Kelas 1", "2. Kelas 2", "3. kelas 3" }));
         Kelas.setName("Kelas"); // NOI18N
-        Kelas.setOpaque(false);
         Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelasKeyPressed(evt);
             }
         });
         panelisi3.add(Kelas);
-        Kelas.setBounds(250, 40, 95, 23);
+        Kelas.setBounds(245, 40, 100, 23);
 
         jLabel14.setText("Status :");
         jLabel14.setName("jLabel14"); // NOI18N
         panelisi3.add(jLabel14);
-        jLabel14.setBounds(0, 70, 90, 23);
+        jLabel14.setBounds(0, 70, 70, 23);
 
         Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Proses Verifikasi ", "2. Pending Verifikasi ", "3. Klaim" }));
         Status.setName("Status"); // NOI18N
-        Status.setOpaque(false);
         Status.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 StatusKeyPressed(evt);
             }
         });
         panelisi3.add(Status);
-        Status.setBounds(93, 70, 252, 23);
+        Status.setBounds(73, 70, 272, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -646,13 +654,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
-        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         faskes.setLocationRelativeTo(internalFrame1);        
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
 
     private void btnPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyakitActionPerformed
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);        
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnPenyakitActionPerformed
@@ -757,7 +765,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void btnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliActionPerformed
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);        
         poli.setVisible(true);
     }//GEN-LAST:event_btnPoliActionPerformed
@@ -889,15 +897,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     private void Monitor(String tanggal,String jenispelayanan,String status){
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Monitoring/Klaim/Tanggal/"+tanggal+"/JnsPelayanan/"+jenispelayanan+"/Status/"+1;	
+            URL = link+"/Monitoring/Klaim/Tanggal/"+tanggal+"/JnsPelayanan/"+jenispelayanan+"/Status/"+1;	
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             requestEntity = new HttpEntity(headers);
-            
-            mapper = new ObjectMapper();
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
