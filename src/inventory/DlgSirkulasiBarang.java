@@ -232,6 +232,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppGrafikJualBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikJualBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikJualBanyak.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikJualBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -248,6 +249,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikJualBanyak);
 
+        ppGrafikJualDikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikJualDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikJualDikit.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikJualDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -264,6 +266,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikJualDikit);
 
+        ppGrafikbeliBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikbeliBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikbeliBanyak.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikbeliBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -280,6 +283,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikbeliBanyak);
 
+        ppGrafikbelidikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikbelidikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikbelidikit.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikbelidikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -296,6 +300,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikbelidikit);
 
+        ppGrafikPiutangBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPiutangBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikPiutangBanyak.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikPiutangBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -312,6 +317,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikPiutangBanyak);
 
+        ppGrafikPiutangDikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPiutangDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikPiutangDikit.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikPiutangDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -328,6 +334,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikPiutangDikit);
 
+        ppGrafikResepPaliingBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikResepPaliingBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikResepPaliingBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -344,6 +351,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikResepPaliingBanyak);
 
+        ppGrafikResepPaliingSedikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikResepPaliingSedikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikResepPaliingSedikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -360,6 +368,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikResepPaliingSedikit);
 
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppLokasi.setForeground(new java.awt.Color(70, 70, 70));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N

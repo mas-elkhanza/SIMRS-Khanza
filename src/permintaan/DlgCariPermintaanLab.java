@@ -422,6 +422,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -435,6 +436,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab);
 
+        MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -448,6 +450,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnBarcodePermintaan);
 
+        MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan1.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -501,7 +504,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019 10:55:25" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 21:45:30" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);

@@ -250,6 +250,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -266,6 +267,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
+        ppStok.setBackground(new java.awt.Color(255, 255, 254));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppStok.setForeground(new java.awt.Color(70, 70, 70));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

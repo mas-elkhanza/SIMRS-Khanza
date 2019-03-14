@@ -190,6 +190,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnUrut1.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUrut1.setForeground(new java.awt.Color(70, 70, 70));
         MnUrut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -205,6 +206,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnUrut1);
 
+        MnUrut2.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUrut2.setForeground(new java.awt.Color(70, 70, 70));
         MnUrut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

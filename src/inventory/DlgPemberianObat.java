@@ -524,6 +524,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         Popup2.setName("Popup2"); // NOI18N
 
+        ppResepObat.setBackground(new java.awt.Color(255, 255, 254));
         ppResepObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppResepObat.setForeground(new java.awt.Color(70, 70, 70));
         ppResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -540,6 +541,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         });
         Popup2.add(ppResepObat);
 
+        ppNoRawat.setBackground(new java.awt.Color(255, 255, 254));
         ppNoRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppNoRawat.setForeground(new java.awt.Color(70, 70, 70));
         ppNoRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -556,6 +558,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         });
         Popup2.add(ppNoRawat);
 
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppLokasi.setForeground(new java.awt.Color(70, 70, 70));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

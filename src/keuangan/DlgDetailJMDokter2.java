@@ -221,6 +221,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanSeleksi.setForeground(java.awt.Color.darkGray);
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

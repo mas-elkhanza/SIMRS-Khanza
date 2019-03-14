@@ -291,6 +291,7 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnSubAkun.setBackground(new java.awt.Color(255, 255, 254));
         MnSubAkun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSubAkun.setForeground(new java.awt.Color(70, 70, 70));
         MnSubAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -307,6 +308,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnSubAkun);
 
+        MnJadikanSub.setBackground(new java.awt.Color(255, 255, 254));
         MnJadikanSub.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnJadikanSub.setForeground(new java.awt.Color(70, 70, 70));
         MnJadikanSub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -323,6 +325,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnJadikanSub);
 
+        MnJadikanUtama.setBackground(new java.awt.Color(255, 255, 254));
         MnJadikanUtama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnJadikanUtama.setForeground(new java.awt.Color(70, 70, 70));
         MnJadikanUtama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

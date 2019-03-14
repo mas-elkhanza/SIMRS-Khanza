@@ -159,7 +159,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppOrder.setBackground(new java.awt.Color(242, 242, 242));
+        ppOrder.setBackground(new java.awt.Color(250, 255, 245));
         ppOrder.setForeground(new java.awt.Color(70, 70, 70));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
@@ -168,7 +168,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrder.setName("ppOrder"); // NOI18N
         ppOrder.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        ppOrderKode.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppOrderKode.setForeground(new java.awt.Color(70, 70, 70));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -185,7 +184,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         });
         ppOrder.add(ppOrderKode);
 
-        ppOrderNama.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppOrderNama.setForeground(new java.awt.Color(70, 70, 70));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -204,7 +202,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         Popup.add(ppOrder);
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -221,7 +218,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppHapusObat.setBackground(new java.awt.Color(255, 255, 255));
         ppHapusObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusObat.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
