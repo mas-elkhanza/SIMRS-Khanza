@@ -412,6 +412,7 @@ import setting.DlgSetInputParsial;
 import kepegawaian.DlgJadwal;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
+import laporan.DlgDataTB;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -1074,7 +1075,6 @@ public class frmUtama extends javax.swing.JFrame {
         MenuBar = new widget.MenuBar();
         jMenu1 = new javax.swing.JMenu();
         MnLogin = new javax.swing.JMenuItem();
-        jSeparator8 = new javax.swing.JPopupMenu.Separator();
         MnGantiPassword = new javax.swing.JMenuItem();
         jSeparator14 = new javax.swing.JPopupMenu.Separator();
         MenuKeluar = new javax.swing.JMenuItem();
@@ -6582,7 +6582,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/03/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6676,7 +6676,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnMenu.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnMenu.setName("BtnMenu"); // NOI18N
         BtnMenu.setPreferredSize(new java.awt.Dimension(68, 40));
-        BtnMenu.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnMenu.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6706,7 +6705,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolReg.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolReg.setName("BtnToolReg"); // NOI18N
         BtnToolReg.setPreferredSize(new java.awt.Dimension(90, 40));
-        BtnToolReg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnToolReg.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6727,7 +6725,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolIGD.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolIGD.setName("btnToolIGD"); // NOI18N
         btnToolIGD.setPreferredSize(new java.awt.Dimension(84, 40));
-        btnToolIGD.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolIGD.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolIGD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6757,7 +6754,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolBcdRalan.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolBcdRalan.setName("btnToolBcdRalan"); // NOI18N
         btnToolBcdRalan.setPreferredSize(new java.awt.Dimension(74, 40));
-        btnToolBcdRalan.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolBcdRalan.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolBcdRalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6778,7 +6774,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolBcdRanap.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolBcdRanap.setName("btnToolBcdRanap"); // NOI18N
         btnToolBcdRanap.setPreferredSize(new java.awt.Dimension(74, 40));
-        btnToolBcdRanap.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolBcdRanap.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolBcdRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6798,7 +6793,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolLab.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolLab.setName("btnToolLab"); // NOI18N
         btnToolLab.setPreferredSize(new java.awt.Dimension(78, 40));
-        btnToolLab.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolLab.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6818,7 +6812,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolRad.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolRad.setName("btnToolRad"); // NOI18N
         btnToolRad.setPreferredSize(new java.awt.Dimension(87, 40));
-        btnToolRad.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolRad.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6838,7 +6831,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolJualObat.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolJualObat.setName("BtnToolJualObat"); // NOI18N
         BtnToolJualObat.setPreferredSize(new java.awt.Dimension(90, 40));
-        BtnToolJualObat.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnToolJualObat.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolJualObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6868,7 +6860,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolKamnap.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolKamnap.setName("BtnToolKamnap"); // NOI18N
         BtnToolKamnap.setPreferredSize(new java.awt.Dimension(97, 40));
-        BtnToolKamnap.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnToolKamnap.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolKamnap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6889,7 +6880,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolKasir.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolKasir.setName("BtnToolKasir"); // NOI18N
         BtnToolKasir.setPreferredSize(new java.awt.Dimension(96, 40));
-        BtnToolKasir.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnToolKasir.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolKasir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6918,7 +6908,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnLog.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnLog.setName("BtnLog"); // NOI18N
         BtnLog.setPreferredSize(new java.awt.Dimension(79, 40));
-        BtnLog.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnLog.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6938,7 +6927,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose.setName("BtnClose"); // NOI18N
         BtnClose.setPreferredSize(new java.awt.Dimension(80, 40));
-        BtnClose.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnClose.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -7118,13 +7106,6 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu1.add(MnLogin);
-
-        jSeparator8.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator8.setForeground(new java.awt.Color(90, 120, 80));
-        jSeparator8.setName("jSeparator8"); // NOI18N
-        jSeparator8.setPreferredSize(new java.awt.Dimension(0, 1));
-        jMenu1.add(jSeparator8);
 
         MnGantiPassword.setBackground(new java.awt.Color(255, 255, 254));
         MnGantiPassword.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -13644,6 +13625,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPasswordAsuransi form=new DlgPasswordAsuransi(this,false);
+        form.emptTeks();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -13658,7 +13640,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_MnRekapHadir6ActionPerformed
 
     private void btnDataSITTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataSITTActionPerformed
-        // TODO add your handling code here:
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataTB aplikasi=new DlgDataTB(this,false);
+        aplikasi.emptTeks();
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnDataSITTActionPerformed
 
     /**
@@ -14199,7 +14190,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private widget.Label label35;
     private widget.Label label36;
