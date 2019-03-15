@@ -14,7 +14,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppLokasi">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -280,7 +280,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="ThnCari" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[80, 23]"/>
+                  <Dimension value="[90, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -304,7 +304,7 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="BlnCari" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[55, 23]"/>
+                  <Dimension value="[62, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -321,7 +321,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="TCari" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[210, 23]"/>
+                  <Dimension value="[190, 23]"/>
                 </Property>
               </Properties>
               <Events>

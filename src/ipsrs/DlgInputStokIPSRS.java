@@ -172,7 +172,7 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -387,7 +387,6 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 10, 110, 23);
 
-        Tgl.setEditable(false);
         Tgl.setDisplayFormat("dd-MM-yyyy");
         Tgl.setName("Tgl"); // NOI18N
         Tgl.addKeyListener(new java.awt.event.KeyAdapter() {

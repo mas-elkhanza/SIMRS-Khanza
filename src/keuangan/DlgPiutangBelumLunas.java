@@ -220,7 +220,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnDetailPiutang.setBackground(new java.awt.Color(255, 255, 255));
+        MnDetailPiutang.setBackground(new java.awt.Color(255, 255, 254));
         MnDetailPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDetailPiutang.setForeground(new java.awt.Color(70, 70, 70));
         MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -282,7 +282,6 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         label32.setPreferredSize(new java.awt.Dimension(100, 23));
         panelisi4.add(label32);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -299,7 +298,6 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         panelisi4.add(jLabel11);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.setPreferredSize(new java.awt.Dimension(265, 23));
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

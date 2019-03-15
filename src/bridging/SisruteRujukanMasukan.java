@@ -64,6 +64,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private boolean aktif=false;
     private String requestJson="",No="",RMFaskes="",NamaPasien="",Kontak="",Alamat="",TempatLahir="",TglLahir="",
                 JK="",NoKartuJKN="",NIK="",NoRujuk="",KodeAsal="",NamaFaskesAsal="",
                 KodeTujuan="",NamaFaskesTujuan="",JenisRujukan="",Alasan="",AlasanLainnya="",Status="",
@@ -317,14 +318,13 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
 
         CmbTerima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Diterima", "0. Tidak Diterima" }));
         CmbTerima.setName("CmbTerima"); // NOI18N
-        CmbTerima.setOpaque(false);
         CmbTerima.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbTerimaKeyPressed(evt);
             }
         });
         internalFrame5.add(CmbTerima);
-        CmbTerima.setBounds(65, 22, 140, 23);
+        CmbTerima.setBounds(65, 22, 230, 23);
 
         jLabel8.setText("Status :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -368,6 +368,14 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Masuk Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -407,7 +415,6 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         jLabel11.setPreferredSize(new java.awt.Dimension(54, 23));
         panelGlass8.add(jLabel11);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -420,7 +427,6 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Teregistrasi", "Belum Teregistrasi" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-        cmbStatus.setOpaque(false);
         cmbStatus.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass8.add(cmbStatus);
 
@@ -924,6 +930,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         pegawai.setVisible(true);
     }//GEN-LAST:event_BtnPegawaiActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
+
     /**
     * @param args the command line arguments
     */
@@ -1059,9 +1073,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     
     private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                nol_detik = "";                
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            if(aktif==true){
+                nol_detik = "";
                 Date now = Calendar.getInstance().getTime();
                 nilai_detik = now.getSeconds();
                 if (nilai_detik <= 9) {
@@ -1069,25 +1083,25 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
 
                 detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("05")){ 
+                if(detik.equals("05")){
                     if(var.getAktif()==false){
-                        rujukanbaru=0;                         
+                        rujukanbaru=0;
                         tampil();
-                        for(i=0;i<tbBangsal.getRowCount();i++){ 
+                        for(i=0;i<tbBangsal.getRowCount();i++){
                             if(tbBangsal.getValueAt(i,18).toString().toLowerCase().contains("belum direspon")){
-                                rujukanbaru++;                                                                                                   
+                                rujukanbaru++;
                             }
                         }
 
                         if(rujukanbaru>0){
                             try {
                                 music = new BackgroundMusic("./suara/alarm.mp3");
-                                music.start();              
+                                music.start();
                             } catch (Exception ex) {
                                 System.out.println(ex);
                             }
-                        } 
-                    }                                                
+                        }                                                
+                    }
                 }
             }
         };

@@ -178,13 +178,12 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
 
         jLabel21.setText("TKP :");
         jLabel21.setName("jLabel21"); // NOI18N
-        jLabel21.setPreferredSize(new java.awt.Dimension(35, 23));
+        jLabel21.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass6.add(jLabel21);
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10 RJTP", "20 RITP", "50 Promotif" }));
         Jenis.setName("Jenis"); // NOI18N
-        Jenis.setOpaque(false);
-        Jenis.setPreferredSize(new java.awt.Dimension(95, 23));
+        Jenis.setPreferredSize(new java.awt.Dimension(115, 23));
         panelGlass6.add(Jenis);
 
         jLabel16.setText("Kode/Nama Tindakan :");
@@ -193,7 +192,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         panelGlass6.add(jLabel16);
 
         diagnosa.setName("diagnosa"); // NOI18N
-        diagnosa.setPreferredSize(new java.awt.Dimension(190, 23));
+        diagnosa.setPreferredSize(new java.awt.Dimension(185, 23));
         diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 diagnosaKeyPressed(evt);
@@ -219,7 +218,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         panelGlass6.add(BtnCari);
 
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel17.setPreferredSize(new java.awt.Dimension(20, 23));
         panelGlass6.add(jLabel17);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -406,7 +405,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
             }else if(ex.toString().contains("424")){
                 JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
             }else if(ex.toString().contains("412")){
-                JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(ex.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }

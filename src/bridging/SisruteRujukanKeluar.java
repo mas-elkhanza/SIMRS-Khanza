@@ -515,7 +515,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 255));
+        MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnSuratRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSuratRujukan.setForeground(new java.awt.Color(70, 70, 70));
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -530,7 +530,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnSuratRujukan);
 
-        ppRiwayat.setBackground(new java.awt.Color(255, 255, 255));
+        ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -565,7 +565,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -626,7 +625,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel22.setBounds(380, 150, 90, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019 09:52:19" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:48:24" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -832,7 +831,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         JenisRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Rawat Jalan", "2. Rawat Darurat/Inap", "3. Parsial" }));
         JenisRujukan.setName("JenisRujukan"); // NOI18N
-        JenisRujukan.setOpaque(false);
         JenisRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisRujukanKeyPressed(evt);
@@ -995,7 +993,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         JenisKesadaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Sadar", "2. Tidak Sadar" }));
         JenisKesadaran.setName("JenisKesadaran"); // NOI18N
-        JenisKesadaran.setOpaque(false);
         JenisKesadaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisKesadaranKeyPressed(evt);
@@ -1071,18 +1068,17 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel42.setText("Tingkat Nyeri :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(536, 350, 90, 23);
+        jLabel42.setBounds(530, 350, 90, 23);
 
         TingkatNyeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak Nyeri", "1. Ringan", "2. Sedang", "3. Berat" }));
         TingkatNyeri.setName("TingkatNyeri"); // NOI18N
-        TingkatNyeri.setOpaque(false);
         TingkatNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TingkatNyeriKeyPressed(evt);
             }
         });
         FormInput.add(TingkatNyeri);
-        TingkatNyeri.setBounds(630, 350, 110, 23);
+        TingkatNyeri.setBounds(624, 350, 116, 23);
 
         jLabel43.setText("Keadaan Umum :");
         jLabel43.setName("jLabel43"); // NOI18N
@@ -1203,9 +1199,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1218,9 +1213,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1272,7 +1266,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRujukan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRujukan.setBorder(null);
         TabRujukan.setForeground(new java.awt.Color(70, 70, 70));
         TabRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRujukan.setName("TabRujukan"); // NOI18N

@@ -364,7 +364,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppPeserta.setBackground(new java.awt.Color(255, 255, 255));
+        ppPeserta.setBackground(new java.awt.Color(255, 255, 254));
         ppPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPeserta.setForeground(new java.awt.Color(70, 70, 70));
         ppPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -388,7 +388,6 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Daftar Peserta Kegiatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
-        internalFrame7.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame7.setLayout(null);
 
         BtnCloseIn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -666,9 +665,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -681,9 +679,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -805,9 +802,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(526, 10, 90, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -827,7 +823,6 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Kegiatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01 Senam", "10 Penyuluhan", "11 Penyuluhan dan Senam" }));
         Kegiatan.setName("Kegiatan"); // NOI18N
-        Kegiatan.setOpaque(false);
         Kegiatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KegiatanKeyPressed(evt);
@@ -838,7 +833,6 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Kelompok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01 Diabetes Melitus", "02 Hipertensi" }));
         Kelompok.setName("Kelompok"); // NOI18N
-        Kelompok.setOpaque(false);
         Kelompok.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelompokKeyPressed(evt);
@@ -1033,7 +1027,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                 }else if(ex.toString().contains("424")){
                     JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                 }else if(ex.toString().contains("412")){
-                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                 }else if(ex.toString().contains("204")){
                     JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                 }
@@ -1098,7 +1092,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                     }else if(ex.toString().contains("424")){
                         JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                     }else if(ex.toString().contains("412")){
-                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                        JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                     }else if(ex.toString().contains("204")){
                         JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                     }

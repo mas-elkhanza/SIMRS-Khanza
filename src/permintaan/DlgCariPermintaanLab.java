@@ -47,6 +47,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private BackgroundMusic music;
     private Date now;
+    private boolean aktif=false;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",
                     NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     
@@ -421,7 +422,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -435,7 +436,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab);
 
-        MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -449,7 +450,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnBarcodePermintaan);
 
-        MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan1.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -503,7 +504,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2019 06:16:55" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 21:45:30" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -519,6 +520,12 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
             }
         });
 
@@ -539,7 +546,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass8.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -556,7 +562,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass8.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -728,7 +733,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabPilihRawat.setBorder(null);
         TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
@@ -794,7 +798,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame2.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatJalan.setBorder(null);
         TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
@@ -927,7 +930,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatInap.setBorder(null);
         TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
@@ -1952,6 +1954,14 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         pilihRanap();
     }//GEN-LAST:event_TabRawatInapMouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
+
     /**
     * @param args the command line arguments
     */
@@ -2559,43 +2569,45 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     
     private void jam(){
         ActionListener taskPerformer = (ActionEvent e) -> {
-            nol_detik = "";
-            now = Calendar.getInstance().getTime();
-            nilai_detik = now.getSeconds();
-            if (nilai_detik <= 9) {
-                nol_detik = "0";
-            }
-            
-            detik = nol_detik + Integer.toString(nilai_detik);
-            if(detik.equals("05")){
-                permintaanbaru=0;
-                if(formalarm.contains("ralan")){
-                    tampil();
-                    for(i=0;i<tbLabRalan.getRowCount();i++){
-                        if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
-                            permintaanbaru++;
+            if(aktif==true){
+                nol_detik = "";
+                now = Calendar.getInstance().getTime();
+                nilai_detik = now.getSeconds();
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+
+                detik = nol_detik + Integer.toString(nilai_detik);
+                if(detik.equals("05")){
+                    permintaanbaru=0;
+                    if(formalarm.contains("ralan")){
+                        tampil();
+                        for(i=0;i<tbLabRalan.getRowCount();i++){
+                            if((!tbLabRalan.getValueAt(i,0).toString().equals(""))&&tbLabRalan.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;
+                            }
+                        }
+                    }
+
+                    if(formalarm.contains("ranap")){
+                        tampil3();
+                        for(i=0;i<tbLabRanap.getRowCount();i++){
+                            if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
+                                permintaanbaru++;
+                            }
+                        }
+                    }
+
+                    if(permintaanbaru>0){
+                        try {
+                            music = new BackgroundMusic("./suara/alarm.mp3");
+                            music.start();
+                        } catch (Exception ex) {
+                            System.out.println(ex);
                         }
                     }
                 }
-                
-                if(formalarm.contains("ranap")){
-                    tampil3();
-                    for(i=0;i<tbLabRanap.getRowCount();i++){
-                        if((!tbLabRanap.getValueAt(i,0).toString().equals(""))&&tbLabRanap.getValueAt(i,5).toString().equals("")){
-                            permintaanbaru++;
-                        }
-                    }
-                }
-                
-                if(permintaanbaru>0){
-                    try {
-                        music = new BackgroundMusic("./suara/alarm.mp3");
-                        music.start();
-                    } catch (Exception ex) {
-                        System.out.println(ex);
-                    }
-                }
-            }
+            }                
         };
         // Timer
         new Timer(1000, taskPerformer).start();

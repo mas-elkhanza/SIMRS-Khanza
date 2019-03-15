@@ -54,6 +54,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private boolean aktif=false;
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -329,13 +330,20 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Berdasar Tanggal Rujukan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -383,15 +391,13 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
 
         ChkJln.setBorder(null);
         ChkJln.setText("Tanggal :");
-        ChkJln.setBorderPainted(true);
-        ChkJln.setBorderPaintedFlat(true);
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkJln.setName("ChkJln"); // NOI18N
-        ChkJln.setPreferredSize(new java.awt.Dimension(75, 23));
+        ChkJln.setOpaque(false);
+        ChkJln.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass5.add(ChkJln);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -404,8 +410,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Terbit", "Belum Terbit" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-        cmbStatus.setOpaque(false);
-        cmbStatus.setPreferredSize(new java.awt.Dimension(110, 23));
+        cmbStatus.setPreferredSize(new java.awt.Dimension(130, 23));
         cmbStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbStatusItemStateChanged(evt);
@@ -610,6 +615,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
         Valid.pindah(evt, BtnCari, BtnKeluar);
     }//GEN-LAST:event_BtnCari1KeyPressed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
 
     /**
     * @param args the command line arguments
@@ -913,41 +926,43 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             private int nilai_menit;
             private int nilai_detik;
             public void actionPerformed(ActionEvent e) {
-                String nol_jam = "";
-                String nol_menit = "";
-                String nol_detik = "";
-                
-                Date now = Calendar.getInstance().getTime();
-                
-                nilai_jam = now.getHours();
-                nilai_menit = now.getMinutes();
-                nilai_detik = now.getSeconds();
-                
+                if(aktif==true){
+                    String nol_jam = "";
+                    String nol_menit = "";
+                    String nol_detik = "";
 
-                // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
-                if (nilai_jam <= 9) {
-                    // Tambahkan "0" didepannya
-                    nol_jam = "0";
-                }
-                // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
-                if (nilai_menit <= 9) {
-                    // Tambahkan "0" didepannya
-                    nol_menit = "0";
-                }
-                // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
-                if (nilai_detik <= 9) {
-                    // Tambahkan "0" didepannya
-                    nol_detik = "0";
-                }
-                // Membuat String JAM, MENIT, DETIK
-                String jam = nol_jam + Integer.toString(nilai_jam);
-                String menit = nol_menit + Integer.toString(nilai_menit);
-                String detik = nol_detik + Integer.toString(nilai_detik);
-                if(ChkJln.isSelected()==true){
-                    if(detik.equals("20")){
-                        TabRawatMouseClicked(null);
+                    Date now = Calendar.getInstance().getTime();
+
+                    nilai_jam = now.getHours();
+                    nilai_menit = now.getMinutes();
+                    nilai_detik = now.getSeconds();
+
+
+                    // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
+                    if (nilai_jam <= 9) {
+                        // Tambahkan "0" didepannya
+                        nol_jam = "0";
                     }
-                }
+                    // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
+                    if (nilai_menit <= 9) {
+                        // Tambahkan "0" didepannya
+                        nol_menit = "0";
+                    }
+                    // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
+                    if (nilai_detik <= 9) {
+                        // Tambahkan "0" didepannya
+                        nol_detik = "0";
+                    }
+                    // Membuat String JAM, MENIT, DETIK
+                    String jam = nol_jam + Integer.toString(nilai_jam);
+                    String menit = nol_menit + Integer.toString(nilai_menit);
+                    String detik = nol_detik + Integer.toString(nilai_detik);
+                    if(ChkJln.isSelected()==true){
+                        if(detik.equals("20")){
+                            TabRawatMouseClicked(null);
+                        }
+                    }
+                }                    
             }
         };
         // Timer

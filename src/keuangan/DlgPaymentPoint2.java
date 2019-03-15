@@ -175,11 +175,6 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Payment Point 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -204,7 +199,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
         panelGlass5.add(label17);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(150, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(220, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -314,10 +309,9 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass6.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
-        Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass6.add(Tgl1);
 
         jLabel9.setText("Jam :");
@@ -327,8 +321,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
 
         CmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         CmbJam.setName("CmbJam"); // NOI18N
-        CmbJam.setOpaque(false);
-        CmbJam.setPreferredSize(new java.awt.Dimension(47, 23));
+        CmbJam.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbJam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbJamKeyPressed(evt);
@@ -338,8 +331,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
 
         CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbMenit.setName("CmbMenit"); // NOI18N
-        CmbMenit.setOpaque(false);
-        CmbMenit.setPreferredSize(new java.awt.Dimension(47, 23));
+        CmbMenit.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbMenit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbMenitKeyPressed(evt);
@@ -349,8 +341,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
 
         CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbDetik.setName("CmbDetik"); // NOI18N
-        CmbDetik.setOpaque(false);
-        CmbDetik.setPreferredSize(new java.awt.Dimension(47, 23));
+        CmbDetik.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbDetik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbDetikKeyPressed(evt);
@@ -364,10 +355,9 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
         label12.setPreferredSize(new java.awt.Dimension(45, 23));
         panelGlass6.add(label12);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass6.add(Tgl2);
 
         jLabel10.setText("Jam :");
@@ -377,8 +367,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
 
         CmbJam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         CmbJam2.setName("CmbJam2"); // NOI18N
-        CmbJam2.setOpaque(false);
-        CmbJam2.setPreferredSize(new java.awt.Dimension(47, 23));
+        CmbJam2.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbJam2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbJam2KeyPressed(evt);
@@ -388,8 +377,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
 
         CmbMenit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbMenit2.setName("CmbMenit2"); // NOI18N
-        CmbMenit2.setOpaque(false);
-        CmbMenit2.setPreferredSize(new java.awt.Dimension(47, 23));
+        CmbMenit2.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbMenit2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbMenit2KeyPressed(evt);
@@ -399,8 +387,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
 
         CmbDetik2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbDetik2.setName("CmbDetik2"); // NOI18N
-        CmbDetik2.setOpaque(false);
-        CmbDetik2.setPreferredSize(new java.awt.Dimension(47, 23));
+        CmbDetik2.setPreferredSize(new java.awt.Dimension(62, 23));
         CmbDetik2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbDetik2KeyPressed(evt);
@@ -464,10 +451,6 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
             dispose();
         }else{Valid.pindah(evt,BtnKeluar,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");

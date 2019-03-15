@@ -1653,7 +1653,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "L", "P" }));
         CmbJk.setName("CmbJk"); // NOI18N
-        CmbJk.setOpaque(false);
         CmbJk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbJkKeyPressed(evt);
@@ -1662,7 +1661,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1728,7 +1727,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnDocument.setBackground(new java.awt.Color(255, 255, 255));
+        MnDocument.setBackground(new java.awt.Color(255, 255, 254));
         MnDocument.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDocument.setForeground(new java.awt.Color(70, 70, 70));
         MnDocument.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1745,7 +1744,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnDocument);
 
-        ppPengajuan.setBackground(new java.awt.Color(255, 255, 255));
+        ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan.setForeground(new java.awt.Color(70, 70, 70));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1762,7 +1761,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppPengajuan);
 
-        ppPengajuan1.setBackground(new java.awt.Color(255, 255, 255));
+        ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan1.setForeground(new java.awt.Color(70, 70, 70));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2044,19 +2043,18 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         CMbGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "A", "B", "AB", "O" }));
         CMbGd.setName("CMbGd"); // NOI18N
-        CMbGd.setOpaque(false);
         CMbGd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CMbGdKeyPressed(evt);
             }
         });
         FormKelengkapanPasien.add(CMbGd);
-        CMbGd.setBounds(325, 55, 90, 23);
+        CMbGd.setBounds(345, 55, 90, 23);
 
         jLabel9.setText("G.Darah :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormKelengkapanPasien.add(jLabel9);
-        jLabel9.setBounds(235, 55, 85, 23);
+        jLabel9.setBounds(256, 55, 85, 23);
 
         jLabel13.setText("Tempat Lahir :");
         jLabel13.setName("jLabel13"); // NOI18N
@@ -2071,7 +2069,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         cmbAgama.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISLAM", "KRISTEN", "KATOLIK", "HINDU", "BUDHA", "KONG HU CHU", "-" }));
         cmbAgama.setLightWeightPopupEnabled(false);
         cmbAgama.setName("cmbAgama"); // NOI18N
-        cmbAgama.setOpaque(false);
         cmbAgama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbAgamaKeyPressed(evt);
@@ -2083,19 +2080,18 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jLabel19.setText("Stts. Nikah :");
         jLabel19.setName("jLabel19"); // NOI18N
         FormKelengkapanPasien.add(jLabel19);
-        jLabel19.setBounds(235, 85, 85, 23);
+        jLabel19.setBounds(228, 85, 65, 23);
 
         CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "BELUM MENIKAH", "JANDA", "DUDHA" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
-        CmbStts.setOpaque(false);
         CmbStts.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbSttsKeyPressed(evt);
             }
         });
         FormKelengkapanPasien.add(CmbStts);
-        CmbStts.setBounds(325, 85, 90, 23);
+        CmbStts.setBounds(297, 85, 138, 23);
 
         jLabel20.setText("Alamat Pasien :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -2165,8 +2161,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanPasien.add(TNo);
         TNo.setBounds(107, 25, 160, 23);
 
-        DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2176,28 +2171,27 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(DTPDaftar);
-        DTPDaftar.setBounds(325, 145, 90, 23);
+        DTPDaftar.setBounds(345, 145, 90, 23);
 
         jLabel22.setText("Pertama Daftar :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormKelengkapanPasien.add(jLabel22);
-        jLabel22.setBounds(235, 145, 85, 23);
+        jLabel22.setBounds(256, 145, 85, 23);
 
         jLabel24.setText("Pendidikan :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormKelengkapanPasien.add(jLabel24);
-        jLabel24.setBounds(235, 115, 85, 23);
+        jLabel24.setBounds(256, 115, 85, 23);
 
         CMbPnd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "TS", "TK", "SD", "SMP", "SMA", "D1", "D2", "D3", "D4", "S1", "S2", "S3" }));
         CMbPnd.setName("CMbPnd"); // NOI18N
-        CMbPnd.setOpaque(false);
         CMbPnd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CMbPndKeyPressed(evt);
             }
         });
         FormKelengkapanPasien.add(CMbPnd);
-        CMbPnd.setBounds(325, 115, 90, 23);
+        CMbPnd.setBounds(345, 115, 90, 23);
 
         Saudara.setName("Saudara"); // NOI18N
         Saudara.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2208,7 +2202,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanPasien.add(Saudara);
         Saudara.setBounds(534, 145, 142, 23);
 
-        R5.setBorder(null);
         R5.setSelected(true);
         R5.setText("Saudara");
         R5.setIconTextGap(0);
@@ -2216,28 +2209,24 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanPasien.add(R5);
         R5.setBounds(750, 115, 60, 23);
 
-        R4.setBorder(null);
         R4.setText("Suami");
         R4.setIconTextGap(0);
         R4.setName("R4"); // NOI18N
         FormKelengkapanPasien.add(R4);
         R4.setBounds(690, 115, 50, 23);
 
-        R3.setBorder(null);
         R3.setText("Istri");
         R3.setIconTextGap(0);
         R3.setName("R3"); // NOI18N
         FormKelengkapanPasien.add(R3);
         R3.setBounds(640, 115, 44, 23);
 
-        R2.setBorder(null);
         R2.setText("Ibu");
         R2.setIconTextGap(0);
         R2.setName("R2"); // NOI18N
         FormKelengkapanPasien.add(R2);
         R2.setBounds(592, 115, 40, 23);
 
-        R1.setBorder(null);
         R1.setText("Ayah");
         R1.setIconTextGap(0);
         R1.setName("R1"); // NOI18N
@@ -2265,7 +2254,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         nmpnj.setText("-");
         nmpnj.setName("nmpnj"); // NOI18N
         FormKelengkapanPasien.add(nmpnj);
-        nmpnj.setBounds(189, 205, 196, 23);
+        nmpnj.setBounds(189, 205, 216, 23);
 
         BtnPenjab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPenjab.setMnemonic('1');
@@ -2277,7 +2266,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnPenjab);
-        BtnPenjab.setBounds(387, 205, 28, 23);
+        BtnPenjab.setBounds(407, 205, 28, 23);
 
         Kelurahan.setText("KELURAHAN");
         Kelurahan.setHighlighter(null);
@@ -2390,7 +2379,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(NmIbu);
-        NmIbu.setBounds(107, 175, 308, 23);
+        NmIbu.setBounds(107, 175, 328, 23);
 
         jLabel26.setText("Png. Jawab :");
         jLabel26.setName("jLabel26"); // NOI18N
@@ -2541,10 +2530,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanPasien.add(KelurahanPj);
         KelurahanPj.setBounds(534, 205, 156, 23);
 
-        ChkRM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
+        ChkRM.setBorder(null);
         ChkRM.setSelected(true);
-        ChkRM.setBorderPainted(true);
-        ChkRM.setBorderPaintedFlat(true);
         ChkRM.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkRM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkRM.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -2557,7 +2544,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanPasien.add(ChkRM);
         ChkRM.setBounds(269, 25, 23, 23);
 
-        R6.setBorder(null);
         R6.setText("Anak");
         R6.setIconTextGap(0);
         R6.setName("R6"); // NOI18N
@@ -2572,7 +2558,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         nmsukubangsa.setEditable(false);
         nmsukubangsa.setName("nmsukubangsa"); // NOI18N
         FormKelengkapanPasien.add(nmsukubangsa);
-        nmsukubangsa.setBounds(107, 235, 278, 23);
+        nmsukubangsa.setBounds(107, 235, 298, 23);
 
         BtnSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSuku.setMnemonic('1');
@@ -2589,7 +2575,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnSuku);
-        BtnSuku.setBounds(387, 235, 28, 23);
+        BtnSuku.setBounds(407, 235, 28, 23);
 
         jLabel41.setText("Bahasa :");
         jLabel41.setName("jLabel41"); // NOI18N
@@ -2599,7 +2585,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         nmbahasa.setEditable(false);
         nmbahasa.setName("nmbahasa"); // NOI18N
         FormKelengkapanPasien.add(nmbahasa);
-        nmbahasa.setBounds(107, 265, 278, 23);
+        nmbahasa.setBounds(107, 265, 298, 23);
 
         BtnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnBahasa.setMnemonic('1');
@@ -2616,7 +2602,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnBahasa);
-        BtnBahasa.setBounds(387, 265, 28, 23);
+        BtnBahasa.setBounds(407, 265, 28, 23);
 
         jLabel42.setText("Cacat Fisik :");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -2626,7 +2612,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         nmcacat.setEditable(false);
         nmcacat.setName("nmcacat"); // NOI18N
         FormKelengkapanPasien.add(nmcacat);
-        nmcacat.setBounds(107, 295, 278, 23);
+        nmcacat.setBounds(107, 295, 298, 23);
 
         BtnCacat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnCacat.setMnemonic('1');
@@ -2643,7 +2629,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnCacat);
-        BtnCacat.setBounds(387, 295, 28, 23);
+        BtnCacat.setBounds(407, 295, 28, 23);
 
         jLabel43.setText("Instansi Pasien :");
         jLabel43.setName("jLabel43"); // NOI18N
@@ -2788,7 +2774,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         nmgolongantni.setEditable(false);
         nmgolongantni.setName("nmgolongantni"); // NOI18N
         FormKelengkapanPasien.add(nmgolongantni);
-        nmgolongantni.setBounds(120, 355, 250, 23);
+        nmgolongantni.setBounds(120, 355, 270, 23);
 
         BtnGolonganTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnGolonganTNI.setMnemonic('1');
@@ -2801,7 +2787,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnGolonganTNI);
-        BtnGolonganTNI.setBounds(370, 355, 28, 23);
+        BtnGolonganTNI.setBounds(390, 355, 28, 23);
 
         BtnSatuanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSatuanTNI.setMnemonic('1');
@@ -2814,12 +2800,12 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnSatuanTNI);
-        BtnSatuanTNI.setBounds(370, 385, 28, 23);
+        BtnSatuanTNI.setBounds(390, 385, 28, 23);
 
         nmsatuantni.setEditable(false);
         nmsatuantni.setName("nmsatuantni"); // NOI18N
         FormKelengkapanPasien.add(nmsatuantni);
-        nmsatuantni.setBounds(120, 385, 250, 23);
+        nmsatuantni.setBounds(120, 385, 270, 23);
 
         LabelSatuanTNI.setText("Kesatuan :");
         LabelSatuanTNI.setName("LabelSatuanTNI"); // NOI18N
@@ -2834,7 +2820,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         nmpangkattni.setEditable(false);
         nmpangkattni.setName("nmpangkattni"); // NOI18N
         FormKelengkapanPasien.add(nmpangkattni);
-        nmpangkattni.setBounds(120, 415, 250, 23);
+        nmpangkattni.setBounds(120, 415, 270, 23);
 
         BtnPangkatTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPangkatTNI.setMnemonic('1');
@@ -2847,7 +2833,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnPangkatTNI);
-        BtnPangkatTNI.setBounds(370, 415, 28, 23);
+        BtnPangkatTNI.setBounds(390, 415, 28, 23);
 
         BtnJabatanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnJabatanTNI.setMnemonic('1');
@@ -2860,12 +2846,12 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnJabatanTNI);
-        BtnJabatanTNI.setBounds(370, 445, 28, 23);
+        BtnJabatanTNI.setBounds(390, 445, 28, 23);
 
         nmjabatantni.setEditable(false);
         nmjabatantni.setName("nmjabatantni"); // NOI18N
         FormKelengkapanPasien.add(nmjabatantni);
-        nmjabatantni.setBounds(120, 445, 250, 23);
+        nmjabatantni.setBounds(120, 445, 270, 23);
 
         LabelJabatanTNI.setText("Jabatan :");
         LabelJabatanTNI.setName("LabelJabatanTNI"); // NOI18N
@@ -3001,8 +2987,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(495, 55, 90, 23);
 
-        TanggalSEP.setEditable(false);
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018 08:54:36" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:18:12" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -3021,8 +3006,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(331, 265, 60, 23);
 
-        TanggalRujuk.setEditable(false);
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3201,7 +3185,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
         JenisPelayanan.setSelectedIndex(1);
         JenisPelayanan.setName("JenisPelayanan"); // NOI18N
-        JenisPelayanan.setOpaque(false);
         JenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 JenisPelayananItemStateChanged(evt);
@@ -3213,24 +3196,23 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             }
         });
         FormKelengkapanSEP.add(JenisPelayanan);
-        JenisPelayanan.setBounds(107, 235, 90, 23);
+        JenisPelayanan.setBounds(107, 235, 93, 23);
 
         LabelKelas.setText("Kelas :");
         LabelKelas.setName("LabelKelas"); // NOI18N
         FormKelengkapanSEP.add(LabelKelas);
-        LabelKelas.setBounds(198, 235, 40, 23);
+        LabelKelas.setBounds(200, 235, 40, 23);
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. kelas 3" }));
         Kelas.setSelectedIndex(2);
         Kelas.setName("Kelas"); // NOI18N
-        Kelas.setOpaque(false);
         Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelasKeyPressed(evt);
             }
         });
         FormKelengkapanSEP.add(Kelas);
-        Kelas.setBounds(242, 235, 90, 23);
+        Kelas.setBounds(244, 235, 98, 23);
 
         jLabel34.setText("KLL :");
         jLabel34.setName("jLabel34"); // NOI18N
@@ -3239,7 +3221,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1. Ya" }));
         LakaLantas.setName("LakaLantas"); // NOI18N
-        LakaLantas.setOpaque(false);
         LakaLantas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 LakaLantasKeyPressed(evt);
@@ -3309,7 +3290,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         AsalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
         AsalRujukan.setSelectedIndex(1);
         AsalRujukan.setName("AsalRujukan"); // NOI18N
-        AsalRujukan.setOpaque(false);
         AsalRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AsalRujukanKeyPressed(evt);
@@ -3325,30 +3305,28 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         Eksekutif.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Eksekutif.setName("Eksekutif"); // NOI18N
-        Eksekutif.setOpaque(false);
         Eksekutif.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EksekutifKeyPressed(evt);
             }
         });
         FormKelengkapanSEP.add(Eksekutif);
-        Eksekutif.setBounds(107, 265, 90, 23);
+        Eksekutif.setBounds(107, 265, 93, 23);
 
         LabelKelas1.setText("COB :");
         LabelKelas1.setName("LabelKelas1"); // NOI18N
         FormKelengkapanSEP.add(LabelKelas1);
-        LabelKelas1.setBounds(198, 265, 40, 23);
+        LabelKelas1.setBounds(200, 265, 40, 23);
 
         COB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak ", "1.Ya" }));
         COB.setName("COB"); // NOI18N
-        COB.setOpaque(false);
         COB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 COBKeyPressed(evt);
             }
         });
         FormKelengkapanSEP.add(COB);
-        COB.setBounds(242, 265, 90, 23);
+        COB.setBounds(244, 265, 98, 23);
 
         jLabel39.setText("Penjamin Laka :");
         jLabel39.setName("jLabel39"); // NOI18N
@@ -3446,7 +3424,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         Katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Katarak.setName("Katarak"); // NOI18N
-        Katarak.setOpaque(false);
         Katarak.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KatarakKeyPressed(evt);
@@ -3461,9 +3438,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel47);
         jLabel47.setBounds(744, 55, 70, 23);
 
-        TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setName("TanggalKKL"); // NOI18N
         TanggalKKL.setOpaque(false);
@@ -3499,7 +3475,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         Suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Suplesi.setName("Suplesi"); // NOI18N
-        Suplesi.setOpaque(false);
         Suplesi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SuplesiKeyPressed(evt);

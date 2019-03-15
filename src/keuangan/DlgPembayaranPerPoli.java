@@ -138,8 +138,6 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(53, 23));
         panelisi1.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -152,8 +150,7 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
 
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
-        CmbStatus.setOpaque(false);
-        CmbStatus.setPreferredSize(new java.awt.Dimension(90, 23));
+        CmbStatus.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi1.add(CmbStatus);
 
         jLabel6.setText("Key Word :");

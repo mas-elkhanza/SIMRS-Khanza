@@ -513,7 +513,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
         jLabel8.setText("Kapasitas/Jumlah Bed :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(213, 72, 120, 23);
+        jLabel8.setBounds(244, 72, 120, 23);
 
         Kapasitas.setText("0");
         Kapasitas.setHighlighter(null);
@@ -524,7 +524,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kapasitas);
-        Kapasitas.setBounds(336, 72, 50, 23);
+        Kapasitas.setBounds(367, 72, 50, 23);
 
         jLabel4.setText("Kode Kelas Aplicare :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -615,7 +615,6 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
         Kelas.setName("Kelas"); // NOI18N
-        Kelas.setOpaque(false);
         Kelas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 KelasItemStateChanged(evt);
@@ -627,7 +626,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kelas);
-        Kelas.setBounds(116, 72, 90, 23);
+        Kelas.setBounds(116, 72, 120, 23);
 
         jLabel9.setText("Tersedia :");
         jLabel9.setName("jLabel9"); // NOI18N

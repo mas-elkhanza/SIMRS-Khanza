@@ -51,6 +51,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private int jmlparsial=0,nilai_detik,resepbaru=0,i=0;
     private BackgroundMusic music;
+    private boolean aktif=false;
     
     /** Creates new form 
      * @param parent
@@ -395,6 +396,12 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
         });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
@@ -416,9 +423,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         jLabel20.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi2.add(jLabel20);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -431,9 +437,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelisi2.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -618,7 +623,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabPilihRawat.setBorder(null);
         TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
@@ -633,7 +637,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame2.setLayout(new java.awt.BorderLayout());
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatJalan.setBorder(null);
         TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
@@ -763,7 +766,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame3.setLayout(new java.awt.BorderLayout());
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatInap.setBorder(null);
         TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
@@ -1396,6 +1398,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnHapusKeyPressed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
+
     /**
     * @param args the command line arguments
     */
@@ -1982,46 +1992,46 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                nol_detik = "";                
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            if(aktif==true){
+                nol_detik = "";
                 Date now = Calendar.getInstance().getTime();
                 nilai_detik = now.getSeconds();
                 if (nilai_detik <= 9) {
                     nol_detik = "0";
                 }
-                
+
                 detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("05")){ 
-                    resepbaru=0; 
+                if(detik.equals("05")){
+                    resepbaru=0;
                     if(formalarm.contains("ralan")){
                         tampil();
-                        for(i=0;i<tbResepRalan.getRowCount();i++){ 
+                        for(i=0;i<tbResepRalan.getRowCount();i++){
                             if(tbResepRalan.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
                             }
                         }
                     }
-                    
+
                     if(formalarm.contains("ranap")){
                         tampil3();
-                        for(i=0;i<tbResepRanap.getRowCount();i++){ 
+                        for(i=0;i<tbResepRanap.getRowCount();i++){
                             if(tbResepRanap.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
                             }
                         }
                     }
-                      
+
                     if(resepbaru>0){
                         try {
                             music = new BackgroundMusic("./suara/alarm.mp3");
-                            music.start();              
+                            music.start();
                         } catch (Exception ex) {
                             System.out.println(ex);
                         }
-                    }                        
+                    }
                 }
-            }
+            }                
         };
         // Timer
         new Timer(1000, taskPerformer).start();

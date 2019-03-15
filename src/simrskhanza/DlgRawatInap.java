@@ -1288,13 +1288,13 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         jLabel10.setText("Record :");
         jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(75, 30));
+        jLabel10.setPreferredSize(new java.awt.Dimension(95, 30));
         panelGlass8.add(jLabel10);
 
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(85, 30));
+        LCount.setPreferredSize(new java.awt.Dimension(87, 30));
         panelGlass8.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -1327,9 +1327,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(64, 23));
         panelGlass10.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1342,9 +1341,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass10.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1391,7 +1389,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(240, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(273, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -2124,7 +2122,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(TTinggi_uteri);
-        TTinggi_uteri.setBounds(138, 10, 50, 23);
+        TTinggi_uteri.setBounds(138, 10, 62, 23);
 
         jLabel30.setText("Janin :");
         jLabel30.setName("jLabel30"); // NOI18N
@@ -2159,17 +2157,16 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(TKualitas_dtk);
-        TKualitas_dtk.setBounds(396, 40, 50, 23);
+        TKualitas_dtk.setBounds(401, 40, 50, 23);
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel33.setText("detik");
         jLabel33.setName("jLabel33"); // NOI18N
         panelGlass14.add(jLabel33);
-        jLabel33.setBounds(449, 40, 30, 23);
+        jLabel33.setBounds(455, 40, 30, 23);
 
         cmbPanggul.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "5/5", "4/5", "3/5", "2/5", "1/5" }));
         cmbPanggul.setName("cmbPanggul"); // NOI18N
-        cmbPanggul.setOpaque(false);
         cmbPanggul.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbPanggul.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2177,13 +2174,13 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbPanggul);
-        cmbPanggul.setBounds(609, 10, 50, 23);
+        cmbPanggul.setBounds(609, 10, 62, 23);
 
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("/10 menit/");
         jLabel34.setName("jLabel34"); // NOI18N
         panelGlass14.add(jLabel34);
-        jLabel34.setBounds(345, 40, 50, 23);
+        jLabel34.setBounds(345, 40, 55, 23);
 
         TTebal.setHighlighter(null);
         TTebal.setName("TTebal"); // NOI18N
@@ -2193,7 +2190,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(TTebal);
-        TTebal.setBounds(704, 70, 50, 23);
+        TTebal.setBounds(709, 70, 50, 23);
 
         TDenyut.setHighlighter(null);
         TDenyut.setName("TDenyut"); // NOI18N
@@ -2203,12 +2200,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(TDenyut);
-        TDenyut.setBounds(836, 10, 50, 23);
+        TDenyut.setBounds(846, 10, 62, 23);
 
         jLabel36.setText("Denyut Jantung Fetus (x/mnt) :");
         jLabel36.setName("jLabel36"); // NOI18N
         panelGlass14.add(jLabel36);
-        jLabel36.setBounds(673, 10, 160, 23);
+        jLabel36.setBounds(683, 10, 160, 23);
 
         TDenominator.setHighlighter(null);
         TDenominator.setName("TDenominator"); // NOI18N
@@ -2247,7 +2244,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbFeto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Susp.CPD-FPD", "CPD-FPD" }));
         cmbFeto.setName("cmbFeto"); // NOI18N
-        cmbFeto.setOpaque(false);
         cmbFeto.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbFeto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2255,7 +2251,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbFeto);
-        cmbFeto.setBounds(786, 100, 100, 23);
+        cmbFeto.setBounds(786, 100, 122, 23);
 
         jLabel42.setText("Denominator :");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -2265,7 +2261,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbJanin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Tunggal", "Gemelli" }));
         cmbJanin.setName("cmbJanin"); // NOI18N
-        cmbJanin.setOpaque(false);
         cmbJanin.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbJanin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2277,7 +2272,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbKetuban.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "+" }));
         cmbKetuban.setName("cmbKetuban"); // NOI18N
-        cmbKetuban.setOpaque(false);
         cmbKetuban.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbKetuban.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2285,7 +2279,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbKetuban);
-        cmbKetuban.setBounds(836, 40, 50, 23);
+        cmbKetuban.setBounds(846, 40, 62, 23);
 
         TPortio.setFocusTraversalPolicyProvider(true);
         TPortio.setName("TPortio"); // NOI18N
@@ -2314,7 +2308,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbKontraksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
         cmbKontraksi.setName("cmbKontraksi"); // NOI18N
-        cmbKontraksi.setOpaque(false);
         cmbKontraksi.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbKontraksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2322,11 +2315,10 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbKontraksi);
-        cmbKontraksi.setBounds(138, 40, 50, 23);
+        cmbKontraksi.setBounds(138, 40, 62, 23);
 
         cmbAlbus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
         cmbAlbus.setName("cmbAlbus"); // NOI18N
-        cmbAlbus.setOpaque(false);
         cmbAlbus.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbAlbus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2334,7 +2326,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbAlbus);
-        cmbAlbus.setBounds(678, 40, 50, 23);
+        cmbAlbus.setBounds(683, 40, 62, 23);
 
         jLabel45.setText("Kontraksi :");
         jLabel45.setName("jLabel45"); // NOI18N
@@ -2344,7 +2336,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel46.setText("Fluor Albus :");
         jLabel46.setName("jLabel46"); // NOI18N
         panelGlass14.add(jLabel46);
-        jLabel46.setBounds(603, 40, 72, 23);
+        jLabel46.setBounds(608, 40, 72, 23);
 
         jLabel47.setText("Vulva/Vagina :");
         jLabel47.setName("jLabel47"); // NOI18N
@@ -2358,7 +2350,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbFluksus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
         cmbFluksus.setName("cmbFluksus"); // NOI18N
-        cmbFluksus.setOpaque(false);
         cmbFluksus.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbFluksus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2366,7 +2357,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbFluksus);
-        cmbFluksus.setBounds(544, 40, 50, 23);
+        cmbFluksus.setBounds(544, 40, 62, 23);
 
         jLabel48.setText("Dalam :");
         jLabel48.setName("jLabel48"); // NOI18N
@@ -2375,7 +2366,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbDalam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kenyal", "Lunak" }));
         cmbDalam.setName("cmbDalam"); // NOI18N
-        cmbDalam.setOpaque(false);
         cmbDalam.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbDalam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2383,7 +2373,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbDalam);
-        cmbDalam.setBounds(550, 70, 80, 23);
+        cmbDalam.setBounds(550, 70, 90, 23);
 
         jLabel49.setText("Pembukaan :");
         jLabel49.setName("jLabel49"); // NOI18N
@@ -2413,17 +2403,16 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel50.setText("Tebal/cm :");
         jLabel50.setName("jLabel50"); // NOI18N
         panelGlass14.add(jLabel50);
-        jLabel50.setBounds(641, 70, 60, 23);
+        jLabel50.setBounds(646, 70, 60, 23);
 
         jLabel51.setText("Selaput Ketuban :");
         jLabel51.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jLabel51.setName("jLabel51"); // NOI18N
         panelGlass14.add(jLabel51);
-        jLabel51.setBounds(743, 40, 90, 23);
+        jLabel51.setBounds(753, 40, 90, 23);
 
         cmbArah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Depan", "Axial", "Belakang" }));
         cmbArah.setName("cmbArah"); // NOI18N
-        cmbArah.setOpaque(false);
         cmbArah.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbArah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2431,7 +2420,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass14.add(cmbArah);
-        cmbArah.setBounds(806, 70, 80, 23);
+        cmbArah.setBounds(806, 70, 102, 23);
 
         jLabel52.setText("Arah :");
         jLabel52.setName("jLabel52"); // NOI18N
@@ -2532,11 +2521,10 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel57.setText("Fluor Albus :");
         jLabel57.setName("jLabel57"); // NOI18N
         panelGlass15.add(jLabel57);
-        jLabel57.setBounds(218, 100, 70, 23);
+        jLabel57.setBounds(206, 100, 70, 23);
 
         cmbMobilitas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
         cmbMobilitas.setName("cmbMobilitas"); // NOI18N
-        cmbMobilitas.setOpaque(false);
         cmbMobilitas.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbMobilitas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2544,7 +2532,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass15.add(cmbMobilitas);
-        cmbMobilitas.setBounds(816, 60, 50, 23);
+        cmbMobilitas.setBounds(803, 60, 62, 23);
 
         jLabel60.setText("Sondage :");
         jLabel60.setName("jLabel60"); // NOI18N
@@ -2595,11 +2583,10 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass15.add(TCavumUteri);
-        TCavumUteri.setBounds(468, 60, 288, 23);
+        TCavumUteri.setBounds(468, 60, 272, 23);
 
         cmbFluorGine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
         cmbFluorGine.setName("cmbFluorGine"); // NOI18N
-        cmbFluorGine.setOpaque(false);
         cmbFluorGine.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbFluorGine.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2607,7 +2594,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass15.add(cmbFluorGine);
-        cmbFluorGine.setBounds(291, 100, 50, 23);
+        cmbFluorGine.setBounds(279, 100, 62, 23);
 
         TInspeksi.setHighlighter(null);
         TInspeksi.setName("TInspeksi"); // NOI18N
@@ -2621,7 +2608,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbFluxusGine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
         cmbFluxusGine.setName("cmbFluxusGine"); // NOI18N
-        cmbFluxusGine.setOpaque(false);
         cmbFluxusGine.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbFluxusGine.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2629,7 +2615,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass15.add(cmbFluxusGine);
-        cmbFluxusGine.setBounds(118, 100, 50, 23);
+        cmbFluxusGine.setBounds(118, 100, 62, 23);
 
         jLabel71.setText("Adnexa/Parametrium :");
         jLabel71.setName("jLabel71"); // NOI18N
@@ -2681,7 +2667,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel77.setName("jLabel77"); // NOI18N
         jLabel77.setPreferredSize(new java.awt.Dimension(63, 14));
         panelGlass15.add(jLabel77);
-        jLabel77.setBounds(753, 60, 60, 23);
+        jLabel77.setBounds(740, 60, 60, 23);
 
         TPortioDalam.setHighlighter(null);
         TPortioDalam.setName("TPortioDalam"); // NOI18N
@@ -2701,7 +2687,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass15.add(TBentuk);
-        TBentuk.setBounds(693, 30, 173, 23);
+        TBentuk.setBounds(693, 30, 172, 23);
 
         jLabel78.setText("Ukuran :");
         jLabel78.setName("jLabel78"); // NOI18N
@@ -2711,7 +2697,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         cmbNyeriTekan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "+", "-" }));
         cmbNyeriTekan.setName("cmbNyeriTekan"); // NOI18N
-        cmbNyeriTekan.setOpaque(false);
         cmbNyeriTekan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbNyeriTekan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2719,7 +2704,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass15.add(cmbNyeriTekan);
-        cmbNyeriTekan.setBounds(816, 90, 50, 23);
+        cmbNyeriTekan.setBounds(803, 90, 62, 23);
 
         TSondage.setHighlighter(null);
         TSondage.setName("TSondage"); // NOI18N
@@ -2777,13 +2762,13 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass15.add(TUkuran);
-        TUkuran.setBounds(510, 90, 230, 23);
+        TUkuran.setBounds(510, 90, 217, 23);
 
         jLabel82.setText(", Nyeri Tekan :");
         jLabel82.setName("jLabel82"); // NOI18N
         jLabel82.setPreferredSize(new java.awt.Dimension(63, 14));
         panelGlass15.add(jLabel82);
-        jLabel82.setBounds(737, 90, 76, 23);
+        jLabel82.setBounds(724, 90, 76, 23);
 
         jLabel83.setText("Portio :");
         jLabel83.setName("jLabel83"); // NOI18N
@@ -2832,9 +2817,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         FormInput.add(TPasien);
         TPasien.setBounds(283, 10, 260, 23);
 
-        DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2844,16 +2828,15 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(DTPTgl);
-        DTPTgl.setBounds(627, 10, 90, 23);
+        DTPTgl.setBounds(617, 10, 90, 23);
 
         jLabel18.setText("Tanggal :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(564, 12, 60, 23);
+        jLabel18.setBounds(554, 10, 60, 23);
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam.setName("cmbJam"); // NOI18N
-        cmbJam.setOpaque(false);
         cmbJam.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbJam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2861,11 +2844,10 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbJam);
-        cmbJam.setBounds(721, 10, 45, 23);
+        cmbJam.setBounds(711, 10, 62, 23);
 
         cmbMnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt.setName("cmbMnt"); // NOI18N
-        cmbMnt.setOpaque(false);
         cmbMnt.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbMnt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2873,11 +2855,10 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbMnt);
-        cmbMnt.setBounds(769, 10, 45, 23);
+        cmbMnt.setBounds(776, 10, 62, 23);
 
         cmbDtk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk.setName("cmbDtk"); // NOI18N
-        cmbDtk.setOpaque(false);
         cmbDtk.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbDtk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2885,7 +2866,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbDtk);
-        cmbDtk.setBounds(817, 10, 45, 23);
+        cmbDtk.setBounds(841, 10, 62, 23);
 
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setSelected(true);
@@ -2901,7 +2882,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(ChkJln);
-        ChkJln.setBounds(865, 10, 23, 23);
+        ChkJln.setBounds(906, 10, 23, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -2910,7 +2891,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(135, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
 
-        ChkAccor.setBorder(null);
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
         ChkAccor.setBorderPainted(true);
         ChkAccor.setBorderPaintedFlat(true);
@@ -3478,7 +3458,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 }else{
-                    
                     ttljmdokter=0;ttljmperawat=0;ttlkso=0;ttlpendapatan=0;
                     for(i=0;i<tbRawatDr.getRowCount();i++){
                         if(tbRawatDr.getValueAt(i,0).toString().equals("true")){

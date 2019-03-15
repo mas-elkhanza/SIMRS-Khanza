@@ -99,7 +99,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                 }
             });
         }  
-        InputModalAwal.setDocument(new batasInput((byte)16).getOnlyAngka(InputModalAwal));
         LoadHTML.setEditable(true);
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditorKit(kit);
@@ -126,12 +125,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WindowModalAwal = new javax.swing.JDialog();
-        internalFrame2 = new widget.InternalFrame();
-        InputModalAwal = new widget.TextBox();
-        jLabel8 = new widget.Label();
-        BtnCloseIn = new widget.Button();
-        BtnSimpan2 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label17 = new widget.Label();
@@ -150,70 +143,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         User = new widget.TextBox();
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
-
-        WindowModalAwal.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        WindowModalAwal.setName("WindowModalAwal"); // NOI18N
-        WindowModalAwal.setUndecorated(true);
-        WindowModalAwal.setResizable(false);
-
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Modal Awal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
-        internalFrame2.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaBawah(new java.awt.Color(240, 245, 235));
-        internalFrame2.setLayout(null);
-
-        InputModalAwal.setHighlighter(null);
-        InputModalAwal.setName("InputModalAwal"); // NOI18N
-        InputModalAwal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                InputModalAwalKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(InputModalAwal);
-        InputModalAwal.setBounds(84, 27, 170, 23);
-
-        jLabel8.setText("Modal Awal :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        internalFrame2.add(jLabel8);
-        jLabel8.setBounds(0, 27, 80, 23);
-
-        BtnCloseIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnCloseIn.setMnemonic('U');
-        BtnCloseIn.setText("Tutup");
-        BtnCloseIn.setToolTipText("Alt+U");
-        BtnCloseIn.setName("BtnCloseIn"); // NOI18N
-        BtnCloseIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseInActionPerformed(evt);
-            }
-        });
-        BtnCloseIn.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCloseInKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnCloseIn);
-        BtnCloseIn.setBounds(380, 25, 100, 30);
-
-        BtnSimpan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan2.setMnemonic('S');
-        BtnSimpan2.setText("Simpan");
-        BtnSimpan2.setToolTipText("Alt+S");
-        BtnSimpan2.setName("BtnSimpan2"); // NOI18N
-        BtnSimpan2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpan2ActionPerformed(evt);
-            }
-        });
-        BtnSimpan2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpan2KeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnSimpan2);
-        BtnSimpan2.setBounds(275, 25, 100, 30);
-
-        WindowModalAwal.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -329,7 +258,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -342,7 +270,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
 
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
-        CmbStatus.setOpaque(false);
         CmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(CmbStatus);
 
@@ -469,34 +396,6 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TCariKeyPressed
 
-    private void InputModalAwalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InputModalAwalKeyPressed
-        Valid.pindah(evt,BtnCloseIn,TCari);
-    }//GEN-LAST:event_InputModalAwalKeyPressed
-
-    private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
-        WindowModalAwal.dispose();
-    }//GEN-LAST:event_BtnCloseInActionPerformed
-
-    private void BtnCloseInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCloseInKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            WindowModalAwal.dispose();
-        }else{Valid.pindah(evt, BtnSimpan2, InputModalAwal);}
-    }//GEN-LAST:event_BtnCloseInKeyPressed
-
-    private void BtnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan2ActionPerformed
-        if(InputModalAwal.getText().trim().equals("")){
-            Valid.textKosong(InputModalAwal,"Modal Awal");
-        }else{
-            Sequel.queryu("delete from set_modal_payment");
-            Sequel.menyimpan("set_modal_payment","'"+InputModalAwal.getText()+"'","Modal Awal");
-            WindowModalAwal.setVisible(false);
-        }
-    }//GEN-LAST:event_BtnSimpan2ActionPerformed
-
-    private void BtnSimpan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan2KeyPressed
-        Valid.pindah(evt,InputModalAwal,BtnCloseIn);
-    }//GEN-LAST:event_BtnSimpan2KeyPressed
-
     private void UserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_UserKeyPressed
@@ -520,22 +419,16 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
-    private widget.Button BtnCloseIn;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.Button BtnSimpan2;
     private widget.ComboBox CmbStatus;
-    private widget.TextBox InputModalAwal;
     private widget.editorpane LoadHTML;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.TextBox User;
-    private javax.swing.JDialog WindowModalAwal;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
     private javax.swing.JLabel jLabel11;
-    private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.Label label11;
     private widget.Label label17;
@@ -777,28 +670,14 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
-            }else if(kolom>2){
+            }else if(kolom>0){
                 LoadHTML.setText(
                         "<html>"+
-                          "<table width='1200px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                          "<table width='"+Integer.toString(700+(kolom*90))+"px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                            htmlContent.toString()+
                           "</table>"+
                         "</html>");
-            }else if(kolom>6){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='1700px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }else if(kolom>12){
-                LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2100px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>");
-            }                
+            }            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

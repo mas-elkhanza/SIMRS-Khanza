@@ -272,7 +272,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -415,7 +415,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         jLabel14.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass9.add(jLabel14);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
@@ -428,7 +427,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(18, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
@@ -549,7 +547,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ralan", "Ranap" }));
         Status.setName("Status"); // NOI18N
-        Status.setOpaque(false);
         Status.setPreferredSize(new java.awt.Dimension(308, 23));
         FormInput.add(Status);
         Status.setBounds(720, 10, 108, 23);

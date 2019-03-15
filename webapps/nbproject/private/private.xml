@@ -4,8 +4,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/opt/lampp/htdocs/webapps/inacbg/pages/detailkirim.php</file>
-            <file>file:/opt/lampp/htdocs/webapps/inacbg/conf/wsinacbg.php</file>
+            <file>file:/Applications/XAMPP/htdocs/webapps/berkasrawat/pages/listvedika.php</file>
+            <file>file:/Applications/XAMPP/htdocs/webapps/billing/LaporanBilling2.php</file>
+            <file>file:/Applications/XAMPP/htdocs/webapps/berkasrawat/conf/command.php</file>
+            <file>file:/Applications/XAMPP/htdocs/webapps/berkasrawat/pages/billing.php</file>
+            <file>file:/Applications/XAMPP/htdocs/webapps/conf/conf.php</file>
+            <file>file:/Applications/XAMPP/htdocs/webapps/berkasrawat/css/default.css</file>
+            <file>file:/Applications/XAMPP/htdocs/webapps/berkasrawat/pages/tampilpdf.php</file>
         </group>
     </open-files>
 </project-private>

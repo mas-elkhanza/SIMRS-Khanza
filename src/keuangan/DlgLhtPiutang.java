@@ -211,7 +211,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnDetailPiutang.setBackground(new java.awt.Color(255, 255, 255));
+        MnDetailPiutang.setBackground(new java.awt.Color(255, 255, 254));
         MnDetailPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDetailPiutang.setForeground(java.awt.Color.darkGray);
         MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -225,7 +225,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnDetailPiutang);
 
-        MnDetailCicilan.setBackground(new java.awt.Color(255, 255, 255));
+        MnDetailCicilan.setBackground(new java.awt.Color(255, 255, 254));
         MnDetailCicilan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDetailCicilan.setForeground(java.awt.Color.darkGray);
         MnDetailCicilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -388,7 +388,6 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -400,7 +399,6 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));

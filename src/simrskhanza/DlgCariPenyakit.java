@@ -261,8 +261,7 @@ public final class DlgCariPenyakit extends javax.swing.JDialog {
         panelisi3.add(jLabel11);
 
         cmbHlm.setName("cmbHlm"); // NOI18N
-        cmbHlm.setOpaque(false);
-        cmbHlm.setPreferredSize(new java.awt.Dimension(55, 23));
+        cmbHlm.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(cmbHlm);
 
         label10.setText("Record :");

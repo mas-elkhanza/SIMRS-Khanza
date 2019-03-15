@@ -104,7 +104,7 @@ public class DlgSaldoAkunPerBulan extends javax.swing.JDialog {
         panelisi1.add(label11);
 
         ThnCari.setName("ThnCari"); // NOI18N
-        ThnCari.setPreferredSize(new java.awt.Dimension(65, 23));
+        ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi1.add(ThnCari);
 
         jLabel6.setText("Key Word :");
@@ -157,7 +157,7 @@ public class DlgSaldoAkunPerBulan extends javax.swing.JDialog {
 
         label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(80, 30));
+        label9.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label9);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N

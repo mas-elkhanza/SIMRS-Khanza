@@ -264,7 +264,6 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass8.add(label11);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -281,7 +280,6 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass8.add(label18);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -603,7 +601,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }else if(ex.toString().contains("424")){
                     JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
                 }else if(ex.toString().contains("412")){
-                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondis. Aku, kamu end...!");
+                    JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                 }else if(ex.toString().contains("204")){
                     JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
                 }

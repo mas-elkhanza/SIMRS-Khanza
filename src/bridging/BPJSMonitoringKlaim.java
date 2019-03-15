@@ -369,9 +369,8 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(0, 10, 90, 23);
+        label11.setBounds(0, 10, 70, 23);
 
-        TglSEP1.setEditable(false);
         TglSEP1.setDisplayFormat("dd-MM-yyyy");
         TglSEP1.setName("TglSEP1"); // NOI18N
         TglSEP1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -380,7 +379,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglSEP1);
-        TglSEP1.setBounds(93, 10, 110, 23);
+        TglSEP1.setBounds(73, 10, 110, 23);
 
         label16.setText("PPK Rujukan :");
         label16.setName("label16"); // NOI18N
@@ -449,9 +448,8 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label12);
-        label12.setBounds(206, 10, 27, 23);
+        label12.setBounds(186, 10, 27, 23);
 
-        TglSEP2.setEditable(false);
         TglSEP2.setDisplayFormat("dd-MM-yyyy");
         TglSEP2.setName("TglSEP2"); // NOI18N
         TglSEP2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -460,7 +458,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglSEP2);
-        TglSEP2.setBounds(235, 10, 110, 23);
+        TglSEP2.setBounds(215, 10, 110, 23);
 
         label14.setText("Poli Tujuan :");
         label14.setName("label14"); // NOI18N
@@ -493,53 +491,50 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         panelisi3.add(btnPoli);
         btnPoli.setBounds(734, 70, 28, 23);
 
-        jLabel13.setText("Jns.Pelayanan :");
+        jLabel13.setText("Pelayanan :");
         jLabel13.setName("jLabel13"); // NOI18N
         panelisi3.add(jLabel13);
-        jLabel13.setBounds(0, 40, 90, 23);
+        jLabel13.setBounds(0, 40, 70, 23);
 
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Rawat Inap", "2. Rawat Jalan" }));
         JenisPelayanan.setName("JenisPelayanan"); // NOI18N
-        JenisPelayanan.setOpaque(false);
         JenisPelayanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisPelayananKeyPressed(evt);
             }
         });
         panelisi3.add(JenisPelayanan);
-        JenisPelayanan.setBounds(93, 40, 110, 23);
+        JenisPelayanan.setBounds(73, 40, 125, 23);
 
         jLabel15.setText("Kelas :");
         jLabel15.setName("jLabel15"); // NOI18N
         panelisi3.add(jLabel15);
-        jLabel15.setBounds(207, 40, 40, 23);
+        jLabel15.setBounds(202, 40, 40, 23);
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Kelas 1", "2. Kelas 2", "3. kelas 3" }));
         Kelas.setName("Kelas"); // NOI18N
-        Kelas.setOpaque(false);
         Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelasKeyPressed(evt);
             }
         });
         panelisi3.add(Kelas);
-        Kelas.setBounds(250, 40, 95, 23);
+        Kelas.setBounds(245, 40, 100, 23);
 
         jLabel14.setText("Status :");
         jLabel14.setName("jLabel14"); // NOI18N
         panelisi3.add(jLabel14);
-        jLabel14.setBounds(0, 70, 90, 23);
+        jLabel14.setBounds(0, 70, 70, 23);
 
         Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "1. Proses Verifikasi ", "2. Pending Verifikasi ", "3. Klaim" }));
         Status.setName("Status"); // NOI18N
-        Status.setOpaque(false);
         Status.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 StatusKeyPressed(evt);
             }
         });
         panelisi3.add(Status);
-        Status.setBounds(93, 70, 252, 23);
+        Status.setBounds(73, 70, 272, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
