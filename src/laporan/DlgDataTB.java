@@ -10,6 +10,7 @@
  */
 
 package laporan;
+import bridging.farizdotidReferensiKabupaten;
 import bridging.farizdotidReferensiPropinsi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,6 +63,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     private farizdotidReferensiPropinsi propinsi=new farizdotidReferensiPropinsi(null,false);
+    private farizdotidReferensiKabupaten kabupaten=new farizdotidReferensiKabupaten(null,false);
 
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -128,9 +130,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
         
-
-        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        KdProp.setDocument(new batasInput((byte)10).getOnlyAngka(KdProp));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -154,7 +155,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
             });
         }  
         
-       propinsi.addWindowListener(new WindowListener() {
+        propinsi.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -184,6 +185,42 @@ public final class DlgDataTB extends javax.swing.JDialog {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
                     propinsi.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        kabupaten.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kabupaten.getTable().getSelectedRow()!= -1){                   
+                    KdKab.setText(kabupaten.getTable().getValueAt(kabupaten.getTable().getSelectedRow(),1).toString());
+                    Kabupaten.setText(kabupaten.getTable().getValueAt(kabupaten.getTable().getSelectedRow(),2).toString().toUpperCase());
+                    KdKab.requestFocus();
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kabupaten.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kabupaten.dispose();
                 }
             }
             @Override
@@ -1403,7 +1440,15 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_PropinsiKeyPressed
 
     private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
-        
+        if(KdProp.getText().trim().equals("")||Propinsi.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+            BtnPropinsi.requestFocus();
+        }else{
+            kabupaten.setPropinsi(KdProp.getText(),Propinsi.getText());
+            kabupaten.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kabupaten.setLocationRelativeTo(internalFrame1);
+            kabupaten.setVisible(true);
+        }   
     }//GEN-LAST:event_BtnKabupatenActionPerformed
 
     private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KabupatenMouseMoved
@@ -1536,7 +1581,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_KdKabKeyPressed
 
     private void BtnCari3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BtnCari3ActionPerformed
 
     private void BtnCari3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari3KeyPressed
@@ -1544,7 +1589,41 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCari3KeyPressed
 
     private void BtnCari4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari4ActionPerformed
-        // TODO add your handling code here:
+        if(KdProp.getText().equals("")||KdProp.getText().equals("0")){
+            JOptionPane.showMessageDialog(null,"Kode Propinsi masih kosong, silahkan pilih propinsi yang ada...!!!");
+            BtnPropinsi.requestFocus();
+        }else{
+            if(Kabupaten.getText().equals("")||Kabupaten.getText().equals("-")||Kabupaten.getText().equals("KABUPATEN")){
+                JOptionPane.showMessageDialog(null,"Nama Kabupaten masih kosong, silahkan pilih kabupaten yang ada...!!!");
+                BtnPropinsi.requestFocus();
+            }else{
+                try {
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    requestEntity = new HttpEntity(headers);
+                    rest=new RestTemplate();
+                    root = mapper.readTree(rest.exchange("http://dev.farizdotid.com/api/daerahindonesia/provinsi/"+KdProp.getText()+"/kabupaten", HttpMethod.GET, requestEntity, String.class).getBody());
+                    nameNode = root.path("error");
+                    if(nameNode.asText().equals("false")){
+                        response = root.path("kabupatens");
+                        if(response.isArray()){
+                            for(JsonNode list:response){
+                                if(list.path("nama").asText().toLowerCase().contains(Kabupaten.getText().toLowerCase())){
+                                    KdKab.setText(list.path("id").asText());
+                                }
+                            }
+                        }
+                    }else {
+                        JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                    }   
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                    if(ex.toString().contains("UnknownHostException")){
+                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server http://dev.farizdotid.com terputus...!");
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_BtnCari4ActionPerformed
 
     private void BtnCari4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari4KeyPressed
