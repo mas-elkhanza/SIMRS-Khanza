@@ -448,7 +448,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglBeli1">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglBeli1" noResource="true"/>
               </Properties>
@@ -608,7 +607,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglBeli2">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglBeli2" noResource="true"/>
               </Properties>

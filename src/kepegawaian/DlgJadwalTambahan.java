@@ -76,11 +76,23 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -121,21 +133,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        try {
-            ps=koneksi.prepareStatement(
-                    "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.pendidikan,departemen.nama as departemen from pegawai inner join departemen "+
-                    "on pegawai.departemen=departemen.dep_id where  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nik like ? or "+
-                    " pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nama like ? order by pegawai.nama");
-            ps2=koneksi.prepareStatement("select jadwal_tambahan.h1,jadwal_tambahan.h2,jadwal_tambahan.h3,jadwal_tambahan.h4,jadwal_tambahan.h5,"+
-                    "jadwal_tambahan.h6,jadwal_tambahan.h7,jadwal_tambahan.h8,jadwal_tambahan.h9,jadwal_tambahan.h10,"+
-                    "jadwal_tambahan.h11,jadwal_tambahan.h12,jadwal_tambahan.h13,jadwal_tambahan.h14,jadwal_tambahan.h15,"+
-                    "jadwal_tambahan.h16,jadwal_tambahan.h17,jadwal_tambahan.h18,jadwal_tambahan.h19,jadwal_tambahan.h20,"+
-                    "jadwal_tambahan.h21,jadwal_tambahan.h22,jadwal_tambahan.h23,jadwal_tambahan.h24,jadwal_tambahan.h25,"+
-                    "jadwal_tambahan.h26,jadwal_tambahan.h27,jadwal_tambahan.h28,jadwal_tambahan.h29,jadwal_tambahan.h30,"+
-                    "jadwal_tambahan.h31 from jadwal_tambahan where jadwal_tambahan.id=? and jadwal_tambahan.tahun=? and jadwal_tambahan.bulan=?  ");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        
     }
    
 
@@ -370,7 +368,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(55, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         BlnCari.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 BlnCariItemStateChanged(evt);
@@ -380,11 +378,11 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
 
         label12.setText("Departemen :");
         label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(130, 23));
+        label12.setPreferredSize(new java.awt.Dimension(120, 23));
         panelBiasa1.add(label12);
 
         Departemen.setName("Departemen"); // NOI18N
-        Departemen.setPreferredSize(new java.awt.Dimension(220, 23));
+        Departemen.setPreferredSize(new java.awt.Dimension(230, 23));
         Departemen.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DepartemenItemStateChanged(evt);
@@ -400,7 +398,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tabMode.getRowCount();i++){ 
             Sequel.menyimpan2("jadwal_tambahan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", 34,
                 new String[]{
@@ -442,7 +440,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
                     BlnCari.getSelectedItem().toString()
                 });            
         } 
-        Sequel.AutoComitTrue();
+        
         JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
         tampil();
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -495,7 +493,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -535,7 +533,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,34).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','"+
                                 tabMode.getValueAt(r,35).toString().replaceAll("Midle ","").replaceAll("1","").replaceAll("2","").replaceAll("3","").replaceAll("4","").replaceAll("5","").replaceAll("6","").replaceAll("7","").replaceAll("8","").replaceAll("9","").replaceAll("0","").replaceAll("agi","").replaceAll("iang","").replaceAll("alam","").replaceAll(" ","")+"','','',''","Rekap Presensi"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();   
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -794,60 +792,93 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            i=1;
-            while(rs.next()){
-                h1="";h2="";h3="";h4="";h5="";h6="";h7="";h8="";h9="";h10="";h11="";h12="";h13="";
-                h14="";h15="";h16="";h17="";h18="";h19="";h20="";h21="";h22="";h23="";h24="";
-                h25="";h26="";h27="";h28="";h29="";h30="";h31="";
-                ps2.setString(1,rs.getString("id"));
-                ps2.setString(2,ThnCari.getSelectedItem().toString());
-                ps2.setString(3,BlnCari.getSelectedItem().toString());
-                rs2=ps2.executeQuery();
-                if(rs2.next()){
-                    h1=rs2.getString("h1");
-                    h2=rs2.getString("h2");
-                    h3=rs2.getString("h3");
-                    h4=rs2.getString("h4");
-                    h5=rs2.getString("h5");
-                    h6=rs2.getString("h6");
-                    h7=rs2.getString("h7");
-                    h8=rs2.getString("h8");
-                    h9=rs2.getString("h9");
-                    h10=rs2.getString("h10");
-                    h11=rs2.getString("h11");
-                    h12=rs2.getString("h12");
-                    h13=rs2.getString("h13");
-                    h14=rs2.getString("h14");
-                    h15=rs2.getString("h15");
-                    h16=rs2.getString("h16");
-                    h17=rs2.getString("h17");
-                    h18=rs2.getString("h18");
-                    h19=rs2.getString("h19");
-                    h20=rs2.getString("h20");
-                    h21=rs2.getString("h21");
-                    h22=rs2.getString("h22");
-                    h23=rs2.getString("h23");
-                    h24=rs2.getString("h24");
-                    h25=rs2.getString("h25");
-                    h26=rs2.getString("h26");
-                    h27=rs2.getString("h27");
-                    h28=rs2.getString("h28");
-                    h29=rs2.getString("h29");
-                    h30=rs2.getString("h30");
-                    h31=rs2.getString("h31"); 
+            ps=koneksi.prepareStatement(
+                    "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.pendidikan,departemen.nama as departemen from pegawai inner join departemen "+
+                    "on pegawai.departemen=departemen.dep_id where  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nik like ? or "+
+                    " pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nama like ? order by pegawai.nama");
+            try {
+                ps.setString(1,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                i=1;
+                while(rs.next()){
+                    h1="";h2="";h3="";h4="";h5="";h6="";h7="";h8="";h9="";h10="";h11="";h12="";h13="";
+                    h14="";h15="";h16="";h17="";h18="";h19="";h20="";h21="";h22="";h23="";h24="";
+                    h25="";h26="";h27="";h28="";h29="";h30="";h31="";
+                    ps2=koneksi.prepareStatement("select jadwal_tambahan.h1,jadwal_tambahan.h2,jadwal_tambahan.h3,jadwal_tambahan.h4,jadwal_tambahan.h5,"+
+                        "jadwal_tambahan.h6,jadwal_tambahan.h7,jadwal_tambahan.h8,jadwal_tambahan.h9,jadwal_tambahan.h10,"+
+                        "jadwal_tambahan.h11,jadwal_tambahan.h12,jadwal_tambahan.h13,jadwal_tambahan.h14,jadwal_tambahan.h15,"+
+                        "jadwal_tambahan.h16,jadwal_tambahan.h17,jadwal_tambahan.h18,jadwal_tambahan.h19,jadwal_tambahan.h20,"+
+                        "jadwal_tambahan.h21,jadwal_tambahan.h22,jadwal_tambahan.h23,jadwal_tambahan.h24,jadwal_tambahan.h25,"+
+                        "jadwal_tambahan.h26,jadwal_tambahan.h27,jadwal_tambahan.h28,jadwal_tambahan.h29,jadwal_tambahan.h30,"+
+                        "jadwal_tambahan.h31 from jadwal_tambahan where jadwal_tambahan.id=? and jadwal_tambahan.tahun=? and jadwal_tambahan.bulan=?  ");
+                    try{
+                        ps2.setString(1,rs.getString("id"));
+                        ps2.setString(2,ThnCari.getSelectedItem().toString());
+                        ps2.setString(3,BlnCari.getSelectedItem().toString());
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){
+                            h1=rs2.getString("h1");
+                            h2=rs2.getString("h2");
+                            h3=rs2.getString("h3");
+                            h4=rs2.getString("h4");
+                            h5=rs2.getString("h5");
+                            h6=rs2.getString("h6");
+                            h7=rs2.getString("h7");
+                            h8=rs2.getString("h8");
+                            h9=rs2.getString("h9");
+                            h10=rs2.getString("h10");
+                            h11=rs2.getString("h11");
+                            h12=rs2.getString("h12");
+                            h13=rs2.getString("h13");
+                            h14=rs2.getString("h14");
+                            h15=rs2.getString("h15");
+                            h16=rs2.getString("h16");
+                            h17=rs2.getString("h17");
+                            h18=rs2.getString("h18");
+                            h19=rs2.getString("h19");
+                            h20=rs2.getString("h20");
+                            h21=rs2.getString("h21");
+                            h22=rs2.getString("h22");
+                            h23=rs2.getString("h23");
+                            h24=rs2.getString("h24");
+                            h25=rs2.getString("h25");
+                            h26=rs2.getString("h26");
+                            h27=rs2.getString("h27");
+                            h28=rs2.getString("h28");
+                            h29=rs2.getString("h29");
+                            h30=rs2.getString("h30");
+                            h31=rs2.getString("h31"); 
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                        
+                    tabMode.addRow(new Object[]{
+                        " "+i+".",rs.getString("id"),rs.getString("nama"),rs.getString("pendidikan"),rs.getString("departemen"),
+                        h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30,h31 
+                    });
+                    i++;
                 }
-                tabMode.addRow(new Object[]{
-                    " "+i+".",rs.getString("id"),rs.getString("nama"),rs.getString("pendidikan"),rs.getString("departemen"),
-                    h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30,h31 
-                });
-                i++;
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

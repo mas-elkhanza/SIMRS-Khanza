@@ -281,7 +281,7 @@ public final class sekuel {
                 }            
                 ps.executeUpdate();
             }catch(Exception e){
-                System.out.println("Notifikasi : "+e);            
+                System.out.println("Notifikasi "+table+" : "+e);            
             }finally{
                 if(ps != null){
                     ps.close();
@@ -1456,6 +1456,36 @@ public final class sekuel {
                     rs.close();
                 }
                 
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+            
+        return angka2;
+    }
+    
+    public double cariIsiAngka2(String sql,String data,String data2) {
+        angka2=0;
+        try {
+            ps=connect.prepareStatement(sql);
+            try{            
+                ps.setString(1,data);
+                ps.setString(2,data2);
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    angka2=rs.getDouble(1);
+                }else{
+                    angka2=0;
+                }
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }                
                 if(ps != null){
                     ps.close();
                 }

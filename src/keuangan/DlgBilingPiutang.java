@@ -325,7 +325,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         i=Sequel.cariInteger("select count(no_rawat) from bayar_piutang where no_rawat=?",TNoRw.getText());
         if(i==0){
-            Sequel.AutoComitFalse();
+            
             jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau menghapus PIUTANG ini ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");  
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");  
@@ -444,7 +444,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
                 this.setCursor(Cursor.getDefaultCursor());
             }
-            Sequel.AutoComitTrue();
+            
             JOptionPane.showMessageDialog(null,"Proses hapus selesai, silahkan lakukan refresh\ndi form Data Tagihan Piutang Pasien..!!");
             this.dispose();
         }else{

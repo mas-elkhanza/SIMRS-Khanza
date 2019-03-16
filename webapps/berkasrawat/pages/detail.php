@@ -162,7 +162,7 @@
         <?php
             if ($action=="HAPUS") {                
                 unlink($_GET['lokasi_file']);
-                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' ","?act=Detail&action=TAMBAH&no_rawat=$no_rawat");
+                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' and lokasi_file='".$_GET['lokasi_file']."' ","?act=Detail&action=TAMBAH&no_rawat=$no_rawat");
             }
 
         

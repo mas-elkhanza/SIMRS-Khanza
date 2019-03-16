@@ -75,7 +75,6 @@
             <Component class="widget.Table" name="tbKamar">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                 <Property name="name" type="java.lang.String" value="tbKamar" noResource="true"/>
               </Properties>
             </Component>
@@ -104,7 +103,7 @@
                 <Property name="text" type="java.lang.String" value="TKP :"/>
                 <Property name="name" type="java.lang.String" value="jLabel21" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[35, 23]"/>
+                  <Dimension value="[30, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -118,9 +117,8 @@
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Jenis" noResource="true"/>
-                <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[95, 23]"/>
+                  <Dimension value="[115, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -137,7 +135,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="diagnosa" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[190, 23]"/>
+                  <Dimension value="[185, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -165,7 +163,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="jLabel17" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[30, 23]"/>
+                  <Dimension value="[20, 23]"/>
                 </Property>
               </Properties>
             </Component>

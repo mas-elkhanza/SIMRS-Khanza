@@ -240,7 +240,6 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         label12.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass5.add(label12);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -253,7 +252,6 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
-        CmbStatus.setOpaque(false);
         CmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass5.add(CmbStatus);
 
@@ -470,7 +468,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(tabModeRalan.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 for(int r=0;r<tabModeRalan.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
@@ -489,7 +487,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                         tabModeRalan.getValueAt(r,12).toString().replaceAll("'","`")+"','"+
                                         tabModeRalan.getValueAt(r,13).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','',''","data");
                 }
-                Sequel.AutoComitTrue();
+                
                 Map<String, Object> param = new HashMap<>();                 
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -507,7 +505,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(tabModeRanap.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 for(int r=0;r<tabModeRanap.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
@@ -530,7 +528,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                         tabModeRanap.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
                                         tabModeRanap.getValueAt(r,17).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','',''","data");
                 }
-                Sequel.AutoComitTrue();
+                
                 Map<String, Object> param = new HashMap<>();                 
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -548,7 +546,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(tabModePemasukan.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 for(int r=0;r<tabModePemasukan.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
@@ -557,7 +555,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                         tabModePemasukan.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
                                         tabModePemasukan.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","data");
                 }
-                Sequel.AutoComitTrue();
+                
                 Map<String, Object> param = new HashMap<>();                 
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -575,7 +573,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(tabModePengeluaran.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 for(int r=0;r<tabModePengeluaran.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
@@ -584,7 +582,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                         tabModePengeluaran.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
                                         tabModePengeluaran.getValueAt(r,3).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","data");
                 }
-                Sequel.AutoComitTrue();
+                
                 Map<String, Object> param = new HashMap<>();                 
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());

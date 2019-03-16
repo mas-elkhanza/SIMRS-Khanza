@@ -79,11 +79,23 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -139,7 +151,7 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
         panelGlass5.add(label11);
 
         ThnCari.setName("ThnCari"); // NOI18N
-        ThnCari.setPreferredSize(new java.awt.Dimension(70, 23));
+        ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass5.add(ThnCari);
 
         jLabel6.setText("Key Word :");
@@ -243,7 +255,7 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();         
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -272,7 +284,7 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,14).toString()+"','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }                    
             }
-            Sequel.AutoComitTrue();   
+               
             Valid.MyReport("rptRekapLabPerTahun.jrxml","report","::[ Laporan Rekap Laboratorium Per Tahun ]::",
                 "select * from temporary order by no asc",param);
         }

@@ -73,11 +73,23 @@ public final class DlgCariDiet extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         
@@ -285,7 +297,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
         //diet.setModal(true);
         diet.emptTeks();
         diet.isCek();
-        diet.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         diet.setLocationRelativeTo(internalFrame1);
         diet.setAlwaysOnTop(false);
         diet.setVisible(true);

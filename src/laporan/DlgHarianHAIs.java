@@ -176,7 +176,6 @@ public class DlgHarianHAIs extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi1.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -188,7 +187,6 @@ public class DlgHarianHAIs extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi1.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -628,7 +626,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         jmldarah=jmldarah+1;
                     }
                     if(!rs.getString("ANTIBIOTIK").equals("")){
-                        antibiotik=0;
+                        antibiotik=1;
                         jmlANTIBIOTIK=jmlANTIBIOTIK+1;
                     }
                     
@@ -666,7 +664,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' align='center'>"+sputum+"</td>"+
                             "<td valign='middle' align='center'>"+darah+"</td>"+
                             "<td valign='middle' align='center'>"+urine+"</td>"+
-                            "<td valign='middle' align='left'>"+antibiotik+"</td>"+
+                            "<td valign='middle' align='center'>"+antibiotik+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("ruang")+"</td>"+
                         "</tr>"
                     );
@@ -692,7 +690,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' align='center'>"+jmlsputum+"</td>"+
                             "<td valign='middle' align='center'>"+jmldarah+"</td>"+
                             "<td valign='middle' align='center'>"+jmlurine+"</td>"+
-                            "<td valign='middle' align='left'>"+jmlANTIBIOTIK+"</td>"+
+                            "<td valign='middle' align='center'>"+jmlANTIBIOTIK+"</td>"+
                             "<td valign='middle' align='center'>&nbsp;</td>"+
                         "</tr>"
                     );

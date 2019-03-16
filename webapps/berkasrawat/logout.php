@@ -4,7 +4,7 @@
 	require_once "conf/command.php";
 	if (cekSessiAdmin())
 	{
-	    session_unregister("ses_admin");
+	    $_SESSION["ses_kunjung"]="ses_kunjung";
 	}
        
 	header("Location:index.php");

@@ -190,7 +190,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnUrut1.setBackground(new java.awt.Color(255, 255, 255));
+        MnUrut1.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUrut1.setForeground(new java.awt.Color(70, 70, 70));
         MnUrut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -198,7 +198,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         MnUrut1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut1.setName("MnUrut1"); // NOI18N
-        MnUrut1.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUrut1.setPreferredSize(new java.awt.Dimension(250, 26));
         MnUrut1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUrut1ActionPerformed(evt);
@@ -206,7 +206,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnUrut1);
 
-        MnUrut2.setBackground(new java.awt.Color(255, 255, 255));
+        MnUrut2.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUrut2.setForeground(new java.awt.Color(70, 70, 70));
         MnUrut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -215,7 +215,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         MnUrut2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut2.setName("MnUrut2"); // NOI18N
-        MnUrut2.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUrut2.setPreferredSize(new java.awt.Dimension(250, 26));
         MnUrut2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUrut2ActionPerformed(evt);
@@ -267,7 +267,6 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -284,7 +283,6 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -430,7 +428,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 jumlah="";
@@ -464,7 +462,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"','"+
                                 jumlah+"','"+total+"','"+emb+"','"+tsl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Obat Perpenjab Poli"); 
             }
-            Sequel.AutoComitTrue();            
+                        
             Map<String, Object> param = new HashMap<>();
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());

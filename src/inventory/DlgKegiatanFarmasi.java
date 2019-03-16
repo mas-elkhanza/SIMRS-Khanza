@@ -124,31 +124,49 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
             });
@@ -198,7 +216,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -249,7 +266,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -261,7 +277,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -378,7 +393,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
             param.put("tanggal",Tgl2.getDate());   
             if(TabRawat.getSelectedIndex()==0){
-                Sequel.AutoComitFalse();            
+                            
                 Sequel.queryu("delete from temporary");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
@@ -389,11 +404,11 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();
+                
                 Valid.MyReport("rptKegiatanFarmasi1.jrxml","report","::[ Laporan Kegiatan Farmasi ]::",
                     "select * from temporary order by no asc",param);
             }else if(TabRawat.getSelectedIndex()==1){
-                Sequel.AutoComitFalse();            
+                            
                 Sequel.queryu("delete from temporary");
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
@@ -404,11 +419,11 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                                     tabMode2.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();
+                
                 Valid.MyReport("rptKegiatanFarmasi2.jrxml","report","::[ Laporan Kegiatan Farmasi ]::",
                     "select * from temporary order by no asc",param);
             }else if(TabRawat.getSelectedIndex()==2){
-                Sequel.AutoComitFalse();            
+                            
                 Sequel.queryu("delete from temporary");
                 for(int r=0;r<tabMode3.getRowCount();r++){ 
                     if(!tbBangsal3.getValueAt(r,0).toString().contains(">>")){
@@ -419,7 +434,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                                     tabMode3.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();
+                
                 Valid.MyReport("rptKegiatanFarmasi3.jrxml","report","::[ Laporan Kegiatan Farmasi ]::",
                     "select * from temporary order by no asc",param);
             }                 

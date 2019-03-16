@@ -6,8 +6,6 @@
 package fungsi;
 
 
-import fungsi.koneksiDB;
-import fungsi.sekuel;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -31,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -483,7 +482,7 @@ public final class validasi {
 
     public void LoadTahun(JComboBox cmb){        
         cmb.removeAllItems();
-        for(i =year;i>=1980;i--){
+        for(i =(year+1);i>=1980;i--){
             cmb.addItem(i);
         }
         cmb.setSelectedItem(year);
@@ -751,6 +750,14 @@ public final class validasi {
         }
     }
     
+    public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JCheckBox kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
+    
     public void pindah(java.awt.event.KeyEvent evt,JTextField kiri,JTextField kanan,JTextField bawah){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             kanan.requestFocus();
@@ -866,6 +873,14 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
+    
+    public void pindah(java.awt.event.KeyEvent evt,JCheckBox kiri,JDateTimePicker kanan){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
 
     public void pindah(java.awt.event.KeyEvent evt,JDateTimePicker kiri,JTextField kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -937,6 +952,28 @@ public final class validasi {
         } 
     }
     
+    public void panggilUrl2(String url){
+        String os = System.getProperty("os.name").toLowerCase();
+        Runtime rt = Runtime.getRuntime();                                
+        try{ 
+            Properties prop = new Properties();
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            if(os.contains("win")) {
+                rt.exec( "rundll32 url.dll,FileProtocolHandler "+url);
+            }else if (os.contains("mac")) {
+                rt.exec( "open " +url);
+            }else if (os.contains("nix") || os.contains("nux")) {
+                String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
+                // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
+                StringBuilder cmd = new StringBuilder();
+                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append(url).append( "\" ");
+                rt.exec(new String[] { "sh", "-c", cmd.toString() });
+            } 
+        }catch (Exception e){
+            System.out.println("Notif Browser : "+e);
+        } 
+    }
+    
     public void printUrl(String url) throws URISyntaxException{
         try{
            Properties prop = new Properties();
@@ -973,6 +1010,15 @@ public final class validasi {
         }catch (Exception e) {
         }   
         return s;
+    }
+    
+    public String MaxTeks(String original,int max){
+        if(original.length()>=max){
+            s=original.substring(0,(max-1));
+        }else{
+            s=original;
+        }
+        return original;
     }
     
     public void SetTgl(JDateTimePicker dtp,String tgl){            
@@ -1091,7 +1137,6 @@ public final class validasi {
         }else{
             return Math.round(number);
         }
-
     }
 
        
