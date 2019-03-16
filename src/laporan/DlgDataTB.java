@@ -10,8 +10,10 @@
  */
 
 package laporan;
-import bridging.farizdotidReferensiKabupaten;
-import bridging.farizdotidReferensiPropinsi;
+import bridging.YaskiReferensiKabupaten;
+import bridging.YaskiReferensiKecamatan;
+import bridging.YaskiReferensiKelurahan;
+import bridging.YaskiReferensiPropinsi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
@@ -62,8 +64,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private farizdotidReferensiPropinsi propinsi=new farizdotidReferensiPropinsi(null,false);
-    private farizdotidReferensiKabupaten kabupaten=new farizdotidReferensiKabupaten(null,false);
+    private YaskiReferensiPropinsi propinsi=new YaskiReferensiPropinsi(null,false);
+    private YaskiReferensiKabupaten kabupaten=new YaskiReferensiKabupaten(null,false);
+    private YaskiReferensiKecamatan kecamatan=new YaskiReferensiKecamatan(null,false);
+    private YaskiReferensiKelurahan kelurahan=new YaskiReferensiKelurahan(null,false);
 
     /** Creates new form DlgJnsPerawatan
      * @param parent
@@ -226,6 +230,78 @@ public final class DlgDataTB extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         }); 
+        
+        kecamatan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kecamatan.getTable().getSelectedRow()!= -1){                   
+                    KdKec.setText(kecamatan.getTable().getValueAt(kecamatan.getTable().getSelectedRow(),1).toString());
+                    Kecamatan.setText(kecamatan.getTable().getValueAt(kecamatan.getTable().getSelectedRow(),2).toString().toUpperCase());
+                    KdKec.requestFocus();
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kecamatan.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kecamatan.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        kelurahan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kelurahan.getTable().getSelectedRow()!= -1){                   
+                    KdKel.setText(kelurahan.getTable().getValueAt(kelurahan.getTable().getSelectedRow(),1).toString());
+                    Kelurahan.setText(kelurahan.getTable().getValueAt(kelurahan.getTable().getSelectedRow(),2).toString().toUpperCase());
+                    KdKel.requestFocus();
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kelurahan.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kelurahan.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
     
     }
     
@@ -1358,7 +1434,15 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_KelurahanKeyPressed
 
     private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
-        
+        if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
+            BtnKelurahan.requestFocus();
+        }else{
+            kelurahan.setPropinsi(KdKec.getText(),Kecamatan.getText());
+            kelurahan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kelurahan.setLocationRelativeTo(internalFrame1);
+            kelurahan.setVisible(true);
+        }
     }//GEN-LAST:event_BtnKelurahanActionPerformed
 
     private void KecamatanMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KecamatanMouseMoved
@@ -1396,7 +1480,15 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_KecamatanKeyPressed
 
     private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
-        
+        if(KdKab.getText().trim().equals("")||Kabupaten.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+            BtnKabupaten.requestFocus();
+        }else{
+            kecamatan.setPropinsi(KdKab.getText(),Kabupaten.getText());
+            kecamatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            kecamatan.setLocationRelativeTo(internalFrame1);
+            kecamatan.setVisible(true);
+        }
     }//GEN-LAST:event_BtnKecamatanActionPerformed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
@@ -1495,24 +1587,30 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 requestEntity = new HttpEntity(headers);
                 rest=new RestTemplate();
-                root = mapper.readTree(rest.exchange("http://dev.farizdotid.com/api/daerahindonesia/provinsi", HttpMethod.GET, requestEntity, String.class).getBody());
-                nameNode = root.path("error");
-                if(nameNode.asText().equals("false")){
-                    response = root.path("semuaprovinsi");
+                root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/provinsi/?search="+Propinsi.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                nameNode = root.path("status");
+                if(nameNode.asText().equals("ok")){
+                    response = root.path("data");
                     if(response.isArray()){
+                        i=0;
                         for(JsonNode list:response){
                             if(list.path("nama").asText().toLowerCase().contains(Propinsi.getText().toLowerCase())){
-                                KdProp.setText(list.path("id").asText());
+                                KdProp.setText(list.path("id_prov").asText());
+                                i++;
                             }
+                        }
+                        if(i==0){
+                            KdProp.setText("");
+                            JOptionPane.showMessageDialog(null,"Data Propinsi tidak ditemukan..!!");
                         }
                     }
                 }else {
-                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                    JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
                 }   
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
                 if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(rootPane,"Koneksi ke server http://dev.farizdotid.com terputus...!");
+                    JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
                 }
             }
         }
@@ -1535,8 +1633,47 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_KdPropKeyPressed
 
     private void BtnCari2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari2ActionPerformed
-        if(Kecamatan.getText().equals("")||Kecamatan.getText().equals("KECAMATAN")){
-            
+        if(KdKec.getText().equals("")||KdKec.getText().equals("0")){
+            JOptionPane.showMessageDialog(null,"Kode Kecamatan masih kosong, silahkan pilih kecamatan yang ada...!!!");
+            BtnKecamatan.requestFocus();
+        }else{
+            if(Kelurahan.getText().equals("")||Kelurahan.getText().equals("-")||Kelurahan.getText().equals("KELURAHAN")){
+                JOptionPane.showMessageDialog(null,"Nama Kelurahan masih kosong, silahkan pilih kelurahan yang ada...!!!");
+                BtnKelurahan.requestFocus();
+            }else{
+                try {
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    requestEntity = new HttpEntity(headers);
+                    rest=new RestTemplate();
+                    root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/kecamatan/"+KdKec.getText()+"/kelurahan", HttpMethod.GET, requestEntity, String.class).getBody());
+                    nameNode = root.path("status");
+                    if(nameNode.asText().equals("ok")){
+                        response = root.path("data");
+                        if(response.isArray()){
+                            i=0;
+                            for(JsonNode list:response){
+                                System.out.println(list.path("nama").asText().toLowerCase());
+                                if(list.path("nama").asText().toLowerCase().contains(Kelurahan.getText().toLowerCase())){
+                                    KdKel.setText(list.path("id_kel").asText());
+                                    i++;
+                                }
+                            }
+                            if(i==0){
+                                KdKel.setText("");
+                                JOptionPane.showMessageDialog(null,"Data Kelurahan tidak ditemukan..!!");
+                            }
+                        }
+                    }else {
+                        JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
+                    }   
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                    if(ex.toString().contains("UnknownHostException")){
+                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
+                    }
+                }
+            }
         }
     }//GEN-LAST:event_BtnCari2ActionPerformed
 
@@ -1581,7 +1718,47 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_KdKabKeyPressed
 
     private void BtnCari3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari3ActionPerformed
-        
+        if(KdKab.getText().equals("")||KdKab.getText().equals("0")){
+            JOptionPane.showMessageDialog(null,"Kode Kabupaten masih kosong, silahkan pilih kabupaten yang ada...!!!");
+            BtnKabupaten.requestFocus();
+        }else{
+            if(Kecamatan.getText().equals("")||Kecamatan.getText().equals("-")||Kecamatan.getText().equals("KECAMATAN")){
+                JOptionPane.showMessageDialog(null,"Nama Kecamatan masih kosong, silahkan pilih kecamatan yang ada...!!!");
+                BtnKecamatan.requestFocus();
+            }else{
+                try {
+                    headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    requestEntity = new HttpEntity(headers);
+                    rest=new RestTemplate();
+                    root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/kabupaten/"+KdKab.getText()+"/kecamatan", HttpMethod.GET, requestEntity, String.class).getBody());
+                    nameNode = root.path("status");
+                    if(nameNode.asText().equals("ok")){
+                        response = root.path("data");
+                        if(response.isArray()){
+                            i=0;
+                            for(JsonNode list:response){
+                                if(list.path("nama").asText().toLowerCase().contains(Kecamatan.getText().toLowerCase())){
+                                    KdKec.setText(list.path("id_kec").asText());
+                                    i++;
+                                }
+                            }
+                            if(i==0){
+                                KdKec.setText("");
+                                JOptionPane.showMessageDialog(null,"Data Kecamatan tidak ditemukan..!!");
+                            }
+                        }
+                    }else {
+                        JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
+                    }   
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                    if(ex.toString().contains("UnknownHostException")){
+                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_BtnCari3ActionPerformed
 
     private void BtnCari3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari3KeyPressed
@@ -1602,24 +1779,30 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     requestEntity = new HttpEntity(headers);
                     rest=new RestTemplate();
-                    root = mapper.readTree(rest.exchange("http://dev.farizdotid.com/api/daerahindonesia/provinsi/"+KdProp.getText()+"/kabupaten", HttpMethod.GET, requestEntity, String.class).getBody());
-                    nameNode = root.path("error");
-                    if(nameNode.asText().equals("false")){
-                        response = root.path("kabupatens");
+                    root = mapper.readTree(rest.exchange("http://yaski.or.id:8888/provinsi/"+KdProp.getText()+"/kabupaten", HttpMethod.GET, requestEntity, String.class).getBody());
+                    nameNode = root.path("status");
+                    if(nameNode.asText().equals("ok")){
+                        response = root.path("data");
                         if(response.isArray()){
+                            i=0;
                             for(JsonNode list:response){
                                 if(list.path("nama").asText().toLowerCase().contains(Kabupaten.getText().toLowerCase())){
-                                    KdKab.setText(list.path("id").asText());
+                                    KdKab.setText(list.path("id_kab").asText());
+                                    i++;
                                 }
+                            }
+                            if(i==0){
+                                KdKab.setText("");
+                                JOptionPane.showMessageDialog(null,"Data Kabupaten tidak ditemukan..!!");
                             }
                         }
                     }else {
-                        JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                        JOptionPane.showMessageDialog(null,nameNode.path("status").asText());                
                     }   
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                     if(ex.toString().contains("UnknownHostException")){
-                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server http://dev.farizdotid.com terputus...!");
+                        JOptionPane.showMessageDialog(rootPane,"Koneksi ke server YASKI terputus...!");
                     }
                 }
             }
