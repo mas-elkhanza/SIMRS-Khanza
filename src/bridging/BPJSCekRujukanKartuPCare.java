@@ -1725,6 +1725,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnDocument.setBackground(new java.awt.Color(255, 255, 254));
         MnDocument.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDocument.setForeground(new java.awt.Color(70, 70, 70));
         MnDocument.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1741,6 +1742,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnDocument);
 
+        ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan.setForeground(new java.awt.Color(70, 70, 70));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1757,6 +1759,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppPengajuan);
 
+        ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPengajuan1.setForeground(new java.awt.Color(70, 70, 70));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2982,7 +2985,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(495, 55, 90, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 21:18:58" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:17:53" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);

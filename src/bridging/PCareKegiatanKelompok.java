@@ -364,6 +364,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
+        ppPeserta.setBackground(new java.awt.Color(255, 255, 254));
         ppPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPeserta.setForeground(new java.awt.Color(70, 70, 70));
         ppPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

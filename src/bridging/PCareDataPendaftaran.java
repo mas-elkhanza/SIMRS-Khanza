@@ -836,6 +836,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.setPreferredSize(new java.awt.Dimension(190, 26));
         MnGelang.setRequestFocusEnabled(false);
 
+        MnGelang1.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGelang1.setForeground(new java.awt.Color(70, 70, 70));
         MnGelang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -852,6 +853,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnGelang1);
 
+        MnGelang2.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGelang2.setForeground(new java.awt.Color(70, 70, 70));
         MnGelang2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -868,6 +870,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnGelang2);
 
+        MnGelang3.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGelang3.setForeground(new java.awt.Color(70, 70, 70));
         MnGelang3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -884,6 +887,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnGelang3);
 
+        MnGelang4.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGelang4.setForeground(new java.awt.Color(70, 70, 70));
         MnGelang4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -900,6 +904,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnGelang4);
 
+        MnGelang5.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGelang5.setForeground(new java.awt.Color(70, 70, 70));
         MnGelang5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -916,6 +921,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnGelang5);
 
+        MnGelang6.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGelang6.setForeground(new java.awt.Color(70, 70, 70));
         MnGelang6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -932,6 +938,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnGelang6);
 
+        MnLabelTracker.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLabelTracker.setForeground(new java.awt.Color(70, 70, 70));
         MnLabelTracker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -948,6 +955,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnLabelTracker);
 
+        MnLabelTracker1.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLabelTracker1.setForeground(new java.awt.Color(70, 70, 70));
         MnLabelTracker1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -964,6 +972,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnLabelTracker1);
 
+        MnLabelTracker2.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLabelTracker2.setForeground(new java.awt.Color(70, 70, 70));
         MnLabelTracker2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -980,6 +989,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnLabelTracker2);
 
+        MnLabelTracker3.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLabelTracker3.setForeground(new java.awt.Color(70, 70, 70));
         MnLabelTracker3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -996,6 +1006,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnLabelTracker3);
 
+        MnBarcode1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcode1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcode1.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcode1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1012,6 +1023,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnBarcode1);
 
+        MnBarcode2.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcode2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcode2.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcode2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1028,6 +1040,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnBarcode2);
 
+        MnBarcode.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcode.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1044,6 +1057,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         MnGelang.add(MnBarcode);
 
+        MnBarcodeRM9.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM9.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1062,6 +1076,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         jPopupMenu1.add(MnGelang);
 
+        MnPemberianObat.setBackground(new java.awt.Color(255, 255, 254));
         MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPemberianObat.setForeground(new java.awt.Color(70, 70, 70));
         MnPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1078,6 +1093,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnPemberianObat);
 
+        MnPemberianObat1.setBackground(new java.awt.Color(255, 255, 254));
         MnPemberianObat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPemberianObat1.setForeground(new java.awt.Color(70, 70, 70));
         MnPemberianObat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1094,6 +1110,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnPemberianObat1);
 
+        MnTIndakan.setBackground(new java.awt.Color(255, 255, 254));
         MnTIndakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnTIndakan.setForeground(new java.awt.Color(70, 70, 70));
         MnTIndakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1110,6 +1127,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnTIndakan);
 
+        MnTIndakan1.setBackground(new java.awt.Color(255, 255, 254));
         MnTIndakan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnTIndakan1.setForeground(new java.awt.Color(70, 70, 70));
         MnTIndakan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1126,6 +1144,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnTIndakan1);
 
+        ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1142,6 +1161,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppRiwayat);
 
+        ppBuktiKunjungan.setBackground(new java.awt.Color(255, 255, 254));
         ppBuktiKunjungan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBuktiKunjungan.setForeground(new java.awt.Color(70, 70, 70));
         ppBuktiKunjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1160,7 +1180,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019 13:39:46" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019 05:44:12" }));
         tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -1259,7 +1279,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel22.setBounds(0, 102, 90, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1575,7 +1595,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel26.setBounds(30, 270, 97, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1680,7 +1700,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnStatusPulang.setBounds(354, 360, 28, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1887,7 +1907,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel32.setBounds(90, 410, 95, 23);
 
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -2235,7 +2255,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2249,7 +2269,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2338,7 +2358,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel42);
 
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2352,7 +2372,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel43);
 
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2019" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2019" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);

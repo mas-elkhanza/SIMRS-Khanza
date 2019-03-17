@@ -555,6 +555,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
+        ppBarcode.setBackground(new java.awt.Color(255, 255, 254));
         ppBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBarcode.setForeground(new java.awt.Color(70, 70, 70));
         ppBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -571,6 +572,7 @@ public class DlgBarang extends javax.swing.JDialog {
         });
         Popup.add(ppBarcode);
 
+        ppBarcodeItem.setBackground(new java.awt.Color(255, 255, 254));
         ppBarcodeItem.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBarcodeItem.setForeground(new java.awt.Color(70, 70, 70));
         ppBarcodeItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -587,6 +589,7 @@ public class DlgBarang extends javax.swing.JDialog {
         });
         Popup.add(ppBarcodeItem);
 
+        ppStok.setBackground(new java.awt.Color(255, 255, 254));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppStok.setForeground(new java.awt.Color(70, 70, 70));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -603,6 +606,7 @@ public class DlgBarang extends javax.swing.JDialog {
         });
         Popup.add(ppStok);
 
+        ppStok2.setBackground(new java.awt.Color(255, 255, 254));
         ppStok2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppStok2.setForeground(new java.awt.Color(70, 70, 70));
         ppStok2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -619,6 +623,7 @@ public class DlgBarang extends javax.swing.JDialog {
         });
         Popup.add(ppStok2);
 
+        MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRestore.setForeground(new java.awt.Color(70, 70, 70));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1341,7 +1346,6 @@ public class DlgBarang extends javax.swing.JDialog {
         DTPExpired.setBounds(644, 252, 100, 23);
 
         ChkKadaluarsa.setBackground(new java.awt.Color(235, 255, 235));
-        ChkKadaluarsa.setBorder(null);
         ChkKadaluarsa.setSelected(true);
         ChkKadaluarsa.setText("Tanggal Kadaluwarsa :");
         ChkKadaluarsa.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

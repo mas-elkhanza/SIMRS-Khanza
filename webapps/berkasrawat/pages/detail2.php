@@ -133,7 +133,7 @@
         <?php
             if ($action=="HAPUS") {
                 unlink($_GET['lokasi_file']);
-                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' ","?act=Detail2&action=TAMBAH&no_rawat=$no_rawat");
+                Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' and lokasi_file='".$_GET['lokasi_file']."'","?act=Detail2&action=TAMBAH&no_rawat=$no_rawat");
             }
             
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

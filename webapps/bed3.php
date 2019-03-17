@@ -3,7 +3,7 @@
  session_start();
  require_once('conf/conf.php');
  require_once('updateaplicare.php');
- require_once('./updatesiranap.php');
+ require_once('updatesiranap.php');
  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
  header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
  header("Cache-Control: no-store, no-cache, must-revalidate"); 

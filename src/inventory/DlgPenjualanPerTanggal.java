@@ -279,6 +279,7 @@ public class DlgPenjualanPerTanggal extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppLokasi.setForeground(new java.awt.Color(70, 70, 70));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N

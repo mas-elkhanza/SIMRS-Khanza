@@ -236,6 +236,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -252,6 +253,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapus);
 
+        ppDisetujui.setBackground(new java.awt.Color(255, 255, 254));
         ppDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppDisetujui.setForeground(new java.awt.Color(70, 70, 70));
         ppDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -268,6 +270,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppDisetujui);
 
+        ppTidakDisetujui.setBackground(new java.awt.Color(255, 255, 254));
         ppTidakDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTidakDisetujui.setForeground(new java.awt.Color(70, 70, 70));
         ppTidakDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
