@@ -398,6 +398,13 @@ public final class DlgDataTB extends javax.swing.JDialog {
         CmbJk9 = new widget.ComboBox();
         Alamat3 = new widget.TextBox();
         jLabel26 = new widget.Label();
+        jLabel27 = new widget.Label();
+        CmbJk10 = new widget.ComboBox();
+        jLabel28 = new widget.Label();
+        CmbJk11 = new widget.ComboBox();
+        jLabel29 = new widget.Label();
+        jLabel30 = new widget.Label();
+        CmbJk12 = new widget.ComboBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -771,7 +778,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(270, 160, 54, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2019 08:12:58" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2019 12:07:42" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1334,6 +1341,56 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
         jLabel26.setBounds(482, 280, 100, 23);
+
+        jLabel27.setText("Sebelum Pengobatan :");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(0, 310, 120, 23);
+
+        CmbJk10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Tidak dilakukan" }));
+        CmbJk10.setName("CmbJk10"); // NOI18N
+        CmbJk10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk10KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk10);
+        CmbJk10.setBounds(194, 310, 125, 23);
+
+        jLabel28.setText("Tes Cepat :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(314, 310, 70, 23);
+
+        CmbJk11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rif sensitif", "Rif resisten", "Negatif", "Rif Indeterminated", "Invalid", "Error", "No Result", "Tidak dilakukan" }));
+        CmbJk11.setName("CmbJk11"); // NOI18N
+        CmbJk11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk11KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk11);
+        CmbJk11.setBounds(387, 310, 143, 23);
+
+        jLabel29.setText("Mikroskopis :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(120, 310, 70, 23);
+
+        jLabel30.setText("Biakan :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(527, 310, 50, 23);
+
+        CmbJk12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negatif", "1-19 BTA", "1+", "2+", "3+", "4+", "NTM", "Kontaminasi", "Tidak dilakukan" }));
+        CmbJk12.setName("CmbJk12"); // NOI18N
+        CmbJk12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk12KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk12);
+        CmbJk12.setBounds(580, 310, 125, 23);
 
         Scroll1.setViewportView(FormInput);
 
@@ -2152,6 +2209,18 @@ public final class DlgDataTB extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Alamat3KeyPressed
 
+    private void CmbJk10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk10KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk10KeyPressed
+
+    private void CmbJk11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk11KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk11KeyPressed
+
+    private void CmbJk12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk12KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk12KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2191,6 +2260,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.Button BtnSimpan;
     private widget.ComboBox CmbJk;
     private widget.ComboBox CmbJk1;
+    private widget.ComboBox CmbJk10;
+    private widget.ComboBox CmbJk11;
+    private widget.ComboBox CmbJk12;
     private widget.ComboBox CmbJk2;
     private widget.ComboBox CmbJk3;
     private widget.ComboBox CmbJk4;
@@ -2244,7 +2316,11 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
     private widget.Label jLabel3;
+    private widget.Label jLabel30;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
