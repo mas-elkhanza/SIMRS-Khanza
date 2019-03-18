@@ -6255,7 +6255,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                      KdKecamatan.getText(),NmKecamatan.getText(),NoSKDP.getText(),KdDPJP.getText(),NmDPJP.getText()
                  })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
-                        try {
+                        /*try {
                             URL = link+"/Sep/updtglplg";
                             headers2= new HttpHeaders();
                             headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -6279,17 +6279,17 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                             System.out.println("code : "+nameNode.path("code").asText());
                             System.out.println("message : "+nameNode.path("message").asText());
                             response = root.path("response");
-                            if(nameNode.path("code").asText().equals("200")){
+                            if(nameNode.path("code").asText().equals("200")){*/
                                 Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                                      Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
                                      response.asText()
                                 }); 
-                            }else{
+                            /*}else{
                                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                             }
                         }catch (Exception ex) {
                             System.out.println("Notifikasi Bridging : "+ex);
-                        }
+                        }*/
                     }    
                     JOptionPane.showMessageDialog(null,"Proses Selesai...!");
                     if(!nosep.equals("")){

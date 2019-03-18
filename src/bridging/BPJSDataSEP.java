@@ -4316,7 +4316,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                          "-",NoBalasan.getText()
                      });
                      if(JenisPelayanan.getSelectedIndex()==1){
-                        try {
+                        /*try {
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -4340,14 +4340,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             System.out.println("code : "+nameNode.path("code").asText());
                             System.out.println("message : "+nameNode.path("message").asText());
                             response = root.path("response");
-                            if(nameNode.path("code").asText().equals("200")){
+                            if(nameNode.path("code").asText().equals("200")){*/
                                 Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                                      Valid.SetTgl(TanggalSEP.getSelectedItem()+""),
                                      response.asText()
                                 });
                                 emptTeks();                         
                                 tampil();     
-                            }else{
+                            /*}else{
                                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                             }
                         }catch (Exception ex) {
@@ -4355,7 +4355,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             if(ex.toString().contains("UnknownHostException")){
                                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
                             }
-                        }
+                        }*/
                      } 
                      if(!prb.equals("")){
                         if(Sequel.menyimpantf("bpjs_prb","?,?","PRB",2,new String[]{response.asText(),prb})==true){
