@@ -188,7 +188,7 @@
     </div>
             <table width="100%" align="center" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr class="head3">					
-                    <td width="690px">
+                    <td width="720px">
                         Periode : 
                         <select name="tanggalawal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
                              <?php
