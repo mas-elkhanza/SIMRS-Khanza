@@ -33,6 +33,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import restore.DlgRestorePoli;
 
 /**
  *
@@ -133,14 +134,11 @@ public final class DlgPoli extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
-        ppSimpan = new javax.swing.JMenuItem();
-        ppGanti = new javax.swing.JMenuItem();
-        ppHapus = new javax.swing.JMenuItem();
-        ppCetak = new javax.swing.JMenuItem();
         ppOrder = new javax.swing.JMenu();
         ppOrderKode = new javax.swing.JMenuItem();
         ppOrderNama = new javax.swing.JMenuItem();
         ppOrderKtg = new javax.swing.JMenuItem();
+        MnRestore = new javax.swing.JMenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -172,90 +170,20 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
-        ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppSimpan.setForeground(new java.awt.Color(70, 70, 70));
-        ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        ppSimpan.setText("Simpan");
-        ppSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSimpan.setIconTextGap(8);
-        ppSimpan.setName("ppSimpan"); // NOI18N
-        ppSimpan.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
-            }
-        });
-        Popup.add(ppSimpan);
-
-        ppGanti.setBackground(new java.awt.Color(242, 242, 242));
-        ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(70, 70, 70));
-        ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        ppGanti.setText("Ganti");
-        ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppGanti.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGanti.setIconTextGap(8);
-        ppGanti.setName("ppGanti"); // NOI18N
-        ppGanti.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppGanti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        Popup.add(ppGanti);
-
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
-        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
-        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        ppHapus.setText("Hapus");
-        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
-        ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        Popup.add(ppHapus);
-
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
-        ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
-        ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        ppCetak.setText("Cetak");
-        ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
-        ppCetak.setName("ppCetak"); // NOI18N
-        ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppCetak);
-
-        ppOrder.setBackground(new java.awt.Color(242, 242, 242));
+        ppOrder.setBackground(new java.awt.Color(245, 255, 250));
         ppOrder.setForeground(new java.awt.Color(70, 70, 70));
-        ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrder.setIconTextGap(8);
         ppOrder.setName("ppOrder"); // NOI18N
 
-        ppOrderKode.setBackground(new java.awt.Color(242, 242, 242));
+        ppOrderKode.setBackground(new java.awt.Color(254, 254, 254));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppOrderKode.setForeground(new java.awt.Color(70, 70, 70));
-        ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrderKode.setText("Kode Unit");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppOrderKode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppOrderKode.setIconTextGap(8);
         ppOrderKode.setName("ppOrderKode"); // NOI18N
         ppOrderKode.setPreferredSize(new java.awt.Dimension(150, 25));
         ppOrderKode.addActionListener(new java.awt.event.ActionListener() {
@@ -265,14 +193,13 @@ public final class DlgPoli extends javax.swing.JDialog {
         });
         ppOrder.add(ppOrderKode);
 
-        ppOrderNama.setBackground(new java.awt.Color(242, 242, 242));
+        ppOrderNama.setBackground(new java.awt.Color(254, 254, 254));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppOrderNama.setForeground(new java.awt.Color(70, 70, 70));
-        ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrderNama.setText("Nama Unit");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppOrderNama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppOrderNama.setIconTextGap(8);
         ppOrderNama.setName("ppOrderNama"); // NOI18N
         ppOrderNama.setPreferredSize(new java.awt.Dimension(150, 25));
         ppOrderNama.addActionListener(new java.awt.event.ActionListener() {
@@ -282,14 +209,13 @@ public final class DlgPoli extends javax.swing.JDialog {
         });
         ppOrder.add(ppOrderNama);
 
-        ppOrderKtg.setBackground(new java.awt.Color(242, 242, 242));
+        ppOrderKtg.setBackground(new java.awt.Color(254, 254, 254));
         ppOrderKtg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppOrderKtg.setForeground(new java.awt.Color(70, 70, 70));
-        ppOrderKtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        ppOrderKtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrderKtg.setText("Registrasi");
         ppOrderKtg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppOrderKtg.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppOrderKtg.setIconTextGap(8);
         ppOrderKtg.setName("ppOrderKtg"); // NOI18N
         ppOrderKtg.setPreferredSize(new java.awt.Dimension(150, 25));
         ppOrderKtg.addActionListener(new java.awt.event.ActionListener() {
@@ -300,6 +226,21 @@ public final class DlgPoli extends javax.swing.JDialog {
         ppOrder.add(ppOrderKtg);
 
         Popup.add(ppOrder);
+
+        MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRestore.setForeground(new java.awt.Color(70, 70, 70));
+        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnRestore.setText("Data Sampah");
+        MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnRestore.setName("MnRestore"); // NOI18N
+        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnRestore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRestoreActionPerformed(evt);
+            }
+        });
+        Popup.add(MnRestore);
 
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
@@ -627,7 +568,7 @@ public final class DlgPoli extends javax.swing.JDialog {
             Sequel.menyimpan("poliklinik","'"+Kd.getText()+"','"+
                     Nm.getText()+"','"+
                     By.getText()+"','"+
-                    ByLm.getText()+"'","Kode Unit");
+                    ByLm.getText()+"','1'","Kode Unit");
             BtnCariActionPerformed(evt);
             emptTeks();
         }
@@ -654,7 +595,7 @@ public final class DlgPoli extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         for(i=0;i<tbKamar.getRowCount();i++){ 
             if(tbKamar.getValueAt(i,0).toString().equals("true")){
-                Sequel.meghapus("poliklinik","kd_poli",tbKamar.getValueAt(i,1).toString());
+                Sequel.mengedit("poliklinik","kd_poli='"+tbKamar.getValueAt(i,1).toString()+"'","status='0'");
             }
         } 
         BtnCariActionPerformed(evt);
@@ -719,8 +660,8 @@ public final class DlgPoli extends javax.swing.JDialog {
                     param.put("emailrs",var.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting"));        
             Valid.MyReport("rptPoli.jrxml","report","::[ Data Unit ]::","select kd_poli, nm_poli, registrasi, registrasilama "+
-                " from poliklinik where  kd_poli like '%"+TCari.getText().trim()+"%' or "+
-                " nm_poli like '%"+TCari.getText().trim()+"%' order by kd_poli",param);
+                " from poliklinik where status='1' and kd_poli like '%"+TCari.getText().trim()+"%' or "+
+                " status='1' and nm_poli like '%"+TCari.getText().trim()+"%' order by kd_poli",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -816,6 +757,13 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         }
     }//GEN-LAST:event_tbKamarKeyReleased
 
+    private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
+        DlgRestorePoli restore=new DlgRestorePoli(null,true);
+        restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        restore.setLocationRelativeTo(internalFrame1);
+        restore.setVisible(true);
+    }//GEN-LAST:event_MnRestoreActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -846,6 +794,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.TextBox Kd;
     private widget.TextBox Kd2;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnRestore;
     private widget.TextBox Nm;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
@@ -861,14 +810,10 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppCetak;
-    private javax.swing.JMenuItem ppGanti;
-    private javax.swing.JMenuItem ppHapus;
     private javax.swing.JMenu ppOrder;
     private javax.swing.JMenuItem ppOrderKode;
     private javax.swing.JMenuItem ppOrderKtg;
     private javax.swing.JMenuItem ppOrderNama;
-    private javax.swing.JMenuItem ppSimpan;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
@@ -876,11 +821,11 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         String sql="";
         if(TCari.getText().equals("")){
             sql="select kd_poli, nm_poli, registrasi,registrasilama "+
-                   "from poliklinik "+order;
+                   "from poliklinik where status='1' "+order;
         }else if(!TCari.getText().equals("")){
             sql="select kd_poli, nm_poli, registrasi,registrasilama "+
-                " from poliklinik where kd_poli like '%"+TCari.getText().trim()+"%' or "+
-                " nm_poli like '%"+TCari.getText().trim()+"%' "+order;
+                " from poliklinik where status='1' and kd_poli like '%"+TCari.getText().trim()+"%' or "+
+                " status='1' and nm_poli like '%"+TCari.getText().trim()+"%' "+order;
         } 
         prosesCari(sql);
     }
@@ -948,5 +893,10 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         BtnHapus.setEnabled(var.getregistrasi());
         BtnEdit.setEnabled(var.getregistrasi());
         BtnPrint.setEnabled(var.getregistrasi());
+        if(var.getkode().equals("Admin Utama")){
+            MnRestore.setEnabled(true);
+        }else{
+            MnRestore.setEnabled(false);
+        }
     }
 }
