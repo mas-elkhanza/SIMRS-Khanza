@@ -1375,7 +1375,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel29.setText("Mikroskopis :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(120, 310, 70, 23);
+        jLabel29.setBounds(121, 310, 70, 23);
 
         jLabel30.setText("Biakan :");
         jLabel30.setName("jLabel30"); // NOI18N
