@@ -365,8 +365,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                     "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama "+
                     "from poliklinik inner join jadwal inner join dokter on poliklinik.kd_poli=jadwal.kd_poli "+
                     "and dokter.kd_dokter=jadwal.kd_dokter "+
-                    "where jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
-                    "jadwal.hari_kerja=? and poliklinik.nm_poli like ? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
+                    "where poliklinik.status='1' and jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
+                    "poliklinik.status='1' and jadwal.hari_kerja=? and poliklinik.nm_poli like ? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
             try{                
                 switch (day) {
                     case 1:
