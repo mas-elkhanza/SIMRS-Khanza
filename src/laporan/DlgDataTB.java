@@ -405,6 +405,16 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel29 = new widget.Label();
         jLabel30 = new widget.Label();
         CmbJk12 = new widget.ComboBox();
+        jLabel34 = new widget.Label();
+        jLabel35 = new widget.Label();
+        CmbJk14 = new widget.ComboBox();
+        jLabel36 = new widget.Label();
+        Alamat5 = new widget.TextBox();
+        Alamat6 = new widget.TextBox();
+        jLabel37 = new widget.Label();
+        CmbJk15 = new widget.ComboBox();
+        jLabel38 = new widget.Label();
+        jLabel39 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -778,7 +788,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(270, 160, 54, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2019 12:07:42" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-03-2019 06:22:28" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1260,7 +1270,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(532, 250, 80, 23);
 
-        DTPLahir1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2019" }));
+        DTPLahir1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-03-2019" }));
         DTPLahir1.setDisplayFormat("dd-MM-yyyy");
         DTPLahir1.setName("DTPLahir1"); // NOI18N
         DTPLahir1.setOpaque(false);
@@ -1391,6 +1401,96 @@ public final class DlgDataTB extends javax.swing.JDialog {
         });
         FormInput.add(CmbJk12);
         CmbJk12.setBounds(580, 310, 125, 23);
+
+        jLabel34.setText("Pemeriksaan Laborat Bulan ke 2 :");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(0, 340, 174, 23);
+
+        jLabel35.setText("Mikroskopis :");
+        jLabel35.setName("jLabel35"); // NOI18N
+        FormInput.add(jLabel35);
+        jLabel35.setBounds(0, 360, 100, 23);
+
+        CmbJk14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Tidak dilakukan" }));
+        CmbJk14.setName("CmbJk14"); // NOI18N
+        CmbJk14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk14KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk14);
+        CmbJk14.setBounds(103, 360, 125, 23);
+
+        jLabel36.setText("No.Reg :");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(230, 360, 50, 23);
+
+        Alamat5.setHighlighter(null);
+        Alamat5.setName("Alamat5"); // NOI18N
+        Alamat5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                Alamat5MouseMoved(evt);
+            }
+        });
+        Alamat5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Alamat5MouseExited(evt);
+            }
+        });
+        Alamat5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Alamat5KeyPressed(evt);
+            }
+        });
+        FormInput.add(Alamat5);
+        Alamat5.setBounds(283, 360, 72, 23);
+
+        Alamat6.setHighlighter(null);
+        Alamat6.setName("Alamat6"); // NOI18N
+        Alamat6.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                Alamat6MouseMoved(evt);
+            }
+        });
+        Alamat6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Alamat6MouseExited(evt);
+            }
+        });
+        Alamat6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Alamat6KeyPressed(evt);
+            }
+        });
+        FormInput.add(Alamat6);
+        Alamat6.setBounds(633, 360, 72, 23);
+
+        jLabel37.setText("No.Reg :");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput.add(jLabel37);
+        jLabel37.setBounds(580, 360, 50, 23);
+
+        CmbJk15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Tidak dilakukan" }));
+        CmbJk15.setName("CmbJk15"); // NOI18N
+        CmbJk15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk15KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk15);
+        CmbJk15.setBounds(453, 360, 125, 23);
+
+        jLabel38.setText("Mikroskopis :");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(350, 360, 100, 23);
+
+        jLabel39.setText("Pemeriksaan Laborat Bulan ke 3 :");
+        jLabel39.setName("jLabel39"); // NOI18N
+        FormInput.add(jLabel39);
+        jLabel39.setBounds(350, 340, 174, 23);
 
         Scroll1.setViewportView(FormInput);
 
@@ -2221,6 +2321,38 @@ public final class DlgDataTB extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_CmbJk12KeyPressed
 
+    private void CmbJk14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk14KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk14KeyPressed
+
+    private void Alamat5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat5MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat5MouseMoved
+
+    private void Alamat5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat5MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat5MouseExited
+
+    private void Alamat5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat5KeyPressed
+
+    private void Alamat6MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat6MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat6MouseMoved
+
+    private void Alamat6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat6MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat6MouseExited
+
+    private void Alamat6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat6KeyPressed
+
+    private void CmbJk15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk15KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk15KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2242,6 +2374,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.TextBox Alamat1;
     private widget.TextBox Alamat2;
     private widget.TextBox Alamat3;
+    private widget.TextBox Alamat5;
+    private widget.TextBox Alamat6;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -2263,6 +2397,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.ComboBox CmbJk10;
     private widget.ComboBox CmbJk11;
     private widget.ComboBox CmbJk12;
+    private widget.ComboBox CmbJk14;
+    private widget.ComboBox CmbJk15;
     private widget.ComboBox CmbJk2;
     private widget.ComboBox CmbJk3;
     private widget.ComboBox CmbJk4;
@@ -2321,6 +2457,12 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.Label jLabel29;
     private widget.Label jLabel3;
     private widget.Label jLabel30;
+    private widget.Label jLabel34;
+    private widget.Label jLabel35;
+    private widget.Label jLabel36;
+    private widget.Label jLabel37;
+    private widget.Label jLabel38;
+    private widget.Label jLabel39;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;

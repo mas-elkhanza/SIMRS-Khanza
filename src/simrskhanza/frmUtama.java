@@ -233,6 +233,7 @@ import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
+import bridging.SiranapKetersediaanKamar;
 import bridging.SisruteCekReferensiAlasanRujuk;
 import bridging.SisruteCekReferensiDiagnosa;
 import bridging.SisruteCekReferensiFaskes;
@@ -1035,6 +1036,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPembayaranAkunBayar3 = new widget.ButtonBig();
         btnPasswordAsuransi = new widget.ButtonBig();
         btnDataSITT = new widget.ButtonBig();
+        btnSiranapKetersediaanKamar = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1127,7 +1129,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setWarnaAtas(new java.awt.Color(180, 230, 170));
-        internalFrame3.setWarnaBawah(new java.awt.Color(253, 255, 249));
+        internalFrame3.setWarnaBawah(new java.awt.Color(235, 255, 245));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.lightGray);
@@ -1189,7 +1191,7 @@ public class frmUtama extends javax.swing.JFrame {
         BtnLogin.setMnemonic('Z');
         BtnLogin.setText("Log-in");
         BtnLogin.setToolTipText("Alt+Z");
-        BtnLogin.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnLogin.setGlassColor(new java.awt.Color(235, 255, 245));
         BtnLogin.setName("BtnLogin"); // NOI18N
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1204,7 +1206,7 @@ public class frmUtama extends javax.swing.JFrame {
         BtnCancel.setMnemonic('Y');
         BtnCancel.setText("Batal");
         BtnCancel.setToolTipText("Alt+Y");
-        BtnCancel.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnCancel.setGlassColor(new java.awt.Color(235, 255, 245));
         BtnCancel.setName("BtnCancel"); // NOI18N
         BtnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6574,6 +6576,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDataSITT);
 
+        btnSiranapKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
+        btnSiranapKetersediaanKamar.setText("Ketersediaan Kamar SIRANAP");
+        btnSiranapKetersediaanKamar.setIconTextGap(0);
+        btnSiranapKetersediaanKamar.setName("btnSiranapKetersediaanKamar"); // NOI18N
+        btnSiranapKetersediaanKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSiranapKetersediaanKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiranapKetersediaanKamarActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSiranapKetersediaanKamar);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6582,7 +6596,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/03/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13652,6 +13666,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnDataSITTActionPerformed
 
+    private void btnSiranapKetersediaanKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiranapKetersediaanKamarActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SiranapKetersediaanKamar form=new SiranapKetersediaanKamar(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSiranapKetersediaanKamarActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14090,6 +14115,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSetupRM;
     private widget.ButtonBig btnSetupTarif;
     private widget.ButtonBig btnSidikJari;
+    private widget.ButtonBig btnSiranapKetersediaanKamar;
     private widget.ButtonBig btnSirkulasi;
     private widget.ButtonBig btnSirkulasi2;
     private widget.ButtonBig btnSirkulasi3;
@@ -16191,6 +16217,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getsisrute_rujukan_keluar()==true){
                 Panelmenu.add(btnRujukanKeluarSisrute);
+                jmlmenu++;
+            }
+            
+            if(var.getsiranap_ketersediaan_kamar()==true){
+                Panelmenu.add(btnSiranapKetersediaanKamar);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -18378,6 +18409,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getsisrute_rujukan_keluar()==true){
             Panelmenu.add(btnRujukanKeluarSisrute);
+            jmlmenu++;
+        }
+
+        if(var.getsiranap_ketersediaan_kamar()==true){
+            Panelmenu.add(btnSiranapKetersediaanKamar);
             jmlmenu++;
         }
 
@@ -21214,6 +21250,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsisrute_rujukan_keluar()==true){
             if(btnRujukanKeluarSisrute.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRujukanKeluarSisrute);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsiranap_ketersediaan_kamar()==true){
+            if(btnSiranapKetersediaanKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSiranapKetersediaanKamar);
                 jmlmenu++;
             }                
         }
