@@ -55,7 +55,7 @@
                   <Color blue="aa" green="e6" red="b4" type="rgb"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f9" green="ff" red="fd" type="rgb"/>
+                  <Color blue="f5" green="ff" red="eb" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -196,7 +196,7 @@
                     <Property name="text" type="java.lang.String" value="Log-in"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+Z"/>
                     <Property name="glassColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                      <Color blue="f5" green="ff" red="eb" type="rgb"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="BtnLogin" noResource="true"/>
                   </Properties>
@@ -221,7 +221,7 @@
                     <Property name="text" type="java.lang.String" value="Batal"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+Y"/>
                     <Property name="glassColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                      <Color blue="f5" green="ff" red="eb" type="rgb"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="BtnCancel" noResource="true"/>
                   </Properties>
@@ -7541,6 +7541,22 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDataSITTActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="widget.ButtonBig" name="btnSiranapKetersediaanKamar">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1485357524_Company.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Ketersediaan Kamar SIRANAP"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnSiranapKetersediaanKamar" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSiranapKetersediaanKamarActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -7557,7 +7573,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="15/03/2019"/>
+            <StringItem index="0" value="21/03/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
