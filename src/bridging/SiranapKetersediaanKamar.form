@@ -9,10 +9,10 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="21-03-2019 11:20:27"/>
+            <StringItem index="0" value="2019-03-22 05:48:39"/>
           </StringArray>
         </Property>
-        <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
+        <Property name="displayFormat" type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
         <Property name="name" type="java.lang.String" value="Tanggal" noResource="true"/>
         <Property name="opaque" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -550,7 +550,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel11">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tersedia Pria &amp; Wanita :"/>
+                    <Property name="text" type="java.lang.String" value="Menunggu :"/>
                     <Property name="name" type="java.lang.String" value="jLabel11" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -559,16 +559,16 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="TersediaPW">
+                <Component class="widget.TextBox" name="TersediaMenunggu">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="null"/>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="TersediaPW" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="TersediaMenunggu" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TersediaPWKeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TersediaMenungguKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -621,7 +621,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="Kelas1">
+                <Component class="widget.ComboBox" name="RuangSiranap">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="30">
@@ -657,11 +657,10 @@
                         <StringItem index="29" value="0030 Kedokteran Nuklir"/>
                       </StringArray>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="Kelas1" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="RuangSiranap" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="Kelas1ItemStateChanged"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kelas1KeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RuangSiranapKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -669,7 +668,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="Kelas2">
+                <Component class="widget.ComboBox" name="KelasSiranap">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="9">
@@ -684,11 +683,10 @@
                         <StringItem index="8" value="0009 Stroke Care Unit"/>
                       </StringArray>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="Kelas2" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="KelasSiranap" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="Kelas2ItemStateChanged"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kelas2KeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KelasSiranapKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
