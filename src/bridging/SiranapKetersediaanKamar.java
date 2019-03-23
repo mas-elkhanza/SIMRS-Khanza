@@ -55,7 +55,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
     private int i=0;
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private final Properties prop = new Properties();
-    private String requestXML,URL="",kod;
+    private String requestXML,URL="";
     private SirsApi api=new SirsApi();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -247,7 +247,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-03-2019 05:48:39" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019-03-23 07:48:15" }));
         Tanggal.setDisplayFormat("yyyy-MM-dd HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -770,8 +770,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                     System.out.println(requestXML);
                     root = mapper.readTree(requestXML);
                     if(root.path("response").asText().equals("1")){
-                        Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=?",2,new String[]{
-                            tbJnsPerawatan.getValueAt(i,1).toString(),tbJnsPerawatan.getValueAt(i,2).toString()
+                        Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=? and kd_bangsal=? and kelas=?",4,new String[]{
+                            tbJnsPerawatan.getValueAt(i,1).toString(),tbJnsPerawatan.getValueAt(i,2).toString(),tbJnsPerawatan.getValueAt(i,3).toString(),tbJnsPerawatan.getValueAt(i,5).toString()
                         });
                     }else{
                         JOptionPane.showMessageDialog(null,nameNode.path("deskripsi").asText());
@@ -822,8 +822,9 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                 System.out.println(requestXML);
                 root = mapper.readTree(requestXML);
                 if(root.path("response").asText().equals("1")){
-                    Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=?",2,new String[]{
-                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()
+                    Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=? and kd_bangsal=? and kelas=?",4,new String[]{
+                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(),
+                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString()
                     });
                 }else{
                     JOptionPane.showMessageDialog(null,nameNode.path("deskripsi").asText());
