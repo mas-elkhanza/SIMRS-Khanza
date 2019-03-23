@@ -489,7 +489,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnHapusObatOperasi.setBackground(new java.awt.Color(255, 255, 255));
+        MnHapusObatOperasi.setBackground(new java.awt.Color(255, 255, 254));
         MnHapusObatOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnHapusObatOperasi.setForeground(new java.awt.Color(70, 70, 70));
         MnHapusObatOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -503,7 +503,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnHapusObatOperasi);
 
-        MnHapusTagihanOperasi.setBackground(new java.awt.Color(255, 255, 255));
+        MnHapusTagihanOperasi.setBackground(new java.awt.Color(255, 255, 254));
         MnHapusTagihanOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnHapusTagihanOperasi.setForeground(new java.awt.Color(70, 70, 70));
         MnHapusTagihanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -517,7 +517,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnHapusTagihanOperasi);
 
-        MnUbahOperatorPetugas.setBackground(new java.awt.Color(255, 255, 255));
+        MnUbahOperatorPetugas.setBackground(new java.awt.Color(255, 255, 254));
         MnUbahOperatorPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUbahOperatorPetugas.setForeground(new java.awt.Color(70, 70, 70));
         MnUbahOperatorPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1440,7 +1440,6 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 70, 23);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1493,7 +1492,6 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         panelisi3.add(label18);
         label18.setBounds(173, 40, 30, 23);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.addKeyListener(new java.awt.event.KeyAdapter() {

@@ -271,9 +271,9 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppHapus.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Retur");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -297,7 +297,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -589,7 +589,6 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         panelisiBeli.add(label11);
         label11.setBounds(320, 40, 55, 23);
 
-        TglRetur1.setEditable(false);
         TglRetur1.setDisplayFormat("dd-MM-yyyy");
         TglRetur1.setName("TglRetur1"); // NOI18N
         TglRetur1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -607,7 +606,6 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         panelisiBeli.add(label12);
         label12.setBounds(500, 40, 27, 23);
 
-        TglRetur2.setEditable(false);
         TglRetur2.setDisplayFormat("dd-MM-yyyy");
         TglRetur2.setName("TglRetur2"); // NOI18N
         TglRetur2.addKeyListener(new java.awt.event.KeyAdapter() {

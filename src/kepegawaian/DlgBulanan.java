@@ -267,7 +267,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
 
         internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Presensi Harian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaBawah(new java.awt.Color(245, 250, 240));
+        internalFrame2.setWarnaBawah(new java.awt.Color(255, 254, 255));
         internalFrame2.setLayout(null);
 
         label2.setText("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -334,7 +334,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(65, 23));
         internalFrame2.add(label23);
-        label23.setBounds(-7, 27, 89, 23);
+        label23.setBounds(-7, 27, 69, 23);
 
         Nm.setEditable(false);
         Nm.setName("Nm"); // NOI18N
@@ -345,7 +345,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(Nm);
-        Nm.setBounds(198, 27, 330, 23);
+        Nm.setBounds(178, 27, 348, 23);
 
         Cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         Cari.setMnemonic('C');
@@ -370,66 +370,66 @@ public final class DlgBulanan extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(Nik);
-        Nik.setBounds(85, 27, 110, 23);
+        Nik.setBounds(65, 27, 110, 23);
 
         tglMasuk.setDisplayFormat("dd-MM-yyyy");
         tglMasuk.setName("tglMasuk"); // NOI18N
         tglMasuk.setPreferredSize(new java.awt.Dimension(105, 23));
         internalFrame2.add(tglMasuk);
-        tglMasuk.setBounds(85, 57, 110, 23);
+        tglMasuk.setBounds(65, 57, 90, 23);
 
         Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam.setName("Jam"); // NOI18N
         internalFrame2.add(Jam);
-        Jam.setBounds(198, 57, 50, 23);
+        Jam.setBounds(159, 57, 62, 23);
 
-        label26.setText("Jam Masuk :");
+        label26.setText("Masuk :");
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         internalFrame2.add(label26);
-        label26.setBounds(-7, 57, 89, 23);
+        label26.setBounds(-7, 57, 69, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
         Menit.setName("Menit"); // NOI18N
         internalFrame2.add(Menit);
-        Menit.setBounds(251, 57, 50, 23);
+        Menit.setBounds(224, 57, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
         Detik.setName("Detik"); // NOI18N
         internalFrame2.add(Detik);
-        Detik.setBounds(304, 57, 50, 23);
+        Detik.setBounds(289, 57, 62, 23);
 
         Jam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam2.setName("Jam2"); // NOI18N
         internalFrame2.add(Jam2);
-        Jam2.setBounds(560, 57, 50, 23);
+        Jam2.setBounds(536, 57, 62, 23);
 
         Menit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
         Menit2.setName("Menit2"); // NOI18N
         internalFrame2.add(Menit2);
-        Menit2.setBounds(613, 57, 50, 23);
+        Menit2.setBounds(601, 57, 62, 23);
 
         Detik2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60" }));
         Detik2.setName("Detik2"); // NOI18N
         internalFrame2.add(Detik2);
-        Detik2.setBounds(666, 57, 50, 23);
+        Detik2.setBounds(666, 57, 62, 23);
 
-        label28.setText("Jam Pulang :");
+        label28.setText("Pulang :");
         label28.setName("label28"); // NOI18N
         label28.setPreferredSize(new java.awt.Dimension(65, 23));
         internalFrame2.add(label28);
-        label28.setBounds(326, 57, 118, 23);
+        label28.setBounds(379, 57, 60, 23);
 
         label24.setText("Catatan :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(65, 23));
         internalFrame2.add(label24);
-        label24.setBounds(-7, 87, 89, 23);
+        label24.setBounds(-7, 87, 69, 23);
 
         catatan.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         catatan.setName("catatan"); // NOI18N
         internalFrame2.add(catatan);
-        catatan.setBounds(85, 87, 630, 23);
+        catatan.setBounds(65, 87, 663, 23);
 
         jamdatang.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jamdatang.setName("jamdatang"); // NOI18N
@@ -446,14 +446,14 @@ public final class DlgBulanan extends javax.swing.JDialog {
         label25.setName("label25"); // NOI18N
         label25.setPreferredSize(new java.awt.Dimension(65, 23));
         internalFrame2.add(label25);
-        label25.setBounds(573, 27, 50, 23);
+        label25.setBounds(563, 27, 40, 23);
 
         Shift.setBackground(new java.awt.Color(245, 255, 235));
         Shift.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pagi", "Pagi2", "Pagi3", "Pagi4", "Pagi5", "Pagi6", "Pagi7", "Pagi8", "Pagi9", "Pagi10", "Siang", "Siang2", "Siang3", "Siang4", "Siang5", "Siang6", "Siang7", "Siang8", "Siang9", "Siang10", "Malam", "Malam2", "Malam3", "Malam4", "Malam5", "Malam6", "Malam7", "Malam8", "Malam9", "Malam10", "Midle Pagi1", "Midle Pagi2", "Midle Pagi3", "Midle Pagi4", "Midle Pagi5", "Midle Pagi6", "Midle Pagi7", "Midle Pagi8", "Midle Pagi9", "Midle Pagi10", "Midle Siang1", "Midle Siang2", "Midle Siang3", "Midle Siang4", "Midle Siang5", "Midle Siang6", "Midle Siang7", "Midle Siang8", "Midle Siang9", "Midle Siang10", "Midle Malam1", "Midle Malam2", "Midle Malam3", "Midle Malam4", "Midle Malam5", "Midle Malam6", "Midle Malam7", "Midle Malam8", "Midle Malam9", "Midle Malam10" }));
         Shift.setName("Shift"); // NOI18N
         Shift.setPreferredSize(new java.awt.Dimension(80, 23));
         internalFrame2.add(Shift);
-        Shift.setBounds(626, 27, 90, 23);
+        Shift.setBounds(606, 27, 122, 23);
 
         jampulang.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         jampulang.setName("jampulang"); // NOI18N
@@ -465,7 +465,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         tglPulang.setName("tglPulang"); // NOI18N
         tglPulang.setPreferredSize(new java.awt.Dimension(105, 23));
         internalFrame2.add(tglPulang);
-        tglPulang.setBounds(447, 57, 110, 23);
+        tglPulang.setBounds(442, 57, 90, 23);
 
         DlgInput.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
 
@@ -528,7 +528,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(50, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass7.add(BlnCari);
 
         label12.setText("Departemen :");
@@ -547,7 +547,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         panelGlass7.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(190, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);

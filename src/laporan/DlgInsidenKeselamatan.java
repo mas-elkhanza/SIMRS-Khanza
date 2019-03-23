@@ -405,7 +405,7 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kode);
-        Kode.setBounds(88, 12, 90, 23);
+        Kode.setBounds(88, 12, 100, 23);
 
         jLabel8.setText("Nama Insiden :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -429,14 +429,13 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KPC", "KTC", "KNC", "KTD", "Sentinel" }));
         Jenis.setName("Jenis"); // NOI18N
-        Jenis.setOpaque(false);
         Jenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisKeyPressed(evt);
             }
         });
         FormInput.add(Jenis);
-        Jenis.setBounds(88, 42, 90, 23);
+        Jenis.setBounds(88, 42, 100, 23);
 
         jLabel10.setText("Dampak/Severity :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -445,14 +444,13 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
 
         Dampak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Tidak Signifikan", "2. Minor", "3. Moderat", "4. Mayor", "5. Katastropik" }));
         Dampak.setName("Dampak"); // NOI18N
-        Dampak.setOpaque(false);
         Dampak.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DampakKeyPressed(evt);
             }
         });
         FormInput.add(Dampak);
-        Dampak.setBounds(313, 42, 180, 23);
+        Dampak.setBounds(313, 42, 200, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 

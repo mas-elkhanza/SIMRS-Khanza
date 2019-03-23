@@ -563,9 +563,8 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         internalFrame2.add(label12);
         label12.setBounds(457, 55, 100, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -875,9 +874,8 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         jLabel27.setPreferredSize(new java.awt.Dimension(110, 23));
         panelCari.add(jLabel27);
 
-        TglPinjam1.setEditable(false);
         TglPinjam1.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2018" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -900,9 +898,8 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(35, 23));
         panelCari.add(jLabel22);
 
-        TglPinjam2.setEditable(false);
         TglPinjam2.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2018" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);

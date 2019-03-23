@@ -385,7 +385,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(212, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(202, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -440,12 +440,11 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 
         jLabel11.setText("Halaman :");
         jLabel11.setName("jLabel11"); // NOI18N
-        jLabel11.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel11);
 
         cmbHlm.setName("cmbHlm"); // NOI18N
-        cmbHlm.setOpaque(false);
-        cmbHlm.setPreferredSize(new java.awt.Dimension(55, 23));
+        cmbHlm.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(cmbHlm);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
@@ -536,7 +535,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(TKeterangan);
-        TKeterangan.setBounds(103, 90, 360, 23);
+        TKeterangan.setBounds(103, 90, 330, 23);
 
         jLabel10.setText("Keterangan :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -579,12 +578,12 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbStatus);
-        cmbStatus.setBounds(519, 89, 100, 23);
+        cmbStatus.setBounds(489, 89, 130, 23);
 
         jLabel12.setText("Status :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(466, 89, 50, 23);
+        jLabel12.setBounds(436, 89, 50, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 

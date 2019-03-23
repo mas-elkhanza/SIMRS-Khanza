@@ -117,12 +117,12 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
         panelGlass8.add(label11);
 
         ThnCari.setName("ThnCari"); // NOI18N
-        ThnCari.setPreferredSize(new java.awt.Dimension(65, 23));
+        ThnCari.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass8.add(ThnCari);
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(50, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass8.add(BlnCari);
 
         jLabel6.setText("Key Word :");

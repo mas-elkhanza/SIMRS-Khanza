@@ -110,8 +110,6 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnLaporanBiayaRalan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -128,22 +126,6 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnLaporanBiayaRalan.setBackground(new java.awt.Color(255, 255, 255));
-        MnLaporanBiayaRalan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        MnLaporanBiayaRalan.setForeground(java.awt.Color.darkGray);
-        MnLaporanBiayaRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
-        MnLaporanBiayaRalan.setText("Laporan Biaya Rawat Jalan");
-        MnLaporanBiayaRalan.setName("MnLaporanBiayaRalan"); // NOI18N
-        MnLaporanBiayaRalan.setPreferredSize(new java.awt.Dimension(250, 28));
-        MnLaporanBiayaRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnLaporanBiayaRalanActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnLaporanBiayaRalan);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -157,12 +139,10 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -187,7 +167,6 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -199,7 +178,6 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -363,15 +341,6 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbBangsalKeyPressed
 
-private void MnLaporanBiayaRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLaporanBiayaRalanActionPerformed
-     if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            tbBangsal.requestFocus();
-        }else{
-            Valid.panggilUrl("billing/LaporanBiayaRalan.php?tgl1="+Valid.SetTgl(Valid.SetTgl(Tgl1.getSelectedItem()+"")+"")+"&tgl2="+Valid.SetTgl(Tgl2.getSelectedItem()+""));                       
-        } 
-}//GEN-LAST:event_MnLaporanBiayaRalanActionPerformed
-
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         
         tampil();
@@ -411,13 +380,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private javax.swing.JMenuItem MnLaporanBiayaRalan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TKd;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label18;
