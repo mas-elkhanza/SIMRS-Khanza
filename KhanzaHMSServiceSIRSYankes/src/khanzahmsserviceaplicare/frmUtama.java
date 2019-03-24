@@ -211,7 +211,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "<kosong_male>"+Integer.toString(tersedia)+"</kosong_male>\n"+
                                             "<kosong_female>"+Integer.toString(tersedia)+"</kosong_female>\n"+
                                             "<waiting>"+Integer.toString(menunggu)+"</waiting>\n"+
-                                            "<tgl_update>"+dateFormat.format(date)+".0</tgl_update>\n"+
+                                            "<tgl_update>"+dateFormat.format(date)+"</tgl_update>\n"+
                                         "</data>\n"+
                                     "</xml>";              
                                     TeksArea.append("JSON dikirim : "+requestXML+"\n");
