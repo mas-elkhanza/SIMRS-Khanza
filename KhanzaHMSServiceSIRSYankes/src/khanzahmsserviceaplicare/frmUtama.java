@@ -5,8 +5,6 @@
  */
 package khanzahmsserviceaplicare;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.SirsApi;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -25,7 +23,6 @@ import javax.swing.Timer;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 
 /**
  *
@@ -39,10 +36,6 @@ public class frmUtama extends javax.swing.JFrame {
     private  SirsApi api=new SirsApi();
     private  HttpHeaders headers;
     private  HttpEntity requestEntity;
-    private  ObjectMapper mapper= new ObjectMapper();
-    private  JsonNode root;
-    private  JsonNode nameNode;
-    private  JsonNode response;
     private  PreparedStatement ps;
     private  ResultSet rs;
     private int totaltt=0,tersedia=0,menunggu=0,terpakai=0;
@@ -212,12 +205,12 @@ public class frmUtama extends javax.swing.JFrame {
                                         "<data>\n"+
                                             "<kode_ruang>"+rs.getString("kode_ruang_siranap").substring(0,4)+"</kode_ruang>\n"+
                                             "<tipe_pasien>"+rs.getString("kelas_ruang_siranap").substring(0,4)+"</tipe_pasien>\n"+
-                                            "<total_TT>"+Double.toString(totaltt)+"</total_TT>\n"+
-                                            "<terpakai_male>"+Double.toString(terpakai)+"</terpakai_male>\n"+
-                                            "<terpakai_female>"+Double.toString(terpakai)+"</terpakai_female>\n"+
-                                            "<kosong_male>"+Double.toString(tersedia)+"</kosong_male>\n"+
-                                            "<kosong_female>"+Double.toString(tersedia)+"</kosong_female>\n"+
-                                            "<waiting>"+Double.toString(menunggu)+"</waiting>\n"+
+                                            "<total_TT>"+Integer.toString(totaltt)+"</total_TT>\n"+
+                                            "<terpakai_male>"+Integer.toString(terpakai)+"</terpakai_male>\n"+
+                                            "<terpakai_female>"+Integer.toString(terpakai)+"</terpakai_female>\n"+
+                                            "<kosong_male>"+Integer.toString(tersedia)+"</kosong_male>\n"+
+                                            "<kosong_female>"+Integer.toString(tersedia)+"</kosong_female>\n"+
+                                            "<waiting>"+Integer.toString(menunggu)+"</waiting>\n"+
                                             "<tgl_update>"+dateFormat.format(date)+".0</tgl_update>\n"+
                                         "</data>\n"+
                                     "</xml>";              

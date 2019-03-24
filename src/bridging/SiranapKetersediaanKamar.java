@@ -703,8 +703,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                         "<kode_ruang>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
                         "<tipe_pasien>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
                         "<total_TT>"+Kapasitas.getText()+"</total_TT>\n"+
-                        "<terpakai_male>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaPria.getText()))+"</terpakai_male>\n"+
-                        "<terpakai_female>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaWanita.getText()))+"</terpakai_female>\n"+
+                        "<terpakai_male>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaPria.getText()))+"</terpakai_male>\n"+
+                        "<terpakai_female>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaWanita.getText()))+"</terpakai_female>\n"+
                         "<kosong_male>"+TersediaPria.getText()+"</kosong_male>\n"+
                         "<kosong_female>"+TersediaWanita.getText()+"</kosong_female>\n"+
                         "<waiting>"+TersediaMenunggu.getText()+"</waiting>\n"+
@@ -849,8 +849,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                         "<kode_ruang>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
                         "<tipe_pasien>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
                         "<total_TT>"+Kapasitas.getText()+"</total_TT>\n"+
-                        "<terpakai_male>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaPria.getText()))+"</terpakai_male>\n"+
-                        "<terpakai_female>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaWanita.getText()))+"</terpakai_female>\n"+
+                        "<terpakai_male>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaPria.getText()))+"</terpakai_male>\n"+
+                        "<terpakai_female>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaWanita.getText()))+"</terpakai_female>\n"+
                         "<kosong_male>"+TersediaPria.getText()+"</kosong_male>\n"+
                         "<kosong_female>"+TersediaWanita.getText()+"</kosong_female>\n"+
                         "<waiting>"+TersediaMenunggu.getText()+"</waiting>\n"+
