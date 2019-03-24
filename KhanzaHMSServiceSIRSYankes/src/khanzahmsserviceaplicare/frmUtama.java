@@ -78,7 +78,7 @@ public class frmUtama extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SIMKES Khanza Service Aplicare");
+        setTitle("SIMKES Khanza Service SIRANAP");
         setResizable(false);
         getContentPane().setLayout(null);
 
