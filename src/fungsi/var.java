@@ -96,7 +96,7 @@ public final class var {
             sisrute_referensi_alasanrujuk=false,sisrute_referensi_diagnosa=false,sisrute_rujukan_masuk=false,sisrute_rujukan_keluar=false,
             bpjs_cek_skdp=false,data_batch=false,kunjungan_permintaan_lab=false,kunjungan_permintaan_lab2=false,kunjungan_permintaan_radiologi=false,
             kunjungan_permintaan_radiologi2=false,pcare_pemberian_obat=false,pcare_pemberian_tindakan=false,pembayaran_akun_bayar3=false,
-            password_asuransi=false,kemenkes_sitt=false;
+            password_asuransi=false,kemenkes_sitt=false,siranap_ketersediaan_kamar=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -558,6 +558,7 @@ public final class var {
                         var.pembayaran_akun_bayar3=true;
                         var.password_asuransi=true;
                         var.kemenkes_sitt=true;
+                        var.siranap_ketersediaan_kamar=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1003,6 +1004,7 @@ public final class var {
                         var.pembayaran_akun_bayar3=rs2.getBoolean("pembayaran_akun_bayar3");
                         var.password_asuransi=rs2.getBoolean("password_asuransi");
                         var.kemenkes_sitt=rs2.getBoolean("kemenkes_sitt");
+                        var.siranap_ketersediaan_kamar=rs2.getBoolean("siranap_ketersediaan_kamar");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1446,6 +1448,7 @@ public final class var {
                         var.pembayaran_akun_bayar3=false;
                         var.password_asuransi=false;
                         var.kemenkes_sitt=false;
+                        var.siranap_ketersediaan_kamar=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1943,4 +1946,5 @@ public final class var {
     public static boolean getpembayaran_akun_bayar3(){return var.pembayaran_akun_bayar3;}
     public static boolean getpassword_asuransi(){return var.password_asuransi;}
     public static boolean getkemenkes_sitt(){return var.kemenkes_sitt;}
+    public static boolean getsiranap_ketersediaan_kamar(){return var.siranap_ketersediaan_kamar;}
 }   

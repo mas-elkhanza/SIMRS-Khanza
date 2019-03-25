@@ -51,6 +51,7 @@ public class DlgInputStok extends javax.swing.JDialog {
     private String[] real,kodebarang,namabarang,kategori,satuan;
     private double[] hargabeli,stok,selisih,nomihilang;
     private WarnaTable2 warna=new WarnaTable2();
+    private boolean aktif=false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -255,6 +256,12 @@ public class DlgInputStok extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
             }
         });
 
@@ -726,10 +733,20 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_tbDokterKeyReleased
 
     private void tbDokterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDokterPropertyChange
-        if(this.isVisible()==true){
-              getData();
+        if(aktif==true){
+            if(tbDokter.getSelectedRow()!= -1){
+                getData();  
+            }
         }
     }//GEN-LAST:event_tbDokterPropertyChange
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
 
     /**
     * @param args the command line arguments
@@ -859,9 +876,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void getData(){
         i=tbDokter.getSelectedRow();
         if(nmgudang.getText().trim().equals("")){
-            Valid.textKosong(kdgudang,"Lokasi");
             for(index=0;index<tbDokter.getRowCount();index++){   
-                    tbDokter.setValueAt("",index,0);        
+                tbDokter.setValueAt("",index,0);        
             }
         }else if(i!= -1){   
             if((tbDokter.getSelectedColumn()==1)||(tbDokter.getSelectedColumn()==0)){   
