@@ -708,7 +708,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                         "<kosong_male>"+TersediaPria.getText()+"</kosong_male>\n"+
                         "<kosong_female>"+TersediaWanita.getText()+"</kosong_female>\n"+
                         "<waiting>"+TersediaMenunggu.getText()+"</waiting>\n"+
-                        "<tgl_update>"+Tanggal.getSelectedItem()+".0</tgl_update>\n"+
+                        "<tgl_update>"+Tanggal.getSelectedItem()+"</tgl_update>\n"+
                     "</data>\n"+
                 "</xml>";              
                 System.out.println(requestXML);
