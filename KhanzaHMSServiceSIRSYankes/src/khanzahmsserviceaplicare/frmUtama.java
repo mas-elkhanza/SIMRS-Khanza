@@ -199,7 +199,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     headers = new HttpHeaders();
                                     headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
                                     headers.add("X-pass",api.getHmac()); 
-                                    headers.add("Content-Type","application/xml");
+                                    headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                                     requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                                     "<xml>\n"+    
                                         "<data>\n"+

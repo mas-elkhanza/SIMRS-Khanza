@@ -6674,7 +6674,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(254, 255, 252));
+        internalFrame1.setWarnaAtas(new java.awt.Color(253, 254, 251));
         internalFrame1.setWarnaBawah(new java.awt.Color(210, 230, 190));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
@@ -6956,7 +6956,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
         internalFrame4.setWarnaAtas(new java.awt.Color(215, 235, 195));
-        internalFrame4.setWarnaBawah(new java.awt.Color(254, 255, 252));
+        internalFrame4.setWarnaBawah(new java.awt.Color(252, 253, 250));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
