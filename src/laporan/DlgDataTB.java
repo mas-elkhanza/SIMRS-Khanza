@@ -405,6 +405,48 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel29 = new widget.Label();
         jLabel30 = new widget.Label();
         CmbJk12 = new widget.ComboBox();
+        jLabel34 = new widget.Label();
+        jLabel35 = new widget.Label();
+        CmbJk14 = new widget.ComboBox();
+        jLabel36 = new widget.Label();
+        Alamat5 = new widget.TextBox();
+        Alamat6 = new widget.TextBox();
+        jLabel37 = new widget.Label();
+        CmbJk15 = new widget.ComboBox();
+        jLabel38 = new widget.Label();
+        jLabel39 = new widget.Label();
+        jLabel40 = new widget.Label();
+        jLabel41 = new widget.Label();
+        CmbJk16 = new widget.ComboBox();
+        jLabel42 = new widget.Label();
+        Alamat7 = new widget.TextBox();
+        Alamat8 = new widget.TextBox();
+        jLabel43 = new widget.Label();
+        CmbJk17 = new widget.ComboBox();
+        jLabel44 = new widget.Label();
+        jLabel45 = new widget.Label();
+        jLabel31 = new widget.Label();
+        DTPLahir2 = new widget.Tanggal();
+        jLabel46 = new widget.Label();
+        CmbJk18 = new widget.ComboBox();
+        jLabel32 = new widget.Label();
+        DTPLahir3 = new widget.Tanggal();
+        DTPLahir4 = new widget.Tanggal();
+        jLabel33 = new widget.Label();
+        jLabel47 = new widget.Label();
+        CmbJk19 = new widget.ComboBox();
+        CmbJk20 = new widget.ComboBox();
+        jLabel48 = new widget.Label();
+        jLabel49 = new widget.Label();
+        CmbJk21 = new widget.ComboBox();
+        jLabel50 = new widget.Label();
+        CmbJk22 = new widget.ComboBox();
+        jLabel51 = new widget.Label();
+        CmbJk23 = new widget.ComboBox();
+        CmbJk24 = new widget.ComboBox();
+        jLabel52 = new widget.Label();
+        CmbJk25 = new widget.ComboBox();
+        jLabel53 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -778,7 +820,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(270, 160, 54, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2019 12:07:42" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2019 12:09:39" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1260,7 +1302,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(532, 250, 80, 23);
 
-        DTPLahir1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2019" }));
+        DTPLahir1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2019" }));
         DTPLahir1.setDisplayFormat("dd-MM-yyyy");
         DTPLahir1.setName("DTPLahir1"); // NOI18N
         DTPLahir1.setOpaque(false);
@@ -1391,6 +1433,372 @@ public final class DlgDataTB extends javax.swing.JDialog {
         });
         FormInput.add(CmbJk12);
         CmbJk12.setBounds(580, 310, 125, 23);
+
+        jLabel34.setText("Pemeriksaan Laborat Bulan ke 2 :");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(0, 340, 174, 23);
+
+        jLabel35.setText("Mikroskopis :");
+        jLabel35.setName("jLabel35"); // NOI18N
+        FormInput.add(jLabel35);
+        jLabel35.setBounds(0, 360, 100, 23);
+
+        CmbJk14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Tidak dilakukan" }));
+        CmbJk14.setName("CmbJk14"); // NOI18N
+        CmbJk14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk14KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk14);
+        CmbJk14.setBounds(103, 360, 125, 23);
+
+        jLabel36.setText("No.Reg :");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(230, 360, 50, 23);
+
+        Alamat5.setHighlighter(null);
+        Alamat5.setName("Alamat5"); // NOI18N
+        Alamat5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                Alamat5MouseMoved(evt);
+            }
+        });
+        Alamat5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Alamat5MouseExited(evt);
+            }
+        });
+        Alamat5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Alamat5KeyPressed(evt);
+            }
+        });
+        FormInput.add(Alamat5);
+        Alamat5.setBounds(283, 360, 72, 23);
+
+        Alamat6.setHighlighter(null);
+        Alamat6.setName("Alamat6"); // NOI18N
+        Alamat6.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                Alamat6MouseMoved(evt);
+            }
+        });
+        Alamat6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Alamat6MouseExited(evt);
+            }
+        });
+        Alamat6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Alamat6KeyPressed(evt);
+            }
+        });
+        FormInput.add(Alamat6);
+        Alamat6.setBounds(633, 360, 72, 23);
+
+        jLabel37.setText("No.Reg :");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput.add(jLabel37);
+        jLabel37.setBounds(580, 360, 50, 23);
+
+        CmbJk15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Tidak dilakukan" }));
+        CmbJk15.setName("CmbJk15"); // NOI18N
+        CmbJk15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk15KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk15);
+        CmbJk15.setBounds(453, 360, 125, 23);
+
+        jLabel38.setText("Mikroskopis :");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(350, 360, 100, 23);
+
+        jLabel39.setText("Pemeriksaan Laborat Bulan ke 3 :");
+        jLabel39.setName("jLabel39"); // NOI18N
+        FormInput.add(jLabel39);
+        jLabel39.setBounds(350, 340, 174, 23);
+
+        jLabel40.setText("Pemeriksaan Laborat Bulan ke 5 :");
+        jLabel40.setName("jLabel40"); // NOI18N
+        FormInput.add(jLabel40);
+        jLabel40.setBounds(0, 390, 174, 23);
+
+        jLabel41.setText("Mikroskopis :");
+        jLabel41.setName("jLabel41"); // NOI18N
+        FormInput.add(jLabel41);
+        jLabel41.setBounds(0, 410, 100, 23);
+
+        CmbJk16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Tidak dilakukan" }));
+        CmbJk16.setName("CmbJk16"); // NOI18N
+        CmbJk16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk16KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk16);
+        CmbJk16.setBounds(103, 410, 125, 23);
+
+        jLabel42.setText("No.Reg :");
+        jLabel42.setName("jLabel42"); // NOI18N
+        FormInput.add(jLabel42);
+        jLabel42.setBounds(230, 410, 50, 23);
+
+        Alamat7.setHighlighter(null);
+        Alamat7.setName("Alamat7"); // NOI18N
+        Alamat7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                Alamat7MouseMoved(evt);
+            }
+        });
+        Alamat7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Alamat7MouseExited(evt);
+            }
+        });
+        Alamat7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Alamat7KeyPressed(evt);
+            }
+        });
+        FormInput.add(Alamat7);
+        Alamat7.setBounds(283, 410, 72, 23);
+
+        Alamat8.setHighlighter(null);
+        Alamat8.setName("Alamat8"); // NOI18N
+        Alamat8.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                Alamat8MouseMoved(evt);
+            }
+        });
+        Alamat8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Alamat8MouseExited(evt);
+            }
+        });
+        Alamat8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Alamat8KeyPressed(evt);
+            }
+        });
+        FormInput.add(Alamat8);
+        Alamat8.setBounds(633, 410, 72, 23);
+
+        jLabel43.setText("No.Reg :");
+        jLabel43.setName("jLabel43"); // NOI18N
+        FormInput.add(jLabel43);
+        jLabel43.setBounds(580, 410, 50, 23);
+
+        CmbJk17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Tidak dilakukan" }));
+        CmbJk17.setName("CmbJk17"); // NOI18N
+        CmbJk17.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk17KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk17);
+        CmbJk17.setBounds(453, 410, 125, 23);
+
+        jLabel44.setText("Mikroskopis :");
+        jLabel44.setName("jLabel44"); // NOI18N
+        FormInput.add(jLabel44);
+        jLabel44.setBounds(350, 410, 100, 23);
+
+        jLabel45.setText("Pemeriksaan Laborat Akhir Pengobatan :");
+        jLabel45.setName("jLabel45"); // NOI18N
+        FormInput.add(jLabel45);
+        jLabel45.setBounds(314, 390, 245, 23);
+
+        jLabel31.setText("Akhir Berobat :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(0, 440, 100, 23);
+
+        DTPLahir2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2019" }));
+        DTPLahir2.setDisplayFormat("dd-MM-yyyy");
+        DTPLahir2.setName("DTPLahir2"); // NOI18N
+        DTPLahir2.setOpaque(false);
+        DTPLahir2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DTPLahir2ItemStateChanged(evt);
+            }
+        });
+        DTPLahir2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPLahir2KeyPressed(evt);
+            }
+        });
+        FormInput.add(DTPLahir2);
+        DTPLahir2.setBounds(103, 440, 90, 23);
+
+        jLabel46.setText("Hasil Akhir Pengobatan :");
+        jLabel46.setName("jLabel46"); // NOI18N
+        FormInput.add(jLabel46);
+        jLabel46.setBounds(190, 440, 140, 23);
+
+        CmbJk18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sembuh", "Pengobatan Lengkap", "Lost To Follow Up", "Meninggal", "Gagal", "Pindah" }));
+        CmbJk18.setName("CmbJk18"); // NOI18N
+        CmbJk18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk18KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk18);
+        CmbJk18.setBounds(333, 440, 160, 23);
+
+        jLabel32.setText("Dianjurkan Tes HIV :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(512, 440, 100, 23);
+
+        DTPLahir3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2019" }));
+        DTPLahir3.setDisplayFormat("dd-MM-yyyy");
+        DTPLahir3.setName("DTPLahir3"); // NOI18N
+        DTPLahir3.setOpaque(false);
+        DTPLahir3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DTPLahir3ItemStateChanged(evt);
+            }
+        });
+        DTPLahir3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPLahir3KeyPressed(evt);
+            }
+        });
+        FormInput.add(DTPLahir3);
+        DTPLahir3.setBounds(615, 440, 90, 23);
+
+        DTPLahir4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2019" }));
+        DTPLahir4.setDisplayFormat("dd-MM-yyyy");
+        DTPLahir4.setName("DTPLahir4"); // NOI18N
+        DTPLahir4.setOpaque(false);
+        DTPLahir4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DTPLahir4ItemStateChanged(evt);
+            }
+        });
+        DTPLahir4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPLahir4KeyPressed(evt);
+            }
+        });
+        FormInput.add(DTPLahir4);
+        DTPLahir4.setBounds(103, 470, 90, 23);
+
+        jLabel33.setText("Tanggal Tes HIV :");
+        jLabel33.setName("jLabel33"); // NOI18N
+        FormInput.add(jLabel33);
+        jLabel33.setBounds(0, 470, 100, 23);
+
+        jLabel47.setText("Hasil Tes HIV :");
+        jLabel47.setName("jLabel47"); // NOI18N
+        FormInput.add(jLabel47);
+        jLabel47.setBounds(192, 470, 90, 23);
+
+        CmbJk19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reaktif", "Non Reaktif", "Indeterminated" }));
+        CmbJk19.setName("CmbJk19"); // NOI18N
+        CmbJk19.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk19KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk19);
+        CmbJk19.setBounds(285, 470, 140, 23);
+
+        CmbJk20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CmbJk20.setName("CmbJk20"); // NOI18N
+        CmbJk20.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk20KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk20);
+        CmbJk20.setBounds(470, 470, 95, 23);
+
+        jLabel48.setText("PPK :");
+        jLabel48.setName("jLabel48"); // NOI18N
+        FormInput.add(jLabel48);
+        jLabel48.setBounds(427, 470, 40, 23);
+
+        jLabel49.setText("ART :");
+        jLabel49.setName("jLabel49"); // NOI18N
+        FormInput.add(jLabel49);
+        jLabel49.setBounds(561, 470, 45, 23);
+
+        CmbJk21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CmbJk21.setName("CmbJk21"); // NOI18N
+        CmbJk21.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk21KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk21);
+        CmbJk21.setBounds(609, 470, 95, 23);
+
+        jLabel50.setText("TB DM :");
+        jLabel50.setName("jLabel50"); // NOI18N
+        FormInput.add(jLabel50);
+        jLabel50.setBounds(0, 500, 100, 23);
+
+        CmbJk22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CmbJk22.setName("CmbJk22"); // NOI18N
+        CmbJk22.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk22KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk22);
+        CmbJk22.setBounds(103, 500, 77, 23);
+
+        jLabel51.setText("Terapi DM :");
+        jLabel51.setName("jLabel51"); // NOI18N
+        FormInput.add(jLabel51);
+        jLabel51.setBounds(183, 500, 63, 23);
+
+        CmbJk23.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OHO", "Inj. Insulin" }));
+        CmbJk23.setName("CmbJk23"); // NOI18N
+        CmbJk23.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk23KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk23);
+        CmbJk23.setBounds(249, 500, 102, 23);
+
+        CmbJk24.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        CmbJk24.setName("CmbJk24"); // NOI18N
+        CmbJk24.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk24KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk24);
+        CmbJk24.setBounds(421, 500, 77, 23);
+
+        jLabel52.setText("Pindah RO :");
+        jLabel52.setName("jLabel52"); // NOI18N
+        FormInput.add(jLabel52);
+        jLabel52.setBounds(353, 500, 65, 23);
+
+        CmbJk25.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sesuai Standar", "Tidak Sesuai Standar" }));
+        CmbJk25.setName("CmbJk25"); // NOI18N
+        CmbJk25.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJk25KeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJk25);
+        CmbJk25.setBounds(569, 500, 135, 23);
+
+        jLabel53.setText("Pindah RO :");
+        jLabel53.setName("jLabel53"); // NOI18N
+        FormInput.add(jLabel53);
+        jLabel53.setBounds(499, 500, 67, 23);
 
         Scroll1.setViewportView(FormInput);
 
@@ -1629,12 +2037,12 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_MnRestoreActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(FormInput.getHeight()<390){   
+        if(FormInput.getHeight()<590){   
             Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,390));
+            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,790));
             if(FormInput.getWidth()<740){
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                FormInput.setPreferredSize(new Dimension(740,390));
+                FormInput.setPreferredSize(new Dimension(740,790));
             }else{
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
             }
@@ -2221,6 +2629,126 @@ public final class DlgDataTB extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_CmbJk12KeyPressed
 
+    private void CmbJk14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk14KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk14KeyPressed
+
+    private void Alamat5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat5MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat5MouseMoved
+
+    private void Alamat5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat5MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat5MouseExited
+
+    private void Alamat5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat5KeyPressed
+
+    private void Alamat6MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat6MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat6MouseMoved
+
+    private void Alamat6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat6MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat6MouseExited
+
+    private void Alamat6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat6KeyPressed
+
+    private void CmbJk15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk15KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk15KeyPressed
+
+    private void CmbJk16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk16KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk16KeyPressed
+
+    private void Alamat7MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat7MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat7MouseMoved
+
+    private void Alamat7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat7MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat7MouseExited
+
+    private void Alamat7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat7KeyPressed
+
+    private void Alamat8MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat8MouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat8MouseMoved
+
+    private void Alamat8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat8MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat8MouseExited
+
+    private void Alamat8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Alamat8KeyPressed
+
+    private void CmbJk17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk17KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk17KeyPressed
+
+    private void DTPLahir2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPLahir2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPLahir2ItemStateChanged
+
+    private void DTPLahir2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahir2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPLahir2KeyPressed
+
+    private void CmbJk18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk18KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk18KeyPressed
+
+    private void DTPLahir3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPLahir3ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPLahir3ItemStateChanged
+
+    private void DTPLahir3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahir3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPLahir3KeyPressed
+
+    private void DTPLahir4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPLahir4ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPLahir4ItemStateChanged
+
+    private void DTPLahir4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahir4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPLahir4KeyPressed
+
+    private void CmbJk19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk19KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk19KeyPressed
+
+    private void CmbJk20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk20KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk20KeyPressed
+
+    private void CmbJk21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk21KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk21KeyPressed
+
+    private void CmbJk22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk22KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk22KeyPressed
+
+    private void CmbJk23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk23KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk23KeyPressed
+
+    private void CmbJk24KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk24KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk24KeyPressed
+
+    private void CmbJk25KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJk25KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbJk25KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2242,6 +2770,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.TextBox Alamat1;
     private widget.TextBox Alamat2;
     private widget.TextBox Alamat3;
+    private widget.TextBox Alamat5;
+    private widget.TextBox Alamat6;
+    private widget.TextBox Alamat7;
+    private widget.TextBox Alamat8;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -2263,7 +2795,19 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.ComboBox CmbJk10;
     private widget.ComboBox CmbJk11;
     private widget.ComboBox CmbJk12;
+    private widget.ComboBox CmbJk14;
+    private widget.ComboBox CmbJk15;
+    private widget.ComboBox CmbJk16;
+    private widget.ComboBox CmbJk17;
+    private widget.ComboBox CmbJk18;
+    private widget.ComboBox CmbJk19;
     private widget.ComboBox CmbJk2;
+    private widget.ComboBox CmbJk20;
+    private widget.ComboBox CmbJk21;
+    private widget.ComboBox CmbJk22;
+    private widget.ComboBox CmbJk23;
+    private widget.ComboBox CmbJk24;
+    private widget.ComboBox CmbJk25;
     private widget.ComboBox CmbJk3;
     private widget.ComboBox CmbJk4;
     private widget.ComboBox CmbJk5;
@@ -2273,6 +2817,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.ComboBox CmbJk9;
     private widget.Tanggal DTPLahir;
     private widget.Tanggal DTPLahir1;
+    private widget.Tanggal DTPLahir2;
+    private widget.Tanggal DTPLahir3;
+    private widget.Tanggal DTPLahir4;
     private widget.PanelBiasa FormInput;
     private widget.TextBox JK;
     private widget.TextBox Kabupaten;
@@ -2321,8 +2868,31 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.Label jLabel29;
     private widget.Label jLabel3;
     private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
+    private widget.Label jLabel33;
+    private widget.Label jLabel34;
+    private widget.Label jLabel35;
+    private widget.Label jLabel36;
+    private widget.Label jLabel37;
+    private widget.Label jLabel38;
+    private widget.Label jLabel39;
     private widget.Label jLabel4;
+    private widget.Label jLabel40;
+    private widget.Label jLabel41;
+    private widget.Label jLabel42;
+    private widget.Label jLabel43;
+    private widget.Label jLabel44;
+    private widget.Label jLabel45;
+    private widget.Label jLabel46;
+    private widget.Label jLabel47;
+    private widget.Label jLabel48;
+    private widget.Label jLabel49;
     private widget.Label jLabel5;
+    private widget.Label jLabel50;
+    private widget.Label jLabel51;
+    private widget.Label jLabel52;
+    private widget.Label jLabel53;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
