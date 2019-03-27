@@ -38,7 +38,7 @@
     <entry key="PASSSISRUTE">1818181</entry>
     <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
     <entry key="IDSIRS">7303010</entry>
-    <entry key="PASSSIRS">1718181</entry>
+    <entry key="PASSSIRS">12345</entry>
     <entry key="URLAPISITT">http://sitt.kemkes.go.id/webapisimrs/insert_simrs.php</entry>
     <entry key="IDSITT">7303010</entry>
     <entry key="PASSSITT">1919191</entry>

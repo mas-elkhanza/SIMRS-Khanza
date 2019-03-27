@@ -45,7 +45,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import kepegawaian.DlgCariDokter;
-import simrskhanza.DlgCariPenyakit;
+import laporan.DlgCariPenyakit;
 
 
 /**
