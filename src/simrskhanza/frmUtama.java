@@ -6596,7 +6596,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/03/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7137,9 +7137,9 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu1.add(MnGantiPassword);
 
-        jSeparator14.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator14.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator14.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator14.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator14.setName("jSeparator14"); // NOI18N
         jSeparator14.setPreferredSize(new java.awt.Dimension(0, 1));
         jMenu1.add(jSeparator14);
@@ -7309,9 +7309,9 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnRekapBulanan2);
 
-        jSeparator10.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator10.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator10.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator10.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator10.setName("jSeparator10"); // NOI18N
         jSeparator10.setPreferredSize(new java.awt.Dimension(0, 1));
         jMenu6.add(jSeparator10);
@@ -7406,9 +7406,9 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnSudahPulang5);
 
-        jSeparator11.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator11.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator11.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator11.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator11.setName("jSeparator11"); // NOI18N
         jSeparator11.setPreferredSize(new java.awt.Dimension(0, 1));
         jMenu6.add(jSeparator11);
@@ -7548,9 +7548,9 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnAnjungan);
 
-        jSeparator12.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator12.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator12.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator12.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator12.setName("jSeparator12"); // NOI18N
         jSeparator12.setPreferredSize(new java.awt.Dimension(0, 1));
         jMenu7.add(jSeparator12);
@@ -7600,9 +7600,9 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnRekapHadir5);
 
-        jSeparator13.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 120, 80)));
-        jSeparator13.setForeground(new java.awt.Color(90, 120, 80));
+        jSeparator13.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator13.setForeground(new java.awt.Color(190, 220, 180));
         jSeparator13.setName("jSeparator13"); // NOI18N
         jSeparator13.setPreferredSize(new java.awt.Dimension(0, 1));
         jMenu7.add(jSeparator13);

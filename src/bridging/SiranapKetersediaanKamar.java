@@ -699,8 +699,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                 requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                 "<xml>\n"+    
                     "<data>\n"+
-                        "<kode_ruang>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
-                        "<tipe_pasien>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
+                        "<kode_ruang>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
+                        "<tipe_pasien>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
                         "<total_TT>"+Kapasitas.getText()+"</total_TT>\n"+
                         "<terpakai_male>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaPria.getText()))+"</terpakai_male>\n"+
                         "<terpakai_female>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaWanita.getText()))+"</terpakai_female>\n"+
@@ -768,8 +768,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                     headers.add("X-pass",api.getHmac()); 
                     headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                     requestEntity = new HttpEntity(headers);
-                    System.out.println(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4));
-                    requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
+                    System.out.println(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4));
+                    requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestXML);
                     root = mapper.readTree(requestXML);
                     respon=root.path("deskripsi").asText();
@@ -824,7 +824,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                 headers.add("X-pass",api.getHmac()); 
                 headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                 requestEntity = new HttpEntity(headers);
-                requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
+                requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestXML);
                 root = mapper.readTree(requestXML);
                 respon=root.path("deskripsi").asText();
@@ -855,8 +855,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                 requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                 "<xml>\n"+    
                     "<data>\n"+
-                        "<kode_ruang>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
-                        "<tipe_pasien>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
+                        "<kode_ruang>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
+                        "<tipe_pasien>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
                         "<total_TT>"+Kapasitas.getText()+"</total_TT>\n"+
                         "<terpakai_male>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaPria.getText()))+"</terpakai_male>\n"+
                         "<terpakai_female>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaWanita.getText()))+"</terpakai_female>\n"+

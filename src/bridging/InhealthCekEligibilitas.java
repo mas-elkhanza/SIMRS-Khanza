@@ -50,7 +50,7 @@ import org.springframework.web.client.RestTemplate;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgBahasa;
 import simrskhanza.DlgCacatFisik;
-import simrskhanza.DlgCariPenyakit;
+import laporan.DlgCariPenyakit;
 import simrskhanza.DlgGolonganPolri;
 import simrskhanza.DlgGolonganTNI;
 import simrskhanza.DlgJabatanPolri;

@@ -203,8 +203,8 @@ public class frmUtama extends javax.swing.JFrame {
                                     requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                                     "<xml>\n"+    
                                         "<data>\n"+
-                                            "<kode_ruang>"+rs.getString("kode_ruang_siranap").substring(0,4)+"</kode_ruang>\n"+
-                                            "<tipe_pasien>"+rs.getString("kelas_ruang_siranap").substring(0,4)+"</tipe_pasien>\n"+
+                                            "<kode_ruang>"+rs.getString("kelas_ruang_siranap").substring(0,4)+"</kode_ruang>\n"+
+                                            "<tipe_pasien>"+rs.getString("kode_ruang_siranap").substring(0,4)+"</tipe_pasien>\n"+
                                             "<total_TT>"+Integer.toString(totaltt)+"</total_TT>\n"+
                                             "<terpakai_male>"+Integer.toString(terpakai)+"</terpakai_male>\n"+
                                             "<terpakai_female>"+Integer.toString(terpakai)+"</terpakai_female>\n"+

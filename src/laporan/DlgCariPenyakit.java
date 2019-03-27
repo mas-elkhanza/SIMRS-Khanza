@@ -9,7 +9,7 @@
  * Created on May 23, 2010, 12:57:16 AM
  */
 
-package simrskhanza;
+package laporan;
 
 import laporan.DlgPenyakit;
 import fungsi.WarnaTable;
