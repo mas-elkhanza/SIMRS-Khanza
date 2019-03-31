@@ -200,8 +200,8 @@ public class frmUtama extends javax.swing.JFrame {
                                                   "\"namaruang\":\""+rs.getString("nm_bangsal")+"\","+ 
                                                   "\"kapasitas\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"'")+"\","+ 
                                                   "\"tersedia\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\","+
-                                                  "\"tersediapria\":\""+rs.getString("tersediapria")+"\","+ 
-                                                  "\"tersediawanita\":\""+rs.getString("tersediawanita")+"\","+ 
+                                                  "\"tersediapria\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\","+ 
+                                                  "\"tersediawanita\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\","+ 
                                                   "\"tersediapriawanita\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\""+
                                                   "}";
                                     TeksArea.append("JSON dikirim : "+requestJson+"\n");

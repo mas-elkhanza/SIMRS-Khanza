@@ -176,7 +176,7 @@ public class frmUtama extends javax.swing.JFrame {
                     }
                         
                     try {
-                        TeksArea.append("Memulai update aplicare\n");
+                        TeksArea.append("Memulai update Siranap\n");
                         ps=koneksi.prepareStatement(
                                 "select siranap_ketersediaan_kamar.kode_ruang_siranap,siranap_ketersediaan_kamar.kelas_ruang_siranap,siranap_ketersediaan_kamar.kd_bangsal," +
                                 "bangsal.nm_bangsal,siranap_ketersediaan_kamar.kelas,siranap_ketersediaan_kamar.kapasitas," +

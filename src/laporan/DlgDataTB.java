@@ -84,34 +84,15 @@ public final class DlgDataTB extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);
 
-        Object[] row={"P","Kode Paket","Nama Operasi","Kategori","Operator 1","Operator 2","Operator 3",
-                      "Asisten Op 1","Asisten Op 2","Asisten Op 3","Instrumen","dr Anestesi","Asisten Anes 1","Asisten Anes 2","dr Anak",
-                      "Perawat Resus","Bidan 1","Bidan 2","Bidan 3","Perawat Luar","Alat","Sewa OK/VK",
-                      "Akomodasi","N.M.S.","Onloop 1","Onloop 2","Onloop 3","Onloop 4","Onloop 5","Sarpras","dr Pj Anak","dr Umum",
-                      "Total","Jenis Bayar","Kelas"};
-        tabMode=new DefaultTableModel(null,row){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
-                boolean a = false;
-                if (colIndex==0) {
-                    a=true;
-                }
-                return a;
-             }
-             Class[] types = new Class[] {
-                 java.lang.Boolean.class, java.lang.Object.class,java.lang.Object.class,java.lang.Object.class, java.lang.Double.class, 
-                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                 java.lang.String.class,java.lang.String.class
-             };
-             @Override
-             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-             }
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "No.Rawat","No.RM","Nama Pasien","J.K.","Tgl.Lahir","Umur","No.JKN","NIK","Alamat","Kd.Kel","Kelurahan","Kd.Kec","Kecamatan","Kd.Kab","Kabupaten",
+                "Kd.Prop","Propinsi","Periode Laporan","Tanggal Laporan","Jenis Rujukan","Keterangan Rujukan","Riwayat Pengobatan","Lokasi TB","Tipe Diagnosis",
+                "Status HIV","Skoring Anak","Skoring 5","Skoring 6","Mulai Berobat","Paduan OAT","Sumber Obat","Keterangan Sumber Obat","Mikroskopis Sebelum Pengobatan",
+                "Tes Cepat Sebelum Pengobatan","Biakan Sebelum Pengobatan","Mikroskopis Bl.2","No.Reg Lab Bl.2","Mikroskopis Bl.3","No.Reg Lab Bl.3","Mikroskopis Bl.5",
+                "No.Reg Lab Bl.5","Mikroskopis Akhir","No.Reg Lab Akhir","Akhir Berobat","Hasil Akhir Pengobatan","Dianjurkan Tes HIV","Tanggal Tes HIV","Hasil Tes HIV",
+                "PPK","ART","TB DM","Terapi DM","Pindah RO","Status Pengobatan","Foto Toraks","Toraks Tdk Dilakukan","Keterangan","ICD X","Nama Penyakit"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbJnsPerawatan.setModel(tabMode);
 
@@ -119,22 +100,126 @@ public final class DlgDataTB extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 35; i++) {
+        for (i = 0; i < 59; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(20);
+                column.setPreferredWidth(105);
             }else if(i==1){
-                column.setPreferredWidth(90);
-            }else if(i==2){
-                column.setPreferredWidth(220);
-            }else if(i==3){
-                column.setPreferredWidth(100);
-            }else if(i==33){
-                column.setPreferredWidth(200);
-            }else if(i==34){
                 column.setPreferredWidth(70);
-            }else{
+            }else if(i==2){
+                column.setPreferredWidth(150);
+            }else if(i==3){
+                column.setPreferredWidth(25);
+            }else if(i==4){
+                column.setPreferredWidth(65);
+            }else if(i==5){
+                column.setPreferredWidth(40);
+            }else if(i==6){
+                column.setPreferredWidth(90);
+            }else if(i==7){
+                column.setPreferredWidth(105);
+            }else if(i==8){
+                column.setPreferredWidth(165);
+            }else if(i==9){
+                column.setPreferredWidth(45);
+            }else if(i==10){
+                column.setPreferredWidth(110);
+            }else if(i==11){
+                column.setPreferredWidth(45);
+            }else if(i==12){
+                column.setPreferredWidth(110);
+            }else if(i==13){
+                column.setPreferredWidth(45);
+            }else if(i==14){
+                column.setPreferredWidth(110);
+            }else if(i==15){
+                column.setPreferredWidth(45);
+            }else if(i==16){
+                column.setPreferredWidth(110);
+            }else if(i==17){
+                column.setPreferredWidth(110);
+            }else if(i==18){
+                column.setPreferredWidth(120);
+            }else if(i==19){
+                column.setPreferredWidth(140);
+            }else if(i==20){
+                column.setPreferredWidth(120);
+            }else if(i==21){
+                column.setPreferredWidth(170);
+            }else if(i==22){
+                column.setPreferredWidth(90);
+            }else if(i==23){
+                column.setPreferredWidth(140);
+            }else if(i==24){
+                column.setPreferredWidth(100);
+            }else if(i==25){
+                column.setPreferredWidth(70);
+            }else if(i==26){
+                column.setPreferredWidth(140);
+            }else if(i==27){
+                column.setPreferredWidth(140);
+            }else if(i==28){
+                column.setPreferredWidth(75);
+            }else if(i==29){
+                column.setPreferredWidth(150);
+            }else if(i==30){
+                column.setPreferredWidth(90);
+            }else if(i==31){
+                column.setPreferredWidth(140);
+            }else if(i==32){
+                column.setPreferredWidth(170);
+            }else if(i==33){
+                column.setPreferredWidth(165);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(90);
+            }else if(i==36){
                 column.setPreferredWidth(85);
+            }else if(i==37){
+                column.setPreferredWidth(90);
+            }else if(i==38){
+                column.setPreferredWidth(85);
+            }else if(i==39){
+                column.setPreferredWidth(90);
+            }else if(i==40){
+                column.setPreferredWidth(85);
+            }else if(i==41){
+                column.setPreferredWidth(95);
+            }else if(i==42){
+                column.setPreferredWidth(90);
+            }else if(i==43){
+                column.setPreferredWidth(75);
+            }else if(i==44){
+                column.setPreferredWidth(120);
+            }else if(i==45){
+                column.setPreferredWidth(100);
+            }else if(i==46){
+                column.setPreferredWidth(90);
+            }else if(i==47){
+                column.setPreferredWidth(80);
+            }else if(i==48){
+                column.setPreferredWidth(50);
+            }else if(i==49){
+                column.setPreferredWidth(50);
+            }else if(i==50){
+                column.setPreferredWidth(50);
+            }else if(i==51){
+                column.setPreferredWidth(70);
+            }else if(i==52){
+                column.setPreferredWidth(60);
+            }else if(i==53){
+                column.setPreferredWidth(110);
+            }else if(i==54){
+                column.setPreferredWidth(90);
+            }else if(i==55){
+                column.setPreferredWidth(170);
+            }else if(i==56){
+                column.setPreferredWidth(140);
+            }else if(i==57){
+                column.setPreferredWidth(50);
+            }else if(i==58){
+                column.setPreferredWidth(170);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -373,6 +458,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
+        jLabel58 = new widget.Label();
+        DTPCari1 = new widget.Tanggal();
+        jLabel59 = new widget.Label();
+        DTPCari2 = new widget.Tanggal();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -529,9 +618,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -682,13 +768,38 @@ public final class DlgDataTB extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        jLabel58.setText("Periode :");
+        jLabel58.setName("jLabel58"); // NOI18N
+        jLabel58.setPreferredSize(new java.awt.Dimension(55, 23));
+        panelGlass9.add(jLabel58);
+
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
+        DTPCari1.setDisplayFormat("dd-MM-yyyy");
+        DTPCari1.setName("DTPCari1"); // NOI18N
+        DTPCari1.setOpaque(false);
+        DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelGlass9.add(DTPCari1);
+
+        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel59.setText("s.d");
+        jLabel59.setName("jLabel59"); // NOI18N
+        jLabel59.setPreferredSize(new java.awt.Dimension(24, 23));
+        panelGlass9.add(jLabel59);
+
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
+        DTPCari2.setDisplayFormat("dd-MM-yyyy");
+        DTPCari2.setName("DTPCari2"); // NOI18N
+        DTPCari2.setOpaque(false);
+        DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelGlass9.add(DTPCari2);
+
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(450, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -876,7 +987,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(270, 160, 54, 23);
 
-        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2019 07:01:43" }));
+        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019 14:39:10" }));
         TanggalLaporan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalLaporan.setName("TanggalLaporan"); // NOI18N
         TanggalLaporan.setOpaque(false);
@@ -1267,7 +1378,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(532, 250, 80, 23);
 
-        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2019" }));
+        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         MulaiBerobat.setDisplayFormat("dd-MM-yyyy");
         MulaiBerobat.setName("MulaiBerobat"); // NOI18N
         MulaiBerobat.setOpaque(false);
@@ -1519,7 +1630,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel31);
         jLabel31.setBounds(0, 440, 100, 23);
 
-        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2019" }));
+        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         AkhirBerobat.setDisplayFormat("dd-MM-yyyy");
         AkhirBerobat.setName("AkhirBerobat"); // NOI18N
         AkhirBerobat.setOpaque(false);
@@ -1551,7 +1662,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel32);
         jLabel32.setBounds(512, 440, 100, 23);
 
-        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2019" }));
+        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         DianjurkanTesHIV.setDisplayFormat("dd-MM-yyyy");
         DianjurkanTesHIV.setName("DianjurkanTesHIV"); // NOI18N
         DianjurkanTesHIV.setOpaque(false);
@@ -1563,7 +1674,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(DianjurkanTesHIV);
         DianjurkanTesHIV.setBounds(615, 440, 90, 23);
 
-        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2019" }));
+        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         TanggalTesHIV.setDisplayFormat("dd-MM-yyyy");
         TanggalTesHIV.setName("TanggalTesHIV"); // NOI18N
         TanggalTesHIV.setOpaque(false);
@@ -1845,9 +1956,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
         }else if(kdpenyakit.getText().trim().equals("")||nmpenyakit.getText().trim().equals("")){
             Valid.textKosong(btnBangsal,"Penyakit");
         }else{
-            if(Sequel.menyimpantf2("data_tb","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,","Data",50,new String[]{
+            if(Sequel.menyimpantf("data_tb","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",50,new String[]{
                     TNoRw.getText(),id_tb_03,PeriodeLaporan.getSelectedItem().toString(),Valid.SetTgl(TanggalLaporan.getSelectedItem()+"")+" "+TanggalLaporan.getSelectedItem().toString().substring(11,19), 
-                    TanggalLaporan.getSelectedItem().toString().substring(0,4),kdwasor,"0",KdProp.getText(),KdKab.getText(),KdKec.getText(),KdKel.getText(),Rujukan.getSelectedItem().toString(),
+                    Valid.SetTgl(TanggalLaporan.getSelectedItem()+"").substring(0,4),kdwasor,"0",KdProp.getText(),KdKab.getText(),KdKec.getText(),KdKel.getText(),Rujukan.getSelectedItem().toString(),
                     KeteranganRujukan.getText(),TipeDiagnosis.getSelectedItem().toString(),Lokasi.getSelectedItem().toString(),Riwayat.getSelectedItem().toString(),StatusHIV.getSelectedItem().toString(),
                     SkoringAnak.getSelectedItem().toString(),Skoring5.getSelectedItem().toString(),Skoring6.getSelectedItem().toString(),Valid.SetTgl(MulaiBerobat.getSelectedItem()+""), 
                     PaduanOAT.getText(),SumberObat.getSelectedItem().toString(),KeteranganSO.getText(),SebelumPengobatanMikroskopis.getSelectedItem().toString(),SebelumPengobatanTesCepat.getSelectedItem().toString(),
@@ -1874,7 +1985,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-
         emptTeks();        
 }//GEN-LAST:event_BtnBatalActionPerformed
 
@@ -1885,13 +1995,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        for(i=0;i<tbJnsPerawatan.getRowCount();i++){ 
-            if(tbJnsPerawatan.getValueAt(i,0).toString().equals("true")){
-                Sequel.mengedit("paket_operasi","kode_paket='"+tbJnsPerawatan.getValueAt(i,1).toString()+"'","status='0'");
-            }
-        } 
-        tampil();
+        Sequel.meghapus("data_tb","no_rawat",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
         emptTeks();
+        tampil();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1903,7 +2009,54 @@ public final class DlgDataTB extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        
+        if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"Pasien");
+        }else if(KdKel.getText().trim().equals("")||Kelurahan.getText().trim().equals("")){
+            Valid.textKosong(BtnKelurahan,"Kelurahan");
+        }else if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")){
+            Valid.textKosong(BtnKecamatan,"Kecamatan");
+        }else if(KdKab.getText().trim().equals("")||Kabupaten.getText().trim().equals("")){
+            Valid.textKosong(BtnKabupaten,"Kabupaten");
+        }else if(KdProp.getText().trim().equals("")||Propinsi.getText().trim().equals("")){
+            Valid.textKosong(BtnPropinsi,"Propinsi");
+        }else if(KeteranganRujukan.getText().trim().equals("")){
+            Valid.textKosong(KeteranganRujukan,"Keterangan Rujukan");
+        }else if(PaduanOAT.getText().trim().equals("")){
+            Valid.textKosong(PaduanOAT,"Paduan OAT");
+        }else if(KeteranganSO.getText().trim().equals("")){
+            Valid.textKosong(KeteranganSO,"Keterangan Sumber Obat");
+        }else if(PemeriksaanLaboratBulan2NoReg.getText().trim().equals("")){
+            Valid.textKosong(PemeriksaanLaboratBulan2NoReg,"No.Reg Pemeriksaan Laborat Bulan 2");
+        }else if(PemeriksaanLaboratBulan3NoReg.getText().trim().equals("")){
+            Valid.textKosong(PemeriksaanLaboratBulan3NoReg,"No.Reg Pemeriksaan Laborat Bulan 3");
+        }else if(PemeriksaanLaboratBulan5NoReg.getText().trim().equals("")){
+            Valid.textKosong(PemeriksaanLaboratBulan5NoReg,"No.Reg Pemeriksaan Laborat Bulan 5");
+        }else if(PemeriksaanLaboratAkhirNoReg.getText().trim().equals("")){
+            Valid.textKosong(PemeriksaanLaboratAkhirNoReg,"No.Reg Pemeriksaan Laborat Akhir Pengobatan");
+        }else if(Keterangan.getText().trim().equals("")){
+            Valid.textKosong(Keterangan,"Keterangan");
+        }else if(kdpenyakit.getText().trim().equals("")||nmpenyakit.getText().trim().equals("")){
+            Valid.textKosong(btnBangsal,"Penyakit");
+        }else{
+            if(Sequel.mengedittf("data_tb","no_rawat=?","no_rawat=?,id_tb_03=?,id_periode_laporan=?,tanggal_buat_laporan=?,tahun_buat_laporan=?,kd_wasor=?,noregkab=?,id_propinsi=?,kd_kabupaten=?,id_kecamatan=?,id_kelurahan=?,nama_rujukan=?,sebutkan1=?,tipe_diagnosis=?,klasifikasi_lokasi_anatomi=?,klasifikasi_riwayat_pengobatan=?,klasifikasi_status_hiv=?,total_skoring_anak=?,konfirmasiSkoring5=?,konfirmasiSkoring6=?,tanggal_mulai_pengobatan=?,paduan_oat=?,sumber_obat=?,sebutkan=?,sebelum_pengobatan_hasil_mikroskopis=?,sebelum_pengobatan_hasil_tes_cepat=?,sebelum_pengobatan_hasil_biakan=?,noreglab_bulan_2=?,hasil_mikroskopis_bulan_2=?,noreglab_bulan_3=?,hasil_mikroskopis_bulan_3=?,noreglab_bulan_5=?,hasil_mikroskopis_bulan_5=?,akhir_pengobatan_noreglab=?,akhir_pengobatan_hasil_mikroskopis=?,tanggal_hasil_akhir_pengobatan=?,hasil_akhir_pengobatan=?,tanggal_dianjurkan_tes=?,tanggal_tes_hiv=?,hasil_tes_hiv=?,ppk=?,art=?,tb_dm=?,terapi_dm=?,pindah_ro=?,status_pengobatan=?,foto_toraks=?,toraks_tdk_dilakukan=?,keterangan=?,kode_icd_x=?",51,new String[]{
+                    TNoRw.getText(),id_tb_03,PeriodeLaporan.getSelectedItem().toString(),Valid.SetTgl(TanggalLaporan.getSelectedItem()+"")+" "+TanggalLaporan.getSelectedItem().toString().substring(11,19), 
+                    Valid.SetTgl(TanggalLaporan.getSelectedItem()+"").substring(0,4),kdwasor,"0",KdProp.getText(),KdKab.getText(),KdKec.getText(),KdKel.getText(),Rujukan.getSelectedItem().toString(),
+                    KeteranganRujukan.getText(),TipeDiagnosis.getSelectedItem().toString(),Lokasi.getSelectedItem().toString(),Riwayat.getSelectedItem().toString(),StatusHIV.getSelectedItem().toString(),
+                    SkoringAnak.getSelectedItem().toString(),Skoring5.getSelectedItem().toString(),Skoring6.getSelectedItem().toString(),Valid.SetTgl(MulaiBerobat.getSelectedItem()+""), 
+                    PaduanOAT.getText(),SumberObat.getSelectedItem().toString(),KeteranganSO.getText(),SebelumPengobatanMikroskopis.getSelectedItem().toString(),SebelumPengobatanTesCepat.getSelectedItem().toString(),
+                    SebelumPengobatanBiakan.getSelectedItem().toString(),PemeriksaanLaboratBulan2NoReg.getText(),PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem().toString(), 
+                    PemeriksaanLaboratBulan3NoReg.getText(),PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem().toString(),PemeriksaanLaboratBulan5NoReg.getText(),
+                    PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem().toString(),PemeriksaanLaboratAkhirNoReg.getText(),PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem().toString(),
+                    Valid.SetTgl(AkhirBerobat.getSelectedItem()+""),HasilAkhirPengobatan.getSelectedItem().toString(),Valid.SetTgl(DianjurkanTesHIV.getSelectedItem().toString()+""), 
+                    Valid.SetTgl(TanggalTesHIV.getSelectedItem()+""),HasilTesHIV.getSelectedItem().toString(),PPK.getSelectedItem().toString(),ART.getSelectedItem().toString(), 
+                    TBDM.getSelectedItem().toString(),TerapiDM.getSelectedItem().toString(),PindahRO.getSelectedItem().toString(),Status.getSelectedItem().toString(),FotoToraks.getSelectedItem().toString(),
+                    ToraksTidakDilakukan.getSelectedItem().toString(),Keterangan.getText(),kdpenyakit.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                })==true){
+                    emptTeks();
+                    tampil();
+                    TabRawat.setSelectedIndex(1);
+            }
+        }
         
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1927,35 +2080,45 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPaketOperasi.jrxml","report","::[ Data Paket Operasi ]::",
-                   "select paket_operasi.kode_paket, paket_operasi.nm_perawatan,(paket_operasi.operator1+paket_operasi.operator2+paket_operasi.operator3+"+
-                       "paket_operasi.asisten_operator1+paket_operasi.asisten_operator2+paket_operasi.asisten_operator3+paket_operasi.instrumen+"+
-                       "paket_operasi.dokter_anak+paket_operasi.perawaat_resusitas+"+
-                       "paket_operasi.alat+paket_operasi.dokter_anestesi+paket_operasi.asisten_anestesi+paket_operasi.asisten_anestesi2+"+
-                       "paket_operasi.bidan+paket_operasi.bidan2+paket_operasi.bidan3+paket_operasi.perawat_luar+"+
-                       "paket_operasi.sewa_ok+paket_operasi.akomodasi+paket_operasi.bagian_rs+"+
-                       "paket_operasi.omloop+paket_operasi.omloop2+paket_operasi.omloop3+paket_operasi.omloop4+paket_operasi.omloop5+"+
-                       "paket_operasi.sarpras+paket_operasi.dokter_pjanak+paket_operasi.dokter_umum) as jumlah "+
-                   "from paket_operasi inner join penjab on penjab.kd_pj=paket_operasi.kd_pj "+
-                   "where paket_operasi.status='1' and paket_operasi.kode_paket like '%"+TCari.getText()+"%' or "+
-                   "paket_operasi.status='1' and paket_operasi.nm_perawatan like '%"+TCari.getText()+"%' or "+
-                   "paket_operasi.status='1' and paket_operasi.kelas like '%"+TCari.getText()+"%' or "+
-                   "paket_operasi.status='1' and penjab.png_jawab like '%"+TCari.getText()+"%' order by paket_operasi.kode_paket ",param);
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());  
+            param.put("periode",DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReport("rptDataTB.jrxml","report","::[ Data Pasien Teridentifikasi TB ]::",
+                "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,if(reg_periksa.sttsumur='Th',reg_periksa.umurdaftar,0) as umur,"+
+                "pasien.no_peserta,pasien.no_ktp,pasien.alamat,data_tb.id_kelurahan,kelurahan.nm_kel,data_tb.id_kecamatan,kecamatan.nm_kec,data_tb.kd_kabupaten,kabupaten.nm_kab,"+
+                "data_tb.id_propinsi,propinsi.nm_prop,data_tb.id_periode_laporan,data_tb.tanggal_buat_laporan,data_tb.nama_rujukan,data_tb.sebutkan1,data_tb.klasifikasi_riwayat_pengobatan,"+
+                "data_tb.klasifikasi_lokasi_anatomi,data_tb.tipe_diagnosis,data_tb.klasifikasi_status_hiv,data_tb.total_skoring_anak,data_tb.konfirmasiSkoring5,data_tb.konfirmasiSkoring6,"+
+                "data_tb.tanggal_mulai_pengobatan,data_tb.paduan_oat,data_tb.sumber_obat,data_tb.sebutkan,data_tb.sebelum_pengobatan_hasil_mikroskopis,data_tb.sebelum_pengobatan_hasil_tes_cepat,"+
+                "data_tb.sebelum_pengobatan_hasil_biakan,data_tb.hasil_mikroskopis_bulan_2,data_tb.noreglab_bulan_2,data_tb.hasil_mikroskopis_bulan_3,data_tb.noreglab_bulan_3,"+
+                "data_tb.hasil_mikroskopis_bulan_5,data_tb.noreglab_bulan_5,data_tb.akhir_pengobatan_hasil_mikroskopis,data_tb.akhir_pengobatan_noreglab,data_tb.tanggal_hasil_akhir_pengobatan,"+
+                "data_tb.hasil_akhir_pengobatan,data_tb.tanggal_dianjurkan_tes,data_tb.tanggal_tes_hiv,data_tb.hasil_tes_hiv,data_tb.ppk,data_tb.art,data_tb.tb_dm,data_tb.terapi_dm,"+
+                "data_tb.pindah_ro,data_tb.status_pengobatan,data_tb.foto_toraks,data_tb.toraks_tdk_dilakukan,data_tb.keterangan,data_tb.kode_icd_x,penyakit.nm_penyakit "+
+                "from reg_periksa inner join pasien inner join data_tb inner join kelurahan inner join kecamatan inner join kabupaten inner join penyakit "+
+                "inner join propinsi on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=data_tb.no_rawat and pasien.kd_kel=kelurahan.kd_kel and "+
+                "pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop and data_tb.kode_icd_x=penyakit.kd_penyakit where "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.alamat like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.no_ktp like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kelurahan.nm_kel like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kecamatan.nm_kec like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kabupaten.nm_kab like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and propinsi.nm_prop like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.nama_rujukan like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.klasifikasi_riwayat_pengobatan like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.klasifikasi_lokasi_anatomi like '%"+TCari.getText().trim()+"%' or "+
+                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.tipe_diagnosis like '%"+TCari.getText().trim()+"%' order by data_tb.tanggal_buat_laporan",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2038,10 +2201,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
-
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==1){
             tampil();
@@ -2056,20 +2215,20 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_MnRestoreActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(FormInput.getHeight()<590){   
+        if(this.getHeight()<750){   
             Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,600));
-            if(FormInput.getWidth()<740){
+            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,605));
+            if(this.getWidth()<760){
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                FormInput.setPreferredSize(new Dimension(740,790));
+                FormInput.setPreferredSize(new Dimension(740,605));
             }else{
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
             }
         }else{
             Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
-            if(FormInput.getWidth()<740){
+            if(this.getWidth()<760){
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                FormInput.setPreferredSize(new Dimension(740,FormInput.WIDTH));
+                FormInput.setPreferredSize(new Dimension(740,FormInput.HEIGHT));
             }else{
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
             }
@@ -2161,7 +2320,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_KelurahanKeyPressed
 
     private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
-        if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")){
+        if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
             BtnKelurahan.requestFocus();
         }else{
@@ -2195,7 +2354,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_KecamatanKeyPressed
 
     private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
-        if(KdKab.getText().trim().equals("")||Kabupaten.getText().trim().equals("")){
+        if(KdKab.getText().trim().equals("")||Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
             BtnKabupaten.requestFocus();
         }else{
@@ -2235,7 +2394,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     }//GEN-LAST:event_PropinsiKeyPressed
 
     private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
-        if(KdProp.getText().trim().equals("")||Propinsi.getText().trim().equals("")){
+        if(KdProp.getText().trim().equals("")||Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
             BtnPropinsi.requestFocus();
         }else{
@@ -2685,6 +2844,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnPropinsi;
     private widget.Button BtnSimpan;
+    private widget.Tanggal DTPCari1;
+    private widget.Tanggal DTPCari2;
     private widget.Tanggal DianjurkanTesHIV;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox FotoToraks;
@@ -2801,6 +2962,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.Label jLabel55;
     private widget.Label jLabel56;
     private widget.Label jLabel57;
+    private widget.Label jLabel58;
+    private widget.Label jLabel59;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -2818,69 +2981,89 @@ public final class DlgDataTB extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{    
             ps=koneksi.prepareStatement(
-                       "select paket_operasi.kode_paket, paket_operasi.nm_perawatan,paket_operasi.kategori,"+
-                       "paket_operasi.operator1, paket_operasi.operator2, paket_operasi.operator3, "+
-                       "paket_operasi.asisten_operator1, paket_operasi.asisten_operator2,paket_operasi.asisten_operator3,"+
-                       "paket_operasi.instrumen, paket_operasi.dokter_anestesi,paket_operasi.asisten_anestesi,paket_operasi.asisten_anestesi2,"+
-                       "paket_operasi.dokter_anak,paket_operasi.perawaat_resusitas, paket_operasi.bidan, "+
-                       "paket_operasi.bidan2, paket_operasi.bidan3, paket_operasi.perawat_luar, paket_operasi.alat,"+
-                       "paket_operasi.sewa_ok,paket_operasi.akomodasi,paket_operasi.bagian_rs,"+
-                       "paket_operasi.omloop,paket_operasi.omloop2,paket_operasi.omloop3,paket_operasi.omloop4,paket_operasi.omloop5,"+
-                       "paket_operasi.sarpras,paket_operasi.dokter_pjanak,paket_operasi.dokter_umum, "+
-                       "(paket_operasi.operator1+paket_operasi.operator2+paket_operasi.operator3+"+
-                       "paket_operasi.asisten_operator1+paket_operasi.asisten_operator2+paket_operasi.asisten_operator3+paket_operasi.instrumen+"+
-                       "paket_operasi.dokter_anak+paket_operasi.perawaat_resusitas+"+
-                       "paket_operasi.alat+paket_operasi.dokter_anestesi+paket_operasi.asisten_anestesi+paket_operasi.asisten_anestesi2+"+
-                       "paket_operasi.bidan+paket_operasi.bidan2+paket_operasi.bidan3+paket_operasi.perawat_luar+"+
-                       "paket_operasi.sewa_ok+paket_operasi.akomodasi+paket_operasi.bagian_rs+"+
-                       "paket_operasi.omloop+paket_operasi.omloop2+paket_operasi.omloop3+paket_operasi.omloop4+paket_operasi.omloop5+"+
-                       "paket_operasi.sarpras+paket_operasi.dokter_pjanak+paket_operasi.dokter_umum) as jumlah, "+
-                       "penjab.png_jawab,paket_operasi.kelas from paket_operasi inner join penjab on penjab.kd_pj=paket_operasi.kd_pj "+
-                       "where paket_operasi.status='1' and paket_operasi.kode_paket like ? or "+
-                       "paket_operasi.status='1' and paket_operasi.nm_perawatan like ? or "+
-                       "paket_operasi.status='1' and paket_operasi.kelas like ? or "+
-                       "paket_operasi.status='1' and penjab.png_jawab like ? order by paket_operasi.kode_paket ");
+                "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,if(reg_periksa.sttsumur='Th',reg_periksa.umurdaftar,0) as umur,"+
+                "pasien.no_peserta,pasien.no_ktp,pasien.alamat,data_tb.id_kelurahan,kelurahan.nm_kel,data_tb.id_kecamatan,kecamatan.nm_kec,data_tb.kd_kabupaten,kabupaten.nm_kab,"+
+                "data_tb.id_propinsi,propinsi.nm_prop,data_tb.id_periode_laporan,data_tb.tanggal_buat_laporan,data_tb.nama_rujukan,data_tb.sebutkan1,data_tb.klasifikasi_riwayat_pengobatan,"+
+                "data_tb.klasifikasi_lokasi_anatomi,data_tb.tipe_diagnosis,data_tb.klasifikasi_status_hiv,data_tb.total_skoring_anak,data_tb.konfirmasiSkoring5,data_tb.konfirmasiSkoring6,"+
+                "data_tb.tanggal_mulai_pengobatan,data_tb.paduan_oat,data_tb.sumber_obat,data_tb.sebutkan,data_tb.sebelum_pengobatan_hasil_mikroskopis,data_tb.sebelum_pengobatan_hasil_tes_cepat,"+
+                "data_tb.sebelum_pengobatan_hasil_biakan,data_tb.hasil_mikroskopis_bulan_2,data_tb.noreglab_bulan_2,data_tb.hasil_mikroskopis_bulan_3,data_tb.noreglab_bulan_3,"+
+                "data_tb.hasil_mikroskopis_bulan_5,data_tb.noreglab_bulan_5,data_tb.akhir_pengobatan_hasil_mikroskopis,data_tb.akhir_pengobatan_noreglab,data_tb.tanggal_hasil_akhir_pengobatan,"+
+                "data_tb.hasil_akhir_pengobatan,data_tb.tanggal_dianjurkan_tes,data_tb.tanggal_tes_hiv,data_tb.hasil_tes_hiv,data_tb.ppk,data_tb.art,data_tb.tb_dm,data_tb.terapi_dm,"+
+                "data_tb.pindah_ro,data_tb.status_pengobatan,data_tb.foto_toraks,data_tb.toraks_tdk_dilakukan,data_tb.keterangan,data_tb.kode_icd_x,penyakit.nm_penyakit "+
+                "from reg_periksa inner join pasien inner join data_tb inner join kelurahan inner join kecamatan inner join kabupaten inner join penyakit "+
+                "inner join propinsi on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=data_tb.no_rawat and pasien.kd_kel=kelurahan.kd_kel and "+
+                "pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop and data_tb.kode_icd_x=penyakit.kd_penyakit where "+
+                "data_tb.tanggal_buat_laporan between ? and ? and reg_periksa.no_rawat like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and pasien.nm_pasien like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and pasien.alamat like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and pasien.no_ktp like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and kelurahan.nm_kel like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and kecamatan.nm_kec like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and kabupaten.nm_kab like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and propinsi.nm_prop like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and data_tb.nama_rujukan like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and data_tb.klasifikasi_riwayat_pengobatan like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and data_tb.klasifikasi_lokasi_anatomi like ? or "+
+                "data_tb.tanggal_buat_laporan between ? and ? and data_tb.tipe_diagnosis like ? order by data_tb.tanggal_buat_laporan");
             try{
-                ps.setString(1,"%"+TCari.getText()+"%");
-                ps.setString(2,"%"+TCari.getText()+"%");
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
+                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(39,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
-                while(rs.next()){                    
-                    tabMode.addRow(new Object[]{false,rs.getString("kode_paket"),
-                                   rs.getString("nm_perawatan"),
-                                   rs.getString("kategori"), 
-                                   rs.getDouble("operator1"), 
-                                   rs.getDouble("operator2"), 
-                                   rs.getDouble("operator3"), 
-                                   rs.getDouble("asisten_operator1"), 
-                                   rs.getDouble("asisten_operator2"), 
-                                   rs.getDouble("asisten_operator3"), 
-                                   rs.getDouble("instrumen"), 
-                                   rs.getDouble("dokter_anestesi"), 
-                                   rs.getDouble("asisten_anestesi"),
-                                   rs.getDouble("asisten_anestesi2"), 
-                                   rs.getDouble("dokter_anak"), 
-                                   rs.getDouble("perawaat_resusitas"), 
-                                   rs.getDouble("bidan"), 
-                                   rs.getDouble("bidan2"), 
-                                   rs.getDouble("bidan3"), 
-                                   rs.getDouble("perawat_luar"), 
-                                   rs.getDouble("alat"), 
-                                   rs.getDouble("sewa_ok"), 
-                                   rs.getDouble("akomodasi"), 
-                                   rs.getDouble("bagian_rs"), 
-                                   rs.getDouble("omloop"), 
-                                   rs.getDouble("omloop2"), 
-                                   rs.getDouble("omloop3"), 
-                                   rs.getDouble("omloop4"), 
-                                   rs.getDouble("omloop5"), 
-                                   rs.getDouble("sarpras"), 
-                                   rs.getDouble("dokter_pjanak"), 
-                                   rs.getDouble("dokter_umum"), 
-                                   rs.getDouble("jumlah"),
-                                   rs.getString("png_jawab"),
-                                   rs.getString("kelas")
+                while(rs.next()){   
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umur")+"Th",rs.getString("no_peserta"),rs.getString("no_ktp"),rs.getString("alamat"),rs.getString("id_kelurahan"),
+                        rs.getString("nm_kel"),rs.getString("id_kecamatan"),rs.getString("nm_kec"),rs.getString("kd_kabupaten"),rs.getString("nm_kab"),
+                        rs.getString("id_propinsi"),rs.getString("nm_prop"),rs.getString("id_periode_laporan"),rs.getString("tanggal_buat_laporan"),
+                        rs.getString("nama_rujukan"),rs.getString("sebutkan1"),rs.getString("klasifikasi_riwayat_pengobatan"),rs.getString("klasifikasi_lokasi_anatomi"),
+                        rs.getString("tipe_diagnosis"),rs.getString("klasifikasi_status_hiv"),rs.getString("total_skoring_anak"),rs.getString("konfirmasiSkoring5"),
+                        rs.getString("konfirmasiSkoring6"),rs.getString("tanggal_mulai_pengobatan"),rs.getString("paduan_oat"),rs.getString("sumber_obat"),
+                        rs.getString("sebutkan"),rs.getString("sebelum_pengobatan_hasil_mikroskopis"),rs.getString("sebelum_pengobatan_hasil_tes_cepat"),
+                        rs.getString("sebelum_pengobatan_hasil_biakan"),rs.getString("hasil_mikroskopis_bulan_2"),rs.getString("noreglab_bulan_2"),
+                        rs.getString("hasil_mikroskopis_bulan_3"),rs.getString("noreglab_bulan_3"),rs.getString("hasil_mikroskopis_bulan_5"),
+                        rs.getString("noreglab_bulan_5"),rs.getString("akhir_pengobatan_hasil_mikroskopis"),rs.getString("akhir_pengobatan_noreglab"),
+                        rs.getString("tanggal_hasil_akhir_pengobatan"),rs.getString("hasil_akhir_pengobatan"),rs.getString("tanggal_dianjurkan_tes"),
+                        rs.getString("tanggal_tes_hiv"),rs.getString("hasil_tes_hiv"),rs.getString("ppk"),rs.getString("art"),rs.getString("tb_dm"),
+                        rs.getString("terapi_dm"),rs.getString("pindah_ro"),rs.getString("status_pengobatan"),rs.getString("foto_toraks"),
+                        rs.getString("toraks_tdk_dilakukan"),rs.getString("keterangan"),rs.getString("kode_icd_x"),rs.getString("nm_penyakit")
                     });
                 }  
             } catch(Exception e){
@@ -2932,13 +3115,71 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void getData() {
         if(tbJnsPerawatan.getSelectedRow()!= -1){
-            //TKd.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
-            
+            TNoRw.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+            TNoRM.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
+            TNmPasien.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
+            JK.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
+            Tanggal.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
+            Umur.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString().replaceAll("Th",""));
+            NoKartu.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString());
+            NIK.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),7).toString());
+            Alamat.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString());
+            KdKel.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString());
+            Kelurahan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),10).toString());
+            KdKec.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString());
+            Kecamatan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),12).toString());
+            KdKab.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),13).toString());
+            Kabupaten.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
+            KdProp.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),15).toString());
+            Propinsi.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),16).toString());
+            PeriodeLaporan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),17).toString());
+            Valid.SetTgl2(TanggalLaporan,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),18).toString());
+            Rujukan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),19).toString());
+            KeteranganRujukan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),20).toString());
+            Riwayat.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),21).toString());
+            Lokasi.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),22).toString());
+            TipeDiagnosis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),23).toString());
+            StatusHIV.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),24).toString());
+            SkoringAnak.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),25).toString());
+            Skoring5.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),26).toString());
+            Skoring6.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),27).toString());
+            Valid.SetTgl(MulaiBerobat,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),28).toString());
+            PaduanOAT.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),29).toString());
+            SumberObat.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),30).toString());
+            KeteranganSO.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),31).toString());
+            SebelumPengobatanMikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),32).toString());
+            SebelumPengobatanTesCepat.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),33).toString());
+            SebelumPengobatanBiakan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),34).toString());
+            PemeriksaanLaboratBulan2Mikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),35).toString());
+            PemeriksaanLaboratBulan2NoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),36).toString());
+            PemeriksaanLaboratBulan3Mikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),37).toString());
+            PemeriksaanLaboratBulan3NoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),38).toString());
+            PemeriksaanLaboratBulan5Mikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),39).toString());
+            PemeriksaanLaboratBulan5NoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),40).toString());
+            PemeriksaanLaboratAkhirPengobatanMikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),41).toString());
+            PemeriksaanLaboratAkhirNoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),42).toString());
+            Valid.SetTgl(AkhirBerobat,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),43).toString());
+            HasilAkhirPengobatan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),44).toString());
+            Valid.SetTgl(DianjurkanTesHIV,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),45).toString());
+            Valid.SetTgl(TanggalTesHIV,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),46).toString());
+            HasilTesHIV.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),47).toString());
+            PPK.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),48).toString());
+            ART.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),49).toString());
+            TBDM.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),50).toString());
+            TerapiDM.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),51).toString());
+            PindahRO.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),52).toString());
+            Status.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),53).toString());
+            FotoToraks.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),54).toString());
+            ToraksTidakDilakukan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),55).toString());
+            Keterangan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),56).toString());
+            kdpenyakit.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),57).toString());
+            nmpenyakit.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),58).toString());
         }
     }
     
     public void isCek(){
         TabRawat.setSelectedIndex(1);
+        tampil();
         BtnSimpan.setEnabled(var.getkemenkes_sitt());
         BtnHapus.setEnabled(var.getkemenkes_sitt());
         BtnEdit.setEnabled(var.getkemenkes_sitt());
