@@ -3036,11 +3036,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
             Kabupaten.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
             KdProp.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),15).toString());
             Propinsi.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),16).toString());
-            /*"Mikroskopis Sebelum Pengobatan",
-                "Tes Cepat Sebelum Pengobatan","Biakan Sebelum Pengobatan","Mikroskopis Bl.2","No.Reg Lab Bl.2","Mikroskopis Bl.3","No.Reg Lab Bl.3","Mikroskopis Bl.5",
-                "No.Reg Lab Bl.5","Mikroskopis Akhir","No.Reg Lab Akhir","Akhir Berobat","Hasil Akhir Pengobatan","Dianjurkan Tes HIV","Tanggal Tes HIV","Hasil Tes HIV",
-                "PPK","ART","TB DM","Terapi DM","Pindah RO","Status Pengobatan","Foto Toraks","Toraks Tdk Dilakukan","Keterangan","ICD X","Nama Penyakit"
-            */
             PeriodeLaporan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),17).toString());
             Valid.SetTgl2(TanggalLaporan,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),18).toString());
             Rujukan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),19).toString());
@@ -3056,6 +3051,33 @@ public final class DlgDataTB extends javax.swing.JDialog {
             PaduanOAT.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),29).toString());
             SumberObat.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),30).toString());
             KeteranganSO.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),31).toString());
+            SebelumPengobatanMikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),32).toString());
+            SebelumPengobatanTesCepat.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),33).toString());
+            SebelumPengobatanBiakan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),34).toString());
+            PemeriksaanLaboratBulan2Mikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),35).toString());
+            PemeriksaanLaboratBulan2NoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),36).toString());
+            PemeriksaanLaboratBulan3Mikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),37).toString());
+            PemeriksaanLaboratBulan3NoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),38).toString());
+            PemeriksaanLaboratBulan5Mikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),39).toString());
+            PemeriksaanLaboratBulan5NoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),40).toString());
+            PemeriksaanLaboratAkhirPengobatanMikroskopis.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),41).toString());
+            PemeriksaanLaboratAkhirNoReg.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),42).toString());
+            Valid.SetTgl(AkhirBerobat,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),43).toString());
+            HasilAkhirPengobatan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),44).toString());
+            Valid.SetTgl(DianjurkanTesHIV,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),45).toString());
+            Valid.SetTgl(TanggalTesHIV,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),46).toString());
+            HasilTesHIV.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),47).toString());
+            PPK.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),48).toString());
+            ART.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),49).toString());
+            TBDM.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),50).toString());
+            TerapiDM.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),51).toString());
+            PindahRO.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),52).toString());
+            Status.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),53).toString());
+            FotoToraks.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),54).toString());
+            ToraksTidakDilakukan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),55).toString());
+            Keterangan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),56).toString());
+            kdpenyakit.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),57).toString());
+            nmpenyakit.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),58).toString());
         }
     }
     
