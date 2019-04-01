@@ -662,7 +662,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekKartu form=new BPJSCekKartu(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKartu(NoKartuJKN);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);
@@ -677,7 +677,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekNIK2 form=new BPJSCekNIK2(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKTP(NIK);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);
@@ -692,7 +692,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekRujukanKartuPCare form=new BPJSCekRujukanKartuPCare(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKartu(NoKartuJKN);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);
@@ -707,7 +707,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekRujukanKartuRS form=new BPJSCekRujukanKartuRS(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKartu(NoKartuJKN);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);

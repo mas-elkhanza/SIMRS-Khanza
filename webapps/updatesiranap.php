@@ -13,8 +13,8 @@
             $tersediapriawanita=0;
             
             # seting koneksi webservices #
-            $xrsid = "kode_rumah_sakit";  # ID Rumah Sakit #
-            $xpass = md5("password_rumah_sakit"); # Password #
+            $xrsid = "7303010";  # ID Rumah Sakit #
+            $xpass = md5("12345"); # Password #
             $strURLSiranap = "http://sirs.yankes.kemkes.go.id/sirsservice/ranap";  
             date_default_timezone_set("Asia/Jakarta");
             $timestamp = strtotime(date("d-m-Y"));
@@ -37,8 +37,8 @@
                 $tersediapriawanita=getOne("select count(kd_kamar) from kamar where statusdata='1' and kelas='".$data['kelas']."' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'");
 
                 $xmlStr .= "<data>\n";
-                $xmlStr .= "<kode_ruang>".$koderuang."</kode_ruang>\n";
-                $xmlStr .= "<tipe_pasien></tipe_pasien>\n";
+                $xmlStr .= "<kode_ruang>0000</kode_ruang>\n";
+                $xmlStr .= "<tipe_pasien>0002</tipe_pasien>\n";
                 $xmlStr .= "<total_TT>".$kapasitas."</total_TT>\n";
                 $xmlStr .= "<terpakai_male>".($kapasitas-$tersediapria)."</terpakai_male>\n";
                 $xmlStr .= "<terpakai_female>".($kapasitas-$tersediawanita)."</terpakai_female>\n";
@@ -64,5 +64,8 @@
             curl_setopt($curl, CURLOPT_POSTFIELDS, $xmlStr);
             $str = curl_exec($curl);  
             curl_close($curl); 
+            echo "respon : ".$str;
 	}
+        
+        updateSiranap();
  ?>
