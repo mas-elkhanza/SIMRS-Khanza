@@ -254,7 +254,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(70, 70, 70));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel22.setText("Skype :");
+        jLabel22.setText("Github :");
         jLabel22.setName("jLabel22"); // NOI18N
         panelGlass4.add(jLabel22);
         jLabel22.setBounds(0, 70, 55, 14);
@@ -347,7 +347,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(70, 70, 70));
-        jLabel34.setText("khanza.media     Tweeter : KhanzaMedia");
+        jLabel34.setText("github.com/mas-elkhanza     Tweeter : KhanzaMedia");
         jLabel34.setName("jLabel34"); // NOI18N
         panelGlass4.add(jLabel34);
         jLabel34.setBounds(58, 70, 420, 14);

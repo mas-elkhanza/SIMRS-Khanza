@@ -479,7 +479,7 @@
                   <Color blue="46" green="46" red="46" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Skype :"/>
+                <Property name="text" type="java.lang.String" value="Github :"/>
                 <Property name="name" type="java.lang.String" value="jLabel22" noResource="true"/>
               </Properties>
               <Constraints>
@@ -679,7 +679,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="46" green="46" red="46" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="khanza.media     Tweeter : KhanzaMedia"/>
+                <Property name="text" type="java.lang.String" value="github.com/mas-elkhanza     Tweeter : KhanzaMedia"/>
                 <Property name="name" type="java.lang.String" value="jLabel34" noResource="true"/>
               </Properties>
               <Constraints>

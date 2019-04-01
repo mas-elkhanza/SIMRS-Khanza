@@ -4271,22 +4271,28 @@ public class DlgKamarInap extends javax.swing.JDialog {
             
             if(evt.getClickCount()==1){
                 if(gabungkan.equals("gabung")){
-                    int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau digabung..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                    if (reply == JOptionPane.YES_OPTION) {
-                        if(Sequel.menyimpantf("ranap_gabung","?,?","Data Ranap Gabung",2,new String[]{
-                                norawat.getText(),norawatgabung
-                            })==true){
-                            Sequel.queryu("delete from kamar_inap where no_rawat='"+norawatgabung+"'");
-                            Sequel.mengedit("kamar","kd_kamar='"+kamaryangdigabung+"'","status='KOSONG'");                
-                            Sequel.mengedit("kamar_inap","no_rawat='"+norawatgabung+"'","no_rawat='"+norawat.getText()+"'"); 
-                            Sequel.mengedit("reg_periksa","no_rawat='"+norawatgabung+"'","status_bayar='Sudah Bayar'");                
-                            gabungkan="";
-                            norawatgabung="";
-                            tampil();
-                        }
-                    }else{
+                    if(norawat.getText().equals(norawatgabung)){
+                        JOptionPane.showMessageDialog(null,"Gabungkan ke ranap ibu gagal karena no perawatan ibu dan bayi yang dipilih sama..!!");
                         gabungkan="";
                         norawatgabung="";
+                    }else{
+                        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau digabung..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                        if (reply == JOptionPane.YES_OPTION) {
+                            if(Sequel.menyimpantf("ranap_gabung","?,?","Data Ranap Gabung",2,new String[]{
+                                    norawat.getText(),norawatgabung
+                                })==true){
+                                Sequel.queryu("delete from kamar_inap where no_rawat='"+norawatgabung+"'");
+                                Sequel.mengedit("kamar","kd_kamar='"+kamaryangdigabung+"'","status='KOSONG'");                
+                                Sequel.mengedit("kamar_inap","no_rawat='"+norawatgabung+"'","no_rawat='"+norawat.getText()+"'"); 
+                                Sequel.mengedit("reg_periksa","no_rawat='"+norawatgabung+"'","status_bayar='Sudah Bayar'");                
+                                gabungkan="";
+                                norawatgabung="";
+                                tampil();
+                            }
+                        }else{
+                            gabungkan="";
+                            norawatgabung="";
+                        }
                     }
                 }
             }
