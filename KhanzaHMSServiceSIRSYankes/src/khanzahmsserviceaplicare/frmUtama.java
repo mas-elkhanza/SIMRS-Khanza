@@ -72,15 +72,12 @@ public class frmUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIMKES Khanza Service SIRANAP");
-        setResizable(false);
-        getContentPane().setLayout(null);
 
         TeksArea.setColumns(20);
         TeksArea.setRows(5);
         jScrollPane1.setViewportView(TeksArea);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(14, 14, 351, 240);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jButton1.setText("Keluar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,8 +85,7 @@ public class frmUtama extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(10, 260, 80, 34);
+        getContentPane().add(jButton1, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -180,7 +176,7 @@ public class frmUtama extends javax.swing.JFrame {
                     }
                         
                     try {
-                        TeksArea.append("Memulai update aplicare\n");
+                        TeksArea.append("Memulai update Siranap\n");
                         ps=koneksi.prepareStatement(
                                 "select siranap_ketersediaan_kamar.kode_ruang_siranap,siranap_ketersediaan_kamar.kelas_ruang_siranap,siranap_ketersediaan_kamar.kd_bangsal," +
                                 "bangsal.nm_bangsal,siranap_ketersediaan_kamar.kelas,siranap_ketersediaan_kamar.kapasitas," +
@@ -199,12 +195,12 @@ public class frmUtama extends javax.swing.JFrame {
                                     headers = new HttpHeaders();
                                     headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
                                     headers.add("X-pass",api.getHmac()); 
-                                    headers.add("Content-Type","application/xml");
+                                    headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                                     requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                                     "<xml>\n"+    
                                         "<data>\n"+
-                                            "<kode_ruang>"+rs.getString("kode_ruang_siranap").substring(0,4)+"</kode_ruang>\n"+
-                                            "<tipe_pasien>"+rs.getString("kelas_ruang_siranap").substring(0,4)+"</tipe_pasien>\n"+
+                                            "<kode_ruang>"+rs.getString("kelas_ruang_siranap").substring(0,4)+"</kode_ruang>\n"+
+                                            "<tipe_pasien>"+rs.getString("kode_ruang_siranap").substring(0,4)+"</tipe_pasien>\n"+
                                             "<total_TT>"+Integer.toString(totaltt)+"</total_TT>\n"+
                                             "<terpakai_male>"+Integer.toString(terpakai)+"</terpakai_male>\n"+
                                             "<terpakai_female>"+Integer.toString(terpakai)+"</terpakai_female>\n"+
