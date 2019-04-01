@@ -76,15 +76,12 @@ public class frmUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIMKES Khanza Service Aplicare");
-        setResizable(false);
-        getContentPane().setLayout(null);
 
         TeksArea.setColumns(20);
         TeksArea.setRows(5);
         jScrollPane1.setViewportView(TeksArea);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(14, 14, 351, 240);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jButton1.setText("Keluar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -92,8 +89,7 @@ public class frmUtama extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(10, 260, 80, 34);
+        getContentPane().add(jButton1, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,13 +198,13 @@ public class frmUtama extends javax.swing.JFrame {
                                     requestJson ="{\"kodekelas\":\""+rs.getString("kode_kelas_aplicare")+"\", "+
                                                   "\"koderuang\":\""+rs.getString("kd_bangsal")+"\","+ 
                                                   "\"namaruang\":\""+rs.getString("nm_bangsal")+"\","+ 
-                                                  "\"kapasitas\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kode_kelas_aplicare")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"'")+"\","+ 
-                                                  "\"tersedia\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kode_kelas_aplicare")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\","+
-                                                  "\"tersediapria\":\""+rs.getString("tersediapria")+"\","+ 
-                                                  "\"tersediawanita\":\""+rs.getString("tersediawanita")+"\","+ 
-                                                  "\"tersediapriawanita\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kode_kelas_aplicare")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\""+
+                                                  "\"kapasitas\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"'")+"\","+ 
+                                                  "\"tersedia\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\","+
+                                                  "\"tersediapria\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\","+ 
+                                                  "\"tersediawanita\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\","+ 
+                                                  "\"tersediapriawanita\":\""+Sequel.cariIsi("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and status='KOSONG'")+"\""+
                                                   "}";
-                                    TeksArea.append("JSON dikirim : "+requestEntity);
+                                    TeksArea.append("JSON dikirim : "+requestJson+"\n");
                                     requestEntity = new HttpEntity(requestJson,headers);
                                     //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                     root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
@@ -216,7 +212,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     //System.out.println("code : "+nameNode.path("code").asText());
                                     //System.out.println("message : "+nameNode.path("message").asText());
                                     response = root.path("response");
-                                    TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText());
+                                    TeksArea.append("respon WS BPJS : "+nameNode.path("message").asText()+"\n");
                                 }catch (Exception ex) {
                                     System.out.println("Notifikasi Bridging : "+ex);
                                 }

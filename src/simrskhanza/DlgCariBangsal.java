@@ -310,6 +310,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //bangsal.setModal(true);
         bangsal.emptTeks();
+        bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setAlwaysOnTop(false);
