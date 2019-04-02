@@ -105,7 +105,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         nama_brng.setDocument(new batasInput((byte)80).getKata(nama_brng));
         kode_sat.setDocument(new batasInput((byte)4).getKata(kode_sat));
         stok.setDocument(new batasInput((byte)10).getKata(stok));
-        harga.setDocument(new batasInput((byte)10).getOnlyAngka(harga));
+        harga.setDocument(new batasInput((byte)20).getKata(harga));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TCari.requestFocus();        
         if(koneksiDB.cariCepat().equals("aktif")){
@@ -1034,7 +1034,7 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             nama_sat.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
             nmjenis.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
             stok.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
-            harga.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString());
+            harga.setText(Valid.SetAngka6(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString())));
             kode_sat.setText(Sequel.cariIsi("select kode_sat from ipsrsbarang where kode_brng=?",kode_brng.getText()));
             kdjenis.setText(Sequel.cariIsi("select jenis from ipsrsbarang where kode_brng=?",kode_brng.getText()));
         }

@@ -413,7 +413,10 @@ import setting.DlgSetInputParsial;
 import kepegawaian.DlgJadwal;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
-import laporan.DlgDataTB;
+import bridging.DlgDataTB;
+import grafikanalisa.GrafikTBPeriodeLaporan;
+import grafikanalisa.GrafikTBRiwayat;
+import grafikanalisa.GrafikTBRujukan;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -1037,6 +1040,9 @@ public class frmUtama extends javax.swing.JFrame {
         btnPasswordAsuransi = new widget.ButtonBig();
         btnDataSITT = new widget.ButtonBig();
         btnSiranapKetersediaanKamar = new widget.ButtonBig();
+        btnGrafikTBLaporanPeriode = new widget.ButtonBig();
+        btnGrafikTBRujukan = new widget.ButtonBig();
+        btnGrafikTBRiwayat = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6588,6 +6594,42 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSiranapKetersediaanKamar);
 
+        btnGrafikTBLaporanPeriode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBLaporanPeriode.setText("Periode Laporan TB");
+        btnGrafikTBLaporanPeriode.setIconTextGap(0);
+        btnGrafikTBLaporanPeriode.setName("btnGrafikTBLaporanPeriode"); // NOI18N
+        btnGrafikTBLaporanPeriode.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBLaporanPeriode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBLaporanPeriodeActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBLaporanPeriode);
+
+        btnGrafikTBRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBRujukan.setText("Rujukan TB");
+        btnGrafikTBRujukan.setIconTextGap(0);
+        btnGrafikTBRujukan.setName("btnGrafikTBRujukan"); // NOI18N
+        btnGrafikTBRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRujukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRujukanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBRujukan);
+
+        btnGrafikTBRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBRiwayat.setText("Riwayat TB");
+        btnGrafikTBRiwayat.setIconTextGap(0);
+        btnGrafikTBRiwayat.setName("btnGrafikTBRiwayat"); // NOI18N
+        btnGrafikTBRiwayat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRiwayatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBRiwayat);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6596,7 +6638,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02/04/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13677,6 +13719,39 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSiranapKetersediaanKamarActionPerformed
 
+    private void btnGrafikTBLaporanPeriodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBLaporanPeriodeActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBPeriodeLaporan aplikasi=new GrafikTBPeriodeLaporan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBLaporanPeriodeActionPerformed
+
+    private void btnGrafikTBRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBRujukanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBRujukan aplikasi=new GrafikTBRujukan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBRujukanActionPerformed
+
+    private void btnGrafikTBRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBRiwayatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBRiwayat aplikasi=new GrafikTBRiwayat(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBRiwayatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13860,6 +13935,9 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikStatusRegPerTahun2;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal2;
+    private widget.ButtonBig btnGrafikTBLaporanPeriode;
+    private widget.ButtonBig btnGrafikTBRiwayat;
+    private widget.ButtonBig btnGrafikTBRujukan;
     private widget.ButtonBig btnHAIsBangsal;
     private widget.ButtonBig btnHarianHAIs;
     private widget.ButtonBig btnHarianKamar;
@@ -16589,6 +16667,21 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikKunjunganPerCacat);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_tb_periodelaporan()==true){
+                Panelmenu.add(btnGrafikTBLaporanPeriode);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_rujukan()==true){
+                Panelmenu.add(btnGrafikTBRujukan);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_riwayat()==true){
+                Panelmenu.add(btnGrafikTBRiwayat);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(var.getsurat_indeks()==true){
@@ -18779,6 +18872,21 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
+        if(var.getgrafik_tb_periodelaporan()==true){
+            Panelmenu.add(btnGrafikTBLaporanPeriode);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_rujukan()==true){
+            Panelmenu.add(btnGrafikTBRujukan);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_tb_riwayat()==true){
+            Panelmenu.add(btnGrafikTBRiwayat);
+            jmlmenu++;
+        }
+
         if(var.getsurat_indeks()==true){
             Panelmenu.add(btnSuratIndeks);
             jmlmenu++;
@@ -21763,6 +21871,27 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_kunjungan_per_cacat()==true){
             if(btnGrafikKunjunganPerCacat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerCacat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_periodelaporan()==true){
+            if(btnGrafikTBLaporanPeriode.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBLaporanPeriode);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_rujukan()==true){
+            if(btnGrafikTBRujukan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBRujukan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_riwayat()==true){
+            if(btnGrafikTBRiwayat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBRiwayat);
                 jmlmenu++;
             }                
         }
