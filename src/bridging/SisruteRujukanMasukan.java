@@ -65,7 +65,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     private boolean aktif=false;
-    private String requestJson="",No="",RMFaskes="",NamaPasien="",Kontak="",Alamat="",TempatLahir="",TglLahir="",
+    private String idrs="",requestJson="",No="",RMFaskes="",NamaPasien="",Kontak="",Alamat="",TempatLahir="",TglLahir="",
                 JK="",NoKartuJKN="",NIK="",NoRujuk="",KodeAsal="",NamaFaskesAsal="",
                 KodeTujuan="",NamaFaskesTujuan="",JenisRujukan="",Alasan="",AlasanLainnya="",Status="",
                 TglRujuk="",DignosaRujuk="",AnamnesisPemeriksaanFisik="",Kesadaran="",
@@ -212,6 +212,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
             alarm=prop.getProperty("ALARMRSISRUTE");
+            idrs=prop.getProperty("IDSISRUTE");
         } catch (Exception e) {
             alarm="no";
             System.out.println("E : "+e);
@@ -878,7 +879,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try {
             URL = link+"/rujukan/jawab/"+NoRujuk;	
             headers = new HttpHeaders();
-            headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+            headers.add("X-cons-id",idrs);
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
 	    headers.add("X-signature",api.getHmac()); 
 	    headers.add("Content-type","application/json");
@@ -994,7 +995,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode);
             URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+	    headers.add("X-cons-id",idrs);
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
 	    headers.add("X-signature",api.getHmac()); 
 	    headers.add("Content-type","application/json");             

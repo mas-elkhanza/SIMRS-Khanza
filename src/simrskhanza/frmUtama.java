@@ -413,7 +413,7 @@ import setting.DlgSetInputParsial;
 import kepegawaian.DlgJadwal;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
-import laporan.DlgDataTB;
+import bridging.DlgDataTB;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
