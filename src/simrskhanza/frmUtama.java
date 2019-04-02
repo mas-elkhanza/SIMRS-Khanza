@@ -415,6 +415,7 @@ import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
 import bridging.DlgDataTB;
 import grafikanalisa.GrafikTBPeriodeLaporan;
+import grafikanalisa.GrafikTBRiwayat;
 import grafikanalisa.GrafikTBRujukan;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
@@ -1041,6 +1042,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSiranapKetersediaanKamar = new widget.ButtonBig();
         btnGrafikTBLaporanPeriode = new widget.ButtonBig();
         btnGrafikTBRujukan = new widget.ButtonBig();
+        btnGrafikTBRiwayat = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6615,6 +6617,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnGrafikTBRujukan);
+
+        btnGrafikTBRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBRiwayat.setText("Riwayat TB");
+        btnGrafikTBRiwayat.setIconTextGap(0);
+        btnGrafikTBRiwayat.setName("btnGrafikTBRiwayat"); // NOI18N
+        btnGrafikTBRiwayat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRiwayatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBRiwayat);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -13727,6 +13741,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikTBRujukanActionPerformed
 
+    private void btnGrafikTBRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBRiwayatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBRiwayat aplikasi=new GrafikTBRiwayat(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBRiwayatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13911,6 +13936,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikStatusRegPerTanggal;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal2;
     private widget.ButtonBig btnGrafikTBLaporanPeriode;
+    private widget.ButtonBig btnGrafikTBRiwayat;
     private widget.ButtonBig btnGrafikTBRujukan;
     private widget.ButtonBig btnHAIsBangsal;
     private widget.ButtonBig btnHarianHAIs;
@@ -16651,6 +16677,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikTBRujukan);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_tb_riwayat()==true){
+                Panelmenu.add(btnGrafikTBRiwayat);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(var.getsurat_indeks()==true){
@@ -18848,6 +18879,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getgrafik_tb_rujukan()==true){
             Panelmenu.add(btnGrafikTBRujukan);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_tb_riwayat()==true){
+            Panelmenu.add(btnGrafikTBRiwayat);
             jmlmenu++;
         }
 
@@ -21849,6 +21885,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_tb_rujukan()==true){
             if(btnGrafikTBRujukan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikTBRujukan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_riwayat()==true){
+            if(btnGrafikTBRiwayat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBRiwayat);
                 jmlmenu++;
             }                
         }
