@@ -417,6 +417,7 @@ import bridging.DlgDataTB;
 import grafikanalisa.GrafikTBPeriodeLaporan;
 import grafikanalisa.GrafikTBRiwayat;
 import grafikanalisa.GrafikTBRujukan;
+import grafikanalisa.GrafikTBStatusHIV;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
@@ -1045,6 +1046,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikTBRujukan = new widget.ButtonBig();
         btnGrafikTBRiwayat = new widget.ButtonBig();
         btnGrafikTBTipeDiagnosis = new widget.ButtonBig();
+        btnGrafikTBSTatusHIV = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6644,6 +6646,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikTBTipeDiagnosis);
 
+        btnGrafikTBSTatusHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBSTatusHIV.setText("Status HIV TB");
+        btnGrafikTBSTatusHIV.setIconTextGap(0);
+        btnGrafikTBSTatusHIV.setName("btnGrafikTBSTatusHIV"); // NOI18N
+        btnGrafikTBSTatusHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSTatusHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSTatusHIVActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBSTatusHIV);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6652,7 +6666,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02/04/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/04/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13777,6 +13791,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikTBTipeDiagnosisActionPerformed
 
+    private void btnGrafikTBSTatusHIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBSTatusHIVActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBStatusHIV aplikasi=new GrafikTBStatusHIV(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBSTatusHIVActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13963,6 +13988,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikTBLaporanPeriode;
     private widget.ButtonBig btnGrafikTBRiwayat;
     private widget.ButtonBig btnGrafikTBRujukan;
+    private widget.ButtonBig btnGrafikTBSTatusHIV;
     private widget.ButtonBig btnGrafikTBTipeDiagnosis;
     private widget.ButtonBig btnHAIsBangsal;
     private widget.ButtonBig btnHarianHAIs;
@@ -16713,6 +16739,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikTBTipeDiagnosis);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_tb_statushiv()==true){
+                Panelmenu.add(btnGrafikTBSTatusHIV);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(var.getsurat_indeks()==true){
@@ -18920,6 +18951,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getgrafik_tb_tipediagnosis()==true){
             Panelmenu.add(btnGrafikTBTipeDiagnosis);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_statushiv()==true){
+            Panelmenu.add(btnGrafikTBSTatusHIV);
             jmlmenu++;
         }
 
@@ -21935,6 +21971,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_tb_tipediagnosis()==true){
             if(btnGrafikTBTipeDiagnosis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikTBTipeDiagnosis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_statushiv()==true){
+            if(btnGrafikTBSTatusHIV.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBSTatusHIV);
                 jmlmenu++;
             }                
         }

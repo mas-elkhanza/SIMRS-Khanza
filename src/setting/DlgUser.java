@@ -124,7 +124,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Referensi Faskes Sisrute","[K]Referensi Alasan Rujuk Sisrute","[K]Referensi Diagnosa Sisrute","[K]Rujukan Masuk Sisrute","[K]Rujukan Keluar Sisrute",
                     "[K]Cek SKDP VClaim","[D]Data Batch","[I]Kunjungan Lab Ralan","[I]Kunjungan Lab Ranap","[I]Kunjungan Radiologi Ralan","[I]Kunjungan Radiologi Ranap",
                     "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[P]Password Asuransi","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
-                    "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB"
+                    "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB","[N]Status HIV TB"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -265,7 +265,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 447;i++) {
+        for (i = 0; i < 448;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -795,6 +795,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(78);
             }else if(i==446){
                 column.setPreferredWidth(110);
+            }else if(i==447){
+                column.setPreferredWidth(90);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1233,7 +1235,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1722,7 +1724,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_tb_periodelaporan='"+tbUser.getValueAt(i,443).toString()+"',"+
                     "grafik_tb_rujukan='"+tbUser.getValueAt(i,444).toString()+"',"+
                     "grafik_tb_riwayat='"+tbUser.getValueAt(i,445).toString()+"',"+
-                    "grafik_tb_tipediagnosis='"+tbUser.getValueAt(i,446).toString()+"'");
+                    "grafik_tb_tipediagnosis='"+tbUser.getValueAt(i,446).toString()+"',"+
+                    "grafik_tb_statushiv='"+tbUser.getValueAt(i,447).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2026,7 +2029,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "bpjs_cek_skdp,data_batch,kunjungan_permintaan_lab,kunjungan_permintaan_lab2,kunjungan_permintaan_radiologi,"+
                         "kunjungan_permintaan_radiologi2,pcare_pemberian_obat,pcare_pemberian_tindakan,pembayaran_akun_bayar3,"+
                         "password_asuransi,kemenkes_sitt,siranap_ketersediaan_kamar,grafik_tb_periodelaporan,grafik_tb_rujukan,"+
-                        "grafik_tb_riwayat,grafik_tb_tipediagnosis from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_tb_riwayat,grafik_tb_tipediagnosis,grafik_tb_statushiv from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2485,7 +2488,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_tb_periodelaporan"),
                                rs.getBoolean("grafik_tb_rujukan"),
                                rs.getBoolean("grafik_tb_riwayat"),
-                               rs.getBoolean("grafik_tb_tipediagnosis")
+                               rs.getBoolean("grafik_tb_tipediagnosis"),
+                               rs.getBoolean("grafik_tb_statushiv")
                             });
                         }   
                     } catch (Exception e) {
@@ -2933,7 +2937,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_tb_periodelaporan"),
                            rs.getBoolean("grafik_tb_rujukan"),
                            rs.getBoolean("grafik_tb_riwayat"),
-                           rs.getBoolean("grafik_tb_tipediagnosis")
+                           rs.getBoolean("grafik_tb_tipediagnosis"),
+                           rs.getBoolean("grafik_tb_statushiv")
                         });
                     }                                             
                  }
