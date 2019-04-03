@@ -97,7 +97,7 @@ public final class var {
             bpjs_cek_skdp=false,data_batch=false,kunjungan_permintaan_lab=false,kunjungan_permintaan_lab2=false,kunjungan_permintaan_radiologi=false,
             kunjungan_permintaan_radiologi2=false,pcare_pemberian_obat=false,pcare_pemberian_tindakan=false,pembayaran_akun_bayar3=false,
             password_asuransi=false,kemenkes_sitt=false,siranap_ketersediaan_kamar=false,grafik_tb_periodelaporan=false,grafik_tb_rujukan=false,
-            grafik_tb_riwayat=false;
+            grafik_tb_riwayat=false,grafik_tb_tipediagnosis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -563,6 +563,7 @@ public final class var {
                         var.grafik_tb_periodelaporan=true;
                         var.grafik_tb_rujukan=true;
                         var.grafik_tb_riwayat=true;
+                        var.grafik_tb_tipediagnosis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1012,6 +1013,7 @@ public final class var {
                         var.grafik_tb_periodelaporan=rs2.getBoolean("grafik_tb_periodelaporan");
                         var.grafik_tb_rujukan=rs2.getBoolean("grafik_tb_rujukan");
                         var.grafik_tb_riwayat=rs2.getBoolean("grafik_tb_riwayat");
+                        var.grafik_tb_tipediagnosis=rs2.getBoolean("grafik_tb_tipediagnosis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1459,6 +1461,7 @@ public final class var {
                         var.grafik_tb_periodelaporan=false;
                         var.grafik_tb_rujukan=false;
                         var.grafik_tb_riwayat=false;
+                        var.grafik_tb_tipediagnosis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1960,4 +1963,5 @@ public final class var {
     public static boolean getgrafik_tb_periodelaporan(){return var.grafik_tb_periodelaporan;}
     public static boolean getgrafik_tb_rujukan(){return var.grafik_tb_rujukan;}
     public static boolean getgrafik_tb_riwayat(){return var.grafik_tb_riwayat;}
+    public static boolean getgrafik_tb_tipediagnosis(){return var.grafik_tb_tipediagnosis;}
 }   

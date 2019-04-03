@@ -417,6 +417,7 @@ import bridging.DlgDataTB;
 import grafikanalisa.GrafikTBPeriodeLaporan;
 import grafikanalisa.GrafikTBRiwayat;
 import grafikanalisa.GrafikTBRujukan;
+import grafikanalisa.GrafikTBTipeDiagnosis;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -1043,6 +1044,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikTBLaporanPeriode = new widget.ButtonBig();
         btnGrafikTBRujukan = new widget.ButtonBig();
         btnGrafikTBRiwayat = new widget.ButtonBig();
+        btnGrafikTBTipeDiagnosis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6629,6 +6631,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnGrafikTBRiwayat);
+
+        btnGrafikTBTipeDiagnosis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBTipeDiagnosis.setText("Tipe Diagnosis TB");
+        btnGrafikTBTipeDiagnosis.setIconTextGap(0);
+        btnGrafikTBTipeDiagnosis.setName("btnGrafikTBTipeDiagnosis"); // NOI18N
+        btnGrafikTBTipeDiagnosis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBTipeDiagnosis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBTipeDiagnosisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBTipeDiagnosis);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -13752,6 +13766,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikTBRiwayatActionPerformed
 
+    private void btnGrafikTBTipeDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBTipeDiagnosisActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBTipeDiagnosis aplikasi=new GrafikTBTipeDiagnosis(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBTipeDiagnosisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13938,6 +13963,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikTBLaporanPeriode;
     private widget.ButtonBig btnGrafikTBRiwayat;
     private widget.ButtonBig btnGrafikTBRujukan;
+    private widget.ButtonBig btnGrafikTBTipeDiagnosis;
     private widget.ButtonBig btnHAIsBangsal;
     private widget.ButtonBig btnHarianHAIs;
     private widget.ButtonBig btnHarianKamar;
@@ -16682,6 +16708,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikTBRiwayat);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_tb_tipediagnosis()==true){
+                Panelmenu.add(btnGrafikTBTipeDiagnosis);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(var.getsurat_indeks()==true){
@@ -18884,6 +18915,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getgrafik_tb_riwayat()==true){
             Panelmenu.add(btnGrafikTBRiwayat);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_tipediagnosis()==true){
+            Panelmenu.add(btnGrafikTBTipeDiagnosis);
             jmlmenu++;
         }
 
@@ -21892,6 +21928,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_tb_riwayat()==true){
             if(btnGrafikTBRiwayat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikTBRiwayat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_tipediagnosis()==true){
+            if(btnGrafikTBTipeDiagnosis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBTipeDiagnosis);
                 jmlmenu++;
             }                
         }
