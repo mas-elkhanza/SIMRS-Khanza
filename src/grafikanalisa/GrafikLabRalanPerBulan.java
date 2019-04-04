@@ -95,7 +95,7 @@ public class GrafikLabRalanPerBulan extends javax.swing.JDialog {
         panelGlass5.add(jLabel33);
 
         Tanggal1.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-03-2018" }));
+        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
         Tanggal1.setOpaque(false);
@@ -103,13 +103,13 @@ public class GrafikLabRalanPerBulan extends javax.swing.JDialog {
         panelGlass5.add(Tanggal1);
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("s/d");
+        jLabel32.setText("s.d");
         jLabel32.setName("jLabel32"); // NOI18N
         jLabel32.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(jLabel32);
 
         Tanggal2.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-03-2018" }));
+        Tanggal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
         Tanggal2.setDisplayFormat("dd-MM-yyyy");
         Tanggal2.setName("Tanggal2"); // NOI18N
         Tanggal2.setOpaque(false);

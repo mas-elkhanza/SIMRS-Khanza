@@ -38,7 +38,6 @@ import javax.swing.table.TableColumn;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import simrskhanza.DlgCariBangsal;
 
 /**
@@ -55,7 +54,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
     private int i=0;
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private final Properties prop = new Properties();
-    private String requestXML,URL="",kod;
+    private String requestXML,URL="",respon="",idrs="";
     private SirsApi api=new SirsApi();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -187,7 +186,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPISIRS");	
+            URL = prop.getProperty("URLAPISIRS");
+            idrs=prop.getProperty("IDSIRS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -247,7 +247,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-03-2019 05:48:39" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019-03-23 07:48:15" }));
         Tanggal.setDisplayFormat("yyyy-MM-dd HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -694,21 +694,21 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         }else{
             try {
                 headers = new HttpHeaders();
-                headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                headers.add("X-rs-id",idrs); 
                 headers.add("X-pass",api.getHmac()); 
-                headers.add("Content-Type","application/xml");
+                headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                 requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                 "<xml>\n"+    
                     "<data>\n"+
-                        "<kode_ruang>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
-                        "<tipe_pasien>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
+                        "<kode_ruang>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
+                        "<tipe_pasien>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
                         "<total_TT>"+Kapasitas.getText()+"</total_TT>\n"+
-                        "<terpakai_male>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaPria.getText()))+"</terpakai_male>\n"+
-                        "<terpakai_female>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaWanita.getText()))+"</terpakai_female>\n"+
+                        "<terpakai_male>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaPria.getText()))+"</terpakai_male>\n"+
+                        "<terpakai_female>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaWanita.getText()))+"</terpakai_female>\n"+
                         "<kosong_male>"+TersediaPria.getText()+"</kosong_male>\n"+
                         "<kosong_female>"+TersediaWanita.getText()+"</kosong_female>\n"+
                         "<waiting>"+TersediaMenunggu.getText()+"</waiting>\n"+
-                        "<tgl_update>"+Tanggal.getSelectedItem()+".0</tgl_update>\n"+
+                        "<tgl_update>"+Tanggal.getSelectedItem()+"</tgl_update>\n"+
                     "</data>\n"+
                 "</xml>";              
                 System.out.println(requestXML);
@@ -716,7 +716,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                 requestXML=api.getRest().exchange(URL+"/ranap", HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestXML);
                 root = mapper.readTree(requestXML);
-                if(root.path("response").asText().equals("1")){
+                respon=root.path("deskripsi").asText();
+                if(root.path("deskripsi").asText().toLowerCase().contains("berhasil")){
                     if(Sequel.menyimpantf("siranap_ketersediaan_kamar","?,?,?,?,?,?,?,?,?","Data",9,new String[]{
                             RuangSiranap.getSelectedItem().toString(),KelasSiranap.getSelectedItem().toString(),KdKamar.getText(),
                             Kelas.getSelectedItem().toString(),Kapasitas.getText(),Tersedia.getText(),TersediaPria.getText(), 
@@ -734,6 +735,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Koneksi ke server SIRANAP terputus...!");
                 }else if(ex.toString().contains("502")){
                     JOptionPane.showMessageDialog(null,"Connection timed out. Hayati lelah bang...!");
+                }else{
+                    JOptionPane.showMessageDialog(null,respon);
                 }
             }
         }
@@ -762,16 +765,18 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
             if(tbJnsPerawatan.getValueAt(i,0).toString().equals("true")){
                 try {
                     headers = new HttpHeaders();
-                    headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                    headers.add("X-rs-id",idrs); 
                     headers.add("X-pass",api.getHmac()); 
-                    headers.add("Content-Type","application/xml");
+                    headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                     requestEntity = new HttpEntity(headers);
-                    requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
+                    System.out.println(URL+"/sisrute/hapusdata/"+idrs+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4));
+                    requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+idrs+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestXML);
                     root = mapper.readTree(requestXML);
-                    if(root.path("response").asText().equals("1")){
-                        Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=?",2,new String[]{
-                            tbJnsPerawatan.getValueAt(i,1).toString(),tbJnsPerawatan.getValueAt(i,2).toString()
+                    respon=root.path("deskripsi").asText();
+                    if(root.path("deskripsi").asText().toLowerCase().contains("berhasil")){
+                        Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=? and kd_bangsal=? and kelas=?",4,new String[]{
+                            tbJnsPerawatan.getValueAt(i,1).toString(),tbJnsPerawatan.getValueAt(i,2).toString(),tbJnsPerawatan.getValueAt(i,3).toString(),tbJnsPerawatan.getValueAt(i,5).toString()
                         });
                     }else{
                         JOptionPane.showMessageDialog(null,nameNode.path("deskripsi").asText());
@@ -782,6 +787,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(null,"Koneksi ke server SIRANAP terputus...!");
                     }else if(ex.toString().contains("502")){
                         JOptionPane.showMessageDialog(null,"Connection timed out. Hayati lelah bang...!");
+                    }else{
+                        JOptionPane.showMessageDialog(null,respon);
                     }
                 }
             }
@@ -814,16 +821,18 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         }else{
             try {
                 headers = new HttpHeaders();
-                headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                headers.add("X-rs-id",idrs); 
                 headers.add("X-pass",api.getHmac()); 
-                headers.add("Content-Type","application/xml");
+                headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                 requestEntity = new HttpEntity(headers);
-                requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
+                requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+idrs+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestXML);
                 root = mapper.readTree(requestXML);
+                respon=root.path("deskripsi").asText();
                 if(root.path("response").asText().equals("1")){
-                    Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=?",2,new String[]{
-                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()
+                    Sequel.queryu2("delete from siranap_ketersediaan_kamar where kode_ruang_siranap=? and kelas_ruang_siranap=? and kd_bangsal=? and kelas=?",4,new String[]{
+                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString(),
+                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString()
                     });
                 }else{
                     JOptionPane.showMessageDialog(null,nameNode.path("deskripsi").asText());
@@ -834,22 +843,24 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Koneksi ke server SIRANAP terputus...!");
                 }else if(ex.toString().contains("502")){
                     JOptionPane.showMessageDialog(null,"Connection timed out. Hayati lelah bang...!");
+                }else{
+                    JOptionPane.showMessageDialog(null,respon);
                 }
             }
             
             try {
                 headers = new HttpHeaders();
-                headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                headers.add("X-rs-id",idrs); 
                 headers.add("X-pass",api.getHmac()); 
-                headers.add("Content-Type","application/xml");
+                headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                 requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                 "<xml>\n"+    
                     "<data>\n"+
-                        "<kode_ruang>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
-                        "<tipe_pasien>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
+                        "<kode_ruang>"+KelasSiranap.getSelectedItem().toString().substring(0,4)+"</kode_ruang>\n"+
+                        "<tipe_pasien>"+RuangSiranap.getSelectedItem().toString().substring(0,4)+"</tipe_pasien>\n"+
                         "<total_TT>"+Kapasitas.getText()+"</total_TT>\n"+
-                        "<terpakai_male>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaPria.getText()))+"</terpakai_male>\n"+
-                        "<terpakai_female>"+Double.toString(Double.parseDouble(Tersedia.getText())-Double.parseDouble(TersediaWanita.getText()))+"</terpakai_female>\n"+
+                        "<terpakai_male>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaPria.getText()))+"</terpakai_male>\n"+
+                        "<terpakai_female>"+Integer.toString(Integer.parseInt(Tersedia.getText())-Integer.parseInt(TersediaWanita.getText()))+"</terpakai_female>\n"+
                         "<kosong_male>"+TersediaPria.getText()+"</kosong_male>\n"+
                         "<kosong_female>"+TersediaWanita.getText()+"</kosong_female>\n"+
                         "<waiting>"+TersediaMenunggu.getText()+"</waiting>\n"+
@@ -861,6 +872,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                 requestXML=api.getRest().exchange(URL+"/ranap", HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestXML);
                 root = mapper.readTree(requestXML);
+                respon=root.path("deskripsi").asText();
                 if(root.path("response").asText().equals("1")){
                     if(Sequel.menyimpantf("siranap_ketersediaan_kamar","?,?,?,?,?,?,?,?,?","Data",9,new String[]{
                             RuangSiranap.getSelectedItem().toString(),KelasSiranap.getSelectedItem().toString(),KdKamar.getText(),
@@ -879,6 +891,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Koneksi ke server SIRANAP terputus...!");
                 }else if(ex.toString().contains("502")){
                     JOptionPane.showMessageDialog(null,"Connection timed out. Hayati lelah bang...!");
+                }else{
+                    JOptionPane.showMessageDialog(null,respon);
                 }
             }
         }
