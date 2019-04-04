@@ -7605,6 +7605,118 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBRiwayatActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikTBTipeDiagnosis">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582080_6.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Tipe Diagnosis TB"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikTBTipeDiagnosis" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBTipeDiagnosisActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikTBSTatusHIV">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582015_11.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Status HIV TB"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikTBSTatusHIV" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBSTatusHIVActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikTBSkoringAnak">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582080_6.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Skoring Anak TB"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikTBSkoringAnak" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBSkoringAnakActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikTBKonfirmasiSkoring5">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582015_11.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Konfirmasi Skoring 5 TB"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikTBKonfirmasiSkoring5" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBKonfirmasiSkoring5ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikTBKonfirmasiSkoring6">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582080_6.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Konfirmasi Skoring 6 TB"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikTBKonfirmasiSkoring6" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBKonfirmasiSkoring6ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikTBSumberObat">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582015_11.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Sumber Obat TB"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikTBSumberObat" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBSumberObatActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikTBHasilAkhirPengobatan">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582080_6.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Hasil Akhir Pengobatan TB"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikTBHasilAkhirPengobatan" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikTBHasilAkhirPengobatanActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -7621,7 +7733,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="02/04/2019"/>
+            <StringItem index="0" value="04/04/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
