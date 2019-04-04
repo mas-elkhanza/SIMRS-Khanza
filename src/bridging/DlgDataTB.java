@@ -2027,7 +2027,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"keterangan\":\""+Keterangan.getText()+"\"," +
                     "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
                     "\"nourut_pasien\":"+TNoRM.getText()+"," +
-                    "\"no_bpjs\":"+NoKartu.getText()+"," +
+                    "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                     "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                     "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
                 "}";
@@ -2193,10 +2193,16 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
                             "\"nourut_pasien\":"+TNoRM.getText()+"," +
-                            "\"no_bpjs\":"+NoKartu.getText()+"," +
+                            "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
                         "}";
+                        System.out.println(requestJson);
+                        requestEntity = new HttpEntity(requestJson,headers);
+                        requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
+                        System.out.println(requestJson);
+                        root = mapper.readTree(requestJson);
+                        id_tb_03=root.path("id_tb_03").asText();
                     }else{
                         requestJson ="{" +
                             "\"id_tb_03\":\""+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),59).toString()+"\"," +
@@ -2255,17 +2261,17 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
                             "\"nourut_pasien\":"+TNoRM.getText()+"," +
-                            "\"no_bpjs\":"+NoKartu.getText()+"," +
+                            "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
                         "}";
+                        System.out.println(requestJson);
+                        requestEntity = new HttpEntity(requestJson,headers);
+                        requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
+                        System.out.println(requestJson);
+                        root = mapper.readTree(requestJson);
+                        id_tb_03=tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),59).toString();
                     }
-                    System.out.println(requestJson);
-                    requestEntity = new HttpEntity(requestJson,headers);
-                    requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
-                    System.out.println(requestJson);
-                    root = mapper.readTree(requestJson);
-                    id_tb_03=root.path("id_tb_03").asText();
                 } catch (Exception ex) {
                     System.out.println("Notifikasi Bridging : "+ex);
                     if(ex.toString().contains("UnknownHostException")){

@@ -97,7 +97,8 @@ public final class var {
             bpjs_cek_skdp=false,data_batch=false,kunjungan_permintaan_lab=false,kunjungan_permintaan_lab2=false,kunjungan_permintaan_radiologi=false,
             kunjungan_permintaan_radiologi2=false,pcare_pemberian_obat=false,pcare_pemberian_tindakan=false,pembayaran_akun_bayar3=false,
             password_asuransi=false,kemenkes_sitt=false,siranap_ketersediaan_kamar=false,grafik_tb_periodelaporan=false,grafik_tb_rujukan=false,
-            grafik_tb_riwayat=false,grafik_tb_tipediagnosis=false,grafik_tb_statushiv=false,grafik_tb_skoringanak=false,grafik_tb_konfirmasiskoring5=false;
+            grafik_tb_riwayat=false,grafik_tb_tipediagnosis=false,grafik_tb_statushiv=false,grafik_tb_skoringanak=false,grafik_tb_konfirmasiskoring5=false,
+            grafik_tb_konfirmasiskoring6=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -567,6 +568,7 @@ public final class var {
                         var.grafik_tb_statushiv=true;
                         var.grafik_tb_skoringanak=true;
                         var.grafik_tb_konfirmasiskoring5=true;
+                        var.grafik_tb_konfirmasiskoring6=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1020,6 +1022,7 @@ public final class var {
                         var.grafik_tb_statushiv=rs2.getBoolean("grafik_tb_statushiv");
                         var.grafik_tb_skoringanak=rs2.getBoolean("grafik_tb_skoringanak");
                         var.grafik_tb_konfirmasiskoring5=rs2.getBoolean("grafik_tb_konfirmasiskoring5");
+                        var.grafik_tb_konfirmasiskoring6=rs2.getBoolean("grafik_tb_konfirmasiskoring6");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1471,6 +1474,7 @@ public final class var {
                         var.grafik_tb_statushiv=false;
                         var.grafik_tb_skoringanak=false;
                         var.grafik_tb_konfirmasiskoring5=false;
+                        var.grafik_tb_konfirmasiskoring6=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1976,4 +1980,5 @@ public final class var {
     public static boolean getgrafik_tb_statushiv(){return var.grafik_tb_statushiv;}
     public static boolean getgrafik_tb_skoringanak(){return var.grafik_tb_skoringanak;}
     public static boolean getgrafik_tb_konfirmasiskoring5(){return var.grafik_tb_konfirmasiskoring5;}
+    public static boolean getgrafik_tb_konfirmasiskoring6(){return var.grafik_tb_konfirmasiskoring6;}
 }   
