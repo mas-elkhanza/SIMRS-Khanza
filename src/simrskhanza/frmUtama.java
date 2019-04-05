@@ -415,6 +415,7 @@ import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
 import bridging.DlgDataTB;
 import grafikanalisa.GrafikTBHasilAkhirPengobatan;
+import grafikanalisa.GrafikTBHasilTesHIV;
 import grafikanalisa.GrafikTBKonfirmasiSkoring5;
 import grafikanalisa.GrafikTBKonfirmasiSkoring6;
 import grafikanalisa.GrafikTBPeriodeLaporan;
@@ -1057,6 +1058,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikTBKonfirmasiSkoring6 = new widget.ButtonBig();
         btnGrafikTBSumberObat = new widget.ButtonBig();
         btnGrafikTBHasilAkhirPengobatan = new widget.ButtonBig();
+        btnGrafikTBHasilTesHIV = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6727,6 +6729,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+
+        btnGrafikTBHasilTesHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBHasilTesHIV.setText("Hasil Tes HIV TB");
+        btnGrafikTBHasilTesHIV.setIconTextGap(0);
+        btnGrafikTBHasilTesHIV.setName("btnGrafikTBHasilTesHIV"); // NOI18N
+        btnGrafikTBHasilTesHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBHasilTesHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBHasilTesHIVActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBHasilTesHIV);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -13927,6 +13941,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikTBHasilAkhirPengobatanActionPerformed
 
+    private void btnGrafikTBHasilTesHIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBHasilTesHIVActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBHasilTesHIV aplikasi=new GrafikTBHasilTesHIV(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBHasilTesHIVActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14111,6 +14136,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikStatusRegPerTanggal;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal2;
     private widget.ButtonBig btnGrafikTBHasilAkhirPengobatan;
+    private widget.ButtonBig btnGrafikTBHasilTesHIV;
     private widget.ButtonBig btnGrafikTBKonfirmasiSkoring5;
     private widget.ButtonBig btnGrafikTBKonfirmasiSkoring6;
     private widget.ButtonBig btnGrafikTBLaporanPeriode;
@@ -16908,6 +16934,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_tb_hasilteshiv()==true){
+                Panelmenu.add(btnGrafikTBHasilTesHIV);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(var.getsurat_indeks()==true){
@@ -19145,6 +19176,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getgrafik_tb_hasilakhirpengobatan()==true){
             Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_hasilteshiv()==true){
+            Panelmenu.add(btnGrafikTBHasilTesHIV);
             jmlmenu++;
         }
 
@@ -22202,6 +22238,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_tb_hasilakhirpengobatan()==true){
             if(btnGrafikTBHasilAkhirPengobatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_hasilteshiv()==true){
+            if(btnGrafikTBHasilTesHIV.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBHasilTesHIV);
                 jmlmenu++;
             }                
         }

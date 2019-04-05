@@ -98,7 +98,7 @@ public final class var {
             kunjungan_permintaan_radiologi2=false,pcare_pemberian_obat=false,pcare_pemberian_tindakan=false,pembayaran_akun_bayar3=false,
             password_asuransi=false,kemenkes_sitt=false,siranap_ketersediaan_kamar=false,grafik_tb_periodelaporan=false,grafik_tb_rujukan=false,
             grafik_tb_riwayat=false,grafik_tb_tipediagnosis=false,grafik_tb_statushiv=false,grafik_tb_skoringanak=false,grafik_tb_konfirmasiskoring5=false,
-            grafik_tb_konfirmasiskoring6=false,grafik_tb_sumberobat=false,grafik_tb_hasilakhirpengobatan=false;
+            grafik_tb_konfirmasiskoring6=false,grafik_tb_sumberobat=false,grafik_tb_hasilakhirpengobatan=false,grafik_tb_hasilteshiv=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -571,6 +571,7 @@ public final class var {
                         var.grafik_tb_konfirmasiskoring6=true;
                         var.grafik_tb_sumberobat=true;
                         var.grafik_tb_hasilakhirpengobatan=true;
+                        var.grafik_tb_hasilteshiv=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1027,6 +1028,7 @@ public final class var {
                         var.grafik_tb_konfirmasiskoring6=rs2.getBoolean("grafik_tb_konfirmasiskoring6");
                         var.grafik_tb_sumberobat=rs2.getBoolean("grafik_tb_sumberobat");
                         var.grafik_tb_hasilakhirpengobatan=rs2.getBoolean("grafik_tb_hasilakhirpengobatan");
+                        var.grafik_tb_hasilteshiv=rs2.getBoolean("grafik_tb_hasilteshiv");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1481,6 +1483,7 @@ public final class var {
                         var.grafik_tb_konfirmasiskoring6=false;
                         var.grafik_tb_sumberobat=false;
                         var.grafik_tb_hasilakhirpengobatan=false;
+                        var.grafik_tb_hasilteshiv=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1989,4 +1992,5 @@ public final class var {
     public static boolean getgrafik_tb_konfirmasiskoring6(){return var.grafik_tb_konfirmasiskoring6;}
     public static boolean getgrafik_tb_sumberobat(){return var.grafik_tb_sumberobat;}
     public static boolean getgrafik_tb_hasilakhirpengobatan(){return var.grafik_tb_hasilakhirpengobatan;}
+    public static boolean getgrafik_tb_hasilteshiv(){return var.grafik_tb_hasilteshiv;}
 }   

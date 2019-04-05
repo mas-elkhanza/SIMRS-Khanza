@@ -1153,7 +1153,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             KeadaanUmum=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),28).toString();
             Alergi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),29).toString();            
             Laboratorium=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),30).toString();      
-            Radiologi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),31).toString();            Radiologi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString();
+            Radiologi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),31).toString();    
             TerapiTindakan=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),32).toString();
             SttsPasien=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),33).toString();
             SttsRegistrasi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),34).toString();
