@@ -86,7 +86,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
-            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",prb="",
+            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",prb="",peserta="",
             penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",status="Baru",propinsi="",propinsipj="",
             tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
@@ -5286,6 +5286,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
 	    requestEntity = new HttpEntity(headers);
 	    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
+            peserta="";
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 response = root.path("response").path("rujukan");
@@ -5343,6 +5344,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     "       Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kode").asText()+". "+response.path("peserta").path("jenisPeserta").path("keterangan").asText()
                 });
                 Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
+                peserta=response.path("peserta").path("jenisPeserta").path("keterangan").asText();
                 tabMode.addRow(new Object[]{
                     "       Medical Record",": "
                 });
@@ -6244,7 +6246,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                      JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                      NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
                      LakaLantas.getSelectedItem().toString().substring(0,1),user,TNo.getText(),TNm.getText(),
-                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),nmpnj.getText(),CmbJk.getSelectedItem().toString(),TNoPeserta.getText(),
+                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),peserta,CmbJk.getSelectedItem().toString(),TNoPeserta.getText(),
                      "0000-00-00 00:00:00",AsalRujukan.getSelectedItem().toString(),Eksekutif.getSelectedItem().toString(),
                      COB.getSelectedItem().toString(),penjamin,TTlp.getText(),Katarak.getSelectedItem().toString(),
                      tglkkl,Keterangan.getText(),Suplesi.getSelectedItem().toString(),

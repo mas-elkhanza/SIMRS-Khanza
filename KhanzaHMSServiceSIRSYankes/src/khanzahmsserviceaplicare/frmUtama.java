@@ -181,7 +181,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 "select siranap_ketersediaan_kamar.kode_ruang_siranap,siranap_ketersediaan_kamar.kelas_ruang_siranap,siranap_ketersediaan_kamar.kd_bangsal," +
                                 "bangsal.nm_bangsal,siranap_ketersediaan_kamar.kelas,siranap_ketersediaan_kamar.kapasitas," +
                                 "siranap_ketersediaan_kamar.tersedia,siranap_ketersediaan_kamar.tersediapria," +
-                                "siranap_ketersediaan_kamar.tersediawanita,siranap_ketersediaan_kamar.tersediapriawanita " +
+                                "siranap_ketersediaan_kamar.tersediawanita,siranap_ketersediaan_kamar.menunggu " +
                                 "from siranap_ketersediaan_kamar inner join bangsal on siranap_ketersediaan_kamar.kd_bangsal=bangsal.kd_bangsal");
                         try {
                             rs=ps.executeQuery();
