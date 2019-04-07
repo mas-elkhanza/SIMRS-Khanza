@@ -441,7 +441,7 @@
             </Component>
             <Component class="widget.Tanggal" name="Tanggal">
               <Properties>
-                <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
+                <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
                 <Property name="name" type="java.lang.String" value="Tanggal" noResource="true"/>
               </Properties>
               <Events>
@@ -449,7 +449,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="532" y="10" width="100" height="23"/>
+                  <AbsoluteConstraints x="532" y="10" width="140" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
