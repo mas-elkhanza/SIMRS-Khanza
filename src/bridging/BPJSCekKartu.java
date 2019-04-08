@@ -83,7 +83,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",prb="",
             kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",penjamin="",link="",
-            jasaraharja="",BPJS="",Taspen="",Asabri="",status="Baru",propinsi="",propinsipj="",
+            jasaraharja="",BPJS="",Taspen="",Asabri="",status="Baru",propinsi="",propinsipj="",peserta="",
             tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
     private ResultSet rs,rs2;
@@ -5285,6 +5285,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         try {
             nosep="";
             statuspasien="";
+            peserta="";
             cekViaBPJSKartu.tampil(nomorpeserta);
             if(cekViaBPJSKartu.informasi.equals("OK")){
                 Valid.tabelKosong(tabMode);             
@@ -5341,6 +5342,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 });            
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
+                peserta=cekViaBPJSKartu.jenisPesertaketerangan;
                 Pekerjaan.setText(cekViaBPJSKartu.jenisPesertaketerangan);
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":"
@@ -5988,7 +5990,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                      JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                      NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
                      LakaLantas.getSelectedItem().toString().substring(0,1),user,TNo.getText(),TNm.getText(),
-                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),nmpnj.getText(),CmbJk.getSelectedItem().toString(),NoKartu.getText(),
+                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),peserta,CmbJk.getSelectedItem().toString(),NoKartu.getText(),
                      "0000-00-00 00:00:00",AsalRujukan.getSelectedItem().toString(),Eksekutif.getSelectedItem().toString(),
                      COB.getSelectedItem().toString(),penjamin,TTlp.getText(),Katarak.getSelectedItem().toString(),
                      tglkkl,Keterangan.getText(),Suplesi.getSelectedItem().toString(),

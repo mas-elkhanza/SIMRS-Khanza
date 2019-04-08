@@ -47,7 +47,8 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
                    ttltotalpiutang=0,totalpiutang=0,jumlahpiutang=0,ttltotalretbeli=0,totalretbeli=0,jumlahretbeli=0,
                    ttltotalretjual=0,totalretjual=0,jumlahretjual=0,ttltotalretpiut=0,totalretpiut=0,jumlahretpiut=0,
                    jumlahpasin=0,totalpasien=0,ttltotalpasien=0,stok=0,aset=0,ttlaset=0,jumlahrespulang=0,totalrespulang=0,
-                   ttltotalrespulang=0;
+                   ttltotalrespulang=0,jumlahmutasimasuk=0,jumlahmutasikeluar=0,totalmutasimasuk=0,totalmutasikeluar=0,
+                   ttltotalmutasimasuk=0,ttltotalmutasikeluar=0;
     private DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8,psstok,ps9,ps10,ps11,ps12;
     private ResultSet rs,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rsstok,rs9,rs10,rs11,rs12;
@@ -59,9 +60,9 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok","Pengadaan","Penerimaan","Penjualan",
+        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok Terakhir","Pengadaan","Penerimaan","Penjualan",
                       "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang","Pengambilan UTD",
-                      "Stok Keluar Medis","Resep Pulang"};
+                      "Stok Keluar Medis","Resep Pulang","Mutasi Masuk","Mutasi Keluar"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,7 +71,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 17; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -856,6 +857,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttltotalpiutang=0;ttltotalretbeli=0;ttltotalretjual=0;
                 ttltotalretpiut=0;ttltotalpasien=0;ttlaset=0;
                 ttltotalutd=0;ttltotalkeluar=0;ttltotalrespulang=0;
+                ttltotalmutasikeluar=0;ttltotalmutasimasuk=0;
                 ps.setString(1,"%"+nmbar.getText()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+nmbar.getText()+"%");
@@ -869,6 +871,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     totalretbeli=0;jumlahretbeli=0;totalretjual=0;jumlahretjual=0;totalretpiut=0;jumlahretpiut=0;
                     jumlahpasin=0;stok=0;aset=0;totalrespulang=0;
                     jumlahutd=0;jumlahkeluar=0;totalkeluar=0;totalutd=0;
+                    jumlahmutasikeluar=0;totalmutasikeluar=0;jumlahmutasimasuk=0;totalmutasimasuk=0;
 
                     psstok=koneksi.prepareStatement("select sum(stok),(sum(stok)*h_beli) as aset "+
                         "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
