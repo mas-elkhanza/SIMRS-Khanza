@@ -54,7 +54,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
     private int i=0;
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private final Properties prop = new Properties();
-    private String requestXML,URL="",respon="";
+    private String requestXML,URL="",respon="",idrs="";
     private SirsApi api=new SirsApi();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -186,7 +186,8 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPISIRS");	
+            URL = prop.getProperty("URLAPISIRS");
+            idrs=prop.getProperty("IDSIRS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -693,7 +694,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         }else{
             try {
                 headers = new HttpHeaders();
-                headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                headers.add("X-rs-id",idrs); 
                 headers.add("X-pass",api.getHmac()); 
                 headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                 requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
@@ -764,12 +765,12 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
             if(tbJnsPerawatan.getValueAt(i,0).toString().equals("true")){
                 try {
                     headers = new HttpHeaders();
-                    headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                    headers.add("X-rs-id",idrs); 
                     headers.add("X-pass",api.getHmac()); 
                     headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                     requestEntity = new HttpEntity(headers);
-                    System.out.println(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4));
-                    requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
+                    System.out.println(URL+"/sisrute/hapusdata/"+idrs+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4));
+                    requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+idrs+"/"+tbJnsPerawatan.getValueAt(i,2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(i,1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestXML);
                     root = mapper.readTree(requestXML);
                     respon=root.path("deskripsi").asText();
@@ -820,11 +821,11 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         }else{
             try {
                 headers = new HttpHeaders();
-                headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                headers.add("X-rs-id",idrs); 
                 headers.add("X-pass",api.getHmac()); 
                 headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                 requestEntity = new HttpEntity(headers);
-                requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+prop.getProperty("IDSIRS")+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
+                requestXML=api.getRest().exchange(URL+"/sisrute/hapusdata/"+idrs+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString().substring(0,4)+"/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(0,4), HttpMethod.POST, requestEntity, String.class).getBody();
                 System.out.println(requestXML);
                 root = mapper.readTree(requestXML);
                 respon=root.path("deskripsi").asText();
@@ -849,7 +850,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
             
             try {
                 headers = new HttpHeaders();
-                headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                headers.add("X-rs-id",idrs); 
                 headers.add("X-pass",api.getHmac()); 
                 headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                 requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+

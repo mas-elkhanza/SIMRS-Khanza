@@ -413,7 +413,19 @@ import setting.DlgSetInputParsial;
 import kepegawaian.DlgJadwal;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
-import laporan.DlgDataTB;
+import bridging.DlgDataTB;
+import grafikanalisa.GrafikTBHasilAkhirPengobatan;
+import grafikanalisa.GrafikTBHasilTesHIV;
+import grafikanalisa.GrafikTBKonfirmasiSkoring5;
+import grafikanalisa.GrafikTBKonfirmasiSkoring6;
+import grafikanalisa.GrafikTBPeriodeLaporan;
+import grafikanalisa.GrafikTBRiwayat;
+import grafikanalisa.GrafikTBRujukan;
+import grafikanalisa.GrafikTBSkoringAnak;
+import grafikanalisa.GrafikTBStatusHIV;
+import grafikanalisa.GrafikTBSumberObat;
+import grafikanalisa.GrafikTBTipeDiagnosis;
+import inventory.DlgKadaluarsaBatch;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -1037,6 +1049,18 @@ public class frmUtama extends javax.swing.JFrame {
         btnPasswordAsuransi = new widget.ButtonBig();
         btnDataSITT = new widget.ButtonBig();
         btnSiranapKetersediaanKamar = new widget.ButtonBig();
+        btnGrafikTBLaporanPeriode = new widget.ButtonBig();
+        btnGrafikTBRujukan = new widget.ButtonBig();
+        btnGrafikTBRiwayat = new widget.ButtonBig();
+        btnGrafikTBTipeDiagnosis = new widget.ButtonBig();
+        btnGrafikTBSTatusHIV = new widget.ButtonBig();
+        btnGrafikTBSkoringAnak = new widget.ButtonBig();
+        btnGrafikTBKonfirmasiSkoring5 = new widget.ButtonBig();
+        btnGrafikTBKonfirmasiSkoring6 = new widget.ButtonBig();
+        btnGrafikTBSumberObat = new widget.ButtonBig();
+        btnGrafikTBHasilAkhirPengobatan = new widget.ButtonBig();
+        btnGrafikTBHasilTesHIV = new widget.ButtonBig();
+        btnKadaluarsaBatch = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6588,6 +6612,150 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSiranapKetersediaanKamar);
 
+        btnGrafikTBLaporanPeriode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBLaporanPeriode.setText("Periode Laporan TB");
+        btnGrafikTBLaporanPeriode.setIconTextGap(0);
+        btnGrafikTBLaporanPeriode.setName("btnGrafikTBLaporanPeriode"); // NOI18N
+        btnGrafikTBLaporanPeriode.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBLaporanPeriode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBLaporanPeriodeActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBLaporanPeriode);
+
+        btnGrafikTBRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBRujukan.setText("Rujukan TB");
+        btnGrafikTBRujukan.setIconTextGap(0);
+        btnGrafikTBRujukan.setName("btnGrafikTBRujukan"); // NOI18N
+        btnGrafikTBRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRujukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRujukanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBRujukan);
+
+        btnGrafikTBRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBRiwayat.setText("Riwayat TB");
+        btnGrafikTBRiwayat.setIconTextGap(0);
+        btnGrafikTBRiwayat.setName("btnGrafikTBRiwayat"); // NOI18N
+        btnGrafikTBRiwayat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRiwayatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBRiwayat);
+
+        btnGrafikTBTipeDiagnosis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBTipeDiagnosis.setText("Tipe Diagnosis TB");
+        btnGrafikTBTipeDiagnosis.setIconTextGap(0);
+        btnGrafikTBTipeDiagnosis.setName("btnGrafikTBTipeDiagnosis"); // NOI18N
+        btnGrafikTBTipeDiagnosis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBTipeDiagnosis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBTipeDiagnosisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBTipeDiagnosis);
+
+        btnGrafikTBSTatusHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBSTatusHIV.setText("Status HIV TB");
+        btnGrafikTBSTatusHIV.setIconTextGap(0);
+        btnGrafikTBSTatusHIV.setName("btnGrafikTBSTatusHIV"); // NOI18N
+        btnGrafikTBSTatusHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSTatusHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSTatusHIVActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBSTatusHIV);
+
+        btnGrafikTBSkoringAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBSkoringAnak.setText("Skoring Anak TB");
+        btnGrafikTBSkoringAnak.setIconTextGap(0);
+        btnGrafikTBSkoringAnak.setName("btnGrafikTBSkoringAnak"); // NOI18N
+        btnGrafikTBSkoringAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSkoringAnak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSkoringAnakActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBSkoringAnak);
+
+        btnGrafikTBKonfirmasiSkoring5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBKonfirmasiSkoring5.setText("Konfirmasi Skoring 5 TB");
+        btnGrafikTBKonfirmasiSkoring5.setIconTextGap(0);
+        btnGrafikTBKonfirmasiSkoring5.setName("btnGrafikTBKonfirmasiSkoring5"); // NOI18N
+        btnGrafikTBKonfirmasiSkoring5.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBKonfirmasiSkoring5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBKonfirmasiSkoring5ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+
+        btnGrafikTBKonfirmasiSkoring6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBKonfirmasiSkoring6.setText("Konfirmasi Skoring 6 TB");
+        btnGrafikTBKonfirmasiSkoring6.setIconTextGap(0);
+        btnGrafikTBKonfirmasiSkoring6.setName("btnGrafikTBKonfirmasiSkoring6"); // NOI18N
+        btnGrafikTBKonfirmasiSkoring6.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBKonfirmasiSkoring6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBKonfirmasiSkoring6ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+
+        btnGrafikTBSumberObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBSumberObat.setText("Sumber Obat TB");
+        btnGrafikTBSumberObat.setIconTextGap(0);
+        btnGrafikTBSumberObat.setName("btnGrafikTBSumberObat"); // NOI18N
+        btnGrafikTBSumberObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSumberObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSumberObatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBSumberObat);
+
+        btnGrafikTBHasilAkhirPengobatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBHasilAkhirPengobatan.setText("Hasil Akhir Pengobatan TB");
+        btnGrafikTBHasilAkhirPengobatan.setIconTextGap(0);
+        btnGrafikTBHasilAkhirPengobatan.setName("btnGrafikTBHasilAkhirPengobatan"); // NOI18N
+        btnGrafikTBHasilAkhirPengobatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBHasilAkhirPengobatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBHasilAkhirPengobatanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+
+        btnGrafikTBHasilTesHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBHasilTesHIV.setText("Hasil Tes HIV TB");
+        btnGrafikTBHasilTesHIV.setIconTextGap(0);
+        btnGrafikTBHasilTesHIV.setName("btnGrafikTBHasilTesHIV"); // NOI18N
+        btnGrafikTBHasilTesHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBHasilTesHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBHasilTesHIVActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBHasilTesHIV);
+
+        btnKadaluarsaBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_diagram-11_35581.png"))); // NOI18N
+        btnKadaluarsaBatch.setText("Kadaluarsa Batch");
+        btnKadaluarsaBatch.setIconTextGap(0);
+        btnKadaluarsaBatch.setName("btnKadaluarsaBatch"); // NOI18N
+        btnKadaluarsaBatch.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKadaluarsaBatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKadaluarsaBatchActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnKadaluarsaBatch);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6596,7 +6764,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/03/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/04/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13677,6 +13845,139 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSiranapKetersediaanKamarActionPerformed
 
+    private void btnGrafikTBLaporanPeriodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBLaporanPeriodeActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBPeriodeLaporan aplikasi=new GrafikTBPeriodeLaporan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBLaporanPeriodeActionPerformed
+
+    private void btnGrafikTBRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBRujukanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBRujukan aplikasi=new GrafikTBRujukan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBRujukanActionPerformed
+
+    private void btnGrafikTBRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBRiwayatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBRiwayat aplikasi=new GrafikTBRiwayat(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBRiwayatActionPerformed
+
+    private void btnGrafikTBTipeDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBTipeDiagnosisActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBTipeDiagnosis aplikasi=new GrafikTBTipeDiagnosis(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBTipeDiagnosisActionPerformed
+
+    private void btnGrafikTBSTatusHIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBSTatusHIVActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBStatusHIV aplikasi=new GrafikTBStatusHIV(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBSTatusHIVActionPerformed
+
+    private void btnGrafikTBSkoringAnakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBSkoringAnakActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBSkoringAnak aplikasi=new GrafikTBSkoringAnak(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBSkoringAnakActionPerformed
+
+    private void btnGrafikTBKonfirmasiSkoring5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBKonfirmasiSkoring5ActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBKonfirmasiSkoring5 aplikasi=new GrafikTBKonfirmasiSkoring5(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBKonfirmasiSkoring5ActionPerformed
+
+    private void btnGrafikTBKonfirmasiSkoring6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBKonfirmasiSkoring6ActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBKonfirmasiSkoring6 aplikasi=new GrafikTBKonfirmasiSkoring6(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBKonfirmasiSkoring6ActionPerformed
+
+    private void btnGrafikTBSumberObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBSumberObatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBSumberObat aplikasi=new GrafikTBSumberObat(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBSumberObatActionPerformed
+
+    private void btnGrafikTBHasilAkhirPengobatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBHasilAkhirPengobatanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBHasilAkhirPengobatan aplikasi=new GrafikTBHasilAkhirPengobatan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBHasilAkhirPengobatanActionPerformed
+
+    private void btnGrafikTBHasilTesHIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBHasilTesHIVActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBHasilTesHIV aplikasi=new GrafikTBHasilTesHIV(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBHasilTesHIVActionPerformed
+
+    private void btnKadaluarsaBatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKadaluarsaBatchActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKadaluarsaBatch form=new DlgKadaluarsaBatch(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnKadaluarsaBatchActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13860,6 +14161,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikStatusRegPerTahun2;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal2;
+    private widget.ButtonBig btnGrafikTBHasilAkhirPengobatan;
+    private widget.ButtonBig btnGrafikTBHasilTesHIV;
+    private widget.ButtonBig btnGrafikTBKonfirmasiSkoring5;
+    private widget.ButtonBig btnGrafikTBKonfirmasiSkoring6;
+    private widget.ButtonBig btnGrafikTBLaporanPeriode;
+    private widget.ButtonBig btnGrafikTBRiwayat;
+    private widget.ButtonBig btnGrafikTBRujukan;
+    private widget.ButtonBig btnGrafikTBSTatusHIV;
+    private widget.ButtonBig btnGrafikTBSkoringAnak;
+    private widget.ButtonBig btnGrafikTBSumberObat;
+    private widget.ButtonBig btnGrafikTBTipeDiagnosis;
     private widget.ButtonBig btnHAIsBangsal;
     private widget.ButtonBig btnHarianHAIs;
     private widget.ButtonBig btnHarianKamar;
@@ -13895,6 +14207,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnJumlahMacamDiet;
     private widget.ButtonBig btnJumlahPorsiDiet;
     private widget.ButtonBig btnJurnalHarian;
+    private widget.ButtonBig btnKadaluarsaBatch;
     private widget.ButtonBig btnKamar;
     private widget.ButtonBig btnKamarInap;
     private widget.ButtonBig btnKasir;
@@ -14508,6 +14821,15 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }else if(jmlmenu<=435){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*83)));
+        }else if(jmlmenu<=440){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*84)));
+        }else if(jmlmenu<=445){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*85)));
+        }else if(jmlmenu<=450){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*86)));
         }                                                 
         Panelmenu.repaint(); 
         DlgHome.setVisible(true);               
@@ -15011,6 +15333,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getppn_obat()==true){
                 Panelmenu.add(btnPPNObat);
+                jmlmenu++;
+            }
+            
+            if(var.getkadaluarsa_batch()==true){
+                Panelmenu.add(btnKadaluarsaBatch);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -16589,6 +16916,61 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikKunjunganPerCacat);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_tb_periodelaporan()==true){
+                Panelmenu.add(btnGrafikTBLaporanPeriode);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_rujukan()==true){
+                Panelmenu.add(btnGrafikTBRujukan);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_riwayat()==true){
+                Panelmenu.add(btnGrafikTBRiwayat);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_tipediagnosis()==true){
+                Panelmenu.add(btnGrafikTBTipeDiagnosis);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_statushiv()==true){
+                Panelmenu.add(btnGrafikTBSTatusHIV);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_skoringanak()==true){
+                Panelmenu.add(btnGrafikTBSkoringAnak);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_konfirmasiskoring5()==true){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_konfirmasiskoring6()==true){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_sumberobat()==true){
+                Panelmenu.add(btnGrafikTBSumberObat);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_hasilakhirpengobatan()==true){
+                Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_tb_hasilteshiv()==true){
+                Panelmenu.add(btnGrafikTBHasilTesHIV);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(var.getsurat_indeks()==true){
@@ -17216,6 +17598,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getppn_obat()==true){
             Panelmenu.add(btnPPNObat);
+            jmlmenu++;
+        }
+        
+        if(var.getkadaluarsa_batch()==true){
+            Panelmenu.add(btnKadaluarsaBatch);
             jmlmenu++;
         }
 
@@ -18779,6 +19166,61 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
+        if(var.getgrafik_tb_periodelaporan()==true){
+            Panelmenu.add(btnGrafikTBLaporanPeriode);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_rujukan()==true){
+            Panelmenu.add(btnGrafikTBRujukan);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_tb_riwayat()==true){
+            Panelmenu.add(btnGrafikTBRiwayat);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_tipediagnosis()==true){
+            Panelmenu.add(btnGrafikTBTipeDiagnosis);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_statushiv()==true){
+            Panelmenu.add(btnGrafikTBSTatusHIV);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_skoringanak()==true){
+            Panelmenu.add(btnGrafikTBSkoringAnak);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_konfirmasiskoring5()==true){
+            Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_konfirmasiskoring6()==true){
+            Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_sumberobat()==true){
+            Panelmenu.add(btnGrafikTBSumberObat);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_tb_hasilakhirpengobatan()==true){
+            Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_tb_hasilteshiv()==true){
+            Panelmenu.add(btnGrafikTBHasilTesHIV);
+            jmlmenu++;
+        }
+
         if(var.getsurat_indeks()==true){
             Panelmenu.add(btnSuratIndeks);
             jmlmenu++;
@@ -19582,6 +20024,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getppn_obat()==true){
             if(btnPPNObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPPNObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getkadaluarsa_batch()==true){
+            if(btnKadaluarsaBatch.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKadaluarsaBatch);
                 jmlmenu++;
             }                
         }
@@ -21763,6 +22212,83 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_kunjungan_per_cacat()==true){
             if(btnGrafikKunjunganPerCacat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerCacat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_periodelaporan()==true){
+            if(btnGrafikTBLaporanPeriode.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBLaporanPeriode);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_rujukan()==true){
+            if(btnGrafikTBRujukan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBRujukan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_riwayat()==true){
+            if(btnGrafikTBRiwayat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBRiwayat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_tipediagnosis()==true){
+            if(btnGrafikTBTipeDiagnosis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBTipeDiagnosis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_statushiv()==true){
+            if(btnGrafikTBSTatusHIV.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBSTatusHIV);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_skoringanak()==true){
+            if(btnGrafikTBSkoringAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBSkoringAnak);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_konfirmasiskoring5()==true){
+            if(btnGrafikTBKonfirmasiSkoring5.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_konfirmasiskoring6()==true){
+            if(btnGrafikTBKonfirmasiSkoring6.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_sumberobat()==true){
+            if(btnGrafikTBSumberObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBSumberObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_hasilakhirpengobatan()==true){
+            if(btnGrafikTBHasilAkhirPengobatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_tb_hasilteshiv()==true){
+            if(btnGrafikTBHasilTesHIV.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBHasilTesHIV);
                 jmlmenu++;
             }                
         }
