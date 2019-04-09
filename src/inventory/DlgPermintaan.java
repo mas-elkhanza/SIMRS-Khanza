@@ -34,7 +34,6 @@ public class DlgPermintaan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int jml=0,i=0,row=0,index=0;
     private String[] jumlah,kodebarang,namabarang,satuan,jenis,kategori,golongan,keterangan;
     private WarnaTable2 warna=new WarnaTable2();
