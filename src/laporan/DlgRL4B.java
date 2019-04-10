@@ -1,8 +1,5 @@
 package laporan;
-import keuangan.Jurnal;
-import keuangan.*;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
@@ -21,13 +18,10 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 public class DlgRL4B extends javax.swing.JDialog {
-    private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private final Jurnal jur=new Jurnal();
     private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2;
-    private final String diagnosa="";
     private StringBuilder htmlContent;
     private int hr0s6l=0,hr0s6p=0,hr7s28l=0,hr7s28p=0,hr28s1thl=0,hr28s1thp=0,th1s4l=0,th1s4p=0,th5s14l=0,th5s14p=0,
                 th15s24l=0,th15s24p=0,th25s44l=0,th25s44p=0,th45s64l=0,th45s64p=0,lbth65l=0,lbth65p=0,mati=0;
