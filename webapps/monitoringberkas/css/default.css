@@ -372,9 +372,12 @@ color: #464646;
 }
 
 .isi8 td{
-        border-bottom: 1px solid #eaeaea;
-	background: #FFFFEE;
-	color:#464646;
+	color:#123546;
+        padding-top:0px;
+	padding-bottom:0px;
+	padding-left:0px;
+	padding-right:0px;
+        border-bottom: 1px solid #E7E7E7;
 	font: 9px Tahoma;
 }
 

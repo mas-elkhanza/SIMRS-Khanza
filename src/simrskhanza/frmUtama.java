@@ -426,6 +426,7 @@ import grafikanalisa.GrafikTBStatusHIV;
 import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import inventory.DlgKadaluarsaBatch;
+import inventory.DlgSisaStok;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -1061,6 +1062,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikTBHasilAkhirPengobatan = new widget.ButtonBig();
         btnGrafikTBHasilTesHIV = new widget.ButtonBig();
         btnKadaluarsaBatch = new widget.ButtonBig();
+        btnSisaStok = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6756,6 +6758,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKadaluarsaBatch);
 
+        btnSisaStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038207_contacts.png"))); // NOI18N
+        btnSisaStok.setText("Sisa Stok");
+        btnSisaStok.setIconTextGap(0);
+        btnSisaStok.setName("btnSisaStok"); // NOI18N
+        btnSisaStok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSisaStok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSisaStokActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSisaStok);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6764,7 +6778,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/04/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/04/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -13978,6 +13992,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKadaluarsaBatchActionPerformed
 
+    private void btnSisaStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisaStokActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSisaStok form=new DlgSisaStok(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSisaStokActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14435,6 +14461,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSirkulasiBerkas;
     private widget.ButtonBig btnSirkulasiInventaris;
     private widget.ButtonBig btnSirkulasiNonMedis;
+    private widget.ButtonBig btnSisaStok;
     private widget.ButtonBig btnStokKeluarIPSRSPerTanggal;
     private widget.ButtonBig btnStokKeluarMedis;
     private widget.ButtonBig btnStokObatPasien;
@@ -15338,6 +15365,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getkadaluarsa_batch()==true){
                 Panelmenu.add(btnKadaluarsaBatch);
+                jmlmenu++;
+            }
+            
+            if(var.getsisa_stok()==true){
+                Panelmenu.add(btnSisaStok);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -17603,6 +17635,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getkadaluarsa_batch()==true){
             Panelmenu.add(btnKadaluarsaBatch);
+            jmlmenu++;
+        }
+        
+        if(var.getsisa_stok()==true){
+            Panelmenu.add(btnSisaStok);
             jmlmenu++;
         }
 
@@ -20031,6 +20068,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getkadaluarsa_batch()==true){
             if(btnKadaluarsaBatch.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKadaluarsaBatch);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsisa_stok()==true){
+            if(btnSisaStok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSisaStok);
                 jmlmenu++;
             }                
         }
