@@ -425,6 +425,7 @@ import grafikanalisa.GrafikTBSkoringAnak;
 import grafikanalisa.GrafikTBStatusHIV;
 import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
+import inventaris.KeslingPemakaiaanAirPDAM;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
@@ -1065,6 +1066,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnKadaluarsaBatch = new widget.ButtonBig();
         btnSisaStok = new widget.ButtonBig();
         btnObatPerResep = new widget.ButtonBig();
+        btnPemakaianAirPDAM = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1369,7 +1371,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelisi2.add(label35);
 
         cmbMenu.setForeground(new java.awt.Color(60, 60, 60));
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar", "[P] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset, Inventaris Barang Rumah Sakit & Instalasi Kesehatan Lingkungan", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar", "[P] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
         cmbMenu.addItemListener(new java.awt.event.ItemListener() {
@@ -6784,6 +6786,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObatPerResep);
 
+        btnPemakaianAirPDAM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Energy_Energy_Oil_Water_Drop_Fuel_3911250.png"))); // NOI18N
+        btnPemakaianAirPDAM.setText("Pemakaian Air PDAM");
+        btnPemakaianAirPDAM.setIconTextGap(0);
+        btnPemakaianAirPDAM.setName("btnPemakaianAirPDAM"); // NOI18N
+        btnPemakaianAirPDAM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemakaianAirPDAM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemakaianAirPDAMActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPemakaianAirPDAM);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6792,7 +6806,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/04/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/04/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -14029,6 +14043,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnObatPerResepActionPerformed
 
+    private void btnPemakaianAirPDAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPemakaianAirPDAMActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingPemakaiaanAirPDAM form=new KeslingPemakaiaanAirPDAM(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPemakaianAirPDAMActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14337,6 +14362,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPaymentPoint;
     private widget.ButtonBig btnPaymentPoint2;
     private widget.ButtonBig btnPegawai;
+    private widget.ButtonBig btnPemakaianAirPDAM;
     private widget.ButtonBig btnPemasukanLain;
     private widget.ButtonBig btnPembatalanPeriksaDokter;
     private widget.ButtonBig btnPembayaranAkunBayar;
@@ -15544,6 +15570,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getbarang_cssd()==true){
                 Panelmenu.add(btnBarangCSSD);
+                jmlmenu++;
+            }
+            
+            if(var.getpemakaian_air_pdam()==true){
+                Panelmenu.add(btnPemakaianAirPDAM);
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -17818,6 +17849,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnBarangCSSD);
             jmlmenu++;
         } 
+        
+        if(var.getpemakaian_air_pdam()==true){
+            Panelmenu.add(btnPemakaianAirPDAM);
+            jmlmenu++;
+        }
 
         if(var.getparkir_jenis()==true){
             Panelmenu.add(btnJenisParkir);
@@ -20314,6 +20350,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbarang_cssd()==true){
             if(btnBarangCSSD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarangCSSD);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(var.getpemakaian_air_pdam()==true){
+            if(btnPemakaianAirPDAM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemakaianAirPDAM);
                 jmlmenu++;
             }                
         } 
