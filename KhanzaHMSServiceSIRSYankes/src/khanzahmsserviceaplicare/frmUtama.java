@@ -5,8 +5,6 @@
  */
 package khanzahmsserviceaplicare;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.SirsApi;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -25,7 +23,6 @@ import javax.swing.Timer;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 
 /**
  *
@@ -39,10 +36,6 @@ public class frmUtama extends javax.swing.JFrame {
     private  SirsApi api=new SirsApi();
     private  HttpHeaders headers;
     private  HttpEntity requestEntity;
-    private  ObjectMapper mapper= new ObjectMapper();
-    private  JsonNode root;
-    private  JsonNode nameNode;
-    private  JsonNode response;
     private  PreparedStatement ps;
     private  ResultSet rs;
     private int totaltt=0,tersedia=0,menunggu=0,terpakai=0;
@@ -78,16 +71,13 @@ public class frmUtama extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SIMKES Khanza Service Aplicare");
-        setResizable(false);
-        getContentPane().setLayout(null);
+        setTitle("SIMKES Khanza Service SIRANAP");
 
         TeksArea.setColumns(20);
         TeksArea.setRows(5);
         jScrollPane1.setViewportView(TeksArea);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(14, 14, 351, 240);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jButton1.setText("Keluar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,8 +85,7 @@ public class frmUtama extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(10, 260, 80, 34);
+        getContentPane().add(jButton1, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,12 +176,12 @@ public class frmUtama extends javax.swing.JFrame {
                     }
                         
                     try {
-                        TeksArea.append("Memulai update aplicare\n");
+                        TeksArea.append("Memulai update Siranap\n");
                         ps=koneksi.prepareStatement(
                                 "select siranap_ketersediaan_kamar.kode_ruang_siranap,siranap_ketersediaan_kamar.kelas_ruang_siranap,siranap_ketersediaan_kamar.kd_bangsal," +
                                 "bangsal.nm_bangsal,siranap_ketersediaan_kamar.kelas,siranap_ketersediaan_kamar.kapasitas," +
                                 "siranap_ketersediaan_kamar.tersedia,siranap_ketersediaan_kamar.tersediapria," +
-                                "siranap_ketersediaan_kamar.tersediawanita,siranap_ketersediaan_kamar.tersediapriawanita " +
+                                "siranap_ketersediaan_kamar.tersediawanita,siranap_ketersediaan_kamar.menunggu " +
                                 "from siranap_ketersediaan_kamar inner join bangsal on siranap_ketersediaan_kamar.kd_bangsal=bangsal.kd_bangsal");
                         try {
                             rs=ps.executeQuery();
@@ -206,19 +195,19 @@ public class frmUtama extends javax.swing.JFrame {
                                     headers = new HttpHeaders();
                                     headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
                                     headers.add("X-pass",api.getHmac()); 
-                                    headers.add("Content-Type","application/xml");
+                                    headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                                     requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
                                     "<xml>\n"+    
                                         "<data>\n"+
-                                            "<kode_ruang>"+rs.getString("kode_ruang_siranap").substring(0,4)+"</kode_ruang>\n"+
-                                            "<tipe_pasien>"+rs.getString("kelas_ruang_siranap").substring(0,4)+"</tipe_pasien>\n"+
-                                            "<total_TT>"+Double.toString(totaltt)+"</total_TT>\n"+
-                                            "<terpakai_male>"+Double.toString(terpakai)+"</terpakai_male>\n"+
-                                            "<terpakai_female>"+Double.toString(terpakai)+"</terpakai_female>\n"+
-                                            "<kosong_male>"+Double.toString(tersedia)+"</kosong_male>\n"+
-                                            "<kosong_female>"+Double.toString(tersedia)+"</kosong_female>\n"+
-                                            "<waiting>"+Double.toString(menunggu)+"</waiting>\n"+
-                                            "<tgl_update>"+dateFormat.format(date)+".0</tgl_update>\n"+
+                                            "<kode_ruang>"+rs.getString("kelas_ruang_siranap").substring(0,4)+"</kode_ruang>\n"+
+                                            "<tipe_pasien>"+rs.getString("kode_ruang_siranap").substring(0,4)+"</tipe_pasien>\n"+
+                                            "<total_TT>"+Integer.toString(totaltt)+"</total_TT>\n"+
+                                            "<terpakai_male>"+Integer.toString(terpakai)+"</terpakai_male>\n"+
+                                            "<terpakai_female>"+Integer.toString(terpakai)+"</terpakai_female>\n"+
+                                            "<kosong_male>"+Integer.toString(tersedia)+"</kosong_male>\n"+
+                                            "<kosong_female>"+Integer.toString(tersedia)+"</kosong_female>\n"+
+                                            "<waiting>"+Integer.toString(menunggu)+"</waiting>\n"+
+                                            "<tgl_update>"+dateFormat.format(date)+"</tgl_update>\n"+
                                         "</data>\n"+
                                     "</xml>";              
                                     TeksArea.append("JSON dikirim : "+requestXML+"\n");

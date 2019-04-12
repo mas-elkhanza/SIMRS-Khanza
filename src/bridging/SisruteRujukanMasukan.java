@@ -65,7 +65,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     private boolean aktif=false;
-    private String requestJson="",No="",RMFaskes="",NamaPasien="",Kontak="",Alamat="",TempatLahir="",TglLahir="",
+    private String idrs="",requestJson="",No="",RMFaskes="",NamaPasien="",Kontak="",Alamat="",TempatLahir="",TglLahir="",
                 JK="",NoKartuJKN="",NIK="",NoRujuk="",KodeAsal="",NamaFaskesAsal="",
                 KodeTujuan="",NamaFaskesTujuan="",JenisRujukan="",Alasan="",AlasanLainnya="",Status="",
                 TglRujuk="",DignosaRujuk="",AnamnesisPemeriksaanFisik="",Kesadaran="",
@@ -212,6 +212,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
             alarm=prop.getProperty("ALARMRSISRUTE");
+            idrs=prop.getProperty("IDSISRUTE");
         } catch (Exception e) {
             alarm="no";
             System.out.println("E : "+e);
@@ -662,7 +663,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekKartu form=new BPJSCekKartu(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKartu(NoKartuJKN);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);
@@ -677,7 +678,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekNIK2 form=new BPJSCekNIK2(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKTP(NIK);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);
@@ -692,7 +693,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekRujukanKartuPCare form=new BPJSCekRujukanKartuPCare(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKartu(NoKartuJKN);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);
@@ -707,7 +708,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 BPJSCekRujukanKartuRS form=new BPJSCekRujukanKartuRS(null,false);
                                 form.isCek();
-                                form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                                 form.setLocationRelativeTo(internalFrame1);
                                 form.SetNoKartu(NoKartuJKN);
                                 form.SetNoRujuk(KodeAsal+NoRujuk);
@@ -878,7 +879,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try {
             URL = link+"/rujukan/jawab/"+NoRujuk;	
             headers = new HttpHeaders();
-            headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+            headers.add("X-cons-id",idrs);
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
 	    headers.add("X-signature",api.getHmac()); 
 	    headers.add("Content-type","application/json");
@@ -994,7 +995,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode);
             URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+	    headers.add("X-cons-id",idrs);
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
 	    headers.add("X-signature",api.getHmac()); 
 	    headers.add("Content-type","application/json");             
@@ -1152,7 +1153,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             KeadaanUmum=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),28).toString();
             Alergi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),29).toString();            
             Laboratorium=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),30).toString();      
-            Radiologi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),31).toString();            Radiologi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString();
+            Radiologi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),31).toString();    
             TerapiTindakan=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),32).toString();
             SttsPasien=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),33).toString();
             SttsRegistrasi=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),34).toString();

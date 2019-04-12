@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import laporan.DlgCariPenyakit;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;

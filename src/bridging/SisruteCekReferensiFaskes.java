@@ -47,7 +47,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private SisruteApi api=new SisruteApi();
-    private String URL="",link="";
+    private String URL="",link="",idrs="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -112,6 +112,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
+            idrs=prop.getProperty("IDSISRUTE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -342,7 +343,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
             }    	
                     
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+	    headers.add("X-cons-id",idrs);
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
 	    headers.add("X-signature",api.getHmac()); 
 	    headers.add("Content-type","application/json");             
