@@ -350,10 +350,9 @@
                 </Component>
                 <Component class="widget.Tanggal" name="Tanggal">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="30-01-2019"/>
+                        <StringItem index="0" value="27-02-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -400,11 +399,10 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="CmbJam" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="233" y="72" width="45" height="23"/>
+                      <AbsoluteConstraints x="189" y="72" width="62" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -475,11 +473,10 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="CmbMenit" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="280" y="72" width="45" height="23"/>
+                      <AbsoluteConstraints x="254" y="72" width="62" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -550,26 +547,19 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="CmbDetik" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="327" y="72" width="45" height="23"/>
+                      <AbsoluteConstraints x="319" y="72" width="62" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="widget.CekBox" name="ChkJln">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                        <LineBorder>
-                          <Color PropertyName="color" blue="c3" green="d7" red="c3" type="rgb"/>
-                        </LineBorder>
-                      </Border>
+                      <Border info="null"/>
                     </Property>
                     <Property name="selected" type="boolean" value="true"/>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="1"/>
                     </Property>
@@ -582,18 +572,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="374" y="72" width="23" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.Label" name="jLabel16">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Jam :"/>
-                    <Property name="name" type="java.lang.String" value="jLabel16" noResource="true"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="185" y="72" width="45" height="23"/>
+                      <AbsoluteConstraints x="384" y="72" width="23" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -660,7 +639,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="400" y="72" width="98" height="23"/>
+                      <AbsoluteConstraints x="409" y="72" width="90" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

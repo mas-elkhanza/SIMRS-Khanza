@@ -406,9 +406,9 @@ public class DlgReturPiutang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppTambah.setBackground(new java.awt.Color(255, 255, 255));
+        ppTambah.setBackground(new java.awt.Color(255, 255, 254));
         ppTambah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTambah.setForeground(new java.awt.Color(70,70,70));
+        ppTambah.setForeground(new java.awt.Color(70, 70, 70));
         ppTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         ppTambah.setText("Tambah");
         ppTambah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -423,9 +423,9 @@ public class DlgReturPiutang extends javax.swing.JDialog {
         });
         Popup.add(ppTambah);
 
-        ppHapus.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -440,9 +440,9 @@ public class DlgReturPiutang extends javax.swing.JDialog {
         });
         Popup.add(ppHapus);
 
-        ppCetakNota.setBackground(new java.awt.Color(255, 255, 255));
+        ppCetakNota.setBackground(new java.awt.Color(255, 255, 254));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCetakNota.setForeground(new java.awt.Color(70,70,70));
+        ppCetakNota.setForeground(new java.awt.Color(70, 70, 70));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
         ppCetakNota.setText("Cetak Nota");
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -466,7 +466,7 @@ public class DlgReturPiutang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Piutang Obat, Alkes & BHP Medis Dari Pembeli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Piutang Obat, Alkes & BHP Medis Dari Pembeli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -776,7 +776,7 @@ public class DlgReturPiutang extends javax.swing.JDialog {
             }
         });
         panelisiBeli.add(NoRetur);
-        NoRetur.setBounds(74, 10, 220, 23);
+        NoRetur.setBounds(74, 10, 200, 23);
 
         label18.setText("No.Nota :");
         label18.setName("label18"); // NOI18N
@@ -792,7 +792,7 @@ public class DlgReturPiutang extends javax.swing.JDialog {
             }
         });
         panelisiBeli.add(NoFaktur);
-        NoFaktur.setBounds(74, 40, 220, 23);
+        NoFaktur.setBounds(74, 40, 200, 23);
 
         Kdptg.setName("Kdptg"); // NOI18N
         Kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -827,9 +827,8 @@ public class DlgReturPiutang extends javax.swing.JDialog {
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisiBeli.add(label11);
-        label11.setBounds(177, 70, 55, 23);
+        label11.setBounds(197, 70, 55, 23);
 
-        TglRetur.setEditable(false);
         TglRetur.setDisplayFormat("dd-MM-yyyy");
         TglRetur.setName("TglRetur"); // NOI18N
         TglRetur.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -838,7 +837,7 @@ public class DlgReturPiutang extends javax.swing.JDialog {
             }
         });
         panelisiBeli.add(TglRetur);
-        TglRetur.setBounds(236, 70, 90, 23);
+        TglRetur.setBounds(256, 70, 90, 23);
 
         label16.setText("Pasien :");
         label16.setName("label16"); // NOI18N
@@ -883,7 +882,7 @@ public class DlgReturPiutang extends javax.swing.JDialog {
             }
         });
         panelisiBeli.add(Jenisjual);
-        Jenisjual.setBounds(74, 70, 100, 23);
+        Jenisjual.setBounds(74, 70, 120, 23);
 
         label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N

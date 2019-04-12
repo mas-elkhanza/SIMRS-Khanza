@@ -424,9 +424,9 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPMedis.setForeground(new java.awt.Color(70,70,70));
+        ppTampilkanBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPMedis.setText("Tampilkan Penggunaan BHP Medis");
         ppTampilkanBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -441,9 +441,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPMedis);
 
-        ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(70,70,70));
+        ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPPenunjang.setText("Tampilkan Penggunaan BHP Non Medis");
         ppTampilkanBHPPenunjang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -458,9 +458,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjang);
 
-        ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjangDanMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(70,70,70));
+        ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjangDanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setText("Tampilkan Penggunaan BHP Medis & Non Medis");
         ppTampilkanBHPPenunjangDanMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -475,9 +475,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjangDanMedis);
 
-        ppUbah.setBackground(new java.awt.Color(255, 255, 255));
+        ppUbah.setBackground(new java.awt.Color(255, 255, 254));
         ppUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUbah.setForeground(new java.awt.Color(70,70,70));
+        ppUbah.setForeground(new java.awt.Color(70, 70, 70));
         ppUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUbah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUbah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -492,9 +492,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppUbah);
 
-        ppHapusBHPMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPMedis.setForeground(new java.awt.Color(70,70,70));
+        ppHapusBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPMedis.setText("Hapus Penggunaan BHP Medis");
         ppHapusBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -509,9 +509,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPMedis);
 
-        ppHapusBHPNonMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusBHPNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPNonMedis.setForeground(new java.awt.Color(70,70,70));
+        ppHapusBHPNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPNonMedis.setText("Hapus Penggunaan BHP Non Medis");
         ppHapusBHPNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -526,9 +526,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPNonMedis);
 
-        ppHapusBHPMedisDanNonMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusBHPMedisDanNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedisDanNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(70,70,70));
+        ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedisDanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPMedisDanNonMedis.setText("Hapus Penggunaan BHP Medis & Non Medis");
         ppHapusBHPMedisDanNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -543,9 +543,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPMedisDanNonMedis);
 
-        ppCekal.setBackground(new java.awt.Color(255, 255, 255));
+        ppCekal.setBackground(new java.awt.Color(255, 255, 254));
         ppCekal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCekal.setForeground(new java.awt.Color(70,70,70));
+        ppCekal.setForeground(new java.awt.Color(70, 70, 70));
         ppCekal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCekal.setText("Cekal Darah");
         ppCekal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -572,13 +572,13 @@ public final class UTDDonor extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Donor Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Donor Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -596,7 +596,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(450, 77));
         panelisi5.setLayout(new java.awt.GridLayout(2, 0));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
@@ -680,7 +680,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         panelisi5.add(jPanel3);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         jPanel4.setName("jPanel4"); // NOI18N
         jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(300, 202));
@@ -809,10 +809,9 @@ public final class UTDDonor extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(230, 12, 57, 23);
+        label32.setBounds(225, 12, 57, 23);
 
-        Tanggal.setEditable(false);
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -821,23 +820,22 @@ public final class UTDDonor extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tanggal);
-        Tanggal.setBounds(290, 12, 95, 23);
+        Tanggal.setBounds(285, 12, 90, 23);
 
         jLabel8.setText("Dinas :");
         jLabel8.setName("jLabel8"); // NOI18N
         panelisi4.add(jLabel8);
-        jLabel8.setBounds(387, 12, 50, 23);
+        jLabel8.setBounds(376, 12, 50, 23);
 
         Dinas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pagi", "Siang", "Sore", "Malam" }));
         Dinas.setName("Dinas"); // NOI18N
-        Dinas.setOpaque(false);
         Dinas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DinasKeyPressed(evt);
             }
         });
         panelisi4.add(Dinas);
-        Dinas.setBounds(440, 12, 70, 23);
+        Dinas.setBounds(429, 12, 86, 23);
 
         label35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label35.setText("Tahun");
@@ -885,7 +883,6 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         JK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         JK.setName("JK"); // NOI18N
-        JK.setOpaque(false);
         JK.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JKKeyPressed(evt);
@@ -901,14 +898,13 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         GolonganDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "AB", "B", "O" }));
         GolonganDarah.setName("GolonganDarah"); // NOI18N
-        GolonganDarah.setOpaque(false);
         GolonganDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GolonganDarahKeyPressed(evt);
             }
         });
         panelisi4.add(GolonganDarah);
-        GolonganDarah.setBounds(105, 132, 60, 23);
+        GolonganDarah.setBounds(105, 132, 70, 23);
 
         jLabel11.setText("Resus :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -917,14 +913,13 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         Resus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(-)", "(+)" }));
         Resus.setName("Resus"); // NOI18N
-        Resus.setOpaque(false);
         Resus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ResusKeyPressed(evt);
             }
         });
         panelisi4.add(Resus);
-        Resus.setBounds(263, 132, 60, 23);
+        Resus.setBounds(263, 132, 70, 23);
 
         label39.setText("Tensi :");
         label39.setName("label39"); // NOI18N
@@ -956,7 +951,7 @@ public final class UTDDonor extends javax.swing.JDialog {
             }
         });
         panelisi4.add(NomorBag);
-        NomorBag.setBounds(105, 162, 60, 23);
+        NomorBag.setBounds(105, 162, 70, 23);
 
         label41.setText("No.Telp :");
         label41.setName("label41"); // NOI18N
@@ -981,14 +976,13 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         JenisBag.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SB", "DB", "TB", "QB" }));
         JenisBag.setName("JenisBag"); // NOI18N
-        JenisBag.setOpaque(false);
         JenisBag.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisBagKeyPressed(evt);
             }
         });
         panelisi4.add(JenisBag);
-        JenisBag.setBounds(263, 162, 60, 23);
+        JenisBag.setBounds(263, 162, 70, 23);
 
         jLabel13.setText("Jenis Donor :");
         jLabel13.setName("jLabel13"); // NOI18N
@@ -997,14 +991,13 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         JenisDonor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DB", "DP", "DS" }));
         JenisDonor.setName("JenisDonor"); // NOI18N
-        JenisDonor.setOpaque(false);
         JenisDonor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisDonorKeyPressed(evt);
             }
         });
         panelisi4.add(JenisDonor);
-        JenisDonor.setBounds(105, 192, 60, 23);
+        JenisDonor.setBounds(105, 192, 70, 23);
 
         jLabel14.setText("Tempat Aftap :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -1013,7 +1006,6 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         TempatAftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dalam Gedung", "Luar Gedung" }));
         TempatAftap.setName("TempatAftap"); // NOI18N
-        TempatAftap.setOpaque(false);
         TempatAftap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TempatAftapKeyPressed(evt);
@@ -1070,7 +1062,6 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         HBSAg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negatif", "Positif" }));
         HBSAg.setName("HBSAg"); // NOI18N
-        HBSAg.setOpaque(false);
         HBSAg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HBSAgActionPerformed(evt);
@@ -1086,7 +1077,6 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         HCV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negatif", "Positif" }));
         HCV.setName("HCV"); // NOI18N
-        HCV.setOpaque(false);
         HCV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HCVKeyPressed(evt);
@@ -1107,7 +1097,6 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         HIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negatif", "Positif" }));
         HIV.setName("HIV"); // NOI18N
-        HIV.setOpaque(false);
         HIV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HIVKeyPressed(evt);
@@ -1123,7 +1112,6 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         Spilis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negatif", "Positif" }));
         Spilis.setName("Spilis"); // NOI18N
-        Spilis.setOpaque(false);
         Spilis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SpilisKeyPressed(evt);
@@ -1174,7 +1162,6 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         Malaria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negatif", "Positif" }));
         Malaria.setName("Malaria"); // NOI18N
-        Malaria.setOpaque(false);
         Malaria.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 MalariaKeyPressed(evt);
@@ -1365,9 +1352,8 @@ public final class UTDDonor extends javax.swing.JDialog {
         jLabel20.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass9.add(jLabel20);
 
-        TanggalCari1.setEditable(false);
         TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2018" }));
+        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TanggalCari1.setDisplayFormat("dd-MM-yyyy");
         TanggalCari1.setName("TanggalCari1"); // NOI18N
         TanggalCari1.setOpaque(false);
@@ -1380,9 +1366,8 @@ public final class UTDDonor extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel21);
 
-        TanggalCari2.setEditable(false);
         TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2018" }));
+        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         TanggalCari2.setDisplayFormat("dd-MM-yyyy");
         TanggalCari2.setName("TanggalCari2"); // NOI18N
         TanggalCari2.setOpaque(false);

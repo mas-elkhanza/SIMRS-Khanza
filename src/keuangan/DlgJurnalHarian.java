@@ -461,7 +461,6 @@ public class DlgJurnalHarian extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(350, 12, 75, 23);
 
-        TglJurnal2.setEditable(false);
         TglJurnal2.setDisplayFormat("dd-MM-yyyy");
         TglJurnal2.setName("TglJurnal2"); // NOI18N
         TglJurnal2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -479,7 +478,6 @@ public class DlgJurnalHarian extends javax.swing.JDialog {
         panelisi3.add(label12);
         label12.setBounds(540, 12, 27, 23);
 
-        TglJurnal1.setEditable(false);
         TglJurnal1.setDisplayFormat("dd-MM-yyyy");
         TglJurnal1.setName("TglJurnal1"); // NOI18N
         TglJurnal1.addKeyListener(new java.awt.event.KeyAdapter() {

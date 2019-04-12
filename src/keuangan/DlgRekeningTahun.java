@@ -225,7 +225,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
+        ppSimpan.setBackground(new java.awt.Color(255, 255, 254));
         ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppSimpan.setForeground(new java.awt.Color(70, 70, 70));
         ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
@@ -242,7 +242,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         });
         Popup.add(ppSimpan);
 
-        ppGanti.setBackground(new java.awt.Color(242, 242, 242));
+        ppGanti.setBackground(new java.awt.Color(255, 255, 254));
         ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppGanti.setForeground(new java.awt.Color(70, 70, 70));
         ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -259,7 +259,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         });
         Popup.add(ppGanti);
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -276,7 +276,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         });
         Popup.add(ppHapus);
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -344,7 +344,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(437, 12, 110, 23);
+        label32.setBounds(437, 12, 90, 23);
 
         Kd.setHighlighter(null);
         Kd.setName("Kd"); // NOI18N
@@ -375,7 +375,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tahun);
-        Tahun.setBounds(550, 12, 70, 23);
+        Tahun.setBounds(530, 12, 90, 23);
 
         label33.setText("Saldo Awal : Rp");
         label33.setName("label33"); // NOI18N

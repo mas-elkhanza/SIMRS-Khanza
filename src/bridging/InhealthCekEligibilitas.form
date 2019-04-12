@@ -21,7 +21,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="24-12-2018"/>
+            <StringItem index="0" value="11-03-2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -102,7 +102,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="MnDocument">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -327,9 +327,6 @@
         </Container>
         <Container class="javax.swing.JPanel" name="PanelInput">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="PanelInput" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -460,7 +457,6 @@
                                   </StringArray>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="CMbGd" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CMbGdKeyPressed"/>
@@ -519,7 +515,6 @@
                                 </Property>
                                 <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
                                 <Property name="name" type="java.lang.String" value="cmbAgama" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbAgamaKeyPressed"/>
@@ -532,12 +527,12 @@
                             </Component>
                             <Component class="widget.Label" name="jLabel19">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Stts. Nikah :"/>
+                                <Property name="text" type="java.lang.String" value="Status :"/>
                                 <Property name="name" type="java.lang.String" value="jLabel19" noResource="true"/>
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="235" y="85" width="85" height="23"/>
+                                  <AbsoluteConstraints x="235" y="85" width="45" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -553,14 +548,13 @@
                                 </Property>
                                 <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
                                 <Property name="name" type="java.lang.String" value="CmbStts" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CmbSttsKeyPressed"/>
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="325" y="85" width="90" height="23"/>
+                                  <AbsoluteConstraints x="285" y="85" width="130" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -668,10 +662,9 @@
                             </Component>
                             <Component class="widget.Tanggal" name="DTPDaftar">
                               <Properties>
-                                <Property name="editable" type="boolean" value="false"/>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="24-12-2018"/>
+                                    <StringItem index="0" value="11-03-2019"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -729,7 +722,6 @@
                                   </StringArray>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="CMbPnd" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CMbPndKeyPressed"/>
@@ -755,9 +747,6 @@
                             </Component>
                             <Component class="widget.RadioButton" name="R5">
                               <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
                                 <Property name="selected" type="boolean" value="true"/>
                                 <Property name="text" type="java.lang.String" value="Saudara"/>
                                 <Property name="iconTextGap" type="int" value="0"/>
@@ -771,9 +760,6 @@
                             </Component>
                             <Component class="widget.RadioButton" name="R4">
                               <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Suami"/>
                                 <Property name="iconTextGap" type="int" value="0"/>
                                 <Property name="name" type="java.lang.String" value="R4" noResource="true"/>
@@ -786,9 +772,6 @@
                             </Component>
                             <Component class="widget.RadioButton" name="R3">
                               <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Istri"/>
                                 <Property name="iconTextGap" type="int" value="0"/>
                                 <Property name="name" type="java.lang.String" value="R3" noResource="true"/>
@@ -801,9 +784,6 @@
                             </Component>
                             <Component class="widget.RadioButton" name="R2">
                               <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Ibu"/>
                                 <Property name="iconTextGap" type="int" value="0"/>
                                 <Property name="name" type="java.lang.String" value="R2" noResource="true"/>
@@ -816,9 +796,6 @@
                             </Component>
                             <Component class="widget.RadioButton" name="R1">
                               <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Ayah"/>
                                 <Property name="iconTextGap" type="int" value="0"/>
                                 <Property name="name" type="java.lang.String" value="R1" noResource="true"/>
@@ -1215,15 +1192,9 @@
                             <Component class="widget.CekBox" name="ChkRM">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                    <LineBorder>
-                                      <Color PropertyName="color" blue="aa" green="b4" red="af" type="rgb"/>
-                                    </LineBorder>
-                                  </Border>
+                                  <Border info="null"/>
                                 </Property>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="borderPainted" type="boolean" value="true"/>
-                                <Property name="borderPaintedFlat" type="boolean" value="true"/>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Tahoma" size="11" style="1"/>
                                 </Property>
@@ -1242,9 +1213,6 @@
                             </Component>
                             <Component class="widget.RadioButton" name="R6">
                               <Properties>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Anak"/>
                                 <Property name="iconTextGap" type="int" value="0"/>
                                 <Property name="name" type="java.lang.String" value="R6" noResource="true"/>
@@ -1933,12 +1901,12 @@
                             </Component>
                             <Component class="widget.Label" name="jLabel18">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Jenis Kelamin :"/>
+                                <Property name="text" type="java.lang.String" value="J.K. :"/>
                                 <Property name="name" type="java.lang.String" value="jLabel18" noResource="true"/>
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="236" y="235" width="85" height="23"/>
+                                  <AbsoluteConstraints x="236" y="235" width="65" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1951,14 +1919,13 @@
                                   </StringArray>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="CmbJk" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CmbJkKeyPressed"/>
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="325" y="235" width="90" height="23"/>
+                                  <AbsoluteConstraints x="305" y="235" width="110" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -2038,7 +2005,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="24-12-2018 21:49:36"/>
+                                    <StringItem index="0" value="11-03-2019 13:29:46"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2078,7 +2045,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="24-12-2018 21:49:36"/>
+                                    <StringItem index="0" value="11-03-2019 13:29:46"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2420,7 +2387,6 @@
                                   </StringArray>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="JenisPelayanan" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JenisPelayananItemStateChanged"/>
@@ -2428,18 +2394,18 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="765" y="115" width="165" height="23"/>
+                                  <AbsoluteConstraints x="725" y="115" width="205" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
                             <Component class="widget.Label" name="LabelKelas">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Jns.Pelayanan :"/>
+                                <Property name="text" type="java.lang.String" value="Jenis :"/>
                                 <Property name="name" type="java.lang.String" value="LabelKelas" noResource="true"/>
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="682" y="115" width="80" height="23"/>
+                                  <AbsoluteConstraints x="682" y="115" width="40" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -2496,7 +2462,6 @@
                                   </StringArray>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="Kelas" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KelasKeyPressed"/>
@@ -2528,7 +2493,6 @@
                                   </StringArray>
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="LakaLantas" noResource="true"/>
-                                <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LakaLantasKeyPressed"/>

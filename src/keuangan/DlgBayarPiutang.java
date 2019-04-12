@@ -315,7 +315,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppNotaPiutang.setBackground(new java.awt.Color(255, 255, 255));
+        ppNotaPiutang.setBackground(new java.awt.Color(255, 255, 254));
         ppNotaPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppNotaPiutang.setForeground(new java.awt.Color(70, 70, 70));
         ppNotaPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -450,7 +450,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         panelisi4.add(Nmmem);
         Nmmem.setBounds(476, 10, 204, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -495,7 +494,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         jLabel10.setBounds(0, 70, 77, 23);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nama_bayarKeyPressed(evt);

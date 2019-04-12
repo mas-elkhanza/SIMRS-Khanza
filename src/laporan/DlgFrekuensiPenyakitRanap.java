@@ -423,7 +423,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -440,7 +440,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakBatang);
 
-        ppGrafikTerbanyakPie.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikTerbanyakPie.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerbanyakPie.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -457,7 +457,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerbanyakPie);
 
-        ppGrafikTerkecilBatang.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikTerkecilBatang.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerkecilBatang.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -474,7 +474,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikTerkecilBatang);
 
-        ppGrafikTerkecilPie.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikTerkecilPie.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerkecilPie.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -513,7 +513,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi1.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -525,7 +524,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(26, 23));
         panelisi1.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));

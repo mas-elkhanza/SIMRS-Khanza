@@ -151,7 +151,7 @@ public final class DlgKonversi extends javax.swing.JDialog {
 
         ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
         ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppSimpan.setForeground(new java.awt.Color(70,70,70));
+        ppSimpan.setForeground(new java.awt.Color(70, 70, 70));
         ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         ppSimpan.setText("Simpan");
         ppSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -168,7 +168,7 @@ public final class DlgKonversi extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -185,7 +185,7 @@ public final class DlgKonversi extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(242, 242, 242));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70,70,70));
+        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -209,7 +209,7 @@ public final class DlgKonversi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Konversi Satuan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Konversi Satuan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -255,7 +255,7 @@ public final class DlgKonversi extends javax.swing.JDialog {
         nmsat1.setHighlighter(null);
         nmsat1.setName("nmsat1"); // NOI18N
         panelisi4.add(nmsat1);
-        nmsat1.setBounds(126, 12, 180, 23);
+        nmsat1.setBounds(146, 12, 160, 23);
 
         kdsat1.setName("kdsat1"); // NOI18N
         kdsat1.setPreferredSize(new java.awt.Dimension(45, 23));
@@ -265,7 +265,7 @@ public final class DlgKonversi extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdsat1);
-        kdsat1.setBounds(64, 12, 60, 23);
+        kdsat1.setBounds(64, 12, 80, 23);
 
         label11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label11.setText("=");
@@ -293,14 +293,14 @@ public final class DlgKonversi extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdsat2);
-        kdsat2.setBounds(381, 12, 60, 23);
+        kdsat2.setBounds(381, 12, 80, 23);
 
         nmsat2.setEditable(false);
         nmsat2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         nmsat2.setHighlighter(null);
         nmsat2.setName("nmsat2"); // NOI18N
         panelisi4.add(nmsat2);
-        nmsat2.setBounds(443, 12, 180, 23);
+        nmsat2.setBounds(463, 12, 160, 23);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 

@@ -14,7 +14,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppHapus">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -31,7 +31,7 @@
             <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppHapus" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[165, 25]"/>
+              <Dimension value="[195, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -41,7 +41,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppBayar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -58,7 +58,7 @@
             <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppBayar" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[165, 25]"/>
+              <Dimension value="[195, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -68,7 +68,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppUbah">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -85,7 +85,7 @@
             <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppUbah" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[165, 25]"/>
+              <Dimension value="[195, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -548,7 +548,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglBeli1">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglBeli1" noResource="true"/>
               </Properties>
@@ -708,7 +707,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglBeli2">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglBeli2" noResource="true"/>
               </Properties>

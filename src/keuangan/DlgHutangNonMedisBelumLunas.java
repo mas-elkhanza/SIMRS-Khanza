@@ -270,7 +270,7 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -287,7 +287,7 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppSemua.setBackground(new java.awt.Color(255, 255, 255));
+        ppSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSemua.setForeground(new java.awt.Color(70, 70, 70));
         ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -338,13 +338,14 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(816, 145));
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 145));
+        jPanel1.setPreferredSize(new java.awt.Dimension(810, 145));
         jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
+        panelisi3.setPreferredSize(new java.awt.Dimension(95, 44));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         label19.setText("Supplier :");
@@ -434,6 +435,7 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         jPanel1.add(panelisi3, java.awt.BorderLayout.CENTER);
 
         panelisi1.setName("panelisi1"); // NOI18N
+        panelisi1.setPreferredSize(new java.awt.Dimension(760, 55));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -512,15 +514,12 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        ChkTanggalDatang.setBorder(null);
         ChkTanggalDatang.setText("Tgl.Datang :");
-        ChkTanggalDatang.setBorderPainted(true);
-        ChkTanggalDatang.setBorderPaintedFlat(true);
         ChkTanggalDatang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggalDatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggalDatang.setName("ChkTanggalDatang"); // NOI18N
         ChkTanggalDatang.setOpaque(false);
-        ChkTanggalDatang.setPreferredSize(new java.awt.Dimension(90, 23));
+        ChkTanggalDatang.setPreferredSize(new java.awt.Dimension(93, 23));
         ChkTanggalDatang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ChkTanggalDatangItemStateChanged(evt);
@@ -528,7 +527,6 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         });
         panelisi5.add(ChkTanggalDatang);
 
-        TglDatang1.setEditable(false);
         TglDatang1.setDisplayFormat("dd-MM-yyyy");
         TglDatang1.setName("TglDatang1"); // NOI18N
         TglDatang1.setPreferredSize(new java.awt.Dimension(97, 23));
@@ -545,7 +543,6 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi5.add(label18);
 
-        TglDatang2.setEditable(false);
         TglDatang2.setDisplayFormat("dd-MM-yyyy");
         TglDatang2.setName("TglDatang2"); // NOI18N
         TglDatang2.setPreferredSize(new java.awt.Dimension(97, 23));
@@ -560,15 +557,12 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         label21.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi5.add(label21);
 
-        ChkTanggalTempo.setBorder(null);
         ChkTanggalTempo.setText("Tgl.Tempo");
-        ChkTanggalTempo.setBorderPainted(true);
-        ChkTanggalTempo.setBorderPaintedFlat(true);
         ChkTanggalTempo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggalTempo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggalTempo.setName("ChkTanggalTempo"); // NOI18N
         ChkTanggalTempo.setOpaque(false);
-        ChkTanggalTempo.setPreferredSize(new java.awt.Dimension(77, 23));
+        ChkTanggalTempo.setPreferredSize(new java.awt.Dimension(80, 23));
         ChkTanggalTempo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ChkTanggalTempoItemStateChanged(evt);
@@ -576,7 +570,6 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         });
         panelisi5.add(ChkTanggalTempo);
 
-        TglTempo1.setEditable(false);
         TglTempo1.setDisplayFormat("dd-MM-yyyy");
         TglTempo1.setName("TglTempo1"); // NOI18N
         TglTempo1.setPreferredSize(new java.awt.Dimension(97, 23));
@@ -593,7 +586,6 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         label20.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi5.add(label20);
 
-        TglTempo2.setEditable(false);
         TglTempo2.setDisplayFormat("dd-MM-yyyy");
         TglTempo2.setName("TglTempo2"); // NOI18N
         TglTempo2.setPreferredSize(new java.awt.Dimension(97, 23));
@@ -656,7 +648,6 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         panelisi4.add(nama_petugas);
         nama_petugas.setBounds(520, 10, 200, 23);
 
-        tgl_bayar.setEditable(false);
         tgl_bayar.setDisplayFormat("dd-MM-yyyy");
         tgl_bayar.setName("tgl_bayar"); // NOI18N
         tgl_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -685,7 +676,6 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         jLabel12.setBounds(0, 40, 75, 23);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nama_bayarKeyPressed(evt);

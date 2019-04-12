@@ -381,7 +381,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="88" y="12" width="90" height="23"/>
+                      <AbsoluteConstraints x="88" y="12" width="100" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -435,14 +435,13 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Jenis" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JenisKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="88" y="42" width="90" height="23"/>
+                      <AbsoluteConstraints x="88" y="42" width="100" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -469,14 +468,13 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Dampak" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DampakKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="313" y="42" width="180" height="23"/>
+                      <AbsoluteConstraints x="313" y="42" width="200" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

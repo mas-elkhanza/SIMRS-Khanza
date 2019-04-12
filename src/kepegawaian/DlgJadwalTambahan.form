@@ -362,7 +362,7 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="BlnCari" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[55, 23]"/>
+                  <Dimension value="[62, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -374,7 +374,7 @@
                 <Property name="text" type="java.lang.String" value="Departemen :"/>
                 <Property name="name" type="java.lang.String" value="label12" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[130, 23]"/>
+                  <Dimension value="[120, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -382,7 +382,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="Departemen" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[220, 23]"/>
+                  <Dimension value="[230, 23]"/>
                 </Property>
               </Properties>
               <Events>
