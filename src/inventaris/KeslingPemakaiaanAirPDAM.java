@@ -48,6 +48,7 @@ public final class KeslingPemakaiaanAirPDAM extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
+    private double total=0;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -892,10 +893,12 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 ps.setString(9,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
+                total=0;
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         i+"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
                     });
+                    total=total+rs.getDouble(5);
                     i++;
                 }
             } catch (Exception e) {
@@ -907,6 +910,11 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 if(ps!=null){
                     ps.close();
                 }
+            }
+            if(total>0){
+                tabMode.addRow(new String[]{
+                    "","","JUMLAH :","","",""+total,""
+                });
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
