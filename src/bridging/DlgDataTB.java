@@ -238,10 +238,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
         PaduanOAT.setDocument(new batasInput((int)500).getKata(PaduanOAT));
         KeteranganSO.setDocument(new batasInput((int)500).getKata(KeteranganSO));
         Keterangan.setDocument(new batasInput((int)100).getKata(Keterangan));
-        PemeriksaanLaboratAkhirNoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratAkhirNoReg));
-        PemeriksaanLaboratBulan2NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan2NoReg));
-        PemeriksaanLaboratBulan3NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan3NoReg));
-        PemeriksaanLaboratBulan5NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan5NoReg));
+        PemeriksaanLaboratAkhirNoReg.setDocument(new batasInput((byte)15).getOnlyAngka(PemeriksaanLaboratAkhirNoReg));
+        PemeriksaanLaboratBulan2NoReg.setDocument(new batasInput((byte)15).getOnlyAngka(PemeriksaanLaboratBulan2NoReg));
+        PemeriksaanLaboratBulan3NoReg.setDocument(new batasInput((byte)15).getOnlyAngka(PemeriksaanLaboratBulan3NoReg));
+        PemeriksaanLaboratBulan5NoReg.setDocument(new batasInput((byte)15).getOnlyAngka(PemeriksaanLaboratBulan5NoReg));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -2026,7 +2026,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                     "\"keterangan\":\""+Keterangan.getText()+"\"," +
                     "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                    "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                    "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                     "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                     "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                     "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
@@ -2192,7 +2192,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
@@ -2260,7 +2260,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
