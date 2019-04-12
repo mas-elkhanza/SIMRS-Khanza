@@ -19,13 +19,11 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -104,7 +102,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         
         kddari.setDocument(new batasInput((byte)10).getKata(kddari));
         kdke.setDocument(new batasInput((byte)10).getKata(kddari));
-        jumlah.setDocument(new batasInput((byte)10).getOnlyAngka(jumlah));
+        jumlah.setDocument(new batasInput((byte)10).getKata(jumlah));
         Keterangan.setDocument(new batasInput((byte)60).getKata(Keterangan));        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.cariCepat().equals("aktif")){
@@ -160,8 +158,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-    }
-    Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();    
+    } 
     int pilihan=0;
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
 
@@ -217,7 +214,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
 
         panelisi4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         panelisi4.setName("panelisi4"); // NOI18N
-        panelisi4.setPreferredSize(new java.awt.Dimension(100, 103));
+        panelisi4.setPreferredSize(new java.awt.Dimension(100, 133));
         panelisi4.setLayout(null);
 
         label32.setText("Tanggal :");
@@ -235,7 +232,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tanggal);
-        Tanggal.setBounds(532, 10, 100, 23);
+        Tanggal.setBounds(532, 10, 180, 23);
 
         label17.setText("Dari :");
         label17.setName("label17"); // NOI18N
@@ -275,7 +272,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         jumlah.setHighlighter(null);
         jumlah.setName("jumlah"); // NOI18N
         panelisi4.add(jumlah);
-        jumlah.setBounds(532, 70, 100, 23);
+        jumlah.setBounds(530, 70, 100, 23);
 
         label37.setText("Jumlah :");
         label37.setName("label37"); // NOI18N
@@ -354,12 +351,12 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         harga.setHighlighter(null);
         harga.setName("harga"); // NOI18N
         panelisi4.add(harga);
-        harga.setBounds(532, 70, 100, 23);
+        harga.setBounds(590, 100, 100, 23);
 
         total.setHighlighter(null);
         total.setName("total"); // NOI18N
         panelisi4.add(total);
-        total.setBounds(532, 70, 100, 23);
+        total.setBounds(440, 100, 100, 23);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -408,7 +405,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelisi3.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-04-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-04-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -422,7 +419,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelisi3.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-04-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-04-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

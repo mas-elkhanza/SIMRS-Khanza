@@ -7,7 +7,6 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -15,7 +14,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -30,10 +28,8 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Jurnal jur=new Jurnal();
     private PreparedStatement psdokter,psresep,psresep2;
     private ResultSet rsdokter,rsresep; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private int i=0,a=0;
     private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
@@ -472,7 +468,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 jumlah="";
                 try {

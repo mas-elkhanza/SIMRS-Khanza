@@ -9,7 +9,7 @@
         </Property>
         <Property name="name" type="java.lang.String" value="panelisi4" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[100, 103]"/>
+          <Dimension value="[100, 133]"/>
         </Property>
       </Properties>
 
@@ -42,7 +42,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="532" y="10" width="100" height="23"/>
+              <AbsoluteConstraints x="532" y="10" width="180" height="23"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -120,7 +120,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="532" y="70" width="100" height="23"/>
+              <AbsoluteConstraints x="530" y="70" width="100" height="23"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -283,7 +283,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="532" y="70" width="100" height="23"/>
+              <AbsoluteConstraints x="590" y="100" width="100" height="23"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -296,7 +296,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="532" y="70" width="100" height="23"/>
+              <AbsoluteConstraints x="440" y="100" width="100" height="23"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -360,9 +360,6 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="Scroll">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -377,9 +374,6 @@
             <Component class="widget.Table" name="tbKamar">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="name" type="java.lang.String" value="tbKamar" noResource="true"/>
               </Properties>
               <Events>
@@ -443,7 +437,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="07-04-2019"/>
+                        <StringItem index="0" value="12-04-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -471,7 +465,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="07-04-2019"/>
+                        <StringItem index="0" value="12-04-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

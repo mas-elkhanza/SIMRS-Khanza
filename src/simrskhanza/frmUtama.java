@@ -426,6 +426,7 @@ import grafikanalisa.GrafikTBStatusHIV;
 import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import inventory.DlgKadaluarsaBatch;
+import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
@@ -1063,6 +1064,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikTBHasilTesHIV = new widget.ButtonBig();
         btnKadaluarsaBatch = new widget.ButtonBig();
         btnSisaStok = new widget.ButtonBig();
+        btnObatPerResep = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6758,7 +6760,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKadaluarsaBatch);
 
-        btnSisaStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038207_contacts.png"))); // NOI18N
+        btnSisaStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-62-document-table_314903.png"))); // NOI18N
         btnSisaStok.setText("Sisa Stok");
         btnSisaStok.setIconTextGap(0);
         btnSisaStok.setName("btnSisaStok"); // NOI18N
@@ -6770,6 +6772,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSisaStok);
 
+        btnObatPerResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_receipt_3440909.png"))); // NOI18N
+        btnObatPerResep.setText("Obat Per Resep");
+        btnObatPerResep.setIconTextGap(0);
+        btnObatPerResep.setName("btnObatPerResep"); // NOI18N
+        btnObatPerResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPerResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPerResepActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnObatPerResep);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6778,7 +6792,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/04/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/04/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -14004,6 +14018,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSisaStokActionPerformed
 
+    private void btnObatPerResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObatPerResepActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgObatPeresep form=new DlgObatPeresep(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnObatPerResepActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14273,6 +14298,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPasienRanap;
     private widget.ButtonBig btnObatPenyakit;
     private widget.ButtonBig btnObatPerCaraBayar;
+    private widget.ButtonBig btnObatPerResep;
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnOpnameIPSRS;
@@ -15370,6 +15396,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getsisa_stok()==true){
                 Panelmenu.add(btnSisaStok);
+                jmlmenu++;
+            }
+            
+            if(var.getobat_per_resep()==true){
+                Panelmenu.add(btnObatPerResep);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -17640,6 +17671,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getsisa_stok()==true){
             Panelmenu.add(btnSisaStok);
+            jmlmenu++;
+        }
+
+        if(var.getobat_per_resep()==true){
+            Panelmenu.add(btnObatPerResep);
             jmlmenu++;
         }
 
@@ -20075,6 +20111,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsisa_stok()==true){
             if(btnSisaStok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSisaStok);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getobat_per_resep()==true){
+            if(btnObatPerResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnObatPerResep);
                 jmlmenu++;
             }                
         }
