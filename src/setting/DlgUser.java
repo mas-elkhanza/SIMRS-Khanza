@@ -126,7 +126,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[P]Password Asuransi","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
                     "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB","[N]Status HIV TB","[N]Skoring Anak TB","[N]Konfirmasi Skoring 5 TB",
                     "[N]Konfirmasi Skoring 6 TB","[N]Sumber Obat TB","[N]Hasil Akhir Pengobatan TB","[N]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
-                    "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis"
+                    "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -268,7 +268,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 459;i++) {
+        for (i = 0; i < 460;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -822,6 +822,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(122);
             }else if(i==458){
                 column.setPreferredWidth(133);
+            }else if(i==459){
+                column.setPreferredWidth(184);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1260,7 +1262,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1761,7 +1763,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "sisa_stok='"+tbUser.getValueAt(i,455).toString()+"',"+
                     "obat_per_resep='"+tbUser.getValueAt(i,456).toString()+"',"+
                     "pemakaian_air_pdam='"+tbUser.getValueAt(i,457).toString()+"',"+
-                    "limbah_b3_medis='"+tbUser.getValueAt(i,458).toString()+"'");
+                    "limbah_b3_medis='"+tbUser.getValueAt(i,458).toString()+"',"+
+                    "grafik_air_pdam_pertanggal='"+tbUser.getValueAt(i,459).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2067,7 +2070,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "password_asuransi,kemenkes_sitt,siranap_ketersediaan_kamar,grafik_tb_periodelaporan,grafik_tb_rujukan,"+
                         "grafik_tb_riwayat,grafik_tb_tipediagnosis,grafik_tb_statushiv,grafik_tb_skoringanak,grafik_tb_konfirmasiskoring5,"+
                         "grafik_tb_konfirmasiskoring6,grafik_tb_sumberobat,grafik_tb_hasilakhirpengobatan,grafik_tb_hasilteshiv,"+
-                        "kadaluarsa_batch,sisa_stok,obat_per_resep,pemakaian_air_pdam,limbah_b3_medis from user order by AES_DECRYPT(id_user,'nur')");
+                        "kadaluarsa_batch,sisa_stok,obat_per_resep,pemakaian_air_pdam,limbah_b3_medis,grafik_air_pdam_pertanggal from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2538,7 +2541,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("sisa_stok"),
                                rs.getBoolean("obat_per_resep"),
                                rs.getBoolean("pemakaian_air_pdam"),
-                               rs.getBoolean("limbah_b3_medis")
+                               rs.getBoolean("limbah_b3_medis"),
+                               rs.getBoolean("grafik_air_pdam_pertanggal")
                             });
                         }   
                     } catch (Exception e) {
@@ -2998,7 +3002,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("sisa_stok"),
                            rs.getBoolean("obat_per_resep"),
                            rs.getBoolean("pemakaian_air_pdam"),
-                           rs.getBoolean("limbah_b3_medis")
+                           rs.getBoolean("limbah_b3_medis"),
+                           rs.getBoolean("grafik_air_pdam_pertanggal")
                         });
                     }                                             
                  }

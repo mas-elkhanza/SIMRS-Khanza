@@ -99,7 +99,7 @@ public final class var {
             password_asuransi=false,kemenkes_sitt=false,siranap_ketersediaan_kamar=false,grafik_tb_periodelaporan=false,grafik_tb_rujukan=false,
             grafik_tb_riwayat=false,grafik_tb_tipediagnosis=false,grafik_tb_statushiv=false,grafik_tb_skoringanak=false,grafik_tb_konfirmasiskoring5=false,
             grafik_tb_konfirmasiskoring6=false,grafik_tb_sumberobat=false,grafik_tb_hasilakhirpengobatan=false,grafik_tb_hasilteshiv=false,
-            kadaluarsa_batch=false,sisa_stok=false,obat_per_resep=false,pemakaian_air_pdam=false,limbah_b3_medis=false;
+            kadaluarsa_batch=false,sisa_stok=false,obat_per_resep=false,pemakaian_air_pdam=false,limbah_b3_medis=false,grafik_air_pdam_pertanggal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -578,6 +578,7 @@ public final class var {
                         var.obat_per_resep=true;
                         var.pemakaian_air_pdam=true;
                         var.limbah_b3_medis=true;
+                        var.grafik_air_pdam_pertanggal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1040,6 +1041,7 @@ public final class var {
                         var.obat_per_resep=rs2.getBoolean("obat_per_resep");
                         var.pemakaian_air_pdam=rs2.getBoolean("pemakaian_air_pdam");
                         var.limbah_b3_medis=rs2.getBoolean("limbah_b3_medis");
+                        var.grafik_air_pdam_pertanggal=rs2.getBoolean("grafik_air_pdam_pertanggal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1500,6 +1502,7 @@ public final class var {
                         var.obat_per_resep=false;
                         var.pemakaian_air_pdam=false;
                         var.limbah_b3_medis=false;
+                        var.grafik_air_pdam_pertanggal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2014,4 +2017,5 @@ public final class var {
     public static boolean getobat_per_resep(){return var.obat_per_resep;}
     public static boolean getpemakaian_air_pdam(){return var.pemakaian_air_pdam;}
     public static boolean getlimbah_b3_medis(){return var.limbah_b3_medis;}
+    public static boolean getgrafik_air_pdam_pertanggal(){return var.grafik_air_pdam_pertanggal;}
 }   

@@ -1509,7 +1509,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 headers.add("Content-type","application/json");
                 requestJson ="{" +
                                 "\"PASIEN\": {" +
-                                    "\"NORM\":"+TNoRM.getText()+"," +
+                                    "\"NORM\":\""+TNoRM.getText()+"\"," +
                                     "\"NIK\": \""+NoKTP.getText()+"\"," +
                                     "\"NO_KARTU_JKN\": \""+NoKartu.getText()+"\"," +
                                     "\"NAMA\": \""+TPasien.getText()+"\"," +
@@ -1712,7 +1712,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     headers.add("Content-type","application/json");
                     requestJson ="{" +
                                     "\"PASIEN\": {" +
-                                        "\"NORM\":"+TNoRM.getText()+"," +
+                                        "\"NORM\":\""+TNoRM.getText()+"\"," +
                                         "\"NIK\": \""+NoKTP.getText()+"\"," +
                                         "\"NO_KARTU_JKN\": \""+NoKartu.getText()+"\"," +
                                         "\"NAMA\": \""+TPasien.getText()+"\"," +
@@ -2783,6 +2783,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
+                        
                         Laborat.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -2804,6 +2805,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("hasil")+";";
                         }
+                        
                         Radiologi.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -2826,6 +2828,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("nama_brng")+";";
                         }
+                        
                         if(!cari.equals("")){
                             cari="TRP:"+cari;
                         }
@@ -3013,7 +3016,30 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
+                        
                         Laborat.setText(cari);
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select hasil_radiologi.hasil from hasil_radiologi where hasil_radiologi.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("hasil")+";";
+                        }
+                        
+                        Radiologi.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{

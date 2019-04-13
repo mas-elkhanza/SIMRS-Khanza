@@ -414,6 +414,7 @@ import kepegawaian.DlgJadwal;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
 import bridging.DlgDataTB;
+import grafikanalisa.GrafikKeslingPDAMPertanggal;
 import grafikanalisa.GrafikTBHasilAkhirPengobatan;
 import grafikanalisa.GrafikTBHasilTesHIV;
 import grafikanalisa.GrafikTBKonfirmasiSkoring5;
@@ -1069,6 +1070,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnObatPerResep = new widget.ButtonBig();
         btnPemakaianAirPDAM = new widget.ButtonBig();
         btnLimbahB3Medis = new widget.ButtonBig();
+        btnGrafikPemakaianAirPDAMPerTanggal = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6811,6 +6813,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnLimbahB3Medis);
+
+        btnGrafikPemakaianAirPDAMPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikPemakaianAirPDAMPerTanggal.setText("Pemakaian Air PDAM Per Tanggal");
+        btnGrafikPemakaianAirPDAMPerTanggal.setIconTextGap(0);
+        btnGrafikPemakaianAirPDAMPerTanggal.setName("btnGrafikPemakaianAirPDAMPerTanggal"); // NOI18N
+        btnGrafikPemakaianAirPDAMPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPemakaianAirPDAMPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPemakaianAirPDAMPerTanggalActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -14079,6 +14093,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnLimbahB3MedisActionPerformed
 
+    private void btnGrafikPemakaianAirPDAMPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikPemakaianAirPDAMPerTanggalActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingPDAMPertanggal aplikasi=new GrafikKeslingPDAMPertanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikPemakaianAirPDAMPerTanggalActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14249,6 +14274,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikLabRalanPerBulan;
     private widget.ButtonBig btnGrafikLabRalanPerHari;
     private widget.ButtonBig btnGrafikLabRalanPerTahun;
+    private widget.ButtonBig btnGrafikPemakaianAirPDAMPerTanggal;
     private widget.ButtonBig btnGrafikPerPerujuk;
     private widget.ButtonBig btnGrafikRadRalanPerBulan;
     private widget.ButtonBig btnGrafikRadRalanPerHari;
@@ -17096,6 +17122,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikTBHasilTesHIV);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_air_pdam_pertanggal()==true){
+                Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(var.getsurat_indeks()==true){
@@ -19366,6 +19397,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
+        if(var.getgrafik_air_pdam_pertanggal()==true){
+            Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
+            jmlmenu++;
+        }
+        
         if(var.getsurat_indeks()==true){
             Panelmenu.add(btnSuratIndeks);
             jmlmenu++;
@@ -22462,6 +22498,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_tb_hasilteshiv()==true){
             if(btnGrafikTBHasilTesHIV.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikTBHasilTesHIV);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_air_pdam_pertanggal()==true){
+            if(btnGrafikPemakaianAirPDAMPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
                 jmlmenu++;
             }                
         }
