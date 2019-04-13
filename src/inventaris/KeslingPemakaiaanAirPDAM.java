@@ -701,7 +701,7 @@ public final class KeslingPemakaiaanAirPDAM extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPemakaianAirPDAM.jrxml","report","::[ Data Pemakaian Air PDAM]::",
+            Valid.MyReport("rptPemakaianAirPDAM.jrxml","report","::[ Data Pemakaian Air PDAM ]::",
                    "select kesling_pemakaian_air_pdam.nip,petugas.nama,kesling_pemakaian_air_pdam.tanggal,"+
                    "kesling_pemakaian_air_pdam.meteran,kesling_pemakaian_air_pdam.jumlahharian,kesling_pemakaian_air_pdam.keterangan "+
                    "from kesling_pemakaian_air_pdam inner join petugas on kesling_pemakaian_air_pdam.nip=petugas.nip where "+
