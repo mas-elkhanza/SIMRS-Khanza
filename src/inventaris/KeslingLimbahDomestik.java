@@ -200,7 +200,7 @@ public final class KeslingLimbahDomestik extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Catatan Limbah Domestik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Catatan Limbah Padat Domestik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -696,7 +696,7 @@ public final class KeslingLimbahDomestik extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptLimbahDomestik.jrxml","report","::[ Data Catatan Limbah Domestik ]::",
+            Valid.MyReport("rptLimbahDomestik.jrxml","report","::[ Data Catatan Limbah Padat Domestik ]::",
                    "select kesling_limbah_domestik.nip,petugas.nama,kesling_limbah_domestik.tanggal,"+
                    "kesling_limbah_domestik.jumlahlimbah,kesling_limbah_domestik.tanggalangkut,kesling_limbah_domestik.keterangan "+
                    "from kesling_limbah_domestik inner join petugas on kesling_limbah_domestik.nip=petugas.nip where "+

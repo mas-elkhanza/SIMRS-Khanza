@@ -51,7 +51,7 @@ on kesling_limbah_domestik.nip=petugas.nip]]>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 				</textElement>
-				<text><![CDATA[DATA CATATAN LIMBAH DOMESTIK]]></text>
+				<text><![CDATA[DATA CATATAN LIMBAH PADAT DOMESTIK]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="14" width="553" height="14"/>
