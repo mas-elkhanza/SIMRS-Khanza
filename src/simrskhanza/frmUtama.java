@@ -430,6 +430,7 @@ import grafikanalisa.GrafikTBStatusHIV;
 import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import inventaris.KeslingLimbahB3Medis;
+import inventaris.KeslingLimbahDomestik;
 import inventaris.KeslingPemakaiaanAirPDAM;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
@@ -1077,6 +1078,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikPemakaianAirPDAMPerBulan = new widget.ButtonBig();
         btnGrafikLimbahB3MedisPerTanggal = new widget.ButtonBig();
         btnGrafikLimbahB3MedisPerBulan = new widget.ButtonBig();
+        btnLimbahDomestik = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6867,6 +6869,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnGrafikLimbahB3MedisPerBulan);
+
+        btnLimbahDomestik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Bin_ecology_recyclewaste_2992453.png"))); // NOI18N
+        btnLimbahDomestik.setText("Limbah Padat Domestik");
+        btnLimbahDomestik.setIconTextGap(0);
+        btnLimbahDomestik.setName("btnLimbahDomestik"); // NOI18N
+        btnLimbahDomestik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLimbahDomestik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimbahDomestikActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnLimbahDomestik);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -14179,6 +14193,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikLimbahB3MedisPerBulanActionPerformed
 
+    private void btnLimbahDomestikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimbahDomestikActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingLimbahDomestik form=new KeslingLimbahDomestik(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLimbahDomestikActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14440,6 +14465,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
     private widget.ButtonBig btnLimbahB3Medis;
+    private widget.ButtonBig btnLimbahDomestik;
     private widget.ButtonBig btnMapingPoliBPJS;
     private widget.ButtonBig btnMasterBerkasPegawai;
     private widget.ButtonBig btnMerkInventaris;
@@ -15710,6 +15736,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getlimbah_b3_medis()==true){
                 Panelmenu.add(btnLimbahB3Medis);
+                jmlmenu++;
+            } 
+            
+            if(var.getlimbah_domestik()==true){
+                Panelmenu.add(btnLimbahDomestik);
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -18012,6 +18043,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getlimbah_b3_medis()==true){
             Panelmenu.add(btnLimbahB3Medis);
+            jmlmenu++;
+        } 
+        
+        if(var.getlimbah_domestik()==true){
+            Panelmenu.add(btnLimbahDomestik);
             jmlmenu++;
         } 
 
@@ -20547,6 +20583,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }                
         } 
+        
+        if(var.getlimbah_domestik()==true){
+            if(btnLimbahDomestik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLimbahDomestik);
+                jmlmenu++;
+            }                
+        }
 
         if(var.getparkir_jenis()==true){
             if(btnJenisParkir.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
