@@ -1,61 +1,45 @@
 {
-    "id_tb_03":"",
-    "id_periode_laporan":1,
-    "tanggal_buat_laporan":"2018-03-20T10:22:16.000Z",
-    "tahun_buat_laporan":2018,
-    "kd_wasor":"1118",
-    "noregkab" :6,
-    "kd_pasien":"BUDIMAN Syamaun",
-    "nik":3265890345783902,
-    "jenis_kelamin":"P",
-    "alamat_lengkap":"Bl ang Krueng",
-    "id_propinsi":"11",
-    "kd_kabupaten":"1118",
-    "id_kecamatan":"1118080",
-    "id_kelurahan":"1118080010",
-    "kd_fasyankes":"04570103",
-    "nama_rujukan":"Inisiatif Pasien / Keluarga",
-    "sebutkan1":"",
-    "tipe_diagnosis":"Terkonfirmasi bakteriologis",
-    "klasifikasi_lokasi_anatomi":"Paru",
-    "klasifikasi_riwayat_pengobatan":"Baru",
-    "klasifikasi_status_hiv":"Tidak diketahui",
-    "total_skoring_anak":"",
-    "konfirmasiSkoring5":"",
-    "konfirmasiSkoring6" :"",
-    "tanggal_mulai_pengobatan":"2018-01-17T17:00:00.000Z",
-    "paduan_oat":"Kategori 1",
-    "sumber_obat":"Program TB",
-    "sebutkan":"",
-    "sebelum_pengobatan_hasil_mikroskopis":"Positif",
-    "sebelum_pengobatan_hasil_tes_cepat":"Tidak dilakukan",
-    "sebelum_pengobatan_hasil_biakan":"Tidak dilakukan",
-    "noreglab_bulan_2":6,
-    "hasil_mikroskopis_bulan_2":"Negatif",
-    "noreg lab_bulan_3":0,
-    "hasil_mikroskopis_bulan_3":"",
-    "noreglab_bulan_5":0,
-    "hasil_mi kroskopis_bulan_5":"",
-    "akhir_pengobatan_noreglab":0,
-    "akhir_pengobatan_hasil_mikroskopis":"",
-    "tanggal_hasil_akhir_pengobatan":"0000-00-00",
-    "hasil_akhir_pengobatan":"",
-    "tanggal_dianjurkan_tes":"0000-00-00",
-    "tanggal_tes_hiv":"0000-00-00",
-    "hasil_tes_hiv":"",
-    "ppk":"",
-    "art":"",
-    "tb_dm":"",
-    "terapi_dm":"",
-    "pindah_ro":"",
-    "umur":75,
-    "status_pengobatan":"Sesuai Standar",
-    "foto_toraks":"Tidak dilakukan",
-    "toraks_tdk_dilakukan":"Tidak dilakukan",
-    "keterangan":"",
-    "tahun":2018,
-    "nourut_pasien":6,
-    "no_bpjs":0,
-    "tgl_lahir":"2018-03-20T10:22:16.000Z",
-    "kode_icd_x":"A15.16"
+   "PASIEN": {
+      "NORM": 11223345,               # Nomor Rekam Medis
+	  "NIK": "7371140101010003",      # Nomor Induk Kependudukan
+	  "NO_KARTU_JKN": "0000001234501",# Nomor Kartu Jaminan Kesehatan Nasional / BPJS
+	  "NAMA": "Rahmat Hidayat",       # Nama Pasien (Tanpa Gelar)
+	  "JENIS_KELAMIN": "1",           # Jenis Kelamin 1. Laki - laki, 2. Perempuan
+	  "TANGGAL_LAHIR": "1980-01-03",  # Tanggal Lahir Format yyyy-mm-dd
+	  "TEMPAT_LAHIR": "Makassar",     # Tempat Lahir
+	  "ALAMAT": "Pettarani",          # Alamat
+	  "KONTAK": "085123123122"        # Nomor Kontak / HP
+   },
+   "RUJUKAN": {
+	  "JENIS_RUJUKAN": "2",          # Jenis Rujukan 1. Rawat Jalan, 2. Rawat Darurat/Inap, 3. Parsial
+	  "TANGGAL": "2018-08-29 10:00:00", # Tanggal Rujukan Format yyy-mm-dd hh:ii:ss
+	  "FASKES_TUJUAN": "3404015",     # Kode Faskes Tujuan
+	  "ALASAN": "1",                  # Lihat Referensi Alasan Rujukan
+	  "ALASAN_LAINNYA": "Pusing",     # Alasan Lainnya / Tambahan Alasan Rujukan
+	  "DIAGNOSA": "I10",              # Kode ICD10 Diagnosa Utama
+	  "DOKTER": {                     # Dokter DPJP
+	     "NIK": "7371140101010111",  # NIK Dokter
+		 "NAMA": "Dr. Raffi"         # Nama Dokter
+      },
+	  "PETUGAS": {                    # Petugas yang merujuk
+	     "NIK": "7371140101010112",  # NIK Petugas
+		 "NAMA": "Enal"              # Nama Petugas
+	  }
+   },
+   "KONDISI_UMUM": {
+      "ANAMNESIS_DAN_PEMERIKSAAN_FISIK": "", # Anamnesis dan pemeriksaan fisik
+      "KESADARAN": "1",               # Kondisi Kesadaran Pasien 1. Sadar, 2. Tidak Sadar
+	  "TEKANAN_DARAH": "120/90",      # Tekanan Darah Pasien dalam satuan mmHg
+	  "FREKUENSI_NADI": "50",         # Frekuensi Nadi Pasien (Kali/Menit)
+	  "SUHU": "37",                   # Suhu (Derajat Celcius)
+	  "PERNAPASAN": "25",             # Pernapasan (Kali/Menit)
+	  "KEADAAN_UMUM": "sesak, gelisah", # Keadaan Umum Pasien
+	  "NYERI": 0,                     # Skala Nyeri 0. Tidak Nyeri, 1. Ringan, 2. Sedang, 3. Berat
+	  "ALERGI": "-"                   # Alergi Pasien
+   },
+   "PENUNJANG": {
+      "LABORATORIUM": "WBC:11,2;HB:15,6;PLT:215;", # Hasil Laboratorium format: parameter:hasil;
+	  "RADIOLOGI": "EKG:Sinus Takikardi;Foto Thorax:Cor dan pulmo normal;", # Hasil Radiologi format: tindakan:hasil;
+	  "TERAPI_ATAU_TINDAKAN": "TRP:LOADING NACL 0.9% 500 CC;INJ. RANITIDIN 50 MG;#TDK:TERPASANG INTUBASI ET NO 8 BATAS BIBIR 21CM;" # Terapi atau Tindakan yang diberikan format; TRP:Nama;#TDK:Nama;
+   }
 }
