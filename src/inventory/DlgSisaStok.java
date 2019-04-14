@@ -35,7 +35,7 @@ public class DlgSisaStok extends javax.swing.JDialog {
         initComponents();
         
         
-        LoadHTML.setEditable(true);
+        LoadHTML.setEditable(false);
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
