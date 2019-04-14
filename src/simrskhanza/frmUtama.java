@@ -433,6 +433,7 @@ import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import inventaris.KeslingLimbahB3Medis;
 import inventaris.KeslingLimbahDomestik;
+import inventaris.KeslingMutuAirLimbah;
 import inventaris.KeslingPemakaiaanAirPDAM;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
@@ -1083,6 +1084,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnLimbahDomestik = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerTanggal = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerBulan = new widget.ButtonBig();
+        btnMutuAirLimbah = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6909,6 +6911,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnGrafikLimbahDomestikPerBulan);
+
+        btnMutuAirLimbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Care_ecology_water_hand_2992434.png"))); // NOI18N
+        btnMutuAirLimbah.setText("Mutu Air Limbah");
+        btnMutuAirLimbah.setIconTextGap(0);
+        btnMutuAirLimbah.setName("btnMutuAirLimbah"); // NOI18N
+        btnMutuAirLimbah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMutuAirLimbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMutuAirLimbahActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnMutuAirLimbah);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -14254,6 +14268,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikLimbahDomestikPerBulanActionPerformed
 
+    private void btnMutuAirLimbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMutuAirLimbahActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingMutuAirLimbah form=new KeslingMutuAirLimbah(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMutuAirLimbahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14525,6 +14550,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnMonitoringKlaim;
     private widget.ButtonBig btnMutasiBarang;
     private widget.ButtonBig btnMutasiBerkas;
+    private widget.ButtonBig btnMutuAirLimbah;
     private widget.ButtonBig btnObat;
     private widget.ButtonBig btnObatPasienPeresep;
     private widget.ButtonBig btnObatPasienRalan;
@@ -15804,6 +15830,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnLimbahDomestik);
                 jmlmenu++;
             } 
+            
+            if(var.getmutu_air_limbah()==true){
+                Panelmenu.add(btnMutuAirLimbah);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==6){ 
             jmlmenu=0;
             if(var.getparkir_jenis()==true){
@@ -18121,6 +18152,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnLimbahDomestik);
             jmlmenu++;
         } 
+        
+        if(var.getmutu_air_limbah()==true){
+            Panelmenu.add(btnMutuAirLimbah);
+            jmlmenu++;
+        }
 
         if(var.getparkir_jenis()==true){
             Panelmenu.add(btnJenisParkir);
@@ -20668,6 +20704,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getlimbah_domestik()==true){
             if(btnLimbahDomestik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLimbahDomestik);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getmutu_air_limbah()==true){
+            if(btnMutuAirLimbah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMutuAirLimbah);
                 jmlmenu++;
             }                
         }
