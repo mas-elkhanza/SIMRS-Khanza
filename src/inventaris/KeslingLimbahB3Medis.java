@@ -955,8 +955,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     public void emptTeks() {
         Jumlah.setText("0");
         Sisa.setText("0");
-        KdPetugas.setText("");
-        NmPetugas.setText("");
         Tanggal.setDate(new Date());
         NoDokumen.setText("");
         Tujuan.setText("");
