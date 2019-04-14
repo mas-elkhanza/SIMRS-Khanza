@@ -96,7 +96,12 @@ public final class var {
             sisrute_referensi_alasanrujuk=false,sisrute_referensi_diagnosa=false,sisrute_rujukan_masuk=false,sisrute_rujukan_keluar=false,
             bpjs_cek_skdp=false,data_batch=false,kunjungan_permintaan_lab=false,kunjungan_permintaan_lab2=false,kunjungan_permintaan_radiologi=false,
             kunjungan_permintaan_radiologi2=false,pcare_pemberian_obat=false,pcare_pemberian_tindakan=false,pembayaran_akun_bayar3=false,
-            password_asuransi=false,kemenkes_sitt=false,siranap_ketersediaan_kamar=false;
+            password_asuransi=false,kemenkes_sitt=false,siranap_ketersediaan_kamar=false,grafik_tb_periodelaporan=false,grafik_tb_rujukan=false,
+            grafik_tb_riwayat=false,grafik_tb_tipediagnosis=false,grafik_tb_statushiv=false,grafik_tb_skoringanak=false,grafik_tb_konfirmasiskoring5=false,
+            grafik_tb_konfirmasiskoring6=false,grafik_tb_sumberobat=false,grafik_tb_hasilakhirpengobatan=false,grafik_tb_hasilteshiv=false,
+            kadaluarsa_batch=false,sisa_stok=false,obat_per_resep=false,pemakaian_air_pdam=false,limbah_b3_medis=false,grafik_air_pdam_pertanggal=false,
+            grafik_air_pdam_perbulan=false,grafik_limbahb3_pertanggal=false,grafik_limbahb3_perbulan=false,limbah_domestik=false,
+            grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -559,6 +564,29 @@ public final class var {
                         var.password_asuransi=true;
                         var.kemenkes_sitt=true;
                         var.siranap_ketersediaan_kamar=true;
+                        var.grafik_tb_periodelaporan=true;
+                        var.grafik_tb_rujukan=true;
+                        var.grafik_tb_riwayat=true;
+                        var.grafik_tb_tipediagnosis=true;
+                        var.grafik_tb_statushiv=true;
+                        var.grafik_tb_skoringanak=true;
+                        var.grafik_tb_konfirmasiskoring5=true;
+                        var.grafik_tb_konfirmasiskoring6=true;
+                        var.grafik_tb_sumberobat=true;
+                        var.grafik_tb_hasilakhirpengobatan=true;
+                        var.grafik_tb_hasilteshiv=true;
+                        var.kadaluarsa_batch=true;
+                        var.sisa_stok=true;
+                        var.obat_per_resep=true;
+                        var.pemakaian_air_pdam=true;
+                        var.limbah_b3_medis=true;
+                        var.grafik_air_pdam_pertanggal=true;
+                        var.grafik_air_pdam_perbulan=true;
+                        var.grafik_limbahb3_pertanggal=true;
+                        var.grafik_limbahb3_perbulan=true;
+                        var.limbah_domestik=true;
+                        var.grafik_limbahdomestik_pertanggal=true;
+                        var.grafik_limbahdomestik_perbulan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1005,6 +1033,29 @@ public final class var {
                         var.password_asuransi=rs2.getBoolean("password_asuransi");
                         var.kemenkes_sitt=rs2.getBoolean("kemenkes_sitt");
                         var.siranap_ketersediaan_kamar=rs2.getBoolean("siranap_ketersediaan_kamar");
+                        var.grafik_tb_periodelaporan=rs2.getBoolean("grafik_tb_periodelaporan");
+                        var.grafik_tb_rujukan=rs2.getBoolean("grafik_tb_rujukan");
+                        var.grafik_tb_riwayat=rs2.getBoolean("grafik_tb_riwayat");
+                        var.grafik_tb_tipediagnosis=rs2.getBoolean("grafik_tb_tipediagnosis");
+                        var.grafik_tb_statushiv=rs2.getBoolean("grafik_tb_statushiv");
+                        var.grafik_tb_skoringanak=rs2.getBoolean("grafik_tb_skoringanak");
+                        var.grafik_tb_konfirmasiskoring5=rs2.getBoolean("grafik_tb_konfirmasiskoring5");
+                        var.grafik_tb_konfirmasiskoring6=rs2.getBoolean("grafik_tb_konfirmasiskoring6");
+                        var.grafik_tb_sumberobat=rs2.getBoolean("grafik_tb_sumberobat");
+                        var.grafik_tb_hasilakhirpengobatan=rs2.getBoolean("grafik_tb_hasilakhirpengobatan");
+                        var.grafik_tb_hasilteshiv=rs2.getBoolean("grafik_tb_hasilteshiv");
+                        var.kadaluarsa_batch=rs2.getBoolean("kadaluarsa_batch");
+                        var.sisa_stok=rs2.getBoolean("sisa_stok");
+                        var.obat_per_resep=rs2.getBoolean("obat_per_resep");
+                        var.pemakaian_air_pdam=rs2.getBoolean("pemakaian_air_pdam");
+                        var.limbah_b3_medis=rs2.getBoolean("limbah_b3_medis");
+                        var.grafik_air_pdam_pertanggal=rs2.getBoolean("grafik_air_pdam_pertanggal");
+                        var.grafik_air_pdam_perbulan=rs2.getBoolean("grafik_air_pdam_perbulan");
+                        var.grafik_limbahb3_pertanggal=rs2.getBoolean("grafik_limbahb3_pertanggal");
+                        var.grafik_limbahb3_perbulan=rs2.getBoolean("grafik_limbahb3_perbulan");
+                        var.limbah_domestik=rs2.getBoolean("limbah_domestik");
+                        var.grafik_limbahdomestik_pertanggal=rs2.getBoolean("grafik_limbahdomestik_pertanggal");
+                        var.grafik_limbahdomestik_perbulan=rs2.getBoolean("grafik_limbahdomestik_perbulan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1449,6 +1500,29 @@ public final class var {
                         var.password_asuransi=false;
                         var.kemenkes_sitt=false;
                         var.siranap_ketersediaan_kamar=false;
+                        var.grafik_tb_periodelaporan=false;
+                        var.grafik_tb_rujukan=false;
+                        var.grafik_tb_riwayat=false;
+                        var.grafik_tb_tipediagnosis=false;
+                        var.grafik_tb_statushiv=false;
+                        var.grafik_tb_skoringanak=false;
+                        var.grafik_tb_konfirmasiskoring5=false;
+                        var.grafik_tb_konfirmasiskoring6=false;
+                        var.grafik_tb_sumberobat=false;
+                        var.grafik_tb_hasilakhirpengobatan=false;
+                        var.grafik_tb_hasilteshiv=false;
+                        var.kadaluarsa_batch=false;
+                        var.sisa_stok=false;
+                        var.obat_per_resep=false;
+                        var.pemakaian_air_pdam=false;
+                        var.limbah_b3_medis=false;
+                        var.grafik_air_pdam_pertanggal=false;
+                        var.grafik_air_pdam_perbulan=false;
+                        var.grafik_limbahb3_pertanggal=false;
+                        var.grafik_limbahb3_perbulan=false;
+                        var.limbah_domestik=false;
+                        var.grafik_limbahdomestik_pertanggal=false;
+                        var.grafik_limbahdomestik_perbulan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1947,4 +2021,27 @@ public final class var {
     public static boolean getpassword_asuransi(){return var.password_asuransi;}
     public static boolean getkemenkes_sitt(){return var.kemenkes_sitt;}
     public static boolean getsiranap_ketersediaan_kamar(){return var.siranap_ketersediaan_kamar;}
+    public static boolean getgrafik_tb_periodelaporan(){return var.grafik_tb_periodelaporan;}
+    public static boolean getgrafik_tb_rujukan(){return var.grafik_tb_rujukan;}
+    public static boolean getgrafik_tb_riwayat(){return var.grafik_tb_riwayat;}
+    public static boolean getgrafik_tb_tipediagnosis(){return var.grafik_tb_tipediagnosis;}
+    public static boolean getgrafik_tb_statushiv(){return var.grafik_tb_statushiv;}
+    public static boolean getgrafik_tb_skoringanak(){return var.grafik_tb_skoringanak;}
+    public static boolean getgrafik_tb_konfirmasiskoring5(){return var.grafik_tb_konfirmasiskoring5;}
+    public static boolean getgrafik_tb_konfirmasiskoring6(){return var.grafik_tb_konfirmasiskoring6;}
+    public static boolean getgrafik_tb_sumberobat(){return var.grafik_tb_sumberobat;}
+    public static boolean getgrafik_tb_hasilakhirpengobatan(){return var.grafik_tb_hasilakhirpengobatan;}
+    public static boolean getgrafik_tb_hasilteshiv(){return var.grafik_tb_hasilteshiv;}
+    public static boolean getkadaluarsa_batch(){return var.kadaluarsa_batch;}
+    public static boolean getsisa_stok(){return var.sisa_stok;}
+    public static boolean getobat_per_resep(){return var.obat_per_resep;}
+    public static boolean getpemakaian_air_pdam(){return var.pemakaian_air_pdam;}
+    public static boolean getlimbah_b3_medis(){return var.limbah_b3_medis;}
+    public static boolean getgrafik_air_pdam_pertanggal(){return var.grafik_air_pdam_pertanggal;}
+    public static boolean getgrafik_air_pdam_perbulan(){return var.grafik_air_pdam_perbulan;}
+    public static boolean getgrafik_limbahb3_pertanggal(){return var.grafik_limbahb3_pertanggal;}
+    public static boolean getgrafik_limbahb3_perbulan(){return var.grafik_limbahb3_perbulan;}
+    public static boolean getlimbah_domestik(){return var.limbah_domestik;}
+    public static boolean getgrafik_limbahdomestik_pertanggal(){return var.grafik_limbahdomestik_pertanggal;}
+    public static boolean getgrafik_limbahdomestik_perbulan(){return var.grafik_limbahdomestik_perbulan;}
 }   

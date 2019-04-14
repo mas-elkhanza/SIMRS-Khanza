@@ -371,6 +371,16 @@ color: #464646;
 	font: 11px  tahoma;
 }
 
+.isi8 td{
+	color:#123546;
+        padding-top:0px;
+	padding-bottom:0px;
+	padding-left:0px;
+	padding-right:0px;
+        border-bottom: 1px solid #E7E7E7;
+	font: 9px Tahoma;
+}
+
 .button {
 	margin-left: 10px;
 	padding: 4px 4px;

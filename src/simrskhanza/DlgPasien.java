@@ -471,8 +471,8 @@ public class DlgPasien extends javax.swing.JDialog {
         Kelurahan2.setDocument(new batasInput((byte)60).getFilter(Kelurahan2));
         Propinsi.setDocument(new batasInput((byte)30).getFilter(Propinsi));
         PropinsiPj.setDocument(new batasInput((byte)30).getFilter(PropinsiPj));
-        EMail.setDocument(new batasInput((byte)50).getFilter(EMail));
-        NIP.setDocument(new batasInput((byte)30).getFilter(NIP));
+        EMail.setDocument(new batasInput((byte)50).getKata(EMail));
+        NIP.setDocument(new batasInput((byte)30).getKata(NIP));
         TNoPeserta.setDocument(new batasInput((byte)25).getKata(TNoPeserta));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){

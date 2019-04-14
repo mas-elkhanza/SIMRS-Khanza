@@ -11,6 +11,7 @@
 
 package simrskhanza;
 
+import laporan.DlgCariPenyakit;
 import inventory.DlgObatPenyakit;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
