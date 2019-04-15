@@ -101,7 +101,7 @@ public final class var {
             grafik_tb_konfirmasiskoring6=false,grafik_tb_sumberobat=false,grafik_tb_hasilakhirpengobatan=false,grafik_tb_hasilteshiv=false,
             kadaluarsa_batch=false,sisa_stok=false,obat_per_resep=false,pemakaian_air_pdam=false,limbah_b3_medis=false,grafik_air_pdam_pertanggal=false,
             grafik_air_pdam_perbulan=false,grafik_limbahb3_pertanggal=false,grafik_limbahb3_perbulan=false,limbah_domestik=false,
-            grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false;
+            grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -588,6 +588,7 @@ public final class var {
                         var.grafik_limbahdomestik_pertanggal=true;
                         var.grafik_limbahdomestik_perbulan=true;
                         var.mutu_air_limbah=true;
+                        var.pest_control=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1058,6 +1059,7 @@ public final class var {
                         var.grafik_limbahdomestik_pertanggal=rs2.getBoolean("grafik_limbahdomestik_pertanggal");
                         var.grafik_limbahdomestik_perbulan=rs2.getBoolean("grafik_limbahdomestik_perbulan");
                         var.mutu_air_limbah=rs2.getBoolean("mutu_air_limbah");
+                        var.pest_control=rs2.getBoolean("pest_control");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1526,6 +1528,7 @@ public final class var {
                         var.grafik_limbahdomestik_pertanggal=false;
                         var.grafik_limbahdomestik_perbulan=false;
                         var.mutu_air_limbah=false;
+                        var.pest_control=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2048,4 +2051,5 @@ public final class var {
     public static boolean getgrafik_limbahdomestik_pertanggal(){return var.grafik_limbahdomestik_pertanggal;}
     public static boolean getgrafik_limbahdomestik_perbulan(){return var.grafik_limbahdomestik_perbulan;}
     public static boolean getmutu_air_limbah(){return var.mutu_air_limbah;}
+    public static boolean getpest_control(){return var.pest_control;}
 }   

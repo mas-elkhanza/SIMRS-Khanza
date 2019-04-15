@@ -435,6 +435,7 @@ import inventaris.KeslingLimbahB3Medis;
 import inventaris.KeslingLimbahDomestik;
 import inventaris.KeslingMutuAirLimbah;
 import inventaris.KeslingPemakaiaanAirPDAM;
+import inventaris.KeslingPestControl;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
@@ -1085,6 +1086,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikLimbahDomestikPerTanggal = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerBulan = new widget.ButtonBig();
         btnMutuAirLimbah = new widget.ButtonBig();
+        btnPestControl = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6924,6 +6926,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMutuAirLimbah);
 
+        btnPestControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_world_eco_leaves_2992451.png"))); // NOI18N
+        btnPestControl.setText("Pest Control");
+        btnPestControl.setIconTextGap(0);
+        btnPestControl.setName("btnPestControl"); // NOI18N
+        btnPestControl.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPestControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPestControlActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPestControl);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6932,7 +6946,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/04/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/04/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -14279,6 +14293,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnMutuAirLimbahActionPerformed
 
+    private void btnPestControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPestControlActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingPestControl form=new KeslingPestControl(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPestControlActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -14630,6 +14655,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPerujukLabPerTahun;
     private widget.ButtonBig btnPerujukRadiologiPerTahun;
     private widget.ButtonBig btnPerusahaan;
+    private widget.ButtonBig btnPestControl;
     private widget.ButtonBig btnPiutang;
     private widget.ButtonBig btnPiutangBelumLunas;
     private widget.ButtonBig btnPiutangPerAkunPiutang;
@@ -15833,6 +15859,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getmutu_air_limbah()==true){
                 Panelmenu.add(btnMutuAirLimbah);
+                jmlmenu++;
+            }
+            
+            if(var.getpest_control()==true){
+                Panelmenu.add(btnPestControl);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -18155,6 +18186,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getmutu_air_limbah()==true){
             Panelmenu.add(btnMutuAirLimbah);
+            jmlmenu++;
+        }
+        
+        if(var.getpest_control()==true){
+            Panelmenu.add(btnPestControl);
             jmlmenu++;
         }
 
@@ -20711,6 +20747,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getmutu_air_limbah()==true){
             if(btnMutuAirLimbah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMutuAirLimbah);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpest_control()==true){
+            if(btnPestControl.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPestControl);
                 jmlmenu++;
             }                
         }
