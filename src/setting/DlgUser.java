@@ -127,7 +127,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB","[N]Status HIV TB","[N]Skoring Anak TB","[N]Konfirmasi Skoring 5 TB",
                     "[N]Konfirmasi Skoring 6 TB","[N]Sumber Obat TB","[N]Hasil Akhir Pengobatan TB","[N]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
                     "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
-                    "[N]Limbah B3 Medis Per Tanggal","[N]Limbah B3 Medis Per Bulan","[F]Limbah Padat Domestik"
+                    "[N]Limbah B3 Medis Per Tanggal","[N]Limbah B3 Medis Per Bulan","[F]Limbah Padat Domestik","[N]Limbah Padat Domestik Per Tanggal",
+                    "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -269,7 +270,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 464;i++) {
+        for (i = 0; i < 467;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -833,6 +834,12 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(152);
             }else if(i==463){
                 column.setPreferredWidth(136);
+            }else if(i==464){
+                column.setPreferredWidth(197);
+            }else if(i==465){
+                column.setPreferredWidth(186);
+            }else if(i==466){
+                column.setPreferredWidth(101);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1271,7 +1278,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1777,7 +1784,10 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_air_pdam_perbulan='"+tbUser.getValueAt(i,460).toString()+"',"+
                     "grafik_limbahb3_pertanggal='"+tbUser.getValueAt(i,461).toString()+"',"+
                     "grafik_limbahb3_perbulan='"+tbUser.getValueAt(i,462).toString()+"',"+
-                    "limbah_domestik='"+tbUser.getValueAt(i,463).toString()+"'");
+                    "limbah_domestik='"+tbUser.getValueAt(i,463).toString()+"',"+
+                    "grafik_limbahdomestik_pertanggal='"+tbUser.getValueAt(i,464).toString()+"',"+
+                    "grafik_limbahdomestik_perbulan='"+tbUser.getValueAt(i,465).toString()+"',"+
+                    "mutu_air_limbah='"+tbUser.getValueAt(i,466).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2084,7 +2094,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_tb_riwayat,grafik_tb_tipediagnosis,grafik_tb_statushiv,grafik_tb_skoringanak,grafik_tb_konfirmasiskoring5,"+
                         "grafik_tb_konfirmasiskoring6,grafik_tb_sumberobat,grafik_tb_hasilakhirpengobatan,grafik_tb_hasilteshiv,"+
                         "kadaluarsa_batch,sisa_stok,obat_per_resep,pemakaian_air_pdam,limbah_b3_medis,grafik_air_pdam_pertanggal,"+
-                        "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik,"+
+                        "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2560,7 +2571,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_air_pdam_perbulan"),
                                rs.getBoolean("grafik_limbahb3_pertanggal"),
                                rs.getBoolean("grafik_limbahb3_perbulan"),
-                               rs.getBoolean("limbah_domestik")
+                               rs.getBoolean("limbah_domestik"),
+                               rs.getBoolean("grafik_limbahdomestik_pertanggal"),
+                               rs.getBoolean("grafik_limbahdomestik_perbulan"),
+                               rs.getBoolean("mutu_air_limbah")
                             });
                         }   
                     } catch (Exception e) {
@@ -3025,7 +3039,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_air_pdam_perbulan"),
                            rs.getBoolean("grafik_limbahb3_pertanggal"),
                            rs.getBoolean("grafik_limbahb3_perbulan"),
-                           rs.getBoolean("limbah_domestik")
+                           rs.getBoolean("limbah_domestik"),
+                           rs.getBoolean("grafik_limbahdomestik_pertanggal"),
+                           rs.getBoolean("grafik_limbahdomestik_perbulan"),
+                           rs.getBoolean("mutu_air_limbah")
                         });
                     }                                             
                  }
