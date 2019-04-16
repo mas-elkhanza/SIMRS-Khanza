@@ -11,10 +11,10 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select mutu_air_limbah.nip,petugas.nama,mutu_air_limbah.tanggal,
-mutu_air_limbah.meteran,mutu_air_limbah.jumlahharian,
-mutu_air_limbah.ph,mutu_air_limbah.suhu 
-from mutu_air_limbah inner join petugas on mutu_air_limbah.nip=petugas.nip]]>
+		<![CDATA[select kesling_mutu_air_limbah.nip,petugas.nama,kesling_mutu_air_limbah.tanggal,
+kesling_mutu_air_limbah.meteran,kesling_mutu_air_limbah.jumlahharian,
+kesling_mutu_air_limbah.ph,kesling_mutu_air_limbah.suhu 
+from kesling_mutu_air_limbah inner join petugas on kesling_mutu_air_limbah.nip=petugas.nip]]>
 	</queryString>
 	<field name="nip" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -42,6 +42,12 @@ from mutu_air_limbah inner join petugas on mutu_air_limbah.nip=petugas.nip]]>
 	</variable>
 	<variable name="total" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{jumlahharian}]]></variableExpression>
+	</variable>
+	<variable name="ph" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[$F{ph}]]></variableExpression>
+	</variable>
+	<variable name="suhu" class="java.lang.Double" calculation="Average">
+		<variableExpression><![CDATA[$F{suhu}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -309,6 +315,20 @@ from mutu_air_limbah inner join petugas on mutu_air_limbah.nip=petugas.nip]]>
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="452" y="2" width="47" height="10"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{ph}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="499" y="2" width="56" height="10"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{suhu}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

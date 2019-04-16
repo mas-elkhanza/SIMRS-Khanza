@@ -48,7 +48,7 @@ public final class KeslingMutuAirLimbah extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private double total=0;
+    private double total=0,ph=0,suhu=0;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -622,7 +622,7 @@ public final class KeslingMutuAirLimbah extends javax.swing.JDialog {
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas yang bertugas");
         }else{
-            if(Sequel.menyimpantf("mutu_air_limbah","?,?,?,?,?,?","Data",6,new String[]{
+            if(Sequel.menyimpantf("kesling_mutu_air_limbah","?,?,?,?,?,?","Data",6,new String[]{
                     KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     Meteran.getText(),JmlHarian.getText(),PH.getText(),Suhu.getText()
                 })==true){
@@ -654,7 +654,7 @@ public final class KeslingMutuAirLimbah extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()> -1){
-            Sequel.meghapus("mutu_air_limbah","nip","tanggal",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            Sequel.meghapus("kesling_mutu_air_limbah","nip","tanggal",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             tampil();
             emptTeks();
         }
@@ -681,7 +681,7 @@ public final class KeslingMutuAirLimbah extends javax.swing.JDialog {
             Valid.textKosong(KdPetugas,"Petugas yang bertugas");
         }else{ 
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("mutu_air_limbah","nip=? and tanggal=?","nip=?,tanggal=?,meteran=?,jumlahharian=?,ph=?,suhu=?",8,new String[]{
+                if(Sequel.mengedittf("kesling_mutu_air_limbah","nip=? and tanggal=?","nip=?,tanggal=?,meteran=?,jumlahharian=?,ph=?,suhu=?",8,new String[]{
                         KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                         Meteran.getText(),JmlHarian.getText(),PH.getText(),Suhu.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
                         tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
@@ -726,12 +726,12 @@ public final class KeslingMutuAirLimbah extends javax.swing.JDialog {
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptMutuAirLimbah.jrxml","report","::[ Data Mutu Air Limbah ]::",
-                   "select mutu_air_limbah.nip,petugas.nama,mutu_air_limbah.tanggal,"+
-                   "mutu_air_limbah.meteran,mutu_air_limbah.jumlahharian,mutu_air_limbah.ph,mutu_air_limbah.suhu "+
-                   "from mutu_air_limbah inner join petugas on mutu_air_limbah.nip=petugas.nip where "+
-                   "mutu_air_limbah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and mutu_air_limbah.nip like '%"+TCari.getText().trim()+"%' or "+
-                   "mutu_air_limbah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%' "+
-                   "order by mutu_air_limbah.tanggal",param);
+                   "select kesling_mutu_air_limbah.nip,petugas.nama,kesling_mutu_air_limbah.tanggal,"+
+                   "kesling_mutu_air_limbah.meteran,kesling_mutu_air_limbah.jumlahharian,kesling_mutu_air_limbah.ph,kesling_mutu_air_limbah.suhu "+
+                   "from kesling_mutu_air_limbah inner join petugas on kesling_mutu_air_limbah.nip=petugas.nip where "+
+                   "kesling_mutu_air_limbah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kesling_mutu_air_limbah.nip like '%"+TCari.getText().trim()+"%' or "+
+                   "kesling_mutu_air_limbah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%' "+
+                   "order by kesling_mutu_air_limbah.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -903,12 +903,12 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select mutu_air_limbah.nip,petugas.nama,mutu_air_limbah.tanggal,"+
-                   "mutu_air_limbah.meteran,mutu_air_limbah.jumlahharian,mutu_air_limbah.ph,mutu_air_limbah.suhu "+
-                   "from mutu_air_limbah inner join petugas on mutu_air_limbah.nip=petugas.nip where "+
-                   "mutu_air_limbah.tanggal between ? and ? and mutu_air_limbah.nip like ? or "+
-                   "mutu_air_limbah.tanggal between ? and ? and petugas.nama like ? "+
-                   "order by mutu_air_limbah.tanggal");
+                   "select kesling_mutu_air_limbah.nip,petugas.nama,kesling_mutu_air_limbah.tanggal,"+
+                   "kesling_mutu_air_limbah.meteran,kesling_mutu_air_limbah.jumlahharian,kesling_mutu_air_limbah.ph,kesling_mutu_air_limbah.suhu "+
+                   "from kesling_mutu_air_limbah inner join petugas on kesling_mutu_air_limbah.nip=petugas.nip where "+
+                   "kesling_mutu_air_limbah.tanggal between ? and ? and kesling_mutu_air_limbah.nip like ? or "+
+                   "kesling_mutu_air_limbah.tanggal between ? and ? and petugas.nama like ? "+
+                   "order by kesling_mutu_air_limbah.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
@@ -918,12 +918,14 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
-                total=0;
+                total=0;ph=0;suhu=0;
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         i+"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
                     });
                     total=total+rs.getDouble(5);
+                    ph=ph+rs.getDouble(6);
+                    suhu=suhu+rs.getDouble(7);
                     i++;
                 }
             } catch (Exception e) {
@@ -938,7 +940,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
             if(total>0){
                 tabMode.addRow(new String[]{
-                    "","","JUMLAH :","","",""+total,""
+                    "","","JUMLAH :","","",""+total,""+(ph/(i-1)),""+(suhu/(i-1))
                 });
             }
         }catch(Exception e){
@@ -984,9 +986,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpemakaian_air_pdam());
-        BtnHapus.setEnabled(var.getpemakaian_air_pdam());
-        BtnEdit.setEnabled(var.getpemakaian_air_pdam());
+        BtnSimpan.setEnabled(var.getmutu_air_limbah());
+        BtnHapus.setEnabled(var.getmutu_air_limbah());
+        BtnEdit.setEnabled(var.getmutu_air_limbah());
         if(var.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);

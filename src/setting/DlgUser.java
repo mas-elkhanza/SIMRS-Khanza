@@ -128,7 +128,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Konfirmasi Skoring 6 TB","[N]Sumber Obat TB","[N]Hasil Akhir Pengobatan TB","[N]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
                     "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
                     "[N]Limbah B3 Medis Per Tanggal","[N]Limbah B3 Medis Per Bulan","[F]Limbah Padat Domestik","[N]Limbah Padat Domestik Per Tanggal",
-                    "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah"
+                    "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah","[F]Pest Control"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -270,7 +270,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 467;i++) {
+        for (i = 0; i < 468;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -840,6 +840,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(186);
             }else if(i==466){
                 column.setPreferredWidth(101);
+            }else if(i==467){
+                column.setPreferredWidth(82);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1278,7 +1280,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1787,7 +1789,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "limbah_domestik='"+tbUser.getValueAt(i,463).toString()+"',"+
                     "grafik_limbahdomestik_pertanggal='"+tbUser.getValueAt(i,464).toString()+"',"+
                     "grafik_limbahdomestik_perbulan='"+tbUser.getValueAt(i,465).toString()+"',"+
-                    "mutu_air_limbah='"+tbUser.getValueAt(i,466).toString()+"'");
+                    "mutu_air_limbah='"+tbUser.getValueAt(i,466).toString()+"',"+
+                    "pest_control='"+tbUser.getValueAt(i,467).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2095,7 +2098,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_tb_konfirmasiskoring6,grafik_tb_sumberobat,grafik_tb_hasilakhirpengobatan,grafik_tb_hasilteshiv,"+
                         "kadaluarsa_batch,sisa_stok,obat_per_resep,pemakaian_air_pdam,limbah_b3_medis,grafik_air_pdam_pertanggal,"+
                         "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik,"+
-                        "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah,pest_control from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2574,7 +2577,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("limbah_domestik"),
                                rs.getBoolean("grafik_limbahdomestik_pertanggal"),
                                rs.getBoolean("grafik_limbahdomestik_perbulan"),
-                               rs.getBoolean("mutu_air_limbah")
+                               rs.getBoolean("mutu_air_limbah"),
+                               rs.getBoolean("pest_control")
                             });
                         }   
                     } catch (Exception e) {
@@ -3042,7 +3046,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("limbah_domestik"),
                            rs.getBoolean("grafik_limbahdomestik_pertanggal"),
                            rs.getBoolean("grafik_limbahdomestik_perbulan"),
-                           rs.getBoolean("mutu_air_limbah")
+                           rs.getBoolean("mutu_air_limbah"),
+                           rs.getBoolean("pest_control")
                         });
                     }                                             
                  }
