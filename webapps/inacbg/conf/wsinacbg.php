@@ -237,7 +237,7 @@
                                 "laboratorium": "'.$laboratorium.'",
                                 "pelayanan_darah": "0",
                                 "rehabilitasi": "0",
-                                "kamar": "'.$kamar.'",
+                                "kamar": "'.($kamar+$tarif_poli_eks).'",
                                 "rawat_intensif": "0",
                                 "obat": "'.$obat.'",
                                 "obat_kronis": "'.$obat_kronis.'",
@@ -246,7 +246,7 @@
                                 "bmhp": "'.$bmhp.'",
                                 "sewa_alat": "'.$sewa_alat.'"
                              },
-                            "tarif_poli_eks": "'.$tarif_poli_eks.'",
+                            "tarif_poli_eks": "0",
                             "nama_dokter": "'.$nama_dokter.'",
                             "kode_tarif": "'.$kode_tarif.'",
                             "payor_id": "'.$payor_id.'",

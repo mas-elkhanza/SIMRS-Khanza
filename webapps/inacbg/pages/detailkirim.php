@@ -34,6 +34,10 @@
             $jam_reg      = $baris["jam_reg"];
             $nm_poli      = $baris["nm_poli"];
             $nm_dokter    = $baris["nm_dokter"];
+            $nm_dokter2   = getOne("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='$norawat'");
+            if(!empty($nm_dokter2)){
+                $nm_dokter=$nm_dokter2;
+            }
             $status_lanjut  = $baris["status_lanjut"];
             $png_jawab    = $baris["png_jawab"];
             $jnsrawat="1";

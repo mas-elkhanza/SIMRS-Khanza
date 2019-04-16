@@ -2002,13 +2002,13 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                     "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                     "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_2\":"+PemeriksaanLaboratBulan2NoReg.getText()+"," +
+                    "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_3\":"+PemeriksaanLaboratBulan3NoReg.getText()+"," +
+                    "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_5\":"+PemeriksaanLaboratBulan5NoReg.getText()+"," +
+                    "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                    "\"akhir_pengobatan_noreglab\":"+PemeriksaanLaboratAkhirNoReg.getText()+"," +
+                    "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                     "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
                     "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
                     "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
@@ -2026,7 +2026,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                     "\"keterangan\":\""+Keterangan.getText()+"\"," +
                     "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                    "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                    "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                     "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                     "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                     "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
@@ -2168,13 +2168,13 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_2\":"+PemeriksaanLaboratBulan2NoReg.getText()+"," +
+                            "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_3\":"+PemeriksaanLaboratBulan3NoReg.getText()+"," +
+                            "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_5\":"+PemeriksaanLaboratBulan5NoReg.getText()+"," +
+                            "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                            "\"akhir_pengobatan_noreglab\":"+PemeriksaanLaboratAkhirNoReg.getText()+"," +
+                            "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                             "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
                             "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
@@ -2192,7 +2192,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
@@ -2236,13 +2236,13 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_2\":"+PemeriksaanLaboratBulan2NoReg.getText()+"," +
+                            "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_3\":"+PemeriksaanLaboratBulan3NoReg.getText()+"," +
+                            "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_5\":"+PemeriksaanLaboratBulan5NoReg.getText()+"," +
+                            "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                            "\"akhir_pengobatan_noreglab\":"+PemeriksaanLaboratAkhirNoReg.getText()+"," +
+                            "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                             "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
                             "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
@@ -2260,7 +2260,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
