@@ -17377,6 +17377,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnJenisPerpustakaan);
                 jmlmenu++;
             }
+            
+            if(var.getpengarang_perpustakaan()==true){
+                Panelmenu.add(btnPengarangPerpustakaan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -19703,6 +19708,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(var.getjenis_perpustakaan()==true){
             Panelmenu.add(btnJenisPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getpengarang_perpustakaan()==true){
+            Panelmenu.add(btnPengarangPerpustakaan);
             jmlmenu++;
         }
 
@@ -22909,6 +22919,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(var.getjenis_perpustakaan()==true){
             if(btnJenisPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpengarang_perpustakaan()==true){
+            if(btnPengarangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengarangPerpustakaan);
                 jmlmenu++;
             }                
         }

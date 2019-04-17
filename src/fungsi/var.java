@@ -102,7 +102,7 @@ public final class var {
             kadaluarsa_batch=false,sisa_stok=false,obat_per_resep=false,pemakaian_air_pdam=false,limbah_b3_medis=false,grafik_air_pdam_pertanggal=false,
             grafik_air_pdam_perbulan=false,grafik_limbahb3_pertanggal=false,grafik_limbahb3_perbulan=false,limbah_domestik=false,
             grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
-            kategori_perpustakaan=false,jenis_perpustakaan=false;
+            kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -593,6 +593,7 @@ public final class var {
                         var.ruang_perpustakaan=true;
                         var.kategori_perpustakaan=true;
                         var.jenis_perpustakaan=true;
+                        var.pengarang_perpustakaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1067,6 +1068,7 @@ public final class var {
                         var.ruang_perpustakaan=rs2.getBoolean("ruang_perpustakaan");
                         var.kategori_perpustakaan=rs2.getBoolean("kategori_perpustakaan");
                         var.jenis_perpustakaan=rs2.getBoolean("jenis_perpustakaan");
+                        var.pengarang_perpustakaan=rs2.getBoolean("pengarang_perpustakaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1539,6 +1541,7 @@ public final class var {
                         var.ruang_perpustakaan=false;
                         var.kategori_perpustakaan=false;
                         var.jenis_perpustakaan=false;
+                        var.pengarang_perpustakaan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2065,4 +2068,5 @@ public final class var {
     public static boolean getruang_perpustakaan(){return var.ruang_perpustakaan;}
     public static boolean getkategori_perpustakaan(){return var.kategori_perpustakaan;}
     public static boolean getjenis_perpustakaan(){return var.jenis_perpustakaan;}
+    public static boolean getpengarang_perpustakaan(){return var.pengarang_perpustakaan;}
 }   
