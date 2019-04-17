@@ -441,6 +441,7 @@ import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
 import perpustakaan.PerpustakaanJenis;
 import perpustakaan.PerpustakaanKategori;
+import perpustakaan.PerpustakaanPenerbit;
 import perpustakaan.PerpustakaanPengarang;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
@@ -14246,6 +14247,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenerbitPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPenerbit form=new PerpustakaanPenerbit(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    
     /**
     * @param args the command line arguments
     */
@@ -14814,7 +14829,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ScrollPane scrollPane2;
     private widget.Tanggal tanggal;
     // End of variables declaration//GEN-END:variables
-    private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan;
+    private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17396,6 +17411,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPengarangPerpustakaan);
                 jmlmenu++;
             }
+            
+            if(var.getpenerbit_perpustakaan()==true){
+                Panelmenu.add(btnPenerbitPerpustakaan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -19727,6 +19747,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(var.getpengarang_perpustakaan()==true){
             Panelmenu.add(btnPengarangPerpustakaan);
+            jmlmenu++;
+        }
+
+        if(var.getpenerbit_perpustakaan()==true){
+            Panelmenu.add(btnPenerbitPerpustakaan);
             jmlmenu++;
         }
 
@@ -22944,6 +22969,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(var.getpenerbit_perpustakaan()==true){
+            if(btnPenerbitPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenerbitPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23146,7 +23178,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnRuangPerpustakaan = new widget.ButtonBig();
-        btnRuangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_City_728922.png"))); // NOI18N
+        btnRuangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_City_728922.png"))); 
         btnRuangPerpustakaan.setText("Ruang Perpustakaan");
         btnRuangPerpustakaan.setIconTextGap(0);
         btnRuangPerpustakaan.setName("btnRuangPerpustakaan"); 
@@ -23158,7 +23190,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnPengarangPerpustakaan = new widget.ButtonBig();
-        btnPengarangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Teacher_131497.png"))); // NOI18N
+        btnPengarangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Teacher_131497.png")));
         btnPengarangPerpustakaan.setText("Pengarang/Penulis");
         btnPengarangPerpustakaan.setIconTextGap(0);
         btnPengarangPerpustakaan.setName("btnPengarangPerpustakaan"); 
@@ -23166,6 +23198,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengarangPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPengarangPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPenerbitPerpustakaan = new widget.ButtonBig();
+        btnPenerbitPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_package_editors_109.png")));
+        btnPenerbitPerpustakaan.setText("Penerbit Koleksi");
+        btnPenerbitPerpustakaan.setIconTextGap(0);
+        btnPenerbitPerpustakaan.setName("btnPenerbitPerpustakaan"); 
+        btnPenerbitPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenerbitPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerbitPerpustakaanActionPerformed(evt);
             }
         });
     }
