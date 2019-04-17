@@ -441,6 +441,7 @@ import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
 import perpustakaan.PerpustakaanJenis;
 import perpustakaan.PerpustakaanKategori;
+import perpustakaan.PerpustakaanPengarang;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import setting.DlgPasswordAsuransi;
@@ -14232,6 +14233,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPengarangPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPengarang form=new PerpustakaanPengarang(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23151,7 +23165,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengarangPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPengarangPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //btnPengarangPerpustakaanActionPerformed(evt);
+                btnPengarangPerpustakaanActionPerformed(evt);
             }
         });
     }
