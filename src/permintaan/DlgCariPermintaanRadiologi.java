@@ -46,6 +46,8 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private BackgroundMusic music;
     private ResultSet rs,rs2;
+    private Date now;
+    private boolean aktif=false;
     private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",diagnosa="";
     
     /** Creates new form DlgProgramStudi
@@ -232,11 +234,23 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         
@@ -397,7 +411,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCetakHasilRadiologi.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilRadiologi.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilRadiologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilRadiologi.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -411,7 +425,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilRadiologi);
 
-        MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -425,7 +439,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnBarcodePermintaan);
 
-        MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan1.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -479,7 +493,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2018 18:28:55" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 21:45:50" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -495,6 +509,12 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
             }
         });
 
@@ -515,7 +535,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass8.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -532,7 +551,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass8.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -704,7 +722,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabPilihRawat.setBorder(null);
         TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
@@ -770,7 +787,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame2.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatJalan.setBorder(null);
         TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
@@ -903,7 +919,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatInap.setBorder(null);
         TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
@@ -1050,7 +1065,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_radiologi");
                     int row=tabMode.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1080,7 +1095,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode.getValueAt(i,10).toString()+"','"+
                             tabMode.getValueAt(i,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1097,7 +1112,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode2.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_radiologi");
                     int row=tabMode2.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1128,7 +1143,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         tabMode2.getValueAt(i,11).toString()+"','"+
                                         tabMode2.getValueAt(i,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1147,7 +1162,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode3.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_radiologi");
                     int row=tabMode3.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1177,7 +1192,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode3.getValueAt(i,10).toString()+"','"+
                             tabMode3.getValueAt(i,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1194,7 +1209,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                     TCari.requestFocus();
                 }else if(tabMode4.getRowCount()!=0){
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_radiologi");
                     int row=tabMode4.getRowCount();
                     for(i=0;i<row;i++){  
@@ -1225,7 +1240,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         tabMode4.getValueAt(i,11).toString()+"','"+
                                         tabMode4.getValueAt(i,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -1345,7 +1360,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                 if(tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),0).toString().trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_radiologi");
                     try {
                         ps2=koneksi.prepareStatement(
@@ -1374,7 +1389,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }            
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("noperiksa",tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),0).toString());
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),1).toString());
@@ -1420,7 +1435,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                 if(tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),0).toString().trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
-                    Sequel.AutoComitFalse();
+                    
                     Sequel.queryu("delete from temporary_permintaan_radiologi");
                     try {
                         ps2=koneksi.prepareStatement(
@@ -1449,7 +1464,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }            
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();
                     param.put("noperiksa",tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),0).toString());
                     norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),1).toString());
@@ -1823,6 +1838,14 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     private void TabRawatInapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatInapMouseClicked
         pilihRanap();
     }//GEN-LAST:event_TabRawatInapMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
 
     /**
     * @param args the command line arguments
@@ -2287,44 +2310,44 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     }
     
     private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                nol_detik = "";                
-                Date now = Calendar.getInstance().getTime();
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            if(aktif==true){
+                nol_detik = "";
+                now = Calendar.getInstance().getTime();
                 nilai_detik = now.getSeconds();
                 if (nilai_detik <= 9) {
                     nol_detik = "0";
                 }
-                
+
                 detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("05")){ 
-                    permintaanbaru=0; 
+                if(detik.equals("05")){
+                    permintaanbaru=0;
                     if(formalarm.contains("ralan")){
                         tampil();
-                        for(i=0;i<tbRadiologiRalan.getRowCount();i++){ 
+                        for(i=0;i<tbRadiologiRalan.getRowCount();i++){
                             if((!tbRadiologiRalan.getValueAt(i,0).toString().equals(""))&&tbRadiologiRalan.getValueAt(i,5).toString().equals("")){
-                                permintaanbaru++;                                                                                                   
+                                permintaanbaru++;
                             }
                         }
                     }
-                    
+
                     if(formalarm.contains("ranap")){
                         tampil3();
-                        for(i=0;i<tbRadiologiRanap.getRowCount();i++){ 
+                        for(i=0;i<tbRadiologiRanap.getRowCount();i++){
                             if((!tbRadiologiRanap.getValueAt(i,0).toString().equals(""))&&tbRadiologiRanap.getValueAt(i,5).toString().equals("")){
-                                permintaanbaru++;                                                                                                   
+                                permintaanbaru++;
                             }
                         }
                     }
-                      
+
                     if(permintaanbaru>0){
                         try {
                             music = new BackgroundMusic("./suara/alarm.mp3");
-                            music.start();              
+                            music.start();
                         } catch (Exception ex) {
                             System.out.println(ex);
                         }
-                    }                        
+                    }
                 }
             }
         };

@@ -51,6 +51,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private int jmlparsial=0,nilai_detik,resepbaru=0,i=0;
     private BackgroundMusic music;
+    private boolean aktif=false;
     
     /** Creates new form 
      * @param parent
@@ -205,11 +206,23 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {pilihTab();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {pilihTab();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {pilihTab();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
         
@@ -383,6 +396,12 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
         });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
@@ -404,9 +423,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         jLabel20.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi2.add(jLabel20);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -419,9 +437,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelisi2.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -606,7 +623,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabPilihRawat.setBorder(null);
         TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
@@ -621,7 +637,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame2.setLayout(new java.awt.BorderLayout());
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatJalan.setBorder(null);
         TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
@@ -751,7 +766,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame3.setLayout(new java.awt.BorderLayout());
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatInap.setBorder(null);
         TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
@@ -966,14 +980,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 }else if(tabMode2.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
                     Sequel.queryu("delete from temporary_resep");
-                    Sequel.AutoComitFalse();
+                    
                     for(int i=0;i<tabMode2.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                             "0",tabMode2.getValueAt(i,0).toString(),tabMode2.getValueAt(i,1).toString(),tabMode2.getValueAt(i,2).toString(),
                             tabMode2.getValueAt(i,3).toString(),tabMode2.getValueAt(i,4).toString(),tabMode2.getValueAt(i,5).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();  
                         param.put("namars",var.getnamars());
                         param.put("alamatrs",var.getalamatrs());
@@ -1017,14 +1031,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 }else if(tabMode4.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
                     Sequel.queryu("delete from temporary_resep");
-                    Sequel.AutoComitFalse();
+                    
                     for(int i=0;i<tabMode4.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                             "0",tabMode4.getValueAt(i,0).toString(),tabMode4.getValueAt(i,1).toString(),tabMode4.getValueAt(i,2).toString(),
                             tabMode4.getValueAt(i,3).toString(),tabMode4.getValueAt(i,4).toString(),tabMode4.getValueAt(i,5).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();  
                         param.put("namars",var.getnamars());
                         param.put("alamatrs",var.getalamatrs());
@@ -1091,23 +1105,19 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
                     }else {
-                        if(var.getkode().equals("Admin Utama")){
-                            panggilform();                        
+                        jmlparsial=0;
+                        if(aktifkanparsial.equals("yes")){
+                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",NoRawat));
+                        }
+                        if(jmlparsial>0){
+                            panggilform();
                         }else{
-                            jmlparsial=0;
-                            if(aktifkanparsial.equals("yes")){
-                                jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",NoRawat));
+                            if(Sequel.cariRegistrasi(NoRawat)>0){
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                            }else{ 
+                                panggilform();                             
                             }
-                            if(jmlparsial>0){
-                                panggilform();
-                            }else{
-                                if(Sequel.cariRegistrasi(NoRawat)>0){
-                                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                                }else{ 
-                                    panggilform();                             
-                                }
-                            }                            
-                        }                    
+                        }               
                     }
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
@@ -1124,16 +1134,12 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
-                    }else {
-                        if(var.getkode().equals("Admin Utama")){
-                            panggilform2();                        
-                        }else{                            
-                            if(Sequel.cariRegistrasi(NoRawat)>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                            }else{ 
-                                panggilform2();                             
-                            }                           
-                        }                    
+                    }else {                           
+                        if(Sequel.cariRegistrasi(NoRawat)>0){
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                        }else{ 
+                            panggilform2();                             
+                        }                
                     }
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
@@ -1391,6 +1397,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.pindah(evt, BtnHapus, BtnEdit);
         }
     }//GEN-LAST:event_BtnHapusKeyPressed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        aktif=true;
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        aktif=false;
+    }//GEN-LAST:event_formWindowDeactivated
 
     /**
     * @param args the command line arguments
@@ -1978,46 +1992,46 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                nol_detik = "";                
+        ActionListener taskPerformer = (ActionEvent e) -> {
+            if(aktif==true){
+                nol_detik = "";
                 Date now = Calendar.getInstance().getTime();
                 nilai_detik = now.getSeconds();
                 if (nilai_detik <= 9) {
                     nol_detik = "0";
                 }
-                
+
                 detik = nol_detik + Integer.toString(nilai_detik);
-                if(detik.equals("05")){ 
-                    resepbaru=0; 
+                if(detik.equals("05")){
+                    resepbaru=0;
                     if(formalarm.contains("ralan")){
                         tampil();
-                        for(i=0;i<tbResepRalan.getRowCount();i++){ 
+                        for(i=0;i<tbResepRalan.getRowCount();i++){
                             if(tbResepRalan.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
                             }
                         }
                     }
-                    
+
                     if(formalarm.contains("ranap")){
                         tampil3();
-                        for(i=0;i<tbResepRanap.getRowCount();i++){ 
+                        for(i=0;i<tbResepRanap.getRowCount();i++){
                             if(tbResepRanap.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
                             }
                         }
                     }
-                      
+
                     if(resepbaru>0){
                         try {
                             music = new BackgroundMusic("./suara/alarm.mp3");
-                            music.start();              
+                            music.start();
                         } catch (Exception ex) {
                             System.out.println(ex);
                         }
-                    }                        
+                    }
                 }
-            }
+            }                
         };
         // Timer
         new Timer(1000, taskPerformer).start();

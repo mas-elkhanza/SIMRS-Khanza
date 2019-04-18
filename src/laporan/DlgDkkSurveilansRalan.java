@@ -149,7 +149,6 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -161,7 +160,6 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -237,7 +235,7 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             Map<String, Object> param = new HashMap<>();
             param.put("tanggal",Tgl2.getDate());
@@ -264,7 +262,7 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();  
+              
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
                 param.put("kotars",var.getkabupatenrs());

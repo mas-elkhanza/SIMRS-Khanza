@@ -281,7 +281,7 @@ public final class sekuel {
                 }            
                 ps.executeUpdate();
             }catch(Exception e){
-                System.out.println("Notifikasi : "+e);            
+                System.out.println("Notifikasi "+table+" : "+e);            
             }finally{
                 if(ps != null){
                     ps.close();
@@ -474,6 +474,26 @@ public final class sekuel {
             ps=connect.prepareStatement("delete from "+table+" where "+field+"=?");
             try{       
                 ps.setString(1,nilai_field);
+                ps.executeUpdate(); 
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void meghapus(String table,String field,String field2,String nilai_field,String nilai_field2) {
+        try {
+            ps=connect.prepareStatement("delete from "+table+" where "+field+"=? and "+field2+"=?");
+            try{       
+                ps.setString(1,nilai_field);
+                ps.setString(2,nilai_field2);
                 ps.executeUpdate(); 
              }catch(Exception e){
                 System.out.println("Notifikasi : "+e);

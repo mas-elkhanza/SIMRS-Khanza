@@ -50,7 +50,13 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
     private PCareCekReferensiSubspesialis spesialis=new PCareCekReferensiSubspesialis(null,false);
     private int i=0;
     private PcareApi api=new PcareApi();
-    private String URL="",link="";
+    private String URL="",link="",otorisasi;
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     private DlgPasien pasien=new DlgPasien(null,false);
     /** Creates new form DlgKamar
      * @param parent
@@ -220,6 +226,7 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -287,9 +294,8 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass6.add(jLabel22);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -425,7 +431,6 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
 
         Khusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "THA THALASEMIA", "HEM HEMOFILI" }));
         Khusus.setName("Khusus"); // NOI18N
-        Khusus.setOpaque(false);
         Khusus.setPreferredSize(new java.awt.Dimension(170, 23));
         panelGlass7.add(Khusus);
 
@@ -459,7 +464,7 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){
@@ -477,7 +482,7 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
                     tabMode.getValueAt(r,10).toString()+"','"+
                     tabMode.getValueAt(r,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs");
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -581,23 +586,20 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
     public void tampil(String spesialistik,String kode,String nokartu,String tanggal) {        
         try {
             URL = link+"/spesialis/rujuk/khusus/"+spesialistik+"/subspesialis/"+kode+"/noKartu/"+nokartu+"/tglEstRujuk/"+tanggal;	
-            System.out.println(""+URL);
-            HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-	    HttpEntity requestEntity = new HttpEntity(headers);
+	    requestEntity = new HttpEntity(headers);
 	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
@@ -618,7 +620,19 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server PCARE terputus...!");
+                JOptionPane.showMessageDialog(null,"Koneksi ke server PCare terputus...!");
+            }else if(ex.toString().contains("500")){
+                JOptionPane.showMessageDialog(null,"Server PCare baru ngambek broooh...!");
+            }else if(ex.toString().contains("401")){
+                JOptionPane.showMessageDialog(null,"Username/Password salah. Lupa password? Wani piro...!");
+            }else if(ex.toString().contains("408")){
+                JOptionPane.showMessageDialog(null,"Time out, hayati lelah baaaang...!");
+            }else if(ex.toString().contains("424")){
+                JOptionPane.showMessageDialog(null,"Ambil data masternya yang bener dong coy...!");
+            }else if(ex.toString().contains("412")){
+                JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
+            }else if(ex.toString().contains("204")){
+                JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
         }
     } 

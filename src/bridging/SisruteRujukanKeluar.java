@@ -58,8 +58,14 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i=0,pilihan=0;
     private final Properties prop = new Properties();
-    private String StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
+    private String idrs="",StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
     private SisruteApi api=new SisruteApi();
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private SisruteCekReferensiFaskes faskes=new SisruteCekReferensiFaskes(null,false);
     private SisruteCekReferensiAlasanRujuk alasanrujuk=new SisruteCekReferensiAlasanRujuk(null,false);
@@ -214,11 +220,23 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -375,6 +393,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
+            idrs=prop.getProperty("IDSISRUTE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -497,7 +516,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 255));
+        MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnSuratRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSuratRujukan.setForeground(new java.awt.Color(70, 70, 70));
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -512,7 +531,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnSuratRujukan);
 
-        ppRiwayat.setBackground(new java.awt.Color(255, 255, 255));
+        ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -547,7 +566,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -608,7 +626,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel22.setBounds(380, 150, 90, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019 09:52:19" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:48:24" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -814,7 +832,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         JenisRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Rawat Jalan", "2. Rawat Darurat/Inap", "3. Parsial" }));
         JenisRujukan.setName("JenisRujukan"); // NOI18N
-        JenisRujukan.setOpaque(false);
         JenisRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisRujukanKeyPressed(evt);
@@ -977,7 +994,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         JenisKesadaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Sadar", "2. Tidak Sadar" }));
         JenisKesadaran.setName("JenisKesadaran"); // NOI18N
-        JenisKesadaran.setOpaque(false);
         JenisKesadaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisKesadaranKeyPressed(evt);
@@ -1053,18 +1069,17 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel42.setText("Tingkat Nyeri :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(536, 350, 90, 23);
+        jLabel42.setBounds(530, 350, 90, 23);
 
         TingkatNyeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak Nyeri", "1. Ringan", "2. Sedang", "3. Berat" }));
         TingkatNyeri.setName("TingkatNyeri"); // NOI18N
-        TingkatNyeri.setOpaque(false);
         TingkatNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TingkatNyeriKeyPressed(evt);
             }
         });
         FormInput.add(TingkatNyeri);
-        TingkatNyeri.setBounds(630, 350, 110, 23);
+        TingkatNyeri.setBounds(624, 350, 116, 23);
 
         jLabel43.setText("Keadaan Umum :");
         jLabel43.setName("jLabel43"); // NOI18N
@@ -1185,9 +1200,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1200,9 +1214,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-01-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1254,7 +1267,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRujukan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRujukan.setBorder(null);
         TabRujukan.setForeground(new java.awt.Color(70, 70, 70));
         TabRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRujukan.setName("TabRujukan"); // NOI18N
@@ -1490,14 +1502,14 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             try {
                 URL = link+"/rujukan";	
                 System.out.println(URL);
-                HttpHeaders headers = new HttpHeaders();
-                headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                headers = new HttpHeaders();
+                headers.add("X-cons-id",idrs);
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-signature",api.getHmac()); 
                 headers.add("Content-type","application/json");
                 requestJson ="{" +
                                 "\"PASIEN\": {" +
-                                    "\"NORM\":"+TNoRM.getText()+"," +
+                                    "\"NORM\":\""+TNoRM.getText()+"\"," +
                                     "\"NIK\": \""+NoKTP.getText()+"\"," +
                                     "\"NO_KARTU_JKN\": \""+NoKartu.getText()+"\"," +
                                     "\"NAMA\": \""+TPasien.getText()+"\"," +
@@ -1541,12 +1553,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                                 "}" +
                             "}";              
                 headers.add("Content-length",Integer.toString(requestJson.length())); 
-                //System.out.println(requestJson);
-                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                ObjectMapper mapper = new ObjectMapper();
+                System.out.println(requestJson);
+                requestEntity = new HttpEntity(requestJson,headers);
                 requestJson=api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
-                //System.out.println(requestJson);
-                JsonNode root = mapper.readTree(requestJson);
+                System.out.println(requestJson);
+                root = mapper.readTree(requestJson);
                 JOptionPane.showMessageDialog(null,root.path("detail").asText());
                 if(root.path("status").asText().equals("200")){
                     if(Sequel.menyimpantf("sisrute_rujukan_keluar","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Nomor Rujuk",36,new String[]{
@@ -1602,8 +1613,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 try {
                     URL = link+"/rujukan/batal/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
-                    HttpHeaders headers = new HttpHeaders();
-                    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                    headers = new HttpHeaders();
+                    headers.add("X-cons-id",idrs);
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
                     headers.add("Content-type","application/json");
@@ -1616,11 +1627,10 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     headers.add("Content-length",Integer.toString(requestJson.length())); 
                     //System.out.println(Integer.toString(requestJson.length()));
                     System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    requestEntity = new HttpEntity(requestJson,headers);
                     requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
+                    root = mapper.readTree(requestJson);
                     JOptionPane.showMessageDialog(null,root.path("detail").asText());
                     if(root.path("status").asText().equals("200")){                    
                         Sequel.meghapus3("sisrute_rujukan_keluar","no_rawat",TNoRw.getText());          
@@ -1695,14 +1705,14 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 try {
                     URL = link+"/rujukan/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
-                    HttpHeaders headers = new HttpHeaders();
-                    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                    headers = new HttpHeaders();
+                    headers.add("X-cons-id",idrs);
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
                     headers.add("Content-type","application/json");
                     requestJson ="{" +
                                     "\"PASIEN\": {" +
-                                        "\"NORM\":"+TNoRM.getText()+"," +
+                                        "\"NORM\":\""+TNoRM.getText()+"\"," +
                                         "\"NIK\": \""+NoKTP.getText()+"\"," +
                                         "\"NO_KARTU_JKN\": \""+NoKartu.getText()+"\"," +
                                         "\"NAMA\": \""+TPasien.getText()+"\"," +
@@ -1747,12 +1757,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                                 "}";              
                     headers.add("Content-length",Integer.toString(requestJson.length())); 
                     //System.out.println(Integer.toString(requestJson.length()));
-                    //System.out.println(requestJson);
-                    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    ObjectMapper mapper = new ObjectMapper();
+                    System.out.println(requestJson);
+                    requestEntity = new HttpEntity(requestJson,headers);
                     requestJson=api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody();
-                    //System.out.println(requestJson);
-                    JsonNode root = mapper.readTree(requestJson);
+                    System.out.println(requestJson);
+                    root = mapper.readTree(requestJson);
                     JOptionPane.showMessageDialog(null,root.path("detail").asText());
                     if(root.path("status").asText().equals("200")){
                         if(Sequel.mengedittf("sisrute_rujukan_keluar","no_rawat=?","no_rujuk=?,no_rkm_medis=?,nm_pasien=?,no_ktp=?,no_peserta=?,jk=?,tgl_lahir=?,tmp_lahir=?,alamat=?,no_tlp=?,jns_rujukan=?,tgl_rujuk=?,kd_faskes_tujuan=?,nm_faskes_tujuan=?,kd_alasan=?,alasan_rujuk=?,alasan_lainnya=?,kd_diagnosa=?,diagnosa_rujuk=?,nik_dokter=?,dokter_perujuk=?,nik_petugas=?,petugas_entry=?,anamnesis_pemeriksaan=?,kesadaran=?,tekanan_darah=?,nadi=?,suhu=?,respirasi=?,keadaan_umum=?,tingkat_nyeri=?,alergi=?,laboratorium=?,radiologi=?,terapitindakan=?",36,new String[]{
@@ -2554,19 +2563,18 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     try {
                         Valid.tabelKosong(tabMode);
                         URL = link+"/rujukan?nomor="+rs.getString("no_rujuk")+"&create=true";
-                        HttpHeaders headers = new HttpHeaders();
-                        headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                        headers = new HttpHeaders();
+                        headers.add("X-cons-id",idrs);
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                         headers.add("X-signature",api.getHmac()); 
                         headers.add("Content-type","application/json");             
                         headers.add("Content-length",null);            
-                        HttpEntity requestEntity = new HttpEntity(headers);
-                        ObjectMapper mapper = new ObjectMapper();
-                        JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                        JsonNode nameNode = root.path("status");
+                        requestEntity = new HttpEntity(headers);
+                        root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                        nameNode = root.path("status");
                         System.out.println("Result : "+root.path("status").asText());
                         if(nameNode.asText().equals("200")){                
-                            JsonNode response = root.path("data");
+                            response = root.path("data");
                             if(response.isArray()){
                                 for(JsonNode list:response){
                                     StatusDirespon=list.path("RUJUKAN").path("STATUS").path("NAMA").asText();
@@ -2695,7 +2703,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rawat,nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) asal,"+
                 "pasien.no_rkm_medis,pasien.no_ktp,pasien.no_peserta,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.no_tlp, "+
-                "pegawai.nama,pegawai.no_ktp from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
+                "pegawai.nama,pegawai.no_ktp as ktpdokter from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
                 "inner join kabupaten inner join propinsi inner join pegawai "+
                 "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_prop=propinsi.kd_prop "+
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
@@ -2714,7 +2722,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     Kontak.setText(rs.getString("no_tlp"));
                     Alamat.setText(rs.getString("asal"));
-                    KdDokter.setText(rs.getString("no_ktp"));
+                    KdDokter.setText(rs.getString("ktpdokter"));
                     DokterPerujuk.setText(rs.getString("nama"));
                     ps2=koneksi.prepareStatement(
                         "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from penyakit "+
@@ -2775,7 +2783,30 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
+                        
                         Laborat.setText(cari);
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select hasil_radiologi.hasil from hasil_radiologi where hasil_radiologi.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("hasil")+";";
+                        }
+                        
+                        Radiologi.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{
@@ -2797,6 +2828,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("nama_brng")+";";
                         }
+                        
                         if(!cari.equals("")){
                             cari="TRP:"+cari;
                         }
@@ -2873,7 +2905,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     if(!cari2.equals("")){
-                        cari2="#TDK:"+cari2;
+                        if(cari.equals("")){
+                            cari2="TDK:"+cari2;
+                        }else{
+                            cari2="#TDK:"+cari2;
+                        } 
                     }
                     TerapiTindakan.setText(cari+cari2);
                 }
@@ -2900,7 +2936,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rawat,nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) asal,"+
                 "pasien.no_rkm_medis,pasien.no_ktp,pasien.no_peserta,pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.no_tlp, "+
-                "pegawai.nama,pegawai.no_ktp from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
+                "pegawai.nama,pegawai.no_ktp as ktpdokter from pasien inner join reg_periksa inner join kelurahan inner join kecamatan "+
                 "inner join kabupaten inner join propinsi inner join pegawai "+
                 "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_prop=propinsi.kd_prop "+
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
@@ -2919,7 +2955,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     Kontak.setText(rs.getString("no_tlp"));
                     Alamat.setText(rs.getString("asal"));
-                    KdDokter.setText(rs.getString("no_ktp"));
+                    KdDokter.setText(rs.getString("ktpdokter"));
                     DokterPerujuk.setText(rs.getString("nama"));
                     ps2=koneksi.prepareStatement(
                         "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from penyakit "+
@@ -2980,7 +3016,30 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
+                        
                         Laborat.setText(cari);
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select hasil_radiologi.hasil from hasil_radiologi where hasil_radiologi.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("hasil")+";";
+                        }
+                        
+                        Radiologi.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{
@@ -3078,7 +3137,11 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                     
                     if(!cari2.equals("")){
-                        cari2="#TDK:"+cari2;
+                        if(cari.equals("")){
+                            cari2="TDK:"+cari2;
+                        }else{
+                            cari2="#TDK:"+cari2;
+                        }                            
                     }
                     TerapiTindakan.setText(cari+cari2);
                 }

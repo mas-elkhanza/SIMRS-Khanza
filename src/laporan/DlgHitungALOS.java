@@ -180,8 +180,6 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -193,8 +191,6 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -336,7 +332,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -361,7 +357,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptHitungAlos.jrxml","report","::[ Data Hitung BOR ]::",
                     "select * from temporary order by no asc",param);
             }
@@ -370,7 +366,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -395,7 +391,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                                         tabMode2.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue();   
+                   
                 Valid.MyReport("rptHitungAlos.jrxml","report","::[ Data Hitung BOR ]::",
                     "select * from temporary order by no asc",param);
             }
@@ -607,7 +603,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode2.addRow(new Object[]{"","","","Perhitungan ALOS ",": "+hari+"/"+pasien,"","",Valid.SetAngka4((hari/pasien)),""});
                 }                    
             } catch (Exception e) {
-                System.out.println("laporan.DlgHitungBOR.tampil() : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();

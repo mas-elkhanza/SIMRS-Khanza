@@ -166,7 +166,6 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -178,7 +177,6 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -305,7 +303,7 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();            
             param.put("tkr1l",(tkr1l+tkr1p));
             param.put("tth1s4l",(tth1s4l+tth1s4p));
@@ -374,7 +372,7 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
                                     tabMode2.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
             }
-            Sequel.AutoComitTrue();
+            
             Valid.MyReport("rptDkkPenyakitTakMenularRanap.jrxml","report","::[ Penyakit Menular Rawat Inap ]::",
                 "select * from temporary order by no asc",param);
         }

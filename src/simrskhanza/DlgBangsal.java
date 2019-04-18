@@ -100,11 +100,23 @@ public final class DlgBangsal extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         TKd.requestFocus();
@@ -732,6 +744,14 @@ public final class DlgBangsal extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbBangsal;
+    }
+    
+    public void isCek(){
+        if(var.getkode().equals("Admin Utama")){
+            MnRestore.setEnabled(true);
+        }else{
+            MnRestore.setEnabled(false);
+        }
     }
 
 }

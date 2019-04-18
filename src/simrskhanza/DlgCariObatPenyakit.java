@@ -11,6 +11,8 @@
 
 package simrskhanza;
 
+import laporan.DlgCariPenyakit;
+import inventory.DlgObatPenyakit;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -346,8 +348,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         panelisi3.add(jLabel12);
 
         cmbHlm.setName("cmbHlm"); // NOI18N
-        cmbHlm.setOpaque(false);
-        cmbHlm.setPreferredSize(new java.awt.Dimension(55, 23));
+        cmbHlm.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi3.add(cmbHlm);
 
         label10.setText("Record :");
@@ -397,7 +398,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
-        TPasien.setPreferredSize(new java.awt.Dimension(250, 23));
+        TPasien.setPreferredSize(new java.awt.Dimension(230, 23));
         TPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TPasienKeyPressed(evt);
@@ -412,11 +413,11 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018-10-13" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018-12-24" }));
         DTPBeri.setDisplayFormat("yyyy-MM-dd");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
-        DTPBeri.setPreferredSize(new java.awt.Dimension(95, 23));
+        DTPBeri.setPreferredSize(new java.awt.Dimension(90, 23));
         DTPBeri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DTPBeriKeyPressed(evt);
@@ -426,8 +427,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam.setName("cmbJam"); // NOI18N
-        cmbJam.setOpaque(false);
-        cmbJam.setPreferredSize(new java.awt.Dimension(45, 23));
+        cmbJam.setPreferredSize(new java.awt.Dimension(62, 23));
         cmbJam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbJamKeyPressed(evt);
@@ -437,8 +437,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         cmbMnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt.setName("cmbMnt"); // NOI18N
-        cmbMnt.setOpaque(false);
-        cmbMnt.setPreferredSize(new java.awt.Dimension(45, 23));
+        cmbMnt.setPreferredSize(new java.awt.Dimension(62, 23));
         cmbMnt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbMntKeyPressed(evt);
@@ -448,8 +447,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         cmbDtk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk.setName("cmbDtk"); // NOI18N
-        cmbDtk.setOpaque(false);
-        cmbDtk.setPreferredSize(new java.awt.Dimension(45, 23));
+        cmbDtk.setPreferredSize(new java.awt.Dimension(62, 23));
         cmbDtk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbDtkKeyPressed(evt);
@@ -457,12 +455,9 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         });
         FormInput.add(cmbDtk);
 
-        ChkJln.setBackground(new java.awt.Color(234, 255, 235));
-        ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkJln.setBorder(null);
         ChkJln.setSelected(true);
-        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkJln.setBorderPainted(true);
-        ChkJln.setBorderPaintedFlat(true);
+        ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkJln.setName("ChkJln"); // NOI18N
@@ -520,7 +515,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         DlgObatPenyakit obatpenyakit=new DlgObatPenyakit(null,false);
         obatpenyakit.emptTeks();
         obatpenyakit.isCek();
-        obatpenyakit.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        obatpenyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         obatpenyakit.setLocationRelativeTo(internalFrame1);
         obatpenyakit.setAlwaysOnTop(false);
         obatpenyakit.setVisible(true);
@@ -611,7 +606,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else{
             try {
                 int row=tabMode.getRowCount();
-                Sequel.AutoComitFalse();
+                
                 for(int r=0;r<row;r++){ 
                     if(Valid.SetAngka(tabMode.getValueAt(r,4).toString())>0){
                         if(Sequel.menyimpantf("detail_pemberian_obat","'"+DTPBeri.getSelectedItem()+"','"+
@@ -630,7 +625,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }                        
                     }                           
                 }                
-                Sequel.AutoComitTrue();
+                
                 JOptionPane.showMessageDialog(null,"Proses menyimpan berhasil...!");
                 dispose();
             } catch (Exception ex) {

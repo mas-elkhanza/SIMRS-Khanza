@@ -89,11 +89,23 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -214,7 +226,7 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
+        ppSimpan.setBackground(new java.awt.Color(255, 255, 254));
         ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppSimpan.setForeground(new java.awt.Color(70, 70, 70));
         ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
@@ -231,7 +243,7 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
         });
         Popup.add(ppSimpan);
 
-        ppGanti.setBackground(new java.awt.Color(242, 242, 242));
+        ppGanti.setBackground(new java.awt.Color(255, 255, 254));
         ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppGanti.setForeground(new java.awt.Color(70, 70, 70));
         ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -248,7 +260,7 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
         });
         Popup.add(ppGanti);
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -265,7 +277,7 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
         });
         Popup.add(ppHapus);
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N

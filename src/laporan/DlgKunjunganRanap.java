@@ -152,26 +152,32 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
-                    }
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
+                    }                        
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(TabRawat.getSelectedIndex()==0){
-                        tampil();
-                    }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                    if(TCari.getText().length()>2){
+                        if(TabRawat.getSelectedIndex()==0){
+                            tampil();
+                        }else if(TabRawat.getSelectedIndex()==1){
+                            tampil2();
+                        }
                     }
                 }
             });
@@ -505,7 +511,6 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -517,7 +522,6 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -885,7 +889,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
@@ -905,7 +909,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue(); 
+                 
                 Valid.MyReport("rptKunjunganRanap.jrxml","report","::[ Laporan Kunjungan Rawat Inap ]::",
                     "select * from temporary order by no asc",param);
             }
@@ -914,7 +918,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
@@ -934,7 +938,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                                     tabMode2.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
-                Sequel.AutoComitTrue(); 
+                 
                 Valid.MyReport("rptKunjunganRanap.jrxml","report","::[ Laporan Kunjungan Rawat Inap ]::",
                     "select * from temporary order by no asc",param);
             }            

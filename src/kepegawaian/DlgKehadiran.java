@@ -88,11 +88,23 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         loadTahun();
@@ -199,15 +211,13 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass7.add(label11);
 
-        ThnCari.setBorder(null);
         ThnCari.setName("ThnCari"); // NOI18N
         ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass7.add(ThnCari);
 
-        BlnCari.setBorder(null);
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(50, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass7.add(BlnCari);
 
         label12.setText("Departemen :");
@@ -386,7 +396,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             for(int r=0;r<tbBangsal.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -402,7 +412,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                                     tbBangsal.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
                                     tbBangsal.getValueAt(r,10).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());

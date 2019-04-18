@@ -82,11 +82,23 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         rekening.addWindowListener(new WindowListener() {
@@ -451,7 +463,6 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(226, 12, 75, 23);
 
-        TglJurnal2.setEditable(false);
         TglJurnal2.setDisplayFormat("dd-MM-yyyy");
         TglJurnal2.setName("TglJurnal2"); // NOI18N
         TglJurnal2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -466,7 +477,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi3.add(label32);
-        label32.setBounds(566, 12, 90, 23);
+        label32.setBounds(546, 12, 90, 23);
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Umum", "Penyesuaian" }));
         Jenis.setName("Jenis"); // NOI18N
@@ -477,7 +488,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Jenis);
-        Jenis.setBounds(660, 12, 110, 23);
+        Jenis.setBounds(640, 12, 130, 23);
 
         label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label12.setText("s.d.");
@@ -486,7 +497,6 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         panelisi3.add(label12);
         label12.setBounds(402, 12, 27, 23);
 
-        TglJurnal1.setEditable(false);
         TglJurnal1.setDisplayFormat("dd-MM-yyyy");
         TglJurnal1.setName("TglJurnal1"); // NOI18N
         TglJurnal1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -625,7 +635,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             Map<String, Object> param = new HashMap<>();    
                 param.put("namars",var.getnamars());
@@ -648,7 +658,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Posting Jurnal");             }
             Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Posting Jurnal"); 
             Sequel.menyimpan("temporary","'0','Jml.Total :','','','','','','"+debet.getText()+"','"+kredit.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
-            Sequel.AutoComitTrue();
+            
             Valid.MyReport("rptJurnal.jrxml","report","::[ Transaksi Posting Jurnal ]::",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
         }

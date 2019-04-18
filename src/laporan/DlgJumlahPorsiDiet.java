@@ -117,12 +117,12 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
         panelGlass8.add(label11);
 
         ThnCari.setName("ThnCari"); // NOI18N
-        ThnCari.setPreferredSize(new java.awt.Dimension(65, 23));
+        ThnCari.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass8.add(ThnCari);
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(50, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass8.add(BlnCari);
 
         jLabel6.setText("Key Word :");
@@ -218,7 +218,7 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("truncate table temporary_gizi");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
@@ -257,7 +257,7 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,32).toString()+"','"+
                                 tabMode.getValueAt(r,33).toString()+"','','','',''","Rekap Gizi"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();   
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());

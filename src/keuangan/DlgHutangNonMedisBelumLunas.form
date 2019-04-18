@@ -22,7 +22,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppBersihkan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -49,7 +49,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppSemua">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -164,10 +164,13 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[816, 145]"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="jPanel1" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[816, 145]"/>
+              <Dimension value="[810, 145]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -185,7 +188,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="panelisi3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[100, 44]"/>
+                  <Dimension value="[95, 44]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -305,6 +308,9 @@
             <Container class="widget.panelisi" name="panelisi1">
               <Properties>
                 <Property name="name" type="java.lang.String" value="panelisi1" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[760, 55]"/>
+                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -426,18 +432,13 @@
               <SubComponents>
                 <Component class="widget.CekBox" name="ChkTanggalDatang">
                   <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Tgl.Datang :"/>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="ChkTanggalDatang" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
+                      <Dimension value="[93, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -446,7 +447,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglDatang1">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglDatang1" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -469,7 +469,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglDatang2">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglDatang2" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -490,18 +489,13 @@
                 </Component>
                 <Component class="widget.CekBox" name="ChkTanggalTempo">
                   <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Tgl.Tempo"/>
-                    <Property name="borderPainted" type="boolean" value="true"/>
-                    <Property name="borderPaintedFlat" type="boolean" value="true"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="ChkTanggalTempo" noResource="true"/>
                     <Property name="opaque" type="boolean" value="false"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[77, 23]"/>
+                      <Dimension value="[80, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -510,7 +504,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglTempo1">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglTempo1" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -533,7 +526,6 @@
                 </Component>
                 <Component class="widget.Tanggal" name="TglTempo2">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="TglTempo2" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -655,7 +647,6 @@
             </Component>
             <Component class="widget.Tanggal" name="tgl_bayar">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="tgl_bayar" noResource="true"/>
               </Properties>
@@ -703,7 +694,6 @@
                   <StringArray count="0"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="nama_bayar" noResource="true"/>
-                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nama_bayarKeyPressed"/>

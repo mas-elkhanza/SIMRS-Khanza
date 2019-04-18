@@ -110,7 +110,6 @@ public class DlgRL4A extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi1.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -122,7 +121,6 @@ public class DlgRL4A extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi1.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -583,7 +581,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_penyakit")+"</td>"+
                             "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
                             "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
                             "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
@@ -848,7 +846,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_penyakit")+"</td>"+
                             "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
                             "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
                             "<td valign='middle' align='center'>"+hr7s28l+"</td>"+

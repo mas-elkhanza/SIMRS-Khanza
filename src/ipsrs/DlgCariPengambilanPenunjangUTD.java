@@ -94,11 +94,23 @@ public final class DlgCariPengambilanPenunjangUTD extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
         
@@ -145,7 +157,7 @@ public final class DlgCariPengambilanPenunjangUTD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengambilan BHP Non Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengambilan BHP Non Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -172,9 +184,8 @@ public final class DlgCariPengambilanPenunjangUTD extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(120, 23));
         panelisi3.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-11-2016" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-12-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -187,9 +198,8 @@ public final class DlgCariPengambilanPenunjangUTD extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelisi3.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-11-2016" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-12-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -342,7 +352,7 @@ public final class DlgCariPengambilanPenunjangUTD extends javax.swing.JDialog {
         }else if(tbKamar.getSelectedRow()<= -1){ 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from utd_pengambilan_penunjang where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+
                           "and nip='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
                           "and tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' "+
@@ -358,7 +368,7 @@ public final class DlgCariPengambilanPenunjangUTD extends javax.swing.JDialog {
             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Penunjang_Utd from set_akun"),"PERSEDIAAN BARANG NON MEDIS",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
             jur.simpanJurnal(DTPCari1.getSelectedItem().toString().replaceAll("-","/"),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BARANG NON MEDIS UTD, PETUGAS : "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5));
             BtnCariActionPerformed(evt);
-            Sequel.AutoComitTrue();
+            
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

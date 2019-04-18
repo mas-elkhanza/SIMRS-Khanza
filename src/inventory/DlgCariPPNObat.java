@@ -171,29 +171,49 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
+                    }else if(TabRawat.getSelectedIndex()==1){
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TabRawat.getSelectedIndex()==0){
-                        tampil();
+                        if(TCari.getText().length()>2){
+                            tampil();
+                        }
                     }else if(TabRawat.getSelectedIndex()==1){
-                        tampil2();
+                        if(TCari.getText().length()>2){
+                            tampil2();
+                        }
                     }else if(TabRawat.getSelectedIndex()==2){
-                        tampil3();
+                        if(TCari.getText().length()>2){
+                            tampil3();
+                        }
                     }
                 }
             });
@@ -243,7 +263,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -324,7 +343,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -336,7 +354,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -490,7 +507,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 //TCari.requestFocus();
             }else if(tabMode3.getRowCount()!=0){
                 Sequel.queryu("truncate table temporary");
-                Sequel.AutoComitFalse();
+                
                 for(int r=0;r<tabMode3.getRowCount();r++){ 
                         Sequel.menyimpan("temporary","'0','"+
                                     tabMode3.getValueAt(r,0).toString()+"','"+
@@ -500,7 +517,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,4).toString()))+"','"+
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
-                Sequel.AutoComitTrue();
+                
                 Valid.MyReport("rptPPNRalan.jrxml","report","::[ Laporan PPN Obat Ralan ]::",
                     "select * from temporary order by no asc",param);
             }                

@@ -1,53 +1,45 @@
 {
-    "status":200,
-    "success":true,
-    "total":1,
-        "data":[{
-                    "PASIEN":{
-                            "NORM":"150415",
-                            "NAMA":" Ny Rohani",
-                            "KONTAK":" 085399753691",
-                            "ALAMAT":" lembang galung bantaeng",
-                            "TEMPAT_LAHIR":"Bantaeng",
-                            "TANGGAL_LAHIR":"0000-00-00",
-                            "JENIS_KELAMIN":{
-                                "KODE":2,
-                                "NAMA":"Perempuan"
-                            },
-                            "NO_KARTU_JKN":"0002447279403",
-                            "NIK":""
-                    },
-                    "RUJUKAN":{
-                        "NOMOR":"7303010190124201",
-                        "FASKES_ASAL":{
-                            "KODE":"7303010",
-                            "NAMA":"RSU Prof.Dr. A Makkatutu"
-                        },
-                        "FASKES_TUJUAN":{
-                            "KODE":"7371325",
-                            "NAMA":"RSUP. Dr. Wahidin Sudirohusodo"
-                        },
-                        "JENIS_RUJUKAN":{
-                            "KODE":"2",
-                            "NAMA":"Rawat Darurat\/Inap"
-                        },
-                        "ALASAN":{
-                            "KODE":"1",
-                            "NAMA":"Penanganan \/ perawatan lanjut pasien (medik)"
-                        },
-                        "ALASAN_LAINNYA":"post op ca. ovarium bula april 2018 , riwayat kemoterapi sebanyak 6 kali .selesai bulan september 2018. ",
-                        "STATUS":{
-                            "KODE":"1",
-                            "NAMA":"Sudah direspon"
-                        },
-                        "STATUS_DITERIMA":{
-                            "KODE":"1",
-                            "NAMA":"Diterima",
-                            "KETERANGAN":"SILAHKAN RUJUK"
-                        },
-                        "TANGGAL":"2019-01-24 15:38:30",
-                        "DOKTER":{
-                            "NIK":null,
-                            "NAMA":null
-                        },
-                        "PETUGAS":{"NIK":null,"NAMA":null},"DIAGNOSA":""},"KONDISI_UMUM":{"ANAMNESIS_DAN_PEMERIKSAAN_FISIK":"","KESADARAN":{"KODE":"1","NAMA":"Sadar"},"TEKANAN_DARAH":"140\/80 mmHg","FREKUENSI_NADI":"80x\/menit","SUHU":"36,5*C","PERNAPASAN":"26x\/menit","NYERI":{"KODE":"3","NAMA":"Berat"},"KEADAAN_UMUM":"","ALERGI":"tidak ada riwayat alergi"},"PENUNJANG":{"LABORATORIUM":"Hematologi dewasa : Hemoglobin : 12,7 gr%, Leukosit : 13.200\/mm, Eritrosit : 4.020.000\/mm3, Trombosit 708.000\/mm3, Hematokrit 37,3%, MCV: 92.8 fl, \r\ndiff : MCH : 31.6 pg, MCHC : 34.0 G\/DL, Limfosit % : 15.0 %, Neutrofil % : 80.0 %, MXD : 5.0%. \r\nHemostatis : CT : 6:00 menit, BT 2:00 menit \r\nserologi immunologi gol. darah B\r\nKimia klinik GDS 105 mg\/dl, creatinin 0.84 mg\/dl, albumin 2.5 g\/dl,SGOT 14 U\/L, SGPT 17 U\/L\r\n\r\n","RADIOLOGI":"- hepar\/ lien, GB dan pancreas normal\r\n_ kedua ginjal normal\r\n- VU : sulit dinilai, volume urine minimal \r\n_ tampak cairan bebas intra cavum peritoneum\r\ntidak tampak signifikan massa patologik intra abdomen\r\n\r\nKESAN ACITES","TERAPI_ATAU_TINDAKAN":"INJ. ketorolac I amp\/ 8 jam \/ IV, farbion 1 amp\/ 24 jam . inj. forosemid 1 amp\/ 8 jam \r\nranitidin 2x1 curcuma 3x1, sucralfat 3x1 "}}],"detail":"Rujukan ditemukan"}1
+   "PASIEN": {
+      "NORM": 11223345,               # Nomor Rekam Medis
+	  "NIK": "7371140101010003",      # Nomor Induk Kependudukan
+	  "NO_KARTU_JKN": "0000001234501",# Nomor Kartu Jaminan Kesehatan Nasional / BPJS
+	  "NAMA": "Rahmat Hidayat",       # Nama Pasien (Tanpa Gelar)
+	  "JENIS_KELAMIN": "1",           # Jenis Kelamin 1. Laki - laki, 2. Perempuan
+	  "TANGGAL_LAHIR": "1980-01-03",  # Tanggal Lahir Format yyyy-mm-dd
+	  "TEMPAT_LAHIR": "Makassar",     # Tempat Lahir
+	  "ALAMAT": "Pettarani",          # Alamat
+	  "KONTAK": "085123123122"        # Nomor Kontak / HP
+   },
+   "RUJUKAN": {
+	  "JENIS_RUJUKAN": "2",          # Jenis Rujukan 1. Rawat Jalan, 2. Rawat Darurat/Inap, 3. Parsial
+	  "TANGGAL": "2018-08-29 10:00:00", # Tanggal Rujukan Format yyy-mm-dd hh:ii:ss
+	  "FASKES_TUJUAN": "3404015",     # Kode Faskes Tujuan
+	  "ALASAN": "1",                  # Lihat Referensi Alasan Rujukan
+	  "ALASAN_LAINNYA": "Pusing",     # Alasan Lainnya / Tambahan Alasan Rujukan
+	  "DIAGNOSA": "I10",              # Kode ICD10 Diagnosa Utama
+	  "DOKTER": {                     # Dokter DPJP
+	     "NIK": "7371140101010111",  # NIK Dokter
+		 "NAMA": "Dr. Raffi"         # Nama Dokter
+      },
+	  "PETUGAS": {                    # Petugas yang merujuk
+	     "NIK": "7371140101010112",  # NIK Petugas
+		 "NAMA": "Enal"              # Nama Petugas
+	  }
+   },
+   "KONDISI_UMUM": {
+      "ANAMNESIS_DAN_PEMERIKSAAN_FISIK": "", # Anamnesis dan pemeriksaan fisik
+      "KESADARAN": "1",               # Kondisi Kesadaran Pasien 1. Sadar, 2. Tidak Sadar
+	  "TEKANAN_DARAH": "120/90",      # Tekanan Darah Pasien dalam satuan mmHg
+	  "FREKUENSI_NADI": "50",         # Frekuensi Nadi Pasien (Kali/Menit)
+	  "SUHU": "37",                   # Suhu (Derajat Celcius)
+	  "PERNAPASAN": "25",             # Pernapasan (Kali/Menit)
+	  "KEADAAN_UMUM": "sesak, gelisah", # Keadaan Umum Pasien
+	  "NYERI": 0,                     # Skala Nyeri 0. Tidak Nyeri, 1. Ringan, 2. Sedang, 3. Berat
+	  "ALERGI": "-"                   # Alergi Pasien
+   },
+   "PENUNJANG": {
+      "LABORATORIUM": "WBC:11,2;HB:15,6;PLT:215;", # Hasil Laboratorium format: parameter:hasil;
+	  "RADIOLOGI": "EKG:Sinus Takikardi;Foto Thorax:Cor dan pulmo normal;", # Hasil Radiologi format: tindakan:hasil;
+	  "TERAPI_ATAU_TINDAKAN": "TRP:LOADING NACL 0.9% 500 CC;INJ. RANITIDIN 50 MG;#TDK:TERPASANG INTUBASI ET NO 8 BATAS BIBIR 21CM;" # Terapi atau Tindakan yang diberikan format; TRP:Nama;#TDK:Nama;
+   }
+}

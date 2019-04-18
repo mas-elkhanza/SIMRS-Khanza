@@ -14,7 +14,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppCetak">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f2" green="f2" red="f2" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -303,14 +303,13 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="GolonganDarah" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GolonganDarahKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="398" y="72" width="60" height="23"/>
+                      <AbsoluteConstraints x="398" y="72" width="65" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -334,23 +333,21 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Resus" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ResusKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="294" y="72" width="60" height="23"/>
+                      <AbsoluteConstraints x="294" y="72" width="65" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="widget.Tanggal" name="Aftap">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="21-02-2018"/>
+                        <StringItem index="0" value="11-03-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -381,10 +378,9 @@
                 </Component>
                 <Component class="widget.Tanggal" name="Kadaluarsa">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="21-02-2018"/>
+                        <StringItem index="0" value="11-03-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -434,14 +430,13 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Asal" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AsalKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="294" y="102" width="164" height="23"/>
+                      <AbsoluteConstraints x="294" y="102" width="169" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -538,6 +533,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
                     <Property name="alignment" type="int" value="0"/>
+                    <Property name="horizontalGap" type="int" value="3"/>
                     <Property name="verticalGap" type="int" value="7"/>
                   </Layout>
                   <SubComponents>
@@ -546,15 +542,12 @@
                         <Property name="text" type="java.lang.String" value="Status :"/>
                         <Property name="name" type="java.lang.String" value="jLabel14" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[55, 23]"/>
+                          <Dimension value="[45, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
                     <Component class="widget.ComboBox" name="CmbCrStatus">
                       <Properties>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="46" green="46" red="46" type="rgb"/>
-                        </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="3">
                             <StringItem index="0" value="Ada"/>
@@ -563,9 +556,8 @@
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="CmbCrStatus" noResource="true"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[95, 23]"/>
+                          <Dimension value="[125, 23]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -577,7 +569,7 @@
                         <Property name="text" type="java.lang.String" value="Resus :"/>
                         <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[55, 23]"/>
+                          <Dimension value="[43, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -590,9 +582,8 @@
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="CmbCariResus" noResource="true"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[50, 23]"/>
+                          <Dimension value="[65, 23]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -605,7 +596,7 @@
                         <Property name="text" type="java.lang.String" value="G.D.:"/>
                         <Property name="name" type="java.lang.String" value="jLabel17" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[55, 23]"/>
+                          <Dimension value="[37, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -620,9 +611,8 @@
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="CmbCariGd" noResource="true"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[50, 23]"/>
+                          <Dimension value="[65, 23]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -635,7 +625,7 @@
                         <Property name="text" type="java.lang.String" value="Asal Darah :"/>
                         <Property name="name" type="java.lang.String" value="jLabel18" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[90, 23]"/>
+                          <Dimension value="[75, 23]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -649,9 +639,8 @@
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="CmbCariAsal" noResource="true"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[120, 23]"/>
+                          <Dimension value="[140, 23]"/>
                         </Property>
                       </Properties>
                       <Events>

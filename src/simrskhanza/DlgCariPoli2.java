@@ -79,11 +79,23 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
     }
@@ -292,7 +304,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         poli.emptTeks();
         poli.isCek();
-        poli.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -353,8 +365,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                     "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama "+
                     "from poliklinik inner join jadwal inner join dokter on poliklinik.kd_poli=jadwal.kd_poli "+
                     "and dokter.kd_dokter=jadwal.kd_dokter "+
-                    "where jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
-                    "jadwal.hari_kerja=? and poliklinik.nm_poli like ? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
+                    "where poliklinik.status='1' and jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
+                    "poliklinik.status='1' and jadwal.hari_kerja=? and poliklinik.nm_poli like ? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
             try{                
                 switch (day) {
                     case 1:

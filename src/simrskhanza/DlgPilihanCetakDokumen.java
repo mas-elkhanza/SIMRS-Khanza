@@ -538,6 +538,25 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptBuktiRegister8.jrxml","report","::[ Bukti Register ]::",
+                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_tlp,"+
+                   "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr')as umur,poliklinik.nm_poli,"+
+                   "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_peserta,pasien.no_ktp,pasien.tgl_lahir "+
+                   "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "+
+                   "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"+NoRawat+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+        if(tbData.getValueAt(22,0).toString().equals("true")){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
             Valid.MyReport("persetujuantindakanmedis.jrxml","report","::[ Persetujuan Tindakan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
@@ -548,7 +567,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(22,0).toString().equals("true")){
+        if(tbData.getValueAt(23,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -568,7 +587,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                    "where reg_periksa.no_rawat='"+NoRawat+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(23,0).toString().equals("true")){
+        if(tbData.getValueAt(24,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("poli",NamaPoli);
@@ -587,7 +606,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                     "select current_date() as sekarang",param); 
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(24,0).toString().equals("true")){
+        if(tbData.getValueAt(25,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("poli",NamaPoli);
@@ -606,7 +625,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                 "select current_date() as sekarang",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(25,0).toString().equals("true")){
+        if(tbData.getValueAt(26,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("poli",NamaPoli);
@@ -627,7 +646,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                     "select current_date() as sekarang",param); 
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(26,0).toString().equals("true")){
+        if(tbData.getValueAt(27,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("poli",NamaPoli);
@@ -648,7 +667,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                     "select current_date() as sekarang",param); 
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(27,0).toString().equals("true")){
+        if(tbData.getValueAt(28,0).toString().equals("true")){
             Map<String, Object> param = new HashMap<>();
             param.put("poli",NamaPoli);
             param.put("antrian",NoReg);
@@ -668,7 +687,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             Valid.MyReport("rptLembarPeriksa.jrxml","report","::[ Lembar Periksa ]::",
                     "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
         }
-        if(tbData.getValueAt(28,0).toString().equals("true")){
+        if(tbData.getValueAt(29,0).toString().equals("true")){
             Map<String, Object> param = new HashMap<>();
             param.put("poli",NamaPoli);
             param.put("antrian",NoReg);
@@ -686,27 +705,6 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             param.put("emailrs",var.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
             Valid.MyReport("rptLembarPeriksa2.jrxml","report","::[ Lembar Periksa ]::",
-                    "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
-        }
-        if(tbData.getValueAt(29,0).toString().equals("true")){
-            Map<String, Object> param = new HashMap<>();
-            param.put("poli",NamaPoli);
-            param.put("antrian",NoReg);
-            param.put("nama",NamaPasien);
-            param.put("norm",NoRm);
-            param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",NoRm));
-            param.put("dokter",NamaDokter);
-            param.put("no_rawat",NoRawat);
-            param.put("bayar",NamaBayar);
-            param.put("penjab",PenanggungJawab);
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptLembarPeriksa3.jrxml","report","::[ Lembar Periksa]::",
                     "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
         }
         if(tbData.getValueAt(30,0).toString().equals("true")){
@@ -727,10 +725,31 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptLembarPeriksa4.jrxml","report","::[ Lembar Periksa]::",
+            Valid.MyReport("rptLembarPeriksa3.jrxml","report","::[ Lembar Periksa]::",
                     "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
         }
         if(tbData.getValueAt(31,0).toString().equals("true")){
+            Map<String, Object> param = new HashMap<>();
+            param.put("poli",NamaPoli);
+            param.put("antrian",NoReg);
+            param.put("nama",NamaPasien);
+            param.put("norm",NoRm);
+            param.put("lahir",Sequel.cariIsi("select DATE_FORMAT(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ",NoRm));
+            param.put("dokter",NamaDokter);
+            param.put("no_rawat",NoRawat);
+            param.put("bayar",NamaBayar);
+            param.put("penjab",PenanggungJawab);
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptLembarPeriksa4.jrxml","report","::[ Lembar Periksa]::",
+                    "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
+        }
+        if(tbData.getValueAt(32,0).toString().equals("true")){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -743,7 +762,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             Valid.MyReport("rptLabelTracker.jrxml",param,"::[ Label Tracker ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(32,0).toString().equals("true")){
+        if(tbData.getValueAt(33,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -757,7 +776,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             Valid.MyReport("rptLabelTracker2.jrxml",param,"::[ Label Tracker ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(33,0).toString().equals("true")){
+        if(tbData.getValueAt(34,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -776,7 +795,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                    "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"+NoRawat+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(34,0).toString().equals("true")){
+        if(tbData.getValueAt(35,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -795,7 +814,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                    "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"+NoRawat+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(35,0).toString().equals("true")){
+        if(tbData.getValueAt(36,0).toString().equals("true")){
             Map<String, Object> param = new HashMap<>();
             param.put("nama",NamaPasien);
             param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",NoRm));
@@ -810,7 +829,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                     "select reg_periksa.no_rawat from reg_periksa where no_rawat='"+NoRawat+"'",param); 
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(36,0).toString().equals("true")){
+        if(tbData.getValueAt(37,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -831,7 +850,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(37,0).toString().equals("true")){
+        if(tbData.getValueAt(38,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -852,7 +871,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(38,0).toString().equals("true")){
+        if(tbData.getValueAt(39,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -873,7 +892,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(39,0).toString().equals("true")){
+        if(tbData.getValueAt(40,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -894,7 +913,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(40,0).toString().equals("true")){
+        if(tbData.getValueAt(41,0).toString().equals("true")){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
@@ -916,7 +935,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             this.setCursor(Cursor.getDefaultCursor());
         }
         try {
-            if(tbData.getValueAt(41,0).toString().equals("true")){
+            if(tbData.getValueAt(42,0).toString().equals("true")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Map<String, Object> param = new HashMap<>();                 
                 param.put("namars",var.getnamars());
@@ -942,7 +961,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         }
             
         try {
-            if(tbData.getValueAt(42,0).toString().equals("true")){
+            if(tbData.getValueAt(43,0).toString().equals("true")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Map<String, Object> param = new HashMap<>();                 
                 param.put("namars",var.getnamars());
@@ -968,8 +987,8 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         }
             
         try {
-            if(tbData.getValueAt(43,0).toString().equals("true")){
-                if(tbData.getValueAt(43,1).toString().equals("Lembar SEP Model 1")){
+            if(tbData.getValueAt(44,0).toString().equals("true")){
+                if(tbData.getValueAt(44,1).toString().equals("Lembar SEP Model 1")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
@@ -999,7 +1018,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                                 "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+NoSEP+"'",param);
                     }                
                     this.setCursor(Cursor.getDefaultCursor());
-                }else if(tbData.getValueAt(43,1).toString().equals("Lembar SJP")){
+                }else if(tbData.getValueAt(44,1).toString().equals("Lembar SJP")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars",var.getnamars());
@@ -1019,7 +1038,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         }    
         
         try {
-            if(tbData.getValueAt(44,0).toString().equals("true")){
+            if(tbData.getValueAt(45,0).toString().equals("true")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars",var.getnamars());
@@ -1054,7 +1073,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         }  
         
         try {
-            if(tbData.getValueAt(45,0).toString().equals("true")){
+            if(tbData.getValueAt(46,0).toString().equals("true")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars",var.getnamars());
@@ -1091,7 +1110,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         }   
         
         try {
-            if(tbData.getValueAt(46,0).toString().equals("true")){
+            if(tbData.getValueAt(47,0).toString().equals("true")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars",var.getnamars());
@@ -1177,33 +1196,34 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             TabMode.addRow(new Object[]{false,"Formulir Pendaftaran Pasien"});//17,0
             TabMode.addRow(new Object[]{false,"Lembar Screening Awal Pasien Masuk Rawat Jalan"});//18,0
             TabMode.addRow(new Object[]{false,"Formulir Penempelan Copy Resep"});//19,0
-            TabMode.addRow(new Object[]{false,"Bukti Register"});//20,0
-            TabMode.addRow(new Object[]{false,"Persetujuan Medis"});//21,0
-            TabMode.addRow(new Object[]{false,"Surat Jaminan & Bukti Pelayanan Ralan"});//22,0
-            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan"});//23,0
-            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri"});//24,0
-            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan+Tracker"});//25,0
-            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri+Tracker"});//26,0
-            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kanan"});//27,0
-            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kiri"});//28,0
-            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kanan 2"});//29,0
-            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kiri 2"});//30,0
-            TabMode.addRow(new Object[]{false,"Label Tracker 1"});//31,0
-            TabMode.addRow(new Object[]{false,"Label Tracker 2"});//32,0
-            TabMode.addRow(new Object[]{false,"Label Tracker 3"});//33,0
-            TabMode.addRow(new Object[]{false,"Label Tracker 4"});//34,0
-            TabMode.addRow(new Object[]{false,"Barcode Perawatan"});//35,0
-            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 1"});//36,0
-            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 2"});//37,0
-            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 3"});//38,0
-            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 4"});//39,0
-            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 5"});//40,0
-            TabMode.addRow(new Object[]{false,"Gelang Pasien Ranap 1"});//41,0
-            TabMode.addRow(new Object[]{false,"Gelang Pasien Ranap 2"});//42,0
-            TabMode.addRow(new Object[]{false,"Lembar SEP Model 1"});//43,0
-            TabMode.addRow(new Object[]{false,"Lembar SEP Model 2"});//44,0
-            TabMode.addRow(new Object[]{false,"Lembar SEP Model 3"});//45,0
-            TabMode.addRow(new Object[]{false,"Lembar SEP Model 4"});//46,0
+            TabMode.addRow(new Object[]{false,"Bukti Register 1"});//20,0
+            TabMode.addRow(new Object[]{false,"Bukti Register 2"});//21,0
+            TabMode.addRow(new Object[]{false,"Persetujuan Medis"});//22,0
+            TabMode.addRow(new Object[]{false,"Surat Jaminan & Bukti Pelayanan Ralan"});//23,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan"});//24,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri"});//25,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan+Tracker"});//26,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri+Tracker"});//27,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kanan"});//28,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kiri"});//29,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kanan 2"});//30,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kiri 2"});//31,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 1"});//32,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 2"});//33,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 3"});//34,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 4"});//35,0
+            TabMode.addRow(new Object[]{false,"Barcode Perawatan"});//36,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 1"});//37,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 2"});//38,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 3"});//39,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 4"});//40,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 5"});//41,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ranap 1"});//42,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ranap 2"});//43,0
+            TabMode.addRow(new Object[]{false,"Lembar SEP Model 1"});//44,0
+            TabMode.addRow(new Object[]{false,"Lembar SEP Model 2"});//45,0
+            TabMode.addRow(new Object[]{false,"Lembar SEP Model 3"});//46,0
+            TabMode.addRow(new Object[]{false,"Lembar SEP Model 4"});//47,0
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1233,12 +1253,13 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             TabMode.addRow(new Object[]{false,"Formulir Pendaftaran Pasien"});//17,0
             TabMode.addRow(new Object[]{false,"Lembar Screening Awal Pasien Masuk Rawat Jalan"});//18,0
             TabMode.addRow(new Object[]{false,"Formulir Penempelan Copy Resep"});//19,0
-            TabMode.addRow(new Object[]{false,"Bukti Register"});//20,0
-            TabMode.addRow(new Object[]{false,"Persetujuan Medis"});//21,0
-            TabMode.addRow(new Object[]{false,"Surat Jaminan & Bukti Pelayanan Ralan"});//22,0
-            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan"});//23,0
-            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri"});//24,0
-            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan+Tracker"});//25,0
+            TabMode.addRow(new Object[]{false,"Bukti Register 1"});//20,0
+            TabMode.addRow(new Object[]{false,"Bukti Register 2"});//21,0
+            TabMode.addRow(new Object[]{false,"Persetujuan Medis"});//22,0
+            TabMode.addRow(new Object[]{false,"Surat Jaminan & Bukti Pelayanan Ralan"});//23,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan"});//24,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri"});//25,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan+Tracker"});//26,0
             TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri+Tracker"});//26,0
             TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kanan"});//27,0
             TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kiri"});//28,0
@@ -1283,7 +1304,8 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             TabMode.addRow(new Object[]{false,"Formulir Pendaftaran Pasien"});//17,0
             TabMode.addRow(new Object[]{false,"Lembar Screening Awal Pasien Masuk Rawat Jalan"});//18,0
             TabMode.addRow(new Object[]{false,"Formulir Penempelan Copy Resep"});//19,0
-            TabMode.addRow(new Object[]{false,"Bukti Register"});//20,0
+            TabMode.addRow(new Object[]{false,"Bukti Register 1"});//20,0
+            TabMode.addRow(new Object[]{false,"Bukti Register 2"});//20,0
             TabMode.addRow(new Object[]{false,"Persetujuan Medis"});//21,0
             TabMode.addRow(new Object[]{false,"Surat Jaminan & Bukti Pelayanan Ralan"});//22,0
             TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan"});//23,0

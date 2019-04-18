@@ -204,7 +204,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanSeleksi.setForeground(java.awt.Color.darkGray);
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -221,7 +221,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanSeleksi);
 
-        ppTampilkanRanapGabung.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanRanapGabung.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanRanapGabung.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanRanapGabung.setForeground(java.awt.Color.darkGray);
         ppTampilkanRanapGabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -282,7 +282,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -299,7 +298,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -434,7 +432,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkLaborat.setName("chkLaborat"); // NOI18N
         chkLaborat.setOpaque(false);
-        chkLaborat.setPreferredSize(new java.awt.Dimension(95, 30));
+        chkLaborat.setPreferredSize(new java.awt.Dimension(100, 30));
         chkLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkLaboratActionPerformed(evt);
@@ -540,7 +538,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 try {
@@ -587,7 +585,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 jm+"','"+
                                 uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
             }
-            Sequel.AutoComitTrue();
+            
             Map<String, Object> param = new HashMap<>();   
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -731,7 +729,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 for(i=1;i<tabMode.getRowCount();i++){  
                     try {
@@ -778,7 +776,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     jm+"','"+
                                     uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
                 }
-                Sequel.AutoComitTrue();
+                
                 Map<String, Object> param = new HashMap<>();   
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
@@ -815,7 +813,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){                
-                Sequel.AutoComitFalse();
+                
                 Sequel.queryu("delete from temporary");
                 for(i=1;i<tabMode.getRowCount();i++){  
                     try {
@@ -862,7 +860,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     jm+"','"+
                                     uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
                 }
-                Sequel.AutoComitTrue();
+                
                 Map<String, Object> param = new HashMap<>();   
                     param.put("namars",var.getnamars());
                     param.put("alamatrs",var.getalamatrs());
