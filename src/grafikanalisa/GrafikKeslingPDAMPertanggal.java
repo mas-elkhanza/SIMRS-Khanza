@@ -222,7 +222,7 @@ public class GrafikKeslingPDAMPertanggal extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
         }
-        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Pemakaian Air PDAM Per Tanggal Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Tanggal","Jumlah Harian (M²)", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Pemakaian Air PDAM Per Tanggal Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Tanggal","Jumlah Harian (M³)", dcd, PlotOrientation.VERTICAL,true, true,true); 
         ChartFrame cf = new ChartFrame("Grafik Pemakaian Air PDAM Per Tanggal",freeChart);
         cf.setSize(panelBiasa3.getWidth(),panelBiasa3.getHeight());   
         cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
