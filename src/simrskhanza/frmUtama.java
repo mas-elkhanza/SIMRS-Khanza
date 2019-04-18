@@ -14829,7 +14829,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ScrollPane scrollPane2;
     private widget.Tanggal tanggal;
     // End of variables declaration//GEN-END:variables
-    private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan;
+    private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
+            btnKoleksiPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17416,6 +17417,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPenerbitPerpustakaan);
                 jmlmenu++;
             }
+            
+            if(var.getkoleksi_perpustakaan()==true){
+                Panelmenu.add(btnKoleksiPerpustakaan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -19752,6 +19758,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(var.getpenerbit_perpustakaan()==true){
             Panelmenu.add(btnPenerbitPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getkoleksi_perpustakaan()==true){
+            Panelmenu.add(btnKoleksiPerpustakaan);
             jmlmenu++;
         }
 
@@ -22976,6 +22987,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(var.getkoleksi_perpustakaan()==true){
+            if(btnKoleksiPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKoleksiPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23210,6 +23228,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenerbitPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPenerbitPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnKoleksiPerpustakaan = new widget.ButtonBig();
+        btnKoleksiPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_General_Office_61_3592836.png")));
+        btnKoleksiPerpustakaan.setText("Koleksi Perpustakaan");
+        btnKoleksiPerpustakaan.setIconTextGap(0);
+        btnKoleksiPerpustakaan.setName("btnKoleksiPerpustakaan"); 
+        btnKoleksiPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKoleksiPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //btnKoleksiPerpustakaanActionPerformed(evt);
             }
         });
     }
