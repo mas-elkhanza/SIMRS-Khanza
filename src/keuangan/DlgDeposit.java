@@ -216,6 +216,7 @@ public class DlgDeposit extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnKwitansiDeposit.setBackground(new java.awt.Color(255, 255, 254));
         MnKwitansiDeposit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKwitansiDeposit.setForeground(java.awt.Color.darkGray);
         MnKwitansiDeposit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

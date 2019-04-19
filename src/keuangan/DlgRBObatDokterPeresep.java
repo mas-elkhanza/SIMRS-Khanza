@@ -7,7 +7,6 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -15,7 +14,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -30,10 +28,8 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Jurnal jur=new Jurnal();
     private PreparedStatement psdokter,psresep,psresep2;
     private ResultSet rsdokter,rsresep; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private int i=0,a=0;
     private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
@@ -218,6 +214,7 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnUrut1.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUrut1.setForeground(new java.awt.Color(70, 70, 70));
         MnUrut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -233,6 +230,7 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnUrut1);
 
+        MnUrut2.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUrut2.setForeground(new java.awt.Color(70, 70, 70));
         MnUrut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -248,6 +246,7 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnUrut2);
 
+        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanSeleksi.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -469,7 +468,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 jumlah="";
                 try {

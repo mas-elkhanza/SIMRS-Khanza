@@ -315,6 +315,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
+        ppNotaPiutang.setBackground(new java.awt.Color(255, 255, 254));
         ppNotaPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppNotaPiutang.setForeground(new java.awt.Color(70, 70, 70));
         ppNotaPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
