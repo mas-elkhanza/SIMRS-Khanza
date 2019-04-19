@@ -2,7 +2,7 @@
 body  {
 	font-family:Tahoma;
 	font-size:11px;
-	background: #fffff9;
+	background: #ffffff;
 	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
 	padding: 0;
 	color: #464646;
@@ -12,10 +12,10 @@ h1 {
 }
 #container { 
 	width: 100%;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
-	background: #fffff9;
+	background: #ffffff;
 } 
 #header { 
-	background: #fffff9;
+	background: #ffffff;
 	width: 900px;
 	height: 168px;
 }
@@ -106,7 +106,7 @@ h1 {
 }
 #navcontainer table {
 	margin: auto 0;
-	background: #fffff9;
+	background: #ffffff;
 	float: left;
 	width: 100%;
         border-bottom-width: 1px;
@@ -149,6 +149,7 @@ h1 {
 }
 
 #post{
+    background: #ffffff;
     width: 99.8%;
     height: 99.5%;
 }
@@ -158,7 +159,7 @@ h1 {
 #post ul li{
 	background:url(images/blue-add.png) no-repeat left #e2e7dd;
         background-position:5px 5px;
-        border-bottom:1px #fffff9 solid;
+        border-bottom:1px #ffffff solid;
         text-decoration:none;
         color:#464646;
         padding:0 0 0 30px;
@@ -171,7 +172,7 @@ h1 {
 #post p{
 	background: #e2e7dd;
         background-position:5px 5px;
-        border-bottom:1px #fffff9 solid;
+        border-bottom:1px #ffffff solid;
         text-decoration:none;
         color:#464646;
         padding:0 0 0 10px;
@@ -277,7 +278,7 @@ color: #464646;
 .isi td{
 	border-right: 1px solid #e2e7dd;
 	border-bottom: 1px solid #e2e7dd;
-	background: #fffff9;
+	background: #ffffff;
 	padding-top:4px;
 	padding-bottom:4px;
 	padding-left:2px;
@@ -297,9 +298,9 @@ color: #464646;
 }
 
 .isi3 td{
-	border-right: 1px solid #fffff9;
-	border-bottom: 1px solid #fffff9;
-	background: #fffff9;
+	border-right: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	background: #ffffff;
 	padding-left:2px;
 	padding-right:0px;
 	color:#464646;
@@ -314,7 +315,7 @@ color: #464646;
 	border-top: 1px solid #e2e7dd;
 	letter-spacing: 1px;
 	padding: 4px 2px 4px 10px;
-	background: #fffff9 ;
+	background: #ffffff ;
 }
 
 .isi5 td{
@@ -330,9 +331,9 @@ color: #464646;
 }
 
 .isi6 td{
-	border-right: 1px solid #fffff9;
-	border-bottom: 1px solid #fffff9;
-	background: #fffff9;
+	border-right: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	background: #ffffff;
 	padding-top:0px;
 	padding-bottom:0px;
 	padding-left:1px;
@@ -346,7 +347,7 @@ color: #464646;
 }
 
 .isi8 td{	
-	background: #fffff9;
+	background: #ffffff;
 	padding-top:3px;
 	padding-bottom:3px;
 	padding-left:2px;
@@ -366,7 +367,7 @@ color: #464646;
 }
 
 .text {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
@@ -375,7 +376,7 @@ color: #464646;
 }
 
 .text2 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
@@ -385,7 +386,7 @@ color: #464646;
 }
 
 .text3 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
@@ -395,7 +396,7 @@ color: #464646;
 }
 
 .text4 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
@@ -451,6 +452,6 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
         display:inline;
         background:url(images/65.png) no-repeat left #f1f6ec;
         background-position:4px 5px;
-        border-bottom:1px #fffff9 solid;
+        border-bottom:1px #ffffff solid;
         color:#464646;
 }

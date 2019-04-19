@@ -58,7 +58,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i=0,pilihan=0;
     private final Properties prop = new Properties();
-    private String StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
+    private String idrs="",StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
     private SisruteApi api=new SisruteApi();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -393,6 +393,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
+            idrs=prop.getProperty("IDSISRUTE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -515,6 +516,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnSuratRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSuratRujukan.setForeground(new java.awt.Color(70, 70, 70));
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -529,6 +531,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnSuratRujukan);
 
+        ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -623,7 +626,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel22.setBounds(380, 150, 90, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019 16:13:30" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:48:24" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1198,7 +1201,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1212,7 +1215,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1500,13 +1503,13 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 URL = link+"/rujukan";	
                 System.out.println(URL);
                 headers = new HttpHeaders();
-                headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                headers.add("X-cons-id",idrs);
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-signature",api.getHmac()); 
                 headers.add("Content-type","application/json");
                 requestJson ="{" +
                                 "\"PASIEN\": {" +
-                                    "\"NORM\":"+TNoRM.getText()+"," +
+                                    "\"NORM\":\""+TNoRM.getText()+"\"," +
                                     "\"NIK\": \""+NoKTP.getText()+"\"," +
                                     "\"NO_KARTU_JKN\": \""+NoKartu.getText()+"\"," +
                                     "\"NAMA\": \""+TPasien.getText()+"\"," +
@@ -1611,7 +1614,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     URL = link+"/rujukan/batal/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
                     headers = new HttpHeaders();
-                    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                    headers.add("X-cons-id",idrs);
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
                     headers.add("Content-type","application/json");
@@ -1703,13 +1706,13 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     URL = link+"/rujukan/"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();	
                     System.out.println(URL);
                     headers = new HttpHeaders();
-                    headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                    headers.add("X-cons-id",idrs);
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-signature",api.getHmac()); 
                     headers.add("Content-type","application/json");
                     requestJson ="{" +
                                     "\"PASIEN\": {" +
-                                        "\"NORM\":"+TNoRM.getText()+"," +
+                                        "\"NORM\":\""+TNoRM.getText()+"\"," +
                                         "\"NIK\": \""+NoKTP.getText()+"\"," +
                                         "\"NO_KARTU_JKN\": \""+NoKartu.getText()+"\"," +
                                         "\"NAMA\": \""+TPasien.getText()+"\"," +
@@ -2561,7 +2564,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         Valid.tabelKosong(tabMode);
                         URL = link+"/rujukan?nomor="+rs.getString("no_rujuk")+"&create=true";
                         headers = new HttpHeaders();
-                        headers.add("X-cons-id",prop.getProperty("IDSISRUTE"));
+                        headers.add("X-cons-id",idrs);
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                         headers.add("X-signature",api.getHmac()); 
                         headers.add("Content-type","application/json");             
@@ -2780,6 +2783,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
+                        
                         Laborat.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -2801,6 +2805,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("hasil")+";";
                         }
+                        
                         Radiologi.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -2823,6 +2828,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("nama_brng")+";";
                         }
+                        
                         if(!cari.equals("")){
                             cari="TRP:"+cari;
                         }
@@ -3010,7 +3016,30 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                         while(rs2.next()){                            
                             cari=cari+rs2.getString("Pemeriksaan")+":"+rs2.getString("nilai")+";";
                         }
+                        
                         Laborat.setText(cari);
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select hasil_radiologi.hasil from hasil_radiologi where hasil_radiologi.no_rawat=?");
+                    try {
+                        ps2.setString(1,NoRawat);
+                        rs2=ps2.executeQuery();
+                        cari="";
+                        while(rs2.next()){                            
+                            cari=cari+rs2.getString("hasil")+";";
+                        }
+                        
+                        Radiologi.setText(cari);
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     } finally{

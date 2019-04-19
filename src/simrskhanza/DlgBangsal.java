@@ -745,5 +745,13 @@ public final class DlgBangsal extends javax.swing.JDialog {
     public JTable getTable(){
         return tbBangsal;
     }
+    
+    public void isCek(){
+        if(var.getkode().equals("Admin Utama")){
+            MnRestore.setEnabled(true);
+        }else{
+            MnRestore.setEnabled(false);
+        }
+    }
 
 }

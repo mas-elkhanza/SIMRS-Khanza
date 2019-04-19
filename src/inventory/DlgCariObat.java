@@ -3526,7 +3526,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             row=tbDetailObatRacikan.getSelectedRow();
             try {
                 tbDetailObatRacikan.setValueAt(
-                    Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(row,4).toString())
+                    Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
                     *Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,9).toString()))
                     /Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,8).toString()),1),row,10
                 );
@@ -3583,6 +3583,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     hitungObat();
                 }
             } catch (Exception e) {
+                System.out.println("Notif Racikan : "+e);
                 tbDetailObatRacikan.setValueAt(0,row,10);
                 tbDetailObatRacikan.setValueAt(0,row,11);
                 tbDetailObatRacikan.setValueAt(0,row,12);

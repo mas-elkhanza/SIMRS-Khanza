@@ -152,6 +152,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppGrafikHidupMati.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikHidupMati.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikHidupMati.setForeground(java.awt.Color.darkGray);
         ppGrafikHidupMati.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -168,6 +169,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikHidupMati);
 
+        ppGrafikLakiPerempuan.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikLakiPerempuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikLakiPerempuan.setForeground(java.awt.Color.darkGray);
         ppGrafikLakiPerempuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -184,6 +186,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikLakiPerempuan);
 
+        ppGrafikGolonganUmur.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikGolonganUmur.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikGolonganUmur.setForeground(java.awt.Color.darkGray);
         ppGrafikGolonganUmur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

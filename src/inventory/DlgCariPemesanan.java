@@ -348,6 +348,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -364,6 +365,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapus);
 
+        ppBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBayar.setForeground(new java.awt.Color(70, 70, 70));
         ppBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -380,6 +382,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppBayar);
 
+        ppUbah.setBackground(new java.awt.Color(255, 255, 254));
         ppUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppUbah.setForeground(new java.awt.Color(70, 70, 70));
         ppUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
