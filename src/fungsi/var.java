@@ -103,7 +103,7 @@ public final class var {
             grafik_air_pdam_perbulan=false,grafik_limbahb3_pertanggal=false,grafik_limbahb3_perbulan=false,limbah_domestik=false,
             grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
             kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
-            inventaris_perpustakaan=false;
+            inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -598,6 +598,7 @@ public final class var {
                         var.penerbit_perpustakaan=true;
                         var.koleksi_perpustakaan=true;
                         var.inventaris_perpustakaan=true;
+                        var.set_peminjaman_perpustakaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1076,6 +1077,7 @@ public final class var {
                         var.penerbit_perpustakaan=rs2.getBoolean("penerbit_perpustakaan");
                         var.koleksi_perpustakaan=rs2.getBoolean("koleksi_perpustakaan");
                         var.inventaris_perpustakaan=rs2.getBoolean("inventaris_perpustakaan");
+                        var.set_peminjaman_perpustakaan=rs2.getBoolean("set_peminjaman_perpustakaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1552,6 +1554,7 @@ public final class var {
                         var.penerbit_perpustakaan=false;
                         var.koleksi_perpustakaan=false;
                         var.inventaris_perpustakaan=false;
+                        var.set_peminjaman_perpustakaan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2082,4 +2085,5 @@ public final class var {
     public static boolean getpenerbit_perpustakaan(){return var.penerbit_perpustakaan;}
     public static boolean getkoleksi_perpustakaan(){return var.koleksi_perpustakaan;}
     public static boolean getinventaris_perpustakaan(){return var.inventaris_perpustakaan;}
+    public static boolean getset_peminjaman_perpustakaan(){return var.set_peminjaman_perpustakaan;}
 }   
