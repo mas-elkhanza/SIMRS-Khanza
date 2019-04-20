@@ -54,18 +54,10 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);
 
-        Object[] row={"Kode Koleksi",
-                      "Nama/Judul",
-                      "Halaman",
-                      "Penerbit",
-                      "Pengarang",
-                      "Terbit",
-                      "ISBN",
-                      "Kategori",
-                      "Jenis"
-        };
-        tabMode=new DefaultTableModel(null,row){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "Kode Koleksi","Nama/Judul","Halaman","Penerbit","Pengarang","Terbit","ISBN","Kategori","Jenis"
+            }){
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbJnsPerawatan.setModel(tabMode);
 
@@ -98,7 +90,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         KodeBuku.setDocument(new batasInput((byte)10).getKata(KodeBuku));
-        Judul.setDocument(new batasInput((byte)60).getKata(Judul));
+        Judul.setDocument(new batasInput((int)200).getKata(Judul));
         Halaman.setDocument(new batasInput((byte)5).getOnlyAngka(Halaman));
         KodePenerbit.setDocument(new batasInput((byte)10).getKata(KodePenerbit));
         KodePengarang.setDocument(new batasInput((byte)7).getKata(KodePengarang));
@@ -599,7 +591,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Judul);
-        Judul.setBounds(88, 40, 261, 23);
+        Judul.setBounds(88, 40, 288, 23);
 
         Halaman.setName("Halaman"); // NOI18N
         Halaman.addKeyListener(new java.awt.event.KeyAdapter() {
