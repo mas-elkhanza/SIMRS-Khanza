@@ -101,7 +101,9 @@ public final class var {
             grafik_tb_konfirmasiskoring6=false,grafik_tb_sumberobat=false,grafik_tb_hasilakhirpengobatan=false,grafik_tb_hasilteshiv=false,
             kadaluarsa_batch=false,sisa_stok=false,obat_per_resep=false,pemakaian_air_pdam=false,limbah_b3_medis=false,grafik_air_pdam_pertanggal=false,
             grafik_air_pdam_perbulan=false,grafik_limbahb3_pertanggal=false,grafik_limbahb3_perbulan=false,limbah_domestik=false,
-            grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false;
+            grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
+            kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
+            inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -587,6 +589,17 @@ public final class var {
                         var.limbah_domestik=true;
                         var.grafik_limbahdomestik_pertanggal=true;
                         var.grafik_limbahdomestik_perbulan=true;
+                        var.mutu_air_limbah=true;
+                        var.pest_control=true;
+                        var.ruang_perpustakaan=true;
+                        var.kategori_perpustakaan=true;
+                        var.jenis_perpustakaan=true;
+                        var.pengarang_perpustakaan=true;
+                        var.penerbit_perpustakaan=true;
+                        var.koleksi_perpustakaan=true;
+                        var.inventaris_perpustakaan=true;
+                        var.set_peminjaman_perpustakaan=true;
+                        var.denda_perpustakaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1056,6 +1069,17 @@ public final class var {
                         var.limbah_domestik=rs2.getBoolean("limbah_domestik");
                         var.grafik_limbahdomestik_pertanggal=rs2.getBoolean("grafik_limbahdomestik_pertanggal");
                         var.grafik_limbahdomestik_perbulan=rs2.getBoolean("grafik_limbahdomestik_perbulan");
+                        var.mutu_air_limbah=rs2.getBoolean("mutu_air_limbah");
+                        var.pest_control=rs2.getBoolean("pest_control");
+                        var.ruang_perpustakaan=rs2.getBoolean("ruang_perpustakaan");
+                        var.kategori_perpustakaan=rs2.getBoolean("kategori_perpustakaan");
+                        var.jenis_perpustakaan=rs2.getBoolean("jenis_perpustakaan");
+                        var.pengarang_perpustakaan=rs2.getBoolean("pengarang_perpustakaan");
+                        var.penerbit_perpustakaan=rs2.getBoolean("penerbit_perpustakaan");
+                        var.koleksi_perpustakaan=rs2.getBoolean("koleksi_perpustakaan");
+                        var.inventaris_perpustakaan=rs2.getBoolean("inventaris_perpustakaan");
+                        var.set_peminjaman_perpustakaan=rs2.getBoolean("set_peminjaman_perpustakaan");
+                        var.denda_perpustakaan=rs2.getBoolean("denda_perpustakaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1523,6 +1547,17 @@ public final class var {
                         var.limbah_domestik=false;
                         var.grafik_limbahdomestik_pertanggal=false;
                         var.grafik_limbahdomestik_perbulan=false;
+                        var.mutu_air_limbah=false;
+                        var.pest_control=false;
+                        var.ruang_perpustakaan=false;
+                        var.kategori_perpustakaan=false;
+                        var.jenis_perpustakaan=false;
+                        var.pengarang_perpustakaan=false;
+                        var.penerbit_perpustakaan=false;
+                        var.koleksi_perpustakaan=false;
+                        var.inventaris_perpustakaan=false;
+                        var.set_peminjaman_perpustakaan=false;
+                        var.denda_perpustakaan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2044,4 +2079,15 @@ public final class var {
     public static boolean getlimbah_domestik(){return var.limbah_domestik;}
     public static boolean getgrafik_limbahdomestik_pertanggal(){return var.grafik_limbahdomestik_pertanggal;}
     public static boolean getgrafik_limbahdomestik_perbulan(){return var.grafik_limbahdomestik_perbulan;}
+    public static boolean getmutu_air_limbah(){return var.mutu_air_limbah;}
+    public static boolean getpest_control(){return var.pest_control;}
+    public static boolean getruang_perpustakaan(){return var.ruang_perpustakaan;}
+    public static boolean getkategori_perpustakaan(){return var.kategori_perpustakaan;}
+    public static boolean getjenis_perpustakaan(){return var.jenis_perpustakaan;}
+    public static boolean getpengarang_perpustakaan(){return var.pengarang_perpustakaan;}
+    public static boolean getpenerbit_perpustakaan(){return var.penerbit_perpustakaan;}
+    public static boolean getkoleksi_perpustakaan(){return var.koleksi_perpustakaan;}
+    public static boolean getinventaris_perpustakaan(){return var.inventaris_perpustakaan;}
+    public static boolean getset_peminjaman_perpustakaan(){return var.set_peminjaman_perpustakaan;}
+    public static boolean getdenda_perpustakaan(){return var.denda_perpustakaan;}
 }   
