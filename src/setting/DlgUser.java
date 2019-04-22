@@ -129,7 +129,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
                     "[N]Limbah B3 Medis Per Tanggal","[N]Limbah B3 Medis Per Bulan","[F]Limbah Padat Domestik","[N]Limbah Padat Domestik Per Tanggal",
                     "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah","[F]Pest Control","[P]Ruang Perpustakaan","[P]Kategori Koleksi","[P]Jenis Koleksi",
-                    "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan"
+                    "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan",
+                    "[P]Anggota Perpustakaan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -273,7 +274,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 477;i++) {
+        for (i = 0; i < 478;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -863,6 +864,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(141);
             }else if(i==476){
                 column.setPreferredWidth(122);
+            }else if(i==477){
+                column.setPreferredWidth(132);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1301,7 +1304,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1820,7 +1823,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "koleksi_perpustakaan='"+tbUser.getValueAt(i,473).toString()+"',"+
                     "inventaris_perpustakaan='"+tbUser.getValueAt(i,474).toString()+"',"+
                     "set_peminjaman_perpustakaan='"+tbUser.getValueAt(i,475).toString()+"',"+
-                    "denda_perpustakaan='"+tbUser.getValueAt(i,476).toString()+"'");
+                    "denda_perpustakaan='"+tbUser.getValueAt(i,476).toString()+"',"+
+                    "anggota_perpustakaan='"+tbUser.getValueAt(i,477).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2130,7 +2134,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik,"+
                         "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah,pest_control,ruang_perpustakaan,"+
                         "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"+
-                        "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan from user order by AES_DECRYPT(id_user,'nur')");
+                        "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2619,7 +2623,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("koleksi_perpustakaan"),
                                rs.getBoolean("inventaris_perpustakaan"),
                                rs.getBoolean("set_peminjaman_perpustakaan"),
-                               rs.getBoolean("denda_perpustakaan")
+                               rs.getBoolean("denda_perpustakaan"),
+                               rs.getBoolean("anggota_perpustakaan")
                             });
                         }   
                     } catch (Exception e) {
@@ -3097,7 +3102,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("koleksi_perpustakaan"),
                            rs.getBoolean("inventaris_perpustakaan"),
                            rs.getBoolean("set_peminjaman_perpustakaan"),
-                           rs.getBoolean("denda_perpustakaan")
+                           rs.getBoolean("denda_perpustakaan"),
+                           rs.getBoolean("anggota_perpustakaan")
                         });
                     }                                             
                  }

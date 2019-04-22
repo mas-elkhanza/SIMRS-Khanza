@@ -439,6 +439,7 @@ import inventaris.KeslingPestControl;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
+import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanDenda;
 import perpustakaan.PerpustakaanInventaris;
 import perpustakaan.PerpustakaanJenis;
@@ -14315,6 +14316,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAnggotaPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanAnggota form=new PerpustakaanAnggota(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -14884,7 +14898,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.Tanggal tanggal;
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
-            btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan;
+            btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17491,6 +17505,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnDendaPerpustakaan);
                 jmlmenu++;
             }
+            
+            if(var.getanggota_perpustakaan()==true){
+                Panelmenu.add(btnAnggotaPerpustakaan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -19847,6 +19866,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(var.getdenda_perpustakaan()==true){
             Panelmenu.add(btnDendaPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getanggota_perpustakaan()==true){
+            Panelmenu.add(btnAnggotaPerpustakaan);
             jmlmenu++;
         }
 
@@ -23099,6 +23123,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(var.getanggota_perpustakaan()==true){
+            if(btnAnggotaPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAnggotaPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23381,6 +23412,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDendaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnAnggotaPerpustakaan = new widget.ButtonBig();
+        btnAnggotaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_male_user_3440844.png")));
+        btnAnggotaPerpustakaan.setText("Anggota Perpustakaan");
+        btnAnggotaPerpustakaan.setIconTextGap(0);
+        btnAnggotaPerpustakaan.setName("btnAnggotaPerpustakaan"); 
+        btnAnggotaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAnggotaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnggotaPerpustakaanActionPerformed(evt);
             }
         });
     }

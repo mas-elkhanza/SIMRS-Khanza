@@ -902,14 +902,16 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         }else if(kd_ruang.getText().trim().equals("")||nm_ruang.getText().trim().equals("")){
             Valid.textKosong(kd_ruang,"Ruangan");
         }else {
-            if(Sequel.mengedittf("perpustakaan_inventaris","no_inventaris=?","no_inventaris=?,kode_buku=?,asal_buku=?,"+
-                    "tgl_pengadaan=?,harga=?,status_buku=?,kd_ruang=?,no_rak=?,no_box=?",10,new String[]{
-                    no_inventaris.getText(),kode_buku.getText(),asal_buku.getSelectedItem().toString(),Valid.SetTgl(tgl_pengadaan.getSelectedItem()+""),
-                    harga.getText(),status_buku.getSelectedItem().toString(),kd_ruang.getText(),no_rak.getSelectedItem().toString(),no_box.getSelectedItem().toString(),
-                    tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
-                })==true){
-                    tampil();
-                    emptTeks();
+            if(tbJnsPerawatan.getSelectedRow()> -1){
+                if(Sequel.mengedittf("perpustakaan_inventaris","no_inventaris=?","no_inventaris=?,kode_buku=?,asal_buku=?,"+
+                        "tgl_pengadaan=?,harga=?,status_buku=?,kd_ruang=?,no_rak=?,no_box=?",10,new String[]{
+                        no_inventaris.getText(),kode_buku.getText(),asal_buku.getSelectedItem().toString(),Valid.SetTgl(tgl_pengadaan.getSelectedItem()+""),
+                        harga.getText(),status_buku.getSelectedItem().toString(),kd_ruang.getText(),no_rak.getSelectedItem().toString(),no_box.getSelectedItem().toString(),
+                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                    })==true){
+                        tampil();
+                        emptTeks();
+                }
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed

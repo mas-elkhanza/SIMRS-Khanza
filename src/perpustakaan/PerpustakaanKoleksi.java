@@ -891,6 +891,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
         }else if(KodeKategori.getText().trim().equals("")||NamaKategori.getText().trim().equals("")){
             Valid.textKosong(KodeKategori,"Kategori");
         }else {
+            if(tbJnsPerawatan.getSelectedRow()> -1){
                 //menyimpan-------------------------------------------------
                 Sequel.mengedit("perpustakaan_buku","kode_buku='"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0) +"'",
                         "kode_buku='"+KodeBuku.getText()+"',judul_buku='"+Judul.getText()+"',jml_halaman='"+Halaman.getText()+"',kode_penerbit='"+
@@ -898,8 +899,9 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
                         KodeKategori.getText()+"',id_jenis='"+IdJenis.getText()+"'");
                 //----------------------------------------------------------
                 KodeBuku.requestFocus();
-            tampil();
-            emptTeks();
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
