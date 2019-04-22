@@ -340,18 +340,18 @@ public class PerpustakaanJenis extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 45));
         panelGlass7.setLayout(null);
 
         jLabel3.setText("Kode Jenis :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(2, 12, 72, 23);
+        jLabel3.setBounds(2, 10, 72, 23);
 
         jLabel4.setText("Nama Jenis :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(176, 12, 100, 23);
+        jLabel4.setBounds(176, 10, 100, 23);
 
         TKd.setHighlighter(null);
         TKd.setName("TKd"); // NOI18N
@@ -361,7 +361,7 @@ public class PerpustakaanJenis extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(TKd);
-        TKd.setBounds(78, 12, 80, 23);
+        TKd.setBounds(78, 10, 80, 23);
 
         TNm.setName("TNm"); // NOI18N
         TNm.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -370,7 +370,7 @@ public class PerpustakaanJenis extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(TNm);
-        TNm.setBounds(280, 12, 235, 23);
+        TNm.setBounds(280, 10, 235, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 

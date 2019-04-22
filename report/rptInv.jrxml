@@ -128,7 +128,7 @@
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Kode Barang]]></text>
+				<text><![CDATA[KODE BARANG]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="1" width="76" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
