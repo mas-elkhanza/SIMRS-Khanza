@@ -894,6 +894,8 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        ChkHabis.setSelected(false);
+        chkGabung.setSelected(false);
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
