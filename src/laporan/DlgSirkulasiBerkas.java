@@ -111,6 +111,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 }
             });
         }  
+        
         pasien.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -279,27 +280,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         
         WindowInput.setSize(735,275);
         WindowInput.setLocationRelativeTo(null);         
-        try {
-            ps=koneksi.prepareStatement(
-                    "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
-                    "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join pasien inner join petugas inner join inventaris_ruang "+
-                    "on peminjaman_berkas.no_rkm_medis=pasien.no_rkm_medis and peminjaman_berkas.nip=petugas.nip and inventaris_ruang.id_ruang=peminjaman_berkas.id_ruang "+
-                    "where peminjaman_berkas.status_pinjam=? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.no_rkm_medis like ? or "+                    
-                    " peminjaman_berkas.status_pinjam=? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and pasien.nm_pasien like ? or "+
-                    " peminjaman_berkas.status_pinjam=? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.nip like ? or "+
-                    " peminjaman_berkas.status_pinjam=? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and petugas.nama like ? or "+
-                    " peminjaman_berkas.status_pinjam=? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.id_ruang like ? or "+
-                    " peminjaman_berkas.status_pinjam=? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and inventaris_ruang.nama_ruang like ? or "+
-                    " peminjaman_berkas.status_pinjam=? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.peminjam like ? order by peminjaman_berkas.tgl_pinjam desc ");
-            pspasien=koneksi.prepareStatement("select pasien.nm_pasien,pasien.pekerjaan, "+
-                   "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
-                   "pasien.tgl_daftar,pasien.umur from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
-                   "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
-                   "where pasien.no_rkm_medis=?");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        
     }
 
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
@@ -368,7 +349,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         panelCari = new widget.panelisi();
         jLabel17 = new widget.Label();
         StatusCari = new widget.ComboBox();
-        jLabel27 = new widget.Label();
+        ChkTanggal = new widget.CekBox();
         TglPinjam1 = new widget.Tanggal();
         jLabel22 = new widget.Label();
         TglPinjam2 = new widget.Tanggal();
@@ -564,7 +545,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         label12.setBounds(457, 55, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -859,32 +840,25 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(80, 23));
         panelCari.add(jLabel17);
 
-        StatusCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masih Dipinjam", "Sudah Kembali" }));
+        StatusCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Masih Dipinjam", "Sudah Kembali" }));
         StatusCari.setName("StatusCari"); // NOI18N
         StatusCari.setPreferredSize(new java.awt.Dimension(225, 23));
-        StatusCari.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                StatusCariItemStateChanged(evt);
-            }
-        });
         panelCari.add(StatusCari);
 
-        jLabel27.setText("Tgl.Pinjam :");
-        jLabel27.setName("jLabel27"); // NOI18N
-        jLabel27.setPreferredSize(new java.awt.Dimension(110, 23));
-        panelCari.add(jLabel27);
+        ChkTanggal.setSelected(true);
+        ChkTanggal.setText("Tgl.Pinjam :");
+        ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkTanggal.setName("ChkTanggal"); // NOI18N
+        ChkTanggal.setPreferredSize(new java.awt.Dimension(110, 23));
+        panelCari.add(ChkTanggal);
 
         TglPinjam1.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2019" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
         TglPinjam1.setPreferredSize(new java.awt.Dimension(134, 23));
-        TglPinjam1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TglPinjam1ItemStateChanged(evt);
-            }
-        });
         TglPinjam1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPinjam1KeyPressed(evt);
@@ -899,16 +873,11 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         panelCari.add(jLabel22);
 
         TglPinjam2.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2019" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
         TglPinjam2.setPreferredSize(new java.awt.Dimension(134, 23));
-        TglPinjam2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TglPinjam1ItemStateChanged(evt);
-            }
-        });
         TglPinjam2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPinjam2KeyPressed(evt);
@@ -1033,9 +1002,6 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
         if(tbKamIn.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
@@ -1048,18 +1014,34 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSirkulasiBerkas.jrxml","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
+                if(ChkTanggal.isSelected()==true){
+                    Valid.MyReport("rptSirkulasiBerkas.jrxml","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
+                        "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,"+
+                        "peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
+                        "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join inventaris_ruang "+
+                        "inner join pasien inner join petugas on peminjaman_berkas.no_rkm_medis=pasien.no_rkm_medis and peminjaman_berkas.nip=petugas.nip and inventaris_ruang.id_ruang=peminjaman_berkas.id_ruang "+
+                        "where peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+                    
+                        " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                        " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.nip like '%"+TCari.getText().trim()+"%' or "+
+                        " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                        " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.id_ruang like '%"+TCari.getText().trim()+"%' or "+
+                        " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' or "+
+                        " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.peminjam like '%"+TCari.getText().trim()+"%' order by peminjaman_berkas.tgl_pinjam desc ",param);
+                }else{
+                    Valid.MyReport("rptSirkulasiBerkas.jrxml","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
                     "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,"+
                     "peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
                     "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join inventaris_ruang "+
                     "inner join pasien inner join petugas on peminjaman_berkas.no_rkm_medis=pasien.no_rkm_medis and peminjaman_berkas.nip=petugas.nip and inventaris_ruang.id_ruang=peminjaman_berkas.id_ruang "+
-                    "where peminjaman_berkas.status_pinjam='"+StatusCari.getSelectedItem()+"' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+                    
-                    " peminjaman_berkas.status_pinjam='"+StatusCari.getSelectedItem()+"' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    " peminjaman_berkas.status_pinjam='"+StatusCari.getSelectedItem()+"' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.nip like '%"+TCari.getText().trim()+"%' or "+
-                    " peminjaman_berkas.status_pinjam='"+StatusCari.getSelectedItem()+"' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    " peminjaman_berkas.status_pinjam='"+StatusCari.getSelectedItem()+"' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.id_ruang like '%"+TCari.getText().trim()+"%' or "+
-                    " peminjaman_berkas.status_pinjam='"+StatusCari.getSelectedItem()+"' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' or "+
-                    " peminjaman_berkas.status_pinjam='"+StatusCari.getSelectedItem()+"' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.peminjam like '%"+TCari.getText().trim()+"%' order by peminjaman_berkas.tgl_pinjam desc ",param);
+                    "where peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+                    
+                    " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.nip like '%"+TCari.getText().trim()+"%' or "+
+                    " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                    " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.id_ruang like '%"+TCari.getText().trim()+"%' or "+
+                    " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' or "+
+                    " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.peminjam like '%"+TCari.getText().trim()+"%' order by peminjaman_berkas.tgl_pinjam desc ",param);
+                }
+                
 
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1098,6 +1080,8 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         RmCari.setText("");
+        ChkTanggal.setSelected(false);
+        StatusCari.setSelectedItem("Semua");
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1187,12 +1171,6 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         
     }//GEN-LAST:event_DTPTglItemStateChanged
 
-    private void TglPinjam1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglPinjam1ItemStateChanged
-        // R2.setSelected(true);
-         tampil();          
-       
-}//GEN-LAST:event_TglPinjam1ItemStateChanged
-
     private void TglPinjam1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPinjam1KeyPressed
         Valid.pindah(evt,RmCari,TglPinjam2);
 }//GEN-LAST:event_TglPinjam1KeyPressed
@@ -1245,10 +1223,6 @@ private void RmCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Rm
 private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     tampil();
 }//GEN-LAST:event_formWindowOpened
-
-private void StatusCariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StatusCariItemStateChanged
-  tampil();
-}//GEN-LAST:event_StatusCariItemStateChanged
 
 private void NoRmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1360,6 +1334,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
     private widget.Button BtnSimpan;
+    private widget.CekBox ChkTanggal;
     private widget.TextBox KdRuang;
     private widget.Label LCount;
     private widget.Label LblTgl;
@@ -1392,7 +1367,6 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
-    private widget.Label jLabel27;
     private widget.Label jLabel6;
     private widget.Label label1;
     private widget.Label label10;
@@ -1412,48 +1386,112 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     public void tampil() {        
         try{
             Valid.tabelKosong(tabMode);
-            ps.setString(1,StatusCari.getSelectedItem().toString());
-            ps.setString(2,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
-            ps.setString(3,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
-            ps.setString(4,"%"+RmCari.getText()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,StatusCari.getSelectedItem().toString());
-            ps.setString(7,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
-            ps.setString(8,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
-            ps.setString(9,"%"+RmCari.getText()+"%");
-            ps.setString(10,"%"+TCari.getText().trim()+"%");
-            ps.setString(11,StatusCari.getSelectedItem().toString());
-            ps.setString(12,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
-            ps.setString(13,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
-            ps.setString(14,"%"+RmCari.getText()+"%");
-            ps.setString(15,"%"+TCari.getText().trim()+"%");
-            ps.setString(16,StatusCari.getSelectedItem().toString());
-            ps.setString(17,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
-            ps.setString(18,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
-            ps.setString(19,"%"+RmCari.getText()+"%");
-            ps.setString(20,"%"+TCari.getText().trim()+"%");
-            ps.setString(21,StatusCari.getSelectedItem().toString());
-            ps.setString(22,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
-            ps.setString(23,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
-            ps.setString(24,"%"+RmCari.getText()+"%");
-            ps.setString(25,"%"+TCari.getText().trim()+"%");
-            ps.setString(26,StatusCari.getSelectedItem().toString());
-            ps.setString(27,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
-            ps.setString(28,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
-            ps.setString(29,"%"+RmCari.getText()+"%");
-            ps.setString(30,"%"+TCari.getText().trim()+"%");
-            ps.setString(31,StatusCari.getSelectedItem().toString());
-            ps.setString(32,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
-            ps.setString(33,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
-            ps.setString(34,"%"+RmCari.getText()+"%");
-            ps.setString(35,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{
-                    rs.getString("peminjam"),rs.getString("id_ruang"),rs.getString("nama_ruang"),
-                    rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_pinjam"),
-                    rs.getString("tgl_kembali"),rs.getString("nip"),rs.getString("nama"),rs.getString("status_pinjam")
-                });
+            if(ChkTanggal.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
+                    "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join pasien inner join petugas inner join inventaris_ruang "+
+                    "on peminjaman_berkas.no_rkm_medis=pasien.no_rkm_medis and peminjaman_berkas.nip=petugas.nip and inventaris_ruang.id_ruang=peminjaman_berkas.id_ruang "+
+                    "where peminjaman_berkas.status_pinjam like ? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.no_rkm_medis like ? or "+                    
+                    " peminjaman_berkas.status_pinjam like ? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and pasien.nm_pasien like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.nip like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and petugas.nama like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.id_ruang like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and inventaris_ruang.nama_ruang like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and tgl_pinjam between ? and ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.peminjam like ? order by peminjaman_berkas.tgl_pinjam desc ");
+            }else{
+                ps=koneksi.prepareStatement(
+                    "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
+                    "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join pasien inner join petugas inner join inventaris_ruang "+
+                    "on peminjaman_berkas.no_rkm_medis=pasien.no_rkm_medis and peminjaman_berkas.nip=petugas.nip and inventaris_ruang.id_ruang=peminjaman_berkas.id_ruang "+
+                    "where peminjaman_berkas.status_pinjam like ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.no_rkm_medis like ? or "+                    
+                    " peminjaman_berkas.status_pinjam like ? and peminjaman_berkas.no_rkm_medis like ? and pasien.nm_pasien like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.nip like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and peminjaman_berkas.no_rkm_medis like ? and petugas.nama like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.id_ruang like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and peminjaman_berkas.no_rkm_medis like ? and inventaris_ruang.nama_ruang like ? or "+
+                    " peminjaman_berkas.status_pinjam like ? and peminjaman_berkas.no_rkm_medis like ? and peminjaman_berkas.peminjam like ? order by peminjaman_berkas.tgl_pinjam desc ");
+            }
+            
+            try {
+                if(ChkTanggal.isSelected()==true){
+                    ps.setString(1,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(2,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                    ps.setString(3,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                    ps.setString(4,"%"+RmCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(7,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                    ps.setString(9,"%"+RmCari.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(12,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                    ps.setString(13,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                    ps.setString(14,"%"+RmCari.getText()+"%");
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                    ps.setString(16,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(17,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                    ps.setString(18,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                    ps.setString(19,"%"+RmCari.getText()+"%");
+                    ps.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps.setString(21,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(22,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                    ps.setString(23,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                    ps.setString(24,"%"+RmCari.getText()+"%");
+                    ps.setString(25,"%"+TCari.getText().trim()+"%");
+                    ps.setString(26,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(27,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                    ps.setString(28,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                    ps.setString(29,"%"+RmCari.getText()+"%");
+                    ps.setString(30,"%"+TCari.getText().trim()+"%");
+                    ps.setString(31,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(32,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                    ps.setString(33,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                    ps.setString(34,"%"+RmCari.getText()+"%");
+                    ps.setString(35,"%"+TCari.getText().trim()+"%");
+                }else{
+                    ps.setString(1,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(2,"%"+RmCari.getText()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(5,"%"+RmCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(8,"%"+RmCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(11,"%"+RmCari.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(14,"%"+RmCari.getText()+"%");
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                    ps.setString(16,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(17,"%"+RmCari.getText()+"%");
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(19,"%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(20,"%"+RmCari.getText()+"%");
+                    ps.setString(21,"%"+TCari.getText().trim()+"%");
+                }
+                
+                System.out.println("laporan.DlgSirkulasiBerkas.tampil() : "+ChkTanggal.isSelected());
+                    
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString("peminjam"),rs.getString("id_ruang"),rs.getString("nama_ruang"),
+                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_pinjam"),
+                        rs.getString("tgl_kembali"),rs.getString("nip"),rs.getString("nama"),rs.getString("status_pinjam")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
             LCount.setText(""+tbKamIn.getRowCount());
         }catch(Exception e){
@@ -1506,7 +1544,14 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }
     
     public void isPasien(){
-        try {                
+        try {   
+            pspasien=koneksi.prepareStatement("select pasien.nm_pasien,pasien.pekerjaan, "+
+                   "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
+                   "pasien.tgl_daftar,pasien.umur from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
+                   "where pasien.no_rkm_medis=?");
+            try {
                 pspasien.setString(1,NoRm.getText());
                 rs=pspasien.executeQuery();
                 if(rs.next()){
@@ -1516,8 +1561,18 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     Pekerjaan.setText(rs.getString("pekerjaan"));
                     PertamaDaftar.setText(rs.getString("tgl_daftar"));
                 }
-            } catch (Exception ex) {
-                System.out.println("Notifikasi : "+ex);
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(pspasien!=null){
+                    pspasien.close();
+                }
             }
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
     }
 }
