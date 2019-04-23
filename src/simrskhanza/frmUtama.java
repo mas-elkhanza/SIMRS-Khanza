@@ -14329,6 +14329,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPeminjamanPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -14898,7 +14902,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.Tanggal tanggal;
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
-            btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan;
+            btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
+            btnPeminjamanPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17510,6 +17515,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnAnggotaPerpustakaan);
                 jmlmenu++;
             }
+            
+            if(var.getpeminjaman_perpustakaan()==true){
+                Panelmenu.add(btnPeminjamanPerpustakaan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -19871,6 +19881,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(var.getanggota_perpustakaan()==true){
             Panelmenu.add(btnAnggotaPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getpeminjaman_perpustakaan()==true){
+            Panelmenu.add(btnPeminjamanPerpustakaan);
             jmlmenu++;
         }
 
@@ -23130,6 +23145,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(var.getpeminjaman_perpustakaan()==true){
+            if(btnPeminjamanPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPeminjamanPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23424,6 +23446,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAnggotaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnggotaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPeminjamanPerpustakaan = new widget.ButtonBig();
+        btnPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Bookmark_728913.png")));
+        btnPeminjamanPerpustakaan.setText("Peminjaman Koleksi Perpustakaan");
+        btnPeminjamanPerpustakaan.setIconTextGap(0);
+        btnPeminjamanPerpustakaan.setName("btnPeminjamanPerpustakaan"); 
+        btnPeminjamanPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPeminjamanPerpustakaanActionPerformed(evt);
             }
         });
     }
