@@ -23,7 +23,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -580,6 +579,7 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"Nama Penerbit");
         }else {
+            if(tbJnsPerawatan.getSelectedRow()> -1){
                 //menyimpan-------------------------------------------------
                 Sequel.mengedit("perpustakaan_penerbit","kode_penerbit='"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0) +"'","kode_penerbit='"+TKd.getText()+"',nama_penerbit='"+TNm.getText()+"',"+
                         "alamat_penerbit='"+TAlamat.getText()+"',"+
@@ -588,8 +588,10 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
                         "website_penerbit='"+TWeb.getText()+"'");
                 //----------------------------------------------------------
                 TKd.requestFocus();
-            tampil();
-            emptTeks();
+                tampil();
+                emptTeks();
+            }
+                
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

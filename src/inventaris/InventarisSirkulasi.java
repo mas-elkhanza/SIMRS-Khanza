@@ -36,6 +36,9 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private String inventariscari="",tglcari="";
 
     /** Creates new form DlgKamarInap
      * @param parent
@@ -256,7 +259,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         panelCari = new widget.panelisi();
         jLabel17 = new widget.Label();
         StatusCari = new widget.ComboBox();
-        jLabel27 = new widget.Label();
+        ChkTanggal = new widget.CekBox();
         TglPinjam1 = new widget.Tanggal();
         jLabel22 = new widget.Label();
         TglPinjam2 = new widget.Tanggal();
@@ -456,7 +459,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         label12.setBounds(367, 55, 80, 23);
 
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-01-2019" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2019" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -718,31 +721,24 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(80, 23));
         panelCari.add(jLabel17);
 
-        StatusCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masih Dipinjam", "Sudah Kembali" }));
+        StatusCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Masih Dipinjam", "Sudah Kembali" }));
         StatusCari.setName("StatusCari"); // NOI18N
         StatusCari.setPreferredSize(new java.awt.Dimension(225, 23));
-        StatusCari.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                StatusCariItemStateChanged(evt);
-            }
-        });
         panelCari.add(StatusCari);
 
-        jLabel27.setText("Tgl.Pinjam :");
-        jLabel27.setName("jLabel27"); // NOI18N
-        jLabel27.setPreferredSize(new java.awt.Dimension(110, 23));
-        panelCari.add(jLabel27);
+        ChkTanggal.setSelected(true);
+        ChkTanggal.setText("Tgl.Pinjam :");
+        ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkTanggal.setName("ChkTanggal"); // NOI18N
+        ChkTanggal.setPreferredSize(new java.awt.Dimension(110, 23));
+        panelCari.add(ChkTanggal);
 
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-01-2019" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2019" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
         TglPinjam1.setPreferredSize(new java.awt.Dimension(134, 23));
-        TglPinjam1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TglPinjam1ItemStateChanged(evt);
-            }
-        });
         TglPinjam1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPinjam1KeyPressed(evt);
@@ -756,16 +752,11 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(35, 23));
         panelCari.add(jLabel22);
 
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-01-2019" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2019" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
         TglPinjam2.setPreferredSize(new java.awt.Dimension(134, 23));
-        TglPinjam2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TglPinjam1ItemStateChanged(evt);
-            }
-        });
         TglPinjam2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglPinjam2KeyPressed(evt);
@@ -896,16 +887,17 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-                String inventariscari="";
-                String tglcari=" inventaris_peminjaman.tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and ";
-
+                inventariscari="";
+                tglcari="";
+                
+                if(ChkTanggal.isSelected()==true){
+                    tglcari=" inventaris_peminjaman.tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and ";
+                }
+                
                 if(!InventarisCari.getText().equals("")){
                     inventariscari="inventaris_barang.nama_barang='"+InventarisCari.getText()+"' and ";
                 }
@@ -941,18 +933,18 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
                            "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
                            "and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
                            "and petugas.nip=inventaris_peminjaman.nip "+
-                           "where "+inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_peminjaman.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_peminjaman.peminjam like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_peminjaman.tlp like '%"+TCari.getText().trim()+"%' "+
+                           "where "+inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_peminjaman.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_peminjaman.peminjam like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                           inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_peminjaman.tlp like '%"+TCari.getText().trim()+"%' "+
                            " order by inventaris_peminjaman.tgl_pinjam",param);
 
         }
@@ -992,6 +984,8 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         InventarisCari.setText("");
+        StatusCari.setSelectedItem("Semua");
+        ChkTanggal.setSelected(false);
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1081,12 +1075,6 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         
     }//GEN-LAST:event_DTPTglItemStateChanged
 
-    private void TglPinjam1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglPinjam1ItemStateChanged
-        // R2.setSelected(true);
-         tampil();          
-       
-}//GEN-LAST:event_TglPinjam1ItemStateChanged
-
     private void TglPinjam1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPinjam1KeyPressed
         Valid.pindah(evt,InventarisCari,TglPinjam2);
 }//GEN-LAST:event_TglPinjam1KeyPressed
@@ -1140,10 +1128,6 @@ private void InventarisCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
 private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     tampil();
 }//GEN-LAST:event_formWindowOpened
-
-private void StatusCariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StatusCariItemStateChanged
-  tampil();
-}//GEN-LAST:event_StatusCariItemStateChanged
 
 private void no_inventarisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_inventarisKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1241,6 +1225,7 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
     private widget.Button BtnSimpan;
+    private widget.CekBox ChkTanggal;
     private widget.TextBox InventarisCari;
     private widget.Label LCount;
     private widget.Label LblTgl;
@@ -1262,7 +1247,6 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
-    private widget.Label jLabel27;
     private widget.Label jLabel6;
     private widget.TextBox jenis;
     private widget.Label label1;
@@ -1288,78 +1272,64 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
-        String inventariscari="";
-        String tglcari=" inventaris_peminjaman.tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and ";
-        
-        if(!InventarisCari.getText().equals("")){
-            inventariscari="inventaris_barang.nama_barang='"+InventarisCari.getText()+"' and ";
-        }
-        
-        String sql="select inventaris_peminjaman.no_inventaris,"+
-                   "inventaris.kode_barang,"+
-                   "inventaris_barang.nama_barang,"+
-                   "inventaris_produsen.nama_produsen,"+
-                   "inventaris_merk.nama_merk,"+
-                   "inventaris_barang.thn_produksi, "+
-                   "inventaris_barang.isbn,"+
-                   "inventaris_kategori.nama_kategori,"+
-                   "inventaris_jenis.nama_jenis,"+
-                   "inventaris_peminjaman.peminjam,"+
-                   "inventaris_peminjaman.tlp,"+
-                   "inventaris_peminjaman.tgl_pinjam,"+
-                   "inventaris_peminjaman.tgl_kembali,"+
-                   "petugas.nama "+
-                   "from inventaris_peminjaman inner join inventaris inner join inventaris_barang inner join inventaris_produsen "+
-                   "inner join inventaris_merk inner join inventaris_kategori inner join inventaris_jenis inner join petugas "+
-                   "on inventaris_peminjaman.no_inventaris=inventaris.no_inventaris "+
-                   "and inventaris_barang.kode_barang=inventaris.kode_barang "+
-                   "and inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
-                   "and inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                   "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
-                   "and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
-                   "and petugas.nip=inventaris_peminjaman.nip "+
-                   "where "+inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_peminjaman.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_peminjaman.peminjam like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                   inventariscari+" inventaris_peminjaman.status_pinjam='"+StatusCari.getSelectedItem()+"' and "+tglcari+" inventaris_peminjaman.tlp like '%"+TCari.getText().trim()+"%' "+
-                   " order by inventaris_peminjaman.tgl_pinjam";
-        //System.out.println(sql);
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
         Valid.tabelKosong(tabMode);
         try{
-            ResultSet rs=koneksiDB.condb().prepareStatement(sql).executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString("no_inventaris"),
-                               rs.getString("kode_barang"),
-                               rs.getString("nama_barang"),
-                               rs.getString("nama_produsen"),
-                               rs.getString("nama_merk"),
-                               rs.getString("thn_produksi").substring(0,4),
-                               rs.getString("isbn"),
-                               rs.getString("nama_kategori"),
-                               rs.getString("nama_jenis"),
-                               rs.getString("peminjam"),
-                               rs.getString("tlp"),
-                               rs.getString("tgl_pinjam"),
-                               rs.getString("tgl_kembali"),
-                               rs.getString("nama")});
+            inventariscari="";
+            tglcari="";
+            if(ChkTanggal.isSelected()==true){
+                tglcari=" inventaris_peminjaman.tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and ";
             }
-        }catch(SQLException e){
+
+            if(!InventarisCari.getText().equals("")){
+                inventariscari="inventaris_barang.nama_barang='"+InventarisCari.getText()+"' and ";
+            }
+            ps=koneksi.prepareStatement(
+                    "select inventaris_peminjaman.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
+                       "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,inventaris_kategori.nama_kategori,"+
+                       "inventaris_jenis.nama_jenis,inventaris_peminjaman.peminjam,inventaris_peminjaman.tlp,inventaris_peminjaman.tgl_pinjam,"+
+                       "inventaris_peminjaman.tgl_kembali,petugas.nama from inventaris_peminjaman inner join inventaris inner join inventaris_barang "+
+                       "inner join inventaris_produsen inner join inventaris_merk inner join inventaris_kategori inner join inventaris_jenis "+
+                       "inner join petugas on inventaris_peminjaman.no_inventaris=inventaris.no_inventaris and inventaris_barang.kode_barang=inventaris.kode_barang "+
+                       "and inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen and inventaris_barang.id_merk=inventaris_merk.id_merk "+
+                       "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
+                       "and petugas.nip=inventaris_peminjaman.nip where "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_peminjaman.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_peminjaman.peminjam like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_peminjaman.tlp like '%"+TCari.getText().trim()+"%' "+
+                       " order by inventaris_peminjaman.tgl_pinjam");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_inventaris"),rs.getString("kode_barang"),rs.getString("nama_barang"),rs.getString("nama_produsen"),
+                        rs.getString("nama_merk"),rs.getString("thn_produksi").substring(0,4),rs.getString("isbn"),rs.getString("nama_kategori"),
+                        rs.getString("nama_jenis"),rs.getString("peminjam"),rs.getString("tlp"),rs.getString("tgl_pinjam"),
+                        rs.getString("tgl_kembali"),rs.getString("nama")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        int b=tabMode.getRowCount();
-        LCount.setText(""+b);
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {       
@@ -1404,19 +1374,30 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
     
     public void isInventaris(){
         try {
-                PreparedStatement ps=koneksiDB.condb().prepareStatement(
+                ps=koneksi.prepareStatement(
                    "select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
                    "inventaris_merk.nama_merk,inventaris_jenis.nama_jenis,inventaris.status_barang "+
                    "from inventaris inner join inventaris_barang inner join inventaris_jenis inner join inventaris_merk "+
                    "on inventaris_barang.id_merk=inventaris_merk.id_merk and inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
                    "and inventaris_barang.kode_barang=inventaris.kode_barang where inventaris.no_inventaris=?");
-                ps.setString(1,no_inventaris.getText());
-                ResultSet rs=ps.executeQuery();
-                if(rs.next()){
-                    nama_barang.setText(rs.getString("kode_barang")+", "+rs.getString("nama_barang"));
-                    merk.setText(rs.getString("nama_merk"));
-                    jenis.setText(rs.getString("nama_jenis"));
-                    status.setText(rs.getString("status_barang"));
+                try{
+                    ps.setString(1,no_inventaris.getText());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        nama_barang.setText(rs.getString("kode_barang")+", "+rs.getString("nama_barang"));
+                        merk.setText(rs.getString("nama_merk"));
+                        jenis.setText(rs.getString("nama_jenis"));
+                        status.setText(rs.getString("status_barang"));
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
                 }
             } catch (SQLException ex) {
                 System.out.println("Notifikasi : "+ex);

@@ -70,7 +70,8 @@ public class DlgSetEmbalase extends javax.swing.JDialog {
 
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Embalase.setDocument(new batasInput((byte)10).getKata(Embalase));
+        Embalase.setDocument(new batasInput((byte)10).getOnlyAngka(Embalase));
+        Tuslah.setDocument(new batasInput((byte)10).getOnlyAngka(Tuslah));
         try {
             ps=koneksi.prepareStatement("select * from set_embalase ");
         } catch (Exception e) {

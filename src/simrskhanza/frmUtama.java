@@ -439,10 +439,15 @@ import inventaris.KeslingPestControl;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
+import perpustakaan.PerpustakaanAnggota;
+import perpustakaan.PerpustakaanDenda;
+import perpustakaan.PerpustakaanInventaris;
 import perpustakaan.PerpustakaanJenis;
 import perpustakaan.PerpustakaanKategori;
+import perpustakaan.PerpustakaanKoleksi;
 import perpustakaan.PerpustakaanPenerbit;
 import perpustakaan.PerpustakaanPengarang;
+import perpustakaan.PerpustakaanPengaturanPeminjaman;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import setting.DlgPasswordAsuransi;
@@ -14260,6 +14265,73 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKoleksiPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanKoleksi form=new PerpustakaanKoleksi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnInventarisPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanInventaris form=new PerpustakaanInventaris(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPengaturanPeminjamanPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPengaturanPeminjaman form=new PerpustakaanPengaturanPeminjaman(this,false);
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnDendaPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanDenda form=new PerpustakaanDenda(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnAnggotaPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanAnggota form=new PerpustakaanAnggota(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPeminjamanPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
     
     /**
     * @param args the command line arguments
@@ -14830,7 +14902,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.Tanggal tanggal;
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
-            btnKoleksiPerpustakaan;
+            btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
+            btnPeminjamanPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17422,6 +17495,31 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnKoleksiPerpustakaan);
                 jmlmenu++;
             }
+            
+            if(var.getinventaris_perpustakaan()==true){
+                Panelmenu.add(btnInventarisPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(var.getset_peminjaman_perpustakaan()==true){
+                Panelmenu.add(btnPengaturanPeminjamanPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(var.getdenda_perpustakaan()==true){
+                Panelmenu.add(btnDendaPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(var.getanggota_perpustakaan()==true){
+                Panelmenu.add(btnAnggotaPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(var.getpeminjaman_perpustakaan()==true){
+                Panelmenu.add(btnPeminjamanPerpustakaan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -19763,6 +19861,31 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(var.getkoleksi_perpustakaan()==true){
             Panelmenu.add(btnKoleksiPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getinventaris_perpustakaan()==true){
+            Panelmenu.add(btnInventarisPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getset_peminjaman_perpustakaan()==true){
+            Panelmenu.add(btnPengaturanPeminjamanPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getdenda_perpustakaan()==true){
+            Panelmenu.add(btnDendaPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getanggota_perpustakaan()==true){
+            Panelmenu.add(btnAnggotaPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getpeminjaman_perpustakaan()==true){
+            Panelmenu.add(btnPeminjamanPerpustakaan);
             jmlmenu++;
         }
 
@@ -22994,6 +23117,41 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(var.getinventaris_perpustakaan()==true){
+            if(btnInventarisPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnInventarisPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getset_peminjaman_perpustakaan()==true){
+            if(btnPengaturanPeminjamanPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengaturanPeminjamanPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getdenda_perpustakaan()==true){
+            if(btnDendaPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDendaPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getanggota_perpustakaan()==true){
+            if(btnAnggotaPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAnggotaPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpeminjaman_perpustakaan()==true){
+            if(btnPeminjamanPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPeminjamanPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23239,7 +23397,67 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKoleksiPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKoleksiPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //btnKoleksiPerpustakaanActionPerformed(evt);
+                btnKoleksiPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnInventarisPerpustakaan = new widget.ButtonBig();
+        btnInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library_47990.png")));
+        btnInventarisPerpustakaan.setText("Inventaris Perpustakaan");
+        btnInventarisPerpustakaan.setIconTextGap(0);
+        btnInventarisPerpustakaan.setName("btnInventarisPerpustakaan"); 
+        btnInventarisPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInventarisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarisPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPengaturanPeminjamanPerpustakaan = new widget.ButtonBig();
+        btnPengaturanPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_EditDocument_728933.png")));
+        btnPengaturanPeminjamanPerpustakaan.setText("Pengaturan Peminjaman");
+        btnPengaturanPeminjamanPerpustakaan.setIconTextGap(0);
+        btnPengaturanPeminjamanPerpustakaan.setName("btnPengaturanPeminjamanPerpustakaan"); 
+        btnPengaturanPeminjamanPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengaturanPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengaturanPeminjamanPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnDendaPerpustakaan = new widget.ButtonBig();
+        btnDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png")));
+        btnDendaPerpustakaan.setText("Denda Perpustakaan");
+        btnDendaPerpustakaan.setIconTextGap(0);
+        btnDendaPerpustakaan.setName("btnDendaPerpustakaan"); 
+        btnDendaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDendaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnAnggotaPerpustakaan = new widget.ButtonBig();
+        btnAnggotaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_male_user_3440844.png")));
+        btnAnggotaPerpustakaan.setText("Anggota Perpustakaan");
+        btnAnggotaPerpustakaan.setIconTextGap(0);
+        btnAnggotaPerpustakaan.setName("btnAnggotaPerpustakaan"); 
+        btnAnggotaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAnggotaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnggotaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPeminjamanPerpustakaan = new widget.ButtonBig();
+        btnPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Bookmark_728913.png")));
+        btnPeminjamanPerpustakaan.setText("Peminjaman Koleksi Perpustakaan");
+        btnPeminjamanPerpustakaan.setIconTextGap(0);
+        btnPeminjamanPerpustakaan.setName("btnPeminjamanPerpustakaan"); 
+        btnPeminjamanPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPeminjamanPerpustakaanActionPerformed(evt);
             }
         });
     }

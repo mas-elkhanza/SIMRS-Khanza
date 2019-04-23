@@ -21,6 +21,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -46,6 +47,8 @@ public class DlgIKBBayi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private Date lahir;
+    private PreparedStatement ps;
+    private ResultSet rs;
     private LocalDate today=LocalDate.now();
     private LocalDate birthday;
     private Period p;
@@ -3754,7 +3757,9 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 tglcari=" pasien.tgl_lahir between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and ";
         }        
         
-        String sql="select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, "+
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, "+
                    "pasien.tgl_lahir,pasien_bayi.jam_lahir, pasien.umur, "+
                    "pasien.tgl_daftar,pasien.nm_ibu,pasien_bayi.umur_ibu, "+
                    "pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,"+
@@ -3777,43 +3782,31 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                    "or "+jkelcari+tglcari+" pasien.nm_ibu like '%"+TCari.getText().trim()+"%' "+
                    "or "+jkelcari+tglcari+" pasien_bayi.proses_lahir like '%"+TCari.getText().trim()+"%' "+
                    "or "+jkelcari+tglcari+" pasien_bayi.penyulit_kehamilan like '%"+TCari.getText().trim()+"%' "+
-                   "or "+jkelcari+tglcari+" pasien_bayi.ketuban like '%"+TCari.getText().trim()+"%'  order by pasien.no_rkm_medis desc";               
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
-        Valid.tabelKosong(tabMode);
-        try{
-            java.sql.Statement stat=koneksi.createStatement();
-            ResultSet rs=stat.executeQuery(sql);
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getString(8),
-                               rs.getString(9),
-                               rs.getString(10),
-                               rs.getString(11),
-                               rs.getString(12),
-                               rs.getString(13),
-                               rs.getString(14),
-                               rs.getString(15),
-                               rs.getString(16),
-                               rs.getString(17),
-                               rs.getString(18),
-                               rs.getString(19),
-                               rs.getString(20),
-                               rs.getString(21),
-                               rs.getString(22),
-                               rs.getString(23),
-                               rs.getString(24),
-                               rs.getString(25)});
+                   "or "+jkelcari+tglcari+" pasien_bayi.ketuban like '%"+TCari.getText().trim()+"%'  order by pasien.no_rkm_medis desc");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),
+                        rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),
+                        rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
+                        rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24),
+                        rs.getString(25)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         int b=tabMode.getRowCount();
@@ -3899,25 +3892,6 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         return BtnKeluar;
     }
 
-    private void isIbu(){
-        try {
-            Statement stat = koneksi.createStatement();
-            ResultSet rs=stat.executeQuery("select pasien_ibu.nm_pasien,"+
-                    " pasien_ibu.suami, "+
-                    " pasien_ibu.umur, "+
-                    " pasien_ibu.alamat "+
-                    " from pasien_ibu where pasien_ibu.no_rm_ib ");
-            while(rs.next()){
-                Nmibu.setText(rs.getString(1));
-                NmAyah.setText(rs.getString(2));
-                UmurIbu.setText(rs.getString(3));
-                AlamatIbu.setText(rs.getString(4));
-            }
-        } catch (SQLException ex) {
-            System.out.println("Catatan ibu : "+ex);
-        }
-    } 
-    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
