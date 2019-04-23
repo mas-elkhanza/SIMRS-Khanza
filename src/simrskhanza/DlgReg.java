@@ -853,6 +853,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnJKRA = new javax.swing.JMenuItem();
         MnLembarRalan = new javax.swing.JMenuItem();
         MnBlangkoResep = new javax.swing.JMenuItem();
+        MnSuratJaminanPelayanan = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MnCheckList = new javax.swing.JMenuItem();
         MnCheckList1 = new javax.swing.JMenuItem();
@@ -2121,6 +2122,23 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         jMenu4.add(MnBlangkoResep);
+
+        MnSuratJaminanPelayanan.setBackground(new java.awt.Color(255, 255, 254));
+        MnSuratJaminanPelayanan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSuratJaminanPelayanan.setForeground(new java.awt.Color(70, 70, 70));
+        MnSuratJaminanPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSuratJaminanPelayanan.setText("Surat Jaminan Pelayanan BPJS");
+        MnSuratJaminanPelayanan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSuratJaminanPelayanan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSuratJaminanPelayanan.setIconTextGap(5);
+        MnSuratJaminanPelayanan.setName("MnSuratJaminanPelayanan"); // NOI18N
+        MnSuratJaminanPelayanan.setPreferredSize(new java.awt.Dimension(320, 26));
+        MnSuratJaminanPelayanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSuratJaminanPelayananActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnSuratJaminanPelayanan);
 
         jPopupMenu1.add(jMenu4);
 
@@ -8642,6 +8660,30 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnTeridentifikasiTB1ActionPerformed
 
+    private void MnSuratJaminanPelayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSuratJaminanPelayananActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("SuratJaminanPelayananRalan.jrxml","report","::[ Surat Jaminan Pelayanan ]::",
+                "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg, reg_periksa.kd_dokter,"+
+                "dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,reg_periksa.p_jawab,"+
+                "reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_peserta,"+
+                "pasien.tgl_lahir from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab on "+
+                "reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "+
+                "and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnSuratJaminanPelayananActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8814,6 +8856,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnStatusBaru;
     private javax.swing.JMenuItem MnStatusLama;
     private javax.swing.JMenuItem MnSudah;
+    private javax.swing.JMenuItem MnSuratJaminanPelayanan;
     private javax.swing.JMenuItem MnTeridentifikasiTB;
     private javax.swing.JMenuItem MnTeridentifikasiTB1;
     private javax.swing.JMenu MnTindakan;

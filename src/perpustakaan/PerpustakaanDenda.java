@@ -467,11 +467,13 @@ public class PerpustakaanDenda extends javax.swing.JDialog {
         }else if(BesarDenda.getText().trim().equals("")){
             Valid.textKosong(BesarDenda,"Besarnya Denda");
         }else{
-            Sequel.mengedit("perpustakaan_denda","kode_denda=?","kode_denda=?,jenis_denda=?,besar_denda=?",4,new String[]{
-                KodeDenda.getText(),NmDenda.getText(),BesarDenda.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbSpesialis.getSelectedRow()> -1){
+                Sequel.mengedit("perpustakaan_denda","kode_denda=?","kode_denda=?,jenis_denda=?,besar_denda=?",4,new String[]{
+                    KodeDenda.getText(),NmDenda.getText(),BesarDenda.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
+                });
+                if(tabMode.getRowCount()!=0){tampil();}
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

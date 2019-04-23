@@ -437,11 +437,13 @@ public class PerpustakaanKategori extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"Nama Kategori");
         }else{
-            Sequel.mengedit("perpustakaan_kategori","id_kategori=?","id_kategori=?,nama_kategori=?",3,new String[]{
-                TKd.getText(),TNm.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbSpesialis.getSelectedRow()> -1){
+                Sequel.mengedit("perpustakaan_kategori","id_kategori=?","id_kategori=?,nama_kategori=?",3,new String[]{
+                    TKd.getText(),TNm.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
+                });
+                if(tabMode.getRowCount()!=0){tampil();}
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
