@@ -578,7 +578,7 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{    
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.62f);
+                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.61f);
             }     
         }catch(Exception e){            
         }
@@ -14343,6 +14343,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBayarDendaPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -14913,7 +14917,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
             btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
-            btnPeminjamanPerpustakaan;
+            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17530,6 +17534,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPeminjamanPerpustakaan);
                 jmlmenu++;
             }
+            
+            if(var.getbayar_denda_perpustakaan()==true){
+                Panelmenu.add(btnBayarDendaPerpustakaan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -19896,6 +19905,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(var.getpeminjaman_perpustakaan()==true){
             Panelmenu.add(btnPeminjamanPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(var.getbayar_denda_perpustakaan()==true){
+            Panelmenu.add(btnBayarDendaPerpustakaan);
             jmlmenu++;
         }
 
@@ -23162,6 +23176,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(var.getbayar_denda_perpustakaan()==true){
+            if(btnBayarDendaPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarDendaPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23468,6 +23489,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPeminjamanPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnBayarDendaPerpustakaan = new widget.ButtonBig();
+        btnBayarDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_checkout_47678.png")));
+        btnBayarDendaPerpustakaan.setText("Bayar Denda Perpustakaan");
+        btnBayarDendaPerpustakaan.setIconTextGap(0);
+        btnBayarDendaPerpustakaan.setName("btnBayarDendaPerpustakaan"); 
+        btnBayarDendaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarDendaPerpustakaanActionPerformed(evt);
             }
         });
     }
