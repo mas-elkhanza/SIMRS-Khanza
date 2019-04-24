@@ -450,6 +450,7 @@ import perpustakaan.PerpustakaanPengarang;
 import perpustakaan.PerpustakaanPengaturanPeminjaman;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
+import perpustakaan.PerpustakaanSirkulasi;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -14330,7 +14331,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPeminjamanPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanSirkulasi form=new PerpustakaanSirkulasi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
@@ -23450,7 +23460,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnPeminjamanPerpustakaan = new widget.ButtonBig();
-        btnPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Bookmark_728913.png")));
+        btnPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_diagram-07_35577.png")));
         btnPeminjamanPerpustakaan.setText("Peminjaman Koleksi Perpustakaan");
         btnPeminjamanPerpustakaan.setIconTextGap(0);
         btnPeminjamanPerpustakaan.setName("btnPeminjamanPerpustakaan"); 
