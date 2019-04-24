@@ -1460,9 +1460,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{
                     psresepasuransi.setDouble(1,kenaikan);
                     psresepasuransi.setString(2,bangsal);
@@ -1499,9 +1499,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{
                     psresep.setString(1,bangsal);
                     psresep.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1824,9 +1824,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{ 
                     psresepasuransi.setDouble(1,kenaikan);
                     psresepasuransi.setString(2,bangsal);
@@ -1864,9 +1864,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{ 
                     psresep.setString(1,bangsal);
                     psresep.setString(2,"%"+TCari.getText().trim()+"%");
