@@ -261,6 +261,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
                 <Property name="alignment" type="int" value="0"/>
+                <Property name="horizontalGap" type="int" value="3"/>
                 <Property name="verticalGap" type="int" value="9"/>
               </Layout>
               <SubComponents>

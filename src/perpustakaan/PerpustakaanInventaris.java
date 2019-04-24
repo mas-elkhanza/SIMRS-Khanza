@@ -483,7 +483,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         label23.setText("Ruang :");
         label23.setName("label23"); // NOI18N
@@ -492,7 +492,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
 
         nm_ruangcari.setEditable(false);
         nm_ruangcari.setName("nm_ruangcari"); // NOI18N
-        nm_ruangcari.setPreferredSize(new java.awt.Dimension(230, 23));
+        nm_ruangcari.setPreferredSize(new java.awt.Dimension(235, 23));
         panelGlass9.add(nm_ruangcari);
 
         btnRuang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -635,7 +635,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         FormInput.add(btnBarang);
         btnBarang.setBounds(495, 40, 25, 23);
 
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2019" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);
