@@ -1648,10 +1648,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private void tbDetailObatRacikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDetailObatRacikanKeyPressed
         if(tbObatRacikan.getSelectedRow()!= -1){
             if(tbDetailObatRacikan.getRowCount()!=0){
+                i=tbDetailObatRacikan.getSelectedColumn();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try {
-                        getDatadetailobatracikan();
-                        i=tbDetailObatRacikan.getSelectedColumn();
                         if(i==11){
                             try {
                                 if(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0.0")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0,0")) {
@@ -1673,11 +1672,14 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             TCari.requestFocus();
                         }else if((i==9)||(i==10)){
                             try {
-                                tbDetailObatRacikan.setValueAt(
-                                    Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
-                                        *Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString()))
-                                    /Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString()),1)
-                                ,tbDetailObatRacikan.getSelectedRow(),10);
+                                if(!tabModeDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString().equals("")){
+                                    tbDetailObatRacikan.setValueAt(
+                                        Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
+                                            *Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString()))
+                                        /Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString()),1)
+                                    ,tbDetailObatRacikan.getSelectedRow(),10);
+                                    getDatadetailobatracikan();
+                                }
                             } catch (Exception e) {
                                 tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),10);
                                 tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),11);
@@ -1694,13 +1696,19 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     }
                 }else if((evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                     try {
-                        if(!tabModeDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString().equals("")){
-                            getDatadetailobatracikan();
-                        }
+                        if((i==9)||(i==10)){
+                            if(!tabModeDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString().equals("")){
+                                tbDetailObatRacikan.setValueAt(
+                                    Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
+                                    *Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,9).toString()))
+                                    /Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,8).toString()),1),row,10
+                                );
+                                getDatadetailobatracikan();
+                            }
+                        }   
                     } catch (java.lang.NullPointerException e) {
                     }
                 }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
-                    i=tbDetailObatRacikan.getSelectedColumn();
                     if((i==9)||(i==10)){
                         if(tbDetailObatRacikan.getSelectedRow()!= -1){
                             tbDetailObatRacikan.setValueAt("",tbDetailObatRacikan.getSelectedRow(),9);
@@ -1711,16 +1719,20 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     }
 
                 }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
-                    i=tbDetailObatRacikan.getSelectedColumn();
                     if(i!=9){
                         TCari.requestFocus();
                     }
                 }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
-                    i=tbDetailObatRacikan.getSelectedColumn();
                     if((i==9)||(i==10)){
                         try {
-                            getDatadetailobatracikan();
-
+                            if(!tabModeDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString().equals("")){
+                                tbDetailObatRacikan.setValueAt(
+                                    Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
+                                    *Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,9).toString()))
+                                    /Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,8).toString()),1),row,10
+                                );
+                            }
+                            
                             try {
                                 if(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0.0")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0,0")) {
                                     tbDetailObatRacikan.setValueAt(embalase,tbDetailObatRacikan.getSelectedRow(),11);
@@ -1736,6 +1748,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             } catch (Exception e) {
                                 tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),12);
                             }
+                            getDatadetailobatracikan();
                         } catch (Exception e) {
                             tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),10);
                             tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),11);
@@ -2555,11 +2568,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         if(tbDetailObatRacikan.getSelectedRow()!= -1){
             row=tbDetailObatRacikan.getSelectedRow();
             try {
-                tbDetailObatRacikan.setValueAt(
-                    Valid.SetAngka8((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
-                    *Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,9).toString()))
-                    /Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,8).toString()),1),row,10
-                );
                 if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(row,8).toString())>0){
                     if(aktifkanbatch.equals("no")){
                         stokbarang=0;  
@@ -2623,7 +2631,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void tampildetailracikanobat() {        
         z=0;
         for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
-            if(!tbDetailObatRacikan.getValueAt(i,9).toString().equals("")){
+            if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
                 z++;
             }
         }    
