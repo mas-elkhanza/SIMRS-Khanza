@@ -366,6 +366,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -635,7 +636,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         FormInput.add(btnBarang);
         btnBarang.setBounds(495, 40, 25, 23);
 
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2019" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);
@@ -1314,7 +1315,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
                         rs.getString("no_inventaris"),rs.getString("kode_buku"),rs.getString("judul_buku"),
                         rs.getString("nama_penerbit"),rs.getString("nama_pengarang"),rs.getString("thn_terbit").substring(0,4),
                         rs.getString("isbn"),rs.getString("nama_kategori"),rs.getString("nama_jenis"),
-                        rs.getString("asal_buku"),rs.getString("tgl_pengadaan"),Valid.SetAngka(rs.getDouble("harga")),
+                        rs.getString("asal_buku"),rs.getString("tgl_pengadaan"),rs.getString("harga"),
                         rs.getString("status_buku"),rs.getString("nm_ruang"),rs.getString("no_rak"),rs.getString("no_box")
                     });
                     nilai_inven=nilai_inven+rs.getDouble("harga");

@@ -579,7 +579,7 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{    
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.61f);
+                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.65f);
             }     
         }catch(Exception e){            
         }
@@ -23468,7 +23468,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnDendaPerpustakaan = new widget.ButtonBig();
-        btnDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png")));
+        btnDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Wallet_3387286.png")));
         btnDendaPerpustakaan.setText("Denda Perpustakaan");
         btnDendaPerpustakaan.setIconTextGap(0);
         btnDendaPerpustakaan.setName("btnDendaPerpustakaan"); 
@@ -23504,7 +23504,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnBayarDendaPerpustakaan = new widget.ButtonBig();
-        btnBayarDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_checkout_47678.png")));
+        btnBayarDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_money_sale_shop_4177574.png")));
         btnBayarDendaPerpustakaan.setText("Bayar Denda Perpustakaan");
         btnBayarDendaPerpustakaan.setIconTextGap(0);
         btnBayarDendaPerpustakaan.setName("btnBayarDendaPerpustakaan"); 
