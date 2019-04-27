@@ -271,6 +271,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -395,7 +396,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 43));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         chkGabung.setText("Tgl.Gabung :");
         chkGabung.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -424,7 +425,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         ChkHabis.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkHabis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkHabis.setName("ChkHabis"); // NOI18N
-        ChkHabis.setPreferredSize(new java.awt.Dimension(165, 23));
+        ChkHabis.setPreferredSize(new java.awt.Dimension(178, 23));
         panelGlass9.add(ChkHabis);
 
         Habis1.setDisplayFormat("dd-MM-yyyy");
@@ -447,7 +448,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 
         panelGlass10.setName("panelGlass10"); // NOI18N
         panelGlass10.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -581,7 +582,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         label10.setBounds(0, 40, 92, 23);
 
         TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-04-2019" }));
+        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         TglLahir.setDisplayFormat("dd-MM-yyyy");
         TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.setOpaque(false);
@@ -638,7 +639,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         label12.setBounds(360, 100, 80, 23);
 
         Gabung.setForeground(new java.awt.Color(50, 70, 50));
-        Gabung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-04-2019" }));
+        Gabung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         Gabung.setDisplayFormat("dd-MM-yyyy");
         Gabung.setName("Gabung"); // NOI18N
         Gabung.setOpaque(false);
@@ -652,7 +653,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         Gabung.setBounds(443, 100, 90, 23);
 
         Habis.setForeground(new java.awt.Color(50, 70, 50));
-        Habis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-04-2019" }));
+        Habis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         Habis.setDisplayFormat("dd-MM-yyyy");
         Habis.setName("Habis"); // NOI18N
         Habis.setOpaque(false);

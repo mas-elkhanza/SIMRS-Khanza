@@ -511,7 +511,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusData = new javax.swing.JMenu();
         MnHapusTagihanOperasi = new javax.swing.JMenuItem();
         MnHapusObatOperasi = new javax.swing.JMenuItem();
-        MnHapusBilling = new javax.swing.JMenuItem();
         MnHapusDeposit = new javax.swing.JMenuItem();
         MnHapusDiet = new javax.swing.JMenuItem();
         MnHapusDiagnosa = new javax.swing.JMenuItem();
@@ -2449,23 +2448,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         });
         MnHapusData.add(MnHapusObatOperasi);
 
-        MnHapusBilling.setBackground(new java.awt.Color(255, 255, 254));
-        MnHapusBilling.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnHapusBilling.setForeground(new java.awt.Color(70, 70, 70));
-        MnHapusBilling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnHapusBilling.setText("Billing");
-        MnHapusBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnHapusBilling.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnHapusBilling.setIconTextGap(5);
-        MnHapusBilling.setName("MnHapusBilling"); // NOI18N
-        MnHapusBilling.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnHapusBilling.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnHapusBillingActionPerformed(evt);
-            }
-        });
-        MnHapusData.add(MnHapusBilling);
-
         MnHapusDeposit.setBackground(new java.awt.Color(255, 255, 254));
         MnHapusDeposit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnHapusDeposit.setForeground(new java.awt.Color(70, 70, 70));
@@ -4065,7 +4047,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -4112,7 +4094,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -4384,7 +4366,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4397,7 +4379,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass8.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5013,6 +4995,9 @@ private void MnPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
         }else{  
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
@@ -5127,22 +5112,22 @@ private void MnRekapHarianPoliActionPerformed(java.awt.event.ActionEvent evt) {/
 }//GEN-LAST:event_MnRekapHarianPoliActionPerformed
 
 private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDataPemberianObatActionPerformed
-     if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Pasien belum dipilih...!!!");
-            TNoRw.requestFocus();
-        }else{
-            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
-            }else {
-                DlgPemberianObat dlgrwinap=new DlgPemberianObat(null,false);
-                dlgrwinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                dlgrwinap.setLocationRelativeTo(internalFrame1);
-                dlgrwinap.isCek();
-                dlgrwinap.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ralan"); 
-                dlgrwinap.tampilPO();
-                dlgrwinap.setVisible(true);
-            }                
-        }
+    if(TNoRw.getText().trim().equals("")){
+        JOptionPane.showMessageDialog(null,"Maaf, Pasien belum dipilih...!!!");
+        TNoRw.requestFocus();
+    }else{
+        if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+            JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+        }else {
+            DlgPemberianObat dlgrwinap=new DlgPemberianObat(null,false);
+            dlgrwinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgrwinap.setLocationRelativeTo(internalFrame1);
+            dlgrwinap.isCek();
+            dlgrwinap.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ralan"); 
+            dlgrwinap.tampilPO();
+            dlgrwinap.setVisible(true);
+        }                
+    }
 }//GEN-LAST:event_MnDataPemberianObatActionPerformed
 
     private void MnRekapHarianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHarianObatActionPerformed
@@ -5297,10 +5282,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
-                
-            }
-            Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
+            }   
         }
     }//GEN-LAST:event_MnHapusTagihanOperasiActionPerformed
 
@@ -5312,9 +5296,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
-                
+                Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
             }
-            Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusObatOperasiActionPerformed
 
@@ -5378,25 +5361,13 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"'");
-        }
-    }//GEN-LAST:event_MnHapusAturanPkaiObatActionPerformed
-
-    private void MnHapusBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusBillingActionPerformed
-        if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-            TCari.requestFocus();
-        }else{
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
-                
+                Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"'");
             }
-            Sequel.queryu("delete from billing where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from nota_inap where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from nota_jalan where no_rawat='"+TNoRw.getText()+"'");
         }
-    }//GEN-LAST:event_MnHapusBillingActionPerformed
+    }//GEN-LAST:event_MnHapusAturanPkaiObatActionPerformed
 
     private void MnHapusDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusDepositActionPerformed
         if(TNoRw.getText().trim().equals("")){
@@ -5406,9 +5377,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
-                
+                Sequel.queryu("delete from deposit where no_rawat='"+TNoRw.getText()+"'");
             }
-            Sequel.queryu("delete from deposit where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusDepositActionPerformed
 
@@ -5417,11 +5387,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-            }else{ 
-                
-            }
             Sequel.queryu("delete from detail_beri_diet where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusDietActionPerformed
@@ -5431,10 +5396,14 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from tagihan_obat_langsung where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from tagihan_obat_langsung where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusObatActionPerformed
 
@@ -5443,9 +5412,13 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from detail_periksa_lab where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from detail_periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusLabActionPerformed
 
@@ -5454,11 +5427,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-            }else{ 
-                
-            }
             Sequel.queryu("delete from diagnosa_pasien where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusDiagnosaActionPerformed
@@ -5468,11 +5436,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-            }else{ 
-                
-            }
             Sequel.queryu("delete from dpjp_ranap where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusDpjpActionPerformed
@@ -5485,9 +5448,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
-                
+                Sequel.queryu("delete from hemodialisa where no_rawat='"+TNoRw.getText()+"'");
             }
-            Sequel.queryu("delete from hemodialisa where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusHemodialisaActionPerformed
 
@@ -5499,9 +5461,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
-                
+                Sequel.queryu("delete from kamar_inap where no_rawat='"+TNoRw.getText()+"'");
             }
-            Sequel.queryu("delete from kamar_inap where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusKamarInapActionPerformed
 
@@ -5531,9 +5492,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
-                
+                Sequel.queryu("delete from pengurangan_biaya where no_rawat='"+TNoRw.getText()+"'");
             }
-            Sequel.queryu("delete from pengurangan_biaya where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusPotonganActionPerformed
 
@@ -5542,10 +5502,14 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from beri_bhp_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from hasil_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from gambar_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from periksa_radiologi where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from beri_bhp_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from hasil_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from gambar_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from periksa_radiologi where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusRadiologiActionPerformed
 
@@ -5554,7 +5518,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusPiutangActionPerformed
 
@@ -5581,7 +5549,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from rawat_inap_dr where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from rawat_inap_dr where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusTindakanRanapDokterActionPerformed
 
@@ -5590,7 +5562,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from rawat_inap_drpr where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from rawat_inap_drpr where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusTindakanRanapDokterParamedisActionPerformed
 
@@ -5599,7 +5575,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from rawat_inap_pr where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from rawat_inap_pr where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusTindakanRanapParamedisActionPerformed
 
@@ -5608,7 +5588,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from rawat_jl_dr where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from rawat_jl_dr where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusTindakanRalanDokterActionPerformed
 
@@ -5617,7 +5601,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from rawat_jl_drpr where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from rawat_jl_drpr where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusTindakanRalanDokterParamedisActionPerformed
 
@@ -5626,7 +5614,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from rawat_jl_pr where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from rawat_jl_pr where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusTindakanRalanParamedisActionPerformed
 
@@ -5635,7 +5627,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from resep_obat where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from resep_obat where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusResepObatActionPerformed
 
@@ -5644,7 +5640,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from resep_pulang where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from resep_pulang where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusResepPulangActionPerformed
 
@@ -5653,7 +5653,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from returpasien where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from returpasien where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusReturObatActionPerformed
 
@@ -5680,7 +5684,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from stok_obat_pasien where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from stok_obat_pasien where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusStokObatRanapActionPerformed
 
@@ -5689,7 +5697,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            Sequel.queryu("delete from tambahan_biaya where no_rawat='"+TNoRw.getText()+"'");
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from tambahan_biaya where no_rawat='"+TNoRw.getText()+"'");
+            }
         }
     }//GEN-LAST:event_MnHapusTambahanActionPerformed
 
@@ -5698,61 +5710,64 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
-            
-            Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from billing where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from pengurangan_biaya where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from nota_inap where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from nota_jalan where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from deposit where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from detail_beri_diet where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from diagnosa_pasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from dpjp_ranap where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from hemodialisa where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from kamar_inap where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from pengurangan_biaya where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from prosedur_pasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from ranap_gabung where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rujuk where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rujuk_masuk where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from tambahan_biaya where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rawat_inap_dr where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rawat_inap_drpr where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rawat_inap_pr where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rawat_jl_dr where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rawat_jl_drpr where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from rawat_jl_pr where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from pemeriksaan_ralan where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from pemeriksaan_ranap where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from detail_periksa_lab where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from periksa_lab where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from beri_bhp_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from periksa_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from tagihan_obat_langsung where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from resep_obat where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from resep_pulang where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from returpasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from stok_obat_pasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from detail_nota_jalan where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from mutasi_berkas where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from gambar_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from hasil_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from booking_operasi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from catatan_perawatan where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from permintaan_lab where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from permintaan_radiologi where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from pcare_pendaftaran where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
-            
-            tampilkasir();
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{ 
+                Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from billing where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from pengurangan_biaya where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from nota_inap where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from nota_jalan where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from deposit where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from detail_beri_diet where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from diagnosa_pasien where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from dpjp_ranap where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from hemodialisa where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from kamar_inap where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from pengurangan_biaya where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from prosedur_pasien where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from ranap_gabung where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rujuk where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rujuk_masuk where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from tambahan_biaya where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rawat_inap_dr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rawat_inap_drpr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rawat_inap_pr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rawat_jl_dr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rawat_jl_drpr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from rawat_jl_pr where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from pemeriksaan_ralan where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from pemeriksaan_ranap where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from detail_periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from beri_bhp_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from periksa_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from tagihan_obat_langsung where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from resep_obat where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from resep_pulang where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from returpasien where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from stok_obat_pasien where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from detail_nota_jalan where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from mutasi_berkas where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from gambar_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from hasil_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from booking_operasi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from catatan_perawatan where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from permintaan_lab where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from permintaan_radiologi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from pcare_pendaftaran where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
+
+                tampilkasir();
+            }
         }
     }//GEN-LAST:event_MnHapusSemuaActionPerformed
 
@@ -6765,6 +6780,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
         }else{
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
@@ -7148,6 +7166,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
         }else{
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
@@ -7363,6 +7384,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
         }else{  
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
@@ -7942,7 +7966,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnGelang6;
     private javax.swing.JMenuItem MnGelang7;
     private javax.swing.JMenuItem MnHapusAturanPkaiObat;
-    private javax.swing.JMenuItem MnHapusBilling;
     private javax.swing.JMenuItem MnHapusBookingOperasi;
     private javax.swing.JMenu MnHapusData;
     private javax.swing.JMenuItem MnHapusDeposit;

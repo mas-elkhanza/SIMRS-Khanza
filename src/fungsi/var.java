@@ -104,7 +104,7 @@ public final class var {
             grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
             kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
             inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false,anggota_perpustakaan=false,
-            peminjaman_perpustakaan=false;
+            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -603,6 +603,7 @@ public final class var {
                         var.denda_perpustakaan=true;
                         var.anggota_perpustakaan=true;
                         var.peminjaman_perpustakaan=true;
+                        var.bayar_denda_perpustakaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1085,6 +1086,7 @@ public final class var {
                         var.denda_perpustakaan=rs2.getBoolean("denda_perpustakaan");
                         var.anggota_perpustakaan=rs2.getBoolean("anggota_perpustakaan");
                         var.peminjaman_perpustakaan=rs2.getBoolean("peminjaman_perpustakaan");
+                        var.bayar_denda_perpustakaan=rs2.getBoolean("bayar_denda_perpustakaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1565,6 +1567,7 @@ public final class var {
                         var.denda_perpustakaan=false;
                         var.anggota_perpustakaan=false;
                         var.peminjaman_perpustakaan=false;
+                        var.bayar_denda_perpustakaan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2099,4 +2102,5 @@ public final class var {
     public static boolean getdenda_perpustakaan(){return var.denda_perpustakaan;}
     public static boolean getanggota_perpustakaan(){return var.anggota_perpustakaan;}
     public static boolean getpeminjaman_perpustakaan(){return var.peminjaman_perpustakaan;}
+    public static boolean getbayar_denda_perpustakaan(){return var.bayar_denda_perpustakaan;}
 }   

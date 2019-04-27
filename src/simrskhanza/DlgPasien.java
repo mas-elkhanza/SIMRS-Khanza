@@ -2636,7 +2636,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Gabungkan Ke Nomor RM ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame8.setName("internalFrame8"); // NOI18N
-        internalFrame8.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame8.setLayout(null);
 
         BtnCloseIn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -3076,7 +3075,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3208,7 +3207,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(712, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -6841,9 +6840,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void NoRmTujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmTujuanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(!NoRmTujuan.getText().trim().equals("")){
-                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmPasienTujuan,NoRmTujuan.getText());
+                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
                 if(NmPasienTujuan.getText().trim().equals("")){
-                    JOptionPane.showMessageDialog(rootPane,"Akun Rekening tidak ditemukan");
+                    JOptionPane.showMessageDialog(rootPane,"Data pasien tidak ditemukan..!!");
                 }
                 NoRmTujuan.requestFocus();
             }

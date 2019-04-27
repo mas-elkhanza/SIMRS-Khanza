@@ -370,6 +370,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -639,7 +640,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         FormInput.add(btnBarang);
         btnBarang.setBounds(703, 40, 25, 23);
 
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);

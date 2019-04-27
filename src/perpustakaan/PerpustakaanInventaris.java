@@ -112,7 +112,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
-        no_inventaris.setDocument(new batasInput((byte)30).getKata(no_inventaris));
+        no_inventaris.setDocument(new batasInput((byte)20).getKata(no_inventaris));
         kode_buku.setDocument(new batasInput((byte)10).getKata(kode_buku));
         harga.setDocument(new batasInput((byte)15).getOnlyAngka(harga));
         kd_ruang.setDocument(new batasInput((byte)5).getKata(kd_ruang));
@@ -322,11 +322,6 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Inventaris Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -371,6 +366,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -488,7 +484,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         label23.setText("Ruang :");
         label23.setName("label23"); // NOI18N
@@ -497,7 +493,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
 
         nm_ruangcari.setEditable(false);
         nm_ruangcari.setName("nm_ruangcari"); // NOI18N
-        nm_ruangcari.setPreferredSize(new java.awt.Dimension(230, 23));
+        nm_ruangcari.setPreferredSize(new java.awt.Dimension(235, 23));
         panelGlass9.add(nm_ruangcari);
 
         btnRuang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -640,7 +636,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         FormInput.add(btnBarang);
         btnBarang.setBounds(495, 40, 25, 23);
 
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-04-2019" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2019" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);
@@ -1161,10 +1157,6 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_ppBarcodeBtnPrintActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
-
     private void btnRuang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuang1ActionPerformed
         pilihan=2;
         ruang.isCek();
@@ -1323,7 +1315,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
                         rs.getString("no_inventaris"),rs.getString("kode_buku"),rs.getString("judul_buku"),
                         rs.getString("nama_penerbit"),rs.getString("nama_pengarang"),rs.getString("thn_terbit").substring(0,4),
                         rs.getString("isbn"),rs.getString("nama_kategori"),rs.getString("nama_jenis"),
-                        rs.getString("asal_buku"),rs.getString("tgl_pengadaan"),Valid.SetAngka(rs.getDouble("harga")),
+                        rs.getString("asal_buku"),rs.getString("tgl_pengadaan"),rs.getString("harga"),
                         rs.getString("status_buku"),rs.getString("nm_ruang"),rs.getString("no_rak"),rs.getString("no_box")
                     });
                     nilai_inven=nilai_inven+rs.getDouble("harga");
