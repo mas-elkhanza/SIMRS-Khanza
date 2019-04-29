@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -502,7 +502,7 @@ public final class DlgKategori extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptKategori.jrxml","report","::[ Data Kategori ]::","select kode, nama "+
+            Valid.MyReport("rptKategori.jasper","report","::[ Data Kategori ]::","select kode, nama "+
                 " from kategori_barang where  kode like '%"+TCari.getText().trim()+"%' or "+
                 " nama like '%"+TCari.getText().trim()+"%' order by kode");
         }
@@ -682,10 +682,10 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getkategori_barang());
-        BtnHapus.setEnabled(var.getkategori_barang());
-        BtnEdit.setEnabled(var.getkategori_barang());
-        BtnPrint.setEnabled(var.getkategori_barang());
+        BtnSimpan.setEnabled(akses.getkategori_barang());
+        BtnHapus.setEnabled(akses.getkategori_barang());
+        BtnEdit.setEnabled(akses.getkategori_barang());
+        BtnPrint.setEnabled(akses.getkategori_barang());
     }
     
 }

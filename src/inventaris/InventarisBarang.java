@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -932,14 +932,14 @@ public final class InventarisBarang extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();                
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());  
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
                 param.put("logo",Sequel.cariGambar("select logo from setting"));  
-                Valid.MyReport("rptBarangInventaris.jrxml","report","::[ Data Koleksi Barang ]::","select inventaris_barang.kode_barang, inventaris_barang.nama_barang, inventaris_barang.jml_barang, "+
+                Valid.MyReport("rptBarangInventaris.jasper","report","::[ Data Koleksi Barang ]::","select inventaris_barang.kode_barang, inventaris_barang.nama_barang, inventaris_barang.jml_barang, "+
                    "inventaris_produsen.nama_produsen, inventaris_merk.nama_merk, inventaris_barang.thn_produksi, inventaris_barang.isbn,"+
                    "inventaris_kategori.nama_kategori, inventaris_jenis.nama_jenis from inventaris_barang inner join inventaris_produsen "+
                    "inner join inventaris_jenis inner join inventaris_kategori inner join inventaris_merk "+
@@ -1326,10 +1326,10 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinventaris_koleksi());
-        BtnHapus.setEnabled(var.getinventaris_koleksi());
-        BtnEdit.setEnabled(var.getinventaris_koleksi());
-        BtnPrint.setEnabled(var.getinventaris_koleksi());
+        BtnSimpan.setEnabled(akses.getinventaris_koleksi());
+        BtnHapus.setEnabled(akses.getinventaris_koleksi());
+        BtnEdit.setEnabled(akses.getinventaris_koleksi());
+        BtnPrint.setEnabled(akses.getinventaris_koleksi());
         TCari.requestFocus();
     }
     

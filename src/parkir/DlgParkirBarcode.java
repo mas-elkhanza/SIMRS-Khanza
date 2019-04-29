@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -580,7 +580,7 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting"));
-                Valid.MyReport("rptDokter.jrxml","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
+                Valid.MyReport("rptDokter.jasper","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                     "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
                     "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
                     "from dokter,spesialis "+
@@ -596,7 +596,7 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
                 param.put("emailrs",var.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting"));
                 String sql=" dokter.kd_sps=spesialis.kd_sps ";
-                Valid.MyReport("rptDokter.jrxml","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
+                Valid.MyReport("rptDokter.jasper","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                     "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
                     "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
                     "from dokter,spesialis "+
@@ -648,7 +648,7 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
                     param.put("kontakrs",var.getkontakrs());
                     param.put("emailrs",var.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDokter.jrxml","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
+                    Valid.MyReport("rptDokter.jasper","report","::[ Data Dokter ]::","select kd_dokter,nm_dokter,jk,tmp_lahir, "+
                         "tgl_lahir,gol_drh,agama,almt_tgl,no_telp, "+
                         "stts_nikah,nm_sps,alumni,no_ijn_praktek "+
                         "from dokter,spesialis "+
@@ -747,8 +747,8 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getparkir_barcode());
-       BtnHapus.setEnabled(var.getparkir_barcode());
-       BtnEdit.setEnabled(var.getparkir_barcode());
+       BtnSimpan.setEnabled(akses.getparkir_barcode());
+       BtnHapus.setEnabled(akses.getparkir_barcode());
+       BtnEdit.setEnabled(akses.getparkir_barcode());
     }
 }

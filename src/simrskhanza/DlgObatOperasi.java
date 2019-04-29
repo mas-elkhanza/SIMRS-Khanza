@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.DlgCariSatuan;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -115,7 +115,7 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgObatOperasi")){
+                if(akses.getform().equals("DlgObatOperasi")){
                     if(satuan.getTable().getSelectedRow()!= -1){                   
                         kdsat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(),0).toString());                    
                         nmsat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(),1).toString());
@@ -603,9 +603,9 @@ public final class DlgObatOperasi extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
             if(TCari.getText().trim().equals("")){
-                Valid.MyReport("rptBangsal.jrxml","report","::[ Data Kamar ]::","select * from order by kd_bangsal",param);
+                Valid.MyReport("rptBangsal.jasper","report","::[ Data Kamar ]::","select * from order by kd_bangsal",param);
             }else if(! TCari.getText().trim().equals("")){
-                Valid.MyReport("rptBangsal.jrxml","report","::[ Data Kamar ]::","select * from where kd_bangsal like '%"+TCari.getText().trim()+"%' "+
+                Valid.MyReport("rptBangsal.jasper","report","::[ Data Kamar ]::","select * from where kd_bangsal like '%"+TCari.getText().trim()+"%' "+
                                "or nm_bangsal like '%"+TCari.getText().trim()+"%' "+
                                "or kelas like '%"+TCari.getText().trim()+"%' order by kd_bangsal",param);
             }
@@ -693,7 +693,7 @@ private void kdsatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kds
 }//GEN-LAST:event_kdsatKeyPressed
 
 private void BtnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuanActionPerformed
-        var.setform("DlgObatOperasi");
+        akses.setform("DlgObatOperasi");
         satuan.emptTeks();
         satuan.isCek();
         satuan.setSize(656,350);

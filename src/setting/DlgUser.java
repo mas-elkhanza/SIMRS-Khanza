@@ -1942,7 +1942,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
             }
-            Valid.MyReport("rptUser.jrxml","report","::[ Data User ]::",
+            Valid.MyReport("rptUser.jasper","report","::[ Data User ]::",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc");
         }
         this.setCursor(Cursor.getDefaultCursor());

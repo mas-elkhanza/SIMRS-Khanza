@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -672,8 +672,8 @@ public class PerpustakaanDenda extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getdenda_perpustakaan());
-       BtnHapus.setEnabled(var.getdenda_perpustakaan());
-       BtnEdit.setEnabled(var.getdenda_perpustakaan());
+       BtnSimpan.setEnabled(akses.getdenda_perpustakaan());
+       BtnHapus.setEnabled(akses.getdenda_perpustakaan());
+       BtnEdit.setEnabled(akses.getdenda_perpustakaan());
     }
 }

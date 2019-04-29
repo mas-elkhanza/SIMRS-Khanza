@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -619,8 +619,8 @@ public class InventarisMerk extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getinventaris_merk());
-       BtnHapus.setEnabled(var.getinventaris_merk());
-       BtnEdit.setEnabled(var.getinventaris_merk());
+       BtnSimpan.setEnabled(akses.getinventaris_merk());
+       BtnHapus.setEnabled(akses.getinventaris_merk());
+       BtnEdit.setEnabled(akses.getinventaris_merk());
     }
 }

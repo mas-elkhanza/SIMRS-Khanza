@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -1179,10 +1179,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getberi_obat());
-        BtnHapus.setEnabled(var.getberi_obat());
-        BtnEdit.setEnabled(var.getberi_obat());
-        BtnPrint.setEnabled(var.getberi_obat());
+        BtnSimpan.setEnabled(akses.getberi_obat());
+        BtnHapus.setEnabled(akses.getberi_obat());
+        BtnEdit.setEnabled(akses.getberi_obat());
+        BtnPrint.setEnabled(akses.getberi_obat());
         
     }
     
