@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -609,14 +609,14 @@ public final class PCareMapingTindakanRalan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptMapingTindakanPCare.jrxml","report","::[ Mapping Tindakan RS & PCare ]::",
+                Valid.MyReport("rptMapingTindakanPCare.jasper","report","::[ Mapping Tindakan RS & PCare ]::",
                    "select maping_tindakan_pcare.kd_jenis_prw,jns_perawatan.nm_perawatan,maping_tindakan_pcare.kd_tindakan_pcare,maping_tindakan_pcare.nm_tindakan_pcare "+
                    "from maping_tindakan_pcare inner join jns_perawatan on maping_tindakan_pcare.kd_jenis_prw=jns_perawatan.kd_jenis_prw where "+
                    "maping_tindakan_pcare.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or maping_tindakan_pcare.kd_tindakan_pcare like '%"+TCari.getText().trim()+"%' or maping_tindakan_pcare.nm_tindakan_pcare like '%"+TCari.getText().trim()+"%' order by jns_perawatan.nm_perawatan",param);            
@@ -801,10 +801,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpcare_mapping_tindakan());
-        BtnHapus.setEnabled(var.getpcare_mapping_tindakan());
-        BtnEdit.setEnabled(var.getpcare_mapping_tindakan());
-        BtnPrint.setEnabled(var.getpcare_mapping_tindakan());
+        BtnSimpan.setEnabled(akses.getpcare_mapping_tindakan());
+        BtnHapus.setEnabled(akses.getpcare_mapping_tindakan());
+        BtnEdit.setEnabled(akses.getpcare_mapping_tindakan());
+        BtnPrint.setEnabled(akses.getpcare_mapping_tindakan());
     }
     
     public JTable getTable(){

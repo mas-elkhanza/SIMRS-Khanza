@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -926,15 +926,15 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 String sql="jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori ";
-                Valid.MyReport("rptKamarSiranap.jrxml","report","::[ Data Ketersediaan Kamar Aplicare]::",
+                Valid.MyReport("rptKamarSiranap.jasper","report","::[ Data Ketersediaan Kamar Aplicare]::",
                    "select siranap_ketersediaan_kamar.kode_ruang_siranap,siranap_ketersediaan_kamar.kelas_ruang_siranap,siranap_ketersediaan_kamar.kd_bangsal,"+
                    "bangsal.nm_bangsal,siranap_ketersediaan_kamar.kelas,siranap_ketersediaan_kamar.kapasitas,"+
                    "siranap_ketersediaan_kamar.tersedia,siranap_ketersediaan_kamar.tersediapria,"+
@@ -1222,10 +1222,10 @@ private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsiranap_ketersediaan_kamar());
-        BtnHapus.setEnabled(var.getsiranap_ketersediaan_kamar());
-        BtnEdit.setEnabled(var.getsiranap_ketersediaan_kamar());
-        BtnPrint.setEnabled(var.getsiranap_ketersediaan_kamar());
+        BtnSimpan.setEnabled(akses.getsiranap_ketersediaan_kamar());
+        BtnHapus.setEnabled(akses.getsiranap_ketersediaan_kamar());
+        BtnEdit.setEnabled(akses.getsiranap_ketersediaan_kamar());
+        BtnPrint.setEnabled(akses.getsiranap_ketersediaan_kamar());
     }
     
     public JTable getTable(){

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -501,7 +501,7 @@ public final class DlgMetodeRacik extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptMetodeRacik.jrxml","report","::[ Data Racik ]::","select kd_racik, nm_racik "+
+            Valid.MyReport("rptMetodeRacik.jasper","report","::[ Data Racik ]::","select kd_racik, nm_racik "+
                 " from metode_racik where  kd_racik like '%"+TCari.getText().trim()+"%' or "+
                 " nm_racik like '%"+TCari.getText().trim()+"%' order by kd_racik");
         }
@@ -681,10 +681,10 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getmetode_racik());
-        BtnHapus.setEnabled(var.getmetode_racik());
-        BtnEdit.setEnabled(var.getmetode_racik());
-        BtnPrint.setEnabled(var.getmetode_racik());
+        BtnSimpan.setEnabled(akses.getmetode_racik());
+        BtnHapus.setEnabled(akses.getmetode_racik());
+        BtnEdit.setEnabled(akses.getmetode_racik());
+        BtnPrint.setEnabled(akses.getmetode_racik());
     }
     
 }

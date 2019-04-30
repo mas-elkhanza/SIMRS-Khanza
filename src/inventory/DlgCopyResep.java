@@ -3,7 +3,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
@@ -292,7 +292,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
     private void tbPemisahanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPemisahanMouseClicked
         if(tabMode.getRowCount()!=0){
             if(evt.getClickCount()==2){
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }
             }
@@ -302,7 +302,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
     private void tbPemisahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPemisahanKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }                    
             }
@@ -572,7 +572,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
 
     public void isCek(){
-        BtnTambah.setEnabled(var.getresep_dokter());
+        BtnTambah.setEnabled(akses.getresep_dokter());
     }
     
     public void setRM(String norawat,String norm,String kodedokter,String kodepj,String status){

@@ -498,7 +498,7 @@ public final class validasi {
     }
 
     @SuppressWarnings("empty-statement")
-    public void MyReport(String reportName,String reportDirName,String judul,String qry){
+    public void MyReport(String reportName,String reportDirName,String judul,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -512,34 +512,19 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
         try {
             try (Statement stm = connect.createStatement()) {
-                Map<String, Object> parameters = new HashMap<>();
-                
                 try {
                     
                     String namafile="./"+reportDirName+"/"+reportName;
-                    File reportfile=new File(namafile);
-                    
-                    JRDesignQuery newQuery = new JRDesignQuery();
-                    newQuery.setText(qry);
-                    JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                    jasperDesign.setQuery(newQuery);
-                    
-                    JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
                     
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -559,7 +544,7 @@ public final class validasi {
     }
     
     @SuppressWarnings("empty-statement")
-    public void MyReport2(String reportName,String reportDirName,String judul,String qry){
+    public void MyReport2(String reportName,String reportDirName,String judul,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -573,34 +558,19 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
         try {
             try (Statement stm = connect.createStatement()) {
-                Map<String, Object> parameters = new HashMap<>();
-                
                 try {
                     
                     String namafile="./"+reportDirName+"/"+reportName;
-                    File reportfile=new File(namafile);
-                    
-                    JRDesignQuery newQuery = new JRDesignQuery();
-                    newQuery.setText(qry);
-                    JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                    jasperDesign.setQuery(newQuery);
-                    
-                    JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
                     
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -619,119 +589,9 @@ public final class validasi {
         }
     }
     
-    public void MyReport(String reportName,String reportDirName,String judul,String qry,Map parameters){
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
-
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
-        try {
-            try {
-                String namafile="./"+reportDirName+"/"+reportName;
-                File reportfile=new File(namafile);
-
-                JRDesignQuery newQuery = new JRDesignQuery();
-                newQuery.setText(qry);
-                JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                jasperDesign.setQuery(newQuery);
-
-                JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
-
-                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                jasperViewer.setTitle(judul);
-                Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-                jasperViewer.setSize(screen.width-50,screen.height-50);
-                jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-                jasperViewer.setLocationRelativeTo(null);
-                jasperViewer.setVisible(true);
-            } catch (Exception rptexcpt) {
-                System.out.println("Report Can't view because : " + rptexcpt);
-                JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    
-    public void MyReport2(String reportName,String reportDirName,String judul,String qry,Map parameters){
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } 
-            } 
-        } 
-
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
-        try {
-            try {
-                String namafile="./"+reportDirName+"/"+reportName;
-                File reportfile=new File(namafile);
-
-                JRDesignQuery newQuery = new JRDesignQuery();
-                newQuery.setText(qry);
-                JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                jasperDesign.setQuery(newQuery);
-
-                JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
-
-                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                jasperViewer.setTitle(judul);
-                Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-                jasperViewer.setSize(screen.width-50,screen.height-50);
-                jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-                jasperViewer.setLocationRelativeTo(null);
-                jasperViewer.setVisible(true);
-            } catch (Exception rptexcpt) {
-                System.out.println("Report Can't view because : " + rptexcpt);
-                JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    
     public void MyReport(String reportName,Map parameters,String title){
         try {
-                JasperViewer jasperViewer =new JasperViewer(JasperFillManager.fillReport(JasperCompileManager.compileReport("./report/"+reportName),parameters,connect), false);
+                JasperViewer jasperViewer =new JasperViewer(JasperFillManager.fillReport("./report/"+reportName,parameters,connect), false);
                 jasperViewer.setTitle(title);
                 jasperViewer.setLocationRelativeTo(null);
                 jasperViewer.setVisible(true);

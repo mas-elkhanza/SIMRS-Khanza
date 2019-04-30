@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -631,7 +631,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptPenjab.jrxml","report","::[ Data Satuan ]::","select kd_pj, png_jawab "+
+            Valid.MyReport("rptPenjab.jasper","report","::[ Data Satuan ]::","select kd_pj, png_jawab "+
                 " from penjab where  kd_pj like '%"+TCari.getText().trim()+"%' or "+
                 " png_jawab like '%"+TCari.getText().trim()+"%' order by kd_pj");
         }
@@ -830,9 +830,9 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getadmin());
-        BtnHapus.setEnabled(var.getadmin());
-        BtnEdit.setEnabled(var.getadmin());
-        BtnPrint.setEnabled(var.getadmin());
+        BtnSimpan.setEnabled(akses.getadmin());
+        BtnHapus.setEnabled(akses.getadmin());
+        BtnEdit.setEnabled(akses.getadmin());
+        BtnPrint.setEnabled(akses.getadmin());
     }
 }

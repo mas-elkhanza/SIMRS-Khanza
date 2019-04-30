@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -582,7 +582,7 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptIpsrsJenis.jrxml","report","::[ Data Jenis Barang ]::","select kd_jenis, nm_jenis "+
+            Valid.MyReport("rptIpsrsJenis.jasper","report","::[ Data Jenis Barang ]::","select kd_jenis, nm_jenis "+
                 " from ipsrsjenisbarang where  kd_jenis like '%"+TCari.getText().trim()+"%' or "+
                 " nm_jenis like '%"+TCari.getText().trim()+"%' order by kd_jenis");
         }
@@ -744,15 +744,15 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getipsrs_jenis_barang());
-        BtnHapus.setEnabled(var.getipsrs_jenis_barang());
-        BtnEdit.setEnabled(var.getipsrs_jenis_barang());
-        BtnPrint.setEnabled(var.getipsrs_jenis_barang());
+        BtnSimpan.setEnabled(akses.getipsrs_jenis_barang());
+        BtnHapus.setEnabled(akses.getipsrs_jenis_barang());
+        BtnEdit.setEnabled(akses.getipsrs_jenis_barang());
+        BtnPrint.setEnabled(akses.getipsrs_jenis_barang());
         
-        ppGanti.setEnabled(var.getipsrs_jenis_barang());        
-        ppHapus.setEnabled(var.getipsrs_jenis_barang());
-        ppCetak.setEnabled(var.getipsrs_jenis_barang());
-        ppSimpan.setEnabled(var.getipsrs_jenis_barang());
+        ppGanti.setEnabled(akses.getipsrs_jenis_barang());        
+        ppHapus.setEnabled(akses.getipsrs_jenis_barang());
+        ppCetak.setEnabled(akses.getipsrs_jenis_barang());
+        ppSimpan.setEnabled(akses.getipsrs_jenis_barang());
     }
     
 }
