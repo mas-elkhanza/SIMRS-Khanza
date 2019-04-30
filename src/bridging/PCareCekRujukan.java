@@ -274,8 +274,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariPCAREReferensiDiagnosa.jasper","report","[ Pencarian Referensi Diagnosa ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptCariPCAREReferensiDiagnosa.jasper","report","[ Pencarian Referensi Diagnosa ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

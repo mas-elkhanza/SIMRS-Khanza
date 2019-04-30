@@ -268,6 +268,7 @@ public final class PCareMapingDokter extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -618,10 +619,8 @@ public final class PCareMapingDokter extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptMapingDokterPCare.jasper","report","::[ Mapping Dokter RS & PCare ]::",
-                   "select maping_dokter_pcare.kd_dokter,dokter.nm_dokter,maping_dokter_pcare.kd_dokter_pcare,maping_dokter_pcare.nm_dokter_pcare "+
-                   "from maping_dokter_pcare inner join dokter on maping_dokter_pcare.kd_dokter=dokter.kd_dokter where "+
-                   "maping_dokter_pcare.kd_dokter like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or maping_dokter_pcare.kd_dokter_pcare like '%"+TCari.getText().trim()+"%' or maping_dokter_pcare.nm_dokter_pcare like '%"+TCari.getText().trim()+"%' order by dokter.nm_dokter",param);            
+                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                Valid.MyReport("rptMapingDokterPCare.jasper","report","::[ Mapping Dokter RS & PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

@@ -19,10 +19,10 @@
             </Property>
             <Property name="name" type="java.lang.String" value="internalFrame2" noResource="true"/>
             <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="8c" red="64" type="rgb"/>
+              <Color blue="64" green="a5" red="6e" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="6e" red="46" type="rgb"/>
+              <Color blue="55" green="91" red="5f" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -52,10 +52,10 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="aa" green="e6" red="b4" type="rgb"/>
+                  <Color blue="d2" green="ff" red="d2" type="rgb"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f5" green="ff" red="eb" type="rgb"/>
+                  <Color blue="e6" green="f5" red="e6" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -83,7 +83,7 @@
                     <Property name="opaqueImage" type="boolean" value="false"/>
                     <Property name="round" type="boolean" value="false"/>
                     <Property name="warna" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="be" green="ff" red="be" type="rgb"/>
+                      <Color blue="af" green="ff" red="be" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>

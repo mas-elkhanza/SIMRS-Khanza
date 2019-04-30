@@ -2793,25 +2793,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
             param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             if(JenisPelayanan.getSelectedIndex()==0){
-                Valid.MyReport("rptBridgingSEP.jasper","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),"+
-                        "concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP.jasper","report","::[ Cetak SEP ]::",param);
             }else{
-                Valid.MyReport("rptBridgingSEP2.jasper","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP2.jasper","report","::[ Cetak SEP ]::",param);
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{

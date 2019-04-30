@@ -1163,21 +1163,21 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(100, 140, 50));
-        internalFrame2.setWarnaBawah(new java.awt.Color(70, 110, 20));
+        internalFrame2.setWarnaAtas(new java.awt.Color(110, 165, 100));
+        internalFrame2.setWarnaBawah(new java.awt.Color(95, 145, 85));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(180, 230, 170));
-        internalFrame3.setWarnaBawah(new java.awt.Color(235, 255, 245));
+        internalFrame3.setWarnaAtas(new java.awt.Color(210, 255, 210));
+        internalFrame3.setWarnaBawah(new java.awt.Color(230, 245, 230));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
         panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 190, 145)));
         panelGlass1.setOpaqueImage(false);
         panelGlass1.setRound(false);
-        panelGlass1.setWarna(new java.awt.Color(190, 255, 190));
+        panelGlass1.setWarna(new java.awt.Color(190, 255, 175));
         panelGlass1.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N

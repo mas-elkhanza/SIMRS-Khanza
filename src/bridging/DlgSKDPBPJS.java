@@ -1078,8 +1078,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
                     tabMode.getValueAt(i,17).toString()+"','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
              
-            Valid.MyReport("rptSKDPBPJS.jasper","report","::[ Laporan Daftar SKDP BPJS ]::",
-                "select * from temporary_booking_registrasi order by no asc",param);
+            Valid.MyReport("rptSKDPBPJS.jasper","report","::[ Laporan Daftar SKDP BPJS ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1335,8 +1334,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     tabMode.getValueAt(tbObat.getSelectedRow(),16).toString()+"','"+
                     tabMode.getValueAt(tbObat.getSelectedRow(),17).toString()+"','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
 
-                Valid.MyReport("rptSuratSKDPBPJS.jasper","report","::[ Surat SKDP BPJS ]::",
-                    "select * from temporary_booking_registrasi order by no asc",param); 
+                Valid.MyReport("rptSuratSKDPBPJS.jasper","report","::[ Surat SKDP BPJS ]::",param); 
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
