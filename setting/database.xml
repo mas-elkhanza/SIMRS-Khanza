@@ -19,6 +19,7 @@
     <entry key="ALARMRADIOLOGI">yes</entry>
     <entry key="ALARMRSISRUTE">yes</entry>
     <entry key="FORMALARMRADIOLOGI">ralan + ranap</entry>
+    <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
     <entry key="SECRETKEYAPIBPJS">3oUEBAF783123123</entry>
     <entry key="CONSIDAPIBPJS">1844123123</entry>

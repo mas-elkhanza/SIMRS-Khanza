@@ -576,6 +576,14 @@ public class frmUtama extends javax.swing.JFrame {
                 }
             });
         } 
+        
+        try{    
+            if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                DlgHome.setOpacity(0.75f);
+                DlgLogin.setOpacity(0.75f);
+            }     
+        }catch(Exception e){            
+        } 
     }
     
     public static frmUtama getInstance() {
@@ -1115,9 +1123,6 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         FlayMenu = new usu.widget.glass.PanelGlass();
-        PanelAccor = new widget.PanelBiasa();
-        ChkAccor = new widget.CekBox();
-        FormMenu = new widget.PanelBiasa();
         MenuBar = new widget.MenuBar();
         jMenu1 = new javax.swing.JMenu();
         MnLogin = new javax.swing.JMenuItem();
@@ -6916,9 +6921,6 @@ public class frmUtama extends javax.swing.JFrame {
         setTitle("::[ Khanza SIMKES 2019 ]::");
         setIconImages(null);
         addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                formComponentResized(evt);
-            }
             public void componentMoved(java.awt.event.ComponentEvent evt) {
                 formComponentMoved(evt);
             }
@@ -6929,11 +6931,11 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -7352,38 +7354,6 @@ public class frmUtama extends javax.swing.JFrame {
         scrollPane1.setViewportView(PanelWall);
 
         PanelUtama.add(scrollPane1, java.awt.BorderLayout.CENTER);
-
-        PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
-        PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(135, 43));
-        PanelAccor.setLayout(new java.awt.BorderLayout());
-
-        ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
-        ChkAccor.setBorderPainted(true);
-        ChkAccor.setBorderPaintedFlat(true);
-        ChkAccor.setFocusable(false);
-        ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkAccor.setName("ChkAccor"); // NOI18N
-        ChkAccor.setPreferredSize(new java.awt.Dimension(15, 20));
-        ChkAccor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
-        ChkAccor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
-        ChkAccor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
-        ChkAccor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkAccorActionPerformed(evt);
-            }
-        });
-        PanelAccor.add(ChkAccor, java.awt.BorderLayout.EAST);
-
-        FormMenu.setBackground(new java.awt.Color(255, 255, 255));
-        FormMenu.setBorder(null);
-        FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(115, 43));
-        FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
-        PanelAccor.add(FormMenu, java.awt.BorderLayout.CENTER);
-
-        PanelUtama.add(PanelAccor, java.awt.BorderLayout.WEST);
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
@@ -8186,7 +8156,7 @@ private void edPwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edP
 private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
     isTutup();
-    DlgHome.setSize(PanelUtama.getWidth()-35, PanelUtama.getHeight()-35);
+    DlgHome.setSize(PanelUtama.getWidth()-25, PanelUtama.getHeight()-25);
     DlgHome.setLocationRelativeTo(PanelUtama);
     DlgHome.setVisible(true);
     isTampil();
@@ -10745,17 +10715,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPiutangBelumLunasActionPerformed
-
-    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-        Window[] wins = Window.getWindows();        
-        for (Window win : wins) {
-            if (win instanceof JDialog) {                
-                DlgHome.setSize(PanelUtama.getWidth()-45, PanelUtama.getHeight()-45);
-                Panelmenu.repaint();
-                DlgHome.setLocationRelativeTo(PanelUtama);
-            }
-        }
-    }//GEN-LAST:event_formComponentResized
 
     private void formComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentMoved
         Window[] wins = Window.getWindows();
@@ -14226,10 +14185,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPestControlActionPerformed
 
-    private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        //isMenu();
-    }//GEN-LAST:event_ChkAccorActionPerformed
-
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -14407,12 +14362,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ButtonBig BtnToolKamnap;
     private widget.ButtonBig BtnToolKasir;
     private widget.ButtonBig BtnToolReg;
-    private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private javax.swing.JDialog DlgHome;
     private javax.swing.JDialog DlgLogin;
     private usu.widget.glass.PanelGlass FlayMenu;
-    private widget.PanelBiasa FormMenu;
     private widget.MenuBar MenuBar;
     private javax.swing.JMenuItem MenuKeluar;
     private javax.swing.JMenuItem MnAnjungan;
@@ -14443,7 +14396,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnSudahPulang4;
     private javax.swing.JMenuItem MnSudahPulang5;
     private javax.swing.JMenuItem MnSudahPulang6;
-    private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelUtama;
     private usu.widget.glass.PanelGlass PanelWall;
     private widget.panelGlass Panelmenu;
@@ -15330,8 +15282,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*94)));
         }                                                 
-        Panelmenu.repaint(); 
-        DlgHome.setVisible(true);               
+        Panelmenu.revalidate();
+        Panelmenu.repaint();               
     }
     
     
