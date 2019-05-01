@@ -267,8 +267,7 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
-            Valid.MyReport("rptSurveilansRalan.jasper","report","::[ Surveilans PD3I ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptSurveilansRalan.jasper","report","::[ Surveilans PD3I ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

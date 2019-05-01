@@ -496,8 +496,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPendapatanRalan.jasper","report","::[ Rekap Pendapatan Ralan ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14,temp15 from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPendapatanRalan.jasper","report","::[ Rekap Pendapatan Ralan ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }else if(TabRawat.getSelectedIndex()==1){
@@ -537,8 +536,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPendapatanRanap.jasper","report","::[ Rekap Pendapatan Ranap ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPendapatanRanap.jasper","report","::[ Rekap Pendapatan Ranap ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }else if(TabRawat.getSelectedIndex()==2){
@@ -564,8 +562,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPemasukanLain.jasper","report","::[ Rekap Pemasukan Lain ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPemasukanLain.jasper","report","::[ Rekap Pemasukan Lain ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }else if(TabRawat.getSelectedIndex()==3){
@@ -591,8 +588,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptRekapPengeluaranHarian.jasper","report","::[ Rekap Pengeluaran Harian ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekapPengeluaranHarian.jasper","report","::[ Rekap Pengeluaran Harian ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }            

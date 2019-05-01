@@ -773,7 +773,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPengeluaranHarian.jasper","report","::[ Data Pengeluaran Harian ]::",
+            Valid.MyReportqry("rptPengeluaranHarian.jasper","report","::[ Data Pengeluaran Harian ]::",
                 "select pengeluaran_harian.tanggal, pengeluaran_harian.keterangan, pengeluaran_harian.biaya, pengeluaran_harian.nip, "+
                     "petugas.nama,pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori "+
                     "from pengeluaran_harian inner join petugas inner join kategori_pengeluaran_harian on pengeluaran_harian.nip=petugas.nip "+

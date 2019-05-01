@@ -444,8 +444,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("dokter",nmdokter.getText());
                 param.put("periode",Tgl1.getSelectedItem()+" s/d "+Tgl2.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptFeeVisitDokter.jasper","report","[ Rekap Jasa Visit Dokter ]",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptFeeVisitDokter.jasper","report","[ Rekap Jasa Visit Dokter ]",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

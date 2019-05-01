@@ -679,7 +679,7 @@ public class DlgIndustriFarmasi extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptIndustriFarmasi.jasper","report","::[ Data Industri Farmasi ]::",sql,param);            
+            Valid.MyReportqry("rptIndustriFarmasi.jasper","report","::[ Data Industri Farmasi ]::",sql,param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

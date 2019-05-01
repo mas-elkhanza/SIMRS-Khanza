@@ -367,8 +367,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("dokter",nmdokter.getText());
                 param.put("periode",Tgl1.getSelectedItem()+" s/d "+Tgl2.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptFeePeriksaRalan.jasper","report","[ Rekap Fee Pemeriksaan Rawat Jalan ]",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptFeePeriksaRalan.jasper","report","[ Rekap Fee Pemeriksaan Rawat Jalan ]",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

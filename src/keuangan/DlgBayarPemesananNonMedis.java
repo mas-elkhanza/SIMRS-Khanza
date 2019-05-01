@@ -848,7 +848,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReport("rptBayarPemesanan.jasper","report","::[ Bayar Pemesanan ]::",
+            Valid.MyReportqry("rptBayarPemesanan.jasper","report","::[ Bayar Pemesanan ]::",
                     "select bayar_pemesanan_non_medis.tgl_bayar,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tgl_pesan,"+
                     "ipsrspemesanan.tgl_tempo, bayar_pemesanan_non_medis.no_faktur,"+
                     "ipsrssuplier.nama_suplier,bayar_pemesanan_non_medis.nama_bayar,bayar_pemesanan_non_medis.no_bukti,"+

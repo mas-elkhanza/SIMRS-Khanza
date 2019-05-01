@@ -765,8 +765,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                     });
                 }
                  
-                Valid.MyReport("rptSensusHarianRalan.jasper","report","::[ Laporan Sensus Harian Ralan ]::",
-                    "select * from temporary_sensus_harian order by no asc",param);
+                Valid.MyReport("rptSensusHarianRalan.jasper","report","::[ Laporan Sensus Harian Ralan ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabmode2.getRowCount()==0){
@@ -787,8 +786,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                     });
                 }
                  
-                Valid.MyReport("rptSensusHarianRalan.jasper","report","::[ Laporan Sensus Harian Ralan ]::",
-                    "select * from temporary_sensus_harian order by no asc",param);
+                Valid.MyReport("rptSensusHarianRalan.jasper","report","::[ Laporan Sensus Harian Ralan ]::",param);
             }            
         }        
         this.setCursor(Cursor.getDefaultCursor());

@@ -809,7 +809,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPasienMati.jasper","report","::[ Data Pasien Meninggal ]::",
+                Valid.MyReportqry("rptPasienMati.jasper","report","::[ Data Pasien Meninggal ]::",
                         "select tanggal,jam,pasien_mati.no_rkm_medis,nm_pasien, "+
                         "jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
                         "agama,keterangan,temp_meninggal,icd1,icd2,icd3,icd4 from pasien_mati,pasien where "+
@@ -892,7 +892,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-          Valid.MyReport("rptSuratKematian.jasper","report","::[ Surat Kematian ]::",
+          Valid.MyReportqry("rptSuratKematian.jasper","report","::[ Surat Kematian ]::",
                         "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "+
                         "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
                         "agama,keterangan from pasien_mati,pasien "+
@@ -917,7 +917,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptAngkutJenazah.jasper","report","::[ Surat Angkut Jenazah ]::",
+            Valid.MyReportqry("rptAngkutJenazah.jasper","report","::[ Surat Angkut Jenazah ]::",
                           "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien,pasien.pekerjaan, "+
                           "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
                           "agama,keterangan from pasien_mati,pasien "+

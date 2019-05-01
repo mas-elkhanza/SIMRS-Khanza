@@ -427,7 +427,7 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptReturObatRanap.jasper","report","::[ Retur Obat Ranap ]::",
+            Valid.MyReportqry("rptReturObatRanap.jasper","report","::[ Retur Obat Ranap ]::",
                   "select returpasien.tanggal, returpasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien)as pasien,"+
                   " concat(returpasien.kode_brng,' ',databarang.nama_brng) as barang, returpasien.jml "+
                   "from returpasien inner join reg_periksa inner join pasien inner join databarang "+

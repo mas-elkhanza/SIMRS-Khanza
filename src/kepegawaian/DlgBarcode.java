@@ -530,17 +530,7 @@ public final class DlgBarcode extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptBarcode.jasper","report","::[ Kartu Barcode ]::","select pegawai.id, "+
-                                "pegawai.nik,"+
-                                "pegawai.nama,"+
-                                "pegawai.jk,"+
-                                "pegawai.jbtn,"+
-                                "pegawai.jnj_jabatan,"+
-                                "pegawai.departemen,"+
-                                "pegawai.bidang,"+
-                                "barcode.barcode "+
-                                "from pegawai inner join jnj_jabatan on pegawai.jnj_jabatan=jnj_jabatan.kode "+
-                                "inner join barcode ON pegawai.id = barcode.id",param);
+                Valid.MyReport("rptBarcode.jasper","report","::[ Kartu Barcode ]::",param);
             }else if(! TCari.getText().trim().equals("")){                
                 Map<String, Object> param = new HashMap<>();
                 param.put("parameter","%"+TCari.getText().trim()+"%");     
@@ -551,7 +541,7 @@ public final class DlgBarcode extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptBarcode.jasper","report","::[ Kartu Barcode ]::","select pegawai.id, "+
+                Valid.MyReportqry("rptBarcode.jasper","report","::[ Kartu Barcode ]::","select pegawai.id, "+
                                 "pegawai.nik,"+
                                 "pegawai.nama,"+
                                 "pegawai.jk,"+

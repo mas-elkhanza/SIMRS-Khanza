@@ -335,8 +335,7 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
                     tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
                
-            Valid.MyReport("rptPelayananLab.jasper","report","::[ Laporan Lama Pelayanan Laboratorium ]::",
-                "select * from temporary_lama_pelayanan_radiologi order by no asc",param);
+            Valid.MyReport("rptPelayananLab.jasper","report","::[ Laporan Lama Pelayanan Laboratorium ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

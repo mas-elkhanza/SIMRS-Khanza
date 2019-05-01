@@ -1115,6 +1115,9 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         FlayMenu = new usu.widget.glass.PanelGlass();
+        PanelAccor = new widget.PanelBiasa();
+        ChkAccor = new widget.CekBox();
+        FormMenu = new widget.PanelBiasa();
         MenuBar = new widget.MenuBar();
         jMenu1 = new javax.swing.JMenu();
         MnLogin = new javax.swing.JMenuItem();
@@ -1169,19 +1172,19 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(210, 255, 210));
+        internalFrame3.setWarnaAtas(new java.awt.Color(215, 255, 215));
         internalFrame3.setWarnaBawah(new java.awt.Color(230, 245, 230));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
-        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 190, 145)));
+        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 205, 115)));
         panelGlass1.setOpaqueImage(false);
         panelGlass1.setRound(false);
-        panelGlass1.setWarna(new java.awt.Color(190, 255, 175));
+        panelGlass1.setWarna(new java.awt.Color(195, 255, 165));
         panelGlass1.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(60, 60, 60));
+        jLabel4.setForeground(new java.awt.Color(50, 50, 50));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("ID Admin :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -1189,14 +1192,14 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel4.setBounds(2, 12, 80, 23);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(60, 60, 60));
+        jLabel5.setForeground(new java.awt.Color(50, 50, 50));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Password :");
         jLabel5.setName("jLabel5"); // NOI18N
         panelGlass1.add(jLabel5);
         jLabel5.setBounds(2, 40, 80, 23);
 
-        edAdmin.setForeground(new java.awt.Color(60, 60, 60));
+        edAdmin.setForeground(new java.awt.Color(50, 50, 50));
         edAdmin.setToolTipText("Silahkan masukkan ID Admin");
         edAdmin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         edAdmin.setName("edAdmin"); // NOI18N
@@ -1208,7 +1211,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelGlass1.add(edAdmin);
         edAdmin.setBounds(85, 12, 220, 23);
 
-        edPwd.setForeground(new java.awt.Color(60, 60, 60));
+        edPwd.setForeground(new java.awt.Color(50, 50, 50));
         edPwd.setToolTipText("Silahkan masukkan password");
         edPwd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         edPwd.setName("edPwd"); // NOI18N
@@ -6860,7 +6863,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/04/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/05/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7349,6 +7352,38 @@ public class frmUtama extends javax.swing.JFrame {
         scrollPane1.setViewportView(PanelWall);
 
         PanelUtama.add(scrollPane1, java.awt.BorderLayout.CENTER);
+
+        PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
+        PanelAccor.setName("PanelAccor"); // NOI18N
+        PanelAccor.setPreferredSize(new java.awt.Dimension(135, 43));
+        PanelAccor.setLayout(new java.awt.BorderLayout());
+
+        ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccor.setBorderPainted(true);
+        ChkAccor.setBorderPaintedFlat(true);
+        ChkAccor.setFocusable(false);
+        ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setName("ChkAccor"); // NOI18N
+        ChkAccor.setPreferredSize(new java.awt.Dimension(15, 20));
+        ChkAccor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkAccorActionPerformed(evt);
+            }
+        });
+        PanelAccor.add(ChkAccor, java.awt.BorderLayout.EAST);
+
+        FormMenu.setBackground(new java.awt.Color(255, 255, 255));
+        FormMenu.setBorder(null);
+        FormMenu.setName("FormMenu"); // NOI18N
+        FormMenu.setPreferredSize(new java.awt.Dimension(115, 43));
+        FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
+        PanelAccor.add(FormMenu, java.awt.BorderLayout.CENTER);
+
+        PanelUtama.add(PanelAccor, java.awt.BorderLayout.WEST);
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
@@ -14191,6 +14226,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPestControlActionPerformed
 
+    private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
+        //isMenu();
+    }//GEN-LAST:event_ChkAccorActionPerformed
+
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -14368,10 +14407,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ButtonBig BtnToolKamnap;
     private widget.ButtonBig BtnToolKasir;
     private widget.ButtonBig BtnToolReg;
+    private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private javax.swing.JDialog DlgHome;
     private javax.swing.JDialog DlgLogin;
     private usu.widget.glass.PanelGlass FlayMenu;
+    private widget.PanelBiasa FormMenu;
     private widget.MenuBar MenuBar;
     private javax.swing.JMenuItem MenuKeluar;
     private javax.swing.JMenuItem MnAnjungan;
@@ -14402,6 +14443,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnSudahPulang4;
     private javax.swing.JMenuItem MnSudahPulang5;
     private javax.swing.JMenuItem MnSudahPulang6;
+    private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelUtama;
     private usu.widget.glass.PanelGlass PanelWall;
     private widget.panelGlass Panelmenu;

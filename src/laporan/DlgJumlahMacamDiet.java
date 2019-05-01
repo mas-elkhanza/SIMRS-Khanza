@@ -300,7 +300,7 @@ public class DlgJumlahMacamDiet extends javax.swing.JDialog {
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
                 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.MyReport("rptRekapGizi2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::","select * from temporary_gizi",param);            
+                Valid.MyReport("rptRekapGizi2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
                 this.setCursor(Cursor.getDefaultCursor());                       
         }
         this.setCursor(Cursor.getDefaultCursor());

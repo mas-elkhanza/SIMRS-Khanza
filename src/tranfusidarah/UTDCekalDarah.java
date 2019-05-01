@@ -739,7 +739,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
+            Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
                     "select utd_cekal_darah.no_donor,utd_donor.nama,utd_donor.alamat,utd_donor.no_telp,"+
                     "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
                     "petugas.nama as petugas,utd_cekal_darah.keterangan from utd_cekal_darah inner join utd_donor inner join petugas "+

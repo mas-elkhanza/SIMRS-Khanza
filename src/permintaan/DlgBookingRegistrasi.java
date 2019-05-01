@@ -1204,7 +1204,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
             }else if(R3.isSelected()==true){
                 status=" booking_registrasi.tanggal_periksa between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' ";           
             }
-            Valid.MyReport("rptBookingRegistrasi.jasper","report","::[ Laporan Daftar Booking Registrasi ]::",
+            Valid.MyReportqry("rptBookingRegistrasi.jasper","report","::[ Laporan Daftar Booking Registrasi ]::",
                 "select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.no_rkm_medis, "+
                     "pasien.nm_pasien,booking_registrasi.tanggal_periksa,booking_registrasi.kd_dokter,"+
                     "dokter.nm_dokter,booking_registrasi.kd_poli,poliklinik.nm_poli,booking_registrasi.no_reg, "+

@@ -24,6 +24,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -500,10 +502,17 @@ public final class DlgMetodeRacik extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptMetodeRacik.jasper","report","::[ Data Racik ]::","select kd_racik, nm_racik "+
+        }else if(tabMode.getRowCount()!=0){   
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());                  
+            Valid.MyReportqry("rptMetodeRacik.jasper","report","::[ Data Racik ]::","select kd_racik, nm_racik "+
                 " from metode_racik where  kd_racik like '%"+TCari.getText().trim()+"%' or "+
-                " nm_racik like '%"+TCari.getText().trim()+"%' order by kd_racik");
+                " nm_racik like '%"+TCari.getText().trim()+"%' order by kd_racik",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

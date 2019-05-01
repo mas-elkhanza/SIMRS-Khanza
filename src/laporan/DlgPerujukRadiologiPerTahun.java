@@ -287,8 +287,7 @@ public final class DlgPerujukRadiologiPerTahun extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptPerujukRadiologiPerTahun.jasper","report","::[ Laporan Rekap Perujuk Laboratorium Per Tahun ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptPerujukRadiologiPerTahun.jasper","report","::[ Laporan Rekap Perujuk Laboratorium Per Tahun ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

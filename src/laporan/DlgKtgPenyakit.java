@@ -554,9 +554,9 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(TCari.getText().trim().equals("")){
-                Valid.MyReport("rptKtgPenyakit.jasper","report","::[ Data Kategori Penyakit ]::","select * from kategori_penyakit order by kd_ktg",param);
+                Valid.MyReport("rptKtgPenyakit.jasper","report","::[ Data Kategori Penyakit ]::",param);
             }else if(! TCari.getText().trim().equals("")){
-                Valid.MyReport("rptKtgPenyakit.jasper","report","::[ Data Kategori Penyakit ]::","select * from kategori_penyakit where kd_ktg like '%"+TCari.getText().trim()+"%' "+
+                Valid.MyReportqry("rptKtgPenyakit.jasper","report","::[ Data Kategori Penyakit ]::","select * from kategori_penyakit where kd_ktg like '%"+TCari.getText().trim()+"%' "+
                                "or nm_kategori like '%"+TCari.getText().trim()+"%' "+
                                "or ciri_umum like '%"+TCari.getText().trim()+"%' order by kd_ktg",param);
             }

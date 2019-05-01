@@ -465,8 +465,7 @@ public final class DlgRanapPerRuang extends javax.swing.JDialog {
                     }                    
                 }
                    
-                Valid.MyReport("rptRanapPerRuang.jasper","report","::[ Laporan Rawat Inap Per Ruang ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRanapPerRuang.jasper","report","::[ Laporan Rawat Inap Per Ruang ]::",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }else if(TabRawat.getSelectedIndex()==1){
@@ -502,8 +501,7 @@ public final class DlgRanapPerRuang extends javax.swing.JDialog {
                     }                    
                 }
                    
-                Valid.MyReport("rptRanapPerRuang.jasper","report","::[ Laporan Rawat Inap Per Ruang ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRanapPerRuang.jasper","report","::[ Laporan Rawat Inap Per Ruang ]::",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }

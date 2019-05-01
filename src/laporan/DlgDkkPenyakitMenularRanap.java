@@ -373,8 +373,7 @@ public final class DlgDkkPenyakitMenularRanap extends javax.swing.JDialog {
                 }
             }
             
-            Valid.MyReport("rptDkkPenyakitMenularRanap.jasper","report","::[ Penyakit Menular Rawat Inap ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptDkkPenyakitMenularRanap.jasper","report","::[ Penyakit Menular Rawat Inap ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

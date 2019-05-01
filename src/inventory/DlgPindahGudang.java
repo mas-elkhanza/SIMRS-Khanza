@@ -673,7 +673,7 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                   tgl+" and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+ 
                   tgl+" and mutasibarang.tanggal like '%"+TCari.getText().trim()+"%' or "+
                   tgl+" and mutasibarang.keterangan like '%"+TCari.getText().trim()+"%' order by mutasibarang.tanggal";
-            Valid.MyReport("rptMutasiObat.jasper","report","::[ Transaksi Mutasi Barang ]::", sql,param);
+            Valid.MyReportqry("rptMutasiObat.jasper","report","::[ Transaksi Mutasi Barang ]::", sql,param);
           
         }
         this.setCursor(Cursor.getDefaultCursor());

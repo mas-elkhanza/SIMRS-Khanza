@@ -297,8 +297,7 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
                
-            Valid.MyReport("rptDkkPenyakitTakMenularRalan.jasper","report","::[ Penyakit Tidak Menular Rawat Jalan ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptDkkPenyakitTakMenularRalan.jasper","report","::[ Penyakit Tidak Menular Rawat Jalan ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

@@ -286,8 +286,7 @@ public final class DlgRl36 extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptRl36.jasper","report","::[ Formulir RL 3.6 ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptRl36.jasper","report","::[ Formulir RL 3.6 ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

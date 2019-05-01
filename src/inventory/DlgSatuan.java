@@ -24,6 +24,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -504,10 +506,17 @@ public final class DlgSatuan extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptSatuan.jasper","report","::[ Data Satuan ]::","select kode_sat, satuan "+
+        }else if(tabMode.getRowCount()!=0){  
+            Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());             
+            Valid.MyReportqry("rptSatuan.jasper","report","::[ Data Satuan ]::","select kode_sat, satuan "+
                 " from kodesatuan where  kode_sat like '%"+TCari.getText().trim()+"%' or "+
-                " satuan like '%"+TCari.getText().trim()+"%' order by kode_sat");
+                " satuan like '%"+TCari.getText().trim()+"%' order by kode_sat",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

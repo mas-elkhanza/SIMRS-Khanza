@@ -285,8 +285,7 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptRekapLabPerTahun.jasper","report","::[ Laporan Rekap Laboratorium Per Tahun ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptRekapLabPerTahun.jasper","report","::[ Laporan Rekap Laboratorium Per Tahun ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

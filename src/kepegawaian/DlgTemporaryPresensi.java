@@ -536,7 +536,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTemporaryPresensi.jasper","report","::[ Temporary Presensi ]::",
+                Valid.MyReportqry("rptTemporaryPresensi.jasper","report","::[ Temporary Presensi ]::",
                     "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift, " +
                     "temporary_presensi.jam_datang, now() as jam_pulang, temporary_presensi.status,  " +
                     "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,temporary_presensi.photo  from pegawai  " +

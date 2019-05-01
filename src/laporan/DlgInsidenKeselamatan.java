@@ -589,7 +589,7 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));           
-            Valid.MyReport("rptInsidenKeselamatan.jasper","report","::[ Master Insiden Kecelakaan ]::",
+            Valid.MyReportqry("rptInsidenKeselamatan.jasper","report","::[ Master Insiden Kecelakaan ]::",
                 "select * from insiden_keselamatan where kode_insiden like '%"+TCari.getText().trim()+"%' or "+
                 "nama_insiden like '%"+TCari.getText().trim()+"%' or "+
                 "jenis_insiden like '%"+TCari.getText().trim()+"%' or "+

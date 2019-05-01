@@ -633,8 +633,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tanggal1+"','"+tanggal2+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Posting Jurnal");             
             }
             
-            Valid.MyReport("rptJurnalHarian.jasper","report","::[ Jurnal Harian ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptJurnalHarian.jasper","report","::[ Jurnal Harian ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

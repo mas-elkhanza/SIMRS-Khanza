@@ -741,7 +741,7 @@ public class DlgDeposit extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDeposit.jasper","report","::[ Data Deposit/Titipan Pasien ]::","select deposit.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien) as pasien, " +
+            Valid.MyReportqry("rptDeposit.jasper","report","::[ Data Deposit/Titipan Pasien ]::","select deposit.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien) as pasien, " +
                 "deposit.tgl_deposit,deposit.besar_deposit,concat(deposit.nip,' ',petugas.nama) as petugas " +
                 "from deposit inner join reg_periksa inner join pasien inner join petugas " +
                 "on deposit.no_rawat=reg_periksa.no_rawat " +

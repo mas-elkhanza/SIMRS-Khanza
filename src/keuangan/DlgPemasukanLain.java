@@ -850,7 +850,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPemasukanLain.jasper","report","::[ Data Pemasukan Lain-Lain ]::",
+            Valid.MyReportqry("rptPemasukanLain.jasper","report","::[ Data Pemasukan Lain-Lain ]::",
                 "select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.keperluan, pemasukan_lain.besar, pemasukan_lain.nip, "+
                     "petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori "+
                     "from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip "+

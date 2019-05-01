@@ -20,8 +20,6 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +30,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -312,8 +309,7 @@ public final class DlgAnggotaMiliterDirawat extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptAnggotaMiliterDirawat.jasper","report","::[ Laporan Anggota Militer/PNS & Keluarga Yang Dirawat ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptAnggotaMiliterDirawat.jasper","report","::[ Laporan Anggota Militer/PNS & Keluarga Yang Dirawat ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

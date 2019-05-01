@@ -579,10 +579,10 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih model cetak..!","Jadwal",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tampilkan Semua", "Tanpa departemen & jabatan"},"Tampilkan Semua");
                     switch (pilihan) {
                         case "Tampilkan Semua":
-                            Valid.MyReport("rptJadwalPegawai.jasper","report","::[ Jadwal Masuk Tambahan Pegawai ]::","select * from temporary",param);            
+                            Valid.MyReport("rptJadwalPegawai.jasper","report","::[ Jadwal Masuk Tambahan Pegawai ]::",param);            
                             break;
                         case "Tanpa departemen & jabatan":
-                            Valid.MyReport("rptJadwalPegawai2.jasper","report","::[ Jadwal Masuk Tambahan Pegawai ]::","select * from temporary",param);            
+                            Valid.MyReport("rptJadwalPegawai2.jasper","report","::[ Jadwal Masuk Tambahan Pegawai ]::",param);            
                             break;
                     }
                 }catch(Exception e){

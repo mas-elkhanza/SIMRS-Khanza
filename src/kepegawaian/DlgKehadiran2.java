@@ -436,12 +436,12 @@ public class DlgKehadiran2 extends javax.swing.JDialog {
                     switch (pilihan) {
                         case "Tampilkan Semua":
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            Valid.MyReport("rptRekapKehadiran.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::","select * from temporary",param);            
+                            Valid.MyReport("rptRekapKehadiran.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
                             this.setCursor(Cursor.getDefaultCursor());
                             break;
                         case "Tanpa departemen & jabatan":
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            Valid.MyReport("rptRekapKehadiran2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::","select * from temporary",param);            
+                            Valid.MyReport("rptRekapKehadiran2.jasper","report","::[ Rekap Kehadiran Non Jadwal Tambahan ]::",param);            
                             this.setCursor(Cursor.getDefaultCursor());
                             break;
                     }

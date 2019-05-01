@@ -335,8 +335,7 @@ public final class DlgPelayananRadiologi extends javax.swing.JDialog {
                     tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
                
-            Valid.MyReport("rptPelayananRadiologi.jasper","report","::[ Laporan Lama Pelayanan Radiologi ]::",
-                "select * from temporary_lama_pelayanan_radiologi order by no asc",param);
+            Valid.MyReport("rptPelayananRadiologi.jasper","report","::[ Laporan Lama Pelayanan Radiologi ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

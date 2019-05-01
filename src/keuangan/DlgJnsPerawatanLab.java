@@ -850,7 +850,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTarifLab.jasper","report","::[ Data Tarif Laboratorium ]::",
+                Valid.MyReportqry("rptTarifLab.jasper","report","::[ Data Tarif Laboratorium ]::",
                     "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.bagian_rs,"+
                     "jns_perawatan_lab.bhp,jns_perawatan_lab.tarif_perujuk,jns_perawatan_lab.tarif_tindakan_dokter,"+
                     "jns_perawatan_lab.tarif_tindakan_petugas,jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,"+

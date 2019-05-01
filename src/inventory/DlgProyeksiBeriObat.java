@@ -412,7 +412,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptProyeksiBeriObat.jasper","report","::[ Proyeksi Keuntungan Pemberian Obat ]::",
+            Valid.MyReportqry("rptProyeksiBeriObat.jasper","report","::[ Proyeksi Keuntungan Pemberian Obat ]::",
                         "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.no_rawat, "+
                         "detail_pemberian_obat.kode_brng,databarang.nama_brng, "+
                         "kodesatuan.satuan,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.jml, "+

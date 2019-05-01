@@ -536,8 +536,7 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptReklasifikasiRalan.jasper","report","::[ Reklasifikasi Ralan ]::",
-                "select * from temporary2 order by no asc",param);
+            Valid.MyReport("rptReklasifikasiRalan.jasper","report","::[ Reklasifikasi Ralan ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

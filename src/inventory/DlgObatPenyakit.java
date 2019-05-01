@@ -796,7 +796,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
                 sql=" nm_kategori like '%"+KtgCari.getText()+"%' "+
                 " and nm_penyakit like '%"+PenyakitCari.getText()+"%' ";
 
-                Valid.MyReport("rptObtPenyakit.jasper","report","::[ Data Obat Penyakit ]::",
+                Valid.MyReportqry("rptObtPenyakit.jasper","report","::[ Data Obat Penyakit ]::",
                         "select obat_penyakit.kd_penyakit,nm_penyakit,ciri_ciri,penyakit.keterangan, "+
                         "nm_kategori,ciri_umum,obat_penyakit.kode_brng,nama_brng,jenis.nama,h_beli,referensi "+
                         "from obat_penyakit inner join penyakit inner join kategori_penyakit inner join databarang inner join jenis "+

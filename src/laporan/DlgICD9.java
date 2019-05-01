@@ -587,7 +587,7 @@ public final class DlgICD9 extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));           
-            Valid.MyReport("rptICD9.jasper","report","::[ Data Prosedur ]::",
+            Valid.MyReportqry("rptICD9.jasper","report","::[ Data Prosedur ]::",
                 "select * from icd9 where kode like '%"+TCari.getText().trim()+"%' or "+
                 " deskripsi_panjang like '%"+TCari.getText().trim()+"%' or "+
                 " deskripsi_pendek like '%"+TCari.getText().trim()+"%' order by kode ",param);

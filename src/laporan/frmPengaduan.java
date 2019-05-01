@@ -531,7 +531,7 @@ public class frmPengaduan extends javax.swing.JFrame {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPengaduan.jasper","report","::[ Data Pengaduan ]::",
+                Valid.MyReportqry("rptPengaduan.jasper","report","::[ Data Pengaduan ]::",
                         "select id, date_time, username, message from pengaduan where "+
                         "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and id like '%"+TCari.getText().trim()+"%' or "+
                         "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and username like '%"+TCari.getText().trim()+"%' or "+

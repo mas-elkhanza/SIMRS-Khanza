@@ -405,8 +405,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                     }                    
                 }
                 
-                Valid.MyReport("rptKegiatanFarmasi1.jasper","report","::[ Laporan Kegiatan Farmasi ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKegiatanFarmasi1.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }else if(TabRawat.getSelectedIndex()==1){
                             
                 Sequel.queryu("delete from temporary");
@@ -420,8 +419,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                     }                    
                 }
                 
-                Valid.MyReport("rptKegiatanFarmasi2.jasper","report","::[ Laporan Kegiatan Farmasi ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKegiatanFarmasi2.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }else if(TabRawat.getSelectedIndex()==2){
                             
                 Sequel.queryu("delete from temporary");
@@ -435,8 +433,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                     }                    
                 }
                 
-                Valid.MyReport("rptKegiatanFarmasi3.jasper","report","::[ Laporan Kegiatan Farmasi ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKegiatanFarmasi3.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }                 
         }
         this.setCursor(Cursor.getDefaultCursor());

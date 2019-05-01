@@ -428,8 +428,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());  
             param.put("periode",Tgl1.getSelectedItem()+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPaymentPoint2.jasper","report","::[ Payment Point ]::",
-                "select * from temporary_payment order by no asc",param);
+            Valid.MyReport("rptPaymentPoint2.jasper","report","::[ Payment Point ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

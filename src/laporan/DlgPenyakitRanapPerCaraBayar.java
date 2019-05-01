@@ -465,8 +465,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
                     }                    
                 }
                    
-                Valid.MyReport("rptPenyakitRanapCaraBayar.jasper","report","::[ Laporan Penyakit Rawat Inap Per Cara Bayar ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptPenyakitRanapCaraBayar.jasper","report","::[ Laporan Penyakit Rawat Inap Per Cara Bayar ]::",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }else if(TabRawat.getSelectedIndex()==1){
@@ -502,8 +501,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
                     }                    
                 }
                    
-                Valid.MyReport("rptPenyakitRanapCaraBayar.jasper","report","::[ Laporan Penyakit Rawat Inap Per Cara Bayar ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptPenyakitRanapCaraBayar.jasper","report","::[ Laporan Penyakit Rawat Inap Per Cara Bayar ]::",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }

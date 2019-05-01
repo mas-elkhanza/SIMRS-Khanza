@@ -645,7 +645,7 @@ public class DlgSuplierIPSRS extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuplier.jasper","report","::[ Data Suplier ]::","select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
+            Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::","select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
                     " ipsrssuplier.alamat,ipsrssuplier.kota, ipsrssuplier.no_telp,ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrssuplier "+
                     " where ipsrssuplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+
                     " ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+

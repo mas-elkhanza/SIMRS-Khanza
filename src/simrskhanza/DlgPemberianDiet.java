@@ -748,7 +748,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBrDiet.jasper","report","::[ Data Pemberian Diet ]::","select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
+            Valid.MyReportqry("rptBrDiet.jasper","report","::[ Data Pemberian Diet ]::","select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, " +
                 "concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal) as kd_kamar,detail_beri_diet.tanggal,detail_beri_diet.waktu,diet.nama_diet " +
                 "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
                 "on detail_beri_diet.no_rawat=reg_periksa.no_rawat " +
@@ -889,7 +889,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptLabelDiet.jasper","report","::[ Label Diet ]::",
+            Valid.MyReportqry("rptLabelDiet.jasper","report","::[ Label Diet ]::",
                 "select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir, " +
                 "concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),detail_beri_diet.tanggal,detail_beri_diet.waktu,diet.nama_diet " +
                 "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +
@@ -917,7 +917,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptLabelDiet.jasper","report","::[ Label Diet ]::",
+            Valid.MyReportqry("rptLabelDiet.jasper","report","::[ Label Diet ]::",
                 "select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir, " +
                 "concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),detail_beri_diet.tanggal,detail_beri_diet.waktu,diet.nama_diet " +
                 "from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar inner join bangsal " +

@@ -1139,8 +1139,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDataLab.jasper","report","::[ Data Pemeriksaan Laboratorium ]::",
-                            "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);
+                    Valid.MyReport("rptDataLab.jasper","report","::[ Data Pemeriksaan Laboratorium ]::",param);
                 }   break;
             case 1:
                 if(tabMode2.getRowCount()==0){
@@ -1176,8 +1175,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDataLab2.jasper","report","::[ Data Item Pemeriksaan Laboratorium ]::",
-                            "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);
+                    Valid.MyReport("rptDataLab2.jasper","report","::[ Data Item Pemeriksaan Laboratorium ]::",param);
                 }   break;
             case 2:
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1472,8 +1470,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -1723,8 +1720,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -1849,8 +1845,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -1975,8 +1970,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2101,8 +2095,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2226,8 +2219,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2355,8 +2347,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -2484,8 +2475,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -2633,8 +2623,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2781,8 +2770,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -2930,8 +2918,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {

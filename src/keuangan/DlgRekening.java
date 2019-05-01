@@ -820,10 +820,9 @@ public final class DlgRekening extends javax.swing.JDialog {
                                     tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
                 }
                   
-                Valid.MyReport("rptRekening2.jasper","report","::[ Data Rekening ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekening2.jasper","report","::[ Data Rekening ]::",param);
             }else{
-                Valid.MyReport("rptRekening.jasper","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
+                Valid.MyReportqry("rptRekening.jasper","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
                     " from rekening where kd_rek like '%"+TCari.getText().trim()+"%' or "+
                     " nm_rek like '%"+TCari.getText().trim()+"%' or "+
                     " tipe like '%"+TCari.getText().trim()+"%' or "+

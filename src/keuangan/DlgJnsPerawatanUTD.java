@@ -887,7 +887,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTarifUtd.jasper","report","::[ Data Tarif Radiologi ]::","select jns_perawatan_utd.kd_jenis_prw,jns_perawatan_utd.nm_perawatan,jns_perawatan_utd.bagian_rs,"+
+                Valid.MyReportqry("rptTarifUtd.jasper","report","::[ Data Tarif Radiologi ]::","select jns_perawatan_utd.kd_jenis_prw,jns_perawatan_utd.nm_perawatan,jns_perawatan_utd.bagian_rs,"+
                     "jns_perawatan_utd.bhp,jns_perawatan_utd.tarif_perujuk,jns_perawatan_utd.tarif_tindakan_dokter,jns_perawatan_utd.tarif_tindakan_petugas,jns_perawatan_utd.kso,"+
                     "jns_perawatan_utd.manajemen,jns_perawatan_utd.total_byr,penjab.png_jawab "+
                     "from jns_perawatan_utd inner join penjab on penjab.kd_pj=jns_perawatan_utd.kd_pj where "+

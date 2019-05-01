@@ -910,8 +910,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                     }                    
                 }
                  
-                Valid.MyReport("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabMode2.getRowCount()==0){
@@ -939,8 +938,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                     }                    
                 }
                  
-                Valid.MyReport("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKunjunganRanap.jasper","report","::[ Laporan Kunjungan Rawat Inap ]::",param);
             }            
         }        
         this.setCursor(Cursor.getDefaultCursor());

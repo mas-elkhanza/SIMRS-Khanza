@@ -876,8 +876,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
-            Valid.MyReport("rptPermintaanLab.jasper","report","::[ Permintaan Laboratorium ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);            
+            Valid.MyReport("rptPermintaanLab.jasper","report","::[ Permintaan Laboratorium ]::",param);            
             ChkJln.setSelected(false);
         }
         this.setCursor(Cursor.getDefaultCursor());
