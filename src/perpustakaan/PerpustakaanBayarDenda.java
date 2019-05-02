@@ -44,7 +44,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
     private PerpustakaanInventaris perpustakaan_inventaris=new PerpustakaanInventaris(null,false);
     private PerpustakaanAnggota anggota=new PerpustakaanAnggota(null,false);
     private PerpustakaanDenda denda=new PerpustakaanDenda(null,false);
-    private double perhari=Sequel.cariIsiAngka("select denda_perhari from perpustakaan_set_peminjaman");
+    private double perhari=Sequel.cariIsiAngka("select denda_perhari from perpustakaan_set_peminjaman"),besardenda=0;
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -60,7 +60,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                   java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                  java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, 
+                  java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, 
              };
              
              @Override
@@ -81,11 +81,11 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(150);
             }else if(i==3){
                 column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(250);
             }else if(i==5){
                 column.setPreferredWidth(90);
             }else if(i==6){
@@ -1182,16 +1182,38 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
                 "inner join perpustakaan_buku inner join perpustakaan_bayar_denda_harian inner join perpustakaan_anggota on "+
                 "perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_bayar_denda_harian.no_anggota=perpustakaan_anggota.no_anggota "+
                 "and perpustakaan_inventaris.no_inventaris=perpustakaan_bayar_denda_harian.no_inventaris where "+
-                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_bayar_denda_harian.no_anggota like ? "+
-                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_anggota.nama_anggota like ? "+
-                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_inventaris.no_inventaris like ? "+
-                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_buku.kode_buku like ? "+
+                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_bayar_denda_harian.no_anggota like ? or "+
+                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_anggota.nama_anggota like ? or "+
+                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_inventaris.no_inventaris like ? or "+
+                "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_buku.kode_buku like ? or "+
                 "perpustakaan_bayar_denda_harian.tgl_denda between ? and ? and perpustakaan_buku.judul_buku like ? order by perpustakaan_bayar_denda_harian.tgl_denda desc"
             );
             try {
                 ps.setString(1,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                
+                besardenda=0;
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString("tgl_denda"),rs.getString("no_anggota"),rs.getString("nama_anggota"),rs.getString("no_inventaris"),
+                        rs.getString("kode_buku")+" "+rs.getString("judul_buku"),rs.getInt("keterlambatan"),rs.getDouble("besar_denda")
+                    });
+                    besardenda=besardenda+rs.getDouble("besar_denda");
+                }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -1202,6 +1224,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            LCount1.setText(Valid.SetAngka(besardenda));
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -1222,7 +1245,10 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
     }
 
     private void getData() {
-        
+        if(tbBayarDenda.getSelectedRow()!= -1){
+            Valid.SetTgl(tgl,tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),0).toString());
+            TNoA.setText(tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),0).toString());
+        }
     }
     
     public void isInventaris(){
