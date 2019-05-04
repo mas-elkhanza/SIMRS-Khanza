@@ -21,7 +21,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -200,7 +200,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPerawatanRanap")){
+                if(akses.getform().equals("DlgCariPerawatanRanap")){
                     if(dokter.getTable().getSelectedRow()!= -1){
                         kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                         nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
@@ -225,7 +225,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPerawatanRanap")){
+                if(akses.getform().equals("DlgCariPerawatanRanap")){
                     if(petugas.getTable().getSelectedRow()!= -1){                   
                         switch (pilihtable) {
                             case "rawat_inap_pr":
@@ -1124,7 +1124,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','"+ttlkso+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','0','"+ttlkso+"'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode());                                                
 
                     if((!TKeluhan.getText().trim().equals(""))||(!TPemeriksaan.getText().trim().equals(""))||
                         (!TSuhu.getText().trim().equals(""))||(!TTensi.getText().trim().equals(""))||
@@ -1195,7 +1195,7 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_kddokterKeyPressed
 
 private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
-        var.setform("DlgCariPerawatanRanap");
+        akses.setform("DlgCariPerawatanRanap");
         switch (pilihtable) {
             case "rawat_inap_dr":
                 dokter.isCek();
@@ -1264,7 +1264,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_KdPtg2KeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgCariPerawatanRanap");
+        akses.setform("DlgCariPerawatanRanap");
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
@@ -1701,7 +1701,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.gettarif_ranap());
+        BtnTambah.setEnabled(akses.gettarif_ranap());
     }
     
     public void setNoRm(String norwt,String pilihtable,Date tanggal,String jam,String menit,String detik,boolean status,String pasien) {

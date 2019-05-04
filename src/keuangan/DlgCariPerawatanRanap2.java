@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1754,7 +1754,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','0','"+hapusttlkso+"'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','"+hapusttlkso+"','0'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH "+akses.getkode());                                                
 
                     Sequel.queryu("delete from tampjurnal");    
                     if(ttlpendapatan>0){
@@ -1773,7 +1773,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','"+ttlkso+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','0','"+ttlkso+"'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode());                                                
 
                     if((!TKeluhan.getText().trim().equals(""))||(!TPemeriksaan.getText().trim().equals(""))||
                         (!TSuhu.getText().trim().equals(""))||(!TTensi.getText().trim().equals(""))||
@@ -3174,7 +3174,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.gettarif_ranap());
+        BtnTambah.setEnabled(akses.gettarif_ranap());
         TCari.requestFocus();
     }
     

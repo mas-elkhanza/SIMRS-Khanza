@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -372,7 +372,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgBooking")){
+                if(akses.getform().equals("DlgBooking")){
                     if(pasien.penjab.getTable().getSelectedRow()!= -1){
                         kdpnj.setText(pasien.penjab.getTable().getValueAt(pasien.penjab.getTable().getSelectedRow(),1).toString());
                         nmpnj.setText(pasien.penjab.getTable().getValueAt(pasien.penjab.getTable().getSelectedRow(),2).toString());
@@ -395,7 +395,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgBooking")){
+                if(akses.getform().equals("DlgBooking")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         pasien.penjab.dispose();
                     }
@@ -1119,7 +1119,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         }else if(NoReg.getText().trim().equals("")){
             Valid.textKosong(NoReg,"No.Antri");
         }else{
-            if(var.getkode().equals("Admin Utama")){
+            if(akses.getkode().equals("Admin Utama")){
                 isBooking();
             }else{
                 if(aktifjadwal.equals("aktif")){
@@ -1192,19 +1192,19 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();  
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting"));
             if(R2.isSelected()==true){
                 status=" booking_registrasi.tanggal_booking between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
             }else if(R3.isSelected()==true){
                 status=" booking_registrasi.tanggal_periksa between '"+Valid.SetTgl(DTPCari3.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari4.getSelectedItem()+"")+"' ";           
             }
-            Valid.MyReport("rptBookingRegistrasi.jrxml","report","::[ Laporan Daftar Booking Registrasi ]::",
+            Valid.MyReportqry("rptBookingRegistrasi.jasper","report","::[ Laporan Daftar Booking Registrasi ]::",
                 "select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.no_rkm_medis, "+
                     "pasien.nm_pasien,booking_registrasi.tanggal_periksa,booking_registrasi.kd_dokter,"+
                     "dokter.nm_dokter,booking_registrasi.kd_poli,poliklinik.nm_poli,booking_registrasi.no_reg, "+
@@ -1290,7 +1290,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
 
 private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
     if(aktifjadwal.equals("aktif")){
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             dokter.isCek();        
             dokter.TCari.requestFocus();
             dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1429,7 +1429,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
         if(aktifjadwal.equals("aktif")){
-            if(var.getkode().equals("Admin Utama")){
+            if(akses.getkode().equals("Admin Utama")){
                 poli.isCek();        
                 poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 poli.setLocationRelativeTo(internalFrame1);
@@ -1495,7 +1495,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_kdpnjKeyPressed
 
     private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
-        var.setform("DlgBooking");
+        akses.setform("DlgBooking");
         pasien.penjab.onCari();
         pasien.penjab.isCek();
         pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1731,10 +1731,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getbooking_registrasi());
-        BtnHapus.setEnabled(var.getbooking_registrasi());
-        BtnPrint.setEnabled(var.getbooking_registrasi());
-        BtnEdit.setEnabled(var.getbooking_registrasi());
+        BtnSimpan.setEnabled(akses.getbooking_registrasi());
+        BtnHapus.setEnabled(akses.getbooking_registrasi());
+        BtnPrint.setEnabled(akses.getbooking_registrasi());
+        BtnEdit.setEnabled(akses.getbooking_registrasi());
     }
 
     private String jam(){

@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -457,19 +457,19 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         Map<String, Object> param = new HashMap<>();         
-        param.put("namars",var.getnamars());
-        param.put("alamatrs",var.getalamatrs());
-        param.put("kotars",var.getkabupatenrs());
-        param.put("propinsirs",var.getpropinsirs());
-        param.put("kontakrs",var.getkontakrs());
-        param.put("emailrs",var.getemailrs());   
+        param.put("namars",akses.getnamars());
+        param.put("alamatrs",akses.getalamatrs());
+        param.put("kotars",akses.getkabupatenrs());
+        param.put("propinsirs",akses.getpropinsirs());
+        param.put("kontakrs",akses.getkontakrs());
+        param.put("emailrs",akses.getemailrs());   
         param.put("periode",Tgl1.getSelectedItem()+" S.D. "+Tgl2.getSelectedItem()); 
         if(TabRawat.getSelectedIndex()==0){
             if(tabMode.getRowCount()==0){
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Valid.MyReport("rptPPNPembelian.jrxml","report","::[ PPN Pengadaan Barang ]::",
+                Valid.MyReportqry("rptPPNPembelian.jasper","report","::[ PPN Pengadaan Barang ]::",
                     "select pembelian.tgl_beli,pembelian.no_faktur, "+
                     " pembelian.kode_suplier,datasuplier.nama_suplier, "+
                     " pembelian.nip,petugas.nama,pembelian.total1,"+
@@ -488,7 +488,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Valid.MyReport("rptPPNPemesanan.jrxml","report","::[ PPN Penerimaan Barang ]::",
+                Valid.MyReportqry("rptPPNPemesanan.jasper","report","::[ PPN Penerimaan Barang ]::",
                     "select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
                     " pemesanan.kode_suplier,datasuplier.nama_suplier, "+
                     " pemesanan.nip,petugas.nama,pemesanan.total1,"+
@@ -518,8 +518,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
                 
-                Valid.MyReport("rptPPNRalan.jrxml","report","::[ Laporan PPN Obat Ralan ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptPPNRalan.jasper","report","::[ Laporan PPN Obat Ralan ]::",param);
             }                
         }
         

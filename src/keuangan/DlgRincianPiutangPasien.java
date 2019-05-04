@@ -7,7 +7,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -450,15 +450,14 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
             
             
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRincianPiutangPasien.jrxml","report","::[ Rekap Piutang Masuk ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptRincianPiutangPasien.jasper","report","::[ Rekap Piutang Masuk ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -503,7 +502,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
                 int kolom=tbBangsal.getSelectedColumn();
                 if(kolom==1){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    if(var.getbayar_piutang()==true){
+                    if(akses.getbayar_piutang()==true){
                         DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,false);
                         bayarpiutang.emptTeks();
                         String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString() +"'");
@@ -536,7 +535,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 int kolom=tbBangsal.getSelectedColumn();
                 if(kolom==1){
-                    if(var.getbayar_piutang()==true){
+                    if(akses.getbayar_piutang()==true){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,false);
                         bayarpiutang.emptTeks();

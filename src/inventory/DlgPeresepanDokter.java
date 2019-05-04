@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -986,7 +986,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 i=tbResep.getSelectedColumn();
                 if(i==8){
-                    var.setform("DlgCariObat");
+                    akses.setform("DlgCariObat");
                     aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame1);
                     aturanpakai.setVisible(true);
@@ -1214,7 +1214,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             i=tbObatResepRacikan.getSelectedColumn();
             if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 if(i==5){
-                    var.setform("DlgCariObat");
+                    akses.setform("DlgCariObat");
                     aturanpakai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                     aturanpakai.setLocationRelativeTo(internalFrame1);
                     aturanpakai.setVisible(true);
@@ -1460,9 +1460,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{
                     psresepasuransi.setDouble(1,kenaikan);
                     psresepasuransi.setString(2,bangsal);
@@ -1499,9 +1499,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{
                     psresep.setString(1,bangsal);
                     psresep.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1599,7 +1599,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     public void isCek(){   
-        BtnTambah.setEnabled(var.getresep_dokter());
+        BtnTambah.setEnabled(akses.getresep_dokter());
         TCari.requestFocus();
         if(status.equals("ralan")){
             bangsal=Sequel.cariIsi("select kd_bangsal from set_depo_ralan where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));
@@ -1607,7 +1607,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 bangsal=bangsaldefault;
             }
         }else if(status.equals("ranap")){
-            bangsal=var.getkdbangsal();
+            bangsal=akses.getkdbangsal();
         }            
     }
     
@@ -1824,9 +1824,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{ 
                     psresepasuransi.setDouble(1,kenaikan);
                     psresepasuransi.setString(2,bangsal);
@@ -1864,9 +1864,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang "+
                     " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
                     " and industrifarmasi.kode_industri=databarang.kode_industri "+
-                    " where  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
-                    "  databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
+                    " where  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                    "  databarang.status='1' and gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 try{ 
                     psresep.setString(1,bangsal);
                     psresep.setString(2,"%"+TCari.getText().trim()+"%");

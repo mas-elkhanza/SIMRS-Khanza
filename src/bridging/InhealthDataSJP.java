@@ -19,7 +19,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -369,9 +369,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         }
 
         try {
-            user=var.getkode().replace(" ","").substring(0,9);
+            user=akses.getkode().replace(" ","").substring(0,9);
         } catch (Exception e) {
-            user=var.getkode();
+            user=akses.getkode();
         }
         
         LabelJenpel.setVisible(false);
@@ -1389,30 +1389,14 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBridgingDaftar.jrxml","report","::[ Data Bridging SEP ]::",
-                    "select bridging_inhealth.no_sjp, bridging_inhealth.no_rawat,bridging_inhealth.nomr,bridging_inhealth.nama_pasien,bridging_inhealth.tglsep,"+
-                    "bridging_inhealth.tglrujukan,bridging_inhealth.no_rujukan,bridging_inhealth.kdppkrujukan,"+
-                    "bridging_inhealth.nmppkrujukan,bridging_inhealth.kdppkpelayanan,bridging_inhealth.nmppkpelayanan,"+
-                    "if(bridging_inhealth.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_inhealth.catatan,bridging_inhealth.diagawal,"+
-                    "bridging_inhealth.nmdiagnosaawal,bridging_inhealth.kdpolitujuan,bridging_inhealth.nmpolitujuan,"+
-                    "if(bridging_inhealth.klsrawat='1','Kelas 1',if(bridging_inhealth.klsrawat='2','Kelas 2','Kelas 3')),"+
-                    "if(bridging_inhealth.lakalantas='1','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),bridging_inhealth.lokasilaka,bridging_inhealth.user, "+
-                    "bridging_inhealth.tanggal_lahir,bridging_inhealth.peserta,bridging_inhealth.jkel,bridging_inhealth.no_kartu,bridging_inhealth.tglpulang from bridging_inhealth where "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.no_sjp like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.nomr like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.nama_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.nmppkrujukan like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.diagawal like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.nmdiagnosaawal like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_inhealth.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and bridging_inhealth.nmpolitujuan like '%"+TCari.getText().trim()+"%' order by bridging_inhealth.tglsep",param);
+            Valid.MyReport("rptBridgingDaftar.jasper","report","::[ Data Bridging SEP ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1511,7 +1495,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
-        if(var.getform().equals("DlgReg")||var.getform().equals("DlgIGD")||var.getform().equals("DlgKamarInap")){
+        if(akses.getform().equals("DlgReg")||akses.getform().equals("DlgIGD")||akses.getform().equals("DlgKamarInap")){
             no_peserta=Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis=?",TNoRM.getText());
             if(no_peserta.trim().equals("")){
                 JOptionPane.showMessageDialog(null,"Pasien tidak mempunyai kepesertaan BPJS");
@@ -1564,15 +1548,16 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             if(JenisPelayanan.getSelectedIndex()==0){
-                Valid.MyReport("rptBridgingSJP.jrxml","report","::[ Cetak SJP ]::","select * from bridging_inhealth where no_sjp='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSJP.jasper","report","::[ Cetak SJP ]::",param);
             }else{
-                Valid.MyReport("rptBridgingSJP2.jrxml","report","::[ Cetak SJP ]::","select * from bridging_inhealth where no_sjp='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSJP2.jasper","report","::[ Cetak SJP ]::",param);
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -2005,10 +1990,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
       
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinhealth_sjp());
-        BtnHapus.setEnabled(var.getinhealth_sjp());
-        BtnPrint.setEnabled(var.getinhealth_sjp());
-        BtnEdit.setEnabled(var.getinhealth_sjp());        
+        BtnSimpan.setEnabled(akses.getinhealth_sjp());
+        BtnHapus.setEnabled(akses.getinhealth_sjp());
+        BtnPrint.setEnabled(akses.getinhealth_sjp());
+        BtnEdit.setEnabled(akses.getinhealth_sjp());        
     }
     
     private void getData() {

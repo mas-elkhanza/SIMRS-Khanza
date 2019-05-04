@@ -12,7 +12,7 @@ import grafikanalisa.grafikreseptersedikit;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -173,7 +173,7 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgSirkulasiBarang")){
+                if(akses.getform().equals("DlgSirkulasiBarang")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
@@ -231,7 +231,7 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgSirkulasiBarang")){
+                if(akses.getform().equals("DlgSirkulasiBarang")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();                    
                     }                
@@ -667,21 +667,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
             
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(lokasi.equals("")){
-                Valid.MyReport("rptSirkulasi5.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi5.jasper","report","::[ Sirkulasi Barang ]::",param);
             }else if(!lokasi.equals("")){
                 param.put("bangsal",lokasi);  
-                Valid.MyReport("rptSirkulasi6.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi6.jasper","report","::[ Sirkulasi Barang ]::",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -745,7 +743,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdbarKeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        var.setform("DlgSirkulasiBarang");
+        akses.setform("DlgSirkulasiBarang");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1746,7 +1744,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-         BtnPrint.setEnabled(var.getsirkulasi_obat());
+         BtnPrint.setEnabled(akses.getsirkulasi_obat());
     }
     
 }

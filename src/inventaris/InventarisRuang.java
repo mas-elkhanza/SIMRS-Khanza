@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -143,7 +143,7 @@ public class InventarisRuang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ruang Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ruang Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -184,6 +184,7 @@ public class InventarisRuang extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -634,8 +635,8 @@ public class InventarisRuang extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getinventaris_ruang());
-       BtnHapus.setEnabled(var.getinventaris_ruang());
-       BtnEdit.setEnabled(var.getinventaris_ruang());
+       BtnSimpan.setEnabled(akses.getinventaris_ruang());
+       BtnHapus.setEnabled(akses.getinventaris_ruang());
+       BtnEdit.setEnabled(akses.getinventaris_ruang());
     }
 }

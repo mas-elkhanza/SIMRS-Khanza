@@ -6,11 +6,11 @@
 package fungsi;
 
 import AESsecurity.EnkripsiAES;
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import org.mariadb.jdbc.MariaDbDataSource;
 
 /**
  *
@@ -20,13 +20,13 @@ public final class koneksiDB {
     public koneksiDB(){}    
     private static Connection connection=null;
     private static final Properties prop = new Properties();  
-    private static final MysqlDataSource dataSource=new MysqlDataSource();
+    private static final MariaDbDataSource dataSource=new MariaDbDataSource();
     private static String caricepat="",var="";
     public static Connection condb(){      
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull");
+                dataSource.setUrl("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                 connection=dataSource.getConnection();       

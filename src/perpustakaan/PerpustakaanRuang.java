@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -181,6 +181,7 @@ public class PerpustakaanRuang extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -269,7 +270,7 @@ public class PerpustakaanRuang extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -437,11 +438,13 @@ public class PerpustakaanRuang extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"Nama Ruang");
         }else{
-            Sequel.mengedit("perpustakaan_ruang","kd_ruang=?","kd_ruang=?,nm_ruang=?",3,new String[]{
-                TKd.getText(),TNm.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbSpesialis.getSelectedRow()> -1){
+                Sequel.mengedit("perpustakaan_ruang","kd_ruang=?","kd_ruang=?,nm_ruang=?",3,new String[]{
+                    TKd.getText(),TNm.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
+                });
+                if(tabMode.getRowCount()!=0){tampil();}
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -630,8 +633,8 @@ public class PerpustakaanRuang extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getruang_perpustakaan());
-       BtnHapus.setEnabled(var.getruang_perpustakaan());
-       BtnEdit.setEnabled(var.getruang_perpustakaan());
+       BtnSimpan.setEnabled(akses.getruang_perpustakaan());
+       BtnHapus.setEnabled(akses.getruang_perpustakaan());
+       BtnEdit.setEnabled(akses.getruang_perpustakaan());
     }
 }

@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -1105,15 +1105,14 @@ public final class DlgResepObat extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();  
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport2("rptResep.jrxml","report","::[ Daftar Pemberian Obat Resep ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_resep order by no asc",param);
+            Valid.MyReport2("rptResep.jasper","report","::[ Daftar Pemberian Obat Resep ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1257,19 +1256,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();  
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(Sequel.cariInteger(
                     "select count(*) from resep_obat inner join "+
                     "aturan_pakai on resep_obat.no_rawat=aturan_pakai.no_rawat and "+
                     "resep_obat.tgl_perawatan=aturan_pakai.tgl_perawatan and " +
                     "resep_obat.jam=aturan_pakai.jam where resep_obat.no_resep=? and aturan_pakai.aturan<>''",NoResep.getText())>0){
-                Valid.MyReport2("rptItemResep.jrxml","report","::[ Aturan Pakai Obat ]::",
+                Valid.MyReportqry("rptItemResep.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
                     "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan "+
@@ -1292,7 +1291,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "obat_racikan on resep_obat.no_rawat=obat_racikan.no_rawat and "+
                     "resep_obat.tgl_perawatan=obat_racikan.tgl_perawatan and " +
                     "resep_obat.jam=obat_racikan.jam where resep_obat.no_resep=? and obat_racikan.aturan_pakai<>''",NoResep.getText())>0){
-                Valid.MyReport2("rptItemResep2.jrxml","report","::[ Aturan Pakai Obat ]::",
+                Valid.MyReportqry("rptItemResep2.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
                     "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
@@ -1318,14 +1317,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();  
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("emailrs",var.getemailrs());
-            param.put("kontakrs",var.getkontakrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("kontakrs",akses.getkontakrs());
             param.put("penanggung",Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText())));               
-            param.put("propinsirs",var.getpropinsirs());
+            param.put("propinsirs",akses.getpropinsirs());
             param.put("tanggal",Valid.SetTgl(DTPBeri.getSelectedItem()+""));
             param.put("norawat",TNoRw.getText());
             param.put("pasien",TPasien.getText());
@@ -1335,7 +1334,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("jam",cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
-            Valid.MyReport("rptLembarObat.jrxml",param,"::[ Lembar Pemberian Obat ]::");
+            Valid.MyReport("rptLembarObat.jasper",param,"::[ Lembar Pemberian Obat ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_ppLembarObatActionPerformed
@@ -1470,19 +1469,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();  
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(Sequel.cariInteger(
                     "select count(*) from resep_obat inner join "+
                     "aturan_pakai on resep_obat.no_rawat=aturan_pakai.no_rawat and "+
                     "resep_obat.tgl_perawatan=aturan_pakai.tgl_perawatan and " +
                     "resep_obat.jam=aturan_pakai.jam where resep_obat.no_resep=? and aturan_pakai.aturan<>''",NoResep.getText())>0){
-                Valid.MyReport2("rptItemResep3.jrxml","report","::[ Aturan Pakai Obat ]::",
+                Valid.MyReportqry("rptItemResep3.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
                     "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan,jenis.nama as jenis "+
@@ -1505,7 +1504,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "obat_racikan on resep_obat.no_rawat=obat_racikan.no_rawat and "+
                     "resep_obat.tgl_perawatan=obat_racikan.tgl_perawatan and " +
                     "resep_obat.jam=obat_racikan.jam where resep_obat.no_resep=? and obat_racikan.aturan_pakai<>''",NoResep.getText())>0){
-                Valid.MyReport2("rptItemResep2.jrxml","report","::[ Aturan Pakai Obat ]::",
+                Valid.MyReportqry("rptItemResep2.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
                     "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
@@ -1531,19 +1530,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();  
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(Sequel.cariInteger(
                     "select count(*) from resep_obat inner join "+
                     "aturan_pakai on resep_obat.no_rawat=aturan_pakai.no_rawat and "+
                     "resep_obat.tgl_perawatan=aturan_pakai.tgl_perawatan and " +
                     "resep_obat.jam=aturan_pakai.jam where resep_obat.no_resep=? and aturan_pakai.aturan<>''",NoResep.getText())>0){
-                Valid.MyReport2("rptItemResep5.jrxml","report","::[ Aturan Pakai Obat ]::",
+                Valid.MyReportqry("rptItemResep5.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam, "+
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
                     "aturan_pakai.aturan,detail_pemberian_obat.jml,kodesatuan.satuan "+
@@ -1566,7 +1565,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "obat_racikan on resep_obat.no_rawat=obat_racikan.no_rawat and "+
                     "resep_obat.tgl_perawatan=obat_racikan.tgl_perawatan and " +
                     "resep_obat.jam=obat_racikan.jam where resep_obat.no_resep=? and obat_racikan.aturan_pakai<>''",NoResep.getText())>0){
-                Valid.MyReport2("rptItemResep6.jrxml","report","::[ Aturan Pakai Obat ]::",
+                Valid.MyReportqry("rptItemResep6.jasper","report","::[ Aturan Pakai Obat ]::",
                     "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam," +
                     "resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik," +
                     "obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik " +
@@ -1927,9 +1926,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getresep_obat());
-        BtnHapus.setEnabled(var.getresep_obat());
-        BtnPrint.setEnabled(var.getresep_obat());
+        BtnSimpan.setEnabled(akses.getresep_obat());
+        BtnHapus.setEnabled(akses.getresep_obat());
+        BtnPrint.setEnabled(akses.getresep_obat());
     }
 
     private void tampilresep() {

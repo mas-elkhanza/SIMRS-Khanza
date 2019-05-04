@@ -19,7 +19,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -572,9 +572,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }
 
         try {
-            user=var.getkode().replace(" ","").substring(0,9);
+            user=akses.getkode().replace(" ","").substring(0,9);
         } catch (Exception e) {
-            user=var.getkode();
+            user=akses.getkode();
         }
         
         try {
@@ -2596,35 +2596,17 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBridgingDaftar.jrxml","report","::[ Data Bridging SEP ]::",
-                    "select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                    "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                    "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                    "if(bridging_sep.jnspelayanan='1','1. Ranap','2. Ralan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                    "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                    "if(bridging_sep.klsrawat='1','1. Kelas 1',if(bridging_sep.klsrawat='2','2. Kelas 2','3. Kelas 3')),"+
-                    "if(bridging_sep.lakalantas='0','0. Tidak','1. Ya'),bridging_sep.user, "+
-                    "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.tglpulang,"+
-                    "bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep,"+
-                    "bridging_sep.katarak,bridging_sep.tglkkl,bridging_sep.keterangankkl,"+
-                    "bridging_sep.suplesi,bridging_sep.no_sep_suplesi,bridging_sep.kdprop,"+
-                    "bridging_sep.nmprop,bridging_sep.kdkab,"+
-                    "bridging_sep.nmkab,bridging_sep.kdkec,bridging_sep.nmkec,bridging_sep.noskdp,"+
-                    "bridging_sep.kddpjp,bridging_sep.nmdpdjp from bridging_sep where "+
-                    "bridging_sep.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.nomr like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_sep.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.nama_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_sep.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.nmppkrujukan like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_sep.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.diagawal like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_sep.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.nmdiagnosaawal like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_sep.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_sep.tglsep between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.nmpolitujuan like '%"+TCari.getText().trim()+"%' order by bridging_sep.tglsep",param);
+                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                param.put("parameter","%"+TCari.getText().trim()+"%");
+            Valid.MyReport("rptBridgingDaftar.jasper","report","::[ Data Bridging SEP ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2761,7 +2743,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     }//GEN-LAST:event_CatatanKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(var.getform().equals("DlgReg")||var.getform().equals("DlgIGD")||var.getform().equals("DlgKamarInap")){
+        if(akses.getform().equals("DlgReg")||akses.getform().equals("DlgIGD")||akses.getform().equals("DlgKamarInap")){
             prb="";
             no_peserta=Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis=?",TNoRM.getText());
             if(no_peserta.trim().equals("")){
@@ -2804,32 +2786,18 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
             param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
             param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             if(JenisPelayanan.getSelectedIndex()==0){
-                Valid.MyReport("rptBridgingSEP.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),"+
-                        "concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP.jasper","report","::[ Cetak SEP ]::",param);
             }else{
-                Valid.MyReport("rptBridgingSEP2.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP2.jasper","report","::[ Cetak SEP ]::",param);
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -2903,7 +2871,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     tampil();     
                     reply = JOptionPane.showConfirmDialog(rootPane,"Proses update pulang di BPJS selesai.\nApakah mau skalian mengupdate data kamar inap..?","Konfirmasi",JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION) {
-                        var.setstatus(false);
+                        akses.setstatus(false);
                         DlgKamarInap kamarinap=new DlgKamarInap(null,false);
                         if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                             JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
@@ -3182,14 +3150,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             "','-','-','"+Catatan1.getText()+"','12:00:01'","No.Rujuk");
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
                         Map<String, Object> param = new HashMap<>();
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
                         param.put("norujuk",response.path("rujukan").path("noRujukan").asText());
                         param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
-                        Valid.MyReport("rptBridgingRujukanBPJS.jrxml",param,"::[ Surat Rujukan Keluar VClaim ]::");
+                        Valid.MyReport("rptBridgingRujukanBPJS.jasper",param,"::[ Surat Rujukan Keluar VClaim ]::");
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 }else{
@@ -3268,31 +3236,18 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
             param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
             param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+            param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             if(JenisPelayanan.getSelectedIndex()==0){
-                Valid.MyReport("rptBridgingSEP3.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP3.jasper","report","::[ Cetak SEP ]::",param);
             }else{
-                Valid.MyReport("rptBridgingSEP4.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP4.jasper","report","::[ Cetak SEP ]::",param);
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -3305,33 +3260,20 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
             param.put("norawat",TNoRw.getText());
             param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
             param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
             param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             if(JenisPelayanan.getSelectedIndex()==0){
-                Valid.MyReport("rptBridgingSEP5.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP5.jasper","report","::[ Cetak SEP ]::",param);
             }else{
-                Valid.MyReport("rptBridgingSEP6.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP6.jasper","report","::[ Cetak SEP ]::",param);
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -3345,34 +3287,21 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             kddokter=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
             param.put("norawat",TNoRw.getText());
             param.put("prb",Sequel.cariIsi("select prb from bpjs_prb where no_sep=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
             param.put("dokter",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter));
             param.put("noreg",Sequel.cariIsi("select no_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
             param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+            param.put("parameter",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             if(JenisPelayanan.getSelectedIndex()==0){
-                Valid.MyReport("rptBridgingSEP7.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP7.jasper","report","::[ Cetak SEP ]::",param);
             }else{
-                Valid.MyReport("rptBridgingSEP8.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='0','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),concat(bridging_sep.nmkec,', ',bridging_sep.nmkab,', ',bridging_sep.nmprop) as lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.penjamin,bridging_sep.notelep from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                Valid.MyReport("rptBridgingSEP8.jasper","report","::[ Cetak SEP ]::",param);
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -4040,17 +3969,17 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
       
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getbpjs_sep());
-        BtnHapus.setEnabled(var.getbpjs_sep());
-        BtnPrint.setEnabled(var.getbpjs_sep());
-        BtnEdit.setEnabled(var.getbpjs_sep());      
-        ppDetailSEPPeserta.setEnabled(var.getbpjs_sep());
-        ppPengajuan.setEnabled(var.getbpjs_sep());
-        ppPengajuan1.setEnabled(var.getbpjs_sep());
-        ppPulang.setEnabled(var.getbpjs_sep());
-        ppSEP.setEnabled(var.getbpjs_sep());               
-        ppRiwayatPerawatan.setEnabled(var.getresume_pasien());    
-        ppRujukan.setEnabled(var.getbpjs_rujukan_keluar());
+        BtnSimpan.setEnabled(akses.getbpjs_sep());
+        BtnHapus.setEnabled(akses.getbpjs_sep());
+        BtnPrint.setEnabled(akses.getbpjs_sep());
+        BtnEdit.setEnabled(akses.getbpjs_sep());      
+        ppDetailSEPPeserta.setEnabled(akses.getbpjs_sep());
+        ppPengajuan.setEnabled(akses.getbpjs_sep());
+        ppPengajuan1.setEnabled(akses.getbpjs_sep());
+        ppPulang.setEnabled(akses.getbpjs_sep());
+        ppSEP.setEnabled(akses.getbpjs_sep());               
+        ppRiwayatPerawatan.setEnabled(akses.getresume_pasien());    
+        ppRujukan.setEnabled(akses.getbpjs_rujukan_keluar());
     }
     
     public void tutupInput(){

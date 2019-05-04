@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -672,14 +672,14 @@ public class DlgPerusahaan extends javax.swing.JDialog {
                     " perusahaan_pasien.no_telp like '%"+TCari.getText().trim()+"%' order by perusahaan_pasien.kode_perusahaan";
             } 
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPerusahaan.jrxml","report","::[ Data Instansi/Perusahaan ]::",sql,param);            
+            Valid.MyReportqry("rptPerusahaan.jasper","report","::[ Data Instansi/Perusahaan ]::",sql,param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -916,14 +916,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getperusahaan_pasien());
-        BtnHapus.setEnabled(var.getperusahaan_pasien());
-        BtnEdit.setEnabled(var.getperusahaan_pasien());
-        BtnPrint.setEnabled(var.getperusahaan_pasien());
+        BtnSimpan.setEnabled(akses.getperusahaan_pasien());
+        BtnHapus.setEnabled(akses.getperusahaan_pasien());
+        BtnEdit.setEnabled(akses.getperusahaan_pasien());
+        BtnPrint.setEnabled(akses.getperusahaan_pasien());
         
-        ppGanti.setEnabled(var.getperusahaan_pasien());        
-        ppHapus.setEnabled(var.getperusahaan_pasien());
-        ppCetak.setEnabled(var.getperusahaan_pasien());
+        ppGanti.setEnabled(akses.getperusahaan_pasien());        
+        ppHapus.setEnabled(akses.getperusahaan_pasien());
+        ppCetak.setEnabled(akses.getperusahaan_pasien());
     }
     
     private void isForm(){

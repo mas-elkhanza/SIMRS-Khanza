@@ -10,7 +10,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -482,7 +482,7 @@ public class PanelDiagnosa extends widget.panelisi {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampildiagnosa();            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(var.getpenyakit()==true){
+            if(akses.getpenyakit()==true){
                 btnTambahPenyakitActionPerformed(null);
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -509,7 +509,7 @@ public class PanelDiagnosa extends widget.panelisi {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilprosedure();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(var.geticd9()==true){
+            if(akses.geticd9()==true){
                 btnTambahProsedurActionPerformed(null);
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -1004,14 +1004,14 @@ public class PanelDiagnosa extends widget.panelisi {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(TabModeDiagnosaPasien.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDiagnosa.jrxml","report","::[ Data Diagnosa Pasien ]::",
+                Valid.MyReportqry("rptDiagnosa.jasper","report","::[ Data Diagnosa Pasien ]::",
                         "select reg_periksa.tgl_registrasi,diagnosa_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                         "diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status,diagnosa_pasien.status_penyakit "+
                         "from diagnosa_pasien inner join reg_periksa inner join pasien inner join penyakit "+
@@ -1032,14 +1032,14 @@ public class PanelDiagnosa extends widget.panelisi {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(TabModeTindakanPasien.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptProsedur.jrxml","report","::[ Data Prosedur Tindakan Pasien ]::",
+                Valid.MyReportqry("rptProsedur.jasper","report","::[ Data Prosedur Tindakan Pasien ]::",
                         "select reg_periksa.tgl_registrasi,prosedur_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                         "prosedur_pasien.kode,icd9.deskripsi_panjang, prosedur_pasien.status "+
                         "from prosedur_pasien inner join reg_periksa inner join pasien inner join icd9 "+

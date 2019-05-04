@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -623,7 +623,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             })==true){
                                 ttlhpp=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,8).toString()));
                                 ttljual=ttljual+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,7).toString()));
-                                Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",var.getkode(),kdgudang.getText(),"Simpan");
+                                Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",akses.getkode(),kdgudang.getText(),"Simpan");
                                 Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
                                                 "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
                             }                            
@@ -639,7 +639,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
                     }
-                    jur.simpanJurnal(norawat.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(norawat.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+akses.getkode());                                                
 
                     
                     for(index=0;index<tbDokter.getRowCount();index++){   
@@ -1046,7 +1046,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
      
     public void isCek(){
-         BtnSimpan.setEnabled(var.getstok_obat_pasien());   
+         BtnSimpan.setEnabled(akses.getstok_obat_pasien());   
     }
 
     public void setNoRm(String no_rawat,String pasien){

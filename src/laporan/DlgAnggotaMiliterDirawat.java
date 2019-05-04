@@ -16,12 +16,10 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +30,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -292,12 +289,12 @@ public final class DlgAnggotaMiliterDirawat extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             
             Map<String, Object> param = new HashMap<>();         
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
             Sequel.queryu("delete from temporary");
             for(int r=0;r<tabMode.getRowCount();r++){ 
@@ -312,8 +309,7 @@ public final class DlgAnggotaMiliterDirawat extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptAnggotaMiliterDirawat.jrxml","report","::[ Laporan Anggota Militer/PNS & Keluarga Yang Dirawat ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptAnggotaMiliterDirawat.jasper","report","::[ Laporan Anggota Militer/PNS & Keluarga Yang Dirawat ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

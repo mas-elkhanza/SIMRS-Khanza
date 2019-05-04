@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -733,7 +733,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     psdetailpesan.setString(1,rs.getString(1));
                                     rs2=psdetailpesan.executeQuery();
                                     while(rs2.next()){
-                                        Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Penerimaan",var.getkode(),rs.getString("kd_bangsal") ,"Hapus");
+                                        Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Penerimaan",akses.getkode(),rs.getString("kd_bangsal") ,"Hapus");
                                         Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
                                                                "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
                                         Sequel.queryu3("delete from data_batch where kode_brng=? and no_batch=?",2,new String[]{
@@ -784,7 +784,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                            tbDokter.getValueAt(i,12).toString(),
                                                            Valid.SetTgl(tbDokter.getValueAt(i,6).toString()+"")
                                                     })==true){
-                                                        Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Penerimaan",var.getkode(),kdgudang.getText(),"Simpan");
+                                                        Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Penerimaan",akses.getkode(),kdgudang.getText(),"Simpan");
                                                         Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
                                                                    "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
                                                         simpanbatch();
@@ -1574,7 +1574,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 tbDokter.getValueAt(i,12).toString(),tbDokter.getValueAt(i,12).toString()
             });
         }
-        if(var.getobat()==true){
+        if(akses.getobat()==true){
             if(tbDokter.getValueAt(i,5).toString().equals("true")){
                 Sequel.mengedit("databarang","kode_brng=?","expire=?,h_beli=?,ralan=?,kelas1=?,kelas2=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?",13,new String[]{
                     Valid.SetTgl(tbDokter.getValueAt(i,6).toString()),tbDokter.getValueAt(i,24).toString(),

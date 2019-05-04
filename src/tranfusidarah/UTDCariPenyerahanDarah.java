@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -861,15 +861,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPenjualanDarah.jrxml","report","::[ Transaksi Penjualan Barang ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);
+            Valid.MyReport("rptPenjualanDarah.jasper","report","::[ Transaksi Penjualan Barang ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1071,7 +1070,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from utd_penyerahan_darah where no_penyerahan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())+"','CARA BAYAR','"+subtotalpendapatan+"','0'","Rekening"); 
                         jur.simpanJurnal(nopenyerahan.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PENJUALAN DARAH DI UTD ");                                                                        
                         Sequel.menyimpan("tagihan_sadewa","'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"','-','"+tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString()+"','-',concat('"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+
-                                "',' ',CURTIME()),'Pelunasan','"+subtotalpendapatan+"','"+subtotalpendapatan+"','Sudah','"+var.getkode()+"'","No.Nota");
+                                "',' ',CURTIME()),'Pelunasan','"+subtotalpendapatan+"','"+subtotalpendapatan+"','Sudah','"+akses.getkode()+"'","No.Nota");
                         Sequel.mengedit("utd_penyerahan_darah","no_penyerahan=?","status='Sudah Dibayar'",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
                         JOptionPane.showMessageDialog(rootPane,"Proses verifikasi selesai ...!!");
                     }else if(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("Sudah Dibayar")){
@@ -1603,9 +1602,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }   
      
     public void isCek(){
-        BtnPrint.setEnabled(var.getpenjualan_obat());
-        ppCetakNota.setEnabled(var.getpenjualan_obat());
-        if(var.getkode().equals("Admin Utama")){
+        BtnPrint.setEnabled(akses.getpenjualan_obat());
+        ppCetakNota.setEnabled(akses.getpenjualan_obat());
+        if(akses.getkode().equals("Admin Utama")){
             ppHapus.setEnabled(true);
         }else{
             ppHapus.setEnabled(false);

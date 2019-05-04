@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -523,14 +523,14 @@ public final class SuratRuang extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();
                 param.put("parameter","%"+TCari.getText().trim()+"%");     
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSuratRuang.jrxml",param,"::[ Laporan Ruang Surat ]::");
+                Valid.MyReport("rptSuratRuang.jasper",param,"::[ Laporan Ruang Surat ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -707,9 +707,9 @@ public final class SuratRuang extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsurat_ruang());
-        BtnHapus.setEnabled(var.getsurat_ruang());
-        BtnEdit.setEnabled(var.getsurat_ruang());
-        BtnPrint.setEnabled(var.getsurat_ruang());
+        BtnSimpan.setEnabled(akses.getsurat_ruang());
+        BtnHapus.setEnabled(akses.getsurat_ruang());
+        BtnEdit.setEnabled(akses.getsurat_ruang());
+        BtnPrint.setEnabled(akses.getsurat_ruang());
     }
 }

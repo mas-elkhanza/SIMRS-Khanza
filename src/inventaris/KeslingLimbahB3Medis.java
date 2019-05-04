@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -718,14 +718,14 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptLimbahB3Medis.jrxml","report","::[ Data Limbah Padat B3 Medis Keluar TPS ]::",
+            Valid.MyReportqry("rptLimbahB3Medis.jasper","report","::[ Data Limbah Padat B3 Medis Keluar TPS ]::",
                    "select kesling_limbah_b3medis.nip,petugas.nama,kesling_limbah_b3medis.tanggal,"+
                    "kesling_limbah_b3medis.jmllimbah,kesling_limbah_b3medis.tujuan_penyerahan,kesling_limbah_b3medis.bukti_dokumen, "+
                    "kesling_limbah_b3medis.sisa_di_tps from kesling_limbah_b3medis inner join petugas on kesling_limbah_b3medis.nip=petugas.nip where "+
@@ -989,13 +989,13 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getlimbah_b3_medis());
-        BtnHapus.setEnabled(var.getlimbah_b3_medis());
-        BtnEdit.setEnabled(var.getlimbah_b3_medis());
-        if(var.getjml2()>=1){
+        BtnSimpan.setEnabled(akses.getlimbah_b3_medis());
+        BtnHapus.setEnabled(akses.getlimbah_b3_medis());
+        BtnEdit.setEnabled(akses.getlimbah_b3_medis());
+        if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
-            KdPetugas.setText(var.getkode());
+            KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
         }  
     }

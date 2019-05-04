@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -2129,7 +2129,7 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getpenyakit_ralan());
+        BtnPrint.setEnabled(akses.getpenyakit_ralan());
     }
     
     private void isForm(){

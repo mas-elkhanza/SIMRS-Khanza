@@ -13,6 +13,7 @@
 
 package setting;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -25,6 +26,8 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -129,7 +132,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
                     "[N]Limbah B3 Medis Per Tanggal","[N]Limbah B3 Medis Per Bulan","[F]Limbah Padat Domestik","[N]Limbah Padat Domestik Per Tanggal",
                     "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah","[F]Pest Control","[P]Ruang Perpustakaan","[P]Kategori Koleksi","[P]Jenis Koleksi",
-                    "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan"
+                    "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan",
+                    "[P]Anggota Perpustakaan","[P]Peminjaman Koleksi Perpustakaan","[P]Bayar Denda Perpustakaan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -260,6 +264,9 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -273,7 +280,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 477;i++) {
+        for (i = 0; i < 480;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -863,6 +870,12 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(141);
             }else if(i==476){
                 column.setPreferredWidth(122);
+            }else if(i==477){
+                column.setPreferredWidth(132);
+            }else if(i==478){
+                column.setPreferredWidth(188);
+            }else if(i==479){
+                column.setPreferredWidth(152);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1301,7 +1314,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1820,7 +1833,10 @@ public class DlgUser extends javax.swing.JDialog {
                     "koleksi_perpustakaan='"+tbUser.getValueAt(i,473).toString()+"',"+
                     "inventaris_perpustakaan='"+tbUser.getValueAt(i,474).toString()+"',"+
                     "set_peminjaman_perpustakaan='"+tbUser.getValueAt(i,475).toString()+"',"+
-                    "denda_perpustakaan='"+tbUser.getValueAt(i,476).toString()+"'");
+                    "denda_perpustakaan='"+tbUser.getValueAt(i,476).toString()+"',"+
+                    "anggota_perpustakaan='"+tbUser.getValueAt(i,477).toString()+"',"+
+                    "peminjaman_perpustakaan='"+tbUser.getValueAt(i,478).toString()+"',"+
+                    "bayar_denda_perpustakaan='"+tbUser.getValueAt(i,479).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1921,6 +1937,13 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TKd.requestFocus();
         }else if(tabMode.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();    
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
@@ -1929,8 +1952,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
             }
-            Valid.MyReport("rptUser.jrxml","report","::[ Data User ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc");
+            Valid.MyReport("rptUser.jasper","report","::[ Data User ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2130,7 +2152,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik,"+
                         "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah,pest_control,ruang_perpustakaan,"+
                         "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"+
-                        "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan from user order by AES_DECRYPT(id_user,'nur')");
+                        "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
+                        "bayar_denda_perpustakaan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2619,7 +2642,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("koleksi_perpustakaan"),
                                rs.getBoolean("inventaris_perpustakaan"),
                                rs.getBoolean("set_peminjaman_perpustakaan"),
-                               rs.getBoolean("denda_perpustakaan")
+                               rs.getBoolean("denda_perpustakaan"),
+                               rs.getBoolean("anggota_perpustakaan"),
+                               rs.getBoolean("peminjaman_perpustakaan"),
+                               rs.getBoolean("bayar_denda_perpustakaan")
                             });
                         }   
                     } catch (Exception e) {
@@ -3097,7 +3123,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("koleksi_perpustakaan"),
                            rs.getBoolean("inventaris_perpustakaan"),
                            rs.getBoolean("set_peminjaman_perpustakaan"),
-                           rs.getBoolean("denda_perpustakaan")
+                           rs.getBoolean("denda_perpustakaan"),
+                           rs.getBoolean("anggota_perpustakaan"),
+                           rs.getBoolean("peminjaman_perpustakaan"),
+                           rs.getBoolean("bayar_denda_perpustakaan")
                         });
                     }                                             
                  }

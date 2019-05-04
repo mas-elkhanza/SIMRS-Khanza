@@ -409,10 +409,12 @@ private void MakBukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_M
         }else if(Denda.getText().trim().equals("")||Denda.getText().trim().equals("0")){
             Valid.textKosong(Denda,"Denda Keterlambatan Perhari");
         }else{
-            Sequel.queryu("delete from perpustakaan_set_peminjaman");
-            Sequel.menyimpan("perpustakaan_set_peminjaman","'"+MakBuku.getText()+"','"+Lama.getText()+"','"+Denda.getText()+"'","Pengaturan Peminjaman");
-            tampil();
-            emptTeks();
+            if(tbAdmin.getSelectedRow()> -1){
+                Sequel.queryu("delete from perpustakaan_set_peminjaman");
+                Sequel.menyimpan("perpustakaan_set_peminjaman","'"+MakBuku.getText()+"','"+Lama.getText()+"','"+Denda.getText()+"'","Pengaturan Peminjaman");
+                tampil();
+                emptTeks();
+            }
         }
     }//GEN-LAST:event_BtnEditActionPerformed
 

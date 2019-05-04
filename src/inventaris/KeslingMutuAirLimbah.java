@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -718,14 +718,14 @@ public final class KeslingMutuAirLimbah extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptMutuAirLimbah.jrxml","report","::[ Data Mutu Air Limbah ]::",
+            Valid.MyReportqry("rptMutuAirLimbah.jasper","report","::[ Data Mutu Air Limbah ]::",
                    "select kesling_mutu_air_limbah.nip,petugas.nama,kesling_mutu_air_limbah.tanggal,"+
                    "kesling_mutu_air_limbah.meteran,kesling_mutu_air_limbah.jumlahharian,kesling_mutu_air_limbah.ph,kesling_mutu_air_limbah.suhu "+
                    "from kesling_mutu_air_limbah inner join petugas on kesling_mutu_air_limbah.nip=petugas.nip where "+
@@ -986,13 +986,13 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getmutu_air_limbah());
-        BtnHapus.setEnabled(var.getmutu_air_limbah());
-        BtnEdit.setEnabled(var.getmutu_air_limbah());
-        if(var.getjml2()>=1){
+        BtnSimpan.setEnabled(akses.getmutu_air_limbah());
+        BtnHapus.setEnabled(akses.getmutu_air_limbah());
+        BtnEdit.setEnabled(akses.getmutu_air_limbah());
+        if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
-            KdPetugas.setText(var.getkode());
+            KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
         }  
     }
