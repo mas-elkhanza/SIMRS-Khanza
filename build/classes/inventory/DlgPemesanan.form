@@ -25,7 +25,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppBersihkan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -138,7 +138,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbDokterMouseReleased"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbDokterMouseClicked"/>
                 <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tbDokterPropertyChange"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbDokterKeyPressed"/>
               </Events>
@@ -603,7 +603,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglPesan">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglPesan" noResource="true"/>
               </Properties>
@@ -813,7 +812,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglTempo">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglTempo" noResource="true"/>
               </Properties>
@@ -856,7 +854,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglFaktur">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglFaktur" noResource="true"/>
               </Properties>

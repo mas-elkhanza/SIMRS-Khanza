@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -366,7 +366,7 @@ public class DlgJadwalPegawai extends javax.swing.JDialog {
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(55, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         BlnCari.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 BlnCariItemStateChanged(evt);
@@ -376,11 +376,11 @@ public class DlgJadwalPegawai extends javax.swing.JDialog {
 
         label12.setText("Departemen :");
         label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(130, 23));
+        label12.setPreferredSize(new java.awt.Dimension(120, 23));
         panelBiasa1.add(label12);
 
         Departemen.setName("Departemen"); // NOI18N
-        Departemen.setPreferredSize(new java.awt.Dimension(220, 23));
+        Departemen.setPreferredSize(new java.awt.Dimension(230, 23));
         Departemen.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DepartemenItemStateChanged(evt);
@@ -533,12 +533,12 @@ public class DlgJadwalPegawai extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("departemen",Departemen.getSelectedItem().toString().replaceAll("Semua",""));
                 param.put("periode","01 - 31 BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
@@ -577,10 +577,10 @@ public class DlgJadwalPegawai extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih model cetak..!","Jadwal",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tampilkan Semua", "Tanpa departemen & jabatan"},"Tampilkan Semua");
                     switch (pilihan) {
                         case "Tampilkan Semua":
-                            Valid.MyReport("rptJadwalPegawai.jrxml","report","::[ Jadwal Masuk Pegawai ]::","select * from temporary",param);            
+                            Valid.MyReport("rptJadwalPegawai.jasper","report","::[ Jadwal Masuk Pegawai ]::",param);            
                             break;
                         case "Tanpa departemen & jabatan":
-                            Valid.MyReport("rptJadwalPegawai2.jrxml","report","::[ Jadwal Masuk Pegawai ]::","select * from temporary",param);            
+                            Valid.MyReport("rptJadwalPegawai2.jasper","report","::[ Jadwal Masuk Pegawai ]::",param);            
                             break;
                     }
                 }catch(Exception e){
@@ -884,8 +884,8 @@ public class DlgJadwalPegawai extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getjadwal_pegawai());
-        BtnHapus.setEnabled(var.getjadwal_pegawai());
+        BtnSimpan.setEnabled(akses.getjadwal_pegawai());
+        BtnHapus.setEnabled(akses.getjadwal_pegawai());
     }
     
     String konversi(int year, int month, int day){

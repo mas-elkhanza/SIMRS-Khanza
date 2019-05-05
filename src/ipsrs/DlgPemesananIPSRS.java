@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -153,7 +153,7 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("DlgPemesananIPSRS")){
                     if(form.suplier.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),1).toString());
@@ -176,7 +176,7 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("DlgPemesananIPSRS")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         form.suplier.dispose();
                     }                
@@ -193,7 +193,7 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("DlgPemesananIPSRS")){
                     if(form.petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
@@ -276,9 +276,9 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
+        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -302,7 +302,7 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Penerimaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Penerimaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -662,7 +662,6 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 75, 23);
 
-        TglPesan.setEditable(false);
         TglPesan.setDisplayFormat("dd-MM-yyyy");
         TglPesan.setName("TglPesan"); // NOI18N
         TglPesan.addItemListener(new java.awt.event.ItemListener() {
@@ -684,7 +683,6 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
         panelisi3.add(label22);
         label22.setBounds(180, 40, 60, 23);
 
-        TglFaktur.setEditable(false);
         TglFaktur.setDisplayFormat("dd-MM-yyyy");
         TglFaktur.setName("TglFaktur"); // NOI18N
         TglFaktur.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -695,7 +693,6 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
         panelisi3.add(TglFaktur);
         TglFaktur.setBounds(243, 40, 95, 23);
 
-        TglTempo.setEditable(false);
         TglTempo.setDisplayFormat("dd-MM-yyyy");
         TglTempo.setName("TglTempo"); // NOI18N
         TglTempo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -964,7 +961,7 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdptgKeyPressed
 
 private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        var.setform("DlgPemesananIPSRS");
+        akses.setform("DlgPemesananIPSRS");
         form.suplier.emptTeks();
         form.suplier.isCek();
         form.suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -974,7 +971,7 @@ private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnSuplierActionPerformed
 
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgPemesananIPSRS");
+        akses.setform("DlgPemesananIPSRS");
         form.petugas.emptTeks();
         form.petugas.isCek();
         form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -991,7 +988,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        var.setform("DlgPemesananIPSRS");
+        akses.setform("DlgPemesananIPSRS");
         DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
         barang.emptTeks();
         barang.isCek();
@@ -1235,12 +1232,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         TCari.requestFocus();
         tppn.setText("10");
         Meterai.setText("0");
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
-            kdptg.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getpenerimaan_non_medis());
-            BtnTambah.setEnabled(var.getipsrs_barang());
+            kdptg.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getpenerimaan_non_medis());
+            BtnTambah.setEnabled(akses.getipsrs_barang());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
         }        
     }

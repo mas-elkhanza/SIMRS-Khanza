@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /***
 * e-Dokter from version 0.1 Beta
@@ -18,11 +18,22 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'sik');
 
-$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME); 
+$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 define('VERSION', '0.1 Beta');
 define('URL', '');
 define('DIR', '');
+define('PRODUCTION', 'NO'); // YES to hide error page. NO to display error page.
+define('SIMRSURL', 'http://localhost/webapps');
+
+// INACBG's and VClaim Configurations
+define('INACBG_KEYRS', '');
+define('INACBG_URLWS', '');
+define('NO_RM', ' ');
+define('NO_PESERTA', '');
+define('SEP', '');
+define('NIK_KODER', '');
+define('TIPE_RS', '');
 
 function escape($string) {
     global $connection;
@@ -57,14 +68,14 @@ function num_rows($result) {
 
 // Get date and time
 
-date_default_timezone_set('Asia/Jakarta');
+date_default_timezone_set('Asia/Makassar');
 $month      = date('Y-m');
 $date       = date('Y-m-d');
 $time       = date('H:i:s');
 $date_time  = date('Y-m-d H:i:s');
 
-// Get settings 
-$getSettings = query("SELECT * FROM setting");
+// Get settings
+$getSettings = query("SELECT nama_instansi, alamat_instansi, kabupaten, propinsi FROM setting");
 $dataSettings = fetch_assoc($getSettings);
 
 // Get jenis poli
@@ -107,4 +118,3 @@ function validation_errors($error) {
     $errors = '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$error.'</div>';
     return $errors;
 }
-

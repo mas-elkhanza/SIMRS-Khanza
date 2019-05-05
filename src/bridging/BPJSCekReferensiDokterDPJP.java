@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -290,8 +290,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -365,15 +364,14 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJSReferensiDokter.jrxml","report","[ Pencarian Referensi Dokter DPJP ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptCariBPJSReferensiDokter.jasper","report","[ Pencarian Referensi Dokter DPJP ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

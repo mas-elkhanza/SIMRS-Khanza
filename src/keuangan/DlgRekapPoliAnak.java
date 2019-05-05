@@ -14,7 +14,7 @@ package keuangan;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -220,8 +220,6 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -233,8 +231,6 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -440,14 +436,13 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
             
             File f = new File("sensusdokter.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-            bw.write(LoadHTML.getText().replaceAll(
-                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
                                     "<font size='2' face='Tahoma'>REKAP HARIAN POLI ANAK<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+

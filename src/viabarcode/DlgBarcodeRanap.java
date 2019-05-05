@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.riwayatobat;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -270,7 +270,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Tindakan & Obat di Rawat Inap Via Barcode No.Rawat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Tindakan & Obat di Rawat Inap Via Barcode No.Rawat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -366,8 +366,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
         jPanel1.setLayout(new java.awt.GridLayout(2, 1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 253));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)), ".: Tindakan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), ".: Tindakan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
@@ -375,7 +375,6 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         panelisi5.setBorder(null);
         panelisi5.setName("panelisi5"); // NOI18N
         panelisi5.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi5.setWarnaBawah(new java.awt.Color(250, 255, 245));
         panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         label11.setText("Key Word :");
@@ -429,8 +428,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 253));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)), ".: Obat & BHP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), ".: Obat & BHP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(350, 102));
         jPanel2.setLayout(new java.awt.BorderLayout(1, 1));
@@ -438,7 +437,6 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         panelisi6.setBorder(null);
         panelisi6.setName("panelisi6"); // NOI18N
         panelisi6.setPreferredSize(new java.awt.Dimension(100, 43));
-        panelisi6.setWarnaBawah(new java.awt.Color(250, 255, 245));
         panelisi6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         label12.setText("Key Word :");
@@ -556,7 +554,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                                         tbObat.getValueAt(i,9).toString(),tbObat.getValueAt(i,10).toString(),
                                         ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),"Ranap",lokasistok                          
                                     })==true){
-                                        Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),"Pemberian Obat",var.getkode(),lokasistok,"Simpan");
+                                        Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),"Pemberian Obat",akses.getkode(),lokasistok,"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+lokasistok+"','-"+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))+"'", 
                                                      "stok=stok-'"+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))+"'","kode_brng='"+tbObat.getValueAt(i,2).toString()+"' and kd_bangsal='"+lokasistok+"'");   
                                     }else{
@@ -569,7 +567,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                                         tbObat.getValueAt(i,9).toString(),tbObat.getValueAt(i,10).toString(),
                                         ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ranap",lokasistok
                                     })==true){
-                                        Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",var.getkode(),lokasistok,"Simpan");
+                                        Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",akses.getkode(),lokasistok,"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+lokasistok+"','-"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'", 
                                                      "stok=stok-'"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'","kode_brng='"+tbObat.getValueAt(i,2).toString()+"' and kd_bangsal='"+lokasistok+"'");   
                                     }                                   
@@ -597,7 +595,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                                 tbObat.getValueAt(i,10).toString(),
                                 ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ranap",lokasistok
                             })==true){
-                                Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",var.getkode(),lokasistok,"Simpan");
+                                Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",akses.getkode(),lokasistok,"Simpan");
                                 Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+lokasistok+"','-"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'", 
                                              "stok=stok-'"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'","kode_brng='"+tbObat.getValueAt(i,2).toString()+"' and kd_bangsal='"+lokasistok+"'");   
                             }                                   
@@ -950,7 +948,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                 lokasistok=Sequel.cariIsi("select kd_bangsal from set_lokasi");
             }
         }else{
-            var.setkdbangsal(this.kd_bangsal);
+            akses.setkdbangsal(this.kd_bangsal);
         }
             
         TCariTindakan.requestFocus();

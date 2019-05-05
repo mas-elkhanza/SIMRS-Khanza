@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -267,7 +267,7 @@ public class DlgDokter extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
+        MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRestore.setForeground(new java.awt.Color(70, 70, 70));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -479,8 +479,7 @@ public class DlgDokter extends javax.swing.JDialog {
         cmbCrJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "LAKI-LAKI", "PEREMPUAN" }));
         cmbCrJk.setLightWeightPopupEnabled(false);
         cmbCrJk.setName("cmbCrJk"); // NOI18N
-        cmbCrJk.setOpaque(false);
-        cmbCrJk.setPreferredSize(new java.awt.Dimension(100, 23));
+        cmbCrJk.setPreferredSize(new java.awt.Dimension(120, 23));
         cmbCrJk.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCrJkItemStateChanged(evt);
@@ -501,8 +500,7 @@ public class DlgDokter extends javax.swing.JDialog {
         CmbCrGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "A", "B", "AB", "O", "-" }));
         CmbCrGd.setLightWeightPopupEnabled(false);
         CmbCrGd.setName("CmbCrGd"); // NOI18N
-        CmbCrGd.setOpaque(false);
-        CmbCrGd.setPreferredSize(new java.awt.Dimension(100, 23));
+        CmbCrGd.setPreferredSize(new java.awt.Dimension(70, 23));
         CmbCrGd.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCrJkItemStateChanged(evt);
@@ -523,8 +521,7 @@ public class DlgDokter extends javax.swing.JDialog {
         CmbCrStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "MENIKAH", "SINGLE", "JANDA", "DUDHA" }));
         CmbCrStts.setLightWeightPopupEnabled(false);
         CmbCrStts.setName("CmbCrStts"); // NOI18N
-        CmbCrStts.setOpaque(false);
-        CmbCrStts.setPreferredSize(new java.awt.Dimension(100, 23));
+        CmbCrStts.setPreferredSize(new java.awt.Dimension(120, 23));
         CmbCrStts.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCrJkItemStateChanged(evt);
@@ -551,7 +548,7 @@ public class DlgDokter extends javax.swing.JDialog {
         panelGlass8.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(230, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(240, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -608,18 +605,17 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmp);
-        TTmp.setBounds(111, 102, 148, 23);
+        TTmp.setBounds(111, 102, 146, 23);
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         CmbJk.setName("CmbJk"); // NOI18N
-        CmbJk.setOpaque(false);
         CmbJk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbJkKeyPressed(evt);
             }
         });
         FormInput.add(CmbJk);
-        CmbJk.setBounds(111, 72, 100, 23);
+        CmbJk.setBounds(111, 72, 110, 23);
 
         TNm.setHighlighter(null);
         TNm.setName("TNm"); // NOI18N
@@ -639,18 +635,17 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel9.setText("Gol. Darah :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(231, 72, 80, 23);
+        jLabel9.setBounds(221, 72, 75, 23);
 
         CMbGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "AB", "O", "-" }));
         CMbGd.setName("CMbGd"); // NOI18N
-        CMbGd.setOpaque(false);
         CMbGd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CMbGdKeyPressed(evt);
             }
         });
         FormInput.add(CMbGd);
-        CMbGd.setBounds(315, 72, 50, 23);
+        CMbGd.setBounds(300, 72, 65, 23);
 
         jLabel13.setText("Tmp/Tgl. Lahir :");
         jLabel13.setName("jLabel13"); // NOI18N
@@ -658,7 +653,7 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel13.setBounds(2, 102, 105, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -678,7 +673,6 @@ public class DlgDokter extends javax.swing.JDialog {
         cmbAgama.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISLAM", "KRISTEN", "KATOLIK", "HINDU", "BUDHA", "KONG HU CHU", "-" }));
         cmbAgama.setLightWeightPopupEnabled(false);
         cmbAgama.setName("cmbAgama"); // NOI18N
-        cmbAgama.setOpaque(false);
         cmbAgama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbAgamaKeyPressed(evt);
@@ -695,7 +689,6 @@ public class DlgDokter extends javax.swing.JDialog {
         CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "SINGLE", "JANDA", "DUDHA", "JOMBLO" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
-        CmbStts.setOpaque(false);
         CmbStts.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbSttsKeyPressed(evt);
@@ -986,14 +979,14 @@ public class DlgDokter extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDokter.jrxml","report","::[ Data Dokter ]::",
+                Valid.MyReportqry("rptDokter.jasper","report","::[ Data Dokter ]::",
                         "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir, "+
                    "dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
                    "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek "+
@@ -1448,11 +1441,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getdokter());
-        BtnHapus.setEnabled(var.getdokter());
-        BtnEdit.setEnabled(var.getdokter());
-        BtnPrint.setEnabled(var.getdokter());
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.getdokter());
+        BtnHapus.setEnabled(akses.getdokter());
+        BtnEdit.setEnabled(akses.getdokter());
+        BtnPrint.setEnabled(akses.getdokter());
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

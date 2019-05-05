@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -183,10 +183,10 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
         WindowModalAwal.setUndecorated(true);
         WindowModalAwal.setResizable(false);
 
+        internalFrame2.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Modal Awal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame2.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame2.setLayout(null);
 
         InputModalAwal.setHighlighter(null);
@@ -379,7 +379,6 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -392,7 +391,6 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
 
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
-        CmbStatus.setOpaque(false);
         CmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(CmbStatus);
 
@@ -443,16 +441,15 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
             param.put("shift",CmbStatus.getSelectedItem().toString());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPaymentPoint.jrxml","report","::[ Payment Point ]::",
-                "select * from temporary_payment order by no asc",param);
+            Valid.MyReport("rptPaymentPoint.jasper","report","::[ Payment Point ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

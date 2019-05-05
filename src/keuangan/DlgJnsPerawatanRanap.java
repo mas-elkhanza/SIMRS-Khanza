@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -322,7 +322,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
+        MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRestore.setForeground(new java.awt.Color(70, 70, 70));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -868,7 +868,6 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
         Kelas.setName("Kelas"); // NOI18N
-        Kelas.setOpaque(false);
         Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelasKeyPressed(evt);
@@ -1119,15 +1118,15 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 String sql="jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori ";
-                Valid.MyReport("rptJnsPrw.jrxml","report","::[ Data Jenis Perawatan ]::","select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                Valid.MyReportqry("rptJnsPrw.jasper","report","::[ Data Jenis Perawatan ]::","select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.material,jns_perawatan_inap.bhp,jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr  "+
                    "from jns_perawatan_inap inner join kategori_perawatan inner join penjab inner join bangsal  "+
@@ -1548,11 +1547,11 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.gettarif_ranap());
-        BtnHapus.setEnabled(var.gettarif_ranap());
-        BtnEdit.setEnabled(var.gettarif_ranap());
-        BtnPrint.setEnabled(var.gettarif_ranap());
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.gettarif_ranap());
+        BtnHapus.setEnabled(akses.gettarif_ranap());
+        BtnEdit.setEnabled(akses.gettarif_ranap());
+        BtnPrint.setEnabled(akses.gettarif_ranap());
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

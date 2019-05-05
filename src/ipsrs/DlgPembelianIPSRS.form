@@ -25,7 +25,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppBersihkan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -585,7 +585,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglBeli">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglBeli" noResource="true"/>
               </Properties>
@@ -730,14 +729,10 @@
             </Component>
             <Component class="widget.ComboBox" name="CmbAkun">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="46" green="46" red="46" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="CmbAkun" noResource="true"/>
-                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

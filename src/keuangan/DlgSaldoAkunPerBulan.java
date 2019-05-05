@@ -2,7 +2,7 @@ package keuangan;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -104,7 +104,7 @@ public class DlgSaldoAkunPerBulan extends javax.swing.JDialog {
         panelisi1.add(label11);
 
         ThnCari.setName("ThnCari"); // NOI18N
-        ThnCari.setPreferredSize(new java.awt.Dimension(65, 23));
+        ThnCari.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi1.add(ThnCari);
 
         jLabel6.setText("Key Word :");
@@ -157,7 +157,7 @@ public class DlgSaldoAkunPerBulan extends javax.swing.JDialog {
 
         label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(80, 30));
+        label9.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label9);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -233,14 +233,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             File f = new File("SaldoAkunPerBulan.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll(
-                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+       
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+       
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -2092,7 +2091,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getsaldo_akun_perbulan());
+        BtnPrint.setEnabled(akses.getsaldo_akun_perbulan());
     }
     
 }

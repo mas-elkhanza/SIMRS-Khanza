@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -344,6 +344,6 @@ public final class PCareCekMappingPoli extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.getpcare_mapping_poli());
+        BtnTambah.setEnabled(akses.getpcare_mapping_poli());
     }
 }

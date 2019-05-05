@@ -7,7 +7,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -220,7 +220,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnDetailPiutang.setBackground(new java.awt.Color(255, 255, 255));
+        MnDetailPiutang.setBackground(new java.awt.Color(255, 255, 254));
         MnDetailPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDetailPiutang.setForeground(new java.awt.Color(70, 70, 70));
         MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -282,7 +282,6 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         label32.setPreferredSize(new java.awt.Dimension(100, 23));
         panelisi4.add(label32);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -299,7 +298,6 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         panelisi4.add(jLabel11);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.setPreferredSize(new java.awt.Dimension(265, 23));
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -513,15 +511,14 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
             
             
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRPiutangMasuk.jrxml","report","::[ Rekap Piutang Masuk ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptRPiutangMasuk.jasper","report","::[ Rekap Piutang Masuk ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -660,7 +657,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     if(Sequel.menyimpantf("bayar_piutang","?,?,?,?,?,?","Data",6,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),
                         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",tabMode.getValueAt(i,1).toString()),
-                        tabMode.getValueAt(i,11).toString(),"diverifikasi oleh "+var.getkode(),tabMode.getValueAt(i,1).toString(),koderekening
+                        tabMode.getValueAt(i,11).toString(),"diverifikasi oleh "+akses.getkode(),tabMode.getValueAt(i,1).toString(),koderekening
                     })==true){
                         if(Double.parseDouble(tabMode.getValueAt(i,8).toString())<=0){
                             Sequel.mengedit("piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","status='Lunas'");

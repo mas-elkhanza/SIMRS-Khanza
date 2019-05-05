@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -344,7 +344,6 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
 
         Khusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IGD ALIH RAWAT IGD", "HDL HEMODIALISA", "JIW JIWA", "KLT KUSTA", "PAR  TB-MDR", "KEM SARANA KEMOTERAPI", "RAT SARANA RADIOTERAPI" }));
         Khusus.setName("Khusus"); // NOI18N
-        Khusus.setOpaque(false);
         Khusus.setPreferredSize(new java.awt.Dimension(200, 23));
         panelGlass7.add(Khusus);
 
@@ -353,9 +352,8 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass7.add(jLabel21);
 
-        Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -410,16 +408,15 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
             //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptCariPCAREFaskesAlihRawat.jrxml","report","[ Pencarian Referensi Rujukan Alih Rawat ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptCariPCAREFaskesAlihRawat.jasper","report","[ Pencarian Referensi Rujukan Alih Rawat ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPrintActionPerformed

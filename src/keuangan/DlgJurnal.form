@@ -22,7 +22,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppTambah">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f2" green="f2" red="f2" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -39,7 +39,7 @@
             <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppTambah" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[150, 25]"/>
+              <Dimension value="[150, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -49,7 +49,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="ppHapus">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f2" green="f2" red="f2" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -66,7 +66,7 @@
             <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppHapus" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[150, 25]"/>
+              <Dimension value="[150, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -624,7 +624,6 @@
             </Component>
             <Component class="widget.Tanggal" name="TglJurnal">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="TglJurnal" noResource="true"/>
               </Properties>

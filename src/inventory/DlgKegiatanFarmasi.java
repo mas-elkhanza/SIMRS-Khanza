@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -216,7 +216,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -267,7 +266,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -279,7 +277,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -387,12 +384,12 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();         
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
             param.put("tanggal",Tgl2.getDate());   
             if(TabRawat.getSelectedIndex()==0){
@@ -408,8 +405,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                     }                    
                 }
                 
-                Valid.MyReport("rptKegiatanFarmasi1.jrxml","report","::[ Laporan Kegiatan Farmasi ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKegiatanFarmasi1.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }else if(TabRawat.getSelectedIndex()==1){
                             
                 Sequel.queryu("delete from temporary");
@@ -423,8 +419,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                     }                    
                 }
                 
-                Valid.MyReport("rptKegiatanFarmasi2.jrxml","report","::[ Laporan Kegiatan Farmasi ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKegiatanFarmasi2.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }else if(TabRawat.getSelectedIndex()==2){
                             
                 Sequel.queryu("delete from temporary");
@@ -438,8 +433,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                     }                    
                 }
                 
-                Valid.MyReport("rptKegiatanFarmasi3.jrxml","report","::[ Laporan Kegiatan Farmasi ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptKegiatanFarmasi3.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }                 
         }
         this.setCursor(Cursor.getDefaultCursor());

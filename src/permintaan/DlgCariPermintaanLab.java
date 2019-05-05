@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -422,7 +422,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -436,7 +436,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab);
 
-        MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -450,7 +450,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnBarcodePermintaan);
 
-        MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodePermintaan1.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -504,7 +504,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-02-2019 10:55:25" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 21:45:30" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -546,7 +546,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass8.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -563,7 +562,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass8.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -735,7 +733,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabPilihRawat.setBorder(null);
         TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
@@ -801,7 +798,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame2.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatJalan.setBorder(null);
         TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
@@ -934,7 +930,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatInap.setBorder(null);
         TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
@@ -1115,15 +1110,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab.jrxml","report","::[ Data Permintaan Laboratorium ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);
+                    Valid.MyReport("rptLapPermintaanLab.jasper","report","::[ Data Permintaan Laboratorium ]::",param);
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
                 if(tabMode2.getRowCount()==0){
@@ -1166,15 +1160,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab2.jrxml","report","::[ Data Detail Permintaan Laboratorium ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);
+                    Valid.MyReport("rptLapPermintaanLab2.jasper","report","::[ Data Detail Permintaan Laboratorium ]::",param);
                 }
             } 
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1215,15 +1208,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab3.jrxml","report","::[ Data Permintaan Laboratorium ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);
+                    Valid.MyReport("rptLapPermintaanLab3.jasper","report","::[ Data Permintaan Laboratorium ]::",param);
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
                 if(tabMode4.getRowCount()==0){
@@ -1266,15 +1258,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptLapPermintaanLab4.jrxml","report","::[ Data Detail Permintaan Laboratorium ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);
+                    Valid.MyReport("rptLapPermintaanLab4.jasper","report","::[ Data Detail Permintaan Laboratorium ]::",param);
                 }
             }
         }                       
@@ -1475,16 +1466,15 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     param.put("jam",JamPermintaan);
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
 
-                    Valid.MyReport("rptPermintaanLab.jrxml","report","::[ Permintaan Laboratorium ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);            
+                    Valid.MyReport("rptPermintaanLab.jasper","report","::[ Permintaan Laboratorium ]::",param);            
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
@@ -1586,16 +1576,15 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     param.put("jam",JamPermintaan);
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
 
-                    Valid.MyReport("rptPermintaanLab.jrxml","report","::[ Permintaan Laboratorium ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);            
+                    Valid.MyReport("rptPermintaanLab.jasper","report","::[ Permintaan Laboratorium ]::",param);            
                 }
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
@@ -1747,13 +1736,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
-                    Valid.MyReport("rptBarcodePermintaanLab.jrxml","report","::[ Barcode No.Permintaan Lab ]::",
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    Valid.MyReportqry("rptBarcodePermintaanLab.jasper","report","::[ Barcode No.Permintaan Lab ]::",
                             "select noorder from permintaan_lab where no_rawat='"+NoRawat+"'",param); 
                     TeksKosong();
                     this.setCursor(Cursor.getDefaultCursor());
@@ -1774,13 +1763,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
-                    Valid.MyReport("rptBarcodePermintaanLab.jrxml","report","::[ Barcode No.Permintaan Lab ]::",
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    Valid.MyReportqry("rptBarcodePermintaanLab.jasper","report","::[ Barcode No.Permintaan Lab ]::",
                             "select noorder from permintaan_lab where no_rawat='"+NoRawat+"'",param); 
                     TeksKosong();
                     this.setCursor(Cursor.getDefaultCursor());
@@ -1806,13 +1795,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
-                    Valid.MyReport("rptBarcodePermintaanLab2.jrxml","report","::[ Barcode No.Permintaan Lab ]::",
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    Valid.MyReportqry("rptBarcodePermintaanLab2.jasper","report","::[ Barcode No.Permintaan Lab ]::",
                             "select noorder from permintaan_lab where no_rawat='"+NoRawat+"'",param); 
                     TeksKosong();
                     this.setCursor(Cursor.getDefaultCursor());
@@ -1833,13 +1822,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",norm));
                     param.put("norm",norm);
                     param.put("parameter","%"+TCari.getText().trim()+"%");     
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
-                    Valid.MyReport("rptBarcodePermintaanLab2.jrxml","report","::[ Barcode No.Permintaan Lab ]::",
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    Valid.MyReportqry("rptBarcodePermintaanLab2.jasper","report","::[ Barcode No.Permintaan Lab ]::",
                             "select noorder from permintaan_lab where no_rawat='"+NoRawat+"'",param); 
                     TeksKosong();
                     this.setCursor(Cursor.getDefaultCursor());
@@ -2315,11 +2304,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void isCek(){
-        MnCetakHasilLab.setEnabled(var.getpermintaan_lab());
-        BtnHasil.setEnabled(var.getpermintaan_lab());
-        BtnSampel.setEnabled(var.getperiksa_lab());
-        BtnHapus.setEnabled(var.getpermintaan_lab());
-        BtnPrint.setEnabled(var.getpermintaan_lab());
+        MnCetakHasilLab.setEnabled(akses.getpermintaan_lab());
+        BtnHasil.setEnabled(akses.getpermintaan_lab());
+        BtnSampel.setEnabled(akses.getperiksa_lab());
+        BtnHapus.setEnabled(akses.getpermintaan_lab());
+        BtnPrint.setEnabled(akses.getpermintaan_lab());
     }
     
     public void setPasien(String pasien){

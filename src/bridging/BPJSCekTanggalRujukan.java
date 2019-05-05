@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -344,7 +344,6 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -392,15 +391,13 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
 
         ChkJln.setBorder(null);
         ChkJln.setText("Tanggal :");
-        ChkJln.setBorderPainted(true);
-        ChkJln.setBorderPaintedFlat(true);
         ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkJln.setName("ChkJln"); // NOI18N
-        ChkJln.setPreferredSize(new java.awt.Dimension(75, 23));
+        ChkJln.setOpaque(false);
+        ChkJln.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass5.add(ChkJln);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -413,8 +410,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Terbit", "Belum Terbit" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-        cmbStatus.setOpaque(false);
-        cmbStatus.setPreferredSize(new java.awt.Dimension(110, 23));
+        cmbStatus.setPreferredSize(new java.awt.Dimension(130, 23));
         cmbStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbStatusItemStateChanged(evt);
@@ -561,7 +557,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     BPJSCekNoRujukanPCare form=new BPJSCekNoRujukanPCare(null,false);
                     form.isCek();
-                    form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                    form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                     form.setLocationRelativeTo(internalFrame1);
                     form.SetRujukan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
                     form.setVisible(true);
@@ -580,7 +576,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     BPJSCekNoRujukanRS form=new BPJSCekNoRujukanRS(null,false);
                     form.isCek();
-                    form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                    form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
                     form.setLocationRelativeTo(internalFrame1);
                     form.SetRujukan(tbBangsal2.getValueAt(tbBangsal2.getSelectedRow(),4).toString());
                     form.setVisible(true);
@@ -921,7 +917,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
     
     public void isCek(){
-        BtnCari1.setEnabled(var.getbpjs_sep());
+        BtnCari1.setEnabled(akses.getbpjs_sep());
     }
     
     private void jam(){

@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -153,7 +153,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPengeluaranApotek")){
+                if(akses.getform().equals("DlgPengeluaranApotek")){
                     if(form.petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
@@ -178,7 +178,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPengeluaranApotek")){
+                if(akses.getform().equals("DlgPengeluaranApotek")){
                     if(form.bangsal.getTable().getSelectedRow()!= -1){                   
                         kdgudang.setText(form.bangsal.getTable().getValueAt(form.bangsal.getTable().getSelectedRow(),0).toString());
                         nmgudang.setText(form.bangsal.getTable().getValueAt(form.bangsal.getTable().getSelectedRow(),1).toString());
@@ -250,9 +250,9 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
+        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -267,9 +267,9 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppStok.setBackground(new java.awt.Color(255, 255, 255));
+        ppStok.setBackground(new java.awt.Color(255, 255, 254));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok.setForeground(new java.awt.Color(70,70,70));
+        ppStok.setForeground(new java.awt.Color(70, 70, 70));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -293,7 +293,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -411,7 +411,6 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(170, 10, 70, 23);
 
-        Tgl.setEditable(false);
         Tgl.setDisplayFormat("dd-MM-yyyy");
         Tgl.setName("Tgl"); // NOI18N
         Tgl.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -657,7 +656,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     tbDokter.getValueAt(i,2).toString(),tbDokter.getValueAt(i,0).toString(),
                                     tbDokter.getValueAt(i,6).toString(),tbDokter.getValueAt(i,7).toString()
                                 })==true){
-                                    Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Keluar",var.getkode(),kdgudang.getText(),"Simpan");
+                                    Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Keluar",akses.getkode(),kdgudang.getText(),"Simpan");
                                     Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
                                         "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
                                 }                                    
@@ -751,7 +750,7 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdptgKeyPressed
 
 private void BtnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPtgActionPerformed
-        var.setform("DlgPengeluaranApotek");
+        akses.setform("DlgPengeluaranApotek");
         form.petugas.emptTeks();
         form.petugas.isCek();
         form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -803,7 +802,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_kdgudangKeyPressed
 
 private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
-    var.setform("DlgPengeluaranApotek");
+    akses.setform("DlgPengeluaranApotek");
     form.bangsal.isCek();
     form.bangsal.emptTeks();
     form.bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1075,12 +1074,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         autoNomor();
         Sequel.cariIsi("select kd_bangsal from set_lokasi",kdgudang);
         Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",nmgudang,kdgudang.getText());
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             BtnPtg.setEnabled(false);
-            BtnSimpan.setEnabled(var.getpengeluaran_stok_apotek());
-            BtnTambah.setEnabled(var.getobat());
-            kdptg.setText(var.getkode());
+            BtnSimpan.setEnabled(akses.getpengeluaran_stok_apotek());
+            BtnTambah.setEnabled(akses.getobat());
+            kdptg.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
         }    
         

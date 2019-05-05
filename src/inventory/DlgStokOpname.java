@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -191,9 +191,9 @@ public final class DlgStokOpname extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -208,9 +208,9 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         });
         Popup.add(ppHapus);
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70,70,70));
+        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -396,7 +396,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -436,7 +436,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -448,7 +447,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         label19.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi3.add(label19);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -637,14 +635,14 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tbKamar.getRowCount()!=0){   
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptOpname.jrxml","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
+            Valid.MyReportqry("rptOpname.jasper","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
                   "opname.real, opname.selisih, opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, (opname.real*opname.h_beli) as totalreal "+
                   "from opname inner join databarang inner join bangsal "+
                   "on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal "+
@@ -929,9 +927,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     
         
     public void isCek(){
-        BtnHapus.setEnabled(var.getstok_opname_obat());
-        BtnPrint.setEnabled(var.getstok_opname_obat());    
-        ppHapus.setEnabled(var.getstok_opname_obat());
-        ppCetak.setEnabled(var.getstok_opname_obat());
+        BtnHapus.setEnabled(akses.getstok_opname_obat());
+        BtnPrint.setEnabled(akses.getstok_opname_obat());    
+        ppHapus.setEnabled(akses.getstok_opname_obat());
+        ppCetak.setEnabled(akses.getstok_opname_obat());
     }
 }

@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -167,7 +167,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPeriksaLab")){
+                if(akses.getform().equals("DlgCariPeriksaLab")){
                     if(member.getTable().getSelectedRow()!= -1){                   
                         kdmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
                         nmmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),2).toString());
@@ -198,7 +198,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPeriksaLab")){
+                if(akses.getform().equals("DlgCariPeriksaLab")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }
@@ -213,7 +213,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPeriksaLab")){
+                if(akses.getform().equals("DlgCariPeriksaLab")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }
@@ -228,7 +228,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPeriksaLab")){
+                if(akses.getform().equals("DlgCariPeriksaLab")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }
@@ -245,7 +245,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPeriksaLab")){
+                if(akses.getform().equals("DlgCariPeriksaLab")){
                     if(petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -385,7 +385,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -399,7 +399,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab);
 
-        MnCetakHasilLab1.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab1.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab1.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -413,7 +413,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab1);
 
-        MnCetakHasilLab2.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab2.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab2.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -427,7 +427,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab2);
 
-        MnCetakHasilLab3.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab3.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab3.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -441,7 +441,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab3);
 
-        MnCetakHasilLab4.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab4.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab4.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -455,7 +455,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab4);
 
-        MnCetakHasilLab5.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab5.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab5.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -469,7 +469,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab5);
 
-        MnCetakHasilLab6.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab6.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab6.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -483,7 +483,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab6);
 
-        MnCetakHasilLab7.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab7.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab7.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -497,7 +497,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab7);
 
-        MnCetakHasilLab8.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab8.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab8.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -511,7 +511,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab8);
 
-        MnCetakHasilLab9.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab9.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab9.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -525,7 +525,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab9);
 
-        MnCetakHasilLab10.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab10.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakHasilLab10.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -539,7 +539,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab10);
 
-        MnCetakNota.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakNota.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakNota.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -553,7 +553,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakNota);
 
-        MnUbah.setBackground(new java.awt.Color(255, 255, 255));
+        MnUbah.setBackground(new java.awt.Color(255, 255, 254));
         MnUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUbah.setForeground(new java.awt.Color(70, 70, 70));
         MnUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -567,7 +567,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnUbah);
 
-        MnSaranKesan.setBackground(new java.awt.Color(255, 255, 255));
+        MnSaranKesan.setBackground(new java.awt.Color(255, 255, 254));
         MnSaranKesan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSaranKesan.setForeground(new java.awt.Color(70, 70, 70));
         MnSaranKesan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -701,7 +701,6 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 75, 23);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -789,7 +788,6 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         panelisi3.add(label18);
         label18.setBounds(178, 40, 30, 23);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1012,7 +1010,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
-        var.setform("DlgCariPeriksaLab");
+        akses.setform("DlgCariPeriksaLab");
         member.emptTeks();
         member.isCek();
         member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1022,7 +1020,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnPasienActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgCariPeriksaLab");
+        akses.setform("DlgCariPeriksaLab");
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1134,15 +1132,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDataLab.jrxml","report","::[ Data Pemeriksaan Laboratorium ]::",
-                            "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);
+                    Valid.MyReport("rptDataLab.jasper","report","::[ Data Pemeriksaan Laboratorium ]::",param);
                 }   break;
             case 1:
                 if(tabMode2.getRowCount()==0){
@@ -1171,15 +1168,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDataLab2.jrxml","report","::[ Data Item Pemeriksaan Laboratorium ]::",
-                            "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);
+                    Valid.MyReport("rptDataLab2.jasper","report","::[ Data Item Pemeriksaan Laboratorium ]::",param);
                 }   break;
             case 2:
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1199,14 +1195,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                     File f = new File("DetailKunjunganLab.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML1.getText().replaceAll(
-                        "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                    bw.write(LoadHTML1.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                             "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
-                                        "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                        var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                        var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
                                         "<font size='2' face='Tahoma'>DETAIL KUNJUNGAN LAB PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
@@ -1323,7 +1318,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     Sequel.menyimpan("tampjurnal","'"+Beban_Kso_Laborat_Ranap+"','Beban KSO Laborat Ranap','0','"+ttlkso+"'","Rekening");    
                                     Sequel.menyimpan("tampjurnal","'"+Utang_Kso_Laborat_Ranap+"','Utang KSO Laborat Ranap','"+ttlkso+"','0'","Rekening");                              
                                 }
-                                jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PEMERIKSAAN LABORAT RAWAT INAP PASIEN OLEH "+var.getkode());  
+                                jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PEMERIKSAAN LABORAT RAWAT INAP PASIEN OLEH "+akses.getkode());  
                             }
                             tampil();                        
                         }
@@ -1468,15 +1463,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -1577,7 +1571,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         Sequel.menyimpan("temporary_lab","'0','','Total Biaya Pemeriksaan Lab','"+ttl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
                         Valid.panggilUrl("billing/LaporanBiayaLab.php?norm="+rs.getString("no_rkm_medis")+"&pasien="+rs.getString("nm_pasien").replaceAll(" ","_")
                                 +"&tanggal="+rs.getString("tgl_periksa")+"&jam="+rs.getString("jam")+"&pjlab="+rs.getString("nm_dokter").replaceAll(" ","_")
-                                +"&petugas="+rs.getString("nama").replaceAll(" ","_")+"&kasir="+Sequel.cariIsi("select nama from pegawai where nik=?",var.getkode()));
+                                +"&petugas="+rs.getString("nama").replaceAll(" ","_")+"&kasir="+Sequel.cariIsi("select nama from pegawai where nik=?",akses.getkode()));
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -1719,15 +1713,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab2.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -1845,15 +1838,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab3.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -1971,15 +1963,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab4.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2097,15 +2088,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab5.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2222,15 +2212,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab6.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2351,15 +2340,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab7.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -2480,15 +2468,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab8.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -2629,15 +2616,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab9.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2777,15 +2763,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab10.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -2926,15 +2911,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
 
                         
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab11.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
-                                       "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_lab order by no asc",param);            
+                        Valid.MyReport("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
 
                     }
                 } catch (Exception e) {
@@ -3737,11 +3721,11 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }
     
     public void isCek(){
-        MnCetakHasilLab.setEnabled(var.getperiksa_lab());
-        MnCetakNota.setEnabled(var.getperiksa_lab());
-        MnUbah.setEnabled(var.getperiksa_lab());
-        BtnHapus.setEnabled(var.getperiksa_lab());
-        BtnPrint.setEnabled(var.getperiksa_lab());
+        MnCetakHasilLab.setEnabled(akses.getperiksa_lab());
+        MnCetakNota.setEnabled(akses.getperiksa_lab());
+        MnUbah.setEnabled(akses.getperiksa_lab());
+        BtnHapus.setEnabled(akses.getperiksa_lab());
+        BtnPrint.setEnabled(akses.getperiksa_lab());
     }
     
     public void setPasien(String pasien){

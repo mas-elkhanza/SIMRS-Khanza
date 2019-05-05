@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -108,7 +108,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariJurnal")){
+                if(akses.getform().equals("DlgCariJurnal")){
                     if(rekening.getTabel().getSelectedRow()!= -1){      
                         kdrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
                         nmrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());                        
@@ -134,7 +134,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariJurnal")){
+                if(akses.getform().equals("DlgCariJurnal")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }
@@ -463,7 +463,6 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(226, 12, 75, 23);
 
-        TglJurnal2.setEditable(false);
         TglJurnal2.setDisplayFormat("dd-MM-yyyy");
         TglJurnal2.setName("TglJurnal2"); // NOI18N
         TglJurnal2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -478,7 +477,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi3.add(label32);
-        label32.setBounds(566, 12, 90, 23);
+        label32.setBounds(546, 12, 90, 23);
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Umum", "Penyesuaian" }));
         Jenis.setName("Jenis"); // NOI18N
@@ -489,7 +488,7 @@ public class DlgCariJurnal extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Jenis);
-        Jenis.setBounds(660, 12, 110, 23);
+        Jenis.setBounds(640, 12, 130, 23);
 
         label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label12.setText("s.d.");
@@ -498,7 +497,6 @@ public class DlgCariJurnal extends javax.swing.JDialog {
         panelisi3.add(label12);
         label12.setBounds(402, 12, 27, 23);
 
-        TglJurnal1.setEditable(false);
         TglJurnal1.setDisplayFormat("dd-MM-yyyy");
         TglJurnal1.setName("TglJurnal1"); // NOI18N
         TglJurnal1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -526,7 +524,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TglJurnal2KeyPressed
 
     private void BtnCari6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari6ActionPerformed
-        var.setform("DlgCariJurnal");
+        akses.setform("DlgCariJurnal");
         rekening.emptTeks();
         rekening.tampil();
         rekening.isCek();
@@ -640,12 +638,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             Sequel.queryu("delete from temporary");
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
@@ -661,8 +659,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Posting Jurnal"); 
             Sequel.menyimpan("temporary","'0','Jml.Total :','','','','','','"+debet.getText()+"','"+kredit.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
             
-            Valid.MyReport("rptJurnal.jrxml","report","::[ Transaksi Posting Jurnal ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptJurnal.jasper","report","::[ Transaksi Posting Jurnal ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -690,7 +687,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        BtnPrint.setEnabled(var.getposting_jurnal());         
+        BtnPrint.setEnabled(akses.getposting_jurnal());         
     }//GEN-LAST:event_formWindowActivated
 
     /**

@@ -156,7 +156,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         jLabel4.setText("Jam Minimal Dihitung di Kamar :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(0, 12, 163, 23);
+        jLabel4.setBounds(2, 12, 165, 23);
 
         Jam.setHighlighter(null);
         Jam.setName("Jam"); // NOI18N
@@ -166,22 +166,21 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(Jam);
-        Jam.setBounds(166, 12, 50, 23);
+        Jam.setBounds(170, 12, 50, 23);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Jam");
         jLabel5.setName("jLabel5"); // NOI18N
         panelGlass7.add(jLabel5);
-        jLabel5.setBounds(219, 12, 50, 23);
+        jLabel5.setBounds(224, 12, 50, 23);
 
         jLabel6.setText("Fee Perujuk Ranap : Rp");
         jLabel6.setName("jLabel6"); // NOI18N
         panelGlass7.add(jLabel6);
-        jLabel6.setBounds(0, 42, 179, 23);
+        jLabel6.setBounds(2, 42, 181, 23);
 
         cmbYes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYes.setName("cmbYes"); // NOI18N
-        cmbYes.setOpaque(false);
         cmbYes.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -189,12 +188,12 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(cmbYes);
-        cmbYes.setBounds(166, 102, 60, 23);
+        cmbYes.setBounds(170, 102, 70, 23);
 
         jLabel7.setText("Hitung Hari dari Awal Masuk :");
         jLabel7.setName("jLabel7"); // NOI18N
         panelGlass7.add(jLabel7);
-        jLabel7.setBounds(0, 102, 163, 23);
+        jLabel7.setBounds(2, 102, 165, 23);
 
         fee.setHighlighter(null);
         fee.setName("fee"); // NOI18N
@@ -204,7 +203,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(fee);
-        fee.setBounds(182, 42, 100, 23);
+        fee.setBounds(186, 42, 100, 23);
 
         jLabel8.setText("Aktifkan Diagnosa Akhir :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -213,7 +212,6 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
 
         cmbYes2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYes2.setName("cmbYes2"); // NOI18N
-        cmbYes2.setOpaque(false);
         cmbYes2.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYes2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -221,12 +219,12 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(cmbYes2);
-        cmbYes2.setBounds(455, 12, 60, 23);
+        cmbYes2.setBounds(455, 12, 70, 23);
 
         jLabel9.setText("Biaya Ranap Gabung Bayi :");
         jLabel9.setName("jLabel9"); // NOI18N
         panelGlass7.add(jLabel9);
-        jLabel9.setBounds(0, 72, 163, 23);
+        jLabel9.setBounds(2, 72, 165, 23);
 
         Bayi.setHighlighter(null);
         Bayi.setName("Bayi"); // NOI18N
@@ -236,13 +234,13 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(Bayi);
-        Bayi.setBounds(166, 72, 50, 23);
+        Bayi.setBounds(170, 72, 50, 23);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("%");
         jLabel10.setName("jLabel10"); // NOI18N
         panelGlass7.add(jLabel10);
-        jLabel10.setBounds(219, 72, 50, 23);
+        jLabel10.setBounds(224, 72, 50, 23);
 
         jLabel11.setText("Aktifkan Hapus Data Salah :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -251,7 +249,6 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
 
         cmbYes3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYes3.setName("cmbYes3"); // NOI18N
-        cmbYes3.setOpaque(false);
         cmbYes3.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYes3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -259,11 +256,10 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(cmbYes3);
-        cmbYes3.setBounds(455, 42, 60, 23);
+        cmbYes3.setBounds(455, 42, 70, 23);
 
         cmbYes4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYes4.setName("cmbYes4"); // NOI18N
-        cmbYes4.setOpaque(false);
         cmbYes4.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYes4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -271,7 +267,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(cmbYes4);
-        cmbYes4.setBounds(455, 72, 60, 23);
+        cmbYes4.setBounds(455, 72, 70, 23);
 
         jLabel12.setText("Aktifkan Kamar Inap di Ralan :");
         jLabel12.setName("jLabel12"); // NOI18N
@@ -285,7 +281,6 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
 
         cmbYes5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYes5.setName("cmbYes5"); // NOI18N
-        cmbYes5.setOpaque(false);
         cmbYes5.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbYes5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -293,7 +288,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(cmbYes5);
-        cmbYes5.setBounds(455, 102, 60, 23);
+        cmbYes5.setBounds(455, 102, 70, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 

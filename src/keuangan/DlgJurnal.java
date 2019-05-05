@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -77,7 +77,7 @@ public class DlgJurnal extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgJurnal")){
+                if(akses.getform().equals("DlgJurnal")){
                     if(rekening.getTabel().getSelectedRow()!= -1){      
                         kdrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
                         nmrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());                        
@@ -103,7 +103,7 @@ public class DlgJurnal extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgJurnal")){
+                if(akses.getform().equals("DlgJurnal")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }
@@ -179,7 +179,7 @@ public class DlgJurnal extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppTambah.setBackground(new java.awt.Color(242, 242, 242));
+        ppTambah.setBackground(new java.awt.Color(255, 255, 254));
         ppTambah.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppTambah.setForeground(new java.awt.Color(70, 70, 70));
         ppTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
@@ -188,7 +188,7 @@ public class DlgJurnal extends javax.swing.JDialog {
         ppTambah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppTambah.setIconTextGap(8);
         ppTambah.setName("ppTambah"); // NOI18N
-        ppTambah.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppTambah.setPreferredSize(new java.awt.Dimension(150, 26));
         ppTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnTambahActionPerformed(evt);
@@ -196,7 +196,7 @@ public class DlgJurnal extends javax.swing.JDialog {
         });
         Popup.add(ppTambah);
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -205,7 +205,7 @@ public class DlgJurnal extends javax.swing.JDialog {
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setIconTextGap(8);
         ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppHapus.setPreferredSize(new java.awt.Dimension(150, 26));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapusActionPerformed(evt);
@@ -524,7 +524,6 @@ public class DlgJurnal extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(201, 10, 85, 23);
 
-        TglJurnal.setEditable(false);
         TglJurnal.setDisplayFormat("dd-MM-yyyy");
         TglJurnal.setName("TglJurnal"); // NOI18N
         TglJurnal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -701,7 +700,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TglJurnalKeyPressed
 
     private void BtnCari6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari6ActionPerformed
-        var.setform("DlgJurnal");        
+        akses.setform("DlgJurnal");        
         rekening.emptTeks();
         rekening.tampil();
         rekening.isCek();
@@ -972,12 +971,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getposting_jurnal());
-        BtnHapus.setEnabled(var.getposting_jurnal());
-        BtnBatal.setEnabled(var.getposting_jurnal());
-        BtnTambah.setEnabled(var.getposting_jurnal());      
-        ppHapus.setEnabled(var.getposting_jurnal());
-        ppTambah.setEnabled(var.getposting_jurnal());
+        BtnSimpan.setEnabled(akses.getposting_jurnal());
+        BtnHapus.setEnabled(akses.getposting_jurnal());
+        BtnBatal.setEnabled(akses.getposting_jurnal());
+        BtnTambah.setEnabled(akses.getposting_jurnal());      
+        ppHapus.setEnabled(akses.getposting_jurnal());
+        ppTambah.setEnabled(akses.getposting_jurnal());
     }
    
  

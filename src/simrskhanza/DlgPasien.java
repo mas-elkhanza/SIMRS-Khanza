@@ -29,7 +29,7 @@ import grafikanalisa.grafiksql;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -471,8 +471,8 @@ public class DlgPasien extends javax.swing.JDialog {
         Kelurahan2.setDocument(new batasInput((byte)60).getFilter(Kelurahan2));
         Propinsi.setDocument(new batasInput((byte)30).getFilter(Propinsi));
         PropinsiPj.setDocument(new batasInput((byte)30).getFilter(PropinsiPj));
-        EMail.setDocument(new batasInput((byte)50).getFilter(EMail));
-        NIP.setDocument(new batasInput((byte)30).getFilter(NIP));
+        EMail.setDocument(new batasInput((byte)50).getKata(EMail));
+        NIP.setDocument(new batasInput((byte)30).getKata(NIP));
         TNoPeserta.setDocument(new batasInput((byte)25).getKata(TNoPeserta));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){
@@ -510,7 +510,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(penjab.getTable().getSelectedRow()!= -1){
                         Kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
                         nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
@@ -533,7 +533,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         penjab.dispose();
                     }                
@@ -550,7 +550,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(perusahaan.getTable().getSelectedRow()!= -1){
                         kdperusahaan.setText(perusahaan.getTable().getValueAt(perusahaan.getTable().getSelectedRow(),0).toString());
                         nmperusahaan.setText(perusahaan.getTable().getValueAt(perusahaan.getTable().getSelectedRow(),1).toString());
@@ -573,7 +573,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         perusahaan.dispose();
                     }                
@@ -590,7 +590,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(golongantni.getTable().getSelectedRow()!= -1){
                         kdgolongantni.setText(golongantni.getTable().getValueAt(golongantni.getTable().getSelectedRow(),0).toString());
                         nmgolongantni.setText(golongantni.getTable().getValueAt(golongantni.getTable().getSelectedRow(),1).toString());
@@ -613,7 +613,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         golongantni.dispose();
                     }                
@@ -630,7 +630,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(jabatantni.getTable().getSelectedRow()!= -1){
                         kdjabatantni.setText(jabatantni.getTable().getValueAt(jabatantni.getTable().getSelectedRow(),0).toString());
                         nmjabatantni.setText(jabatantni.getTable().getValueAt(jabatantni.getTable().getSelectedRow(),1).toString());
@@ -653,7 +653,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         jabatantni.dispose();
                     }                
@@ -670,7 +670,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(satuantni.getTable().getSelectedRow()!= -1){
                         kdsatuantni.setText(satuantni.getTable().getValueAt(satuantni.getTable().getSelectedRow(),0).toString());
                         nmsatuantni.setText(satuantni.getTable().getValueAt(satuantni.getTable().getSelectedRow(),1).toString());
@@ -693,7 +693,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         satuantni.dispose();
                     }                
@@ -710,7 +710,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(pangkattni.getTable().getSelectedRow()!= -1){
                         kdpangkattni.setText(pangkattni.getTable().getValueAt(pangkattni.getTable().getSelectedRow(),0).toString());
                         nmpangkattni.setText(pangkattni.getTable().getValueAt(pangkattni.getTable().getSelectedRow(),1).toString());
@@ -733,7 +733,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         pangkattni.dispose();
                     }                
@@ -750,7 +750,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(golonganpolri.getTable().getSelectedRow()!= -1){
                         kdgolonganpolri.setText(golonganpolri.getTable().getValueAt(golonganpolri.getTable().getSelectedRow(),0).toString());
                         nmgolonganpolri.setText(golonganpolri.getTable().getValueAt(golonganpolri.getTable().getSelectedRow(),1).toString());
@@ -773,7 +773,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         golonganpolri.dispose();
                     }                
@@ -790,7 +790,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(jabatanpolri.getTable().getSelectedRow()!= -1){
                         kdjabatanpolri.setText(jabatanpolri.getTable().getValueAt(jabatanpolri.getTable().getSelectedRow(),0).toString());
                         nmjabatanpolri.setText(jabatanpolri.getTable().getValueAt(jabatanpolri.getTable().getSelectedRow(),1).toString());
@@ -813,7 +813,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         jabatanpolri.dispose();
                     }                
@@ -830,7 +830,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(satuanpolri.getTable().getSelectedRow()!= -1){
                         kdsatuanpolri.setText(satuanpolri.getTable().getValueAt(satuanpolri.getTable().getSelectedRow(),0).toString());
                         nmsatuanpolri.setText(satuanpolri.getTable().getValueAt(satuanpolri.getTable().getSelectedRow(),1).toString());
@@ -853,7 +853,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         satuanpolri.dispose();
                     }                
@@ -870,7 +870,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(pangkatpolri.getTable().getSelectedRow()!= -1){
                         kdpangkatpolri.setText(pangkatpolri.getTable().getValueAt(pangkatpolri.getTable().getSelectedRow(),0).toString());
                         nmpangkatpolri.setText(pangkatpolri.getTable().getValueAt(pangkatpolri.getTable().getSelectedRow(),1).toString());
@@ -893,7 +893,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         pangkatpolri.dispose();
                     }                
@@ -910,7 +910,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(bahasa.getTable().getSelectedRow()!= -1){
                         kdbahasa.setText(bahasa.getTable().getValueAt(bahasa.getTable().getSelectedRow(),0).toString());
                         nmbahasa.setText(bahasa.getTable().getValueAt(bahasa.getTable().getSelectedRow(),1).toString());
@@ -933,7 +933,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         bahasa.dispose();
                     }                
@@ -950,7 +950,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(suku.getTable().getSelectedRow()!= -1){
                         kdsuku.setText(suku.getTable().getValueAt(suku.getTable().getSelectedRow(),0).toString());
                         nmsukubangsa.setText(suku.getTable().getValueAt(suku.getTable().getSelectedRow(),1).toString());
@@ -973,7 +973,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         suku.dispose();
                     }                
@@ -990,7 +990,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(prop.getTable().getSelectedRow()!= -1){
                         switch (pilih) {
                             case 1:
@@ -1029,7 +1029,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(kab.getTable().getSelectedRow()!= -1){
                         switch (pilih) {
                             case 1:
@@ -1068,7 +1068,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(kec.getTable().getSelectedRow()!= -1){
                         switch (pilih) {
                             case 1:
@@ -1107,7 +1107,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(kel.getTable().getSelectedRow()!= -1){
                         switch (pilih) {
                             case 1:
@@ -1146,7 +1146,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(cacat.getTable().getSelectedRow()!= -1){
                         kdcacat.setText(cacat.getTable().getValueAt(cacat.getTable().getSelectedRow(),0).toString());
                         nmcacat.setText(cacat.getTable().getValueAt(cacat.getTable().getSelectedRow(),1).toString());
@@ -1169,7 +1169,7 @@ public class DlgPasien extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPasien")){
+                if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         cacat.dispose();
                     }                
@@ -1590,16 +1590,15 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        KartuPasien.setBackground(new java.awt.Color(252, 255, 250));
+        KartuPasien.setBackground(new java.awt.Color(250, 255, 245));
         KartuPasien.setForeground(new java.awt.Color(70, 70, 70));
         KartuPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         KartuPasien.setText("Kartu Pasien");
         KartuPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         KartuPasien.setName("KartuPasien"); // NOI18N
-        KartuPasien.setOpaque(true);
         KartuPasien.setPreferredSize(new java.awt.Dimension(220, 26));
 
-        MnKartu1.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu1.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKartu1.setForeground(new java.awt.Color(70, 70, 70));
         MnKartu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1613,7 +1612,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         KartuPasien.add(MnKartu1);
 
-        MnKartu2.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu2.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKartu2.setForeground(new java.awt.Color(70, 70, 70));
         MnKartu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1627,7 +1626,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         KartuPasien.add(MnKartu2);
 
-        MnKartu3.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu3.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKartu3.setForeground(new java.awt.Color(70, 70, 70));
         MnKartu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1641,7 +1640,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         KartuPasien.add(MnKartu3);
 
-        MnKartu4.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu4.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKartu4.setForeground(new java.awt.Color(70, 70, 70));
         MnKartu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1655,7 +1654,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         KartuPasien.add(MnKartu4);
 
-        MnKartu5.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu5.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKartu5.setForeground(new java.awt.Color(70, 70, 70));
         MnKartu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1669,7 +1668,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         KartuPasien.add(MnKartu5);
 
-        MnKartu6.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu6.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKartu6.setForeground(new java.awt.Color(70, 70, 70));
         MnKartu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1685,16 +1684,15 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu1.add(KartuPasien);
 
-        Barcode.setBackground(new java.awt.Color(252, 255, 250));
+        Barcode.setBackground(new java.awt.Color(250, 255, 245));
         Barcode.setForeground(new java.awt.Color(70, 70, 70));
         Barcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         Barcode.setText("Label Rekam Medis");
         Barcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Barcode.setName("Barcode"); // NOI18N
-        Barcode.setOpaque(true);
         Barcode.setPreferredSize(new java.awt.Dimension(220, 26));
 
-        MnBarcodeRM.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1708,7 +1706,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM);
 
-        MnBarcodeRM1.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM1.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1722,7 +1720,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM1);
 
-        MnBarcodeRM2.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM2.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM2.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1736,7 +1734,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM2);
 
-        MnBarcodeRM3.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM3.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM3.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1750,7 +1748,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM3);
 
-        MnBarcodeRM4.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM4.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM4.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1764,7 +1762,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM4);
 
-        MnBarcodeRM5.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM5.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM5.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1778,7 +1776,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM5);
 
-        MnBarcodeRM6.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM6.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM6.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1792,7 +1790,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM6);
 
-        MnBarcodeRM7.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM7.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM7.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1807,7 +1805,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM7);
 
-        MnBarcodeRM8.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM8.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM8.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1821,7 +1819,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         Barcode.add(MnBarcodeRM8);
 
-        MnBarcodeRM9.setBackground(new java.awt.Color(255, 255, 255));
+        MnBarcodeRM9.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcodeRM9.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodeRM9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1837,16 +1835,15 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu1.add(Barcode);
 
-        MenuIdentitas.setBackground(new java.awt.Color(252, 255, 250));
+        MenuIdentitas.setBackground(new java.awt.Color(250, 255, 245));
         MenuIdentitas.setForeground(new java.awt.Color(70, 70, 70));
         MenuIdentitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MenuIdentitas.setText("Identitas Pasien");
         MenuIdentitas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuIdentitas.setName("MenuIdentitas"); // NOI18N
-        MenuIdentitas.setOpaque(true);
         MenuIdentitas.setPreferredSize(new java.awt.Dimension(220, 26));
 
-        MnIdentitas.setBackground(new java.awt.Color(255, 255, 255));
+        MnIdentitas.setBackground(new java.awt.Color(255, 255, 254));
         MnIdentitas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnIdentitas.setForeground(new java.awt.Color(70, 70, 70));
         MnIdentitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1860,7 +1857,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         MenuIdentitas.add(MnIdentitas);
 
-        MnIdentitas2.setBackground(new java.awt.Color(255, 255, 255));
+        MnIdentitas2.setBackground(new java.awt.Color(255, 255, 254));
         MnIdentitas2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnIdentitas2.setForeground(new java.awt.Color(70, 70, 70));
         MnIdentitas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1874,7 +1871,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         MenuIdentitas.add(MnIdentitas2);
 
-        MnIdentitas3.setBackground(new java.awt.Color(255, 255, 255));
+        MnIdentitas3.setBackground(new java.awt.Color(255, 255, 254));
         MnIdentitas3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnIdentitas3.setForeground(new java.awt.Color(70, 70, 70));
         MnIdentitas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1888,7 +1885,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         MenuIdentitas.add(MnIdentitas3);
 
-        MnIdentitas4.setBackground(new java.awt.Color(255, 255, 255));
+        MnIdentitas4.setBackground(new java.awt.Color(255, 255, 254));
         MnIdentitas4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnIdentitas4.setForeground(new java.awt.Color(70, 70, 70));
         MnIdentitas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1904,7 +1901,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu1.add(MenuIdentitas);
 
-        MnKartuStatus.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartuStatus.setBackground(new java.awt.Color(255, 255, 254));
         MnKartuStatus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKartuStatus.setForeground(new java.awt.Color(70, 70, 70));
         MnKartuStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1918,22 +1915,21 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnKartuStatus);
 
-        MenuBPJS.setBackground(new java.awt.Color(252, 255, 250));
+        MenuBPJS.setBackground(new java.awt.Color(250, 255, 245));
         MenuBPJS.setForeground(new java.awt.Color(70, 70, 70));
         MenuBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MenuBPJS.setText("BPJS");
         MenuBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuBPJS.setName("MenuBPJS"); // NOI18N
-        MenuBPJS.setOpaque(true);
         MenuBPJS.setPreferredSize(new java.awt.Dimension(220, 26));
 
-        MnCekKepesertaan.setBackground(new java.awt.Color(255, 255, 255));
+        MnCekKepesertaan.setBackground(new java.awt.Color(255, 255, 254));
         MnCekKepesertaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCekKepesertaan.setForeground(new java.awt.Color(70, 70, 70));
         MnCekKepesertaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekKepesertaan.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan VClaim");
         MnCekKepesertaan.setName("MnCekKepesertaan"); // NOI18N
-        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekKepesertaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekKepesertaanActionPerformed(evt);
@@ -1941,13 +1937,13 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         MenuBPJS.add(MnCekKepesertaan);
 
-        MnCekNIK.setBackground(new java.awt.Color(255, 255, 255));
+        MnCekNIK.setBackground(new java.awt.Color(255, 255, 254));
         MnCekNIK.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCekNIK.setForeground(new java.awt.Color(70, 70, 70));
         MnCekNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekNIK.setText("Pencarian Peserta Berdasarkan NIK/No.KTP VClaim");
         MnCekNIK.setName("MnCekNIK"); // NOI18N
-        MnCekNIK.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekNIK.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekNIK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekNIKActionPerformed(evt);
@@ -1955,13 +1951,13 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         MenuBPJS.add(MnCekNIK);
 
-        MnCekKepesertaan1.setBackground(new java.awt.Color(255, 255, 255));
+        MnCekKepesertaan1.setBackground(new java.awt.Color(255, 255, 254));
         MnCekKepesertaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCekKepesertaan1.setForeground(new java.awt.Color(70, 70, 70));
         MnCekKepesertaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekKepesertaan1.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan PCare");
         MnCekKepesertaan1.setName("MnCekKepesertaan1"); // NOI18N
-        MnCekKepesertaan1.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekKepesertaan1.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekKepesertaan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekKepesertaan1ActionPerformed(evt);
@@ -1969,13 +1965,13 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         MenuBPJS.add(MnCekKepesertaan1);
 
-        MnCekNIK1.setBackground(new java.awt.Color(255, 255, 255));
+        MnCekNIK1.setBackground(new java.awt.Color(255, 255, 254));
         MnCekNIK1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCekNIK1.setForeground(new java.awt.Color(70, 70, 70));
         MnCekNIK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekNIK1.setText("Pencarian Peserta Berdasarkan NIK/No.KTP PCare");
         MnCekNIK1.setName("MnCekNIK1"); // NOI18N
-        MnCekNIK1.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekNIK1.setPreferredSize(new java.awt.Dimension(350, 26));
         MnCekNIK1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekNIK1ActionPerformed(evt);
@@ -1985,7 +1981,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu1.add(MenuBPJS);
 
-        ppKelahiranBayi.setBackground(new java.awt.Color(255, 255, 255));
+        ppKelahiranBayi.setBackground(new java.awt.Color(255, 255, 254));
         ppKelahiranBayi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppKelahiranBayi.setForeground(new java.awt.Color(70, 70, 70));
         ppKelahiranBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2001,16 +1997,15 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppKelahiranBayi);
 
-        jMenu1.setBackground(new java.awt.Color(252, 255, 250));
+        jMenu1.setBackground(new java.awt.Color(250, 255, 245));
         jMenu1.setForeground(new java.awt.Color(70, 70, 70));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu1.setText("Berkas Rekam Medis");
         jMenu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jMenu1.setName("jMenu1"); // NOI18N
-        jMenu1.setOpaque(true);
         jMenu1.setPreferredSize(new java.awt.Dimension(220, 26));
 
-        MnLaporanRM.setBackground(new java.awt.Color(255, 255, 255));
+        MnLaporanRM.setBackground(new java.awt.Color(255, 255, 254));
         MnLaporanRM.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanRM.setForeground(new java.awt.Color(70, 70, 70));
         MnLaporanRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2024,7 +2019,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLaporanRM);
 
-        MnLaporanRM1.setBackground(new java.awt.Color(255, 255, 255));
+        MnLaporanRM1.setBackground(new java.awt.Color(255, 255, 254));
         MnLaporanRM1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanRM1.setForeground(new java.awt.Color(70, 70, 70));
         MnLaporanRM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2038,7 +2033,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLaporanRM1);
 
-        MnLaporanRM2.setBackground(new java.awt.Color(255, 255, 255));
+        MnLaporanRM2.setBackground(new java.awt.Color(255, 255, 254));
         MnLaporanRM2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanRM2.setForeground(new java.awt.Color(70, 70, 70));
         MnLaporanRM2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2052,7 +2047,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLaporanRM2);
 
-        MnLaporanRM3.setBackground(new java.awt.Color(255, 255, 255));
+        MnLaporanRM3.setBackground(new java.awt.Color(255, 255, 254));
         MnLaporanRM3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanRM3.setForeground(new java.awt.Color(70, 70, 70));
         MnLaporanRM3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2066,7 +2061,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLaporanRM3);
 
-        MnFormulirPendaftaran.setBackground(new java.awt.Color(255, 255, 255));
+        MnFormulirPendaftaran.setBackground(new java.awt.Color(255, 255, 254));
         MnFormulirPendaftaran.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnFormulirPendaftaran.setForeground(new java.awt.Color(70, 70, 70));
         MnFormulirPendaftaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2080,7 +2075,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnFormulirPendaftaran);
 
-        MnSCreening.setBackground(new java.awt.Color(255, 255, 255));
+        MnSCreening.setBackground(new java.awt.Color(255, 255, 254));
         MnSCreening.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSCreening.setForeground(new java.awt.Color(70, 70, 70));
         MnSCreening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2094,7 +2089,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnSCreening);
 
-        MnCopyResep.setBackground(new java.awt.Color(255, 255, 255));
+        MnCopyResep.setBackground(new java.awt.Color(255, 255, 254));
         MnCopyResep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCopyResep.setForeground(new java.awt.Color(70, 70, 70));
         MnCopyResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2108,7 +2103,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnCopyResep);
 
-        MnLembarKeluarMasuk.setBackground(new java.awt.Color(255, 255, 255));
+        MnLembarKeluarMasuk.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarKeluarMasuk.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLembarKeluarMasuk.setForeground(new java.awt.Color(70, 70, 70));
         MnLembarKeluarMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2122,7 +2117,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLembarKeluarMasuk);
 
-        MnLembarKeluarMasuk2.setBackground(new java.awt.Color(255, 255, 255));
+        MnLembarKeluarMasuk2.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarKeluarMasuk2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLembarKeluarMasuk2.setForeground(new java.awt.Color(70, 70, 70));
         MnLembarKeluarMasuk2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2136,7 +2131,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLembarKeluarMasuk2);
 
-        MnLaporanIGD.setBackground(new java.awt.Color(255, 255, 255));
+        MnLaporanIGD.setBackground(new java.awt.Color(255, 255, 254));
         MnLaporanIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanIGD.setForeground(new java.awt.Color(70, 70, 70));
         MnLaporanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2150,7 +2145,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLaporanIGD);
 
-        MnLembarAnamNesa.setBackground(new java.awt.Color(255, 255, 255));
+        MnLembarAnamNesa.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarAnamNesa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLembarAnamNesa.setForeground(new java.awt.Color(70, 70, 70));
         MnLembarAnamNesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2164,7 +2159,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLembarAnamNesa);
 
-        MnLembarGrafik.setBackground(new java.awt.Color(255, 255, 255));
+        MnLembarGrafik.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarGrafik.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLembarGrafik.setForeground(new java.awt.Color(70, 70, 70));
         MnLembarGrafik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2178,7 +2173,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLembarGrafik);
 
-        MnLembarCatatanPerkembangan.setBackground(new java.awt.Color(255, 255, 255));
+        MnLembarCatatanPerkembangan.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarCatatanPerkembangan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLembarCatatanPerkembangan.setForeground(new java.awt.Color(70, 70, 70));
         MnLembarCatatanPerkembangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2192,7 +2187,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLembarCatatanPerkembangan);
 
-        MnLembarCatatanKeperawatan.setBackground(new java.awt.Color(255, 255, 255));
+        MnLembarCatatanKeperawatan.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarCatatanKeperawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLembarCatatanKeperawatan.setForeground(new java.awt.Color(70, 70, 70));
         MnLembarCatatanKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2206,7 +2201,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLembarCatatanKeperawatan);
 
-        MnLaporanAnestesia.setBackground(new java.awt.Color(255, 255, 255));
+        MnLaporanAnestesia.setBackground(new java.awt.Color(255, 255, 254));
         MnLaporanAnestesia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanAnestesia.setForeground(new java.awt.Color(70, 70, 70));
         MnLaporanAnestesia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2220,7 +2215,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnLaporanAnestesia);
 
-        MnPengantarHemodalisa.setBackground(new java.awt.Color(255, 255, 255));
+        MnPengantarHemodalisa.setBackground(new java.awt.Color(255, 255, 254));
         MnPengantarHemodalisa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPengantarHemodalisa.setForeground(new java.awt.Color(70, 70, 70));
         MnPengantarHemodalisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2234,7 +2229,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnPengantarHemodalisa);
 
-        MnCover.setBackground(new java.awt.Color(255, 255, 255));
+        MnCover.setBackground(new java.awt.Color(255, 255, 254));
         MnCover.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCover.setForeground(new java.awt.Color(70, 70, 70));
         MnCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2248,7 +2243,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnCover);
 
-        MnCover1.setBackground(new java.awt.Color(255, 255, 255));
+        MnCover1.setBackground(new java.awt.Color(255, 255, 254));
         MnCover1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCover1.setForeground(new java.awt.Color(70, 70, 70));
         MnCover1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2264,16 +2259,15 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu1);
 
-        jMenu2.setBackground(new java.awt.Color(252, 255, 250));
+        jMenu2.setBackground(new java.awt.Color(250, 255, 245));
         jMenu2.setForeground(new java.awt.Color(70, 70, 70));
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu2.setText("Grafik Analisa");
         jMenu2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jMenu2.setName("jMenu2"); // NOI18N
-        jMenu2.setOpaque(true);
         jMenu2.setPreferredSize(new java.awt.Dimension(220, 26));
 
-        ppGrafikPerAgama.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikPerAgama.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPerAgama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikPerAgama.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikPerAgama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2289,7 +2283,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu2.add(ppGrafikPerAgama);
 
-        ppGrafikPerPekerjaan.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikPerPekerjaan.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPerPekerjaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikPerPekerjaan.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikPerPekerjaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2305,7 +2299,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu2.add(ppGrafikPerPekerjaan);
 
-        ppGrafikjkbayi.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikjkbayi.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikjkbayi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikjkbayi.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikjkbayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2322,7 +2316,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu2.add(ppGrafikjkbayi);
 
-        ppGrafikDemografi.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikDemografi.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikDemografi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikDemografi.setForeground(new java.awt.Color(70, 70, 70));
         ppGrafikDemografi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2341,7 +2335,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu2);
 
-        ppRegistrasi.setBackground(new java.awt.Color(255, 255, 255));
+        ppRegistrasi.setBackground(new java.awt.Color(255, 255, 254));
         ppRegistrasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRegistrasi.setForeground(new java.awt.Color(70, 70, 70));
         ppRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2357,7 +2351,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppRegistrasi);
 
-        ppRiwayat.setBackground(new java.awt.Color(255, 255, 255));
+        ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2373,7 +2367,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppRiwayat);
 
-        ppCatatanPasien.setBackground(new java.awt.Color(255, 255, 255));
+        ppCatatanPasien.setBackground(new java.awt.Color(255, 255, 254));
         ppCatatanPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppCatatanPasien.setForeground(new java.awt.Color(70, 70, 70));
         ppCatatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2389,7 +2383,7 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppCatatanPasien);
 
-        ppGabungRM.setBackground(new java.awt.Color(255, 255, 255));
+        ppGabungRM.setBackground(new java.awt.Color(255, 255, 254));
         ppGabungRM.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGabungRM.setForeground(new java.awt.Color(70, 70, 70));
         ppGabungRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2564,13 +2558,13 @@ public class DlgPasien extends javax.swing.JDialog {
 
         jPopupMenu2.setName("jPopupMenu2"); // NOI18N
 
-        MnViaBPJSNik.setBackground(new java.awt.Color(255, 255, 255));
+        MnViaBPJSNik.setBackground(new java.awt.Color(255, 255, 254));
         MnViaBPJSNik.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnViaBPJSNik.setForeground(new java.awt.Color(70, 70, 70));
         MnViaBPJSNik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaBPJSNik.setText("Cek Via NIK Web Servis BPJS VClaim");
         MnViaBPJSNik.setName("MnViaBPJSNik"); // NOI18N
-        MnViaBPJSNik.setPreferredSize(new java.awt.Dimension(280, 25));
+        MnViaBPJSNik.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaBPJSNik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaBPJSNikActionPerformed(evt);
@@ -2578,13 +2572,13 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu2.add(MnViaBPJSNik);
 
-        MnViaBPJSNoKartu.setBackground(new java.awt.Color(255, 255, 255));
+        MnViaBPJSNoKartu.setBackground(new java.awt.Color(255, 255, 254));
         MnViaBPJSNoKartu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnViaBPJSNoKartu.setForeground(new java.awt.Color(70, 70, 70));
         MnViaBPJSNoKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaBPJSNoKartu.setText("Cek Via No Kartu Web Servis BPJS VClaim");
         MnViaBPJSNoKartu.setName("MnViaBPJSNoKartu"); // NOI18N
-        MnViaBPJSNoKartu.setPreferredSize(new java.awt.Dimension(280, 25));
+        MnViaBPJSNoKartu.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaBPJSNoKartu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaBPJSNoKartuActionPerformed(evt);
@@ -2592,13 +2586,13 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu2.add(MnViaBPJSNoKartu);
 
-        MnViaDukcapilNikDKI.setBackground(new java.awt.Color(255, 255, 255));
+        MnViaDukcapilNikDKI.setBackground(new java.awt.Color(255, 255, 254));
         MnViaDukcapilNikDKI.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnViaDukcapilNikDKI.setForeground(new java.awt.Color(70, 70, 70));
         MnViaDukcapilNikDKI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaDukcapilNikDKI.setText("Cek Via NIK Web Servis DUKCAPIL Jakarta");
         MnViaDukcapilNikDKI.setName("MnViaDukcapilNikDKI"); // NOI18N
-        MnViaDukcapilNikDKI.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaDukcapilNikDKI.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaDukcapilNikDKI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaDukcapilNikDKIActionPerformed(evt);
@@ -2606,13 +2600,13 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu2.add(MnViaDukcapilNikDKI);
 
-        MnViaDukcapilNikAceh.setBackground(new java.awt.Color(255, 255, 255));
+        MnViaDukcapilNikAceh.setBackground(new java.awt.Color(255, 255, 254));
         MnViaDukcapilNikAceh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnViaDukcapilNikAceh.setForeground(new java.awt.Color(70, 70, 70));
         MnViaDukcapilNikAceh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaDukcapilNikAceh.setText("Cek Via NIK Web Servis DUKCAPIL Aceh");
         MnViaDukcapilNikAceh.setName("MnViaDukcapilNikAceh"); // NOI18N
-        MnViaDukcapilNikAceh.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaDukcapilNikAceh.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaDukcapilNikAceh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaDukcapilNikAcehActionPerformed(evt);
@@ -2620,13 +2614,13 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jPopupMenu2.add(MnViaDukcapilNikAceh);
 
-        MnViaDukcapilNikBatam.setBackground(new java.awt.Color(255, 255, 255));
+        MnViaDukcapilNikBatam.setBackground(new java.awt.Color(255, 255, 254));
         MnViaDukcapilNikBatam.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnViaDukcapilNikBatam.setForeground(new java.awt.Color(70, 70, 70));
         MnViaDukcapilNikBatam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnViaDukcapilNikBatam.setText("Cek Via NIK Web Servis DUKCAPIL Batam");
         MnViaDukcapilNikBatam.setName("MnViaDukcapilNikBatam"); // NOI18N
-        MnViaDukcapilNikBatam.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaDukcapilNikBatam.setPreferredSize(new java.awt.Dimension(290, 26));
         MnViaDukcapilNikBatam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaDukcapilNikBatamActionPerformed(evt);
@@ -2642,7 +2636,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Gabungkan Ke Nomor RM ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame8.setName("internalFrame8"); // NOI18N
-        internalFrame8.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame8.setLayout(null);
 
         BtnCloseIn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -2933,7 +2926,7 @@ public class DlgPasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel11);
 
         Carialamat.setName("Carialamat"); // NOI18N
-        Carialamat.setPreferredSize(new java.awt.Dimension(340, 23));
+        Carialamat.setPreferredSize(new java.awt.Dimension(335, 23));
         Carialamat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CarialamatKeyPressed(evt);
@@ -2987,8 +2980,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         cmbHlm.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100", "200", "300", "400", "500", "1000", "Semua" }));
         cmbHlm.setName("cmbHlm"); // NOI18N
-        cmbHlm.setOpaque(false);
-        cmbHlm.setPreferredSize(new java.awt.Dimension(80, 23));
+        cmbHlm.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(cmbHlm);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
@@ -2996,7 +2988,6 @@ public class DlgPasien extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -3037,11 +3028,10 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmp);
-        TTmp.setBounds(102, 102, 188, 23);
+        TTmp.setBounds(102, 102, 187, 23);
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         CmbJk.setName("CmbJk"); // NOI18N
-        CmbJk.setOpaque(false);
         CmbJk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbJkKeyPressed(evt);
@@ -3067,7 +3057,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         CMbGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "A", "B", "AB", "O" }));
         CMbGd.setName("CMbGd"); // NOI18N
-        CMbGd.setOpaque(false);
         CMbGd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CMbGdKeyPressed(evt);
@@ -3086,7 +3075,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3111,7 +3100,6 @@ public class DlgPasien extends javax.swing.JDialog {
         cmbAgama.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISLAM", "KRISTEN", "KATOLIK", "HINDU", "BUDHA", "KONG HU CHU", "-" }));
         cmbAgama.setLightWeightPopupEnabled(false);
         cmbAgama.setName("cmbAgama"); // NOI18N
-        cmbAgama.setOpaque(false);
         cmbAgama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbAgamaKeyPressed(evt);
@@ -3123,19 +3111,18 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel19.setText("Stts. Nikah :");
         jLabel19.setName("jLabel19"); // NOI18N
         FormInput.add(jLabel19);
-        jLabel19.setBounds(629, 12, 120, 23);
+        jLabel19.setBounds(629, 12, 100, 23);
 
         CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "BELUM MENIKAH", "JANDA", "DUDHA" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
-        CmbStts.setOpaque(false);
         CmbStts.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbSttsKeyPressed(evt);
             }
         });
         FormInput.add(CmbStts);
-        CmbStts.setBounds(753, 12, 120, 23);
+        CmbStts.setBounds(733, 12, 140, 23);
 
         jLabel20.setText("Alamat Pasien :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -3220,8 +3207,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(712, 132, 130, 23);
 
-        DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2019" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2019" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3250,7 +3236,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         CMbPnd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "TS", "TK", "SD", "SMP", "SMA", "SLTA/SEDERAJAT", "D1", "D2", "D3", "D4", "S1", "S2", "S3" }));
         CMbPnd.setName("CMbPnd"); // NOI18N
-        CMbPnd.setOpaque(false);
         CMbPnd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CMbPndKeyPressed(evt);
@@ -3266,48 +3251,38 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(Saudara);
-        Saudara.setBounds(102, 222, 290, 23);
+        Saudara.setBounds(102, 252, 290, 23);
 
-        R5.setBorder(null);
         buttonGroup1.add(R5);
         R5.setText("Saudara");
-        R5.setIconTextGap(0);
         R5.setName("R5"); // NOI18N
         FormInput.add(R5);
-        R5.setBounds(287, 192, 60, 23);
+        R5.setBounds(210, 222, 100, 23);
 
-        R4.setBorder(null);
         buttonGroup1.add(R4);
         R4.setText("Suami");
-        R4.setIconTextGap(0);
         R4.setName("R4"); // NOI18N
         FormInput.add(R4);
-        R4.setBounds(236, 192, 50, 23);
+        R4.setBounds(101, 222, 100, 23);
 
-        R3.setBorder(null);
         buttonGroup1.add(R3);
         R3.setText("Istri");
-        R3.setIconTextGap(0);
         R3.setName("R3"); // NOI18N
         FormInput.add(R3);
-        R3.setBounds(191, 192, 44, 23);
+        R3.setBounds(308, 192, 100, 23);
 
-        R2.setBorder(null);
         buttonGroup1.add(R2);
         R2.setText("Ibu");
-        R2.setIconTextGap(0);
         R2.setName("R2"); // NOI18N
         FormInput.add(R2);
-        R2.setBounds(149, 192, 40, 23);
+        R2.setBounds(210, 192, 100, 23);
 
-        R1.setBorder(null);
         buttonGroup1.add(R1);
         R1.setText("Ayah");
-        R1.setIconTextGap(0);
         R1.setName("R1"); // NOI18N
         R1.setPreferredSize(new java.awt.Dimension(40, 20));
         FormInput.add(R1);
-        R1.setBounds(101, 192, 46, 23);
+        R1.setBounds(101, 192, 100, 23);
 
         jLabel24.setText("Askes/Asuransi :");
         jLabel24.setName("jLabel24"); // NOI18N
@@ -3442,9 +3417,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(BtnKabupaten);
         BtnKabupaten.setBounds(651, 222, 28, 23);
 
-        ChkDaftar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
-        ChkDaftar.setBorderPainted(true);
-        ChkDaftar.setBorderPaintedFlat(true);
+        ChkDaftar.setBorder(null);
         ChkDaftar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkDaftar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkDaftar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -3479,7 +3452,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel25.setText("Png. Jawab :");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(4, 222, 95, 23);
+        jLabel25.setBounds(4, 252, 95, 23);
 
         PekerjaanPj.setName("PekerjaanPj"); // NOI18N
         PekerjaanPj.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3488,12 +3461,12 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(PekerjaanPj);
-        PekerjaanPj.setBounds(102, 252, 290, 23);
+        PekerjaanPj.setBounds(102, 282, 290, 23);
 
         jLabel26.setText("Pekerjaan P.J. :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(4, 252, 95, 23);
+        jLabel26.setBounds(4, 282, 95, 23);
 
         jLabel27.setText("Alamat P.J. :");
         jLabel27.setName("jLabel27"); // NOI18N
@@ -3635,10 +3608,8 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TNoPeserta);
         TNoPeserta.setBounds(496, 72, 150, 23);
 
-        ChkRM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
+        ChkRM.setBorder(null);
         ChkRM.setSelected(true);
-        ChkRM.setBorderPainted(true);
-        ChkRM.setBorderPaintedFlat(true);
         ChkRM.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ChkRM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkRM.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -3651,13 +3622,11 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(ChkRM);
         ChkRM.setBounds(266, 12, 23, 23);
 
-        R6.setBorder(null);
         buttonGroup1.add(R6);
         R6.setText("Anak");
-        R6.setIconTextGap(0);
         R6.setName("R6"); // NOI18N
         FormInput.add(R6);
-        R6.setBounds(348, 192, 60, 23);
+        R6.setBounds(308, 222, 100, 23);
 
         BtnKelurahan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/011.png"))); // NOI18N
         BtnKelurahan1.setMnemonic('2');
@@ -3717,12 +3686,12 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel32.setText("Suku/Bangsa :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
-        jLabel32.setBounds(4, 282, 95, 23);
+        jLabel32.setBounds(4, 312, 95, 23);
 
         nmsukubangsa.setEditable(false);
         nmsukubangsa.setName("nmsukubangsa"); // NOI18N
         FormInput.add(nmsukubangsa);
-        nmsukubangsa.setBounds(102, 282, 259, 23);
+        nmsukubangsa.setBounds(102, 312, 259, 23);
 
         BtnSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSuku.setMnemonic('1');
@@ -3739,12 +3708,12 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSuku);
-        BtnSuku.setBounds(364, 282, 28, 23);
+        BtnSuku.setBounds(364, 312, 28, 23);
 
         nmbahasa.setEditable(false);
         nmbahasa.setName("nmbahasa"); // NOI18N
         FormInput.add(nmbahasa);
-        nmbahasa.setBounds(102, 312, 259, 23);
+        nmbahasa.setBounds(102, 342, 259, 23);
 
         BtnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnBahasa.setMnemonic('1');
@@ -3761,12 +3730,12 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnBahasa);
-        BtnBahasa.setBounds(364, 312, 28, 23);
+        BtnBahasa.setBounds(364, 342, 28, 23);
 
         jLabel36.setText("Bahasa Dipakai :");
         jLabel36.setName("jLabel36"); // NOI18N
         FormInput.add(jLabel36);
-        jLabel36.setBounds(4, 312, 95, 23);
+        jLabel36.setBounds(4, 342, 95, 23);
 
         jLabel37.setText("Instansi Pasien :");
         jLabel37.setName("jLabel37"); // NOI18N
@@ -3805,17 +3774,17 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(chkTNI);
-        chkTNI.setBounds(4, 377, 95, 23);
+        chkTNI.setBounds(4, 407, 95, 23);
 
         LabelGolonganTNI.setText("Golongan :");
         LabelGolonganTNI.setName("LabelGolonganTNI"); // NOI18N
         FormInput.add(LabelGolonganTNI);
-        LabelGolonganTNI.setBounds(4, 402, 103, 23);
+        LabelGolonganTNI.setBounds(4, 432, 103, 23);
 
         nmgolongantni.setEditable(false);
         nmgolongantni.setName("nmgolongantni"); // NOI18N
         FormInput.add(nmgolongantni);
-        nmgolongantni.setBounds(111, 402, 250, 23);
+        nmgolongantni.setBounds(111, 432, 250, 23);
 
         BtnGolonganTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnGolonganTNI.setMnemonic('1');
@@ -3828,7 +3797,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnGolonganTNI);
-        BtnGolonganTNI.setBounds(364, 402, 28, 23);
+        BtnGolonganTNI.setBounds(364, 432, 28, 23);
 
         BtnSatuanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSatuanTNI.setMnemonic('1');
@@ -3841,27 +3810,27 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSatuanTNI);
-        BtnSatuanTNI.setBounds(364, 432, 28, 23);
+        BtnSatuanTNI.setBounds(364, 462, 28, 23);
 
         nmsatuantni.setEditable(false);
         nmsatuantni.setName("nmsatuantni"); // NOI18N
         FormInput.add(nmsatuantni);
-        nmsatuantni.setBounds(111, 432, 250, 23);
+        nmsatuantni.setBounds(111, 462, 250, 23);
 
         LabelSatuanTNI.setText("Kesatuan :");
         LabelSatuanTNI.setName("LabelSatuanTNI"); // NOI18N
         FormInput.add(LabelSatuanTNI);
-        LabelSatuanTNI.setBounds(4, 432, 103, 23);
+        LabelSatuanTNI.setBounds(4, 462, 103, 23);
 
         LabelPangkatTNI.setText("Pangkat :");
         LabelPangkatTNI.setName("LabelPangkatTNI"); // NOI18N
         FormInput.add(LabelPangkatTNI);
-        LabelPangkatTNI.setBounds(4, 462, 103, 23);
+        LabelPangkatTNI.setBounds(4, 492, 103, 23);
 
         nmpangkattni.setEditable(false);
         nmpangkattni.setName("nmpangkattni"); // NOI18N
         FormInput.add(nmpangkattni);
-        nmpangkattni.setBounds(111, 462, 250, 23);
+        nmpangkattni.setBounds(111, 492, 250, 23);
 
         BtnPangkatTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPangkatTNI.setMnemonic('1');
@@ -3874,17 +3843,17 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnPangkatTNI);
-        BtnPangkatTNI.setBounds(364, 462, 28, 23);
+        BtnPangkatTNI.setBounds(364, 492, 28, 23);
 
         LabelJabatanTNI.setText("Jabatan :");
         LabelJabatanTNI.setName("LabelJabatanTNI"); // NOI18N
         FormInput.add(LabelJabatanTNI);
-        LabelJabatanTNI.setBounds(4, 492, 103, 23);
+        LabelJabatanTNI.setBounds(4, 522, 103, 23);
 
         nmjabatantni.setEditable(false);
         nmjabatantni.setName("nmjabatantni"); // NOI18N
         FormInput.add(nmjabatantni);
-        nmjabatantni.setBounds(111, 492, 250, 23);
+        nmjabatantni.setBounds(111, 522, 250, 23);
 
         BtnJabatanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnJabatanTNI.setMnemonic('1');
@@ -3897,7 +3866,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnJabatanTNI);
-        BtnJabatanTNI.setBounds(364, 492, 28, 23);
+        BtnJabatanTNI.setBounds(364, 522, 28, 23);
 
         chkPolri.setText("Anggota POLRI :");
         chkPolri.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -3909,17 +3878,17 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(chkPolri);
-        chkPolri.setBounds(425, 377, 130, 23);
+        chkPolri.setBounds(425, 407, 130, 23);
 
         LabelGolonganPolri.setText("Golongan :");
         LabelGolonganPolri.setName("LabelGolonganPolri"); // NOI18N
         FormInput.add(LabelGolonganPolri);
-        LabelGolonganPolri.setBounds(433, 402, 133, 23);
+        LabelGolonganPolri.setBounds(433, 432, 133, 23);
 
         nmgolonganpolri.setEditable(false);
         nmgolonganpolri.setName("nmgolonganpolri"); // NOI18N
         FormInput.add(nmgolonganpolri);
-        nmgolonganpolri.setBounds(570, 402, 273, 23);
+        nmgolonganpolri.setBounds(570, 432, 273, 23);
 
         BtnGolonganPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnGolonganPolri.setMnemonic('1');
@@ -3932,7 +3901,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnGolonganPolri);
-        BtnGolonganPolri.setBounds(845, 402, 28, 23);
+        BtnGolonganPolri.setBounds(845, 432, 28, 23);
 
         BtnSatuanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSatuanPolri.setMnemonic('1');
@@ -3945,27 +3914,27 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnSatuanPolri);
-        BtnSatuanPolri.setBounds(845, 432, 28, 23);
+        BtnSatuanPolri.setBounds(845, 462, 28, 23);
 
         nmsatuanpolri.setEditable(false);
         nmsatuanpolri.setName("nmsatuanpolri"); // NOI18N
         FormInput.add(nmsatuanpolri);
-        nmsatuanpolri.setBounds(570, 432, 273, 23);
+        nmsatuanpolri.setBounds(570, 462, 273, 23);
 
         LabelSatuanPolri.setText("Kesatuan :");
         LabelSatuanPolri.setName("LabelSatuanPolri"); // NOI18N
         FormInput.add(LabelSatuanPolri);
-        LabelSatuanPolri.setBounds(433, 432, 133, 23);
+        LabelSatuanPolri.setBounds(433, 462, 133, 23);
 
         LabelPangkatPolri.setText("Pangkat :");
         LabelPangkatPolri.setName("LabelPangkatPolri"); // NOI18N
         FormInput.add(LabelPangkatPolri);
-        LabelPangkatPolri.setBounds(433, 462, 133, 23);
+        LabelPangkatPolri.setBounds(433, 492, 133, 23);
 
         nmpangkatpolri.setEditable(false);
         nmpangkatpolri.setName("nmpangkatpolri"); // NOI18N
         FormInput.add(nmpangkatpolri);
-        nmpangkatpolri.setBounds(570, 462, 273, 23);
+        nmpangkatpolri.setBounds(570, 492, 273, 23);
 
         BtnPangkatPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPangkatPolri.setMnemonic('1');
@@ -3978,7 +3947,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnPangkatPolri);
-        BtnPangkatPolri.setBounds(845, 462, 28, 23);
+        BtnPangkatPolri.setBounds(845, 492, 28, 23);
 
         BtnJabatanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnJabatanPolri.setMnemonic('1');
@@ -3991,17 +3960,17 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnJabatanPolri);
-        BtnJabatanPolri.setBounds(845, 492, 28, 23);
+        BtnJabatanPolri.setBounds(845, 522, 28, 23);
 
         nmjabatanpolri.setEditable(false);
         nmjabatanpolri.setName("nmjabatanpolri"); // NOI18N
         FormInput.add(nmjabatanpolri);
-        nmjabatanpolri.setBounds(570, 492, 273, 23);
+        nmjabatanpolri.setBounds(570, 522, 273, 23);
 
         LabelJabatanPolri.setText("Jabatan :");
         LabelJabatanPolri.setName("LabelJabatanPolri"); // NOI18N
         FormInput.add(LabelJabatanPolri);
-        LabelJabatanPolri.setBounds(433, 492, 133, 23);
+        LabelJabatanPolri.setBounds(433, 522, 133, 23);
 
         BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPropinsi.setMnemonic('4');
@@ -4072,12 +4041,12 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel38.setText("Cacat Fisik :");
         jLabel38.setName("jLabel38"); // NOI18N
         FormInput.add(jLabel38);
-        jLabel38.setBounds(4, 342, 95, 23);
+        jLabel38.setBounds(4, 372, 95, 23);
 
         nmcacat.setEditable(false);
         nmcacat.setName("nmcacat"); // NOI18N
         FormInput.add(nmcacat);
-        nmcacat.setBounds(102, 342, 259, 23);
+        nmcacat.setBounds(102, 372, 259, 23);
 
         BtnCacat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnCacat.setMnemonic('1');
@@ -4094,7 +4063,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnCacat);
-        BtnCacat.setBounds(364, 342, 28, 23);
+        BtnCacat.setBounds(364, 372, 28, 23);
 
         jLabel39.setText("Email :");
         jLabel39.setName("jLabel39"); // NOI18N
@@ -4257,7 +4226,7 @@ private void tbPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
-                var.setform(asalform);
+                akses.setform(asalform);
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCari.setText("");
                 TCari.requestFocus();
@@ -4382,7 +4351,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     kdkel,kdkec,kdkab,PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),KabupatenPj.getText(),kdperusahaan.getText(),
                     kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),kdprop,PropinsiPj.getText()
                 })==true){
-                if(var.getform().equals("DlgReg")){
+                if(akses.getform().equals("DlgReg")){
                     TCari.setText(TNo.getText());
                 }
                 if(chkTNI.isSelected()==true){
@@ -4413,7 +4382,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         kdkel,kdkec,kdkab,PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),KabupatenPj.getText(),kdperusahaan.getText(),
                         kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),kdprop,PropinsiPj.getText()
                     })==true){
-                    if(var.getform().equals("DlgReg")){
+                    if(akses.getform().equals("DlgReg")){
                         TCari.setText(TNo.getText());
                     }
                     if(chkTNI.isSelected()==true){
@@ -4444,7 +4413,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             kdkel,kdkec,kdkab,PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),KabupatenPj.getText(),kdperusahaan.getText(),
                             kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),kdprop,PropinsiPj.getText()
                         })==true){
-                        if(var.getform().equals("DlgReg")){
+                        if(akses.getform().equals("DlgReg")){
                             TCari.setText(TNo.getText());
                         }
                         if(chkTNI.isSelected()==true){
@@ -4475,7 +4444,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 kdkel,kdkec,kdkab,PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),KabupatenPj.getText(),kdperusahaan.getText(),
                                 kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),kdprop,PropinsiPj.getText()
                             })==true){
-                            if(var.getform().equals("DlgReg")){
+                            if(akses.getform().equals("DlgReg")){
                                 TCari.setText(TNo.getText());
                             }
                             if(chkTNI.isSelected()==true){
@@ -4506,7 +4475,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     kdkel,kdkec,kdkab,PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),KabupatenPj.getText(),kdperusahaan.getText(),
                                     kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),kdprop,PropinsiPj.getText()
                                 })==true){
-                                if(var.getform().equals("DlgReg")){
+                                if(akses.getform().equals("DlgReg")){
                                     TCari.setText(TNo.getText());
                                 }
                                 if(chkTNI.isSelected()==true){
@@ -4753,12 +4722,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Map<String, Object> param = new HashMap<>();    
-        param.put("namars",var.getnamars());
-        param.put("alamatrs",var.getalamatrs());
-        param.put("kotars",var.getkabupatenrs());
-        param.put("propinsirs",var.getpropinsirs());
-        param.put("kontakrs",var.getkontakrs());
-        param.put("emailrs",var.getemailrs());   
+        param.put("namars",akses.getnamars());
+        param.put("alamatrs",akses.getalamatrs());
+        param.put("kotars",akses.getkabupatenrs());
+        param.put("propinsirs",akses.getpropinsirs());
+        param.put("kontakrs",akses.getkontakrs());
+        param.put("emailrs",akses.getemailrs());   
         param.put("logo",Sequel.cariGambar("select logo from setting")); 
 
         switch (TabRawat.getSelectedIndex()) {
@@ -4768,7 +4737,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     BtnBatal.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
                     if(!cmbHlm.getSelectedItem().toString().equals("Semua")){
-                        Valid.MyReport("rptPasien.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                        Valid.MyReportqry("rptPasien.jasper","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                             "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
                             "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                             "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
@@ -4801,7 +4770,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                              "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like '%"+Carialamat.getText().trim()+"%'  and pasien.tgl_daftar like '%"+TCari.getText().trim()+"%' "+
                              "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like '%"+Carialamat.getText().trim()+"%'  and pasien.no_tlp like '%"+TCari.getText().trim()+"%'  order by pasien.no_rkm_medis desc"+" LIMIT "+cmbHlm.getSelectedItem(),param);
                     }else{
-                        Valid.MyReport("rptPasien.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                        Valid.MyReportqry("rptPasien.jasper","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                             "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
                             "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                             "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
@@ -4842,7 +4811,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     BtnBatal.requestFocus();
                 }else if(tabMode2.getRowCount()!=0){
                     if(!cmbHlm.getSelectedItem().toString().equals("Semua")){
-                        Valid.MyReport("rptPasien2.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                        Valid.MyReportqry("rptPasien2.jasper","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                             "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                             "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                             "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
@@ -4884,7 +4853,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                              "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like '%"+Carialamat.getText().trim()+"%'  and pasien.tgl_daftar like '%"+TCari.getText().trim()+"%' "+
                              "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like '%"+Carialamat.getText().trim()+"%'  and pasien.no_tlp like '%"+TCari.getText().trim()+"%'  order by pasien.no_rkm_medis desc LIMIT "+cmbHlm.getSelectedItem(),param);
                     }else{
-                        Valid.MyReport("rptPasien2.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                        Valid.MyReportqry("rptPasien2.jasper","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                             "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                             "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                             "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
@@ -4934,7 +4903,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     BtnBatal.requestFocus();
                 }else if(tabMode3.getRowCount()!=0){
                     if(!cmbHlm.getSelectedItem().toString().equals("Semua")){
-                        Valid.MyReport("rptPasien3.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                        Valid.MyReportqry("rptPasien3.jasper","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                             "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                             "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                             "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
@@ -4976,7 +4945,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                              "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like '%"+Carialamat.getText().trim()+"%'  and pasien.tgl_daftar like '%"+TCari.getText().trim()+"%' "+
                              "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like '%"+Carialamat.getText().trim()+"%'  and pasien.no_tlp like '%"+TCari.getText().trim()+"%'  order by pasien.no_rkm_medis desc LIMIT "+cmbHlm.getSelectedItem(),param);
                     }else{
-                        Valid.MyReport("rptPasien3.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                        Valid.MyReportqry("rptPasien3.jasper","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                             "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                             "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                             "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
@@ -5216,14 +5185,14 @@ private void MnKartuStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptKartuPasien.jrxml","report","::[ Kartu Periksa Pasien(Umum) ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptKartuPasien.jasper","report","::[ Kartu Periksa Pasien(Umum) ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -5253,7 +5222,7 @@ private void KdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kdp
 }//GEN-LAST:event_KdpnjKeyPressed
 
 private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         penjab.isCek();
         penjab.onCari();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -5270,12 +5239,19 @@ private void MnKartu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             tbPasien.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Valid.MyReport("rptKartuBerobat.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptKartuBerobat.jasper","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
 }//GEN-LAST:event_MnKartu2ActionPerformed
@@ -5296,14 +5272,14 @@ private void MnLaporanRMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             tbPasien.requestFocus();
         }else{
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM2.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM2.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -5322,12 +5298,19 @@ private void MnLaporanIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbPasien.requestFocus();
         }else{
-            Valid.MyReport("rptKartuIgd.jrxml","report","::[ Laporan Rekam Medik ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptKartuIgd.jasper","report","::[ Laporan Rekam Medik ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
         }
 }//GEN-LAST:event_MnLaporanIGDActionPerformed
 
@@ -5361,14 +5344,14 @@ private void MnLembarKeluarMasukActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptLembarKeluarMasuk.jrxml","report","::[ Ringkasan Masuk Keluar ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptLembarKeluarMasuk.jasper","report","::[ Ringkasan Masuk Keluar ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -5388,12 +5371,19 @@ private void MnLembarAnamNesaActionPerformed(java.awt.event.ActionEvent evt) {//
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbPasien.requestFocus();
         }else{
-            Valid.MyReport("rptLembarAnamnesi.jrxml","report","::[ Lembar Anamnesa ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptLembarAnamnesi.jasper","report","::[ Lembar Anamnesa ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
         }
 }//GEN-LAST:event_MnLembarAnamNesaActionPerformed
 
@@ -5405,12 +5395,20 @@ private void MnLembarGrafikActionPerformed(java.awt.event.ActionEvent evt) {//GE
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbPasien.requestFocus();
         }else{
-            Valid.MyReport("rptLembarGrafik.jrxml","report","::[ Lembar Grafik ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptLembarGrafik.jasper","report","::[ Lembar Grafik ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
         }
 }//GEN-LAST:event_MnLembarGrafikActionPerformed
 
@@ -5422,12 +5420,19 @@ private void MnLembarCatatanPerkembanganActionPerformed(java.awt.event.ActionEve
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbPasien.requestFocus();
         }else{
-            Valid.MyReport("rptLembarPerkembangan.jrxml","report","::[ Lembar Catatan Perkembangan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptLembarPerkembangan.jasper","report","::[ Lembar Catatan Perkembangan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and  pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
         }
 }//GEN-LAST:event_MnLembarCatatanPerkembanganActionPerformed
 
@@ -5439,12 +5444,19 @@ private void MnLembarCatatanKeperawatanActionPerformed(java.awt.event.ActionEven
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbPasien.requestFocus();
         }else{
-            Valid.MyReport("rptLembarPerkembangan.jrxml","report","::[ Lembar Catatan Keperawatan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptLembarPerkembangan.jasper","report","::[ Lembar Catatan Keperawatan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and  pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
         }
 }//GEN-LAST:event_MnLembarCatatanKeperawatanActionPerformed
 
@@ -5456,12 +5468,19 @@ private void MnLaporanAnestesiaActionPerformed(java.awt.event.ActionEvent evt) {
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbPasien.requestFocus();
         }else{
-            Valid.MyReport("rptLaporanAnestesia.jrxml","report","::[ Lembar Catatan Keperawatan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptLaporanAnestesia.jasper","report","::[ Lembar Catatan Keperawatan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and  pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
         }
 }//GEN-LAST:event_MnLaporanAnestesiaActionPerformed
 
@@ -5486,12 +5505,19 @@ private void MnKartu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             tbPasien.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Valid.MyReport("rptKartuBerobat2.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptKartuBerobat2.jasper","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
 }//GEN-LAST:event_MnKartu3ActionPerformed
@@ -5563,7 +5589,7 @@ private void KabupatenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_KabupatenKeyPressed
 
 private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
-       var.setform("DlgPasien");
+       akses.setform("DlgPasien");
        pilih=1;
         kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kel.setLocationRelativeTo(internalFrame1);
@@ -5571,7 +5597,7 @@ private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_BtnKelurahanActionPerformed
 
 private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=1;
         kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kec.setLocationRelativeTo(internalFrame1);
@@ -5579,7 +5605,7 @@ private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_BtnKecamatanActionPerformed
 
 private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=1;
         kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kab.setLocationRelativeTo(internalFrame1);
@@ -5662,7 +5688,7 @@ private void BtnSeek8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    if(Kecamatan2.getText().equals("")){
        Valid.textKosong(Kecamatan2,"Kecamatan");
    }else{
-       var.setform("DlgPasien");
+       akses.setform("DlgPasien");
        pilih=2;
         kel.emptTeks();
         kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -5675,7 +5701,7 @@ private void BtnSeek9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    if(Kabupaten2.getText().equals("")){
        Valid.textKosong(Kabupaten2,"Kabupaten");
    }else{
-       var.setform("DlgPasien");
+       akses.setform("DlgPasien");
        pilih=2;
         kec.emptTeks();
         kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -5688,7 +5714,7 @@ private void BtnSeek10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     if(Propinsi2.getText().equals("")){
        Valid.textKosong(Propinsi2,"Propinsi");
     }else{    
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=2;
         kab.emptTeks();
         kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -5708,14 +5734,14 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Map<String, Object> data = new HashMap<>();
                 data.put("judul","Data Demografi Per Area Kelurahan "+Kelurahan2.getText()+", Kecamatan "+Kecamatan2.getText()+", Kabupaten "+Kabupaten2.getText());
                 data.put("area","Area");
-                data.put("namars",var.getnamars());
-                data.put("alamatrs",var.getalamatrs());
-                data.put("kotars",var.getkabupatenrs());
-                data.put("propinsirs",var.getpropinsirs());
-                data.put("kontakrs",var.getkontakrs());
-                data.put("emailrs",var.getemailrs());
+                data.put("namars",akses.getnamars());
+                data.put("alamatrs",akses.getalamatrs());
+                data.put("kotars",akses.getkabupatenrs());
+                data.put("propinsirs",akses.getpropinsirs());
+                data.put("kontakrs",akses.getkontakrs());
+                data.put("emailrs",akses.getemailrs());
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Area Kelurahan "+Kelurahan2.getText()+", Kecamatan "+Kecamatan2.getText()+", Kabupaten "+Kabupaten2.getText()+" ]::",
+                Valid.MyReportqry("rptDemografi.jasper","report","::[ Data Demografi Per Area Kelurahan "+Kelurahan2.getText()+", Kecamatan "+Kecamatan2.getText()+", Kabupaten "+Kabupaten2.getText()+" ]::",
                    "select  pasien.alamat as area,count(pasien.alamat) as jumlah from pasien "+
                    "inner join kabupaten inner join kecamatan inner join kelurahan inner join propinsi "+
                    "on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
@@ -5728,14 +5754,14 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Map<String, Object> data = new HashMap<>();
                 data.put("judul","Data Demografi Per Kelurahan Kecamatan "+Kecamatan2.getText()+", Kabupaten "+Kabupaten2.getText());
                 data.put("area","Kelurahan");
-                data.put("namars",var.getnamars());
-                data.put("alamatrs",var.getalamatrs());
-                data.put("kotars",var.getkabupatenrs());
-                data.put("propinsirs",var.getpropinsirs());
-                data.put("kontakrs",var.getkontakrs());
-                data.put("emailrs",var.getemailrs());
+                data.put("namars",akses.getnamars());
+                data.put("alamatrs",akses.getalamatrs());
+                data.put("kotars",akses.getkabupatenrs());
+                data.put("propinsirs",akses.getpropinsirs());
+                data.put("kontakrs",akses.getkontakrs());
+                data.put("emailrs",akses.getemailrs());
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Kelurahan Kecamatan "+Kecamatan2.getText()+" Kabupaten "+Kabupaten2.getText()+" ]::",
+                Valid.MyReportqry("rptDemografi.jasper","report","::[ Data Demografi Per Kelurahan Kecamatan "+Kecamatan2.getText()+" Kabupaten "+Kabupaten2.getText()+" ]::",
                    "select kelurahan.nm_kel as area,count(kelurahan.nm_kel) as jumlah from pasien "+
                    "inner join kabupaten inner join kecamatan inner join kelurahan inner join propinsi "+
                    "on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
@@ -5747,14 +5773,14 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Map<String, Object> data = new HashMap<>();
                 data.put("judul","Data Demografi Per Kecamatan Kabupaten "+Kabupaten2.getText());
                 data.put("area","Kecamatan");
-                data.put("namars",var.getnamars());
-                data.put("alamatrs",var.getalamatrs());
-                data.put("kotars",var.getkabupatenrs());
-                data.put("propinsirs",var.getpropinsirs());
-                data.put("kontakrs",var.getkontakrs());
-                data.put("emailrs",var.getemailrs());
+                data.put("namars",akses.getnamars());
+                data.put("alamatrs",akses.getalamatrs());
+                data.put("kotars",akses.getkabupatenrs());
+                data.put("propinsirs",akses.getpropinsirs());
+                data.put("kontakrs",akses.getkontakrs());
+                data.put("emailrs",akses.getemailrs());
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Per Kecamatan Kabupaten "+Kabupaten2.getText()+" ]::",
+                Valid.MyReportqry("rptDemografi.jasper","report","::[ Data Per Kecamatan Kabupaten "+Kabupaten2.getText()+" ]::",
                    "select kecamatan.nm_kec as area,count(kecamatan.nm_kec) as jumlah from pasien "+
                    "inner join kabupaten inner join kecamatan inner join propinsi "+
                    "on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
@@ -5765,28 +5791,28 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Map<String, Object> data = new HashMap<>();
                 data.put("judul","Data Demografi Per Propinsi");
                 data.put("area","Propinsi");
-                data.put("namars",var.getnamars());
-                data.put("alamatrs",var.getalamatrs());
-                data.put("kotars",var.getkabupatenrs());
-                data.put("propinsirs",var.getpropinsirs());
-                data.put("kontakrs",var.getkontakrs());
-                data.put("emailrs",var.getemailrs());
+                data.put("namars",akses.getnamars());
+                data.put("alamatrs",akses.getalamatrs());
+                data.put("kotars",akses.getkabupatenrs());
+                data.put("propinsirs",akses.getpropinsirs());
+                data.put("kontakrs",akses.getkontakrs());
+                data.put("emailrs",akses.getemailrs());
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Propinsi ]::","select propinsi.nm_prop as area,count(propinsi.nm_prop) as jumlah from pasien "+
+                Valid.MyReportqry("rptDemografi.jasper","report","::[ Data Demografi Per Propinsi ]::","select propinsi.nm_prop as area,count(propinsi.nm_prop) as jumlah from pasien "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where propinsi.nm_prop='"+Propinsi2.getText()+"' group by propinsi.nm_prop order by propinsi.nm_prop",data);
             }else if(Propinsi2.getText().equals("")){
                 DlgDemografi.dispose();   
                 Map<String, Object> data = new HashMap<>();
                 data.put("judul","Data Demografi Per Propinsi");
                 data.put("area","Propinsi");
-                data.put("namars",var.getnamars());
-                data.put("alamatrs",var.getalamatrs());
-                data.put("kotars",var.getkabupatenrs());
-                data.put("propinsirs",var.getpropinsirs());
-                data.put("kontakrs",var.getkontakrs());
-                data.put("emailrs",var.getemailrs());
+                data.put("namars",akses.getnamars());
+                data.put("alamatrs",akses.getalamatrs());
+                data.put("kotars",akses.getkabupatenrs());
+                data.put("propinsirs",akses.getpropinsirs());
+                data.put("kontakrs",akses.getkontakrs());
+                data.put("emailrs",akses.getemailrs());
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Propinsi ]::","select propinsi.nm_prop as area,count(propinsi.nm_prop) as jumlah from pasien "+
+                Valid.MyReportqry("rptDemografi.jasper","report","::[ Data Demografi Per Propinsi ]::","select propinsi.nm_prop as area,count(propinsi.nm_prop) as jumlah from pasien "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop group by propinsi.nm_prop order by propinsi.nm_prop",data);
             }                         
         }
@@ -5864,14 +5890,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{     
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM1.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM1.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -5900,17 +5926,17 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             tbPasien.requestFocus();
         }else{
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             String nip=Sequel.cariIsi("select kd_dokterhemodialisa from set_pjlab");
             param.put("dokter",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter='"+nip+"'"));   
             param.put("nipdokter",nip);   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM3.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM3.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab from pasien "+
@@ -5991,7 +6017,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_KecamatanPjKeyPressed
 
     private void BtnKecamatanPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanPjActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=3;
         kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kec.setLocationRelativeTo(internalFrame1);
@@ -6033,7 +6059,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_KabupatenPjKeyPressed
 
     private void BtnKabupatenPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenPjActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=3;
         kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kab.setLocationRelativeTo(internalFrame1);
@@ -6041,7 +6067,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnKabupatenPjActionPerformed
 
     private void BtnKelurahanPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanPjActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=3;
         kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kel.setLocationRelativeTo(internalFrame1);
@@ -6096,14 +6122,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6125,14 +6151,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM2.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM2.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6193,14 +6219,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM3.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM3.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6222,14 +6248,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM9.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM9.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6250,7 +6276,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             tbPasien.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Valid.MyReport("rptKartuBerobat5.jrxml","report","::[ Kartu Periksa Pasien ]::","select * from pasien where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptKartuBerobat5.jasper","report","::[ Kartu Periksa Pasien ]::","select * from pasien where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnKartu1ActionPerformed
@@ -6265,14 +6298,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM11.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM11.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6294,14 +6327,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM12.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM12.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6323,14 +6356,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM13.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM13.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6388,14 +6421,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM4.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM4.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6435,14 +6468,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{     
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM5.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM5.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6464,14 +6497,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM6.jrxml","report","::[ Lembar Rawat Jalan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM6.jasper","report","::[ Lembar Rawat Jalan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6493,14 +6526,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM7.jrxml","report","::[ Formulir Pendaftaran ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM7.jasper","report","::[ Formulir Pendaftaran ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6522,14 +6555,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM8.jrxml","report","::[ Screening Awal ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM8.jasper","report","::[ Screening Awal ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6551,14 +6584,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM9.jrxml","report","::[ Copy Resep ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM9.jasper","report","::[ Copy Resep ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6579,12 +6612,19 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             tbPasien.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Valid.MyReport("rptKartuBerobat6.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
+            Valid.MyReportqry("rptKartuBerobat6.jasper","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnKartu4ActionPerformed
@@ -6599,14 +6639,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptLembarKeluarMasuk2.jrxml","report","::[ Ringkasan Masuk Keluar ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptLembarKeluarMasuk2.jasper","report","::[ Ringkasan Masuk Keluar ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6628,14 +6668,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{     
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM10.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM10.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6657,14 +6697,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM15.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM15.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6724,13 +6764,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs()); 
-            Valid.MyReport("rptKartuBerobat7.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs()); 
+            Valid.MyReportqry("rptKartuBerobat7.jasper","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.nm_ibu,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -6767,14 +6807,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             tbPasien.requestFocus();
         }else{
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCoverMap.jrxml","report","::[ Cover Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptCoverMap.jasper","report","::[ Cover Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.no_peserta,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6871,9 +6911,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void NoRmTujuanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmTujuanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(!NoRmTujuan.getText().trim().equals("")){
-                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmPasienTujuan,NoRmTujuan.getText());
+                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmPasienTujuan,NoRmTujuan.getText());
                 if(NmPasienTujuan.getText().trim().equals("")){
-                    JOptionPane.showMessageDialog(rootPane,"Akun Rekening tidak ditemukan");
+                    JOptionPane.showMessageDialog(rootPane,"Data pasien tidak ditemukan..!!");
                 }
                 NoRmTujuan.requestFocus();
             }
@@ -6921,14 +6961,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM17.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM17.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -6950,14 +6990,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM18.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptBarcodeRM18.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -7032,10 +7072,10 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         if(tampilkantni.equals("Yes")){
             if(this.getHeight()<670){   
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-                FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,530));
+                FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,560));
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,530));
+                    FormInput.setPreferredSize(new Dimension(890,560));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }
@@ -7049,12 +7089,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 }
             }
         }else{
-            if(this.getHeight()<530){   
+            if(this.getHeight()<560){   
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-                FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,380));
+                FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,410));
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,380));
+                    FormInput.setPreferredSize(new Dimension(890,410));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }
@@ -7071,7 +7111,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_formWindowActivated
 
     private void BtnSukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSukuActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         suku.isCek();
         suku.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         suku.setLocationRelativeTo(internalFrame1);
@@ -7079,7 +7119,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnSukuActionPerformed
 
     private void BtnBahasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBahasaActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         bahasa.isCek();
         bahasa.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bahasa.setLocationRelativeTo(internalFrame1);
@@ -7091,7 +7131,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_kdperusahaanKeyPressed
 
     private void BtnPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPerusahaanActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         perusahaan.isCek();
         perusahaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         perusahaan.setLocationRelativeTo(internalFrame1);
@@ -7099,7 +7139,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnPerusahaanActionPerformed
 
     private void BtnGolonganTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganTNIActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         golongantni.isCek();
         golongantni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         golongantni.setLocationRelativeTo(internalFrame1);
@@ -7107,7 +7147,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnGolonganTNIActionPerformed
 
     private void BtnSatuanTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuanTNIActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         satuantni.isCek();
         satuantni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         satuantni.setLocationRelativeTo(internalFrame1);
@@ -7115,7 +7155,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnSatuanTNIActionPerformed
 
     private void BtnPangkatTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPangkatTNIActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pangkattni.isCek();
         pangkattni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pangkattni.setLocationRelativeTo(internalFrame1);
@@ -7123,7 +7163,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnPangkatTNIActionPerformed
 
     private void BtnJabatanTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJabatanTNIActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         jabatantni.isCek();
         jabatantni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jabatantni.setLocationRelativeTo(internalFrame1);
@@ -7131,7 +7171,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnJabatanTNIActionPerformed
 
     private void BtnGolonganPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganPolriActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         golonganpolri.isCek();
         golonganpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         golonganpolri.setLocationRelativeTo(internalFrame1);
@@ -7139,7 +7179,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnGolonganPolriActionPerformed
 
     private void BtnSatuanPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuanPolriActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         satuanpolri.isCek();
         satuanpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         satuanpolri.setLocationRelativeTo(internalFrame1);
@@ -7147,7 +7187,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnSatuanPolriActionPerformed
 
     private void BtnPangkatPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPangkatPolriActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pangkatpolri.isCek();
         pangkatpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pangkatpolri.setLocationRelativeTo(internalFrame1);
@@ -7155,7 +7195,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnPangkatPolriActionPerformed
 
     private void BtnJabatanPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJabatanPolriActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         jabatanpolri.isCek();
         jabatanpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jabatanpolri.setLocationRelativeTo(internalFrame1);
@@ -7258,7 +7298,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     getDataTni();
                 } catch (java.lang.NullPointerException e) {
                 }
-                var.setform(asalform);
+                akses.setform(asalform);
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCari.setText("");
                 TCari.requestFocus();
@@ -7291,7 +7331,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     getDataPolri();
                 } catch (java.lang.NullPointerException e) {
                 }
-                var.setform(asalform);
+                akses.setform(asalform);
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCari.setText("");
                 TCari.requestFocus();
@@ -7312,7 +7352,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=1;
         prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         prop.setLocationRelativeTo(internalFrame1);
@@ -7385,7 +7425,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_PropinsiPjKeyPressed
 
     private void btnPropinsiPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPropinsiPjActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=3;
         prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         prop.setLocationRelativeTo(internalFrame1);
@@ -7393,7 +7433,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_btnPropinsiPjActionPerformed
 
     private void BtnCacatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCacatActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         cacat.isCek();
         cacat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         cacat.setLocationRelativeTo(internalFrame1);
@@ -7423,7 +7463,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_kdcacatKeyPressed
 
     private void BtnSeek11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek11ActionPerformed
-        var.setform("DlgPasien");
+        akses.setform("DlgPasien");
         pilih=2;
         prop.emptTeks();
         prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -7502,15 +7542,15 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{     
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());  
-            param.put("petugas",var.getnamauser());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());  
+            param.put("petugas",akses.getnamauser());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptIdentitasPasien.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptIdentitasPasien.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -7532,17 +7572,17 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
             param.put("suku",nmsukubangsa.getText());
             param.put("bahasa",nmbahasa.getText());
             param.put("cacat",nmcacat.getText());
-            param.put("emailrs",var.getemailrs());   
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRM13.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptRM13.jasper","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -7563,14 +7603,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             tbPasien.requestFocus();
         }else{
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCoverMap2.jrxml","report","::[ Cover Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            Valid.MyReportqry("rptCoverMap2.jasper","report","::[ Cover Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.no_peserta,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
@@ -7591,13 +7631,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs()); 
-            Valid.MyReport("rptKartuBerobat8.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs()); 
+            Valid.MyReportqry("rptKartuBerobat8.jasper","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                    "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.nm_ibu,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga, pasien.no_peserta from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -9002,14 +9042,14 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpasien());
-        BtnHapus.setEnabled(var.getpasien());
-        BtnEdit.setEnabled(var.getpasien());
-        BtnPrint.setEnabled(var.getpasien());
-        ppGabungRM.setEnabled(var.getpasien());
-        ppRiwayat.setEnabled(var.getresume_pasien());
-        ppCatatanPasien.setEnabled(var.getcatatan_pasien());
-        asalform=var.getform();
+        BtnSimpan.setEnabled(akses.getpasien());
+        BtnHapus.setEnabled(akses.getpasien());
+        BtnEdit.setEnabled(akses.getpasien());
+        BtnPrint.setEnabled(akses.getpasien());
+        ppGabungRM.setEnabled(akses.getpasien());
+        ppRiwayat.setEnabled(akses.getresume_pasien());
+        ppCatatanPasien.setEnabled(akses.getcatatan_pasien());
+        asalform=akses.getform();
     }
 
     private void prosesCari2() {

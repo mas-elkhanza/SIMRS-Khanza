@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -265,7 +265,7 @@ public final class DlgPulang extends javax.swing.JDialog {
 
         popup.setName("popup"); // NOI18N
 
-        inpketerangan.setBackground(new java.awt.Color(255, 255, 255));
+        inpketerangan.setBackground(new java.awt.Color(255, 255, 254));
         inpketerangan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         inpketerangan.setForeground(new java.awt.Color(91, 137, 58));
         inpketerangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N

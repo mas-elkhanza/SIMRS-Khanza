@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -159,7 +159,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppOrder.setBackground(new java.awt.Color(242, 242, 242));
+        ppOrder.setBackground(new java.awt.Color(250, 255, 245));
         ppOrder.setForeground(new java.awt.Color(70, 70, 70));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
@@ -168,7 +168,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrder.setName("ppOrder"); // NOI18N
         ppOrder.setPreferredSize(new java.awt.Dimension(200, 25));
 
-        ppOrderKode.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppOrderKode.setForeground(new java.awt.Color(70, 70, 70));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -185,7 +184,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         });
         ppOrder.add(ppOrderKode);
 
-        ppOrderNama.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppOrderNama.setForeground(new java.awt.Color(70, 70, 70));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -204,7 +202,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         Popup.add(ppOrder);
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -221,7 +218,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppHapusObat.setBackground(new java.awt.Color(255, 255, 255));
         ppHapusObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapusObat.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -491,7 +487,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TKdPny.getText().trim().equals("")){
             Valid.textKosong(TCari,"Data");
-        }else if(var.getkdbangsal().equals("")){
+        }else if(akses.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");
         }else{    
             
@@ -501,11 +497,11 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             TNoRw.getText(),tbKamar.getValueAt(i,1).toString(),tbKamar.getValueAt(i,0).toString(),
                             tbKamar.getValueAt(i,6).toString(),""+Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()),
                             tbKamar.getValueAt(i,4).toString(),Sequel.cariIsi("select current_date()"),
-                            Sequel.cariIsi("select current_time()"),var.getkdbangsal()
+                            Sequel.cariIsi("select current_time()"),akses.getkdbangsal()
                         })==true){
-                            Trackobat.catatRiwayat(tbKamar.getValueAt(i,1).toString(),0,Valid.SetAngka(tbKamar.getValueAt(i,0).toString()),"Resep Pulang",var.getkode(),var.getkdbangsal(),"Simpan");
-                            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+var.getkdbangsal()+"','-"+tbKamar.getValueAt(i,0).toString()+"'", 
-                                                 "stok=stok-'"+tbKamar.getValueAt(i,0).toString()+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
+                            Trackobat.catatRiwayat(tbKamar.getValueAt(i,1).toString(),0,Valid.SetAngka(tbKamar.getValueAt(i,0).toString()),"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Simpan");
+                            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+akses.getkdbangsal()+"','-"+tbKamar.getValueAt(i,0).toString()+"'", 
+                                                 "stok=stok-'"+tbKamar.getValueAt(i,0).toString()+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+akses.getkdbangsal()+"'");                               
                     }
                 }
             }  
@@ -533,14 +529,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 private void ppHapusObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusObatActionPerformed
            try{
                 i=tbKamar.getSelectedRow();
-                if(var.getkdbangsal().equals("")){
+                if(akses.getkdbangsal().equals("")){
                     Valid.textKosong(TCari,"Lokasi");
                 }else if(i!= -1){
                     if(!tbKamar.getValueAt(i,0).toString().equals("")){
                         Sequel.queryu("delete from resep_pulang where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' ");
                        // Sequel.mengedit("databarang","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"'","stok=stok+"+tbKamar.getValueAt(i,0).toString()+"");                    
-                        Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+var.getkdbangsal()+"','"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'", 
-                                        "stok=stok+'"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+var.getkdbangsal()+"'");
+                        Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+akses.getkdbangsal()+"','"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'", 
+                                        "stok=stok+'"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+akses.getkdbangsal()+"'");
                         setObatPasien();
                         tampil();                          
                     }                    
@@ -827,7 +823,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(var.getobat());
+        BtnTambah.setEnabled(akses.getobat());
     }
     
     public void setNoRm(String norwt,String penyakit, String tanggal, String jam) {        

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -365,8 +365,8 @@ public final class DlgCariPoli extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try {
             ps=koneksi.prepareStatement("select kd_poli, nm_poli, registrasi, registrasilama "+
-                " from poliklinik where kd_poli like ? or "+
-                " nm_poli like ? order by nm_poli");
+                " from poliklinik where status='1' and kd_poli like ? or "+
+                " status='1' and nm_poli like ? order by nm_poli");
             try{            
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -400,6 +400,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(var.getadmin());
+        BtnTambah.setEnabled(akses.getadmin());
     }
 }

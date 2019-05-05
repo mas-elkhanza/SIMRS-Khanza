@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -137,7 +137,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgRekeningTahun")){
+                if(akses.getform().equals("DlgRekeningTahun")){
                     if(rekening.getTabel().getSelectedRow()!= -1){      
                         Kd.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),0).toString());
                         Nm.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
@@ -162,7 +162,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgRekeningTahun")){
+                if(akses.getform().equals("DlgRekeningTahun")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }
@@ -225,7 +225,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
+        ppSimpan.setBackground(new java.awt.Color(255, 255, 254));
         ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppSimpan.setForeground(new java.awt.Color(70, 70, 70));
         ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
@@ -242,7 +242,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         });
         Popup.add(ppSimpan);
 
-        ppGanti.setBackground(new java.awt.Color(242, 242, 242));
+        ppGanti.setBackground(new java.awt.Color(255, 255, 254));
         ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppGanti.setForeground(new java.awt.Color(70, 70, 70));
         ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -259,7 +259,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         });
         Popup.add(ppGanti);
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -276,7 +276,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         });
         Popup.add(ppHapus);
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -344,7 +344,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(437, 12, 110, 23);
+        label32.setBounds(437, 12, 90, 23);
 
         Kd.setHighlighter(null);
         Kd.setName("Kd"); // NOI18N
@@ -375,7 +375,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tahun);
-        Tahun.setBounds(550, 12, 70, 23);
+        Tahun.setBounds(530, 12, 90, 23);
 
         label33.setText("Saldo Awal : Rp");
         label33.setName("label33"); // NOI18N
@@ -802,15 +802,14 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekening Tahun"); 
             }
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRekeningTahun.jrxml","report","::[ Saldo Rekening ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptRekeningTahun.jasper","report","::[ Saldo Rekening ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -877,7 +876,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
                 } catch (java.lang.NullPointerException e) {
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                var.setform(asalform);
+                akses.setform(asalform);
             }
         }
 }//GEN-LAST:event_tbKamarKeyPressed
@@ -899,7 +898,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }//GEN-LAST:event_SaldoKeyPressed
 
     private void BtnCari7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari7ActionPerformed
-        var.setform("DlgRekeningTahun");
+        akses.setform("DlgRekeningTahun");
         rekening.emptTeks();
         rekening.tampil();
         rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1084,15 +1083,15 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        asalform=var.getform();       
-        BtnSimpan.setEnabled(var.getrekening_tahun());
-        BtnBatal.setEnabled(var.getrekening_tahun());
-        BtnEdit.setEnabled(var.getrekening_tahun());
-        BtnHapus.setEnabled(var.getrekening_tahun());
-        BtnPrint.setEnabled(var.getrekening_tahun());
-        ppSimpan.setEnabled(var.getrekening_tahun());
-        ppGanti.setEnabled(var.getrekening_tahun());        
-        ppHapus.setEnabled(var.getrekening_tahun());
-        ppCetak.setEnabled(var.getrekening_tahun());        
+        asalform=akses.getform();       
+        BtnSimpan.setEnabled(akses.getrekening_tahun());
+        BtnBatal.setEnabled(akses.getrekening_tahun());
+        BtnEdit.setEnabled(akses.getrekening_tahun());
+        BtnHapus.setEnabled(akses.getrekening_tahun());
+        BtnPrint.setEnabled(akses.getrekening_tahun());
+        ppSimpan.setEnabled(akses.getrekening_tahun());
+        ppGanti.setEnabled(akses.getrekening_tahun());        
+        ppHapus.setEnabled(akses.getrekening_tahun());
+        ppCetak.setEnabled(akses.getrekening_tahun());        
     }
 }

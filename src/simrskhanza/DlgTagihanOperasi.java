@@ -7,7 +7,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -568,7 +568,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -858,7 +858,6 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
-        PanelInput.setBorder(null);
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
         PanelInput.setPreferredSize(new java.awt.Dimension(560, 444));
@@ -1371,7 +1370,6 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Khusus", "Besar", "Sedang", "Kecil" }));
         Kategori.setName("Kategori"); // NOI18N
-        Kategori.setOpaque(false);
         Kategori.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KategoriKeyPressed(evt);
@@ -2632,7 +2630,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Operasi_Ranap+"','HPP Persediaan Operasi Rawat Inap','"+ttlbhp+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Kamar_Operasi_Ranap+"','Persediaan BHP Operasi Rawat Inap','0','"+ttlbhp+"'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(tgl.getSelectedItem()+""),"U","OPERASI RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());                                              
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(tgl.getSelectedItem()+""),"U","OPERASI RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode());                                              
                 }
                 
                 for(int r=0;r<tbtindakan.getRowCount();r++){
@@ -3278,10 +3276,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void isCek(){
        // Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,NoNota); 
         TCari.requestFocus();
-        if(var.getjml2()>=1){
-            BtnSimpan.setEnabled(var.getoperasi());
-            BtnTambahOperasi.setEnabled(var.gettarif_operasi());
-            BtnTambah.setEnabled(var.getoperasi());
+        if(akses.getjml2()>=1){
+            BtnSimpan.setEnabled(akses.getoperasi());
+            BtnTambahOperasi.setEnabled(akses.gettarif_operasi());
+            BtnTambah.setEnabled(akses.getoperasi());
         }        
     }
     

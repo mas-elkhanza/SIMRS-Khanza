@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -136,7 +136,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPengeluaranIPSRS")){
+                if(akses.getform().equals("DlgPengeluaranIPSRS")){
                     if(form.petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
@@ -199,9 +199,9 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
+        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -225,7 +225,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -397,7 +397,6 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 75, 23);
 
-        TglKeluar.setEditable(false);
         TglKeluar.setDisplayFormat("dd-MM-yyyy");
         TglKeluar.setName("TglKeluar"); // NOI18N
         TglKeluar.addItemListener(new java.awt.event.ItemListener() {
@@ -639,7 +638,7 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdptgKeyPressed
 
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgPengeluaranIPSRS");
+        akses.setform("DlgPengeluaranIPSRS");
         form.petugas.emptTeks();
         form.petugas.isCek();
         form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -660,7 +659,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        var.setform("DlgPembelianIPSRS");
+        akses.setform("DlgPembelianIPSRS");
         DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
         barang.emptTeks();
         barang.isCek();
@@ -789,12 +788,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
-            kdptg.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getipsrs_stok_keluar());
-            BtnTambah.setEnabled(var.getipsrs_barang());
+            kdptg.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getipsrs_stok_keluar());
+            BtnTambah.setEnabled(akses.getipsrs_barang());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
         }        
     }

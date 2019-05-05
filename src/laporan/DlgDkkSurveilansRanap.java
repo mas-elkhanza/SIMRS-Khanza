@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -152,7 +152,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppGrafikHidupMati.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikHidupMati.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikHidupMati.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikHidupMati.setForeground(java.awt.Color.darkGray);
         ppGrafikHidupMati.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -169,7 +169,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikHidupMati);
 
-        ppGrafikLakiPerempuan.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikLakiPerempuan.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikLakiPerempuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikLakiPerempuan.setForeground(java.awt.Color.darkGray);
         ppGrafikLakiPerempuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -186,7 +186,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikLakiPerempuan);
 
-        ppGrafikGolonganUmur.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikGolonganUmur.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikGolonganUmur.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikGolonganUmur.setForeground(java.awt.Color.darkGray);
         ppGrafikGolonganUmur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -225,7 +225,6 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -237,7 +236,6 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -378,12 +376,11 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 }
 
                 
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
-                    "select * from temporary order by no asc",param);
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabMode2.getRowCount()==0){
@@ -421,12 +418,11 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 }
 
                 
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
-                    "select * from temporary order by no asc",param);
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",param);
             }
         }
             

@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.DlgSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -123,7 +123,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPembelianIpsrs")){
+                if(akses.getform().equals("DlgCariPembelianIpsrs")){
                     if(suplier.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
@@ -146,7 +146,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPembelianIpsrs")){
+                if(akses.getform().equals("DlgCariPembelianIpsrs")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         suplier.dispose();
                     }                
@@ -163,7 +163,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPembelianIpsrs")){
+                if(akses.getform().equals("DlgCariPembelianIpsrs")){
                     if(petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -188,7 +188,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPembelianIpsrs")){
+                if(akses.getform().equals("DlgCariPembelianIpsrs")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
@@ -211,7 +211,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPembelianIpsrs")){
+                if(akses.getform().equals("DlgCariPembelianIpsrs")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                     }                
@@ -228,7 +228,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPembelianIpsrs")){
+                if(akses.getform().equals("DlgCariPembelianIpsrs")){
                     if(barang.jenis.getTable().getSelectedRow()!= -1){                   
                         kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
                         nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
@@ -336,9 +336,9 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Pengadaan Barang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -362,7 +362,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -598,7 +598,6 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(0, 40, 80, 23);
 
-        TglBeli1.setEditable(false);
         TglBeli1.setDisplayFormat("dd-MM-yyyy");
         TglBeli1.setName("TglBeli1"); // NOI18N
         TglBeli1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -686,7 +685,6 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
         panelisi3.add(label12);
         label12.setBounds(179, 40, 27, 23);
 
-        TglBeli2.setEditable(false);
         TglBeli2.setDisplayFormat("dd-MM-yyyy");
         TglBeli2.setName("TglBeli2"); // NOI18N
         TglBeli2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -720,7 +718,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        var.setform("DlgCariPembelianIpsrs");
+        akses.setform("DlgCariPembelianIpsrs");
         suplier.emptTeks();
         suplier.isCek();
         suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -730,7 +728,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnSuplierActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgCariPembelianIpsrs");
+        akses.setform("DlgCariPembelianIpsrs");
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -744,7 +742,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TglBeli1KeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        var.setform("DlgCariPembelianIpsrs");
+        akses.setform("DlgCariPembelianIpsrs");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -872,15 +870,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPembelian.jrxml","report","::[ Transaksi Pembelian Barang ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptPembelian.jasper","report","::[ Transaksi Pembelian Barang ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -944,7 +941,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_kdjenisKeyPressed
 
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
-        var.setform("DlgCariPembelianIpsrs");
+        akses.setform("DlgCariPembelianIpsrs");
         barang.jenis.isCek();
         barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.jenis.setLocationRelativeTo(internalFrame1);
@@ -1142,7 +1139,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getipsrs_pengadaan_barang());
+        BtnPrint.setEnabled(akses.getipsrs_pengadaan_barang());
     }
     
 }

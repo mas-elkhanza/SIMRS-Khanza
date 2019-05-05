@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -534,7 +534,7 @@ public class DlgGolonganTNI extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getgolongan_tni());
-        BtnHapus.setEnabled(var.getgolongan_tni());
+        BtnSimpan.setEnabled(akses.getgolongan_tni());
+        BtnHapus.setEnabled(akses.getgolongan_tni());
     }
 }

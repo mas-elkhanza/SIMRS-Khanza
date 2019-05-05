@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -199,7 +199,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppTemplate.setBackground(new java.awt.Color(255, 255, 255));
+        ppTemplate.setBackground(new java.awt.Color(255, 255, 254));
         ppTemplate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTemplate.setForeground(new java.awt.Color(70, 70, 70));
         ppTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -216,7 +216,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
         });
         Popup.add(ppTemplate);
 
-        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
+        MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRestore.setForeground(new java.awt.Color(70, 70, 70));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -669,7 +669,6 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Rawat Jalan", "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
         Kelas.setName("Kelas"); // NOI18N
-        Kelas.setOpaque(false);
         Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelasKeyPressed(evt);
@@ -844,14 +843,14 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();  
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTarifLab.jrxml","report","::[ Data Tarif Laboratorium ]::",
+                Valid.MyReportqry("rptTarifLab.jasper","report","::[ Data Tarif Laboratorium ]::",
                     "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.bagian_rs,"+
                     "jns_perawatan_lab.bhp,jns_perawatan_lab.tarif_perujuk,jns_perawatan_lab.tarif_tindakan_dokter,"+
                     "jns_perawatan_lab.tarif_tindakan_petugas,jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,"+
@@ -1309,12 +1308,12 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.gettarif_lab());
-        BtnHapus.setEnabled(var.gettarif_lab());
-        BtnEdit.setEnabled(var.gettarif_lab());
-        BtnPrint.setEnabled(var.gettarif_lab());
+        BtnSimpan.setEnabled(akses.gettarif_lab());
+        BtnHapus.setEnabled(akses.gettarif_lab());
+        BtnEdit.setEnabled(akses.gettarif_lab());
+        BtnPrint.setEnabled(akses.gettarif_lab());
         
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

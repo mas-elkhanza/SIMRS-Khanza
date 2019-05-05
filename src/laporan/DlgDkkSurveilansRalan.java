@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -149,7 +149,6 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -161,7 +160,6 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -265,12 +263,11 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
               
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-            Valid.MyReport("rptSurveilansRalan.jrxml","report","::[ Surveilans PD3I ]::",
-                "select * from temporary order by no asc",param);
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+            Valid.MyReport("rptSurveilansRalan.jasper","report","::[ Surveilans PD3I ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

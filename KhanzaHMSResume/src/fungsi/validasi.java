@@ -456,14 +456,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 
@@ -517,14 +517,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 
@@ -578,14 +578,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 
@@ -633,14 +633,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 

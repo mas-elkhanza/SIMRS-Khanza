@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.DlgSuplier;
 import ipsrs.DlgSuplierIPSRS;
 import java.awt.Cursor;
@@ -388,7 +388,6 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         panelisi4.add(nama_petugas);
         nama_petugas.setBounds(480, 10, 200, 23);
 
-        tgl_bayar.setEditable(false);
         tgl_bayar.setDisplayFormat("dd-MM-yyyy");
         tgl_bayar.setName("tgl_bayar"); // NOI18N
         tgl_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -435,7 +434,6 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         jLabel10.setBounds(0, 70, 77, 23);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nama_bayarKeyPressed(evt);
@@ -633,7 +631,6 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         label33.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi5.add(label33);
 
-        TglCari1.setEditable(false);
         TglCari1.setDisplayFormat("dd-MM-yyyy");
         TglCari1.setName("TglCari1"); // NOI18N
         TglCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -650,7 +647,6 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         label37.setPreferredSize(new java.awt.Dimension(25, 23));
         panelisi5.add(label37);
 
-        TglCari2.setEditable(false);
         TglCari2.setDisplayFormat("dd-MM-yyyy");
         TglCari2.setName("TglCari2"); // NOI18N
         TglCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -845,14 +841,14 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
             BtnKeluar.requestFocus();
         }else if(tabMode.getRowCount()!=0){     
                 Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());        
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReport("rptBayarPemesanan.jrxml","report","::[ Bayar Pemesanan ]::",
+            Valid.MyReportqry("rptBayarPemesanan.jasper","report","::[ Bayar Pemesanan ]::",
                     "select bayar_pemesanan_non_medis.tgl_bayar,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tgl_pesan,"+
                     "ipsrspemesanan.tgl_tempo, bayar_pemesanan_non_medis.no_faktur,"+
                     "ipsrssuplier.nama_suplier,bayar_pemesanan_non_medis.nama_bayar,bayar_pemesanan_non_medis.no_bukti,"+
@@ -1234,16 +1230,16 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getbayar_pesan_non_medis());
-        BtnHapus.setEnabled(var.getbayar_pesan_non_medis());
-        BtnPrint.setEnabled(var.getbayar_pesan_non_medis());
-        if(var.getjml2()>=1){
+        BtnSimpan.setEnabled(akses.getbayar_pesan_non_medis());
+        BtnHapus.setEnabled(akses.getbayar_pesan_non_medis());
+        BtnPrint.setEnabled(akses.getbayar_pesan_non_medis());
+        if(akses.getjml2()>=1){
             nip.setEditable(false);
             BtnPetugas.setEnabled(false);
-            nip.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getbayar_pesan_non_medis());
+            nip.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getbayar_pesan_non_medis());
             Sequel.cariIsi("select nama from petugas where nip=?", nama_petugas,nip.getText());
-        }else if(var.getjml1()>=1){
+        }else if(akses.getjml1()>=1){
             nip.setEditable(true);
             BtnPetugas.setEnabled(true);
             BtnSimpan.setEnabled(true);

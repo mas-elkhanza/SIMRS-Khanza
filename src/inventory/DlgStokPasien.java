@@ -17,14 +17,13 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
@@ -149,9 +148,9 @@ public final class DlgStokPasien extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -166,9 +165,9 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         });
         Popup.add(ppHapus);
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70,70,70));
+        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -201,7 +200,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemberian Stok Obat, Alkes & BHP Medis Pasien Di Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemberian Stok Obat, Alkes & BHP Medis Pasien Di Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -231,7 +230,6 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -243,7 +241,6 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         label19.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi3.add(label19);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -389,7 +386,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
-                Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()),0,"Stok Pasien Ranap",var.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString(),"Hapus");
+                Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()),0,"Stok Pasien Ranap",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString(),"Hapus");
                 Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'", 
                                                 "stok=stok+'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'","kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"' and kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"'");
                 Sequel.queryu("delete from stok_obat_pasien where tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' "+
@@ -427,14 +424,14 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){   
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptStokPasien.jrxml","report","::[ Pemberian Stok Obat, Alkes & BHP Medis ]::",
+            Valid.MyReportqry("rptStokPasien.jasper","report","::[ Pemberian Stok Obat, Alkes & BHP Medis ]::",
                   "select stok_obat_pasien.tanggal, stok_obat_pasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien) as pasien,"+
                   " concat(stok_obat_pasien.kode_brng,' ',databarang.nama_brng) as barang, stok_obat_pasien.jumlah, concat(stok_obat_pasien.kd_bangsal,' ',bangsal.nm_bangsal) as bangsal "+
                   "from stok_obat_pasien inner join reg_periksa inner join pasien inner join databarang inner join bangsal "+
@@ -605,9 +602,9 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     
     
     public void isCek(){
-        BtnHapus.setEnabled(var.getstok_obat_pasien());
-        BtnPrint.setEnabled(var.getstok_obat_pasien());    
-        ppHapus.setEnabled(var.getstok_obat_pasien());
-        ppCetak.setEnabled(var.getstok_obat_pasien());
+        BtnHapus.setEnabled(akses.getstok_obat_pasien());
+        BtnPrint.setEnabled(akses.getstok_obat_pasien());    
+        ppHapus.setEnabled(akses.getstok_obat_pasien());
+        ppCetak.setEnabled(akses.getstok_obat_pasien());
     }
 }

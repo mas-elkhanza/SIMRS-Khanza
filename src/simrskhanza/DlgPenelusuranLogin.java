@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -25,6 +25,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -269,9 +271,8 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-10-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -284,9 +285,8 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-10-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -373,6 +373,13 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();    
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());  
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
@@ -382,8 +389,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
             }
-            Valid.MyReport("rptTracker.jrxml","report","::[ Data Penelusuran User Login ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc");
+            Valid.MyReport("rptTracker.jasper","report","::[ Data Penelusuran User Login ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -506,8 +512,8 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
 
     
     public void isCek(){
-        BtnHapus.setEnabled(var.gettracer_login());
-        BtnPrint.setEnabled(var.gettracer_login());
+        BtnHapus.setEnabled(akses.gettracer_login());
+        BtnPrint.setEnabled(akses.gettracer_login());
     }
 
     

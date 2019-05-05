@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -181,8 +181,6 @@ public final class DlgPembatalanPeriksaPerDokter extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -194,8 +192,6 @@ public final class DlgPembatalanPeriksaPerDokter extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -304,12 +300,12 @@ public final class DlgPembatalanPeriksaPerDokter extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             
             Map<String, Object> param = new HashMap<>();         
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
             Sequel.queryu("delete from temporary");
             for(int r=0;r<tabMode.getRowCount();r++){ 
@@ -324,7 +320,7 @@ public final class DlgPembatalanPeriksaPerDokter extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptPembatalanPeriksaPerDokter.jrxml",param,"::[ Laporan Pembatalan Periksa Rawat Jalan Per Dokter ]::");
+            Valid.MyReport("rptPembatalanPeriksaPerDokter.jasper",param,"::[ Laporan Pembatalan Periksa Rawat Jalan Per Dokter ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

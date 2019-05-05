@@ -7,7 +7,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -189,9 +189,9 @@ public class DlgPermintaanNonMedis extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
+        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -215,7 +215,7 @@ public class DlgPermintaanNonMedis extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengajuan Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengajuan Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -384,7 +384,6 @@ public class DlgPermintaanNonMedis extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(220, 10, 55, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addItemListener(new java.awt.event.ItemListener() {
@@ -792,12 +791,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
-            kdptg.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getpermintaan_non_medis());
-            BtnTambah.setEnabled(var.getipsrs_barang());
+            kdptg.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getpermintaan_non_medis());
+            BtnTambah.setEnabled(akses.getipsrs_barang());
             Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             Sequel.cariIsi("select departemen from pegawai where nik=?",Departemen,kdptg.getText());
         }        

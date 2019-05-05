@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -132,7 +132,7 @@ public class DlgPengadaanIPSRSPerTanggal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengadaan Barang Non Medis Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengadaan Barang Non Medis Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -165,7 +165,7 @@ public class DlgPengadaanIPSRSPerTanggal extends javax.swing.JDialog {
 
         BlnCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         BlnCari.setName("BlnCari"); // NOI18N
-        BlnCari.setPreferredSize(new java.awt.Dimension(55, 23));
+        BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass8.add(BlnCari);
 
         jLabel6.setText("Key Word :");
@@ -374,12 +374,12 @@ public class DlgPengadaanIPSRSPerTanggal extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("periode","01 - 31 BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 param.put("jd1","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")");
@@ -413,7 +413,7 @@ public class DlgPengadaanIPSRSPerTanggal extends javax.swing.JDialog {
                 param.put("jd29","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")");
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
-                Valid.MyReport("rptPengadaanIPSRSPerTanggal.jrxml","report","::[ Pengadaan Barang Non Medis Per Tanggal ]::","select * from temporary",param);            
+                Valid.MyReport("rptPengadaanIPSRSPerTanggal.jasper","report","::[ Pengadaan Barang Non Medis Per Tanggal ]::",param);            
                                  
         }
         this.setCursor(Cursor.getDefaultCursor());

@@ -82,6 +82,7 @@ import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
 import bridging.PCareClubProlanis;
 import bridging.PCareDataPemberianObat;
+import bridging.PCareDataPemberianTindakan;
 import bridging.PCareDataPendaftaran;
 import bridging.PCareKegiatanKelompok;
 import bridging.PCareMapingDokter;
@@ -116,7 +117,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import informasi.InformasiJadwal;
 import informasi.InformasiKamar;
 import informasi.InformasiKamarInap;
@@ -232,6 +233,7 @@ import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
+import bridging.SiranapKetersediaanKamar;
 import bridging.SisruteCekReferensiAlasanRujuk;
 import bridging.SisruteCekReferensiDiagnosa;
 import bridging.SisruteCekReferensiFaskes;
@@ -273,9 +275,9 @@ import grafikanalisa.GrafikStatusRegPerTahun;
 import grafikanalisa.GrafikStatusRegPerTahun2;
 import grafikanalisa.GrafikStatusRegPerTanggal;
 import grafikanalisa.GrafikStatusRegPerTanggal2;
+import informasi.InformasiTelusurKunjunganPasien;
 import inventaris.InventarisBarangCSSD;
 import inventory.DlgCariPPNObat;
-import inventory.DlgCariPermintaan;
 import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgDataBatch;
 import inventory.DlgGolongan;
@@ -381,7 +383,6 @@ import laporan.DlgInsidenKeselamatan;
 import laporan.DlgPenyakitRanapPerCaraBayar;
 import laporan.DlgRanapPerRuang;
 import permintaan.DlgCariPermintaanRadiologi;
-import permintaan.DlgPermintaanLaboratorium;
 import setting.DlgClosingKasir;
 import setting.DlgSetEmbalase;
 import setting.DlgSetHargaKamar;
@@ -409,36 +410,49 @@ import laporan.DlgRekapLabPerTahun;
 import laporan.DlgRekapRadiologiPerTahun;
 import setting.DlgRunTeksApotek;
 import setting.DlgSetInputParsial;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgBahasa;
-import simrskhanza.DlgCacatFisik;
-import simrskhanza.DlgCariPeriksaLab;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariTagihanOperasi;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgGolonganPolri;
-import simrskhanza.DlgGolonganTNI;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgJabatanPolri;
-import simrskhanza.DlgJabatanTNI;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgLhtCatatanPasien;
-import simrskhanza.DlgPangkatPolri;
-import simrskhanza.DlgPangkatTNI;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPenelusuranLogin;
-import simrskhanza.DlgPerusahaan;
-import simrskhanza.DlgRawatJalan;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujukMasuk;
-import simrskhanza.DlgSatuanPolri;
-import simrskhanza.DlgSatuanTNI;
-import simrskhanza.DlgSuku;
+import kepegawaian.DlgJadwal;
+import inventory.DlgResepPulang;
+import keuangan.DlgPembayaranPerAKunBayar3;
+import bridging.DlgDataTB;
+import grafikanalisa.GrafikKeslingLimbahB3Bulan;
+import grafikanalisa.GrafikKeslingLimbahB3Pertanggal;
+import grafikanalisa.GrafikKeslingLimbahDomestikBulan;
+import grafikanalisa.GrafikKeslingLimbahDomestikPertanggal;
+import grafikanalisa.GrafikKeslingPDAMPerBulan;
+import grafikanalisa.GrafikKeslingPDAMPertanggal;
+import grafikanalisa.GrafikTBHasilAkhirPengobatan;
+import grafikanalisa.GrafikTBHasilTesHIV;
+import grafikanalisa.GrafikTBKonfirmasiSkoring5;
+import grafikanalisa.GrafikTBKonfirmasiSkoring6;
+import grafikanalisa.GrafikTBPeriodeLaporan;
+import grafikanalisa.GrafikTBRiwayat;
+import grafikanalisa.GrafikTBRujukan;
+import grafikanalisa.GrafikTBSkoringAnak;
+import grafikanalisa.GrafikTBStatusHIV;
+import grafikanalisa.GrafikTBSumberObat;
+import grafikanalisa.GrafikTBTipeDiagnosis;
+import inventaris.KeslingLimbahB3Medis;
+import inventaris.KeslingLimbahDomestik;
+import inventaris.KeslingMutuAirLimbah;
+import inventaris.KeslingPemakaiaanAirPDAM;
+import inventaris.KeslingPestControl;
+import inventory.DlgKadaluarsaBatch;
+import inventory.DlgObatPeresep;
+import inventory.DlgSisaStok;
+import perpustakaan.PerpustakaanAnggota;
+import perpustakaan.PerpustakaanBayarDenda;
+import perpustakaan.PerpustakaanDenda;
+import perpustakaan.PerpustakaanInventaris;
+import perpustakaan.PerpustakaanJenis;
+import perpustakaan.PerpustakaanKategori;
+import perpustakaan.PerpustakaanKoleksi;
+import perpustakaan.PerpustakaanPenerbit;
+import perpustakaan.PerpustakaanPengarang;
+import perpustakaan.PerpustakaanPengaturanPeminjaman;
+import setting.WindowInputPassword;
+import perpustakaan.PerpustakaanRuang;
+import perpustakaan.PerpustakaanSirkulasi;
+import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
 import surat.SuratBalas;
@@ -488,6 +502,7 @@ public class frmUtama extends javax.swing.JFrame {
     private frmUtama() {
         super();
         initComponents();
+        initKhanza();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
         
         this.setSize(screen.width,screen.height);
@@ -495,17 +510,11 @@ public class frmUtama extends javax.swing.JFrame {
         //desktop.setAutoscrolls(true);
         edAdmin.setDocument(new batasInput((byte)100).getKata(edAdmin));
         edPwd.setDocument(new batasInput((byte)100).getKata(edPwd));
-        PassLama.setDocument(new batasInput((byte)100).getKata(PassLama));
-        Passbaru1.setDocument(new batasInput((byte)100).getKata(Passbaru1));
-        PassBaru2.setDocument(new batasInput((byte)100).getKata(PassBaru2));
-
-        DlgLogin.setSize(344,201);
+        DlgLogin.setSize(344,191);
         DlgLogin.setVisible(false);
         DlgLogin.setLocationRelativeTo(null);
         
-        WindowInput.setSize(349,180);
-        WindowInput.setVisible(false);
-        WindowInput.setLocationRelativeTo(null);
+        
 
         cariNIK.getTable().addKeyListener(new KeyListener() {
             @Override
@@ -570,10 +579,11 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{    
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.62f);
+                DlgHome.setOpacity(0.75f);
+                DlgLogin.setOpacity(0.75f);
             }     
         }catch(Exception e){            
-        }             
+        } 
     }
     
     public static frmUtama getInstance() {
@@ -607,16 +617,6 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         BtnLogin = new widget.Button();
         BtnCancel = new widget.Button();
-        WindowInput = new javax.swing.JDialog();
-        internalFrame6 = new widget.InternalFrame();
-        PassLama = new widget.TextBox();
-        jLabel9 = new widget.Label();
-        BtnClosePass = new widget.Button();
-        BtnSimpanPass = new widget.Button();
-        jLabel10 = new widget.Label();
-        Passbaru1 = new widget.TextBox();
-        jLabel12 = new widget.Label();
-        PassBaru2 = new widget.TextBox();
         DlgHome = new javax.swing.JDialog();
         panelMenu = new widget.InternalFrame();
         panelisi2 = new widget.panelisi();
@@ -1056,6 +1056,36 @@ public class frmUtama extends javax.swing.JFrame {
         btnKunjunganRadRalan = new widget.ButtonBig();
         btnKunjunganRadRanap = new widget.ButtonBig();
         btnPCareBeriObat = new widget.ButtonBig();
+        btnPCareBeriTindakan = new widget.ButtonBig();
+        btnPembayaranAkunBayar3 = new widget.ButtonBig();
+        btnPasswordAsuransi = new widget.ButtonBig();
+        btnDataSITT = new widget.ButtonBig();
+        btnSiranapKetersediaanKamar = new widget.ButtonBig();
+        btnGrafikTBLaporanPeriode = new widget.ButtonBig();
+        btnGrafikTBRujukan = new widget.ButtonBig();
+        btnGrafikTBRiwayat = new widget.ButtonBig();
+        btnGrafikTBTipeDiagnosis = new widget.ButtonBig();
+        btnGrafikTBSTatusHIV = new widget.ButtonBig();
+        btnGrafikTBSkoringAnak = new widget.ButtonBig();
+        btnGrafikTBKonfirmasiSkoring5 = new widget.ButtonBig();
+        btnGrafikTBKonfirmasiSkoring6 = new widget.ButtonBig();
+        btnGrafikTBSumberObat = new widget.ButtonBig();
+        btnGrafikTBHasilAkhirPengobatan = new widget.ButtonBig();
+        btnGrafikTBHasilTesHIV = new widget.ButtonBig();
+        btnKadaluarsaBatch = new widget.ButtonBig();
+        btnSisaStok = new widget.ButtonBig();
+        btnObatPerResep = new widget.ButtonBig();
+        btnPemakaianAirPDAM = new widget.ButtonBig();
+        btnLimbahB3Medis = new widget.ButtonBig();
+        btnGrafikPemakaianAirPDAMPerTanggal = new widget.ButtonBig();
+        btnGrafikPemakaianAirPDAMPerBulan = new widget.ButtonBig();
+        btnGrafikLimbahB3MedisPerTanggal = new widget.ButtonBig();
+        btnGrafikLimbahB3MedisPerBulan = new widget.ButtonBig();
+        btnLimbahDomestik = new widget.ButtonBig();
+        btnGrafikLimbahDomestikPerTanggal = new widget.ButtonBig();
+        btnGrafikLimbahDomestikPerBulan = new widget.ButtonBig();
+        btnMutuAirLimbah = new widget.ButtonBig();
+        btnPestControl = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1096,8 +1126,8 @@ public class frmUtama extends javax.swing.JFrame {
         MenuBar = new widget.MenuBar();
         jMenu1 = new javax.swing.JMenu();
         MnLogin = new javax.swing.JMenuItem();
-        jSeparator8 = new javax.swing.JPopupMenu.Separator();
         MnGantiPassword = new javax.swing.JMenuItem();
+        jSeparator14 = new javax.swing.JPopupMenu.Separator();
         MenuKeluar = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         MnBelumDatang1 = new javax.swing.JMenuItem();
@@ -1107,13 +1137,16 @@ public class frmUtama extends javax.swing.JFrame {
         MnRekapHadir = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         MnRekapBulanan1 = new javax.swing.JMenuItem();
+        MnRekapBulanan3 = new javax.swing.JMenuItem();
         MnRekapBulanan2 = new javax.swing.JMenuItem();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
         MnSudahPulang1 = new javax.swing.JMenuItem();
         MnSudahPulang3 = new javax.swing.JMenuItem();
         MnSudahPulang6 = new javax.swing.JMenuItem();
         MnSudahPulang4 = new javax.swing.JMenuItem();
         MnSudahPulang2 = new javax.swing.JMenuItem();
         MnSudahPulang5 = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir1 = new javax.swing.JMenuItem();
         MnInfoBed = new javax.swing.JMenuItem();
         MnInfoBed2 = new javax.swing.JMenuItem();
@@ -1123,9 +1156,12 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoBed5 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         MnAnjungan = new javax.swing.JMenuItem();
+        jSeparator12 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir3 = new javax.swing.JMenuItem();
         MnRekapHadir4 = new javax.swing.JMenuItem();
         MnRekapHadir5 = new javax.swing.JMenuItem();
+        jSeparator13 = new javax.swing.JPopupMenu.Separator();
+        MnRekapHadir6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         DlgLogin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -1135,23 +1171,25 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(100, 140, 50));
-        internalFrame2.setWarnaBawah(new java.awt.Color(70, 110, 20));
+        internalFrame2.setWarnaAtas(new java.awt.Color(110, 165, 100));
+        internalFrame2.setWarnaBawah(new java.awt.Color(95, 145, 85));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(185, 235, 175));
+        internalFrame3.setWarnaAtas(new java.awt.Color(215, 255, 215));
+        internalFrame3.setWarnaBawah(new java.awt.Color(230, 245, 230));
         internalFrame3.setLayout(null);
 
-        panelGlass1.setBackground(java.awt.Color.lightGray);
-        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 185, 145)));
+        panelGlass1.setBackground(java.awt.Color.red);
+        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(145, 205, 115)));
         panelGlass1.setOpaqueImage(false);
         panelGlass1.setRound(false);
+        panelGlass1.setWarna(new java.awt.Color(195, 255, 165));
         panelGlass1.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(60, 60, 60));
+        jLabel4.setForeground(new java.awt.Color(50, 50, 50));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("ID Admin :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -1159,14 +1197,14 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel4.setBounds(2, 12, 80, 23);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(60, 60, 60));
+        jLabel5.setForeground(new java.awt.Color(50, 50, 50));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Password :");
         jLabel5.setName("jLabel5"); // NOI18N
         panelGlass1.add(jLabel5);
         jLabel5.setBounds(2, 40, 80, 23);
 
-        edAdmin.setForeground(new java.awt.Color(60, 60, 60));
+        edAdmin.setForeground(new java.awt.Color(50, 50, 50));
         edAdmin.setToolTipText("Silahkan masukkan ID Admin");
         edAdmin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         edAdmin.setName("edAdmin"); // NOI18N
@@ -1178,7 +1216,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelGlass1.add(edAdmin);
         edAdmin.setBounds(85, 12, 220, 23);
 
-        edPwd.setForeground(new java.awt.Color(60, 60, 60));
+        edPwd.setForeground(new java.awt.Color(50, 50, 50));
         edPwd.setToolTipText("Silahkan masukkan password");
         edPwd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         edPwd.setName("edPwd"); // NOI18N
@@ -1203,7 +1241,7 @@ public class frmUtama extends javax.swing.JFrame {
         BtnLogin.setMnemonic('Z');
         BtnLogin.setText("Log-in");
         BtnLogin.setToolTipText("Alt+Z");
-        BtnLogin.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnLogin.setGlassColor(new java.awt.Color(235, 255, 245));
         BtnLogin.setName("BtnLogin"); // NOI18N
         BtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1211,14 +1249,14 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         internalFrame3.add(BtnLogin);
-        BtnLogin.setBounds(12, 125, 105, 32);
+        BtnLogin.setBounds(12, 115, 105, 32);
 
         BtnCancel.setForeground(new java.awt.Color(60, 60, 60));
         BtnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnCancel.setMnemonic('Y');
         BtnCancel.setText("Batal");
         BtnCancel.setToolTipText("Alt+Y");
-        BtnCancel.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnCancel.setGlassColor(new java.awt.Color(235, 255, 245));
         BtnCancel.setName("BtnCancel"); // NOI18N
         BtnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1226,90 +1264,12 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         internalFrame3.add(BtnCancel);
-        BtnCancel.setBounds(222, 125, 105, 32);
+        BtnCancel.setBounds(222, 115, 105, 32);
 
         internalFrame2.add(internalFrame3);
-        internalFrame3.setBounds(2, 15, 340, 170);
+        internalFrame3.setBounds(2, 15, 340, 160);
 
         DlgLogin.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
-
-        WindowInput.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        WindowInput.setModal(true);
-        WindowInput.setName("WindowInput"); // NOI18N
-        WindowInput.setUndecorated(true);
-        WindowInput.setResizable(false);
-
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Password ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
-        internalFrame6.setName("internalFrame6"); // NOI18N
-        internalFrame6.setLayout(null);
-
-        PassLama.setHighlighter(null);
-        PassLama.setName("PassLama"); // NOI18N
-        internalFrame6.add(PassLama);
-        PassLama.setBounds(128, 30, 190, 23);
-
-        jLabel9.setText("Password Lama :");
-        jLabel9.setName("jLabel9"); // NOI18N
-        internalFrame6.add(jLabel9);
-        jLabel9.setBounds(0, 30, 125, 23);
-
-        BtnClosePass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnClosePass.setMnemonic('2');
-        BtnClosePass.setText("Tutup");
-        BtnClosePass.setToolTipText("Alt+2");
-        BtnClosePass.setName("BtnClosePass"); // NOI18N
-        BtnClosePass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClosePassActionPerformed(evt);
-            }
-        });
-        BtnClosePass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnClosePassKeyPressed(evt);
-            }
-        });
-        internalFrame6.add(BtnClosePass);
-        BtnClosePass.setBounds(230, 130, 100, 30);
-
-        BtnSimpanPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpanPass.setMnemonic('1');
-        BtnSimpanPass.setText("Simpan");
-        BtnSimpanPass.setToolTipText("Alt+1");
-        BtnSimpanPass.setName("BtnSimpanPass"); // NOI18N
-        BtnSimpanPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanPassActionPerformed(evt);
-            }
-        });
-        BtnSimpanPass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpanPassKeyPressed(evt);
-            }
-        });
-        internalFrame6.add(BtnSimpanPass);
-        BtnSimpanPass.setBounds(20, 130, 100, 30);
-
-        jLabel10.setText("Password Baru :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        internalFrame6.add(jLabel10);
-        jLabel10.setBounds(0, 60, 125, 23);
-
-        Passbaru1.setHighlighter(null);
-        Passbaru1.setName("Passbaru1"); // NOI18N
-        internalFrame6.add(Passbaru1);
-        Passbaru1.setBounds(128, 60, 190, 23);
-
-        jLabel12.setText("Password Baru :");
-        jLabel12.setName("jLabel12"); // NOI18N
-        internalFrame6.add(jLabel12);
-        jLabel12.setBounds(0, 90, 125, 23);
-
-        PassBaru2.setHighlighter(null);
-        PassBaru2.setName("PassBaru2"); // NOI18N
-        internalFrame6.add(PassBaru2);
-        PassBaru2.setBounds(128, 90, 190, 23);
-
-        WindowInput.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
         DlgHome.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         DlgHome.setAlwaysOnTop(true);
@@ -1326,7 +1286,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
-        panelisi2.setWarnaBawah(new java.awt.Color(255, 254, 253));
+        panelisi2.setWarnaBawah(new java.awt.Color(255, 255, 254));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
 
         label36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -1353,9 +1313,8 @@ public class frmUtama extends javax.swing.JFrame {
         panelisi2.add(label35);
 
         cmbMenu.setForeground(new java.awt.Color(60, 60, 60));
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar", "[P] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[G] Menejemen Parkir Kendaraan Pasien & Karyawan", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[J] Tarif Pelayanan,Menejemen Keuangan & Akuntansi", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar", "[P] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[Q] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
-        cmbMenu.setOpaque(false);
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
         cmbMenu.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1374,13 +1333,10 @@ public class frmUtama extends javax.swing.JFrame {
         });
         panelisi2.add(TCari);
 
-        ChkInput.setBorder(null);
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setSelected(true);
         ChkInput.setToolTipText("Alt+I");
-        ChkInput.setBorderPainted(true);
-        ChkInput.setBorderPaintedFlat(true);
         ChkInput.setFocusable(false);
         ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -2045,7 +2001,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnSetBiayaHarian);
 
         btnJenisInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
-        btnJenisInventaris.setText("Jenis");
+        btnJenisInventaris.setText("Jenis Inventaris");
         btnJenisInventaris.setIconTextGap(0);
         btnJenisInventaris.setName("btnJenisInventaris"); // NOI18N
         btnJenisInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2057,7 +2013,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnJenisInventaris);
 
         btnKategoriInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnKategoriInventaris.setText("Kategori");
+        btnKategoriInventaris.setText("Kategori Inventaris");
         btnKategoriInventaris.setIconTextGap(0);
         btnKategoriInventaris.setName("btnKategoriInventaris"); // NOI18N
         btnKategoriInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2141,7 +2097,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnRanapMasuk);
 
         btnProdusenInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
-        btnProdusenInventaris.setText("Produsen");
+        btnProdusenInventaris.setText("Produsen Inventaris");
         btnProdusenInventaris.setIconTextGap(0);
         btnProdusenInventaris.setName("btnProdusenInventaris"); // NOI18N
         btnProdusenInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2201,7 +2157,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(BtnJadwal);
 
         btnMerkInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bag1.png"))); // NOI18N
-        btnMerkInventaris.setText("Merk");
+        btnMerkInventaris.setText("Merk Inventaris");
         btnMerkInventaris.setIconTextGap(0);
         btnMerkInventaris.setName("btnMerkInventaris"); // NOI18N
         btnMerkInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2213,7 +2169,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnMerkInventaris);
 
         btnRuangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
-        btnRuangInventaris.setText("Ruang");
+        btnRuangInventaris.setText("Ruang Inventaris");
         btnRuangInventaris.setIconTextGap(0);
         btnRuangInventaris.setName("btnRuangInventaris"); // NOI18N
         btnRuangInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2225,7 +2181,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnRuangInventaris);
 
         btnBarangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fax.png"))); // NOI18N
-        btnBarangInventaris.setText("Koleksi");
+        btnBarangInventaris.setText("Koleksi Inventaris");
         btnBarangInventaris.setIconTextGap(0);
         btnBarangInventaris.setName("btnBarangInventaris"); // NOI18N
         btnBarangInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2237,7 +2193,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnBarangInventaris);
 
         btnInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486921_bar-code.png"))); // NOI18N
-        btnInventaris.setText("Inventaris");
+        btnInventaris.setText("Data Inventaris");
         btnInventaris.setIconTextGap(0);
         btnInventaris.setName("btnInventaris"); // NOI18N
         btnInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6544,6 +6500,366 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPCareBeriObat);
 
+        btnPCareBeriTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
+        btnPCareBeriTindakan.setText("Pemberian Tindakan PCare");
+        btnPCareBeriTindakan.setIconTextGap(0);
+        btnPCareBeriTindakan.setName("btnPCareBeriTindakan"); // NOI18N
+        btnPCareBeriTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareBeriTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareBeriTindakanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareBeriTindakan);
+
+        btnPembayaranAkunBayar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnPembayaranAkunBayar3.setText("Pembayaran Per Akun Bayar 3");
+        btnPembayaranAkunBayar3.setIconTextGap(0);
+        btnPembayaranAkunBayar3.setName("btnPembayaranAkunBayar3"); // NOI18N
+        btnPembayaranAkunBayar3.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranAkunBayar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaranAkunBayar3ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPembayaranAkunBayar3);
+
+        btnPasswordAsuransi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
+        btnPasswordAsuransi.setText("Password Asuransi");
+        btnPasswordAsuransi.setIconTextGap(0);
+        btnPasswordAsuransi.setName("btnPasswordAsuransi"); // NOI18N
+        btnPasswordAsuransi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasswordAsuransi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasswordAsuransiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPasswordAsuransi);
+
+        btnDataSITT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnDataSITT.setText("Data TB");
+        btnDataSITT.setIconTextGap(0);
+        btnDataSITT.setName("btnDataSITT"); // NOI18N
+        btnDataSITT.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataSITT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataSITTActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDataSITT);
+
+        btnSiranapKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
+        btnSiranapKetersediaanKamar.setText("Ketersediaan Kamar SIRANAP");
+        btnSiranapKetersediaanKamar.setIconTextGap(0);
+        btnSiranapKetersediaanKamar.setName("btnSiranapKetersediaanKamar"); // NOI18N
+        btnSiranapKetersediaanKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSiranapKetersediaanKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiranapKetersediaanKamarActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSiranapKetersediaanKamar);
+
+        btnGrafikTBLaporanPeriode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBLaporanPeriode.setText("Periode Laporan TB");
+        btnGrafikTBLaporanPeriode.setIconTextGap(0);
+        btnGrafikTBLaporanPeriode.setName("btnGrafikTBLaporanPeriode"); // NOI18N
+        btnGrafikTBLaporanPeriode.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBLaporanPeriode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBLaporanPeriodeActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBLaporanPeriode);
+
+        btnGrafikTBRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBRujukan.setText("Rujukan TB");
+        btnGrafikTBRujukan.setIconTextGap(0);
+        btnGrafikTBRujukan.setName("btnGrafikTBRujukan"); // NOI18N
+        btnGrafikTBRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRujukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRujukanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBRujukan);
+
+        btnGrafikTBRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBRiwayat.setText("Riwayat TB");
+        btnGrafikTBRiwayat.setIconTextGap(0);
+        btnGrafikTBRiwayat.setName("btnGrafikTBRiwayat"); // NOI18N
+        btnGrafikTBRiwayat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRiwayatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBRiwayat);
+
+        btnGrafikTBTipeDiagnosis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBTipeDiagnosis.setText("Tipe Diagnosis TB");
+        btnGrafikTBTipeDiagnosis.setIconTextGap(0);
+        btnGrafikTBTipeDiagnosis.setName("btnGrafikTBTipeDiagnosis"); // NOI18N
+        btnGrafikTBTipeDiagnosis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBTipeDiagnosis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBTipeDiagnosisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBTipeDiagnosis);
+
+        btnGrafikTBSTatusHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBSTatusHIV.setText("Status HIV TB");
+        btnGrafikTBSTatusHIV.setIconTextGap(0);
+        btnGrafikTBSTatusHIV.setName("btnGrafikTBSTatusHIV"); // NOI18N
+        btnGrafikTBSTatusHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSTatusHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSTatusHIVActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBSTatusHIV);
+
+        btnGrafikTBSkoringAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBSkoringAnak.setText("Skoring Anak TB");
+        btnGrafikTBSkoringAnak.setIconTextGap(0);
+        btnGrafikTBSkoringAnak.setName("btnGrafikTBSkoringAnak"); // NOI18N
+        btnGrafikTBSkoringAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSkoringAnak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSkoringAnakActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBSkoringAnak);
+
+        btnGrafikTBKonfirmasiSkoring5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBKonfirmasiSkoring5.setText("Konfirmasi Skoring 5 TB");
+        btnGrafikTBKonfirmasiSkoring5.setIconTextGap(0);
+        btnGrafikTBKonfirmasiSkoring5.setName("btnGrafikTBKonfirmasiSkoring5"); // NOI18N
+        btnGrafikTBKonfirmasiSkoring5.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBKonfirmasiSkoring5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBKonfirmasiSkoring5ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+
+        btnGrafikTBKonfirmasiSkoring6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBKonfirmasiSkoring6.setText("Konfirmasi Skoring 6 TB");
+        btnGrafikTBKonfirmasiSkoring6.setIconTextGap(0);
+        btnGrafikTBKonfirmasiSkoring6.setName("btnGrafikTBKonfirmasiSkoring6"); // NOI18N
+        btnGrafikTBKonfirmasiSkoring6.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBKonfirmasiSkoring6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBKonfirmasiSkoring6ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+
+        btnGrafikTBSumberObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBSumberObat.setText("Sumber Obat TB");
+        btnGrafikTBSumberObat.setIconTextGap(0);
+        btnGrafikTBSumberObat.setName("btnGrafikTBSumberObat"); // NOI18N
+        btnGrafikTBSumberObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSumberObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSumberObatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBSumberObat);
+
+        btnGrafikTBHasilAkhirPengobatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBHasilAkhirPengobatan.setText("Hasil Akhir Pengobatan TB");
+        btnGrafikTBHasilAkhirPengobatan.setIconTextGap(0);
+        btnGrafikTBHasilAkhirPengobatan.setName("btnGrafikTBHasilAkhirPengobatan"); // NOI18N
+        btnGrafikTBHasilAkhirPengobatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBHasilAkhirPengobatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBHasilAkhirPengobatanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+
+        btnGrafikTBHasilTesHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBHasilTesHIV.setText("Hasil Tes HIV TB");
+        btnGrafikTBHasilTesHIV.setIconTextGap(0);
+        btnGrafikTBHasilTesHIV.setName("btnGrafikTBHasilTesHIV"); // NOI18N
+        btnGrafikTBHasilTesHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBHasilTesHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBHasilTesHIVActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikTBHasilTesHIV);
+
+        btnKadaluarsaBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_diagram-11_35581.png"))); // NOI18N
+        btnKadaluarsaBatch.setText("Kadaluarsa Batch");
+        btnKadaluarsaBatch.setIconTextGap(0);
+        btnKadaluarsaBatch.setName("btnKadaluarsaBatch"); // NOI18N
+        btnKadaluarsaBatch.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKadaluarsaBatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKadaluarsaBatchActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnKadaluarsaBatch);
+
+        btnSisaStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-62-document-table_314903.png"))); // NOI18N
+        btnSisaStok.setText("Sisa Stok");
+        btnSisaStok.setIconTextGap(0);
+        btnSisaStok.setName("btnSisaStok"); // NOI18N
+        btnSisaStok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSisaStok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSisaStokActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSisaStok);
+
+        btnObatPerResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_receipt_3440909.png"))); // NOI18N
+        btnObatPerResep.setText("Obat Per Resep");
+        btnObatPerResep.setIconTextGap(0);
+        btnObatPerResep.setName("btnObatPerResep"); // NOI18N
+        btnObatPerResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPerResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPerResepActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnObatPerResep);
+
+        btnPemakaianAirPDAM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Energy_Energy_Oil_Water_Drop_Fuel_3911250.png"))); // NOI18N
+        btnPemakaianAirPDAM.setText("Pemakaian Air PDAM");
+        btnPemakaianAirPDAM.setIconTextGap(0);
+        btnPemakaianAirPDAM.setName("btnPemakaianAirPDAM"); // NOI18N
+        btnPemakaianAirPDAM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemakaianAirPDAM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemakaianAirPDAMActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPemakaianAirPDAM);
+
+        btnLimbahB3Medis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_trash red_10554.png"))); // NOI18N
+        btnLimbahB3Medis.setText("Limbah Padat B3 Medis");
+        btnLimbahB3Medis.setIconTextGap(0);
+        btnLimbahB3Medis.setName("btnLimbahB3Medis"); // NOI18N
+        btnLimbahB3Medis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLimbahB3Medis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimbahB3MedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnLimbahB3Medis);
+
+        btnGrafikPemakaianAirPDAMPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikPemakaianAirPDAMPerTanggal.setText("Pemakaian Air PDAM Per Tanggal");
+        btnGrafikPemakaianAirPDAMPerTanggal.setIconTextGap(0);
+        btnGrafikPemakaianAirPDAMPerTanggal.setName("btnGrafikPemakaianAirPDAMPerTanggal"); // NOI18N
+        btnGrafikPemakaianAirPDAMPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPemakaianAirPDAMPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPemakaianAirPDAMPerTanggalActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
+
+        btnGrafikPemakaianAirPDAMPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikPemakaianAirPDAMPerBulan.setText("Pemakaian Air PDAM Per Bulan");
+        btnGrafikPemakaianAirPDAMPerBulan.setIconTextGap(0);
+        btnGrafikPemakaianAirPDAMPerBulan.setName("btnGrafikPemakaianAirPDAMPerBulan"); // NOI18N
+        btnGrafikPemakaianAirPDAMPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPemakaianAirPDAMPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPemakaianAirPDAMPerBulanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikPemakaianAirPDAMPerBulan);
+
+        btnGrafikLimbahB3MedisPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikLimbahB3MedisPerTanggal.setText("Limbah B3 Medis Per Tanggal");
+        btnGrafikLimbahB3MedisPerTanggal.setIconTextGap(0);
+        btnGrafikLimbahB3MedisPerTanggal.setName("btnGrafikLimbahB3MedisPerTanggal"); // NOI18N
+        btnGrafikLimbahB3MedisPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahB3MedisPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLimbahB3MedisPerTanggalActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikLimbahB3MedisPerTanggal);
+
+        btnGrafikLimbahB3MedisPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikLimbahB3MedisPerBulan.setText("Limbah B3 Medis Per Bulan");
+        btnGrafikLimbahB3MedisPerBulan.setIconTextGap(0);
+        btnGrafikLimbahB3MedisPerBulan.setName("btnGrafikLimbahB3MedisPerBulan"); // NOI18N
+        btnGrafikLimbahB3MedisPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahB3MedisPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLimbahB3MedisPerBulanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikLimbahB3MedisPerBulan);
+
+        btnLimbahDomestik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Bin_ecology_recyclewaste_2992453.png"))); // NOI18N
+        btnLimbahDomestik.setText("Limbah Padat Domestik");
+        btnLimbahDomestik.setIconTextGap(0);
+        btnLimbahDomestik.setName("btnLimbahDomestik"); // NOI18N
+        btnLimbahDomestik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLimbahDomestik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimbahDomestikActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnLimbahDomestik);
+
+        btnGrafikLimbahDomestikPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikLimbahDomestikPerTanggal.setText("Limbah Padat Domestik Per Tanggal");
+        btnGrafikLimbahDomestikPerTanggal.setIconTextGap(0);
+        btnGrafikLimbahDomestikPerTanggal.setName("btnGrafikLimbahDomestikPerTanggal"); // NOI18N
+        btnGrafikLimbahDomestikPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahDomestikPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLimbahDomestikPerTanggalActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikLimbahDomestikPerTanggal);
+
+        btnGrafikLimbahDomestikPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikLimbahDomestikPerBulan.setText("Limbah Padat Domestik Medis Per Bulan");
+        btnGrafikLimbahDomestikPerBulan.setIconTextGap(0);
+        btnGrafikLimbahDomestikPerBulan.setName("btnGrafikLimbahDomestikPerBulan"); // NOI18N
+        btnGrafikLimbahDomestikPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahDomestikPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLimbahDomestikPerBulanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikLimbahDomestikPerBulan);
+
+        btnMutuAirLimbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Care_ecology_water_hand_2992434.png"))); // NOI18N
+        btnMutuAirLimbah.setText("Mutu Air Limbah");
+        btnMutuAirLimbah.setIconTextGap(0);
+        btnMutuAirLimbah.setName("btnMutuAirLimbah"); // NOI18N
+        btnMutuAirLimbah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMutuAirLimbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMutuAirLimbahActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnMutuAirLimbah);
+
+        btnPestControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_world_eco_leaves_2992451.png"))); // NOI18N
+        btnPestControl.setText("Pest Control");
+        btnPestControl.setIconTextGap(0);
+        btnPestControl.setName("btnPestControl"); // NOI18N
+        btnPestControl.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPestControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPestControlActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPestControl);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6552,7 +6868,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/02/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/05/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6602,12 +6918,9 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("::[ Khanza Hospital Management System 2017 ]::");
+        setTitle("::[ Khanza SIMKES 2019 ]::");
         setIconImages(null);
         addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                formComponentResized(evt);
-            }
             public void componentMoved(java.awt.event.ComponentEvent evt) {
                 formComponentMoved(evt);
             }
@@ -6618,11 +6931,11 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -6630,10 +6943,11 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(253, 255, 251));
+        internalFrame1.setWarnaAtas(new java.awt.Color(253, 254, 251));
         internalFrame1.setWarnaBawah(new java.awt.Color(210, 230, 190));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
+        BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
         BtnMenu.setMnemonic('M');
         BtnMenu.setText("Menu");
@@ -6641,11 +6955,10 @@ public class frmUtama extends javax.swing.JFrame {
         BtnMenu.setEnabled(false);
         BtnMenu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnMenu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnMenu.setIconTextGap(3);
-        BtnMenu.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        BtnMenu.setIconTextGap(2);
+        BtnMenu.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnMenu.setName("BtnMenu"); // NOI18N
         BtnMenu.setPreferredSize(new java.awt.Dimension(68, 40));
-        BtnMenu.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnMenu.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6657,11 +6970,13 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(90, 130, 80));
         jSeparator4.setForeground(new java.awt.Color(90, 130, 80));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         jSeparator4.setOpaque(true);
         jSeparator4.setPreferredSize(new java.awt.Dimension(1, 37));
         internalFrame1.add(jSeparator4);
 
+        BtnToolReg.setBackground(new java.awt.Color(255, 255, 255));
         BtnToolReg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
         BtnToolReg.setMnemonic('R');
         BtnToolReg.setText("Registrasi");
@@ -6669,11 +6984,10 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolReg.setEnabled(false);
         BtnToolReg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnToolReg.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnToolReg.setIconTextGap(3);
-        BtnToolReg.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        BtnToolReg.setIconTextGap(2);
+        BtnToolReg.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolReg.setName("BtnToolReg"); // NOI18N
-        BtnToolReg.setPreferredSize(new java.awt.Dimension(88, 40));
-        BtnToolReg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnToolReg.setPreferredSize(new java.awt.Dimension(90, 40));
         BtnToolReg.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6682,6 +6996,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolReg);
 
+        btnToolIGD.setBackground(new java.awt.Color(255, 255, 255));
         btnToolIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Doctor.png"))); // NOI18N
         btnToolIGD.setMnemonic('D');
         btnToolIGD.setText("IGD/UGD");
@@ -6689,11 +7004,10 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolIGD.setEnabled(false);
         btnToolIGD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnToolIGD.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnToolIGD.setIconTextGap(3);
-        btnToolIGD.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        btnToolIGD.setIconTextGap(2);
+        btnToolIGD.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolIGD.setName("btnToolIGD"); // NOI18N
         btnToolIGD.setPreferredSize(new java.awt.Dimension(84, 40));
-        btnToolIGD.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolIGD.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolIGD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6705,11 +7019,13 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(90, 130, 80));
         jSeparator5.setForeground(new java.awt.Color(90, 130, 80));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         jSeparator5.setOpaque(true);
         jSeparator5.setPreferredSize(new java.awt.Dimension(1, 37));
         internalFrame1.add(jSeparator5);
 
+        btnToolBcdRalan.setBackground(new java.awt.Color(255, 255, 255));
         btnToolBcdRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/barralan.png"))); // NOI18N
         btnToolBcdRalan.setMnemonic('B');
         btnToolBcdRalan.setText("Bar.RJ");
@@ -6717,11 +7033,10 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolBcdRalan.setEnabled(false);
         btnToolBcdRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnToolBcdRalan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnToolBcdRalan.setIconTextGap(3);
-        btnToolBcdRalan.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        btnToolBcdRalan.setIconTextGap(2);
+        btnToolBcdRalan.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolBcdRalan.setName("btnToolBcdRalan"); // NOI18N
         btnToolBcdRalan.setPreferredSize(new java.awt.Dimension(74, 40));
-        btnToolBcdRalan.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolBcdRalan.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolBcdRalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6730,6 +7045,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolBcdRalan);
 
+        btnToolBcdRanap.setBackground(new java.awt.Color(255, 255, 255));
         btnToolBcdRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/barranap.png"))); // NOI18N
         btnToolBcdRanap.setMnemonic('I');
         btnToolBcdRanap.setText("Bar.RI");
@@ -6737,11 +7053,10 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolBcdRanap.setEnabled(false);
         btnToolBcdRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnToolBcdRanap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnToolBcdRanap.setIconTextGap(3);
-        btnToolBcdRanap.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        btnToolBcdRanap.setIconTextGap(2);
+        btnToolBcdRanap.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolBcdRanap.setName("btnToolBcdRanap"); // NOI18N
         btnToolBcdRanap.setPreferredSize(new java.awt.Dimension(74, 40));
-        btnToolBcdRanap.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolBcdRanap.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolBcdRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6750,17 +7065,17 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolBcdRanap);
 
+        btnToolLab.setBackground(new java.awt.Color(255, 255, 255));
         btnToolLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/addressbook-search24.png"))); // NOI18N
         btnToolLab.setMnemonic('O');
         btnToolLab.setText("Laborat");
         btnToolLab.setToolTipText("Alt+O");
         btnToolLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnToolLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnToolLab.setIconTextGap(3);
-        btnToolLab.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        btnToolLab.setIconTextGap(2);
+        btnToolLab.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolLab.setName("btnToolLab"); // NOI18N
         btnToolLab.setPreferredSize(new java.awt.Dimension(78, 40));
-        btnToolLab.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnToolLab.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6769,17 +7084,17 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolLab);
 
+        btnToolRad.setBackground(new java.awt.Color(255, 255, 255));
         btnToolRad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Surgeon.png"))); // NOI18N
         btnToolRad.setMnemonic('A');
         btnToolRad.setText("Radiologi");
         btnToolRad.setToolTipText("Alt+A");
         btnToolRad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnToolRad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnToolRad.setIconTextGap(3);
-        btnToolRad.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        btnToolRad.setIconTextGap(2);
+        btnToolRad.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnToolRad.setName("btnToolRad"); // NOI18N
-        btnToolRad.setPreferredSize(new java.awt.Dimension(84, 40));
-        btnToolRad.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnToolRad.setPreferredSize(new java.awt.Dimension(87, 40));
         btnToolRad.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnToolRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6788,17 +7103,17 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolRad);
 
+        BtnToolJualObat.setBackground(new java.awt.Color(255, 255, 255));
         BtnToolJualObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/shopping-cart-insert24.png"))); // NOI18N
         BtnToolJualObat.setMnemonic('j');
         BtnToolJualObat.setText("Penjualan");
         BtnToolJualObat.setToolTipText("Alt+J");
         BtnToolJualObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnToolJualObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnToolJualObat.setIconTextGap(3);
-        BtnToolJualObat.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        BtnToolJualObat.setIconTextGap(2);
+        BtnToolJualObat.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolJualObat.setName("BtnToolJualObat"); // NOI18N
-        BtnToolJualObat.setPreferredSize(new java.awt.Dimension(88, 40));
-        BtnToolJualObat.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnToolJualObat.setPreferredSize(new java.awt.Dimension(90, 40));
         BtnToolJualObat.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolJualObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6810,11 +7125,13 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator9.setBackground(new java.awt.Color(90, 130, 80));
         jSeparator9.setForeground(new java.awt.Color(90, 130, 80));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator9.setName("jSeparator9"); // NOI18N
         jSeparator9.setOpaque(true);
         jSeparator9.setPreferredSize(new java.awt.Dimension(1, 37));
         internalFrame1.add(jSeparator9);
 
+        BtnToolKamnap.setBackground(new java.awt.Color(255, 255, 255));
         BtnToolKamnap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/home24.png"))); // NOI18N
         BtnToolKamnap.setMnemonic('K');
         BtnToolKamnap.setText("Kamar Inap");
@@ -6822,11 +7139,10 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolKamnap.setEnabled(false);
         BtnToolKamnap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnToolKamnap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnToolKamnap.setIconTextGap(3);
-        BtnToolKamnap.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        BtnToolKamnap.setIconTextGap(2);
+        BtnToolKamnap.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolKamnap.setName("BtnToolKamnap"); // NOI18N
-        BtnToolKamnap.setPreferredSize(new java.awt.Dimension(96, 40));
-        BtnToolKamnap.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnToolKamnap.setPreferredSize(new java.awt.Dimension(97, 40));
         BtnToolKamnap.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolKamnap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6835,6 +7151,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolKamnap);
 
+        BtnToolKasir.setBackground(new java.awt.Color(255, 255, 255));
         BtnToolKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/addressbook-edit24.png"))); // NOI18N
         BtnToolKasir.setMnemonic('S');
         BtnToolKasir.setText("Kasir Ralan");
@@ -6842,11 +7159,10 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolKasir.setEnabled(false);
         BtnToolKasir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnToolKasir.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnToolKasir.setIconTextGap(3);
-        BtnToolKasir.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        BtnToolKasir.setIconTextGap(2);
+        BtnToolKasir.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnToolKasir.setName("BtnToolKasir"); // NOI18N
-        BtnToolKasir.setPreferredSize(new java.awt.Dimension(94, 40));
-        BtnToolKasir.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnToolKasir.setPreferredSize(new java.awt.Dimension(96, 40));
         BtnToolKasir.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnToolKasir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6858,22 +7174,23 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator7.setBackground(new java.awt.Color(90, 130, 80));
         jSeparator7.setForeground(new java.awt.Color(90, 130, 80));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator7.setName("jSeparator7"); // NOI18N
         jSeparator7.setOpaque(true);
         jSeparator7.setPreferredSize(new java.awt.Dimension(1, 37));
         internalFrame1.add(jSeparator7);
 
+        BtnLog.setBackground(new java.awt.Color(255, 255, 255));
         BtnLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/login2.png"))); // NOI18N
         BtnLog.setMnemonic('L');
         BtnLog.setText("Log In");
         BtnLog.setToolTipText("Alt+L");
         BtnLog.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnLog.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnLog.setIconTextGap(3);
-        BtnLog.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        BtnLog.setIconTextGap(2);
+        BtnLog.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnLog.setName("BtnLog"); // NOI18N
-        BtnLog.setPreferredSize(new java.awt.Dimension(75, 40));
-        BtnLog.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnLog.setPreferredSize(new java.awt.Dimension(79, 40));
         BtnLog.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6882,17 +7199,17 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnLog);
 
+        BtnClose.setBackground(new java.awt.Color(255, 255, 255));
         BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Delete.png"))); // NOI18N
         BtnClose.setMnemonic('U');
         BtnClose.setText("Keluar");
         BtnClose.setToolTipText("Alt+U");
         BtnClose.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnClose.setIconTextGap(3);
-        BtnClose.setMargin(new java.awt.Insets(1, 2, 1, 0));
+        BtnClose.setIconTextGap(2);
+        BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose.setName("BtnClose"); // NOI18N
         BtnClose.setPreferredSize(new java.awt.Dimension(80, 40));
-        BtnClose.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         BtnClose.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -6903,11 +7220,12 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.PAGE_START);
 
+        internalFrame4.setBackground(new java.awt.Color(215, 235, 195));
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(210, 230, 190));
-        internalFrame4.setWarnaBawah(new java.awt.Color(253, 255, 251));
+        internalFrame4.setWarnaAtas(new java.awt.Color(215, 235, 195));
+        internalFrame4.setWarnaBawah(new java.awt.Color(252, 253, 250));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -6922,6 +7240,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(90, 130, 80));
         jSeparator1.setForeground(new java.awt.Color(90, 130, 80));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator1.setName("jSeparator1"); // NOI18N
         jSeparator1.setOpaque(true);
         jSeparator1.setPreferredSize(new java.awt.Dimension(1, 21));
@@ -6939,6 +7258,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(90, 130, 80));
         jSeparator2.setForeground(new java.awt.Color(90, 130, 80));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator2.setName("jSeparator2"); // NOI18N
         jSeparator2.setOpaque(true);
         jSeparator2.setPreferredSize(new java.awt.Dimension(1, 21));
@@ -6956,6 +7276,7 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator3.setBackground(new java.awt.Color(90, 130, 80));
         jSeparator3.setForeground(new java.awt.Color(90, 130, 80));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         jSeparator3.setOpaque(true);
         jSeparator3.setPreferredSize(new java.awt.Dimension(1, 21));
@@ -6974,7 +7295,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame4, java.awt.BorderLayout.PAGE_END);
 
-        PanelUtama.setBorder(null);
         PanelUtama.setName("PanelUtama"); // NOI18N
         PanelUtama.setOpaque(false);
         PanelUtama.setLayout(new java.awt.BorderLayout());
@@ -7043,16 +7363,19 @@ public class frmUtama extends javax.swing.JFrame {
         MenuBar.setPreferredSize(new java.awt.Dimension(227, 28));
 
         jMenu1.setBackground(new java.awt.Color(20, 0, 20));
+        jMenu1.setBorder(null);
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/85.png"))); // NOI18N
         jMenu1.setMnemonic('A');
         jMenu1.setText("Program");
         jMenu1.setToolTipText("Alt+A");
         jMenu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu1.setIconTextGap(3);
         jMenu1.setName("jMenu1"); // NOI18N
+        jMenu1.setOpaque(false);
         jMenu1.setPreferredSize(new java.awt.Dimension(80, 28));
 
-        MnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        MnLogin.setBackground(new java.awt.Color(255, 255, 254));
         MnLogin.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLogin.setForeground(new java.awt.Color(90, 120, 80));
         MnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/login2.png"))); // NOI18N
@@ -7067,16 +7390,10 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu1.add(MnLogin);
 
-        jSeparator8.setBackground(new java.awt.Color(90, 120, 80));
-        jSeparator8.setForeground(new java.awt.Color(90, 120, 80));
-        jSeparator8.setName("jSeparator8"); // NOI18N
-        jSeparator8.setPreferredSize(new java.awt.Dimension(0, 1));
-        jMenu1.add(jSeparator8);
-
-        MnGantiPassword.setBackground(new java.awt.Color(255, 255, 255));
+        MnGantiPassword.setBackground(new java.awt.Color(255, 255, 254));
         MnGantiPassword.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGantiPassword.setForeground(new java.awt.Color(90, 120, 80));
-        MnGantiPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/73.png"))); // NOI18N
+        MnGantiPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/unlock.png"))); // NOI18N
         MnGantiPassword.setText("Ubah Password");
         MnGantiPassword.setEnabled(false);
         MnGantiPassword.setIconTextGap(6);
@@ -7089,7 +7406,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu1.add(MnGantiPassword);
 
-        MenuKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator14.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator14.setForeground(new java.awt.Color(190, 220, 180));
+        jSeparator14.setName("jSeparator14"); // NOI18N
+        jSeparator14.setPreferredSize(new java.awt.Dimension(0, 1));
+        jMenu1.add(jSeparator14);
+
+        MenuKeluar.setBackground(new java.awt.Color(255, 255, 254));
         MenuKeluar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuKeluar.setForeground(new java.awt.Color(90, 120, 80));
         MenuKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Delete.png"))); // NOI18N
@@ -7107,16 +7431,19 @@ public class frmUtama extends javax.swing.JFrame {
         MenuBar.add(jMenu1);
 
         jMenu5.setBackground(new java.awt.Color(20, 0, 20));
+        jMenu5.setBorder(null);
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientMale.png"))); // NOI18N
         jMenu5.setMnemonic('P');
         jMenu5.setText("Presensi Pegawai");
         jMenu5.setToolTipText("Alt+P");
         jMenu5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu5.setIconTextGap(3);
         jMenu5.setName("jMenu5"); // NOI18N
+        jMenu5.setOpaque(false);
         jMenu5.setPreferredSize(new java.awt.Dimension(127, 28));
 
-        MnBelumDatang1.setBackground(new java.awt.Color(255, 255, 255));
+        MnBelumDatang1.setBackground(new java.awt.Color(255, 255, 254));
         MnBelumDatang1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBelumDatang1.setForeground(new java.awt.Color(90, 120, 80));
         MnBelumDatang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/female-user-search24.png"))); // NOI18N
@@ -7131,7 +7458,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu5.add(MnBelumDatang1);
 
-        MnBelumDatang.setBackground(new java.awt.Color(255, 255, 255));
+        MnBelumDatang.setBackground(new java.awt.Color(255, 255, 254));
         MnBelumDatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBelumDatang.setForeground(new java.awt.Color(90, 120, 80));
         MnBelumDatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/couple24.png"))); // NOI18N
@@ -7146,7 +7473,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu5.add(MnBelumDatang);
 
-        MnSudahPulang.setBackground(new java.awt.Color(255, 255, 255));
+        MnSudahPulang.setBackground(new java.awt.Color(255, 255, 254));
         MnSudahPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudahPulang.setForeground(new java.awt.Color(90, 120, 80));
         MnSudahPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/addressbook-remove24.png"))); // NOI18N
@@ -7161,7 +7488,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu5.add(MnSudahPulang);
 
-        MnRekapBulanan.setBackground(new java.awt.Color(255, 255, 255));
+        MnRekapBulanan.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapBulanan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapBulanan.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapBulanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Doctor.png"))); // NOI18N
@@ -7176,7 +7503,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu5.add(MnRekapBulanan);
 
-        MnRekapHadir.setBackground(new java.awt.Color(255, 255, 255));
+        MnRekapHadir.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapHadir.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapHadir.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapHadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/addressbook-search24.png"))); // NOI18N
@@ -7194,23 +7521,26 @@ public class frmUtama extends javax.swing.JFrame {
         MenuBar.add(jMenu5);
 
         jMenu6.setBackground(new java.awt.Color(20, 0, 20));
+        jMenu6.setBorder(null);
         jMenu6.setForeground(new java.awt.Color(255, 255, 255));
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Bar Chart.png"))); // NOI18N
         jMenu6.setMnemonic('I');
         jMenu6.setText("Informasi");
         jMenu6.setToolTipText("Alt+I");
         jMenu6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu6.setIconTextGap(3);
         jMenu6.setName("jMenu6"); // NOI18N
+        jMenu6.setOpaque(false);
         jMenu6.setPreferredSize(new java.awt.Dimension(89, 28));
 
-        MnRekapBulanan1.setBackground(new java.awt.Color(255, 255, 255));
+        MnRekapBulanan1.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapBulanan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapBulanan1.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapBulanan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnRekapBulanan1.setText("Pasien Kamar Inap");
         MnRekapBulanan1.setIconTextGap(6);
         MnRekapBulanan1.setName("MnRekapBulanan1"); // NOI18N
-        MnRekapBulanan1.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnRekapBulanan1.setPreferredSize(new java.awt.Dimension(250, 30));
         MnRekapBulanan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapBulanan1ActionPerformed(evt);
@@ -7218,14 +7548,29 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnRekapBulanan1);
 
-        MnRekapBulanan2.setBackground(new java.awt.Color(255, 255, 255));
+        MnRekapBulanan3.setBackground(new java.awt.Color(255, 255, 254));
+        MnRekapBulanan3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRekapBulanan3.setForeground(new java.awt.Color(90, 120, 80));
+        MnRekapBulanan3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
+        MnRekapBulanan3.setText("Telusur Kunjungan Pasien");
+        MnRekapBulanan3.setIconTextGap(6);
+        MnRekapBulanan3.setName("MnRekapBulanan3"); // NOI18N
+        MnRekapBulanan3.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnRekapBulanan3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRekapBulanan3ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnRekapBulanan3);
+
+        MnRekapBulanan2.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapBulanan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapBulanan2.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapBulanan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnRekapBulanan2.setText("Penggunaan Kamar Inap");
         MnRekapBulanan2.setIconTextGap(6);
         MnRekapBulanan2.setName("MnRekapBulanan2"); // NOI18N
-        MnRekapBulanan2.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnRekapBulanan2.setPreferredSize(new java.awt.Dimension(250, 30));
         MnRekapBulanan2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapBulanan2ActionPerformed(evt);
@@ -7233,14 +7578,21 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnRekapBulanan2);
 
-        MnSudahPulang1.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator10.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator10.setForeground(new java.awt.Color(190, 220, 180));
+        jSeparator10.setName("jSeparator10"); // NOI18N
+        jSeparator10.setPreferredSize(new java.awt.Dimension(0, 1));
+        jMenu6.add(jSeparator10);
+
+        MnSudahPulang1.setBackground(new java.awt.Color(255, 255, 254));
         MnSudahPulang1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudahPulang1.setForeground(new java.awt.Color(90, 120, 80));
         MnSudahPulang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnSudahPulang1.setText("Tarif Kamar");
         MnSudahPulang1.setIconTextGap(6);
         MnSudahPulang1.setName("MnSudahPulang1"); // NOI18N
-        MnSudahPulang1.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnSudahPulang1.setPreferredSize(new java.awt.Dimension(250, 30));
         MnSudahPulang1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSudahPulang1ActionPerformed(evt);
@@ -7248,14 +7600,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnSudahPulang1);
 
-        MnSudahPulang3.setBackground(new java.awt.Color(255, 255, 255));
+        MnSudahPulang3.setBackground(new java.awt.Color(255, 255, 254));
         MnSudahPulang3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudahPulang3.setForeground(new java.awt.Color(90, 120, 80));
         MnSudahPulang3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnSudahPulang3.setText("Tarif Laboratorium");
         MnSudahPulang3.setIconTextGap(6);
         MnSudahPulang3.setName("MnSudahPulang3"); // NOI18N
-        MnSudahPulang3.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnSudahPulang3.setPreferredSize(new java.awt.Dimension(250, 30));
         MnSudahPulang3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSudahPulang3ActionPerformed(evt);
@@ -7263,14 +7615,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnSudahPulang3);
 
-        MnSudahPulang6.setBackground(new java.awt.Color(255, 255, 255));
+        MnSudahPulang6.setBackground(new java.awt.Color(255, 255, 254));
         MnSudahPulang6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudahPulang6.setForeground(new java.awt.Color(90, 120, 80));
         MnSudahPulang6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnSudahPulang6.setText("Tarif Radiologi");
         MnSudahPulang6.setIconTextGap(6);
         MnSudahPulang6.setName("MnSudahPulang6"); // NOI18N
-        MnSudahPulang6.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnSudahPulang6.setPreferredSize(new java.awt.Dimension(250, 30));
         MnSudahPulang6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSudahPulang6ActionPerformed(evt);
@@ -7278,14 +7630,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnSudahPulang6);
 
-        MnSudahPulang4.setBackground(new java.awt.Color(255, 255, 255));
+        MnSudahPulang4.setBackground(new java.awt.Color(255, 255, 254));
         MnSudahPulang4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudahPulang4.setForeground(new java.awt.Color(90, 120, 80));
         MnSudahPulang4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnSudahPulang4.setText("Tarif Operasi & VK");
         MnSudahPulang4.setIconTextGap(6);
         MnSudahPulang4.setName("MnSudahPulang4"); // NOI18N
-        MnSudahPulang4.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnSudahPulang4.setPreferredSize(new java.awt.Dimension(250, 30));
         MnSudahPulang4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSudahPulang4ActionPerformed(evt);
@@ -7293,14 +7645,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnSudahPulang4);
 
-        MnSudahPulang2.setBackground(new java.awt.Color(255, 255, 255));
+        MnSudahPulang2.setBackground(new java.awt.Color(255, 255, 254));
         MnSudahPulang2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudahPulang2.setForeground(new java.awt.Color(90, 120, 80));
         MnSudahPulang2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnSudahPulang2.setText("Tarif Rawat Jalan");
         MnSudahPulang2.setIconTextGap(6);
         MnSudahPulang2.setName("MnSudahPulang2"); // NOI18N
-        MnSudahPulang2.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnSudahPulang2.setPreferredSize(new java.awt.Dimension(250, 30));
         MnSudahPulang2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSudahPulang2ActionPerformed(evt);
@@ -7308,14 +7660,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnSudahPulang2);
 
-        MnSudahPulang5.setBackground(new java.awt.Color(255, 255, 255));
+        MnSudahPulang5.setBackground(new java.awt.Color(255, 255, 254));
         MnSudahPulang5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudahPulang5.setForeground(new java.awt.Color(90, 120, 80));
         MnSudahPulang5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnSudahPulang5.setText("Tarif Rawat Inap");
         MnSudahPulang5.setIconTextGap(6);
         MnSudahPulang5.setName("MnSudahPulang5"); // NOI18N
-        MnSudahPulang5.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnSudahPulang5.setPreferredSize(new java.awt.Dimension(250, 30));
         MnSudahPulang5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSudahPulang5ActionPerformed(evt);
@@ -7323,14 +7675,21 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnSudahPulang5);
 
-        MnRekapHadir1.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator11.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator11.setForeground(new java.awt.Color(190, 220, 180));
+        jSeparator11.setName("jSeparator11"); // NOI18N
+        jSeparator11.setPreferredSize(new java.awt.Dimension(0, 1));
+        jMenu6.add(jSeparator11);
+
+        MnRekapHadir1.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapHadir1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapHadir1.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapHadir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnRekapHadir1.setText("Jadwal Praktek Dokter");
         MnRekapHadir1.setIconTextGap(6);
         MnRekapHadir1.setName("MnRekapHadir1"); // NOI18N
-        MnRekapHadir1.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnRekapHadir1.setPreferredSize(new java.awt.Dimension(250, 30));
         MnRekapHadir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir1ActionPerformed(evt);
@@ -7338,14 +7697,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnRekapHadir1);
 
-        MnInfoBed.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoBed.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed.setForeground(new java.awt.Color(90, 120, 80));
         MnInfoBed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnInfoBed.setText("Dashboard Info Bed 1");
         MnInfoBed.setIconTextGap(6);
         MnInfoBed.setName("MnInfoBed"); // NOI18N
-        MnInfoBed.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnInfoBed.setPreferredSize(new java.awt.Dimension(250, 30));
         MnInfoBed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoBedActionPerformed(evt);
@@ -7353,14 +7712,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnInfoBed);
 
-        MnInfoBed2.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed2.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoBed2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed2.setForeground(new java.awt.Color(90, 120, 80));
         MnInfoBed2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnInfoBed2.setText("Dashboard Info Bed 2");
         MnInfoBed2.setIconTextGap(6);
         MnInfoBed2.setName("MnInfoBed2"); // NOI18N
-        MnInfoBed2.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnInfoBed2.setPreferredSize(new java.awt.Dimension(250, 30));
         MnInfoBed2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoBed2ActionPerformed(evt);
@@ -7368,14 +7727,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnInfoBed2);
 
-        MnInfoBed1.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed1.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoBed1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed1.setForeground(new java.awt.Color(90, 120, 80));
         MnInfoBed1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnInfoBed1.setText("Dashboard Info Jadwal Dokter");
         MnInfoBed1.setIconTextGap(6);
         MnInfoBed1.setName("MnInfoBed1"); // NOI18N
-        MnInfoBed1.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnInfoBed1.setPreferredSize(new java.awt.Dimension(250, 30));
         MnInfoBed1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoBed1ActionPerformed(evt);
@@ -7383,14 +7742,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnInfoBed1);
 
-        MnInfoBed3.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed3.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoBed3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed3.setForeground(new java.awt.Color(90, 120, 80));
         MnInfoBed3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnInfoBed3.setText("Dashboard Info Bed & Jadwal Dokter");
         MnInfoBed3.setIconTextGap(6);
         MnInfoBed3.setName("MnInfoBed3"); // NOI18N
-        MnInfoBed3.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnInfoBed3.setPreferredSize(new java.awt.Dimension(250, 30));
         MnInfoBed3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoBed3ActionPerformed(evt);
@@ -7398,14 +7757,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnInfoBed3);
 
-        MnInfoBed4.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed4.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoBed4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed4.setForeground(new java.awt.Color(90, 120, 80));
         MnInfoBed4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnInfoBed4.setText("Dashboard Register Poli");
         MnInfoBed4.setIconTextGap(6);
         MnInfoBed4.setName("MnInfoBed4"); // NOI18N
-        MnInfoBed4.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnInfoBed4.setPreferredSize(new java.awt.Dimension(250, 30));
         MnInfoBed4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoBed4ActionPerformed(evt);
@@ -7413,14 +7772,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu6.add(MnInfoBed4);
 
-        MnInfoBed5.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed5.setBackground(new java.awt.Color(255, 255, 254));
         MnInfoBed5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed5.setForeground(new java.awt.Color(90, 120, 80));
         MnInfoBed5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
         MnInfoBed5.setText("Dashboard Jadwal Operasi");
         MnInfoBed5.setIconTextGap(6);
         MnInfoBed5.setName("MnInfoBed5"); // NOI18N
-        MnInfoBed5.setPreferredSize(new java.awt.Dimension(240, 30));
+        MnInfoBed5.setPreferredSize(new java.awt.Dimension(250, 30));
         MnInfoBed5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnInfoBed5ActionPerformed(evt);
@@ -7431,23 +7790,26 @@ public class frmUtama extends javax.swing.JFrame {
         MenuBar.add(jMenu6);
 
         jMenu7.setBackground(new java.awt.Color(20, 0, 20));
+        jMenu7.setBorder(null);
         jMenu7.setForeground(new java.awt.Color(255, 255, 255));
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/My-Tickets24.png"))); // NOI18N
         jMenu7.setMnemonic('N');
         jMenu7.setText("Anjungan & Antrian");
         jMenu7.setToolTipText("Alt+N");
         jMenu7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu7.setIconTextGap(3);
         jMenu7.setName("jMenu7"); // NOI18N
+        jMenu7.setOpaque(false);
         jMenu7.setPreferredSize(new java.awt.Dimension(138, 28));
 
-        MnAnjungan.setBackground(new java.awt.Color(255, 255, 255));
+        MnAnjungan.setBackground(new java.awt.Color(255, 255, 254));
         MnAnjungan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnAnjungan.setForeground(new java.awt.Color(90, 120, 80));
         MnAnjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/family24.png"))); // NOI18N
         MnAnjungan.setText("Anjungan Registrasi Mandiri");
         MnAnjungan.setIconTextGap(6);
         MnAnjungan.setName("MnAnjungan"); // NOI18N
-        MnAnjungan.setPreferredSize(new java.awt.Dimension(200, 30));
+        MnAnjungan.setPreferredSize(new java.awt.Dimension(210, 30));
         MnAnjungan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnAnjunganActionPerformed(evt);
@@ -7455,14 +7817,21 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnAnjungan);
 
-        MnRekapHadir3.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator12.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator12.setForeground(new java.awt.Color(190, 220, 180));
+        jSeparator12.setName("jSeparator12"); // NOI18N
+        jSeparator12.setPreferredSize(new java.awt.Dimension(0, 1));
+        jMenu7.add(jSeparator12);
+
+        MnRekapHadir3.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapHadir3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapHadir3.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapHadir3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir3.setText("Antrian Loket");
         MnRekapHadir3.setIconTextGap(6);
         MnRekapHadir3.setName("MnRekapHadir3"); // NOI18N
-        MnRekapHadir3.setPreferredSize(new java.awt.Dimension(200, 30));
+        MnRekapHadir3.setPreferredSize(new java.awt.Dimension(210, 30));
         MnRekapHadir3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir3ActionPerformed(evt);
@@ -7470,14 +7839,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnRekapHadir3);
 
-        MnRekapHadir4.setBackground(new java.awt.Color(255, 255, 255));
+        MnRekapHadir4.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapHadir4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapHadir4.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapHadir4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir4.setText("Antrian Unit/Poliklinik");
         MnRekapHadir4.setIconTextGap(6);
         MnRekapHadir4.setName("MnRekapHadir4"); // NOI18N
-        MnRekapHadir4.setPreferredSize(new java.awt.Dimension(200, 30));
+        MnRekapHadir4.setPreferredSize(new java.awt.Dimension(210, 30));
         MnRekapHadir4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir4ActionPerformed(evt);
@@ -7485,14 +7854,14 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnRekapHadir4);
 
-        MnRekapHadir5.setBackground(new java.awt.Color(255, 255, 255));
+        MnRekapHadir5.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapHadir5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRekapHadir5.setForeground(new java.awt.Color(90, 120, 80));
         MnRekapHadir5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         MnRekapHadir5.setText("Antrian Apotek");
         MnRekapHadir5.setIconTextGap(6);
         MnRekapHadir5.setName("MnRekapHadir5"); // NOI18N
-        MnRekapHadir5.setPreferredSize(new java.awt.Dimension(200, 30));
+        MnRekapHadir5.setPreferredSize(new java.awt.Dimension(210, 30));
         MnRekapHadir5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHadir5ActionPerformed(evt);
@@ -7500,24 +7869,49 @@ public class frmUtama extends javax.swing.JFrame {
         });
         jMenu7.add(MnRekapHadir5);
 
+        jSeparator13.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator13.setForeground(new java.awt.Color(190, 220, 180));
+        jSeparator13.setName("jSeparator13"); // NOI18N
+        jSeparator13.setPreferredSize(new java.awt.Dimension(0, 1));
+        jMenu7.add(jSeparator13);
+
+        MnRekapHadir6.setBackground(new java.awt.Color(255, 255, 254));
+        MnRekapHadir6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRekapHadir6.setForeground(new java.awt.Color(90, 120, 80));
+        MnRekapHadir6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
+        MnRekapHadir6.setText("Verifikasi Digital Klaim");
+        MnRekapHadir6.setIconTextGap(6);
+        MnRekapHadir6.setName("MnRekapHadir6"); // NOI18N
+        MnRekapHadir6.setPreferredSize(new java.awt.Dimension(210, 30));
+        MnRekapHadir6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRekapHadir6ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnRekapHadir6);
+
         MenuBar.add(jMenu7);
 
         jMenu4.setBackground(new java.awt.Color(20, 0, 20));
+        jMenu4.setBorder(null);
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/63.png"))); // NOI18N
         jMenu4.setMnemonic('G');
         jMenu4.setText("Tentang Program");
         jMenu4.setToolTipText("Alt+G");
         jMenu4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu4.setIconTextGap(3);
         jMenu4.setName("jMenu4"); // NOI18N
+        jMenu4.setOpaque(false);
         jMenu4.setPreferredSize(new java.awt.Dimension(124, 28));
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
             }
         });
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -7553,10 +7947,6 @@ public class frmUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCancelActionPerformed
 
     private void BtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLogActionPerformed
-        try{
-            com.sun.awt.AWTUtilities.setWindowOpacity(DlgLogin,0.7f);
-        }catch(Exception e){            
-        }
         FlayMenu.setVisible(false);
         
         switch (BtnLog.getText().trim()) {
@@ -7568,15 +7958,15 @@ public class frmUtama extends javax.swing.JFrame {
                 MnGantiPassword.setEnabled(false);
                 btnToolBcdRalan.setEnabled(false);
                 btnToolBcdRanap.setEnabled(false);                
-                var.setpenjualan_obatfalse();
-                var.setpenjualan_obatfalse();
-                var.setutd_penyerahan_darahfalse();
-                var.setresep_dokterfalse();
-                var.setresep_obatfalse();
-                var.setpermintaanlabfalse();
-                var.setperiksalabfalse();
-                var.setpermintaanradiologifalse();
-                var.setperiksaradiologifalse();
+                akses.setpenjualan_obatfalse();
+                akses.setpenjualan_obatfalse();
+                akses.setutd_penyerahan_darahfalse();
+                akses.setresep_dokterfalse();
+                akses.setresep_obatfalse();
+                akses.setpermintaanlabfalse();
+                akses.setperiksalabfalse();
+                akses.setpermintaanradiologifalse();
+                akses.setperiksaradiologifalse();
                 edAdmin.setText("");
                 edPwd.setText("");
                 BtnLog.setText("Log In");
@@ -7600,7 +7990,7 @@ public class frmUtama extends javax.swing.JFrame {
             Valid.textKosong(edPwd,"Password");
         }else {
             try {                               
-                var.setData(edAdmin.getText(),edPwd.getText());        
+                akses.setData(edAdmin.getText(),edPwd.getText());        
                 /*if(edAdmin.getText().equals("admin") && edPwd.getText().equals("akusayangsamakamu122456")){       
                     BtnMenu.setEnabled(true);             
                     BtnToolReg.setEnabled(true);
@@ -7618,7 +8008,7 @@ public class frmUtama extends javax.swing.JFrame {
                     lblStts.setText("Admin : ");
                     lblUser.setText("Admin Utama");
                 }else */
-                if(var.getjml1()>=1){    
+                if(akses.getjml1()>=1){    
                     BtnMenu.setEnabled(true);
                     BtnToolReg.setEnabled(true);
                     BtnToolKamnap.setEnabled(true);
@@ -7642,51 +8032,51 @@ public class frmUtama extends javax.swing.JFrame {
                     MnLogin.setText("Log Out");
                     lblStts.setText("Admin : ");
                     lblUser.setText("Admin Utama");
-                }else if(var.getjml2()>=1){  
+                }else if(akses.getjml2()>=1){  
                     BtnMenu.setEnabled(true);
                     DlgLogin.dispose();
                     BtnLog.setText("Log Out");
                     MnLogin.setText("Log Out");
                     lblStts.setText("Admin : ");
-                    lblUser.setText(var.getkode());
+                    lblUser.setText(akses.getkode());
                     MnGantiPassword.setEnabled(true);
-                    BtnToolReg.setEnabled(var.getregistrasi());
-                    if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
+                    BtnToolReg.setEnabled(akses.getregistrasi());
+                    if((akses.getkamar_inap()==true)||(akses.getbilling_ranap()==true)||(akses.gettindakan_ranap()==true)){
                         BtnToolKamnap.setEnabled(true);
                     }else{
-                        BtnToolKamnap.setEnabled(var.getkamar_inap());
+                        BtnToolKamnap.setEnabled(akses.getkamar_inap());
                     }
                     
-                    if((var.getkasir_ralan()==true)||(var.getbilling_ralan()==true)){
+                    if((akses.getkasir_ralan()==true)||(akses.getbilling_ralan()==true)){
                         BtnToolKasir.setEnabled(true);
                     }else{
-                        BtnToolKasir.setEnabled(var.getkasir_ralan());
+                        BtnToolKasir.setEnabled(akses.getkasir_ralan());
                     }
                         
-                    if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
+                    if((akses.getpermintaan_radiologi()==true)||(akses.getperiksa_radiologi()==true)){
                         btnPermintaanRadiologi.setEnabled(true);
                     }else{
-                        btnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());
+                        btnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
                     }
                     
-                    if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
+                    if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
                         btnPermintaanLab.setEnabled(true);
                     }else{
-                        btnPermintaanLab.setEnabled(var.getpermintaan_lab());
+                        btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
                     }
                         
-                    btnToolIGD.setEnabled(var.getigd());                    
-                    btnToolBcdRalan.setEnabled(var.getbarcoderalan());
-                    btnToolBcdRanap.setEnabled(var.getbarcoderanap()); 
-                    btnLaboratorium.setEnabled(var.getperiksa_lab());
-                    btnPeriksaRadiologi.setEnabled(var.getperiksa_radiologi());  
-                    btnInputPenjualan.setEnabled(var.getpenjualan_obat());
-                    btnDataPenjualan.setEnabled(var.getpenjualan_obat());
-                    btnDataPenyerahanDarah.setEnabled(var.getutd_penyerahan_darah());
-                    btnDaftarPermintaanResep.setEnabled(var.getresep_dokter());
-                    btnResepObatDepan.setEnabled(var.getresep_obat());
+                    btnToolIGD.setEnabled(akses.getigd());                    
+                    btnToolBcdRalan.setEnabled(akses.getbarcoderalan());
+                    btnToolBcdRanap.setEnabled(akses.getbarcoderanap()); 
+                    btnLaboratorium.setEnabled(akses.getperiksa_lab());
+                    btnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());  
+                    btnInputPenjualan.setEnabled(akses.getpenjualan_obat());
+                    btnDataPenjualan.setEnabled(akses.getpenjualan_obat());
+                    btnDataPenyerahanDarah.setEnabled(akses.getutd_penyerahan_darah());
+                    btnDaftarPermintaanResep.setEnabled(akses.getresep_dokter());
+                    btnResepObatDepan.setEnabled(akses.getresep_obat());
                     Sequel.menyimpan("tracker","'"+edAdmin.getText()+"',current_date(),current_time()","Login");
-                }else if((var.getjml1()==0)&&(var.getjml2()==0)){
+                }else if((akses.getjml1()==0)&&(akses.getjml2()==0)){
                     JOptionPane.showMessageDialog(null,"Maaf, Gagal login. ID User atau password ada yang salah ...!");
                     BtnToolReg.setEnabled(false);
                     BtnToolKamnap.setEnabled(false);
@@ -7766,7 +8156,7 @@ private void edPwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edP
 private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
     isTutup();
-    DlgHome.setSize(PanelUtama.getWidth()-35, PanelUtama.getHeight()-35);
+    DlgHome.setSize(PanelUtama.getWidth()-25, PanelUtama.getHeight()-25);
     DlgHome.setLocationRelativeTo(PanelUtama);
     DlgHome.setVisible(true);
     isTampil();
@@ -7803,49 +8193,16 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_formWindowStateChanged
 
 private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnGantiPasswordBtnLogActionPerformed
+    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
     isTutup();
-    PassLama.setText("");
-    Passbaru1.setText("");
-    PassBaru2.setText("");
-    WindowInput.setVisible(true);
+    WindowInputPassword barcode=new WindowInputPassword(this,true);
+    barcode.SetUserPass(lblUser.getText(),edPwd.getText());
+    barcode.setLocationRelativeTo(PanelUtama);
+    barcode.setVisible(true);
+    DlgHome.dispose();
+    this.setCursor(Cursor.getDefaultCursor());
+    
 }//GEN-LAST:event_MnGantiPasswordBtnLogActionPerformed
-
-private void BtnClosePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClosePassActionPerformed
-        WindowInput.dispose();
-}//GEN-LAST:event_BtnClosePassActionPerformed
-
-private void BtnClosePassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnClosePassKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            WindowInput.dispose();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            PassBaru2.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            PassLama.requestFocus();
-        }
-}//GEN-LAST:event_BtnClosePassKeyPressed
-
-private void BtnSimpanPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanPassActionPerformed
-        if(PassLama.getText().trim().equals("")){
-            Valid.textKosong(PassLama,"Password Lama");
-        }else if(Passbaru1.getText().trim().equals("")){
-            Valid.textKosong(Passbaru1,"Password Baru");
-        }else if(PassBaru2.getText().trim().equals("")){
-            Valid.textKosong(PassBaru2,"Password Baru");
-        }else if(!edPwd.getText().trim().equals(PassLama.getText())){
-            JOptionPane.showMessageDialog(null,"Maaf, Password lama salah...!!!");
-            PassLama.requestFocus();
-        }else if(!Passbaru1.getText().trim().equals(PassBaru2.getText())){
-            JOptionPane.showMessageDialog(null,"Maaf, Password Baru 1 dan Password Baru 2 tidak sesuai...!!!");
-            PassBaru2.requestFocus();
-        }else{
-            Sequel.queryu("update user set password=AES_ENCRYPT('"+PassBaru2.getText()+"','windi')  where id_user=AES_ENCRYPT('"+lblUser.getText()+"','nur')");            
-            WindowInput.setVisible(false);
-        }
-}//GEN-LAST:event_BtnSimpanPassActionPerformed
-
-private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanPassKeyPressed
-        Valid.pindah(evt,PassLama,PassBaru2);
-}//GEN-LAST:event_BtnSimpanPassKeyPressed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         DlgHome.dispose();
@@ -8344,7 +8701,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnReturBeliActionPerformed
 
     private void btnReturJualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturJualActionPerformed
-        var.setform("DlgReturJual");
+        akses.setform("DlgReturJual");
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgReturJual returjual=new DlgReturJual(this,false);
@@ -8994,9 +9351,9 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPenggajian penggajian=new DlgPenggajian(this,false);
         try {
-            if(var.getpegawai_admin()==true){
+            if(akses.getpegawai_admin()==true){
                 penggajian.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
-            }else if(var.getpegawai_user()==true){
+            }else if(akses.getpegawai_user()==true){
                 penggajian.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=paijo&passwordte=mumet");
             }            
         } catch (Exception ex) {
@@ -9159,12 +9516,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         FlayMenu.removeAll();        
         FlayMenu.add(btnPermintaanLab);
         FlayMenu.add(btnLaboratorium);
-        if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
+        if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
             btnPermintaanLab.setEnabled(true);
         }else{
-            btnPermintaanLab.setEnabled(var.getpermintaan_lab());
+            btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
         }
-        btnLaboratorium.setEnabled(var.getperiksa_lab());
+        btnLaboratorium.setEnabled(akses.getperiksa_lab());
         FlayMenu.setVisible(true); 
     }//GEN-LAST:event_btnToolLabActionPerformed
 
@@ -9514,12 +9871,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         FlayMenu.removeAll();        
         FlayMenu.add(btnPermintaanRadiologi);
         FlayMenu.add(btnPeriksaRadiologi);
-        if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
+        if((akses.getpermintaan_radiologi()==true)||(akses.getperiksa_radiologi()==true)){
             btnPermintaanRadiologi.setEnabled(true);
         }else{
-            btnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());
+            btnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
         }
-        btnPeriksaRadiologi.setEnabled(var.getperiksa_radiologi());
+        btnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());
         FlayMenu.setVisible(true); 
     }//GEN-LAST:event_btnToolRadActionPerformed
 
@@ -10359,17 +10716,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPiutangBelumLunasActionPerformed
 
-    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-        Window[] wins = Window.getWindows();        
-        for (Window win : wins) {
-            if (win instanceof JDialog) {                
-                DlgHome.setSize(PanelUtama.getWidth()-45, PanelUtama.getHeight()-45);
-                Panelmenu.repaint();
-                DlgHome.setLocationRelativeTo(PanelUtama);
-            }
-        }
-    }//GEN-LAST:event_formComponentResized
-
     private void formComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentMoved
         Window[] wins = Window.getWindows();
         for (Window win : wins) {
@@ -10390,11 +10736,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         FlayMenu.add(btnDataPenyerahanDarah);
         FlayMenu.add(btnDaftarPermintaanResep);
         FlayMenu.add(btnResepObatDepan);
-        btnInputPenjualan.setEnabled(var.getpenjualan_obat());
-        btnDataPenjualan.setEnabled(var.getpenjualan_obat());
-        btnDataPenyerahanDarah.setEnabled(var.getutd_penyerahan_darah());
-        btnDaftarPermintaanResep.setEnabled(var.getresep_dokter());
-        btnResepObatDepan.setEnabled(var.getresep_obat());
+        btnInputPenjualan.setEnabled(akses.getpenjualan_obat());
+        btnDataPenjualan.setEnabled(akses.getpenjualan_obat());
+        btnDataPenyerahanDarah.setEnabled(akses.getutd_penyerahan_darah());
+        btnDaftarPermintaanResep.setEnabled(akses.getresep_dokter());
+        btnResepObatDepan.setEnabled(akses.getresep_obat());
         FlayMenu.setVisible(true);       
     }//GEN-LAST:event_BtnToolJualObatActionPerformed
 
@@ -10805,7 +11151,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnAplicareKetersediaanKamarActionPerformed
 
     private void btnInaCBGKlaimBaruOtomatisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInaCBGKlaimBaruOtomatisActionPerformed
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             pilihpage="KlaimBaruOtomatis";
             judulform="::[ Otomatisasi Klaim Pasien Baru Dari Data SEP Ke INACBG ]::";
             isTutup();
@@ -10814,7 +11160,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             cariNIK.setLocationRelativeTo(PanelUtama);
             cariNIK.setVisible(true);
         }else{
-            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",var.getkode());
+            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",akses.getkode());
             if(!coder_nik.equals("")){
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -10839,7 +11185,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnInaCBGKlaimBaruOtomatisActionPerformed
 
     private void btnInaCBGKlaimBaruManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInaCBGKlaimBaruManualActionPerformed
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             pilihpage="KlaimBaruManual";
             judulform="::[ Klaim Manual Pasien Baru Dari Data SEP Ke INACBG ]::";
             isTutup();
@@ -10848,7 +11194,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             cariNIK.setLocationRelativeTo(PanelUtama);
             cariNIK.setVisible(true);
         }else{
-            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",var.getkode());
+            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",akses.getkode());
             if(!coder_nik.equals("")){
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -11042,7 +11388,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPiutangRanapActionPerformed
-
+    
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         if(ChkInput.isSelected()==true){
             cmbMenu.setVisible(true);
@@ -11664,7 +12010,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_MnInfoBed3ActionPerformed
 
     private void btnInaCBGKlaimBaruManual2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInaCBGKlaimBaruManual2ActionPerformed
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             pilihpage="KlaimBaruManual2";
             judulform="::[ Klaim Manual Ke INACBG ]::";
             isTutup();
@@ -11673,7 +12019,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             cariNIK.setLocationRelativeTo(PanelUtama);
             cariNIK.setVisible(true);
         }else{
-            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",var.getkode());
+            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",akses.getkode());
             if(!coder_nik.equals("")){
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -13476,6 +13822,525 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPCareBeriObatActionPerformed
 
+    private void MnRekapBulanan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapBulanan3ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        
+        DlgHome.dispose();
+        InformasiTelusurKunjunganPasien belum=new InformasiTelusurKunjunganPasien(this,true);
+        belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        belum.setLocationRelativeTo(PanelUtama);
+        belum.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnRekapBulanan3ActionPerformed
+
+    private void btnPCareBeriTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareBeriTindakanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareDataPemberianTindakan form=new PCareDataPemberianTindakan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareBeriTindakanActionPerformed
+
+    private void btnPembayaranAkunBayar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembayaranAkunBayar3ActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPembayaranPerAKunBayar3 aplikasi=new DlgPembayaranPerAKunBayar3(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPembayaranAkunBayar3ActionPerformed
+
+    private void btnPasswordAsuransiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasswordAsuransiActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPasswordAsuransi form=new DlgPasswordAsuransi(this,false);
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPasswordAsuransiActionPerformed
+
+    private void MnRekapHadir6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHadir6ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("berkasrawat");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnRekapHadir6ActionPerformed
+
+    private void btnDataSITTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataSITTActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataTB aplikasi=new DlgDataTB(this,false);
+        aplikasi.emptTeks();
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDataSITTActionPerformed
+
+    private void btnSiranapKetersediaanKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiranapKetersediaanKamarActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SiranapKetersediaanKamar form=new SiranapKetersediaanKamar(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSiranapKetersediaanKamarActionPerformed
+
+    private void btnGrafikTBLaporanPeriodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBLaporanPeriodeActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBPeriodeLaporan aplikasi=new GrafikTBPeriodeLaporan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBLaporanPeriodeActionPerformed
+
+    private void btnGrafikTBRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBRujukanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBRujukan aplikasi=new GrafikTBRujukan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBRujukanActionPerformed
+
+    private void btnGrafikTBRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBRiwayatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBRiwayat aplikasi=new GrafikTBRiwayat(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBRiwayatActionPerformed
+
+    private void btnGrafikTBTipeDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBTipeDiagnosisActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBTipeDiagnosis aplikasi=new GrafikTBTipeDiagnosis(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBTipeDiagnosisActionPerformed
+
+    private void btnGrafikTBSTatusHIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBSTatusHIVActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBStatusHIV aplikasi=new GrafikTBStatusHIV(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBSTatusHIVActionPerformed
+
+    private void btnGrafikTBSkoringAnakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBSkoringAnakActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBSkoringAnak aplikasi=new GrafikTBSkoringAnak(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBSkoringAnakActionPerformed
+
+    private void btnGrafikTBKonfirmasiSkoring5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBKonfirmasiSkoring5ActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBKonfirmasiSkoring5 aplikasi=new GrafikTBKonfirmasiSkoring5(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBKonfirmasiSkoring5ActionPerformed
+
+    private void btnGrafikTBKonfirmasiSkoring6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBKonfirmasiSkoring6ActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBKonfirmasiSkoring6 aplikasi=new GrafikTBKonfirmasiSkoring6(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBKonfirmasiSkoring6ActionPerformed
+
+    private void btnGrafikTBSumberObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBSumberObatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBSumberObat aplikasi=new GrafikTBSumberObat(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBSumberObatActionPerformed
+
+    private void btnGrafikTBHasilAkhirPengobatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBHasilAkhirPengobatanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBHasilAkhirPengobatan aplikasi=new GrafikTBHasilAkhirPengobatan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBHasilAkhirPengobatanActionPerformed
+
+    private void btnGrafikTBHasilTesHIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikTBHasilTesHIVActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikTBHasilTesHIV aplikasi=new GrafikTBHasilTesHIV(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikTBHasilTesHIVActionPerformed
+
+    private void btnKadaluarsaBatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKadaluarsaBatchActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKadaluarsaBatch form=new DlgKadaluarsaBatch(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnKadaluarsaBatchActionPerformed
+
+    private void btnSisaStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSisaStokActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSisaStok form=new DlgSisaStok(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSisaStokActionPerformed
+
+    private void btnObatPerResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObatPerResepActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgObatPeresep form=new DlgObatPeresep(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnObatPerResepActionPerformed
+
+    private void btnPemakaianAirPDAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPemakaianAirPDAMActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingPemakaiaanAirPDAM form=new KeslingPemakaiaanAirPDAM(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPemakaianAirPDAMActionPerformed
+
+    private void btnLimbahB3MedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimbahB3MedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingLimbahB3Medis form=new KeslingLimbahB3Medis(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLimbahB3MedisActionPerformed
+
+    private void btnGrafikPemakaianAirPDAMPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikPemakaianAirPDAMPerTanggalActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingPDAMPertanggal aplikasi=new GrafikKeslingPDAMPertanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikPemakaianAirPDAMPerTanggalActionPerformed
+
+    private void btnGrafikPemakaianAirPDAMPerBulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikPemakaianAirPDAMPerBulanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingPDAMPerBulan aplikasi=new GrafikKeslingPDAMPerBulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikPemakaianAirPDAMPerBulanActionPerformed
+
+    private void btnGrafikLimbahB3MedisPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikLimbahB3MedisPerTanggalActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingLimbahB3Pertanggal aplikasi=new GrafikKeslingLimbahB3Pertanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikLimbahB3MedisPerTanggalActionPerformed
+
+    private void btnGrafikLimbahB3MedisPerBulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikLimbahB3MedisPerBulanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingLimbahB3Bulan aplikasi=new GrafikKeslingLimbahB3Bulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikLimbahB3MedisPerBulanActionPerformed
+
+    private void btnLimbahDomestikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimbahDomestikActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingLimbahDomestik form=new KeslingLimbahDomestik(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLimbahDomestikActionPerformed
+
+    private void btnGrafikLimbahDomestikPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikLimbahDomestikPerTanggalActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingLimbahDomestikPertanggal aplikasi=new GrafikKeslingLimbahDomestikPertanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikLimbahDomestikPerTanggalActionPerformed
+
+    private void btnGrafikLimbahDomestikPerBulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikLimbahDomestikPerBulanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingLimbahDomestikBulan aplikasi=new GrafikKeslingLimbahDomestikBulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikLimbahDomestikPerBulanActionPerformed
+
+    private void btnMutuAirLimbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMutuAirLimbahActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingMutuAirLimbah form=new KeslingMutuAirLimbah(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMutuAirLimbahActionPerformed
+
+    private void btnPestControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPestControlActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingPestControl form=new KeslingPestControl(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPestControlActionPerformed
+
+    private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanKategori form=new PerpustakaanKategori(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnJenisPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanJenis form=new PerpustakaanJenis(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnRuangPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanRuang form=new PerpustakaanRuang(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPengarangPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPengarang form=new PerpustakaanPengarang(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenerbitPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPenerbit form=new PerpustakaanPenerbit(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnKoleksiPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanKoleksi form=new PerpustakaanKoleksi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnInventarisPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanInventaris form=new PerpustakaanInventaris(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.tampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPengaturanPeminjamanPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPengaturanPeminjaman form=new PerpustakaanPengaturanPeminjaman(this,false);
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnDendaPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanDenda form=new PerpustakaanDenda(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnAnggotaPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanAnggota form=new PerpustakaanAnggota(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPeminjamanPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanSirkulasi form=new PerpustakaanSirkulasi(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnBayarDendaPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanBayarDenda form=new PerpustakaanBayarDenda(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -13488,13 +14353,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCancel;
     private widget.ButtonBig BtnClose;
-    private widget.Button BtnClosePass;
     private widget.ButtonBig BtnDpjp;
     private widget.ButtonBig BtnJadwal;
     private widget.ButtonBig BtnLog;
     private widget.Button BtnLogin;
     private widget.ButtonBig BtnMenu;
-    private widget.Button BtnSimpanPass;
     private widget.ButtonBig BtnToolJualObat;
     private widget.ButtonBig BtnToolKamnap;
     private widget.ButtonBig BtnToolKasir;
@@ -13519,11 +14382,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JMenuItem MnRekapBulanan;
     private javax.swing.JMenuItem MnRekapBulanan1;
     private javax.swing.JMenuItem MnRekapBulanan2;
+    private javax.swing.JMenuItem MnRekapBulanan3;
     private javax.swing.JMenuItem MnRekapHadir;
     private javax.swing.JMenuItem MnRekapHadir1;
     private javax.swing.JMenuItem MnRekapHadir3;
     private javax.swing.JMenuItem MnRekapHadir4;
     private javax.swing.JMenuItem MnRekapHadir5;
+    private javax.swing.JMenuItem MnRekapHadir6;
     private javax.swing.JMenuItem MnSudahPulang;
     private javax.swing.JMenuItem MnSudahPulang1;
     private javax.swing.JMenuItem MnSudahPulang2;
@@ -13534,11 +14399,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JPanel PanelUtama;
     private usu.widget.glass.PanelGlass PanelWall;
     private widget.panelGlass Panelmenu;
-    private widget.TextBox PassBaru2;
-    private widget.TextBox PassLama;
-    private widget.TextBox Passbaru1;
     private widget.TextBox TCari;
-    private javax.swing.JDialog WindowInput;
     private widget.ButtonBig btnAdmin;
     private widget.ButtonBig btnAkunPiutang;
     private widget.ButtonBig btnAnalisaKamar;
@@ -13607,6 +14468,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDataHAIs;
     private widget.ButtonBig btnDataPenjualan;
     private widget.ButtonBig btnDataPenyerahanDarah;
+    private widget.ButtonBig btnDataSITT;
     private widget.ButtonBig btnDeposit;
     private widget.ButtonBig btnDetailTindakan;
     private widget.ButtonBig btnDetailVKOK;
@@ -13643,6 +14505,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikLabRalanPerBulan;
     private widget.ButtonBig btnGrafikLabRalanPerHari;
     private widget.ButtonBig btnGrafikLabRalanPerTahun;
+    private widget.ButtonBig btnGrafikLimbahB3MedisPerBulan;
+    private widget.ButtonBig btnGrafikLimbahB3MedisPerTanggal;
+    private widget.ButtonBig btnGrafikLimbahDomestikPerBulan;
+    private widget.ButtonBig btnGrafikLimbahDomestikPerTanggal;
+    private widget.ButtonBig btnGrafikPemakaianAirPDAMPerBulan;
+    private widget.ButtonBig btnGrafikPemakaianAirPDAMPerTanggal;
     private widget.ButtonBig btnGrafikPerPerujuk;
     private widget.ButtonBig btnGrafikRadRalanPerBulan;
     private widget.ButtonBig btnGrafikRadRalanPerHari;
@@ -13656,6 +14524,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikStatusRegPerTahun2;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal;
     private widget.ButtonBig btnGrafikStatusRegPerTanggal2;
+    private widget.ButtonBig btnGrafikTBHasilAkhirPengobatan;
+    private widget.ButtonBig btnGrafikTBHasilTesHIV;
+    private widget.ButtonBig btnGrafikTBKonfirmasiSkoring5;
+    private widget.ButtonBig btnGrafikTBKonfirmasiSkoring6;
+    private widget.ButtonBig btnGrafikTBLaporanPeriode;
+    private widget.ButtonBig btnGrafikTBRiwayat;
+    private widget.ButtonBig btnGrafikTBRujukan;
+    private widget.ButtonBig btnGrafikTBSTatusHIV;
+    private widget.ButtonBig btnGrafikTBSkoringAnak;
+    private widget.ButtonBig btnGrafikTBSumberObat;
+    private widget.ButtonBig btnGrafikTBTipeDiagnosis;
     private widget.ButtonBig btnHAIsBangsal;
     private widget.ButtonBig btnHarianHAIs;
     private widget.ButtonBig btnHarianKamar;
@@ -13691,6 +14570,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnJumlahMacamDiet;
     private widget.ButtonBig btnJumlahPorsiDiet;
     private widget.ButtonBig btnJurnalHarian;
+    private widget.ButtonBig btnKadaluarsaBatch;
     private widget.ButtonBig btnKamar;
     private widget.ButtonBig btnKamarInap;
     private widget.ButtonBig btnKasir;
@@ -13717,6 +14597,8 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLamaPelayananRadiologi;
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
+    private widget.ButtonBig btnLimbahB3Medis;
+    private widget.ButtonBig btnLimbahDomestik;
     private widget.ButtonBig btnMapingPoliBPJS;
     private widget.ButtonBig btnMasterBerkasPegawai;
     private widget.ButtonBig btnMerkInventaris;
@@ -13724,16 +14606,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnMonitoringKlaim;
     private widget.ButtonBig btnMutasiBarang;
     private widget.ButtonBig btnMutasiBerkas;
+    private widget.ButtonBig btnMutuAirLimbah;
     private widget.ButtonBig btnObat;
     private widget.ButtonBig btnObatPasienPeresep;
     private widget.ButtonBig btnObatPasienRalan;
     private widget.ButtonBig btnObatPasienRanap;
     private widget.ButtonBig btnObatPenyakit;
     private widget.ButtonBig btnObatPerCaraBayar;
+    private widget.ButtonBig btnObatPerResep;
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnOpnameIPSRS;
     private widget.ButtonBig btnPCareBeriObat;
+    private widget.ButtonBig btnPCareBeriTindakan;
     private widget.ButtonBig btnPCareClubProlanis;
     private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
@@ -13763,13 +14648,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnParkirMasuk;
     private widget.ButtonBig btnPasien;
     private widget.ButtonBig btnPasienMati;
+    private widget.ButtonBig btnPasswordAsuransi;
     private widget.ButtonBig btnPaymentPoint;
     private widget.ButtonBig btnPaymentPoint2;
     private widget.ButtonBig btnPegawai;
+    private widget.ButtonBig btnPemakaianAirPDAM;
     private widget.ButtonBig btnPemasukanLain;
     private widget.ButtonBig btnPembatalanPeriksaDokter;
     private widget.ButtonBig btnPembayaranAkunBayar;
     private widget.ButtonBig btnPembayaranAkunBayar2;
+    private widget.ButtonBig btnPembayaranAkunBayar3;
     private widget.ButtonBig btnPembayaranPerUnit;
     private widget.ButtonBig btnPembelian;
     private widget.ButtonBig btnPembelianIpsrs;
@@ -13798,6 +14686,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPerujukLabPerTahun;
     private widget.ButtonBig btnPerujukRadiologiPerTahun;
     private widget.ButtonBig btnPerusahaan;
+    private widget.ButtonBig btnPestControl;
     private widget.ButtonBig btnPiutang;
     private widget.ButtonBig btnPiutangBelumLunas;
     private widget.ButtonBig btnPiutangPerAkunPiutang;
@@ -13908,12 +14797,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSetupRM;
     private widget.ButtonBig btnSetupTarif;
     private widget.ButtonBig btnSidikJari;
+    private widget.ButtonBig btnSiranapKetersediaanKamar;
     private widget.ButtonBig btnSirkulasi;
     private widget.ButtonBig btnSirkulasi2;
     private widget.ButtonBig btnSirkulasi3;
     private widget.ButtonBig btnSirkulasiBerkas;
     private widget.ButtonBig btnSirkulasiInventaris;
     private widget.ButtonBig btnSirkulasiNonMedis;
+    private widget.ButtonBig btnSisaStok;
     private widget.ButtonBig btnStokKeluarIPSRSPerTanggal;
     private widget.ButtonBig btnStokKeluarMedis;
     private widget.ButtonBig btnStokObatPasien;
@@ -13982,28 +14873,28 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
-    private widget.InternalFrame internalFrame6;
-    private widget.Label jLabel10;
     private javax.swing.JLabel jLabel11;
-    private widget.Label jLabel12;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private widget.Label jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
+    private javax.swing.JPopupMenu.Separator jSeparator12;
+    private javax.swing.JPopupMenu.Separator jSeparator13;
+    private javax.swing.JPopupMenu.Separator jSeparator14;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private widget.Label label35;
     private widget.Label label36;
@@ -14018,6 +14909,67 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ScrollPane scrollPane2;
     private widget.Tanggal tanggal;
     // End of variables declaration//GEN-END:variables
+    private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
+            btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
+            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan;
+    
+    public void isWall(){
+        try{            
+            ps=koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    jLabel8.setText(rs.getString(1));
+                    this.setTitle("SIM "+rs.getString("nama_instansi"));
+                    jLabel11.setText(rs.getString(2) +", "+rs.getString(3) +", "+rs.getString(4) +" ");
+                    akses.setnamars(rs.getString("nama_instansi"));
+                    akses.setalamatrs(rs.getString("alamat_instansi"));
+                    akses.setkabupatenrs(rs.getString("kabupaten"));
+                    akses.setpropinsirs(rs.getString("propinsi"));
+                    akses.setkontakrs(rs.getString("kontak"));
+                    akses.setemailrs(rs.getString("email"));
+                    if(rs.getString(5).equals("Yes")){
+                        Blob blob = rs.getBlob(6);
+                        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(blob.getBytes(1, (int) (blob.length()))));
+                        repaint();
+                    }
+                }  
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                 
+        }catch(Exception e){
+            System.out.println("Notifikasi : Silahkan Set Aplikasi "+e);
+        }
+    }
+
+    private void isTutup() {
+        FlayMenu.setVisible(false);
+        akses.setform("frmUtama");
+        Window[] wins = Window.getWindows();
+        for (Window win : wins) {
+            if (win instanceof JDialog) {
+                win.dispose();
+            }
+        }
+    }
+    
+    private void setToolbar(){
+        if(internalFrame1.getWidth()<(BtnMenu.getWidth()+BtnToolReg.getWidth()+btnToolIGD.getWidth()+
+                btnToolBcdRalan.getWidth()+btnToolBcdRanap.getWidth()+btnToolLab.getWidth()+
+                btnToolRad.getWidth()+BtnToolJualObat.getWidth()+BtnToolKamnap.getWidth()+
+                BtnToolKasir.getWidth()+BtnLog.getWidth()+BtnClose.getWidth()+8)){
+            internalFrame1.setSize(new Dimension(PanelUtama.getWidth(),90));
+        }else{
+            internalFrame1.setSize(new Dimension(PanelUtama.getWidth(),44));
+        }
+    }
     
     public void isTampil(){        
         Panelmenu.removeAll();
@@ -14296,242 +15248,219 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }else if(jmlmenu<=435){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*83)));
+        }else if(jmlmenu<=440){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*84)));
+        }else if(jmlmenu<=445){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*85)));
+        }else if(jmlmenu<=450){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*86)));
+        }else if(jmlmenu<=455){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*87)));
+        }else if(jmlmenu<=460){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*88)));
+        }else if(jmlmenu<=465){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*89)));
+        }else if(jmlmenu<=470){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*90)));
+        }else if(jmlmenu<=475){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*91)));
+        }else if(jmlmenu<=480){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*92)));
+        }else if(jmlmenu<=485){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*93)));
+        }else if(jmlmenu<=490){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*94)));
         }                                                 
-        Panelmenu.repaint(); 
-        DlgHome.setVisible(true);               
+        Panelmenu.revalidate();
+        Panelmenu.repaint();               
     }
     
-    public void isWall(){
-        try{            
-            ps=koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");
-            try {
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    jLabel8.setText(rs.getString(1));
-                    this.setTitle("SIM "+rs.getString("nama_instansi"));
-                    jLabel11.setText(rs.getString(2) +", "+rs.getString(3) +", "+rs.getString(4) +" ");
-                    var.setnamars(rs.getString("nama_instansi"));
-                    var.setalamatrs(rs.getString("alamat_instansi"));
-                    var.setkabupatenrs(rs.getString("kabupaten"));
-                    var.setpropinsirs(rs.getString("propinsi"));
-                    var.setkontakrs(rs.getString("kontak"));
-                    var.setemailrs(rs.getString("email"));
-                    if(rs.getString(5).equals("Yes")){
-                        Blob blob = rs.getBlob(6);
-                        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(blob.getBytes(1, (int) (blob.length()))));
-                        repaint();
-                    }
-                }  
-            } catch (Exception e) {
-                System.out.println(e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }                 
-        }catch(Exception e){
-            System.out.println("Notifikasi : Silahkan Set Aplikasi "+e);
-        }
-    }
-
-    private void isTutup() {
-        FlayMenu.setVisible(false);
-        var.setform("frmUtama");
-        Window[] wins = Window.getWindows();
-        for (Window win : wins) {
-            if (win instanceof JDialog) {
-                win.dispose();
-            }
-        }
-    }
     
-    private void setToolbar(){
-        if(internalFrame1.getWidth()<(BtnMenu.getWidth()+BtnToolReg.getWidth()+btnToolIGD.getWidth()+
-                btnToolBcdRalan.getWidth()+btnToolBcdRanap.getWidth()+btnToolLab.getWidth()+
-                btnToolRad.getWidth()+BtnToolJualObat.getWidth()+BtnToolKamnap.getWidth()+
-                BtnToolKasir.getWidth()+BtnLog.getWidth()+BtnClose.getWidth()+8)){
-            internalFrame1.setSize(new Dimension(PanelUtama.getWidth(),90));
-        }else{
-            internalFrame1.setSize(new Dimension(PanelUtama.getWidth(),44));
-        }
-    }
 
     private void isCombo() {
         if(cmbMenu.getSelectedIndex()==0){
             jmlmenu=0;     
-            if(var.getinformasi_kamar()==true){
+            if(akses.getinformasi_kamar()==true){
                 Panelmenu.add(btnAnalisaKamar);
                 jmlmenu++;
             }
 
-            if(var.getjadwal_praktek()==true){                
+            if(akses.getjadwal_praktek()==true){                
                 Panelmenu.add(BtnJadwal);
                 jmlmenu++;
             }
 
-            if(var.getregistrasi()==true){
+            if(akses.getregistrasi()==true){
                 Panelmenu.add(btnRegistrasi);
                 jmlmenu++;
             }
 
-            if(var.getbooking_registrasi()==true){
+            if(akses.getbooking_registrasi()==true){
                 Panelmenu.add(btnBookingRegistrasi);
                 jmlmenu++;
             }
             
-            if(var.getigd()==true){
+            if(akses.getigd()==true){
                 Panelmenu.add(btnIGD);  
                 jmlmenu++;
             }               
 
-            if(var.gettindakan_ralan()==true){
+            if(akses.gettindakan_ralan()==true){
                 Panelmenu.add(btnRalan); 
                 jmlmenu++;
             }
 
-            if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
+            if((akses.getkamar_inap()==true)||(akses.getbilling_ranap()==true)||(akses.gettindakan_ranap()==true)){
                 Panelmenu.add(btnKamarInap);
                 jmlmenu++;
             }
 
-            if(var.getbooking_operasi()==true){
+            if(akses.getbooking_operasi()==true){
                 Panelmenu.add(btnJadwalOperasi);
                 jmlmenu++;
             }
             
-            if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
+            if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
                 Panelmenu.add(btnPermintaanLab);
                 jmlmenu++;
             }
             
-            if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
+            if((akses.getpermintaan_radiologi()==true)||(akses.getperiksa_radiologi()==true)){
                 Panelmenu.add(btnPermintaanRadiologi);
                 jmlmenu++;
             }
             
-            if(var.getdpjp_ranap()==true){
+            if(akses.getdpjp_ranap()==true){
                 Panelmenu.add(BtnDpjp);
                 jmlmenu++;
             }
 
-            if(var.gettindakan_ranap()==true){
+            if(akses.gettindakan_ranap()==true){
                 Panelmenu.add(btnRanap);
                 jmlmenu++;
             }
 
-            if(var.getoperasi()==true){
+            if(akses.getoperasi()==true){
                 Panelmenu.add(btnTagihanOperasi);
                 jmlmenu++;
             }
 
-            if(var.getrujukan_keluar()==true){
+            if(akses.getrujukan_keluar()==true){
                 Panelmenu.add(btnRujukPasien);
                 jmlmenu++;
             }
 
-            if(var.getrujukan_masuk()==true){                
+            if(akses.getrujukan_masuk()==true){                
                 Panelmenu.add(btnRujukMasuk);
                 jmlmenu++;
             }
 
-            if(var.getberi_obat()==true){
+            if(akses.getberi_obat()==true){
                 Panelmenu.add(btnBeriObat);
                 jmlmenu++;
             }
 
-            if(var.getresep_pulang()==true){                
+            if(akses.getresep_pulang()==true){                
                 Panelmenu.add(btnResepPulang);
                 jmlmenu++;
             }
 
-            if(var.getresep_obat()==true){
+            if(akses.getresep_obat()==true){
                 Panelmenu.add(btnResepObat);
                 jmlmenu++;
             }
 
-            if(var.getdiet_pasien()==true){
+            if(akses.getdiet_pasien()==true){
                 Panelmenu.add(btnDiet);
                 jmlmenu++;
             }
 
-            if(var.getperiksa_lab()==true){
+            if(akses.getperiksa_lab()==true){
                 Panelmenu.add(btnLaboratorium);
                 jmlmenu++;
             }
 
-            if(var.getperiksa_radiologi()==true){
+            if(akses.getperiksa_radiologi()==true){
                 Panelmenu.add(btnPeriksaRadiologi);   
                 jmlmenu++;
             }
 
-            if((var.getkasir_ralan()==true)||(var.getbilling_ralan()==true)){
+            if((akses.getkasir_ralan()==true)||(akses.getbilling_ralan()==true)){
                 Panelmenu.add(btnKasir);     
                 jmlmenu++;
             }
 
-            if(var.getdeposit_pasien()==true){                          
+            if(akses.getdeposit_pasien()==true){                          
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
             }                        
         }else if(cmbMenu.getSelectedIndex()==1){ 
             jmlmenu=0;
-            if(var.getbarcoderalan()==true){
+            if(akses.getbarcoderalan()==true){
                 Panelmenu.add(btnBarcodeRalan);
                 jmlmenu++;
             }
 
-            if(var.getbarcoderanap()==true){
+            if(akses.getbarcoderanap()==true){
                 Panelmenu.add(btnBarcodeRanap);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==2){ 
             jmlmenu=0;
-            if(var.getpetugas()==true){
+            if(akses.getpetugas()==true){
                 Panelmenu.add(btnPegawai);
                 jmlmenu++;
             }
 
-            if(var.getdokter()==true){
+            if(akses.getdokter()==true){
                 Panelmenu.add(btnDokter);
                 jmlmenu++;
             }
 
-            if(var.getbarcode()==true){
+            if(akses.getbarcode()==true){
                 Panelmenu.add(btnBarcode);  
                 jmlmenu++;
             }
 
-            if(var.getsidikjari()==true){
+            if(akses.getsidikjari()==true){
                 Panelmenu.add(btnSidikJari);   
                 jmlmenu++;
             }
 
-            if(var.getjam_masuk()==true){
+            if(akses.getjam_masuk()==true){
                 Panelmenu.add(btnJamPresensi);  
                 jmlmenu++;
             }
 
-            if(var.getjadwal_pegawai()==true){
+            if(akses.getjadwal_pegawai()==true){
                 Panelmenu.add(btnJadwalPegawai);   
                 jmlmenu++;
                 Panelmenu.add(btnJadwalTambahan);   
                 jmlmenu++;
             }             
 
-            if(var.getpresensi_harian()==true){
+            if(akses.getpresensi_harian()==true){
                 Panelmenu.add(btnRekapHarian);
                 jmlmenu++;
             }
 
-            if(var.getpresensi_bulanan()==true){                
+            if(akses.getpresensi_bulanan()==true){                
                 Panelmenu.add(btnRekapBulanan);
                 jmlmenu++;
             }
 
-            if(var.gettemporary_presensi()==true){
+            if(akses.gettemporary_presensi()==true){
                 Panelmenu.add(btnTemporaryPresensi);   
                 jmlmenu++;
             }
@@ -14541,1997 +15470,2208 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
             jmlmenu++;
 
-            if((var.getpegawai_admin()==true)||(var.getpegawai_user()==true)){                
+            if((akses.getpegawai_admin()==true)||(akses.getpegawai_user()==true)){                
                 Panelmenu.add(btnPenggajian); 
                 jmlmenu++;
             }
             
-            if(var.getmaster_berkas_pegawai()==true){                
+            if(akses.getmaster_berkas_pegawai()==true){                
                 Panelmenu.add(btnMasterBerkasPegawai); 
                 jmlmenu++;
             }
             
-            if(var.getberkas_kepegawaian()==true){                
+            if(akses.getberkas_kepegawaian()==true){                
                 Panelmenu.add(btnBerkasPegawai); 
                 jmlmenu++;
             }
             
-            if(var.getriwayat_jabatan()==true){                
+            if(akses.getriwayat_jabatan()==true){                
                 Panelmenu.add(btnRiwayatJabatan); 
                 jmlmenu++;
             }
             
-            if(var.getriwayat_pendidikan()==true){                
+            if(akses.getriwayat_pendidikan()==true){                
                 Panelmenu.add(btnRiwayatPendidikan); 
                 jmlmenu++;
             }
             
-            if(var.getriwayat_naik_gaji()==true){                
+            if(akses.getriwayat_naik_gaji()==true){                
                 Panelmenu.add(btnRiwayatNaikGaji); 
                 jmlmenu++;
             }
             
-            if(var.getkegiatan_ilmiah()==true){                
+            if(akses.getkegiatan_ilmiah()==true){                
                 Panelmenu.add(btnKegiatanIlmiah); 
                 jmlmenu++;
             }
             
-            if(var.getriwayat_penghargaan()==true){                
+            if(akses.getriwayat_penghargaan()==true){                
                 Panelmenu.add(btnRiwayatPenghargaan); 
                 jmlmenu++;
             }
             
-            if(var.getriwayat_penelitian()==true){                
+            if(akses.getriwayat_penelitian()==true){                
                 Panelmenu.add(btnRiwayatPenelitian); 
                 jmlmenu++;
             }
 
-            if(var.getsms()==true){                
+            if(akses.getsms()==true){                
                 Panelmenu.add(btnSMS);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
             jmlmenu=0;
-            if(var.getindustrifarmasi()==true){
+            if(akses.getindustrifarmasi()==true){
                 Panelmenu.add(btnIndustriFarmasi); 
                 jmlmenu++;
             }
 
-            if(var.getsuplier()==true){
+            if(akses.getsuplier()==true){
                 Panelmenu.add(btnSuplier); 
                 jmlmenu++;
             }
 
-            if(var.getsatuan_barang()==true){
+            if(akses.getsatuan_barang()==true){
                 Panelmenu.add(btnSatuan); 
                 jmlmenu++;
             }
             
-            if(var.getmetode_racik()==true){
+            if(akses.getmetode_racik()==true){
                 Panelmenu.add(btnMetodeRacik); 
                 jmlmenu++;
             }
 
-            if(var.getkonversi_satuan()==true){
+            if(akses.getkonversi_satuan()==true){
                 Panelmenu.add(btnKonversi); 
                 jmlmenu++;
             }    
 
-            if(var.getjenis_barang()==true){
+            if(akses.getjenis_barang()==true){
                 Panelmenu.add(btnJnsBarang);
                 jmlmenu++;
             }
             
-            if(var.getkategori_barang()==true){
+            if(akses.getkategori_barang()==true){
                 Panelmenu.add(btnKategoriBarang);
                 jmlmenu++;
             }
             
-            if(var.getgolongan_barang()==true){
+            if(akses.getgolongan_barang()==true){
                 Panelmenu.add(btnGolonganBarang);
                 jmlmenu++;
             }
 
-            if(var.getobat()==true){
+            if(akses.getobat()==true){
                 Panelmenu.add(btnObat);
                 jmlmenu++;
             }
 
-            if(var.getstok_opname_obat()==true){
+            if(akses.getstok_opname_obat()==true){
                 Panelmenu.add(btnOpname); 
                 jmlmenu++;
             }
 
-            if(var.getmutasi_barang()==true){
+            if(akses.getmutasi_barang()==true){
                 Panelmenu.add(btnMutasiBarang); 
                 jmlmenu++;
             }
 
-            if(var.getstok_obat_pasien()==true){
+            if(akses.getstok_obat_pasien()==true){
                 Panelmenu.add(btnStokObatPasien); 
                 jmlmenu++;
             }
 
-            if((var.getpermintaan_medis()==true)||(var.getmutasi_barang()==true)||(var.getpengeluaran_stok_apotek()==true)){
+            if((akses.getpermintaan_medis()==true)||(akses.getmutasi_barang()==true)||(akses.getpengeluaran_stok_apotek()==true)){
                 Panelmenu.add(btnPermintaanMedis);   
                 jmlmenu++;
             }
             
-            if(var.getrekap_permintaan_medis()==true){
+            if(akses.getrekap_permintaan_medis()==true){
                 Panelmenu.add(btnRekapPermintaanMedis);   
                 jmlmenu++;
             }
             
-            if((var.getsurat_pemesanan_medis()==true)||(var.getpemesanan_obat()==true)){
+            if((akses.getsurat_pemesanan_medis()==true)||(akses.getpemesanan_obat()==true)){
                 Panelmenu.add(btnSuratPemesananMedis);   
                 jmlmenu++;
             }
             
-            if(var.getpengadaan_obat()==true){
+            if(akses.getpengadaan_obat()==true){
                 Panelmenu.add(btnPembelian);   
                 jmlmenu++;
             }
 
-            if((var.getpemesanan_obat()==true)||(var.getbayar_pemesanan_obat()==true)){
+            if((akses.getpemesanan_obat()==true)||(akses.getbayar_pemesanan_obat()==true)){
                 Panelmenu.add(btnPemesanan);
                 jmlmenu++;
             }
 
-            if(var.getpenjualan_obat()==true){
+            if(akses.getpenjualan_obat()==true){
                 Panelmenu.add(btnPenjualan);
                 jmlmenu++;
             }
             
-            if(var.getresep_dokter()==true){
+            if(akses.getresep_dokter()==true){
                 Panelmenu.add(btnDaftarPermintaanResep);
                 jmlmenu++;
             }
 
-            if(var.getpiutang_obat()==true){
+            if(akses.getpiutang_obat()==true){
                  Panelmenu.add(btnPiutang);  
                  jmlmenu++;
             }
             
-            if(var.getpengeluaran_stok_apotek()==true){
+            if(akses.getpengeluaran_stok_apotek()==true){
                  Panelmenu.add(btnStokKeluarMedis);  
                  jmlmenu++;
             }
 
-            if(var.getretur_ke_suplier()==true){
+            if(akses.getretur_ke_suplier()==true){
                 Panelmenu.add(btnReturBeli); 
                 jmlmenu++;
             }
 
-            if(var.getretur_dari_pembeli()==true){
+            if(akses.getretur_dari_pembeli()==true){
                 Panelmenu.add(btnReturJual); 
                 jmlmenu++;
             }
 
-            if(var.getretur_obat_ranap()==true){
+            if(akses.getretur_obat_ranap()==true){
                 Panelmenu.add(btnReturPasien); 
                 jmlmenu++;
             }
 
-            if(var.getretur_piutang_pasien()==true){
+            if(akses.getretur_piutang_pasien()==true){
                 Panelmenu.add(btnReturPiutang); 
                 jmlmenu++;
             }   
 
-            if(var.getpengambilan_utd()==true){
+            if(akses.getpengambilan_utd()==true){
                 Panelmenu.add(btnPengambilanUTD); 
                 jmlmenu++;
             } 
 
-            if(var.getkeuntungan_penjualan()==true){
+            if(akses.getkeuntungan_penjualan()==true){
                 Panelmenu.add(btnKeuntungan);
                 jmlmenu++;
             }
 
-            if(var.getkeuntungan_beri_obat()==true){
+            if(akses.getkeuntungan_beri_obat()==true){
                 Panelmenu.add(btnKeuntunganObatRanap);
                 jmlmenu++;
             }
 
-            if(var.getkeuntungan_beri_obat_nonpiutang()==true){
+            if(akses.getkeuntungan_beri_obat_nonpiutang()==true){
                 Panelmenu.add(btnKeuntunganObat2);
                 jmlmenu++;
             }
 
-            if(var.getsirkulasi_obat()==true){
+            if(akses.getsirkulasi_obat()==true){
                 Panelmenu.add(btnSirkulasi);
                 jmlmenu++;
             }
 
-            if(var.getsirkulasi_obat2()==true){
+            if(akses.getsirkulasi_obat2()==true){
                 Panelmenu.add(btnSirkulasi2);
                 jmlmenu++;
             }
             
-            if(var.getsirkulasi_obat3()==true){
+            if(akses.getsirkulasi_obat3()==true){
                 Panelmenu.add(btnSirkulasi3);
                 jmlmenu++;
             }
             
-            if(var.getpemberian_obat_pertanggal()==true){
+            if(akses.getpemberian_obat_pertanggal()==true){
                 Panelmenu.add(btnObatPerTanggal);
                 jmlmenu++;
             }
             
-            if(var.getpenjualan_obat_pertanggal()==true){
+            if(akses.getpenjualan_obat_pertanggal()==true){
                 Panelmenu.add(btnPenjualanPerTanggal);
                 jmlmenu++;
             }
 
-            if(var.getriwayat_obat_alkes_bhp()==true){
+            if(akses.getriwayat_obat_alkes_bhp()==true){
                 Panelmenu.add(btnRiwayatBarangMedis);
                 jmlmenu++;
             }
 
-            if(var.getdarurat_stok()==true){
+            if(akses.getdarurat_stok()==true){
                 Panelmenu.add(btnDaruratStok);
                 jmlmenu++;
             }  
             
-            if(var.getpengguna_obat_resep()==true){
+            if(akses.getpengguna_obat_resep()==true){
                 Panelmenu.add(btnPenggunaObatResep);
                 jmlmenu++;
             }
             
-            if(var.getrekap_pemesanan()==true){
+            if(akses.getrekap_pemesanan()==true){
                 Panelmenu.add(btnRekapPenerimaanObat);
                 jmlmenu++;
             }
             
-            if(var.getdata_batch()==true){
+            if(akses.getdata_batch()==true){
                 Panelmenu.add(btnDataBatch);
                 jmlmenu++;
             }
             
-            if(var.getriwayat_data_batch()==true){
+            if(akses.getriwayat_data_batch()==true){
                 Panelmenu.add(btnRiwayatBatch);
                 jmlmenu++;
             }
             
-            if(var.getkegiatan_farmasi()==true){
+            if(akses.getkegiatan_farmasi()==true){
                 Panelmenu.add(btnKegiatanFarmasi);
                 jmlmenu++;
             }
             
-            if(var.getppn_obat()==true){
+            if(akses.getppn_obat()==true){
                 Panelmenu.add(btnPPNObat);
+                jmlmenu++;
+            }
+            
+            if(akses.getkadaluarsa_batch()==true){
+                Panelmenu.add(btnKadaluarsaBatch);
+                jmlmenu++;
+            }
+            
+            if(akses.getsisa_stok()==true){
+                Panelmenu.add(btnSisaStok);
+                jmlmenu++;
+            }
+            
+            if(akses.getobat_per_resep()==true){
+                Panelmenu.add(btnObatPerResep);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
             jmlmenu=0;
-            if(var.getsatuan_barang()==true){
+            if(akses.getsatuan_barang()==true){
                 Panelmenu.add(btnSatuan);  
                 jmlmenu++;
             }             
 
-            if(var.getipsrs_jenis_barang()==true){
+            if(akses.getipsrs_jenis_barang()==true){
                 Panelmenu.add(btnJenisIpsrs); 
                 jmlmenu++;
             } 
 
-            if(var.getipsrs_barang()==true){
+            if(akses.getipsrs_barang()==true){
                 Panelmenu.add(btnBarangIpsrs);  
                 jmlmenu++;
             } 
 
-            if(var.getsuplier_penunjang()==true){
+            if(akses.getsuplier_penunjang()==true){
                 Panelmenu.add(btnSuplierIPSRS);  
                 jmlmenu++;
             }             
 
-            if(var.getpermintaan_non_medis()==true){
+            if(akses.getpermintaan_non_medis()==true){
                 Panelmenu.add(btnPermintaanNonMedis);  
                 jmlmenu++;
             }
             
-            if(var.getrekap_permintaan_non_medis()==true){
+            if(akses.getrekap_permintaan_non_medis()==true){
                 Panelmenu.add(btnRekapPermintaanNonMedis);  
                 jmlmenu++;
             }
             
-            if(var.getsurat_pemesanan_non_medis()==true){
+            if(akses.getsurat_pemesanan_non_medis()==true){
                 Panelmenu.add(btnSuratPemesananNonMedis);  
                 jmlmenu++;
             }
             
-            if(var.getipsrs_pengadaan_barang()==true){
+            if(akses.getipsrs_pengadaan_barang()==true){
                 Panelmenu.add(btnPembelianIpsrs);  
                 jmlmenu++;
             }
             
-            if(var.getpenerimaan_non_medis()==true){
+            if(akses.getpenerimaan_non_medis()==true){
                 Panelmenu.add(btnPenerimaanNonMedis);  
                 jmlmenu++;
             }
 
-            if(var.getipsrs_stok_keluar()==true){
+            if(akses.getipsrs_stok_keluar()==true){
                 Panelmenu.add(btnPengeluaranIpsrs); 
                 jmlmenu++;
             }
 
-            if(var.getipsrs_pengeluaran_harian()==true){
+            if(akses.getipsrs_pengeluaran_harian()==true){
                 Panelmenu.add(btnRBiayaIpsrs);
                 jmlmenu++;
             }
 
-            if(var.getipsrs_rekap_pengadaan()==true){
+            if(akses.getipsrs_rekap_pengadaan()==true){
                 Panelmenu.add(btnRHMasukIpsrs);
                 jmlmenu++;
             }
 
-            if(var.getipsrs_rekap_stok_keluar()==true){
+            if(akses.getipsrs_rekap_stok_keluar()==true){
                 Panelmenu.add(btnRHKeluarIpsrs);
                 jmlmenu++;
             } 
 
-            if(var.getpengambilan_penunjang_utd()==true){
+            if(akses.getpengambilan_penunjang_utd()==true){
                 Panelmenu.add(btnPengambilanPenunjangUTD);
                 jmlmenu++;
             } 
             
-            if(var.getipsrs_pengadaan_pertanggal()==true){
+            if(akses.getipsrs_pengadaan_pertanggal()==true){
                 Panelmenu.add(btnPengadaanIPSRSPerTanggal);
                 jmlmenu++;
             } 
             
-            if(var.getipsrs_stokkeluar_pertanggal()==true){
+            if(akses.getipsrs_stokkeluar_pertanggal()==true){
                 Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
                 jmlmenu++;
             } 
             
-            if(var.getrekap_pemesanan_non_medis()==true){
+            if(akses.getrekap_pemesanan_non_medis()==true){
                 Panelmenu.add(btnRekapPenerimaanNonMedis);
                 jmlmenu++;
             }
             
-            if(var.getstok_opname_logistik()==true){
+            if(akses.getstok_opname_logistik()==true){
                 Panelmenu.add(btnOpnameIPSRS);
                 jmlmenu++;
             }
             
-            if(var.getsirkulasi_non_medis()==true){
+            if(akses.getsirkulasi_non_medis()==true){
                 Panelmenu.add(btnSirkulasiNonMedis);
                 jmlmenu++;
             }
 
         }else if(cmbMenu.getSelectedIndex()==5){ 
             jmlmenu=0;
-            if(var.getinventaris_jenis()==true){
+            if(akses.getinventaris_jenis()==true){
                 Panelmenu.add(btnJenisInventaris);  
                 jmlmenu++;
             }   
 
-            if(var.getinventaris_kategori()==true){
+            if(akses.getinventaris_kategori()==true){
                 Panelmenu.add(btnKategoriInventaris);
                 jmlmenu++;
             }
 
-            if(var.getinventaris_merk()==true){
+            if(akses.getinventaris_merk()==true){
                 Panelmenu.add(btnMerkInventaris);
                 jmlmenu++;
             }
 
-            if(var.getinventaris_ruang()==true){
+            if(akses.getinventaris_ruang()==true){
                 Panelmenu.add(btnRuangInventaris);
                 jmlmenu++;
             }
 
-            if(var.getinventaris_produsen()==true){
+            if(akses.getinventaris_produsen()==true){
                 Panelmenu.add(btnProdusenInventaris);
                 jmlmenu++;
             }
 
-            if(var.getinventaris_koleksi()==true){
+            if(akses.getinventaris_koleksi()==true){
                 Panelmenu.add(btnBarangInventaris);
                 jmlmenu++;
             }
 
-            if(var.getinventaris_inventaris()==true){
+            if(akses.getinventaris_inventaris()==true){
                 Panelmenu.add(btnInventaris);  
                 jmlmenu++;
             }                 
 
-            if(var.getinventaris_sirkulasi()==true){
+            if(akses.getinventaris_sirkulasi()==true){
                 Panelmenu.add(btnSirkulasiInventaris);
                 jmlmenu++;
             }  
             
-            if(var.getbarang_cssd()==true){
+            if(akses.getbarang_cssd()==true){
                 Panelmenu.add(btnBarangCSSD);
                 jmlmenu++;
+            }
+            
+            if(akses.getpemakaian_air_pdam()==true){
+                Panelmenu.add(btnPemakaianAirPDAM);
+                jmlmenu++;
             } 
+            
+            if(akses.getlimbah_b3_medis()==true){
+                Panelmenu.add(btnLimbahB3Medis);
+                jmlmenu++;
+            } 
+            
+            if(akses.getlimbah_domestik()==true){
+                Panelmenu.add(btnLimbahDomestik);
+                jmlmenu++;
+            } 
+            
+            if(akses.getmutu_air_limbah()==true){
+                Panelmenu.add(btnMutuAirLimbah);
+                jmlmenu++;
+            }
+            
+            if(akses.getpest_control()==true){
+                Panelmenu.add(btnPestControl);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==6){ 
             jmlmenu=0;
-            if(var.getparkir_jenis()==true){
+            if(akses.getparkir_jenis()==true){
                 Panelmenu.add(btnJenisParkir);
                 jmlmenu++;
             }     
 
-            if(var.getparkir_barcode()==true){
+            if(akses.getparkir_barcode()==true){
                 Panelmenu.add(btnBarcodeParkir);
                 jmlmenu++;
             }
 
-            if(var.getparkir_in()==true){
+            if(akses.getparkir_in()==true){
                 Panelmenu.add(btnParkirMasuk);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==7){ 
             jmlmenu=0;
-            if(var.getharian_tindakan_poli()==true){
+            if(akses.getharian_tindakan_poli()==true){
                 Panelmenu.add(btnTagihanPoli); 
                 jmlmenu++;
             }   
 
-            if(var.getharian_kamar()==true){
+            if(akses.getharian_kamar()==true){
                 Panelmenu.add(btnHarianKamar); 
                 jmlmenu++;
             }  
 
-            if(var.getharian_tindakan_dokter()==true){
+            if(akses.getharian_tindakan_dokter()==true){
                 Panelmenu.add(btnTagihanDokter); 
                 jmlmenu++;
             } 
 
-            if(var.getobat_per_poli()==true){
+            if(akses.getobat_per_poli()==true){
                 Panelmenu.add(btnTagihanObatPoli);
                 jmlmenu++;
             }
 
-            if(var.getobat_per_kamar()==true){
+            if(akses.getobat_per_kamar()==true){
                 Panelmenu.add(btnTagihanObatBangsal);
                 jmlmenu++;
             }
 
-            if(var.getobat_per_dokter_ralan()==true){
+            if(akses.getobat_per_dokter_ralan()==true){
                 Panelmenu.add(btnObatPasienRalan);    
                 jmlmenu++;
             }
 
-            if(var.getobat_per_dokter_ranap()==true){
+            if(akses.getobat_per_dokter_ranap()==true){
                 Panelmenu.add(btnObatPasienRanap);
                 jmlmenu++;
             }    
 
-            if(var.getobat_per_dokter_peresep()==true){
+            if(akses.getobat_per_dokter_peresep()==true){
                 Panelmenu.add(btnObatPasienPeresep);
                 jmlmenu++;
             }
 
-            if(var.getobat_per_cara_bayar()==true){
+            if(akses.getobat_per_cara_bayar()==true){
                 Panelmenu.add(btnObatPerCaraBayar);
                 jmlmenu++;
             }
 
-            if(var.getdetail_tindakan()==true){
+            if(akses.getdetail_tindakan()==true){
                 Panelmenu.add(btnDetailTindakan);
                 jmlmenu++;
             } 
             
-            if(var.getjm_ranap_dokter()==true){
+            if(akses.getjm_ranap_dokter()==true){
                 Panelmenu.add(btnJMDetailDokter);
                 jmlmenu++;
             } 
             
-            if(var.getdetailjmdokter2()==true){
+            if(akses.getdetailjmdokter2()==true){
                 Panelmenu.add(btnJMDetailDokter2);
                 jmlmenu++;
             } 
 
-            if(var.getharian_dokter()==true){
+            if(akses.getharian_dokter()==true){
                 Panelmenu.add(btnRHDOkter);  
                 jmlmenu++;
             }
 
-            if(var.getbulanan_dokter()==true){
+            if(akses.getbulanan_dokter()==true){
                 Panelmenu.add(btnRBDokter);
                 jmlmenu++;
             }
 
-            if(var.getharian_paramedis()==true){
+            if(akses.getharian_paramedis()==true){
                 Panelmenu.add(btnRHParamedis); 
                 jmlmenu++;
             }
 
-            if(var.getbulanan_paramedis()==true){
+            if(akses.getbulanan_paramedis()==true){
                 Panelmenu.add(btnRBParamedis); 
                 jmlmenu++;
             }
 
-            if(var.getharian_js()==true){
+            if(akses.getharian_js()==true){
                 Panelmenu.add(btnRHJasaSarana);  
                 jmlmenu++;
             }
 
-            if(var.getbulanan_js()==true){
+            if(akses.getbulanan_js()==true){
                 Panelmenu.add(btnRBJasaSarana);  
                 jmlmenu++;
             }
 
-            if(var.getharian_kso()==true){
+            if(akses.getharian_kso()==true){
                 Panelmenu.add(btnRHKSO);  
                 jmlmenu++;
             }
 
-            if(var.getbulanan_kso()==true){
+            if(akses.getbulanan_kso()==true){
                 Panelmenu.add(btnRBKSO);  
                 jmlmenu++;
             }
 
-            if(var.getharian_menejemen()==true){
+            if(akses.getharian_menejemen()==true){
                 Panelmenu.add(btnRHMenejemen);  
                 jmlmenu++;
             }
 
-            if(var.getbulanan_menejemen()==true){
+            if(akses.getbulanan_menejemen()==true){
                 Panelmenu.add(btnRBMenejemen);  
                 jmlmenu++;
             }
 
-            if(var.getharian_paket_bhp()==true){
+            if(akses.getharian_paket_bhp()==true){
                 Panelmenu.add(btnRHPaketBHP);  
                 jmlmenu++;
             }
 
-            if(var.getbulanan_paket_bhp()==true){
+            if(akses.getbulanan_paket_bhp()==true){
                 Panelmenu.add(btnRBPaketBHP);  
                 jmlmenu++;
             }
 
-            if(var.getfee_visit_dokter()==true){
+            if(akses.getfee_visit_dokter()==true){
                 Panelmenu.add(btnfee_visit_dokter); 
                 jmlmenu++;
             }
 
-            if(var.getfee_bacaan_ekg()==true){
+            if(akses.getfee_bacaan_ekg()==true){
                 Panelmenu.add(btnfee_bacaan_ekg); 
                 jmlmenu++;
             }
 
-            if(var.getfee_rujukan_rontgen()==true){
+            if(akses.getfee_rujukan_rontgen()==true){
                 Panelmenu.add(btnfee_rujukan_rontgen); 
                 jmlmenu++;
             }
 
-            if(var.getfee_rujukan_ranap()==true){
+            if(akses.getfee_rujukan_ranap()==true){
                 Panelmenu.add(btnfee_rujukan_ranap); 
                 jmlmenu++;
             }
 
-            if(var.getfee_ralan()==true){
+            if(akses.getfee_ralan()==true){
                 Panelmenu.add(btnfee_ralan); 
                 jmlmenu++;
             }
 
-            if(var.getdetail_tindakan_okvk()==true){
+            if(akses.getdetail_tindakan_okvk()==true){
                 Panelmenu.add(btnDetailVKOK);
                 jmlmenu++;
             }
             
-            if(var.getpembayaran_ralan()==true){
+            if(akses.getpembayaran_ralan()==true){
                 Panelmenu.add(btnRalanMasuk);
                 jmlmenu++;
             }
 
-            if(var.getpembayaran_ranap()==true){
+            if(akses.getpembayaran_ranap()==true){
                 Panelmenu.add(btnRanapMasuk);
                 jmlmenu++;
             }
             
-            if(var.getpiutang_pasien()==true){
+            if(akses.getpiutang_pasien()==true){
                Panelmenu.add(btnLihatPiutang); 
                jmlmenu++;
             }
 
-            if(var.getpiutang_ralan()==true){
+            if(akses.getpiutang_ralan()==true){
                 Panelmenu.add(btnPiutangRalan);
                 jmlmenu++;
             }
 
-            if(var.getpiutang_ranap()==true){
+            if(akses.getpiutang_ranap()==true){
                 Panelmenu.add(btnPiutangRanap);
                 jmlmenu++;
             }
 
-            if(var.getrekap_pembayaran_ralan()==true){
+            if(akses.getrekap_pembayaran_ralan()==true){
                 Panelmenu.add(btnTagihanRalanPerhari);
                 jmlmenu++;
             }
 
-            if(var.getrekap_pembayaran_ranap()==true){
+            if(akses.getrekap_pembayaran_ranap()==true){
                 Panelmenu.add(btnTagihanRanapPerhari);
                 jmlmenu++;
             }
             
-            if(var.getpembayaran_per_unit()==true){
+            if(akses.getpembayaran_per_unit()==true){
                 Panelmenu.add(btnPembayaranPerUnit);
                 jmlmenu++;
             }
             
-            if(var.getrekap_pembayaran_per_unit()==true){
+            if(akses.getrekap_pembayaran_per_unit()==true){
                 Panelmenu.add(btnRekapPembayaranPerUnit);
                 jmlmenu++;
             }
 
-            if(var.gettagihan_masuk()==true){
+            if(akses.gettagihan_masuk()==true){
                 Panelmenu.add(btnTagihanMasuk);
                 jmlmenu++;
             }
 
-            if(var.gettambahan_biaya()==true){
+            if(akses.gettambahan_biaya()==true){
                 Panelmenu.add(btnTambahanBiaya);
                 jmlmenu++;
             }   
 
-            if(var.getpotongan_biaya()==true){
+            if(akses.getpotongan_biaya()==true){
                 Panelmenu.add(btnPotonganBiaya);
                 jmlmenu++;
             }     
             
-            if(var.getrekap_poli_anak()==true){
+            if(akses.getrekap_poli_anak()==true){
                 Panelmenu.add(btnRekapPoliAnak);
                 jmlmenu++;
             } 
 
-            if(var.getdeposit_pasien()==true){
+            if(akses.getdeposit_pasien()==true){
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
             }
 
-            if(var.getrekap_per_shift()==true){
+            if(akses.getrekap_per_shift()==true){
                 Panelmenu.add(btnRekapPershift);
                 jmlmenu++;
             }            
 
-            if(var.getpayment_point()==true){
+            if(akses.getpayment_point()==true){
                 Panelmenu.add(btnPaymentPoint);
                 jmlmenu++;
             }
             
-            if(var.getpayment_point2()==true){
+            if(akses.getpayment_point2()==true){
                 Panelmenu.add(btnPaymentPoint2);
                 jmlmenu++;
             }
             
-            if(var.getpembayaran_akun_bayar()==true){
+            if(akses.getpembayaran_akun_bayar()==true){
                 Panelmenu.add(btnPembayaranAkunBayar);
                 jmlmenu++;
             }
             
-            if(var.getpembayaran_akun_bayar2()==true){
+            if(akses.getpembayaran_akun_bayar2()==true){
                 Panelmenu.add(btnPembayaranAkunBayar2);
                 jmlmenu++;
             }
             
-            if(var.getpiutang_akun_piutang()==true){
+            if(akses.getpembayaran_akun_bayar3()==true){
+                Panelmenu.add(btnPembayaranAkunBayar3);
+                jmlmenu++;
+            }
+            
+            if(akses.getpiutang_akun_piutang()==true){
                 Panelmenu.add(btnPiutangPerAkunPiutang);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==8){ 
             jmlmenu=0;
-            if(var.geticd9()==true){
+            if(akses.geticd9()==true){
                 Panelmenu.add(btnICD9);
                 jmlmenu++;
             }
 
-            if(var.getpenyakit()==true){
+            if(akses.getpenyakit()==true){
                 Panelmenu.add(btnICD);
                 jmlmenu++;
             }
             
-            if(var.getpenyakit_pd3i()==true){
+            if(akses.getpenyakit_pd3i()==true){
                 Panelmenu.add(btnPenyakitPD3I);
                 jmlmenu++;
             }
 
-            if(var.getsurveilans_pd3i()==true){
+            if(akses.getsurveilans_pd3i()==true){
                 Panelmenu.add(btnSurveilansPD3I);
                 jmlmenu++;
             }
 
-            if(var.getsurveilans_ralan()==true){
+            if(akses.getsurveilans_ralan()==true){
                 Panelmenu.add(btnSurveilansRalan);
                 jmlmenu++;
             }
 
-            if(var.getsurveilans_ranap()==true){
+            if(akses.getsurveilans_ranap()==true){
                 Panelmenu.add(btnSurveilansRanap);
                 jmlmenu++;
             }
 
-            if(var.getpny_takmenular_ralan()==true){
+            if(akses.getpny_takmenular_ralan()==true){
                 Panelmenu.add(btnPnyTakMenularRalan);
                 jmlmenu++;
             }
 
-            if(var.getpny_takmenular_ranap()==true){
+            if(akses.getpny_takmenular_ranap()==true){
                 Panelmenu.add(btnPnyTakMenularRanap);
                 jmlmenu++;
             }
             
-            if(var.getpenyakit_menular_ralan()==true){
+            if(akses.getpenyakit_menular_ralan()==true){
                 Panelmenu.add(btnPnyMenularRalan);
                 jmlmenu++;
             }
 
-            if(var.getpenyakit_menular_ranap()==true){
+            if(akses.getpenyakit_menular_ranap()==true){
                 Panelmenu.add(btnPnyMenularRanap);
                 jmlmenu++;
             }
 
-            if(var.getobat_penyakit()==true){
+            if(akses.getobat_penyakit()==true){
                 Panelmenu.add(btnObatPenyakit);
                 jmlmenu++;
             }
 
-            if(var.getpenyakit_ralan()==true){                
+            if(akses.getpenyakit_ralan()==true){                
                 Panelmenu.add(btnFrekuensiRalan); 
                 jmlmenu++;
             }
 
-            if(var.getpenyakit_ranap()==true){  
+            if(akses.getpenyakit_ranap()==true){  
                 Panelmenu.add(btnFrekuensiRanap); 
                 jmlmenu++;
             }
 
-            if(var.getkunjungan_ralan()==true){  
+            if(akses.getkunjungan_ralan()==true){  
                 Panelmenu.add(btnKunjunganRalan);  
                 jmlmenu++;
             }
 
-            if(var.getkunjungan_ranap()==true){  
+            if(akses.getkunjungan_ranap()==true){  
                 Panelmenu.add(btnKunjunganRanap); 
                 jmlmenu++;
             }
             
-            if(var.getkunjungan_permintaan_lab()==true){  
+            if(akses.getkunjungan_permintaan_lab()==true){  
                 Panelmenu.add(btnKunjunganLabRalan); 
                 jmlmenu++;
             }
             
-            if(var.getkunjungan_permintaan_lab2()==true){  
+            if(akses.getkunjungan_permintaan_lab2()==true){  
                 Panelmenu.add(btnKunjunganLabRanap); 
                 jmlmenu++;
             }
             
-            if(var.getkunjungan_permintaan_radiologi()==true){  
+            if(akses.getkunjungan_permintaan_radiologi()==true){  
                 Panelmenu.add(btnKunjunganRadRalan); 
                 jmlmenu++;
             }
             
-            if(var.getkunjungan_permintaan_radiologi2()==true){  
+            if(akses.getkunjungan_permintaan_radiologi2()==true){  
                 Panelmenu.add(btnKunjunganRadRanap); 
                 jmlmenu++;
             }
 
-            if(var.getsensus_harian_poli()==true){  
+            if(akses.getsensus_harian_poli()==true){  
                 Panelmenu.add(btnSensusHarianPoli);  
                 jmlmenu++;
             }
             
-            if(var.getsensus_harian_ralan()==true){  
+            if(akses.getsensus_harian_ralan()==true){  
                 Panelmenu.add(btnSensusHarianRalan);  
                 jmlmenu++;
             }
 
-            if(var.getrl32()==true){  
+            if(akses.getrl32()==true){  
                 Panelmenu.add(btnRl32);   
                 jmlmenu++;
             }
 
-            if(var.getrl33()==true){  
+            if(akses.getrl33()==true){  
                 Panelmenu.add(btnRl33);                 
                 jmlmenu++;
             }
 
-            if(var.getrl34()==true){  
+            if(akses.getrl34()==true){  
                 Panelmenu.add(btnRl34);   
                 jmlmenu++;
             }
 
-            if(var.getrl36()==true){  
+            if(akses.getrl36()==true){  
                 Panelmenu.add(btnRl36);  
                 jmlmenu++;
             }
 
-            if(var.getrl37()==true){  
+            if(akses.getrl37()==true){  
                 Panelmenu.add(btnRl37); 
                 jmlmenu++;
             }
 
-            if(var.getrl38()==true){  
+            if(akses.getrl38()==true){  
                 Panelmenu.add(btnRl38);  
                 jmlmenu++;
             }
 
-            if(var.getrl4a()==true){  
+            if(akses.getrl4a()==true){  
                 Panelmenu.add(btnRl4a);                 
                 jmlmenu++;
             }
             
-            if(var.getrl4b()==true){  
+            if(akses.getrl4b()==true){  
                 Panelmenu.add(btnRl4b);                 
                 jmlmenu++;
             }
             
-            if(var.getrl4asebab()==true){  
+            if(akses.getrl4asebab()==true){  
                 Panelmenu.add(btnRl4asebab);                 
                 jmlmenu++;
             }
             
-            if(var.getrl4bsebab()==true){  
+            if(akses.getrl4bsebab()==true){  
                 Panelmenu.add(btnRl4bsebab);                 
                 jmlmenu++;
             }
             
-            if(var.getlama_pelayanan_ralan()==true){  
+            if(akses.getlama_pelayanan_ralan()==true){  
                 Panelmenu.add(btnLamaPelayananRalan);                 
                 jmlmenu++;
             }
             
-            if(var.getlama_pelayanan_apotek()==true){  
+            if(akses.getlama_pelayanan_apotek()==true){  
                 Panelmenu.add(btnLamaPelayananApotek);                 
                 jmlmenu++;
             }
             
-            if(var.getlama_pelayanan_radiologi()==true){  
+            if(akses.getlama_pelayanan_radiologi()==true){  
                 Panelmenu.add(btnLamaPelayananRadiologi);                 
                 jmlmenu++;
             }
             
-            if(var.getlama_pelayanan_lab()==true){  
+            if(akses.getlama_pelayanan_lab()==true){  
                 Panelmenu.add(btnLamaPelayananLab);                 
                 jmlmenu++;
             }
             
-            if(var.getharian_HAIs()==true){  
+            if(akses.getharian_HAIs()==true){  
                 Panelmenu.add(btnHarianHAIs);                 
                 jmlmenu++;
             }
             
-            if(var.getbulanan_HAIs()==true){  
+            if(akses.getbulanan_HAIs()==true){  
                 Panelmenu.add(btnBulananHAIs);                 
                 jmlmenu++;
             }
             
-            if(var.gethais_perbangsal()==true){  
+            if(akses.gethais_perbangsal()==true){  
                 Panelmenu.add(btnHAIsBangsal);                 
                 jmlmenu++;
             }
             
-            if(var.gethitung_bor()==true){  
+            if(akses.gethitung_bor()==true){  
                 Panelmenu.add(btnHitungBor);                 
                 jmlmenu++;
             }
             
-            if(var.gethitung_alos()==true){  
+            if(akses.gethitung_alos()==true){  
                 Panelmenu.add(btnHitungAlos);                 
                 jmlmenu++;
             }
             
-            if(var.getpembatalan_periksa_dokter()==true){  
+            if(akses.getpembatalan_periksa_dokter()==true){  
                 Panelmenu.add(btnPembatalanPeriksaDokter);                 
                 jmlmenu++;
             }
             
-            if(var.getcek_entry_ralan()==true){  
+            if(akses.getcek_entry_ralan()==true){  
                 Panelmenu.add(btnCekEntryRalan);                 
                 jmlmenu++;
             }
             
-            if(var.getranap_per_ruang()==true){  
+            if(akses.getranap_per_ruang()==true){  
                 Panelmenu.add(btnRanapPerRuang);                 
                 jmlmenu++;
             }
             
-            if(var.getpenyakit_ranap_cara_bayar()==true){  
+            if(akses.getpenyakit_ranap_cara_bayar()==true){  
                 Panelmenu.add(btnPenyakitRanapCaraBayar);                 
                 jmlmenu++;
             }
             
-            if(var.getrekap_lab_pertahun()==true){  
+            if(akses.getrekap_lab_pertahun()==true){  
                 Panelmenu.add(btnRekapLabPerTahun);                 
                 jmlmenu++;
             }
             
-            if(var.getperujuk_lab_pertahun()==true){  
+            if(akses.getperujuk_lab_pertahun()==true){  
                 Panelmenu.add(btnPerujukLabPerTahun);                 
                 jmlmenu++;
             }
             
-            if(var.getrekap_radiologi_pertahun()==true){  
+            if(akses.getrekap_radiologi_pertahun()==true){  
                 Panelmenu.add(btnRekapRadiologiPerTahun);                 
                 jmlmenu++;
             }
 
-            if(var.getperujuk_radiologi_pertahun()==true){  
+            if(akses.getperujuk_radiologi_pertahun()==true){  
                 Panelmenu.add(btnPerujukRadiologiPerTahun);                 
                 jmlmenu++;
             }
             
-            if(var.getjumlah_porsi_diet()==true){  
+            if(akses.getjumlah_porsi_diet()==true){  
                 Panelmenu.add(btnJumlahPorsiDiet);                 
                 jmlmenu++;
             }
             
-            if(var.getjumlah_macam_diet()==true){  
+            if(akses.getjumlah_macam_diet()==true){  
                 Panelmenu.add(btnJumlahMacamDiet);                 
                 jmlmenu++;
             }
             
+            if(akses.getkemenkes_sitt()==true){  
+                Panelmenu.add(btnDataSITT);                 
+                jmlmenu++;
+            }
+            
             if(tampilkantni.equals("Yes")){
-                if(var.getanggota_militer_dirawat()==true){
+                if(akses.getanggota_militer_dirawat()==true){
                     Panelmenu.add(btnAnggotaMiliterDirawat);
                     jmlmenu++;
                 }
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
             jmlmenu=0;
-            if(var.getkamar()==true){
+            if(akses.getkamar()==true){
                 Panelmenu.add(btnKamar);
                 jmlmenu++;
             }             
 
-            if(var.gettarif_ralan()==true){
+            if(akses.gettarif_ralan()==true){
                 Panelmenu.add(btnTindakanRalan);
                 jmlmenu++;
             }
 
-            if(var.gettarif_ranap()==true){
+            if(akses.gettarif_ranap()==true){
                 Panelmenu.add(btnTindakanRanap);
                 jmlmenu++;
             }
 
-            if(var.gettarif_lab()==true){
+            if(akses.gettarif_lab()==true){
                 Panelmenu.add(btnTarifLab);
                 jmlmenu++;
             }
 
-            if(var.gettarif_radiologi()==true){
+            if(akses.gettarif_radiologi()==true){
                 Panelmenu.add(btnTarifRadiologi);
                 jmlmenu++;
             }          
 
-            if(var.gettarif_operasi()==true){
+            if(akses.gettarif_operasi()==true){
                 Panelmenu.add(btnPaketOperasi);
                 jmlmenu++;
             }
 
-            if(var.gettarif_utd()==true){
+            if(akses.gettarif_utd()==true){
                 Panelmenu.add(btnTarifUtd);
                 jmlmenu++;
             }
 
-            if(var.getakun_rekening()==true){
+            if(akses.getakun_rekening()==true){
                 Panelmenu.add(btnRekening);  
                 jmlmenu++;
             }    
 
-            if(var.getrekening_tahun()==true){
+            if(akses.getrekening_tahun()==true){
                 Panelmenu.add(btnRekeningTahun);   
                 jmlmenu++;
             } 
             
-            if(var.getsaldo_akun_perbulan()==true){
+            if(akses.getsaldo_akun_perbulan()==true){
                 Panelmenu.add(btnSaldoAkunPerBulan);   
                 jmlmenu++;
             }
 
-            if(var.getakun_bayar()==true){
+            if(akses.getakun_bayar()==true){
                 Panelmenu.add(btnakun_bayar);  
                 jmlmenu++;
             }
 
-            if(var.getakun_piutang()==true){
+            if(akses.getakun_piutang()==true){
                 Panelmenu.add(btnAkunPiutang);  
                 jmlmenu++;
             }
 
-            if(var.getpengaturan_rekening()==true){
+            if(akses.getpengaturan_rekening()==true){
                 Panelmenu.add(btnPengaturanRekening);   
                 jmlmenu++;
             } 
 
-            if(var.getpengeluaran()==true){
+            if(akses.getpengeluaran()==true){
                 Panelmenu.add(btnPengeluaran);
                 jmlmenu++;
             }
 
-            if(var.getpemasukan_lain()==true){
+            if(akses.getpemasukan_lain()==true){
                 Panelmenu.add(btnPemasukanLain);
                 jmlmenu++;
             }
 
-            if(var.getdeposit_pasien()==true){                          
+            if(akses.getdeposit_pasien()==true){                          
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
             }
 
-            if(var.getpiutang_pasien()==true){
+            if(akses.getpiutang_pasien()==true){
                Panelmenu.add(btnLihatPiutang); 
                jmlmenu++;
             }
 
-            if(var.getrincian_piutang_pasien()==true){
+            if(akses.getrincian_piutang_pasien()==true){
                Panelmenu.add(btnRincianPiutangPasien); 
                jmlmenu++;
             }
 
-            if(var.getpiutang_pasien2()==true){
+            if(akses.getpiutang_pasien2()==true){
                Panelmenu.add(btnPiutangBelumLunas); 
                jmlmenu++;
             }
             
-            if(var.getdetail_piutang_penjab()==true){
+            if(akses.getdetail_piutang_penjab()==true){
                Panelmenu.add(btnPiutangPerCaraBayar); 
                jmlmenu++;
             }
 
-            if(var.getbayar_piutang()==true){
+            if(akses.getbayar_piutang()==true){
                Panelmenu.add(btnBayarPiutang); 
                jmlmenu++;
             }
 
-            if(var.gethutang_obat()==true){
+            if(akses.gethutang_obat()==true){
                 Panelmenu.add(btnHutangObat);
                 jmlmenu++;
             }
 
-            if(var.getbayar_pemesanan_obat()==true){
+            if(akses.getbayar_pemesanan_obat()==true){
                 Panelmenu.add(btnbayar_pemesanan);
                 jmlmenu++;
             }
             
-            if(var.gethutang_barang_non_medis()==true){
+            if(akses.gethutang_barang_non_medis()==true){
                 Panelmenu.add(btnHutangNonMedis);
                 jmlmenu++;
             }
             
-            if(var.getbayar_pesan_non_medis()==true){
+            if(akses.getbayar_pesan_non_medis()==true){
                 Panelmenu.add(btnBayarPesanNonMedis);
                 jmlmenu++;
             }
 
-            if(var.getposting_jurnal()==true){
+            if(akses.getposting_jurnal()==true){
                 Panelmenu.add(btnPostingJurnal); 
                 jmlmenu++;
             }
 
-            if(var.getjurnal_harian()==true){
+            if(akses.getjurnal_harian()==true){
                 Panelmenu.add(btnJurnalHarian);  
                 jmlmenu++;
             }
 
-            if(var.getbuku_besar()==true){
+            if(akses.getbuku_besar()==true){
                 Panelmenu.add(btnBubes);
                 jmlmenu++;
             }  
 
-            if(var.getcashflow()==true){
+            if(akses.getcashflow()==true){
                 Panelmenu.add(btnCashFlow);
                 jmlmenu++;
             }
 
-            if(var.getkeuangan()==true){
+            if(akses.getkeuangan()==true){
                 Panelmenu.add(btnLabaRugi);
                 jmlmenu++;
             }                               
 
         }else if(cmbMenu.getSelectedIndex()==10){ 
             jmlmenu=0;
-            if(var.getbpjs_cek_kartu()==true){
+            if(akses.getbpjs_cek_kartu()==true){
                 Panelmenu.add(btnCekBPJSKartu);
                 jmlmenu++;
             }    
 
-            if(var.getbpjs_cek_nik()==true){
+            if(akses.getbpjs_cek_nik()==true){
                 Panelmenu.add(btnCekBPJSNik);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_skdp()==true){
+            if(akses.getbpjs_cek_skdp()==true){
                 Panelmenu.add(btnCekBPJSSKDP);
                 jmlmenu++;
             }
 
-            if(var.getbpjs_cek_riwayat()==true){
+            if(akses.getbpjs_cek_riwayat()==true){
                 Panelmenu.add(btnCekBPJSRiwayatRujukanPCare);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_riwayat_rujukanrs()==true){
+            if(akses.getbpjs_cek_riwayat_rujukanrs()==true){
                 Panelmenu.add(btnCekBPJSRiwayatRujukanRS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_tanggal_rujukan()==true){
+            if(akses.getbpjs_cek_tanggal_rujukan()==true){
                 Panelmenu.add(btnCekBPJSTanggalRujukan);
                 jmlmenu++;
             }
 
-            if(var.getbpjs_cek_nomor_rujukan()==true){
+            if(akses.getbpjs_cek_nomor_rujukan()==true){
                 Panelmenu.add(btnCekBPJSNomorRujukanPCare);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_nomor_rujukan_rs()==true){
+            if(akses.getbpjs_cek_nomor_rujukan_rs()==true){
                 Panelmenu.add(btnCekBPJSNomorRujukanRS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_rujukan_kartu_pcare()==true){
+            if(akses.getbpjs_cek_rujukan_kartu_pcare()==true){
                 Panelmenu.add(btnCekBPJSRujukanKartuPCare);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_rujukan_kartu_rs()==true){
+            if(akses.getbpjs_cek_rujukan_kartu_rs()==true){
                 Panelmenu.add(btnCekBPJSRujukanKartuRS);
                 jmlmenu++;
             }
 
-            if(var.getbpjs_referensi_diagnosa()==true){
+            if(akses.getbpjs_referensi_diagnosa()==true){
                 Panelmenu.add(btnCekBPJSDiagnosa);
                 jmlmenu++;
             }
 
-            if(var.getbpjs_referensi_poli()==true){
+            if(akses.getbpjs_referensi_poli()==true){
                 Panelmenu.add(btnCekBPJSPoli);
                 jmlmenu++;
             }
             
-            if(var.getmapping_poli_bpjs()==true){
+            if(akses.getmapping_poli_bpjs()==true){
                 Panelmenu.add(btnMapingPoliBPJS);
                 jmlmenu++;
             }
 
-            if(var.getbpjs_referensi_faskes()==true){
+            if(akses.getbpjs_referensi_faskes()==true){
                 Panelmenu.add(btnCekBPJSFaskes);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_prosedur()==true){
+            if(akses.getbpjs_cek_prosedur()==true){
                 Panelmenu.add(btnCekReferensiProsedurBPJS);
                 jmlmenu++;
             }
 
-            if(var.getbpjs_cek_kelas_rawat()==true){
+            if(akses.getbpjs_cek_kelas_rawat()==true){
                 Panelmenu.add(btnCekReferensiKelasRawatBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_dokter()==true){
+            if(akses.getbpjs_cek_dokter()==true){
                 Panelmenu.add(btnCekReferensiDokterBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_spesialistik()==true){
+            if(akses.getbpjs_cek_spesialistik()==true){
                 Panelmenu.add(btnCekReferensiSpesialistikBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_ruangrawat()==true){
+            if(akses.getbpjs_cek_ruangrawat()==true){
                 Panelmenu.add(btnCekReferensiRuangRawatBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_carakeluar()==true){
+            if(akses.getbpjs_cek_carakeluar()==true){
                 Panelmenu.add(btnCekReferensiCaraKeluarBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_pasca_pulang()==true){
+            if(akses.getbpjs_cek_pasca_pulang()==true){
                 Panelmenu.add(btnCekReferensiPascaPulangBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_propinsi()==true){
+            if(akses.getbpjs_cek_propinsi()==true){
                 Panelmenu.add(btnCekReferensiPropinsiBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_kabupaten()==true){
+            if(akses.getbpjs_cek_kabupaten()==true){
                 Panelmenu.add(btnCekReferensiKabupatenBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_kecamatan()==true){
+            if(akses.getbpjs_cek_kecamatan()==true){
                 Panelmenu.add(btnCekReferensiKecamatanBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_dokterdpjp()==true){
+            if(akses.getbpjs_cek_dokterdpjp()==true){
                 Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_sep()==true){
+            if(akses.getbpjs_sep()==true){
                 Panelmenu.add(btnBPJSSEP);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_cek_sep()==true){
+            if(akses.getbpjs_cek_sep()==true){
                 Panelmenu.add(btnCekSEP);
                 jmlmenu++;
             }
             
-            if(var.getbpjs_rujukan_keluar()==true){
+            if(akses.getbpjs_rujukan_keluar()==true){
                 Panelmenu.add(btnRujukanKeluarBPJS);
                 jmlmenu++;
             }
 
-            if(var.getbpjs_monitoring_klaim()==true){
+            if(akses.getbpjs_monitoring_klaim()==true){
                 Panelmenu.add(btnMonitoringKlaim);
                 jmlmenu++;
             }
 
-            if(var.getskdp_bpjs()==true){
+            if(akses.getskdp_bpjs()==true){
                 Panelmenu.add(btnSKDPBPJS);
                 jmlmenu++;
             }
             
-            if(var.getreklasifikasi_ralan()==true){
+            if(akses.getreklasifikasi_ralan()==true){
                 Panelmenu.add(btnReklasifikasiRalan);
                 jmlmenu++;
             }
 
-            if(var.getreklasifikasi_ranap()==true){
+            if(akses.getreklasifikasi_ranap()==true){
                 Panelmenu.add(btnReklasifikasiRanap);
                 jmlmenu++;
             }
 
-            if(var.getaplicare_referensi_kamar()==true){
+            if(akses.getaplicare_referensi_kamar()==true){
                 Panelmenu.add(btnAplicareReferensiKamar);
                 jmlmenu++;
             }
 
-            if(var.getaplicare_ketersediaan_kamar()==true){
+            if(akses.getaplicare_ketersediaan_kamar()==true){
                 Panelmenu.add(btnAplicareKetersediaanKamar);
                 jmlmenu++;
             }
 
-            if(var.getinacbg_coder_nik()==true){
+            if(akses.getinacbg_coder_nik()==true){
                 Panelmenu.add(btnInaCBGCoderNIK);
                 jmlmenu++;
             }
 
-            if(var.getinacbg_klaim_baru_otomatis()==true){
+            if(akses.getinacbg_klaim_baru_otomatis()==true){
                 Panelmenu.add(btnInaCBGKlaimBaruOtomatis);
                 jmlmenu++;
             } 
 
-            if(var.getinacbg_klaim_baru_manual()==true){
+            if(akses.getinacbg_klaim_baru_manual()==true){
                 Panelmenu.add(btnInaCBGKlaimBaruManual);
                 jmlmenu++;
             } 
             
-            if(var.getinacbg_klaim_baru_manual2()==true){
+            if(akses.getinacbg_klaim_baru_manual2()==true){
                 Panelmenu.add(btnInaCBGKlaimBaruManual2);
                 jmlmenu++;
             } 
 
-            if(var.getinhealth_referensi_jenpel_ruang_rawat()==true){
+            if(akses.getinhealth_referensi_jenpel_ruang_rawat()==true){
                 Panelmenu.add(btnReferensiKamarInhealth);
                 jmlmenu++;
             }
 
-            if(var.getinhealth_referensi_poli()==true){
+            if(akses.getinhealth_referensi_poli()==true){
                 Panelmenu.add(btnCekInhealthPoli);
                 jmlmenu++;
             }
 
-            if(var.getinhealth_referensi_faskes()==true){
+            if(akses.getinhealth_referensi_faskes()==true){
                 Panelmenu.add(btnCekInhealthFaskes);
                 jmlmenu++;
             }
 
-            if(var.getinhealth_cek_eligibilitas()==true){
+            if(akses.getinhealth_cek_eligibilitas()==true){
                 Panelmenu.add(btnCekEligibilitasInhealth);
                 jmlmenu++;
             }
 
-            if(var.getinhealth_sjp()==true){
+            if(akses.getinhealth_sjp()==true){
                 Panelmenu.add(btnInhealthSJP);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_penyakit()==true){
+            if(akses.getpcare_cek_penyakit()==true){
                 Panelmenu.add(btnCekPCareDiagnosa);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_kesadaran()==true){
+            if(akses.getpcare_cek_kesadaran()==true){
                 Panelmenu.add(btnCekPCareKesadaran);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_dokter()==true){
+            if(akses.getpcare_cek_dokter()==true){
                 Panelmenu.add(btnPCareReferensiDokter);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_poli()==true){
+            if(akses.getpcare_cek_poli()==true){
                 Panelmenu.add(btnPCareReferensiPoli);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_provider()==true){
+            if(akses.getpcare_cek_provider()==true){
                 Panelmenu.add(btnPCareReferensiProvider);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_statuspulang()==true){
+            if(akses.getpcare_cek_statuspulang()==true){
                 Panelmenu.add(btnPCareReferensiStatusPulang);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_spesialis()==true){
+            if(akses.getpcare_cek_spesialis()==true){
                 Panelmenu.add(btnPCareReferensiSpesialis);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_subspesialis()==true){
+            if(akses.getpcare_cek_subspesialis()==true){
                 Panelmenu.add(btnPCareReferensiSubspesialis);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_sarana()==true){
+            if(akses.getpcare_cek_sarana()==true){
                 Panelmenu.add(btnPCareReferensiSarana);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_khusus()==true){
+            if(akses.getpcare_cek_khusus()==true){
                 Panelmenu.add(btnPCareReferensiKhusus);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_obat()==true){
+            if(akses.getpcare_cek_obat()==true){
                 Panelmenu.add(btnPCareReferensiObat);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_tindakan()==true){
+            if(akses.getpcare_cek_tindakan()==true){
                 Panelmenu.add(btnPCareReferensiTindakan);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_faskessubspesialis()==true){
+            if(akses.getpcare_cek_faskessubspesialis()==true){
                 Panelmenu.add(btnPCareFaskesSubspesialis);
                 jmlmenu++;
             }
 
-            if(var.getpcare_cek_faskesalihrawat()==true){
+            if(akses.getpcare_cek_faskesalihrawat()==true){
                 Panelmenu.add(btnPCareFaskesAlihRawat);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_faskesthalasemia()==true){
+            if(akses.getpcare_cek_faskesthalasemia()==true){
                 Panelmenu.add(btnPCareFaskesThalasemia);
                 jmlmenu++;
             }
             
-            if(var.getpcare_mapping_obat()==true){
+            if(akses.getpcare_mapping_obat()==true){
                 Panelmenu.add(btnPCareMapingObat);
                 jmlmenu++;
             }
             
-            if(var.getpcare_mapping_tindakan()==true){
+            if(akses.getpcare_mapping_tindakan()==true){
                 Panelmenu.add(btnPCareMapingTindakan);
                 jmlmenu++;
             }
             
-            if(var.getpcare_mapping_tindakan_ranap()==true){
+            if(akses.getpcare_mapping_tindakan_ranap()==true){
                 Panelmenu.add(btnPCareMapingTindakanRanap);
                 jmlmenu++;
             }
             
-            if(var.getpcare_mapping_dokter()==true){
+            if(akses.getpcare_mapping_dokter()==true){
                 Panelmenu.add(btnPCareMapingDokter);
                 jmlmenu++;
             }
             
-            if(var.getpcare_mapping_poli()==true){
+            if(akses.getpcare_mapping_poli()==true){
                 Panelmenu.add(btnPCareMapingPoli);
                 jmlmenu++;
             }
             
-            if(var.getpcare_club_prolanis()==true){
+            if(akses.getpcare_club_prolanis()==true){
                 Panelmenu.add(btnPCareClubProlanis);
                 jmlmenu++;
             }
             
-            if((var.getpcare_kegiatan_kelompok()==true)||(var.getpcare_peserta_kegiatan_kelompok()==true)){
+            if((akses.getpcare_kegiatan_kelompok()==true)||(akses.getpcare_peserta_kegiatan_kelompok()==true)){
                 Panelmenu.add(btnPCareKegiatanKelompok);
                 jmlmenu++;
             }
             
-            if(var.getpcare_peserta_kegiatan_kelompok()==true){
+            if(akses.getpcare_peserta_kegiatan_kelompok()==true){
                 Panelmenu.add(btnPCarePesertaKegiatanKelompok);
                 jmlmenu++;
             }
             
-            if(var.getbridging_pcare_daftar()==true){
+            if(akses.getbridging_pcare_daftar()==true){
                 Panelmenu.add(btnPCarePendaftaran);
                 jmlmenu++;
             }
             
-            if(var.getpcare_cek_rujukan()==true){
+            if(akses.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
             }
             
-            if(var.getpcare_pemberian_obat()==true){
+            if(akses.getpcare_pemberian_obat()==true){
                 Panelmenu.add(btnPCareBeriObat);
                 jmlmenu++;
             }
             
-            if(var.getsisrute_referensi_faskes()==true){
+            if(akses.getpcare_pemberian_tindakan()==true){
+                Panelmenu.add(btnPCareBeriTindakan);
+                jmlmenu++;
+            }
+            
+            if(akses.getsisrute_referensi_faskes()==true){
                 Panelmenu.add(btnCekSisruteFaskes);
                 jmlmenu++;
             }
             
-            if(var.getsisrute_referensi_alasanrujuk()==true){
+            if(akses.getsisrute_referensi_alasanrujuk()==true){
                 Panelmenu.add(btnCekSisruteAlasanRujuk);
                 jmlmenu++;
             }
             
-            if(var.getsisrute_referensi_diagnosa()==true){
+            if(akses.getsisrute_referensi_diagnosa()==true){
                 Panelmenu.add(btnCekSisruteDiagnosa);
                 jmlmenu++;
             }
             
-            if(var.getsisrute_rujukan_masuk()==true){
+            if(akses.getsisrute_rujukan_masuk()==true){
                 Panelmenu.add(btnRujukanMasukSisrute);
                 jmlmenu++;
             }
             
-            if(var.getsisrute_rujukan_keluar()==true){
+            if(akses.getsisrute_rujukan_keluar()==true){
                 Panelmenu.add(btnRujukanKeluarSisrute);
+                jmlmenu++;
+            }
+            
+            if(akses.getsiranap_ketersediaan_kamar()==true){
+                Panelmenu.add(btnSiranapKetersediaanKamar);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
-            if(var.getperusahaan_pasien()==true){
+            if(akses.getperusahaan_pasien()==true){
                 Panelmenu.add(btnPerusahaan);
                 jmlmenu++;
             }
             
-            if(var.getsuku_bangsa()==true){
+            if(akses.getsuku_bangsa()==true){
                 Panelmenu.add(btnSuku);
                 jmlmenu++;
             }
             
-            if(var.getbahasa_pasien()==true){
+            if(akses.getbahasa_pasien()==true){
                 Panelmenu.add(btnBahasa);
                 jmlmenu++;
             }
             
             if(tampilkantni.equals("Yes")){
-                if(var.getgolongan_tni()==true){
+                if(akses.getgolongan_tni()==true){
                     Panelmenu.add(btnGolonganTNI);
                     jmlmenu++;
                 }
 
-                if(var.getsatuan_tni()==true){
+                if(akses.getsatuan_tni()==true){
                     Panelmenu.add(btnSatuanTNI);
                     jmlmenu++;
                 }
 
-                if(var.getjabatan_tni()==true){
+                if(akses.getjabatan_tni()==true){
                     Panelmenu.add(btnJabatanTNI);
                     jmlmenu++;
                 }
 
-                if(var.getpangkat_tni()==true){
+                if(akses.getpangkat_tni()==true){
                     Panelmenu.add(btnPangkatTNI);
                     jmlmenu++;
                 }
 
-                if(var.getgolongan_polri()==true){
+                if(akses.getgolongan_polri()==true){
                     Panelmenu.add(btnGolonganPolri);
                     jmlmenu++;
                 }
 
-                if(var.getsatuan_polri()==true){
+                if(akses.getsatuan_polri()==true){
                     Panelmenu.add(btnSatuanPolri);
                     jmlmenu++;
                 }
 
-                if(var.getjabatan_polri()==true){
+                if(akses.getjabatan_polri()==true){
                     Panelmenu.add(btnJabatanPolri);
                     jmlmenu++;
                 }
 
-                if(var.getpangkat_polri()==true){
+                if(akses.getpangkat_polri()==true){
                     Panelmenu.add(btnPangkatPolri);
                     jmlmenu++;
                 }
             }     
             
-            if(var.getcacat_fisik()==true){
+            if(akses.getcacat_fisik()==true){
                 Panelmenu.add(btnCacatFisik);
                 jmlmenu++;
             }
             
-            if(var.getpasien()==true){
+            if(akses.getpasien()==true){
                 Panelmenu.add(btnPasien);
                 jmlmenu++;
             }
 
-            if(var.getkelahiran_bayi()==true){
+            if(akses.getkelahiran_bayi()==true){
                 Panelmenu.add(btnLahir);
                 jmlmenu++;
             }
             
-            if(var.getcatatan_pasien()==true){
+            if(akses.getcatatan_pasien()==true){
                 Panelmenu.add(btnCatatanPasien);
                 jmlmenu++;               
             }
 
-            if(var.getpasien_meninggal()==true){
+            if(akses.getpasien_meninggal()==true){
                 Panelmenu.add(btnPasienMati);
                 jmlmenu++;
             }
 
-            if(var.getdiagnosa_pasien()==true){
+            if(akses.getdiagnosa_pasien()==true){
                 Panelmenu.add(btnDiagnosa); 
                 jmlmenu++;
             }
             
-            if(var.getinsiden_keselamatan()==true){
+            if(akses.getinsiden_keselamatan()==true){
                 Panelmenu.add(btnInsidenKeselamatan);
                 jmlmenu++;
             }
             
-            if(var.getdata_HAIs()==true){
+            if(akses.getdata_HAIs()==true){
                 Panelmenu.add(btnDataHAIs); 
                 jmlmenu++;
             }
             
-            if(var.getinsiden_keselamatan_pasien()==true){
+            if(akses.getinsiden_keselamatan_pasien()==true){
                 Panelmenu.add(btnInsidenKeselamatanPasien); 
                 jmlmenu++;
             }
 
-            if(var.getpeminjaman_berkas()==true){
+            if(akses.getpeminjaman_berkas()==true){
                Panelmenu.add(btnSirkulasiBerkas); 
                jmlmenu++;
             }
 
-            if(var.getresume_pasien()==true){
+            if(akses.getresume_pasien()==true){
                 Panelmenu.add(btnResume);
                 jmlmenu++;
             }   
 
-            if(var.getretensi_rm()==true){
+            if(akses.getretensi_rm()==true){
                 Panelmenu.add(btnRetensiRM);
                 jmlmenu++;
             }
 
-            if(var.getmutasi_berkas()==true){
+            if(akses.getmutasi_berkas()==true){
                 Panelmenu.add(btnMutasiBerkas);
                 jmlmenu++;
             } 
             
-            if(var.getberkas_digital_perawatan()==true){
+            if(akses.getberkas_digital_perawatan()==true){
                 Panelmenu.add(btnBerkasDigitalPerawatan);
                 jmlmenu++;
             } 
             
-            if(var.getpengaduan_pasien()==true){
+            if(akses.getpengaduan_pasien()==true){
                 Panelmenu.add(btnPengaduan);
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==12){  
             jmlmenu=0;
-            if(var.getpengambilan_utd2()==true){
+            if(akses.getpengambilan_utd2()==true){
                 Panelmenu.add(btnPengambilanUTD2); 
                 jmlmenu++;
             } 
 
-            if(var.getutd_medis_rusak()==true){
+            if(akses.getutd_medis_rusak()==true){
                 Panelmenu.add(btnUTDMedisRusak); 
                 jmlmenu++;
             } 
 
-            if(var.getpengambilan_penunjang_utd2()==true){
+            if(akses.getpengambilan_penunjang_utd2()==true){
                 Panelmenu.add(btnPengambilanPenunjangUTD2); 
                 jmlmenu++;
             }
 
-            if(var.getutd_penunjang_rusak()==true){
+            if(akses.getutd_penunjang_rusak()==true){
                 Panelmenu.add(btnUTDPenunjangRusak); 
                 jmlmenu++;
             } 
 
-            if(var.getutd_komponen_darah()==true){
+            if(akses.getutd_komponen_darah()==true){
                 Panelmenu.add(btnUTDKomponenDarah); 
                 jmlmenu++;
             } 
 
-            if(var.getutd_donor()==true){
+            if(akses.getutd_donor()==true){
                 Panelmenu.add(btnUTDDonorDarah); 
                 jmlmenu++;
             } 
 
-            if(var.getutd_cekal_darah()==true){
+            if(akses.getutd_cekal_darah()==true){
                 Panelmenu.add(btnUTDCekalDarah); 
                 jmlmenu++;
             } 
 
-            if(var.getutd_pemisahan_darah()==true){
+            if(akses.getutd_pemisahan_darah()==true){
                 Panelmenu.add(btnUTDPemisahanDarah); 
                 jmlmenu++;
             } 
 
-            if(var.getutd_stok_darah()==true){
+            if(akses.getutd_stok_darah()==true){
                 Panelmenu.add(btnUTDStokDarah); 
                 jmlmenu++;
             } 
 
-            if(var.getutd_penyerahan_darah()==true){
+            if(akses.getutd_penyerahan_darah()==true){
                 Panelmenu.add(btnUTDPenyerahanDarah); 
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==13){ 
             jmlmenu=0;
-            if(var.getgrafik_kunjungan_poli()==true){
+            if(akses.getgrafik_kunjungan_poli()==true){
                 Panelmenu.add(btnGrafikKunjunganPoli);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_perdokter()==true){
+            if(akses.getgrafik_kunjungan_perdokter()==true){
                 Panelmenu.add(btnGrafikKunjunganPerDokter);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_perpekerjaan()==true){
+            if(akses.getgrafik_kunjungan_perpekerjaan()==true){
                 Panelmenu.add(btnGrafikKunjunganPerPekerjaan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_perpendidikan()==true){
+            if(akses.getgrafik_kunjungan_perpendidikan()==true){
                 Panelmenu.add(btnGrafikKunjunganPerPendidikan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_pertahun()==true){
+            if(akses.getgrafik_kunjungan_pertahun()==true){
                 Panelmenu.add(btnGrafikKunjunganPerTahun);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_perbulan()==true){
+            if(akses.getgrafik_kunjungan_perbulan()==true){
                 Panelmenu.add(btnGrafikKunjunganPerBulan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_pertanggal()==true){
+            if(akses.getgrafik_kunjungan_pertanggal()==true){
                 Panelmenu.add(btnGrafikKunjunganPerTanggal);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_demografi()==true){
+            if(akses.getgrafik_kunjungan_demografi()==true){
                 Panelmenu.add(btnGrafikDemografiRegistrasi);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusdaftartahun()==true){
+            if(akses.getgrafik_kunjungan_statusdaftartahun()==true){
                 Panelmenu.add(btnGrafikStatusRegPerTahun);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusdaftartahun2()==true){
+            if(akses.getgrafik_kunjungan_statusdaftartahun2()==true){
                 Panelmenu.add(btnGrafikStatusRegPerTahun2);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusdaftarbulan()==true){
+            if(akses.getgrafik_kunjungan_statusdaftarbulan()==true){
                 Panelmenu.add(btnGrafikStatusRegPerBulan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusdaftarbulan2()==true){
+            if(akses.getgrafik_kunjungan_statusdaftarbulan2()==true){
                 Panelmenu.add(btnGrafikStatusRegPerBulan2);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusdaftartanggal()==true){
+            if(akses.getgrafik_kunjungan_statusdaftartanggal()==true){
                 Panelmenu.add(btnGrafikStatusRegPerTanggal);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusdaftartanggal2()==true){
+            if(akses.getgrafik_kunjungan_statusdaftartanggal2()==true){
                 Panelmenu.add(btnGrafikStatusRegPerTanggal2);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusbataltahun()==true){
+            if(akses.getgrafik_kunjungan_statusbataltahun()==true){
                 Panelmenu.add(btnGrafikStatusRegBatalPerTahun);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusbatalbulan()==true){
+            if(akses.getgrafik_kunjungan_statusbatalbulan()==true){
                 Panelmenu.add(btnGrafikStatusRegBatalPerBulan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_statusbataltanggal()==true){
+            if(akses.getgrafik_kunjungan_statusbataltanggal()==true){
                 Panelmenu.add(btnGrafikStatusRegBatalPerTanggal);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_percarabayar()==true){
+            if(akses.getgrafik_kunjungan_percarabayar()==true){
                 Panelmenu.add(btnGrafikKunjunganPerCarabayar);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_ranaptahun()==true){
+            if(akses.getgrafik_kunjungan_ranaptahun()==true){
                 Panelmenu.add(btnGrafikKunjunganRanapPerTahun);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_lab_ralantahun()==true){
+            if(akses.getgrafik_lab_ralantahun()==true){
                 Panelmenu.add(btnGrafikLabRalanPerTahun);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_rad_ralantahun()==true){
+            if(akses.getgrafik_rad_ralantahun()==true){
                 Panelmenu.add(btnGrafikRadRalanPerTahun);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_per_perujuk()==true){
+            if(akses.getgrafik_per_perujuk()==true){
                 Panelmenu.add(btnGrafikPerPerujuk);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_lab_ralanbulan()==true){
+            if(akses.getgrafik_lab_ralanbulan()==true){
                 Panelmenu.add(btnGrafikLabRalanPerBulan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_rad_ralanbulan()==true){
+            if(akses.getgrafik_rad_ralanbulan()==true){
                 Panelmenu.add(btnGrafikRadRalanPerBulan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_lab_ralanhari()==true){
+            if(akses.getgrafik_lab_ralanhari()==true){
                 Panelmenu.add(btnGrafikLabRalanPerHari);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_rad_ralanhari()==true){
+            if(akses.getgrafik_rad_ralanhari()==true){
                 Panelmenu.add(btnGrafikRadRalanPerHari);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_ikp_pertahun()==true){
+            if(akses.getgrafik_ikp_pertahun()==true){
                 Panelmenu.add(btnGrafikKejadianIKPPerTahun);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_ikp_perbulan()==true){
+            if(akses.getgrafik_ikp_perbulan()==true){
                 Panelmenu.add(btnGrafikKejadianIKPPerBulan);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_ikp_pertanggal()==true){
+            if(akses.getgrafik_ikp_pertanggal()==true){
                 Panelmenu.add(btnGrafikKejadianIKPPerTanggal);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_ikp_jenis()==true){
+            if(akses.getgrafik_ikp_jenis()==true){
                 Panelmenu.add(btnGrafikKejadianIKPPerJenis);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_ikp_dampak()==true){
+            if(akses.getgrafik_ikp_dampak()==true){
                 Panelmenu.add(btnGrafikKejadianIKPPerDampak);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_per_agama()==true){
+            if(akses.getgrafik_kunjungan_per_agama()==true){
                 Panelmenu.add(btnGrafikKunjunganPerAgama);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_per_umur()==true){
+            if(akses.getgrafik_kunjungan_per_umur()==true){
                 Panelmenu.add(btnGrafikKunjunganPerUmur);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_suku()==true){
+            if(akses.getgrafik_kunjungan_suku()==true){
                 Panelmenu.add(btnGrafikKunjunganPerSuku);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_bahasa()==true){
+            if(akses.getgrafik_kunjungan_bahasa()==true){
                 Panelmenu.add(btnGrafikKunjunganPerBahasa);
                 jmlmenu++;
             }
             
-            if(var.getgrafik_kunjungan_per_cacat()==true){
+            if(akses.getgrafik_kunjungan_per_cacat()==true){
                 Panelmenu.add(btnGrafikKunjunganPerCacat);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_periodelaporan()==true){
+                Panelmenu.add(btnGrafikTBLaporanPeriode);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_rujukan()==true){
+                Panelmenu.add(btnGrafikTBRujukan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_riwayat()==true){
+                Panelmenu.add(btnGrafikTBRiwayat);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_tipediagnosis()==true){
+                Panelmenu.add(btnGrafikTBTipeDiagnosis);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_statushiv()==true){
+                Panelmenu.add(btnGrafikTBSTatusHIV);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_skoringanak()==true){
+                Panelmenu.add(btnGrafikTBSkoringAnak);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_konfirmasiskoring5()==true){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_konfirmasiskoring6()==true){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_sumberobat()==true){
+                Panelmenu.add(btnGrafikTBSumberObat);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_hasilakhirpengobatan()==true){
+                Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tb_hasilteshiv()==true){
+                Panelmenu.add(btnGrafikTBHasilTesHIV);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_air_pdam_pertanggal()==true){
+                Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_air_pdam_perbulan()==true){
+                Panelmenu.add(btnGrafikPemakaianAirPDAMPerBulan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_limbahb3_pertanggal()==true){
+                Panelmenu.add(btnGrafikLimbahB3MedisPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_limbahb3_perbulan()==true){
+                Panelmenu.add(btnGrafikLimbahB3MedisPerBulan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_limbahdomestik_pertanggal()==true){
+                Panelmenu.add(btnGrafikLimbahDomestikPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_limbahdomestik_perbulan()==true){
+                Panelmenu.add(btnGrafikLimbahDomestikPerBulan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
-            if(var.getsurat_indeks()==true){
+            if(akses.getsurat_indeks()==true){
                 Panelmenu.add(btnSuratIndeks);
                 jmlmenu++;
             }
             
-            if(var.getsurat_map()==true){
+            if(akses.getsurat_map()==true){
                 Panelmenu.add(btnSuratMap);
                 jmlmenu++;
             }
             
-            if(var.getsurat_almari()==true){
+            if(akses.getsurat_almari()==true){
                 Panelmenu.add(btnSuratAlmari);
                 jmlmenu++;
             }
             
-            if(var.getsurat_rak()==true){
+            if(akses.getsurat_rak()==true){
                 Panelmenu.add(btnSuratRak);
                 jmlmenu++;
             }
             
-            if(var.getsurat_ruang()==true){
+            if(akses.getsurat_ruang()==true){
                 Panelmenu.add(btnSuratRuang);
                 jmlmenu++;
             }
             
-            if(var.getsurat_klasifikasi()==true){
+            if(akses.getsurat_klasifikasi()==true){
                 Panelmenu.add(btnSuratKlasifikasi);
                 jmlmenu++;
             }
             
-            if(var.getsurat_status()==true){
+            if(akses.getsurat_status()==true){
                 Panelmenu.add(btnSuratStatus);
                 jmlmenu++;
             }
             
-            if(var.getsurat_sifat()==true){
+            if(akses.getsurat_sifat()==true){
                 Panelmenu.add(btnSuratSifat);
                 jmlmenu++;
             }
             
-            if(var.getsurat_balas()==true){
+            if(akses.getsurat_balas()==true){
                 Panelmenu.add(btnSuratBalas);
                 jmlmenu++;
             }
             
-            if(var.getsurat_masuk()==true){
+            if(akses.getsurat_masuk()==true){
                 Panelmenu.add(btnSuratMasuk);
                 jmlmenu++;
             }
             
-            if(var.getsurat_keluar()==true){
+            if(akses.getsurat_keluar()==true){
                 Panelmenu.add(btnSuratKeluar);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==15){   
+        }else if(cmbMenu.getSelectedIndex()==15){ 
             jmlmenu=0;
-            if(var.getaplikasi()==true){
+            if(akses.getruang_perpustakaan()==true){
+                Panelmenu.add(btnRuangPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getkategori_perpustakaan()==true){
+                Panelmenu.add(btnKategoriPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getjenis_perpustakaan()==true){
+                Panelmenu.add(btnJenisPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpengarang_perpustakaan()==true){
+                Panelmenu.add(btnPengarangPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenerbit_perpustakaan()==true){
+                Panelmenu.add(btnPenerbitPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getkoleksi_perpustakaan()==true){
+                Panelmenu.add(btnKoleksiPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getinventaris_perpustakaan()==true){
+                Panelmenu.add(btnInventarisPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getset_peminjaman_perpustakaan()==true){
+                Panelmenu.add(btnPengaturanPeminjamanPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getdenda_perpustakaan()==true){
+                Panelmenu.add(btnDendaPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getanggota_perpustakaan()==true){
+                Panelmenu.add(btnAnggotaPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpeminjaman_perpustakaan()==true){
+                Panelmenu.add(btnPeminjamanPerpustakaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getbayar_denda_perpustakaan()==true){
+                Panelmenu.add(btnBayarDendaPerpustakaan);
+                jmlmenu++;
+            }
+        }else if(cmbMenu.getSelectedIndex()==16){   
+            jmlmenu=0;
+            if(akses.getaplikasi()==true){
                 Panelmenu.add(btnSetupAplikasi);
                 jmlmenu++;
             }
 
-            if(var.getadmin()==true){
+            if(akses.getadmin()==true){
                 Panelmenu.add(btnAdmin);
                 jmlmenu++;
             }
 
-            if(var.getsetup_pjlab()==true){
+            if(akses.getsetup_pjlab()==true){
                 Panelmenu.add(btnSetPenjab);
                 jmlmenu++;
             }
 
-            if(var.getsetup_otolokasi()==true){
+            if(akses.getsetup_otolokasi()==true){
                 Panelmenu.add(btnSetupOtoLokasi);
                 jmlmenu++;
             }
 
-            if(var.getsetup_jam_kamin()==true){
+            if(akses.getsetup_jam_kamin()==true){
                 Panelmenu.add(btnSetupJamInap);
                 jmlmenu++;
             }
 
-            if(var.getset_harga_kamar()==true){
+            if(akses.getset_harga_kamar()==true){
                 Panelmenu.add(btnSetHargaKamar);
                 jmlmenu++;
             }
 
-            if(var.getsetup_embalase()==true){
+            if(akses.getsetup_embalase()==true){
                 Panelmenu.add(btnSetupEmbalase);
                 jmlmenu++;
             }                                
 
-            if(var.getuser()==true){
+            if(akses.getuser()==true){
                 Panelmenu.add(btnUser);
                 jmlmenu++;
             }
 
-            if(var.gettracer_login()==true){
+            if(akses.gettracer_login()==true){
                 Panelmenu.add(btnTracker);
                 jmlmenu++;
             }
 
-            if(var.getvakum()==true){
+            if(akses.getvakum()==true){
                 Panelmenu.add(btnVakum);
                 jmlmenu++;
             }
 
-            if(var.getdisplay()==true){
+            if(akses.getdisplay()==true){
                Panelmenu.add(btnDisplay); 
                jmlmenu++;
             }
             
-            if(var.getdisplay_apotek()==true){
+            if(akses.getdisplay_apotek()==true){
                Panelmenu.add(btnDisplayApotek); 
                jmlmenu++;
             }
 
-            if(var.getset_harga_obat()==true){
+            if(akses.getset_harga_obat()==true){
                 Panelmenu.add(btnSetupHarga);
                 jmlmenu++;
             }
 
-            if(var.getset_harga_obat_ralan()==true){
+            if(akses.getset_harga_obat_ralan()==true){
                 Panelmenu.add(btnSetObatRalan);
                 jmlmenu++;
             }
 
-            if(var.getset_harga_obat_ranap()==true){
+            if(akses.getset_harga_obat_ranap()==true){
                 Panelmenu.add(btnSetObatRanap);
                 jmlmenu++;
             }
 
-            if(var.getset_penggunaan_tarif()==true){
+            if(akses.getset_penggunaan_tarif()==true){
                 Panelmenu.add(btnSetupTarif);
                 jmlmenu++;
             }
 
-            if(var.getset_oto_ralan()==true){
+            if(akses.getset_oto_ralan()==true){
                 Panelmenu.add(btnSetOtoRalan);
                 jmlmenu++;
             }
 
-            if(var.getbiaya_harian()==true){
+            if(akses.getbiaya_harian()==true){
                 Panelmenu.add(btnSetBiayaHarian);
                 jmlmenu++;
             }
 
-            if(var.getbiaya_masuk_sekali()==true){
+            if(akses.getbiaya_masuk_sekali()==true){
                 Panelmenu.add(btnSetBiayaMasukSekali);
                 jmlmenu++;
             }
 
-            if(var.getset_no_rm()==true){
+            if(akses.getset_no_rm()==true){
                 Panelmenu.add(btnSetupRM);
                 jmlmenu++;
             }
 
-            if(var.getset_nota()==true){
+            if(akses.getset_nota()==true){
                 Panelmenu.add(btnSetupNota);
                 jmlmenu++;
             }
 
-            if(var.getclosing_kasir()==true){
+            if(akses.getclosing_kasir()==true){
                 Panelmenu.add(btnClosingKasir);
                 jmlmenu++;
             }
 
-            if(var.getketerlambatan_presensi()==true){
+            if(akses.getketerlambatan_presensi()==true){
                 Panelmenu.add(btnKeterlambatanPresensi);
                 jmlmenu++;
             }
             
-            if(var.getset_input_parsial()==true){
+            if(akses.getset_input_parsial()==true){
                 Panelmenu.add(btnSetInputParsial);
+                jmlmenu++;
+            }
+            
+            if(akses.getpassword_asuransi()==true){
+                Panelmenu.add(btnPasswordAsuransi);
                 jmlmenu++;
             }
         }    
@@ -16539,180 +17679,180 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     private void isCariKosong() {
         jmlmenu=0;     
-        if(var.getinformasi_kamar()==true){
+        if(akses.getinformasi_kamar()==true){
             Panelmenu.add(btnAnalisaKamar);
             jmlmenu++;
         }
 
-        if(var.getjadwal_praktek()==true){                
+        if(akses.getjadwal_praktek()==true){                
             Panelmenu.add(BtnJadwal);
             jmlmenu++;
         }
 
-        if(var.getregistrasi()==true){
+        if(akses.getregistrasi()==true){
             Panelmenu.add(btnRegistrasi);
             jmlmenu++;
         }
 
-        if(var.getbooking_registrasi()==true){
+        if(akses.getbooking_registrasi()==true){
             Panelmenu.add(btnBookingRegistrasi);
             jmlmenu++;
         }
 
-        if(var.getigd()==true){
+        if(akses.getigd()==true){
             Panelmenu.add(btnIGD);  
             jmlmenu++;
         }               
 
-        if(var.gettindakan_ralan()==true){
+        if(akses.gettindakan_ralan()==true){
             Panelmenu.add(btnRalan); 
             jmlmenu++;
         }
 
-        if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
+        if((akses.getkamar_inap()==true)||(akses.getbilling_ranap()==true)||(akses.gettindakan_ranap()==true)){
             Panelmenu.add(btnKamarInap);
             jmlmenu++;
         }
         
-        if(var.getbooking_operasi()==true){
+        if(akses.getbooking_operasi()==true){
             Panelmenu.add(btnJadwalOperasi);
             jmlmenu++;
         }
 
-        if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
+        if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
             Panelmenu.add(btnPermintaanLab);
             jmlmenu++;
         }
         
-        if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
+        if((akses.getpermintaan_radiologi()==true)||(akses.getperiksa_radiologi()==true)){
             Panelmenu.add(btnPermintaanRadiologi);
             jmlmenu++;
         }
 
-        if(var.getdpjp_ranap()==true){
+        if(akses.getdpjp_ranap()==true){
             Panelmenu.add(BtnDpjp);
             jmlmenu++;
         }
 
-        if(var.gettindakan_ranap()==true){
+        if(akses.gettindakan_ranap()==true){
             Panelmenu.add(btnRanap);
             jmlmenu++;
         }
 
-        if(var.getoperasi()==true){
+        if(akses.getoperasi()==true){
             Panelmenu.add(btnTagihanOperasi);
             jmlmenu++;
         }
 
-        if(var.getrujukan_keluar()==true){
+        if(akses.getrujukan_keluar()==true){
             Panelmenu.add(btnRujukPasien);
             jmlmenu++;
         }
 
-        if(var.getrujukan_masuk()==true){                
+        if(akses.getrujukan_masuk()==true){                
             Panelmenu.add(btnRujukMasuk);
             jmlmenu++;
         }
 
-        if(var.getberi_obat()==true){
+        if(akses.getberi_obat()==true){
             Panelmenu.add(btnBeriObat);
             jmlmenu++;
         }
 
-        if(var.getresep_pulang()==true){                
+        if(akses.getresep_pulang()==true){                
             Panelmenu.add(btnResepPulang);
             jmlmenu++;
         }
 
-        if(var.getresep_obat()==true){
+        if(akses.getresep_obat()==true){
             Panelmenu.add(btnResepObat);
             jmlmenu++;
         }
 
-        if(var.getdiet_pasien()==true){
+        if(akses.getdiet_pasien()==true){
             Panelmenu.add(btnDiet);
             jmlmenu++;
         }
 
-        if(var.getperiksa_lab()==true){
+        if(akses.getperiksa_lab()==true){
             Panelmenu.add(btnLaboratorium);
             jmlmenu++;
         }
 
-        if(var.getperiksa_radiologi()==true){
+        if(akses.getperiksa_radiologi()==true){
             Panelmenu.add(btnPeriksaRadiologi);   
             jmlmenu++;
         }
 
-        if((var.getkasir_ralan()==true)||(var.getbilling_ralan()==true)){
+        if((akses.getkasir_ralan()==true)||(akses.getbilling_ralan()==true)){
             Panelmenu.add(btnKasir);     
             jmlmenu++;
         }
 
-        if(var.getdeposit_pasien()==true){                          
+        if(akses.getdeposit_pasien()==true){                          
             Panelmenu.add(btnDeposit);
             jmlmenu++;
         }
 
-        if(var.getpiutang_pasien()==true){
+        if(akses.getpiutang_pasien()==true){
            Panelmenu.add(btnLihatPiutang); 
            jmlmenu++;
         }            
 
 
-        if(var.getbarcoderalan()==true){
+        if(akses.getbarcoderalan()==true){
             Panelmenu.add(btnBarcodeRalan);
             jmlmenu++;
         }
 
-        if(var.getbarcoderanap()==true){
+        if(akses.getbarcoderanap()==true){
             Panelmenu.add(btnBarcodeRanap);
             jmlmenu++;
         }
 
-        if(var.getpetugas()==true){
+        if(akses.getpetugas()==true){
             Panelmenu.add(btnPegawai);
             jmlmenu++;
         }
 
-        if(var.getdokter()==true){
+        if(akses.getdokter()==true){
             Panelmenu.add(btnDokter);
             jmlmenu++;
         }
 
-        if(var.getbarcode()==true){
+        if(akses.getbarcode()==true){
             Panelmenu.add(btnBarcode);  
             jmlmenu++;
         }
 
-        if(var.getsidikjari()==true){
+        if(akses.getsidikjari()==true){
             Panelmenu.add(btnSidikJari);   
             jmlmenu++;
         }
 
-        if(var.getjam_masuk()==true){
+        if(akses.getjam_masuk()==true){
             Panelmenu.add(btnJamPresensi);  
             jmlmenu++;
         }
 
-        if(var.getjadwal_pegawai()==true){
+        if(akses.getjadwal_pegawai()==true){
             Panelmenu.add(btnJadwalPegawai);   
             jmlmenu++;
             Panelmenu.add(btnJadwalTambahan);   
             jmlmenu++;
         }             
 
-        if(var.getpresensi_harian()==true){
+        if(akses.getpresensi_harian()==true){
             Panelmenu.add(btnRekapHarian);
             jmlmenu++;
         }
 
-        if(var.getpresensi_bulanan()==true){                
+        if(akses.getpresensi_bulanan()==true){                
             Panelmenu.add(btnRekapBulanan);
             jmlmenu++;
         }
 
-        if(var.gettemporary_presensi()==true){
+        if(akses.gettemporary_presensi()==true){
             Panelmenu.add(btnTemporaryPresensi);   
             jmlmenu++;
         }
@@ -16722,2146 +17862,2356 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         jmlmenu++;
         jmlmenu++;
 
-        if((var.getpegawai_admin()==true)||(var.getpegawai_user()==true)){                
+        if((akses.getpegawai_admin()==true)||(akses.getpegawai_user()==true)){                
             Panelmenu.add(btnPenggajian); 
             jmlmenu++;
         }
         
-        if(var.getmaster_berkas_pegawai()==true){                
+        if(akses.getmaster_berkas_pegawai()==true){                
             Panelmenu.add(btnMasterBerkasPegawai); 
             jmlmenu++;
         }
 
-        if(var.getberkas_kepegawaian()==true){                
+        if(akses.getberkas_kepegawaian()==true){                
             Panelmenu.add(btnBerkasPegawai); 
             jmlmenu++;
         }
 
-        if(var.getriwayat_jabatan()==true){                
+        if(akses.getriwayat_jabatan()==true){                
             Panelmenu.add(btnRiwayatJabatan); 
             jmlmenu++;
         }
         
-        if(var.getriwayat_pendidikan()==true){                
+        if(akses.getriwayat_pendidikan()==true){                
             Panelmenu.add(btnRiwayatPendidikan); 
             jmlmenu++;
         }
         
-        if(var.getriwayat_naik_gaji()==true){                
+        if(akses.getriwayat_naik_gaji()==true){                
             Panelmenu.add(btnRiwayatNaikGaji); 
             jmlmenu++;
         }
         
-        if(var.getkegiatan_ilmiah()==true){                
+        if(akses.getkegiatan_ilmiah()==true){                
             Panelmenu.add(btnKegiatanIlmiah); 
             jmlmenu++;
         }
         
-        if(var.getriwayat_penghargaan()==true){                
+        if(akses.getriwayat_penghargaan()==true){                
             Panelmenu.add(btnRiwayatPenghargaan); 
             jmlmenu++;
         }
 
-        if(var.getriwayat_penelitian()==true){                
+        if(akses.getriwayat_penelitian()==true){                
             Panelmenu.add(btnRiwayatPenelitian); 
             jmlmenu++;
         }
 
-        if(var.getsms()==true){                
+        if(akses.getsms()==true){                
             Panelmenu.add(btnSMS);
             jmlmenu++;
         }
 
-        if(var.getindustrifarmasi()==true){
+        if(akses.getindustrifarmasi()==true){
             Panelmenu.add(btnIndustriFarmasi); 
             jmlmenu++;
         }
 
-        if(var.getsuplier()==true){
+        if(akses.getsuplier()==true){
             Panelmenu.add(btnSuplier); 
             jmlmenu++;
         }
 
-        if(var.getsatuan_barang()==true){
+        if(akses.getsatuan_barang()==true){
             Panelmenu.add(btnSatuan); 
             jmlmenu++;
         }
         
-        if(var.getmetode_racik()==true){
+        if(akses.getmetode_racik()==true){
             Panelmenu.add(btnMetodeRacik); 
             jmlmenu++;
         }
 
-        if(var.getkonversi_satuan()==true){
+        if(akses.getkonversi_satuan()==true){
             Panelmenu.add(btnKonversi); 
             jmlmenu++;
         }    
 
-        if(var.getjenis_barang()==true){
+        if(akses.getjenis_barang()==true){
             Panelmenu.add(btnJnsBarang);
             jmlmenu++;
         }
 
-        if(var.getkategori_barang()==true){
+        if(akses.getkategori_barang()==true){
             Panelmenu.add(btnKategoriBarang);
             jmlmenu++;
         }
         
-        if(var.getgolongan_barang()==true){
+        if(akses.getgolongan_barang()==true){
             Panelmenu.add(btnGolonganBarang);
             jmlmenu++;
         }
         
-        if(var.getobat()==true){
+        if(akses.getobat()==true){
             Panelmenu.add(btnObat);
             jmlmenu++;
         }
 
-        if(var.getstok_opname_obat()==true){
+        if(akses.getstok_opname_obat()==true){
             Panelmenu.add(btnOpname); 
             jmlmenu++;
         }
 
-        if(var.getmutasi_barang()==true){
+        if(akses.getmutasi_barang()==true){
             Panelmenu.add(btnMutasiBarang); 
             jmlmenu++;
         }
 
-        if(var.getstok_obat_pasien()==true){
+        if(akses.getstok_obat_pasien()==true){
             Panelmenu.add(btnStokObatPasien); 
             jmlmenu++;
         }
 
-        if((var.getpermintaan_medis()==true)||(var.getmutasi_barang()==true)||(var.getpengeluaran_stok_apotek()==true)){
+        if((akses.getpermintaan_medis()==true)||(akses.getmutasi_barang()==true)||(akses.getpengeluaran_stok_apotek()==true)){
             Panelmenu.add(btnPermintaanMedis);   
             jmlmenu++;
         }
         
-        if(var.getrekap_permintaan_medis()==true){
+        if(akses.getrekap_permintaan_medis()==true){
             Panelmenu.add(btnRekapPermintaanMedis);   
             jmlmenu++;
         }
         
-        if((var.getsurat_pemesanan_medis()==true)||(var.getpemesanan_obat()==true)){
+        if((akses.getsurat_pemesanan_medis()==true)||(akses.getpemesanan_obat()==true)){
             Panelmenu.add(btnSuratPemesananMedis);   
             jmlmenu++;
         }
 
-        if(var.getpengadaan_obat()==true){
+        if(akses.getpengadaan_obat()==true){
             Panelmenu.add(btnPembelian);   
             jmlmenu++;
         }
 
-        if((var.getpemesanan_obat()==true)||(var.getbayar_pemesanan_obat()==true)){
+        if((akses.getpemesanan_obat()==true)||(akses.getbayar_pemesanan_obat()==true)){
             Panelmenu.add(btnPemesanan);
             jmlmenu++;
         }
 
-        if(var.getpenjualan_obat()==true){
+        if(akses.getpenjualan_obat()==true){
             Panelmenu.add(btnPenjualan);
             jmlmenu++;
         }
 
-        if(var.getresep_dokter()==true){
+        if(akses.getresep_dokter()==true){
             Panelmenu.add(btnDaftarPermintaanResep);
             jmlmenu++;
         }
 
-        if(var.getpiutang_obat()==true){
+        if(akses.getpiutang_obat()==true){
              Panelmenu.add(btnPiutang);  
              jmlmenu++;
         }
         
-        if(var.getpengeluaran_stok_apotek()==true){
+        if(akses.getpengeluaran_stok_apotek()==true){
              Panelmenu.add(btnStokKeluarMedis);  
              jmlmenu++;
         }
 
-        if(var.getretur_ke_suplier()==true){
+        if(akses.getretur_ke_suplier()==true){
             Panelmenu.add(btnReturBeli); 
             jmlmenu++;
         }
 
-        if(var.getretur_dari_pembeli()==true){
+        if(akses.getretur_dari_pembeli()==true){
             Panelmenu.add(btnReturJual); 
             jmlmenu++;
         }
 
-        if(var.getretur_obat_ranap()==true){
+        if(akses.getretur_obat_ranap()==true){
             Panelmenu.add(btnReturPasien); 
             jmlmenu++;
         }
 
-        if(var.getretur_piutang_pasien()==true){
+        if(akses.getretur_piutang_pasien()==true){
             Panelmenu.add(btnReturPiutang); 
             jmlmenu++;
         }   
 
-        if(var.getpengambilan_utd()==true){
+        if(akses.getpengambilan_utd()==true){
             Panelmenu.add(btnPengambilanUTD); 
             jmlmenu++;
         } 
 
-        if(var.getkeuntungan_penjualan()==true){
+        if(akses.getkeuntungan_penjualan()==true){
             Panelmenu.add(btnKeuntungan);
             jmlmenu++;
         }
 
-        if(var.getkeuntungan_beri_obat()==true){
+        if(akses.getkeuntungan_beri_obat()==true){
             Panelmenu.add(btnKeuntunganObatRanap);
             jmlmenu++;
         }
 
-        if(var.getkeuntungan_beri_obat_nonpiutang()==true){
+        if(akses.getkeuntungan_beri_obat_nonpiutang()==true){
             Panelmenu.add(btnKeuntunganObat2);
             jmlmenu++;
         }
 
-        if(var.getsirkulasi_obat()==true){
+        if(akses.getsirkulasi_obat()==true){
             Panelmenu.add(btnSirkulasi);
             jmlmenu++;
         }
 
-        if(var.getsirkulasi_obat2()==true){
+        if(akses.getsirkulasi_obat2()==true){
             Panelmenu.add(btnSirkulasi2);
             jmlmenu++;
         }
         
-        if(var.getsirkulasi_obat3()==true){
+        if(akses.getsirkulasi_obat3()==true){
             Panelmenu.add(btnSirkulasi3);
             jmlmenu++;
         }
 
-        if(var.getpemberian_obat_pertanggal()==true){
+        if(akses.getpemberian_obat_pertanggal()==true){
             Panelmenu.add(btnObatPerTanggal);
             jmlmenu++;
         }
         
-        if(var.getpenjualan_obat_pertanggal()==true){
+        if(akses.getpenjualan_obat_pertanggal()==true){
             Panelmenu.add(btnPenjualanPerTanggal);
             jmlmenu++;
         }
 
-        if(var.getriwayat_obat_alkes_bhp()==true){
+        if(akses.getriwayat_obat_alkes_bhp()==true){
             Panelmenu.add(btnRiwayatBarangMedis);
             jmlmenu++;
         }
 
-        if(var.getdarurat_stok()==true){
+        if(akses.getdarurat_stok()==true){
             Panelmenu.add(btnDaruratStok);
             jmlmenu++;
         }         
 
-        if(var.getpengguna_obat_resep()==true){
+        if(akses.getpengguna_obat_resep()==true){
             Panelmenu.add(btnPenggunaObatResep);
             jmlmenu++;
         }
 
-        if(var.getrekap_pemesanan()==true){
+        if(akses.getrekap_pemesanan()==true){
             Panelmenu.add(btnRekapPenerimaanObat);
             jmlmenu++;
         }
         
-        if(var.getdata_batch()==true){
+        if(akses.getdata_batch()==true){
             Panelmenu.add(btnDataBatch);
             jmlmenu++;
         }
 
-        if(var.getriwayat_data_batch()==true){
+        if(akses.getriwayat_data_batch()==true){
             Panelmenu.add(btnRiwayatBatch);
             jmlmenu++;
         }
         
-        if(var.getkegiatan_farmasi()==true){
+        if(akses.getkegiatan_farmasi()==true){
             Panelmenu.add(btnKegiatanFarmasi);
             jmlmenu++;
         }
         
-        if(var.getppn_obat()==true){
+        if(akses.getppn_obat()==true){
             Panelmenu.add(btnPPNObat);
             jmlmenu++;
         }
+        
+        if(akses.getkadaluarsa_batch()==true){
+            Panelmenu.add(btnKadaluarsaBatch);
+            jmlmenu++;
+        }
+        
+        if(akses.getsisa_stok()==true){
+            Panelmenu.add(btnSisaStok);
+            jmlmenu++;
+        }
 
-        if(var.getsatuan_barang()==true){
+        if(akses.getobat_per_resep()==true){
+            Panelmenu.add(btnObatPerResep);
+            jmlmenu++;
+        }
+
+        if(akses.getsatuan_barang()==true){
             Panelmenu.add(btnSatuan);  
             jmlmenu++;
         }             
 
-        if(var.getipsrs_jenis_barang()==true){
+        if(akses.getipsrs_jenis_barang()==true){
             Panelmenu.add(btnJenisIpsrs); 
             jmlmenu++;
         } 
 
-        if(var.getipsrs_barang()==true){
+        if(akses.getipsrs_barang()==true){
             Panelmenu.add(btnBarangIpsrs);  
             jmlmenu++;
         } 
 
-        if(var.getsuplier_penunjang()==true){
+        if(akses.getsuplier_penunjang()==true){
             Panelmenu.add(btnSuplierIPSRS);  
             jmlmenu++;
         }             
 
-        if(var.getpermintaan_non_medis()==true){
+        if(akses.getpermintaan_non_medis()==true){
             Panelmenu.add(btnPermintaanNonMedis);  
             jmlmenu++;
         }
         
-        if(var.getrekap_permintaan_non_medis()==true){
+        if(akses.getrekap_permintaan_non_medis()==true){
             Panelmenu.add(btnRekapPermintaanNonMedis);  
             jmlmenu++;
         }
         
-        if(var.getsurat_pemesanan_non_medis()==true){
+        if(akses.getsurat_pemesanan_non_medis()==true){
             Panelmenu.add(btnSuratPemesananNonMedis);  
             jmlmenu++;
         }
 
-        if(var.getipsrs_pengadaan_barang()==true){
+        if(akses.getipsrs_pengadaan_barang()==true){
             Panelmenu.add(btnPembelianIpsrs);  
             jmlmenu++;
         }
 
-        if(var.getpenerimaan_non_medis()==true){
+        if(akses.getpenerimaan_non_medis()==true){
             Panelmenu.add(btnPenerimaanNonMedis);  
             jmlmenu++;
         }
 
-        if(var.getipsrs_stok_keluar()==true){
+        if(akses.getipsrs_stok_keluar()==true){
             Panelmenu.add(btnPengeluaranIpsrs); 
             jmlmenu++;
         }
 
-        if(var.getipsrs_pengeluaran_harian()==true){
+        if(akses.getipsrs_pengeluaran_harian()==true){
             Panelmenu.add(btnRBiayaIpsrs);
             jmlmenu++;
         }
 
-        if(var.getipsrs_rekap_pengadaan()==true){
+        if(akses.getipsrs_rekap_pengadaan()==true){
             Panelmenu.add(btnRHMasukIpsrs);
             jmlmenu++;
         }
 
-        if(var.getipsrs_rekap_stok_keluar()==true){
+        if(akses.getipsrs_rekap_stok_keluar()==true){
             Panelmenu.add(btnRHKeluarIpsrs);
             jmlmenu++;
         } 
 
-        if(var.getpengambilan_penunjang_utd()==true){
+        if(akses.getpengambilan_penunjang_utd()==true){
             Panelmenu.add(btnPengambilanPenunjangUTD);
             jmlmenu++;
         } 
 
-        if(var.getipsrs_pengadaan_pertanggal()==true){
+        if(akses.getipsrs_pengadaan_pertanggal()==true){
             Panelmenu.add(btnPengadaanIPSRSPerTanggal);
             jmlmenu++;
         }
         
-        if(var.getipsrs_stokkeluar_pertanggal()==true){
+        if(akses.getipsrs_stokkeluar_pertanggal()==true){
             Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
             jmlmenu++;
         } 
         
-        if(var.getrekap_pemesanan_non_medis()==true){
+        if(akses.getrekap_pemesanan_non_medis()==true){
             Panelmenu.add(btnRekapPenerimaanNonMedis);
             jmlmenu++;
         }
         
-        if(var.getstok_opname_logistik()==true){
+        if(akses.getstok_opname_logistik()==true){
             Panelmenu.add(btnOpnameIPSRS);
             jmlmenu++;
         }
         
-        if(var.getsirkulasi_non_medis()==true){
+        if(akses.getsirkulasi_non_medis()==true){
             Panelmenu.add(btnSirkulasiNonMedis);
             jmlmenu++;
         }
 
-        if(var.getinventaris_jenis()==true){
+        if(akses.getinventaris_jenis()==true){
             Panelmenu.add(btnJenisInventaris);  
             jmlmenu++;
         }   
 
-        if(var.getinventaris_kategori()==true){
+        if(akses.getinventaris_kategori()==true){
             Panelmenu.add(btnKategoriInventaris);
             jmlmenu++;
         }
 
-        if(var.getinventaris_merk()==true){
+        if(akses.getinventaris_merk()==true){
             Panelmenu.add(btnMerkInventaris);
             jmlmenu++;
         }
 
-        if(var.getinventaris_ruang()==true){
+        if(akses.getinventaris_ruang()==true){
             Panelmenu.add(btnRuangInventaris);
             jmlmenu++;
         }
 
-        if(var.getinventaris_produsen()==true){
+        if(akses.getinventaris_produsen()==true){
             Panelmenu.add(btnProdusenInventaris);
             jmlmenu++;
         }
 
-        if(var.getinventaris_koleksi()==true){
+        if(akses.getinventaris_koleksi()==true){
             Panelmenu.add(btnBarangInventaris);
             jmlmenu++;
         }
 
-        if(var.getinventaris_inventaris()==true){
+        if(akses.getinventaris_inventaris()==true){
             Panelmenu.add(btnInventaris);  
             jmlmenu++;
         }                 
 
-        if(var.getinventaris_sirkulasi()==true){
+        if(akses.getinventaris_sirkulasi()==true){
             Panelmenu.add(btnSirkulasiInventaris);
             jmlmenu++;
         }     
 
-        if(var.getbarang_cssd()==true){
+        if(akses.getbarang_cssd()==true){
             Panelmenu.add(btnBarangCSSD);
             jmlmenu++;
         } 
+        
+        if(akses.getpemakaian_air_pdam()==true){
+            Panelmenu.add(btnPemakaianAirPDAM);
+            jmlmenu++;
+        }
+        
+        if(akses.getlimbah_b3_medis()==true){
+            Panelmenu.add(btnLimbahB3Medis);
+            jmlmenu++;
+        } 
+        
+        if(akses.getlimbah_domestik()==true){
+            Panelmenu.add(btnLimbahDomestik);
+            jmlmenu++;
+        } 
+        
+        if(akses.getmutu_air_limbah()==true){
+            Panelmenu.add(btnMutuAirLimbah);
+            jmlmenu++;
+        }
+        
+        if(akses.getpest_control()==true){
+            Panelmenu.add(btnPestControl);
+            jmlmenu++;
+        }
 
-        if(var.getparkir_jenis()==true){
+        if(akses.getparkir_jenis()==true){
             Panelmenu.add(btnJenisParkir);
             jmlmenu++;
         }     
 
-        if(var.getparkir_barcode()==true){
+        if(akses.getparkir_barcode()==true){
             Panelmenu.add(btnBarcodeParkir);
             jmlmenu++;
         }
 
-        if(var.getparkir_in()==true){
+        if(akses.getparkir_in()==true){
             Panelmenu.add(btnParkirMasuk);
             jmlmenu++;
         }
 
-        if(var.getharian_tindakan_poli()==true){
+        if(akses.getharian_tindakan_poli()==true){
             Panelmenu.add(btnTagihanPoli); 
             jmlmenu++;
         }   
 
-        if(var.getharian_kamar()==true){
+        if(akses.getharian_kamar()==true){
             Panelmenu.add(btnHarianKamar); 
             jmlmenu++;
         }  
 
-        if(var.getharian_tindakan_dokter()==true){
+        if(akses.getharian_tindakan_dokter()==true){
             Panelmenu.add(btnTagihanDokter); 
             jmlmenu++;
         } 
 
-        if(var.getobat_per_poli()==true){
+        if(akses.getobat_per_poli()==true){
             Panelmenu.add(btnTagihanObatPoli);
             jmlmenu++;
         }
 
-        if(var.getobat_per_kamar()==true){
+        if(akses.getobat_per_kamar()==true){
             Panelmenu.add(btnTagihanObatBangsal);
             jmlmenu++;
         }
 
-        if(var.getobat_per_dokter_ralan()==true){
+        if(akses.getobat_per_dokter_ralan()==true){
             Panelmenu.add(btnObatPasienRalan);    
             jmlmenu++;
         }
 
-        if(var.getobat_per_dokter_ranap()==true){
+        if(akses.getobat_per_dokter_ranap()==true){
             Panelmenu.add(btnObatPasienRanap);
             jmlmenu++;
         }    
 
-        if(var.getobat_per_dokter_peresep()==true){
+        if(akses.getobat_per_dokter_peresep()==true){
             Panelmenu.add(btnObatPasienPeresep);
             jmlmenu++;
         }
 
-        if(var.getobat_per_cara_bayar()==true){
+        if(akses.getobat_per_cara_bayar()==true){
             Panelmenu.add(btnObatPerCaraBayar);
             jmlmenu++;
         }
 
-        if(var.getdetail_tindakan()==true){
+        if(akses.getdetail_tindakan()==true){
             Panelmenu.add(btnDetailTindakan);
             jmlmenu++;
         } 
 
-        if(var.getjm_ranap_dokter()==true){
+        if(akses.getjm_ranap_dokter()==true){
             Panelmenu.add(btnJMDetailDokter);
             jmlmenu++;
         } 
 
-        if(var.getdetailjmdokter2()==true){
+        if(akses.getdetailjmdokter2()==true){
             Panelmenu.add(btnJMDetailDokter2);
             jmlmenu++;
         } 
 
-        if(var.getharian_dokter()==true){
+        if(akses.getharian_dokter()==true){
             Panelmenu.add(btnRHDOkter);  
             jmlmenu++;
         }
 
-        if(var.getbulanan_dokter()==true){
+        if(akses.getbulanan_dokter()==true){
             Panelmenu.add(btnRBDokter);
             jmlmenu++;
         }
 
-        if(var.getharian_paramedis()==true){
+        if(akses.getharian_paramedis()==true){
             Panelmenu.add(btnRHParamedis); 
             jmlmenu++;
         }
 
-        if(var.getbulanan_paramedis()==true){
+        if(akses.getbulanan_paramedis()==true){
             Panelmenu.add(btnRBParamedis); 
             jmlmenu++;
         }
 
-        if(var.getharian_js()==true){
+        if(akses.getharian_js()==true){
             Panelmenu.add(btnRHJasaSarana);  
             jmlmenu++;
         }
 
-        if(var.getbulanan_js()==true){
+        if(akses.getbulanan_js()==true){
             Panelmenu.add(btnRBJasaSarana);  
             jmlmenu++;
         }
 
-        if(var.getharian_kso()==true){
+        if(akses.getharian_kso()==true){
             Panelmenu.add(btnRHKSO);  
             jmlmenu++;
         }
 
-        if(var.getbulanan_kso()==true){
+        if(akses.getbulanan_kso()==true){
             Panelmenu.add(btnRBKSO);  
             jmlmenu++;
         }
 
-        if(var.getharian_menejemen()==true){
+        if(akses.getharian_menejemen()==true){
             Panelmenu.add(btnRHMenejemen);  
             jmlmenu++;
         }
 
-        if(var.getbulanan_menejemen()==true){
+        if(akses.getbulanan_menejemen()==true){
             Panelmenu.add(btnRBMenejemen);  
             jmlmenu++;
         }
 
-        if(var.getharian_paket_bhp()==true){
+        if(akses.getharian_paket_bhp()==true){
             Panelmenu.add(btnRHPaketBHP);  
             jmlmenu++;
         }
 
-        if(var.getbulanan_paket_bhp()==true){
+        if(akses.getbulanan_paket_bhp()==true){
             Panelmenu.add(btnRBPaketBHP);  
             jmlmenu++;
         }
 
-        if(var.getfee_visit_dokter()==true){
+        if(akses.getfee_visit_dokter()==true){
             Panelmenu.add(btnfee_visit_dokter); 
             jmlmenu++;
         }
 
-        if(var.getfee_bacaan_ekg()==true){
+        if(akses.getfee_bacaan_ekg()==true){
             Panelmenu.add(btnfee_bacaan_ekg); 
             jmlmenu++;
         }
 
-        if(var.getfee_rujukan_rontgen()==true){
+        if(akses.getfee_rujukan_rontgen()==true){
             Panelmenu.add(btnfee_rujukan_rontgen); 
             jmlmenu++;
         }
 
-        if(var.getfee_rujukan_ranap()==true){
+        if(akses.getfee_rujukan_ranap()==true){
             Panelmenu.add(btnfee_rujukan_ranap); 
             jmlmenu++;
         }
 
-        if(var.getfee_ralan()==true){
+        if(akses.getfee_ralan()==true){
             Panelmenu.add(btnfee_ralan); 
             jmlmenu++;
         }
 
-        if(var.getdetail_tindakan_okvk()==true){
+        if(akses.getdetail_tindakan_okvk()==true){
             Panelmenu.add(btnDetailVKOK);
             jmlmenu++;
         }
         
-        if(var.getpembayaran_ralan()==true){
+        if(akses.getpembayaran_ralan()==true){
             Panelmenu.add(btnRalanMasuk);
             jmlmenu++;
         }
 
-        if(var.getpembayaran_ranap()==true){
+        if(akses.getpembayaran_ranap()==true){
             Panelmenu.add(btnRanapMasuk);
             jmlmenu++;
         }
 
-        if(var.getpiutang_ralan()==true){
+        if(akses.getpiutang_ralan()==true){
             Panelmenu.add(btnPiutangRalan);
             jmlmenu++;
         }
 
-        if(var.getpiutang_ranap()==true){
+        if(akses.getpiutang_ranap()==true){
             Panelmenu.add(btnPiutangRanap);
             jmlmenu++;
         }
 
-        if(var.getrekap_pembayaran_ralan()==true){
+        if(akses.getrekap_pembayaran_ralan()==true){
             Panelmenu.add(btnTagihanRalanPerhari);
             jmlmenu++;
         }
 
-        if(var.getrekap_pembayaran_ranap()==true){
+        if(akses.getrekap_pembayaran_ranap()==true){
             Panelmenu.add(btnTagihanRanapPerhari);
             jmlmenu++;
         }
 
-        if(var.getpembayaran_per_unit()==true){
+        if(akses.getpembayaran_per_unit()==true){
             Panelmenu.add(btnPembayaranPerUnit);
             jmlmenu++;
         }
         
-        if(var.getrekap_pembayaran_per_unit()==true){
+        if(akses.getrekap_pembayaran_per_unit()==true){
             Panelmenu.add(btnRekapPembayaranPerUnit);
             jmlmenu++;
         }
 
-        if(var.gettagihan_masuk()==true){
+        if(akses.gettagihan_masuk()==true){
             Panelmenu.add(btnTagihanMasuk);
             jmlmenu++;
         }
 
-        if(var.gettambahan_biaya()==true){
+        if(akses.gettambahan_biaya()==true){
             Panelmenu.add(btnTambahanBiaya);
             jmlmenu++;
         }   
 
-        if(var.getpotongan_biaya()==true){
+        if(akses.getpotongan_biaya()==true){
             Panelmenu.add(btnPotonganBiaya);
             jmlmenu++;
         }                                                    
 
-        if(var.getrekap_poli_anak()==true){
+        if(akses.getrekap_poli_anak()==true){
             Panelmenu.add(btnRekapPoliAnak);
             jmlmenu++;
         }
 
-        if(var.getdeposit_pasien()==true){
+        if(akses.getdeposit_pasien()==true){
             Panelmenu.add(btnDeposit);
             jmlmenu++;
         }
 
-        if(var.getrekap_per_shift()==true){
+        if(akses.getrekap_per_shift()==true){
             Panelmenu.add(btnRekapPershift);
             jmlmenu++;
         }            
 
-        if(var.getpayment_point()==true){
+        if(akses.getpayment_point()==true){
             Panelmenu.add(btnPaymentPoint);
             jmlmenu++;
         }
         
-        if(var.getpayment_point2()==true){
+        if(akses.getpayment_point2()==true){
             Panelmenu.add(btnPaymentPoint2);
             jmlmenu++;
         }
         
-        if(var.getpembayaran_akun_bayar()==true){
+        if(akses.getpembayaran_akun_bayar()==true){
             Panelmenu.add(btnPembayaranAkunBayar);
             jmlmenu++;
         }
         
-        if(var.getpembayaran_akun_bayar2()==true){
+        if(akses.getpembayaran_akun_bayar2()==true){
             Panelmenu.add(btnPembayaranAkunBayar2);
             jmlmenu++;
         }
 
-        if(var.getpiutang_akun_piutang()==true){
+        if(akses.getpembayaran_akun_bayar3()==true){
+            Panelmenu.add(btnPembayaranAkunBayar3);
+            jmlmenu++;
+        }
+        
+        if(akses.getpiutang_akun_piutang()==true){
             Panelmenu.add(btnPiutangPerAkunPiutang);
             jmlmenu++;
         }
 
-        if(var.geticd9()==true){
+        if(akses.geticd9()==true){
             Panelmenu.add(btnICD9);
             jmlmenu++;
         }
 
-        if(var.getpenyakit()==true){
+        if(akses.getpenyakit()==true){
             Panelmenu.add(btnICD);
             jmlmenu++;
         }
         
-        if(var.getpenyakit_pd3i()==true){
+        if(akses.getpenyakit_pd3i()==true){
             Panelmenu.add(btnPenyakitPD3I);
             jmlmenu++;
         }
 
-        if(var.getsurveilans_pd3i()==true){
+        if(akses.getsurveilans_pd3i()==true){
             Panelmenu.add(btnSurveilansPD3I);
             jmlmenu++;
         }
 
-        if(var.getsurveilans_ralan()==true){
+        if(akses.getsurveilans_ralan()==true){
             Panelmenu.add(btnSurveilansRalan);
             jmlmenu++;
         }
 
-        if(var.getsurveilans_ranap()==true){
+        if(akses.getsurveilans_ranap()==true){
             Panelmenu.add(btnSurveilansRanap);
             jmlmenu++;
         }
 
-        if(var.getpny_takmenular_ralan()==true){
+        if(akses.getpny_takmenular_ralan()==true){
             Panelmenu.add(btnPnyTakMenularRalan);
             jmlmenu++;
         }
 
-        if(var.getpny_takmenular_ranap()==true){
+        if(akses.getpny_takmenular_ranap()==true){
             Panelmenu.add(btnPnyTakMenularRanap);
             jmlmenu++;
         }
         
-        if(var.getpenyakit_menular_ralan()==true){
+        if(akses.getpenyakit_menular_ralan()==true){
             Panelmenu.add(btnPnyMenularRalan);
             jmlmenu++;
         }
 
-        if(var.getpenyakit_menular_ranap()==true){
+        if(akses.getpenyakit_menular_ranap()==true){
             Panelmenu.add(btnPnyMenularRanap);
             jmlmenu++;
         }
 
-        if(var.getobat_penyakit()==true){
+        if(akses.getobat_penyakit()==true){
             Panelmenu.add(btnObatPenyakit);
             jmlmenu++;
         }
 
-        if(var.getpenyakit_ralan()==true){                
+        if(akses.getpenyakit_ralan()==true){                
             Panelmenu.add(btnFrekuensiRalan); 
             jmlmenu++;
         }
 
-        if(var.getpenyakit_ranap()==true){  
+        if(akses.getpenyakit_ranap()==true){  
             Panelmenu.add(btnFrekuensiRanap); 
             jmlmenu++;
         }
 
-        if(var.getkunjungan_ralan()==true){  
+        if(akses.getkunjungan_ralan()==true){  
             Panelmenu.add(btnKunjunganRalan);  
             jmlmenu++;
         }
 
-        if(var.getkunjungan_ranap()==true){  
+        if(akses.getkunjungan_ranap()==true){  
             Panelmenu.add(btnKunjunganRanap); 
             jmlmenu++;
         }
         
-        if(var.getkunjungan_permintaan_lab()==true){  
+        if(akses.getkunjungan_permintaan_lab()==true){  
             Panelmenu.add(btnKunjunganLabRalan); 
             jmlmenu++;
         }
         
-        if(var.getkunjungan_permintaan_lab2()==true){  
+        if(akses.getkunjungan_permintaan_lab2()==true){  
             Panelmenu.add(btnKunjunganLabRanap); 
             jmlmenu++;
         }
         
-        if(var.getkunjungan_permintaan_radiologi()==true){  
+        if(akses.getkunjungan_permintaan_radiologi()==true){  
             Panelmenu.add(btnKunjunganRadRalan); 
             jmlmenu++;
         }
         
-        if(var.getkunjungan_permintaan_radiologi2()==true){  
+        if(akses.getkunjungan_permintaan_radiologi2()==true){  
             Panelmenu.add(btnKunjunganRadRanap); 
             jmlmenu++;
         }
 
-        if(var.getsensus_harian_poli()==true){  
+        if(akses.getsensus_harian_poli()==true){  
             Panelmenu.add(btnSensusHarianPoli);  
             jmlmenu++;
         }
 
-        if(var.getsensus_harian_ralan()==true){  
+        if(akses.getsensus_harian_ralan()==true){  
             Panelmenu.add(btnSensusHarianRalan);  
             jmlmenu++;
         }
 
-        if(var.getrl32()==true){  
+        if(akses.getrl32()==true){  
             Panelmenu.add(btnRl32);   
             jmlmenu++;
         }
 
-        if(var.getrl33()==true){  
+        if(akses.getrl33()==true){  
             Panelmenu.add(btnRl33);                 
             jmlmenu++;
         }
 
-        if(var.getrl34()==true){  
+        if(akses.getrl34()==true){  
             Panelmenu.add(btnRl34);   
             jmlmenu++;
         }
 
-        if(var.getrl36()==true){  
+        if(akses.getrl36()==true){  
             Panelmenu.add(btnRl36);  
             jmlmenu++;
         }
 
-        if(var.getrl37()==true){  
+        if(akses.getrl37()==true){  
             Panelmenu.add(btnRl37); 
             jmlmenu++;
         }
 
-        if(var.getrl38()==true){  
+        if(akses.getrl38()==true){  
             Panelmenu.add(btnRl38);  
             jmlmenu++;
         }
 
-        if(var.getrl4a()==true){  
+        if(akses.getrl4a()==true){  
             Panelmenu.add(btnRl4a);                 
             jmlmenu++;
         }
         
-        if(var.getrl4b()==true){  
+        if(akses.getrl4b()==true){  
             Panelmenu.add(btnRl4b);                 
             jmlmenu++;
         }
         
-        if(var.getrl4asebab()==true){  
+        if(akses.getrl4asebab()==true){  
             Panelmenu.add(btnRl4asebab);                 
             jmlmenu++;
         }
 
-        if(var.getrl4bsebab()==true){  
+        if(akses.getrl4bsebab()==true){  
             Panelmenu.add(btnRl4bsebab);                 
             jmlmenu++;
         }
         
-        if(var.getlama_pelayanan_ralan()==true){  
+        if(akses.getlama_pelayanan_ralan()==true){  
             Panelmenu.add(btnLamaPelayananRalan);                 
             jmlmenu++;
         }
         
-        if(var.getlama_pelayanan_apotek()==true){  
+        if(akses.getlama_pelayanan_apotek()==true){  
             Panelmenu.add(btnLamaPelayananApotek);                 
             jmlmenu++;
         }
         
-        if(var.getlama_pelayanan_radiologi()==true){  
+        if(akses.getlama_pelayanan_radiologi()==true){  
             Panelmenu.add(btnLamaPelayananRadiologi);                 
             jmlmenu++;
         }
         
-        if(var.getlama_pelayanan_lab()==true){  
+        if(akses.getlama_pelayanan_lab()==true){  
             Panelmenu.add(btnLamaPelayananLab);                 
             jmlmenu++;
         }
 
-        if(var.getharian_HAIs()==true){  
+        if(akses.getharian_HAIs()==true){  
             Panelmenu.add(btnHarianHAIs);                 
             jmlmenu++;
         }
         
-        if(var.getbulanan_HAIs()==true){  
+        if(akses.getbulanan_HAIs()==true){  
             Panelmenu.add(btnBulananHAIs);                 
             jmlmenu++;
         }
         
-        if(var.gethais_perbangsal()==true){  
+        if(akses.gethais_perbangsal()==true){  
             Panelmenu.add(btnHAIsBangsal);                 
             jmlmenu++;
         }
         
-        if(var.gethitung_bor()==true){  
+        if(akses.gethitung_bor()==true){  
             Panelmenu.add(btnHitungBor);                 
             jmlmenu++;
         }
         
-        if(var.gethitung_alos()==true){  
+        if(akses.gethitung_alos()==true){  
             Panelmenu.add(btnHitungAlos);                 
             jmlmenu++;
         }
         
-        if(var.getpembatalan_periksa_dokter()==true){  
+        if(akses.getpembatalan_periksa_dokter()==true){  
             Panelmenu.add(btnPembatalanPeriksaDokter);                 
             jmlmenu++;
         }
         
-        if(var.getcek_entry_ralan()==true){  
+        if(akses.getcek_entry_ralan()==true){  
             Panelmenu.add(btnCekEntryRalan);                 
             jmlmenu++;
         }
         
-        if(var.getranap_per_ruang()==true){  
+        if(akses.getranap_per_ruang()==true){  
             Panelmenu.add(btnRanapPerRuang);                 
             jmlmenu++;
         }
         
-        if(var.getpenyakit_ranap_cara_bayar()==true){  
+        if(akses.getpenyakit_ranap_cara_bayar()==true){  
             Panelmenu.add(btnPenyakitRanapCaraBayar);                 
             jmlmenu++;
         }
         
-        if(var.getrekap_lab_pertahun()==true){  
+        if(akses.getrekap_lab_pertahun()==true){  
             Panelmenu.add(btnRekapLabPerTahun);                 
             jmlmenu++;
         }
         
-        if(var.getperujuk_lab_pertahun()==true){  
+        if(akses.getperujuk_lab_pertahun()==true){  
             Panelmenu.add(btnPerujukLabPerTahun);                 
             jmlmenu++;
         }
         
-        if(var.getrekap_radiologi_pertahun()==true){  
+        if(akses.getrekap_radiologi_pertahun()==true){  
             Panelmenu.add(btnRekapRadiologiPerTahun);                 
             jmlmenu++;
         }
         
-        if(var.getperujuk_radiologi_pertahun()==true){  
+        if(akses.getperujuk_radiologi_pertahun()==true){  
             Panelmenu.add(btnPerujukRadiologiPerTahun);                 
             jmlmenu++;
         }
         
-        if(var.getjumlah_porsi_diet()==true){  
+        if(akses.getjumlah_porsi_diet()==true){  
             Panelmenu.add(btnJumlahPorsiDiet);                 
             jmlmenu++;
         }
         
-        if(var.getjumlah_macam_diet()==true){  
+        if(akses.getjumlah_macam_diet()==true){  
             Panelmenu.add(btnJumlahMacamDiet);                 
             jmlmenu++;
         }
         
+        if(akses.getkemenkes_sitt()==true){  
+            Panelmenu.add(btnDataSITT);                 
+            jmlmenu++;
+        }
+
         if(tampilkantni.equals("Yes")){
-            if(var.getanggota_militer_dirawat()==true){
+            if(akses.getanggota_militer_dirawat()==true){
                 Panelmenu.add(btnAnggotaMiliterDirawat);
                 jmlmenu++;
             }
         }
 
-        if(var.getkamar()==true){
+        if(akses.getkamar()==true){
             Panelmenu.add(btnKamar);
             jmlmenu++;
         }             
 
-        if(var.gettarif_ralan()==true){
+        if(akses.gettarif_ralan()==true){
             Panelmenu.add(btnTindakanRalan);
             jmlmenu++;
         }
 
-        if(var.gettarif_ranap()==true){
+        if(akses.gettarif_ranap()==true){
             Panelmenu.add(btnTindakanRanap);
             jmlmenu++;
         }
 
-        if(var.gettarif_lab()==true){
+        if(akses.gettarif_lab()==true){
             Panelmenu.add(btnTarifLab);
             jmlmenu++;
         }
 
-        if(var.gettarif_radiologi()==true){
+        if(akses.gettarif_radiologi()==true){
             Panelmenu.add(btnTarifRadiologi);
             jmlmenu++;
         }          
 
-        if(var.gettarif_operasi()==true){
+        if(akses.gettarif_operasi()==true){
             Panelmenu.add(btnPaketOperasi);
             jmlmenu++;
         }
 
-        if(var.gettarif_utd()==true){
+        if(akses.gettarif_utd()==true){
             Panelmenu.add(btnTarifUtd);
             jmlmenu++;
         }
 
-        if(var.getakun_rekening()==true){
+        if(akses.getakun_rekening()==true){
             Panelmenu.add(btnRekening);  
             jmlmenu++;
         }    
 
-        if(var.getrekening_tahun()==true){
+        if(akses.getrekening_tahun()==true){
             Panelmenu.add(btnRekeningTahun);   
             jmlmenu++;
         } 
         
-        if(var.getsaldo_akun_perbulan()==true){
+        if(akses.getsaldo_akun_perbulan()==true){
             Panelmenu.add(btnSaldoAkunPerBulan);   
             jmlmenu++;
         }
 
-        if(var.getakun_bayar()==true){
+        if(akses.getakun_bayar()==true){
             Panelmenu.add(btnakun_bayar);  
             jmlmenu++;
         }
 
-        if(var.getakun_piutang()==true){
+        if(akses.getakun_piutang()==true){
             Panelmenu.add(btnAkunPiutang);  
             jmlmenu++;
         }
 
-        if(var.getpengaturan_rekening()==true){
+        if(akses.getpengaturan_rekening()==true){
             Panelmenu.add(btnPengaturanRekening);   
             jmlmenu++;
         } 
 
-        if(var.getpengeluaran()==true){
+        if(akses.getpengeluaran()==true){
             Panelmenu.add(btnPengeluaran);
             jmlmenu++;
         }
 
-        if(var.getpemasukan_lain()==true){
+        if(akses.getpemasukan_lain()==true){
             Panelmenu.add(btnPemasukanLain);
             jmlmenu++;
         }
 
-        if(var.getdeposit_pasien()==true){                          
+        if(akses.getdeposit_pasien()==true){                          
             Panelmenu.add(btnDeposit);
             jmlmenu++;
         }
 
-        if(var.getpiutang_pasien()==true){
+        if(akses.getpiutang_pasien()==true){
            Panelmenu.add(btnLihatPiutang); 
            jmlmenu++;
         }
 
-        if(var.getrincian_piutang_pasien()==true){
+        if(akses.getrincian_piutang_pasien()==true){
            Panelmenu.add(btnRincianPiutangPasien); 
            jmlmenu++;
         }
 
-        if(var.getpiutang_pasien2()==true){
+        if(akses.getpiutang_pasien2()==true){
            Panelmenu.add(btnPiutangBelumLunas); 
            jmlmenu++;
         }
         
-        if(var.getdetail_piutang_penjab()==true){
+        if(akses.getdetail_piutang_penjab()==true){
             Panelmenu.add(btnPiutangPerCaraBayar); 
             jmlmenu++;
         }
 
-        if(var.getbayar_piutang()==true){
+        if(akses.getbayar_piutang()==true){
            Panelmenu.add(btnBayarPiutang); 
            jmlmenu++;
         }
 
-        if(var.gethutang_obat()==true){
+        if(akses.gethutang_obat()==true){
             Panelmenu.add(btnHutangObat);
             jmlmenu++;
         }
 
-        if(var.getbayar_pemesanan_obat()==true){
+        if(akses.getbayar_pemesanan_obat()==true){
             Panelmenu.add(btnbayar_pemesanan);
             jmlmenu++;
         }
         
-        if(var.gethutang_barang_non_medis()==true){
+        if(akses.gethutang_barang_non_medis()==true){
             Panelmenu.add(btnHutangNonMedis);
             jmlmenu++;
         }
 
-        if(var.getbayar_pesan_non_medis()==true){
+        if(akses.getbayar_pesan_non_medis()==true){
             Panelmenu.add(btnBayarPesanNonMedis);
             jmlmenu++;
         }
         
-        if(var.getposting_jurnal()==true){
+        if(akses.getposting_jurnal()==true){
             Panelmenu.add(btnPostingJurnal); 
             jmlmenu++;
         }
 
-        if(var.getjurnal_harian()==true){
+        if(akses.getjurnal_harian()==true){
             Panelmenu.add(btnJurnalHarian);  
             jmlmenu++;
         }
 
-        if(var.getbuku_besar()==true){
+        if(akses.getbuku_besar()==true){
             Panelmenu.add(btnBubes);
             jmlmenu++;
         }  
 
-        if(var.getcashflow()==true){
+        if(akses.getcashflow()==true){
             Panelmenu.add(btnCashFlow);
             jmlmenu++;
         }
 
-        if(var.getkeuangan()==true){
+        if(akses.getkeuangan()==true){
             Panelmenu.add(btnLabaRugi);
             jmlmenu++;
         }                               
 
 
-        if(var.getbpjs_cek_kartu()==true){
+        if(akses.getbpjs_cek_kartu()==true){
             Panelmenu.add(btnCekBPJSKartu);
             jmlmenu++;
         }    
 
-        if(var.getbpjs_cek_nik()==true){
+        if(akses.getbpjs_cek_nik()==true){
             Panelmenu.add(btnCekBPJSNik);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_skdp()==true){
+        if(akses.getbpjs_cek_skdp()==true){
             Panelmenu.add(btnCekBPJSSKDP);
             jmlmenu++;
         }
 
-        if(var.getbpjs_cek_riwayat()==true){
+        if(akses.getbpjs_cek_riwayat()==true){
             Panelmenu.add(btnCekBPJSRiwayatRujukanPCare);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_riwayat_rujukanrs()==true){
+        if(akses.getbpjs_cek_riwayat_rujukanrs()==true){
             Panelmenu.add(btnCekBPJSRiwayatRujukanRS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_tanggal_rujukan()==true){
+        if(akses.getbpjs_cek_tanggal_rujukan()==true){
             Panelmenu.add(btnCekBPJSTanggalRujukan);
             jmlmenu++;
         }
 
-        if(var.getbpjs_cek_nomor_rujukan()==true){
+        if(akses.getbpjs_cek_nomor_rujukan()==true){
             Panelmenu.add(btnCekBPJSNomorRujukanPCare);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_nomor_rujukan_rs()==true){
+        if(akses.getbpjs_cek_nomor_rujukan_rs()==true){
             Panelmenu.add(btnCekBPJSNomorRujukanRS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_rujukan_kartu_pcare()==true){
+        if(akses.getbpjs_cek_rujukan_kartu_pcare()==true){
             Panelmenu.add(btnCekBPJSRujukanKartuPCare);
             jmlmenu++;
         }
 
-        if(var.getbpjs_cek_rujukan_kartu_rs()==true){
+        if(akses.getbpjs_cek_rujukan_kartu_rs()==true){
             Panelmenu.add(btnCekBPJSRujukanKartuRS);
             jmlmenu++;
         }
 
-        if(var.getbpjs_referensi_diagnosa()==true){
+        if(akses.getbpjs_referensi_diagnosa()==true){
             Panelmenu.add(btnCekBPJSDiagnosa);
             jmlmenu++;
         }
 
-        if(var.getbpjs_referensi_poli()==true){
+        if(akses.getbpjs_referensi_poli()==true){
             Panelmenu.add(btnCekBPJSPoli);
             jmlmenu++;
         }
 
-        if(var.getmapping_poli_bpjs()==true){
+        if(akses.getmapping_poli_bpjs()==true){
             Panelmenu.add(btnMapingPoliBPJS);
             jmlmenu++;
         }
 
-        if(var.getbpjs_referensi_faskes()==true){
+        if(akses.getbpjs_referensi_faskes()==true){
             Panelmenu.add(btnCekBPJSFaskes);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_prosedur()==true){
+        if(akses.getbpjs_cek_prosedur()==true){
             Panelmenu.add(btnCekReferensiProsedurBPJS);
             jmlmenu++;
         }
 
-        if(var.getbpjs_cek_kelas_rawat()==true){
+        if(akses.getbpjs_cek_kelas_rawat()==true){
             Panelmenu.add(btnCekReferensiKelasRawatBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_dokter()==true){
+        if(akses.getbpjs_cek_dokter()==true){
             Panelmenu.add(btnCekReferensiDokterBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_spesialistik()==true){
+        if(akses.getbpjs_cek_spesialistik()==true){
             Panelmenu.add(btnCekReferensiSpesialistikBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_ruangrawat()==true){
+        if(akses.getbpjs_cek_ruangrawat()==true){
             Panelmenu.add(btnCekReferensiRuangRawatBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_carakeluar()==true){
+        if(akses.getbpjs_cek_carakeluar()==true){
             Panelmenu.add(btnCekReferensiCaraKeluarBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_pasca_pulang()==true){
+        if(akses.getbpjs_cek_pasca_pulang()==true){
             Panelmenu.add(btnCekReferensiPascaPulangBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_propinsi()==true){
+        if(akses.getbpjs_cek_propinsi()==true){
             Panelmenu.add(btnCekReferensiPropinsiBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_kabupaten()==true){
+        if(akses.getbpjs_cek_kabupaten()==true){
             Panelmenu.add(btnCekReferensiKabupatenBPJS);
             jmlmenu++;
         }
 
-        if(var.getbpjs_cek_kecamatan()==true){
+        if(akses.getbpjs_cek_kecamatan()==true){
             Panelmenu.add(btnCekReferensiKecamatanBPJS);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_dokterdpjp()==true){
+        if(akses.getbpjs_cek_dokterdpjp()==true){
             Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
             jmlmenu++;
         }
 
-        if(var.getbpjs_sep()==true){
+        if(akses.getbpjs_sep()==true){
             Panelmenu.add(btnBPJSSEP);
             jmlmenu++;
         }
         
-        if(var.getbpjs_cek_sep()==true){
+        if(akses.getbpjs_cek_sep()==true){
             Panelmenu.add(btnCekSEP);
             jmlmenu++;
         }
         
-        if(var.getbpjs_rujukan_keluar()==true){
+        if(akses.getbpjs_rujukan_keluar()==true){
             Panelmenu.add(btnRujukanKeluarBPJS);
             jmlmenu++;
         }
 
-        if(var.getbpjs_monitoring_klaim()==true){
+        if(akses.getbpjs_monitoring_klaim()==true){
             Panelmenu.add(btnMonitoringKlaim);
             jmlmenu++;
         }
         
-        if(var.getskdp_bpjs()==true){
+        if(akses.getskdp_bpjs()==true){
             Panelmenu.add(btnSKDPBPJS);
             jmlmenu++;
         }
 
-        if(var.getreklasifikasi_ralan()==true){
+        if(akses.getreklasifikasi_ralan()==true){
             Panelmenu.add(btnReklasifikasiRalan);
             jmlmenu++;
         }
 
-        if(var.getreklasifikasi_ranap()==true){
+        if(akses.getreklasifikasi_ranap()==true){
             Panelmenu.add(btnReklasifikasiRanap);
             jmlmenu++;
         }
 
-        if(var.getaplicare_referensi_kamar()==true){
+        if(akses.getaplicare_referensi_kamar()==true){
             Panelmenu.add(btnAplicareReferensiKamar);
             jmlmenu++;
         }
 
-        if(var.getaplicare_ketersediaan_kamar()==true){
+        if(akses.getaplicare_ketersediaan_kamar()==true){
             Panelmenu.add(btnAplicareKetersediaanKamar);
             jmlmenu++;
         }
 
-        if(var.getinacbg_coder_nik()==true){
+        if(akses.getinacbg_coder_nik()==true){
             Panelmenu.add(btnInaCBGCoderNIK);
             jmlmenu++;
         }
 
-        if(var.getinacbg_klaim_baru_otomatis()==true){
+        if(akses.getinacbg_klaim_baru_otomatis()==true){
             Panelmenu.add(btnInaCBGKlaimBaruOtomatis);
             jmlmenu++;
         } 
 
-        if(var.getinacbg_klaim_baru_manual()==true){
+        if(akses.getinacbg_klaim_baru_manual()==true){
             Panelmenu.add(btnInaCBGKlaimBaruManual);
             jmlmenu++;
         } 
         
-        if(var.getinacbg_klaim_baru_manual2()==true){
+        if(akses.getinacbg_klaim_baru_manual2()==true){
             Panelmenu.add(btnInaCBGKlaimBaruManual2);
             jmlmenu++;
         } 
 
-        if(var.getinhealth_referensi_jenpel_ruang_rawat()==true){
+        if(akses.getinhealth_referensi_jenpel_ruang_rawat()==true){
             Panelmenu.add(btnReferensiKamarInhealth);
             jmlmenu++;
         }
 
-        if(var.getinhealth_referensi_poli()==true){
+        if(akses.getinhealth_referensi_poli()==true){
             Panelmenu.add(btnCekInhealthPoli);
             jmlmenu++;
         }
 
-        if(var.getinhealth_referensi_faskes()==true){
+        if(akses.getinhealth_referensi_faskes()==true){
             Panelmenu.add(btnCekInhealthFaskes);
             jmlmenu++;
         }
 
-        if(var.getinhealth_cek_eligibilitas()==true){
+        if(akses.getinhealth_cek_eligibilitas()==true){
             Panelmenu.add(btnCekEligibilitasInhealth);
             jmlmenu++;
         }
 
-        if(var.getinhealth_sjp()==true){
+        if(akses.getinhealth_sjp()==true){
             Panelmenu.add(btnInhealthSJP);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_penyakit()==true){
+        if(akses.getpcare_cek_penyakit()==true){
             Panelmenu.add(btnCekPCareDiagnosa);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_kesadaran()==true){
+        if(akses.getpcare_cek_kesadaran()==true){
             Panelmenu.add(btnCekPCareKesadaran);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_dokter()==true){
+        if(akses.getpcare_cek_dokter()==true){
             Panelmenu.add(btnPCareReferensiDokter);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_poli()==true){
+        if(akses.getpcare_cek_poli()==true){
             Panelmenu.add(btnPCareReferensiPoli);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_provider()==true){
+        if(akses.getpcare_cek_provider()==true){
             Panelmenu.add(btnPCareReferensiProvider);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_statuspulang()==true){
+        if(akses.getpcare_cek_statuspulang()==true){
             Panelmenu.add(btnPCareReferensiStatusPulang);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_spesialis()==true){
+        if(akses.getpcare_cek_spesialis()==true){
             Panelmenu.add(btnPCareReferensiSpesialis);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_subspesialis()==true){
+        if(akses.getpcare_cek_subspesialis()==true){
             Panelmenu.add(btnPCareReferensiSubspesialis);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_sarana()==true){
+        if(akses.getpcare_cek_sarana()==true){
             Panelmenu.add(btnPCareReferensiSarana);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_khusus()==true){
+        if(akses.getpcare_cek_khusus()==true){
             Panelmenu.add(btnPCareReferensiKhusus);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_obat()==true){
+        if(akses.getpcare_cek_obat()==true){
             Panelmenu.add(btnPCareReferensiObat);
             jmlmenu++;
         }
 
-        if(var.getpcare_cek_tindakan()==true){
+        if(akses.getpcare_cek_tindakan()==true){
             Panelmenu.add(btnPCareReferensiTindakan);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_faskessubspesialis()==true){
+        if(akses.getpcare_cek_faskessubspesialis()==true){
             Panelmenu.add(btnPCareFaskesSubspesialis);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_faskesalihrawat()==true){
+        if(akses.getpcare_cek_faskesalihrawat()==true){
             Panelmenu.add(btnPCareFaskesAlihRawat);
             jmlmenu++;
         }
         
-        if(var.getpcare_cek_faskesthalasemia()==true){
+        if(akses.getpcare_cek_faskesthalasemia()==true){
             Panelmenu.add(btnPCareFaskesThalasemia);
             jmlmenu++;
         }
         
-        if(var.getpcare_mapping_obat()==true){
+        if(akses.getpcare_mapping_obat()==true){
             Panelmenu.add(btnPCareMapingObat);
             jmlmenu++;
         }
         
-        if(var.getpcare_mapping_tindakan()==true){
+        if(akses.getpcare_mapping_tindakan()==true){
             Panelmenu.add(btnPCareMapingTindakan);
             jmlmenu++;
         }
         
-        if(var.getpcare_mapping_tindakan_ranap()==true){
+        if(akses.getpcare_mapping_tindakan_ranap()==true){
             Panelmenu.add(btnPCareMapingTindakanRanap);
             jmlmenu++;
         }
         
-        if(var.getpcare_mapping_dokter()==true){
+        if(akses.getpcare_mapping_dokter()==true){
             Panelmenu.add(btnPCareMapingDokter);
             jmlmenu++;
         }
         
-        if(var.getpcare_mapping_poli()==true){
+        if(akses.getpcare_mapping_poli()==true){
             Panelmenu.add(btnPCareMapingPoli);
             jmlmenu++;
         }
         
-        if(var.getpcare_club_prolanis()==true){
+        if(akses.getpcare_club_prolanis()==true){
             Panelmenu.add(btnPCareClubProlanis);
             jmlmenu++;
         }
         
-        if((var.getpcare_kegiatan_kelompok()==true)||(var.getpcare_peserta_kegiatan_kelompok()==true)){
+        if((akses.getpcare_kegiatan_kelompok()==true)||(akses.getpcare_peserta_kegiatan_kelompok()==true)){
             Panelmenu.add(btnPCareKegiatanKelompok);
             jmlmenu++;
         }
         
-        if(var.getpcare_peserta_kegiatan_kelompok()==true){
+        if(akses.getpcare_peserta_kegiatan_kelompok()==true){
             Panelmenu.add(btnPCarePesertaKegiatanKelompok);
             jmlmenu++;
         }
         
-        if(var.getbridging_pcare_daftar()==true){
+        if(akses.getbridging_pcare_daftar()==true){
             Panelmenu.add(btnPCarePendaftaran);
             jmlmenu++;
         }
 
-        if(var.getpcare_cek_rujukan()==true){
+        if(akses.getpcare_cek_rujukan()==true){
             Panelmenu.add(btnCekPCareRujukan);
             jmlmenu++;
         }
         
-        if(var.getpcare_pemberian_obat()==true){
+        if(akses.getpcare_pemberian_obat()==true){
             Panelmenu.add(btnPCareBeriObat);
             jmlmenu++;
         }
         
-        if(var.getsisrute_referensi_faskes()==true){
+        if(akses.getpcare_pemberian_tindakan()==true){
+            Panelmenu.add(btnPCareBeriTindakan);
+            jmlmenu++;
+        }
+        
+        if(akses.getsisrute_referensi_faskes()==true){
             Panelmenu.add(btnCekSisruteFaskes);
             jmlmenu++;
         }
         
-        if(var.getsisrute_referensi_alasanrujuk()==true){
+        if(akses.getsisrute_referensi_alasanrujuk()==true){
             Panelmenu.add(btnCekSisruteAlasanRujuk);
             jmlmenu++;
         }
 
-        if(var.getsisrute_referensi_diagnosa()==true){
+        if(akses.getsisrute_referensi_diagnosa()==true){
             Panelmenu.add(btnCekSisruteDiagnosa);
             jmlmenu++;
         }
         
-        if(var.getsisrute_rujukan_masuk()==true){
+        if(akses.getsisrute_rujukan_masuk()==true){
             Panelmenu.add(btnRujukanMasukSisrute);
             jmlmenu++;
         }
         
-        if(var.getsisrute_rujukan_keluar()==true){
+        if(akses.getsisrute_rujukan_keluar()==true){
             Panelmenu.add(btnRujukanKeluarSisrute);
             jmlmenu++;
         }
 
-        if(var.getperusahaan_pasien()==true){
+        if(akses.getsiranap_ketersediaan_kamar()==true){
+            Panelmenu.add(btnSiranapKetersediaanKamar);
+            jmlmenu++;
+        }
+
+        if(akses.getperusahaan_pasien()==true){
             Panelmenu.add(btnPerusahaan);
             jmlmenu++;
         }
 
-        if(var.getsuku_bangsa()==true){
+        if(akses.getsuku_bangsa()==true){
             Panelmenu.add(btnSuku);
             jmlmenu++;
         }
         
-        if(var.getbahasa_pasien()==true){
+        if(akses.getbahasa_pasien()==true){
             Panelmenu.add(btnBahasa);
             jmlmenu++;
         }
 
         if(tampilkantni.equals("Yes")){
-            if(var.getgolongan_tni()==true){
+            if(akses.getgolongan_tni()==true){
                 Panelmenu.add(btnGolonganTNI);
                 jmlmenu++;
             }
 
-            if(var.getsatuan_tni()==true){
+            if(akses.getsatuan_tni()==true){
                 Panelmenu.add(btnSatuanTNI);
                 jmlmenu++;
             }
 
-            if(var.getjabatan_tni()==true){
+            if(akses.getjabatan_tni()==true){
                 Panelmenu.add(btnJabatanTNI);
                 jmlmenu++;
             }
 
-            if(var.getpangkat_tni()==true){
+            if(akses.getpangkat_tni()==true){
                 Panelmenu.add(btnPangkatTNI);
                 jmlmenu++;
             }
 
-            if(var.getgolongan_polri()==true){
+            if(akses.getgolongan_polri()==true){
                 Panelmenu.add(btnGolonganPolri);
                 jmlmenu++;
             }
 
-            if(var.getsatuan_polri()==true){
+            if(akses.getsatuan_polri()==true){
                 Panelmenu.add(btnSatuanPolri);
                 jmlmenu++;
             }
 
-            if(var.getjabatan_polri()==true){
+            if(akses.getjabatan_polri()==true){
                 Panelmenu.add(btnJabatanPolri);
                 jmlmenu++;
             }
 
-            if(var.getpangkat_polri()==true){
+            if(akses.getpangkat_polri()==true){
                 Panelmenu.add(btnPangkatPolri);
                 jmlmenu++;
             }
         }    
 
-        if(var.getcacat_fisik()==true){
+        if(akses.getcacat_fisik()==true){
             Panelmenu.add(btnCacatFisik);
             jmlmenu++;
         }
 
-        if(var.getpasien()==true){
+        if(akses.getpasien()==true){
             Panelmenu.add(btnPasien);
             jmlmenu++;
         }
 
-        if(var.getkelahiran_bayi()==true){
+        if(akses.getkelahiran_bayi()==true){
             Panelmenu.add(btnLahir);
             jmlmenu++;
         }
         
-        if(var.getcatatan_pasien()==true){
+        if(akses.getcatatan_pasien()==true){
             Panelmenu.add(btnCatatanPasien);
             jmlmenu++;
         }
 
-        if(var.getpasien_meninggal()==true){
+        if(akses.getpasien_meninggal()==true){
             Panelmenu.add(btnPasienMati);
             jmlmenu++;
         }
 
-        if(var.getdiagnosa_pasien()==true){
+        if(akses.getdiagnosa_pasien()==true){
             Panelmenu.add(btnDiagnosa); 
             jmlmenu++;
         }
         
-        if(var.getinsiden_keselamatan()==true){
+        if(akses.getinsiden_keselamatan()==true){
             Panelmenu.add(btnInsidenKeselamatan);
             jmlmenu++;
         }
         
-        if(var.getdata_HAIs()==true){
+        if(akses.getdata_HAIs()==true){
             Panelmenu.add(btnDataHAIs); 
             jmlmenu++;
         }
 
-        if(var.getinsiden_keselamatan_pasien()==true){
+        if(akses.getinsiden_keselamatan_pasien()==true){
             Panelmenu.add(btnInsidenKeselamatanPasien); 
             jmlmenu++;
         }
 
-        if(var.getpeminjaman_berkas()==true){
+        if(akses.getpeminjaman_berkas()==true){
            Panelmenu.add(btnSirkulasiBerkas); 
            jmlmenu++;
         }
 
-        if(var.getresume_pasien()==true){
+        if(akses.getresume_pasien()==true){
             Panelmenu.add(btnResume);
             jmlmenu++;
         }   
 
-        if(var.getretensi_rm()==true){
+        if(akses.getretensi_rm()==true){
             Panelmenu.add(btnRetensiRM);
             jmlmenu++;
         }
 
-        if(var.getmutasi_berkas()==true){
+        if(akses.getmutasi_berkas()==true){
             Panelmenu.add(btnMutasiBerkas);
             jmlmenu++;
         } 
         
-        if(var.getberkas_digital_perawatan()==true){
+        if(akses.getberkas_digital_perawatan()==true){
             Panelmenu.add(btnBerkasDigitalPerawatan);
             jmlmenu++;
         } 
         
-        if(var.getpengaduan_pasien()==true){
+        if(akses.getpengaduan_pasien()==true){
             Panelmenu.add(btnPengaduan);
             jmlmenu++;
         } 
 
-        if(var.getpengambilan_utd2()==true){
+        if(akses.getpengambilan_utd2()==true){
             Panelmenu.add(btnPengambilanUTD2); 
             jmlmenu++;
         } 
 
-        if(var.getutd_medis_rusak()==true){
+        if(akses.getutd_medis_rusak()==true){
             Panelmenu.add(btnUTDMedisRusak); 
             jmlmenu++;
         } 
 
-        if(var.getpengambilan_penunjang_utd2()==true){
+        if(akses.getpengambilan_penunjang_utd2()==true){
             Panelmenu.add(btnPengambilanPenunjangUTD2); 
             jmlmenu++;
         }
 
-        if(var.getutd_penunjang_rusak()==true){
+        if(akses.getutd_penunjang_rusak()==true){
             Panelmenu.add(btnUTDPenunjangRusak); 
             jmlmenu++;
         } 
 
-        if(var.getutd_komponen_darah()==true){
+        if(akses.getutd_komponen_darah()==true){
             Panelmenu.add(btnUTDKomponenDarah); 
             jmlmenu++;
         } 
 
-        if(var.getutd_donor()==true){
+        if(akses.getutd_donor()==true){
             Panelmenu.add(btnUTDDonorDarah); 
             jmlmenu++;
         } 
 
-        if(var.getutd_cekal_darah()==true){
+        if(akses.getutd_cekal_darah()==true){
             Panelmenu.add(btnUTDCekalDarah); 
             jmlmenu++;
         } 
 
-        if(var.getutd_pemisahan_darah()==true){
+        if(akses.getutd_pemisahan_darah()==true){
             Panelmenu.add(btnUTDPemisahanDarah); 
             jmlmenu++;
         } 
 
-        if(var.getutd_stok_darah()==true){
+        if(akses.getutd_stok_darah()==true){
             Panelmenu.add(btnUTDStokDarah); 
             jmlmenu++;
         } 
 
-        if(var.getutd_penyerahan_darah()==true){
+        if(akses.getutd_penyerahan_darah()==true){
             Panelmenu.add(btnUTDPenyerahanDarah); 
             jmlmenu++;
         } 
 
-        if(var.getgrafik_kunjungan_poli()==true){
+        if(akses.getgrafik_kunjungan_poli()==true){
             Panelmenu.add(btnGrafikKunjunganPoli);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_perdokter()==true){
+        if(akses.getgrafik_kunjungan_perdokter()==true){
             Panelmenu.add(btnGrafikKunjunganPerDokter);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_perpekerjaan()==true){
+        if(akses.getgrafik_kunjungan_perpekerjaan()==true){
             Panelmenu.add(btnGrafikKunjunganPerPekerjaan);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_perpendidikan()==true){
+        if(akses.getgrafik_kunjungan_perpendidikan()==true){
             Panelmenu.add(btnGrafikKunjunganPerPendidikan);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_pertahun()==true){
+        if(akses.getgrafik_kunjungan_pertahun()==true){
             Panelmenu.add(btnGrafikKunjunganPerTahun);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_perbulan()==true){
+        if(akses.getgrafik_kunjungan_perbulan()==true){
             Panelmenu.add(btnGrafikKunjunganPerBulan);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_pertanggal()==true){
+        if(akses.getgrafik_kunjungan_pertanggal()==true){
             Panelmenu.add(btnGrafikKunjunganPerTanggal);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_demografi()==true){
+        if(akses.getgrafik_kunjungan_demografi()==true){
             Panelmenu.add(btnGrafikDemografiRegistrasi);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_statusdaftartahun()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartahun()==true){
             Panelmenu.add(btnGrafikStatusRegPerTahun);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_statusdaftartahun2()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartahun2()==true){
             Panelmenu.add(btnGrafikStatusRegPerTahun2);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_statusdaftarbulan()==true){
+        if(akses.getgrafik_kunjungan_statusdaftarbulan()==true){
             Panelmenu.add(btnGrafikStatusRegPerBulan);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_statusdaftarbulan2()==true){
+        if(akses.getgrafik_kunjungan_statusdaftarbulan2()==true){
             Panelmenu.add(btnGrafikStatusRegPerBulan2);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_statusdaftartanggal()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartanggal()==true){
             Panelmenu.add(btnGrafikStatusRegPerTanggal);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_statusdaftartanggal2()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartanggal2()==true){
             Panelmenu.add(btnGrafikStatusRegPerTanggal2);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_statusbataltahun()==true){
+        if(akses.getgrafik_kunjungan_statusbataltahun()==true){
             Panelmenu.add(btnGrafikStatusRegBatalPerTahun);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_statusbatalbulan()==true){
+        if(akses.getgrafik_kunjungan_statusbatalbulan()==true){
             Panelmenu.add(btnGrafikStatusRegBatalPerBulan);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_statusbataltanggal()==true){
+        if(akses.getgrafik_kunjungan_statusbataltanggal()==true){
             Panelmenu.add(btnGrafikStatusRegBatalPerTanggal);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_percarabayar()==true){
+        if(akses.getgrafik_kunjungan_percarabayar()==true){
             Panelmenu.add(btnGrafikKunjunganPerCarabayar);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_ranaptahun()==true){
+        if(akses.getgrafik_kunjungan_ranaptahun()==true){
             Panelmenu.add(btnGrafikKunjunganRanapPerTahun);
             jmlmenu++;
         }
         
-        if(var.getgrafik_lab_ralantahun()==true){
+        if(akses.getgrafik_lab_ralantahun()==true){
             Panelmenu.add(btnGrafikLabRalanPerTahun);
             jmlmenu++;
         }
         
-        if(var.getgrafik_rad_ralantahun()==true){
+        if(akses.getgrafik_rad_ralantahun()==true){
             Panelmenu.add(btnGrafikRadRalanPerTahun);
             jmlmenu++;
         }
         
-        if(var.getgrafik_per_perujuk()==true){
+        if(akses.getgrafik_per_perujuk()==true){
             Panelmenu.add(btnGrafikPerPerujuk);
             jmlmenu++;
         }
         
-        if(var.getgrafik_lab_ralanbulan()==true){
+        if(akses.getgrafik_lab_ralanbulan()==true){
             Panelmenu.add(btnGrafikLabRalanPerBulan);
             jmlmenu++;
         }
         
-        if(var.getgrafik_rad_ralanbulan()==true){
+        if(akses.getgrafik_rad_ralanbulan()==true){
             Panelmenu.add(btnGrafikRadRalanPerBulan);
             jmlmenu++;
         }
         
-        if(var.getgrafik_lab_ralanhari()==true){
+        if(akses.getgrafik_lab_ralanhari()==true){
             Panelmenu.add(btnGrafikLabRalanPerHari);
             jmlmenu++;
         }
 
-        if(var.getgrafik_rad_ralanhari()==true){
+        if(akses.getgrafik_rad_ralanhari()==true){
             Panelmenu.add(btnGrafikRadRalanPerHari);
             jmlmenu++;
         }
         
-        if(var.getgrafik_ikp_pertahun()==true){
+        if(akses.getgrafik_ikp_pertahun()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerTahun);
             jmlmenu++;
         }
 
-        if(var.getgrafik_ikp_perbulan()==true){
+        if(akses.getgrafik_ikp_perbulan()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerBulan);
             jmlmenu++;
         }
         
-        if(var.getgrafik_ikp_pertanggal()==true){
+        if(akses.getgrafik_ikp_pertanggal()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerTanggal);
             jmlmenu++;
         }
 
-        if(var.getgrafik_ikp_jenis()==true){
+        if(akses.getgrafik_ikp_jenis()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerJenis);
             jmlmenu++;
         }
         
-        if(var.getgrafik_ikp_dampak()==true){
+        if(akses.getgrafik_ikp_dampak()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerDampak);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_per_agama()==true){
+        if(akses.getgrafik_kunjungan_per_agama()==true){
             Panelmenu.add(btnGrafikKunjunganPerAgama);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_per_umur()==true){
+        if(akses.getgrafik_kunjungan_per_umur()==true){
             Panelmenu.add(btnGrafikKunjunganPerUmur);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_suku()==true){
+        if(akses.getgrafik_kunjungan_suku()==true){
             Panelmenu.add(btnGrafikKunjunganPerSuku);
             jmlmenu++;
         }
 
-        if(var.getgrafik_kunjungan_bahasa()==true){
+        if(akses.getgrafik_kunjungan_bahasa()==true){
             Panelmenu.add(btnGrafikKunjunganPerBahasa);
             jmlmenu++;
         }
         
-        if(var.getgrafik_kunjungan_per_cacat()==true){
+        if(akses.getgrafik_kunjungan_per_cacat()==true){
             Panelmenu.add(btnGrafikKunjunganPerCacat);
             jmlmenu++;
         }
         
-        if(var.getsurat_indeks()==true){
+        if(akses.getgrafik_tb_periodelaporan()==true){
+            Panelmenu.add(btnGrafikTBLaporanPeriode);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_rujukan()==true){
+            Panelmenu.add(btnGrafikTBRujukan);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_tb_riwayat()==true){
+            Panelmenu.add(btnGrafikTBRiwayat);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_tipediagnosis()==true){
+            Panelmenu.add(btnGrafikTBTipeDiagnosis);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_statushiv()==true){
+            Panelmenu.add(btnGrafikTBSTatusHIV);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_skoringanak()==true){
+            Panelmenu.add(btnGrafikTBSkoringAnak);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_konfirmasiskoring5()==true){
+            Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_konfirmasiskoring6()==true){
+            Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_sumberobat()==true){
+            Panelmenu.add(btnGrafikTBSumberObat);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_tb_hasilakhirpengobatan()==true){
+            Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tb_hasilteshiv()==true){
+            Panelmenu.add(btnGrafikTBHasilTesHIV);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_air_pdam_pertanggal()==true){
+            Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_air_pdam_perbulan()==true){
+            Panelmenu.add(btnGrafikPemakaianAirPDAMPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_limbahb3_pertanggal()==true){
+            Panelmenu.add(btnGrafikLimbahB3MedisPerTanggal);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_limbahb3_perbulan()==true){
+            Panelmenu.add(btnGrafikLimbahB3MedisPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_limbahdomestik_pertanggal()==true){
+            Panelmenu.add(btnGrafikLimbahDomestikPerTanggal);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_limbahdomestik_perbulan()==true){
+            Panelmenu.add(btnGrafikLimbahDomestikPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_indeks()==true){
             Panelmenu.add(btnSuratIndeks);
             jmlmenu++;
         }
         
-        if(var.getsurat_map()==true){
+        if(akses.getsurat_map()==true){
             Panelmenu.add(btnSuratMap);
             jmlmenu++;
         }
         
-        if(var.getsurat_almari()==true){
+        if(akses.getsurat_almari()==true){
             Panelmenu.add(btnSuratAlmari);
             jmlmenu++;
         }
         
-        if(var.getsurat_rak()==true){
+        if(akses.getsurat_rak()==true){
             Panelmenu.add(btnSuratRak);
             jmlmenu++;
         }
         
-        if(var.getsurat_ruang()==true){
+        if(akses.getsurat_ruang()==true){
             Panelmenu.add(btnSuratRuang);
             jmlmenu++;
         }
 
-        if(var.getsurat_klasifikasi()==true){
+        if(akses.getsurat_klasifikasi()==true){
             Panelmenu.add(btnSuratKlasifikasi);
             jmlmenu++;
         }
         
-        if(var.getsurat_status()==true){
+        if(akses.getsurat_status()==true){
             Panelmenu.add(btnSuratStatus);
             jmlmenu++;
         }
 
-        if(var.getsurat_sifat()==true){
+        if(akses.getsurat_sifat()==true){
             Panelmenu.add(btnSuratSifat);
             jmlmenu++;
         }
         
-        if(var.getsurat_balas()==true){
+        if(akses.getsurat_balas()==true){
             Panelmenu.add(btnSuratBalas);
             jmlmenu++;
         }
         
-        if(var.getsurat_masuk()==true){
+        if(akses.getsurat_masuk()==true){
             Panelmenu.add(btnSuratMasuk);
             jmlmenu++;
         }
         
-        if(var.getsurat_keluar()==true){
+        if(akses.getsurat_keluar()==true){
             Panelmenu.add(btnSuratKeluar);
             jmlmenu++;
         }
+        
+        if(akses.getruang_perpustakaan()==true){
+            Panelmenu.add(btnRuangPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getkategori_perpustakaan()==true){
+            Panelmenu.add(btnKategoriPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getjenis_perpustakaan()==true){
+            Panelmenu.add(btnJenisPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpengarang_perpustakaan()==true){
+            Panelmenu.add(btnPengarangPerpustakaan);
+            jmlmenu++;
+        }
 
-        if(var.getaplikasi()==true){
+        if(akses.getpenerbit_perpustakaan()==true){
+            Panelmenu.add(btnPenerbitPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getkoleksi_perpustakaan()==true){
+            Panelmenu.add(btnKoleksiPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getinventaris_perpustakaan()==true){
+            Panelmenu.add(btnInventarisPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getset_peminjaman_perpustakaan()==true){
+            Panelmenu.add(btnPengaturanPeminjamanPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getdenda_perpustakaan()==true){
+            Panelmenu.add(btnDendaPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getanggota_perpustakaan()==true){
+            Panelmenu.add(btnAnggotaPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpeminjaman_perpustakaan()==true){
+            Panelmenu.add(btnPeminjamanPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getbayar_denda_perpustakaan()==true){
+            Panelmenu.add(btnBayarDendaPerpustakaan);
+            jmlmenu++;
+        }
+
+        if(akses.getaplikasi()==true){
             Panelmenu.add(btnSetupAplikasi);
             jmlmenu++;
         }
 
-        if(var.getadmin()==true){
+        if(akses.getadmin()==true){
             Panelmenu.add(btnAdmin);
             jmlmenu++;
         }
 
-        if(var.getsetup_pjlab()==true){
+        if(akses.getsetup_pjlab()==true){
             Panelmenu.add(btnSetPenjab);
             jmlmenu++;
         }
 
-        if(var.getsetup_otolokasi()==true){
+        if(akses.getsetup_otolokasi()==true){
             Panelmenu.add(btnSetupOtoLokasi);
             jmlmenu++;
         }
 
-        if(var.getsetup_jam_kamin()==true){
+        if(akses.getsetup_jam_kamin()==true){
             Panelmenu.add(btnSetupJamInap);
             jmlmenu++;
         }
 
-        if(var.getset_harga_kamar()==true){
+        if(akses.getset_harga_kamar()==true){
             Panelmenu.add(btnSetHargaKamar);
             jmlmenu++;
         }
 
-        if(var.getsetup_embalase()==true){
+        if(akses.getsetup_embalase()==true){
             Panelmenu.add(btnSetupEmbalase);
             jmlmenu++;
         }                                
 
-        if(var.getuser()==true){
+        if(akses.getuser()==true){
             Panelmenu.add(btnUser);
             jmlmenu++;
         }
 
-        if(var.gettracer_login()==true){
+        if(akses.gettracer_login()==true){
             Panelmenu.add(btnTracker);
             jmlmenu++;
         }
 
-        if(var.getvakum()==true){
+        if(akses.getvakum()==true){
             Panelmenu.add(btnVakum);
             jmlmenu++;
         }
 
-        if(var.getdisplay()==true){
+        if(akses.getdisplay()==true){
            Panelmenu.add(btnDisplay); 
            jmlmenu++;
         }
         
-        if(var.getdisplay_apotek()==true){
+        if(akses.getdisplay_apotek()==true){
            Panelmenu.add(btnDisplayApotek); 
            jmlmenu++;
         }
 
-        if(var.getset_harga_obat()==true){
+        if(akses.getset_harga_obat()==true){
             Panelmenu.add(btnSetupHarga);
             jmlmenu++;
         }
 
-        if(var.getset_harga_obat_ralan()==true){
+        if(akses.getset_harga_obat_ralan()==true){
             Panelmenu.add(btnSetObatRalan);
             jmlmenu++;
         }
 
-        if(var.getset_harga_obat_ranap()==true){
+        if(akses.getset_harga_obat_ranap()==true){
             Panelmenu.add(btnSetObatRanap);
             jmlmenu++;
         }
 
-        if(var.getset_penggunaan_tarif()==true){
+        if(akses.getset_penggunaan_tarif()==true){
             Panelmenu.add(btnSetupTarif);
             jmlmenu++;
         }
 
-        if(var.getset_oto_ralan()==true){
+        if(akses.getset_oto_ralan()==true){
             Panelmenu.add(btnSetOtoRalan);
             jmlmenu++;
         }
 
-        if(var.getbiaya_harian()==true){
+        if(akses.getbiaya_harian()==true){
             Panelmenu.add(btnSetBiayaHarian);
             jmlmenu++;
         }
 
-        if(var.getbiaya_masuk_sekali()==true){
+        if(akses.getbiaya_masuk_sekali()==true){
             Panelmenu.add(btnSetBiayaMasukSekali);
             jmlmenu++;
         }
 
-        if(var.getset_no_rm()==true){
+        if(akses.getset_no_rm()==true){
             Panelmenu.add(btnSetupRM);
             jmlmenu++;
         }
 
-        if(var.getset_nota()==true){
+        if(akses.getset_nota()==true){
             Panelmenu.add(btnSetupNota);
             jmlmenu++;
         }
 
-        if(var.getclosing_kasir()==true){
+        if(akses.getclosing_kasir()==true){
             Panelmenu.add(btnClosingKasir);
             jmlmenu++;
         }
 
-        if(var.getketerlambatan_presensi()==true){
+        if(akses.getketerlambatan_presensi()==true){
             Panelmenu.add(btnKeterlambatanPresensi);
             jmlmenu++;
         }
         
-        if(var.getset_input_parsial()==true){
+        if(akses.getset_input_parsial()==true){
             Panelmenu.add(btnSetInputParsial);
+            jmlmenu++;
+        }
+        
+        if(akses.getpassword_asuransi()==true){
+            Panelmenu.add(btnPasswordAsuransi);
             jmlmenu++;
         }
     }
     
     private void isCariIsi() {
         jmlmenu=0;     
-        if(var.getinformasi_kamar()==true){
+        if(akses.getinformasi_kamar()==true){
             if(btnAnalisaKamar.getText().trim().contains(TCari.getText().trim())){
                 Panelmenu.add(btnAnalisaKamar);
                 jmlmenu++;
             }                
         }
 
-        if(var.getjadwal_praktek()==true){   
+        if(akses.getjadwal_praktek()==true){   
             if(BtnJadwal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(BtnJadwal);
                 jmlmenu++;
             }                
         }
 
-        if(var.getregistrasi()==true){
+        if(akses.getregistrasi()==true){
             if(btnRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRegistrasi);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbooking_registrasi()==true){
+        if(akses.getbooking_registrasi()==true){
             if(btnBookingRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBookingRegistrasi);
                 jmlmenu++;
             }                
         }
 
-        if(var.getigd()==true){
+        if(akses.getigd()==true){
             if(btnIGD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnIGD);  
                 jmlmenu++;
             }                
         }               
 
-        if(var.gettindakan_ralan()==true){
+        if(akses.gettindakan_ralan()==true){
             if(btnRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRalan); 
                 jmlmenu++;
             }                
         }
 
-        if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
+        if((akses.getkamar_inap()==true)||(akses.getbilling_ranap()==true)||(akses.gettindakan_ranap()==true)){
             if(btnKamarInap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamarInap);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbooking_operasi()==true){
+        if(akses.getbooking_operasi()==true){
             if(btnJadwalOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJadwalOperasi);
                 jmlmenu++;
             }                
         }
         
-        if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
+        if((akses.getpermintaan_lab()==true)||(akses.getperiksa_lab()==true)){
             if(btnPermintaanLab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanLab);
                 jmlmenu++;
             }                
         }
         
-        if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
+        if((akses.getpermintaan_radiologi()==true)||(akses.getperiksa_radiologi()==true)){
             if(btnPermintaanRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanRadiologi);
                 jmlmenu++;
             }                
         }
 
-        if(var.getdpjp_ranap()==true){
+        if(akses.getdpjp_ranap()==true){
             if(BtnDpjp.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(BtnDpjp);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettindakan_ranap()==true){
+        if(akses.gettindakan_ranap()==true){
             if(btnRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getoperasi()==true){
+        if(akses.getoperasi()==true){
             if(btnTagihanOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanOperasi);
                 jmlmenu++;
             }                
         }
 
-        if(var.getrujukan_keluar()==true){
+        if(akses.getrujukan_keluar()==true){
             if(btnRujukPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRujukPasien);
                 jmlmenu++;
             }                
         }
 
-        if(var.getrujukan_masuk()==true){ 
+        if(akses.getrujukan_masuk()==true){ 
             if(btnRujukMasuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRujukMasuk);
                 jmlmenu++;
             }                
         }
 
-        if(var.getberi_obat()==true){
+        if(akses.getberi_obat()==true){
             if(btnBeriObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBeriObat);
                 jmlmenu++;
             }                
         }
 
-        if(var.getresep_pulang()==true){ 
+        if(akses.getresep_pulang()==true){ 
             if(btnResepPulang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnResepPulang);
                 jmlmenu++;
             }                
         }
 
-        if(var.getresep_obat()==true){
+        if(akses.getresep_obat()==true){
             if(btnResepObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnResepObat);
                 jmlmenu++;
             }                
         }
 
-        if(var.getdiet_pasien()==true){
+        if(akses.getdiet_pasien()==true){
             if(btnDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDiet);
                 jmlmenu++;
             }                
         }
 
-        if(var.getperiksa_lab()==true){
+        if(akses.getperiksa_lab()==true){
             if(btnLaboratorium.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLaboratorium);
                 jmlmenu++;
             }                
         }
 
-        if(var.getperiksa_radiologi()==true){
+        if(akses.getperiksa_radiologi()==true){
             if(btnPeriksaRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPeriksaRadiologi);   
                 jmlmenu++;
             }                
         }
 
-        if((var.getkasir_ralan()==true)||(var.getbilling_ralan()==true)){
+        if((akses.getkasir_ralan()==true)||(akses.getbilling_ralan()==true)){
             if(btnKasir.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKasir);     
                 jmlmenu++;
             }                
         }
 
-        if(var.getdeposit_pasien()==true){    
+        if(akses.getdeposit_pasien()==true){    
             if(btnDeposit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpiutang_pasien()==true){
+        if(akses.getpiutang_pasien()==true){
             if(btnLihatPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLihatPiutang); 
                 jmlmenu++;
@@ -18869,56 +20219,56 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }            
 
 
-        if(var.getbarcoderalan()==true){
+        if(akses.getbarcoderalan()==true){
             if(btnBarcodeRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarcodeRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbarcoderanap()==true){
+        if(akses.getbarcoderanap()==true){
             if(btnBarcodeRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarcodeRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpetugas()==true){
+        if(akses.getpetugas()==true){
             if(btnPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPegawai);
                 jmlmenu++;
             }                
         }
 
-        if(var.getdokter()==true){
+        if(akses.getdokter()==true){
             if(btnDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDokter);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbarcode()==true){
+        if(akses.getbarcode()==true){
             if(btnBarcode.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarcode);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getsidikjari()==true){
+        if(akses.getsidikjari()==true){
             if(btnSidikJari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSidikJari);   
                 jmlmenu++;
             }                
         }
 
-        if(var.getjam_masuk()==true){
+        if(akses.getjam_masuk()==true){
             if(btnJamPresensi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJamPresensi);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getjadwal_pegawai()==true){
+        if(akses.getjadwal_pegawai()==true){
             if(btnJadwalPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJadwalPegawai);   
                 jmlmenu++;                
@@ -18929,21 +20279,21 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }   
         }             
 
-        if(var.getpresensi_harian()==true){
+        if(akses.getpresensi_harian()==true){
             if(btnRekapHarian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapHarian);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpresensi_bulanan()==true){    
+        if(akses.getpresensi_bulanan()==true){    
             if(btnRekapBulanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapBulanan);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettemporary_presensi()==true){
+        if(akses.gettemporary_presensi()==true){
             if(btnTemporaryPresensi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTemporaryPresensi);   
                 jmlmenu++;
@@ -18960,1282 +20310,1353 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
-        if((var.getpegawai_admin()==true)||(var.getpegawai_user()==true)){  
+        if((akses.getpegawai_admin()==true)||(akses.getpegawai_user()==true)){  
             if(btnPenggajian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenggajian); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getmaster_berkas_pegawai()==true){    
+        if(akses.getmaster_berkas_pegawai()==true){    
             if(btnMasterBerkasPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterBerkasPegawai);
                 jmlmenu++;
             }                
         }
         
-        if(var.getberkas_kepegawaian()==true){    
+        if(akses.getberkas_kepegawaian()==true){    
             if(btnBerkasPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBerkasPegawai);
                 jmlmenu++;
             }                
         }
         
-        if(var.getriwayat_jabatan()==true){    
+        if(akses.getriwayat_jabatan()==true){    
             if(btnRiwayatJabatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatJabatan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getriwayat_pendidikan()==true){    
+        if(akses.getriwayat_pendidikan()==true){    
             if(btnRiwayatPendidikan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatPendidikan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getriwayat_naik_gaji()==true){    
+        if(akses.getriwayat_naik_gaji()==true){    
             if(btnRiwayatNaikGaji.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatNaikGaji);
                 jmlmenu++;
             }                
         }
         
-        if(var.getkegiatan_ilmiah()==true){    
+        if(akses.getkegiatan_ilmiah()==true){    
             if(btnKegiatanIlmiah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKegiatanIlmiah);
                 jmlmenu++;
             }                
         }
         
-        if(var.getriwayat_penghargaan()==true){    
+        if(akses.getriwayat_penghargaan()==true){    
             if(btnRiwayatPenghargaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatPenghargaan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getriwayat_penelitian()==true){    
+        if(akses.getriwayat_penelitian()==true){    
             if(btnRiwayatPenelitian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatPenelitian);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsms()==true){    
+        if(akses.getsms()==true){    
             if(btnSMS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSMS);
                 jmlmenu++;
             }                
         }
 
-        if(var.getindustrifarmasi()==true){
+        if(akses.getindustrifarmasi()==true){
             if(btnIndustriFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnIndustriFarmasi); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getsuplier()==true){
+        if(akses.getsuplier()==true){
             if(btnSuplier.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuplier); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getsatuan_barang()==true){
+        if(akses.getsatuan_barang()==true){
             if(btnSatuan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSatuan); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getmetode_racik()==true){
+        if(akses.getmetode_racik()==true){
             if(btnMetodeRacik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMetodeRacik); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getkonversi_satuan()==true){
+        if(akses.getkonversi_satuan()==true){
             if(btnKonversi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKonversi); 
                 jmlmenu++;
             }                
         }    
 
-        if(var.getjenis_barang()==true){
+        if(akses.getjenis_barang()==true){
             if(btnJnsBarang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJnsBarang);
                 jmlmenu++;
             }                
         }
         
-        if(var.getkategori_barang()==true){
+        if(akses.getkategori_barang()==true){
             if(btnKategoriBarang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKategoriBarang);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgolongan_barang()==true){
+        if(akses.getgolongan_barang()==true){
             if(btnGolonganBarang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGolonganBarang);
                 jmlmenu++;
             }                
         }
 
-        if(var.getobat()==true){
+        if(akses.getobat()==true){
             if(btnObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObat);
                 jmlmenu++;
             }                
         }
 
-        if(var.getstok_opname_obat()==true){
+        if(akses.getstok_opname_obat()==true){
             if(btnOpname.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOpname); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getmutasi_barang()==true){
+        if(akses.getmutasi_barang()==true){
             if(btnMutasiBarang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMutasiBarang); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getstok_obat_pasien()==true){
+        if(akses.getstok_obat_pasien()==true){
             if(btnStokObatPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnStokObatPasien); 
                 jmlmenu++;
             }                
         }
 
-        if((var.getpermintaan_medis()==true)||(var.getmutasi_barang()==true)||(var.getpengeluaran_stok_apotek()==true)){
+        if((akses.getpermintaan_medis()==true)||(akses.getmutasi_barang()==true)||(akses.getpengeluaran_stok_apotek()==true)){
             if(btnPermintaanMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanMedis);   
                 jmlmenu++;
             }                
         }
         
-        if(var.getrekap_permintaan_medis()==true){
+        if(akses.getrekap_permintaan_medis()==true){
             if(btnRekapPermintaanMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPermintaanMedis);   
                 jmlmenu++;
             }                
         }
         
-        if((var.getsurat_pemesanan_medis()==true)||(var.getpemesanan_obat()==true)){
+        if((akses.getsurat_pemesanan_medis()==true)||(akses.getpemesanan_obat()==true)){
             if(btnSuratPemesananMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratPemesananMedis);   
                 jmlmenu++;
             }                
         }
         
-        if(var.getpengadaan_obat()==true){
+        if(akses.getpengadaan_obat()==true){
             if(btnPembelian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembelian);   
                 jmlmenu++;
             }                
         }
 
-        if((var.getpemesanan_obat()==true)||(var.getbayar_pemesanan_obat()==true)){
+        if((akses.getpemesanan_obat()==true)||(akses.getbayar_pemesanan_obat()==true)){
             if(btnPemesanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemesanan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpenjualan_obat()==true){
+        if(akses.getpenjualan_obat()==true){
             if(btnPenjualan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenjualan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getresep_dokter()==true){
+        if(akses.getresep_dokter()==true){
             if(btnDaftarPermintaanResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDaftarPermintaanResep);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpiutang_obat()==true){
+        if(akses.getpiutang_obat()==true){
             if(btnPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutang);  
                 jmlmenu++;
             }                
         }
         
-        if(var.getpengeluaran_stok_apotek()==true){
+        if(akses.getpengeluaran_stok_apotek()==true){
             if(btnStokKeluarMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnStokKeluarMedis);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getretur_ke_suplier()==true){
+        if(akses.getretur_ke_suplier()==true){
             if(btnReturBeli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturBeli); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getretur_dari_pembeli()==true){
+        if(akses.getretur_dari_pembeli()==true){
             if(btnReturJual.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturJual); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getretur_obat_ranap()==true){
+        if(akses.getretur_obat_ranap()==true){
             if(btnReturPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturPasien); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getretur_piutang_pasien()==true){
+        if(akses.getretur_piutang_pasien()==true){
             if(btnReturPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturPiutang); 
                 jmlmenu++;
             }                
         }   
 
-        if(var.getpengambilan_utd()==true){
+        if(akses.getpengambilan_utd()==true){
             if(btnPengambilanUTD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getkeuntungan_penjualan()==true){
+        if(akses.getkeuntungan_penjualan()==true){
             if(btnKeuntungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKeuntungan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getkeuntungan_beri_obat()==true){
+        if(akses.getkeuntungan_beri_obat()==true){
             if(btnKeuntunganObatRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKeuntunganObatRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getkeuntungan_beri_obat_nonpiutang()==true){
+        if(akses.getkeuntungan_beri_obat_nonpiutang()==true){
             if(btnKeuntunganObat2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKeuntunganObat2);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsirkulasi_obat()==true){
+        if(akses.getsirkulasi_obat()==true){
             if(btnSirkulasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasi);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsirkulasi_obat2()==true){
+        if(akses.getsirkulasi_obat2()==true){
             if(btnSirkulasi2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasi2);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsirkulasi_obat3()==true){
+        if(akses.getsirkulasi_obat3()==true){
             if(btnSirkulasi3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasi3);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpemberian_obat_pertanggal()==true){
+        if(akses.getpemberian_obat_pertanggal()==true){
             if(btnObatPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPerTanggal);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpenjualan_obat_pertanggal()==true){
+        if(akses.getpenjualan_obat_pertanggal()==true){
             if(btnPenjualanPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenjualanPerTanggal);
                 jmlmenu++;
             }                
         }
 
-        if(var.getriwayat_obat_alkes_bhp()==true){
+        if(akses.getriwayat_obat_alkes_bhp()==true){
             if(btnRiwayatBarangMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatBarangMedis);
                 jmlmenu++;
             }                
         }
 
-        if(var.getdarurat_stok()==true){
+        if(akses.getdarurat_stok()==true){
             if(btnDaruratStok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDaruratStok);
                 jmlmenu++;
             }                
         }    
         
-        if(var.getpengguna_obat_resep()==true){
+        if(akses.getpengguna_obat_resep()==true){
             if(btnPenggunaObatResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenggunaObatResep);
                 jmlmenu++;
             }                
         }  
         
-        if(var.getrekap_pemesanan()==true){
+        if(akses.getrekap_pemesanan()==true){
             if(btnRekapPenerimaanObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPenerimaanObat);
                 jmlmenu++;
             }                
         }
         
-        if(var.getdata_batch()==true){
+        if(akses.getdata_batch()==true){
             if(btnDataBatch.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDataBatch);
                 jmlmenu++;
             }                
         }
         
-        if(var.getriwayat_data_batch()==true){
+        if(akses.getriwayat_data_batch()==true){
             if(btnRiwayatBatch.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatBatch);
                 jmlmenu++;
             }                
         }
         
-        if(var.getkegiatan_farmasi()==true){
+        if(akses.getkegiatan_farmasi()==true){
             if(btnKegiatanFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKegiatanFarmasi);
                 jmlmenu++;
             }                
         }
         
-        if(var.getppn_obat()==true){
+        if(akses.getppn_obat()==true){
             if(btnPPNObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPPNObat);
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getkadaluarsa_batch()==true){
+            if(btnKadaluarsaBatch.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKadaluarsaBatch);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsisa_stok()==true){
+            if(btnSisaStok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSisaStok);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getobat_per_resep()==true){
+            if(btnObatPerResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnObatPerResep);
+                jmlmenu++;
+            }                
+        }
 
-        if(var.getsatuan_barang()==true){
+        if(akses.getsatuan_barang()==true){
             if(btnSatuan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSatuan);  
                 jmlmenu++;
             }                
         }             
 
-        if(var.getipsrs_jenis_barang()==true){
+        if(akses.getipsrs_jenis_barang()==true){
             if(btnJenisIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisIpsrs); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getipsrs_barang()==true){
+        if(akses.getipsrs_barang()==true){
             if(btnBarangIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarangIpsrs);  
                 jmlmenu++;
             }                
         } 
 
-        if(var.getsuplier_penunjang()==true){
+        if(akses.getsuplier_penunjang()==true){
             if(btnSuplierIPSRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuplierIPSRS);  
                 jmlmenu++;
             }                
         }           
         
-        if(var.getpermintaan_non_medis()==true){
+        if(akses.getpermintaan_non_medis()==true){
             if(btnPermintaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanNonMedis);  
                 jmlmenu++;
             }                
         }
         
-        if(var.getrekap_permintaan_non_medis()==true){
+        if(akses.getrekap_permintaan_non_medis()==true){
             if(btnRekapPermintaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPermintaanNonMedis);  
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_pemesanan_non_medis()==true){
+        if(akses.getsurat_pemesanan_non_medis()==true){
             if(btnSuratPemesananNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratPemesananNonMedis);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getipsrs_pengadaan_barang()==true){
+        if(akses.getipsrs_pengadaan_barang()==true){
             if(btnPembelianIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembelianIpsrs);  
                 jmlmenu++;
             }                
         }
         
-        if(var.getpenerimaan_non_medis()==true){
+        if(akses.getpenerimaan_non_medis()==true){
             if(btnPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenerimaanNonMedis);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getipsrs_stok_keluar()==true){
+        if(akses.getipsrs_stok_keluar()==true){
             if(btnPengeluaranIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengeluaranIpsrs); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getipsrs_pengeluaran_harian()==true){
+        if(akses.getipsrs_pengeluaran_harian()==true){
             if(btnRBiayaIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBiayaIpsrs);
                 jmlmenu++;
             }                
         }
 
-        if(var.getipsrs_rekap_pengadaan()==true){
+        if(akses.getipsrs_rekap_pengadaan()==true){
             if(btnRHMasukIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHMasukIpsrs);
                 jmlmenu++;
             }                
         }
 
-        if(var.getipsrs_rekap_stok_keluar()==true){
+        if(akses.getipsrs_rekap_stok_keluar()==true){
             if(btnRHKeluarIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHKeluarIpsrs);
                 jmlmenu++;
             }                
         } 
 
-        if(var.getpengambilan_penunjang_utd()==true){
+        if(akses.getpengambilan_penunjang_utd()==true){
             if(btnPengambilanPenunjangUTD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanPenunjangUTD);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getipsrs_pengadaan_pertanggal()==true){
+        if(akses.getipsrs_pengadaan_pertanggal()==true){
             if(btnPengadaanIPSRSPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengadaanIPSRSPerTanggal);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getipsrs_stokkeluar_pertanggal()==true){
+        if(akses.getipsrs_stokkeluar_pertanggal()==true){
             if(btnStokKeluarIPSRSPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getrekap_pemesanan_non_medis()==true){
+        if(akses.getrekap_pemesanan_non_medis()==true){
             if(btnRekapPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPenerimaanNonMedis);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getstok_opname_logistik()==true){
+        if(akses.getstok_opname_logistik()==true){
             if(btnOpnameIPSRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOpnameIPSRS);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getsirkulasi_non_medis()==true){
+        if(akses.getsirkulasi_non_medis()==true){
             if(btnSirkulasiNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasiNonMedis);
                 jmlmenu++;
             }                
         } 
 
-        if(var.getinventaris_jenis()==true){
+        if(akses.getinventaris_jenis()==true){
             if(btnJenisInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisInventaris);  
                 jmlmenu++;
             }                
         }   
 
-        if(var.getinventaris_kategori()==true){
+        if(akses.getinventaris_kategori()==true){
             if(btnKategoriInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKategoriInventaris);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinventaris_merk()==true){
+        if(akses.getinventaris_merk()==true){
             if(btnMerkInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMerkInventaris);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinventaris_ruang()==true){
+        if(akses.getinventaris_ruang()==true){
             if(btnRuangInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangInventaris);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinventaris_produsen()==true){
+        if(akses.getinventaris_produsen()==true){
             if(btnProdusenInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnProdusenInventaris);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinventaris_koleksi()==true){
+        if(akses.getinventaris_koleksi()==true){
             if(btnBarangInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarangInventaris);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinventaris_inventaris()==true){
+        if(akses.getinventaris_inventaris()==true){
             if(btnInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInventaris);  
                 jmlmenu++;
             }                
         }                 
 
-        if(var.getinventaris_sirkulasi()==true){
+        if(akses.getinventaris_sirkulasi()==true){
             if(btnSirkulasiInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasiInventaris);
                 jmlmenu++;
             }                
         }     
         
-        if(var.getbarang_cssd()==true){
+        if(akses.getbarang_cssd()==true){
             if(btnBarangCSSD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarangCSSD);
                 jmlmenu++;
             }                
         } 
+        
+        if(akses.getpemakaian_air_pdam()==true){
+            if(btnPemakaianAirPDAM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemakaianAirPDAM);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(akses.getlimbah_b3_medis()==true){
+            if(btnLimbahB3Medis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLimbahB3Medis);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(akses.getlimbah_domestik()==true){
+            if(btnLimbahDomestik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLimbahDomestik);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmutu_air_limbah()==true){
+            if(btnMutuAirLimbah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMutuAirLimbah);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpest_control()==true){
+            if(btnPestControl.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPestControl);
+                jmlmenu++;
+            }                
+        }
 
-        if(var.getparkir_jenis()==true){
+        if(akses.getparkir_jenis()==true){
             if(btnJenisParkir.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisParkir);
                 jmlmenu++;
             }                
         }     
 
-        if(var.getparkir_barcode()==true){
+        if(akses.getparkir_barcode()==true){
             if(btnBarcodeParkir.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBarcodeParkir);
                 jmlmenu++;
             }                
         }
 
-        if(var.getparkir_in()==true){
+        if(akses.getparkir_in()==true){
             if(btnParkirMasuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnParkirMasuk);
                 jmlmenu++;
             }                
         }
 
-        if(var.getharian_tindakan_poli()==true){
+        if(akses.getharian_tindakan_poli()==true){
             if(btnTagihanPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanPoli); 
                 jmlmenu++;
             }                
         }   
 
-        if(var.getharian_kamar()==true){
+        if(akses.getharian_kamar()==true){
             if(btnHarianKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHarianKamar); 
                 jmlmenu++;
             }                
         }  
 
-        if(var.getharian_tindakan_dokter()==true){
+        if(akses.getharian_tindakan_dokter()==true){
             if(btnTagihanDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanDokter); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getobat_per_poli()==true){
+        if(akses.getobat_per_poli()==true){
             if(btnTagihanObatPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanObatPoli);
                 jmlmenu++;
             }                
         }
 
-        if(var.getobat_per_kamar()==true){
+        if(akses.getobat_per_kamar()==true){
             if(btnTagihanObatBangsal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanObatBangsal);
                 jmlmenu++;
             }                
         }
 
-        if(var.getobat_per_dokter_ralan()==true){
+        if(akses.getobat_per_dokter_ralan()==true){
             if(btnObatPasienRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPasienRalan);    
                 jmlmenu++;
             }                
         }
 
-        if(var.getobat_per_dokter_ranap()==true){
+        if(akses.getobat_per_dokter_ranap()==true){
             if(btnObatPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPasienRanap);
                 jmlmenu++;
             }                
         }    
 
-        if(var.getobat_per_dokter_peresep()==true){
+        if(akses.getobat_per_dokter_peresep()==true){
             if(btnObatPasienPeresep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPasienPeresep);
                 jmlmenu++;
             }                
         }
 
-        if(var.getobat_per_cara_bayar()==true){
+        if(akses.getobat_per_cara_bayar()==true){
             if(btnObatPerCaraBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPerCaraBayar);
                 jmlmenu++;
             }                
         }
 
-        if(var.getdetail_tindakan()==true){
+        if(akses.getdetail_tindakan()==true){
             if(btnDetailTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDetailTindakan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getjm_ranap_dokter()==true){
+        if(akses.getjm_ranap_dokter()==true){
             if(btnJMDetailDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJMDetailDokter);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getdetailjmdokter2()==true){
+        if(akses.getdetailjmdokter2()==true){
             if(btnJMDetailDokter2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJMDetailDokter2);
                 jmlmenu++;
             }                
         } 
 
-        if(var.getharian_dokter()==true){
+        if(akses.getharian_dokter()==true){
             if(btnRHDOkter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHDOkter);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getbulanan_dokter()==true){
+        if(akses.getbulanan_dokter()==true){
             if(btnRBDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBDokter);
                 jmlmenu++;
             }                
         }
 
-        if(var.getharian_paramedis()==true){
+        if(akses.getharian_paramedis()==true){
             if(btnRHParamedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHParamedis); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getbulanan_paramedis()==true){
+        if(akses.getbulanan_paramedis()==true){
             if(btnRBParamedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBParamedis); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getharian_js()==true){
+        if(akses.getharian_js()==true){
             if(btnRHJasaSarana.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHJasaSarana);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getbulanan_js()==true){
+        if(akses.getbulanan_js()==true){
             if(btnRBJasaSarana.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBJasaSarana);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getharian_kso()==true){
+        if(akses.getharian_kso()==true){
             if(btnRHKSO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHKSO);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getbulanan_kso()==true){
+        if(akses.getbulanan_kso()==true){
             if(btnRBKSO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBKSO);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getharian_menejemen()==true){
+        if(akses.getharian_menejemen()==true){
             if(btnRHMenejemen.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHMenejemen);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getbulanan_menejemen()==true){
+        if(akses.getbulanan_menejemen()==true){
             if(btnRBMenejemen.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBMenejemen);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getharian_paket_bhp()==true){
+        if(akses.getharian_paket_bhp()==true){
             if(btnRHPaketBHP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRHPaketBHP);  
                 jmlmenu++;
             }                           
         }
 
-        if(var.getbulanan_paket_bhp()==true){
+        if(akses.getbulanan_paket_bhp()==true){
             if(btnRBPaketBHP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRBPaketBHP);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getfee_visit_dokter()==true){
+        if(akses.getfee_visit_dokter()==true){
             if(btnfee_visit_dokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnfee_visit_dokter); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getfee_bacaan_ekg()==true){
+        if(akses.getfee_bacaan_ekg()==true){
             if(btnfee_bacaan_ekg.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnfee_bacaan_ekg); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getfee_rujukan_rontgen()==true){
+        if(akses.getfee_rujukan_rontgen()==true){
             if(btnfee_rujukan_rontgen.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnfee_rujukan_rontgen); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getfee_rujukan_ranap()==true){
+        if(akses.getfee_rujukan_ranap()==true){
             if(btnfee_rujukan_ranap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnfee_rujukan_ranap); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getfee_ralan()==true){
+        if(akses.getfee_ralan()==true){
             if(btnfee_ralan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnfee_ralan); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getdetail_tindakan_okvk()==true){
+        if(akses.getdetail_tindakan_okvk()==true){
             if(btnDetailVKOK.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDetailVKOK);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpembayaran_ralan()==true){
+        if(akses.getpembayaran_ralan()==true){
             if(btnRalanMasuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRalanMasuk);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpembayaran_ranap()==true){
+        if(akses.getpembayaran_ranap()==true){
             if(btnRanapMasuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRanapMasuk);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpiutang_ralan()==true){
+        if(akses.getpiutang_ralan()==true){
             if(btnPiutangRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutangRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpiutang_ranap()==true){
+        if(akses.getpiutang_ranap()==true){
             if(btnPiutangRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutangRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getrekap_pembayaran_ralan()==true){
+        if(akses.getrekap_pembayaran_ralan()==true){
             if(btnTagihanRalanPerhari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanRalanPerhari);
                 jmlmenu++;
             }                
         }
 
-        if(var.getrekap_pembayaran_ranap()==true){
+        if(akses.getrekap_pembayaran_ranap()==true){
             if(btnTagihanRanapPerhari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanRanapPerhari);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpembayaran_per_unit()==true){
+        if(akses.getpembayaran_per_unit()==true){
             if(btnPembayaranPerUnit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranPerUnit);
                 jmlmenu++;
             }                
         }
         
-        if(var.getrekap_pembayaran_per_unit()==true){
+        if(akses.getrekap_pembayaran_per_unit()==true){
             if(btnRekapPembayaranPerUnit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPembayaranPerUnit);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettagihan_masuk()==true){
+        if(akses.gettagihan_masuk()==true){
             if(btnTagihanMasuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanMasuk);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettambahan_biaya()==true){
+        if(akses.gettambahan_biaya()==true){
             if(btnTambahanBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTambahanBiaya);
                 jmlmenu++;
             }                
         }   
 
-        if(var.getpotongan_biaya()==true){
+        if(akses.getpotongan_biaya()==true){
             if(btnPotonganBiaya.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPotonganBiaya);
                 jmlmenu++;
             }                
         }     
         
-        if(var.getrekap_poli_anak()==true){
+        if(akses.getrekap_poli_anak()==true){
             if(btnRekapPoliAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPoliAnak);
                 jmlmenu++;
             }                
         } 
 
-        if(var.getdeposit_pasien()==true){
+        if(akses.getdeposit_pasien()==true){
             if(btnDeposit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
             }                
         }
 
-        if(var.getrekap_per_shift()==true){
+        if(akses.getrekap_per_shift()==true){
             if(btnRekapPershift.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPershift);
                 jmlmenu++;
             }                
         }            
 
-        if(var.getpayment_point()==true){
+        if(akses.getpayment_point()==true){
             if(btnPaymentPoint.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPaymentPoint);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpayment_point2()==true){
+        if(akses.getpayment_point2()==true){
             if(btnPaymentPoint2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPaymentPoint2);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpembayaran_akun_bayar()==true){
+        if(akses.getpembayaran_akun_bayar()==true){
             if(btnPembayaranAkunBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranAkunBayar);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpembayaran_akun_bayar2()==true){
+        if(akses.getpembayaran_akun_bayar2()==true){
             if(btnPembayaranAkunBayar2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranAkunBayar2);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpiutang_akun_piutang()==true){
+        if(akses.getpembayaran_akun_bayar3()==true){
+            if(btnPembayaranAkunBayar3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranAkunBayar3);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpiutang_akun_piutang()==true){
             if(btnPiutangPerAkunPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutangPerAkunPiutang);
                 jmlmenu++;
             }                
         }
 
-        if(var.geticd9()==true){
+        if(akses.geticd9()==true){
             if(btnICD9.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnICD9);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpenyakit()==true){
+        if(akses.getpenyakit()==true){
             if(btnICD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnICD);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpenyakit_pd3i()==true){
+        if(akses.getpenyakit_pd3i()==true){
             if(btnPenyakitPD3I.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenyakitPD3I);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsurveilans_pd3i()==true){
+        if(akses.getsurveilans_pd3i()==true){
             if(btnSurveilansPD3I.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSurveilansPD3I);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsurveilans_ralan()==true){
+        if(akses.getsurveilans_ralan()==true){
             if(btnSurveilansRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSurveilansRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsurveilans_ranap()==true){
+        if(akses.getsurveilans_ranap()==true){
             if(btnSurveilansRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSurveilansRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpny_takmenular_ralan()==true){
+        if(akses.getpny_takmenular_ralan()==true){
             if(btnPnyTakMenularRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPnyTakMenularRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpny_takmenular_ranap()==true){
+        if(akses.getpny_takmenular_ranap()==true){
             if(btnPnyTakMenularRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPnyTakMenularRanap);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpenyakit_menular_ralan()==true){
+        if(akses.getpenyakit_menular_ralan()==true){
             if(btnPnyMenularRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPnyMenularRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpenyakit_menular_ranap()==true){
+        if(akses.getpenyakit_menular_ranap()==true){
             if(btnPnyMenularRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPnyMenularRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getobat_penyakit()==true){
+        if(akses.getobat_penyakit()==true){
             if(btnObatPenyakit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPenyakit);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpenyakit_ralan()==true){  
+        if(akses.getpenyakit_ralan()==true){  
             if(btnFrekuensiRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnFrekuensiRalan); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getpenyakit_ranap()==true){  
+        if(akses.getpenyakit_ranap()==true){  
             if(btnFrekuensiRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnFrekuensiRanap); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getkunjungan_ralan()==true){ 
+        if(akses.getkunjungan_ralan()==true){ 
             if(btnKunjunganRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganRalan);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getkunjungan_ranap()==true){  
+        if(akses.getkunjungan_ranap()==true){  
             if(btnKunjunganRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganRanap); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getkunjungan_permintaan_lab()==true){  
+        if(akses.getkunjungan_permintaan_lab()==true){  
             if(btnKunjunganLabRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganLabRalan); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getkunjungan_permintaan_lab2()==true){  
+        if(akses.getkunjungan_permintaan_lab2()==true){  
             if(btnKunjunganLabRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganLabRanap); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getkunjungan_permintaan_radiologi()==true){  
+        if(akses.getkunjungan_permintaan_radiologi()==true){  
             if(btnKunjunganRadRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganRadRalan); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getkunjungan_permintaan_radiologi2()==true){  
+        if(akses.getkunjungan_permintaan_radiologi2()==true){  
             if(btnKunjunganRadRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKunjunganRadRanap); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getsensus_harian_poli()==true){  
+        if(akses.getsensus_harian_poli()==true){  
             if(btnSensusHarianPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSensusHarianPoli);  
                 jmlmenu++;
             }                
         }
         
-        if(var.getsensus_harian_ralan()==true){  
+        if(akses.getsensus_harian_ralan()==true){  
             if(btnSensusHarianRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSensusHarianRalan);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getrl32()==true){  
+        if(akses.getrl32()==true){  
             if(btnRl32.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl32);   
                 jmlmenu++;
             }                
         }
 
-        if(var.getrl33()==true){  
+        if(akses.getrl33()==true){  
             if(btnRl33.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl33);                 
                 jmlmenu++;
             }                
         }
 
-        if(var.getrl34()==true){  
+        if(akses.getrl34()==true){  
             if(btnRl34.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl34);   
                 jmlmenu++;
             }                
         }
 
-        if(var.getrl36()==true){  
+        if(akses.getrl36()==true){  
             if(btnRl36.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl36);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getrl37()==true){  
+        if(akses.getrl37()==true){  
             if(btnRl37.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl37); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getrl38()==true){  
+        if(akses.getrl38()==true){  
             if(btnRl38.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl38);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getrl4a()==true){  
+        if(akses.getrl4a()==true){  
             if(btnRl4a.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl4a);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getrl4b()==true){  
+        if(akses.getrl4b()==true){  
             if(btnRl4b.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl4b);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getrl4asebab()==true){  
+        if(akses.getrl4asebab()==true){  
             if(btnRl4asebab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl4asebab);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getrl4bsebab()==true){  
+        if(akses.getrl4bsebab()==true){  
             if(btnRl4bsebab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl4bsebab);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getlama_pelayanan_ralan()==true){  
+        if(akses.getlama_pelayanan_ralan()==true){  
             if(btnLamaPelayananRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananRalan);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getlama_pelayanan_apotek()==true){  
+        if(akses.getlama_pelayanan_apotek()==true){  
             if(btnLamaPelayananApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananApotek);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getlama_pelayanan_radiologi()==true){  
+        if(akses.getlama_pelayanan_radiologi()==true){  
             if(btnLamaPelayananRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananRadiologi);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getlama_pelayanan_lab()==true){  
+        if(akses.getlama_pelayanan_lab()==true){  
             if(btnLamaPelayananLab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananLab);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getharian_HAIs()==true){  
+        if(akses.getharian_HAIs()==true){  
             if(btnHarianHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHarianHAIs);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getbulanan_HAIs()==true){  
+        if(akses.getbulanan_HAIs()==true){  
             if(btnBulananHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBulananHAIs);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.gethais_perbangsal()==true){  
+        if(akses.gethais_perbangsal()==true){  
             if(btnHAIsBangsal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHAIsBangsal);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.gethitung_bor()==true){  
+        if(akses.gethitung_bor()==true){  
             if(btnHitungBor.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHitungBor);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.gethitung_alos()==true){  
+        if(akses.gethitung_alos()==true){  
             if(btnHitungAlos.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHitungAlos);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getpembatalan_periksa_dokter()==true){  
+        if(akses.getpembatalan_periksa_dokter()==true){  
             if(btnPembatalanPeriksaDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembatalanPeriksaDokter);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getcek_entry_ralan()==true){  
+        if(akses.getcek_entry_ralan()==true){  
             if(btnCekEntryRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekEntryRalan);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getranap_per_ruang()==true){  
+        if(akses.getranap_per_ruang()==true){  
             if(btnRanapPerRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRanapPerRuang);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getpenyakit_ranap_cara_bayar()==true){  
+        if(akses.getpenyakit_ranap_cara_bayar()==true){  
             if(btnPenyakitRanapCaraBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenyakitRanapCaraBayar);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getrekap_lab_pertahun()==true){  
+        if(akses.getrekap_lab_pertahun()==true){  
             if(btnRekapLabPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapLabPerTahun);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getperujuk_lab_pertahun()==true){  
+        if(akses.getperujuk_lab_pertahun()==true){  
             if(btnPerujukLabPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerujukLabPerTahun);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getrekap_radiologi_pertahun()==true){  
+        if(akses.getrekap_radiologi_pertahun()==true){  
             if(btnRekapRadiologiPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapRadiologiPerTahun);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getperujuk_radiologi_pertahun()==true){  
+        if(akses.getperujuk_radiologi_pertahun()==true){  
             if(btnPerujukRadiologiPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerujukRadiologiPerTahun);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getjumlah_porsi_diet()==true){  
+        if(akses.getjumlah_porsi_diet()==true){  
             if(btnJumlahPorsiDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJumlahPorsiDiet);                 
                 jmlmenu++;
             }                
         }
         
-        if(var.getjumlah_macam_diet()==true){  
+        if(akses.getjumlah_macam_diet()==true){  
             if(btnJumlahMacamDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJumlahMacamDiet);                 
                 jmlmenu++;
             }                
         }
         
+        
+        if(akses.getkemenkes_sitt()==true){  
+            if(btnDataSITT.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDataSITT);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(tampilkantni.equals("Yes")){
-            if(var.getanggota_militer_dirawat()==true){
+            if(akses.getanggota_militer_dirawat()==true){
                 if(btnAnggotaMiliterDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnAnggotaMiliterDirawat);
                     jmlmenu++;
@@ -20243,749 +21664,763 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }
         }
 
-        if(var.getkamar()==true){
+        if(akses.getkamar()==true){
             if(btnKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamar);
                 jmlmenu++;
             }                
         }             
 
-        if(var.gettarif_ralan()==true){
+        if(akses.gettarif_ralan()==true){
             if(btnTindakanRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTindakanRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettarif_ranap()==true){
+        if(akses.gettarif_ranap()==true){
             if(btnTindakanRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTindakanRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettarif_lab()==true){
+        if(akses.gettarif_lab()==true){
             if(btnTarifLab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTarifLab);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettarif_radiologi()==true){
+        if(akses.gettarif_radiologi()==true){
             if(btnTarifRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTarifRadiologi);
                 jmlmenu++;
             }                
         }          
 
-        if(var.gettarif_operasi()==true){
+        if(akses.gettarif_operasi()==true){
             if(btnPaketOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPaketOperasi);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettarif_utd()==true){
+        if(akses.gettarif_utd()==true){
             if(btnTarifUtd.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTarifUtd);
                 jmlmenu++;
             }                
         }
 
-        if(var.getakun_rekening()==true){
+        if(akses.getakun_rekening()==true){
             if(btnRekening.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekening);  
                 jmlmenu++;
             }                
         }    
 
-        if(var.getrekening_tahun()==true){
+        if(akses.getrekening_tahun()==true){
             if(btnRekeningTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekeningTahun);   
                 jmlmenu++;
             }                
         } 
         
-        if(var.getsaldo_akun_perbulan()==true){
+        if(akses.getsaldo_akun_perbulan()==true){
             if(btnSaldoAkunPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSaldoAkunPerBulan);   
                 jmlmenu++;
             }                
         } 
 
-        if(var.getakun_bayar()==true){
+        if(akses.getakun_bayar()==true){
             if(btnakun_bayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnakun_bayar);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getakun_piutang()==true){
+        if(akses.getakun_piutang()==true){
             if(btnAkunPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAkunPiutang);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getpengaturan_rekening()==true){
+        if(akses.getpengaturan_rekening()==true){
             if(btnPengaturanRekening.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengaturanRekening);   
                 jmlmenu++;
             }                
         } 
 
-        if(var.getpengeluaran()==true){
+        if(akses.getpengeluaran()==true){
             if(btnPengeluaran.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengeluaran);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpemasukan_lain()==true){
+        if(akses.getpemasukan_lain()==true){
             if(btnPemasukanLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemasukanLain);
                 jmlmenu++;
             }                
         }
 
-        if(var.getdeposit_pasien()==true){   
+        if(akses.getdeposit_pasien()==true){   
             if(btnDeposit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpiutang_pasien()==true){
+        if(akses.getpiutang_pasien()==true){
             if(btnLihatPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLihatPiutang); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getrincian_piutang_pasien()==true){
+        if(akses.getrincian_piutang_pasien()==true){
             if(btnRincianPiutangPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRincianPiutangPasien); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getpiutang_pasien2()==true){
+        if(akses.getpiutang_pasien2()==true){
             if(btnPiutangBelumLunas.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPiutangBelumLunas); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getdetail_piutang_penjab()==true){
+        if(akses.getdetail_piutang_penjab()==true){
             if(btnPiutangPerCaraBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                Panelmenu.add(btnPiutangPerCaraBayar); 
                jmlmenu++; 
             }               
         }
 
-        if(var.getbayar_piutang()==true){
+        if(akses.getbayar_piutang()==true){
             if(btnBayarPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPiutang); 
                 jmlmenu++;
             }                
         }
 
-        if(var.gethutang_obat()==true){
+        if(akses.gethutang_obat()==true){
             if(btnHutangObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHutangObat);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbayar_pemesanan_obat()==true){
+        if(akses.getbayar_pemesanan_obat()==true){
             if(btnbayar_pemesanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnbayar_pemesanan);
                 jmlmenu++;
             }                
         }
         
-        if(var.gethutang_barang_non_medis()==true){
+        if(akses.gethutang_barang_non_medis()==true){
             if(btnHutangNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHutangNonMedis);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbayar_pesan_non_medis()==true){
+        if(akses.getbayar_pesan_non_medis()==true){
             if(btnBayarPesanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPesanNonMedis);
                 jmlmenu++;
             }                
         }
 
-        if(var.getposting_jurnal()==true){
+        if(akses.getposting_jurnal()==true){
             if(btnPostingJurnal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPostingJurnal); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getjurnal_harian()==true){
+        if(akses.getjurnal_harian()==true){
             if(btnJurnalHarian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJurnalHarian);  
                 jmlmenu++;
             }                
         }
 
-        if(var.getbuku_besar()==true){
+        if(akses.getbuku_besar()==true){
             if(btnBubes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBubes);
                 jmlmenu++;
             }                
         }  
 
-        if(var.getcashflow()==true){
+        if(akses.getcashflow()==true){
             if(btnCashFlow.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCashFlow);
                 jmlmenu++;
             }                
         }
 
-        if(var.getkeuangan()==true){
+        if(akses.getkeuangan()==true){
             if(btnLabaRugi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLabaRugi);
                 jmlmenu++;
             }                
         }                               
 
-        if(var.getbpjs_cek_kartu()==true){
+        if(akses.getbpjs_cek_kartu()==true){
             if(btnCekBPJSKartu.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSKartu);
                 jmlmenu++;
             }                
         }    
 
-        if(var.getbpjs_cek_nik()==true){
+        if(akses.getbpjs_cek_nik()==true){
             if(btnCekBPJSNik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSNik);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbpjs_cek_skdp()==true){
+        if(akses.getbpjs_cek_skdp()==true){
             if(btnCekBPJSSKDP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSSKDP);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_riwayat()==true){
+        if(akses.getbpjs_cek_riwayat()==true){
             if(btnCekBPJSRiwayatRujukanPCare.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSRiwayatRujukanPCare);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_riwayat_rujukanrs()==true){
+        if(akses.getbpjs_cek_riwayat_rujukanrs()==true){
             if(btnCekBPJSRiwayatRujukanRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSRiwayatRujukanRS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_tanggal_rujukan()==true){
+        if(akses.getbpjs_cek_tanggal_rujukan()==true){
             if(btnCekBPJSTanggalRujukan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSTanggalRujukan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbpjs_cek_nomor_rujukan()==true){
+        if(akses.getbpjs_cek_nomor_rujukan()==true){
             if(btnCekBPJSNomorRujukanPCare.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSNomorRujukanPCare);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_nomor_rujukan_rs()==true){
+        if(akses.getbpjs_cek_nomor_rujukan_rs()==true){
             if(btnCekBPJSNomorRujukanRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSNomorRujukanRS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_rujukan_kartu_pcare()==true){
+        if(akses.getbpjs_cek_rujukan_kartu_pcare()==true){
             if(btnCekBPJSRujukanKartuPCare.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSRujukanKartuPCare);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_rujukan_kartu_rs()==true){
+        if(akses.getbpjs_cek_rujukan_kartu_rs()==true){
             if(btnCekBPJSRujukanKartuRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSRujukanKartuRS);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbpjs_referensi_diagnosa()==true){
+        if(akses.getbpjs_referensi_diagnosa()==true){
             if(btnCekBPJSDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSDiagnosa);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbpjs_referensi_poli()==true){
+        if(akses.getbpjs_referensi_poli()==true){
             if(btnCekBPJSPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSPoli);
                 jmlmenu++;
             }                
         }
         
-        if(var.getmapping_poli_bpjs()==true){
+        if(akses.getmapping_poli_bpjs()==true){
             if(btnMapingPoliBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMapingPoliBPJS);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbpjs_referensi_faskes()==true){
+        if(akses.getbpjs_referensi_faskes()==true){
             if(btnCekBPJSFaskes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSFaskes);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_prosedur()==true){
+        if(akses.getbpjs_cek_prosedur()==true){
             if(btnCekReferensiProsedurBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiProsedurBPJS);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbpjs_cek_kelas_rawat()==true){
+        if(akses.getbpjs_cek_kelas_rawat()==true){
             if(btnCekReferensiKelasRawatBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiKelasRawatBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_dokter()==true){
+        if(akses.getbpjs_cek_dokter()==true){
             if(btnCekReferensiDokterBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiDokterBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_spesialistik()==true){
+        if(akses.getbpjs_cek_spesialistik()==true){
             if(btnCekReferensiSpesialistikBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiSpesialistikBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_ruangrawat()==true){
+        if(akses.getbpjs_cek_ruangrawat()==true){
             if(btnCekReferensiRuangRawatBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiRuangRawatBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_carakeluar()==true){
+        if(akses.getbpjs_cek_carakeluar()==true){
             if(btnCekReferensiCaraKeluarBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiCaraKeluarBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_pasca_pulang()==true){
+        if(akses.getbpjs_cek_pasca_pulang()==true){
             if(btnCekReferensiPascaPulangBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiPascaPulangBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_propinsi()==true){
+        if(akses.getbpjs_cek_propinsi()==true){
             if(btnCekReferensiPropinsiBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiPropinsiBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_kabupaten()==true){
+        if(akses.getbpjs_cek_kabupaten()==true){
             if(btnCekReferensiKabupatenBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiKabupatenBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_kecamatan()==true){
+        if(akses.getbpjs_cek_kecamatan()==true){
             if(btnCekReferensiKecamatanBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiKecamatanBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_dokterdpjp()==true){
+        if(akses.getbpjs_cek_dokterdpjp()==true){
             if(btnCekReferensiDokterDPJPBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_sep()==true){
+        if(akses.getbpjs_sep()==true){
             if(btnBPJSSEP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSSEP);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_cek_sep()==true){
+        if(akses.getbpjs_cek_sep()==true){
             if(btnCekSEP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekSEP);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbpjs_rujukan_keluar()==true){
+        if(akses.getbpjs_rujukan_keluar()==true){
             if(btnRujukanKeluarBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRujukanKeluarBPJS);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbpjs_monitoring_klaim()==true){
+        if(akses.getbpjs_monitoring_klaim()==true){
             if(btnMonitoringKlaim.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMonitoringKlaim);
                 jmlmenu++;
             }                
         }
         
-        if(var.getskdp_bpjs()==true){
+        if(akses.getskdp_bpjs()==true){
             if(btnSKDPBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSKDPBPJS);
                 jmlmenu++;
             }                
         }
 
-        if(var.getreklasifikasi_ralan()==true){
+        if(akses.getreklasifikasi_ralan()==true){
             if(btnReklasifikasiRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReklasifikasiRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getreklasifikasi_ranap()==true){
+        if(akses.getreklasifikasi_ranap()==true){
             if(btnReklasifikasiRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReklasifikasiRanap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getaplicare_referensi_kamar()==true){
+        if(akses.getaplicare_referensi_kamar()==true){
             if(btnAplicareReferensiKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAplicareReferensiKamar);
                 jmlmenu++;
             }                
         }
 
-        if(var.getaplicare_ketersediaan_kamar()==true){
+        if(akses.getaplicare_ketersediaan_kamar()==true){
             if(btnAplicareKetersediaanKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAplicareKetersediaanKamar);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinacbg_coder_nik()==true){
+        if(akses.getinacbg_coder_nik()==true){
             if(btnInaCBGCoderNIK.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInaCBGCoderNIK);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinacbg_klaim_baru_otomatis()==true){
+        if(akses.getinacbg_klaim_baru_otomatis()==true){
             if(btnInaCBGKlaimBaruOtomatis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInaCBGKlaimBaruOtomatis);
                 jmlmenu++;
             }                
         } 
 
-        if(var.getinacbg_klaim_baru_manual()==true){
+        if(akses.getinacbg_klaim_baru_manual()==true){
             if(btnInaCBGKlaimBaruManual.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInaCBGKlaimBaruManual);
                 jmlmenu++;
             }                
         }
         
-        if(var.getinacbg_klaim_baru_manual2()==true){
+        if(akses.getinacbg_klaim_baru_manual2()==true){
             if(btnInaCBGKlaimBaruManual2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInaCBGKlaimBaruManual2);
                 jmlmenu++;
             }                
         } 
 
-        if(var.getinhealth_referensi_jenpel_ruang_rawat()==true){
+        if(akses.getinhealth_referensi_jenpel_ruang_rawat()==true){
             if(btnReferensiKamarInhealth.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReferensiKamarInhealth);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinhealth_referensi_poli()==true){
+        if(akses.getinhealth_referensi_poli()==true){
             if(btnCekInhealthPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekInhealthPoli);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinhealth_referensi_faskes()==true){
+        if(akses.getinhealth_referensi_faskes()==true){
             if(btnCekInhealthFaskes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekInhealthFaskes);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinhealth_cek_eligibilitas()==true){
+        if(akses.getinhealth_cek_eligibilitas()==true){
             if(btnCekEligibilitasInhealth.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekEligibilitasInhealth);
                 jmlmenu++;
             }                
         }
 
-        if(var.getinhealth_sjp()==true){
+        if(akses.getinhealth_sjp()==true){
             if(btnInhealthSJP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInhealthSJP);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_penyakit()==true){
+        if(akses.getpcare_cek_penyakit()==true){
             if(btnCekPCareDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekPCareDiagnosa);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_kesadaran()==true){
+        if(akses.getpcare_cek_kesadaran()==true){
             if(btnCekPCareKesadaran.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekPCareKesadaran);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_dokter()==true){
+        if(akses.getpcare_cek_dokter()==true){
             if(btnPCareReferensiDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiDokter);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_poli()==true){
+        if(akses.getpcare_cek_poli()==true){
             if(btnPCareReferensiPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiPoli);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_provider()==true){
+        if(akses.getpcare_cek_provider()==true){
             if(btnPCareReferensiProvider.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiProvider);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_statuspulang()==true){
+        if(akses.getpcare_cek_statuspulang()==true){
             if(btnPCareReferensiStatusPulang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiStatusPulang);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_spesialis()==true){
+        if(akses.getpcare_cek_spesialis()==true){
             if(btnPCareReferensiSpesialis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiSpesialis);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_subspesialis()==true){
+        if(akses.getpcare_cek_subspesialis()==true){
             if(btnPCareReferensiSubspesialis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiSubspesialis);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_sarana()==true){
+        if(akses.getpcare_cek_sarana()==true){
             if(btnPCareReferensiSarana.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiSarana);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_khusus()==true){
+        if(akses.getpcare_cek_khusus()==true){
             if(btnPCareReferensiKhusus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiKhusus);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_obat()==true){
+        if(akses.getpcare_cek_obat()==true){
             if(btnPCareReferensiObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiObat);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_tindakan()==true){
+        if(akses.getpcare_cek_tindakan()==true){
             if(btnPCareReferensiTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiTindakan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_faskessubspesialis()==true){
+        if(akses.getpcare_cek_faskessubspesialis()==true){
             if(btnPCareFaskesSubspesialis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareFaskesSubspesialis);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_faskesalihrawat()==true){
+        if(akses.getpcare_cek_faskesalihrawat()==true){
             if(btnPCareFaskesAlihRawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareFaskesAlihRawat);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_faskesthalasemia()==true){
+        if(akses.getpcare_cek_faskesthalasemia()==true){
             if(btnPCareFaskesThalasemia.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareFaskesThalasemia);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_mapping_obat()==true){
+        if(akses.getpcare_mapping_obat()==true){
             if(btnPCareMapingObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingObat);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_mapping_tindakan()==true){
+        if(akses.getpcare_mapping_tindakan()==true){
             if(btnPCareMapingTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingTindakan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_mapping_tindakan_ranap()==true){
+        if(akses.getpcare_mapping_tindakan_ranap()==true){
             if(btnPCareMapingTindakanRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingTindakanRanap);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_mapping_dokter()==true){
+        if(akses.getpcare_mapping_dokter()==true){
             if(btnPCareMapingDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingDokter);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_mapping_poli()==true){
+        if(akses.getpcare_mapping_poli()==true){
             if(btnPCareMapingPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingPoli);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_club_prolanis()==true){
+        if(akses.getpcare_club_prolanis()==true){
             if(btnPCareClubProlanis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareClubProlanis);
                 jmlmenu++;
             }                
         }
         
-        if((var.getpcare_kegiatan_kelompok()==true)||(var.getpcare_peserta_kegiatan_kelompok()==true)){
+        if((akses.getpcare_kegiatan_kelompok()==true)||(akses.getpcare_peserta_kegiatan_kelompok()==true)){
             if(btnPCareKegiatanKelompok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareKegiatanKelompok);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_peserta_kegiatan_kelompok()==true){
+        if(akses.getpcare_peserta_kegiatan_kelompok()==true){
             if(btnPCarePesertaKegiatanKelompok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCarePesertaKegiatanKelompok);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbridging_pcare_daftar()==true){
+        if(akses.getbridging_pcare_daftar()==true){
             if(btnPCarePendaftaran.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCarePendaftaran);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_cek_rujukan()==true){
+        if(akses.getpcare_cek_rujukan()==true){
             if(btnCekPCareRujukan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpcare_pemberian_obat()==true){
+        if(akses.getpcare_pemberian_obat()==true){
             if(btnPCareBeriObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareBeriObat);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsisrute_referensi_faskes()==true){
+        if(akses.getpcare_pemberian_tindakan()==true){
+            if(btnPCareBeriTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareBeriTindakan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsisrute_referensi_faskes()==true){
             if(btnCekSisruteFaskes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekSisruteFaskes);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsisrute_referensi_alasanrujuk()==true){
+        if(akses.getsisrute_referensi_alasanrujuk()==true){
             if(btnCekSisruteAlasanRujuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekSisruteAlasanRujuk);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsisrute_referensi_diagnosa()==true){
+        if(akses.getsisrute_referensi_diagnosa()==true){
             if(btnCekSisruteDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekSisruteDiagnosa);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsisrute_rujukan_masuk()==true){
+        if(akses.getsisrute_rujukan_masuk()==true){
             if(btnRujukanMasukSisrute.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRujukanMasukSisrute);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsisrute_rujukan_keluar()==true){
+        if(akses.getsisrute_rujukan_keluar()==true){
             if(btnRujukanKeluarSisrute.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRujukanKeluarSisrute);
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getsiranap_ketersediaan_kamar()==true){
+            if(btnSiranapKetersediaanKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSiranapKetersediaanKamar);
+                jmlmenu++;
+            }                
+        }
 
-        if(var.getperusahaan_pasien()==true){
+        if(akses.getperusahaan_pasien()==true){
             if(btnPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerusahaan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsuku_bangsa()==true){
+        if(akses.getsuku_bangsa()==true){
             if(btnSuku.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuku);
                 jmlmenu++;
             }                
         }
         
-        if(var.getbahasa_pasien()==true){
+        if(akses.getbahasa_pasien()==true){
             if(btnBahasa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBahasa);
                 jmlmenu++;
@@ -20993,56 +22428,56 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }
         
         if(tampilkantni.equals("Yes")){
-            if(var.getgolongan_tni()==true){
+            if(akses.getgolongan_tni()==true){
                 if(btnGolonganTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnGolonganTNI);
                     jmlmenu++;
                 }                
             }
 
-            if(var.getsatuan_tni()==true){
+            if(akses.getsatuan_tni()==true){
                 if(btnSatuanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnSatuanTNI);
                     jmlmenu++;
                 }                
             }
 
-            if(var.getjabatan_tni()==true){
+            if(akses.getjabatan_tni()==true){
                 if(btnJabatanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnJabatanTNI);
                     jmlmenu++;
                 }                
             }
 
-            if(var.getpangkat_tni()==true){
+            if(akses.getpangkat_tni()==true){
                 if(btnPangkatTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnPangkatTNI);
                     jmlmenu++;
                 }                
             }
 
-            if(var.getgolongan_polri()==true){
+            if(akses.getgolongan_polri()==true){
                 if(btnGolonganPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnGolonganPolri);
                     jmlmenu++;
                 }                
             }
 
-            if(var.getsatuan_polri()==true){
+            if(akses.getsatuan_polri()==true){
                 if(btnSatuanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnSatuanPolri);
                     jmlmenu++;
                 }                
             }
 
-            if(var.getjabatan_polri()==true){
+            if(akses.getjabatan_polri()==true){
                 if(btnJabatanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnJabatanPolri);
                     jmlmenu++;
                 }                
             }
 
-            if(var.getpangkat_polri()==true){
+            if(akses.getpangkat_polri()==true){
                 if(btnPangkatPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                     Panelmenu.add(btnPangkatPolri);
                     jmlmenu++;
@@ -21050,678 +22485,1033 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }            
         }            
         
-        if(var.getcacat_fisik()==true){
+        if(akses.getcacat_fisik()==true){
             if(btnCacatFisik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCacatFisik);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpasien()==true){
+        if(akses.getpasien()==true){
             if(btnPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPasien);
                 jmlmenu++;
             }                
         }
 
-        if(var.getkelahiran_bayi()==true){
+        if(akses.getkelahiran_bayi()==true){
             if(btnLahir.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLahir);
                 jmlmenu++;
             }                
         }
         
-        if(var.getcatatan_pasien()==true){
+        if(akses.getcatatan_pasien()==true){
             if(btnCatatanPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanPasien);
                 jmlmenu++;
             }                
         }
 
-        if(var.getpasien_meninggal()==true){
+        if(akses.getpasien_meninggal()==true){
             if(btnPasienMati.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPasienMati);
                 jmlmenu++;
             }
         }
 
-        if(var.getdiagnosa_pasien()==true){
+        if(akses.getdiagnosa_pasien()==true){
             if(btnDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDiagnosa); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getinsiden_keselamatan()==true){
+        if(akses.getinsiden_keselamatan()==true){
             if(btnInsidenKeselamatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInsidenKeselamatan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getdata_HAIs()==true){
+        if(akses.getdata_HAIs()==true){
             if(btnDataHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDataHAIs); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getinsiden_keselamatan_pasien()==true){
+        if(akses.getinsiden_keselamatan_pasien()==true){
             if(btnInsidenKeselamatanPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInsidenKeselamatanPasien); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getpeminjaman_berkas()==true){
+        if(akses.getpeminjaman_berkas()==true){
             if(btnSirkulasiBerkas.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasiBerkas); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getresume_pasien()==true){
+        if(akses.getresume_pasien()==true){
             if(btnResume.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnResume);
                 jmlmenu++;
             }                
         }   
 
-        if(var.getretensi_rm()==true){
+        if(akses.getretensi_rm()==true){
             if(btnRetensiRM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRetensiRM);
                 jmlmenu++;
             }                
         }
 
-        if(var.getmutasi_berkas()==true){
+        if(akses.getmutasi_berkas()==true){
             if(btnMutasiBerkas.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMutasiBerkas);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getberkas_digital_perawatan()==true){
+        if(akses.getberkas_digital_perawatan()==true){
             if(btnBerkasDigitalPerawatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBerkasDigitalPerawatan);
                 jmlmenu++;
             }                
         } 
         
-        if(var.getpengaduan_pasien()==true){
+        if(akses.getpengaduan_pasien()==true){
             if(btnPengaduan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengaduan);
                 jmlmenu++;
             }                
         } 
 
-        if(var.getpengambilan_utd2()==true){
+        if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getutd_medis_rusak()==true){
+        if(akses.getutd_medis_rusak()==true){
             if(btnUTDMedisRusak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDMedisRusak); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getpengambilan_penunjang_utd2()==true){
+        if(akses.getpengambilan_penunjang_utd2()==true){
             if(btnPengambilanPenunjangUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanPenunjangUTD2); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getutd_penunjang_rusak()==true){
+        if(akses.getutd_penunjang_rusak()==true){
             if(btnUTDPenunjangRusak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDPenunjangRusak); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getutd_komponen_darah()==true){
+        if(akses.getutd_komponen_darah()==true){
             if(btnUTDKomponenDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDKomponenDarah); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getutd_donor()==true){
+        if(akses.getutd_donor()==true){
             if(btnUTDDonorDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDDonorDarah); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getutd_cekal_darah()==true){
+        if(akses.getutd_cekal_darah()==true){
             if(btnUTDCekalDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDCekalDarah); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getutd_pemisahan_darah()==true){
+        if(akses.getutd_pemisahan_darah()==true){
             if(btnUTDPemisahanDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDPemisahanDarah); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getutd_stok_darah()==true){
+        if(akses.getutd_stok_darah()==true){
             if(btnUTDStokDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDStokDarah); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getutd_penyerahan_darah()==true){
+        if(akses.getutd_penyerahan_darah()==true){
             if(btnUTDPenyerahanDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDPenyerahanDarah); 
                 jmlmenu++;
             }                
         } 
 
-        if(var.getgrafik_kunjungan_poli()==true){
+        if(akses.getgrafik_kunjungan_poli()==true){
             if(btnGrafikKunjunganPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPoli);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_perdokter()==true){
+        if(akses.getgrafik_kunjungan_perdokter()==true){
             if(btnGrafikKunjunganPerDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerDokter);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_perpekerjaan()==true){
+        if(akses.getgrafik_kunjungan_perpekerjaan()==true){
             if(btnGrafikKunjunganPerPekerjaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerPekerjaan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_perpendidikan()==true){
+        if(akses.getgrafik_kunjungan_perpendidikan()==true){
             if(btnGrafikKunjunganPerPendidikan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerPendidikan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_pertahun()==true){
+        if(akses.getgrafik_kunjungan_pertahun()==true){
             if(btnGrafikKunjunganPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerTahun);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_perbulan()==true){
+        if(akses.getgrafik_kunjungan_perbulan()==true){
             if(btnGrafikKunjunganPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerBulan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_pertanggal()==true){
+        if(akses.getgrafik_kunjungan_pertanggal()==true){
             if(btnGrafikKunjunganPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerTanggal);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_demografi()==true){
+        if(akses.getgrafik_kunjungan_demografi()==true){
             if(btnGrafikDemografiRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikDemografiRegistrasi);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusdaftartahun()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartahun()==true){
             if(btnGrafikStatusRegPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegPerTahun);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusdaftartahun2()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartahun2()==true){
             if(btnGrafikStatusRegPerTahun2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegPerTahun2);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusdaftarbulan()==true){
+        if(akses.getgrafik_kunjungan_statusdaftarbulan()==true){
             if(btnGrafikStatusRegPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegPerBulan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusdaftarbulan2()==true){
+        if(akses.getgrafik_kunjungan_statusdaftarbulan2()==true){
             if(btnGrafikStatusRegPerBulan2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegPerBulan2);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusdaftartanggal()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartanggal()==true){
             if(btnGrafikStatusRegPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegPerTanggal);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusdaftartanggal2()==true){
+        if(akses.getgrafik_kunjungan_statusdaftartanggal2()==true){
             if(btnGrafikStatusRegPerTanggal2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegPerTanggal2);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusbataltahun()==true){
+        if(akses.getgrafik_kunjungan_statusbataltahun()==true){
             if(btnGrafikStatusRegBatalPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegBatalPerTahun);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusbatalbulan()==true){
+        if(akses.getgrafik_kunjungan_statusbatalbulan()==true){
             if(btnGrafikStatusRegBatalPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegBatalPerBulan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_statusbataltanggal()==true){
+        if(akses.getgrafik_kunjungan_statusbataltanggal()==true){
             if(btnGrafikStatusRegBatalPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikStatusRegBatalPerTanggal);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_percarabayar()==true){
+        if(akses.getgrafik_kunjungan_percarabayar()==true){
             if(btnGrafikKunjunganPerCarabayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerCarabayar);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_ranaptahun()==true){
+        if(akses.getgrafik_kunjungan_ranaptahun()==true){
             if(btnGrafikKunjunganRanapPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganRanapPerTahun);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_lab_ralantahun()==true){
+        if(akses.getgrafik_lab_ralantahun()==true){
             if(btnGrafikLabRalanPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikLabRalanPerTahun);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_rad_ralantahun()==true){
+        if(akses.getgrafik_rad_ralantahun()==true){
             if(btnGrafikRadRalanPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikRadRalanPerTahun);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_per_perujuk()==true){
+        if(akses.getgrafik_per_perujuk()==true){
             if(btnGrafikPerPerujuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikPerPerujuk);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_lab_ralanbulan()==true){
+        if(akses.getgrafik_lab_ralanbulan()==true){
             if(btnGrafikLabRalanPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikLabRalanPerBulan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_rad_ralanbulan()==true){
+        if(akses.getgrafik_rad_ralanbulan()==true){
             if(btnGrafikRadRalanPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikRadRalanPerBulan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_lab_ralanhari()==true){
+        if(akses.getgrafik_lab_ralanhari()==true){
             if(btnGrafikLabRalanPerHari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikLabRalanPerHari);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_rad_ralanhari()==true){
+        if(akses.getgrafik_rad_ralanhari()==true){
             if(btnGrafikRadRalanPerHari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikRadRalanPerHari);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_ikp_pertahun()==true){
+        if(akses.getgrafik_ikp_pertahun()==true){
             if(btnGrafikKejadianIKPPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerTahun);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_ikp_perbulan()==true){
+        if(akses.getgrafik_ikp_perbulan()==true){
             if(btnGrafikKejadianIKPPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerBulan);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_ikp_pertanggal()==true){
+        if(akses.getgrafik_ikp_pertanggal()==true){
             if(btnGrafikKejadianIKPPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerTanggal);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_ikp_jenis()==true){
+        if(akses.getgrafik_ikp_jenis()==true){
             if(btnGrafikKejadianIKPPerJenis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerJenis);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_ikp_dampak()==true){
+        if(akses.getgrafik_ikp_dampak()==true){
             if(btnGrafikKejadianIKPPerDampak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerDampak);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_per_agama()==true){
+        if(akses.getgrafik_kunjungan_per_agama()==true){
             if(btnGrafikKunjunganPerAgama.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerAgama);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_per_umur()==true){
+        if(akses.getgrafik_kunjungan_per_umur()==true){
             if(btnGrafikKunjunganPerUmur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerUmur);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_suku()==true){
+        if(akses.getgrafik_kunjungan_suku()==true){
             if(btnGrafikKunjunganPerSuku.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerSuku);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_bahasa()==true){
+        if(akses.getgrafik_kunjungan_bahasa()==true){
             if(btnGrafikKunjunganPerBahasa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerBahasa);
                 jmlmenu++;
             }                
         }
         
-        if(var.getgrafik_kunjungan_per_cacat()==true){
+        if(akses.getgrafik_kunjungan_per_cacat()==true){
             if(btnGrafikKunjunganPerCacat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerCacat);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_indeks()==true){
+        if(akses.getgrafik_tb_periodelaporan()==true){
+            if(btnGrafikTBLaporanPeriode.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBLaporanPeriode);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_rujukan()==true){
+            if(btnGrafikTBRujukan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBRujukan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_riwayat()==true){
+            if(btnGrafikTBRiwayat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBRiwayat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_tipediagnosis()==true){
+            if(btnGrafikTBTipeDiagnosis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBTipeDiagnosis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_statushiv()==true){
+            if(btnGrafikTBSTatusHIV.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBSTatusHIV);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_skoringanak()==true){
+            if(btnGrafikTBSkoringAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBSkoringAnak);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_konfirmasiskoring5()==true){
+            if(btnGrafikTBKonfirmasiSkoring5.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_konfirmasiskoring6()==true){
+            if(btnGrafikTBKonfirmasiSkoring6.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_sumberobat()==true){
+            if(btnGrafikTBSumberObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBSumberObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_hasilakhirpengobatan()==true){
+            if(btnGrafikTBHasilAkhirPengobatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tb_hasilteshiv()==true){
+            if(btnGrafikTBHasilTesHIV.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikTBHasilTesHIV);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_air_pdam_pertanggal()==true){
+            if(btnGrafikPemakaianAirPDAMPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_air_pdam_perbulan()==true){
+            if(btnGrafikPemakaianAirPDAMPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPemakaianAirPDAMPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_limbahb3_pertanggal()==true){
+            if(btnGrafikLimbahB3MedisPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikLimbahB3MedisPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_limbahb3_perbulan()==true){
+            if(btnGrafikLimbahB3MedisPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikLimbahB3MedisPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_limbahdomestik_pertanggal()==true){
+            if(btnGrafikLimbahDomestikPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikLimbahDomestikPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_limbahdomestik_perbulan()==true){
+            if(btnGrafikLimbahDomestikPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikLimbahDomestikPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsurat_map()==true){
+        if(akses.getsurat_map()==true){
             if(btnSuratMap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratMap);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_almari()==true){
+        if(akses.getsurat_almari()==true){
             if(btnSuratAlmari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratAlmari);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_rak()==true){
+        if(akses.getsurat_rak()==true){
             if(btnSuratRak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratRak);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_ruang()==true){
+        if(akses.getsurat_ruang()==true){
             if(btnSuratRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratRuang);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_klasifikasi()==true){
+        if(akses.getsurat_klasifikasi()==true){
             if(btnSuratKlasifikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratKlasifikasi);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_status()==true){
+        if(akses.getsurat_status()==true){
             if(btnSuratStatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratStatus);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_sifat()==true){
+        if(akses.getsurat_sifat()==true){
             if(btnSuratSifat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratSifat);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_balas()==true){
+        if(akses.getsurat_balas()==true){
             if(btnSuratBalas.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratBalas);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_masuk()==true){
+        if(akses.getsurat_masuk()==true){
             if(btnSuratMasuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratMasuk);
                 jmlmenu++;
             }                
         }
         
-        if(var.getsurat_keluar()==true){
+        if(akses.getsurat_keluar()==true){
             if(btnSuratKeluar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratKeluar);
                 jmlmenu++;
             }                
         }
         
-        if(var.getaplikasi()==true){
+        if(akses.getruang_perpustakaan()==true){
+            if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRuangPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getkategori_perpustakaan()==true){
+            if(btnKategoriPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKategoriPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getjenis_perpustakaan()==true){
+            if(btnJenisPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJenisPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpengarang_perpustakaan()==true){
+            if(btnPengarangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengarangPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenerbit_perpustakaan()==true){
+            if(btnPenerbitPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenerbitPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getkoleksi_perpustakaan()==true){
+            if(btnKoleksiPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKoleksiPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getinventaris_perpustakaan()==true){
+            if(btnInventarisPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnInventarisPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getset_peminjaman_perpustakaan()==true){
+            if(btnPengaturanPeminjamanPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengaturanPeminjamanPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdenda_perpustakaan()==true){
+            if(btnDendaPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDendaPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getanggota_perpustakaan()==true){
+            if(btnAnggotaPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAnggotaPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpeminjaman_perpustakaan()==true){
+            if(btnPeminjamanPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPeminjamanPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbayar_denda_perpustakaan()==true){
+            if(btnBayarDendaPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarDendaPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
                 jmlmenu++;
             }                
         }
 
-        if(var.getadmin()==true){
+        if(akses.getadmin()==true){
             if(btnAdmin.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAdmin);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsetup_pjlab()==true){
+        if(akses.getsetup_pjlab()==true){
             if(btnSetPenjab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetPenjab);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsetup_otolokasi()==true){
+        if(akses.getsetup_otolokasi()==true){
             if(btnSetupOtoLokasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupOtoLokasi);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsetup_jam_kamin()==true){
+        if(akses.getsetup_jam_kamin()==true){
             if(btnSetupJamInap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupJamInap);
                 jmlmenu++;
             }                
         }
 
-        if(var.getset_harga_kamar()==true){
+        if(akses.getset_harga_kamar()==true){
             if(btnSetHargaKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetHargaKamar);
                 jmlmenu++;
             }                
         }
 
-        if(var.getsetup_embalase()==true){
+        if(akses.getsetup_embalase()==true){
             if(btnSetupEmbalase.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupEmbalase);
                 jmlmenu++;
             }                
         }                                
 
-        if(var.getuser()==true){
+        if(akses.getuser()==true){
             if(btnUser.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUser);
                 jmlmenu++;
             }                
         }
 
-        if(var.gettracer_login()==true){
+        if(akses.gettracer_login()==true){
             if(btnTracker.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTracker);
                 jmlmenu++;
             }                
         }
 
-        if(var.getvakum()==true){
+        if(akses.getvakum()==true){
             if(btnVakum.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnVakum);
                 jmlmenu++;
             }                
         }
 
-        if(var.getdisplay()==true){
+        if(akses.getdisplay()==true){
             if(btnDisplay.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDisplay); 
                 jmlmenu++;
             }                
         }
         
-        if(var.getdisplay_apotek()==true){
+        if(akses.getdisplay_apotek()==true){
             if(btnDisplayApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDisplayApotek); 
                 jmlmenu++;
             }                
         }
 
-        if(var.getset_harga_obat()==true){
+        if(akses.getset_harga_obat()==true){
             if(btnSetupHarga.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupHarga);
                 jmlmenu++;
             }                
         }
 
-        if(var.getset_harga_obat_ralan()==true){
+        if(akses.getset_harga_obat_ralan()==true){
             if(btnSetObatRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetObatRalan);
                 jmlmenu++;
             }                
         }
 
-        if(var.getset_harga_obat_ranap()==true){
+        if(akses.getset_harga_obat_ranap()==true){
             if(btnSetObatRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetObatRanap);
                 jmlmenu++;
             }
         }
 
-        if(var.getset_penggunaan_tarif()==true){
+        if(akses.getset_penggunaan_tarif()==true){
             if(btnSetupTarif.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupTarif);
                 jmlmenu++;
             }                
         }
 
-        if(var.getset_oto_ralan()==true){
+        if(akses.getset_oto_ralan()==true){
             if(btnSetOtoRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetOtoRalan);
                 jmlmenu++;
             }
         }
 
-        if(var.getbiaya_harian()==true){
+        if(akses.getbiaya_harian()==true){
             if(btnSetBiayaHarian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetBiayaHarian);
                 jmlmenu++;
             }                
         }
 
-        if(var.getbiaya_masuk_sekali()==true){
+        if(akses.getbiaya_masuk_sekali()==true){
             if(btnSetBiayaMasukSekali.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetBiayaMasukSekali);
                 jmlmenu++;
             }                
         }
 
-        if(var.getset_no_rm()==true){
+        if(akses.getset_no_rm()==true){
             if(btnSetupRM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupRM);
                 jmlmenu++;
             }                
         }
 
-        if(var.getset_nota()==true){
+        if(akses.getset_nota()==true){
             if(btnSetupNota.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupNota);
                 jmlmenu++;
             }                
         }
 
-        if(var.getclosing_kasir()==true){
+        if(akses.getclosing_kasir()==true){
             if(btnClosingKasir.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnClosingKasir);
                 jmlmenu++;
             }                
         }
 
-        if(var.getketerlambatan_presensi()==true){
+        if(akses.getketerlambatan_presensi()==true){
             if(btnKeterlambatanPresensi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKeterlambatanPresensi);
                 jmlmenu++;
             }                
         }
         
-        if(var.getset_input_parsial()==true){
+        if(akses.getset_input_parsial()==true){
             if(btnSetInputParsial.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetInputParsial);
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getpassword_asuransi()==true){
+            if(btnPasswordAsuransi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPasswordAsuransi);
+                jmlmenu++;
+            }                
+        }
     }
-    
+
+    private void initKhanza() {
+        btnKategoriPerpustakaan = new widget.ButtonBig();
+        btnKategoriPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_document-open_118911.png")));
+        btnKategoriPerpustakaan.setText("Kategori Koleksi");
+        btnKategoriPerpustakaan.setIconTextGap(0);
+        btnKategoriPerpustakaan.setName("btnKategoriPerpustakaan");
+        btnKategoriPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKategoriPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKategoriPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnJenisPerpustakaan = new widget.ButtonBig();
+        btnJenisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Untitled-1-02_3775448.png")));
+        btnJenisPerpustakaan.setText("Jenis Koleksi");
+        btnJenisPerpustakaan.setIconTextGap(0);
+        btnJenisPerpustakaan.setName("btnJenisPerpustakaan");
+        btnJenisPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJenisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJenisPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnRuangPerpustakaan = new widget.ButtonBig();
+        btnRuangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_City_728922.png"))); 
+        btnRuangPerpustakaan.setText("Ruang Perpustakaan");
+        btnRuangPerpustakaan.setIconTextGap(0);
+        btnRuangPerpustakaan.setName("btnRuangPerpustakaan"); 
+        btnRuangPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRuangPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRuangPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPengarangPerpustakaan = new widget.ButtonBig();
+        btnPengarangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Teacher_131497.png")));
+        btnPengarangPerpustakaan.setText("Pengarang/Penulis");
+        btnPengarangPerpustakaan.setIconTextGap(0);
+        btnPengarangPerpustakaan.setName("btnPengarangPerpustakaan"); 
+        btnPengarangPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengarangPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengarangPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPenerbitPerpustakaan = new widget.ButtonBig();
+        btnPenerbitPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_package_editors_109.png")));
+        btnPenerbitPerpustakaan.setText("Penerbit Koleksi");
+        btnPenerbitPerpustakaan.setIconTextGap(0);
+        btnPenerbitPerpustakaan.setName("btnPenerbitPerpustakaan"); 
+        btnPenerbitPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenerbitPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerbitPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnKoleksiPerpustakaan = new widget.ButtonBig();
+        btnKoleksiPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_General_Office_61_3592836.png")));
+        btnKoleksiPerpustakaan.setText("Koleksi Perpustakaan");
+        btnKoleksiPerpustakaan.setIconTextGap(0);
+        btnKoleksiPerpustakaan.setName("btnKoleksiPerpustakaan"); 
+        btnKoleksiPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKoleksiPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKoleksiPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnInventarisPerpustakaan = new widget.ButtonBig();
+        btnInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library_47990.png")));
+        btnInventarisPerpustakaan.setText("Inventaris Perpustakaan");
+        btnInventarisPerpustakaan.setIconTextGap(0);
+        btnInventarisPerpustakaan.setName("btnInventarisPerpustakaan"); 
+        btnInventarisPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInventarisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarisPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPengaturanPeminjamanPerpustakaan = new widget.ButtonBig();
+        btnPengaturanPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_EditDocument_728933.png")));
+        btnPengaturanPeminjamanPerpustakaan.setText("Pengaturan Peminjaman");
+        btnPengaturanPeminjamanPerpustakaan.setIconTextGap(0);
+        btnPengaturanPeminjamanPerpustakaan.setName("btnPengaturanPeminjamanPerpustakaan"); 
+        btnPengaturanPeminjamanPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengaturanPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengaturanPeminjamanPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnDendaPerpustakaan = new widget.ButtonBig();
+        btnDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Wallet_3387286.png")));
+        btnDendaPerpustakaan.setText("Denda Perpustakaan");
+        btnDendaPerpustakaan.setIconTextGap(0);
+        btnDendaPerpustakaan.setName("btnDendaPerpustakaan"); 
+        btnDendaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDendaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnAnggotaPerpustakaan = new widget.ButtonBig();
+        btnAnggotaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_male_user_3440844.png")));
+        btnAnggotaPerpustakaan.setText("Anggota Perpustakaan");
+        btnAnggotaPerpustakaan.setIconTextGap(0);
+        btnAnggotaPerpustakaan.setName("btnAnggotaPerpustakaan"); 
+        btnAnggotaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAnggotaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnggotaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPeminjamanPerpustakaan = new widget.ButtonBig();
+        btnPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_diagram-07_35577.png")));
+        btnPeminjamanPerpustakaan.setText("Peminjaman Koleksi Perpustakaan");
+        btnPeminjamanPerpustakaan.setIconTextGap(0);
+        btnPeminjamanPerpustakaan.setName("btnPeminjamanPerpustakaan"); 
+        btnPeminjamanPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPeminjamanPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnBayarDendaPerpustakaan = new widget.ButtonBig();
+        btnBayarDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_money_sale_shop_4177574.png")));
+        btnBayarDendaPerpustakaan.setText("Bayar Denda Perpustakaan");
+        btnBayarDendaPerpustakaan.setIconTextGap(0);
+        btnBayarDendaPerpustakaan.setName("btnBayarDendaPerpustakaan"); 
+        btnBayarDendaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarDendaPerpustakaanActionPerformed(evt);
+            }
+        });
+    }
 
 }

@@ -328,7 +328,7 @@ public final class sekuel {
                 ps.setString(angka,a[angka-1]);
             }            
             ps.executeUpdate();
-            ps=connect.prepareStatement("insert into trackersql values( now(),'insert into "+table+" values("+dicari+")','','jadwal pegawai "+var.getuser()+"','simpan')");
+            ps=connect.prepareStatement("insert into trackersql values( now(),'insert into "+table+" values("+dicari+")','','jadwal pegawai "+akses.getuser()+"','simpan')");
             ps.executeUpdate();
             
             if(ps != null){
@@ -343,7 +343,7 @@ public final class sekuel {
                     ps.setString(angka,b[angka-1]);
                 } 
                 ps.executeUpdate(); 
-                ps=connect.prepareStatement("insert into trackersql values( now(),'update "+table+" set "+update.replaceAll("'","")+" where "+acuan_field.replaceAll("'","")+" "+dicari+"','"+e.toString().replaceAll("'","")+"','jadwal pegawai "+var.getuser()+"','update')");
+                ps=connect.prepareStatement("insert into trackersql values( now(),'update "+table+" set "+update.replaceAll("'","")+" where "+acuan_field.replaceAll("'","")+" "+dicari+"','"+e.toString().replaceAll("'","")+"','jadwal pegawai "+akses.getuser()+"','update')");
                 ps.executeUpdate();
                 
                 if(ps != null){
@@ -355,7 +355,7 @@ public final class sekuel {
                 for(angka=1;angka<=j;angka++){
                     dicari=dicari+", "+a[angka-1];
                 }
-                menyimpan("trackersql","now(),'update "+table+" set "+update.replaceAll("'","")+" where "+acuan_field.replaceAll("'","")+" "+dicari+"','"+e.toString().replaceAll("'","")+"','jadwal pegawai "+var.getuser()+"','update'");
+                menyimpan("trackersql","now(),'update "+table+" set "+update.replaceAll("'","")+" where "+acuan_field.replaceAll("'","")+" "+dicari+"','"+e.toString().replaceAll("'","")+"','jadwal pegawai "+akses.getuser()+"','update'");
             }
                          
         }
@@ -474,6 +474,26 @@ public final class sekuel {
             ps=connect.prepareStatement("delete from "+table+" where "+field+"=?");
             try{       
                 ps.setString(1,nilai_field);
+                ps.executeUpdate(); 
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void meghapus(String table,String field,String field2,String nilai_field,String nilai_field2) {
+        try {
+            ps=connect.prepareStatement("delete from "+table+" where "+field+"=? and "+field2+"=?");
+            try{       
+                ps.setString(1,nilai_field);
+                ps.setString(2,nilai_field2);
                 ps.executeUpdate(); 
              }catch(Exception e){
                 System.out.println("Notifikasi : "+e);

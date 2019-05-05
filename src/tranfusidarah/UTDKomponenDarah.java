@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -159,9 +159,9 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppGanti.setBackground(new java.awt.Color(242, 242, 242));
+        ppGanti.setBackground(new java.awt.Color(255, 255, 254));
         ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(70,70,70));
+        ppGanti.setForeground(new java.awt.Color(70, 70, 70));
         ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         ppGanti.setText("Ganti");
         ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -176,9 +176,9 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         });
         Popup.add(ppGanti);
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -193,9 +193,9 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         });
         Popup.add(ppHapus);
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70,70,70));
+        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -219,7 +219,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -752,14 +752,14 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         }else if(tabModeKomponen.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptKomponenDarah.jrxml","report","::[ Data Komponen Darah ]::",
+            Valid.MyReportqry("rptKomponenDarah.jasper","report","::[ Data Komponen Darah ]::",
                     "select * from utd_komponen_darah where kode like '%"+TCari.getText().trim()+"%' or nama like '%"+TCari.getText().trim()+"%' order by nama",param);            
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -1051,14 +1051,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getutd_komponen_darah());
-        BtnHapus.setEnabled(var.getutd_komponen_darah());
-        BtnEdit.setEnabled(var.getutd_komponen_darah());
-        BtnPrint.setEnabled(var.getutd_komponen_darah());
+        BtnSimpan.setEnabled(akses.getutd_komponen_darah());
+        BtnHapus.setEnabled(akses.getutd_komponen_darah());
+        BtnEdit.setEnabled(akses.getutd_komponen_darah());
+        BtnPrint.setEnabled(akses.getutd_komponen_darah());
         
-        ppGanti.setEnabled(var.getutd_komponen_darah());        
-        ppHapus.setEnabled(var.getutd_komponen_darah());
-        ppCetak.setEnabled(var.getutd_komponen_darah());
+        ppGanti.setEnabled(akses.getutd_komponen_darah());        
+        ppHapus.setEnabled(akses.getutd_komponen_darah());
+        ppCetak.setEnabled(akses.getutd_komponen_darah());
     }
     
     private void isForm(){

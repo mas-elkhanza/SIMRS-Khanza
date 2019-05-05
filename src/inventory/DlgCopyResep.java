@@ -3,7 +3,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
@@ -113,15 +113,12 @@ public class DlgCopyResep extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(55, 55));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        ChkTanggal.setBorder(null);
         ChkTanggal.setText("Tgl.Resep :");
-        ChkTanggal.setBorderPainted(true);
-        ChkTanggal.setBorderPaintedFlat(true);
         ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setName("ChkTanggal"); // NOI18N
         ChkTanggal.setOpaque(false);
-        ChkTanggal.setPreferredSize(new java.awt.Dimension(85, 23));
+        ChkTanggal.setPreferredSize(new java.awt.Dimension(90, 23));
         ChkTanggal.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ChkTanggalItemStateChanged(evt);
@@ -129,9 +126,8 @@ public class DlgCopyResep extends javax.swing.JDialog {
         });
         panelisi1.add(ChkTanggal);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -144,9 +140,8 @@ public class DlgCopyResep extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelisi1.add(jLabel21);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -297,7 +292,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
     private void tbPemisahanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPemisahanMouseClicked
         if(tabMode.getRowCount()!=0){
             if(evt.getClickCount()==2){
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }
             }
@@ -307,7 +302,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
     private void tbPemisahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPemisahanKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }                    
             }
@@ -577,7 +572,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
 
     public void isCek(){
-        BtnTambah.setEnabled(var.getresep_dokter());
+        BtnTambah.setEnabled(akses.getresep_dokter());
     }
     
     public void setRM(String norawat,String norm,String kodedokter,String kodepj,String status){

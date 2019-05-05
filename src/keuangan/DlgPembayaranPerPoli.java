@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -138,8 +138,6 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(53, 23));
         panelisi1.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -152,8 +150,7 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
 
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
-        CmbStatus.setOpaque(false);
-        CmbStatus.setPreferredSize(new java.awt.Dimension(90, 23));
+        CmbStatus.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi1.add(CmbStatus);
 
         jLabel6.setText("Key Word :");
@@ -285,16 +282,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
             
             Map<String, Object> param = new HashMap<>();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
                 param.put("tanggal",Tgl1.getSelectedItem()+" SHIFT "+CmbStatus.getSelectedItem().toString().toUpperCase());
-                param.put("emailrs",var.getemailrs());   
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPembayaranPerPoli.jrxml","report","[ Pembayaran Per Bagian/Unit ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptPembayaranPerPoli.jasper","report","[ Pembayaran Per Bagian/Unit ]",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

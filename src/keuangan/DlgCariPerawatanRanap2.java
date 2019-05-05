@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -364,7 +364,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -381,7 +381,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        ppDokter.setBackground(new java.awt.Color(255, 255, 255));
+        ppDokter.setBackground(new java.awt.Color(255, 255, 254));
         ppDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppDokter.setForeground(new java.awt.Color(70, 70, 70));
         ppDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -398,7 +398,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         });
         Popup.add(ppDokter);
 
-        ppPetugas.setBackground(new java.awt.Color(255, 255, 255));
+        ppPetugas.setBackground(new java.awt.Color(255, 255, 254));
         ppPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPetugas.setForeground(new java.awt.Color(70, 70, 70));
         ppPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -415,7 +415,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         });
         Popup.add(ppPetugas);
 
-        ppPetugasDokter.setBackground(new java.awt.Color(255, 255, 255));
+        ppPetugasDokter.setBackground(new java.awt.Color(255, 255, 254));
         ppPetugasDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppPetugasDokter.setForeground(new java.awt.Color(70, 70, 70));
         ppPetugasDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
@@ -690,9 +690,8 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(710, 74));
         FormInput.setLayout(null);
 
-        DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1755,7 +1754,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','0','"+hapusttlkso+"'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','"+hapusttlkso+"','0'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH "+akses.getkode());                                                
 
                     Sequel.queryu("delete from tampjurnal");    
                     if(ttlpendapatan>0){
@@ -1774,7 +1773,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','"+ttlkso+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','0','"+ttlkso+"'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode());                                                
 
                     if((!TKeluhan.getText().trim().equals(""))||(!TPemeriksaan.getText().trim().equals(""))||
                         (!TSuhu.getText().trim().equals(""))||(!TTensi.getText().trim().equals(""))||
@@ -3175,7 +3174,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.gettarif_ranap());
+        BtnTambah.setEnabled(akses.gettarif_ranap());
         TCari.requestFocus();
     }
     

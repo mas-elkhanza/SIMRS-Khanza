@@ -5,7 +5,7 @@ import keuangan.*;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -117,7 +117,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -130,7 +130,6 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi1.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -142,7 +141,6 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi1.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -270,14 +268,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             File f = new File("rl4b.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll(
-                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
                                     "<font size='2' face='Tahoma'>DATA KEADAAN MORBIDITAS PASIEN RAWAT JALAN RUMAH SAKIT PENYEBAB KECELAKAN<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
@@ -806,7 +803,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getriwayat_data_batch());
+        BtnPrint.setEnabled(akses.getriwayat_data_batch());
     }
     
 }

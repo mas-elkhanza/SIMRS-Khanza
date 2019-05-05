@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -310,6 +310,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //bangsal.setModal(true);
         bangsal.emptTeks();
+        bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setAlwaysOnTop(false);
@@ -395,6 +396,6 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-       BtnTambah.setEnabled(var.getkamar());
+       BtnTambah.setEnabled(akses.getkamar());
     }
 }

@@ -8,7 +8,7 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.sekuel;
-import fungsi.var;
+import fungsi.akses;
 import java.io.FileInputStream;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -102,7 +102,7 @@ public class DUKCAPILAcehCekNIK {
                             JENIS_KLMIN=list.path("JENIS_KLMIN").asText();
                             TGL_LHR=list.path("TGL_LHR").asText();
                             GOL_DARAH=list.path("GOL_DARAH").asText();
-                            Sequel.queryu2("insert into log_dukcapil_aceh values('"+NIK+"',now(),'"+var.getkode()+"')");
+                            Sequel.queryu2("insert into log_dukcapil_aceh values('"+NIK+"',now(),'"+akses.getkode()+"')");
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null,e+" "+list.path("RESPON").asText());

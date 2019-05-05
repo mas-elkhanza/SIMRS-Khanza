@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
@@ -178,13 +178,12 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
 
         jLabel21.setText("TKP :");
         jLabel21.setName("jLabel21"); // NOI18N
-        jLabel21.setPreferredSize(new java.awt.Dimension(35, 23));
+        jLabel21.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass6.add(jLabel21);
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10 RJTP", "20 RITP", "50 Promotif" }));
         Jenis.setName("Jenis"); // NOI18N
-        Jenis.setOpaque(false);
-        Jenis.setPreferredSize(new java.awt.Dimension(95, 23));
+        Jenis.setPreferredSize(new java.awt.Dimension(115, 23));
         panelGlass6.add(Jenis);
 
         jLabel16.setText("Kode/Nama Tindakan :");
@@ -193,7 +192,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         panelGlass6.add(jLabel16);
 
         diagnosa.setName("diagnosa"); // NOI18N
-        diagnosa.setPreferredSize(new java.awt.Dimension(190, 23));
+        diagnosa.setPreferredSize(new java.awt.Dimension(185, 23));
         diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 diagnosaKeyPressed(evt);
@@ -219,7 +218,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         panelGlass6.add(BtnCari);
 
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel17.setPreferredSize(new java.awt.Dimension(20, 23));
         panelGlass6.add(jLabel17);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -288,16 +287,15 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
             //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariPCAREReferensiTindakan.jrxml","report","[ Pencarian Referensi Tindakan ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptCariPCAREReferensiTindakan.jasper","report","[ Pencarian Referensi Tindakan ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

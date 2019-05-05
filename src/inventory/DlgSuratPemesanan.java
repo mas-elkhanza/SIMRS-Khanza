@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -307,9 +307,9 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
+        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -427,7 +427,7 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surat Pemesanan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surat Pemesanan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -494,7 +494,6 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(220, 10, 55, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addItemListener(new java.awt.event.ItemListener() {
@@ -1345,25 +1344,24 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());  
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
                 param.put("suplier",nmsup.getText());  
                 param.put("nomorpesan",NoPemesanan.getText());  
                 param.put("total",LTotal2.getText());  
                 param.put("ppn",LPpn.getText());  
                 param.put("meterai",Valid.SetAngka(meterai));  
                 param.put("tagihan",LTagiha.getText());  
-                param.put("tanggal",var.getkabupatenrs()+", "+Tanggal.getSelectedItem());  
+                param.put("tanggal",akses.getkabupatenrs()+", "+Tanggal.getSelectedItem());  
                 param.put("apoteker",Apoteker.getText()); 
                 param.put("petugas",nmptg.getText()); 
                 param.put("kabidkeu",KabidKeu.getText()); 
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuratPemesanan.jrxml","report","::[ Transaksi Pemesanan Barang ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptSuratPemesanan.jasper","report","::[ Transaksi Pemesanan Barang ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrint5ActionPerformed
@@ -1609,12 +1607,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
-            kdptg.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getsurat_pemesanan_medis());
-            BtnTambah.setEnabled(var.getobat());
+            kdptg.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getsurat_pemesanan_medis());
+            BtnTambah.setEnabled(akses.getobat());
             Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             Sequel.cariIsi("select departemen from pegawai where nik=?",Departemen,kdptg.getText());
         }        

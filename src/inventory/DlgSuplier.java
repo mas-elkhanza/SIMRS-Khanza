@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -641,14 +641,14 @@ public class DlgSuplier extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuplier.jrxml","report","::[ Data Suplier ]::",
+            Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::",
                     " select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
                     " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
                     " datasuplier.nama_bank,datasuplier.rekening from datasuplier "+
@@ -914,10 +914,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsuplier());
-        BtnHapus.setEnabled(var.getsuplier());
-        BtnEdit.setEnabled(var.getsuplier());
-        BtnPrint.setEnabled(var.getsuplier());
+        BtnSimpan.setEnabled(akses.getsuplier());
+        BtnHapus.setEnabled(akses.getsuplier());
+        BtnEdit.setEnabled(akses.getsuplier());
+        BtnPrint.setEnabled(akses.getsuplier());
     }
     
     private void isForm(){
