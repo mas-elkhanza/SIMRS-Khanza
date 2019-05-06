@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -382,7 +382,7 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
                 TCari.requestFocus();
             }else{
                 
-                Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString(),0,Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()),"Retur Pasien",var.getkode(),bangsal,"Hapus");                
+                Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString(),0,Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()),"Retur Pasien",akses.getkode(),bangsal,"Hapus");                
                 Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"','"+bangsal+"','-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'", 
                                  "stok=stok-'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'","kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");                    
                 Sequel.queryu("delete from returpasien where tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' "+
@@ -420,14 +420,14 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){   
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptReturObatRanap.jrxml","report","::[ Retur Obat Ranap ]::",
+            Valid.MyReportqry("rptReturObatRanap.jasper","report","::[ Retur Obat Ranap ]::",
                   "select returpasien.tanggal, returpasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien)as pasien,"+
                   " concat(returpasien.kode_brng,' ',databarang.nama_brng) as barang, returpasien.jml "+
                   "from returpasien inner join reg_periksa inner join pasien inner join databarang "+
@@ -591,9 +591,9 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
     
     
     public void isCek(){
-        BtnHapus.setEnabled(var.getretur_obat_ranap());
-        BtnPrint.setEnabled(var.getretur_obat_ranap());    
-        ppHapus.setEnabled(var.getretur_obat_ranap());
-        ppCetak.setEnabled(var.getretur_obat_ranap());
+        BtnHapus.setEnabled(akses.getretur_obat_ranap());
+        BtnPrint.setEnabled(akses.getretur_obat_ranap());    
+        ppHapus.setEnabled(akses.getretur_obat_ranap());
+        ppCetak.setEnabled(akses.getretur_obat_ranap());
     }
 }

@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -619,11 +619,11 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?","No.Rawat dan Obat",9,new String[]{
                         TNoRw.getText(),KdBarang.getText(),Jml.getText(),HrgaObat.getText(),Total.getText(),
                         Dosis.getText(),Sequel.cariIsi("select current_date()"),
-                        Sequel.cariIsi("select current_time()"),var.getkdbangsal()
+                        Sequel.cariIsi("select current_time()"),akses.getkdbangsal()
                     })==true){
-                    Trackobat.catatRiwayat(KdBarang.getText(),0,Valid.SetAngka(Jml.getText()),"Resep Pulang",var.getkode(),var.getkdbangsal(),"Simpan");
-                    Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','-"+Jml.getText()+"'", 
-                                     "stok=stok-'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
+                    Trackobat.catatRiwayat(KdBarang.getText(),0,Valid.SetAngka(Jml.getText()),"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Simpan");
+                    Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','-"+Jml.getText()+"'", 
+                                     "stok=stok-'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+akses.getkdbangsal()+"'");                               
                     tampil();
                     BtnBatalActionPerformed(evt);
                 } 
@@ -672,9 +672,9 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 Sequel.queryu2("delete from resep_pulang where no_rawat=? and kode_brng=?",2,new String[]{
                     TNoRw.getText(),KdBarang.getText()
                 });
-                Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(Jml.getText()),0,"Resep Pulang",var.getkode(),var.getkdbangsal(),"Hapus");
-                Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','"+Jml.getText()+"'", 
-                                 "stok=stok+'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
+                Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(Jml.getText()),0,"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Hapus");
+                Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','"+Jml.getText()+"'", 
+                                 "stok=stok+'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+akses.getkdbangsal()+"'");                               
                 tampil();
             }                
         }
@@ -720,15 +720,14 @@ public final class DlgResepPulang extends javax.swing.JDialog {
             
             
             Map<String, Object> param = new HashMap<>();  
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptResepPulang.jrxml","report","::[ Data Resep Pulang ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptResepPulang.jasper","report","::[ Data Resep Pulang ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1086,9 +1085,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getresep_pulang());
-        BtnHapus.setEnabled(var.getresep_pulang());
-        BtnPrint.setEnabled(var.getresep_pulang());
+        BtnSimpan.setEnabled(akses.getresep_pulang());
+        BtnHapus.setEnabled(akses.getresep_pulang());
+        BtnPrint.setEnabled(akses.getresep_pulang());
     }
     
     private void isHitung(){

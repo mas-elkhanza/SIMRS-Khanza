@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -112,7 +112,7 @@ public class DlgPengambilanPenunjangUTD extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPengambilanUTD")){
+                if(akses.getform().equals("DlgPengambilanUTD")){
                     if(petugas.getTable().getSelectedRow()!= -1){   
                         Nip.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         Nama.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -587,7 +587,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_NipKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgPengambilanUTD");
+        akses.setform("DlgPengambilanUTD");
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -894,12 +894,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
 
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpengambilan_penunjang_utd());
-        BtnTambah.setEnabled(var.getipsrs_barang());
-        if(var.getjml2()>=1){
+        BtnSimpan.setEnabled(akses.getpengambilan_penunjang_utd());
+        BtnTambah.setEnabled(akses.getipsrs_barang());
+        if(akses.getjml2()>=1){
             Nip.setEditable(false);
             btnPetugas.setEnabled(false);
-            Nip.setText(var.getkode());
+            Nip.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?",Nama,Nip.getText());
         } 
     }

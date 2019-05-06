@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -801,12 +801,12 @@ public final class DlgRekening extends javax.swing.JDialog {
         }else if(tbKamar.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(TCari.getText().trim().equals("")){
                 
@@ -820,10 +820,9 @@ public final class DlgRekening extends javax.swing.JDialog {
                                     tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
                 }
                   
-                Valid.MyReport("rptRekening2.jrxml","report","::[ Data Rekening ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptRekening2.jasper","report","::[ Data Rekening ]::",param);
             }else{
-                Valid.MyReport("rptRekening.jrxml","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
+                Valid.MyReportqry("rptRekening.jasper","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
                     " from rekening where kd_rek like '%"+TCari.getText().trim()+"%' or "+
                     " nm_rek like '%"+TCari.getText().trim()+"%' or "+
                     " tipe like '%"+TCari.getText().trim()+"%' or "+
@@ -1617,11 +1616,11 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getakun_rekening());
-        BtnBatal.setEnabled(var.getakun_rekening());
-        BtnEdit.setEnabled(var.getakun_rekening());
-        BtnHapus.setEnabled(var.getakun_rekening());
-        BtnPrint.setEnabled(var.getakun_rekening());
+        BtnSimpan.setEnabled(akses.getakun_rekening());
+        BtnBatal.setEnabled(akses.getakun_rekening());
+        BtnEdit.setEnabled(akses.getakun_rekening());
+        BtnHapus.setEnabled(akses.getakun_rekening());
+        BtnPrint.setEnabled(akses.getakun_rekening());
     }
         
 }

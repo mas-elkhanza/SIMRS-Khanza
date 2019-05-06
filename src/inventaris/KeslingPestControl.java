@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -667,14 +667,14 @@ public final class KeslingPestControl extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPestControl.jrxml","report","::[ Data Pest Control ]::",
+            Valid.MyReportqry("rptPestControl.jasper","report","::[ Data Pest Control ]::",
                    "select kesling_pest_control.nip,petugas.nama,kesling_pest_control.tanggal,"+
                    "kesling_pest_control.rincian_kegiatan,kesling_pest_control.rekomendasi "+
                    "from kesling_pest_control inner join petugas on kesling_pest_control.nip=petugas.nip where "+
@@ -913,13 +913,13 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpest_control());
-        BtnHapus.setEnabled(var.getpest_control());
-        BtnEdit.setEnabled(var.getpest_control());
-        if(var.getjml2()>=1){
+        BtnSimpan.setEnabled(akses.getpest_control());
+        BtnHapus.setEnabled(akses.getpest_control());
+        BtnEdit.setEnabled(akses.getpest_control());
+        if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
-            KdPetugas.setText(var.getkode());
+            KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
         }  
     }

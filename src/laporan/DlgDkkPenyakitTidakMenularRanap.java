@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -315,12 +315,12 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
             param.put("ttotall",(ttotall+ttotalp));
             param.put("ttotaljml",ttotaljml);
             param.put("tmatil",(tmatil+tmatip));
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Sequel.queryu("delete from temporary");
             if(TabRawat.getSelectedIndex()==0){
@@ -373,8 +373,7 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
                 }
             }
             
-            Valid.MyReport("rptDkkPenyakitTakMenularRanap.jrxml","report","::[ Penyakit Menular Rawat Inap ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptDkkPenyakitTakMenularRanap.jasper","report","::[ Penyakit Menular Rawat Inap ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

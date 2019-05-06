@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -266,6 +266,7 @@ public final class PCareMapingTindakanRanap extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -442,22 +443,22 @@ public final class PCareMapingTindakanRanap extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 74));
         FormInput.setLayout(null);
 
-        jLabel4.setText("Tindakan RS :");
+        jLabel4.setText("Tindakan Ranap :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 95, 23);
+        jLabel4.setBounds(0, 10, 100, 23);
 
         kdtindakan.setEditable(false);
         kdtindakan.setHighlighter(null);
         kdtindakan.setName("kdtindakan"); // NOI18N
         FormInput.add(kdtindakan);
-        kdtindakan.setBounds(100, 10, 115, 23);
+        kdtindakan.setBounds(105, 10, 115, 23);
 
         TTindakan.setEditable(false);
         TTindakan.setHighlighter(null);
         TTindakan.setName("TTindakan"); // NOI18N
         FormInput.add(TTindakan);
-        TTindakan.setBounds(217, 10, 470, 23);
+        TTindakan.setBounds(222, 10, 475, 23);
 
         btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliRS.setMnemonic('1');
@@ -474,23 +475,23 @@ public final class PCareMapingTindakanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPoliRS);
-        btnPoliRS.setBounds(690, 10, 28, 23);
+        btnPoliRS.setBounds(700, 10, 28, 23);
 
         jLabel19.setText("Tindakan PCare :");
         jLabel19.setName("jLabel19"); // NOI18N
         FormInput.add(jLabel19);
-        jLabel19.setBounds(0, 40, 95, 23);
+        jLabel19.setBounds(0, 40, 100, 23);
 
         KdTindakanPCare.setEditable(false);
         KdTindakanPCare.setHighlighter(null);
         KdTindakanPCare.setName("KdTindakanPCare"); // NOI18N
         FormInput.add(KdTindakanPCare);
-        KdTindakanPCare.setBounds(100, 40, 115, 23);
+        KdTindakanPCare.setBounds(105, 40, 115, 23);
 
         NmTindakanPCare.setEditable(false);
         NmTindakanPCare.setName("NmTindakanPCare"); // NOI18N
         FormInput.add(NmTindakanPCare);
-        NmTindakanPCare.setBounds(217, 40, 470, 23);
+        NmTindakanPCare.setBounds(222, 40, 475, 23);
 
         btnPoliBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliBPJS.setMnemonic('3');
@@ -502,7 +503,7 @@ public final class PCareMapingTindakanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPoliBPJS);
-        btnPoliBPJS.setBounds(690, 40, 28, 23);
+        btnPoliBPJS.setBounds(700, 40, 28, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -609,17 +610,15 @@ public final class PCareMapingTindakanRanap extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptMapingTindakanRanapPCare.jrxml","report","::[ Mapping Tindakan RS & PCare ]::",
-                   "select maping_tindakan_ranap_pcare.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,maping_tindakan_ranap_pcare.kd_tindakan_pcare,maping_tindakan_ranap_pcare.nm_tindakan_pcare "+
-                   "from maping_tindakan_ranap_pcare inner join jns_perawatan_inap on maping_tindakan_ranap_pcare.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw where "+
-                   "maping_tindakan_ranap_pcare.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or jns_perawatan_inap.nm_perawatan like '%"+TCari.getText().trim()+"%' or maping_tindakan_ranap_pcare.kd_tindakan_pcare like '%"+TCari.getText().trim()+"%' or maping_tindakan_ranap_pcare.nm_tindakan_pcare like '%"+TCari.getText().trim()+"%' order by jns_perawatan_inap.nm_perawatan",param);            
+                param.put("parameter","%"+TCari.getText().trim()+"%"); 
+                Valid.MyReport("rptMapingTindakanRanapPCare.jasper","report","::[ Mapping Tindakan Ranap di PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -801,10 +800,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpcare_mapping_tindakan());
-        BtnHapus.setEnabled(var.getpcare_mapping_tindakan());
-        BtnEdit.setEnabled(var.getpcare_mapping_tindakan());
-        BtnPrint.setEnabled(var.getpcare_mapping_tindakan());
+        BtnSimpan.setEnabled(akses.getpcare_mapping_tindakan());
+        BtnHapus.setEnabled(akses.getpcare_mapping_tindakan());
+        BtnEdit.setEnabled(akses.getpcare_mapping_tindakan());
+        BtnPrint.setEnabled(akses.getpcare_mapping_tindakan());
     }
     
     public JTable getTable(){
