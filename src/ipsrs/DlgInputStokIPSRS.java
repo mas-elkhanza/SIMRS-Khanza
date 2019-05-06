@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -746,7 +746,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
          
     public void isCek(){
-         BtnSimpan.setEnabled(var.getstok_opname_logistik());   
+         BtnSimpan.setEnabled(akses.getstok_opname_logistik());   
     }
 
 }

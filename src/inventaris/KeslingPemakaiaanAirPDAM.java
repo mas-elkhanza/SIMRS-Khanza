@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -694,14 +694,14 @@ public final class KeslingPemakaiaanAirPDAM extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPemakaianAirPDAM.jrxml","report","::[ Data Pemakaian Air PDAM ]::",
+            Valid.MyReportqry("rptPemakaianAirPDAM.jasper","report","::[ Data Pemakaian Air PDAM ]::",
                    "select kesling_pemakaian_air_pdam.nip,petugas.nama,kesling_pemakaian_air_pdam.tanggal,"+
                    "kesling_pemakaian_air_pdam.meteran,kesling_pemakaian_air_pdam.jumlahharian,kesling_pemakaian_air_pdam.keterangan "+
                    "from kesling_pemakaian_air_pdam inner join petugas on kesling_pemakaian_air_pdam.nip=petugas.nip where "+
@@ -957,13 +957,13 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpemakaian_air_pdam());
-        BtnHapus.setEnabled(var.getpemakaian_air_pdam());
-        BtnEdit.setEnabled(var.getpemakaian_air_pdam());
-        if(var.getjml2()>=1){
+        BtnSimpan.setEnabled(akses.getpemakaian_air_pdam());
+        BtnHapus.setEnabled(akses.getpemakaian_air_pdam());
+        BtnEdit.setEnabled(akses.getpemakaian_air_pdam());
+        if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
-            KdPetugas.setText(var.getkode());
+            KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
         }  
     }

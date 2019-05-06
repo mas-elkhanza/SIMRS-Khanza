@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -838,14 +838,14 @@ public class DlgDpjp extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(TabModePasien.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDpjp.jrxml","report","::[ Data Diagnosa Pasien ]::",
+            Valid.MyReportqry("rptDpjp.jasper","report","::[ Data Diagnosa Pasien ]::",
                     "select reg_periksa.tgl_registrasi,dpjp_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                     "dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join reg_periksa inner join pasien inner join dokter "+
                     "on dpjp_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -947,7 +947,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                tampildiagnosa();   
             }            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(var.getpenyakit()==true){
+            if(akses.getpenyakit()==true){
                 btnTarifActionPerformed(null);
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -1171,10 +1171,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getdpjp_ranap());
-        BtnHapus.setEnabled(var.getdpjp_ranap());
-        btnTarif.setEnabled(var.getdokter());
-        BtnPrint.setEnabled(var.getdpjp_ranap());
+        BtnSimpan.setEnabled(akses.getdpjp_ranap());
+        BtnHapus.setEnabled(akses.getdpjp_ranap());
+        btnTarif.setEnabled(akses.getdokter());
+        BtnPrint.setEnabled(akses.getdpjp_ranap());
         
     }
 

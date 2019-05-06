@@ -22,7 +22,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -1394,7 +1394,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     
     public void isCek(){
-        BtnTambahTindakan.setEnabled(var.gettarif_ralan());
+        BtnTambahTindakan.setEnabled(akses.gettarif_ralan());
     }
     
     public void setPoli(String KodePoli){
