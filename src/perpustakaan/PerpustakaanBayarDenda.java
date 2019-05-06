@@ -27,6 +27,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -57,16 +58,16 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
                 "Tgl.Denda","No.Anggota","Nama Anggota","No.Inventaris",
                 "Judul Koleksi","Terlambat(Hari)","Denda(Rp)"
             }){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-             Class[] types = new Class[] {
-                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                  java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, 
-             };
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, 
+            };
              
-             @Override
-             public Class getColumnClass(int columnIndex) {
+            @Override
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-             }
+            }
         };
 
         tbBayarDenda.setModel(tabMode);
@@ -89,7 +90,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }
         }
         tbBayarDenda.setDefaultRenderer(Object.class, new WarnaTable());
@@ -97,9 +98,19 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
 
         tabMode2=new DefaultTableModel(null,new Object[]{
                 "Tgl.Denda","No.Anggota","Nama Anggota","No.Inventaris",
-                "Judul Koleksi","Jenis Denda","Besar Denda(Rp)","Keterangan"
+                "Judul Koleksi","Kode Jenis","Jenis Denda","Denda","Besar Denda(Rp)","Keterangan"
             }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Object.class
+            };
+             
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
         };
 
         tbDendaLain.setModel(tabMode2);
@@ -107,24 +118,30 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         tbDendaLain.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDendaLain.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 10; i++) {
             TableColumn column = tbDendaLain.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(150);
             }else if(i==3){
                 column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(250);
             }else if(i==5){
-                column.setPreferredWidth(120);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==6){
                 column.setPreferredWidth(100);
             }else if(i==7){
-                column.setPreferredWidth(150);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==8){
+                column.setPreferredWidth(90);
+            }else if(i==9){
+                column.setPreferredWidth(120);
             }
         }
         tbDendaLain.setDefaultRenderer(Object.class, new WarnaTable());
@@ -133,6 +150,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         TNoI.setDocument(new batasInput((byte)20).getKata(TNoI));
         Keterlambatan.setDocument(new batasInput((byte)10).getOnlyAngka(Keterlambatan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -156,6 +174,57 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
                 }
             });
         }
+        
+        Keterlambatan.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDendaHarian();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDendaHarian();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDendaHarian();
+            }
+        });
+        
+        Harga.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDendaLain();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDendaLain();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDendaLain();
+            }
+        });
+        
+        DendaLain.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDendaLain();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDendaLain();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDendaLain();
+            }
+        });
         
         perpustakaan_inventaris.addWindowListener(new WindowListener() {
             @Override
@@ -470,7 +539,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         jLabel8.setPreferredSize(new java.awt.Dimension(52, 23));
         panelGlass9.add(jLabel8);
 
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2019" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-05-2019" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -488,7 +557,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass9.add(jLabel22);
 
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2019" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-05-2019" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -578,7 +647,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         LblTgl.setBounds(0, 10, 85, 23);
 
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2019" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-05-2019" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -697,6 +766,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
             }
         });
         tbBayarDenda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbBayarDendaKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tbBayarDendaKeyReleased(evt);
             }
@@ -760,6 +832,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
             }
         });
         tbDendaLain.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbDendaLainKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tbDendaLainKeyReleased(evt);
             }
@@ -890,7 +965,21 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
                     }
                 }
             }else if(TabRawat.getSelectedIndex()==1){
-                
+                if(KdJenisDenda.getText().equals("")||JenisDenda.getText().equals("")){
+                    Valid.textKosong(KdJenisDenda,"Jenis Denda");
+                }else if(Keterangan.getText().equals("")){
+                    Valid.textKosong(Keterangan,"Keterangan");
+                }else if(BesarDendaLain.getText().equals("")||BesarDendaLain.getText().equals("0")){
+                    Valid.textKosong(Keterangan,"Besar Denda");
+                }else{
+                    if(Sequel.menyimpantf("perpustakaan_bayar_denda","?,?,?,?,?,?","Denda",6,new String[]{
+                            Valid.SetTgl(tgl.getSelectedItem()+""),TNoA.getText(),TNoI.getText(),KdJenisDenda.getText(),
+                            Double.toString(Double.parseDouble(Harga.getText())*(Double.parseDouble(DendaLain.getText())/100)),Keterangan.getText()
+                        })==true){
+                            emptTeks2();
+                            tampil2();
+                    }
+                }
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -910,7 +999,38 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        
+        if(TabRawat.getSelectedIndex()==0){
+            if(Keterlambatan.getText().equals("0")||Keterlambatan.getText().equals("")||DendaKeterlambatan.getText().equals("")||DendaKeterlambatan.getText().equals("0")){
+                Valid.textKosong(Keterlambatan,"Keterlambatan");
+            }else{
+                if(tbBayarDenda.getSelectedRow()!= -1){
+                    if(Sequel.queryu2tf("delete from perpustakaan_bayar_denda_harian where tgl_denda=? and no_anggota=? and no_inventaris=?",3,new String[]{
+                            tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),0).toString(),tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),1).toString(),tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),3).toString()
+                        })==true){
+                            tampil();
+                            emptTeks();
+                    }
+                }
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if(KdJenisDenda.getText().equals("")||JenisDenda.getText().equals("")){
+                Valid.textKosong(KdJenisDenda,"Jenis Denda");
+            }else if(Keterangan.getText().equals("")){
+                Valid.textKosong(Keterangan,"Keterangan");
+            }else if(BesarDendaLain.getText().equals("")||BesarDendaLain.getText().equals("0")){
+                Valid.textKosong(Keterangan,"Besar Denda");
+            }else{
+                if(tbDendaLain.getSelectedRow()!= -1){
+                    if(Sequel.queryu2tf("delete from perpustakaan_bayar_denda where tgl_denda=? and no_anggota=? and no_inventaris=? and kode_denda",4,new String[]{
+                            tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),0).toString(),tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),1).toString(),
+                            tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),3).toString(),tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),5).toString()
+                        })==true){
+                            tampil2();
+                            emptTeks2();
+                    }
+                }
+            }
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -922,7 +1042,30 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-       
+        if(TNoI.getText().trim().equals("")||TJudul.getText().trim().equals("")){
+            Valid.textKosong(TNoI,"Inventaris");
+        }else if(TNoA.getText().trim().equals("")||TNmA.getText().trim().equals("")){
+            Valid.textKosong(TNoA,"Peminjam");
+        }else{
+            if(TabRawat.getSelectedIndex()==0){
+                if(Keterlambatan.getText().equals("0")||Keterlambatan.getText().equals("")||DendaKeterlambatan.getText().equals("")||DendaKeterlambatan.getText().equals("0")){
+                    Valid.textKosong(Keterlambatan,"Keterlambatan");
+                }else{
+                    if(tbBayarDenda.getSelectedRow()!= -1){
+                        if(Sequel.mengedittf("perpustakaan_bayar_denda_harian","tgl_denda=? and no_anggota=? and no_inventaris=?","tgl_denda=?,no_anggota=?,no_inventaris=?,keterlambatan=?,besar_denda=?",8,new String[]{
+                                Valid.SetTgl(tgl.getSelectedItem()+""),TNoA.getText(),TNoI.getText(),Keterlambatan.getText(),
+                                Double.toString(Double.parseDouble(Keterlambatan.getText())*perhari),tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),0).toString(),
+                                tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),1).toString(),tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),3).toString()
+                            })==true){
+                                emptTeks();
+                                tampil();
+                        }
+                    }
+                }
+            }else if(TabRawat.getSelectedIndex()==1){
+                
+            }
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -948,7 +1091,11 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        if(TabRawat.getSelectedIndex()==0){
+            tampil();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -964,8 +1111,13 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyReleased
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-       emptTeks();
-       tampil();
+        TCari.setText("");
+        if(TabRawat.getSelectedIndex()==0){
+            tampil();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }
+        
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1038,33 +1190,54 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         if(TabRawat.getSelectedIndex()==0){
             tampil();
         }else if(TabRawat.getSelectedIndex()==1){
-            //tampil2();
+            tampil2();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void tbBayarDendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBayarDendaMouseClicked
-       
+        if(tabMode.getRowCount()!=0){
+            try {
+                getData();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
     }//GEN-LAST:event_tbBayarDendaMouseClicked
 
     private void tbBayarDendaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBayarDendaKeyReleased
-       
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }          
+        }
     }//GEN-LAST:event_tbBayarDendaKeyReleased
 
     private void tbDendaLainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDendaLainMouseClicked
-        // TODO add your handling code here:
+        if(tabMode2.getRowCount()!=0){
+            try {
+                getData2();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
     }//GEN-LAST:event_tbDendaLainMouseClicked
 
     private void tbDendaLainKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDendaLainKeyReleased
-        // TODO add your handling code here:
+        if(tabMode2.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData2();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }          
+        }
     }//GEN-LAST:event_tbDendaLainKeyReleased
 
     private void KeterlambatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeterlambatanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             TNoI.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            if(!Keterlambatan.getText().equals("")){
-                DendaKeterlambatan.setText(Valid.SetAngka(Double.parseDouble(Keterlambatan.getText())*perhari));
-            }
             BtnSimpan.requestFocus();
         }
     }//GEN-LAST:event_KeterlambatanKeyPressed
@@ -1092,8 +1265,26 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void BtnDendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDendaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, TNoI, Keterangan);
     }//GEN-LAST:event_BtnDendaKeyPressed
+
+    private void tbBayarDendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBayarDendaKeyPressed
+        if(tabMode.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
+            }           
+        }
+    }//GEN-LAST:event_tbBayarDendaKeyPressed
+
+    private void tbDendaLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDendaLainKeyPressed
+        if(tabMode2.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
+            }           
+        }
+    }//GEN-LAST:event_tbDendaLainKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1205,7 +1396,6 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
                 ps.setString(14,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
                 ps.setString(15,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
-                
                 besardenda=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -1224,6 +1414,74 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            LCount.setText(""+tabMode.getRowCount());
+            LCount1.setText(Valid.SetAngka(besardenda));
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+    }
+    
+    public void tampil2() {
+        Valid.tabelKosong(tabMode);
+        try {
+            //"Tgl.Denda","No.Anggota","Nama Anggota","No.Inventaris",
+            //"Judul Koleksi","Kode Jenis","Jenis Denda","Denda","Besar Denda(Rp)","Keterangan"
+            ps=koneksi.prepareStatement(
+                "select perpustakaan_bayar_denda.tgl_denda,perpustakaan_bayar_denda.no_anggota,perpustakaan_anggota.nama_anggota,"+
+                "perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+                "perpustakaan_denda.kode_denda,perpustakaan_denda.jenis_denda,perpustakaan_denda.besar_denda as denda,"+
+                "perpustakaan_bayar_denda.besar_denda,perpustakaan_bayar_denda.keterangan_denda from perpustakaan_inventaris "+
+                "inner join perpustakaan_buku inner join perpustakaan_bayar_denda inner join perpustakaan_anggota inner join perpustakaan_denda on "+
+                "perpustakaan_buku.kode_buku=perpustakaan_inventaris.kode_buku and perpustakaan_bayar_denda.no_anggota=perpustakaan_anggota.no_anggota "+
+                "and perpustakaan_inventaris.no_inventaris=perpustakaan_bayar_denda.no_inventaris and perpustakaan_bayar_denda.kode_denda=perpustakaan_denda.kode_denda where "+
+                "perpustakaan_bayar_denda.tgl_denda between ? and ? and perpustakaan_bayar_denda.no_anggota like ? or "+
+                "perpustakaan_bayar_denda.tgl_denda between ? and ? and perpustakaan_anggota.nama_anggota like ? or "+
+                "perpustakaan_bayar_denda.tgl_denda between ? and ? and perpustakaan_inventaris.no_inventaris like ? or "+
+                "perpustakaan_bayar_denda.tgl_denda between ? and ? and perpustakaan_denda.jenis_denda like ? or "+
+                "perpustakaan_bayar_denda.tgl_denda between ? and ? and perpustakaan_buku.kode_buku like ? or "+
+                "perpustakaan_bayar_denda.tgl_denda between ? and ? and perpustakaan_buku.judul_buku like ? order by perpustakaan_bayar_denda.tgl_denda desc"
+            );
+            try {
+                ps.setString(1,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(TglPinjam1.getSelectedItem()+""));
+                ps.setString(17,Valid.SetTgl(TglPinjam2.getSelectedItem()+""));
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                
+                besardenda=0;
+                while(rs.next()){
+                    tabMode2.addRow(new Object[]{
+                        rs.getString("tgl_denda"),rs.getString("no_anggota"),rs.getString("nama_anggota"),rs.getString("no_inventaris"),
+                        rs.getString("kode_buku")+" "+rs.getString("judul_buku"),rs.getString("kode_denda"),rs.getString("jenis_denda"),
+                        rs.getDouble("denda"),rs.getDouble("besar_denda"),rs.getString("keterangan_denda")
+                    });
+                    besardenda=besardenda+rs.getDouble("besar_denda");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCount.setText(""+tabMode2.getRowCount());
             LCount1.setText(Valid.SetAngka(besardenda));
         } catch (Exception e) {
             System.out.println("Notif : "+e);
@@ -1234,20 +1492,46 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         TNoI.setText("");
         TJudul.setText("");
         Harga.setText("");
-        if(TabRawat.getSelectedIndex()==0){
-            Keterlambatan.setText("");
-            DendaKeterlambatan.setText("0");
-        }else if(TabRawat.getSelectedIndex()==1){
-            Keterangan.setText("");
-            BesarDendaLain.setText("0");
-        }
+        Keterlambatan.setText("");
+        DendaKeterlambatan.setText("0");
+        TNoA.requestFocus();
+    }
+    
+    public void emptTeks2() {
+        TNoI.setText("");
+        TJudul.setText("");
+        Harga.setText("");
+        Keterangan.setText("");
+        BesarDendaLain.setText("0");
         TNoA.requestFocus();
     }
 
     private void getData() {
         if(tbBayarDenda.getSelectedRow()!= -1){
             Valid.SetTgl(tgl,tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),0).toString());
-            TNoA.setText(tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),0).toString());
+            TNoA.setText(tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),1).toString());
+            TNmA.setText(tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),2).toString());
+            TNoI.setText(tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),3).toString());
+            isInventaris();
+            Keterlambatan.setText(tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),5).toString());
+            DendaKeterlambatan.setText(Valid.SetAngka(Double.parseDouble(tbBayarDenda.getValueAt(tbBayarDenda.getSelectedRow(),6).toString())));
+            isDendaHarian();
+        }
+    }
+    
+    private void getData2() {
+        if(tbDendaLain.getSelectedRow()!= -1){
+            Valid.SetTgl(tgl,tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),0).toString());
+            TNoA.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),1).toString());
+            TNmA.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),2).toString());
+            TNoI.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),3).toString());
+            isInventaris();
+            KdJenisDenda.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),5).toString());
+            JenisDenda.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),6).toString());
+            DendaLain.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),7).toString());
+            BesarDendaLain.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),8).toString());
+            Keterangan.setText(tbDendaLain.getValueAt(tbDendaLain.getSelectedRow(),9).toString());
+            isDendaLain();
         }
     }
     
@@ -1286,5 +1570,21 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
        BtnSimpan.setEnabled(akses.getbayar_denda_perpustakaan());
        BtnHapus.setEnabled(akses.getbayar_denda_perpustakaan());
        BtnEdit.setEnabled(akses.getbayar_denda_perpustakaan());
+    }
+
+    private void isDendaHarian() {
+        if(TabRawat.getSelectedIndex()==0){
+            if(!Keterlambatan.getText().equals("")){
+                DendaKeterlambatan.setText(Valid.SetAngka(Double.parseDouble(Keterlambatan.getText())*perhari));
+            }
+        }
+    }
+    
+    private void isDendaLain(){
+        if(TabRawat.getSelectedIndex()==1){
+            if((!Harga.getText().equals(""))&&(!DendaLain.getText().equals(""))){
+                BesarDendaLain.setText(Valid.SetAngka(Double.parseDouble(Harga.getText())*(Double.parseDouble(DendaLain.getText())/100)));
+            }
+        }
     }
 }
