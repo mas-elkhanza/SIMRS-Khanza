@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -624,14 +624,14 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();  
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPenerbitPerpustakaan.jrxml","report","::[ Data Penerbit Perpustakaan ]::","select perpustakaan_penerbit.kode_penerbit, perpustakaan_penerbit.nama_penerbit, perpustakaan_penerbit.alamat_penerbit, perpustakaan_penerbit.no_telp,"+
+                Valid.MyReportqry("rptPenerbitPerpustakaan.jasper","report","::[ Data Penerbit Perpustakaan ]::","select perpustakaan_penerbit.kode_penerbit, perpustakaan_penerbit.nama_penerbit, perpustakaan_penerbit.alamat_penerbit, perpustakaan_penerbit.no_telp,"+
                    "perpustakaan_penerbit.email, perpustakaan_penerbit.website_penerbit from perpustakaan_penerbit "+
                    "where perpustakaan_penerbit.kode_penerbit like '%"+TCari.getText().trim()+"%' "+
                     "or perpustakaan_penerbit.nama_penerbit like '%"+TCari.getText().trim()+"%' "+
@@ -891,10 +891,10 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpenerbit_perpustakaan());
-        BtnHapus.setEnabled(var.getpenerbit_perpustakaan());
-        BtnEdit.setEnabled(var.getpenerbit_perpustakaan());
-        BtnPrint.setEnabled(var.getpenerbit_perpustakaan());
+        BtnSimpan.setEnabled(akses.getpenerbit_perpustakaan());
+        BtnHapus.setEnabled(akses.getpenerbit_perpustakaan());
+        BtnEdit.setEnabled(akses.getpenerbit_perpustakaan());
+        BtnPrint.setEnabled(akses.getpenerbit_perpustakaan());
     }
 
     

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -840,14 +840,14 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
             }
                
             Map<String, Object> param = new HashMap<>();  
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptAnggotaPerpustakaan.jrxml","report","::[ Data Anggota Perpustakaan ]::",
+            Valid.MyReportqry("rptAnggotaPerpustakaan.jasper","report","::[ Data Anggota Perpustakaan ]::",
                     "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                     "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where "+
                     gabung+habis+" no_anggota like '%"+TCari.getText().trim()+"%' or "+
@@ -1006,14 +1006,14 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
         }else if(tabMode.getRowCount()!=0){
             if(tbJnsPerawatan.getSelectedRow()> -1){
                 Map<String, Object> param = new HashMap<>();  
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptKartuAnggota.jrxml","report","::[ Kartu Anggota Perpustakaan ]::",
+                Valid.MyReportqry("rptKartuAnggota.jasper","report","::[ Kartu Anggota Perpustakaan ]::",
                         "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                         "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where no_anggota='"+NoAnggota.getText()+"'",param);
             }else{
@@ -1196,9 +1196,9 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getanggota_perpustakaan());
-        BtnHapus.setEnabled(var.getanggota_perpustakaan());
-        BtnEdit.setEnabled(var.getanggota_perpustakaan());
+        BtnSimpan.setEnabled(akses.getanggota_perpustakaan());
+        BtnHapus.setEnabled(akses.getanggota_perpustakaan());
+        BtnEdit.setEnabled(akses.getanggota_perpustakaan());
     }
 
     

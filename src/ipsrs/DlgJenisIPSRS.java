@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -24,6 +24,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -581,10 +583,17 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptIpsrsJenis.jrxml","report","::[ Data Jenis Barang ]::","select kd_jenis, nm_jenis "+
+        }else if(tabMode.getRowCount()!=0){   
+            Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+            Valid.MyReportqry("rptIpsrsJenis.jasper","report","::[ Data Jenis Barang ]::","select kd_jenis, nm_jenis "+
                 " from ipsrsjenisbarang where  kd_jenis like '%"+TCari.getText().trim()+"%' or "+
-                " nm_jenis like '%"+TCari.getText().trim()+"%' order by kd_jenis");
+                " nm_jenis like '%"+TCari.getText().trim()+"%' order by kd_jenis",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -744,15 +753,15 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getipsrs_jenis_barang());
-        BtnHapus.setEnabled(var.getipsrs_jenis_barang());
-        BtnEdit.setEnabled(var.getipsrs_jenis_barang());
-        BtnPrint.setEnabled(var.getipsrs_jenis_barang());
+        BtnSimpan.setEnabled(akses.getipsrs_jenis_barang());
+        BtnHapus.setEnabled(akses.getipsrs_jenis_barang());
+        BtnEdit.setEnabled(akses.getipsrs_jenis_barang());
+        BtnPrint.setEnabled(akses.getipsrs_jenis_barang());
         
-        ppGanti.setEnabled(var.getipsrs_jenis_barang());        
-        ppHapus.setEnabled(var.getipsrs_jenis_barang());
-        ppCetak.setEnabled(var.getipsrs_jenis_barang());
-        ppSimpan.setEnabled(var.getipsrs_jenis_barang());
+        ppGanti.setEnabled(akses.getipsrs_jenis_barang());        
+        ppHapus.setEnabled(akses.getipsrs_jenis_barang());
+        ppCetak.setEnabled(akses.getipsrs_jenis_barang());
+        ppSimpan.setEnabled(akses.getipsrs_jenis_barang());
     }
     
 }

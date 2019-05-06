@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -635,14 +635,14 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tbKamar.getRowCount()!=0){   
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptOpname.jrxml","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
+            Valid.MyReportqry("rptOpname.jasper","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
                   "opname.real, opname.selisih, opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, (opname.real*opname.h_beli) as totalreal "+
                   "from opname inner join databarang inner join bangsal "+
                   "on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal "+
@@ -927,9 +927,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     
         
     public void isCek(){
-        BtnHapus.setEnabled(var.getstok_opname_obat());
-        BtnPrint.setEnabled(var.getstok_opname_obat());    
-        ppHapus.setEnabled(var.getstok_opname_obat());
-        ppCetak.setEnabled(var.getstok_opname_obat());
+        BtnHapus.setEnabled(akses.getstok_opname_obat());
+        BtnPrint.setEnabled(akses.getstok_opname_obat());    
+        ppHapus.setEnabled(akses.getstok_opname_obat());
+        ppCetak.setEnabled(akses.getstok_opname_obat());
     }
 }

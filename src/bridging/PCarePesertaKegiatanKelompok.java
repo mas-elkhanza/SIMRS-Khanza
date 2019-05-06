@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -475,33 +475,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){            
                     Map<String, Object> param = new HashMap<>();    
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptPCarePesertaKegiatanKelompok.jrxml","report","::[ Data Kegiatan Kelompok PCare ]::",
-                        "select pcare_kegiatan_kelompok.eduId,pcare_kegiatan_kelompok.tglPelayanan,"+
-                        "pcare_kegiatan_kelompok.nmKegiatan,pcare_kegiatan_kelompok.nmKelompok,"+
-                        "pcare_kegiatan_kelompok.materi,pcare_kegiatan_kelompok.pembicara,"+
-                        "pcare_kegiatan_kelompok.lokasi,pcare_kegiatan_kelompok.keterangan,"+
-                        "pcare_kegiatan_kelompok.biaya,pcare_peserta_kegiatan_kelompok.no_rkm_medis, "+
-                        "pasien.no_peserta,pasien.nm_pasien from pcare_kegiatan_kelompok inner join pasien inner join "+
-                        "pcare_peserta_kegiatan_kelompok on pcare_kegiatan_kelompok.eduId=pcare_peserta_kegiatan_kelompok.eduId "+
-                        "and pcare_peserta_kegiatan_kelompok.no_rkm_medis=pasien.no_rkm_medis where "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.eduId like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.clubId like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.nmKelompok like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.materi like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.pembicara like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.lokasi like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_kegiatan_kelompok.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pcare_peserta_kegiatan_kelompok.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.no_peserta like '%"+TCari.getText().trim()+"%' or "+
-                        "pcare_kegiatan_kelompok.tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' order by pcare_kegiatan_kelompok.eduId",param);            
+                    param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    param.put("parameter","%"+TCari.getText()+"%"); 
+                    Valid.MyReport("rptPCarePesertaKegiatanKelompok.jasper","report","::[ Data Kegiatan Kelompok PCare ]::",param);            
             }
             this.setCursor(Cursor.getDefaultCursor());
         }else if(TabRawat.getSelectedIndex()==1){
@@ -522,14 +506,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                 File f = new File("PesertaKegiatanKelompokPCare.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                bw.write(LoadHTML1.getText().replaceAll(
-                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                bw.write(LoadHTML1.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
                                     "<font size='2' face='Tahoma'>Detail Peserta Kegiatan Kelompok PCARE Tanggal Pelayanan "+DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem()+"<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
@@ -900,8 +883,8 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     
     public void isCek(){
-        BtnHapus.setEnabled(var.getpcare_peserta_kegiatan_kelompok());
-        BtnPrint.setEnabled(var.getpcare_peserta_kegiatan_kelompok());
+        BtnHapus.setEnabled(akses.getpcare_peserta_kegiatan_kelompok());
+        BtnPrint.setEnabled(akses.getpcare_peserta_kegiatan_kelompok());
     }
  
 }

@@ -16,7 +16,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -420,7 +420,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 psretur.setString(2,tbObat.getValueAt(i,1).toString());
                                 rsretur=psretur.executeQuery();
                                 if(rsretur.next()){
-                                    Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),0,rsretur.getDouble("jml"),"Retur Pasien",var.getkode(),bangsal,"Hapus");
+                                    Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),0,rsretur.getDouble("jml"),"Retur Pasien",akses.getkode(),bangsal,"Hapus");
                                     psupdategudang= koneksi.prepareStatement("update gudangbarang set stok=stok-? where kode_brng=? and kd_bangsal=?");           
                                     try {
                                         psupdategudang.setDouble(1,rsretur.getDouble("jml"));
@@ -468,7 +468,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 psimpanretur.setDouble(4,retur);
                                 psimpanretur.executeUpdate();
 
-                                Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),retur,0,"Retur Pasien",var.getkode(),bangsal,"Simpan");
+                                Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),retur,0,"Retur Pasien",akses.getkode(),bangsal,"Simpan");
                                 psupdategudang2= koneksi.prepareStatement("update gudangbarang set stok=stok+? where kode_brng=? and kd_bangsal=?");
                                 try {
                                     psupdategudang2.setDouble(1,retur);
@@ -663,15 +663,14 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     param.put("namapasien",rspasien.getString("nm_pasien"));
                     param.put("jkel",rspasien.getString("jk"));
                     param.put("umur",rspasien.getString("umur"));
-                    param.put("tanggal",Valid.SetTgl(Tanggal.getSelectedItem()+""));param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("tanggal",Valid.SetTgl(Tanggal.getSelectedItem()+""));param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptObatPasien.jrxml","report","::[ Obat Keluar Masuk ]::",
-                            "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);
+                    Valid.MyReport("rptObatPasien.jasper","report","::[ Obat Keluar Masuk ]::",param);
                 }                
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -962,7 +961,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         TNoRw.setText(norwt);
         Tanggal.setDate(tanggal);
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
-        kdgudang.setText(var.getkdbangsal());
+        kdgudang.setText(akses.getkdbangsal());
         kelas.setText(Sequel.cariIsi(
                 "select kamar.kelas from kamar inner join kamar_inap on kamar.kd_kamar=kamar_inap.kd_kamar "+
                 "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norwt));

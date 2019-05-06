@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -633,8 +633,8 @@ public class PerpustakaanPengarang extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getpengarang_perpustakaan());
-       BtnHapus.setEnabled(var.getpengarang_perpustakaan());
-       BtnEdit.setEnabled(var.getpengarang_perpustakaan());
+       BtnSimpan.setEnabled(akses.getpengarang_perpustakaan());
+       BtnHapus.setEnabled(akses.getpengarang_perpustakaan());
+       BtnEdit.setEnabled(akses.getpengarang_perpustakaan());
     }
 }

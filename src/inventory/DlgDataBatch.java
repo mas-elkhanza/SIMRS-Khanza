@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1184,14 +1184,14 @@ public class DlgDataBatch extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
             Map<String, Object> param = new HashMap<>();
-            param.put("namars", var.getnamars());
-            param.put("alamatrs", var.getalamatrs());
-            param.put("kotars", var.getkabupatenrs());
-            param.put("propinsirs", var.getpropinsirs());
-            param.put("kontakrs", var.getkontakrs());
-            param.put("emailrs", var.getemailrs());
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptDataBatch.jrxml", "report", "::[ Data Batch ]::", 
+            Valid.MyReportqry("rptDataBatch.jasper", "report", "::[ Data Batch ]::", 
                 "select data_batch.kode_brng, databarang.nama_brng, "
                 + " data_batch.no_faktur,data_batch.no_batch,data_batch.tgl_beli, data_batch.h_beli,"
                 + " data_batch.ralan,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"
@@ -1779,10 +1779,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             
     public void isCek() {
         TCari.requestFocus();
-        BtnSimpan.setEnabled(var.getdata_batch());
-        BtnHapus.setEnabled(var.getdata_batch());
-        BtnEdit.setEnabled(var.getdata_batch());
-        BtnPrint.setEnabled(var.getdata_batch());
+        BtnSimpan.setEnabled(akses.getdata_batch());
+        BtnHapus.setEnabled(akses.getdata_batch());
+        BtnEdit.setEnabled(akses.getdata_batch());
+        BtnPrint.setEnabled(akses.getdata_batch());
     }
 
 }

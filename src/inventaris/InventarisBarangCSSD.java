@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -620,20 +620,15 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBarangCSSD.jrxml","report","::[ Barang CSSD ]::","select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang,"+
-                    "inventaris_ruang.nama_ruang,cssd_barang.jenis_barang from inventaris inner join inventaris_barang "+
-                    "inner join inventaris_ruang inner join cssd_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
-                    "and inventaris.id_ruang=inventaris_ruang.id_ruang and inventaris.no_inventaris=cssd_barang.no_inventaris where "+
-                    "inventaris.no_inventaris like '%"+TCari.getText().trim()+"%' or inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' "+
-                    " or inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' or "+
-                    "cssd_barang.jenis_barang like '%"+TCari.getText().trim()+"%' order by cssd_barang.jenis_barang",param);
+            param.put("parameter","%"+TCari.getText()+"%"); 
+            Valid.MyReport("rptBarangCSSD.jasper","report","::[ Barang CSSD ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -765,8 +760,8 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getbarang_cssd());
-        BtnHapus.setEnabled(var.getbarang_cssd());
-        BtnEdit.setEnabled(var.getbarang_cssd());
+        BtnSimpan.setEnabled(akses.getbarang_cssd());
+        BtnHapus.setEnabled(akses.getbarang_cssd());
+        BtnEdit.setEnabled(akses.getbarang_cssd());
     }
 }

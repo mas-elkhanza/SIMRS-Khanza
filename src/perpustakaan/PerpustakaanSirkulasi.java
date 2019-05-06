@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1038,14 +1038,14 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
                 }
 
                 Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPeminjamanPerpustakaan.jrxml","report","::[ Data Peminjaman Koleksi Perpustakaan ]::","select perpustakaan_peminjaman.no_inventaris,perpustakaan_inventaris.kode_buku,perpustakaan_buku.judul_buku,perpustakaan_penerbit.nama_penerbit,"+
+                Valid.MyReportqry("rptPeminjamanPerpustakaan.jasper","report","::[ Data Peminjaman Koleksi Perpustakaan ]::","select perpustakaan_peminjaman.no_inventaris,perpustakaan_inventaris.kode_buku,perpustakaan_buku.judul_buku,perpustakaan_penerbit.nama_penerbit,"+
                        "perpustakaan_pengarang.nama_pengarang,perpustakaan_buku.thn_terbit,perpustakaan_buku.isbn,perpustakaan_kategori.nama_kategori,"+
                        "perpustakaan_jenis_buku.nama_jenis,perpustakaan_peminjaman.no_anggota,perpustakaan_anggota.nama_anggota,perpustakaan_peminjaman.tgl_pinjam,"+
                        "perpustakaan_peminjaman.tgl_kembali,petugas.nama from perpustakaan_peminjaman inner join perpustakaan_inventaris inner join perpustakaan_buku "+
@@ -1544,13 +1544,13 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
 
     
     public void isCek(){
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             TNIP.setEditable(false);
             btnPtg.setEnabled(false);
-            BtnSimpan.setEnabled(var.getpeminjaman_perpustakaan());
-            BtnIn.setEnabled(var.getpeminjaman_perpustakaan());
-            BtnOut.setEnabled(var.getpeminjaman_perpustakaan());
-            TNIP.setText(var.getkode());
+            BtnSimpan.setEnabled(akses.getpeminjaman_perpustakaan());
+            BtnIn.setEnabled(akses.getpeminjaman_perpustakaan());
+            BtnOut.setEnabled(akses.getpeminjaman_perpustakaan());
+            TNIP.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", TNmPetugas,TNIP.getText());
         } 
     }

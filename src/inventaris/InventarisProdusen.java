@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -617,21 +617,15 @@ public final class InventarisProdusen extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();  
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptProdusen.jrxml","report","::[ Data Produsen ]::","select inventaris_produsen.kode_produsen, inventaris_produsen.nama_produsen, inventaris_produsen.alamat_produsen, inventaris_produsen.no_telp,"+
-                   "inventaris_produsen.email, inventaris_produsen.website_produsen from inventaris_produsen "+
-                   "where inventaris_produsen.kode_produsen like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.alamat_produsen like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.no_telp like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.email like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.website_produsen like '%"+TCari.getText().trim()+"%' order by inventaris_produsen.kode_produsen",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("parameter","%"+TCari.getText()+"%"); 
+                Valid.MyReport("rptProdusen.jasper","report","::[ Data Produsen ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -875,10 +869,10 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinventaris_produsen());
-        BtnHapus.setEnabled(var.getinventaris_produsen());
-        BtnEdit.setEnabled(var.getinventaris_produsen());
-        BtnPrint.setEnabled(var.getinventaris_produsen());
+        BtnSimpan.setEnabled(akses.getinventaris_produsen());
+        BtnHapus.setEnabled(akses.getinventaris_produsen());
+        BtnEdit.setEnabled(akses.getinventaris_produsen());
+        BtnPrint.setEnabled(akses.getinventaris_produsen());
     }
 
     

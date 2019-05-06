@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -114,7 +114,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgRiwayatBarangMedis")){
+                if(akses.getform().equals("DlgRiwayatBarangMedis")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
@@ -137,7 +137,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgRiwayatBarangMedis")){
+                if(akses.getform().equals("DlgRiwayatBarangMedis")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();                    
                     }                
@@ -154,7 +154,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgRiwayatBarangMedis")){
+                if(akses.getform().equals("DlgRiwayatBarangMedis")){
                     if(bangsal.getTable().getSelectedRow()!= -1){                   
                         KdGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                         NmGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
@@ -446,14 +446,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRiwayatBarangMedis.jrxml","report","::[ Riwayat Obat, Alkes & BHP ]::",
+            Valid.MyReportqry("rptRiwayatBarangMedis.jasper","report","::[ Riwayat Obat, Alkes & BHP ]::",
                 "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"+
                     "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"+
                     "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"+
@@ -532,7 +532,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdbarKeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        var.setform("DlgRiwayatBarangMedis");
+        akses.setform("DlgRiwayatBarangMedis");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -565,7 +565,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_formWindowOpened
 
     private void btnBarang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarang1ActionPerformed
-        var.setform("DlgRiwayatBarangMedis");
+        akses.setform("DlgRiwayatBarangMedis");
         bangsal.emptTeks();
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -702,7 +702,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-         BtnPrint.setEnabled(var.getsirkulasi_obat());
+         BtnPrint.setEnabled(akses.getsirkulasi_obat());
     }
     
 }

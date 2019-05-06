@@ -76,7 +76,7 @@
         <mkdir dir="${build.dir}/suara" />        
         <mkdir dir="${build.dir}/lib" />        
         <copy todir="${build.dir}/report">
-            <fileset dir="report/" includes="**/*.jrxml" />
+            <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
         </copy>                
         <copy todir="${build.dir}/setting">
             <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />
@@ -95,7 +95,7 @@
         <mkdir dir="${dist.dir}/suara" />         
         <mkdir dir="${dist.dir}/lib" />         
         <copy todir="${dist.dir}/report">
-            <fileset dir="report/" includes="**/*.jrxml" />
+            <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
         </copy>               
         <copy todir="${dist.dir}/setting">
             <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />

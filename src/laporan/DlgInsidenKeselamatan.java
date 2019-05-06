@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -582,14 +582,14 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){  
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));           
-            Valid.MyReport("rptInsidenKeselamatan.jrxml","report","::[ Master Insiden Kecelakaan ]::",
+            Valid.MyReportqry("rptInsidenKeselamatan.jasper","report","::[ Master Insiden Kecelakaan ]::",
                 "select * from insiden_keselamatan where kode_insiden like '%"+TCari.getText().trim()+"%' or "+
                 "nama_insiden like '%"+TCari.getText().trim()+"%' or "+
                 "jenis_insiden like '%"+TCari.getText().trim()+"%' or "+
@@ -806,9 +806,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinsiden_keselamatan());
-        BtnHapus.setEnabled(var.getinsiden_keselamatan());
-        BtnEdit.setEnabled(var.getinsiden_keselamatan());
-        BtnPrint.setEnabled(var.getinsiden_keselamatan());
+        BtnSimpan.setEnabled(akses.getinsiden_keselamatan());
+        BtnHapus.setEnabled(akses.getinsiden_keselamatan());
+        BtnEdit.setEnabled(akses.getinsiden_keselamatan());
+        BtnPrint.setEnabled(akses.getinsiden_keselamatan());
     }
 }

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -137,7 +137,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgRekeningTahun")){
+                if(akses.getform().equals("DlgRekeningTahun")){
                     if(rekening.getTabel().getSelectedRow()!= -1){      
                         Kd.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),0).toString());
                         Nm.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
@@ -162,7 +162,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgRekeningTahun")){
+                if(akses.getform().equals("DlgRekeningTahun")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }
@@ -802,15 +802,14 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekening Tahun"); 
             }
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRekeningTahun.jrxml","report","::[ Saldo Rekening ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptRekeningTahun.jasper","report","::[ Saldo Rekening ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -877,7 +876,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
                 } catch (java.lang.NullPointerException e) {
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                var.setform(asalform);
+                akses.setform(asalform);
             }
         }
 }//GEN-LAST:event_tbKamarKeyPressed
@@ -899,7 +898,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }//GEN-LAST:event_SaldoKeyPressed
 
     private void BtnCari7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari7ActionPerformed
-        var.setform("DlgRekeningTahun");
+        akses.setform("DlgRekeningTahun");
         rekening.emptTeks();
         rekening.tampil();
         rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1084,15 +1083,15 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        asalform=var.getform();       
-        BtnSimpan.setEnabled(var.getrekening_tahun());
-        BtnBatal.setEnabled(var.getrekening_tahun());
-        BtnEdit.setEnabled(var.getrekening_tahun());
-        BtnHapus.setEnabled(var.getrekening_tahun());
-        BtnPrint.setEnabled(var.getrekening_tahun());
-        ppSimpan.setEnabled(var.getrekening_tahun());
-        ppGanti.setEnabled(var.getrekening_tahun());        
-        ppHapus.setEnabled(var.getrekening_tahun());
-        ppCetak.setEnabled(var.getrekening_tahun());        
+        asalform=akses.getform();       
+        BtnSimpan.setEnabled(akses.getrekening_tahun());
+        BtnBatal.setEnabled(akses.getrekening_tahun());
+        BtnEdit.setEnabled(akses.getrekening_tahun());
+        BtnHapus.setEnabled(akses.getrekening_tahun());
+        BtnPrint.setEnabled(akses.getrekening_tahun());
+        ppSimpan.setEnabled(akses.getrekening_tahun());
+        ppGanti.setEnabled(akses.getrekening_tahun());        
+        ppHapus.setEnabled(akses.getrekening_tahun());
+        ppCetak.setEnabled(akses.getrekening_tahun());        
     }
 }

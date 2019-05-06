@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -689,14 +689,14 @@ public final class KeslingLimbahDomestik extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptLimbahDomestik.jrxml","report","::[ Data Catatan Limbah Padat Domestik ]::",
+            Valid.MyReportqry("rptLimbahDomestik.jasper","report","::[ Data Catatan Limbah Padat Domestik ]::",
                    "select kesling_limbah_domestik.nip,petugas.nama,kesling_limbah_domestik.tanggal,"+
                    "kesling_limbah_domestik.jumlahlimbah,kesling_limbah_domestik.tanggalangkut,kesling_limbah_domestik.keterangan "+
                    "from kesling_limbah_domestik inner join petugas on kesling_limbah_domestik.nip=petugas.nip where "+
@@ -956,13 +956,13 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getlimbah_domestik());
-        BtnHapus.setEnabled(var.getlimbah_domestik());
-        BtnEdit.setEnabled(var.getlimbah_domestik());
-        if(var.getjml2()>=1){
+        BtnSimpan.setEnabled(akses.getlimbah_domestik());
+        BtnHapus.setEnabled(akses.getlimbah_domestik());
+        BtnEdit.setEnabled(akses.getlimbah_domestik());
+        if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
-            KdPetugas.setText(var.getkode());
+            KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
         }  
     }

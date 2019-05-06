@@ -7,7 +7,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventaris.InventarisRuang;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -1006,15 +1006,15 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tbKamIn.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 if(ChkTanggal.isSelected()==true){
-                    Valid.MyReport("rptSirkulasiBerkas.jrxml","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
+                    Valid.MyReportqry("rptSirkulasiBerkas.jasper","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
                         "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,"+
                         "peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
                         "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join inventaris_ruang "+
@@ -1027,7 +1027,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                         " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' or "+
                         " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.peminjam like '%"+TCari.getText().trim()+"%' order by peminjaman_berkas.tgl_pinjam desc ",param);
                 }else{
-                    Valid.MyReport("rptSirkulasiBerkas.jrxml","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
+                    Valid.MyReportqry("rptSirkulasiBerkas.jasper","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
                     "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,"+
                     "peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
                     "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join inventaris_ruang "+
@@ -1531,13 +1531,13 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     
     public void isCek(){
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             Nip.setEditable(false);
             btnPtg.setEnabled(false);
-            BtnSimpan.setEnabled(var.getpeminjaman_berkas());
-            BtnIn.setEnabled(var.getpeminjaman_berkas());
-            BtnOut.setEnabled(var.getpeminjaman_berkas());
-            Nip.setText(var.getkode());
+            BtnSimpan.setEnabled(akses.getpeminjaman_berkas());
+            BtnIn.setEnabled(akses.getpeminjaman_berkas());
+            BtnOut.setEnabled(akses.getpeminjaman_berkas());
+            Nip.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,Nip.getText());
         } 
     }

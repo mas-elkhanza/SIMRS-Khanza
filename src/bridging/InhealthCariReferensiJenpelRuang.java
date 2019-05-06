@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -430,6 +430,6 @@ public final class InhealthCariReferensiJenpelRuang extends javax.swing.JDialog 
     }
     
     public void isCek(){        
-       BtnTambah.setEnabled(var.getinhealth_referensi_jenpel_ruang_rawat());
+       BtnTambah.setEnabled(akses.getinhealth_referensi_jenpel_ruang_rawat());
     }
 }

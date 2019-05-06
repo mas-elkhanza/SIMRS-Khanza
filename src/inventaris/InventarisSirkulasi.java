@@ -6,7 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -902,14 +902,14 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
                 }
 
                 Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSirkulasiInventaris.jrxml","report","::[ Data Sirkulasi Inventaris ]::","select inventaris_peminjaman.no_inventaris,"+
+                Valid.MyReportqry("rptSirkulasiInventaris.jasper","report","::[ Data Sirkulasi Inventaris ]::","select inventaris_peminjaman.no_inventaris,"+
                            "inventaris.kode_barang,"+
                            "inventaris_barang.nama_barang,"+
                            "inventaris_produsen.nama_produsen,"+
@@ -1360,13 +1360,13 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
 
     
     public void isCek(){
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             nip.setEditable(false);
             btnPtg.setEnabled(false);
-            BtnSimpan.setEnabled(var.getinventaris_sirkulasi());
-            BtnIn.setEnabled(var.getinventaris_sirkulasi());
-            BtnOut.setEnabled(var.getinventaris_sirkulasi());
-            nip.setText(var.getkode());
+            BtnSimpan.setEnabled(akses.getinventaris_sirkulasi());
+            BtnIn.setEnabled(akses.getinventaris_sirkulasi());
+            BtnOut.setEnabled(akses.getinventaris_sirkulasi());
+            nip.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", nama_petugas,nip.getText());
         } 
     }

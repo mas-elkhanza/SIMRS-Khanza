@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1905,15 +1905,14 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             }           
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDonorDarah.jrxml","report","::[ Data Donor Darah ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptDonorDarah.jasper","report","::[ Data Donor Darah ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2874,14 +2873,14 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }
     
     public void isCek(){ 
-        BtnSimpan.setEnabled(var.getutd_donor());
-        BtnHapus.setEnabled(var.getutd_donor());
-        BtnEdit.setEnabled(var.getutd_donor());
-        BtnPrint.setEnabled(var.getutd_donor());
-        ppUbah.setEnabled(var.getutd_donor());
-        ppHapusBHPMedis.setEnabled(var.getutd_donor());
-        ppHapusBHPMedisDanNonMedis.setEnabled(var.getutd_donor());
-        ppHapusBHPNonMedis.setEnabled(var.getutd_donor());
-        ppCekal.setEnabled(var.getutd_cekal_darah());        
+        BtnSimpan.setEnabled(akses.getutd_donor());
+        BtnHapus.setEnabled(akses.getutd_donor());
+        BtnEdit.setEnabled(akses.getutd_donor());
+        BtnPrint.setEnabled(akses.getutd_donor());
+        ppUbah.setEnabled(akses.getutd_donor());
+        ppHapusBHPMedis.setEnabled(akses.getutd_donor());
+        ppHapusBHPMedisDanNonMedis.setEnabled(akses.getutd_donor());
+        ppHapusBHPNonMedis.setEnabled(akses.getutd_donor());
+        ppCekal.setEnabled(akses.getutd_cekal_darah());        
     }
 }

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -580,14 +580,14 @@ public final class DlgICD9 extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){  
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));           
-            Valid.MyReport("rptICD9.jrxml","report","::[ Data Prosedur ]::",
+            Valid.MyReportqry("rptICD9.jasper","report","::[ Data Prosedur ]::",
                 "select * from icd9 where kode like '%"+TCari.getText().trim()+"%' or "+
                 " deskripsi_panjang like '%"+TCari.getText().trim()+"%' or "+
                 " deskripsi_pendek like '%"+TCari.getText().trim()+"%' order by kode ",param);
@@ -788,9 +788,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.geticd9());
-        BtnHapus.setEnabled(var.geticd9());
-        BtnEdit.setEnabled(var.geticd9());
-        BtnPrint.setEnabled(var.geticd9());
+        BtnSimpan.setEnabled(akses.geticd9());
+        BtnHapus.setEnabled(akses.geticd9());
+        BtnEdit.setEnabled(akses.geticd9());
+        BtnPrint.setEnabled(akses.geticd9());
     }
 }

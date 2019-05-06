@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -692,8 +692,8 @@ public class INACBGCoderNIK extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinacbg_coder_nik());
-        BtnHapus.setEnabled(var.getinacbg_coder_nik());
-        BtnEdit.setEnabled(var.getinacbg_coder_nik());
+        BtnSimpan.setEnabled(akses.getinacbg_coder_nik());
+        BtnHapus.setEnabled(akses.getinacbg_coder_nik());
+        BtnEdit.setEnabled(akses.getinacbg_coder_nik());
     }
 }

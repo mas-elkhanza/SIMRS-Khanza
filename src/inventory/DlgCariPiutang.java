@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -166,7 +166,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(member.getTable().getSelectedRow()!= -1){                   
                         kdmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
                         nmmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),2).toString());
@@ -198,7 +198,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }
@@ -213,7 +213,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }
@@ -228,7 +228,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }
@@ -245,7 +245,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -270,7 +270,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
@@ -293,7 +293,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                     }                
@@ -310,7 +310,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPiutang")){
+                if(akses.getform().equals("DlgCariPiutang")){
                     if(barang.jenis.getTable().getSelectedRow()!= -1){
                         kdsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());
                         nmsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
@@ -794,7 +794,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
-        var.setform("DlgCariPiutang");
+        akses.setform("DlgCariPiutang");
         member.emptTeks();
         member.isCek();
         member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -804,7 +804,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnPasienActionPerformed
 
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
-        var.setform("DlgCariPiutang");
+        akses.setform("DlgCariPiutang");
         petugas.emptTeks();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
@@ -867,7 +867,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdbarKeyPressed
 
     private void BtnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBarangActionPerformed
-        var.setform("DlgCariPiutang");
+        akses.setform("DlgCariPiutang");
         barang.emptTeks();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
@@ -890,7 +890,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdsatKeyPressed
 
     private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
-        var.setform("DlgCariPiutang");
+        akses.setform("DlgCariPiutang");
         barang.jenis.emptTeks();
         barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.jenis.setLocationRelativeTo(internalFrame1);
@@ -980,16 +980,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.menyimpan("temporary","'0','Jml.Total :','','','','','','','','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Piutang"); 
             
             
-                    Map<String, Object> param = new HashMap<>();  
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPiutang.jrxml","report","::[ Transaksi Piutang Barang ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);
+            Map<String, Object> param = new HashMap<>();  
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReport("rptPiutang.jasper","report","::[ Transaksi Piutang Barang ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1039,7 +1038,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                   "select kode_brng,jumlah,no_batch from detailpiutang where nota_piutang='"+rscaripiutang.getString(1) +"' ");
              ResultSet rsdetailpiutang=psdetailpiutang.executeQuery();
              while(rsdetailpiutang.next()){
-                 Trackobat.catatRiwayat(rsdetailpiutang.getString("kode_brng"),rsdetailpiutang.getDouble("jumlah"),0,"Piutang",var.getkode(),rscaripiutang.getString("kd_bangsal"),"Hapus");
+                 Trackobat.catatRiwayat(rsdetailpiutang.getString("kode_brng"),rsdetailpiutang.getDouble("jumlah"),0,"Piutang",akses.getkode(),rscaripiutang.getString("kd_bangsal"),"Hapus");
                  Sequel.menyimpan("gudangbarang","'"+rsdetailpiutang.getString("kode_brng") +"','"+rscaripiutang.getString("kd_bangsal") +"','"+rsdetailpiutang.getString("jumlah") +"'", 
                                         "stok=stok+'"+rsdetailpiutang.getString("jumlah") +"'","kode_brng='"+rsdetailpiutang.getString("kode_brng")+"' and kd_bangsal='"+rscaripiutang.getString("kd_bangsal") +"'");
                  if(aktifkanbatch.equals("yes")){
@@ -1288,10 +1287,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     } 
      
     public void isCek(){
-        MnDetailCicilan.setEnabled(var.getbayar_piutang());
-        BtnPrint.setEnabled(var.getpiutang_obat());
-        ppCetakNota.setEnabled(var.getpiutang_obat());
-        if(var.getkode().equals("Admin Utama")){
+        MnDetailCicilan.setEnabled(akses.getbayar_piutang());
+        BtnPrint.setEnabled(akses.getpiutang_obat());
+        ppCetakNota.setEnabled(akses.getpiutang_obat());
+        if(akses.getkode().equals("Admin Utama")){
             ppHapus.setEnabled(true);
         }else{
             ppHapus.setEnabled(false);
