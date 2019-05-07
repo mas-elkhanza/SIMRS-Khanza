@@ -759,7 +759,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptBarangIpsrs.jasper","report","::[ Data Barang Non Medis, Radiologi, Loundry, ATK, Dapur, IPSRS ]::",
+                Valid.MyReportqry("rptBarangIpsrs.jasper","report","::[ Data Barang Non Medis, Radiologi, Loundry, ATK, Dapur, IPSRS ]::",
                    "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsjenisbarang.nm_jenis as jenis, "+
                     "ipsrsbarang.stok,ipsrsbarang.harga from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
                     "on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+

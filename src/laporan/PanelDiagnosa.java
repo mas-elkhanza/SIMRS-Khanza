@@ -1011,7 +1011,7 @@ public class PanelDiagnosa extends widget.panelisi {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDiagnosa.jasper","report","::[ Data Diagnosa Pasien ]::",
+                Valid.MyReportqry("rptDiagnosa.jasper","report","::[ Data Diagnosa Pasien ]::",
                         "select reg_periksa.tgl_registrasi,diagnosa_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                         "diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status,diagnosa_pasien.status_penyakit "+
                         "from diagnosa_pasien inner join reg_periksa inner join pasien inner join penyakit "+
@@ -1039,7 +1039,7 @@ public class PanelDiagnosa extends widget.panelisi {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptProsedur.jasper","report","::[ Data Prosedur Tindakan Pasien ]::",
+                Valid.MyReportqry("rptProsedur.jasper","report","::[ Data Prosedur Tindakan Pasien ]::",
                         "select reg_periksa.tgl_registrasi,prosedur_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                         "prosedur_pasien.kode,icd9.deskripsi_panjang, prosedur_pasien.status "+
                         "from prosedur_pasien inner join reg_periksa inner join pasien inner join icd9 "+

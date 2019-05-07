@@ -592,7 +592,7 @@ public class DlgJamMasuk extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptJammasuk.jasper","report","::[ Jadwal Pegawai ]::",
+                Valid.MyReportqry("rptJammasuk.jasper","report","::[ Jadwal Pegawai ]::",
                         "select * from jam_masuk where shift like '%"+TCari.getText().trim()+"%'  order by shift",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());

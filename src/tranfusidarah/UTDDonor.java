@@ -1912,8 +1912,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDonorDarah.jasper","report","::[ Data Donor Darah ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptDonorDarah.jasper","report","::[ Data Donor Darah ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

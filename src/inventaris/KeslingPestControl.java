@@ -674,7 +674,7 @@ public final class KeslingPestControl extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPestControl.jasper","report","::[ Data Pest Control ]::",
+            Valid.MyReportqry("rptPestControl.jasper","report","::[ Data Pest Control ]::",
                    "select kesling_pest_control.nip,petugas.nama,kesling_pest_control.tanggal,"+
                    "kesling_pest_control.rincian_kegiatan,kesling_pest_control.rekomendasi "+
                    "from kesling_pest_control inner join petugas on kesling_pest_control.nip=petugas.nip where "+

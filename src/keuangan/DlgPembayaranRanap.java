@@ -422,8 +422,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRTagihanRanap.jasper","report","::[ Rekap Tagihan Ranap Masuk ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptRTagihanRanap.jasper","report","::[ Rekap Tagihan Ranap Masuk ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

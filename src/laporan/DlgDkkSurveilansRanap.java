@@ -380,8 +380,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
-                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabMode2.getRowCount()==0){
@@ -423,8 +422,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
-                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",param);
             }
         }
             

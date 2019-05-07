@@ -1014,7 +1014,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 if(ChkTanggal.isSelected()==true){
-                    Valid.MyReport("rptSirkulasiBerkas.jasper","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
+                    Valid.MyReportqry("rptSirkulasiBerkas.jasper","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
                         "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,"+
                         "peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
                         "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join inventaris_ruang "+
@@ -1027,7 +1027,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                         " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and inventaris_ruang.nama_ruang like '%"+TCari.getText().trim()+"%' or "+
                         " peminjaman_berkas.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and peminjaman_berkas.no_rkm_medis like '%"+RmCari.getText()+"%' and peminjaman_berkas.peminjam like '%"+TCari.getText().trim()+"%' order by peminjaman_berkas.tgl_pinjam desc ",param);
                 }else{
-                    Valid.MyReport("rptSirkulasiBerkas.jasper","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
+                    Valid.MyReportqry("rptSirkulasiBerkas.jasper","report","::[ Data Peminjaman Dan Pengembalian Berkas Rekam Medis ]::",
                     "select peminjaman_berkas.peminjam,peminjaman_berkas.id_ruang,inventaris_ruang.nama_ruang,"+
                     "peminjaman_berkas.no_rkm_medis,pasien.nm_pasien,peminjaman_berkas.tgl_pinjam,"+
                     "peminjaman_berkas.tgl_kembali,peminjaman_berkas.nip,petugas.nama,peminjaman_berkas.status_pinjam from peminjaman_berkas inner join inventaris_ruang "+

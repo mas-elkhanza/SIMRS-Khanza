@@ -696,7 +696,7 @@ public final class KeslingLimbahDomestik extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptLimbahDomestik.jasper","report","::[ Data Catatan Limbah Padat Domestik ]::",
+            Valid.MyReportqry("rptLimbahDomestik.jasper","report","::[ Data Catatan Limbah Padat Domestik ]::",
                    "select kesling_limbah_domestik.nip,petugas.nama,kesling_limbah_domestik.tanggal,"+
                    "kesling_limbah_domestik.jumlahlimbah,kesling_limbah_domestik.tanggalangkut,kesling_limbah_domestik.keterangan "+
                    "from kesling_limbah_domestik inner join petugas on kesling_limbah_domestik.nip=petugas.nip where "+

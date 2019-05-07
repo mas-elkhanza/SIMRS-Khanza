@@ -855,7 +855,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTarifRad.jasper","report","::[ Data Tarif Radiologi ]::",
+                Valid.MyReportqry("rptTarifRad.jasper","report","::[ Data Tarif Radiologi ]::",
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.bagian_rs,"+
                     "jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
                     "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,jns_perawatan_radiologi.total_byr,penjab.png_jawab "+

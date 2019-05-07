@@ -745,7 +745,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));           
-            Valid.MyReport("rptPenyakit.jasper","report","::[ Data Penyakit ]::","select penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
+            Valid.MyReportqry("rptPenyakit.jasper","report","::[ Data Penyakit ]::","select penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
                 "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum "+
                 "from kategori_penyakit inner join penyakit "+
                 "on penyakit.kd_ktg=kategori_penyakit.kd_ktg where  "+

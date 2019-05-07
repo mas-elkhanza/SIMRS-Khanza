@@ -283,8 +283,7 @@ public final class DlgRl33 extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptRl33.jasper","report","::[ Formulir RL 3.3 ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptRl33.jasper","report","::[ Formulir RL 3.3 ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

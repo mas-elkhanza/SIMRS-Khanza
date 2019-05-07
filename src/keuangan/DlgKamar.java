@@ -799,7 +799,7 @@ public final class DlgKamar extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if((TCari.getText().trim().equals(""))&&(panelCari.isVisible()==false)){
-                Valid.MyReport("rptKamar.jasper","report","::[ Data Nomor Kamar ]::",
+                Valid.MyReportqry("rptKamar.jasper","report","::[ Data Nomor Kamar ]::",
                         "select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
                                "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar "+
@@ -807,7 +807,7 @@ public final class DlgKamar extends javax.swing.JDialog {
                                "order by kd_kamar",param);
             }else if((! TCari.getText().trim().equals(""))&&(panelCari.isVisible()==false)){
                 String sql="kamar.statusdata='1' and kamar.kd_bangsal=bangsal.kd_bangsal ";
-                Valid.MyReport("rptKamar.jasper","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
+                Valid.MyReportqry("rptKamar.jasper","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
                                "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar where  "+
                                sql+"and kd_kamar like '%"+TCari.getText().trim()+"%' or "+
@@ -829,7 +829,7 @@ public final class DlgKamar extends javax.swing.JDialog {
                 }else if((BangsalCari.getText().equals(""))&&(! CmbCrIsi.getSelectedItem().toString().equals(" "))){
                      key="and kamar.statusdata='1' and kamar.status like '%"+CmbCrIsi.getSelectedItem().toString().trim()+"%' ";
                 }     
-                Valid.MyReport("rptKamar.jasper","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
+                Valid.MyReportqry("rptKamar.jasper","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
                                "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar "+
                                "where kamar.kd_bangsal=bangsal.kd_bangsal "+key+

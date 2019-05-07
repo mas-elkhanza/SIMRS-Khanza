@@ -600,12 +600,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(lokasi.equals("")){
-                Valid.MyReport("rptSirkulasi2.jasper","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15, temp16, temp17, temp18 from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi2.jasper","report","::[ Sirkulasi Barang ]::",param);
             }else if(!lokasi.equals("")){
                 param.put("bangsal",lokasi); 
-                Valid.MyReport("rptSirkulasi4.jasper","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15, temp16, temp17, temp18 from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi4.jasper","report","::[ Sirkulasi Barang ]::",param);
             }    
             this.setCursor(Cursor.getDefaultCursor());
         }

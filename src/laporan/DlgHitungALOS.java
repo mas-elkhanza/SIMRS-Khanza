@@ -358,8 +358,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                     }                    
                 }
                    
-                Valid.MyReport("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabMode2.getRowCount()==0){
@@ -392,8 +391,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                     }                    
                 }
                    
-                Valid.MyReport("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptHitungAlos.jasper","report","::[ Data Hitung BOR ]::",param);
             }
         }
             

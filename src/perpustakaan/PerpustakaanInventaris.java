@@ -947,7 +947,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptInventarisPerpustakaan.jasper","report","::[ Data Inventaris Perpustakaan ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+                Valid.MyReportqry("rptInventarisPerpustakaan.jasper","report","::[ Data Inventaris Perpustakaan ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
                    "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
                    "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
                    "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+
@@ -1130,7 +1130,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs()); 
-            Valid.MyReport("rptBarcodeInventaris.jasper","report","::[ Data Barang ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
+            Valid.MyReportqry("rptBarcodeInventaris.jasper","report","::[ Data Barang ]::","select perpustakaan_inventaris.no_inventaris,perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, "+
                    "perpustakaan_buku.judul_buku, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn, "+
                    "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis,perpustakaan_inventaris.asal_buku,perpustakaan_inventaris.tgl_pengadaan, "+
                    "perpustakaan_inventaris.harga,perpustakaan_inventaris.status_buku,perpustakaan_ruang.nm_ruang,perpustakaan_inventaris.no_rak,perpustakaan_inventaris.no_box "+

@@ -617,21 +617,15 @@ public final class InventarisProdusen extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();  
-                    param.put("namars",akses.getnamars());
-                    param.put("alamatrs",akses.getalamatrs());
-                    param.put("kotars",akses.getkabupatenrs());
-                    param.put("propinsirs",akses.getpropinsirs());
-                    param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptProdusen.jasper","report","::[ Data Produsen ]::","select inventaris_produsen.kode_produsen, inventaris_produsen.nama_produsen, inventaris_produsen.alamat_produsen, inventaris_produsen.no_telp,"+
-                   "inventaris_produsen.email, inventaris_produsen.website_produsen from inventaris_produsen "+
-                   "where inventaris_produsen.kode_produsen like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.alamat_produsen like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.no_telp like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.email like '%"+TCari.getText().trim()+"%' "+
-                    "or inventaris_produsen.website_produsen like '%"+TCari.getText().trim()+"%' order by inventaris_produsen.kode_produsen",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("parameter","%"+TCari.getText()+"%"); 
+                Valid.MyReport("rptProdusen.jasper","report","::[ Data Produsen ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

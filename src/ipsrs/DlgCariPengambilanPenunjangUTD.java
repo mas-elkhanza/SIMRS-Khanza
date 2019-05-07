@@ -441,7 +441,7 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));                       
-            Valid.MyReport("rptPengambilanPenunjangUTD.jasper","report","::[ Transaksi Pengambilan BHP Non Medis UTD ]::", 
+            Valid.MyReportqry("rptPengambilanPenunjangUTD.jasper","report","::[ Transaksi Pengambilan BHP Non Medis UTD ]::", 
                     "select utd_pengambilan_penunjang.kode_brng,ipsrsbarang.nama_brng,utd_pengambilan_penunjang.jml,utd_pengambilan_penunjang.harga,"+
                     "utd_pengambilan_penunjang.total,utd_pengambilan_penunjang.nip,petugas.nama,utd_pengambilan_penunjang.tanggal,"+
                     "utd_pengambilan_penunjang.keterangan,ipsrsbarang.kode_sat from utd_pengambilan_penunjang inner join ipsrsbarang inner join petugas "+

@@ -858,7 +858,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRekapPenerimaanNonMedis.jasper","report","::[ Rekap Penerimaan Barang Non Medis ]::",
+            Valid.MyReportqry("rptRekapPenerimaanNonMedis.jasper","report","::[ Rekap Penerimaan Barang Non Medis ]::",
                 "select ipsrspemesanan.tgl_pesan,ipsrspemesanan.no_faktur, "+
                     "ipsrspemesanan.kode_suplier,ipsrssuplier.nama_suplier, "+
                     "ipsrspemesanan.nip,petugas.nama,ipsrspemesanan.tgl_faktur, "+

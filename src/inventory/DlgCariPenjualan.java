@@ -1056,12 +1056,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Penjualan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1","Laporan 2"},"Laporan 1");
                     switch (pilihan) {
                         case "Laporan 1":
-                              Valid.MyReport("rptPenjualan.jasper","report","::[ Transaksi Penjualan Barang ]::",
-                                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16, temp17, temp18, temp19 from temporary order by no asc",param);
+                              Valid.MyReport("rptPenjualan.jasper","report","::[ Transaksi Penjualan Barang ]::",param);
                               break;
                         case "Laporan 2":
-                              Valid.MyReport("rptPenjualan2.jasper","report","::[ Transaksi Penjualan Barang ]::",
-                                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16, temp17, temp18, temp19 from temporary order by no asc",param);
+                              Valid.MyReport("rptPenjualan2.jasper","report","::[ Transaksi Penjualan Barang ]::",param);
                               break;                
                     }  
                 }  break;

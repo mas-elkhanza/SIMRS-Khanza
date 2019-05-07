@@ -405,8 +405,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Valid.MyReport("rptSirkulasiNonMedis.jasper","report","::[ Sirkulasi Barang Non Medis, Penunjang Lab & Radiologi ]::",
-                    "select * from temporary order by no asc",param);
+            Valid.MyReport("rptSirkulasiNonMedis.jasper","report","::[ Sirkulasi Barang Non Medis, Penunjang Lab & Radiologi ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed

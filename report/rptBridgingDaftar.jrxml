@@ -7,6 +7,7 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="25"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="964"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="server"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -49,129 +50,223 @@
                     bridging_sep.tglsep between $P{tanggal1} and $P{tanggal2} and bridging_sep.nmpolitujuan like $P{parameter} order by bridging_sep.tglsep]]>
 	</queryString>
 	<field name="no_sep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_sep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nomr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nomr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tglsep" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tglsep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tglrujukan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tglrujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kdppkrujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kdppkrujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmppkrujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmppkrujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kdppkpelayanan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kdppkpelayanan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmppkpelayanan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmppkpelayanan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="if(bridging_sep.jnspelayanan=&apos;1&apos;,&apos;1. Ranap&apos;,&apos;2. Ralan&apos;)" class="java.lang.String"/>
+	<field name="if(bridging_sep.jnspelayanan=&apos;1&apos;,&apos;1. Ranap&apos;,&apos;2. Ralan&apos;)" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label">
+			<![CDATA[if(bridging_sep.jnspelayanan='1','1. Ranap','2. Ralan')]]>
+		</property>
+	</field>
 	<field name="catatan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="catatan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="diagawal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="diagawal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmdiagnosaawal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmdiagnosaawal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kdpolitujuan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kdpolitujuan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmpolitujuan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmpolitujuan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="if(bridging_sep.klsrawat=&apos;1&apos;,&apos;1. Kelas 1&apos;,if(bridging_sep.klsrawat=&apos;2&apos;,&apos;2. Kelas 2&apos;,&apos;3. Kelas 3&apos;))" class="java.lang.String"/>
-	<field name="if(bridging_sep.lakalantas=&apos;0&apos;,&apos;0. Tidak&apos;,&apos;1. Ya&apos;)" class="java.lang.String"/>
+	<field name="if(bridging_sep.klsrawat=&apos;1&apos;,&apos;1. Kelas 1&apos;,if(bridging_sep.klsrawat=&apos;2&apos;,&apos;2. Kelas 2&apos;,&apos;3. Kelas 3&apos;))" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label">
+			<![CDATA[if(bridging_sep.klsrawat='1','1. Kelas 1',if(bridging_sep.klsrawat='2','2. Kelas 2','3. Kelas 3'))]]>
+		</property>
+	</field>
+	<field name="if(bridging_sep.lakalantas=&apos;0&apos;,&apos;0. Tidak&apos;,&apos;1. Ya&apos;)" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label">
+			<![CDATA[if(bridging_sep.lakalantas='0','0. Tidak','1. Ya')]]>
+		</property>
+	</field>
 	<field name="user" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="user"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tanggal_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tanggal_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="peserta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="peserta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jkel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jkel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_kartu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_kartu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tglpulang" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="tglpulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="asal_rujukan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="asal_rujukan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="eksekutif" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="eksekutif"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="cob" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cob"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="penjamin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="penjamin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="notelep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="notelep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="katarak" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="katarak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tglkkl" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tglkkl"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="keterangankkl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="keterangankkl"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="suplesi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="suplesi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_sep_suplesi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_sep_suplesi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kdprop" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kdprop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmprop" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmprop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kdkab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kdkab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmkab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmkab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kdkec" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kdkec"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmkec" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmkec"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="noskdp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="noskdp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kddpjp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kddpjp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nmdpdjp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nmdpdjp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>

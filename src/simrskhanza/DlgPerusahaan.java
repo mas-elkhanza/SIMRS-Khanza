@@ -679,7 +679,7 @@ public class DlgPerusahaan extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPerusahaan.jasper","report","::[ Data Instansi/Perusahaan ]::",sql,param);            
+            Valid.MyReportqry("rptPerusahaan.jasper","report","::[ Data Instansi/Perusahaan ]::",sql,param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

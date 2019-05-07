@@ -815,8 +815,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
                 }                    
             }
                
-            Valid.MyReport("rptKunjunganRalan.jasper","report","::[ Laporan Kunjungan Rawat Jalan ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptKunjunganRalan.jasper","report","::[ Laporan Kunjungan Rawat Jalan ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

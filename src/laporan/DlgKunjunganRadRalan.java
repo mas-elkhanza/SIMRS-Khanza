@@ -852,8 +852,7 @@ public final class DlgKunjunganRadRalan extends javax.swing.JDialog {
                 );
             }
                
-            Valid.MyReport("rptKunjunganRadRalan.jasper","report","::[ Laporan Kunjungan Radiologi Rawat Jalan ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptKunjunganRadRalan.jasper","report","::[ Laporan Kunjungan Radiologi Rawat Jalan ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

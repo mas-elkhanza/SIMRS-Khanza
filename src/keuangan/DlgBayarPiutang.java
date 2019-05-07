@@ -767,7 +767,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReport("rptBayar.jasper","report","::[ Bayar Piutang ]::","select bayar_piutang.tgl_bayar, bayar_piutang.no_rkm_medis,pasien.nm_pasien, bayar_piutang.besar_cicilan,"+
+            Valid.MyReportqry("rptBayar.jasper","report","::[ Bayar Piutang ]::","select bayar_piutang.tgl_bayar, bayar_piutang.no_rkm_medis,pasien.nm_pasien, bayar_piutang.besar_cicilan,"+
                 "bayar_piutang.catatan, bayar_piutang.no_rawat from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis where "+
                 "bayar_piutang.no_rawat like '%"+TCari.getText()+"%' or "+
                 "bayar_piutang.no_rkm_medis like '%"+TCari.getText()+"%' or "+

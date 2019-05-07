@@ -847,7 +847,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptAnggotaPerpustakaan.jasper","report","::[ Data Anggota Perpustakaan ]::",
+            Valid.MyReportqry("rptAnggotaPerpustakaan.jasper","report","::[ Data Anggota Perpustakaan ]::",
                     "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                     "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where "+
                     gabung+habis+" no_anggota like '%"+TCari.getText().trim()+"%' or "+
@@ -1013,7 +1013,7 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptKartuAnggota.jasper","report","::[ Kartu Anggota Perpustakaan ]::",
+                Valid.MyReportqry("rptKartuAnggota.jasper","report","::[ Kartu Anggota Perpustakaan ]::",
                         "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                         "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where no_anggota='"+NoAnggota.getText()+"'",param);
             }else{

@@ -422,8 +422,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("tahun","BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptHadir.jasper","report","::[ Rekap Kehadiran Pegawai ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptHadir.jasper","report","::[ Rekap Kehadiran Pegawai ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed

@@ -859,7 +859,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));                 
             if(panelCari.isVisible()==false){
-                Valid.MyReport("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
@@ -876,7 +876,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                     "utd_stok_darah.status='Ada' and utd_stok_darah.status like '%"+TCari.getText().trim()+"%' "+
                     "order by utd_stok_darah.tanggal_kadaluarsa",param);            
             }else{
-                Valid.MyReport("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+

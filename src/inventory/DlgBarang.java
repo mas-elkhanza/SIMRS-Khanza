@@ -1647,7 +1647,7 @@ public class DlgBarang extends javax.swing.JDialog {
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBarang.jasper", "report", "::[ Data Barang ]::", 
+            Valid.MyReportqry("rptBarang.jasper", "report", "::[ Data Barang ]::", 
                     "select databarang.kode_brng, databarang.nama_brng, "
                     + " databarang.kode_sat,kodesatuan.satuan,databarang.letak_barang, databarang.h_beli,"
                     + " databarang.ralan,databarang.kelas1,databarang.kelas2,databarang.kelas3,"
@@ -1942,7 +1942,15 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
-            Valid.MyReport("rptBarcodeBarang.jasper", "report", "::[ Data Barang ]::", 
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptBarcodeBarang.jasper", "report", "::[ Data Barang ]::", 
                     "select databarang.kode_brng  "
                     + " from databarang inner join kodesatuan inner join jenis "
                     + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
@@ -1952,7 +1960,7 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                     + " kodesatuan.satuan like '%" + TCari.getText().trim() + "%' or "
                     + " databarang.letak_barang like '%" + TCari.getText().trim() + "%' or "                    + " databarang.stokminimal like '%" + TCari.getText().trim() + "%' or "
                     + " databarang.kdjns like '%" + TCari.getText().trim() + "%' or "
-                    + " jenis.nama like '%" + TCari.getText().trim() + "%'  order by databarang.nama_brng");
+                    + " jenis.nama like '%" + TCari.getText().trim() + "%'  order by databarang.nama_brng",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBarcodeBtnPrintActionPerformed
@@ -1979,8 +1987,15 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                 for (int i = 0; i < jml; i++) {
                     Sequel.menyimpan("temporary", "'0','" + Kd.getText() + "','" + Kd.getText() + "','" + Kd.getText() + "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Barcode");
                 }
-                Valid.MyReport("rptBarcodeItem.jasper", "report", "::[ Barcode Perbarang ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc");
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars", akses.getnamars());
+                param.put("alamatrs", akses.getalamatrs());
+                param.put("kotars", akses.getkabupatenrs());
+                param.put("propinsirs", akses.getpropinsirs());
+                param.put("kontakrs", akses.getkontakrs());
+                param.put("emailrs", akses.getemailrs());
+                param.put("logo", Sequel.cariGambar("select logo from setting"));
+                Valid.MyReport("rptBarcodeItem.jasper", "report", "::[ Barcode Perbarang ]::",param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }

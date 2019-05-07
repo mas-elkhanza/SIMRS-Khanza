@@ -581,7 +581,7 @@ public final class DlgStokOpnameIPSRS extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptOpnameIPSRS.jasper","report","::[ Stok Opname Non Medis, Penunjang Lab & Radiologi ]::","select ipsrsopname.kode_brng, ipsrsbarang.nama_brng,ipsrsopname.h_beli, ipsrsbarang.kode_sat, ipsrsopname.tanggal, ipsrsopname.stok, "+
+            Valid.MyReportqry("rptOpnameIPSRS.jasper","report","::[ Stok Opname Non Medis, Penunjang Lab & Radiologi ]::","select ipsrsopname.kode_brng, ipsrsbarang.nama_brng,ipsrsopname.h_beli, ipsrsbarang.kode_sat, ipsrsopname.tanggal, ipsrsopname.stok, "+
                   "ipsrsopname.real, ipsrsopname.selisih, ipsrsopname.nomihilang, ipsrsopname.keterangan, (ipsrsopname.real*ipsrsopname.h_beli) as totalreal "+
                   "from ipsrsopname inner join ipsrsbarang on ipsrsopname.kode_brng=ipsrsbarang.kode_brng "+
                   "where ipsrsopname.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsopname.kode_brng like '%"+TCari.getText().trim()+"%' or "+

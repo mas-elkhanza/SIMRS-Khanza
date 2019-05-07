@@ -885,28 +885,10 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBridgingDaftarRujukan.jasper","report","::[ Data Bridging Rujukan VClaim ]::",
-                    "select bridging_rujukan_bpjs.no_sep, bridging_sep.no_rawat,"+
-                    "bridging_sep.nomr,bridging_sep.nama_pasien,bridging_rujukan_bpjs.tglRujukan,"+
-                    "bridging_rujukan_bpjs.no_rujukan,bridging_rujukan_bpjs.ppkDirujuk,"+
-                    "bridging_rujukan_bpjs.nm_ppkDirujuk,"+
-                    "if(bridging_rujukan_bpjs.jnsPelayanan='1','1. Rawat Inap','2. Rawat Jalan') as jenis,"+
-                    "bridging_rujukan_bpjs.tipeRujukan,bridging_rujukan_bpjs.catatan,"+
-                    "bridging_rujukan_bpjs.diagRujukan,bridging_rujukan_bpjs.nama_diagRujukan,"+
-                    "bridging_rujukan_bpjs.poliRujukan,bridging_rujukan_bpjs.nama_poliRujukan  "+
-                    "from bridging_sep inner join bridging_rujukan_bpjs on bridging_rujukan_bpjs.no_sep=bridging_sep.no_sep where "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.no_sep like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.nomr like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_sep.nama_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.no_rujukan like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.ppkDirujuk like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.nm_ppkDirujuk like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.diagRujukan like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.nama_diagRujukan like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.poliRujukan like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.nama_poliRujukan like '%"+TCari.getText().trim()+"%' or "+
-                    "bridging_rujukan_bpjs.tglRujukan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and bridging_rujukan_bpjs.catatan like '%"+TCari.getText().trim()+"%' order by bridging_rujukan_bpjs.tglRujukan",param);
+                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+"")); 
+                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")); 
+                param.put("parameter","%"+TCari.getText().trim()+"%"); 
+            Valid.MyReport("rptBridgingDaftarRujukan.jasper","report","::[ Data Bridging Rujukan VClaim ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

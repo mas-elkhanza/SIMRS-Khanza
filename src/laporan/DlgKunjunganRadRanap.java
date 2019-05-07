@@ -853,8 +853,7 @@ public final class DlgKunjunganRadRanap extends javax.swing.JDialog {
                 );
             }
                
-            Valid.MyReport("rptKunjunganRadRanap.jasper","report","::[ Laporan Kunjungan Radiologi Rawat Inap ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptKunjunganRadRanap.jasper","report","::[ Laporan Kunjungan Radiologi Rawat Inap ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

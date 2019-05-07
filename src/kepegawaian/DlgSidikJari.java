@@ -320,7 +320,7 @@ public final class DlgSidikJari extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSidikJari.jasper","report","::[ Data Sidik Jari ]::",
+                Valid.MyReportqry("rptSidikJari.jasper","report","::[ Data Sidik Jari ]::",
                     "select  pegawai.id,pegawai.nik,pegawai.nama,sidikjari.sidikjari  from pegawai "+
                     "inner join sidikjari on pegawai.id=sidikjari.id where pegawai.nik like '%"+TCari.getText().trim()+"%' "+
                     "or pegawai.nama like '%"+TCari.getText().trim()+"%' order by pegawai.nik",param);

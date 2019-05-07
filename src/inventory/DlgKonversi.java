@@ -564,7 +564,7 @@ public final class DlgKonversi extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptKonversi.jasper","report","::[ Konversi Satuan ]::","select nilai, kode_sat, nilai_konversi, sat_konversi  "+
+            Valid.MyReportqry("rptKonversi.jasper","report","::[ Konversi Satuan ]::","select nilai, kode_sat, nilai_konversi, sat_konversi  "+
                 " from konver_sat where  kode_sat like '%"+TCari.getText().trim()+"%' or "+
                 " sat_konversi like '%"+TCari.getText().trim()+"%' order by kode_sat",param);
         }

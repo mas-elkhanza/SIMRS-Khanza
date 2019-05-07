@@ -594,7 +594,7 @@ public class DlgClosingKasir extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptJamKasir.jasper","report","::[ Jam Closing Shift ]::",
+                Valid.MyReportqry("rptJamKasir.jasper","report","::[ Jam Closing Shift ]::",
                         "select * from closing_kasir where shift like '%"+TCari.getText().trim()+"%'  order by shift",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());

@@ -594,8 +594,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptJMRanapDokter.jasper","report","[ Detail J.M. Dokter  ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptJMRanapDokter.jasper","report","[ Detail J.M. Dokter  ]",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -787,8 +786,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     param.put("dokter",nmdokter.getText());   
                     param.put("bulan",Tgl1.getSelectedItem().toString().substring(3,10));   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+                Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
             }
             this.setCursor(Cursor.getDefaultCursor());            
         }
@@ -871,8 +869,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     param.put("dokter",nmdokter.getText());   
                     param.put("bulan",Tgl1.getSelectedItem().toString().substring(3,10));   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+                Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
             }
             this.setCursor(Cursor.getDefaultCursor());            
         }

@@ -16,7 +16,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.DlgBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -62,7 +61,7 @@ public final class PCareMapingPoli extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Kode Poli RS","Nama Poli RS","Kode Poli PCare","Nama Poli PCare"}){
+            "Kode Poli","Nama Poli","Kode Poli PCare","Nama Poli PCare"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbJnsPerawatan.setModel(tabMode);
@@ -267,6 +266,7 @@ public final class PCareMapingPoli extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -443,22 +443,22 @@ public final class PCareMapingPoli extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 44));
         FormInput.setLayout(null);
 
-        jLabel4.setText("Poli RS :");
+        jLabel4.setText("Poli :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 56, 23);
+        jLabel4.setBounds(0, 10, 46, 23);
 
         kdpoli.setEditable(false);
         kdpoli.setHighlighter(null);
         kdpoli.setName("kdpoli"); // NOI18N
         FormInput.add(kdpoli);
-        kdpoli.setBounds(59, 10, 70, 23);
+        kdpoli.setBounds(49, 10, 70, 23);
 
         TPoli.setEditable(false);
         TPoli.setHighlighter(null);
         TPoli.setName("TPoli"); // NOI18N
         FormInput.add(TPoli);
-        TPoli.setBounds(131, 10, 190, 23);
+        TPoli.setBounds(121, 10, 190, 23);
 
         btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliRS.setMnemonic('1');
@@ -475,7 +475,7 @@ public final class PCareMapingPoli extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPoliRS);
-        btnPoliRS.setBounds(323, 10, 28, 23);
+        btnPoliRS.setBounds(313, 10, 28, 23);
 
         jLabel19.setText("Poli PCare :");
         jLabel19.setName("jLabel19"); // NOI18N
@@ -617,10 +617,8 @@ public final class PCareMapingPoli extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptMapingPoliPCare.jasper","report","::[ Mapping Poli RS & PCare ]::",
-                   "select maping_poliklinik_pcare.kd_poli_rs,poliklinik.nm_poli,maping_poliklinik_pcare.kd_poli_pcare,maping_poliklinik_pcare.nm_poli_pcare "+
-                   "from maping_poliklinik_pcare inner join poliklinik on maping_poliklinik_pcare.kd_poli_rs=poliklinik.kd_poli where "+
-                   "maping_poliklinik_pcare.kd_poli_rs like '%"+TCari.getText().trim()+"%' or poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' or maping_poliklinik_pcare.kd_poli_pcare like '%"+TCari.getText().trim()+"%' or maping_poliklinik_pcare.nm_poli_pcare like '%"+TCari.getText().trim()+"%' order by poliklinik.nm_poli",param);            
+                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                Valid.MyReport("rptMapingPoliPCare.jasper","report","::[ Mapping Poli RS & PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

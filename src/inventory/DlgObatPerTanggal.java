@@ -690,10 +690,10 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
                 if(lokasi.equals("")){
-                    Valid.MyReport("rptObatPerTanggal.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary",param);            
+                    Valid.MyReport("rptObatPerTanggal.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::",param);            
                 }else if(!lokasi.equals("")){
                     param.put("bangsal",lokasi);  
-                    Valid.MyReport("rptObatPerTanggal2.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary",param);            
+                    Valid.MyReport("rptObatPerTanggal2.jasper","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::",param);            
                 }                                 
         }
         this.setCursor(Cursor.getDefaultCursor());

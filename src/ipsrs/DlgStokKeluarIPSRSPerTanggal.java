@@ -410,7 +410,7 @@ public class DlgStokKeluarIPSRSPerTanggal extends javax.swing.JDialog {
                 param.put("jd29","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")");
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
-                Valid.MyReport("rptStokKeluarIPSRSPerTanggal.jasper","report","::[ Pengadaan Barang Non Medis Per Tanggal ]::","select * from temporary",param);            
+                Valid.MyReport("rptStokKeluarIPSRSPerTanggal.jasper","report","::[ Pengadaan Barang Non Medis Per Tanggal ]::",param);            
                                  
         }
         this.setCursor(Cursor.getDefaultCursor());

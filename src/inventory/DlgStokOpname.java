@@ -642,7 +642,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptOpname.jasper","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
+            Valid.MyReportqry("rptOpname.jasper","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
                   "opname.real, opname.selisih, opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, (opname.real*opname.h_beli) as totalreal "+
                   "from opname inner join databarang inner join bangsal "+
                   "on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal "+

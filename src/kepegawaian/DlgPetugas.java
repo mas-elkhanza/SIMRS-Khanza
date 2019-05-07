@@ -943,7 +943,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPetugas.jasper","report","::[ Data Petugas ]::","select petugas.nip,petugas.nama,petugas.jk,petugas.tmp_lahir,petugas.tgl_lahir, "+
+                Valid.MyReportqry("rptPetugas.jasper","report","::[ Data Petugas ]::","select petugas.nip,petugas.nama,petugas.jk,petugas.tmp_lahir,petugas.tgl_lahir, "+
                     "petugas.gol_darah,petugas.agama,petugas.stts_nikah,petugas.alamat,jabatan.nm_jbtn,petugas.no_telp "+
                     "from petugas inner join jabatan on jabatan.kd_jbtn=petugas.kd_jbtn "+
                     "where petugas.status='1' and petugas.jk like '%"+cmbCrJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"%' and petugas.gol_darah like '%"+CmbCrGd.getSelectedItem().toString().trim()+"%' and petugas.stts_nikah like '%"+CmbCrStts.getSelectedItem().toString().trim()+"%' and petugas.nip like '%"+TCari.getText().trim()+"%' or "+

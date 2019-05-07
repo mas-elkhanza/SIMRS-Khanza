@@ -791,7 +791,7 @@ public class DlgJadwal extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptJadwal.jasper","report","::[ Jadwal Praktek Dokter ]::",
+                Valid.MyReportqry("rptJadwal.jasper","report","::[ Jadwal Praktek Dokter ]::",
                         "select jadwal.kd_dokter,dokter.nm_dokter,jadwal.hari_kerja, "+
                         "jadwal.jam_mulai,jadwal.jam_selesai,poliklinik.nm_poli,jadwal.kuota "+
                         "from jadwal inner join poliklinik inner join dokter "+

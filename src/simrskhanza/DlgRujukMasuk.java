@@ -1115,7 +1115,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRujukMasuk.jasper","report","::[ Data Rujukan Yang Masuk ]::",
+            Valid.MyReportqry("rptRujukMasuk.jasper","report","::[ Data Rujukan Yang Masuk ]::",
                 "select * from temporary order by no asc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1380,7 +1380,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs()); 
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBalasanRujukan.jasper","report","::[ Surat Balasan ]::",
+            Valid.MyReportqry("rptBalasanRujukan.jasper","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,pasien.alamat,dokter.nm_dokter, "+
                     "reg_periksa.no_rkm_medis,pasien.jk,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.nm_pasien,"+
                     "reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
@@ -1475,7 +1475,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs()); 
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBalasanRujukan2.jasper","report","::[ Surat Balasan ]::",
+            Valid.MyReportqry("rptBalasanRujukan2.jasper","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,pasien.alamat,dokter.nm_dokter, "+
                     "reg_periksa.no_rkm_medis,pasien.jk,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.nm_pasien,"+
                     "reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
@@ -1642,7 +1642,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs()); 
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBalasanRujukan3.jasper","report","::[ Surat Balasan ]::",
+            Valid.MyReportqry("rptBalasanRujukan3.jasper","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.alamat,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
                     "pasien.nm_pasien,reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,"+
                     "rujuk_masuk.jm_perujuk,rujuk_masuk.dokter_perujuk,rujuk_masuk.kd_penyakit,penyakit.nm_penyakit,rujuk_masuk.kategori_rujuk,"+

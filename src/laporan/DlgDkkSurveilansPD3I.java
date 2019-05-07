@@ -273,8 +273,7 @@ public final class DlgDkkSurveilansPD3I extends javax.swing.JDialog {
             Map<String, Object> param = new HashMap<>(); 
                 param.put("namars",akses.getnamars());
                 param.put("kotars",akses.getkabupatenrs());
-            Valid.MyReport("rptSurveilansPD3I.jasper","report","::[ Surveilans PD3I ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptSurveilansPD3I.jasper","report","::[ Surveilans PD3I ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

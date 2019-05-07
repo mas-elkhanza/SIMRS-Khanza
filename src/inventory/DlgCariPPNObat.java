@@ -469,7 +469,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Valid.MyReport("rptPPNPembelian.jasper","report","::[ PPN Pengadaan Barang ]::",
+                Valid.MyReportqry("rptPPNPembelian.jasper","report","::[ PPN Pengadaan Barang ]::",
                     "select pembelian.tgl_beli,pembelian.no_faktur, "+
                     " pembelian.kode_suplier,datasuplier.nama_suplier, "+
                     " pembelian.nip,petugas.nama,pembelian.total1,"+
@@ -488,7 +488,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Valid.MyReport("rptPPNPemesanan.jasper","report","::[ PPN Penerimaan Barang ]::",
+                Valid.MyReportqry("rptPPNPemesanan.jasper","report","::[ PPN Penerimaan Barang ]::",
                     "select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
                     " pemesanan.kode_suplier,datasuplier.nama_suplier, "+
                     " pemesanan.nip,petugas.nama,pemesanan.total1,"+
@@ -518,8 +518,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                                     Valid.SetAngka(Double.parseDouble(tabMode3.getValueAt(r,5).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
                 
-                Valid.MyReport("rptPPNRalan.jasper","report","::[ Laporan PPN Obat Ralan ]::",
-                    "select * from temporary order by no asc",param);
+                Valid.MyReport("rptPPNRalan.jasper","report","::[ Laporan PPN Obat Ralan ]::",param);
             }                
         }
         

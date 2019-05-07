@@ -1437,7 +1437,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPaketOperasi.jasper","report","::[ Data Paket Operasi ]::",
+            Valid.MyReportqry("rptPaketOperasi.jasper","report","::[ Data Paket Operasi ]::",
                    "select paket_operasi.kode_paket, paket_operasi.nm_perawatan,(paket_operasi.operator1+paket_operasi.operator2+paket_operasi.operator3+"+
                        "paket_operasi.asisten_operator1+paket_operasi.asisten_operator2+paket_operasi.asisten_operator3+paket_operasi.instrumen+"+
                        "paket_operasi.dokter_anak+paket_operasi.perawaat_resusitas+"+

@@ -648,7 +648,7 @@ public class DlgSuplier extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuplier.jasper","report","::[ Data Suplier ]::",
+            Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::",
                     " select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
                     " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
                     " datasuplier.nama_bank,datasuplier.rekening from datasuplier "+

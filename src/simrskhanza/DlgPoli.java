@@ -659,7 +659,7 @@ public final class DlgPoli extends javax.swing.JDialog {
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting"));        
-            Valid.MyReport("rptPoli.jasper","report","::[ Data Unit ]::","select kd_poli, nm_poli, registrasi, registrasilama "+
+            Valid.MyReportqry("rptPoli.jasper","report","::[ Data Unit ]::","select kd_poli, nm_poli, registrasi, registrasilama "+
                 " from poliklinik where status='1' and kd_poli like '%"+TCari.getText().trim()+"%' or "+
                 " status='1' and nm_poli like '%"+TCari.getText().trim()+"%' order by kd_poli",param);
         }

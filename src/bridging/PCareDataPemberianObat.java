@@ -494,25 +494,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPCarePemberianObat.jasper","report","::[ Data Pemberian Obat PCare ]::",
-                   "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,pcare_obat_diberikan.noKunjungan,"+
-                   "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pcare_obat_diberikan.kdObatSK,"+
-                   "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
-                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,"+
-                   "detail_pemberian_obat.kd_bangsal,detail_pemberian_obat.no_batch,detail_pemberian_obat.status "+
-                   "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang "+
-                   "inner join pcare_obat_diberikan on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and detail_pemberian_obat.kode_brng=databarang.kode_brng "+
-                   "and pcare_obat_diberikan.no_rawat=detail_pemberian_obat.no_rawat "+
-                   "and pcare_obat_diberikan.tgl_perawatan=detail_pemberian_obat.tgl_perawatan "+
-                   "and pcare_obat_diberikan.jam=detail_pemberian_obat.jam "+
-                   "and pcare_obat_diberikan.kode_brng=detail_pemberian_obat.kode_brng "+
-                   "and pcare_obat_diberikan.no_batch=detail_pemberian_obat.no_batch where "+
-                   "detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_pemberian_obat.no_rawat like '%"+TCari.getText()+"%' or "+
-                   "detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and reg_periksa.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                   "detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
-                   "detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_pemberian_obat.kode_brng like '%"+TCari.getText()+"%' or "+
-                   "detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and databarang.nama_brng like '%"+TCari.getText()+"%' order by detail_pemberian_obat.tgl_perawatan",param);            
+                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                param.put("parameter","%"+TCari.getText()+"%"); 
+                Valid.MyReport("rptPCarePemberianObat.jasper","report","::[ Data Pemberian Obat PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
