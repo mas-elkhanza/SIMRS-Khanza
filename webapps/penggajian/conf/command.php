@@ -190,8 +190,8 @@
 			case 'InputDataAdmin'		: include_once('pages/aturadmin.php'); break;			
 			case 'InputTahun'		: include_once('pages/aturtahun.php'); break;
 
-                        case 'ListPresensi'             : include_once('pages/presensi/listpresensi.php'); break;
-			case 'DetailPresensi'           : include_once('pages/presensi/detailpresensi.php'); break;
+                        case 'ListPresensi'              : include_once('pages/presensi/listpresensi.php'); break;
+                        case 'DetailPresensi'            : include_once('pages/presensi/detailpresensi.php'); break;
                         case 'ListKS'		        : include_once('pages/ks/detailks.php'); break;
                         
                         case 'InputRiwayatPangkat'      : include_once('pages/riwayatpangkat/detail.php'); break;
@@ -211,10 +211,11 @@
                         
                         case 'InputRiwayatPenelitian'   : include_once('pages/riwayatpenelitian/detail.php'); break;
                         case 'ListRiwayatPenelitian'    : include_once('pages/riwayatpenelitian/list.php'); break;
+                        case 'ListPerpustakaanPenelitian'   : include_once('pages/riwayatpenelitian/perpustakaanpenelitian.php'); break;
                         
                         case 'DetailBerkasPegawai'      : include_once('pages/berkaspegawai/detail.php'); break;
                         
-                    default			        : include_once('pages/kontak.php');
+                    default			       : include_once('pages/kontak.php');
 			
 		}
 	}
