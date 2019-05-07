@@ -10,7 +10,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -503,7 +503,7 @@ public class frmPengaduan extends javax.swing.JFrame {
             Valid.textKosong(Pesan,"Pesan");
         }else{
             Sequel.menyimpan("pengaduan","?,?,?,?",4,new String[]{
-                "0",Sequel.cariIsi("select now()"),var.getkode(),Pesan.getText()
+                "0",Sequel.cariIsi("select now()"),akses.getkode(),Pesan.getText()
             });
             Pesan.setText("");
             tampil2();
@@ -524,14 +524,14 @@ public class frmPengaduan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPengaduan.jrxml","report","::[ Data Pengaduan ]::",
+                Valid.MyReportqry("rptPengaduan.jasper","report","::[ Data Pengaduan ]::",
                         "select id, date_time, username, message from pengaduan where "+
                         "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and id like '%"+TCari.getText().trim()+"%' or "+
                         "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and username like '%"+TCari.getText().trim()+"%' or "+
@@ -663,7 +663,7 @@ public class frmPengaduan extends javax.swing.JFrame {
                 i=1;
                 while(rs.next()){
                     if(i%2==0){
-                        if(rs.getString("username").equals(var.getkode())){
+                        if(rs.getString("username").equals(akses.getkode())){
                             htmlContent.append(
                                 "<tr class='isi'>"+
                                     "<td align='right' valign='top' bgcolor='#ffffff'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
@@ -675,7 +675,7 @@ public class frmPengaduan extends javax.swing.JFrame {
                                 "</tr>");
                         }                            
                     }else if(i%2==1){
-                        if(rs.getString("username").equals(var.getkode())){
+                        if(rs.getString("username").equals(akses.getkode())){
                             htmlContent.append(
                                 "<tr class='isi'>"+
                                     "<td align='right' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
@@ -712,7 +712,7 @@ public class frmPengaduan extends javax.swing.JFrame {
     }
     
     public void isCek(){
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             BtnHapusTotal.setEnabled(true);
         }else{
             BtnHapusTotal.setEnabled(false);

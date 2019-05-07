@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.DlgCariSatuan;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -140,7 +140,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgBarangIPSRS")){
+                if(akses.getform().equals("DlgBarangIPSRS")){
                     if(satuan.getTable().getSelectedRow()!= -1){                   
                         kode_sat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(),0).toString());                    
                         nama_sat.setText(satuan.getTable().getValueAt(satuan.getTable().getSelectedRow(),1).toString());
@@ -166,7 +166,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgBarangIPSRS")){
+                if(akses.getform().equals("DlgBarangIPSRS")){
                     if(jenis.getTable().getSelectedRow()!= -1){                   
                         kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(),0).toString());                    
                         nmjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(),1).toString());
@@ -752,14 +752,14 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();                
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptBarangIpsrs.jrxml","report","::[ Data Barang Non Medis, Radiologi, Loundry, ATK, Dapur, IPSRS ]::",
+                Valid.MyReportqry("rptBarangIpsrs.jasper","report","::[ Data Barang Non Medis, Radiologi, Loundry, ATK, Dapur, IPSRS ]::",
                    "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsjenisbarang.nm_jenis as jenis, "+
                     "ipsrsbarang.stok,ipsrsbarang.harga from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
                     "on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
@@ -865,7 +865,7 @@ private void kode_satKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_kode_satKeyPressed
 
 private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
-    var.setform("DlgBarangIPSRS");
+    akses.setform("DlgBarangIPSRS");
     satuan.isCek();
     satuan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     satuan.setLocationRelativeTo(internalFrame1);
@@ -897,7 +897,7 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_kdjenisKeyPressed
 
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
-        var.setform("DlgBarangIPSRS");
+        akses.setform("DlgBarangIPSRS");
         jenis.isCek();
         jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jenis.setLocationRelativeTo(internalFrame1);
@@ -1059,11 +1059,11 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getipsrs_barang());
-        BtnHapus.setEnabled(var.getipsrs_barang());
-        BtnEdit.setEnabled(var.getipsrs_barang());
-        BtnPrint.setEnabled(var.getipsrs_barang());
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.getipsrs_barang());
+        BtnHapus.setEnabled(akses.getipsrs_barang());
+        BtnEdit.setEnabled(akses.getipsrs_barang());
+        BtnPrint.setEnabled(akses.getipsrs_barang());
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

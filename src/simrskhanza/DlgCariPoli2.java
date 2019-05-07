@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -428,7 +428,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(var.getregistrasi());
+        BtnTambah.setEnabled(akses.getregistrasi());
     }
     
     public void SetHari(Date tanggal){

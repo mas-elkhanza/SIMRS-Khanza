@@ -17,7 +17,7 @@ import kepegawaian.DlgCariDokter2;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -403,7 +403,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         if(aktifjadwal.equals("aktif")){
-            if(var.getkode().equals("Admin Utama")){
+            if(akses.getkode().equals("Admin Utama")){
                 dokter.isCek();
                 dokter.TCari.requestFocus();
                 dokter.setSize(lebar-40,tinggi-40);
@@ -429,7 +429,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
 
     private void BtnUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUnitActionPerformed
         if(aktifjadwal.equals("aktif")){
-            if(var.getkode().equals("Admin Utama")){
+            if(akses.getkode().equals("Admin Utama")){
                 poli.isCek();
                 poli.setSize(lebar-40,tinggi-40);
                 poli.setLocationRelativeTo(internalFrame1);

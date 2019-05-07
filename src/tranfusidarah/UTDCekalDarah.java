@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -732,14 +732,14 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCekalDonor.jrxml","report","::[ Data Pencekalan Darah Donor ]::",
+            Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
                     "select utd_cekal_darah.no_donor,utd_donor.nama,utd_donor.alamat,utd_donor.no_telp,"+
                     "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
                     "petugas.nama as petugas,utd_cekal_darah.keterangan from utd_cekal_darah inner join utd_donor inner join petugas "+
@@ -1025,12 +1025,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getutd_cekal_darah());
-        BtnHapus.setEnabled(var.getutd_cekal_darah());
-        BtnEdit.setEnabled(var.getutd_cekal_darah());
-        BtnPrint.setEnabled(var.getutd_cekal_darah());
-        if(var.getjml2()>=1){
-            KodePetugas.setText(var.getkode());
+        BtnSimpan.setEnabled(akses.getutd_cekal_darah());
+        BtnHapus.setEnabled(akses.getutd_cekal_darah());
+        BtnEdit.setEnabled(akses.getutd_cekal_darah());
+        BtnPrint.setEnabled(akses.getutd_cekal_darah());
+        if(akses.getjml2()>=1){
+            KodePetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NamaPetugas,KodePetugas.getText());
         }    
     }

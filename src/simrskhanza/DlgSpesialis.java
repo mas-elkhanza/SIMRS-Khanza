@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -611,8 +611,8 @@ public class DlgSpesialis extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getdokter());
-        BtnHapus.setEnabled(var.getdokter());
-        BtnEdit.setEnabled(var.getdokter());
+        BtnSimpan.setEnabled(akses.getdokter());
+        BtnHapus.setEnabled(akses.getdokter());
+        BtnEdit.setEnabled(akses.getdokter());
     }
 }

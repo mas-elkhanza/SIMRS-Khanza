@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -718,7 +718,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptKamarInap.jrxml","report","::[ Data Kamar Inap Pasien ]::",sql,param);*/
+                Valid.MyReport("rptKamarInap.jasper","report","::[ Data Kamar Inap Pasien ]::",sql,param);*/
 
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -774,7 +774,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
 
     private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
 //        TOut.setText("");
-        var.setstatus(false);
+        akses.setstatus(false);
         WindowInputParkir.dispose();
     }//GEN-LAST:event_BtnCloseInActionPerformed
 
@@ -846,7 +846,7 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_formWindowOpened
 
     private void WindowInputParkirWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_WindowInputParkirWindowActivated
-         var.setstatus(false);
+         akses.setstatus(false);
     }//GEN-LAST:event_WindowInputParkirWindowActivated
 
     private void BarcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BarcodeKeyPressed
@@ -1065,13 +1065,13 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     
     
     public void isCek(){
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             NmPetugas.setEnabled(false);
             btnPetugas.setEnabled(false);
-            BtnHapus.setEnabled(var.getparkir_in());
-            BtnPrint.setEnabled(var.getparkir_in());
-            KdPetugas.setText(var.getkode());
+            BtnHapus.setEnabled(akses.getparkir_in());
+            BtnPrint.setEnabled(akses.getparkir_in());
+            KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?",NmPetugas,KdPetugas.getText());
         }else{
             KdPetugas.setEditable(true);

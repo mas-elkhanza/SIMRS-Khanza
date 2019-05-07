@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -672,14 +672,14 @@ public class DlgIndustriFarmasi extends javax.swing.JDialog {
                     " industrifarmasi.no_telp like '%"+TCari.getText().trim()+"%' order by industrifarmasi.kode_industri";
             } 
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptIndustriFarmasi.jrxml","report","::[ Data Industri Farmasi ]::",sql,param);            
+            Valid.MyReportqry("rptIndustriFarmasi.jasper","report","::[ Data Industri Farmasi ]::",sql,param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -927,14 +927,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getindustrifarmasi());
-        BtnHapus.setEnabled(var.getindustrifarmasi());
-        BtnEdit.setEnabled(var.getindustrifarmasi());
-        BtnPrint.setEnabled(var.getindustrifarmasi());
+        BtnSimpan.setEnabled(akses.getindustrifarmasi());
+        BtnHapus.setEnabled(akses.getindustrifarmasi());
+        BtnEdit.setEnabled(akses.getindustrifarmasi());
+        BtnPrint.setEnabled(akses.getindustrifarmasi());
         
-        ppGanti.setEnabled(var.getindustrifarmasi());        
-        ppHapus.setEnabled(var.getindustrifarmasi());
-        ppCetak.setEnabled(var.getindustrifarmasi());
+        ppGanti.setEnabled(akses.getindustrifarmasi());        
+        ppHapus.setEnabled(akses.getindustrifarmasi());
+        ppCetak.setEnabled(akses.getindustrifarmasi());
     }
     
     private void isForm(){

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -652,14 +652,14 @@ public final class DlgPoli extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){     
                     Map<String, Object> param = new HashMap<>();  
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting"));        
-            Valid.MyReport("rptPoli.jrxml","report","::[ Data Unit ]::","select kd_poli, nm_poli, registrasi, registrasilama "+
+            Valid.MyReportqry("rptPoli.jasper","report","::[ Data Unit ]::","select kd_poli, nm_poli, registrasi, registrasilama "+
                 " from poliklinik where status='1' and kd_poli like '%"+TCari.getText().trim()+"%' or "+
                 " status='1' and nm_poli like '%"+TCari.getText().trim()+"%' order by kd_poli",param);
         }
@@ -889,11 +889,11 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getregistrasi());
-        BtnHapus.setEnabled(var.getregistrasi());
-        BtnEdit.setEnabled(var.getregistrasi());
-        BtnPrint.setEnabled(var.getregistrasi());
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.getregistrasi());
+        BtnHapus.setEnabled(akses.getregistrasi());
+        BtnEdit.setEnabled(akses.getregistrasi());
+        BtnPrint.setEnabled(akses.getregistrasi());
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

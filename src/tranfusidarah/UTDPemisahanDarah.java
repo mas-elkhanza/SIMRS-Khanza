@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1177,15 +1177,14 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }           
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptUTDPemisahanKomponen.jrxml","report","::[ Data Pemisahan Komponen Darah ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptUTDPemisahanKomponen.jasper","report","::[ Data Pemisahan Komponen Darah ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2061,11 +2060,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.getutd_pemisahan_darah());
-        BtnPrint.setEnabled(var.getutd_pemisahan_darah());
-        btnTambahKomponen.setEnabled(var.getutd_komponen_darah());
-        if(var.getjml2()>=1){
-            KodePetugas.setText(var.getkode());
+        BtnTambah.setEnabled(akses.getutd_pemisahan_darah());
+        BtnPrint.setEnabled(akses.getutd_pemisahan_darah());
+        btnTambahKomponen.setEnabled(akses.getutd_komponen_darah());
+        if(akses.getjml2()>=1){
+            KodePetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NamaPetugas,KodePetugas.getText());
         } 
     }

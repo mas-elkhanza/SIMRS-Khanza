@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -851,15 +851,15 @@ public class UTDStokDarah extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));                 
             if(panelCari.isVisible()==false){
-                Valid.MyReport("rptUTDStokDarah.jrxml","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
@@ -876,7 +876,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                     "utd_stok_darah.status='Ada' and utd_stok_darah.status like '%"+TCari.getText().trim()+"%' "+
                     "order by utd_stok_darah.tanggal_kadaluarsa",param);            
             }else{
-                Valid.MyReport("rptUTDStokDarah.jrxml","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
@@ -1244,10 +1244,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getutd_stok_darah());
-        BtnHapus.setEnabled(var.getutd_stok_darah());
-        BtnEdit.setEnabled(var.getutd_stok_darah());
-        BtnPrint.setEnabled(var.getutd_stok_darah());
+        BtnSimpan.setEnabled(akses.getutd_stok_darah());
+        BtnHapus.setEnabled(akses.getutd_stok_darah());
+        BtnEdit.setEnabled(akses.getutd_stok_darah());
+        BtnPrint.setEnabled(akses.getutd_stok_darah());
     }
     
     private void isForm(){

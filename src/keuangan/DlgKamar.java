@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -140,7 +140,7 @@ public final class DlgKamar extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgKamar")){
+                if(akses.getform().equals("DlgKamar")){
                     load();
                     if(bangsal.getTable().getSelectedRow()!= -1){                   
                         if(pilihan==1){
@@ -791,15 +791,15 @@ public final class DlgKamar extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if((TCari.getText().trim().equals(""))&&(panelCari.isVisible()==false)){
-                Valid.MyReport("rptKamar.jrxml","report","::[ Data Nomor Kamar ]::",
+                Valid.MyReportqry("rptKamar.jasper","report","::[ Data Nomor Kamar ]::",
                         "select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
                                "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar "+
@@ -807,7 +807,7 @@ public final class DlgKamar extends javax.swing.JDialog {
                                "order by kd_kamar",param);
             }else if((! TCari.getText().trim().equals(""))&&(panelCari.isVisible()==false)){
                 String sql="kamar.statusdata='1' and kamar.kd_bangsal=bangsal.kd_bangsal ";
-                Valid.MyReport("rptKamar.jrxml","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
+                Valid.MyReportqry("rptKamar.jasper","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
                                "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar where  "+
                                sql+"and kd_kamar like '%"+TCari.getText().trim()+"%' or "+
@@ -829,7 +829,7 @@ public final class DlgKamar extends javax.swing.JDialog {
                 }else if((BangsalCari.getText().equals(""))&&(! CmbCrIsi.getSelectedItem().toString().equals(" "))){
                      key="and kamar.statusdata='1' and kamar.status like '%"+CmbCrIsi.getSelectedItem().toString().trim()+"%' ";
                 }     
-                Valid.MyReport("rptKamar.jrxml","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
+                Valid.MyReportqry("rptKamar.jasper","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
                                "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar "+
                                "where kamar.kd_bangsal=bangsal.kd_bangsal "+key+
@@ -914,7 +914,7 @@ public final class DlgKamar extends javax.swing.JDialog {
     }//GEN-LAST:event_TCariKeyTyped
 
     private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarActionPerformed
-        var.setform("DlgKamar");
+        akses.setform("DlgKamar");
         pilihan=1;
         bangsal.isCek();
         bangsal.emptTeks();        
@@ -943,7 +943,7 @@ public final class DlgKamar extends javax.swing.JDialog {
                 TCari.setText("");
                 TCari.requestFocus();
             }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                var.setform(asalform);
+                akses.setform(asalform);
             }
         }
 }//GEN-LAST:event_tbKamarKeyPressed
@@ -970,7 +970,7 @@ private void kdbangsalcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 }//GEN-LAST:event_kdbangsalcariKeyPressed
 
 private void btnKamarCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarCariActionPerformed
-        var.setform("DlgKamar");
+        akses.setform("DlgKamar");
         pilihan=2;        
         bangsal.isCek();
         bangsal.emptTeks();        
@@ -1175,15 +1175,15 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
     }
        
      public void isCek(){
-        BtnSimpan.setEnabled(var.getkamar());
-        BtnHapus.setEnabled(var.getkamar());
-        BtnPrint.setEnabled(var.getkamar());
-        TKd.setEditable(var.getkamar());
-        TTarif.setEditable(var.getkamar());
-        kd_bangsal.setEditable(var.getkamar());
-        Kelas.setEnabled(var.getkamar());        
-        asalform=var.getform();
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.getkamar());
+        BtnHapus.setEnabled(akses.getkamar());
+        BtnPrint.setEnabled(akses.getkamar());
+        TKd.setEditable(akses.getkamar());
+        TTarif.setEditable(akses.getkamar());
+        kd_bangsal.setEditable(akses.getkamar());
+        Kelas.setEnabled(akses.getkamar());        
+        asalform=akses.getform();
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
             BtnEdit.setEnabled(true);
         }else{

@@ -268,7 +268,7 @@ public class DlgCetak extends javax.swing.JDialog {
             param.put("kontakrs",kontak);
             param.put("emailrs",email);
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBuktiRegister2.jrxml","report","::[ Bukti Register ]::",
+            Valid.MyReport("rptBuktiRegister2.jasper","report","::[ Bukti Register ]::",
                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                    "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"+
                    "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "+
@@ -310,7 +310,7 @@ public class DlgCetak extends javax.swing.JDialog {
                 param.put("kontakrs",kontak);
                 param.put("emailrs",email);
                 param.put("logo",Sequel.cariGambar("select logo from setting"));
-                Valid.MyReport("rptLembarPeriksa.jrxml","report","::[ Lembar Periksa ]::",
+                Valid.MyReport("rptLembarPeriksa.jasper","report","::[ Lembar Periksa ]::",
                         "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
             }
         this.setCursor(Cursor.getDefaultCursor());
@@ -329,7 +329,7 @@ public class DlgCetak extends javax.swing.JDialog {
                 param.put("propinsirs",propinsi);
                 param.put("kontakrs",kontak);
                 param.put("emailrs",email);   
-                Valid.MyReport("rptBarcodeRawat.jrxml","report","::[ Barcode No.Rawat ]::",
+                Valid.MyReport("rptBarcodeRawat.jasper","report","::[ Barcode No.Rawat ]::",
                         "select reg_periksa.no_rawat from reg_periksa where no_rawat='"+LblNoRw.getText()+"'",param); 
                 this.setCursor(Cursor.getDefaultCursor());
             }  
@@ -354,7 +354,7 @@ public class DlgCetak extends javax.swing.JDialog {
                 param.put("kontakrs",kontak);
                 param.put("emailrs",email);
                 param.put("logo",Sequel.cariGambar("select logo from setting"));
-                Valid.MyReport("rptLembarPeriksa2.jrxml","report","::[ Lembar Periksa ]::",
+                Valid.MyReport("rptLembarPeriksa2.jasper","report","::[ Lembar Periksa ]::",
                         "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
             }
         this.setCursor(Cursor.getDefaultCursor());
@@ -378,7 +378,7 @@ public class DlgCetak extends javax.swing.JDialog {
             param.put("emailrs",email);
             param.put("norawat",LblNoRw.getText());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBuktiRegister3.jrxml",param,"::[ Bukti Register ]::");
+            Valid.MyReport("rptBuktiRegister3.jasper",param,"::[ Bukti Register ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnAbout4ActionPerformed
@@ -396,7 +396,7 @@ public class DlgCetak extends javax.swing.JDialog {
             param.put("kontakrs",kontak);
             param.put("emailrs",email);
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBuktiRegister8.jrxml","report","::[ Bukti Register ]::",
+            Valid.MyReport("rptBuktiRegister8.jasper","report","::[ Bukti Register ]::",
                 "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                 "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"+
                 "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_peserta,pasien.no_ktp,pasien.tgl_lahir "+

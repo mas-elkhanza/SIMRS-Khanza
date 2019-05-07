@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -535,12 +535,12 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
             }
             
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("departemen",Departemen.getSelectedItem().toString().replaceAll("Semua",""));
                 param.put("periode","01 - 31 BULAN "+BlnCari.getSelectedItem()+" TAHUN "+ThnCari.getSelectedItem());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
@@ -579,10 +579,10 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih model cetak..!","Jadwal",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tampilkan Semua", "Tanpa departemen & jabatan"},"Tampilkan Semua");
                     switch (pilihan) {
                         case "Tampilkan Semua":
-                            Valid.MyReport("rptJadwalPegawai.jrxml","report","::[ Jadwal Masuk Tambahan Pegawai ]::","select * from temporary",param);            
+                            Valid.MyReport("rptJadwalPegawai.jasper","report","::[ Jadwal Masuk Tambahan Pegawai ]::",param);            
                             break;
                         case "Tanpa departemen & jabatan":
-                            Valid.MyReport("rptJadwalPegawai2.jrxml","report","::[ Jadwal Masuk Tambahan Pegawai ]::","select * from temporary",param);            
+                            Valid.MyReport("rptJadwalPegawai2.jasper","report","::[ Jadwal Masuk Tambahan Pegawai ]::",param);            
                             break;
                     }
                 }catch(Exception e){
@@ -886,8 +886,8 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getjadwal_pegawai());
-        BtnHapus.setEnabled(var.getjadwal_pegawai());
+        BtnSimpan.setEnabled(akses.getjadwal_pegawai());
+        BtnHapus.setEnabled(akses.getjadwal_pegawai());
     }
     
     String konversi(int year, int month, int day){

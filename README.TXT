@@ -14,6 +14,6 @@
 
   Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki
   
-  Hasil build/Software jadi bisa di download di https://1drv.ms/u/s!Ar3q9Vv6-j5MbBp0W5-ks5Bd_ww?e=7i6e1F 
+  Hasil build/Software jadi bisa di download di https://drive.google.com/drive/folders/0ByL--Jg6bdF7RG1NSlVTT2ZPODg 
 
   Bagi yang ingin donasi untuk SIMRS Khanza bisa lewat BRI Syariah 1015369872 atas nama Windiarto

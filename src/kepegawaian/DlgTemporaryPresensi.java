@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -529,14 +529,14 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTemporaryPresensi.jrxml","report","::[ Temporary Presensi ]::",
+                Valid.MyReportqry("rptTemporaryPresensi.jasper","report","::[ Temporary Presensi ]::",
                     "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift, " +
                     "temporary_presensi.jam_datang, now() as jam_pulang, temporary_presensi.status,  " +
                     "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,temporary_presensi.photo  from pegawai  " +
@@ -745,11 +745,11 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnTambah.setEnabled(var.gettemporary_presensi());
-        BtnHapus.setEnabled(var.gettemporary_presensi());
-        BtnPrint.setEnabled(var.gettemporary_presensi());
+        BtnTambah.setEnabled(akses.gettemporary_presensi());
+        BtnHapus.setEnabled(akses.gettemporary_presensi());
+        BtnPrint.setEnabled(akses.gettemporary_presensi());
         
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             ppVerifyOtomatis.setEnabled(true);
         }else{
             ppVerifyOtomatis.setEnabled(false);

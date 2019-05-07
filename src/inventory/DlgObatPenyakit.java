@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -159,7 +159,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgObatPenyakit")){
+                if(akses.getform().equals("DlgObatPenyakit")){
                     if( penyakit.getTable().getSelectedRow()!= -1){                   
                         kdpenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
                         TPenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
@@ -186,7 +186,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgObatPenyakit")){
+                if(akses.getform().equals("DlgObatPenyakit")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdobat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
                         nmobat.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
@@ -209,7 +209,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgObatPenyakit")){
+                if(akses.getform().equals("DlgObatPenyakit")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                     }                
@@ -227,7 +227,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgObatPenyakit")){
+                if(akses.getform().equals("DlgObatPenyakit")){
                     if(ktg.getTable().getSelectedRow()!= -1){                                   
                         KtgCari.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),1).toString());
                     }   
@@ -249,7 +249,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgObatPenyakit")){
+                if(akses.getform().equals("DlgObatPenyakit")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         ktg.dispose();
                     }                
@@ -786,17 +786,17 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 sql=" nm_kategori like '%"+KtgCari.getText()+"%' "+
                 " and nm_penyakit like '%"+PenyakitCari.getText()+"%' ";
 
-                Valid.MyReport("rptObtPenyakit.jrxml","report","::[ Data Obat Penyakit ]::",
+                Valid.MyReportqry("rptObtPenyakit.jasper","report","::[ Data Obat Penyakit ]::",
                         "select obat_penyakit.kd_penyakit,nm_penyakit,ciri_ciri,penyakit.keterangan, "+
                         "nm_kategori,ciri_umum,obat_penyakit.kode_brng,nama_brng,jenis.nama,h_beli,referensi "+
                         "from obat_penyakit inner join penyakit inner join kategori_penyakit inner join databarang inner join jenis "+
@@ -884,7 +884,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
     }//GEN-LAST:event_TCariKeyTyped
 
     private void btnpenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpenyakitActionPerformed
-        var.setform("DlgObatPenyakit");
+        akses.setform("DlgObatPenyakit");
         penyakit.isCek();
         penyakit.emptTeks();
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -897,7 +897,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_btnpenyakitKeyPressed
 
     private void btnobatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnobatActionPerformed
-        var.setform("DlgObatPenyakit");
+        akses.setform("DlgObatPenyakit");
         barang.isCek();
         barang.emptTeks();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -958,7 +958,7 @@ private void KtgCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_K
 }//GEN-LAST:event_KtgCariKeyPressed
 
 private void btnKategoriCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriCariActionPerformed
-        var.setform("DlgObatPenyakit");
+        akses.setform("DlgObatPenyakit");
         ktg.emptTeks();        
         ktg.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ktg.setLocationRelativeTo(internalFrame1);
@@ -978,7 +978,7 @@ private void PenyakitCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 }//GEN-LAST:event_PenyakitCariKeyPressed
 
 private void btnPenyakitCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyakitCariActionPerformed
-        var.setform("DlgObatPenyakit");
+        akses.setform("DlgObatPenyakit");
         penyakit.emptTeks();
         penyakit.isCek();
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1120,8 +1120,8 @@ private void btnPenyakitCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST
     }  
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getobat_penyakit());
-        BtnHapus.setEnabled(var.getobat_penyakit());
-        BtnPrint.setEnabled(var.getobat_penyakit());
+        BtnSimpan.setEnabled(akses.getobat_penyakit());
+        BtnHapus.setEnabled(akses.getobat_penyakit());
+        BtnPrint.setEnabled(akses.getobat_penyakit());
     }
 }
