@@ -634,6 +634,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCari() {             
         try{   
+            Valid.tabelKosong(tabMode);
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,"+
                     " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter "+
