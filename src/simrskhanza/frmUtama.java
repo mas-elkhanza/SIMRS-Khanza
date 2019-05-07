@@ -446,6 +446,7 @@ import perpustakaan.PerpustakaanInventaris;
 import perpustakaan.PerpustakaanJenis;
 import perpustakaan.PerpustakaanKategori;
 import perpustakaan.PerpustakaanKoleksi;
+import perpustakaan.PerpustakaanPenelitian;
 import perpustakaan.PerpustakaanPenerbit;
 import perpustakaan.PerpustakaanPengarang;
 import perpustakaan.PerpustakaanPengaturanPeminjaman;
@@ -14342,6 +14343,23 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenelitianPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPenelitian form=new PerpustakaanPenelitian(this,false);
+        try {
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginperpustakaanpenelitian.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);        
+        form.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -14912,7 +14930,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
             btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
-            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan;
+            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17549,6 +17567,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnBayarDendaPerpustakaan);
                 jmlmenu++;
             }
+            
+            Panelmenu.add(btnPenelitianPerpustakaan);
+            jmlmenu++;
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(akses.getaplikasi()==true){
@@ -19922,6 +19943,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnBayarDendaPerpustakaan);
             jmlmenu++;
         }
+        
+        Panelmenu.add(btnPenelitianPerpustakaan);
+        jmlmenu++;
 
         if(akses.getaplikasi()==true){
             Panelmenu.add(btnSetupAplikasi);
@@ -23193,6 +23217,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(btnPenelitianPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+            Panelmenu.add(btnPenelitianPerpustakaan);
+            jmlmenu++;
+        } 
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23511,6 +23540,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBayarDendaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPenelitianPerpustakaan = new widget.ButtonBig();
+        btnPenelitianPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png")));
+        btnPenelitianPerpustakaan.setText("Koleksi Penelitian");
+        btnPenelitianPerpustakaan.setIconTextGap(0);
+        btnPenelitianPerpustakaan.setName("btnPenelitianPerpustakaan"); 
+        btnPenelitianPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenelitianPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenelitianPerpustakaanActionPerformed(evt);
             }
         });
     }
