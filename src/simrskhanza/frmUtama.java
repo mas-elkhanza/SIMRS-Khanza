@@ -446,6 +446,7 @@ import perpustakaan.PerpustakaanInventaris;
 import perpustakaan.PerpustakaanJenis;
 import perpustakaan.PerpustakaanKategori;
 import perpustakaan.PerpustakaanKoleksi;
+import perpustakaan.PerpustakaanPenelitian;
 import perpustakaan.PerpustakaanPenerbit;
 import perpustakaan.PerpustakaanPengarang;
 import perpustakaan.PerpustakaanPengaturanPeminjaman;
@@ -6868,7 +6869,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/05/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/05/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6939,7 +6940,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(null);
+        internalFrame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
@@ -7221,7 +7222,7 @@ public class frmUtama extends javax.swing.JFrame {
         getContentPane().add(internalFrame1, java.awt.BorderLayout.PAGE_START);
 
         internalFrame4.setBackground(new java.awt.Color(215, 235, 195));
-        internalFrame4.setBorder(null);
+        internalFrame4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
         internalFrame4.setWarnaAtas(new java.awt.Color(215, 235, 195));
@@ -7295,11 +7296,12 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame4, java.awt.BorderLayout.PAGE_END);
 
+        PanelUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         PanelUtama.setName("PanelUtama"); // NOI18N
         PanelUtama.setOpaque(false);
         PanelUtama.setLayout(new java.awt.BorderLayout());
 
-        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 245, 205)));
+        scrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         scrollPane1.setName("scrollPane1"); // NOI18N
 
         PanelWall.setBackground(new java.awt.Color(29, 29, 29));
@@ -7357,7 +7359,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
-        MenuBar.setBorder(null);
+        MenuBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         MenuBar.setForeground(new java.awt.Color(255, 204, 255));
         MenuBar.setName("MenuBar"); // NOI18N
         MenuBar.setPreferredSize(new java.awt.Dimension(227, 28));
@@ -14341,6 +14343,23 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenelitianPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanPenelitian form=new PerpustakaanPenelitian(this,false);
+        try {
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginperpustakaanpenelitian.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);        
+        form.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -14911,7 +14930,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
             btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
-            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan;
+            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17548,6 +17567,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnBayarDendaPerpustakaan);
                 jmlmenu++;
             }
+            
+            Panelmenu.add(btnPenelitianPerpustakaan);
+            jmlmenu++;
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
             if(akses.getaplikasi()==true){
@@ -19921,6 +19943,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnBayarDendaPerpustakaan);
             jmlmenu++;
         }
+        
+        Panelmenu.add(btnPenelitianPerpustakaan);
+        jmlmenu++;
 
         if(akses.getaplikasi()==true){
             Panelmenu.add(btnSetupAplikasi);
@@ -23192,6 +23217,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(btnPenelitianPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+            Panelmenu.add(btnPenelitianPerpustakaan);
+            jmlmenu++;
+        } 
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -23510,6 +23540,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBayarDendaPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnPenelitianPerpustakaan = new widget.ButtonBig();
+        btnPenelitianPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png")));
+        btnPenelitianPerpustakaan.setText("Koleksi Penelitian");
+        btnPenelitianPerpustakaan.setIconTextGap(0);
+        btnPenelitianPerpustakaan.setName("btnPenelitianPerpustakaan"); 
+        btnPenelitianPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenelitianPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenelitianPerpustakaanActionPerformed(evt);
             }
         });
     }
