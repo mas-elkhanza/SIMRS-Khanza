@@ -12,11 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/sekuel.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/perpustakaan/PerpustakaanPenelitian.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgResepObat.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/validasi.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/akses.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgObatPeresep.java</file>
         </group>
     </open-files>
 </project-private>
