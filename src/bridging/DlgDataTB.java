@@ -22,7 +22,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -2328,40 +2328,18 @@ public final class DlgDataTB extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>();    
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());  
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());  
             param.put("periode",DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDataTB.jrxml","report","::[ Data Pasien Teridentifikasi TB ]::",
-                "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,if(reg_periksa.sttsumur='Th',reg_periksa.umurdaftar,0) as umur,"+
-                "pasien.no_peserta,pasien.no_ktp,pasien.alamat,data_tb.id_kelurahan,kelurahan.nm_kel,data_tb.id_kecamatan,kecamatan.nm_kec,data_tb.kd_kabupaten,kabupaten.nm_kab,"+
-                "data_tb.id_propinsi,propinsi.nm_prop,data_tb.id_periode_laporan,data_tb.tanggal_buat_laporan,data_tb.nama_rujukan,data_tb.sebutkan1,data_tb.klasifikasi_riwayat_pengobatan,"+
-                "data_tb.klasifikasi_lokasi_anatomi,data_tb.tipe_diagnosis,data_tb.klasifikasi_status_hiv,data_tb.total_skoring_anak,data_tb.konfirmasiSkoring5,data_tb.konfirmasiSkoring6,"+
-                "data_tb.tanggal_mulai_pengobatan,data_tb.paduan_oat,data_tb.sumber_obat,data_tb.sebutkan,data_tb.sebelum_pengobatan_hasil_mikroskopis,data_tb.sebelum_pengobatan_hasil_tes_cepat,"+
-                "data_tb.sebelum_pengobatan_hasil_biakan,data_tb.hasil_mikroskopis_bulan_2,data_tb.noreglab_bulan_2,data_tb.hasil_mikroskopis_bulan_3,data_tb.noreglab_bulan_3,"+
-                "data_tb.hasil_mikroskopis_bulan_5,data_tb.noreglab_bulan_5,data_tb.akhir_pengobatan_hasil_mikroskopis,data_tb.akhir_pengobatan_noreglab,data_tb.tanggal_hasil_akhir_pengobatan,"+
-                "data_tb.hasil_akhir_pengobatan,data_tb.tanggal_dianjurkan_tes,data_tb.tanggal_tes_hiv,data_tb.hasil_tes_hiv,data_tb.ppk,data_tb.art,data_tb.tb_dm,data_tb.terapi_dm,"+
-                "data_tb.pindah_ro,data_tb.status_pengobatan,data_tb.foto_toraks,data_tb.toraks_tdk_dilakukan,data_tb.keterangan,data_tb.kode_icd_x,penyakit.nm_penyakit "+
-                "from reg_periksa inner join pasien inner join data_tb inner join kelurahan inner join kecamatan inner join kabupaten inner join penyakit "+
-                "inner join propinsi on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=data_tb.no_rawat and pasien.kd_kel=kelurahan.kd_kel and "+
-                "pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop and data_tb.kode_icd_x=penyakit.kd_penyakit where "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.alamat like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.no_ktp like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kelurahan.nm_kel like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kecamatan.nm_kec like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kabupaten.nm_kab like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and propinsi.nm_prop like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.nama_rujukan like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.klasifikasi_riwayat_pengobatan like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.klasifikasi_lokasi_anatomi like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.tipe_diagnosis like '%"+TCari.getText().trim()+"%' order by data_tb.tanggal_buat_laporan",param);
+            param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"); 
+            param.put("parameter","%"+TCari.getText().trim()+"%"); 
+            Valid.MyReport("rptDataTB.jasper","report","::[ Data Pasien Teridentifikasi TB ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -3423,10 +3401,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
     public void isCek(){
         TabRawat.setSelectedIndex(1);
         tampil();
-        BtnSimpan.setEnabled(var.getkemenkes_sitt());
-        BtnHapus.setEnabled(var.getkemenkes_sitt());
-        BtnEdit.setEnabled(var.getkemenkes_sitt());
-        BtnPrint.setEnabled(var.getkemenkes_sitt());
+        BtnSimpan.setEnabled(akses.getkemenkes_sitt());
+        BtnHapus.setEnabled(akses.getkemenkes_sitt());
+        BtnEdit.setEnabled(akses.getkemenkes_sitt());
+        BtnPrint.setEnabled(akses.getkemenkes_sitt());
     }
     
     public void setNoRM(String norawat){

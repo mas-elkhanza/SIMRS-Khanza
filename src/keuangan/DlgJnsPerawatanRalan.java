@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1114,14 +1114,14 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptJnsPrw.jrxml","report","::[ Data Tarif Perawatan ]::","select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                Valid.MyReportqry("rptJnsPrw.jasper","report","::[ Data Tarif Perawatan ]::","select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan.material,jns_perawatan.bhp,jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,"+
                    "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,jns_perawatan.kso,jns_perawatan.menejemen  "+
                    "from jns_perawatan inner join kategori_perawatan inner join penjab inner join poliklinik  "+
@@ -1535,11 +1535,11 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.gettarif_ralan());
-        BtnHapus.setEnabled(var.gettarif_ralan());
-        BtnEdit.setEnabled(var.gettarif_ralan());
-        BtnPrint.setEnabled(var.gettarif_ralan());
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.gettarif_ralan());
+        BtnHapus.setEnabled(akses.gettarif_ralan());
+        BtnEdit.setEnabled(akses.gettarif_ralan());
+        BtnPrint.setEnabled(akses.gettarif_ralan());
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

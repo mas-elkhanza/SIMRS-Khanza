@@ -3,7 +3,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -112,7 +112,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPengaturanRekening")){
+                if(akses.getform().equals("DlgPengaturanRekening")){
                     if(rekening.getTabel().getSelectedRow()!= -1){    
                         if(tbPengaturan.getSelectedColumn()==1){
                             tabMode.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturan.getSelectedRow(),1);
@@ -139,7 +139,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgPengaturanRekening")){
+                if(akses.getform().equals("DlgPengaturanRekening")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }
@@ -488,7 +488,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     private void tbPengaturanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengaturanKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                var.setform("DlgPengaturanRekening");
+                akses.setform("DlgPengaturanRekening");
                 rekening.emptTeks();
                 rekening.tampil();
                 rekening.isCek();
@@ -1404,7 +1404,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpengaturan_rekening());
+        BtnSimpan.setEnabled(akses.getpengaturan_rekening());
     }
         
     

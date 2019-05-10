@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Date;
@@ -800,11 +800,11 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getdiagnosa_pasien());
-        BtnHapus.setEnabled(var.getdiagnosa_pasien());        
-        BtnPrint.setEnabled(var.getdiagnosa_pasien());
-        panelDiagnosa1.btnTambahPenyakit.setEnabled(var.getpenyakit());
-        panelDiagnosa1.btnTambahProsedur.setEnabled(var.geticd9());
+        BtnSimpan.setEnabled(akses.getdiagnosa_pasien());
+        BtnHapus.setEnabled(akses.getdiagnosa_pasien());        
+        BtnPrint.setEnabled(akses.getdiagnosa_pasien());
+        panelDiagnosa1.btnTambahPenyakit.setEnabled(akses.getpenyakit());
+        panelDiagnosa1.btnTambahProsedur.setEnabled(akses.geticd9());
     }
 
     

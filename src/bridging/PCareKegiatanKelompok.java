@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -534,6 +534,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -666,7 +667,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -680,7 +681,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -803,7 +804,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel22.setBounds(526, 10, 90, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1227,24 +1228,17 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPCareKegiatanKelompok.jrxml","report","::[ Data Kegiatan Kelompok PCare ]::",
-                   "select eduId,clubId,namaClub,tglPelayanan,nmKegiatan,nmKelompok,materi, "+
-                   "pembicara,lokasi,keterangan,biaya from pcare_kegiatan_kelompok where "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and eduId like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and clubId like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and nmKelompok like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and materi like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and pembicara like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and lokasi like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and keterangan like '%"+TCari.getText().trim()+"%' or "+
-                   "tglPelayanan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and nmKegiatan like '%"+TCari.getText().trim()+"%' order by eduId",param);            
+                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));   
+                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));   
+                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                Valid.MyReport("rptPCareKegiatanKelompok.jasper","report","::[ Data Kegiatan Kelompok PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1584,10 +1578,10 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                         rs.getString("keterangan"),rs.getDouble("biaya")
                     });
                     total=total+rs.getDouble("biaya");
-                    tabMode.addRow(new Object[]{
-                        "","","Total",":","","","","","","",total
-                    });
                 }
+                tabMode.addRow(new Object[]{
+                    "","","Total",":","","","","","","",total
+                });
             } catch (Exception e) {
                 System.out.println("Notif Ketersediaan : "+e);
             } finally{
@@ -1632,11 +1626,11 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpcare_kegiatan_kelompok());
-        BtnHapus.setEnabled(var.getpcare_kegiatan_kelompok());
-        BtnEdit.setEnabled(var.getpcare_kegiatan_kelompok());
-        BtnPrint.setEnabled(var.getpcare_kegiatan_kelompok());
-        ppPeserta.setEnabled(var.getpcare_peserta_kegiatan_kelompok());
+        BtnSimpan.setEnabled(akses.getpcare_kegiatan_kelompok());
+        BtnHapus.setEnabled(akses.getpcare_kegiatan_kelompok());
+        BtnEdit.setEnabled(akses.getpcare_kegiatan_kelompok());
+        BtnPrint.setEnabled(akses.getpcare_kegiatan_kelompok());
+        ppPeserta.setEnabled(akses.getpcare_peserta_kegiatan_kelompok());
     }
     
     public JTable getTable(){

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -116,7 +116,7 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgKategoriPemasukan")){
+                if(akses.getform().equals("DlgKategoriPemasukan")){
                     if(rekening.getTabel().getSelectedRow()!= -1){  
                         if(pilihan==1){
                             if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("R")&&
@@ -155,7 +155,7 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgKategoriPemasukan")){
+                if(akses.getform().equals("DlgKategoriPemasukan")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }
@@ -758,15 +758,14 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekening Tahun"); 
             }
             Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptKategoriPemasukanLain.jrxml","report","::[ Kategori Pemasukan Lain ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptKategoriPemasukanLain.jasper","report","::[ Kategori Pemasukan Lain ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -831,7 +830,7 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
                 } catch (java.lang.NullPointerException e) {
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                var.setform(asalform);
+                akses.setform(asalform);
             }
         }
 }//GEN-LAST:event_tbKamarKeyPressed
@@ -845,7 +844,7 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
     }//GEN-LAST:event_Kd2KeyPressed
 
     private void BtnAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAkunActionPerformed
-        var.setform("DlgKategoriPemasukan");
+        akses.setform("DlgKategoriPemasukan");
         pilihan=1;
         rekening.emptTeks();
         rekening.tampil();
@@ -882,7 +881,7 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
     }//GEN-LAST:event_NmKontraAKunKeyPressed
 
     private void BtnKontraAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKontraAkunActionPerformed
-        var.setform("DlgKategoriPemasukan");
+        akses.setform("DlgKategoriPemasukan");
         pilihan=2;
         rekening.emptTeks();
         rekening.tampil();
@@ -1011,15 +1010,15 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
     }
     
     public void isCek(){
-        asalform=var.getform();       
-        BtnSimpan.setEnabled(var.getpemasukan_lain());
-        BtnBatal.setEnabled(var.getpemasukan_lain());
-        BtnEdit.setEnabled(var.getpemasukan_lain());
-        BtnHapus.setEnabled(var.getpemasukan_lain());
-        BtnPrint.setEnabled(var.getpemasukan_lain());
-        ppSimpan.setEnabled(var.getpemasukan_lain());
-        ppGanti.setEnabled(var.getpemasukan_lain());        
-        ppHapus.setEnabled(var.getpemasukan_lain());
-        ppCetak.setEnabled(var.getpemasukan_lain());        
+        asalform=akses.getform();       
+        BtnSimpan.setEnabled(akses.getpemasukan_lain());
+        BtnBatal.setEnabled(akses.getpemasukan_lain());
+        BtnEdit.setEnabled(akses.getpemasukan_lain());
+        BtnHapus.setEnabled(akses.getpemasukan_lain());
+        BtnPrint.setEnabled(akses.getpemasukan_lain());
+        ppSimpan.setEnabled(akses.getpemasukan_lain());
+        ppGanti.setEnabled(akses.getpemasukan_lain());        
+        ppHapus.setEnabled(akses.getpemasukan_lain());
+        ppCetak.setEnabled(akses.getpemasukan_lain());        
     }
 }

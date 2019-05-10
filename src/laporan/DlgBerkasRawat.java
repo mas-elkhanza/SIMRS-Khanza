@@ -14,7 +14,7 @@ package laporan;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Desktop;

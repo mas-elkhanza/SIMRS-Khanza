@@ -229,9 +229,6 @@
           <SubComponents>
             <Component class="widget.CekBox" name="chkRalan">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Ralan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -247,9 +244,6 @@
             </Component>
             <Component class="widget.CekBox" name="chkRanap">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Ranap"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -265,9 +259,6 @@
             </Component>
             <Component class="widget.CekBox" name="chkLaborat">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Laboratorium"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -283,9 +274,6 @@
             </Component>
             <Component class="widget.CekBox" name="chkRadiologi">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Radiologi"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>

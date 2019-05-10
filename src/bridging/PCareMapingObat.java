@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.DlgBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -268,6 +268,7 @@ public final class PCareMapingObat extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -611,17 +612,15 @@ public final class PCareMapingObat extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptMapingObatPCare.jrxml","report","::[ Mapping Obat RS & PCare ]::",
-                   "select maping_obat_pcare.kode_brng,databarang.nama_brng,maping_obat_pcare.kode_brng_pcare,maping_obat_pcare.nama_brng_pcare "+
-                   "from maping_obat_pcare inner join databarang on maping_obat_pcare.kode_brng=databarang.kode_brng where "+
-                   "maping_obat_pcare.kode_brng like '%"+TCari.getText().trim()+"%' or databarang.nama_brng like '%"+TCari.getText().trim()+"%' or maping_obat_pcare.kode_brng_pcare like '%"+TCari.getText().trim()+"%' or maping_obat_pcare.nama_brng_pcare like '%"+TCari.getText().trim()+"%' order by databarang.nama_brng",param);            
+                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                Valid.MyReport("rptMapingObatPCare.jasper","report","::[ Mapping Obat PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -799,10 +798,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpcare_mapping_obat());
-        BtnHapus.setEnabled(var.getpcare_mapping_obat());
-        BtnEdit.setEnabled(var.getpcare_mapping_obat());
-        BtnPrint.setEnabled(var.getpcare_mapping_obat());
+        BtnSimpan.setEnabled(akses.getpcare_mapping_obat());
+        BtnHapus.setEnabled(akses.getpcare_mapping_obat());
+        BtnEdit.setEnabled(akses.getpcare_mapping_obat());
+        BtnPrint.setEnabled(akses.getpcare_mapping_obat());
     }
     
     public JTable getTable(){

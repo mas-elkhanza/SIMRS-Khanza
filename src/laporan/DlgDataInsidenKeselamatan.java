@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -1051,17 +1051,17 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));   
                 param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));   
                 param.put("parameter","%"+TCari.getText().trim()+"%");   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDataInsidenKeselamatanPasien.jrxml",param,"::[ Data Insiden Keselamatan Pasien ]::");
+                Valid.MyReport("rptDataInsidenKeselamatanPasien.jasper",param,"::[ Data Insiden Keselamatan Pasien ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1505,11 +1505,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinsiden_keselamatan_pasien());
-        BtnHapus.setEnabled(var.getinsiden_keselamatan_pasien());
-        BtnPrint.setEnabled(var.getinsiden_keselamatan_pasien()); 
-        if(var.getjml2()>=1){
-            nip.setText(var.getkode());
+        BtnSimpan.setEnabled(akses.getinsiden_keselamatan_pasien());
+        BtnHapus.setEnabled(akses.getinsiden_keselamatan_pasien());
+        BtnPrint.setEnabled(akses.getinsiden_keselamatan_pasien()); 
+        if(akses.getjml2()>=1){
+            nip.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?",namapetugas,nip.getText());
         }            
     }

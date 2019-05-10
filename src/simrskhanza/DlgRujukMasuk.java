@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1108,14 +1108,14 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
                                 tabMode.getValueAt(i,19).toString()+"','','','','','','','','','','','','','','','','','','','',''","Rujukan Masuk"); 
             }
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRujukMasuk.jrxml","report","::[ Data Rujukan Yang Masuk ]::",
+            Valid.MyReportqry("rptRujukMasuk.jasper","report","::[ Data Rujukan Yang Masuk ]::",
                 "select * from temporary order by no asc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1222,7 +1222,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }//GEN-LAST:event_BtnKeluar1ActionPerformed
 
     private void btnCariRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariRujukActionPerformed
-        var.setform("DlgRujukMasuk");
+        akses.setform("DlgRujukMasuk");
         tampil2();
         TCariPerujuk.requestFocus();
         WindowPerujuk.setSize(this.getWidth()-20,this.getHeight()-20);
@@ -1236,7 +1236,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void tbPerujukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPerujukMouseClicked
         if(tabMode2.getRowCount()!=0){
-            if(var.getform().equals("DlgRujukMasuk")){
+            if(akses.getform().equals("DlgRujukMasuk")){
                 try {
                     getData2();
                 } catch (java.lang.NullPointerException e) {
@@ -1373,14 +1373,14 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     ". Penderita meninggal/telah sembuh kami pulangkan dengan keadaan "+keluar+". Terapi waktu pulang "+status+
                     ". Pemeriksaan lanjutan .........................................................\n\nSekian, "+
                     "terima kasih atas kerja samanya yang baik.\nWassalamu’alaikum wr.wb.");
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs()); 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs()); 
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBalasanRujukan.jrxml","report","::[ Surat Balasan ]::",
+            Valid.MyReportqry("rptBalasanRujukan.jasper","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,pasien.alamat,dokter.nm_dokter, "+
                     "reg_periksa.no_rkm_medis,pasien.jk,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.nm_pasien,"+
                     "reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
@@ -1462,20 +1462,20 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             
             keluar=Sequel.cariIsi("select stts_pulang from kamar_inap where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
             
-            param.put("html","Setelah penderita kami rawat di "+var.getnamars()+" pulang dengan keadaan :\n"+
+            param.put("html","Setelah penderita kami rawat di "+akses.getnamars()+" pulang dengan keadaan :\n"+
                     "     "+keluar+" dengan diagnosa akhir "+tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()+"\n"+
                     "Atas kerjasamanya kami ucapkan terima kasih");
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
             param.put("diagnosa",tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             param.put("tindakan",diagnosa2);
             param.put("terpi",diagnosa);
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs()); 
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs()); 
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBalasanRujukan2.jrxml","report","::[ Surat Balasan ]::",
+            Valid.MyReportqry("rptBalasanRujukan2.jasper","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,pasien.alamat,dokter.nm_dokter, "+
                     "reg_periksa.no_rkm_medis,pasien.jk,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.nm_pasien,"+
                     "reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
@@ -1629,20 +1629,20 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             
             keluar=Sequel.cariIsi("select stts_pulang from kamar_inap where no_rawat=? and stts_pulang<>'-' order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
             
-            param.put("html","Setelah penderita kami rawat di "+var.getnamars()+" pulang dengan keadaan :\n"+
+            param.put("html","Setelah penderita kami rawat di "+akses.getnamars()+" pulang dengan keadaan :\n"+
                     "     "+keluar+" dengan diagnosa akhir "+diagnosapulang+"\n"+
                     "Atas kerjasamanya kami ucapkan terima kasih");
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
             param.put("diagnosa",tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             param.put("tindakan",diagnosa2);
             param.put("terpi",diagnosa);
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs()); 
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs()); 
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBalasanRujukan3.jrxml","report","::[ Surat Balasan ]::",
+            Valid.MyReportqry("rptBalasanRujukan3.jasper","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.alamat,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
                     "pasien.nm_pasien,reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,"+
                     "rujuk_masuk.jm_perujuk,rujuk_masuk.dokter_perujuk,rujuk_masuk.kd_penyakit,penyakit.nm_penyakit,rujuk_masuk.kategori_rujuk,"+
@@ -1918,10 +1918,10 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
       
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getrujukan_masuk());
-        BtnHapus.setEnabled(var.getrujukan_masuk());
-        BtnPrint.setEnabled(var.getrujukan_masuk());
-        BtnEdit.setEnabled(var.getrujukan_masuk());
+        BtnSimpan.setEnabled(akses.getrujukan_masuk());
+        BtnHapus.setEnabled(akses.getrujukan_masuk());
+        BtnPrint.setEnabled(akses.getrujukan_masuk());
+        BtnEdit.setEnabled(akses.getrujukan_masuk());
         
     }
     

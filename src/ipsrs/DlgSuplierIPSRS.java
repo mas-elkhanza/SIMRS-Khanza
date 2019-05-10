@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -638,14 +638,14 @@ public class DlgSuplierIPSRS extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuplier.jrxml","report","::[ Data Suplier ]::","select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
+            Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::","select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
                     " ipsrssuplier.alamat,ipsrssuplier.kota, ipsrssuplier.no_telp,ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrssuplier "+
                     " where ipsrssuplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+
                     " ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
@@ -910,10 +910,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsuplier_penunjang());
-        BtnHapus.setEnabled(var.getsuplier_penunjang());
-        BtnEdit.setEnabled(var.getsuplier_penunjang());
-        BtnPrint.setEnabled(var.getsuplier_penunjang());
+        BtnSimpan.setEnabled(akses.getsuplier_penunjang());
+        BtnHapus.setEnabled(akses.getsuplier_penunjang());
+        BtnEdit.setEnabled(akses.getsuplier_penunjang());
+        BtnPrint.setEnabled(akses.getsuplier_penunjang());
     }
     
     private void isForm(){

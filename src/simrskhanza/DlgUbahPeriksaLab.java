@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -821,7 +821,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                                     Sequel.menyimpan("tampjurnal","'"+Beban_Kso_Laborat_Ranap+"','Beban KSO Laborat Ranap','0','"+ttlkso+"'","Rekening");    
                                     Sequel.menyimpan("tampjurnal","'"+Utang_Kso_Laborat_Ranap+"','Utang KSO Laborat Ranap','"+ttlkso+"','0'","Rekening");                              
                                 }
-                                jur.simpanJurnal(TNoRw.getText().toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PEMERIKSAAN LABORAT RAWAT INAP PASIEN OLEH "+var.getkode());  
+                                jur.simpanJurnal(TNoRw.getText().toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PEMERIKSAAN LABORAT RAWAT INAP PASIEN OLEH "+akses.getkode());  
                             }                     
                         }
                     }
@@ -949,7 +949,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                             Sequel.menyimpan("tampjurnal","'"+Beban_Kso_Laborat_Ranap+"','Beban KSO Laborat Ranap','"+ttlkso+"','0'","Rekening");    
                             Sequel.menyimpan("tampjurnal","'"+Utang_Kso_Laborat_Ranap+"','Utang KSO Laborat Ranap','0','"+ttlkso+"'","Rekening");                              
                         }
-                        jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMERIKSAAN LABORAT RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());  
+                        jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMERIKSAAN LABORAT RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode());  
                     }
                     koneksi.setAutoCommit(true);
                     JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
@@ -982,7 +982,7 @@ private void PemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampiltarif();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(var.getperiksa_lab()==true){
+            if(akses.getperiksa_lab()==true){
                 btnTarifActionPerformed(null);
             }            
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1438,9 +1438,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getperiksa_lab());
-        BtnHapus.setEnabled(var.getperiksa_lab());
-        btnTarif.setEnabled(var.gettarif_lab());
+        BtnSimpan.setEnabled(akses.getperiksa_lab());
+        BtnHapus.setEnabled(akses.getperiksa_lab());
+        btnTarif.setEnabled(akses.gettarif_lab());
     }
     
     private void isForm(){

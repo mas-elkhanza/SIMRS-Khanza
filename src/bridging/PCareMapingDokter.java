@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import inventory.DlgBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -268,6 +268,7 @@ public final class PCareMapingDokter extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -611,17 +612,15 @@ public final class PCareMapingDokter extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptMapingDokterPCare.jrxml","report","::[ Mapping Dokter RS & PCare ]::",
-                   "select maping_dokter_pcare.kd_dokter,dokter.nm_dokter,maping_dokter_pcare.kd_dokter_pcare,maping_dokter_pcare.nm_dokter_pcare "+
-                   "from maping_dokter_pcare inner join dokter on maping_dokter_pcare.kd_dokter=dokter.kd_dokter where "+
-                   "maping_dokter_pcare.kd_dokter like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or maping_dokter_pcare.kd_dokter_pcare like '%"+TCari.getText().trim()+"%' or maping_dokter_pcare.nm_dokter_pcare like '%"+TCari.getText().trim()+"%' order by dokter.nm_dokter",param);            
+                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                Valid.MyReport("rptMapingDokterPCare.jasper","report","::[ Mapping Dokter RS & PCare ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -800,10 +799,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpcare_mapping_dokter());
-        BtnHapus.setEnabled(var.getpcare_mapping_dokter());
-        BtnEdit.setEnabled(var.getpcare_mapping_dokter());
-        BtnPrint.setEnabled(var.getpcare_mapping_dokter());
+        BtnSimpan.setEnabled(akses.getpcare_mapping_dokter());
+        BtnHapus.setEnabled(akses.getpcare_mapping_dokter());
+        BtnEdit.setEnabled(akses.getpcare_mapping_dokter());
+        BtnPrint.setEnabled(akses.getpcare_mapping_dokter());
     }
     
     public JTable getTable(){
