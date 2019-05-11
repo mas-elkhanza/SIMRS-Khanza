@@ -442,6 +442,7 @@ import inventory.DlgSisaStok;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
 import perpustakaan.PerpustakaanDenda;
+import perpustakaan.PerpustakaanEbook;
 import perpustakaan.PerpustakaanInventaris;
 import perpustakaan.PerpustakaanJenis;
 import perpustakaan.PerpustakaanKategori;
@@ -14360,6 +14361,23 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnEbookPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanEbook form=new PerpustakaanEbook(this,false);
+        try {
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"ebook/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);        
+        form.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -14930,7 +14948,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
             btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
-            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan;
+            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan,btnEbookPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17568,6 +17586,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getebook_perpustakaan()==true){
+                Panelmenu.add(btnEbookPerpustakaan);
+                jmlmenu++;
+            }
+            
             Panelmenu.add(btnPenelitianPerpustakaan);
             jmlmenu++;
         }else if(cmbMenu.getSelectedIndex()==16){   
@@ -19941,6 +19964,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbayar_denda_perpustakaan()==true){
             Panelmenu.add(btnBayarDendaPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getebook_perpustakaan()==true){
+            Panelmenu.add(btnEbookPerpustakaan);
             jmlmenu++;
         }
         
@@ -23217,6 +23245,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getebook_perpustakaan()==true){
+            if(btnEbookPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnEbookPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(btnPenelitianPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
             Panelmenu.add(btnPenelitianPerpustakaan);
             jmlmenu++;
@@ -23552,6 +23587,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenelitianPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPenelitianPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnEbookPerpustakaan = new widget.ButtonBig();
+        btnEbookPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_bookmark_3440843.png")));
+        btnEbookPerpustakaan.setText("Data Koleksi Ebook");
+        btnEbookPerpustakaan.setIconTextGap(0);
+        btnEbookPerpustakaan.setName("btnEbookPerpustakaan"); 
+        btnEbookPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnEbookPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEbookPerpustakaanActionPerformed(evt);
             }
         });
     }
