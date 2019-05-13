@@ -11,7 +11,6 @@
 
 package perpustakaan;
 
-import kepegawaian.*;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
@@ -21,9 +20,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Properties;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -52,7 +48,6 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
-import simrskhanza.DlgPilihanCetakDokumen;
 
 /**
  *
@@ -68,11 +63,6 @@ public class PerpustakaanPenelitian extends javax.swing.JDialog {
     private final JProgressBar progressBar = new JProgressBar();
     private final Properties prop = new Properties(); 
     private final validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private final validasi validasi=new validasi();
-    private final Connection koneksi=koneksiDB.condb();
-    private final DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     
     public PerpustakaanPenelitian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

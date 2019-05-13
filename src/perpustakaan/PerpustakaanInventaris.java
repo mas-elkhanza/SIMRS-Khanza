@@ -1397,27 +1397,6 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     }
     
     public void isCek(){
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            namaruang=prop.getProperty("KAMARAKTIFRANAP");
-        } catch (Exception ex) {
-            namaruang="";
-        }
-        
-        if(!namaruang.equals("")){
-            if(akses.getkode().equals("Admin Utama")){
-                nm_ruangcari.setText("");
-                btnRuang1.setEnabled(true);
-                nm_ruangcari.setEditable(true);
-            }else{
-                nm_ruangcari.setText(namaruang);
-                btnRuang1.setEnabled(false);
-                nm_ruangcari.setEditable(false);
-            }                
-        }else{
-            btnRuang1.setEnabled(true);
-            nm_ruangcari.setEditable(true);
-        }
         BtnSimpan.setEnabled(akses.getinventaris_perpustakaan());
         BtnHapus.setEnabled(akses.getinventaris_perpustakaan());
         BtnEdit.setEnabled(akses.getinventaris_perpustakaan());

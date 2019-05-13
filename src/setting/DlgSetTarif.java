@@ -119,7 +119,7 @@ public class DlgSetTarif extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Penggunaan Tarif Ranap, Ralan & Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Penggunaan Tarif Ranap, Ralan & Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -143,7 +143,7 @@ public class DlgSetTarif extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelisi2.setName("panelisi2"); // NOI18N
-        panelisi2.setPreferredSize(new java.awt.Dimension(100, 224));
+        panelisi2.setPreferredSize(new java.awt.Dimension(100, 194));
         panelisi2.setLayout(null);
 
         label35.setText("Aktifkan Tarif Per Cara Bayar di Laborat : ");
@@ -252,7 +252,7 @@ public class DlgSetTarif extends javax.swing.JDialog {
         label41.setName("label41"); // NOI18N
         label41.setPreferredSize(new java.awt.Dimension(82, 23));
         panelisi2.add(label41);
-        label41.setBounds(0, 190, 220, 23);
+        label41.setBounds(325, 10, 215, 23);
 
         YesNo7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         YesNo7.setName("YesNo7"); // NOI18N
@@ -263,7 +263,7 @@ public class DlgSetTarif extends javax.swing.JDialog {
             }
         });
         panelisi2.add(YesNo7);
-        YesNo7.setBounds(220, 190, 100, 23);
+        YesNo7.setBounds(540, 10, 100, 23);
 
         YesNo8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         YesNo8.setName("YesNo8"); // NOI18N
@@ -274,13 +274,13 @@ public class DlgSetTarif extends javax.swing.JDialog {
             }
         });
         panelisi2.add(YesNo8);
-        YesNo8.setBounds(530, 10, 100, 23);
+        YesNo8.setBounds(540, 40, 100, 23);
 
         label42.setText("Aktifkan Tarif Per Kelas di Operasi : ");
         label42.setName("label42"); // NOI18N
         label42.setPreferredSize(new java.awt.Dimension(82, 23));
         panelisi2.add(label42);
-        label42.setBounds(330, 100, 200, 23);
+        label42.setBounds(325, 130, 215, 23);
 
         YesNo9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         YesNo9.setName("YesNo9"); // NOI18N
@@ -291,13 +291,13 @@ public class DlgSetTarif extends javax.swing.JDialog {
             }
         });
         panelisi2.add(YesNo9);
-        YesNo9.setBounds(530, 40, 100, 23);
+        YesNo9.setBounds(540, 70, 100, 23);
 
         label43.setText("Aktifkan Tarif Per Kelas di Radiologi : ");
         label43.setName("label43"); // NOI18N
         label43.setPreferredSize(new java.awt.Dimension(82, 23));
         panelisi2.add(label43);
-        label43.setBounds(330, 70, 200, 23);
+        label43.setBounds(325, 100, 215, 23);
 
         YesNo10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         YesNo10.setName("YesNo10"); // NOI18N
@@ -308,13 +308,13 @@ public class DlgSetTarif extends javax.swing.JDialog {
             }
         });
         panelisi2.add(YesNo10);
-        YesNo10.setBounds(530, 70, 100, 23);
+        YesNo10.setBounds(540, 100, 100, 23);
 
         label44.setText("Aktifkan Tarif Per Kelas di Laborat : ");
         label44.setName("label44"); // NOI18N
         label44.setPreferredSize(new java.awt.Dimension(82, 23));
         panelisi2.add(label44);
-        label44.setBounds(330, 40, 200, 23);
+        label44.setBounds(325, 70, 215, 23);
 
         YesNo11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         YesNo11.setName("YesNo11"); // NOI18N
@@ -325,13 +325,13 @@ public class DlgSetTarif extends javax.swing.JDialog {
             }
         });
         panelisi2.add(YesNo11);
-        YesNo11.setBounds(530, 100, 100, 23);
+        YesNo11.setBounds(540, 130, 100, 23);
 
         label45.setText("Aktifkan Tarif Per Kelas di Ranap : ");
         label45.setName("label45"); // NOI18N
         label45.setPreferredSize(new java.awt.Dimension(82, 23));
         panelisi2.add(label45);
-        label45.setBounds(330, 10, 200, 23);
+        label45.setBounds(325, 40, 215, 23);
 
         internalFrame1.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 

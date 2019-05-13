@@ -441,7 +441,10 @@ import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
+import perpustakaan.PerpustakaanCariEbook;
+import perpustakaan.PerpustakaanCariInventaris;
 import perpustakaan.PerpustakaanDenda;
+import perpustakaan.PerpustakaanEbook;
 import perpustakaan.PerpustakaanInventaris;
 import perpustakaan.PerpustakaanJenis;
 import perpustakaan.PerpustakaanKategori;
@@ -1085,8 +1088,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnLimbahDomestik = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerTanggal = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerBulan = new widget.ButtonBig();
-        btnMutuAirLimbah = new widget.ButtonBig();
-        btnPestControl = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1155,6 +1156,10 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoBed3 = new javax.swing.JMenuItem();
         MnInfoBed4 = new javax.swing.JMenuItem();
         MnInfoBed5 = new javax.swing.JMenuItem();
+        jSeparator15 = new javax.swing.JPopupMenu.Separator();
+        MnKoleksiPenelitian = new javax.swing.JMenuItem();
+        MnCariEbook = new javax.swing.JMenuItem();
+        MnCariInventarisPerpustakaan = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         MnAnjungan = new javax.swing.JMenuItem();
         jSeparator12 = new javax.swing.JPopupMenu.Separator();
@@ -6837,30 +6842,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikLimbahDomestikPerBulan);
 
-        btnMutuAirLimbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Care_ecology_water_hand_2992434.png"))); // NOI18N
-        btnMutuAirLimbah.setText("Mutu Air Limbah");
-        btnMutuAirLimbah.setIconTextGap(0);
-        btnMutuAirLimbah.setName("btnMutuAirLimbah"); // NOI18N
-        btnMutuAirLimbah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMutuAirLimbah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMutuAirLimbahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMutuAirLimbah);
-
-        btnPestControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_world_eco_leaves_2992451.png"))); // NOI18N
-        btnPestControl.setText("Pest Control");
-        btnPestControl.setIconTextGap(0);
-        btnPestControl.setName("btnPestControl"); // NOI18N
-        btnPestControl.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPestControl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPestControlActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPestControl);
-
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6869,7 +6850,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/05/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/05/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7788,6 +7769,58 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu6.add(MnInfoBed5);
+
+        jSeparator15.setBackground(new java.awt.Color(190, 220, 180));
+        jSeparator15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 220, 180)));
+        jSeparator15.setForeground(new java.awt.Color(190, 220, 180));
+        jSeparator15.setName("jSeparator15"); // NOI18N
+        jSeparator15.setPreferredSize(new java.awt.Dimension(0, 1));
+        jMenu6.add(jSeparator15);
+
+        MnKoleksiPenelitian.setBackground(new java.awt.Color(255, 255, 254));
+        MnKoleksiPenelitian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKoleksiPenelitian.setForeground(new java.awt.Color(90, 120, 80));
+        MnKoleksiPenelitian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
+        MnKoleksiPenelitian.setText("Koleksi Penelitian");
+        MnKoleksiPenelitian.setIconTextGap(6);
+        MnKoleksiPenelitian.setName("MnKoleksiPenelitian"); // NOI18N
+        MnKoleksiPenelitian.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnKoleksiPenelitian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKoleksiPenelitianActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnKoleksiPenelitian);
+
+        MnCariEbook.setBackground(new java.awt.Color(255, 255, 254));
+        MnCariEbook.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCariEbook.setForeground(new java.awt.Color(90, 120, 80));
+        MnCariEbook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
+        MnCariEbook.setText("Cari Koleksi Ebook");
+        MnCariEbook.setIconTextGap(6);
+        MnCariEbook.setName("MnCariEbook"); // NOI18N
+        MnCariEbook.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnCariEbook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCariEbookActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnCariEbook);
+
+        MnCariInventarisPerpustakaan.setBackground(new java.awt.Color(255, 255, 254));
+        MnCariInventarisPerpustakaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCariInventarisPerpustakaan.setForeground(new java.awt.Color(90, 120, 80));
+        MnCariInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
+        MnCariInventarisPerpustakaan.setText("Cari Inventaris Perpustakaan");
+        MnCariInventarisPerpustakaan.setIconTextGap(6);
+        MnCariInventarisPerpustakaan.setName("MnCariInventarisPerpustakaan"); // NOI18N
+        MnCariInventarisPerpustakaan.setPreferredSize(new java.awt.Dimension(250, 30));
+        MnCariInventarisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCariInventarisPerpustakaanActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnCariInventarisPerpustakaan);
 
         MenuBar.add(jMenu6);
 
@@ -14161,31 +14194,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikLimbahDomestikPerBulanActionPerformed
 
-    private void btnMutuAirLimbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMutuAirLimbahActionPerformed
-        isTutup();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeslingMutuAirLimbah form=new KeslingMutuAirLimbah(this,false);
-        form.isCek();
-        form.emptTeks();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        form.setLocationRelativeTo(PanelUtama);
-        form.setVisible(true);
-        DlgHome.dispose();
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnMutuAirLimbahActionPerformed
+    private void MnKoleksiPenelitianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKoleksiPenelitianActionPerformed
+        btnPenelitianPerpustakaanActionPerformed(null);
+    }//GEN-LAST:event_MnKoleksiPenelitianActionPerformed
 
-    private void btnPestControlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPestControlActionPerformed
-        isTutup();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeslingPestControl form=new KeslingPestControl(this,false);
-        form.isCek();
-        form.emptTeks();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        form.setLocationRelativeTo(PanelUtama);
-        form.setVisible(true);
-        DlgHome.dispose();
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnPestControlActionPerformed
+    private void MnCariEbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCariEbookActionPerformed
+        btnCariEbookActionPerformed(null);
+    }//GEN-LAST:event_MnCariEbookActionPerformed
+
+    private void MnCariInventarisPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCariInventarisPerpustakaanActionPerformed
+        btnCariInventarisPerpustakaanActionPerformed(null);
+    }//GEN-LAST:event_MnCariInventarisPerpustakaanActionPerformed
 
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
@@ -14360,6 +14379,78 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnEbookPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanEbook form=new PerpustakaanEbook(this,false);
+        try {
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"ebook/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);        
+        form.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnCariEbookActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanCariEbook form=new PerpustakaanCariEbook(this,false);
+        try {
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"ebook/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);        
+        form.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPestControlActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingPestControl form=new KeslingPestControl(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnMutuAirLimbahActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingMutuAirLimbah form=new KeslingMutuAirLimbah(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnCariInventarisPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PerpustakaanCariInventaris form=new PerpustakaanCariInventaris(this,false);
+        form.tampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -14390,6 +14481,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnAnjungan;
     private javax.swing.JMenuItem MnBelumDatang;
     private javax.swing.JMenuItem MnBelumDatang1;
+    private javax.swing.JMenuItem MnCariEbook;
+    private javax.swing.JMenuItem MnCariInventarisPerpustakaan;
     private javax.swing.JMenuItem MnGantiPassword;
     private javax.swing.JMenuItem MnInfoBed;
     private javax.swing.JMenuItem MnInfoBed1;
@@ -14397,6 +14490,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnInfoBed3;
     private javax.swing.JMenuItem MnInfoBed4;
     private javax.swing.JMenuItem MnInfoBed5;
+    private javax.swing.JMenuItem MnKoleksiPenelitian;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnRekapBulanan;
     private javax.swing.JMenuItem MnRekapBulanan1;
@@ -14625,7 +14719,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ButtonBig btnMonitoringKlaim;
     private widget.ButtonBig btnMutasiBarang;
     private widget.ButtonBig btnMutasiBerkas;
-    private widget.ButtonBig btnMutuAirLimbah;
     private widget.ButtonBig btnObat;
     private widget.ButtonBig btnObatPasienPeresep;
     private widget.ButtonBig btnObatPasienRalan;
@@ -14705,7 +14798,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ButtonBig btnPerujukLabPerTahun;
     private widget.ButtonBig btnPerujukRadiologiPerTahun;
     private widget.ButtonBig btnPerusahaan;
-    private widget.ButtonBig btnPestControl;
     private widget.ButtonBig btnPiutang;
     private widget.ButtonBig btnPiutangBelumLunas;
     private widget.ButtonBig btnPiutangPerAkunPiutang;
@@ -14909,6 +15001,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JPopupMenu.Separator jSeparator12;
     private javax.swing.JPopupMenu.Separator jSeparator13;
     private javax.swing.JPopupMenu.Separator jSeparator14;
+    private javax.swing.JPopupMenu.Separator jSeparator15;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -14930,7 +15023,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     // End of variables declaration//GEN-END:variables
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
             btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
-            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan;
+            btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan,btnEbookPerpustakaan,btnCariEbook,btnPestControl,
+            btnMutuAirLimbah,btnCariInventarisPerpustakaan;
     
     public void isWall(){
         try{            
@@ -17568,7 +17662,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getebook_perpustakaan()==true){
+                Panelmenu.add(btnEbookPerpustakaan);
+                jmlmenu++;
+            }
+            
             Panelmenu.add(btnPenelitianPerpustakaan);
+            jmlmenu++;
+            
+            Panelmenu.add(btnCariEbook);
+            jmlmenu++;
+            
+            Panelmenu.add(btnCariInventarisPerpustakaan);
             jmlmenu++;
         }else if(cmbMenu.getSelectedIndex()==16){   
             jmlmenu=0;
@@ -19944,7 +20049,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getebook_perpustakaan()==true){
+            Panelmenu.add(btnEbookPerpustakaan);
+            jmlmenu++;
+        }
+        
         Panelmenu.add(btnPenelitianPerpustakaan);
+        jmlmenu++;
+        
+        Panelmenu.add(btnCariEbook);
+        jmlmenu++;
+        
+        Panelmenu.add(btnCariInventarisPerpustakaan);
         jmlmenu++;
 
         if(akses.getaplikasi()==true){
@@ -23217,8 +23333,25 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getebook_perpustakaan()==true){
+            if(btnEbookPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnEbookPerpustakaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(btnPenelitianPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
             Panelmenu.add(btnPenelitianPerpustakaan);
+            jmlmenu++;
+        }
+        
+        if(btnCariEbook.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+            Panelmenu.add(btnCariEbook);
+            jmlmenu++;
+        } 
+        
+        if(btnCariInventarisPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+            Panelmenu.add(btnCariInventarisPerpustakaan);
             jmlmenu++;
         } 
         
@@ -23552,6 +23685,66 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenelitianPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPenelitianPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnEbookPerpustakaan = new widget.ButtonBig();
+        btnEbookPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_bookmark_3440843.png")));
+        btnEbookPerpustakaan.setText("Data Koleksi Ebook");
+        btnEbookPerpustakaan.setIconTextGap(0);
+        btnEbookPerpustakaan.setName("btnEbookPerpustakaan"); 
+        btnEbookPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnEbookPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEbookPerpustakaanActionPerformed(evt);
+            }
+        });
+        
+        btnCariEbook = new widget.ButtonBig();
+        btnCariEbook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Book_728912.png")));
+        btnCariEbook.setText("Cari Koleksi Ebook");
+        btnCariEbook.setIconTextGap(0);
+        btnCariEbook.setName("btnCariEbook"); 
+        btnCariEbook.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCariEbook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariEbookActionPerformed(evt);
+            }
+        });
+        
+        btnPestControl = new widget.ButtonBig();
+        btnPestControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_world_eco_leaves_2992451.png"))); 
+        btnPestControl.setText("Pest Control");
+        btnPestControl.setIconTextGap(0);
+        btnPestControl.setName("btnPestControl"); // NOI18N
+        btnPestControl.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPestControl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPestControlActionPerformed(evt);
+            }
+        });
+        
+        btnMutuAirLimbah = new widget.ButtonBig();
+        btnMutuAirLimbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Care_ecology_water_hand_2992434.png")));
+        btnMutuAirLimbah.setText("Mutu Air Limbah");
+        btnMutuAirLimbah.setIconTextGap(0);
+        btnMutuAirLimbah.setName("btnMutuAirLimbah"); // NOI18N
+        btnMutuAirLimbah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMutuAirLimbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMutuAirLimbahActionPerformed(evt);
+            }
+        });
+        
+        btnCariInventarisPerpustakaan = new widget.ButtonBig();
+        btnCariInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_data_1421637.png")));
+        btnCariInventarisPerpustakaan.setText("Cari Inventaris Perpustakaan");
+        btnCariInventarisPerpustakaan.setIconTextGap(0);
+        btnCariInventarisPerpustakaan.setName("btnCariInventarisPerpustakaan"); // NOI18N
+        btnCariInventarisPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCariInventarisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariInventarisPerpustakaanActionPerformed(evt);
             }
         });
     }

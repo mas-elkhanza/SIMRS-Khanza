@@ -104,7 +104,7 @@ public final class akses {
             grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
             kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
             inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false,anggota_perpustakaan=false,
-            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false;
+            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -604,6 +604,7 @@ public final class akses {
                         akses.anggota_perpustakaan=true;
                         akses.peminjaman_perpustakaan=true;
                         akses.bayar_denda_perpustakaan=true;
+                        akses.ebook_perpustakaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1087,6 +1088,7 @@ public final class akses {
                         akses.anggota_perpustakaan=rs2.getBoolean("anggota_perpustakaan");
                         akses.peminjaman_perpustakaan=rs2.getBoolean("peminjaman_perpustakaan");
                         akses.bayar_denda_perpustakaan=rs2.getBoolean("bayar_denda_perpustakaan");
+                        akses.ebook_perpustakaan=rs2.getBoolean("ebook_perpustakaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1568,6 +1570,7 @@ public final class akses {
                         akses.anggota_perpustakaan=false;
                         akses.peminjaman_perpustakaan=false;
                         akses.bayar_denda_perpustakaan=false;
+                        akses.ebook_perpustakaan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2103,4 +2106,5 @@ public final class akses {
     public static boolean getanggota_perpustakaan(){return akses.anggota_perpustakaan;}
     public static boolean getpeminjaman_perpustakaan(){return akses.peminjaman_perpustakaan;}
     public static boolean getbayar_denda_perpustakaan(){return akses.bayar_denda_perpustakaan;}
+    public static boolean getebook_perpustakaan(){return akses.ebook_perpustakaan;}
 }   
