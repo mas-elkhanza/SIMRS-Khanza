@@ -1198,9 +1198,6 @@ public class DlgUser extends javax.swing.JDialog {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BtnCariKeyPressed(evt);
             }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                BtnCariKeyReleased(evt);
-            }
         });
         panelGlass7.add(BtnCari);
 
@@ -2557,10 +2554,6 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             Valid.pindah(evt, TCari, BtnAll);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
-
-    private void BtnCariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCariKeyReleased
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
