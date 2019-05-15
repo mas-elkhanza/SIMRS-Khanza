@@ -57,7 +57,7 @@ public class DlgUser extends javax.swing.JDialog {
     public DlgUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        
         Object[] row={"ID User","Nama User","Jabatan","Password","[I]ICD 10","[I]Obat Penyakit","[C]Dokter","[A]Jadwal Praktek","[C]Petugas","[L]Pasien","[A]Registrasi","[A]Tindakan Ralan",
                     "[A]Kamar Inap","[A]Tindakan Ranap","[A]Operasi","[A]Rujukan Keluar","[A]Rujukan Masuk","[A]Beri Obat, Alkes & BHP","[A]Resep Pulang",
                     "[L]Pasien Meninggal","[A]Diet Pasien","[L]Kelahiran Bayi","[A]Periksa Lab","[A]Periksa Radiologi","[A]Kasir Ralan",
@@ -2606,7 +2606,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void MnSetUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSetUserActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         personal.isUser(TKd.getText(),TNmUser.getText(),TPass.getText());
-        personal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        personal.setSize(460,this.getHeight()-50);
         personal.setLocationRelativeTo(internalFrame1);
         personal.setAlwaysOnTop(false);
         personal.setVisible(true);
