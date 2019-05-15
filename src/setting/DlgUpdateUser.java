@@ -1921,7 +1921,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusbataltanggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
-                    /*if("[N]Kunjungan Reg Per Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
+                    if("[N]Kunjungan Reg Per Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
                         Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_percarabayar='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
@@ -1958,106 +1958,106 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     }
                     
                     if("[N]Kejadian IKP Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kejadian IKP Per Tahun",grafik_ikp_pertahun
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_ikp_pertahun='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kejadian IKP Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kejadian IKP Per Bulan",grafik_ikp_perbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_ikp_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kejadian IKP Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kejadian IKP Per Tanggal",grafik_ikp_pertanggal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_ikp_pertanggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kejadian IKP Per Jenis".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kejadian IKP Per Jenis",grafik_ikp_jenis
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_ikp_jenis='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kejadian IKP Per Dampak".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kejadian IKP Per Dampak",grafik_ikp_dampak
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_ikp_dampak='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Agama".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Agama",grafik_kunjungan_per_agama
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_per_agama='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Umur".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Umur",grafik_kunjungan_per_umur
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_per_umur='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Suku/Bangsa".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Suku/Bangsa",grafik_kunjungan_suku
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_suku='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Bahasa".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Bahasa",grafik_kunjungan_bahasa
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_bahasa='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Cacat Fisik".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Cacat Fisik",grafik_kunjungan_per_cacat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_per_cacat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Periode Laporan TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Periode Laporan TB",grafik_tb_periodelaporan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_periodelaporan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Rujukan TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Rujukan TB",grafik_tb_rujukan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_rujukan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Riwayat TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Riwayat TB",grafik_tb_riwayat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_riwayat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Tipe Diagnosis TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Tipe Diagnosis TB",grafik_tb_tipediagnosis
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_tipediagnosis='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Status HIV TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Status HIV TB",grafik_tb_statushiv
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_statushiv='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Skoring Anak TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Skoring Anak TB",grafik_tb_skoringanak
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_skoringanak='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Konfirmasi Skoring 5 TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Konfirmasi Skoring 5 TB",grafik_tb_konfirmasiskoring5
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_konfirmasiskoring5='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Konfirmasi Skoring 6 TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Konfirmasi Skoring 6 TB",grafik_tb_konfirmasiskoring6
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_konfirmasiskoring6='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Sumber Obat TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Sumber Obat TB",grafik_tb_sumberobat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_sumberobat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Hasil Akhir Pengobatan TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Hasil Akhir Pengobatan TB",grafik_tb_hasilakhirpengobatan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_hasilakhirpengobatan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Hasil Tes HIV TB".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Hasil Tes HIV TB",grafik_tb_hasilteshiv
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_tb_hasilteshiv='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Pemakaian Air PDAM Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Pemakaian Air PDAM Per Tanggal",grafik_air_pdam_pertanggal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_air_pdam_pertanggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Pemakaian Air PDAM Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Pemakaian Air PDAM Per Bulan",grafik_air_pdam_perbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_air_pdam_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Limbah B3 Medis Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Limbah B3 Medis Per Tanggal",grafik_limbahb3_pertanggal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_limbahb3_pertanggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Limbah B3 Medis Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Limbah B3 Medis Per Bulan",grafik_limbahb3_perbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_limbahb3_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
-                    if("[N]Limbah Padat Domestik Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
+                    /*if("[N]Limbah Padat Domestik Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
                         Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Limbah Padat Domestik Per Tanggal",grafik_limbahdomestik_pertanggal
                     }
                     
