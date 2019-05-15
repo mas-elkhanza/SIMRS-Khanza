@@ -1477,484 +1477,484 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","inhealth_referensi_jenpel_ruang_rawat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
-                    /*if("[K]Referensi Poli Inhealth".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Poli Inhealth",inhealth_referensi_poli
+                    if("[K]Referensi Poli Inhealth".equals(tbUser.getValueAt(i,1).toString())){
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","inhealth_referensi_poli='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Faskes Inhealth".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Faskes Inhealth",inhealth_referensi_faskes
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","inhealth_referensi_faskes='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Data Bridging SJP Inhealth".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Data Bridging SJP Inhealth",inhealth_sjp
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","inhealth_sjp='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Diagnosa Pcare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Diagnosa Pcare",pcare_cek_penyakit
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_penyakit='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Kesadaran Pcare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Kesadaran Pcare",pcare_cek_kesadaran
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_kesadaran='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Cek Rujukan PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Cek Rujukan PCare",pcare_cek_rujukan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_rujukan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Klaim Baru Manual INACBG 2".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Klaim Baru Manual INACBG 2",inacbg_klaim_baru_manual2
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","inacbg_klaim_baru_manual2='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Prosedur VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Prosedur VClaim",bpjs_cek_prosedur
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_prosedur='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Kelas Rawat VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Kelas Rawat VClaim",bpjs_cek_kelas_rawat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_kelas_rawat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Dokter VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Dokter VClaim",bpjs_cek_dokter
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_dokter='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Spesialistik VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Spesialistik VClaim",bpjs_cek_spesialistik
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_spesialistik='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Ruang Rawat VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Ruang Rawat VClaim",bpjs_cek_ruangrawat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_ruangrawat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Cara Keluar VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Cara Keluar VClaim",bpjs_cek_carakeluar
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_carakeluar='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Pasca Pulang VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Pasca Pulang VClaim",bpjs_cek_pasca_pulang
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_pasca_pulang='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Cek No.Rujukan RS di VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Cek No.Rujukan RS di VClaim",bpjs_cek_nomor_rujukan_rs
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_nomor_rujukan_rs='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Cek Rujukan Kartu PCare di VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Cek Rujukan Kartu PCare di VClaim",bpjs_cek_rujukan_kartu_pcare
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_rujukan_kartu_pcare='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Cek Rujukan Kartu RS di VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Cek Rujukan Kartu RS di VClaim",bpjs_cek_rujukan_kartu_rs
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_rujukan_kartu_rs='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Pembuatan Rujukan VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Pembuatan Rujukan VClaim",bpjs_rujukan_keluar
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_rujukan_keluar='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Mapping Poli VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Mapping Poli VClaim",mapping_poli_bpjs
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","mapping_poli_bpjs='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]SKDP BPJS".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]SKDP BPJS",skdp_bpjs
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","skdp_bpjs='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Propinsi VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Propinsi VClaim",bpjs_cek_propinsi
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_propinsi='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Kabupaten VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Kabupaten VClaim",bpjs_cek_kabupaten
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_kabupaten='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Kecamatan VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Kecamatan VClaim",bpjs_cek_kecamatan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_kecamatan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Dokter DPJP VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Dokter DPJP VClaim",bpjs_cek_dokterdpjp
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_dokterdpjp='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Riwayat Rujukan RS di VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Riwayat Rujukan RS di VClaim",bpjs_cek_riwayat_rujukanrs
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_riwayat_rujukanrs='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Tanggal Rujukan di VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Tanggal Rujukan di VClaim",bpjs_cek_tanggal_rujukan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_tanggal_rujukan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Dokter PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Dokter PCare",pcare_cek_dokter
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_dokter='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Poli PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Poli PCare",pcare_cek_poli
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_poli='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Provider PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Provider PCare",pcare_cek_provider
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_provider='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Stts Pulang PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Stts Pulang PCare",pcare_cek_statuspulang
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_statuspulang='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Spesialis PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Spesialis PCare",pcare_cek_spesialis
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_spesialis='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Subspesialis PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Subspesialis PCare",pcare_cek_subspesialis
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_subspesialis='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Sarana PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Sarana PCare",pcare_cek_sarana
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_sarana='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Khusus PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Khusus PCare",pcare_cek_khusus
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_khusus='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Obat PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Obat PCare",pcare_cek_obat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_obat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Tindakan PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Tindakan PCare",pcare_cek_tindakan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_tindakan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Faskes Subspesialis PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Faskes Subspesialis PCare",pcare_cek_faskessubspesialis
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_faskessubspesialis='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Faskes Alih Rawat PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Faskes Alih Rawat PCare",pcare_cek_faskesalihrawat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_faskesalihrawat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Faskes Thalasemia & Hemofili PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Faskes Thalasemia & Hemofili PCare",pcare_cek_faskesthalasemia
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_faskesthalasemia='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Mapping Obat PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Mapping Obat PCare",pcare_mapping_obat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_mapping_obat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Tarif Ralan RS & PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Tarif Ralan RS & PCare",pcare_mapping_tindakan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_mapping_tindakan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Club Prolanis PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Club Prolanis PCare",pcare_club_prolanis
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_club_prolanis='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Mapping Poli PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Mapping Poli PCare",pcare_mapping_poli
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_mapping_poli='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Kegiatan Kelompok PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Kegiatan Kelompok PCare",pcare_kegiatan_kelompok
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_kegiatan_kelompok='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Tarif Ranap RS & PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Tarif Ranap RS & PCare",pcare_mapping_tindakan_ranap
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_mapping_tindakan_ranap='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Peserta Keg Kelompok PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Peserta Keg Kelompok PCare",pcare_peserta_kegiatan_kelompok
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_peserta_kegiatan_kelompok='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Data Pendafataran PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Data Pendafataran PCare",bridging_pcare_daftar
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bridging_pcare_daftar='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Mapping Dokter PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Mapping Dokter PCare",pcare_mapping_dokter
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_mapping_dokter='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Cek Nomor SEP".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Cek Nomor SEP",bpjs_cek_sep
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_sep='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Faskes Sisrute".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Faskes Sisrute",sisrute_referensi_faskes
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","sisrute_referensi_faskes='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Alasan Rujuk Sisrute".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Alasan Rujuk Sisrute",sisrute_referensi_alasanrujuk
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","sisrute_referensi_alasanrujuk='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Referensi Diagnosa Sisrute".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Referensi Diagnosa Sisrute",sisrute_referensi_diagnosa
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","sisrute_referensi_diagnosa='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Rujukan Masuk Sisrute".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Rujukan Masuk Sisrute",sisrute_rujukan_masuk
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","sisrute_rujukan_masuk='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Rujukan Keluar Sisrute".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Rujukan Keluar Sisrute",sisrute_rujukan_keluar
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","sisrute_rujukan_keluar='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Cek SKDP VClaim".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Cek SKDP VClaim",bpjs_cek_skdp
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_skdp='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Pemberian Obat PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Pemberian Obat PCare",pcare_pemberian_obat
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_pemberian_obat='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Pemberian Tindakan PCare".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Pemberian Tindakan PCare",pcare_pemberian_tindakan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_pemberian_tindakan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[K]Ketersediaan Kamar SIRANAP".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[K]Ketersediaan Kamar SIRANAP",siranap_ketersediaan_kamar
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","siranap_ketersediaan_kamar='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Pasien",pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Pasien Meninggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Pasien Meninggal",pasien_meninggal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pasien_meninggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Kelahiran Bayi".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Kelahiran Bayi",kelahiran_bayi
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","kelahiran_bayi='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Peminjaman Berkas RM".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Peminjaman Berkas RM",peminjaman_berkas
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","peminjaman_berkas='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Riwayat Perawatan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Riwayat Perawatan",resume_pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","resume_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Diagnosa Pasien".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Diagnosa Pasien",diagnosa_pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","diagnosa_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Retensi Data R.M.".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Retensi Data R.M.",retensi_rm
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","retensi_rm='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Mutasi Berkas RM".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Mutasi Berkas RM",mutasi_berkas
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","mutasi_berkas='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Catatan Pasien".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Catatan Pasien",catatan_pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","catatan_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Data HAIs".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Data HAIs",data_HAIs
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","data_HAIs='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Instansi/Perusahaan Pasien".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Instansi/Perusahaan Pasien",perusahaan_pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","perusahaan_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Berkas Digital Perawatan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Berkas Digital Perawatan",berkas_digital_perawatan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","berkas_digital_perawatan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Pengaduan/Chat".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Pengaduan/Chat",pengaduan_pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengaduan_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Insiden Keselamatan Pasien".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Insiden Keselamatan Pasien",insiden_keselamatan_pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","insiden_keselamatan_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Suku/Bangsa Pasien".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Suku/Bangsa Pasien",suku_bangsa
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","suku_bangsa='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Bahasa Pasien".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Bahasa Pasien",bahasa_pasien
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bahasa_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Golongan TNI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Golongan TNI",golongan_tni
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","golongan_tni='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Satuan TNI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Satuan TNI",satuan_tni
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satuan_tni='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Jabatan TNI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Jabatan TNI",jabatan_tni
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","jabatan_tni='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Pangkat TNI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Pangkat TNI",pangkat_tni
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pangkat_tni='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Golongan POLRI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Golongan POLRI",golongan_polri") });
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","golongan_polri='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Satuan POLRI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Satuan POLRI",satuan_polri
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","satuan_polri='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Jabatan POLRI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Jabatan POLRI",jabatan_polri
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","jabatan_polri='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Pangkat POLRI".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Pangkat POLRI",pangkat_polri
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pangkat_polri='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]Cacat Fisik".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]Cacat Fisik",cacat_fisik
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","cacat_fisik='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[L]HAIs Per Kamar/Bangsal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[L]HAIs Per Kamar/Bangsal",hais_perbangsal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hais_perbangsal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Pengambilan BHP Medis",pengambilan_utd2
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengambilan_utd2='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]BHP Medis Rusak".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]BHP Medis Rusak",utd_medis_rusak
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_medis_rusak='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Pengambilan BHP Non Medis".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Pengambilan BHP Non Medis",pengambilan_penunjang_utd2
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengambilan_penunjang_utd2='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]BHP Non Medis Rusak".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]BHP Non Medis Rusak",utd_penunjang_rusak
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_penunjang_rusak='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Donor Darah".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Donor Darah",utd_donor
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_donor='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Cekal Darah".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Cekal Darah",utd_cekal_darah
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_cekal_darah='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Komponen Darah".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Komponen Darah",utd_komponen_darah
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_komponen_darah='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Stok Darah".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Stok Darah",utd_stok_darah
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_stok_darah='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Pemisahan Darah".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Pemisahan Darah",utd_pemisahan_darah
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_pemisahan_darah='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[M]Penyerahan Darah".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[M]Penyerahan Darah",utd_penyerahan_darah
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_penyerahan_darah='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Poli".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Poli",grafik_kunjungan_poli
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_poli='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Dokter".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Dokter",grafik_kunjungan_perdokter
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perdokter='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Pekerjaan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Pekerjaan",grafik_kunjungan_perpekerjaan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perpekerjaan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Pendidikan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Pendidikan",grafik_kunjungan_perpendidikan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perpendidikan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Tahun",grafik_kunjungan_pertahun
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_pertahun='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Bulan",grafik_kunjungan_perbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Reg Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Tanggal",grafik_kunjungan_pertanggal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_pertanggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Demografi Registrasi".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Demografi Registrasi",grafik_kunjungan_demografi
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_demografi='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Reg Lama Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Reg Lama Per Tahun",grafik_kunjungan_statusdaftartahun
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusdaftartahun='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Reg Baru Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Reg Baru Per Tahun",grafik_kunjungan_statusdaftartahun2
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusdaftartahun2='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Reg Lama Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Reg Lama Per Bulan",grafik_kunjungan_statusdaftarbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusdaftarbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Reg Baru Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Reg Baru Per Bulan",grafik_kunjungan_statusdaftarbulan2
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusdaftarbulan2='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Reg Lama Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Reg Lama Per Tanggal",grafik_kunjungan_statusdaftartanggal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusdaftartanggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Reg Baru Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Reg Baru Per Tanggal",grafik_kunjungan_statusdaftartanggal2
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusdaftartanggal2='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Batal Periksa Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Batal Periksa Per Tahun",grafik_kunjungan_statusbataltahun
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusbataltahun='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Batal Periksa Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Batal Periksa Per Bulan",grafik_kunjungan_statusbatalbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusbatalbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Batal Periksa Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Batal Periksa Per Tanggal",grafik_kunjungan_statusbataltanggal
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusbataltanggal='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
-                    if("[N]Kunjungan Reg Per Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Reg Per Cara Bayar",grafik_kunjungan_percarabayar
+                    /*if("[N]Kunjungan Reg Per Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_percarabayar='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Ranap Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Ranap Per Tahun",grafik_kunjungan_ranaptahun
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_ranaptahun='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Lab Ralan Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Lab Ralan Per Tahun",grafik_lab_ralantahun
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_lab_ralantahun='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Rad Ralan Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Rad Ralan Per Tahun",grafik_rad_ralantahun
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_rad_ralantahun='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Per Perujuk".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Per Perujuk",grafik_per_perujuk
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_per_perujuk='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Lab Ralan Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Lab Ralan Per Bulan",grafik_lab_ralanbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_lab_ralanbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Rad Ralan Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Rad Ralan Per Bulan",grafik_rad_ralanbulan
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_rad_ralanbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Lab Ralan Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Lab Ralan Per Tanggal",grafik_lab_ralanhari
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_lab_ralanhari='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kunjungan Rad Ralan Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
-                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","='"+tbUser.getValueAt(i,2).toString()+"'");"[N]Kunjungan Rad Ralan Per Tanggal",grafik_rad_ralanhari
+                        Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_rad_ralanhari='"+tbUser.getValueAt(i,2).toString()+"'");
                     }
                     
                     if("[N]Kejadian IKP Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
