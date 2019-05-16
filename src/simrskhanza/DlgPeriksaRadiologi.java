@@ -122,7 +122,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         }
         tbPemeriksaan.setDefaultRenderer(Object.class, new WarnaTable());
         
-        Object[] row2={"Jumlah","Kode","Nama","Satuan","Harga"};
+        Object[] row2={"Jml","Kode","Nama","Satuan","Harga"};
         
         tabMode2=new DefaultTableModel(null,row2){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
