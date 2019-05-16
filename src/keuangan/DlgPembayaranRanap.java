@@ -298,7 +298,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
 
         panelisi4.setName("panelisi4"); // NOI18N
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
-        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         label11.setText("Tgl.Tagihan :");
         label11.setName("label11"); // NOI18N
@@ -307,7 +307,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
 
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
-        Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi4.add(Tgl1);
 
         label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -318,12 +318,12 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
 
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi4.add(Tgl2);
 
-        label17.setText("Jenis Bayar :");
+        label17.setText("Kamar/Bangsal :");
         label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(75, 23));
+        label17.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi4.add(label17);
 
         kdpenjab.setName("kdpenjab"); // NOI18N

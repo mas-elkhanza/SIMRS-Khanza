@@ -4587,9 +4587,9 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }else{
                                 akses.setkdbangsal(bangsal);
                             }
+                          billing.rawatinap.isCek();
                           billing.rawatinap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                           billing.rawatinap.setLocationRelativeTo(internalFrame1);  
-                          billing.rawatinap.isCek();
                           billing.rawatinap.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),DTPCari2.getDate());   
                           billing.rawatinap.setVisible(true);
                     }else{
@@ -4621,9 +4621,9 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }else{
                 akses.setkdbangsal(bangsal);
             }
+            billing.rawatinap.isCek();
             billing.rawatinap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             billing.rawatinap.setLocationRelativeTo(internalFrame1);  
-            billing.rawatinap.isCek();
             billing.rawatinap.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());   
             billing.rawatinap.setVisible(true);
       } 
