@@ -236,7 +236,6 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         ppTemplate.setText("Template UTD");
         ppTemplate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTemplate.setIconTextGap(5);
         ppTemplate.setName("ppTemplate"); // NOI18N
         ppTemplate.setPreferredSize(new java.awt.Dimension(150, 25));
         ppTemplate.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +252,6 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setIconTextGap(5);
         MnRestore.setName("MnRestore"); // NOI18N
         MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
         MnRestore.addActionListener(new java.awt.event.ActionListener() {

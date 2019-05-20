@@ -308,7 +308,6 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         ppBarcode.setText("Barcode");
         ppBarcode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBarcode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBarcode.setIconTextGap(8);
         ppBarcode.setName("ppBarcode"); // NOI18N
         ppBarcode.setPreferredSize(new java.awt.Dimension(150, 25));
         ppBarcode.addActionListener(new java.awt.event.ActionListener() {

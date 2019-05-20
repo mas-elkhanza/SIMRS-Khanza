@@ -1303,7 +1303,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanTindakanDr.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanTindakanDr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanTindakanDr.setIconTextGap(8);
         ppBersihkanTindakanDr.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanTindakanDr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1319,7 +1318,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaTindakanDr.setText("Pilih Semua");
         ppSemuaTindakanDr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaTindakanDr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaTindakanDr.setIconTextGap(8);
         ppSemuaTindakanDr.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaTindakanDr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1337,7 +1335,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanTindakanDrBayar.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanTindakanDrBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanTindakanDrBayar.setIconTextGap(8);
         ppBersihkanTindakanDrBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanTindakanDrBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1353,7 +1350,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaTindakanDrBayar.setText("Pilih Semua");
         ppSemuaTindakanDrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaTindakanDrBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaTindakanDrBayar.setIconTextGap(8);
         ppSemuaTindakanDrBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaTindakanDrBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1371,7 +1367,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanTindakanPr.setText("Bersihkan Pilihan");
         ppBersihkanTindakanPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanTindakanPr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanTindakanPr.setIconTextGap(8);
         ppBersihkanTindakanPr.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanTindakanPr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1387,7 +1382,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaTindakanPr.setText("Pilih Semua");
         ppSemuaTindakanPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaTindakanPr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaTindakanPr.setIconTextGap(8);
         ppSemuaTindakanPr.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaTindakanPr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1405,7 +1399,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanTindakanPrBayar.setText("Bersihkan Pilihan");
         ppBersihkanTindakanPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanTindakanPrBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanTindakanPrBayar.setIconTextGap(8);
         ppBersihkanTindakanPrBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanTindakanPrBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1421,7 +1414,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaTindakanPrBayar.setText("Pilih Semua");
         ppSemuaTindakanPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaTindakanPrBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaTindakanPrBayar.setIconTextGap(8);
         ppSemuaTindakanPrBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaTindakanPrBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1439,7 +1431,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanTindakanDrPr.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDrPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanTindakanDrPr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanTindakanDrPr.setIconTextGap(8);
         ppBersihkanTindakanDrPr.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanTindakanDrPr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1455,7 +1446,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaTindakanDrPr.setText("Pilih Semua");
         ppSemuaTindakanDrPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaTindakanDrPr.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaTindakanDrPr.setIconTextGap(8);
         ppSemuaTindakanDrPr.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaTindakanDrPr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1473,7 +1463,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanTindakanDrPrBayar.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDrPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanTindakanDrPrBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanTindakanDrPrBayar.setIconTextGap(8);
         ppBersihkanTindakanDrPrBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanTindakanDrPrBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1489,7 +1478,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaTindakanDrPrBayar.setText("Pilih Semua");
         ppSemuaTindakanDrPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaTindakanDrPrBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaTindakanDrPrBayar.setIconTextGap(8);
         ppSemuaTindakanDrPrBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaTindakanDrPrBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1507,7 +1495,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanRadiologi.setText("Bersihkan Pilihan");
         ppBersihkanRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanRadiologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanRadiologi.setIconTextGap(8);
         ppBersihkanRadiologi.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1523,7 +1510,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaRadiologi.setText("Pilih Semua");
         ppSemuaRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaRadiologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaRadiologi.setIconTextGap(8);
         ppSemuaRadiologi.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1541,7 +1527,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanRadiologiBayar.setText("Bersihkan Pilihan");
         ppBersihkanRadiologiBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanRadiologiBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanRadiologiBayar.setIconTextGap(8);
         ppBersihkanRadiologiBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanRadiologiBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1557,7 +1542,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaRadiologiBayar.setText("Pilih Semua");
         ppSemuaRadiologiBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaRadiologiBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaRadiologiBayar.setIconTextGap(8);
         ppSemuaRadiologiBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaRadiologiBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1575,7 +1559,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanLaborat.setText("Bersihkan Pilihan");
         ppBersihkanLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanLaborat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanLaborat.setIconTextGap(8);
         ppBersihkanLaborat.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1591,7 +1574,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaLaborat.setText("Pilih Semua");
         ppSemuaLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaLaborat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaLaborat.setIconTextGap(8);
         ppSemuaLaborat.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1609,7 +1591,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanDetailLaborat.setText("Bersihkan Pilihan");
         ppBersihkanDetailLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanDetailLaborat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanDetailLaborat.setIconTextGap(8);
         ppBersihkanDetailLaborat.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanDetailLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1625,7 +1606,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaDetailLaborat.setText("Pilih Semua");
         ppSemuaDetailLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaDetailLaborat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaDetailLaborat.setIconTextGap(8);
         ppSemuaDetailLaborat.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaDetailLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1643,7 +1623,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanLaboratBayar.setText("Bersihkan Pilihan");
         ppBersihkanLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanLaboratBayar.setIconTextGap(8);
         ppBersihkanLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1659,7 +1638,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaLaboratBayar.setText("Pilih Semua");
         ppSemuaLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaLaboratBayar.setIconTextGap(8);
         ppSemuaLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1677,7 +1655,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanDetailLaboratBayar.setText("Bersihkan Pilihan");
         ppBersihkanDetailLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanDetailLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanDetailLaboratBayar.setIconTextGap(8);
         ppBersihkanDetailLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanDetailLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1693,7 +1670,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaDetailLaboratBayar.setText("Pilih Semua");
         ppSemuaDetailLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaDetailLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaDetailLaboratBayar.setIconTextGap(8);
         ppSemuaDetailLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaDetailLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1711,7 +1687,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanObat.setText("Bersihkan Pilihan");
         ppBersihkanObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanObat.setIconTextGap(8);
         ppBersihkanObat.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1727,7 +1702,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaObat.setText("Pilih Semua");
         ppSemuaObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaObat.setIconTextGap(8);
         ppSemuaObat.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1745,7 +1719,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppBersihkanObatBayar.setText("Bersihkan Pilihan");
         ppBersihkanObatBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkanObatBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkanObatBayar.setIconTextGap(8);
         ppBersihkanObatBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppBersihkanObatBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1761,7 +1734,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ppSemuaObatBayar.setText("Pilih Semua");
         ppSemuaObatBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemuaObatBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemuaObatBayar.setIconTextGap(8);
         ppSemuaObatBayar.setPreferredSize(new java.awt.Dimension(160, 25));
         ppSemuaObatBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1828,7 +1800,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 07:21:04" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019 16:59:22" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));

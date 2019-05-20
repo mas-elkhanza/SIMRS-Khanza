@@ -371,7 +371,6 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         ppPeserta.setText("Masukkan Daftar Peserta Kegiatan");
         ppPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPeserta.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPeserta.setIconTextGap(8);
         ppPeserta.setName("ppPeserta"); // NOI18N
         ppPeserta.setPreferredSize(new java.awt.Dimension(250, 25));
         ppPeserta.addActionListener(new java.awt.event.ActionListener() {
@@ -667,7 +666,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -681,7 +680,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -804,7 +803,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         jLabel22.setBounds(526, 10, 90, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);

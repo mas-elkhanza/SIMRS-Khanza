@@ -309,7 +309,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         ppHapus.setText("Hapus Data Surat Pemesanan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(165, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +325,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         ppDatang.setText("Sudah Datang");
         ppDatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDatang.setIconTextGap(5);
         ppDatang.setName("ppDatang"); // NOI18N
         ppDatang.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDatang.addActionListener(new java.awt.event.ActionListener() {
@@ -343,7 +341,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         ppProses.setText("Proses Pesan");
         ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppProses.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppProses.setIconTextGap(5);
         ppProses.setName("ppProses"); // NOI18N
         ppProses.setPreferredSize(new java.awt.Dimension(200, 25));
         ppProses.addActionListener(new java.awt.event.ActionListener() {
@@ -381,7 +378,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);

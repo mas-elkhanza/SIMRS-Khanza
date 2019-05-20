@@ -7791,7 +7791,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="16/05/2019"/>
+            <StringItem index="0" value="18/05/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -7899,11 +7899,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu1" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 28]"/>
+              <Dimension value="[82, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -7922,7 +7921,6 @@
                   <Image iconType="3" name="/picture/login2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Log In"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnLogin" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -7948,7 +7946,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ubah Password"/>
                 <Property name="enabled" type="boolean" value="false"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnGantiPassword" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -7994,7 +7991,6 @@
                   <Image iconType="3" name="/picture/Delete.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Keluar"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MenuKeluar" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -8026,11 +8022,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu5" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[127, 28]"/>
+              <Dimension value="[129, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -8049,7 +8044,6 @@
                   <Image iconType="3" name="/picture/female-user-search24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Presensi Pegawai"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnBelumDatang1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -8074,7 +8068,6 @@
                   <Image iconType="3" name="/picture/couple24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Belum Datang"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnBelumDatang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -8099,7 +8092,6 @@
                   <Image iconType="3" name="/picture/addressbook-remove24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sudah Pulang"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -8124,7 +8116,6 @@
                   <Image iconType="3" name="/picture/Doctor.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rekap Bulanan"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -8149,7 +8140,6 @@
                   <Image iconType="3" name="/picture/addressbook-search24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rekap Kehadiran"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[170, 30]"/>
@@ -8181,11 +8171,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu6" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[89, 28]"/>
+              <Dimension value="[91, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -8204,7 +8193,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pasien Kamar Inap"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8229,7 +8217,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Telusur Kunjungan Pasien"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8254,7 +8241,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Penggunaan Kamar Inap"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulanan2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8300,7 +8286,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Kamar"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8325,7 +8310,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Laboratorium"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8350,7 +8334,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Radiologi"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang6" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8375,7 +8358,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Operasi &amp; VK"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8400,7 +8382,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Rawat Jalan"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8425,7 +8406,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Rawat Inap"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnSudahPulang5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8471,7 +8451,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jadwal Praktek Dokter"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8496,7 +8475,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard Info Bed 1"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8521,7 +8499,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard Info Bed 2"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8546,7 +8523,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard Info Jadwal Dokter"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8571,7 +8547,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard Info Bed &amp; Jadwal Dokter"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8596,7 +8571,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard Register Poli"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8621,7 +8595,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard Jadwal Operasi"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnInfoBed5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8667,7 +8640,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Koleksi Penelitian"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnKoleksiPenelitian" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8692,7 +8664,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cari Koleksi Ebook"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnCariEbook" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8717,7 +8688,6 @@
                   <Image iconType="3" name="/picture/Preview.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cari Inventaris Perpustakaan"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnCariInventarisPerpustakaan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 30]"/>
@@ -8749,11 +8719,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu7" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[138, 28]"/>
+              <Dimension value="[140, 28]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -8772,7 +8741,6 @@
                   <Image iconType="3" name="/picture/family24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Anjungan Registrasi Mandiri"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnAnjungan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[210, 30]"/>
@@ -8818,7 +8786,6 @@
                   <Image iconType="3" name="/picture/Create-Ticket24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Antrian Loket"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir3" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[210, 30]"/>
@@ -8843,7 +8810,6 @@
                   <Image iconType="3" name="/picture/Create-Ticket24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Antrian Unit/Poliklinik"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir4" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[210, 30]"/>
@@ -8868,7 +8834,6 @@
                   <Image iconType="3" name="/picture/Create-Ticket24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Antrian Apotek"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir5" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[210, 30]"/>
@@ -8914,7 +8879,6 @@
                   <Image iconType="3" name="/picture/PatientFile.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Verifikasi Digital Klaim"/>
-                <Property name="iconTextGap" type="int" value="6"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHadir6" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[210, 30]"/>
@@ -8946,11 +8910,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu4" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[124, 28]"/>
+              <Dimension value="[126, 28]"/>
             </Property>
           </Properties>
           <Events>

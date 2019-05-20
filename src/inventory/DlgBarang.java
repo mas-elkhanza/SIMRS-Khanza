@@ -562,7 +562,6 @@ public class DlgBarang extends javax.swing.JDialog {
         ppBarcode.setText("Barcode");
         ppBarcode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBarcode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBarcode.setIconTextGap(8);
         ppBarcode.setName("ppBarcode"); // NOI18N
         ppBarcode.setPreferredSize(new java.awt.Dimension(200, 26));
         ppBarcode.addActionListener(new java.awt.event.ActionListener() {
@@ -579,7 +578,6 @@ public class DlgBarang extends javax.swing.JDialog {
         ppBarcodeItem.setText("Barcode Perbarang");
         ppBarcodeItem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBarcodeItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBarcodeItem.setIconTextGap(8);
         ppBarcodeItem.setName("ppBarcodeItem"); // NOI18N
         ppBarcodeItem.setPreferredSize(new java.awt.Dimension(200, 26));
         ppBarcodeItem.addActionListener(new java.awt.event.ActionListener() {
@@ -596,7 +594,6 @@ public class DlgBarang extends javax.swing.JDialog {
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppStok.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppStok.setIconTextGap(8);
         ppStok.setName("ppStok"); // NOI18N
         ppStok.setPreferredSize(new java.awt.Dimension(200, 26));
         ppStok.addActionListener(new java.awt.event.ActionListener() {
@@ -613,7 +610,6 @@ public class DlgBarang extends javax.swing.JDialog {
         ppStok2.setText("Tampilkan Stok Per Lokasi");
         ppStok2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppStok2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppStok2.setIconTextGap(8);
         ppStok2.setName("ppStok2"); // NOI18N
         ppStok2.setPreferredSize(new java.awt.Dimension(200, 26));
         ppStok2.addActionListener(new java.awt.event.ActionListener() {
@@ -630,7 +626,6 @@ public class DlgBarang extends javax.swing.JDialog {
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setIconTextGap(8);
         MnRestore.setName("MnRestore"); // NOI18N
         MnRestore.setPreferredSize(new java.awt.Dimension(200, 26));
         MnRestore.addActionListener(new java.awt.event.ActionListener() {
@@ -1333,7 +1328,7 @@ public class DlgBarang extends javax.swing.JDialog {
         karyawan.setBounds(660, 192, 110, 23);
 
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);

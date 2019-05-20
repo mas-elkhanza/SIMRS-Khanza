@@ -253,7 +253,6 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        Tabel.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Tabel.setName("Tabel"); // NOI18N
         Scroll.setViewportView(Tabel);
 

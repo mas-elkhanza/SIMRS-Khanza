@@ -211,7 +211,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         ppTampilkanSeleksi.setText("Tampilkan Per Jenis Bayar");
         ppTampilkanSeleksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanSeleksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanSeleksi.setIconTextGap(5);
         ppTampilkanSeleksi.setName("ppTampilkanSeleksi"); // NOI18N
         ppTampilkanSeleksi.setPreferredSize(new java.awt.Dimension(360, 25));
         ppTampilkanSeleksi.addActionListener(new java.awt.event.ActionListener() {
@@ -228,7 +227,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         ppTampilkanRanapGabung.setText("Tampilkan Per Ranap Gabung (Ibu Harus Ada Tindakan Ranap)");
         ppTampilkanRanapGabung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanRanapGabung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanRanapGabung.setIconTextGap(5);
         ppTampilkanRanapGabung.setName("ppTampilkanRanapGabung"); // NOI18N
         ppTampilkanRanapGabung.setPreferredSize(new java.awt.Dimension(360, 25));
         ppTampilkanRanapGabung.addActionListener(new java.awt.event.ActionListener() {

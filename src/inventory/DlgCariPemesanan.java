@@ -355,7 +355,6 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         ppHapus.setText("Hapus Data Penerimaan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(195, 26));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -372,7 +371,6 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         ppBayar.setText("Bayar Tagihan");
         ppBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBayar.setIconTextGap(8);
         ppBayar.setName("ppBayar"); // NOI18N
         ppBayar.setPreferredSize(new java.awt.Dimension(195, 26));
         ppBayar.addActionListener(new java.awt.event.ActionListener() {
@@ -389,7 +387,6 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         ppUbah.setText("Ubah Penerimaan");
         ppUbah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUbah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUbah.setIconTextGap(8);
         ppUbah.setName("ppUbah"); // NOI18N
         ppUbah.setPreferredSize(new java.awt.Dimension(195, 26));
         ppUbah.addActionListener(new java.awt.event.ActionListener() {

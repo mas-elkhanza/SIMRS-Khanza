@@ -322,7 +322,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         ppNotaPiutang.setText("Nota Bayar Piutang");
         ppNotaPiutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppNotaPiutang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppNotaPiutang.setIconTextGap(8);
         ppNotaPiutang.setName("ppNotaPiutang"); // NOI18N
         ppNotaPiutang.setPreferredSize(new java.awt.Dimension(160, 25));
         ppNotaPiutang.addActionListener(new java.awt.event.ActionListener() {
@@ -353,7 +352,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {

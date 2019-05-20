@@ -286,7 +286,6 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbTemporary.setAutoCreateRowSorter(true);
-        tbTemporary.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTemporary.setComponentPopupMenu(Popup2);
         tbTemporary.setName("tbTemporary"); // NOI18N
         Scroll.setViewportView(tbTemporary);

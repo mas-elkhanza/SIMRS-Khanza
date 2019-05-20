@@ -243,7 +243,6 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         ppHapus.setText("Hapus Permintaan Barang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(200, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +259,6 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         ppDisetujui.setText("Disetujui");
         ppDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDisetujui.setIconTextGap(5);
         ppDisetujui.setName("ppDisetujui"); // NOI18N
         ppDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDisetujui.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +275,6 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         ppTidakDisetujui.setText("Tidak Disetujui");
         ppTidakDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTidakDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTidakDisetujui.setIconTextGap(5);
         ppTidakDisetujui.setName("ppTidakDisetujui"); // NOI18N
         ppTidakDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
         ppTidakDisetujui.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +312,6 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);

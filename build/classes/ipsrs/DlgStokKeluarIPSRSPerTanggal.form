@@ -71,7 +71,6 @@
           <SubComponents>
             <Component class="widget.Table" name="tbJadwal">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                 <Property name="name" type="java.lang.String" value="tbJadwal" noResource="true"/>
               </Properties>
               <Events>

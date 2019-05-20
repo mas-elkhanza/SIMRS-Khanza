@@ -341,7 +341,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ppResepObat.setText("Cetak Aturan Pakai Model 1");
         ppResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppResepObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppResepObat.setIconTextGap(8);
         ppResepObat.setName("ppResepObat"); // NOI18N
         ppResepObat.setPreferredSize(new java.awt.Dimension(225, 25));
         ppResepObat.addActionListener(new java.awt.event.ActionListener() {
@@ -358,7 +357,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ppResepObat1.setText("Cetak Aturan Pakai Model 2");
         ppResepObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppResepObat1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppResepObat1.setIconTextGap(8);
         ppResepObat1.setName("ppResepObat1"); // NOI18N
         ppResepObat1.setPreferredSize(new java.awt.Dimension(225, 25));
         ppResepObat1.addActionListener(new java.awt.event.ActionListener() {
@@ -375,7 +373,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ppResepObat2.setText("Cetak Aturan Pakai Model 3");
         ppResepObat2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppResepObat2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppResepObat2.setIconTextGap(8);
         ppResepObat2.setName("ppResepObat2"); // NOI18N
         ppResepObat2.setPreferredSize(new java.awt.Dimension(225, 25));
         ppResepObat2.addActionListener(new java.awt.event.ActionListener() {
@@ -392,7 +389,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ppLembarObat.setText("Lembar Pemberian Obat");
         ppLembarObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppLembarObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppLembarObat.setIconTextGap(8);
         ppLembarObat.setName("ppLembarObat"); // NOI18N
         ppLembarObat.setPreferredSize(new java.awt.Dimension(225, 25));
         ppLembarObat.addActionListener(new java.awt.event.ActionListener() {
@@ -409,7 +405,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ppUbahAturanPakai.setText("Ubah Aturan Pakai Obat Umum");
         ppUbahAturanPakai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUbahAturanPakai.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUbahAturanPakai.setIconTextGap(8);
         ppUbahAturanPakai.setName("ppUbahAturanPakai"); // NOI18N
         ppUbahAturanPakai.setPreferredSize(new java.awt.Dimension(225, 25));
         ppUbahAturanPakai.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +421,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
         ppUbahAturanPakai1.setText("Ubah Aturan Pakai Obat Racikan");
         ppUbahAturanPakai1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUbahAturanPakai1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUbahAturanPakai1.setIconTextGap(8);
         ppUbahAturanPakai1.setName("ppUbahAturanPakai1"); // NOI18N
         ppUbahAturanPakai1.setPreferredSize(new java.awt.Dimension(225, 25));
         ppUbahAturanPakai1.addActionListener(new java.awt.event.ActionListener() {
@@ -773,7 +767,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -787,7 +781,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -917,7 +911,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         jLabel8.setBounds(0, 42, 95, 23);
 
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);

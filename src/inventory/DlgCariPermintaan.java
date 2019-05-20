@@ -281,7 +281,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppHapus.setText("Hapus Permintaan Barang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(200, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +297,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppDisetujui.setText("Disetujui ( Mutasi )");
         ppDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDisetujui.setIconTextGap(5);
         ppDisetujui.setName("ppDisetujui"); // NOI18N
         ppDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDisetujui.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +313,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppDisetujui1.setText("Disetujui ( Stok Keluar )");
         ppDisetujui1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDisetujui1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDisetujui1.setIconTextGap(5);
         ppDisetujui1.setName("ppDisetujui1"); // NOI18N
         ppDisetujui1.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDisetujui1.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +329,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppTidakDisetujui.setText("Tidak Disetujui");
         ppTidakDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTidakDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTidakDisetujui.setIconTextGap(5);
         ppTidakDisetujui.setName("ppTidakDisetujui"); // NOI18N
         ppTidakDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
         ppTidakDisetujui.addActionListener(new java.awt.event.ActionListener() {

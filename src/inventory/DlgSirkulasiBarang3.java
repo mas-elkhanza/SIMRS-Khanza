@@ -297,7 +297,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikJualBanyak.setText("Grafik 10 Barang Penjualan Terbanyak");
         ppGrafikJualBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikJualBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikJualBanyak.setIconTextGap(8);
         ppGrafikJualBanyak.setName("ppGrafikJualBanyak"); // NOI18N
         ppGrafikJualBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikJualBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -314,7 +313,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikJualDikit.setText("Grafik 10 Barang Penjualan Tersedikit");
         ppGrafikJualDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikJualDikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikJualDikit.setIconTextGap(8);
         ppGrafikJualDikit.setName("ppGrafikJualDikit"); // NOI18N
         ppGrafikJualDikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikJualDikit.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +329,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikbeliBanyak.setText("Grafik 10 Barang Pembelian Terbanyak");
         ppGrafikbeliBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikbeliBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikbeliBanyak.setIconTextGap(8);
         ppGrafikbeliBanyak.setName("ppGrafikbeliBanyak"); // NOI18N
         ppGrafikbeliBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikbeliBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +345,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikbelidikit.setText("Grafik 10 Barang Pembelian Tersedikit");
         ppGrafikbelidikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikbelidikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikbelidikit.setIconTextGap(8);
         ppGrafikbelidikit.setName("ppGrafikbelidikit"); // NOI18N
         ppGrafikbelidikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikbelidikit.addActionListener(new java.awt.event.ActionListener() {
@@ -365,7 +361,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikPiutangBanyak.setText("Grafik 10 Barang Piutang Terbanyak");
         ppGrafikPiutangBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPiutangBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikPiutangBanyak.setIconTextGap(8);
         ppGrafikPiutangBanyak.setName("ppGrafikPiutangBanyak"); // NOI18N
         ppGrafikPiutangBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikPiutangBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -382,7 +377,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikPiutangDikit.setText("Grafik 10 Barang Piutang Tersedikit");
         ppGrafikPiutangDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPiutangDikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikPiutangDikit.setIconTextGap(8);
         ppGrafikPiutangDikit.setName("ppGrafikPiutangDikit"); // NOI18N
         ppGrafikPiutangDikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikPiutangDikit.addActionListener(new java.awt.event.ActionListener() {
@@ -399,7 +393,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikResepPaliingBanyak.setText("Grafik 10 Barang Resep Ke Pasien Terbanyak");
         ppGrafikResepPaliingBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikResepPaliingBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikResepPaliingBanyak.setIconTextGap(8);
         ppGrafikResepPaliingBanyak.setName("ppGrafikResepPaliingBanyak"); // NOI18N
         ppGrafikResepPaliingBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikResepPaliingBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -416,7 +409,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppGrafikResepPaliingSedikit.setText("Grafik 10 Barang Resep Ke Pasien Tersedikit");
         ppGrafikResepPaliingSedikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikResepPaliingSedikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikResepPaliingSedikit.setIconTextGap(8);
         ppGrafikResepPaliingSedikit.setName("ppGrafikResepPaliingSedikit"); // NOI18N
         ppGrafikResepPaliingSedikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikResepPaliingSedikit.addActionListener(new java.awt.event.ActionListener() {
@@ -433,7 +425,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         ppLokasi.setText("Tampilkan Per Lokasi");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppLokasi.setIconTextGap(8);
         ppLokasi.setName("ppLokasi"); // NOI18N
         ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
         ppLokasi.addActionListener(new java.awt.event.ActionListener() {
@@ -471,7 +462,6 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);

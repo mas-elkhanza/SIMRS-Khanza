@@ -371,7 +371,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppBersihkan.setText("Hilangkan Centang/Tindakan Terpilih");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setIconTextGap(8);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
         ppBersihkan.setPreferredSize(new java.awt.Dimension(250, 25));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
@@ -388,7 +387,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppDokter.setText("Ubah Ke Tindakan Dokter");
         ppDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDokter.setIconTextGap(8);
         ppDokter.setName("ppDokter"); // NOI18N
         ppDokter.setPreferredSize(new java.awt.Dimension(250, 25));
         ppDokter.addActionListener(new java.awt.event.ActionListener() {
@@ -405,7 +403,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppPetugas.setText("Ubah Ke Tindakan Petugas");
         ppPetugas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPetugas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPetugas.setIconTextGap(8);
         ppPetugas.setName("ppPetugas"); // NOI18N
         ppPetugas.setPreferredSize(new java.awt.Dimension(250, 25));
         ppPetugas.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +419,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppPetugasDokter.setText("Ubah Ke Tindakan Dokter & Petugas");
         ppPetugasDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPetugasDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPetugasDokter.setIconTextGap(8);
         ppPetugasDokter.setName("ppPetugasDokter"); // NOI18N
         ppPetugasDokter.setPreferredSize(new java.awt.Dimension(250, 25));
         ppPetugasDokter.addActionListener(new java.awt.event.ActionListener() {
@@ -690,7 +686,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
