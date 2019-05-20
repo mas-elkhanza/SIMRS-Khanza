@@ -148,7 +148,6 @@ public final class DlgLhtCatatanPasien extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanPasien.setBackground(new java.awt.Color(255, 255, 255));
         MnCatatanPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCatatanPasien.setForeground(java.awt.Color.darkGray);
         MnCatatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -179,7 +178,6 @@ public final class DlgLhtCatatanPasien extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {

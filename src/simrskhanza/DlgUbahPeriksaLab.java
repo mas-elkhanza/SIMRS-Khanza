@@ -374,7 +374,6 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         ppBersihkan.setText("Bersihkan Pilihan");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setIconTextGap(8);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
         ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
@@ -391,7 +390,6 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         ppSemua.setText("Pilih Semua");
         ppSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSemua.setIconTextGap(8);
         ppSemua.setName("ppSemua"); // NOI18N
         ppSemua.setPreferredSize(new java.awt.Dimension(200, 25));
         ppSemua.addActionListener(new java.awt.event.ActionListener() {
@@ -587,7 +585,6 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll1.setName("Scroll1"); // NOI18N
 
-        tbTarif.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTarif.setName("tbTarif"); // NOI18N
         tbTarif.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -686,7 +683,6 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPemeriksaan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPemeriksaan.setName("tbPemeriksaan"); // NOI18N
         Scroll.setViewportView(tbPemeriksaan);
 

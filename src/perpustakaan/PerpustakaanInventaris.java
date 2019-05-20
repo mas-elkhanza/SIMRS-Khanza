@@ -309,7 +309,6 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         ppBarcode.setText("Barcode");
         ppBarcode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBarcode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBarcode.setIconTextGap(8);
         ppBarcode.setName("ppBarcode"); // NOI18N
         ppBarcode.setPreferredSize(new java.awt.Dimension(150, 25));
         ppBarcode.addActionListener(new java.awt.event.ActionListener() {
@@ -636,7 +635,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         FormInput.add(btnBarang);
         btnBarang.setBounds(495, 40, 25, 23);
 
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2019" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2019" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);

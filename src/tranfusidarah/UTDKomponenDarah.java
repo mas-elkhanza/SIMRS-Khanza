@@ -112,10 +112,6 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppGanti = new javax.swing.JMenuItem();
-        ppHapus = new javax.swing.JMenuItem();
-        ppCetak = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
@@ -156,59 +152,6 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         label20 = new widget.Label();
         Pembatalan = new widget.TextBox();
         ChkInput = new widget.CekBox();
-
-        Popup.setName("Popup"); // NOI18N
-
-        ppGanti.setBackground(new java.awt.Color(255, 255, 254));
-        ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(70, 70, 70));
-        ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        ppGanti.setText("Ganti");
-        ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppGanti.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGanti.setIconTextGap(8);
-        ppGanti.setName("ppGanti"); // NOI18N
-        ppGanti.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppGanti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        Popup.add(ppGanti);
-
-        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
-        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
-        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        ppHapus.setText("Hapus");
-        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
-        ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        Popup.add(ppHapus);
-
-        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
-        ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
-        ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        ppCetak.setText("Cetak");
-        ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
-        ppCetak.setName("ppCetak"); // NOI18N
-        ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppCetak);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -410,7 +353,6 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
-        scrollPane1.setComponentPopupMenu(Popup);
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -427,7 +369,6 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             }
         ));
         tbKomponen.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKomponen.setComponentPopupMenu(Popup);
         tbKomponen.setName("tbKomponen"); // NOI18N
         tbKomponen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -960,7 +901,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox PaketBHP;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pembatalan;
-    private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
     private widget.TextBox Total;
     private widget.InternalFrame internalFrame1;
@@ -979,9 +919,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
-    private javax.swing.JMenuItem ppCetak;
-    private javax.swing.JMenuItem ppGanti;
-    private javax.swing.JMenuItem ppHapus;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbKomponen;
     // End of variables declaration//GEN-END:variables
@@ -1055,10 +992,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnHapus.setEnabled(akses.getutd_komponen_darah());
         BtnEdit.setEnabled(akses.getutd_komponen_darah());
         BtnPrint.setEnabled(akses.getutd_komponen_darah());
-        
-        ppGanti.setEnabled(akses.getutd_komponen_darah());        
-        ppHapus.setEnabled(akses.getutd_komponen_darah());
-        ppCetak.setEnabled(akses.getutd_komponen_darah());
     }
     
     private void isForm(){

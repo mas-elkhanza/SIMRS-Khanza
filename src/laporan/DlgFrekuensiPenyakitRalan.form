@@ -36,7 +36,6 @@
             <Property name="text" type="java.lang.String" value="Grafik Batang 10 Penyakit Terbanyak"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerbanyakBatang" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[300, 25]"/>
@@ -63,7 +62,6 @@
             <Property name="text" type="java.lang.String" value="Grafik Pie 10 Penyakit Terbanyak"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerbanyakPie" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[300, 25]"/>
@@ -90,7 +88,6 @@
             <Property name="text" type="java.lang.String" value="Grafik Batang 10 Penyakit Tersedikit"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerkecilBatang" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[300, 25]"/>
@@ -117,7 +114,6 @@
             <Property name="text" type="java.lang.String" value="Grafik Pie 10 Penyakit Tersedikit"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="8"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerkecilPie" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[300, 25]"/>

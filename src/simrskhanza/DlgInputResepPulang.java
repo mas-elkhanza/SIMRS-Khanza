@@ -164,7 +164,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppOrder.setIconTextGap(8);
         ppOrder.setName("ppOrder"); // NOI18N
         ppOrder.setPreferredSize(new java.awt.Dimension(200, 25));
 
@@ -174,7 +173,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrderKode.setText("Kode Obat");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppOrderKode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppOrderKode.setIconTextGap(8);
         ppOrderKode.setName("ppOrderKode"); // NOI18N
         ppOrderKode.setPreferredSize(new java.awt.Dimension(200, 25));
         ppOrderKode.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +188,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrderNama.setText("Nama Obat");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppOrderNama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppOrderNama.setIconTextGap(8);
         ppOrderNama.setName("ppOrderNama"); // NOI18N
         ppOrderNama.setPreferredSize(new java.awt.Dimension(200, 25));
         ppOrderNama.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +205,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setIconTextGap(8);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
         ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +220,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppHapusObat.setText("Hapus Obat Terpilih");
         ppHapusObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusObat.setIconTextGap(8);
         ppHapusObat.setName("ppHapusObat"); // NOI18N
         ppHapusObat.setPreferredSize(new java.awt.Dimension(200, 25));
         ppHapusObat.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +274,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {

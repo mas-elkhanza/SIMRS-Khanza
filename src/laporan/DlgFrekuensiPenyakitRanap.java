@@ -430,7 +430,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerbanyakBatang.setText("Grafik Batang 10 Penyakit Terbanyak");
         ppGrafikTerbanyakBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerbanyakBatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerbanyakBatang.setIconTextGap(8);
         ppGrafikTerbanyakBatang.setName("ppGrafikTerbanyakBatang"); // NOI18N
         ppGrafikTerbanyakBatang.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikTerbanyakBatang.addActionListener(new java.awt.event.ActionListener() {
@@ -447,7 +446,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerbanyakPie.setText("Grafik Pie 10 Penyakit Terbanyak");
         ppGrafikTerbanyakPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerbanyakPie.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerbanyakPie.setIconTextGap(8);
         ppGrafikTerbanyakPie.setName("ppGrafikTerbanyakPie"); // NOI18N
         ppGrafikTerbanyakPie.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikTerbanyakPie.addActionListener(new java.awt.event.ActionListener() {
@@ -464,7 +462,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerkecilBatang.setText("Grafik Batang 10 Penyakit Tersedikit");
         ppGrafikTerkecilBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerkecilBatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerkecilBatang.setIconTextGap(8);
         ppGrafikTerkecilBatang.setName("ppGrafikTerkecilBatang"); // NOI18N
         ppGrafikTerkecilBatang.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikTerkecilBatang.addActionListener(new java.awt.event.ActionListener() {
@@ -481,7 +478,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerkecilPie.setText("Grafik Pie 10 Penyakit Tersedikit");
         ppGrafikTerkecilPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerkecilPie.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikTerkecilPie.setIconTextGap(8);
         ppGrafikTerkecilPie.setName("ppGrafikTerkecilPie"); // NOI18N
         ppGrafikTerkecilPie.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikTerkecilPie.addActionListener(new java.awt.event.ActionListener() {
@@ -649,7 +645,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -673,7 +668,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter2.setComponentPopupMenu(jPopupMenu1);
         tbDokter2.setName("tbDokter2"); // NOI18N
         scrollPane2.setViewportView(tbDokter2);

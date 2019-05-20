@@ -299,7 +299,6 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll3 = new widget.ScrollPane();
         tbTindakanPasien = new widget.Table();
 
-        MnStatusBaru.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnStatusBaru.setForeground(new java.awt.Color(70, 70, 70));
         MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -314,7 +313,6 @@ public class PanelDiagnosa extends widget.panelisi {
         });
         jPopupMenu1.add(MnStatusBaru);
 
-        MnStatusLama.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnStatusLama.setForeground(new java.awt.Color(70, 70, 70));
         MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -333,7 +331,6 @@ public class PanelDiagnosa extends widget.panelisi {
         setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
         TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -387,8 +384,6 @@ public class PanelDiagnosa extends widget.panelisi {
 
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll1.setOpaque(true);
-
-        tbDiagnosa.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Scroll1.setViewportView(tbDiagnosa);
 
         FormData.add(Scroll1);
@@ -450,8 +445,6 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll.setOpaque(true);
 
         tbDiagnosaPasien.setAutoCreateRowSorter(true);
-        tbDiagnosaPasien.setBorder(null);
-        tbDiagnosaPasien.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDiagnosaPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll.setViewportView(tbDiagnosaPasien);
 
@@ -466,8 +459,6 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll3.setOpaque(true);
 
         tbTindakanPasien.setAutoCreateRowSorter(true);
-        tbTindakanPasien.setBorder(null);
-        tbTindakanPasien.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTindakanPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll3.setViewportView(tbTindakanPasien);
 

@@ -493,7 +493,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 21:45:50" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2019 16:40:22" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -811,7 +811,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRalan.setComponentPopupMenu(jPopupMenu1);
         tbRadiologiRalan.setName("tbRadiologiRalan"); // NOI18N
         tbRadiologiRalan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -843,7 +842,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRalan2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRalan2.setName("tbRadiologiRalan2"); // NOI18N
         tbRadiologiRalan2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -943,7 +941,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRanap.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRanap.setComponentPopupMenu(jPopupMenu1);
         tbRadiologiRanap.setName("tbRadiologiRanap"); // NOI18N
         tbRadiologiRanap.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -975,7 +972,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRanap2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRanap2.setName("tbRadiologiRanap2"); // NOI18N
         tbRadiologiRanap2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

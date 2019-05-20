@@ -589,7 +589,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         label32.setBounds(220, 12, 57, 23);
 
         Tanggal.setEditable(false);
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -783,7 +783,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         ppTampilkanBHPMedis.setText("Tampilkan Penggunaan BHP Medis");
         ppTampilkanBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPMedis.setIconTextGap(8);
         ppTampilkanBHPMedis.setName("ppTampilkanBHPMedis"); // NOI18N
         ppTampilkanBHPMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -800,7 +799,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         ppTampilkanBHPPenunjang.setText("Tampilkan Penggunaan BHP Non Medis");
         ppTampilkanBHPPenunjang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPPenunjang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPPenunjang.setIconTextGap(8);
         ppTampilkanBHPPenunjang.setName("ppTampilkanBHPPenunjang"); // NOI18N
         ppTampilkanBHPPenunjang.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPPenunjang.addActionListener(new java.awt.event.ActionListener() {
@@ -817,7 +815,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         ppTampilkanBHPPenunjangDanMedis.setText("Tampilkan Penggunaan BHP Medis & Non Medis");
         ppTampilkanBHPPenunjangDanMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPPenunjangDanMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPPenunjangDanMedis.setIconTextGap(8);
         ppTampilkanBHPPenunjangDanMedis.setName("ppTampilkanBHPPenunjangDanMedis"); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPPenunjangDanMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -834,7 +831,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         ppHapusBHPMedis.setText("Hapus Penggunaan BHP Medis");
         ppHapusBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPMedis.setIconTextGap(8);
         ppHapusBHPMedis.setName("ppHapusBHPMedis"); // NOI18N
         ppHapusBHPMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -851,7 +847,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         ppHapusBHPNonMedis.setText("Hapus Penggunaan BHP Non Medis");
         ppHapusBHPNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPNonMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPNonMedis.setIconTextGap(8);
         ppHapusBHPNonMedis.setName("ppHapusBHPNonMedis"); // NOI18N
         ppHapusBHPNonMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPNonMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -868,7 +863,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         ppHapusBHPMedisDanNonMedis.setText("Hapus Penggunaan BHP Medis & Non Medis");
         ppHapusBHPMedisDanNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPMedisDanNonMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPMedisDanNonMedis.setIconTextGap(8);
         ppHapusBHPMedisDanNonMedis.setName("ppHapusBHPMedisDanNonMedis"); // NOI18N
         ppHapusBHPMedisDanNonMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPMedisDanNonMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -885,7 +879,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         ppHapusPemisahan.setText("Hapus Pemisahan Komponen");
         ppHapusPemisahan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusPemisahan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusPemisahan.setIconTextGap(8);
         ppHapusPemisahan.setName("ppHapusPemisahan"); // NOI18N
         ppHapusPemisahan.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusPemisahan.addActionListener(new java.awt.event.ActionListener() {
@@ -924,7 +917,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2019" }));
         TanggalCari1.setDisplayFormat("dd-MM-yyyy");
         TanggalCari1.setName("TanggalCari1"); // NOI18N
         TanggalCari1.setOpaque(false);
@@ -938,7 +931,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2019" }));
         TanggalCari2.setDisplayFormat("dd-MM-yyyy");
         TanggalCari2.setName("TanggalCari2"); // NOI18N
         TanggalCari2.setOpaque(false);
@@ -1085,7 +1078,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbPemisahan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPemisahan.setComponentPopupMenu(jPopupMenu1);
         tbPemisahan.setName("tbPemisahan"); // NOI18N
         tbPemisahan.addMouseListener(new java.awt.event.MouseAdapter() {

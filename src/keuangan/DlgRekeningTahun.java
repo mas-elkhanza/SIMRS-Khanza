@@ -185,11 +185,6 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppSimpan = new javax.swing.JMenuItem();
-        ppGanti = new javax.swing.JMenuItem();
-        ppHapus = new javax.swing.JMenuItem();
-        ppCetak = new javax.swing.JMenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -223,76 +218,6 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
-        Popup.setName("Popup"); // NOI18N
-
-        ppSimpan.setBackground(new java.awt.Color(255, 255, 254));
-        ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppSimpan.setForeground(new java.awt.Color(70, 70, 70));
-        ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        ppSimpan.setText("Simpan");
-        ppSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSimpan.setIconTextGap(8);
-        ppSimpan.setName("ppSimpan"); // NOI18N
-        ppSimpan.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
-            }
-        });
-        Popup.add(ppSimpan);
-
-        ppGanti.setBackground(new java.awt.Color(255, 255, 254));
-        ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(70, 70, 70));
-        ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        ppGanti.setText("Ganti");
-        ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppGanti.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGanti.setIconTextGap(8);
-        ppGanti.setName("ppGanti"); // NOI18N
-        ppGanti.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppGanti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        Popup.add(ppGanti);
-
-        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
-        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
-        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        ppHapus.setText("Hapus");
-        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
-        ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        Popup.add(ppHapus);
-
-        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
-        ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
-        ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        ppCetak.setText("Cetak");
-        ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
-        ppCetak.setName("ppCetak"); // NOI18N
-        ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppCetak);
-
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -309,12 +234,10 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -937,7 +860,6 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.TextBox Kd2;
     private widget.Label LCount;
     private widget.TextBox Nm;
-    private javax.swing.JPopupMenu Popup;
     private widget.TextBox Saldo;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -955,10 +877,6 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppCetak;
-    private javax.swing.JMenuItem ppGanti;
-    private javax.swing.JMenuItem ppHapus;
-    private javax.swing.JMenuItem ppSimpan;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
@@ -1088,10 +1006,6 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         BtnBatal.setEnabled(akses.getrekening_tahun());
         BtnEdit.setEnabled(akses.getrekening_tahun());
         BtnHapus.setEnabled(akses.getrekening_tahun());
-        BtnPrint.setEnabled(akses.getrekening_tahun());
-        ppSimpan.setEnabled(akses.getrekening_tahun());
-        ppGanti.setEnabled(akses.getrekening_tahun());        
-        ppHapus.setEnabled(akses.getrekening_tahun());
-        ppCetak.setEnabled(akses.getrekening_tahun());        
+        BtnPrint.setEnabled(akses.getrekening_tahun());    
     }
 }

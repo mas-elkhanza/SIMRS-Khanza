@@ -504,7 +504,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 21:45:30" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2019 16:34:54" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -822,7 +822,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
             }
         ));
-        tbLabRalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLabRalan.setComponentPopupMenu(jPopupMenu1);
         tbLabRalan.setName("tbLabRalan"); // NOI18N
         tbLabRalan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -854,7 +853,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
             }
         ));
-        tbLabRalan2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLabRalan2.setName("tbLabRalan2"); // NOI18N
         tbLabRalan2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -954,7 +952,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
             }
         ));
-        tbLabRanap.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLabRanap.setComponentPopupMenu(jPopupMenu1);
         tbLabRanap.setName("tbLabRanap"); // NOI18N
         tbLabRanap.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -986,7 +983,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
             }
         ));
-        tbLabRanap2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLabRanap2.setName("tbLabRanap2"); // NOI18N
         tbLabRanap2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -144,7 +144,6 @@ public class DlgKelurahan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbkelurahan.setAutoCreateRowSorter(true);
-        tbkelurahan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbkelurahan.setName("tbkelurahan"); // NOI18N
         tbkelurahan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -145,7 +145,6 @@ public class DlgGolonganTNI extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbkecamatan.setAutoCreateRowSorter(true);
-        tbkecamatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbkecamatan.setName("tbkecamatan"); // NOI18N
         tbkecamatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

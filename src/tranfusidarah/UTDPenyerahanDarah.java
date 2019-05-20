@@ -368,7 +368,6 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setIconTextGap(8);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
         ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
@@ -385,7 +384,6 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppStok.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppStok.setIconTextGap(8);
         ppStok.setName("ppStok"); // NOI18N
         ppStok.setPreferredSize(new java.awt.Dimension(200, 25));
         ppStok.addActionListener(new java.awt.event.ActionListener() {
@@ -858,7 +856,6 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbDarah.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDarah.setComponentPopupMenu(Popup);
         tbDarah.setName("tbDarah"); // NOI18N
         tbDarah.addMouseListener(new java.awt.event.MouseAdapter() {

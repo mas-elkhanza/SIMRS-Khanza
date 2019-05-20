@@ -150,7 +150,6 @@ public final class DlgRestorePoli extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit, untuk menghapus data silahkan centang kemudian klik hapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 

@@ -514,8 +514,6 @@ public class PanelResume extends widget.panelisi {
 
         Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll12.setOpaque(true);
-
-        tbRegistrasi.setToolTipText("Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan");
         Scroll12.setViewportView(tbRegistrasi);
 
         internalFrame14.add(Scroll12, java.awt.BorderLayout.CENTER);

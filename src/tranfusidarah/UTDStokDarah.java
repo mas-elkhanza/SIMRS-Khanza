@@ -227,7 +227,6 @@ public class UTDStokDarah extends javax.swing.JDialog {
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
         ppCetak.setName("ppCetak"); // NOI18N
         ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
         ppCetak.addActionListener(new java.awt.event.ActionListener() {
@@ -378,7 +377,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(Resus);
         Resus.setBounds(294, 72, 65, 23);
 
-        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Aftap.setDisplayFormat("dd-MM-yyyy");
         Aftap.setName("Aftap"); // NOI18N
         Aftap.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -395,7 +394,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(label32);
         label32.setBounds(0, 72, 85, 23);
 
-        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Kadaluarsa.setDisplayFormat("dd-MM-yyyy");
         Kadaluarsa.setName("Kadaluarsa"); // NOI18N
         Kadaluarsa.addKeyListener(new java.awt.event.KeyAdapter() {

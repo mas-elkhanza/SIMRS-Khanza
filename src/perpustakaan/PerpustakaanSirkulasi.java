@@ -483,7 +483,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         label12.setBounds(367, 55, 80, 23);
 
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2019" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -856,7 +856,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         ChkTanggal.setPreferredSize(new java.awt.Dimension(135, 23));
         panelCari.add(ChkTanggal);
 
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2019" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -874,7 +874,7 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(35, 23));
         panelCari.add(jLabel22);
 
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2019" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -894,7 +894,6 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamIn.setAutoCreateRowSorter(true);
-        tbKamIn.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamIn.setName("tbKamIn"); // NOI18N
         tbKamIn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

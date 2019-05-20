@@ -144,7 +144,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbpropinsi.setAutoCreateRowSorter(true);
-        tbpropinsi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbpropinsi.setName("tbpropinsi"); // NOI18N
         tbpropinsi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

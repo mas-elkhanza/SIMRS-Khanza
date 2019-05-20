@@ -126,14 +126,6 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppSimpan = new javax.swing.JMenuItem();
-        ppGanti = new javax.swing.JMenuItem();
-        ppHapus = new javax.swing.JMenuItem();
-        ppCetak = new javax.swing.JMenuItem();
-        ppOrder = new javax.swing.JMenu();
-        ppOrderKode = new javax.swing.JMenuItem();
-        ppOrderNama = new javax.swing.JMenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -159,120 +151,6 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
-        Popup.setName("Popup"); // NOI18N
-
-        ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
-        ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppSimpan.setForeground(new java.awt.Color(70, 70, 70));
-        ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        ppSimpan.setText("Simpan");
-        ppSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSimpan.setIconTextGap(8);
-        ppSimpan.setName("ppSimpan"); // NOI18N
-        ppSimpan.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
-            }
-        });
-        Popup.add(ppSimpan);
-
-        ppGanti.setBackground(new java.awt.Color(242, 242, 242));
-        ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(70, 70, 70));
-        ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        ppGanti.setText("Ganti");
-        ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppGanti.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGanti.setIconTextGap(8);
-        ppGanti.setName("ppGanti"); // NOI18N
-        ppGanti.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppGanti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        Popup.add(ppGanti);
-
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
-        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
-        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        ppHapus.setText("Hapus");
-        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
-        ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        Popup.add(ppHapus);
-
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
-        ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
-        ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        ppCetak.setText("Cetak");
-        ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
-        ppCetak.setName("ppCetak"); // NOI18N
-        ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppCetak);
-
-        ppOrder.setBackground(new java.awt.Color(242, 242, 242));
-        ppOrder.setForeground(new java.awt.Color(70, 70, 70));
-        ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        ppOrder.setText("Urutkan Berdasar");
-        ppOrder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrder.setIconTextGap(8);
-        ppOrder.setName("ppOrder"); // NOI18N
-
-        ppOrderKode.setBackground(new java.awt.Color(242, 242, 242));
-        ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderKode.setForeground(new java.awt.Color(70, 70, 70));
-        ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        ppOrderKode.setText("Kode Penanggung/Askes/Asuransi");
-        ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppOrderKode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppOrderKode.setIconTextGap(8);
-        ppOrderKode.setName("ppOrderKode"); // NOI18N
-        ppOrderKode.setPreferredSize(new java.awt.Dimension(300, 25));
-        ppOrderKode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppOrderKodeActionPerformed(evt);
-            }
-        });
-        ppOrder.add(ppOrderKode);
-
-        ppOrderNama.setBackground(new java.awt.Color(242, 242, 242));
-        ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderNama.setForeground(new java.awt.Color(70, 70, 70));
-        ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        ppOrderNama.setText("Nama Penanggung/Askes/Asuransi");
-        ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppOrderNama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppOrderNama.setIconTextGap(8);
-        ppOrderNama.setName("ppOrderNama"); // NOI18N
-        ppOrderNama.setPreferredSize(new java.awt.Dimension(300, 25));
-        ppOrderNama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppOrderNamaActionPerformed(evt);
-            }
-        });
-        ppOrder.add(ppOrderNama);
-
-        Popup.add(ppOrder);
-
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -294,13 +172,11 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -719,14 +595,6 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
    Valid.pindah(evt,Kd,BtnSimpan);
 }//GEN-LAST:event_NmKeyPressed
 
-    private void ppOrderKodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppOrderKodeActionPerformed
-        tampil();
-    }//GEN-LAST:event_ppOrderKodeActionPerformed
-
-    private void ppOrderNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppOrderNamaActionPerformed
-        tampil();
-    }//GEN-LAST:event_ppOrderNamaActionPerformed
-
     private void Kd2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kd2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Kd2KeyPressed
@@ -764,7 +632,6 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.TextBox Kd2;
     private widget.Label LCount;
     private widget.TextBox Nm;
-    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
@@ -776,13 +643,6 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppCetak;
-    private javax.swing.JMenuItem ppGanti;
-    private javax.swing.JMenuItem ppHapus;
-    private javax.swing.JMenu ppOrder;
-    private javax.swing.JMenuItem ppOrderKode;
-    private javax.swing.JMenuItem ppOrderNama;
-    private javax.swing.JMenuItem ppSimpan;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

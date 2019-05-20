@@ -62,12 +62,8 @@
     <entry key="PASSDUKCAPILJAKARTA">R8ud!KSW5</entry>
     <entry key="VAR1DUKCAPILJAKARTA">RSIABK</entry>
     <entry key="VAR2DUKCAPILJAKARTA">12</entry>
-    <entry key="URLDUKCAPILACEH">http://172.16.160.128:8000/dukcapil/get_json/rsia_aceh</entry>
-    <entry key="USERDUKCAPILACEH">rsia</entry>
-    <entry key="PASSDUKCAPILACEH">123</entry>
-    <entry key="IPUSERDUKCAPILACEH">10.160.57.2</entry>
-    <entry key="URLDUKCAPILBATAM">http://172.16.160.128:8000/dukcapil/get_json/rsembongfat</entry>
-    <entry key="USERDUKCAPILBATAM">rsia</entry>
-    <entry key="PASSDUKCAPILBATAM">123</entry>
-    <entry key="IPUSERDUKCAPILBATAM">10.160.57.2</entry>
+    <entry key="URLDUKCAPIL">http://172.16.160.128:8000/dukcapil/get_json/rsia_aceh/CALL_NIK</entry>
+    <entry key="USERDUKCAPIL">rsia</entry>
+    <entry key="PASSDUKCAPIL">123</entry>
+    <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
 </properties>

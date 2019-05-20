@@ -257,7 +257,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppCetakNota.setText("Cetak Ulang Nota");
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetakNota.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetakNota.setIconTextGap(8);
         ppCetakNota.setName("ppCetakNota"); // NOI18N
         ppCetakNota.setPreferredSize(new java.awt.Dimension(150, 25));
         ppCetakNota.addActionListener(new java.awt.event.ActionListener() {
@@ -274,7 +273,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppHapus.setText("Hapus Penyerahan Darah");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -291,7 +289,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppVerif.setText("Verifikasi");
         ppVerif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppVerif.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppVerif.setIconTextGap(8);
         ppVerif.setName("ppVerif"); // NOI18N
         ppVerif.setPreferredSize(new java.awt.Dimension(150, 25));
         ppVerif.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +305,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppTampilkanBHPMedis.setText("Tampilkan Penggunaan BHP Medis");
         ppTampilkanBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPMedis.setIconTextGap(8);
         ppTampilkanBHPMedis.setName("ppTampilkanBHPMedis"); // NOI18N
         ppTampilkanBHPMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +321,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppTampilkanBHPPenunjang.setText("Tampilkan Penggunaan BHP Non Medis");
         ppTampilkanBHPPenunjang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPPenunjang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPPenunjang.setIconTextGap(8);
         ppTampilkanBHPPenunjang.setName("ppTampilkanBHPPenunjang"); // NOI18N
         ppTampilkanBHPPenunjang.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPPenunjang.addActionListener(new java.awt.event.ActionListener() {
@@ -342,7 +337,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppTampilkanBHPPenunjangDanMedis.setText("Tampilkan Penggunaan BHP Medis & Non Medis");
         ppTampilkanBHPPenunjangDanMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPPenunjangDanMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPPenunjangDanMedis.setIconTextGap(8);
         ppTampilkanBHPPenunjangDanMedis.setName("ppTampilkanBHPPenunjangDanMedis"); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPPenunjangDanMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -359,7 +353,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppHapusBHPMedis.setText("Hapus Penggunaan BHP Medis");
         ppHapusBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPMedis.setIconTextGap(8);
         ppHapusBHPMedis.setName("ppHapusBHPMedis"); // NOI18N
         ppHapusBHPMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -376,7 +369,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppHapusBHPNonMedis.setText("Hapus Penggunaan BHP Non Medis");
         ppHapusBHPNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPNonMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPNonMedis.setIconTextGap(8);
         ppHapusBHPNonMedis.setName("ppHapusBHPNonMedis"); // NOI18N
         ppHapusBHPNonMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPNonMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -393,7 +385,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
         ppHapusBHPMedisDanNonMedis.setText("Hapus Penggunaan BHP Medis & Non Medis");
         ppHapusBHPMedisDanNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPMedisDanNonMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPMedisDanNonMedis.setIconTextGap(8);
         ppHapusBHPMedisDanNonMedis.setName("ppHapusBHPMedisDanNonMedis"); // NOI18N
         ppHapusBHPMedisDanNonMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPMedisDanNonMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -431,7 +422,6 @@ public class UTDCariPenyerahanDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);

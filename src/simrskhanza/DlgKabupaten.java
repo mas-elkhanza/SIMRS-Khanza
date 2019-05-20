@@ -129,11 +129,11 @@ public class DlgKabupaten extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
             }
         });
 
@@ -145,7 +145,6 @@ public class DlgKabupaten extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbkabupaten.setAutoCreateRowSorter(true);
-        tbkabupaten.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbkabupaten.setName("tbkabupaten"); // NOI18N
         tbkabupaten.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
