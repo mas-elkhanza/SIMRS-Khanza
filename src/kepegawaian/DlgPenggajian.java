@@ -109,7 +109,7 @@ public class DlgPenggajian extends javax.swing.JDialog {
                         if(engine.getLocation().contains("/webapps/penggajian/index.php?act=HomeAdmin")){
                             try{            
                                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                                    DlgPenggajian.this.setOpacity(0.76f);
+                                    DlgPenggajian.this.setOpacity(0.77f);
                                 }               
                             }catch(Exception e){
                             }

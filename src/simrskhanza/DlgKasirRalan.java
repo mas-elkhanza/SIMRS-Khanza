@@ -375,13 +375,33 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            namadokter=prop.getProperty("DOKTERAKTIFKASIRRALAN");
-            namapoli=prop.getProperty("POLIAKTIFKASIRRALAN");
-            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            try {
+                namadokter=prop.getProperty("DOKTERAKTIFKASIRRALAN");
+            } catch (Exception e) {
+                namadokter="";
+            }
+            
+            try {
+                namapoli=prop.getProperty("POLIAKTIFKASIRRALAN");
+            } catch (Exception e) {
+                namapoli="";
+            }
+            
+            try {
+                aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            } catch (Exception e) {
+                aktifkanparsial="no";
+            }
+                
+            try {
+                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                    DlgCatatan.setOpacity(0.77f);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Tansparant : "+e);
+            }
         } catch (Exception ex) {
-            namadokter="";
-            namapoli="";
-            aktifkanparsial="no";
+            System.out.println("Notif Load XML : "+ex);
         }
     }
     

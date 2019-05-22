@@ -755,16 +755,46 @@ public final class DlgReg extends javax.swing.JDialog {
                 
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            aktifjadwal=prop.getProperty("JADWALDOKTERDIREGISTRASI");
-            IPPRINTERTRACER=prop.getProperty("IPPRINTERTRACER");
-            URUTNOREG=prop.getProperty("URUTNOREG");
-            BASENOREG=prop.getProperty("BASENOREG");
-            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            
+            try {
+                aktifjadwal=prop.getProperty("JADWALDOKTERDIREGISTRASI");
+            } catch (Exception e) {
+                aktifjadwal="nonaktif";
+            }
+            
+            try {
+                IPPRINTERTRACER=prop.getProperty("IPPRINTERTRACER");
+            } catch (Exception e) {
+                IPPRINTERTRACER="127.0.0.1";
+            }
+            
+            try {
+                URUTNOREG=prop.getProperty("URUTNOREG");
+            } catch (Exception e) {
+                URUTNOREG="dokter";
+            }
+            
+            try {
+                BASENOREG=prop.getProperty("BASENOREG");
+            } catch (Exception e) {
+                BASENOREG="registrasi";
+            }
+            
+            try {
+                aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            } catch (Exception e) {
+                aktifkanparsial="no";
+            }
+                
+            try {
+                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                    DlgCatatan.setOpacity(0.77f);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Tansparant : "+e);
+            }
         } catch (Exception ex) {
-            aktifjadwal="";            
-            IPPRINTERTRACER="";
-            URUTNOREG="";
-            BASENOREG="";
+            System.out.println("Notif Load XML : "+ex);
         }
         
         ChkInput.setSelected(false);
