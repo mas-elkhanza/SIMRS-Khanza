@@ -63,7 +63,7 @@ public class K3RSJenisCidera extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(460);
+                column.setPreferredWidth(550);
             }
         }
 

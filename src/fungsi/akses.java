@@ -104,7 +104,7 @@ public final class akses {
             grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
             kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
             inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false,anggota_perpustakaan=false,
-            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false,jenis_cidera_k3rs=false;
+            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false,jenis_cidera_k3rs=false,penyebab_k3rs=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -606,6 +606,7 @@ public final class akses {
                         akses.bayar_denda_perpustakaan=true;
                         akses.ebook_perpustakaan=true;
                         akses.jenis_cidera_k3rs=true;
+                        akses.penyebab_k3rs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1091,6 +1092,7 @@ public final class akses {
                         akses.bayar_denda_perpustakaan=rs2.getBoolean("bayar_denda_perpustakaan");
                         akses.ebook_perpustakaan=rs2.getBoolean("ebook_perpustakaan");
                         akses.jenis_cidera_k3rs=rs2.getBoolean("jenis_cidera_k3rs");
+                        akses.penyebab_k3rs=rs2.getBoolean("penyebab_k3rs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1574,6 +1576,7 @@ public final class akses {
                         akses.bayar_denda_perpustakaan=false;
                         akses.ebook_perpustakaan=false;
                         akses.jenis_cidera_k3rs=false;
+                        akses.penyebab_k3rs=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2111,4 +2114,5 @@ public final class akses {
     public static boolean getbayar_denda_perpustakaan(){return akses.bayar_denda_perpustakaan;}
     public static boolean getebook_perpustakaan(){return akses.ebook_perpustakaan;}
     public static boolean getjenis_cidera_k3rs(){return akses.jenis_cidera_k3rs;}
+    public static boolean getpenyebab_k3rs(){return akses.penyebab_k3rs;}
 }   
