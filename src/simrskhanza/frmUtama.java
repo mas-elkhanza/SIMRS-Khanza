@@ -23774,7 +23774,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnJenisCideraK3 = new widget.ButtonBig();
-        btnJenisCideraK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reports.png")));
+        btnJenisCideraK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ruber.png")));
         btnJenisCideraK3.setText("Jenis Cidera K3");
         btnJenisCideraK3.setIconTextGap(0);
         btnJenisCideraK3.setName("btnJenisCideraK3"); // NOI18N
@@ -23786,7 +23786,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnPenyebabKecelakaanK3 = new widget.ButtonBig();
-        btnPenyebabKecelakaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reports.png")));
+        btnPenyebabKecelakaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_sponge_2___331505.png")));
         btnPenyebabKecelakaanK3.setText("Penyebab Kecelakaan K3");
         btnPenyebabKecelakaanK3.setIconTextGap(0);
         btnPenyebabKecelakaanK3.setName("btnPenyebabKecelakaanK3"); // NOI18N
