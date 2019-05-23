@@ -441,6 +441,7 @@ import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
 import kepegawaian.K3RSJenisCidera;
 import kepegawaian.K3RSJenisLuka;
+import kepegawaian.K3RSLokasiKejadian;
 import kepegawaian.K3RSPenyebab;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
@@ -14456,6 +14457,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLokasiKejadianK3ActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        K3RSLokasiKejadian form=new K3RSLokasiKejadian(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -15029,7 +15042,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ButtonBig btnKategoriPerpustakaan,btnRuangPerpustakaan,btnJenisPerpustakaan,btnPengarangPerpustakaan,btnPenerbitPerpustakaan,
             btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
             btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan,btnEbookPerpustakaan,btnCariEbook,btnPestControl,
-            btnMutuAirLimbah,btnCariInventarisPerpustakaan,btnJenisCideraK3,btnPenyebabKecelakaanK3,btnJenisLukaK3;
+            btnMutuAirLimbah,btnCariInventarisPerpustakaan,btnJenisCideraK3,btnPenyebabKecelakaanK3,btnJenisLukaK3,btnLokasiKejadianK3;
     
     public void isWall(){
         try{            
@@ -15653,6 +15666,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getjenis_luka_k3rs()==true){                
                 Panelmenu.add(btnJenisLukaK3);
+                jmlmenu++;
+            }
+            
+            if(akses.getlokasi_kejadian_k3rs()==true){                
+                Panelmenu.add(btnLokasiKejadianK3);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -18074,6 +18092,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getjenis_luka_k3rs()==true){                
             Panelmenu.add(btnJenisLukaK3);
+            jmlmenu++;
+        }
+        
+        if(akses.getlokasi_kejadian_k3rs()==true){                
+            Panelmenu.add(btnLokasiKejadianK3);
             jmlmenu++;
         }
 
@@ -20576,6 +20599,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getjenis_luka_k3rs()==true){    
             if(btnJenisLukaK3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisLukaK3);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlokasi_kejadian_k3rs()==true){    
+            if(btnLokasiKejadianK3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLokasiKejadianK3);
                 jmlmenu++;
             }                
         }
@@ -23840,6 +23870,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJenisLukaK3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJenisLukaK3ActionPerformed(evt);
+            }
+        });
+        
+        btnLokasiKejadianK3 = new widget.ButtonBig();
+        btnLokasiKejadianK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_arrows_blue_61552.png")));
+        btnLokasiKejadianK3.setText("Lokasi Kejadian K3");
+        btnLokasiKejadianK3.setIconTextGap(0);
+        btnLokasiKejadianK3.setName("btnLokasiKejadianK3"); // NOI18N
+        btnLokasiKejadianK3.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLokasiKejadianK3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLokasiKejadianK3ActionPerformed(evt);
             }
         });
     }
