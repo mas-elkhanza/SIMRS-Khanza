@@ -105,7 +105,7 @@ public final class akses {
             kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
             inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false,anggota_perpustakaan=false,
             peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false,jenis_cidera_k3rs=false,penyebab_k3rs=false,
-            jenis_luka_k3rs=false,lokasi_kejadian_k3rs=false;
+            jenis_luka_k3rs=false,lokasi_kejadian_k3rs=false,dampak_cidera_k3rs=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -610,6 +610,7 @@ public final class akses {
                         akses.penyebab_k3rs=true;
                         akses.jenis_luka_k3rs=true;
                         akses.lokasi_kejadian_k3rs=true;
+                        akses.dampak_cidera_k3rs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1098,6 +1099,7 @@ public final class akses {
                         akses.penyebab_k3rs=rs2.getBoolean("penyebab_k3rs");
                         akses.jenis_luka_k3rs=rs2.getBoolean("jenis_luka_k3rs");
                         akses.lokasi_kejadian_k3rs=rs2.getBoolean("lokasi_kejadian_k3rs");
+                        akses.dampak_cidera_k3rs=rs2.getBoolean("dampak_cidera_k3rs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1584,6 +1586,7 @@ public final class akses {
                         akses.penyebab_k3rs=false;
                         akses.jenis_luka_k3rs=false;
                         akses.lokasi_kejadian_k3rs=false;
+                        akses.dampak_cidera_k3rs=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2124,4 +2127,5 @@ public final class akses {
     public static boolean getpenyebab_k3rs(){return akses.penyebab_k3rs;}
     public static boolean getjenis_luka_k3rs(){return akses.jenis_luka_k3rs;}
     public static boolean getlokasi_kejadian_k3rs(){return akses.lokasi_kejadian_k3rs;}
+    public static boolean getdampak_cidera_k3rs(){return akses.dampak_cidera_k3rs;}
 }   

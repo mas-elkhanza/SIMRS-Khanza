@@ -639,6 +639,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","lokasi_kejadian_k3rs='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
+                if("[C]Dampak Cidera K3".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","dampak_cidera_k3rs='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
                 if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","suplier='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
@@ -2546,7 +2550,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah,pest_control,ruang_perpustakaan,"+
                         "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"+
                         "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
-                        "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
+                        "dampak_cidera_k3rs from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2773,6 +2778,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Lokasi Kejadian K3".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Lokasi Kejadian K3",rs.getBoolean("lokasi_kejadian_k3rs")});
+                    }
+                    
+                    if("[C]Dampak Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Dampak Cidera K3",rs.getBoolean("dampak_cidera_k3rs")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
