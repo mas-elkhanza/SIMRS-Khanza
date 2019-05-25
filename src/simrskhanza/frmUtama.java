@@ -439,6 +439,7 @@ import inventaris.KeslingPestControl;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
+import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSDampakCidera;
 import kepegawaian.K3RSJenisCidera;
 import kepegawaian.K3RSJenisLuka;
@@ -14485,6 +14486,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBagianTubuhK3ActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        K3RSBagianTubuh form=new K3RSBagianTubuh(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15058,7 +15072,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnKoleksiPerpustakaan,btnInventarisPerpustakaan,btnPengaturanPeminjamanPerpustakaan,btnDendaPerpustakaan,btnAnggotaPerpustakaan,
             btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan,btnEbookPerpustakaan,btnCariEbook,btnPestControl,
             btnMutuAirLimbah,btnCariInventarisPerpustakaan,btnJenisCideraK3,btnPenyebabKecelakaanK3,btnJenisLukaK3,btnLokasiKejadianK3,btnDampakCideraK3,
-            btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3;
+            btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3,btnBagianTubuhK3;
     
     public void isWall(){
         try{            
@@ -15419,6 +15433,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }else if(jmlmenu<=475){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*91)));
+        }else if(jmlmenu<=480){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*92)));
         }                                             
         Panelmenu.revalidate();
         Panelmenu.repaint();               
@@ -15685,6 +15702,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getjenis_pekerjaan_k3rs()==true){                
                 Panelmenu.add(btnJenisPekerjaanK3);
+                jmlmenu++;
+            }
+            
+            if(akses.getbagian_tubuh_k3rs()==true){                
+                Panelmenu.add(btnBagianTubuhK3);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -18121,6 +18143,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getjenis_pekerjaan_k3rs()==true){                
             Panelmenu.add(btnJenisPekerjaanK3);
+            jmlmenu++;
+        }
+        
+        if(akses.getbagian_tubuh_k3rs()==true){                
+            Panelmenu.add(btnBagianTubuhK3);
             jmlmenu++;
         }
 
@@ -20644,6 +20671,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getjenis_pekerjaan_k3rs()==true){    
             if(btnJenisPekerjaanK3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisPekerjaanK3);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbagian_tubuh_k3rs()==true){    
+            if(btnBagianTubuhK3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBagianTubuhK3);
                 jmlmenu++;
             }                
         }
@@ -23948,7 +23982,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnJenisPekerjaanK3 = new widget.ButtonBig();
-        btnJenisPekerjaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_applications-engineering_8830.png"))); // NOI18N
+        btnJenisPekerjaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_applications-engineering_8830.png"))); 
         btnJenisPekerjaanK3.setText("Jenis Pekerjaan K3");
         btnJenisPekerjaanK3.setIconTextGap(0);
         btnJenisPekerjaanK3.setName("btnJenisPekerjaanK3"); // NOI18N
@@ -23956,6 +23990,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJenisPekerjaanK3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJenisPekerjaanK3ActionPerformed(evt);
+            }
+        });
+        
+        btnBagianTubuhK3 = new widget.ButtonBig();
+        btnBagianTubuhK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png")));
+        btnBagianTubuhK3.setText("Bagian Tubuh K3");
+        btnBagianTubuhK3.setIconTextGap(0);
+        btnBagianTubuhK3.setName("btnBagianTubuhK3"); // NOI18N
+        btnBagianTubuhK3.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBagianTubuhK3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBagianTubuhK3ActionPerformed(evt);
             }
         });
     }

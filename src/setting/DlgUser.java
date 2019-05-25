@@ -135,7 +135,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah","[F]Pest Control","[P]Ruang Perpustakaan","[P]Kategori Koleksi","[P]Jenis Koleksi",
                     "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan",
                     "[P]Anggota Perpustakaan","[P]Peminjaman Koleksi Perpustakaan","[P]Bayar Denda Perpustakaan","[P]Data Koleksi Ebook","[C]Jenis Cidera K3",
-                    "[C]Penyebab Kecelakaan K3","[C]Jenis Luka K3","[C]Lokasi Kejadian K3","[C]Dampak Cidera K3","[C]Jenis Pekerjaan K3"
+                    "[C]Penyebab Kecelakaan K3","[C]Jenis Luka K3","[C]Lokasi Kejadian K3","[C]Dampak Cidera K3","[C]Jenis Pekerjaan K3","[C]Bagian Tubuh K3"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -273,6 +273,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -286,7 +287,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 487;i++) {
+        for (i = 0; i < 488;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -896,6 +897,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(111);
             }else if(i==486){
                 column.setPreferredWidth(113);
+            }else if(i==487){
+                column.setPreferredWidth(103);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1386,7 +1389,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1915,7 +1918,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "jenis_luka_k3rs='"+tbUser.getValueAt(i,483).toString()+"',"+
                     "lokasi_kejadian_k3rs='"+tbUser.getValueAt(i,484).toString()+"',"+
                     "dampak_cidera_k3rs='"+tbUser.getValueAt(i,485).toString()+"',"+
-                    "jenis_pekerjaan_k3rs='"+tbUser.getValueAt(i,486).toString()+"'");
+                    "jenis_pekerjaan_k3rs='"+tbUser.getValueAt(i,486).toString()+"',"+
+                    "bagian_tubuh_k3rs='"+tbUser.getValueAt(i,487).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2483,7 +2487,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "jenis_luka_k3rs='"+tbUser.getValueAt(barisdicopy,483).toString()+"',"+
                                     "lokasi_kejadian_k3rs='"+tbUser.getValueAt(barisdicopy,484).toString()+"',"+
                                     "dampak_cidera_k3rs='"+tbUser.getValueAt(barisdicopy,485).toString()+"',"+
-                                    "jenis_pekerjaan_k3rs='"+tbUser.getValueAt(barisdicopy,486).toString()+"'");
+                                    "jenis_pekerjaan_k3rs='"+tbUser.getValueAt(barisdicopy,486).toString()+"',"+
+                                    "bagian_tubuh_k3rs='"+tbUser.getValueAt(barisdicopy,487).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2771,7 +2776,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"+
                         "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
                         "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
-                        "dampak_cidera_k3rs,jenis_pekerjaan_k3rs from user order by AES_DECRYPT(id_user,'nur')");
+                        "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3270,7 +3275,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("jenis_luka_k3rs"),
                                rs.getBoolean("lokasi_kejadian_k3rs"),
                                rs.getBoolean("dampak_cidera_k3rs"),
-                               rs.getBoolean("jenis_pekerjaan_k3rs")
+                               rs.getBoolean("jenis_pekerjaan_k3rs"),
+                               rs.getBoolean("bagian_tubuh_k3rs")
                             });
                         }   
                     } catch (Exception e) {
@@ -3758,7 +3764,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("jenis_luka_k3rs"),
                            rs.getBoolean("lokasi_kejadian_k3rs"),
                            rs.getBoolean("dampak_cidera_k3rs"),
-                           rs.getBoolean("jenis_pekerjaan_k3rs")
+                           rs.getBoolean("jenis_pekerjaan_k3rs"),
+                           rs.getBoolean("bagian_tubuh_k3rs")
                         });
                     }                                             
                  }
