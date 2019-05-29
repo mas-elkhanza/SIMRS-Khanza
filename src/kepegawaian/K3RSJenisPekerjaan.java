@@ -585,7 +585,7 @@ public class K3RSJenisPekerjaan extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select * from k3rs_jenis_pekerjaan where kode_pekerjaan like ? or jenis_pekerjaan like ? order by kode_pekerjaan");
