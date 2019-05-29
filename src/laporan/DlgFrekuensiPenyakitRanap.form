@@ -38,7 +38,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerbanyakBatang" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[300, 25]"/>
+              <Dimension value="[300, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -64,7 +64,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerbanyakPie" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[300, 25]"/>
+              <Dimension value="[300, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -90,7 +90,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerkecilBatang" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[300, 25]"/>
+              <Dimension value="[300, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -116,7 +116,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="ppGrafikTerkecilPie" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[300, 25]"/>
+              <Dimension value="[300, 26]"/>
             </Property>
           </Properties>
           <Events>

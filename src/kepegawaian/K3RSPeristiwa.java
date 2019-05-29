@@ -92,21 +92,86 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(110);
             }else if(i==2){
-                column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==3){
                 column.setPreferredWidth(230);
             }else if(i==4){
                 column.setPreferredWidth(110);
             }else if(i==5){
-                column.setPreferredWidth(50);
+                //column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==6){
                 column.setPreferredWidth(230);
             }else if(i==7){
                 column.setPreferredWidth(230);
             }else if(i==8){
-                column.setPreferredWidth(50);
+                //column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==9){
                 column.setPreferredWidth(230);
+            }else if(i==10){
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setPreferredWidth(170);
+            }else if(i==12){
+                column.setPreferredWidth(85);
+            }else if(i==13){
+                column.setPreferredWidth(47);
+            }else if(i==14){
+                //column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==15){
+                column.setPreferredWidth(230);
+            }else if(i==16){
+                //column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==17){
+                column.setPreferredWidth(230);
+            }else if(i==18){
+                //column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==19){
+                column.setPreferredWidth(230);
+            }else if(i==20){
+                column.setPreferredWidth(190);
+            }else if(i==21){
+                column.setPreferredWidth(190);
+            }else if(i==22){
+                column.setPreferredWidth(190);
+            }else if(i==23){
+                column.setPreferredWidth(190);
+            }else if(i==24){
+                //column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==25){
+                column.setPreferredWidth(230);
+            }else if(i==26){
+                column.setPreferredWidth(90);
+            }else if(i==27){
+                column.setPreferredWidth(170);
+            }else if(i==28){
+                column.setPreferredWidth(70);
+            }else if(i==29){
+                column.setPreferredWidth(120);
+            }else if(i==30){
+                column.setPreferredWidth(200);
+            }else if(i==31){
+                column.setPreferredWidth(70);
+            }else if(i==32){
+                column.setPreferredWidth(140);
+            }else if(i==33){
+                column.setPreferredWidth(200);
+            }else if(i==34){
+                column.setPreferredWidth(90);
+            }else if(i==35){
+                column.setPreferredWidth(170);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2345,7 +2410,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString("no_k3rs"),rs.getString("tgl_insiden")+" "+rs.getString("waktu_insiden"),rs.getString("kode_pekerjaan"),rs.getString("jenis_pekerjaan"),
                         rs.getString("tgl_pelaporan")+" "+rs.getString("waktu_pelaporan"),rs.getString("kode_lokasi"),rs.getString("lokasi_kejadian"),rs.getString("kronologi_kejadian"),
-                        rs.getString("kode_penyebab"),rs.getString("penyebab_kecelakaan")
+                        rs.getString("kode_penyebab"),rs.getString("penyebab_kecelakaan"),rs.getString("nik"),rs.getString("korban"),rs.getString("kategori_cidera"),rs.getString("lt"),
+                        rs.getString("kode_cidera"),rs.getString("jenis_cidera"),rs.getString("kode_luka"),rs.getString("jenis_luka"),rs.getString("kode_bagian"),rs.getString("bagian_tubuh"),
+                        rs.getString("penyebab_langsung_kondisi"),rs.getString("penyebab_langsung_tindakan"),rs.getString("penyebab_tidak_langsung_pribadi"),rs.getString("penyebab_tidak_langsung_pekerjaan"),
+                        rs.getString("kode_dampak"),rs.getString("dampak_cidera"),rs.getString("nik_pelapor"),rs.getString("pelapor"),rs.getString("barang_bukti"),rs.getString("perbaikan_jenis_tindakan"),
+                        rs.getString("perbaikan_rencana_tindakan"),rs.getString("perbaikan_target"),rs.getString("perbaikan_wewenang"),rs.getString("perbaikan_wewenang"),rs.getString("nik_timk3"),
+                        rs.getString("timk3")
                     });
                 }  
             } catch(Exception e){
@@ -2414,7 +2484,17 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 
     private void getData() {
         if(tbJnsPerawatan.getSelectedRow()!= -1){
-            //TNoRw.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+            /*"Tanggal Pelaporan","Kd.Lokasi","Lokasi Kejadian","Kronologi Kejadian","Kd.Aspek","Aspek Penyebab",
+                "NIK Korban","Nama Korban","Kategori Cidera","LT(Hari)","Kd.Cidera","Jenis Cidera","Kd.Luka","Jenis Luka","Kd.Bagian","Bagian Tubuh","Kondisi Tidak Aman",
+                "Tindakan Tidak Aman","Pribadi","Pekerjaan","Kd.Dampak","Dampak Kejadian","NIK Pelapor","Nama Pelapor","Barang Bukti","Jenis Tindakan","Rencana","Target",
+                "Wewenang","Catatan","NIK TIM K3","Nama TIM K3"*/
+            NoLaporan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+            Valid.SetTgl(TglInsiden,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
+            JamInsiden.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(11,13));
+            MenitInsiden.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(14,16));
+            DetikInsiden.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(17,19));
+            KdJenisPekerjaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
+            NmJenisPekerjaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
             
         }
     }

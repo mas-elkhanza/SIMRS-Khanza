@@ -431,7 +431,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerbanyakBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerbanyakBatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikTerbanyakBatang.setName("ppGrafikTerbanyakBatang"); // NOI18N
-        ppGrafikTerbanyakBatang.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerbanyakBatang.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerbanyakBatang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerbanyakBatangActionPerformed(evt);
@@ -447,7 +447,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerbanyakPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerbanyakPie.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikTerbanyakPie.setName("ppGrafikTerbanyakPie"); // NOI18N
-        ppGrafikTerbanyakPie.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerbanyakPie.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerbanyakPie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerbanyakPieActionPerformed(evt);
@@ -463,7 +463,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerkecilBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerkecilBatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikTerkecilBatang.setName("ppGrafikTerkecilBatang"); // NOI18N
-        ppGrafikTerkecilBatang.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerkecilBatang.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerkecilBatang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerkecilBatangActionPerformed(evt);
@@ -479,7 +479,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         ppGrafikTerkecilPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikTerkecilPie.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikTerkecilPie.setName("ppGrafikTerkecilPie"); // NOI18N
-        ppGrafikTerkecilPie.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikTerkecilPie.setPreferredSize(new java.awt.Dimension(300, 26));
         ppGrafikTerkecilPie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikTerkecilPieActionPerformed(evt);
