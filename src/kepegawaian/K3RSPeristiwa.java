@@ -94,7 +94,19 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(50);
             }else if(i==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(230);
+            }else if(i==4){
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setPreferredWidth(50);
+            }else if(i==6){
+                column.setPreferredWidth(230);
+            }else if(i==7){
+                column.setPreferredWidth(230);
+            }else if(i==8){
+                column.setPreferredWidth(50);
+            }else if(i==9){
+                column.setPreferredWidth(230);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2331,7 +2343,9 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){   
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_k3rs"),rs.getString("tgl_insiden")+" "+rs.getString("waktu_insiden"),rs.getString("kode_pekerjaan"),rs.getString("jenis_pekerjaan")
+                        rs.getString("no_k3rs"),rs.getString("tgl_insiden")+" "+rs.getString("waktu_insiden"),rs.getString("kode_pekerjaan"),rs.getString("jenis_pekerjaan"),
+                        rs.getString("tgl_pelaporan")+" "+rs.getString("waktu_pelaporan"),rs.getString("kode_lokasi"),rs.getString("lokasi_kejadian"),rs.getString("kronologi_kejadian"),
+                        rs.getString("kode_penyebab"),rs.getString("penyebab_kecelakaan")
                     });
                 }  
             } catch(Exception e){
