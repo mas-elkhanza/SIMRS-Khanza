@@ -659,7 +659,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         tbJnsPerawatan = new widget.Table();
 
         TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2019" }));
         TglLahir.setDisplayFormat("dd-MM-yyyy");
         TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.setOpaque(false);
@@ -823,7 +823,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         jLabel58.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel58);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -836,7 +836,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         jLabel59.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel59);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -934,7 +934,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         jLabel13.setBounds(0, 60, 97, 23);
 
         TglInsiden.setForeground(new java.awt.Color(50, 70, 50));
-        TglInsiden.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        TglInsiden.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2019" }));
         TglInsiden.setDisplayFormat("dd-MM-yyyy");
         TglInsiden.setName("TglInsiden"); // NOI18N
         TglInsiden.setOpaque(false);
@@ -990,12 +990,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         KdJenisPekerjaan.setHighlighter(null);
         KdJenisPekerjaan.setName("KdJenisPekerjaan"); // NOI18N
         FormInput.add(KdJenisPekerjaan);
-        KdJenisPekerjaan.setBounds(101, 90, 50, 23);
+        KdJenisPekerjaan.setBounds(101, 90, 55, 23);
 
         NmJenisPekerjaan.setEditable(false);
         NmJenisPekerjaan.setName("NmJenisPekerjaan"); // NOI18N
         FormInput.add(NmJenisPekerjaan);
-        NmJenisPekerjaan.setBounds(154, 90, 201, 23);
+        NmJenisPekerjaan.setBounds(159, 90, 196, 23);
 
         BtnJenisPekerjaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnJenisPekerjaan.setMnemonic('3');
@@ -1020,7 +1020,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         jLabel16.setBounds(0, 120, 97, 23);
 
         TglPelaporan.setForeground(new java.awt.Color(50, 70, 50));
-        TglPelaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        TglPelaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2019" }));
         TglPelaporan.setDisplayFormat("dd-MM-yyyy");
         TglPelaporan.setName("TglPelaporan"); // NOI18N
         TglPelaporan.setOpaque(false);
@@ -1071,12 +1071,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         KdLokasiKejadian.setHighlighter(null);
         KdLokasiKejadian.setName("KdLokasiKejadian"); // NOI18N
         FormInput.add(KdLokasiKejadian);
-        KdLokasiKejadian.setBounds(101, 150, 50, 23);
+        KdLokasiKejadian.setBounds(101, 150, 55, 23);
 
         NmLokasiKejadian.setEditable(false);
         NmLokasiKejadian.setName("NmLokasiKejadian"); // NOI18N
         FormInput.add(NmLokasiKejadian);
-        NmLokasiKejadian.setBounds(154, 150, 201, 23);
+        NmLokasiKejadian.setBounds(159, 150, 196, 23);
 
         btnLokasiKejadian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnLokasiKejadian.setMnemonic('3');
@@ -1127,12 +1127,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         KdPenyebab.setHighlighter(null);
         KdPenyebab.setName("KdPenyebab"); // NOI18N
         FormInput.add(KdPenyebab);
-        KdPenyebab.setBounds(101, 270, 50, 23);
+        KdPenyebab.setBounds(101, 270, 55, 23);
 
         NmPenyebab.setEditable(false);
         NmPenyebab.setName("NmPenyebab"); // NOI18N
         FormInput.add(NmPenyebab);
-        NmPenyebab.setBounds(154, 270, 201, 23);
+        NmPenyebab.setBounds(159, 270, 196, 23);
 
         BtnPenyebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPenyebab.setMnemonic('3');
@@ -1279,12 +1279,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         KdJenisCidera.setHighlighter(null);
         KdJenisCidera.setName("KdJenisCidera"); // NOI18N
         FormInput.add(KdJenisCidera);
-        KdJenisCidera.setBounds(101, 440, 50, 23);
+        KdJenisCidera.setBounds(101, 440, 55, 23);
 
         NmJenisCidera.setEditable(false);
         NmJenisCidera.setName("NmJenisCidera"); // NOI18N
         FormInput.add(NmJenisCidera);
-        NmJenisCidera.setBounds(154, 440, 201, 23);
+        NmJenisCidera.setBounds(159, 440, 196, 23);
 
         btnJenisCidera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnJenisCidera.setMnemonic('3');
@@ -1312,12 +1312,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         KdJenisLuka.setHighlighter(null);
         KdJenisLuka.setName("KdJenisLuka"); // NOI18N
         FormInput.add(KdJenisLuka);
-        KdJenisLuka.setBounds(101, 470, 50, 23);
+        KdJenisLuka.setBounds(101, 470, 55, 23);
 
         NmJenisLuka.setEditable(false);
         NmJenisLuka.setName("NmJenisLuka"); // NOI18N
         FormInput.add(NmJenisLuka);
-        NmJenisLuka.setBounds(154, 470, 201, 23);
+        NmJenisLuka.setBounds(159, 470, 196, 23);
 
         btnJenisLuka.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnJenisLuka.setMnemonic('3');
@@ -1345,12 +1345,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         KdBagianTubuh.setHighlighter(null);
         KdBagianTubuh.setName("KdBagianTubuh"); // NOI18N
         FormInput.add(KdBagianTubuh);
-        KdBagianTubuh.setBounds(101, 500, 50, 23);
+        KdBagianTubuh.setBounds(101, 500, 55, 23);
 
         NmBagianTubuh.setEditable(false);
         NmBagianTubuh.setName("NmBagianTubuh"); // NOI18N
         FormInput.add(NmBagianTubuh);
-        NmBagianTubuh.setBounds(154, 500, 201, 23);
+        NmBagianTubuh.setBounds(159, 500, 196, 23);
 
         btnBagianTubuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBagianTubuh.setMnemonic('3');
@@ -1467,12 +1467,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         KdDampak.setHighlighter(null);
         KdDampak.setName("KdDampak"); // NOI18N
         FormInput.add(KdDampak);
-        KdDampak.setBounds(504, 180, 50, 23);
+        KdDampak.setBounds(504, 180, 55, 23);
 
         NmDampak.setEditable(false);
         NmDampak.setName("NmDampak"); // NOI18N
         FormInput.add(NmDampak);
-        NmDampak.setBounds(557, 180, 201, 23);
+        NmDampak.setBounds(562, 180, 196, 23);
 
         BtnDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDampak.setMnemonic('3');
@@ -1612,7 +1612,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         jLabel41.setBounds(400, 410, 100, 23);
 
         Target.setForeground(new java.awt.Color(50, 70, 50));
-        Target.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        Target.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-05-2019" }));
         Target.setDisplayFormat("dd-MM-yyyy");
         Target.setName("Target"); // NOI18N
         Target.setOpaque(false);
@@ -1670,12 +1670,12 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         NIKK3.setHighlighter(null);
         NIKK3.setName("NIKK3"); // NOI18N
         FormInput.add(NIKK3);
-        NIKK3.setBounds(504, 500, 50, 23);
+        NIKK3.setBounds(504, 500, 100, 23);
 
         NmPetugasK3.setEditable(false);
         NmPetugasK3.setName("NmPetugasK3"); // NOI18N
         FormInput.add(NmPetugasK3);
-        NmPetugasK3.setBounds(557, 500, 201, 23);
+        NmPetugasK3.setBounds(607, 500, 151, 23);
 
         btnTIMK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnTIMK3.setMnemonic('3');
@@ -1704,7 +1704,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll1, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Data K3", internalFrame2);
+        TabRawat.addTab("Input Data Peristiwa K3", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -1815,9 +1815,11 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.meghapus("data_tb","no_rawat",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
-        emptTeks();
-        tampil();
+        if(tbJnsPerawatan.getSelectedRow() > -1){
+            Sequel.meghapus("k3rs_peristiwa","no_k3rs",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+            emptTeks();
+            tampil();
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1829,7 +1831,62 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        
+        if(NoLaporan.getText().trim().equals("")){
+            Valid.textKosong(NoLaporan,"No.Laporan");
+        }else if(KdJenisPekerjaan.getText().trim().equals("")||NmJenisPekerjaan.getText().trim().equals("")){
+            Valid.textKosong(BtnJenisPekerjaan,"Jenis Pekerjaan");
+        }else if(KdLokasiKejadian.getText().trim().equals("")||NmLokasiKejadian.getText().trim().equals("")){
+            Valid.textKosong(btnLokasiKejadian,"Lokasi Kejadian");
+        }else if(Kronologi.getText().trim().equals("")){
+            Valid.textKosong(Kronologi,"Kronologi");
+        }else if(KdPenyebab.getText().trim().equals("")||NmPenyebab.getText().trim().equals("")){
+            Valid.textKosong(BtnPenyebab,"Aspek Penyebab");
+        }else if(NIKKorban.getText().trim().equals("")||NmKorban.getText().trim().equals("")){
+            Valid.textKosong(btnKorban,"Korban");
+        }else if(LT.getText().trim().equals("")){
+            Valid.textKosong(LT,"Lost Time");
+        }else if(KdJenisCidera.getText().trim().equals("")||NmJenisCidera.getText().trim().equals("")){
+            Valid.textKosong(btnJenisCidera,"Jenis Cidera");
+        }else if(KdJenisLuka.getText().trim().equals("")||NmJenisLuka.getText().trim().equals("")){
+            Valid.textKosong(btnJenisLuka,"Jenis Luka");
+        }else if(KdBagianTubuh.getText().trim().equals("")||NmBagianTubuh.getText().trim().equals("")){
+            Valid.textKosong(btnBagianTubuh,"Bagian Tubuh");
+        }else if(KondisiTidakAman.getText().trim().equals("")){
+            Valid.textKosong(KondisiTidakAman,"Penyebab langsung kondisi tidak aman");
+        }else if(TindakanTidakAman.getText().trim().equals("")){
+            Valid.textKosong(TindakanTidakAman,"Penyebab langsung tindakan tidak aman");
+        }else if(Pribadi.getText().trim().equals("")){
+            Valid.textKosong(Pribadi,"Penyebab tidak langsung pribadi");
+        }else if(Pekerjaan.getText().trim().equals("")){
+            Valid.textKosong(Pekerjaan,"Penyebab tidak langsung pekerjaan");
+        }else if(KdDampak.getText().trim().equals("")||NmDampak.getText().trim().equals("")){
+            Valid.textKosong(BtnDampak,"Dampak/Akibat Kejadian");
+        }else if(NIKPelapor.getText().trim().equals("")||NmPelapor.getText().trim().equals("")){
+            Valid.textKosong(btnPelapor,"Pelapor");
+        }else if(Rencana.getText().trim().equals("")){
+            Valid.textKosong(Rencana,"Rencana Perbaikan");
+        }else if(Wewenang.getText().trim().equals("")){
+            Valid.textKosong(Wewenang,"Wewenang");
+        }else if(Catatan.getText().trim().equals("")){
+            Valid.textKosong(Catatan,"Catatan");
+        }else if(NIKK3.getText().trim().equals("")||NmPetugasK3.getText().trim().equals("")){
+            Valid.textKosong(btnTIMK3,"Petugas K3");
+        }else{
+            if(tbJnsPerawatan.getSelectedRow() > -1){
+                if(Sequel.mengedittf("k3rs_peristiwa","no_k3rs=?","no_k3rs=?,tgl_insiden=?,waktu_insiden=?,kode_pekerjaan=?,tgl_pelaporan=?,waktu_pelaporan=?,kode_lokasi=?,kronologi_kejadian=?,kode_penyebab=?,nik=?,kategori_cidera=?,kode_cidera=?,kode_luka=?,kode_bagian=?,lt=?,penyebab_langsung_kondisi=?,penyebab_langsung_tindakan=?,penyebab_tidak_langsung_pribadi=?,penyebab_tidak_langsung_pekerjaan=?,barang_bukti=?,kode_dampak=?,nik_pelapor=?,perbaikan_jenis_tindakan=?,perbaikan_rencana_tindakan=?,perbaikan_target=?,perbaikan_wewenang=?,nik_timk3=?,catatan=?",29,new String[]{
+                        NoLaporan.getText(),Valid.SetTgl(TglInsiden.getSelectedItem()+""),JamInsiden.getSelectedItem()+":"+MenitInsiden.getSelectedItem()+":"+DetikInsiden.getSelectedItem(), 
+                        KdJenisPekerjaan.getText(),Valid.SetTgl(TglPelaporan.getSelectedItem()+""),JamPelaporan.getSelectedItem()+":"+MenitPelaporan.getSelectedItem()+":"+DetikPelaporan.getSelectedItem(), 
+                        KdLokasiKejadian.getText(),Kronologi.getText(),KdPenyebab.getText(),NIKKorban.getText(),Kategori.getSelectedItem().toString(),KdJenisCidera.getText(),KdJenisLuka.getText(), 
+                        KdBagianTubuh.getText(),LT.getText(),KondisiTidakAman.getText(),TindakanTidakAman.getText(),Pribadi.getText(),Pekerjaan.getText(),BarangBukti.getSelectedItem().toString(), 
+                        KdDampak.getText(),NIKPelapor.getText(),JenisTindakan.getSelectedItem().toString(),Rencana.getText(),Valid.SetTgl(Target.getSelectedItem()+""),Wewenang.getText(),NIKK3.getText(),
+                        Catatan.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                    })==true){
+                        emptTeks();
+                        TabRawat.setSelectedIndex(1);
+                        tampil();
+                }
+            }
+        }
         
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1921,10 +1978,9 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     private void tbJnsPerawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbJnsPerawatanMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
-                getData();
                 if(evt.getClickCount()==2){
+                    getData();
                     TabRawat.setSelectedIndex(0);
-                   
                 }
             } catch (java.lang.NullPointerException e) {
             }
@@ -1933,22 +1989,13 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 
     private void tbJnsPerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyPressed
         if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 try {
                     getData();
                     TabRawat.setSelectedIndex(0);
                 } catch (java.lang.NullPointerException e) {
                 }
-            }else if(evt.getKeyCode()==KeyEvent.VK_A){                
-                for(i=0;i<tbJnsPerawatan.getRowCount();i++){ 
-                    tbJnsPerawatan.setValueAt(true,i,0);
-                }
-            } 
+            }
         }
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
@@ -2414,7 +2461,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
                         rs.getString("kode_cidera"),rs.getString("jenis_cidera"),rs.getString("kode_luka"),rs.getString("jenis_luka"),rs.getString("kode_bagian"),rs.getString("bagian_tubuh"),
                         rs.getString("penyebab_langsung_kondisi"),rs.getString("penyebab_langsung_tindakan"),rs.getString("penyebab_tidak_langsung_pribadi"),rs.getString("penyebab_tidak_langsung_pekerjaan"),
                         rs.getString("kode_dampak"),rs.getString("dampak_cidera"),rs.getString("nik_pelapor"),rs.getString("pelapor"),rs.getString("barang_bukti"),rs.getString("perbaikan_jenis_tindakan"),
-                        rs.getString("perbaikan_rencana_tindakan"),rs.getString("perbaikan_target"),rs.getString("perbaikan_wewenang"),rs.getString("perbaikan_wewenang"),rs.getString("nik_timk3"),
+                        rs.getString("perbaikan_rencana_tindakan"),rs.getString("perbaikan_target"),rs.getString("perbaikan_wewenang"),rs.getString("catatan"),rs.getString("nik_timk3"),
                         rs.getString("timk3")
                     });
                 }  
@@ -2484,10 +2531,6 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
 
     private void getData() {
         if(tbJnsPerawatan.getSelectedRow()!= -1){
-            /*"Tanggal Pelaporan","Kd.Lokasi","Lokasi Kejadian","Kronologi Kejadian","Kd.Aspek","Aspek Penyebab",
-                "NIK Korban","Nama Korban","Kategori Cidera","LT(Hari)","Kd.Cidera","Jenis Cidera","Kd.Luka","Jenis Luka","Kd.Bagian","Bagian Tubuh","Kondisi Tidak Aman",
-                "Tindakan Tidak Aman","Pribadi","Pekerjaan","Kd.Dampak","Dampak Kejadian","NIK Pelapor","Nama Pelapor","Barang Bukti","Jenis Tindakan","Rencana","Target",
-                "Wewenang","Catatan","NIK TIM K3","Nama TIM K3"*/
             NoLaporan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
             Valid.SetTgl(TglInsiden,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
             JamInsiden.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(11,13));
@@ -2495,7 +2538,87 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             DetikInsiden.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString().substring(17,19));
             KdJenisPekerjaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
             NmJenisPekerjaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
-            
+            Valid.SetTgl(TglPelaporan,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
+            JamPelaporan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString().substring(11,13));
+            MenitPelaporan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString().substring(14,16));
+            DetikPelaporan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString().substring(17,19));
+            KdLokasiKejadian.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString());
+            NmLokasiKejadian.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString());
+            Kronologi.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),7).toString());
+            KdPenyebab.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString());
+            NmPenyebab.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString());
+            NIKKorban.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),10).toString());
+            NmKorban.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString());
+            Kategori.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),12).toString());
+            LT.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),13).toString());
+            KdJenisCidera.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
+            NmJenisCidera.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),15).toString());
+            KdJenisLuka.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),16).toString());
+            NmJenisLuka.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),17).toString());
+            KdBagianTubuh.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),18).toString());
+            NmBagianTubuh.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),19).toString());
+            KondisiTidakAman.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),20).toString());
+            TindakanTidakAman.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),21).toString());
+            Pribadi.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),22).toString());
+            Pekerjaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),23).toString());
+            KdDampak.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),24).toString());
+            NmDampak.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),25).toString());
+            NIKPelapor.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),26).toString());
+            NmPelapor.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),27).toString());
+            BarangBukti.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),28).toString());
+            JenisTindakan.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),29).toString());
+            Rencana.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),30).toString());
+            Valid.SetTgl(Target,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),31).toString());
+            Wewenang.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),32).toString());
+            Catatan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),33).toString());
+            NIKK3.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),34).toString());
+            NmPetugasK3.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),35).toString());
+            try {
+                ps=koneksi.prepareStatement(
+                    "select jk,jbtn,departemen,bidang,tgl_lahir from pegawai where nik=?");
+                try {
+                    ps.setString(1,NIKKorban.getText());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        Bidang.setText(rs.getString("bidang"));
+                        Departemen.setText(rs.getString("departemen"));
+                        JK.setText(rs.getString("jk"));
+                        Jabatan.setText(rs.getString("jbtn"));
+                        TglLahir.setDate(rs.getDate("tgl_lahir"));
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+                
+                ps=koneksi.prepareStatement(
+                    "select departemen,bidang from pegawai where nik=?");
+                try {
+                    ps.setString(1,NIKPelapor.getText());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        BidangPelapor.setText(rs.getString("bidang"));
+                        DepartemenPelapor.setText(rs.getString("departemen"));
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
         }
     }
     
