@@ -2487,6 +2487,9 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         NmJenisPekerjaan.setText("");
         KdLokasiKejadian.setText("");
         NmLokasiKejadian.setText("");
+        TglInsiden.setDate(new Date());
+        TglPelaporan.setDate(new Date());
+        TglLahir.setDate(new Date());
         Kronologi.setText("");
         KdPenyebab.setText("");
         NmPenyebab.setText("");
@@ -2519,8 +2522,6 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         Rencana.setText("");
         Wewenang.setText("");
         Catatan.setText("");
-        TglInsiden.setDate(new Date());
-        TglPelaporan.setDate(new Date());
         NoLaporan.requestFocus();
     }
     
