@@ -268,7 +268,8 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="40" splitType="Stretch">
+		<band height="44" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
 			<line>
 				<reportElement x="1" y="0" width="1320" height="1" uuid="97ba9133-3032-42dc-a205-fddbc2b9bcbd"/>
 				<graphicElement>
@@ -296,9 +297,9 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="1" y="13" width="113" height="1" uuid="55104960-710a-4cb4-b372-2397b5eb2e30"/>
+				<reportElement x="1" y="13" width="413" height="1" uuid="55104960-710a-4cb4-b372-2397b5eb2e30"/>
 				<graphicElement>
-					<pen lineWidth="0.25"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
@@ -308,7 +309,9 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="2" y="15" width="78" height="24" forecolor="#000000" backcolor="#FFFFFF" uuid="27f7b93f-e60c-4a36-9f9e-5bb97d4a32da"/>
+				<reportElement mode="Transparent" x="2" y="15" width="78" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="27f7b93f-e60c-4a36-9f9e-5bb97d4a32da">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -316,17 +319,42 @@
 				<text><![CDATA[No.Laporan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="100" y="14" width="78" height="24" forecolor="#000000" backcolor="#FFFFFF" uuid="b1a22b5a-637d-4035-965d-a1843a9cc4c1"/>
+				<reportElement mode="Transparent" x="83" y="15" width="78" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="b1a22b5a-637d-4035-965d-a1843a9cc4c1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Tanggal Insiden]]></text>
 			</staticText>
+			<line>
+				<reportElement x="162" y="14" width="1" height="25" uuid="543fcb71-5cfa-4e97-8aed-980b73ab7e0f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="164" y="15" width="156" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="4748d7f8-127f-4a50-ae92-07b823191aea">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jenis Pekerjaan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="321" y="14" width="1" height="25" uuid="708ceb03-c95c-4113-8c42-693c4333bb4b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="39" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<line>
 				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="12" uuid="3d473e01-b057-4d1c-98d2-a53b21663f06"/>
 				<graphicElement>
@@ -334,7 +362,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="1" y="11" width="1320" height="1" uuid="30380612-8d40-4c09-8a3a-0614da0758ae"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="1" y="12" width="1320" height="1" uuid="30380612-8d40-4c09-8a3a-0614da0758ae"/>
 				<graphicElement>
 					<pen lineWidth="0.25"/>
 				</graphicElement>
@@ -348,7 +376,35 @@
 				<textFieldExpression><![CDATA[$F{no_k3rs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="81" y="-1" width="1" height="12" uuid="135ccb70-d7f5-4113-8c43-a552b996c9e5"/>
+				<reportElement x="81" y="0" width="1" height="12" uuid="135ccb70-d7f5-4113-8c43-a552b996c9e5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField pattern="">
+				<reportElement x="83" y="1" width="78" height="10" uuid="2c6834c4-9169-4be3-973e-e002b45c554d"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_insiden}+" "+$F{waktu_insiden}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="162" y="0" width="1" height="12" uuid="ac64b253-2ac1-48d8-b30e-8df0cf371a40"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField pattern="">
+				<reportElement x="164" y="1" width="156" height="10" uuid="43d158da-474c-4329-8285-66c56a7ce2ef"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_pekerjaan}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="321" y="0" width="1" height="12" uuid="f7a5eb1b-7869-40d1-950f-66dfa20ce7ec"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
