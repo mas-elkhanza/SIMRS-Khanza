@@ -1926,7 +1926,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
             param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
             param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")); 
             param.put("parameter","%"+TCari.getText().trim()+"%"); 
-            Valid.MyReport("rptDataTB.jasper","report","::[ Data Pasien Teridentifikasi TB ]::",param);
+            Valid.MyReport("rptPeristiwaK3RS.jasper","report","::[ Data Pasien Teridentifikasi TB ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

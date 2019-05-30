@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1363" pageHeight="612" orientation="Landscape" columnWidth="1323" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="856c0fad-cccf-4a03-8432-25982430a269">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="356"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="101"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="888"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="tanggal1" class="java.lang.String"/>
+	<parameter name="tanggal2" class="java.lang.String"/>
+	<parameter name="parameter" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[select k3rs_peristiwa.no_k3rs,k3rs_peristiwa.tgl_insiden,k3rs_peristiwa.waktu_insiden,k3rs_peristiwa.kode_pekerjaan,k3rs_jenis_pekerjaan.jenis_pekerjaan,
+                k3rs_peristiwa.tgl_pelaporan,k3rs_peristiwa.waktu_pelaporan,k3rs_peristiwa.kode_lokasi,k3rs_lokasi_kejadian.lokasi_kejadian,k3rs_peristiwa.kronologi_kejadian,
+                k3rs_peristiwa.kode_penyebab,k3rs_penyebab.penyebab_kecelakaan,k3rs_peristiwa.nik,peg1.nama as korban,k3rs_peristiwa.kategori_cidera,k3rs_peristiwa.kode_cidera,
+                k3rs_jenis_cidera.jenis_cidera,k3rs_peristiwa.kode_luka,k3rs_jenis_luka.jenis_luka,k3rs_peristiwa.kode_bagian,k3rs_bagian_tubuh.bagian_tubuh,k3rs_peristiwa.lt,
+                k3rs_peristiwa.penyebab_langsung_kondisi,k3rs_peristiwa.penyebab_langsung_tindakan,k3rs_peristiwa.penyebab_tidak_langsung_pribadi,k3rs_peristiwa.penyebab_tidak_langsung_pekerjaan,
+                k3rs_peristiwa.barang_bukti,k3rs_peristiwa.kode_dampak,k3rs_dampak_cidera.dampak_cidera,k3rs_peristiwa.nik_pelapor,peg2.nama as pelapor,k3rs_peristiwa.perbaikan_jenis_tindakan,
+                k3rs_peristiwa.perbaikan_rencana_tindakan,k3rs_peristiwa.perbaikan_target,k3rs_peristiwa.perbaikan_wewenang,k3rs_peristiwa.nik_timk3,peg3.nama as timk3,
+                k3rs_peristiwa.catatan from k3rs_peristiwa inner join k3rs_jenis_pekerjaan inner join k3rs_bagian_tubuh inner join k3rs_dampak_cidera 
+                inner join k3rs_jenis_cidera inner join k3rs_jenis_luka inner join k3rs_lokasi_kejadian inner join k3rs_penyebab inner join pegawai as peg1 
+                inner join pegawai as peg2 inner join pegawai as peg3 on k3rs_peristiwa.kode_pekerjaan=k3rs_jenis_pekerjaan.kode_pekerjaan and 
+                k3rs_peristiwa.kode_lokasi=k3rs_lokasi_kejadian.kode_lokasi and k3rs_peristiwa.kode_penyebab=k3rs_penyebab.kode_penyebab and 
+                k3rs_peristiwa.kode_cidera=k3rs_jenis_cidera.kode_cidera and k3rs_peristiwa.kode_luka=k3rs_jenis_luka.kode_luka and k3rs_peristiwa.kode_bagian=k3rs_bagian_tubuh.kode_bagian and 
+                k3rs_peristiwa.kode_dampak=k3rs_dampak_cidera.kode_dampak and k3rs_peristiwa.nik=peg1.nik and k3rs_peristiwa.nik_pelapor=peg2.nik and k3rs_peristiwa.nik_timk3=peg3.nik 
+                where k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_peristiwa.no_k3rs like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_jenis_pekerjaan.jenis_pekerjaan like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_lokasi_kejadian.lokasi_kejadian like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_penyebab.penyebab_kecelakaan like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_jenis_cidera.jenis_cidera like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_jenis_luka.jenis_luka like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_bagian_tubuh.bagian_tubuh like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_dampak_cidera.dampak_cidera like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and peg1.nama like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and peg2.nama like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and peg3.nama like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_peristiwa.kategori_cidera like $P{parameter} or 
+                k3rs_peristiwa.tgl_pelaporan between $P{tanggal1} and $P{tanggal2} and k3rs_peristiwa.perbaikan_jenis_tindakan like $P{parameter} order by k3rs_peristiwa.tgl_pelaporan desc]]>
+	</queryString>
+	<field name="no_k3rs" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_k3rs"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="tgl_insiden" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_insiden"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="waktu_insiden" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="waktu_insiden"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="kode_pekerjaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_pekerjaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="jenis_pekerjaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jenis_pekerjaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_jenis_pekerjaan"/>
+	</field>
+	<field name="tgl_pelaporan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_pelaporan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="waktu_pelaporan" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="waktu_pelaporan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="kode_lokasi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_lokasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="lokasi_kejadian" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lokasi_kejadian"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_lokasi_kejadian"/>
+	</field>
+	<field name="kronologi_kejadian" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kronologi_kejadian"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="kode_penyebab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_penyebab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="penyebab_kecelakaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="penyebab_kecelakaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_penyebab"/>
+	</field>
+	<field name="nik" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nik"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="korban" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="korban"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pegawai"/>
+	</field>
+	<field name="kategori_cidera" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kategori_cidera"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="kode_cidera" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_cidera"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="jenis_cidera" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jenis_cidera"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_jenis_cidera"/>
+	</field>
+	<field name="kode_luka" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_luka"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="jenis_luka" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jenis_luka"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_jenis_luka"/>
+	</field>
+	<field name="kode_bagian" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_bagian"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="bagian_tubuh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="bagian_tubuh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_bagian_tubuh"/>
+	</field>
+	<field name="lt" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="lt"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="penyebab_langsung_kondisi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="penyebab_langsung_kondisi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="penyebab_langsung_tindakan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="penyebab_langsung_tindakan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="penyebab_tidak_langsung_pribadi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="penyebab_tidak_langsung_pribadi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="penyebab_tidak_langsung_pekerjaan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="penyebab_tidak_langsung_pekerjaan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="barang_bukti" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="barang_bukti"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="kode_dampak" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_dampak"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="dampak_cidera" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dampak_cidera"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_dampak_cidera"/>
+	</field>
+	<field name="nik_pelapor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nik_pelapor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="pelapor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pelapor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pegawai"/>
+	</field>
+	<field name="perbaikan_jenis_tindakan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="perbaikan_jenis_tindakan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="perbaikan_rencana_tindakan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="perbaikan_rencana_tindakan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="perbaikan_target" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="perbaikan_target"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="perbaikan_wewenang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="perbaikan_wewenang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="nik_timk3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nik_timk3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<field name="timk3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="timk3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pegawai"/>
+	</field>
+	<field name="catatan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="catatan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="k3rs_peristiwa"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="0" y="2" width="48" height="45" uuid="0cc5daf2-9a89-40e9-b72b-228253646dd3"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="2" y="0" width="1318" height="17" uuid="32a34587-0487-4b39-8095-840cdeb46554"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="35" width="1318" height="14" uuid="e0090857-d470-4afc-b7da-7c52ff8452b6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="14" width="1318" height="14" uuid="faf8e4a6-3c65-436b-9a77-89f0e5f4fd20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="48" width="1320" height="1" uuid="274a7526-31bd-4e76-b2cf-fd63643e6f1e"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="2" y="25" width="1318" height="14" uuid="44b8f737-11fc-498b-a459-dc6526ff30ee"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="0" y="53" width="1320" height="16" uuid="e9439524-2160-44cf-a9be-b7d11eaba178"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="11"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LAPORAN KECELAKAAN KERJA PERIODE "+$P{tanggal1}+" S.D. "+$P{tanggal2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="0" width="1320" height="1" uuid="97ba9133-3032-42dc-a205-fddbc2b9bcbd"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="38" uuid="6cd39bb7-580d-41b0-9c14-855121ea4244"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="4" y="1" width="112" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="ae0e3a43-9ef5-45d4-a1ad-d02138e65c76"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[A. INSIDEN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="39" width="1320" height="1" uuid="502dae9d-f8aa-40e5-8428-659e25a56445"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="13" width="113" height="1" uuid="55104960-710a-4cb4-b372-2397b5eb2e30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="81" y="14" width="1" height="25" uuid="1e20a0fd-960e-40a7-9f5f-f147365be21f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="15" width="78" height="24" forecolor="#000000" backcolor="#FFFFFF" uuid="27f7b93f-e60c-4a36-9f9e-5bb97d4a32da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.Laporan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="100" y="14" width="78" height="24" forecolor="#000000" backcolor="#FFFFFF" uuid="b1a22b5a-637d-4035-965d-a1843a9cc4c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal Insiden]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="12" uuid="3d473e01-b057-4d1c-98d2-a53b21663f06"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="1" y="11" width="1320" height="1" uuid="30380612-8d40-4c09-8a3a-0614da0758ae"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<textField pattern="">
+				<reportElement x="2" y="1" width="78" height="10" uuid="80835554-b86c-47f2-afa4-24c419163ded"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_k3rs}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="81" y="-1" width="1" height="12" uuid="135ccb70-d7f5-4113-8c43-a552b996c9e5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>
