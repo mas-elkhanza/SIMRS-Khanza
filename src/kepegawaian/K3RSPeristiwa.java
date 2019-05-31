@@ -74,7 +74,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Laporan","Tanggal Insiden","Kd.Pekerjaan","Jenis Pekerjaan","Tanggal Pelaporan","Kd.Lokasi","Lokasi Kejadian","Kronologi Kejadian","Kd.Aspek","Aspek Penyebab",
                 "NIK Korban","Nama Korban","Kategori Cidera","LT(Hari)","Kd.Cidera","Jenis Cidera","Kd.Luka","Jenis Luka","Kd.Bagian","Bagian Tubuh","Kondisi Tidak Aman",
-                "Tindakan Tidak Aman","Pribadi","Pekerjaan","Kd.Dampak","Dampak Kejadian","NIK Pelapor","Nama Pelapor","Barang Bukti","Jenis Tindakan","Rencana","Target",
+                "Tindakan Tidak Aman","Pribadi","Pekerjaan","Kd.Dampak","Dampak Kejadian","NIK Pelapor","Nama Pelapor","Barang Bukti","Jenis Tindakan","Rencana Tindakan","Target",
                 "Wewenang","Catatan","NIK TIM K3","Nama TIM K3"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
