@@ -382,7 +382,7 @@ public class GrafikPeristiwaK3PerTahun extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("periode",Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());    
+            param.put("periode","Periode "+Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());    
             Sequel.queryu("truncate table temporary_grafik");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                     Sequel.menyimpan("temporary_grafik","'0','"+
