@@ -55,9 +55,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(545,599);
 
-        Object[] row={"P","Kode Kamar","Nama Kamar"};
-        
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{"P","Kode Kamar","Nama Kamar"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
