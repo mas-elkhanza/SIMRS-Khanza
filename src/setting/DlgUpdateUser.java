@@ -2174,6 +2174,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 if("[N]Limbah Padat Domestik Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_limbahdomestik_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
+                
+                if("[N]K3 Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_k3_pertahun='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
+                if("[N]K3 Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_k3_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
+                if("[N]K3 Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_k3_pertanggal='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
 
                 if("[O]Indeks Surat".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_indeks='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -2563,7 +2575,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"+
                         "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
                         "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
-                        "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
+                        "grafik_k3_pertanggal from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -4326,6 +4339,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[N]Limbah Padat Domestik Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[N]Limbah Padat Domestik Per Bulan",rs.getBoolean("grafik_limbahdomestik_perbulan")});
+                    }
+                    
+                    if("[N]K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]K3 Per Tahun",rs.getBoolean("grafik_k3_pertahun")});
+                    }
+                    
+                    if("[N]K3 Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]K3 Per Bulan",rs.getBoolean("grafik_k3_perbulan")});
+                    }
+                    
+                    if("[N]K3 Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]K3 Per Tanggal",rs.getBoolean("grafik_k3_pertanggal")});
                     }
                     
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){
