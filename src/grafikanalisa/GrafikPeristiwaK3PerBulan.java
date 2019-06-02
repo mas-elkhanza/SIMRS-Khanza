@@ -296,7 +296,7 @@ public class GrafikPeristiwaK3PerBulan extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
         }
-        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Peristiwa K3 Per Bulan Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Bulan","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Peristiwa K3 Per Bulan Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Bulan","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true); 
         ChartFrame cf = new ChartFrame("Grafik Peristiwa K3 Per Bulan",freeChart);
         cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
         cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -319,7 +319,7 @@ public class GrafikPeristiwaK3PerBulan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
     private void BtnPrint4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint4ActionPerformed
-       grafiksql2 kas=new grafiksql2("Grafik Peristiwa K3 Per Bulan Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),
+       grafiksql2 kas=new grafiksql2("Grafik Peristiwa K3 Per Bulan Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),
                "select DATE_FORMAT(k3rs_peristiwa.tgl_pelaporan, '%y-%m'),count(DATE_FORMAT(k3rs_peristiwa.tgl_pelaporan, '%y-%m')) as jumlah from k3rs_peristiwa "+
                "where tgl_pelaporan between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' "+
                "group by DATE_FORMAT(k3rs_peristiwa.tgl_pelaporan, '%y-%m')","Bulan");
@@ -350,7 +350,7 @@ public class GrafikPeristiwaK3PerBulan extends javax.swing.JDialog {
             System.out.println("Notifikasi : " + e);
         } 
         
-        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Peristiwa K3 Per Bulan Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Peristiwa K3 Per Bulan Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
         ChartFrame cf = new ChartFrame("Grafik Peristiwa K3 Per Bulan",freeChart);
         cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
         cf.setLocationRelativeTo(Scroll);
@@ -382,7 +382,8 @@ public class GrafikPeristiwaK3PerBulan extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            param.put("periode","Periode "+Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());    
+            param.put("periode","Periode "+Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());  
+            param.put("logo",Sequel.cariGambar("select logo from setting"));  
             Sequel.queryu("truncate table temporary_grafik");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                     Sequel.menyimpan("temporary_grafik","'0','"+

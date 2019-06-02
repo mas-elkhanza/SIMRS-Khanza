@@ -106,7 +106,7 @@ public final class akses {
             inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false,anggota_perpustakaan=false,
             peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false,jenis_cidera_k3rs=false,penyebab_k3rs=false,
             jenis_luka_k3rs=false,lokasi_kejadian_k3rs=false,dampak_cidera_k3rs=false,jenis_pekerjaan_k3rs=false,bagian_tubuh_k3rs=false,
-            peristiwa_k3rs=false,grafik_k3_pertahun=false,grafik_k3_perbulan=false,grafik_k3_pertanggal=false;
+            peristiwa_k3rs=false,grafik_k3_pertahun=false,grafik_k3_perbulan=false,grafik_k3_pertanggal=false,grafik_k3_perjeniscidera=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -618,6 +618,7 @@ public final class akses {
                         akses.grafik_k3_pertahun=true;
                         akses.grafik_k3_perbulan=true;
                         akses.grafik_k3_pertanggal=true;
+                        akses.grafik_k3_perjeniscidera=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1113,6 +1114,7 @@ public final class akses {
                         akses.grafik_k3_pertahun=rs2.getBoolean("grafik_k3_pertahun");
                         akses.grafik_k3_perbulan=rs2.getBoolean("grafik_k3_perbulan");
                         akses.grafik_k3_pertanggal=rs2.getBoolean("grafik_k3_pertanggal");
+                        akses.grafik_k3_perjeniscidera=rs2.getBoolean("grafik_k3_perjeniscidera");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1606,6 +1608,7 @@ public final class akses {
                         akses.grafik_k3_pertahun=false;
                         akses.grafik_k3_perbulan=false;
                         akses.grafik_k3_pertanggal=false;
+                        akses.grafik_k3_perjeniscidera=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2153,4 +2156,5 @@ public final class akses {
     public static boolean getgrafik_k3_pertahun(){return akses.grafik_k3_pertahun;}
     public static boolean getgrafik_k3_perbulan(){return akses.grafik_k3_perbulan;}
     public static boolean getgrafik_k3_pertanggal(){return akses.grafik_k3_pertanggal;}
+    public static boolean getgrafik_k3_perjeniscidera(){return akses.grafik_k3_perjeniscidera;}
 }   
