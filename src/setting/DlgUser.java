@@ -136,7 +136,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan",
                     "[P]Anggota Perpustakaan","[P]Peminjaman Koleksi Perpustakaan","[P]Bayar Denda Perpustakaan","[P]Data Koleksi Ebook","[C]Jenis Cidera K3",
                     "[C]Penyebab Kecelakaan K3","[C]Jenis Luka K3","[C]Lokasi Kejadian K3","[C]Dampak Cidera K3","[C]Jenis Pekerjaan K3","[C]Bagian Tubuh K3",
-                    "[C]Peristiwa K3","[N]K3 Per Tahun","[N]K3 Per Bulan","[N]K3 Per Tanggal","[N]K3 Per Jenis Cidera"
+                    "[C]Peristiwa K3","[N]K3 Per Tahun","[N]K3 Per Bulan","[N]K3 Per Tanggal","[N]K3 Per Jenis Cidera","[N]K3 Per Penyebab Kecelakaan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -276,6 +276,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -289,7 +290,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 493;i++) {
+        for (i = 0; i < 494;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -911,6 +912,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(95);
             }else if(i==492){
                 column.setPreferredWidth(116);
+            }else if(i==493){
+                column.setPreferredWidth(162);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1401,7 +1404,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1936,7 +1939,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_k3_pertahun='"+tbUser.getValueAt(i,489).toString()+"',"+
                     "grafik_k3_perbulan='"+tbUser.getValueAt(i,490).toString()+"',"+
                     "grafik_k3_pertanggal='"+tbUser.getValueAt(i,491).toString()+"',"+
-                    "grafik_k3_perjeniscidera='"+tbUser.getValueAt(i,492).toString()+"'");
+                    "grafik_k3_perjeniscidera='"+tbUser.getValueAt(i,492).toString()+"',"+
+                    "grafik_k3_perpenyebab='"+tbUser.getValueAt(i,493).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2510,7 +2514,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "grafik_k3_pertahun='"+tbUser.getValueAt(barisdicopy,489).toString()+"',"+
                                     "grafik_k3_perbulan='"+tbUser.getValueAt(barisdicopy,490).toString()+"',"+
                                     "grafik_k3_pertanggal='"+tbUser.getValueAt(barisdicopy,491).toString()+"',"+
-                                    "grafik_k3_perjeniscidera='"+tbUser.getValueAt(barisdicopy,492).toString()+"'");
+                                    "grafik_k3_perjeniscidera='"+tbUser.getValueAt(barisdicopy,492).toString()+"',"+
+                                    "grafik_k3_perpenyebab='"+tbUser.getValueAt(barisdicopy,493).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2799,7 +2804,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
                         "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
                         "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
-                        "grafik_k3_pertanggal,grafik_k3_perjeniscidera from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3304,7 +3309,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_k3_pertahun"),
                                rs.getBoolean("grafik_k3_perbulan"),
                                rs.getBoolean("grafik_k3_pertanggal"),
-                               rs.getBoolean("grafik_k3_perjeniscidera")
+                               rs.getBoolean("grafik_k3_perjeniscidera"),
+                               rs.getBoolean("grafik_k3_perpenyebab")
                             });
                         }   
                     } catch (Exception e) {
@@ -3798,7 +3804,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_k3_pertahun"),
                            rs.getBoolean("grafik_k3_perbulan"),
                            rs.getBoolean("grafik_k3_pertanggal"),
-                           rs.getBoolean("grafik_k3_perjeniscidera")
+                           rs.getBoolean("grafik_k3_perjeniscidera"),
+                           rs.getBoolean("grafik_k3_perpenyebab")
                         });
                     }                                             
                  }
