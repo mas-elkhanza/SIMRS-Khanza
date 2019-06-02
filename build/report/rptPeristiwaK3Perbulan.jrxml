@@ -245,7 +245,7 @@
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement mode="Opaque" x="368" y="0" width="187" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="12721778-5bb6-4f54-b9da-de7248ff9094"/>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -261,7 +261,7 @@
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="122" y="0" width="247" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="4005dc8d-6084-41a2-b02a-a93ec8dde0a1"/>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -276,7 +276,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="2" y="0" width="120" height="10" uuid="3d9fbee0-c06c-40bd-912d-004cc2293669"/>
 				<textElement>
@@ -287,7 +287,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="122" y="0" width="246" height="10" uuid="9c746498-1b76-4194-8b97-9cff0ec1ce0f"/>
-				<textElement>
+				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -295,12 +295,18 @@
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="368" y="0" width="186" height="10" uuid="425ecdbf-a3b6-46bb-8e5f-2bb181b482c5"/>
-				<textElement>
+				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement stretchType="ElementGroupHeight" x="0" y="11" width="555" height="1" uuid="cffd2163-f3e6-4189-a7de-f1e34f6af462"/>
+				<graphicElement>
+					<pen lineWidth="0.3"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

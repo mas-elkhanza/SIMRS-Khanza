@@ -276,7 +276,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="2" y="0" width="120" height="10" uuid="3d9fbee0-c06c-40bd-912d-004cc2293669"/>
 				<textElement>
@@ -301,6 +301,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement stretchType="ElementGroupHeight" x="0" y="11" width="555" height="1" uuid="cffd2163-f3e6-4189-a7de-f1e34f6af462"/>
+				<graphicElement>
+					<pen lineWidth="0.3"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
