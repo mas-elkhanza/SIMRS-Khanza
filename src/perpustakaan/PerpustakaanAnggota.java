@@ -108,7 +108,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm(); 
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

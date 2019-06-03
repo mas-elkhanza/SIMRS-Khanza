@@ -86,7 +86,7 @@ public final class DlgKategoriPemasukan extends javax.swing.JDialog {
         KdKontraAkun.setDocument(new batasInput((byte)15).getKata(KdKontraAkun));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

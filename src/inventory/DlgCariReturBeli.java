@@ -132,7 +132,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
        
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

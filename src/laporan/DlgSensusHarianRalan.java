@@ -186,7 +186,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         }
         table2.setDefaultRenderer(Object.class, new WarnaTable());
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

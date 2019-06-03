@@ -100,7 +100,7 @@ public class DlgAkunBayar extends javax.swing.JDialog {
         nama.setDocument(new batasInput((byte)50).getKata(nama));
         ppn.setDocument(new batasInput((byte)5).getKata(ppn));
         kdrek.setDocument(new batasInput((byte)15).getKata(kdrek));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

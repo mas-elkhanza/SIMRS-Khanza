@@ -135,7 +135,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         TPemeriksaan.setDocument(new batasInput((byte)400).getKata(TPemeriksaan));
         TSuhu.setDocument(new batasInput((byte)3).getKata(TSuhu));
         TTensi.setDocument(new batasInput((byte)7).getKata(TTensi));   
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

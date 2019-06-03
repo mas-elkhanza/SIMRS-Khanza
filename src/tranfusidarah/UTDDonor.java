@@ -242,7 +242,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         NomorTelp.setDocument(new batasInput((byte)10).getKata(NomorTelp));
         KodePetugasAftap.setDocument(new batasInput((byte)20).getKata(KodePetugasAftap));
         KodePetugasUSaring.setDocument(new batasInput((byte)20).getKata(KodePetugasUSaring));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

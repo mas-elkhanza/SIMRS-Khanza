@@ -81,7 +81,7 @@ public class DlgBiayaSekaliMasuk extends javax.swing.JDialog {
         NmBiaya.setDocument(new batasInput((byte)50).getKata(NmBiaya));
         BiayaHarian.setDocument(new batasInput((byte)15).getOnlyAngka(BiayaHarian));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

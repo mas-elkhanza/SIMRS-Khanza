@@ -166,7 +166,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         tbRawatJalan.setDefaultRenderer(Object.class, new WarnaTable());
         
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

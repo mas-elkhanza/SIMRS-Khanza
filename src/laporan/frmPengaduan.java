@@ -94,7 +94,7 @@ public class frmPengaduan extends javax.swing.JFrame {
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         Pesan.setDocument(new batasInput((int)255).getKata(Pesan));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

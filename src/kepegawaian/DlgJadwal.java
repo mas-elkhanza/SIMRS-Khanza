@@ -106,7 +106,7 @@ public class DlgJadwal extends javax.swing.JDialog {
         kddokter.setDocument(new batasInput((byte)20).getKata(kddokter));
         KdPoli.setDocument(new batasInput((byte)5).getKata(KdPoli));
         Kuota.setDocument(new batasInput((byte)4).getOnlyAngka(Kuota));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
