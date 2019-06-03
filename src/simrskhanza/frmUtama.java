@@ -422,6 +422,7 @@ import grafikanalisa.GrafikKeslingPDAMPerBulan;
 import grafikanalisa.GrafikKeslingPDAMPertanggal;
 import grafikanalisa.GrafikPeristiwaK3PerBulan;
 import grafikanalisa.GrafikPeristiwaK3PerJenisCidera;
+import grafikanalisa.GrafikPeristiwaK3PerJenisLuka;
 import grafikanalisa.GrafikPeristiwaK3PerPenyebab;
 import grafikanalisa.GrafikPeristiwaK3PerTahun;
 import grafikanalisa.GrafikPeristiwaK3PerTanggal;
@@ -14573,6 +14574,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikK3PerJenisLukaActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPeristiwaK3PerJenisLuka aplikasi=new GrafikPeristiwaK3PerJenisLuka(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15147,7 +15159,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPeminjamanPerpustakaan,btnBayarDendaPerpustakaan,btnPenelitianPerpustakaan,btnEbookPerpustakaan,btnCariEbook,btnPestControl,
             btnMutuAirLimbah,btnCariInventarisPerpustakaan,btnJenisCideraK3,btnPenyebabKecelakaanK3,btnJenisLukaK3,btnLokasiKejadianK3,btnDampakCideraK3,
             btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3,btnBagianTubuhK3,btnPeristiwaK3,btnGrafikK3PerTahun,btnGrafikK3PerBulan,btnGrafikK3PerTanggal,
-            btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab;
+            btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka;
     
     public void isWall(){
         try{            
@@ -17729,6 +17741,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnGrafikK3PerPenyebab);
                 jmlmenu++;
             }
+            
+            if(akses.getgrafik_k3_perjenisluka()==true){
+                Panelmenu.add(btnGrafikK3PerJenisLuka);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(akses.getsurat_indeks()==true){
@@ -20181,6 +20198,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_k3_perpenyebab()==true){
             Panelmenu.add(btnGrafikK3PerPenyebab);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_k3_perjenisluka()==true){
+            Panelmenu.add(btnGrafikK3PerJenisLuka);
             jmlmenu++;
         }
 
@@ -23513,6 +23535,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_k3_perjenisluka()==true){
+            if(btnGrafikK3PerJenisLuka.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikK3PerJenisLuka);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -24254,6 +24283,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikK3PerPenyebab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikK3PerPenyebabActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikK3PerJenisLuka= new widget.ButtonBig();
+        btnGrafikK3PerJenisLuka.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikK3PerJenisLuka.setText("K3 Per Jenis Luka");
+        btnGrafikK3PerJenisLuka.setIconTextGap(0);
+        btnGrafikK3PerJenisLuka.setName("btnGrafikK3PerJenisLuka"); 
+        btnGrafikK3PerJenisLuka.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikK3PerJenisLuka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikK3PerJenisLukaActionPerformed(evt);
             }
         });
     }
