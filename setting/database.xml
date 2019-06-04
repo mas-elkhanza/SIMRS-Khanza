@@ -66,5 +66,5 @@
     <entry key="USERDUKCAPIL">rsia</entry>
     <entry key="PASSDUKCAPIL">123</entry>
     <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
-    <entry key="AKTIFKANTRACKSQL">no</entry>
+    <entry key="AKTIFKANTRACKSQL">yes</entry>
 </properties>

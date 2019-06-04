@@ -17,8 +17,8 @@
     <entry key="ALARMLAB">yes</entry>
     <entry key="FORMALARMLAB">ralan + ranap</entry>
     <entry key="ALARMRADIOLOGI">yes</entry>
-    <entry key="ALARMRSISRUTE">yes</entry>
     <entry key="FORMALARMRADIOLOGI">ralan + ranap</entry>
+    <entry key="ALARMRSISRUTE">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
     <entry key="SECRETKEYAPIBPJS">3oUEBAF783123123</entry>
@@ -66,4 +66,5 @@
     <entry key="USERDUKCAPIL">rsia</entry>
     <entry key="PASSDUKCAPIL">123</entry>
     <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
+    <entry key="AKTIFKANTRACKSQL">yes</entry>
 </properties>

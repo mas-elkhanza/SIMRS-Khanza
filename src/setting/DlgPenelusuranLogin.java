@@ -522,7 +522,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode2);
         try{    
             ps=koneksi.prepareStatement(
-                    "select * from trackersql where tanggal between ? and ? and usere like ? or tanggal between ? and ? and sqle like ?  order by trackersql.tanggal");
+                    "select tanggal,usere, replace(sqle,'|','\\',\\'') as sqle from trackersql where tanggal between ? and ? and usere like ? or tanggal between ? and ? and sqle like ?  order by trackersql.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
@@ -533,7 +533,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode2.addRow(new Object[]{
-                        rs.getString("Tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("usere")),rs.getString("sqle")
+                        rs.getString("tanggal"),rs.getString("usere")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("usere")),rs.getString("sqle").replaceAll("\\(\\',\\'","\\(\\'")
                     });
                 }
             } catch (Exception e) {

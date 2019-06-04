@@ -955,7 +955,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
-            SimpanTrack(qry);
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack(qry+" "+dicari);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
