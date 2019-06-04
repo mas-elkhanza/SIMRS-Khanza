@@ -136,7 +136,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan",
                     "[P]Anggota Perpustakaan","[P]Peminjaman Koleksi Perpustakaan","[P]Bayar Denda Perpustakaan","[P]Data Koleksi Ebook","[C]Jenis Cidera K3",
                     "[C]Penyebab Kecelakaan K3","[C]Jenis Luka K3","[C]Lokasi Kejadian K3","[C]Dampak Cidera K3","[C]Jenis Pekerjaan K3","[C]Bagian Tubuh K3",
-                    "[C]Peristiwa K3","[N]K3 Per Tahun","[N]K3 Per Bulan","[N]K3 Per Tanggal","[N]K3 Per Jenis Cidera","[N]K3 Per Penyebab Kecelakaan","[N]K3 Per Jenis Luka"
+                    "[C]Peristiwa K3","[N]K3 Per Tahun","[N]K3 Per Bulan","[N]K3 Per Tanggal","[N]K3 Per Jenis Cidera","[N]K3 Per Penyebab Kecelakaan","[N]K3 Per Jenis Luka",
+                    "[N]K3 Per Lokasi Kejadian"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -290,7 +291,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 495;i++) {
+        for (i = 0; i < 496;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -915,7 +916,9 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==493){
                 column.setPreferredWidth(161);
             }else if(i==494){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(106);
+            }else if(i==495){
+                column.setPreferredWidth(131);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1406,7 +1409,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1943,7 +1946,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_k3_pertanggal='"+tbUser.getValueAt(i,491).toString()+"',"+
                     "grafik_k3_perjeniscidera='"+tbUser.getValueAt(i,492).toString()+"',"+
                     "grafik_k3_perpenyebab='"+tbUser.getValueAt(i,493).toString()+"',"+
-                    "grafik_k3_perjenisluka='"+tbUser.getValueAt(i,494).toString()+"'");
+                    "grafik_k3_perjenisluka='"+tbUser.getValueAt(i,494).toString()+"',"+
+                    "grafik_k3_lokasikejadian='"+tbUser.getValueAt(i,495).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2519,7 +2523,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "grafik_k3_pertanggal='"+tbUser.getValueAt(barisdicopy,491).toString()+"',"+
                                     "grafik_k3_perjeniscidera='"+tbUser.getValueAt(barisdicopy,492).toString()+"',"+
                                     "grafik_k3_perpenyebab='"+tbUser.getValueAt(barisdicopy,493).toString()+"',"+
-                                    "grafik_k3_perjenisluka='"+tbUser.getValueAt(barisdicopy,494).toString()+"'");
+                                    "grafik_k3_perjenisluka='"+tbUser.getValueAt(barisdicopy,494).toString()+"',"+
+                                    "grafik_k3_lokasikejadian='"+tbUser.getValueAt(barisdicopy,495).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2808,7 +2813,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
                         "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
                         "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
-                        "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3315,7 +3320,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_k3_pertanggal"),
                                rs.getBoolean("grafik_k3_perjeniscidera"),
                                rs.getBoolean("grafik_k3_perpenyebab"),
-                               rs.getBoolean("grafik_k3_perjenisluka")
+                               rs.getBoolean("grafik_k3_perjenisluka"),
+                               rs.getBoolean("grafik_k3_lokasikejadian")
                             });
                         }   
                     } catch (Exception e) {
@@ -3811,7 +3817,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_k3_pertanggal"),
                            rs.getBoolean("grafik_k3_perjeniscidera"),
                            rs.getBoolean("grafik_k3_perpenyebab"),
-                           rs.getBoolean("grafik_k3_perjenisluka")
+                           rs.getBoolean("grafik_k3_perjenisluka"),
+                           rs.getBoolean("grafik_k3_lokasikejadian")
                         });
                     }                                             
                  }
