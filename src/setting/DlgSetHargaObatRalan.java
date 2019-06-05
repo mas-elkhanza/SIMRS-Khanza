@@ -79,7 +79,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
         harga.setDocument(new batasInput((byte)3).getOnlyAngka(harga));
         kdpj.setDocument(new batasInput((byte)8).getKata(kdpj));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

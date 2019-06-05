@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -94,7 +94,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         kdsat.setDocument(new batasInput((byte)4).getKata(kdsat));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -124,7 +124,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPemesanan")){
+                if(akses.getform().equals("DlgCariPemesanan")){
                     if(suplier.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
@@ -147,7 +147,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPemesanan")){
+                if(akses.getform().equals("DlgCariPemesanan")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         suplier.dispose();
                     }    
@@ -164,7 +164,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPemesanan")){
+                if(akses.getform().equals("DlgCariPemesanan")){
                     if(barang.jenis.getTable().getSelectedRow()!= -1){                          
                         kdsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
                         nmsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());                        
@@ -189,7 +189,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPemesanan")){
+                if(akses.getform().equals("DlgCariPemesanan")){
                     if(pegawai.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
@@ -214,7 +214,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgCariPemesanan")){
+                if(akses.getform().equals("DlgCariPemesanan")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
@@ -237,7 +237,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgCariPemesanan")){
+                if(akses.getform().equals("DlgCariPemesanan")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                     }
@@ -309,7 +309,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         ppHapus.setText("Hapus Data Surat Pemesanan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(165, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +325,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         ppDatang.setText("Sudah Datang");
         ppDatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDatang.setIconTextGap(5);
         ppDatang.setName("ppDatang"); // NOI18N
         ppDatang.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDatang.addActionListener(new java.awt.event.ActionListener() {
@@ -343,7 +341,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         ppProses.setText("Proses Pesan");
         ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppProses.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppProses.setIconTextGap(5);
         ppProses.setName("ppProses"); // NOI18N
         ppProses.setPreferredSize(new java.awt.Dimension(200, 25));
         ppProses.addActionListener(new java.awt.event.ActionListener() {
@@ -381,7 +378,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -728,7 +724,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        var.setform("DlgCariPemesanan");
+        akses.setform("DlgCariPemesanan");
         suplier.emptTeks();
         suplier.isCek();
         suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -738,7 +734,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnSuplierActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgCariPemesanan");
+        akses.setform("DlgCariPemesanan");
         pegawai.emptTeks();
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
@@ -751,7 +747,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TglBeli1KeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        var.setform("DlgCariPemesanan");
+        akses.setform("DlgCariPemesanan");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -761,7 +757,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnBarangActionPerformed
 
     private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
-        var.setform("DlgCariPemesanan");
+        akses.setform("DlgCariPemesanan");
         barang.jenis.emptTeks();
         barang.jenis.isCek();
         barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -907,15 +903,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDataPemesananNonMedis.jrxml","report","::[ Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & Radiologi) ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptDataPemesananNonMedis.jasper","report","::[ Data Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & Radiologi) ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1224,10 +1219,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getsurat_pemesanan_non_medis());
-        ppHapus.setEnabled(var.getsurat_pemesanan_non_medis());
-        ppDatang.setEnabled(var.getpenerimaan_non_medis());
-        ppProses.setEnabled(var.getsurat_pemesanan_non_medis());
+        BtnPrint.setEnabled(akses.getsurat_pemesanan_non_medis());
+        ppHapus.setEnabled(akses.getsurat_pemesanan_non_medis());
+        ppDatang.setEnabled(akses.getpenerimaan_non_medis());
+        ppProses.setEnabled(akses.getsurat_pemesanan_non_medis());
     }
     
 }

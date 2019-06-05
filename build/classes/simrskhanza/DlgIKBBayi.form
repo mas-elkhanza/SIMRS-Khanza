@@ -28,7 +28,6 @@
             <Property name="text" type="java.lang.String" value="Grafik Jns.Kelamin Bayi"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="ppGrafikjkbayi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[180, 30]"/>
@@ -53,7 +52,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu1" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[180, 30]"/>
@@ -77,7 +75,6 @@
                 <Property name="text" type="java.lang.String" value="Keseluruhan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikberat" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -104,7 +101,6 @@
                 <Property name="text" type="java.lang.String" value="Laki-Laki"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikberatlaki" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -131,7 +127,6 @@
                 <Property name="text" type="java.lang.String" value="Perempuan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikberatwn" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -158,7 +153,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu2" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[180, 30]"/>
@@ -182,7 +176,6 @@
                 <Property name="text" type="java.lang.String" value="Keseluruhan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikpanjang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -209,7 +202,6 @@
                 <Property name="text" type="java.lang.String" value="Laki-Laki"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikpanjanglaki" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -236,7 +228,6 @@
                 <Property name="text" type="java.lang.String" value="Perempuan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikpanjangwn" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -264,7 +255,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu3" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[180, 30]"/>
@@ -288,7 +278,6 @@
                 <Property name="text" type="java.lang.String" value="Keseluruhan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafiklahirtahun" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -315,7 +304,6 @@
                 <Property name="text" type="java.lang.String" value="Laki-Laki"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafiklahirtahunlaki" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -342,7 +330,6 @@
                 <Property name="text" type="java.lang.String" value="Perempuan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafiklahirtahunwn" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -370,7 +357,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu4" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[180, 30]"/>
@@ -394,7 +380,6 @@
                 <Property name="text" type="java.lang.String" value="Keseluruhan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafiklahirbulan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -421,7 +406,6 @@
                 <Property name="text" type="java.lang.String" value="Laki-Laki"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafiklahirbulanlaki" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -448,7 +432,6 @@
                 <Property name="text" type="java.lang.String" value="Perempuan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafiklahirbulanwn" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -476,7 +459,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="jMenu5" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[180, 30]"/>
@@ -500,7 +482,6 @@
                 <Property name="text" type="java.lang.String" value="Keseluruhan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikproseslahir" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -527,7 +508,6 @@
                 <Property name="text" type="java.lang.String" value="Laki-Laki"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikproseslahirlaki" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -554,7 +534,6 @@
                 <Property name="text" type="java.lang.String" value="Perempuan"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
-                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="ppGrafikproseslahirwn" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 30]"/>
@@ -581,7 +560,6 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Kartu Berobat"/>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnKartu" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[250, 25]"/>
@@ -606,7 +584,6 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Label Informasi Bayi"/>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnInformasiBayi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[250, 28]"/>
@@ -631,7 +608,6 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Surat Keterangan Lahir 1"/>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnSKL" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[250, 28]"/>
@@ -656,7 +632,6 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Surat Keterangan Lahir 2"/>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnSKL1" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[250, 28]"/>
@@ -681,7 +656,6 @@
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Surat Keterangan Lahir 3"/>
-            <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnSKL2" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[250, 28]"/>

@@ -18,7 +18,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -135,7 +135,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         TPemeriksaan.setDocument(new batasInput((byte)400).getKata(TPemeriksaan));
         TSuhu.setDocument(new batasInput((byte)3).getKata(TSuhu));
         TTensi.setDocument(new batasInput((byte)7).getKata(TTensi));   
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -371,7 +371,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppBersihkan.setText("Hilangkan Centang/Tindakan Terpilih");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setIconTextGap(8);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
         ppBersihkan.setPreferredSize(new java.awt.Dimension(250, 25));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
@@ -388,7 +387,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppDokter.setText("Ubah Ke Tindakan Dokter");
         ppDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDokter.setIconTextGap(8);
         ppDokter.setName("ppDokter"); // NOI18N
         ppDokter.setPreferredSize(new java.awt.Dimension(250, 25));
         ppDokter.addActionListener(new java.awt.event.ActionListener() {
@@ -405,7 +403,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppPetugas.setText("Ubah Ke Tindakan Petugas");
         ppPetugas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPetugas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPetugas.setIconTextGap(8);
         ppPetugas.setName("ppPetugas"); // NOI18N
         ppPetugas.setPreferredSize(new java.awt.Dimension(250, 25));
         ppPetugas.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +419,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         ppPetugasDokter.setText("Ubah Ke Tindakan Dokter & Petugas");
         ppPetugasDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPetugasDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPetugasDokter.setIconTextGap(8);
         ppPetugasDokter.setName("ppPetugasDokter"); // NOI18N
         ppPetugasDokter.setPreferredSize(new java.awt.Dimension(250, 25));
         ppPetugasDokter.addActionListener(new java.awt.event.ActionListener() {
@@ -519,7 +515,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -691,7 +686,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1754,7 +1749,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','0','"+hapusttlkso+"'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','"+hapusttlkso+"','0'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH "+akses.getkode());                                                
 
                     Sequel.queryu("delete from tampjurnal");    
                     if(ttlpendapatan>0){
@@ -1773,7 +1768,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','"+ttlkso+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','0','"+ttlkso+"'","Rekening");                              
                     }
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());                                                
+                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode());                                                
 
                     if((!TKeluhan.getText().trim().equals(""))||(!TPemeriksaan.getText().trim().equals(""))||
                         (!TSuhu.getText().trim().equals(""))||(!TTensi.getText().trim().equals(""))||
@@ -3174,7 +3169,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.gettarif_ranap());
+        BtnTambah.setEnabled(akses.gettarif_ranap());
         TCari.requestFocus();
     }
     

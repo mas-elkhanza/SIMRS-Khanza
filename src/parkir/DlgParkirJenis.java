@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -80,7 +80,7 @@ public class DlgParkirJenis extends javax.swing.JDialog {
         TNm.setDocument(new batasInput((byte)50).getKata(TNm));
         TBiaya.setDocument(new batasInput((byte)12).getOnlyAngka(TBiaya));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -682,8 +682,8 @@ public class DlgParkirJenis extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getparkir_jenis());
-       BtnHapus.setEnabled(var.getparkir_jenis());
-       BtnEdit.setEnabled(var.getparkir_jenis());
+       BtnSimpan.setEnabled(akses.getparkir_jenis());
+       BtnHapus.setEnabled(akses.getparkir_jenis());
+       BtnEdit.setEnabled(akses.getparkir_jenis());
     }
 }

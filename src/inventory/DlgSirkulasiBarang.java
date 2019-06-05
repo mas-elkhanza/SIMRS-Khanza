@@ -12,7 +12,7 @@ import grafikanalisa.grafikreseptersedikit;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -82,7 +82,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());         
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -112,7 +112,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgSirkulasiBarang")){
+                if(akses.getform().equals("DlgSirkulasiBarang")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
@@ -170,7 +170,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgSirkulasiBarang")){
+                if(akses.getform().equals("DlgSirkulasiBarang")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();                    
                     }                
@@ -236,7 +236,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikJualBanyak.setText("Grafik 10 Barang Penjualan Terbanyak");
         ppGrafikJualBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikJualBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikJualBanyak.setIconTextGap(8);
         ppGrafikJualBanyak.setName("ppGrafikJualBanyak"); // NOI18N
         ppGrafikJualBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikJualBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +252,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikJualDikit.setText("Grafik 10 Barang Penjualan Tersedikit");
         ppGrafikJualDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikJualDikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikJualDikit.setIconTextGap(8);
         ppGrafikJualDikit.setName("ppGrafikJualDikit"); // NOI18N
         ppGrafikJualDikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikJualDikit.addActionListener(new java.awt.event.ActionListener() {
@@ -270,7 +268,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikbeliBanyak.setText("Grafik 10 Barang Pembelian Terbanyak");
         ppGrafikbeliBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikbeliBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikbeliBanyak.setIconTextGap(8);
         ppGrafikbeliBanyak.setName("ppGrafikbeliBanyak"); // NOI18N
         ppGrafikbeliBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikbeliBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +284,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikbelidikit.setText("Grafik 10 Barang Pembelian Tersedikit");
         ppGrafikbelidikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikbelidikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikbelidikit.setIconTextGap(8);
         ppGrafikbelidikit.setName("ppGrafikbelidikit"); // NOI18N
         ppGrafikbelidikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikbelidikit.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +300,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikPiutangBanyak.setText("Grafik 10 Barang Piutang Terbanyak");
         ppGrafikPiutangBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPiutangBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikPiutangBanyak.setIconTextGap(8);
         ppGrafikPiutangBanyak.setName("ppGrafikPiutangBanyak"); // NOI18N
         ppGrafikPiutangBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikPiutangBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +316,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikPiutangDikit.setText("Grafik 10 Barang Piutang Tersedikit");
         ppGrafikPiutangDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPiutangDikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikPiutangDikit.setIconTextGap(8);
         ppGrafikPiutangDikit.setName("ppGrafikPiutangDikit"); // NOI18N
         ppGrafikPiutangDikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikPiutangDikit.addActionListener(new java.awt.event.ActionListener() {
@@ -338,7 +332,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikResepPaliingBanyak.setText("Grafik 10 Barang Resep Ke Pasien Terbanyak");
         ppGrafikResepPaliingBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikResepPaliingBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikResepPaliingBanyak.setIconTextGap(8);
         ppGrafikResepPaliingBanyak.setName("ppGrafikResepPaliingBanyak"); // NOI18N
         ppGrafikResepPaliingBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikResepPaliingBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -355,7 +348,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikResepPaliingSedikit.setText("Grafik 10 Barang Resep Ke Pasien Tersedikit");
         ppGrafikResepPaliingSedikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikResepPaliingSedikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikResepPaliingSedikit.setIconTextGap(8);
         ppGrafikResepPaliingSedikit.setName("ppGrafikResepPaliingSedikit"); // NOI18N
         ppGrafikResepPaliingSedikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikResepPaliingSedikit.addActionListener(new java.awt.event.ActionListener() {
@@ -372,7 +364,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppLokasi.setText("Tampilkan Per Lokasi");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppLokasi.setIconTextGap(8);
         ppLokasi.setName("ppLokasi"); // NOI18N
         ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
         ppLokasi.addActionListener(new java.awt.event.ActionListener() {
@@ -410,7 +401,6 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -601,21 +591,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
             
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(lokasi.equals("")){
-                Valid.MyReport("rptSirkulasi.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15, temp16, temp17 from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi.jasper","report","::[ Sirkulasi Barang ]::",param);
             }else if(!lokasi.equals("")){
                 param.put("bangsal",lokasi);  
-                Valid.MyReport("rptSirkulasi3.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15, temp16, temp17 from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi3.jasper","report","::[ Sirkulasi Barang ]::",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -679,7 +667,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_kdbarKeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        var.setform("DlgSirkulasiBarang");
+        akses.setform("DlgSirkulasiBarang");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1688,7 +1676,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-         BtnPrint.setEnabled(var.getsirkulasi_obat());
+         BtnPrint.setEnabled(akses.getsirkulasi_obat());
     }
     
 }

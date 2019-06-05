@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -86,7 +86,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         NoKantong.setDocument(new batasInput((byte)20).getKata(NoKantong));
         KodeKomponen.setDocument(new batasInput((byte)5).getKata(KodeKomponen));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -227,7 +227,6 @@ public class UTDStokDarah extends javax.swing.JDialog {
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
         ppCetak.setName("ppCetak"); // NOI18N
         ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
         ppCetak.addActionListener(new java.awt.event.ActionListener() {
@@ -378,7 +377,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(Resus);
         Resus.setBounds(294, 72, 65, 23);
 
-        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Aftap.setDisplayFormat("dd-MM-yyyy");
         Aftap.setName("Aftap"); // NOI18N
         Aftap.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -395,7 +394,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(label32);
         label32.setBounds(0, 72, 85, 23);
 
-        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Kadaluarsa.setDisplayFormat("dd-MM-yyyy");
         Kadaluarsa.setName("Kadaluarsa"); // NOI18N
         Kadaluarsa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -851,15 +850,15 @@ public class UTDStokDarah extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));                 
             if(panelCari.isVisible()==false){
-                Valid.MyReport("rptUTDStokDarah.jrxml","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
@@ -876,7 +875,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                     "utd_stok_darah.status='Ada' and utd_stok_darah.status like '%"+TCari.getText().trim()+"%' "+
                     "order by utd_stok_darah.tanggal_kadaluarsa",param);            
             }else{
-                Valid.MyReport("rptUTDStokDarah.jrxml","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
@@ -1244,10 +1243,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getutd_stok_darah());
-        BtnHapus.setEnabled(var.getutd_stok_darah());
-        BtnEdit.setEnabled(var.getutd_stok_darah());
-        BtnPrint.setEnabled(var.getutd_stok_darah());
+        BtnSimpan.setEnabled(akses.getutd_stok_darah());
+        BtnHapus.setEnabled(akses.getutd_stok_darah());
+        BtnEdit.setEnabled(akses.getutd_stok_darah());
+        BtnPrint.setEnabled(akses.getutd_stok_darah());
     }
     
     private void isForm(){

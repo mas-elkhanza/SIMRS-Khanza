@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -314,7 +314,6 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
@@ -324,7 +323,6 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbBangsal2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal2.setComponentPopupMenu(jPopupMenu1);
         tbBangsal2.setName("tbBangsal2"); // NOI18N
         Scroll1.setViewportView(tbBangsal2);
@@ -376,12 +374,11 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 }
 
                 
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
-                    "select * from temporary order by no asc",param);
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabMode2.getRowCount()==0){
@@ -419,12 +416,11 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 }
 
                 
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
-                    "select * from temporary order by no asc",param);
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jasper","report","::[ Surveilans PD3I ]::",param);
             }
         }
             

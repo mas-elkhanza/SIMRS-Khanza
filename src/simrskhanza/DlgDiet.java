@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -78,7 +78,7 @@ public class DlgDiet extends javax.swing.JDialog {
         TKd.setDocument(new batasInput((byte)3).getKata(TKd));
         TNm.setDocument(new batasInput((byte)50).getKata(TNm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -611,8 +611,8 @@ public class DlgDiet extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getdiet_pasien());
-        BtnHapus.setEnabled(var.getdiet_pasien());
-        BtnEdit.setEnabled(var.getdiet_pasien());
+        BtnSimpan.setEnabled(akses.getdiet_pasien());
+        BtnHapus.setEnabled(akses.getdiet_pasien());
+        BtnEdit.setEnabled(akses.getdiet_pasien());
     }
 }

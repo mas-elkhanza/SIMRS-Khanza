@@ -254,7 +254,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="Tabel1">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="Tabel1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -304,7 +303,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="Tabel2">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="Tabel2" noResource="true"/>
                       </Properties>
                       <Events>

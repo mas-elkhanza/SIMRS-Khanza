@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -74,7 +74,7 @@ public class PerpustakaanDenda extends javax.swing.JDialog {
         NmDenda.setDocument(new batasInput((byte)40).getKata(NmDenda));
         BesarDenda.setDocument(new batasInput((byte)10).getOnlyAngka(BesarDenda));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -186,6 +186,7 @@ public class PerpustakaanDenda extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -274,7 +275,7 @@ public class PerpustakaanDenda extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -671,8 +672,8 @@ public class PerpustakaanDenda extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       BtnSimpan.setEnabled(var.getdenda_perpustakaan());
-       BtnHapus.setEnabled(var.getdenda_perpustakaan());
-       BtnEdit.setEnabled(var.getdenda_perpustakaan());
+       BtnSimpan.setEnabled(akses.getdenda_perpustakaan());
+       BtnHapus.setEnabled(akses.getdenda_perpustakaan());
+       BtnEdit.setEnabled(akses.getdenda_perpustakaan());
     }
 }

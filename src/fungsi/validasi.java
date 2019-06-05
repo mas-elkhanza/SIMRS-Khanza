@@ -25,7 +25,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JButton;
@@ -42,13 +41,9 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
-import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
 /**
@@ -57,7 +52,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class validasi {
     private int a,j,i,result=0;
-    private String s,s1,auto,PEMBULATANHARGAOBAT="";
+    private String s,s1,auto,PEMBULATANHARGAOBAT=koneksiDB.PEMBULATANHARGAOBAT();
     private final Connection connect=koneksiDB.condb();
     private final sekuel sek=new sekuel();
     private final java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
@@ -75,12 +70,6 @@ public final class validasi {
     
     public validasi(){
         super();
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            PEMBULATANHARGAOBAT=prop.getProperty("PEMBULATANHARGAOBAT");
-        }catch(Exception e){
-            PEMBULATANHARGAOBAT="no"; 
-        }
     };
 
     public void autoNomer(DefaultTableModel tabMode,String strAwal,Integer pnj,javax.swing.JTextField teks){        
@@ -498,7 +487,7 @@ public final class validasi {
     }
 
     @SuppressWarnings("empty-statement")
-    public void MyReport(String reportName,String reportDirName,String judul,String qry){
+    public void MyReport(String reportName,String reportDirName,String judul,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -512,34 +501,19 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
         try {
             try (Statement stm = connect.createStatement()) {
-                Map<String, Object> parameters = new HashMap<>();
-                
                 try {
                     
                     String namafile="./"+reportDirName+"/"+reportName;
-                    File reportfile=new File(namafile);
-                    
-                    JRDesignQuery newQuery = new JRDesignQuery();
-                    newQuery.setText(qry);
-                    JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                    jasperDesign.setQuery(newQuery);
-                    
-                    JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
                     
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -559,7 +533,7 @@ public final class validasi {
     }
     
     @SuppressWarnings("empty-statement")
-    public void MyReport2(String reportName,String reportDirName,String judul,String qry){
+    public void MyReport2(String reportName,String reportDirName,String judul,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -573,34 +547,19 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
         try {
             try (Statement stm = connect.createStatement()) {
-                Map<String, Object> parameters = new HashMap<>();
-                
                 try {
                     
                     String namafile="./"+reportDirName+"/"+reportName;
-                    File reportfile=new File(namafile);
-                    
-                    JRDesignQuery newQuery = new JRDesignQuery();
-                    newQuery.setText(qry);
-                    JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                    jasperDesign.setQuery(newQuery);
-                    
-                    JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
                     
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -619,7 +578,7 @@ public final class validasi {
         }
     }
     
-    public void MyReport(String reportName,String reportDirName,String judul,String qry,Map parameters){
+    public void MyReportqry(String reportName,String reportDirName,String judul,String qry,Map parameters){
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -640,23 +599,14 @@ public final class validasi {
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
         try {
+            ps=connect.prepareStatement(qry);
             try {
                 String namafile="./"+reportDirName+"/"+reportName;
-                File reportfile=new File(namafile);
-
-                JRDesignQuery newQuery = new JRDesignQuery();
-                newQuery.setText(qry);
-                JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                jasperDesign.setQuery(newQuery);
-
-                JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
+                rs=ps.executeQuery();
+                JRResultSetDataSource rsdt = new JRResultSetDataSource(rs);
+                
+                JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters,rsdt);
 
                 JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                 jasperViewer.setTitle(judul);
@@ -668,70 +618,23 @@ public final class validasi {
             } catch (Exception rptexcpt) {
                 System.out.println("Report Can't view because : " + rptexcpt);
                 JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
-    public void MyReport2(String reportName,String reportDirName,String judul,String qry,Map parameters){
-        Properties systemProp = System.getProperties();
 
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } 
-            } 
-        } 
-
-        // Ambil Direktori tempat file RptMaster.jrxml berada
-        String[] subRptDir = fullPath.split(reportName);
-        String reportDir = subRptDir[0];
-
-
-        try {
-            try {
-                String namafile="./"+reportDirName+"/"+reportName;
-                File reportfile=new File(namafile);
-
-                JRDesignQuery newQuery = new JRDesignQuery();
-                newQuery.setText(qry);
-                JasperDesign jasperDesign = JRXmlLoader.load(reportfile);
-                jasperDesign.setQuery(newQuery);
-
-                JasperReport JRpt = JasperCompileManager.compileReport(jasperDesign);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(JRpt, parameters, connect);
-
-                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                jasperViewer.setTitle(judul);
-                Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-                jasperViewer.setSize(screen.width-50,screen.height-50);
-                jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-                jasperViewer.setLocationRelativeTo(null);
-                jasperViewer.setVisible(true);
-            } catch (Exception rptexcpt) {
-                System.out.println("Report Can't view because : " + rptexcpt);
-                JOptionPane.showMessageDialog(null,"Report Can't view because : "+ rptexcpt);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
     
     public void MyReport(String reportName,Map parameters,String title){
         try {
-                JasperViewer jasperViewer =new JasperViewer(JasperFillManager.fillReport(JasperCompileManager.compileReport("./report/"+reportName),parameters,connect), false);
+                JasperViewer jasperViewer =new JasperViewer(JasperFillManager.fillReport("./report/"+reportName,parameters,connect), false);
                 jasperViewer.setTitle(title);
                 jasperViewer.setLocationRelativeTo(null);
                 jasperViewer.setVisible(true);
@@ -937,14 +840,14 @@ public final class validasi {
             Properties prop = new Properties();
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(os.contains("win")) {
-                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
             }else if (os.contains("mac")) {
-                rt.exec( "open " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "open " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
             }else if (os.contains("nix") || os.contains("nux")) {
                 String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
-                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");
+                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");
                 rt.exec(new String[] { "sh", "-c", cmd.toString() });
             } 
         }catch (Exception e){
@@ -978,7 +881,7 @@ public final class validasi {
         try{
            Properties prop = new Properties();
            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
+           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
         }catch (Exception e) {
            System.out.println(e);
         }
@@ -1138,6 +1041,5 @@ public final class validasi {
             return Math.round(number);
         }
     }
-
        
 }

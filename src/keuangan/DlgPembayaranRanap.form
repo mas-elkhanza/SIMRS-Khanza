@@ -118,7 +118,6 @@
           <SubComponents>
             <Component class="widget.Table" name="tbBangsal">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
@@ -252,6 +251,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
             <Property name="alignment" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="3"/>
             <Property name="verticalGap" type="int" value="9"/>
           </Layout>
           <SubComponents>
@@ -269,7 +269,7 @@
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="Tgl1" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[100, 23]"/>
+                  <Dimension value="[95, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -288,16 +288,16 @@
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="Tgl2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[100, 23]"/>
+                  <Dimension value="[95, 23]"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="widget.Label" name="label17">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Jenis Bayar :"/>
+                <Property name="text" type="java.lang.String" value="Kamar/Bangsal :"/>
                 <Property name="name" type="java.lang.String" value="label17" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[75, 23]"/>
+                  <Dimension value="[95, 23]"/>
                 </Property>
               </Properties>
             </Component>

@@ -709,9 +709,6 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
                 <Component class="widget.Table" name="tbRegistrasi">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan"/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

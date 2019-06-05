@@ -72,7 +72,6 @@
             <Component class="widget.Table" name="tbJnsPerawatan">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit, untuk menghapus data silahkan centang kemudian klik hapus"/>
                 <Property name="name" type="java.lang.String" value="tbJnsPerawatan" noResource="true"/>
               </Properties>
             </Component>

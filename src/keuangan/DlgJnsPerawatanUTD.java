@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -105,7 +105,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         kdpnj.setDocument(new batasInput((int)3).getKata(kdpnj));
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -236,7 +236,6 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         ppTemplate.setText("Template UTD");
         ppTemplate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTemplate.setIconTextGap(5);
         ppTemplate.setName("ppTemplate"); // NOI18N
         ppTemplate.setPreferredSize(new java.awt.Dimension(150, 25));
         ppTemplate.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +252,6 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setIconTextGap(5);
         MnRestore.setName("MnRestore"); // NOI18N
         MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
         MnRestore.addActionListener(new java.awt.event.ActionListener() {
@@ -880,14 +878,14 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();  
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTarifUtd.jrxml","report","::[ Data Tarif Radiologi ]::","select jns_perawatan_utd.kd_jenis_prw,jns_perawatan_utd.nm_perawatan,jns_perawatan_utd.bagian_rs,"+
+                Valid.MyReportqry("rptTarifUtd.jasper","report","::[ Data Tarif Radiologi ]::","select jns_perawatan_utd.kd_jenis_prw,jns_perawatan_utd.nm_perawatan,jns_perawatan_utd.bagian_rs,"+
                     "jns_perawatan_utd.bhp,jns_perawatan_utd.tarif_perujuk,jns_perawatan_utd.tarif_tindakan_dokter,jns_perawatan_utd.tarif_tindakan_petugas,jns_perawatan_utd.kso,"+
                     "jns_perawatan_utd.manajemen,jns_perawatan_utd.total_byr,penjab.png_jawab "+
                     "from jns_perawatan_utd inner join penjab on penjab.kd_pj=jns_perawatan_utd.kd_pj where "+
@@ -1258,11 +1256,11 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.gettarif_utd());
-        BtnHapus.setEnabled(var.gettarif_utd());
-        BtnEdit.setEnabled(var.gettarif_utd());
-        BtnPrint.setEnabled(var.gettarif_utd());
-        if(var.getkode().equals("Admin Utama")){
+        BtnSimpan.setEnabled(akses.gettarif_utd());
+        BtnHapus.setEnabled(akses.gettarif_utd());
+        BtnEdit.setEnabled(akses.gettarif_utd());
+        BtnPrint.setEnabled(akses.gettarif_utd());
+        if(akses.getkode().equals("Admin Utama")){
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);

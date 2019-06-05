@@ -118,7 +118,6 @@
           <SubComponents>
             <Component class="widget.Table" name="tbBangsal">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
@@ -213,7 +212,7 @@
                 <Property name="text" type="java.lang.String" value="0"/>
                 <Property name="name" type="java.lang.String" value="LCount" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[300, 23]"/>
+                  <Dimension value="[290, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -252,6 +251,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
             <Property name="alignment" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="3"/>
             <Property name="verticalGap" type="int" value="9"/>
           </Layout>
           <SubComponents>
@@ -294,7 +294,7 @@
             </Component>
             <Component class="widget.Label" name="label17">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Jenis Bayar :"/>
+                <Property name="text" type="java.lang.String" value="Poli/Unit :"/>
                 <Property name="name" type="java.lang.String" value="label17" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[75, 23]"/>

@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -108,7 +108,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm(); 
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -207,7 +207,6 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         MnKartu.setText("Cetak Kartu Anggota");
         MnKartu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnKartu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnKartu.setIconTextGap(5);
         MnKartu.setName("MnKartu"); // NOI18N
         MnKartu.setPreferredSize(new java.awt.Dimension(200, 28));
         MnKartu.addActionListener(new java.awt.event.ActionListener() {
@@ -271,6 +270,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -395,7 +395,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 43));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         chkGabung.setText("Tgl.Gabung :");
         chkGabung.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -424,7 +424,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         ChkHabis.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkHabis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkHabis.setName("ChkHabis"); // NOI18N
-        ChkHabis.setPreferredSize(new java.awt.Dimension(165, 23));
+        ChkHabis.setPreferredSize(new java.awt.Dimension(178, 23));
         panelGlass9.add(ChkHabis);
 
         Habis1.setDisplayFormat("dd-MM-yyyy");
@@ -447,7 +447,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 
         panelGlass10.setName("panelGlass10"); // NOI18N
         panelGlass10.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -581,7 +581,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         label10.setBounds(0, 40, 92, 23);
 
         TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-04-2019" }));
+        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         TglLahir.setDisplayFormat("dd-MM-yyyy");
         TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.setOpaque(false);
@@ -638,7 +638,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         label12.setBounds(360, 100, 80, 23);
 
         Gabung.setForeground(new java.awt.Color(50, 70, 50));
-        Gabung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-04-2019" }));
+        Gabung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Gabung.setDisplayFormat("dd-MM-yyyy");
         Gabung.setName("Gabung"); // NOI18N
         Gabung.setOpaque(false);
@@ -652,7 +652,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         Gabung.setBounds(443, 100, 90, 23);
 
         Habis.setForeground(new java.awt.Color(50, 70, 50));
-        Habis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-04-2019" }));
+        Habis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Habis.setDisplayFormat("dd-MM-yyyy");
         Habis.setName("Habis"); // NOI18N
         Habis.setOpaque(false);
@@ -839,14 +839,14 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
             }
                
             Map<String, Object> param = new HashMap<>();  
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptAnggotaPerpustakaan.jrxml","report","::[ Data Anggota Perpustakaan ]::",
+            Valid.MyReportqry("rptAnggotaPerpustakaan.jasper","report","::[ Data Anggota Perpustakaan ]::",
                     "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                     "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where "+
                     gabung+habis+" no_anggota like '%"+TCari.getText().trim()+"%' or "+
@@ -1005,14 +1005,14 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
         }else if(tabMode.getRowCount()!=0){
             if(tbJnsPerawatan.getSelectedRow()> -1){
                 Map<String, Object> param = new HashMap<>();  
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptKartuAnggota.jrxml","report","::[ Kartu Anggota Perpustakaan ]::",
+                Valid.MyReportqry("rptKartuAnggota.jasper","report","::[ Kartu Anggota Perpustakaan ]::",
                         "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                         "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where no_anggota='"+NoAnggota.getText()+"'",param);
             }else{
@@ -1195,9 +1195,9 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getanggota_perpustakaan());
-        BtnHapus.setEnabled(var.getanggota_perpustakaan());
-        BtnEdit.setEnabled(var.getanggota_perpustakaan());
+        BtnSimpan.setEnabled(akses.getanggota_perpustakaan());
+        BtnHapus.setEnabled(akses.getanggota_perpustakaan());
+        BtnEdit.setEnabled(akses.getanggota_perpustakaan());
     }
 
     

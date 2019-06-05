@@ -21,7 +21,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
+import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -78,7 +79,7 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
         
         Poli.setDocument(new batasInput((byte)100).getKata(Poli));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -345,6 +346,6 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.getmapping_poli_bpjs());
+        BtnTambah.setEnabled(akses.getmapping_poli_bpjs());
     }
 }

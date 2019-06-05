@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -79,7 +79,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         KdPeg.setDocument(new batasInput((byte)20).getKata(KdPeg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -281,7 +281,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppHapus.setText("Hapus Permintaan Barang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(200, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +297,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppDisetujui.setText("Disetujui ( Mutasi )");
         ppDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDisetujui.setIconTextGap(5);
         ppDisetujui.setName("ppDisetujui"); // NOI18N
         ppDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDisetujui.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +313,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppDisetujui1.setText("Disetujui ( Stok Keluar )");
         ppDisetujui1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDisetujui1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDisetujui1.setIconTextGap(5);
         ppDisetujui1.setName("ppDisetujui1"); // NOI18N
         ppDisetujui1.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDisetujui1.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +329,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppTidakDisetujui.setText("Tidak Disetujui");
         ppTidakDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTidakDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTidakDisetujui.setIconTextGap(5);
         ppTidakDisetujui.setName("ppTidakDisetujui"); // NOI18N
         ppTidakDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
         ppTidakDisetujui.addActionListener(new java.awt.event.ActionListener() {
@@ -854,15 +850,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPermintaan.jrxml","report","::[ Data Pengajuan Permintaan Obat/Alkes/BHP Medis ]::",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptPermintaan.jasper","report","::[ Data Pengajuan Permintaan Obat/Alkes/BHP Medis ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1200,14 +1195,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     
     public void isCek(){
         TCari.requestFocus();
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             ppHapus.setEnabled(true);
         }else{
             ppHapus.setEnabled(false);
         }    
-        ppDisetujui.setEnabled(var.getmutasi_barang());
-        ppDisetujui1.setEnabled(var.getpengeluaran_stok_apotek());
-        if((var.getpengeluaran_stok_apotek()==false)&&(var.getmutasi_barang()==false)){
+        ppDisetujui.setEnabled(akses.getmutasi_barang());
+        ppDisetujui1.setEnabled(akses.getpengeluaran_stok_apotek());
+        if((akses.getpengeluaran_stok_apotek()==false)&&(akses.getmutasi_barang()==false)){
             ppTidakDisetujui.setEnabled(false);
         }else{
             ppTidakDisetujui.setEnabled(true);

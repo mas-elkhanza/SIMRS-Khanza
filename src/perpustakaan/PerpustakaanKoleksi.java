@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -253,7 +253,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -388,6 +388,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -512,7 +513,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
 
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -933,14 +934,14 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();                
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());  
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());  
                 param.put("logo",Sequel.cariGambar("select logo from setting"));  
-                Valid.MyReport("rptKoleksiPerpustakaan.jrxml","report","::[ Data Koleksi Perpustakaan ]::","select perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, perpustakaan_buku.jml_halaman, "+
+                Valid.MyReportqry("rptKoleksiPerpustakaan.jasper","report","::[ Data Koleksi Perpustakaan ]::","select perpustakaan_buku.kode_buku, perpustakaan_buku.judul_buku, perpustakaan_buku.jml_halaman, "+
                    "perpustakaan_penerbit.nama_penerbit, perpustakaan_pengarang.nama_pengarang, perpustakaan_buku.thn_terbit, perpustakaan_buku.isbn,"+
                    "perpustakaan_kategori.nama_kategori, perpustakaan_jenis_buku.nama_jenis from perpustakaan_buku inner join perpustakaan_penerbit "+
                    "inner join perpustakaan_jenis_buku inner join perpustakaan_kategori inner join perpustakaan_pengarang "+
@@ -1349,9 +1350,9 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getkoleksi_perpustakaan());
-        BtnHapus.setEnabled(var.getkoleksi_perpustakaan());
-        BtnEdit.setEnabled(var.getkoleksi_perpustakaan());
+        BtnSimpan.setEnabled(akses.getkoleksi_perpustakaan());
+        BtnHapus.setEnabled(akses.getkoleksi_perpustakaan());
+        BtnEdit.setEnabled(akses.getkoleksi_perpustakaan());
         TCari.requestFocus();
     }
     

@@ -282,7 +282,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRalanDokter">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbRalanDokter" noResource="true"/>
                       </Properties>
                       <Events>
@@ -332,7 +331,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRalanParamedis">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbRalanParamedis" noResource="true"/>
                       </Properties>
                       <Events>
@@ -382,7 +380,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRalanDokterParamedis">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbRalanDokterParamedis" noResource="true"/>
                       </Properties>
                       <Events>
@@ -432,7 +429,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbOperasi">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbOperasi" noResource="true"/>
                       </Properties>
                       <Events>
@@ -482,7 +478,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRanapDokter">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbRanapDokter" noResource="true"/>
                       </Properties>
                       <Events>
@@ -532,7 +527,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRanapParamedis">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbRanapParamedis" noResource="true"/>
                       </Properties>
                       <Events>
@@ -582,7 +576,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRanapDokterParamedis">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbRanapDokterParamedis" noResource="true"/>
                       </Properties>
                       <Events>
@@ -632,7 +625,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRadiologi">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbRadiologi" noResource="true"/>
                       </Properties>
                       <Events>
@@ -682,7 +674,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbLaborat">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbLaborat" noResource="true"/>
                       </Properties>
                       <Events>
@@ -732,7 +723,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbDetailLaborat">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbDetailLaborat" noResource="true"/>
                       </Properties>
                       <Events>

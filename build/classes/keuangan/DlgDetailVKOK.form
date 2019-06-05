@@ -282,7 +282,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbOperasi">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbOperasi" noResource="true"/>
                       </Properties>
                       <Events>
@@ -332,7 +331,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbOperasi1">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbOperasi1" noResource="true"/>
                       </Properties>
                       <Events>
