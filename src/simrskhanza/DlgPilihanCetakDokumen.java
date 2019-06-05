@@ -110,7 +110,6 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbData.setAutoCreateRowSorter(true);
-        tbData.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbData.setName("tbData"); // NOI18N
         Scroll.setViewportView(tbData);
 

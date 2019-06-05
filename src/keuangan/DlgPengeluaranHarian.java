@@ -107,7 +107,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         KdPtg.setDocument(new batasInput((byte)20).getKata(KdPtg));
         Pengeluaran.setDocument(new batasInput((byte)15).getKata(Pengeluaran));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

@@ -367,9 +367,6 @@ public class DlgPiutang extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
-        Popup = new javax.swing.JPopupMenu();
-        ppTambah = new javax.swing.JMenuItem();
-        ppHapus = new javax.swing.JMenuItem();
         HrgBeli = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -449,42 +446,6 @@ public class DlgPiutang extends javax.swing.JDialog {
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
 
-        Popup.setName("Popup"); // NOI18N
-
-        ppTambah.setBackground(new java.awt.Color(255, 255, 254));
-        ppTambah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTambah.setForeground(new java.awt.Color(70, 70, 70));
-        ppTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
-        ppTambah.setText("Tambah");
-        ppTambah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppTambah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTambah.setIconTextGap(8);
-        ppTambah.setName("ppTambah"); // NOI18N
-        ppTambah.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTambahActionPerformed(evt);
-            }
-        });
-        Popup.add(ppTambah);
-
-        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
-        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
-        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        ppHapus.setText("Hapus");
-        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
-        ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        Popup.add(ppHapus);
-
         HrgBeli.setEditable(false);
         HrgBeli.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         HrgBeli.setName("HrgBeli"); // NOI18N
@@ -503,7 +464,6 @@ public class DlgPiutang extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        scrollPane1.setComponentPopupMenu(Popup);
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -518,8 +478,6 @@ public class DlgPiutang extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1668,7 +1626,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox NoBatch;
     private widget.TextBox NoNota;
     private widget.TextBox Ongkir;
-    private javax.swing.JPopupMenu Popup;
     private widget.TextBox Sisa;
     private widget.TextBox Stok;
     private widget.TextBox Tambah;
@@ -1716,8 +1673,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.panelisi2 panelisi21;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi5;
-    private javax.swing.JMenuItem ppHapus;
-    private javax.swing.JMenuItem ppTambah;
     private widget.TextBox satuanbar;
     private widget.ScrollPane scrollPane1;
     private widget.TextBox subtotal;

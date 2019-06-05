@@ -107,7 +107,7 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
         NoNota.setDocument(new batasInput((byte)25).getKata(NoNota));
         Kdptg.setDocument(new batasInput((byte)25).getKata(Kdptg));    
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -276,7 +276,6 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
         ppHapus.setText("Hapus Piutang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {

@@ -185,7 +185,6 @@ public class DlgBilingPiutang extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbAdmin.setAutoCreateRowSorter(true);
-        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAdmin.setName("tbAdmin"); // NOI18N
         Scroll.setViewportView(tbAdmin);
 

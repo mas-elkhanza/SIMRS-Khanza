@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
-import fungsi.koneksiDB;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -24,9 +23,9 @@ import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -89,7 +88,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
         
         Kelas.setDocument(new batasInput((byte)100).getKata(Kelas));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Kelas.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -113,8 +112,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIAPLICARE")+"/rest/ref/kelas";
+            URL = koneksiDB.URLAPIAPLICARE()+"/rest/ref/kelas";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }     

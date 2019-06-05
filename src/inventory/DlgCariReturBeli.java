@@ -132,7 +132,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
        
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -278,7 +278,6 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         ppHapus.setText("Hapus Retur");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {

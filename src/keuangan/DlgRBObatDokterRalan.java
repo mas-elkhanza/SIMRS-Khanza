@@ -191,7 +191,6 @@ public class DlgRBObatDokterRalan extends javax.swing.JDialog {
         ppTampilkanSeleksi.setText("Tampilkan Per Jenis Bayar");
         ppTampilkanSeleksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanSeleksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanSeleksi.setIconTextGap(5);
         ppTampilkanSeleksi.setName("ppTampilkanSeleksi"); // NOI18N
         ppTampilkanSeleksi.setPreferredSize(new java.awt.Dimension(240, 26));
         ppTampilkanSeleksi.addActionListener(new java.awt.event.ActionListener() {

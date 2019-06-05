@@ -136,7 +136,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
         kdsat.setDocument(new batasInput((byte)3).getKata(kdsat));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -391,7 +391,6 @@ public class DlgCariPiutang extends javax.swing.JDialog {
         ppCetakNota.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetakNota.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetakNota.setIconTextGap(5);
         ppCetakNota.setName("ppCetakNota"); // NOI18N
         ppCetakNota.setPreferredSize(new java.awt.Dimension(150, 25));
         ppCetakNota.addActionListener(new java.awt.event.ActionListener() {
@@ -409,7 +408,6 @@ public class DlgCariPiutang extends javax.swing.JDialog {
         ppHapus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -425,7 +423,6 @@ public class DlgCariPiutang extends javax.swing.JDialog {
         MnDetailCicilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailCicilan.setText("Bayar Piutang");
         MnDetailCicilan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        MnDetailCicilan.setIconTextGap(5);
         MnDetailCicilan.setName("MnDetailCicilan"); // NOI18N
         MnDetailCicilan.setPreferredSize(new java.awt.Dimension(150, 25));
         MnDetailCicilan.addActionListener(new java.awt.event.ActionListener() {

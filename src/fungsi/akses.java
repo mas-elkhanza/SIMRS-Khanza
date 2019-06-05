@@ -104,7 +104,10 @@ public final class akses {
             grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
             kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
             inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false,anggota_perpustakaan=false,
-            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false;
+            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false,jenis_cidera_k3rs=false,penyebab_k3rs=false,
+            jenis_luka_k3rs=false,lokasi_kejadian_k3rs=false,dampak_cidera_k3rs=false,jenis_pekerjaan_k3rs=false,bagian_tubuh_k3rs=false,
+            peristiwa_k3rs=false,grafik_k3_pertahun=false,grafik_k3_perbulan=false,grafik_k3_pertanggal=false,grafik_k3_perjeniscidera=false,
+            grafik_k3_perpenyebab=false,grafik_k3_perjenisluka=false,grafik_k3_lokasikejadian=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -604,6 +607,22 @@ public final class akses {
                         akses.anggota_perpustakaan=true;
                         akses.peminjaman_perpustakaan=true;
                         akses.bayar_denda_perpustakaan=true;
+                        akses.ebook_perpustakaan=true;
+                        akses.jenis_cidera_k3rs=true;
+                        akses.penyebab_k3rs=true;
+                        akses.jenis_luka_k3rs=true;
+                        akses.lokasi_kejadian_k3rs=true;
+                        akses.dampak_cidera_k3rs=true;
+                        akses.jenis_pekerjaan_k3rs=true;
+                        akses.bagian_tubuh_k3rs=true;
+                        akses.peristiwa_k3rs=true;
+                        akses.grafik_k3_pertahun=true;
+                        akses.grafik_k3_perbulan=true;
+                        akses.grafik_k3_pertanggal=true;
+                        akses.grafik_k3_perjeniscidera=true;
+                        akses.grafik_k3_perpenyebab=true;
+                        akses.grafik_k3_perjenisluka=true;
+                        akses.grafik_k3_lokasikejadian=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1087,6 +1106,22 @@ public final class akses {
                         akses.anggota_perpustakaan=rs2.getBoolean("anggota_perpustakaan");
                         akses.peminjaman_perpustakaan=rs2.getBoolean("peminjaman_perpustakaan");
                         akses.bayar_denda_perpustakaan=rs2.getBoolean("bayar_denda_perpustakaan");
+                        akses.ebook_perpustakaan=rs2.getBoolean("ebook_perpustakaan");
+                        akses.jenis_cidera_k3rs=rs2.getBoolean("jenis_cidera_k3rs");
+                        akses.penyebab_k3rs=rs2.getBoolean("penyebab_k3rs");
+                        akses.jenis_luka_k3rs=rs2.getBoolean("jenis_luka_k3rs");
+                        akses.lokasi_kejadian_k3rs=rs2.getBoolean("lokasi_kejadian_k3rs");
+                        akses.dampak_cidera_k3rs=rs2.getBoolean("dampak_cidera_k3rs");
+                        akses.jenis_pekerjaan_k3rs=rs2.getBoolean("jenis_pekerjaan_k3rs");
+                        akses.bagian_tubuh_k3rs=rs2.getBoolean("bagian_tubuh_k3rs");
+                        akses.peristiwa_k3rs=rs2.getBoolean("peristiwa_k3rs");
+                        akses.grafik_k3_pertahun=rs2.getBoolean("grafik_k3_pertahun");
+                        akses.grafik_k3_perbulan=rs2.getBoolean("grafik_k3_perbulan");
+                        akses.grafik_k3_pertanggal=rs2.getBoolean("grafik_k3_pertanggal");
+                        akses.grafik_k3_perjeniscidera=rs2.getBoolean("grafik_k3_perjeniscidera");
+                        akses.grafik_k3_perpenyebab=rs2.getBoolean("grafik_k3_perpenyebab");
+                        akses.grafik_k3_perjenisluka=rs2.getBoolean("grafik_k3_perjenisluka");
+                        akses.grafik_k3_lokasikejadian=rs2.getBoolean("grafik_k3_lokasikejadian");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1568,6 +1603,22 @@ public final class akses {
                         akses.anggota_perpustakaan=false;
                         akses.peminjaman_perpustakaan=false;
                         akses.bayar_denda_perpustakaan=false;
+                        akses.ebook_perpustakaan=false;
+                        akses.jenis_cidera_k3rs=false;
+                        akses.penyebab_k3rs=false;
+                        akses.jenis_luka_k3rs=false;
+                        akses.lokasi_kejadian_k3rs=false;
+                        akses.dampak_cidera_k3rs=false;
+                        akses.jenis_pekerjaan_k3rs=false;
+                        akses.bagian_tubuh_k3rs=false;
+                        akses.peristiwa_k3rs=false;
+                        akses.grafik_k3_pertahun=false;
+                        akses.grafik_k3_perbulan=false;
+                        akses.grafik_k3_pertanggal=false;
+                        akses.grafik_k3_perjeniscidera=false;
+                        akses.grafik_k3_perpenyebab=false;
+                        akses.grafik_k3_perjenisluka=false;
+                        akses.grafik_k3_lokasikejadian=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2103,4 +2154,20 @@ public final class akses {
     public static boolean getanggota_perpustakaan(){return akses.anggota_perpustakaan;}
     public static boolean getpeminjaman_perpustakaan(){return akses.peminjaman_perpustakaan;}
     public static boolean getbayar_denda_perpustakaan(){return akses.bayar_denda_perpustakaan;}
+    public static boolean getebook_perpustakaan(){return akses.ebook_perpustakaan;}
+    public static boolean getjenis_cidera_k3rs(){return akses.jenis_cidera_k3rs;}
+    public static boolean getpenyebab_k3rs(){return akses.penyebab_k3rs;}
+    public static boolean getjenis_luka_k3rs(){return akses.jenis_luka_k3rs;}
+    public static boolean getlokasi_kejadian_k3rs(){return akses.lokasi_kejadian_k3rs;}
+    public static boolean getdampak_cidera_k3rs(){return akses.dampak_cidera_k3rs;}
+    public static boolean getjenis_pekerjaan_k3rs(){return akses.jenis_pekerjaan_k3rs;}
+    public static boolean getbagian_tubuh_k3rs(){return akses.bagian_tubuh_k3rs;}
+    public static boolean getperistiwa_k3rs(){return akses.peristiwa_k3rs;}
+    public static boolean getgrafik_k3_pertahun(){return akses.grafik_k3_pertahun;}
+    public static boolean getgrafik_k3_perbulan(){return akses.grafik_k3_perbulan;}
+    public static boolean getgrafik_k3_pertanggal(){return akses.grafik_k3_pertanggal;}
+    public static boolean getgrafik_k3_perjeniscidera(){return akses.grafik_k3_perjeniscidera;}
+    public static boolean getgrafik_k3_perpenyebab(){return akses.grafik_k3_perpenyebab;}
+    public static boolean getgrafik_k3_perjenisluka(){return akses.grafik_k3_perjenisluka;}
+    public static boolean getgrafik_k3_lokasikejadian(){return akses.grafik_k3_lokasikejadian;}
 }   

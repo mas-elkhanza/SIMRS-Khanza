@@ -88,7 +88,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         KdSubInduk.setDocument(new batasInput((byte)15).getKata(KdSubInduk));
         NmSub.setDocument(new batasInput((byte)100).getKata(NmSub));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -298,7 +298,6 @@ public final class DlgRekening extends javax.swing.JDialog {
         MnSubAkun.setText("Buat Sub Akun Rekening");
         MnSubAkun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnSubAkun.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnSubAkun.setIconTextGap(5);
         MnSubAkun.setName("MnSubAkun"); // NOI18N
         MnSubAkun.setPreferredSize(new java.awt.Dimension(250, 28));
         MnSubAkun.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +314,6 @@ public final class DlgRekening extends javax.swing.JDialog {
         MnJadikanSub.setText("Jadikan Sub Akun Rekening");
         MnJadikanSub.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnJadikanSub.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnJadikanSub.setIconTextGap(5);
         MnJadikanSub.setName("MnJadikanSub"); // NOI18N
         MnJadikanSub.setPreferredSize(new java.awt.Dimension(250, 28));
         MnJadikanSub.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +330,6 @@ public final class DlgRekening extends javax.swing.JDialog {
         MnJadikanUtama.setText("Jadikan Akun Utama");
         MnJadikanUtama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnJadikanUtama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnJadikanUtama.setIconTextGap(5);
         MnJadikanUtama.setName("MnJadikanUtama"); // NOI18N
         MnJadikanUtama.setPreferredSize(new java.awt.Dimension(250, 28));
         MnJadikanUtama.addActionListener(new java.awt.event.ActionListener() {

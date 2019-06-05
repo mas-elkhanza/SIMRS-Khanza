@@ -108,7 +108,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         harga.setDocument(new batasInput((byte)20).getKata(harga));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TCari.requestFocus();        
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -246,7 +246,6 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setIconTextGap(8);
         MnRestore.setName("MnRestore"); // NOI18N
         MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
         MnRestore.addActionListener(new java.awt.event.ActionListener() {

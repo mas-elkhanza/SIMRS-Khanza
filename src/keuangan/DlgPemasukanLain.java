@@ -113,7 +113,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         pemasukan.setDocument(new batasInput((byte)15).getKata(pemasukan));
         Nomor.setDocument(new batasInput((byte)15).getKata(Nomor));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

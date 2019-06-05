@@ -132,7 +132,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -320,7 +320,6 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
         ppHapus.setText("Hapus Data Stok Keluar");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(200, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -639,7 +638,6 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -662,7 +660,6 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter2.setComponentPopupMenu(jPopupMenu1);
         tbDokter2.setName("tbDokter2"); // NOI18N
         scrollPane2.setViewportView(tbDokter2);
