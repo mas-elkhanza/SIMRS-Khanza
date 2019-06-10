@@ -2202,6 +2202,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 if("[N]K3 Per Lokasi Kejadian".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_k3_lokasikejadian='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
+                
+                if("[N]K3 Per Dampak Cidera".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_k3_dampakcidera='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
 
                 if("[O]Indeks Surat".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_indeks='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -2592,7 +2596,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
                         "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
                         "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
-                        "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
+                        "grafik_k3_dampakcidera from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -4383,6 +4388,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[N]K3 Per Lokasi Kejadian".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[N]K3 Per Lokasi Kejadian",rs.getBoolean("grafik_k3_lokasikejadian")});
+                    }
+                    
+                    if("[N]K3 Per Dampak Cidera".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]K3 Per Dampak Cidera",rs.getBoolean("grafik_k3_dampakcidera")});
                     }
                     
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){
