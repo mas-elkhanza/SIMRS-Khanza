@@ -453,6 +453,7 @@ import inventory.DlgSisaStok;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSDampakCidera;
 import kepegawaian.K3RSJenisCidera;
+import kepegawaian.K3RSJenisCideraPerTahun;
 import kepegawaian.K3RSJenisLuka;
 import kepegawaian.K3RSJenisPekerjaan;
 import kepegawaian.K3RSLokasiKejadian;
@@ -14640,6 +14641,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnJenisCideraK3PerTahunActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        K3RSJenisCideraPerTahun form=new K3RSJenisCideraPerTahun(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -15215,7 +15226,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMutuAirLimbah,btnCariInventarisPerpustakaan,btnJenisCideraK3,btnPenyebabKecelakaanK3,btnJenisLukaK3,btnLokasiKejadianK3,btnDampakCideraK3,
             btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3,btnBagianTubuhK3,btnPeristiwaK3,btnGrafikK3PerTahun,btnGrafikK3PerBulan,btnGrafikK3PerTanggal,
             btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka,btnGrafikK3PerLokasiKejadian,btnGrafikK3PerDampakCidera,
-            btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh;
+            btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun;
     
     public void isWall(){
         try{            
@@ -15861,6 +15872,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getperistiwa_k3rs()==true){                
                 Panelmenu.add(btnPeristiwaK3);
+                jmlmenu++;
+            }
+            
+            if(akses.getjenis_cidera_k3rstahun()==true){                
+                Panelmenu.add(btnJenisCideraK3PerTahun);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -18357,6 +18373,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getperistiwa_k3rs()==true){                
             Panelmenu.add(btnPeristiwaK3);
+            jmlmenu++;
+        }
+        
+        if(akses.getjenis_cidera_k3rstahun()==true){                
+            Panelmenu.add(btnJenisCideraK3PerTahun);
             jmlmenu++;
         }
 
@@ -20944,6 +20965,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getperistiwa_k3rs()==true){    
             if(btnPeristiwaK3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPeristiwaK3);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getjenis_cidera_k3rstahun()==true){    
+            if(btnJenisCideraK3PerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJenisCideraK3PerTahun);
                 jmlmenu++;
             }                
         }
@@ -24470,6 +24498,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikK3PerBagianTubuh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikK3PerBagianTubuhActionPerformed(evt);
+            }
+        });
+        
+        btnJenisCideraK3PerTahun = new widget.ButtonBig();
+        btnJenisCideraK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ruber.png")));
+        btnJenisCideraK3PerTahun.setText("Jenis Cidera K3 Per Tahun");
+        btnJenisCideraK3PerTahun.setIconTextGap(0);
+        btnJenisCideraK3PerTahun.setName("btnJenisCideraK3PerTahun"); 
+        btnJenisCideraK3PerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJenisCideraK3PerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJenisCideraK3PerTahunActionPerformed(evt);
             }
         });
     }

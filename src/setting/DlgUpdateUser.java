@@ -655,6 +655,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","peristiwa_k3rs='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
+                if("[C]Jenis Cidera K3 Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","jenis_cidera_k3rstahun='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
                 if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","suplier='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
@@ -2605,7 +2609,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
                         "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
                         "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
-                        "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2848,6 +2852,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Peristiwa K3".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Peristiwa K3",rs.getBoolean("peristiwa_k3rs")});
+                    }
+                    
+                    if("[C]Jenis Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Jenis Cidera K3 Per Tahun",rs.getBoolean("jenis_cidera_k3rstahun")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
