@@ -458,6 +458,7 @@ import kepegawaian.K3RSJenisLuka;
 import kepegawaian.K3RSJenisPekerjaan;
 import kepegawaian.K3RSLokasiKejadian;
 import kepegawaian.K3RSPenyebab;
+import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
@@ -535,7 +536,7 @@ public class frmUtama extends javax.swing.JFrame {
         //desktop.setAutoscrolls(true);
         edAdmin.setDocument(new batasInput((byte)100).getKata(edAdmin));
         edPwd.setDocument(new batasInput((byte)100).getKata(edPwd));
-        DlgLogin.setSize(344,191);
+        DlgLogin.setSize(319,191);
         DlgLogin.setVisible(false);
         DlgLogin.setLocationRelativeTo(null);
         
@@ -1220,7 +1221,7 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel4.setText("ID Admin :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass1.add(jLabel4);
-        jLabel4.setBounds(2, 12, 80, 23);
+        jLabel4.setBounds(2, 12, 75, 23);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(50, 50, 50));
@@ -1228,7 +1229,7 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel5.setText("Password :");
         jLabel5.setName("jLabel5"); // NOI18N
         panelGlass1.add(jLabel5);
-        jLabel5.setBounds(2, 40, 80, 23);
+        jLabel5.setBounds(2, 40, 75, 23);
 
         edAdmin.setForeground(new java.awt.Color(50, 50, 50));
         edAdmin.setToolTipText("Silahkan masukkan ID Admin");
@@ -1240,7 +1241,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         panelGlass1.add(edAdmin);
-        edAdmin.setBounds(85, 12, 220, 23);
+        edAdmin.setBounds(80, 12, 213, 23);
 
         edPwd.setForeground(new java.awt.Color(50, 50, 50));
         edPwd.setToolTipText("Silahkan masukkan password");
@@ -1252,7 +1253,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         panelGlass1.add(edPwd);
-        edPwd.setBounds(85, 40, 220, 23);
+        edPwd.setBounds(80, 40, 213, 23);
 
         internalFrame3.add(panelGlass1);
         panelGlass1.setBounds(-1, 30, 342, 76);
@@ -1260,7 +1261,7 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/LaST (Cobalt) Lock n Gear.png"))); // NOI18N
         jLabel6.setName("jLabel6"); // NOI18N
         internalFrame3.add(jLabel6);
-        jLabel6.setBounds(120, 5, 135, 145);
+        jLabel6.setBounds(105, 5, 135, 145);
 
         BtnLogin.setForeground(new java.awt.Color(60, 60, 60));
         BtnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/lock.png"))); // NOI18N
@@ -1290,10 +1291,10 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         internalFrame3.add(BtnCancel);
-        BtnCancel.setBounds(222, 115, 105, 32);
+        BtnCancel.setBounds(197, 115, 105, 32);
 
         internalFrame2.add(internalFrame3);
-        internalFrame3.setBounds(2, 15, 340, 160);
+        internalFrame3.setBounds(2, 15, 315, 160);
 
         DlgLogin.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
 
@@ -6858,7 +6859,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/05/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/06/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -14651,6 +14652,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnPenyebabKecelakaanK3PerTahunActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        K3RSPenyebabPerTahun form=new K3RSPenyebabPerTahun(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15226,7 +15239,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMutuAirLimbah,btnCariInventarisPerpustakaan,btnJenisCideraK3,btnPenyebabKecelakaanK3,btnJenisLukaK3,btnLokasiKejadianK3,btnDampakCideraK3,
             btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3,btnBagianTubuhK3,btnPeristiwaK3,btnGrafikK3PerTahun,btnGrafikK3PerBulan,btnGrafikK3PerTanggal,
             btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka,btnGrafikK3PerLokasiKejadian,btnGrafikK3PerDampakCidera,
-            btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun;
+            btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun;
     
     public void isWall(){
         try{            
@@ -15877,6 +15890,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getjenis_cidera_k3rstahun()==true){                
                 Panelmenu.add(btnJenisCideraK3PerTahun);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenyebab_k3rstahun()==true){                
+                Panelmenu.add(btnPenyebabKecelakaanK3PerTahun);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -18378,6 +18396,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getjenis_cidera_k3rstahun()==true){                
             Panelmenu.add(btnJenisCideraK3PerTahun);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenyebab_k3rstahun()==true){                
+            Panelmenu.add(btnPenyebabKecelakaanK3PerTahun);
             jmlmenu++;
         }
 
@@ -20972,6 +20995,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getjenis_cidera_k3rstahun()==true){    
             if(btnJenisCideraK3PerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisCideraK3PerTahun);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenyebab_k3rstahun()==true){    
+            if(btnPenyebabKecelakaanK3PerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenyebabKecelakaanK3PerTahun);
                 jmlmenu++;
             }                
         }
@@ -24510,6 +24540,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJenisCideraK3PerTahun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJenisCideraK3PerTahunActionPerformed(evt);
+            }
+        });
+        
+        btnPenyebabKecelakaanK3PerTahun = new widget.ButtonBig();
+        btnPenyebabKecelakaanK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_sponge_2___331505.png")));
+        btnPenyebabKecelakaanK3PerTahun.setText("Penyebab Kecelakaan K3 Per Tahun");
+        btnPenyebabKecelakaanK3PerTahun.setIconTextGap(0);
+        btnPenyebabKecelakaanK3PerTahun.setName("btnPenyebabKecelakaanK3PerTahun"); 
+        btnPenyebabKecelakaanK3PerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenyebabKecelakaanK3PerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenyebabKecelakaanK3PerTahunActionPerformed(evt);
             }
         });
     }
