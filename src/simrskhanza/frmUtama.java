@@ -452,6 +452,7 @@ import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSDampakCidera;
+import kepegawaian.K3RSDampakCideraPerTahun;
 import kepegawaian.K3RSJenisCidera;
 import kepegawaian.K3RSJenisCideraPerTahun;
 import kepegawaian.K3RSJenisLuka;
@@ -14688,6 +14689,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnDampakCideraK3PerTahunActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        K3RSDampakCideraPerTahun form=new K3RSDampakCideraPerTahun(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15264,7 +15276,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3,btnBagianTubuhK3,btnPeristiwaK3,btnGrafikK3PerTahun,btnGrafikK3PerBulan,btnGrafikK3PerTanggal,
             btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka,btnGrafikK3PerLokasiKejadian,btnGrafikK3PerDampakCidera,
             btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun,btnJenisLukaK3PerTahun,
-            btnLokasiKejadianK3PerTahun;
+            btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun;
     
     public void isWall(){
         try{            
@@ -15634,6 +15646,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }else if(jmlmenu<=490){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*94)));
+        }else if(jmlmenu<=495){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*95)));
         }                                              
         Panelmenu.revalidate();
         Panelmenu.repaint();               
@@ -15930,6 +15945,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlokasi_kejadian_k3rstahun()==true){                
                 Panelmenu.add(btnLokasiKejadianK3PerTahun);
+                jmlmenu++;
+            }
+            
+            if(akses.getdampak_cidera_k3rstahun()==true){                
+                Panelmenu.add(btnDampakCideraK3PerTahun);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -18446,6 +18466,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlokasi_kejadian_k3rstahun()==true){                
             Panelmenu.add(btnLokasiKejadianK3PerTahun);
+            jmlmenu++;
+        }
+        
+        if(akses.getdampak_cidera_k3rstahun()==true){                
+            Panelmenu.add(btnDampakCideraK3PerTahun);
             jmlmenu++;
         }
 
@@ -21061,6 +21086,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getlokasi_kejadian_k3rstahun()==true){    
             if(btnLokasiKejadianK3PerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLokasiKejadianK3PerTahun);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdampak_cidera_k3rstahun()==true){    
+            if(btnDampakCideraK3PerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDampakCideraK3PerTahun);
                 jmlmenu++;
             }                
         }
@@ -24635,6 +24667,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLokasiKejadianK3PerTahun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLokasiKejadianK3PerTahunActionPerformed(evt);
+            }
+        });
+        
+        btnDampakCideraK3PerTahun = new widget.ButtonBig();
+        btnDampakCideraK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ambulance_45490.png")));
+        btnDampakCideraK3PerTahun.setText("Dampak Cidera K3 Per Tahun");
+        btnDampakCideraK3PerTahun.setIconTextGap(0);
+        btnDampakCideraK3PerTahun.setName("btnDampakCideraK3PerTahun"); 
+        btnDampakCideraK3PerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDampakCideraK3PerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDampakCideraK3PerTahunActionPerformed(evt);
             }
         });
     }

@@ -109,7 +109,7 @@ public final class akses {
             peristiwa_k3rs=false,grafik_k3_pertahun=false,grafik_k3_perbulan=false,grafik_k3_pertanggal=false,grafik_k3_perjeniscidera=false,
             grafik_k3_perpenyebab=false,grafik_k3_perjenisluka=false,grafik_k3_lokasikejadian=false,grafik_k3_dampakcidera=false,
             grafik_k3_perjenispekerjaan=false,grafik_k3_perbagiantubuh=false,jenis_cidera_k3rstahun=false,penyebab_k3rstahun=false,
-            jenis_luka_k3rstahun=false,lokasi_kejadian_k3rstahun=false;
+            jenis_luka_k3rstahun=false,lokasi_kejadian_k3rstahun=false,dampak_cidera_k3rstahun=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -632,6 +632,7 @@ public final class akses {
                         akses.penyebab_k3rstahun=true;
                         akses.jenis_luka_k3rstahun=true;
                         akses.lokasi_kejadian_k3rstahun=true;
+                        akses.dampak_cidera_k3rstahun=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1138,6 +1139,7 @@ public final class akses {
                         akses.penyebab_k3rstahun=rs2.getBoolean("penyebab_k3rstahun");
                         akses.jenis_luka_k3rstahun=rs2.getBoolean("jenis_luka_k3rstahun");
                         akses.lokasi_kejadian_k3rstahun=rs2.getBoolean("lokasi_kejadian_k3rstahun");
+                        akses.dampak_cidera_k3rstahun=rs2.getBoolean("dampak_cidera_k3rstahun");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1642,6 +1644,7 @@ public final class akses {
                         akses.penyebab_k3rstahun=false;
                         akses.jenis_luka_k3rstahun=false;
                         akses.lokasi_kejadian_k3rstahun=false;
+                        akses.dampak_cidera_k3rstahun=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2200,4 +2203,5 @@ public final class akses {
     public static boolean getpenyebab_k3rstahun(){return akses.penyebab_k3rstahun;}
     public static boolean getjenis_luka_k3rstahun(){return akses.jenis_luka_k3rstahun;}
     public static boolean getlokasi_kejadian_k3rstahun(){return akses.lokasi_kejadian_k3rstahun;}
+    public static boolean getdampak_cidera_k3rstahun(){return akses.dampak_cidera_k3rstahun;}
 }   
