@@ -451,6 +451,7 @@ import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgSisaStok;
 import kepegawaian.K3RSBagianTubuh;
+import kepegawaian.K3RSBagianTubuhPerTahun;
 import kepegawaian.K3RSDampakCidera;
 import kepegawaian.K3RSDampakCideraPerTahun;
 import kepegawaian.K3RSJenisCidera;
@@ -14712,6 +14713,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBagianTubuhK3PerTahunActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        K3RSBagianTubuhPerTahun form=new K3RSBagianTubuhPerTahun(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15288,7 +15300,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3,btnBagianTubuhK3,btnPeristiwaK3,btnGrafikK3PerTahun,btnGrafikK3PerBulan,btnGrafikK3PerTanggal,
             btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka,btnGrafikK3PerLokasiKejadian,btnGrafikK3PerDampakCidera,
             btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun,btnJenisLukaK3PerTahun,
-            btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun;
+            btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun;
     
     public void isWall(){
         try{            
@@ -15967,6 +15979,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getjenis_pekerjaan_k3rstahun()==true){                
                 Panelmenu.add(btnJenisPekerjaanK3PerTahun);
+                jmlmenu++;
+            }
+            
+            if(akses.getbagian_tubuh_k3rstahun()==true){                
+                Panelmenu.add(btnBagianTubuhK3PerTahun);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==3){ 
@@ -18493,6 +18510,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getjenis_pekerjaan_k3rstahun()==true){                
             Panelmenu.add(btnJenisPekerjaanK3PerTahun);
+            jmlmenu++;
+        }
+        
+        if(akses.getbagian_tubuh_k3rstahun()==true){                
+            Panelmenu.add(btnBagianTubuhK3PerTahun);
             jmlmenu++;
         }
 
@@ -21122,6 +21144,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getjenis_pekerjaan_k3rstahun()==true){    
             if(btnJenisPekerjaanK3PerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisPekerjaanK3PerTahun);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbagian_tubuh_k3rstahun()==true){    
+            if(btnBagianTubuhK3PerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBagianTubuhK3PerTahun);
                 jmlmenu++;
             }                
         }
@@ -24720,6 +24749,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJenisPekerjaanK3PerTahun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJenisPekerjaanK3PerTahunActionPerformed(evt);
+            }
+        });
+        
+        btnBagianTubuhK3PerTahun = new widget.ButtonBig();
+        btnBagianTubuhK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png")));
+        btnBagianTubuhK3PerTahun.setText("Bagian Tubuh K3 Per Tahun");
+        btnBagianTubuhK3PerTahun.setIconTextGap(0);
+        btnBagianTubuhK3PerTahun.setName("btnBagianTubuhK3PerTahun"); 
+        btnBagianTubuhK3PerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBagianTubuhK3PerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBagianTubuhK3PerTahunActionPerformed(evt);
             }
         });
     }
