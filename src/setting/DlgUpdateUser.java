@@ -675,6 +675,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","dampak_cidera_k3rstahun='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
+                if("[C]Jenis Pekerjaan K3 Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","jenis_pekerjaan_k3rstahun='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
                 if("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","suplier='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
@@ -2626,7 +2630,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
                         "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
                         "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"+
-                        "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2889,6 +2893,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[C]Dampak Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[C]Dampak Cidera K3 Per Tahun",rs.getBoolean("dampak_cidera_k3rstahun")});
+                    }
+                    
+                    if("[C]Jenis Pekerjaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[C]Jenis Pekerjaan K3 Per Tahun",rs.getBoolean("jenis_pekerjaan_k3rstahun")});
                     }
                     
                     if("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
