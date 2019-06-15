@@ -139,7 +139,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[C]Peristiwa K3","[N]K3 Per Tahun","[N]K3 Per Bulan","[N]K3 Per Tanggal","[N]K3 Per Jenis Cidera","[N]K3 Per Penyebab Kecelakaan","[N]K3 Per Jenis Luka",
                     "[N]K3 Per Lokasi Kejadian","[N]K3 Per Dampak Cidera","[N]K3 Per Jenis Pekerjaan","[N]K3 Per Bagian Tubuh","[C]Jenis Cidera K3 Per Tahun",
                     "[C]Penyebab Kecelakaan K3 Per Tahun","[C]Jenis Luka K3 Per Tahun","[C]Lokasi Kejadian K3 Per Tahun","[C]Dampak Cidera K3 Per Tahun",
-                    "[C]Jenis Pekerjaan K3 Per Tahun","[C]Bagian Tubuh K3 Per Tahun"
+                    "[C]Jenis Pekerjaan K3 Per Tahun","[C]Bagian Tubuh K3 Per Tahun","[A]Skrining Rawat Jalan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -283,6 +283,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -296,7 +297,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 506;i++) {
+        for (i = 0; i < 507;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -944,6 +945,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(165);
             }else if(i==505){
                 column.setPreferredWidth(155);
+            }else if(i==506){
+                column.setPreferredWidth(124);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1435,7 +1438,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1983,7 +1986,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "lokasi_kejadian_k3rstahun='"+tbUser.getValueAt(i,502).toString()+"',"+
                     "dampak_cidera_k3rstahun='"+tbUser.getValueAt(i,503).toString()+"',"+
                     "jenis_pekerjaan_k3rstahun='"+tbUser.getValueAt(i,504).toString()+"',"+
-                    "bagian_tubuh_k3rstahun='"+tbUser.getValueAt(i,505).toString()+"'");
+                    "bagian_tubuh_k3rstahun='"+tbUser.getValueAt(i,505).toString()+"',"+
+                    "sekrining_rawat_jalan='"+tbUser.getValueAt(i,506).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2570,7 +2574,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "lokasi_kejadian_k3rstahun='"+tbUser.getValueAt(barisdicopy,502).toString()+"',"+
                                     "dampak_cidera_k3rstahun='"+tbUser.getValueAt(barisdicopy,503).toString()+"',"+
                                     "jenis_pekerjaan_k3rstahun='"+tbUser.getValueAt(barisdicopy,504).toString()+"',"+
-                                    "bagian_tubuh_k3rstahun='"+tbUser.getValueAt(barisdicopy,505).toString()+"'");
+                                    "bagian_tubuh_k3rstahun='"+tbUser.getValueAt(barisdicopy,505).toString()+"',"+
+                                    "sekrining_rawat_jalan='"+tbUser.getValueAt(barisdicopy,506).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2861,7 +2866,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
                         "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
                         "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"+
-                        "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun from user order by AES_DECRYPT(id_user,'nur')");
+                        "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun,"+
+                        "sekrining_rawat_jalan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3379,7 +3385,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("lokasi_kejadian_k3rstahun"),
                                rs.getBoolean("dampak_cidera_k3rstahun"),
                                rs.getBoolean("jenis_pekerjaan_k3rstahun"),
-                               rs.getBoolean("bagian_tubuh_k3rstahun")
+                               rs.getBoolean("bagian_tubuh_k3rstahun"),
+                               rs.getBoolean("sekrining_rawat_jalan")
                             });
                         }   
                     } catch (Exception e) {
@@ -3886,7 +3893,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("lokasi_kejadian_k3rstahun"),
                            rs.getBoolean("dampak_cidera_k3rstahun"),
                            rs.getBoolean("jenis_pekerjaan_k3rstahun"),
-                           rs.getBoolean("bagian_tubuh_k3rstahun")
+                           rs.getBoolean("bagian_tubuh_k3rstahun"),
+                           rs.getBoolean("sekrining_rawat_jalan")
                         });
                     }                                             
                  }

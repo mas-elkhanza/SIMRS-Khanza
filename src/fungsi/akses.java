@@ -110,7 +110,7 @@ public final class akses {
             grafik_k3_perpenyebab=false,grafik_k3_perjenisluka=false,grafik_k3_lokasikejadian=false,grafik_k3_dampakcidera=false,
             grafik_k3_perjenispekerjaan=false,grafik_k3_perbagiantubuh=false,jenis_cidera_k3rstahun=false,penyebab_k3rstahun=false,
             jenis_luka_k3rstahun=false,lokasi_kejadian_k3rstahun=false,dampak_cidera_k3rstahun=false,jenis_pekerjaan_k3rstahun=false,
-            bagian_tubuh_k3rstahun=false;
+            bagian_tubuh_k3rstahun=false,sekrining_rawat_jalan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -636,6 +636,7 @@ public final class akses {
                         akses.dampak_cidera_k3rstahun=true;
                         akses.jenis_pekerjaan_k3rstahun=true;
                         akses.bagian_tubuh_k3rstahun=true;
+                        akses.sekrining_rawat_jalan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1145,6 +1146,7 @@ public final class akses {
                         akses.dampak_cidera_k3rstahun=rs2.getBoolean("dampak_cidera_k3rstahun");
                         akses.jenis_pekerjaan_k3rstahun=rs2.getBoolean("jenis_pekerjaan_k3rstahun");
                         akses.bagian_tubuh_k3rstahun=rs2.getBoolean("bagian_tubuh_k3rstahun");
+                        akses.sekrining_rawat_jalan=rs2.getBoolean("sekrining_rawat_jalan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1652,6 +1654,7 @@ public final class akses {
                         akses.dampak_cidera_k3rstahun=false;
                         akses.jenis_pekerjaan_k3rstahun=false;
                         akses.bagian_tubuh_k3rstahun=false;
+                        akses.sekrining_rawat_jalan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2213,4 +2216,5 @@ public final class akses {
     public static boolean getdampak_cidera_k3rstahun(){return akses.dampak_cidera_k3rstahun;}
     public static boolean getjenis_pekerjaan_k3rstahun(){return akses.jenis_pekerjaan_k3rstahun;}
     public static boolean getbagian_tubuh_k3rstahun(){return akses.bagian_tubuh_k3rstahun;}
+    public static boolean getsekrining_rawat_jalan(){return akses.sekrining_rawat_jalan;}
 }   
