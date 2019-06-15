@@ -257,6 +257,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnLembarSkriningRalan = new javax.swing.JMenuItem();
+        MnPDFSkriningRalan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -331,6 +332,20 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnLembarSkriningRalan);
+
+        MnPDFSkriningRalan.setBackground(new java.awt.Color(255, 255, 254));
+        MnPDFSkriningRalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPDFSkriningRalan.setForeground(new java.awt.Color(70, 70, 70));
+        MnPDFSkriningRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPDFSkriningRalan.setText("PDF Skrining Ralan");
+        MnPDFSkriningRalan.setName("MnPDFSkriningRalan"); // NOI18N
+        MnPDFSkriningRalan.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPDFSkriningRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPDFSkriningRalanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnPDFSkriningRalan);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -511,7 +526,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -524,7 +539,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -649,7 +664,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
         FormInput.add(jLabel8);
         jLabel8.setBounds(571, 100, 80, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2019" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2019" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -1245,7 +1260,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptLembarSkriningRalan.jasper","report","::[ Data Skrining Rawat Jalan ]::",
+            Valid.MyReportqry("rptLembarSkriningRalan.jasper","report","::[ Lembar Skrining Rawat Jalan ]::",
                     "select skrining_rawat_jalan.tanggal,skrining_rawat_jalan.jam,skrining_rawat_jalan.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
                     "pasien.nm_ibu,pasien.jk,skrining_rawat_jalan.geriatri,skrining_rawat_jalan.kesadaran,skrining_rawat_jalan.pernapasan,"+
                     "skrining_rawat_jalan.nyeri_dada,skrining_rawat_jalan.skala_nyeri,skrining_rawat_jalan.keputusan,skrining_rawat_jalan.nip,petugas.nama "+
@@ -1254,6 +1269,26 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
         }
     }//GEN-LAST:event_MnLembarSkriningRalanActionPerformed
+
+    private void MnPDFSkriningRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPDFSkriningRalanActionPerformed
+        if(tbObat.getSelectedRow()> -1){ 
+            Map<String, Object> param = new HashMap<>(); 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReportqrypdf("rptLembarSkriningRalan.jasper","report","::[ Lembar Skrining Rawat Jalan ]::",
+                    "select skrining_rawat_jalan.tanggal,skrining_rawat_jalan.jam,skrining_rawat_jalan.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
+                    "pasien.nm_ibu,pasien.jk,skrining_rawat_jalan.geriatri,skrining_rawat_jalan.kesadaran,skrining_rawat_jalan.pernapasan,"+
+                    "skrining_rawat_jalan.nyeri_dada,skrining_rawat_jalan.skala_nyeri,skrining_rawat_jalan.keputusan,skrining_rawat_jalan.nip,petugas.nama "+
+                    "from skrining_rawat_jalan inner join pasien inner join petugas on skrining_rawat_jalan.no_rkm_medis=pasien.no_rkm_medis and skrining_rawat_jalan.nip=petugas.nip where skrining_rawat_jalan.no_rkm_medis='"+TNoRM.getText()+"'",param);
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+        }
+    }//GEN-LAST:event_MnPDFSkriningRalanActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1299,6 +1334,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label LCount;
     private widget.TextBox Lahir;
     private javax.swing.JMenuItem MnLembarSkriningRalan;
+    private javax.swing.JMenuItem MnPDFSkriningRalan;
     private widget.ComboBox NyeriDada;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Pernapasan;
