@@ -32,7 +32,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import simrskhanza.DlgIGD;
 import simrskhanza.DlgPasien;
+import simrskhanza.DlgReg;
 
 /**
  *
@@ -51,6 +53,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private String pilihan;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -62,7 +65,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"No.","Diagnosa","Jenis Pelayanan","Kelas Rawat","Nama Peserta","No.Kartu","No.SEP","No.Rujukan","Poli","PPK Pelayanan","Tgl. Pulang SEP","Tgl.SEP"};
+        Object[] row={"No.","Diagnosa","Jenis Pelayanan","Kelas Rawat","Nama Peserta","No.Kartu","No.SEP","No.Rujukan","Poli","PPK Pelayanan","Pulang SEP","Tgl.SEP"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -87,9 +90,17 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(85);
             }else if(i==6){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(125);
             }else if(i==7){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(125);
+            }else if(i==8){
+                column.setPreferredWidth(115);
+            }else if(i==9){
+                column.setPreferredWidth(160);
+            }else if(i==10){
+                column.setPreferredWidth(65);
+            }else if(i==11){
+                column.setPreferredWidth(65);
             }
         }
         
@@ -164,7 +175,6 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
         BtnRegist = new widget.Button();
-        BtnCari1 = new widget.Button();
         BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -288,24 +298,6 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
         });
         panelGlass6.add(BtnRegist);
 
-        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnCari1.setMnemonic('E');
-        BtnCari1.setText("Data SEP");
-        BtnCari1.setToolTipText("Alt+E");
-        BtnCari1.setName("BtnCari1"); // NOI18N
-        BtnCari1.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCari1ActionPerformed(evt);
-            }
-        });
-        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCari1KeyPressed(evt);
-            }
-        });
-        panelGlass6.add(BtnCari1);
-
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -368,7 +360,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(NoKartu.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan masukkan nomor kartu BPJS..!!");
+            Valid.textKosong(NoKartu,"No.Kartu");
         }else{
             tampil(NoKartu.getText());
         }
@@ -384,7 +376,76 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistActionPerformed
-        
+        if(NoKartu.getText().equals("")){
+            Valid.textKosong(NoKartu,"No.Kartu");
+        }else{
+            try{
+                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Cek No.Kartu VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim","Via Cek No.Rujukan PCare di VClaim","Via Cek No.Rujukan RS di VClaim"},"Via Cek No.Kartu VClaim");
+                switch (pilihan) {
+                    case "Via Cek No.Kartu VClaim":
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        BPJSCekKartu form=new BPJSCekKartu(null,false);
+                        form.isCek();
+                        form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                        form.setLocationRelativeTo(internalFrame1);
+                        form.SetNoKartu(NoKartu.getText());
+                        form.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                        break;
+                    case "Via Cek Rujukan Kartu PCare di VClaim":
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        BPJSCekRujukanKartuPCare form2=new BPJSCekRujukanKartuPCare(null,false);
+                        form2.isCek();
+                        form2.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                        form2.setLocationRelativeTo(internalFrame1);
+                        form2.SetNoKartu(NoKartu.getText());
+                        form2.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                        break;
+                    case "Via Cek Rujukan Kartu RS di VClaim":
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        BPJSCekRujukanKartuRS form3=new BPJSCekRujukanKartuRS(null,false);
+                        form3.isCek();
+                        form3.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                        form3.setLocationRelativeTo(internalFrame1);
+                        form3.SetNoKartu(NoKartu.getText());
+                        form3.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                        break;
+                    case "Via Cek No.Rujukan PCare di VClaim":
+                        if(tbKamar.getSelectedRow()> -1){
+                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                            BPJSCekNoRujukanPCare form4=new BPJSCekNoRujukanPCare(null,false);
+                            form4.isCek();
+                            form4.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                            form4.setLocationRelativeTo(internalFrame1);
+                            form4.SetRujukan(tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                            form4.setVisible(true);
+                            this.setCursor(Cursor.getDefaultCursor());
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+                        }
+                        break;
+                    case "Via Cek No.Rujukan RS di VClaim":
+                        if(tbKamar.getSelectedRow()> -1){
+                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                            BPJSCekNoRujukanRS form5=new BPJSCekNoRujukanRS(null,false);
+                            form5.isCek();
+                            form5.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
+                            form5.setLocationRelativeTo(internalFrame1);
+                            form5.SetRujukan(tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString());
+                            form5.setVisible(true);
+                            this.setCursor(Cursor.getDefaultCursor());
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+                        }
+                        break;
+                    
+                }
+            }catch(Exception e){
+                System.out.println("Notif : "+e);
+            }
+        } 
     }//GEN-LAST:event_BtnRegistActionPerformed
 
     private void BtnRegistKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnRegistKeyPressed
@@ -394,22 +455,6 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
             Valid.pindah(evt, BtnCari, BtnKeluar);
         }
     }//GEN-LAST:event_BtnRegistKeyPressed
-
-    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BPJSDataSEP form=new BPJSDataSEP(null,false);
-        form.isCek();
-        form.tampil();
-        form.tutupInput();
-        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.setLocationRelativeTo(internalFrame1);
-        form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnCari1ActionPerformed
-
-    private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
-        Valid.pindah(evt, BtnCari, BtnKeluar);
-    }//GEN-LAST:event_BtnCari1KeyPressed
 
     /**
     * @param args the command line arguments
@@ -429,7 +474,6 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
-    private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnRegist;
     private widget.Tanggal DTPCari1;
@@ -466,7 +510,8 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{
                             i+".",list.path("diagnosa").asText(),list.path("jnsPelayanan").asText().replaceAll("1","Rawat Inap").replaceAll("2","Rawat Jalan"),
                             list.path("kelasRawat").asText(),list.path("namaPeserta").asText(),list.path("noKartu").asText(),list.path("noSep").asText(),
-                            list.path("noRujukan").asText(),list.path("poli").asText(),list.path("ppkPelayanan").asText(),list.path("tglSep").asText()
+                            list.path("noRujukan").asText(),list.path("poli").asText(),list.path("ppkPelayanan").asText(),list.path("tglPlgSep").asText(),
+                            list.path("tglSep").asText()
                         });    
                         i++;
                     }
@@ -483,7 +528,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
     }  
     
     public void isCek(){
-        BtnCari1.setEnabled(akses.getbpjs_sep());
+        BtnRegist.setEnabled(akses.getbpjs_sep());
     }
  
 }

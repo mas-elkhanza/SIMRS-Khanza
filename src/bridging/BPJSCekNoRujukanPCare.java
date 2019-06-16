@@ -6240,4 +6240,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         ppPengajuan1.setEnabled(akses.getbpjs_sep());
     }
     
+    
+    
 }
