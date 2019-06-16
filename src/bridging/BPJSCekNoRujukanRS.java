@@ -5285,12 +5285,14 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 if(!kdpoli.getText().equals("")){
                     isPoli();
                 }else{
-                    int jawab=JOptionPane.showConfirmDialog(null, "Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                    if(jawab==JOptionPane.YES_OPTION){
-                        poli.isCek();
-                        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        poli.setLocationRelativeTo(internalFrame1);
-                        poli.setVisible(true);
+                    if(!response.path("poliRujukan").path("kode").asText().equals("")){
+                        int jawab=JOptionPane.showConfirmDialog(null, "Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                        if(jawab==JOptionPane.YES_OPTION){
+                            poli.isCek();
+                            poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            poli.setLocationRelativeTo(internalFrame1);
+                            poli.setVisible(true);
+                        }
                     }
                 }
                 NmPoli.setText(response.path("poliRujukan").path("nama").asText());
