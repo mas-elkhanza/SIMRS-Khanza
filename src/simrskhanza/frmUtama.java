@@ -54,6 +54,7 @@ import bridging.BPJSCekRujukanKartuRS;
 import bridging.BPJSCekSKDP;
 import bridging.BPJSCekTanggalRujukan;
 import bridging.BPJSDataSEP;
+import bridging.BPJSHistoriPelayanan;
 import bridging.BPJSMapingPoli;
 import bridging.BPJSMonitoringKlaim;
 import bridging.BPJSRujukanKeluar;
@@ -14738,6 +14739,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBPJSHistoriPelayananActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSHistoriPelayanan form=new BPJSHistoriPelayanan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -15314,7 +15326,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikLimbahDomestikPerBulan,btnJenisPekerjaanK3,btnBagianTubuhK3,btnPeristiwaK3,btnGrafikK3PerTahun,btnGrafikK3PerBulan,btnGrafikK3PerTanggal,
             btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka,btnGrafikK3PerLokasiKejadian,btnGrafikK3PerDampakCidera,
             btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun,btnJenisLukaK3PerTahun,
-            btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun,btnSkriningRawatJalan;
+            btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun,btnSkriningRawatJalan,
+            btnBPJSHistoriPelayanan;
     
     public void isWall(){
         try{            
@@ -15687,6 +15700,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }else if(jmlmenu<=495){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*95)));
+        }else if(jmlmenu<=500){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*96)));
         }                                              
         Panelmenu.revalidate();
         Panelmenu.repaint();               
@@ -17135,6 +17151,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_cek_rujukan_kartu_rs()==true){
                 Panelmenu.add(btnCekBPJSRujukanKartuRS);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_histori_pelayanan()==true){
+                Panelmenu.add(btnBPJSHistoriPelayanan);
                 jmlmenu++;
             }
 
@@ -19657,6 +19678,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getbpjs_cek_rujukan_kartu_rs()==true){
             Panelmenu.add(btnCekBPJSRujukanKartuRS);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_histori_pelayanan()==true){
+            Panelmenu.add(btnBPJSHistoriPelayanan);
             jmlmenu++;
         }
 
@@ -22749,6 +22775,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getbpjs_histori_pelayanan()==true){
+            if(btnBPJSHistoriPelayanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBPJSHistoriPelayanan);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getbpjs_referensi_diagnosa()==true){
             if(btnCekBPJSDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -24804,6 +24837,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningRawatJalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSkriningRawatJalanActionPerformed(evt);
+            }
+        });
+        
+        btnBPJSHistoriPelayanan = new widget.ButtonBig();
+        btnBPJSHistoriPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Hourglass_34227.png")));
+        btnBPJSHistoriPelayanan.setText("Histori Pelayanan BPJS");
+        btnBPJSHistoriPelayanan.setIconTextGap(0);
+        btnBPJSHistoriPelayanan.setName("btnBPJSHistoriPelayanan"); 
+        btnBPJSHistoriPelayanan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSHistoriPelayanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBPJSHistoriPelayananActionPerformed(evt);
             }
         });
     }

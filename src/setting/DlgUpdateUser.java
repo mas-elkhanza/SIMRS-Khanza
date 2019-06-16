@@ -1722,6 +1722,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 if("[K]Tanggal Rujukan di VClaim".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_tanggal_rujukan='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
+                
+                if("[K]Histori Pelayanan BPJS".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_histori_pelayanan='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
 
                 if("[K]Referensi Dokter PCare".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pcare_cek_dokter='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -2639,7 +2643,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
                         "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"+
                         "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun,"+
-                        "sekrining_rawat_jalan from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "sekrining_rawat_jalan,bpjs_histori_pelayanan from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3950,6 +3954,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Tanggal Rujukan di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Tanggal Rujukan di VClaim",rs.getBoolean("bpjs_cek_tanggal_rujukan")});
+                    }
+                    
+                    if("[K]Histori Pelayanan BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Histori Pelayanan BPJS",rs.getBoolean("bpjs_histori_pelayanan")});
                     }
                     
                     if("[K]Referensi Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())){
