@@ -4774,8 +4774,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             Valid.textKosong(TNo,"No.Rekam Medis");
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama pasien");
-        }else if(kdpoli.getText().trim().equals("")){
-            Valid.textKosong(TNm,"Mapping Poli");
         }else if(nmpnj.getText().trim().equals("")||Kdpnj.getText().trim().equals("")){
             Valid.textKosong(Kdpnj,"Asuransi/Askes/Png.Jawab");
         }else if(tmp_lahir.equals("Yes")&&(TTmp.getText().trim().length()<p_tmp_lahir)){
@@ -5289,6 +5287,9 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                             poli.setLocationRelativeTo(internalFrame1);
                             poli.setVisible(true);
                         }
+                    }else{
+                        kdpoli.setText("IGDK");
+                        isPoli();
                     }
                 }
                     
