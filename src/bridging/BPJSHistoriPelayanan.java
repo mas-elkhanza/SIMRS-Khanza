@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.batasInput;
 import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
@@ -105,6 +106,9 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
         }
         
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        NoKartu.setDocument(new batasInput((byte)100).getKata(NoKartu));
+        
         pasien.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}

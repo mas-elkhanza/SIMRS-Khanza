@@ -466,6 +466,7 @@ import kepegawaian.K3RSLokasiKejadianPerTahun;
 import kepegawaian.K3RSPenyebab;
 import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
+import laporan.DlgRekapMutasiBerkas;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
 import perpustakaan.PerpustakaanCariEbook;
@@ -14750,6 +14751,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnRekapMutasiBerkasActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapMutasiBerkas form=new DlgRekapMutasiBerkas(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -15327,7 +15339,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka,btnGrafikK3PerLokasiKejadian,btnGrafikK3PerDampakCidera,
             btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun,btnJenisLukaK3PerTahun,
             btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun,btnSkriningRawatJalan,
-            btnBPJSHistoriPelayanan;
+            btnBPJSHistoriPelayanan,btnRekapMutasiBerkas;
     
     public void isWall(){
         try{            
@@ -16941,6 +16953,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getkemenkes_sitt()==true){  
                 Panelmenu.add(btnDataSITT);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getrekap_mutasi_berkas()==true){  
+                Panelmenu.add(btnRekapMutasiBerkas);                 
                 jmlmenu++;
             }
             
@@ -19470,6 +19487,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getkemenkes_sitt()==true){  
             Panelmenu.add(btnDataSITT);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getrekap_mutasi_berkas()==true){  
+            Panelmenu.add(btnRekapMutasiBerkas);                 
             jmlmenu++;
         }
 
@@ -22487,6 +22509,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getrekap_mutasi_berkas()==true){  
+            if(btnRekapMutasiBerkas.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapMutasiBerkas);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(tampilkantni.equals("Yes")){
             if(akses.getanggota_militer_dirawat()==true){
                 if(btnAnggotaMiliterDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -24849,6 +24878,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBPJSHistoriPelayanan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBPJSHistoriPelayananActionPerformed(evt);
+            }
+        });
+        
+        btnRekapMutasiBerkas = new widget.ButtonBig();
+        btnRekapMutasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_group_data_45163.png")));
+        btnRekapMutasiBerkas.setText("Rekap Mutasi Berkas");
+        btnRekapMutasiBerkas.setIconTextGap(0);
+        btnRekapMutasiBerkas.setName("btnRekapMutasiBerkas"); 
+        btnRekapMutasiBerkas.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapMutasiBerkas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapMutasiBerkasActionPerformed(evt);
             }
         });
     }

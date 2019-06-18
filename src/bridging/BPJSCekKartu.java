@@ -3785,7 +3785,8 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         if(ChkCari.isSelected()==true){
             ChkCari.setSelected(false);
             isForm();
-        }          
+        }    
+        ChkRM.setSelected(true);
         emptTeks();
         tampil(NoKartu.getText());
         this.setCursor(Cursor.getDefaultCursor());

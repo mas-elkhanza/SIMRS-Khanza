@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.batasInput;
 import fungsi.validasi;
 import fungsi.koneksiDB;
 import java.awt.Cursor;
@@ -29,6 +30,7 @@ import java.awt.event.WindowListener;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -104,6 +106,9 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
         }
         
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        NoKartu.setDocument(new batasInput((byte)100).getKata(NoKartu));
+        
         pasien.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}

@@ -3663,6 +3663,11 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(ChkCari.isSelected()==true){
+            ChkCari.setSelected(false);
+            isForm();
+        }       
+        ChkRM.setSelected(true);
         tampil(NoKartu.getText());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed

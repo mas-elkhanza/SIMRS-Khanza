@@ -3786,6 +3786,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             ChkCari.setSelected(false);
             isForm();
         }       
+        ChkRM.setSelected(true);
         emptTeks();
         tampil(TNik.getText());
         this.setCursor(Cursor.getDefaultCursor());
