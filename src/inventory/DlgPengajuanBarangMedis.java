@@ -545,9 +545,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){  
                             try {
-                                //"Jml"0,"Kode Barang"1,"Nama Barang"2,"Satuan"3,"Jenis Obat"4,"Kategori"5,"Golongan"6,"H.Pengajuan"7,"Sub Total"8
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    Sequel.menyimpan("detail_pengajuan_barang_medis","?,?,?,?,?,?","Detail Permintaan",6,new String[]{
+                                    Sequel.menyimpan("detail_pengajuan_barang_medis","?,?,?,?,?,?","Detail Pengajuan Barang Medis",6,new String[]{
                                          NoPengajuan.getText(),tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
                                          tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,7).toString(),tbDokter.getValueAt(i,8).toString()
                                     });                                   
@@ -857,7 +856,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pengajuan,3),signed)),0) from pengajuan_barang_medis where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PBMN"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
+                "PBM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
     }
     
     private void getData(){        
@@ -874,12 +873,15 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
         total=0;
         jml=tbDokter.getRowCount();
-        for(i=0;i<jml;i++){                 
-            try {
-                y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
-            } catch (Exception e) {
-                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
-                y=0;                
+        for(i=0;i<jml;i++){     
+            y=0;
+            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){ 
+                try {
+                    y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
+                } catch (Exception e) {
+                    tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
+                    y=0;                
+                }
             }
             total=total+y;   
         }

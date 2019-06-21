@@ -1,7 +1,6 @@
 package ipsrs;
 
 
-import inventory.*;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -24,7 +23,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
-import simrskhanza.DlgCariBangsal;
 import kepegawaian.DlgCariPegawai;
 
 public class DlgPermintaanNonMedis extends javax.swing.JDialog {

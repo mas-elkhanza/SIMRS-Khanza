@@ -1077,7 +1077,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         BtnPrint.setEnabled(akses.getpengajuan_barang_medis());
         ppHapus.setEnabled(akses.getpengajuan_barang_medis());
         ppDisetujui.setEnabled(akses.getsurat_pemesanan_medis());
-        ppDisetujui.setEnabled(akses.getpengajuan_barang_medis());
+        ppProsesPengajuan.setEnabled(akses.getpengajuan_barang_medis());
         ppDitolak.setEnabled(akses.getpengajuan_barang_medis());
     }
 }
