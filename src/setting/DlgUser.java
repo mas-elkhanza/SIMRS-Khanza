@@ -140,7 +140,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]K3 Per Lokasi Kejadian","[N]K3 Per Dampak Cidera","[N]K3 Per Jenis Pekerjaan","[N]K3 Per Bagian Tubuh","[C]Jenis Cidera K3 Per Tahun",
                     "[C]Penyebab Kecelakaan K3 Per Tahun","[C]Jenis Luka K3 Per Tahun","[C]Lokasi Kejadian K3 Per Tahun","[C]Dampak Cidera K3 Per Tahun",
                     "[C]Jenis Pekerjaan K3 Per Tahun","[C]Bagian Tubuh K3 Per Tahun","[A]Skrining Rawat Jalan","[K]Histori Pelayanan BPJS","[I]Rekap Mutasi Berkas",
-                    "[I]Skrining Pernapasan Ralan Per Tahun"
+                    "[I]Skrining Pernapasan Ralan Per Tahun","[D]Pengajuan Obat & BHP"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -298,7 +298,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 510;i++) {
+        for (i = 0; i < 511;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -954,6 +954,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(119);
             }else if(i==509){
                 column.setPreferredWidth(200);
+            }else if(i==510){
+                column.setPreferredWidth(132);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1445,7 +1447,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1997,7 +1999,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "sekrining_rawat_jalan='"+tbUser.getValueAt(i,506).toString()+"',"+
                     "bpjs_histori_pelayanan='"+tbUser.getValueAt(i,507).toString()+"',"+
                     "rekap_mutasi_berkas='"+tbUser.getValueAt(i,508).toString()+"',"+
-                    "skrining_ralan_pernapasan_pertahun='"+tbUser.getValueAt(i,509).toString()+"'");
+                    "skrining_ralan_pernapasan_pertahun='"+tbUser.getValueAt(i,509).toString()+"',"+
+                    "pengajuan_barang_medis='"+tbUser.getValueAt(i,510).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2588,7 +2591,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "sekrining_rawat_jalan='"+tbUser.getValueAt(barisdicopy,506).toString()+"',"+
                                     "bpjs_histori_pelayanan='"+tbUser.getValueAt(barisdicopy,507).toString()+"',"+
                                     "rekap_mutasi_berkas='"+tbUser.getValueAt(barisdicopy,508).toString()+"',"+
-                                    "skrining_ralan_pernapasan_pertahun='"+tbUser.getValueAt(barisdicopy,509).toString()+"'");
+                                    "skrining_ralan_pernapasan_pertahun='"+tbUser.getValueAt(barisdicopy,509).toString()+"',"+
+                                    "pengajuan_barang_medis='"+tbUser.getValueAt(barisdicopy,510).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2880,7 +2884,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
                         "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"+
                         "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun,"+
-                        "sekrining_rawat_jalan,bpjs_histori_pelayanan,rekap_mutasi_berkas,skrining_ralan_pernapasan_pertahun from user order by AES_DECRYPT(id_user,'nur')");
+                        "sekrining_rawat_jalan,bpjs_histori_pelayanan,rekap_mutasi_berkas,skrining_ralan_pernapasan_pertahun,pengajuan_barang_medis from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3402,7 +3406,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("sekrining_rawat_jalan"),
                                rs.getBoolean("bpjs_histori_pelayanan"),
                                rs.getBoolean("rekap_mutasi_berkas"),
-                               rs.getBoolean("skrining_ralan_pernapasan_pertahun")
+                               rs.getBoolean("skrining_ralan_pernapasan_pertahun"),
+                               rs.getBoolean("pengajuan_barang_medis")
                             });
                         }   
                     } catch (Exception e) {
@@ -3913,7 +3918,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("sekrining_rawat_jalan"),
                            rs.getBoolean("bpjs_histori_pelayanan"),
                            rs.getBoolean("rekap_mutasi_berkas"),
-                           rs.getBoolean("skrining_ralan_pernapasan_pertahun")
+                           rs.getBoolean("skrining_ralan_pernapasan_pertahun"),
+                           rs.getBoolean("pengajuan_barang_medis")
                         });
                     }                                             
                  }

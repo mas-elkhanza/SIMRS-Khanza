@@ -37,8 +37,6 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private double tagihan=0;
-    private Jurnal jur=new Jurnal();
     private DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
     private DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
 
@@ -74,7 +72,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoPermintaan.setDocument(new batasInput((byte)15).getKata(NoPermintaan));
+        NoPermintaan.setDocument(new batasInput((byte)20).getKata(NoPermintaan));
         KdBangsal.setDocument(new batasInput((byte)5).getKata(KdBangsal));
         KdPeg.setDocument(new batasInput((byte)20).getKata(KdPeg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
@@ -347,7 +345,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengajuan Permintaan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Permintaan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -857,7 +855,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPermintaan.jasper","report","::[ Data Pengajuan Permintaan Obat/Alkes/BHP Medis ]::",param);
+            Valid.MyReport("rptPermintaan.jasper","report","::[ Data Permintaan Obat/Alkes/BHP Medis ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1114,7 +1112,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(79,"%"+nmbar.getText()+"%");
                 ps.setString(80,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
-                tagihan=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("no_permintaan"),rs.getString("nm_bangsal"),

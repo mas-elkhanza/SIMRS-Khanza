@@ -111,7 +111,7 @@ public final class akses {
             grafik_k3_perjenispekerjaan=false,grafik_k3_perbagiantubuh=false,jenis_cidera_k3rstahun=false,penyebab_k3rstahun=false,
             jenis_luka_k3rstahun=false,lokasi_kejadian_k3rstahun=false,dampak_cidera_k3rstahun=false,jenis_pekerjaan_k3rstahun=false,
             bagian_tubuh_k3rstahun=false,sekrining_rawat_jalan=false,bpjs_histori_pelayanan=false,rekap_mutasi_berkas=false,
-            skrining_ralan_pernapasan_pertahun=false;
+            skrining_ralan_pernapasan_pertahun=false,pengajuan_barang_medis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -641,6 +641,7 @@ public final class akses {
                         akses.bpjs_histori_pelayanan=true;
                         akses.rekap_mutasi_berkas=true;
                         akses.skrining_ralan_pernapasan_pertahun=true;
+                        akses.pengajuan_barang_medis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1154,6 +1155,7 @@ public final class akses {
                         akses.bpjs_histori_pelayanan=rs2.getBoolean("bpjs_histori_pelayanan");
                         akses.rekap_mutasi_berkas=rs2.getBoolean("rekap_mutasi_berkas");
                         akses.skrining_ralan_pernapasan_pertahun=rs2.getBoolean("skrining_ralan_pernapasan_pertahun");
+                        akses.pengajuan_barang_medis=rs2.getBoolean("pengajuan_barang_medis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1665,6 +1667,7 @@ public final class akses {
                         akses.bpjs_histori_pelayanan=false;
                         akses.rekap_mutasi_berkas=false;
                         akses.skrining_ralan_pernapasan_pertahun=false;
+                        akses.pengajuan_barang_medis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2230,4 +2233,5 @@ public final class akses {
     public static boolean getbpjs_histori_pelayanan(){return akses.bpjs_histori_pelayanan;}
     public static boolean getrekap_mutasi_berkas(){return akses.rekap_mutasi_berkas;}
     public static boolean getskrining_ralan_pernapasan_pertahun(){return akses.skrining_ralan_pernapasan_pertahun;}
+    public static boolean getpengajuan_barang_medis(){return akses.pengajuan_barang_medis;}
 }   

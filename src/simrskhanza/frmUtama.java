@@ -450,6 +450,7 @@ import inventaris.KeslingPemakaiaanAirPDAM;
 import inventaris.KeslingPestControl;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
+import inventory.DlgPengajuanBarangMedis;
 import inventory.DlgSisaStok;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSBagianTubuhPerTahun;
@@ -14774,6 +14775,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnPengajuanBarangMedisActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPengajuanBarangMedis form=new DlgPengajuanBarangMedis(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
     /**
     * @param args the command line arguments
     */
@@ -15351,7 +15364,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikK3PerJenisCidera,btnGrafikK3PerPenyebab,btnGrafikK3PerJenisLuka,btnGrafikK3PerLokasiKejadian,btnGrafikK3PerDampakCidera,
             btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun,btnJenisLukaK3PerTahun,
             btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun,btnSkriningRawatJalan,
-            btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun;
+            btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis;
     
     public void isWall(){
         try{            
@@ -16114,6 +16127,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekap_permintaan_medis()==true){
                 Panelmenu.add(btnRekapPermintaanMedis);   
+                jmlmenu++;
+            }
+            
+            if(akses.getpengajuan_barang_medis()==true){
+                Panelmenu.add(btnPengajuanBarangMedis);   
                 jmlmenu++;
             }
             
@@ -18664,6 +18682,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekap_permintaan_medis()==true){
             Panelmenu.add(btnRekapPermintaanMedis);   
+            jmlmenu++;
+        }
+        
+        if(akses.getpengajuan_barang_medis()==true){
+            Panelmenu.add(btnPengajuanBarangMedis);   
             jmlmenu++;
         }
         
@@ -21350,6 +21373,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekap_permintaan_medis()==true){
             if(btnRekapPermintaanMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPermintaanMedis);   
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpengajuan_barang_medis()==true){
+            if(btnPengajuanBarangMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengajuanBarangMedis);   
                 jmlmenu++;
             }                
         }
@@ -24931,6 +24961,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningRalanPernapasanPerTahun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSkriningRalanPernapasanPerTahunActionPerformed(evt);
+            }
+        });
+        
+        btnPengajuanBarangMedis = new widget.ButtonBig();
+        btnPengajuanBarangMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ordering_49597.png")));
+        btnPengajuanBarangMedis.setText("Pengajuan Obat & BHP");
+        btnPengajuanBarangMedis.setIconTextGap(0);
+        btnPengajuanBarangMedis.setName("btnPengajuanBarangMedis"); 
+        btnPengajuanBarangMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengajuanBarangMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengajuanBarangMedisActionPerformed(evt);
             }
         });
     }
