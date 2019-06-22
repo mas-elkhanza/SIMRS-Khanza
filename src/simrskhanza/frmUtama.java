@@ -423,6 +423,8 @@ import grafikanalisa.GrafikKeslingLimbahDomestikPertanggal;
 import grafikanalisa.GrafikKeslingPDAMPerBulan;
 import grafikanalisa.GrafikKeslingPDAMPertanggal;
 import grafikanalisa.GrafikKunjunganRanapPerBulan;
+import grafikanalisa.GrafikKunjunganRanapPerRuang;
+import grafikanalisa.GrafikKunjunganRanapPerTanggal;
 import grafikanalisa.GrafikPeristiwaK3PerBagianTubuh;
 import grafikanalisa.GrafikPeristiwaK3PerBulan;
 import grafikanalisa.GrafikPeristiwaK3PerDampakCidera;
@@ -14812,6 +14814,28 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnGrafikKunjunganRanapTanggalActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKunjunganRanapPerTanggal aplikasi=new GrafikKunjunganRanapPerTanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnGrafikKunjunganRanapRuangActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKunjunganRanapPerRuang aplikasi=new GrafikKunjunganRanapPerRuang(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -15390,7 +15414,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun,btnJenisLukaK3PerTahun,
             btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun,btnSkriningRawatJalan,
             btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis,btnPengajuanBarangNonMedis,
-            btnGrafikKunjunganRanapBulan;
+            btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang;
     
     public void isWall(){
         try{            
@@ -18079,6 +18103,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnGrafikKunjunganRanapBulan);
                 jmlmenu++;
             }
+            
+            if(akses.getgrafik_kunjungan_ranaptanggal()==true){
+                Panelmenu.add(btnGrafikKunjunganRanapTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_kunjungan_ranap_peruang()==true){
+                Panelmenu.add(btnGrafikKunjunganRanapRuang);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(akses.getsurat_indeks()==true){
@@ -20626,6 +20660,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_kunjungan_ranapbulan()==true){
             Panelmenu.add(btnGrafikKunjunganRanapBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_kunjungan_ranaptanggal()==true){
+            Panelmenu.add(btnGrafikKunjunganRanapTanggal);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_kunjungan_ranap_peruang()==true){
+            Panelmenu.add(btnGrafikKunjunganRanapRuang);
             jmlmenu++;
         }
 
@@ -24091,6 +24135,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_kunjungan_ranaptanggal()==true){
+            if(btnGrafikKunjunganRanapTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKunjunganRanapTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_kunjungan_ranap_peruang()==true){
+            if(btnGrafikKunjunganRanapRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKunjunganRanapRuang);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -25060,6 +25118,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikKunjunganRanapBulan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikKunjunganRanapBulanActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikKunjunganRanapTanggal = new widget.ButtonBig();
+        btnGrafikKunjunganRanapTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikKunjunganRanapTanggal.setText("Kunjungan Ranap Per Tanggal");
+        btnGrafikKunjunganRanapTanggal.setIconTextGap(0);
+        btnGrafikKunjunganRanapTanggal.setName("btnGrafikKunjunganRanapTanggal"); 
+        btnGrafikKunjunganRanapTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganRanapTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganRanapTanggalActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikKunjunganRanapRuang = new widget.ButtonBig();
+        btnGrafikKunjunganRanapRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikKunjunganRanapRuang.setText("Kunjungan Ranap Per Ruang");
+        btnGrafikKunjunganRanapRuang.setIconTextGap(0);
+        btnGrafikKunjunganRanapRuang.setName("btnGrafikKunjunganRanapRuang"); 
+        btnGrafikKunjunganRanapRuang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganRanapRuang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganRanapRuangActionPerformed(evt);
             }
         });
     }
