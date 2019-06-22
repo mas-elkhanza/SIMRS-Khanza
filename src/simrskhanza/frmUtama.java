@@ -24085,8 +24085,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }
         
         if(akses.getgrafik_kunjungan_ranapbulan()==true){
-            if(btnGrafikKunjunganRanapPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnGrafikKunjunganRanapPerTahun);
+            if(btnGrafikKunjunganRanapBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKunjunganRanapBulan);
                 jmlmenu++;
             }                
         }
