@@ -141,7 +141,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[C]Penyebab Kecelakaan K3 Per Tahun","[C]Jenis Luka K3 Per Tahun","[C]Lokasi Kejadian K3 Per Tahun","[C]Dampak Cidera K3 Per Tahun",
                     "[C]Jenis Pekerjaan K3 Per Tahun","[C]Bagian Tubuh K3 Per Tahun","[A]Skrining Rawat Jalan","[K]Histori Pelayanan BPJS","[I]Rekap Mutasi Berkas",
                     "[I]Skrining Pernapasan Ralan Per Tahun","[D]Pengajuan Obat & BHP","[E]Pengajuan Barang Non Medis","[N]Kunjungan Ranap Per Bulan","[N]Kunjungan Ranap Per Tanggal",
-                    "[N]Kunjungan Ranap Per Ruang"
+                    "[N]Kunjungan Ranap Per Ruang","[N]Kunjungan Ruang Per Tahun"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -300,7 +300,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 515;i++) {
+        for (i = 0; i < 516;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -966,6 +966,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(168);
             }else if(i==514){
                 column.setPreferredWidth(160);
+            }else if(i==515){
+                column.setPreferredWidth(159);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1457,7 +1459,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2014,7 +2016,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pengajuan_barang_nonmedis='"+tbUser.getValueAt(i,511).toString()+"',"+
                     "grafik_kunjungan_ranapbulan='"+tbUser.getValueAt(i,512).toString()+"',"+
                     "grafik_kunjungan_ranaptanggal='"+tbUser.getValueAt(i,513).toString()+"',"+
-                    "grafik_kunjungan_ranap_peruang='"+tbUser.getValueAt(i,514).toString()+"'");
+                    "grafik_kunjungan_ranap_peruang='"+tbUser.getValueAt(i,514).toString()+"',"+
+                    "kunjungan_bangsal_pertahun='"+tbUser.getValueAt(i,515).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2610,7 +2613,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "pengajuan_barang_nonmedis='"+tbUser.getValueAt(barisdicopy,511).toString()+"',"+
                                     "grafik_kunjungan_ranapbulan='"+tbUser.getValueAt(barisdicopy,512).toString()+"',"+
                                     "grafik_kunjungan_ranaptanggal='"+tbUser.getValueAt(barisdicopy,513).toString()+"',"+
-                                    "grafik_kunjungan_ranap_peruang='"+tbUser.getValueAt(barisdicopy,514).toString()+"'");
+                                    "grafik_kunjungan_ranap_peruang='"+tbUser.getValueAt(barisdicopy,514).toString()+"',"+
+                                    "kunjungan_bangsal_pertahun='"+tbUser.getValueAt(barisdicopy,515).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2903,7 +2907,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"+
                         "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun,"+
                         "sekrining_rawat_jalan,bpjs_histori_pelayanan,rekap_mutasi_berkas,skrining_ralan_pernapasan_pertahun,pengajuan_barang_medis,"+
-                        "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang from user order by AES_DECRYPT(id_user,'nur')");
+                        "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"+
+                        "kunjungan_bangsal_pertahun from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3430,7 +3435,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pengajuan_barang_nonmedis"),
                                rs.getBoolean("grafik_kunjungan_ranapbulan"),
                                rs.getBoolean("grafik_kunjungan_ranaptanggal"),
-                               rs.getBoolean("grafik_kunjungan_ranap_peruang")
+                               rs.getBoolean("grafik_kunjungan_ranap_peruang"),
+                               rs.getBoolean("kunjungan_bangsal_pertahun")
                             });
                         }   
                     } catch (Exception e) {
@@ -3946,7 +3952,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pengajuan_barang_nonmedis"),
                            rs.getBoolean("grafik_kunjungan_ranapbulan"),
                            rs.getBoolean("grafik_kunjungan_ranaptanggal"),
-                           rs.getBoolean("grafik_kunjungan_ranap_peruang")
+                           rs.getBoolean("grafik_kunjungan_ranap_peruang"),
+                           rs.getBoolean("kunjungan_bangsal_pertahun")
                         });
                     }                                             
                  }

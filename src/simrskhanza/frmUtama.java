@@ -472,6 +472,7 @@ import kepegawaian.K3RSPenyebab;
 import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
 import laporan.DlgRekapMutasiBerkas;
+import laporan.RekapKunjunganRuangPerTahun;
 import laporan.RekapSkriningPernapasanRalanPerTahun;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
@@ -14836,6 +14837,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnKunjunganBangsalTahunActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RekapKunjunganRuangPerTahun aplikasi=new RekapKunjunganRuangPerTahun(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15414,7 +15427,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikK3PerJenisPekerjaan,btnGrafikK3PerBagianTubuh,btnJenisCideraK3PerTahun,btnPenyebabKecelakaanK3PerTahun,btnJenisLukaK3PerTahun,
             btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun,btnSkriningRawatJalan,
             btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis,btnPengajuanBarangNonMedis,
-            btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang;
+            btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun;
     
     public void isWall(){
         try{            
@@ -17051,6 +17064,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_ralan_pernapasan_pertahun()==true){  
                 Panelmenu.add(btnSkriningRalanPernapasanPerTahun);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getkunjungan_bangsal_pertahun()==true){  
+                Panelmenu.add(btnKunjunganBangsalTahun);                 
                 jmlmenu++;
             }
             
@@ -19615,6 +19633,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_ralan_pernapasan_pertahun()==true){  
             Panelmenu.add(btnSkriningRalanPernapasanPerTahun);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getkunjungan_bangsal_pertahun()==true){  
+            Panelmenu.add(btnKunjunganBangsalTahun);                 
             jmlmenu++;
         }
 
@@ -22675,6 +22698,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getkunjungan_bangsal_pertahun()==true){  
+            if(btnKunjunganBangsalTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKunjunganBangsalTahun);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(tampilkantni.equals("Yes")){
             if(akses.getanggota_militer_dirawat()==true){
                 if(btnAnggotaMiliterDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25142,6 +25172,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikKunjunganRanapRuang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikKunjunganRanapRuangActionPerformed(evt);
+            }
+        });
+        
+        btnKunjunganBangsalTahun = new widget.ButtonBig();
+        btnKunjunganBangsalTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Company_132030.png"))); 
+        btnKunjunganBangsalTahun.setText("Kunjungan Ruang Per Tahun");
+        btnKunjunganBangsalTahun.setIconTextGap(0);
+        btnKunjunganBangsalTahun.setName("btnKunjunganBangsalTahun"); 
+        btnKunjunganBangsalTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganBangsalTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganBangsalTahunActionPerformed(evt);
             }
         });
     }
