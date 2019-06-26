@@ -112,7 +112,8 @@ public final class akses {
             jenis_luka_k3rstahun=false,lokasi_kejadian_k3rstahun=false,dampak_cidera_k3rstahun=false,jenis_pekerjaan_k3rstahun=false,
             bagian_tubuh_k3rstahun=false,sekrining_rawat_jalan=false,bpjs_histori_pelayanan=false,rekap_mutasi_berkas=false,
             skrining_ralan_pernapasan_pertahun=false,pengajuan_barang_medis=false,pengajuan_barang_nonmedis=false,grafik_kunjungan_ranapbulan=false,
-            grafik_kunjungan_ranaptanggal=false,grafik_kunjungan_ranap_peruang=false,kunjungan_bangsal_pertahun=false,grafik_jenjang_jabatanpegawai=false;
+            grafik_kunjungan_ranaptanggal=false,grafik_kunjungan_ranap_peruang=false,kunjungan_bangsal_pertahun=false,grafik_jenjang_jabatanpegawai=false,
+            grafik_bidangpegawai=false,grafik_departemenpegawai=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -649,6 +650,8 @@ public final class akses {
                         akses.grafik_kunjungan_ranap_peruang=true;
                         akses.kunjungan_bangsal_pertahun=true;
                         akses.grafik_jenjang_jabatanpegawai=true;
+                        akses.grafik_bidangpegawai=true;
+                        akses.grafik_departemenpegawai=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1169,6 +1172,8 @@ public final class akses {
                         akses.grafik_kunjungan_ranap_peruang=rs2.getBoolean("grafik_kunjungan_ranap_peruang");
                         akses.kunjungan_bangsal_pertahun=rs2.getBoolean("kunjungan_bangsal_pertahun");
                         akses.grafik_jenjang_jabatanpegawai=rs2.getBoolean("grafik_jenjang_jabatanpegawai");
+                        akses.grafik_bidangpegawai=rs2.getBoolean("grafik_bidangpegawai");
+                        akses.grafik_departemenpegawai=rs2.getBoolean("grafik_departemenpegawai");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1687,6 +1692,8 @@ public final class akses {
                         akses.grafik_kunjungan_ranap_peruang=false;
                         akses.kunjungan_bangsal_pertahun=false;
                         akses.grafik_jenjang_jabatanpegawai=false;
+                        akses.grafik_bidangpegawai=false;
+                        akses.grafik_departemenpegawai=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2259,4 +2266,6 @@ public final class akses {
     public static boolean getgrafik_kunjungan_ranap_peruang(){return akses.grafik_kunjungan_ranap_peruang;}
     public static boolean getkunjungan_bangsal_pertahun(){return akses.kunjungan_bangsal_pertahun;}
     public static boolean getgrafik_jenjang_jabatanpegawai(){return akses.grafik_jenjang_jabatanpegawai;}
+    public static boolean getgrafik_bidangpegawai(){return akses.grafik_bidangpegawai;}
+    public static boolean getgrafik_departemenpegawai(){return akses.grafik_departemenpegawai;}
 }   
