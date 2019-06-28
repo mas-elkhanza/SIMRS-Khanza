@@ -429,6 +429,8 @@ import grafikanalisa.GrafikPegawaiPerBidang;
 import grafikanalisa.GrafikPegawaiPerDepartemen;
 import grafikanalisa.GrafikPegawaiPerJenjangJabatan;
 import grafikanalisa.GrafikPegawaiPerPendidikan;
+import grafikanalisa.GrafikPegawaiPerStatusKerja;
+import grafikanalisa.GrafikPegawaiPerStatusWP;
 import grafikanalisa.GrafikPeristiwaK3PerBagianTubuh;
 import grafikanalisa.GrafikPeristiwaK3PerBulan;
 import grafikanalisa.GrafikPeristiwaK3PerDampakCidera;
@@ -1324,7 +1326,7 @@ public class frmUtama extends javax.swing.JFrame {
         DlgHome.setUndecorated(true);
         DlgHome.setResizable(false);
 
-        panelMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Menu Utama ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(60, 60, 60))); // NOI18N
+        panelMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 235, 215)), "::[ Menu Utama ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(60, 60, 60))); // NOI18N
         panelMenu.setName("panelMenu"); // NOI18N
         panelMenu.setPreferredSize(new java.awt.Dimension(2412, 3653));
         panelMenu.setLayout(new java.awt.BorderLayout(1, 1));
@@ -6878,7 +6880,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/06/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/06/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -14896,6 +14898,29 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnGrafikStatusWPPegawaiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPegawaiPerStatusWP aplikasi=new GrafikPegawaiPerStatusWP(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnGrafikStatusKerjaPegawaiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPegawaiPerStatusKerja aplikasi=new GrafikPegawaiPerStatusKerja(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15475,7 +15500,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLokasiKejadianK3PerTahun,btnDampakCideraK3PerTahun,btnJenisPekerjaanK3PerTahun,btnBagianTubuhK3PerTahun,btnSkriningRawatJalan,
             btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis,btnPengajuanBarangNonMedis,
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
-            btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai;
+            btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai;
     
     public void isWall(){
         try{            
@@ -18202,6 +18227,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnGrafikPendidikanPegawai);
                 jmlmenu++;
             }
+            
+            if(akses.getgrafik_sttswppegawai()==true){
+                Panelmenu.add(btnGrafikStatusWPPegawai);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_sttskerjapegawai()==true){
+                Panelmenu.add(btnGrafikStatusKerjaPegawai);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(akses.getsurat_indeks()==true){
@@ -20784,6 +20819,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getgrafik_pendidikanpegawai()==true){
             Panelmenu.add(btnGrafikPendidikanPegawai);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_sttswppegawai()==true){
+            Panelmenu.add(btnGrafikStatusWPPegawai);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_sttskerjapegawai()==true){
+            Panelmenu.add(btnGrafikStatusKerjaPegawai);
             jmlmenu++;
         }
 
@@ -24298,6 +24343,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_sttswppegawai()==true){
+            if(btnGrafikStatusWPPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikStatusWPPegawai);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_sttskerjapegawai()==true){
+            if(btnGrafikStatusKerjaPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikStatusKerjaPegawai);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -25351,6 +25410,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikPendidikanPegawai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikPendidikanPegawaiActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikStatusWPPegawai = new widget.ButtonBig();
+        btnGrafikStatusWPPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikStatusWPPegawai.setText("Pegawai Per Status WP");
+        btnGrafikStatusWPPegawai.setIconTextGap(0);
+        btnGrafikStatusWPPegawai.setName("btnGrafikStatusWPPegawai"); 
+        btnGrafikStatusWPPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusWPPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusWPPegawaiActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikStatusKerjaPegawai = new widget.ButtonBig();
+        btnGrafikStatusKerjaPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikStatusKerjaPegawai.setText("Pegawai Per Status Kerja");
+        btnGrafikStatusKerjaPegawai.setIconTextGap(0);
+        btnGrafikStatusKerjaPegawai.setName("btnGrafikStatusKerjaPegawai"); 
+        btnGrafikStatusKerjaPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusKerjaPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusKerjaPegawaiActionPerformed(evt);
             }
         });
     }

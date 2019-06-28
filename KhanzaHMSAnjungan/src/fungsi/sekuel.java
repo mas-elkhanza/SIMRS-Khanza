@@ -122,7 +122,7 @@ public final class sekuel {
             ps.executeUpdate();
             if(ps != null){
                 ps.close();
-            }  
+            } 
             return true;           
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
@@ -154,6 +154,7 @@ public final class sekuel {
                 if(ps != null){
                     ps.close();
                 } 
+                
                 bool=true;
             } catch (Exception e2) {
                 bool=false;
@@ -171,6 +172,7 @@ public final class sekuel {
                     ps.setString(angka,a[angka-1]);
                 }            
                 ps.executeUpdate();
+                
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);            
                 JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada "+sama+" yang sama dimasukkan sebelumnya...!");
@@ -179,6 +181,7 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
         }            
@@ -199,6 +202,7 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);            
         }    
@@ -215,6 +219,7 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             }
+            
             return true;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);  
@@ -302,6 +307,7 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             } 
+            
         }catch(Exception e){
             try {
                 ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
@@ -313,9 +319,42 @@ public final class sekuel {
                 if(ps != null){
                     ps.close();
                 } 
+                
             } catch (Exception e2) {
                 System.out.println("Notifikasi : "+e2);
             }                         
+        }
+    }
+    
+    public void menyimpan2(String table,String value,int i,String[] a,String acuan_field,String update,int j,String[] b){
+        try{ 
+            dicari="";
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            for(angka=1;angka<=i;angka++){
+                dicari=dicari+", "+a[angka-1];
+                ps.setString(angka,a[angka-1]);
+            }            
+            ps.executeUpdate();
+            
+            if(ps != null){
+                  ps.close();
+            } 
+            
+        }catch(Exception e){
+            try {
+                ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+                for(angka=1;angka<=j;angka++){
+                    ps.setString(angka,b[angka-1]);
+                } 
+                ps.executeUpdate(); 
+                
+                if(ps != null){
+                    ps.close();
+                } 
+                
+            } catch (Exception e2) {                
+                System.out.println("Notifikasi : "+e2);
+            }            
         }
     }
     
@@ -331,6 +370,7 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             } 
+            
         }catch(Exception e){
             try {
                 ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
@@ -361,6 +401,7 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);  
         }
@@ -561,6 +602,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }    
@@ -583,6 +625,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }    
@@ -666,6 +709,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }            
@@ -684,6 +728,8 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -705,6 +751,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
         } catch (Exception e) {
             bool=false;
             System.out.println("Notifikasi : "+e);
@@ -726,6 +773,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }    
@@ -744,6 +792,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -1609,9 +1658,7 @@ public final class sekuel {
         System.out.println(str);
     }
 
-
-
-   public class Painter extends Canvas {
+    public class Painter extends Canvas {
 
         Image image;
 
