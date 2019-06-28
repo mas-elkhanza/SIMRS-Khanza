@@ -114,7 +114,7 @@ public final class akses {
             skrining_ralan_pernapasan_pertahun=false,pengajuan_barang_medis=false,pengajuan_barang_nonmedis=false,grafik_kunjungan_ranapbulan=false,
             grafik_kunjungan_ranaptanggal=false,grafik_kunjungan_ranap_peruang=false,kunjungan_bangsal_pertahun=false,grafik_jenjang_jabatanpegawai=false,
             grafik_bidangpegawai=false,grafik_departemenpegawai=false,grafik_pendidikanpegawai=false,grafik_sttswppegawai=false,
-            grafik_sttskerjapegawai=false;
+            grafik_sttskerjapegawai=false,grafik_sttspulangranap=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -656,6 +656,7 @@ public final class akses {
                         akses.grafik_pendidikanpegawai=true;
                         akses.grafik_sttswppegawai=true;
                         akses.grafik_sttskerjapegawai=true;
+                        akses.grafik_sttspulangranap=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1181,6 +1182,7 @@ public final class akses {
                         akses.grafik_pendidikanpegawai=rs2.getBoolean("grafik_pendidikanpegawai");
                         akses.grafik_sttswppegawai=rs2.getBoolean("grafik_sttswppegawai");
                         akses.grafik_sttskerjapegawai=rs2.getBoolean("grafik_sttskerjapegawai");
+                        akses.grafik_sttspulangranap=rs2.getBoolean("grafik_sttspulangranap");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1704,6 +1706,7 @@ public final class akses {
                         akses.grafik_pendidikanpegawai=false;
                         akses.grafik_sttswppegawai=false;
                         akses.grafik_sttskerjapegawai=false;
+                        akses.grafik_sttspulangranap=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2281,4 +2284,5 @@ public final class akses {
     public static boolean getgrafik_pendidikanpegawai(){return akses.grafik_pendidikanpegawai;}
     public static boolean getgrafik_sttswppegawai(){return akses.grafik_sttswppegawai;}
     public static boolean getgrafik_sttskerjapegawai(){return akses.grafik_sttskerjapegawai;}
+    public static boolean getgrafik_sttspulangranap(){return akses.grafik_sttspulangranap;}
 }   

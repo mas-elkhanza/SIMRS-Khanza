@@ -142,7 +142,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[C]Jenis Pekerjaan K3 Per Tahun","[C]Bagian Tubuh K3 Per Tahun","[A]Skrining Rawat Jalan","[K]Histori Pelayanan BPJS","[I]Rekap Mutasi Berkas",
                     "[I]Skrining Pernapasan Ralan Per Tahun","[D]Pengajuan Obat & BHP","[E]Pengajuan Barang Non Medis","[N]Kunjungan Ranap Per Bulan","[N]Kunjungan Ranap Per Tanggal",
                     "[N]Kunjungan Ranap Per Ruang","[I]Masuk Ruang Per Tahun","[N]Pegawai Per Jenjang Jabatan","[N]Pegawai Per Bidang/Bagian","[N]Pegawai Per Departemen",
-                    "[N]Pegawai Per Pendidikan","[N]Pegawai Per Status WP","[N]Pegawai Per Status Kerja"
+                    "[N]Pegawai Per Pendidikan","[N]Pegawai Per Status WP","[N]Pegawai Per Status Kerja","[N]Status Pulang Ranap"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -302,7 +302,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 522;i++) {
+        for (i = 0; i < 523;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -982,6 +982,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(135);
             }else if(i==521){
                 column.setPreferredWidth(143);
+            }else if(i==522){
+                column.setPreferredWidth(123);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1473,7 +1475,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2037,7 +2039,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_departemenpegawai='"+tbUser.getValueAt(i,518).toString()+"',"+
                     "grafik_pendidikanpegawai='"+tbUser.getValueAt(i,519).toString()+"',"+
                     "grafik_sttswppegawai='"+tbUser.getValueAt(i,520).toString()+"',"+
-                    "grafik_sttskerjapegawai='"+tbUser.getValueAt(i,521).toString()+"'");
+                    "grafik_sttskerjapegawai='"+tbUser.getValueAt(i,521).toString()+"',"+
+                    "grafik_sttspulangranap='"+tbUser.getValueAt(i,522).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2640,7 +2643,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "grafik_departemenpegawai='"+tbUser.getValueAt(barisdicopy,518).toString()+"',"+
                                     "grafik_pendidikanpegawai='"+tbUser.getValueAt(barisdicopy,519).toString()+"',"+
                                     "grafik_sttswppegawai='"+tbUser.getValueAt(barisdicopy,520).toString()+"',"+
-                                    "grafik_sttskerjapegawai='"+tbUser.getValueAt(barisdicopy,521).toString()+"'");
+                                    "grafik_sttskerjapegawai='"+tbUser.getValueAt(barisdicopy,521).toString()+"',"+
+                                    "grafik_sttspulangranap='"+tbUser.getValueAt(barisdicopy,522).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2935,7 +2939,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "sekrining_rawat_jalan,bpjs_histori_pelayanan,rekap_mutasi_berkas,skrining_ralan_pernapasan_pertahun,pengajuan_barang_medis,"+
                         "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"+
                         "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"+
-                        "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3469,7 +3473,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_departemenpegawai"),
                                rs.getBoolean("grafik_pendidikanpegawai"),
                                rs.getBoolean("grafik_sttswppegawai"),
-                               rs.getBoolean("grafik_sttskerjapegawai")
+                               rs.getBoolean("grafik_sttskerjapegawai"),
+                               rs.getBoolean("grafik_sttspulangranap")
                             });
                         }   
                     } catch (Exception e) {
@@ -3992,7 +3997,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_departemenpegawai"),
                            rs.getBoolean("grafik_pendidikanpegawai"),
                            rs.getBoolean("grafik_sttswppegawai"),
-                           rs.getBoolean("grafik_sttskerjapegawai")
+                           rs.getBoolean("grafik_sttskerjapegawai"),
+                           rs.getBoolean("grafik_sttspulangranap")
                         });
                     }                                             
                  }
