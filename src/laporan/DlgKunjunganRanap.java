@@ -51,7 +51,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2;
-    private int i=0,lama=0,baru=0,laki=0,per=0,pilihan=0;   
+    private int i=0,lama=0,baru=0,laki=0,per=0;  
     private String setbaru="",setlama="",umurlk="",umurpr="",kddiagnosa="",diagnosa="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);

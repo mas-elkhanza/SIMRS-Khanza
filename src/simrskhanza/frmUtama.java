@@ -478,6 +478,7 @@ import kepegawaian.K3RSLokasiKejadianPerTahun;
 import kepegawaian.K3RSPenyebab;
 import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
+import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.RekapKunjunganRuangPerTahun;
 import laporan.RekapSkriningPernapasanRalanPerTahun;
@@ -14933,6 +14934,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKIPPasienRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKIPPasienRanap aplikasi=new DlgKIPPasienRanap(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15513,7 +15525,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis,btnPengajuanBarangNonMedis,
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
-            btnGrafikStatusPulangRanap;
+            btnGrafikStatusPulangRanap,btnKIPPasienRanap;
     
     public void isWall(){
         try{            
@@ -17161,6 +17173,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getkunjungan_bangsal_pertahun()==true){  
                 Panelmenu.add(btnKunjunganBangsalTahun);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getkip_pasien_ranap()==true){  
+                Panelmenu.add(btnKIPPasienRanap);                 
                 jmlmenu++;
             }
             
@@ -19765,6 +19782,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getkunjungan_bangsal_pertahun()==true){  
             Panelmenu.add(btnKunjunganBangsalTahun);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getkip_pasien_ranap()==true){  
+            Panelmenu.add(btnKIPPasienRanap);                 
             jmlmenu++;
         }
 
@@ -22867,6 +22889,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getkip_pasien_ranap()==true){  
+            if(btnKIPPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKIPPasienRanap);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(tampilkantni.equals("Yes")){
             if(akses.getanggota_militer_dirawat()==true){
                 if(btnAnggotaMiliterDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25479,6 +25508,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikStatusPulangRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikStatusPulangRanapActionPerformed(evt);
+            }
+        });
+        
+        btnKIPPasienRanap = new widget.ButtonBig();
+        btnKIPPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png")));
+        btnKIPPasienRanap.setText("KIP Pasien Ranap");
+        btnKIPPasienRanap.setIconTextGap(0);
+        btnKIPPasienRanap.setName("btnKIPPasienRanap"); 
+        btnKIPPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKIPPasienRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKIPPasienRanapActionPerformed(evt);
             }
         });
     }
