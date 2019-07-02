@@ -41,7 +41,7 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
     private DlgSuplier suplier=new DlgSuplier(null,false);
     private DlgCariSuratPemesanan form=new DlgCariSuratPemesanan(null,false);
     private DlgCariSatuan satuanbarang=new DlgCariSatuan(null,false);
-    private double meterai=0,saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,tagihan=0,jmlkonversi=0,hargappn=0;
+    private double meterai=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,jmlkonversi=0;
     private int jml=0,i=0,row=0,index=0,pilihan=1;
     private String[] kodebarang,namabarang,satuan,satuanbeli;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok;
@@ -485,7 +485,7 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoPemesanan);
-        NoPemesanan.setBounds(95, 10, 110, 23);
+        NoPemesanan.setBounds(95, 10, 120, 23);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
@@ -1627,6 +1627,40 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     public void panggilgetData(){
+        getData();
+    }
+    
+    public void panggilgetData(String nopengajuan){
+        try{
+            ps=koneksi.prepareStatement(
+                "select databarang.kode_brng, databarang.nama_brng,databarang.kode_sat,detail_pengajuan_barang_medis.h_pengajuan,"+
+                "detail_pengajuan_barang_medis.jumlah,detail_pengajuan_barang_medis.total "+
+                "from databarang inner join jenis inner join detail_pengajuan_barang_medis "+
+                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=detail_pengajuan_barang_medis.kode_brng "+
+                " where detail_pengajuan_barang_medis.no_pengajuan=?");
+            try {
+                ps.setString(1,nopengajuan);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString("jumlah"),rs.getString("kode_sat"),rs.getString("kode_brng"),
+                        rs.getString("nama_brng"),rs.getString("kode_sat"),rs.getDouble("h_pengajuan"),
+                        rs.getDouble("total"),0,0,rs.getDouble("total"),0
+                    });
+                }        
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }         
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
         getData();
     }
 }

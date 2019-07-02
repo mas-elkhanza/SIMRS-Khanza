@@ -3211,7 +3211,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         if(ChkCari.isSelected()==true){
             ChkCari.setSelected(false);
             isForm();
-        }            
+        }           
+        ChkRM.setSelected(true);
         cekEligibilitas(NoKartu.getText());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
