@@ -18,6 +18,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -25,9 +26,8 @@ import javax.swing.text.html.StyleSheet;
 public class DlgKIPPasienRanap extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private final Jurnal jur=new Jurnal();
     private final Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2,ps3;
+    private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     private StringBuilder htmlContent;
@@ -384,11 +384,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+    if(nmpenyakit.getText().trim().equals("")){
+        JOptionPane.showMessageDialog(null,"Silahkan masukkan penyakit yang mau dicari terlebih dahulu..!!!");
+    }else{
         if(TabRawat.getSelectedIndex()==0){
             prosesCari();
         }else if(TabRawat.getSelectedIndex()==1){
             prosesCari2();
         }
+    }
 }//GEN-LAST:event_btnCariActionPerformed
 
 private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariKeyPressed
@@ -633,7 +637,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     }
                     
                     diagnosa="";
-                    
                     ps2=koneksi.prepareStatement("select 	kd_penyakit from diagnosa_pasien where status='Ranap' and prioritas>1 and no_rawat=?");    
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
@@ -655,7 +658,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             ps2.close();
                         }
                     }  
-                    
                     if(diagnosa.endsWith(",")){
                         diagnosa = diagnosa.substring(0,diagnosa.length() - 1);
                     }
@@ -1169,7 +1171,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     
     
     public void isCek(){
-        BtnPrint.setEnabled(akses.getrl4asebab());
+        BtnPrint.setEnabled(akses.getkip_pasien_ranap());
     }
     
 }

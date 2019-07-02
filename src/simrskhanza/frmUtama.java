@@ -478,6 +478,7 @@ import kepegawaian.K3RSLokasiKejadianPerTahun;
 import kepegawaian.K3RSPenyebab;
 import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
+import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.RekapKunjunganRuangPerTahun;
@@ -14945,6 +14946,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKIPPasienRalanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKIPPasienRalan aplikasi=new DlgKIPPasienRalan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15525,7 +15537,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis,btnPengajuanBarangNonMedis,
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
-            btnGrafikStatusPulangRanap,btnKIPPasienRanap;
+            btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan;
     
     public void isWall(){
         try{            
@@ -15910,6 +15922,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }else if(jmlmenu<=515){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*99)));
+        }else if(jmlmenu<=520){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*100)));
+        }else if(jmlmenu<=525){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*101)));
         }                                              
         Panelmenu.revalidate();
         Panelmenu.repaint();               
@@ -17178,6 +17196,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getkip_pasien_ranap()==true){  
                 Panelmenu.add(btnKIPPasienRanap);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getkip_pasien_ralan()==true){  
+                Panelmenu.add(btnKIPPasienRalan);                 
                 jmlmenu++;
             }
             
@@ -19787,6 +19810,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getkip_pasien_ranap()==true){  
             Panelmenu.add(btnKIPPasienRanap);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getkip_pasien_ralan()==true){  
+            Panelmenu.add(btnKIPPasienRalan);                 
             jmlmenu++;
         }
 
@@ -22896,6 +22924,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getkip_pasien_ralan()==true){  
+            if(btnKIPPasienRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKIPPasienRalan);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(tampilkantni.equals("Yes")){
             if(akses.getanggota_militer_dirawat()==true){
                 if(btnAnggotaMiliterDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25520,6 +25555,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKIPPasienRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKIPPasienRanapActionPerformed(evt);
+            }
+        });
+        
+        btnKIPPasienRalan = new widget.ButtonBig();
+        btnKIPPasienRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png")));
+        btnKIPPasienRalan.setText("KIP Pasien Ralan");
+        btnKIPPasienRalan.setIconTextGap(0);
+        btnKIPPasienRalan.setName("btnKIPPasienRalan"); 
+        btnKIPPasienRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKIPPasienRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKIPPasienRalanActionPerformed(evt);
             }
         });
     }
