@@ -518,6 +518,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TKdPrw1.setDocument(new batasInput((byte)15).getKata(TKdPrw1));
         TKdPrw2.setDocument(new batasInput((byte)15).getKata(TKdPrw2));
         TSuhu.setDocument(new batasInput((byte)5).getKata(TSuhu));
+        TLetak.setDocument(new batasInput((byte)50).getKata(TLetak));
         TTensi.setDocument(new batasInput((byte)7).getKata(TTensi));
         TCariPasien.setDocument(new batasInput((byte)20).getKata(TCariPasien));
         TKeluhan.setDocument(new batasInput((int)300).getKata(TKeluhan));        
