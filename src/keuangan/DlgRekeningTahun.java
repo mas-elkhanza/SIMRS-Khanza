@@ -923,9 +923,6 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                             }
 
                             saldoakhir=rs.getDouble(6)+(md-mk);
-                            if(saldoakhir<0){
-                                saldoakhir=(rs.getDouble(6)+(md-mk))*(-1);
-                            }
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -938,15 +935,20 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                         }
                     }
                         
-                    tabMode.addRow(new Object[]{rs.getString(1).substring(0, 4),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   df2.format(rs.getDouble(6)),
-                                   df2.format(md),
-                                   df2.format(mk),
-                                   df2.format(saldoakhir)});
+                    if(saldoakhir<0){
+                        tabMode.addRow(new Object[]{
+                             rs.getString(1).substring(0, 4),rs.getString(2),rs.getString(3),
+                             rs.getString(4),rs.getString(5),df2.format(rs.getDouble(6)),
+                             df2.format(md),df2.format(mk),"("+df2.format(saldoakhir*(-1))+")"
+                        });      
+                    }else{
+                        tabMode.addRow(new Object[]{
+                             rs.getString(1).substring(0, 4),rs.getString(2),rs.getString(3),
+                             rs.getString(4),rs.getString(5),df2.format(rs.getDouble(6)),
+                             df2.format(md),df2.format(mk),df2.format(saldoakhir)
+                        }); 
+                    }
+                    
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
