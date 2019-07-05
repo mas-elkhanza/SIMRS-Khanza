@@ -344,7 +344,7 @@
           <SubComponents>
             <Component class="widget.Label" name="jLabel4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dokter Rs :"/>
+                <Property name="text" type="java.lang.String" value="Dokter RS :"/>
                 <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
               </Properties>
               <Constraints>

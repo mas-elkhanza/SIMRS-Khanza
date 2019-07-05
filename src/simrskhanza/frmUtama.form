@@ -60,7 +60,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="2" y="15" width="340" height="160"/>
+                  <AbsoluteConstraints x="2" y="15" width="315" height="160"/>
                 </Constraint>
               </Constraints>
 
@@ -110,7 +110,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="2" y="12" width="80" height="23"/>
+                          <AbsoluteConstraints x="2" y="12" width="75" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -128,7 +128,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="2" y="40" width="80" height="23"/>
+                          <AbsoluteConstraints x="2" y="40" width="75" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -148,7 +148,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="85" y="12" width="220" height="23"/>
+                          <AbsoluteConstraints x="80" y="12" width="213" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -168,7 +168,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="85" y="40" width="220" height="23"/>
+                          <AbsoluteConstraints x="80" y="40" width="213" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -183,7 +183,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="5" width="135" height="145"/>
+                      <AbsoluteConstraints x="105" y="5" width="135" height="145"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -233,7 +233,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="222" y="115" width="105" height="32"/>
+                      <AbsoluteConstraints x="197" y="115" width="105" height="32"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -267,7 +267,7 @@
                 <TitledBorder title="::[ Menu Utama ]::">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="cd" green="e1" red="d7" type="rgb"/>
+                      <Color PropertyName="color" blue="d7" green="eb" red="e1" type="rgb"/>
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -7775,7 +7775,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="04/06/2019"/>
+            <StringItem index="0" value="28/06/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

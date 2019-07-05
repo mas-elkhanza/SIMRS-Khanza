@@ -6654,6 +6654,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         AsalRujukan.setText(FaskesAsal);
         isPas();
     }
+
+    public void SetPasien(String norm){
+        ChkInput.setSelected(true);
+        isForm(); 
+        TNoRM.setText(norm);
+        isPas();
+    }
     
     public void setPasien(String NamaPasien,String Kontak,String Alamat,String TempatLahir,String TglLahir,
             String JK,String NoKartuJKN,String NIK,String nosisrute,String FaskesAsal){

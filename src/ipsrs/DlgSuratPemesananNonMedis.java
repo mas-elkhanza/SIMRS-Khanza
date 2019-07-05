@@ -41,7 +41,7 @@ public class DlgSuratPemesananNonMedis extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
     private DlgCariSuratPemesananNonMedis form=new DlgCariSuratPemesananNonMedis(null,false);
-    private double meterai=0,saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,tagihan=0,jmlkonversi=0,hargappn=0;
+    private double meterai=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0;
     private int jml=0,i=0,row=0,index=0,pilihan=1;
     private String[] kodebarang,namabarang,satuanbeli;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
@@ -1474,6 +1474,39 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     public void panggilgetData(){
+        getData();
+    }
+    
+    public void panggilgetData(String nopengajuan){
+        try{
+            ps=koneksi.prepareStatement(
+                "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsbarang.kode_sat,detail_pengajuan_barang_nonmedis.jumlah,detail_pengajuan_barang_nonmedis.total,"+
+                " detail_pengajuan_barang_nonmedis.h_pengajuan from ipsrsbarang inner join ipsrsjenisbarang inner join detail_pengajuan_barang_nonmedis "+
+                " on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis and ipsrsbarang.kode_brng=detail_pengajuan_barang_nonmedis.kode_brng "+
+                " where detail_pengajuan_barang_nonmedis.no_pengajuan=?");
+            try {
+                ps.setString(1,nopengajuan);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString("jumlah"),rs.getString("kode_sat"),rs.getString("kode_brng"),rs.getString("nama_brng"),
+                        rs.getDouble("h_pengajuan"),rs.getDouble("total"),0,0,rs.getDouble("total")
+                    });
+                }        
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }         
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
         getData();
     }
 }
