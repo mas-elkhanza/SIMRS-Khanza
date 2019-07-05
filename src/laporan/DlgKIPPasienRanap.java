@@ -497,8 +497,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>0-6 hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-28hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28hr-<1th</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-27hr</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28hr-&lsaquo;1th</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>1-4th</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>5-14th</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>15-24th</td>"+
@@ -559,7 +559,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 hr0s6p++;
                                 sthr0s6p="V";
                             }
-                        }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=28)){
+                        }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=27)){
                             if(rs.getString("jk").equals("L")){
                                 hr7s28l++;
                                 sthr7s28l="V";
@@ -567,7 +567,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 hr7s28p++;
                                 sthr7s28p="V";
                             }
-                        }else if(rs.getInt("umurdaftar")>28){
+                        }else if(rs.getInt("umurdaftar")>=28){
                             if(rs.getString("jk").equals("L")){
                                 hr28s1thl++;
                                 sthr28s1thl="V";
@@ -840,8 +840,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>0-6 hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-28hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28hr-<1th</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-27hr</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28hr-&lsaquo;1th</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>1-4th</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>5-14th</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>15-24th</td>"+
@@ -903,7 +903,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 hr0s6p++;
                                 sthr0s6p="V";
                             }
-                        }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=28)){
+                        }else if((rs.getInt("umurdaftar")>=7)&&(rs.getInt("umurdaftar")<=27)){
                             if(rs.getString("jk").equals("L")){
                                 hr7s28l++;
                                 sthr7s28l="V";
@@ -911,7 +911,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 hr7s28p++;
                                 sthr7s28p="V";
                             }
-                        }else if(rs.getInt("umurdaftar")>28){
+                        }else if(rs.getInt("umurdaftar")>=28){
                             if(rs.getString("jk").equals("L")){
                                 hr28s1thl++;
                                 sthr28s1thl="V";

@@ -55,6 +55,7 @@ import bridging.BPJSCekSKDP;
 import bridging.BPJSCekTanggalRujukan;
 import bridging.BPJSDataSEP;
 import bridging.BPJSHistoriPelayanan;
+import bridging.BPJSMapingDokterDPJP;
 import bridging.BPJSMapingPoli;
 import bridging.BPJSMonitoringKlaim;
 import bridging.BPJSRujukanKeluar;
@@ -14957,6 +14958,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMappingDokterDPJPVClaimActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSMapingDokterDPJP form=new BPJSMapingDokterDPJP(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15537,7 +15550,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis,btnPengajuanBarangNonMedis,
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
-            btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan;
+            btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim;
     
     public void isWall(){
         try{            
@@ -17491,6 +17504,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbpjs_cek_dokterdpjp()==true){
                 Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
+                jmlmenu++;
+            }
+            
+            if(akses.getbpjs_mapping_dokterdpjp()==true){
+                Panelmenu.add(btnMappingDokterDPJPVClaim);
                 jmlmenu++;
             }
             
@@ -20103,6 +20121,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbpjs_cek_dokterdpjp()==true){
             Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
+            jmlmenu++;
+        }
+        
+        if(akses.getbpjs_mapping_dokterdpjp()==true){
+            Panelmenu.add(btnMappingDokterDPJPVClaim);
             jmlmenu++;
         }
 
@@ -23332,6 +23355,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getbpjs_mapping_dokterdpjp()==true){
+            if(btnMappingDokterDPJPVClaim.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMappingDokterDPJPVClaim);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getbpjs_sep()==true){
             if(btnBPJSSEP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSSEP);
@@ -25567,6 +25597,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKIPPasienRalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKIPPasienRalanActionPerformed(evt);
+            }
+        });
+        
+        btnMappingDokterDPJPVClaim = new widget.ButtonBig();
+        btnMappingDokterDPJPVClaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_doctor_assistant_38712.png")));
+        btnMappingDokterDPJPVClaim.setText("Mapping Dokter DPJP VClaim");
+        btnMappingDokterDPJPVClaim.setIconTextGap(0);
+        btnMappingDokterDPJPVClaim.setName("btnMappingDokterDPJPVClaim"); 
+        btnMappingDokterDPJPVClaim.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMappingDokterDPJPVClaim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMappingDokterDPJPVClaimActionPerformed(evt);
             }
         });
     }

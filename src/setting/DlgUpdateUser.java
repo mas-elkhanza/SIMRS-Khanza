@@ -1882,6 +1882,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 if("[K]Ketersediaan Kamar SIRANAP".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","siranap_ketersediaan_kamar='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
+                
+                if("[K]Mapping Dokter DPJP VClaim".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_mapping_dokterdpjp='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
 
                 if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pasien='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -2715,7 +2719,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"+
                         "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"+
                         "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap,kip_pasien_ranap,"+
-                        "kip_pasien_ralan from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "kip_pasien_ralan,bpjs_mapping_dokterdpjp from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -4186,6 +4190,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Ketersediaan Kamar SIRANAP".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Ketersediaan Kamar SIRANAP",rs.getBoolean("siranap_ketersediaan_kamar")});
+                    }
+                    
+                    if("[K]Mapping Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Mapping Dokter DPJP VClaim",rs.getBoolean("bpjs_mapping_dokterdpjp")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
