@@ -1030,7 +1030,31 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 if(dpjp.getTable().getSelectedRow()!= -1){  
                     KdDPJP.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),1).toString());
                     NmDPJP.setText(dpjp.getTable().getValueAt(dpjp.getTable().getSelectedRow(),2).toString());
-                    KdDPJP.requestFocus();             
+                    try{
+                        ps=koneksi.prepareStatement(
+                                "select maping_dokter_dpjpvclaim.kd_dokter,dokter.nm_dokter from maping_dokter_dpjpvclaim inner join dokter "+
+                                "on maping_dokter_dpjpvclaim.kd_dokter=dokter.kd_dokter where maping_dokter_dpjpvclaim.kd_dokter_bpjs=?");
+                        try{
+                            ps.setString(1,KdDPJP.getText());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                kddokter.setText(rs.getString("kd_dokter"));
+                                TDokter.setText(rs.getString("nm_dokter"));
+                            }
+                        }catch(Exception ex){
+                            System.out.println("Notif : "+ex);
+                        }finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }  
+                        }
+                    }catch(Exception ex){
+                        System.out.println("Notif : "+ex);
+                    }
+                    KdDPJP.requestFocus();   
                 }  
             }
             @Override
