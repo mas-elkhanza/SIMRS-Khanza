@@ -39,6 +39,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -100,12 +101,14 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     private long p2;
     private boolean empt=false;
     private HttpHeaders headers;
-    private HttpHeaders headers2;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
+    private Calendar cal = Calendar.getInstance();
+    private int day = cal.get(Calendar.DAY_OF_WEEK);
+    private String hari="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -5603,6 +5606,46 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println("Notif Cari Pasien : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+                Catatan.setText(statuspasien);
+                ps=koneksi.prepareStatement(
+                        "select maping_dokter_dpjpvclaim.kd_dokter,maping_dokter_dpjpvclaim.kd_dokter_bpjs,maping_dokter_dpjpvclaim.nm_dokter_bpjs from maping_dokter_dpjpvclaim inner join jadwal "+
+                        "on maping_dokter_dpjpvclaim.kd_dokter=jadwal.kd_dokter where jadwal.kd_poli=? and jadwal.hari_kerja=?");
+                try {
+                    if(day==1){
+                        hari="AKHAD";
+                    }else if(day==2){
+                        hari="SENIN";
+                    }else if(day==3){
+                        hari="SELASA";
+                    }else if(day==4){
+                        hari="RABU";
+                    }else if(day==5){
+                        hari="KAMIS";
+                    }else if(day==6){
+                        hari="JUMAT";
+                    }else if(day==7){
+                        hari="SABTU";
+                    }
+                    
+                    ps.setString(1,kdpoli.getText());
+                    ps.setString(2,hari);
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        KdDPJP.setText(rs.getString("kd_dokter_bpjs"));
+                        NmDPJP.setText(rs.getString("nm_dokter_bpjs"));
+                        kddokter.setText(rs.getString("kd_dokter"));
+                        TDokter.setText(rs.getString("nm_dokter_bpjs"));
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
                 } finally{
                     if(rs!=null){
                         rs.close();
