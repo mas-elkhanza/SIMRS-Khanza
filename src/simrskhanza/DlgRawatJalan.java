@@ -24,9 +24,7 @@ import fungsi.validasi;
 import fungsi.akses;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
-import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgPeresepanDokter;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -285,7 +283,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         tabModePemeriksaan=new DefaultTableModel(null,new Object[]{
             "P","No.Rawat","No.R.M.","Nama Pasien","Tgl.Rawat","Jam Rawat","Suhu(C)","Tensi","Nadi(/menit)",
             "Respirasi(/menit)","Tinggi(Cm)","Berat(Kg)","GCS(E,V,M)","Keluhan","Pemeriksaan","Alergi",
-            "Imun Ke","Tindak Lanjut"}){
+            "Imun Ke","Tindak Lanjut","Penilaian"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -299,7 +297,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -310,7 +308,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         tbPemeriksaan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPemeriksaan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 18; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbPemeriksaan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -347,6 +345,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }else if(i==16){
                 column.setPreferredWidth(50);
             }else if(i==17){
+                column.setPreferredWidth(180);
+            }else if(i==18){
                 column.setPreferredWidth(180);
             }
         }
@@ -761,7 +761,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TSuhu.setDocument(new batasInput((byte)5).getKata(TSuhu));
         TTensi.setDocument(new batasInput((byte)7).getKata(TTensi));
         TKeluhan.setDocument(new batasInput((int)400).getKata(TKeluhan));
-        TPemeriksaan.setDocument(new batasInput((int)400).getKata(TPemeriksaan));   
+        TPemeriksaan.setDocument(new batasInput((int)400).getKata(TPemeriksaan));
+        TPenilaian.setDocument(new batasInput((int)400).getKata(TPenilaian));     
         TAlergi.setDocument(new batasInput((int)50).getKata(TAlergi));        
         TCari.setDocument(new batasInput((int)100).getKata(TCari));       
         TGCS.setDocument(new batasInput((byte)10).getKata(TGCS));
@@ -1200,6 +1201,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TKeluhan = new widget.TextArea();
         scrollPane2 = new widget.ScrollPane();
         TPemeriksaan = new widget.TextArea();
+        scrollPane3 = new widget.ScrollPane();
+        TPenilaian = new widget.TextArea();
+        jLabel28 = new widget.Label();
         internalFrame6 = new widget.InternalFrame();
         Scroll4 = new widget.ScrollPane();
         tbPemeriksaanObstetri = new widget.Table();
@@ -1497,7 +1501,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1511,7 +1515,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2084,12 +2088,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel9.setText("Pemeriksaan :");
         jLabel9.setName("jLabel9"); // NOI18N
         panelGlass12.add(jLabel9);
-        jLabel9.setBounds(0, 85, 85, 23);
+        jLabel9.setBounds(0, 60, 85, 23);
 
         jLabel15.setText("Alergi :");
         jLabel15.setName("jLabel15"); // NOI18N
         panelGlass12.add(jLabel15);
-        jLabel15.setBounds(477, 10, 97, 23);
+        jLabel15.setBounds(477, 40, 97, 23);
 
         TAlergi.setHighlighter(null);
         TAlergi.setName("TAlergi"); // NOI18N
@@ -2099,7 +2103,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         panelGlass12.add(TAlergi);
-        TAlergi.setBounds(577, 10, 311, 23);
+        TAlergi.setBounds(577, 40, 311, 23);
 
         TindakLanjut.setHighlighter(null);
         TindakLanjut.setName("TindakLanjut"); // NOI18N
@@ -2109,12 +2113,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         panelGlass12.add(TindakLanjut);
-        TindakLanjut.setBounds(577, 40, 311, 23);
+        TindakLanjut.setBounds(577, 10, 311, 23);
 
         jLabel26.setText("Tindak Lanjut :");
         jLabel26.setName("jLabel26"); // NOI18N
         panelGlass12.add(jLabel26);
-        jLabel26.setBounds(477, 40, 97, 23);
+        jLabel26.setBounds(477, 10, 97, 23);
 
         jLabel20.setText("Respirasi(/menit) :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -2161,7 +2165,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         scrollPane1.setViewportView(TKeluhan);
 
         panelGlass12.add(scrollPane1);
-        scrollPane1.setBounds(88, 10, 360, 68);
+        scrollPane1.setBounds(88, 10, 360, 41);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -2178,7 +2182,29 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         scrollPane2.setViewportView(TPemeriksaan);
 
         panelGlass12.add(scrollPane2);
-        scrollPane2.setBounds(88, 85, 360, 68);
+        scrollPane2.setBounds(88, 60, 360, 41);
+
+        scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane3.setName("scrollPane3"); // NOI18N
+
+        TPenilaian.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        TPenilaian.setColumns(20);
+        TPenilaian.setRows(5);
+        TPenilaian.setName("TPenilaian"); // NOI18N
+        TPenilaian.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TPenilaianKeyPressed(evt);
+            }
+        });
+        scrollPane3.setViewportView(TPenilaian);
+
+        panelGlass12.add(scrollPane3);
+        scrollPane3.setBounds(88, 110, 360, 41);
+
+        jLabel28.setText("Penilaian :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        panelGlass12.add(jLabel28);
+        jLabel28.setBounds(0, 110, 85, 23);
 
         PanelInput.add(panelGlass12, java.awt.BorderLayout.CENTER);
 
@@ -3083,7 +3109,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3449,7 +3475,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 }//GEN-LAST:event_TNoRwKeyPressed
 
     private void TSuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TSuhuKeyPressed
-        Valid.pindah(evt,TindakLanjut,TTensi);
+        Valid.pindah(evt,TAlergi,TTensi);
 }//GEN-LAST:event_TSuhuKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -3534,15 +3560,16 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             (!TAlergi.getText().trim().equals(""))||(!TTinggi.getText().trim().equals(""))||
                             (!TBerat.getText().trim().equals(""))||(!TRespirasi.getText().trim().equals(""))||
                             (!TNadi.getText().trim().equals(""))||(!TGCS.getText().trim().equals(""))||
-                            (!TindakLanjut.getText().trim().equals(""))){
-                        if(Sequel.menyimpantf("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
+                            (!TindakLanjut.getText().trim().equals(""))||(!TPenilaian.getText().trim().equals(""))){
+                        if(Sequel.menyimpantf("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
                             TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                             TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),
                             TBerat.getText(),TGCS.getText(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
-                            cmbImun.getSelectedItem().toString(),TindakLanjut.getText()})==true){
+                            cmbImun.getSelectedItem().toString(),TindakLanjut.getText(),TPenilaian.getText()})==true){
                                 TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
                                 TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
-                                TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);TindakLanjut.setText("");
+                                TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);
+                                TindakLanjut.setText("");TPenilaian.setText("");
                                 tampilPemeriksaan();
                         }
                     }
@@ -3654,6 +3681,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TTensi.setText("");
         TKeluhan.setText("");
         TPemeriksaan.setText("");
+        TPenilaian.setText("");
         TAlergi.setText("");
         TBerat.setText("");
         TTinggi.setText("");
@@ -3981,13 +4009,14 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                     "pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi, " +
                                     "pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, " +
                                     "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,"+
-                                    "pemeriksaan_ralan.rtl from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
+                                    "pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
                                     "on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
                                     tgl+"and pemeriksaan_ralan.no_rawat like '%"+TCari.getText().trim()+"%' or "+
                                     tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
                                     tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                                     tgl+"and pemeriksaan_ralan.alergi like '%"+TCari.getText().trim()+"%' or "+
                                     tgl+"and pemeriksaan_ralan.keluhan like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pemeriksaan_ralan.penilaian like '%"+TCari.getText().trim()+"%' or "+
                                     tgl+"and pemeriksaan_ralan.pemeriksaan like '%"+TCari.getText().trim()+"%' "+
                                             "order by pemeriksaan_ralan.no_rawat desc",param);
                 }   break;
@@ -4371,7 +4400,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             (!TAlergi.getText().trim().equals(""))||(!TTinggi.getText().trim().equals(""))||
                             (!TBerat.getText().trim().equals(""))||(!TRespirasi.getText().trim().equals(""))||
                             (!TNadi.getText().trim().equals(""))||(!TGCS.getText().trim().equals(""))||
-                            (!TindakLanjut.getText().trim().equals(""))){
+                            (!TindakLanjut.getText().trim().equals(""))||(!TPenilaian.getText().trim().equals(""))){
                         if(tbPemeriksaan.getSelectedRow()>-1){
                             if(Sequel.mengedittf("pemeriksaan_ralan","no_rawat='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),1)+
                                 "' and tgl_perawatan='"+tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),4)+
@@ -4382,10 +4411,12 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 "tinggi='"+TTinggi.getText()+"',berat='"+TBerat.getText()+"',"+
                                 "gcs='"+TGCS.getText()+"',alergi='"+TAlergi.getText()+"',imun_ke='"+cmbImun.getSelectedItem()+"',"+
                                 "tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"',"+
-                                "jam_rawat='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"',rtl='"+TindakLanjut.getText()+"'")==true){
+                                "jam_rawat='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"',"+
+                                "rtl='"+TindakLanjut.getText()+"',penilaian='"+TPenilaian.getText()+"'")==true){
                                     TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
                                     TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
-                                    TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);TindakLanjut.setText("");
+                                    TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);
+                                    TindakLanjut.setText("");TPenilaian.setText("");
                                     tampilPemeriksaan();
                             }                            
                         }else{
@@ -4548,7 +4579,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_tbPemeriksaanMouseClicked
 
     private void TAlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TAlergiKeyPressed
-        Valid.pindah(evt,TPemeriksaan,TindakLanjut); 
+        Valid.pindah(evt,TindakLanjut,TSuhu); 
     }//GEN-LAST:event_TAlergiKeyPressed
 
     private void TBeratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBeratKeyPressed
@@ -4609,7 +4640,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_cmbImunKeyPressed
 
     private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
-        Valid.pindah(evt,TindakLanjut,TSuhu); 
+        Valid.pindah(evt,TPenilaian,TAlergi); 
     }//GEN-LAST:event_TindakLanjutKeyPressed
 
     private void tbPemeriksaanObstetriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPemeriksaanObstetriMouseClicked
@@ -4802,7 +4833,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_TKeluhanKeyPressed
 
     private void TPemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPemeriksaanKeyPressed
-        Valid.pindah(evt,TKeluhan,TAlergi);
+        Valid.pindah(evt,TKeluhan,TPenilaian);
     }//GEN-LAST:event_TPemeriksaanKeyPressed
 
     private void tbRawatDrKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRawatDrKeyReleased
@@ -5303,6 +5334,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnSeekDokter3ActionPerformed
 
+    private void TPenilaianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPenilaianKeyPressed
+        Valid.pindah(evt,TPemeriksaan,TindakLanjut);
+    }//GEN-LAST:event_TPenilaianKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -5405,6 +5440,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox TPasien;
     private widget.TextBox TPembukaan;
     private widget.TextArea TPemeriksaan;
+    private widget.TextArea TPenilaian;
     private widget.TextBox TPenurunan;
     private widget.TextBox TPerawat;
     private widget.TextBox TPerawat2;
@@ -5470,6 +5506,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label jLabel25;
     private widget.Label jLabel26;
     private widget.Label jLabel27;
+    private widget.Label jLabel28;
     private widget.Label jLabel3;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
@@ -5534,6 +5571,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private simrskhanza.PanelResume panelResume1;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
+    private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane4;
     private widget.Table tbCatatan;
     private widget.Table tbPemeriksaan;
@@ -5932,13 +5970,15 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi, " +
                     "pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi, " +
                     "pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, " +
-                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
+                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,"+
+                    "pemeriksaan_ralan.rtl,pemeriksaan_ralan.penilaian from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
                     "on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ralan.no_rawat like ? or "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and reg_periksa.no_rkm_medis like ? or "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pasien.nm_pasien like ? or  "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ralan.alergi like ? or "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ralan.keluhan like ? or "+
+                    "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ralan.penilaian like ? or "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ralan.pemeriksaan like ? "+
                    "order by pemeriksaan_ralan.no_rawat desc"); 
             try{
@@ -5966,25 +6006,18 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ps4.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps4.setString(23,"%"+TCariPasien.getText()+"%");
                 ps4.setString(24,"%"+TCari.getText().trim()+"%");
+                ps4.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps4.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps4.setString(27,"%"+TCariPasien.getText()+"%");
+                ps4.setString(28,"%"+TCari.getText().trim()+"%");
                 rs=ps4.executeQuery();
                 while(rs.next()){
-                    tabModePemeriksaan.addRow(new Object[]{false,rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   rs.getString(6),
-                                   rs.getString(7),
-                                   rs.getString(8),
-                                   rs.getString(9),
-                                   rs.getString(10),
-                                   rs.getString(11),
-                                   rs.getString(12),
-                                   rs.getString(13),
-                                   rs.getString(14),
-                                   rs.getString(15),
-                                   rs.getString(16),
-                                   rs.getString(17)
+                    tabModePemeriksaan.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),
+                        rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),
+                        rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),
+                        rs.getString(16),rs.getString(17),rs.getString(18)
                     });
                 }
             } catch (Exception e) {
@@ -6088,6 +6121,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TAlergi.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),15).toString()); 
             cmbImun.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),16).toString()); 
             TindakLanjut.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),17).toString()); 
+            TPenilaian.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),18).toString()); 
             cmbJam.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(0,2));
             cmbMnt.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(3,5));
             cmbDtk.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(6,8));
