@@ -1201,7 +1201,7 @@ public class PanelResume extends widget.panelisi {
                             try {
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi," +
-                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan," +
+                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
                                         "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat "+
                                         "from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
                                 if(rs3.next()){
@@ -1256,6 +1256,26 @@ public class PanelResume extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Pemeriksaan</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("penilaian").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Penilaian</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("rtl").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
