@@ -531,6 +531,7 @@ public class K3RSJenisPekerjaan extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
+        emptTeks();
     }//GEN-LAST:event_formWindowOpened
 
     private void tbSpesialisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbSpesialisKeyReleased
@@ -612,7 +613,7 @@ public class K3RSJenisPekerjaan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
-    public void emptTeks() {
+    private void emptTeks() {
         TKd.setText("");
         TNm.setText("");
         TCari.setText("");

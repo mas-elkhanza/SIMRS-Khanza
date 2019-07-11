@@ -586,7 +586,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(220, 12, 57, 23);
+        label32.setBounds(205, 12, 57, 23);
 
         Tanggal.setEditable(false);
         Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2019" }));
@@ -598,12 +598,12 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tanggal);
-        Tanggal.setBounds(280, 12, 95, 23);
+        Tanggal.setBounds(265, 12, 90, 23);
 
         jLabel8.setText("Dinas :");
         jLabel8.setName("jLabel8"); // NOI18N
         panelisi4.add(jLabel8);
-        jLabel8.setBounds(387, 12, 50, 23);
+        jLabel8.setBounds(365, 12, 50, 23);
 
         Dinas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pagi", "Siang", "Sore", "Malam" }));
         Dinas.setName("Dinas"); // NOI18N
@@ -613,7 +613,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Dinas);
-        Dinas.setBounds(440, 12, 70, 23);
+        Dinas.setBounds(418, 12, 90, 23);
 
         KodePetugas.setName("KodePetugas"); // NOI18N
         KodePetugas.setPreferredSize(new java.awt.Dimension(80, 23));
