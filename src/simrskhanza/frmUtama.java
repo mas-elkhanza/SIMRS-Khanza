@@ -503,6 +503,8 @@ import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
 import rekammedis.MasterTriaseSkala1;
 import rekammedis.MasterTriaseSkala2;
+import rekammedis.MasterTriaseSkala3;
+import rekammedis.MasterTriaseSkala4;
 import rekammedis.RMSKriningRawatJalan;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
@@ -14989,6 +14991,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterTriaseSkala3ActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTriaseSkala3 form=new MasterTriaseSkala3(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnMasterTriaseSkala4ActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTriaseSkala4 form=new MasterTriaseSkala4(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15569,7 +15595,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBPJSHistoriPelayanan,btnRekapMutasiBerkas,btnSkriningRalanPernapasanPerTahun,btnPengajuanBarangMedis,btnPengajuanBarangNonMedis,
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
-            btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2;
+            btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
+            btnMasterTriaseSkala3,btnMasterTriaseSkala4;
     
     public void isWall(){
         try{            
@@ -17929,6 +17956,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_triase_skala2()==true){
                 Panelmenu.add(btnMasterTriaseSkala2);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_triase_skala3()==true){
+                Panelmenu.add(btnMasterTriaseSkala3);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_triase_skala4()==true){
+                Panelmenu.add(btnMasterTriaseSkala4);
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==12){  
@@ -20555,6 +20592,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmaster_triase_skala2()==true){
             Panelmenu.add(btnMasterTriaseSkala2);
+            jmlmenu++;
+        } 
+        
+        if(akses.getmaster_triase_skala3()==true){
+            Panelmenu.add(btnMasterTriaseSkala3);
+            jmlmenu++;
+        } 
+
+        if(akses.getmaster_triase_skala4()==true){
+            Panelmenu.add(btnMasterTriaseSkala4);
             jmlmenu++;
         } 
 
@@ -23958,6 +24005,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getmaster_triase_skala3()==true){
+            if(btnMasterTriaseSkala3.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterTriaseSkala3);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getmaster_triase_skala4()==true){
+            if(btnMasterTriaseSkala4.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterTriaseSkala4);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25689,6 +25750,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterTriaseSkala2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMasterTriaseSkala2ActionPerformed(evt);
+            }
+        });
+        
+        btnMasterTriaseSkala3 = new widget.ButtonBig();
+        btnMasterTriaseSkala3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_dialog-warning_118940.png")));
+        btnMasterTriaseSkala3.setText("Master Triase Skala 3");
+        btnMasterTriaseSkala3.setIconTextGap(0);
+        btnMasterTriaseSkala3.setName("btnMasterTriaseSkala3"); 
+        btnMasterTriaseSkala3.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterTriaseSkala3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterTriaseSkala3ActionPerformed(evt);
+            }
+        });
+        
+        btnMasterTriaseSkala4 = new widget.ButtonBig();
+        btnMasterTriaseSkala4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Male-User-Warning_49595.png")));
+        btnMasterTriaseSkala4.setText("Master Triase Skala 4");
+        btnMasterTriaseSkala4.setIconTextGap(0);
+        btnMasterTriaseSkala4.setName("btnMasterTriaseSkala4"); 
+        btnMasterTriaseSkala4.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterTriaseSkala4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterTriaseSkala4ActionPerformed(evt);
             }
         });
     }

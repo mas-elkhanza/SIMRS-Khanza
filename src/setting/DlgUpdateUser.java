@@ -2002,6 +2002,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 if("[L]Master Triase Skala 2".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_triase_skala2='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
+                
+                if("[L]Master Triase Skala 3".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_triase_skala3='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
+                if("[L]Master Triase Skala 4".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_triase_skala4='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
 
                 if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengambilan_utd2='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -2731,7 +2739,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"+
                         "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"+
                         "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap,kip_pasien_ranap,"+
-                        "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase,master_triase_skala1,master_triase_skala2 from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
+                        "master_triase_skala4 from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -4322,6 +4331,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Master Triase Skala 2".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Master Triase Skala 2",rs.getBoolean("master_triase_skala2")});
+                    }
+                    
+                    if("[L]Master Triase Skala 3".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Master Triase Skala 3",rs.getBoolean("master_triase_skala3")});
+                    }
+                    
+                    if("[L]Master Triase Skala 4".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Master Triase Skala 4",rs.getBoolean("master_triase_skala4")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
