@@ -143,7 +143,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[I]Skrining Pernapasan Ralan Per Tahun","[D]Pengajuan Obat & BHP","[E]Pengajuan Barang Non Medis","[N]Kunjungan Ranap Per Bulan","[N]Kunjungan Ranap Per Tanggal",
                     "[N]Kunjungan Ranap Per Ruang","[I]Masuk Ruang Per Tahun","[N]Pegawai Per Jenjang Jabatan","[N]Pegawai Per Bidang/Bagian","[N]Pegawai Per Departemen",
                     "[N]Pegawai Per Pendidikan","[N]Pegawai Per Status WP","[N]Pegawai Per Status Kerja","[N]Status Pulang Ranap","[I]KIP Pasien Ranap","[I]KIP Pasien Ralan",
-                    "[K]Mapping Dokter DPJP VClaim","[L]Data Triase","[L]Master Triase Skala 1","[L]Master Triase Skala 2","[L]Master Triase Skala 3","[L]Master Triase Skala 4"
+                    "[K]Mapping Dokter DPJP VClaim","[L]Data Triase","[L]Master Triase Skala 1","[L]Master Triase Skala 2","[L]Master Triase Skala 3","[L]Master Triase Skala 4",
+                    "[L]Master Triase Skala 5"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -306,7 +307,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 531;i++) {
+        for (i = 0; i < 532;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1004,6 +1005,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(123);
             }else if(i==530){
                 column.setPreferredWidth(123);
+            }else if(i==531){
+                column.setPreferredWidth(123);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1496,7 +1499,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2069,7 +2072,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "master_triase_skala1='"+tbUser.getValueAt(i,527).toString()+"',"+
                     "master_triase_skala2='"+tbUser.getValueAt(i,528).toString()+"',"+
                     "master_triase_skala3='"+tbUser.getValueAt(i,529).toString()+"',"+
-                    "master_triase_skala4='"+tbUser.getValueAt(i,530).toString()+"'");
+                    "master_triase_skala4='"+tbUser.getValueAt(i,530).toString()+"',"+
+                    "master_triase_skala5='"+tbUser.getValueAt(i,531).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2681,7 +2685,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "master_triase_skala1='"+tbUser.getValueAt(barisdicopy,527).toString()+"',"+
                                     "master_triase_skala2='"+tbUser.getValueAt(barisdicopy,528).toString()+"',"+
                                     "master_triase_skala3='"+tbUser.getValueAt(barisdicopy,529).toString()+"',"+
-                                    "master_triase_skala4='"+tbUser.getValueAt(barisdicopy,530).toString()+"'");
+                                    "master_triase_skala4='"+tbUser.getValueAt(barisdicopy,530).toString()+"',"+
+                                    "master_triase_skala5='"+tbUser.getValueAt(barisdicopy,531).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -2978,7 +2983,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"+
                         "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap,kip_pasien_ranap,"+
                         "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
-                        "master_triase_skala4 from user order by AES_DECRYPT(id_user,'nur')");
+                        "master_triase_skala4,master_triase_skala5 from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3521,7 +3526,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("master_triase_skala1"),
                                rs.getBoolean("master_triase_skala2"),
                                rs.getBoolean("master_triase_skala3"),
-                               rs.getBoolean("master_triase_skala4")
+                               rs.getBoolean("master_triase_skala4"),
+                               rs.getBoolean("master_triase_skala5")
                             });
                         }   
                     } catch (Exception e) {
@@ -4053,7 +4059,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("master_triase_skala1"),
                            rs.getBoolean("master_triase_skala2"),
                            rs.getBoolean("master_triase_skala3"),
-                           rs.getBoolean("master_triase_skala4")
+                           rs.getBoolean("master_triase_skala4"),
+                           rs.getBoolean("master_triase_skala5")
                         });
                     }                                             
                  }
