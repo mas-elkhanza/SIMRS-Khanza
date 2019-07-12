@@ -19,6 +19,9 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,6 +41,7 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
+    private MasterTriasePemeriksaan pemeriksaan=new MasterTriasePemeriksaan(null,false);
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -47,7 +51,7 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         initComponents();
 
 
-        Object[] row={"Kode","Pengkajian"};
+        Object[] row={"Kode Pemeriksaan","Pemeriksaan","Kode","Pengkajian"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -58,19 +62,24 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 4; i++) {
             TableColumn column = tbSpesialis.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(50);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==1){
-                column.setPreferredWidth(470);
+                column.setPreferredWidth(200);
+            }else if(i==2){
+                column.setPreferredWidth(50);
+            }else if(i==3){
+                column.setPreferredWidth(270);
             }
         }
 
         tbSpesialis.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TKd.setDocument(new batasInput((byte)3).getKata(TKd));
-        TNm.setDocument(new batasInput((int)150).getKata(TNm));
+        kdskala.setDocument(new batasInput((byte)3).getKata(kdskala));
+        namaskala.setDocument(new batasInput((int)150).getKata(namaskala));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -94,6 +103,42 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
                 }
             });
         }
+        
+        pemeriksaan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pemeriksaan.getTable().getSelectedRow()!= -1){
+                    kdpemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),0).toString());
+                    nmpemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),1).toString());
+                }  
+                btnPemeriksaan.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pemeriksaan.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pemeriksaan.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
     }
 
     /** This method is called from within the constructor to
@@ -125,8 +170,12 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         panelGlass7 = new widget.panelisi();
         jLabel3 = new widget.Label();
         jLabel4 = new widget.Label();
-        TKd = new widget.TextBox();
-        TNm = new widget.TextBox();
+        kdskala = new widget.TextBox();
+        namaskala = new widget.TextBox();
+        jLabel5 = new widget.Label();
+        kdpemeriksaan = new widget.TextBox();
+        nmpemeriksaan = new widget.TextBox();
+        btnPemeriksaan = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -341,37 +390,80 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 45));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 74));
         panelGlass7.setLayout(null);
 
-        jLabel3.setText("Kode :");
+        jLabel3.setText("Kode  :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
-        jLabel3.setBounds(2, 10, 43, 23);
+        jLabel3.setBounds(0, 40, 82, 23);
 
         jLabel4.setText("Pengkajian :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelGlass7.add(jLabel4);
-        jLabel4.setBounds(122, 10, 100, 23);
+        jLabel4.setBounds(152, 40, 79, 23);
 
-        TKd.setHighlighter(null);
-        TKd.setName("TKd"); // NOI18N
-        TKd.addKeyListener(new java.awt.event.KeyAdapter() {
+        kdskala.setHighlighter(null);
+        kdskala.setName("kdskala"); // NOI18N
+        kdskala.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TKdKeyPressed(evt);
+                kdskalaKeyPressed(evt);
             }
         });
-        panelGlass7.add(TKd);
-        TKd.setBounds(48, 10, 70, 23);
+        panelGlass7.add(kdskala);
+        kdskala.setBounds(86, 40, 70, 23);
 
-        TNm.setName("TNm"); // NOI18N
-        TNm.addKeyListener(new java.awt.event.KeyAdapter() {
+        namaskala.setName("namaskala"); // NOI18N
+        namaskala.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNmKeyPressed(evt);
+                namaskalaKeyPressed(evt);
             }
         });
-        panelGlass7.add(TNm);
-        TNm.setBounds(225, 10, 290, 23);
+        panelGlass7.add(namaskala);
+        namaskala.setBounds(235, 40, 280, 23);
+
+        jLabel5.setText("Pemeriksaan :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        panelGlass7.add(jLabel5);
+        jLabel5.setBounds(0, 10, 82, 23);
+
+        kdpemeriksaan.setEditable(false);
+        kdpemeriksaan.setHighlighter(null);
+        kdpemeriksaan.setName("kdpemeriksaan"); // NOI18N
+        kdpemeriksaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdpemeriksaanKeyPressed(evt);
+            }
+        });
+        panelGlass7.add(kdpemeriksaan);
+        kdpemeriksaan.setBounds(86, 10, 70, 23);
+
+        nmpemeriksaan.setEditable(false);
+        nmpemeriksaan.setName("nmpemeriksaan"); // NOI18N
+        nmpemeriksaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nmpemeriksaanKeyPressed(evt);
+            }
+        });
+        panelGlass7.add(nmpemeriksaan);
+        nmpemeriksaan.setBounds(158, 10, 325, 23);
+
+        btnPemeriksaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPemeriksaan.setMnemonic('1');
+        btnPemeriksaan.setToolTipText("Alt+1");
+        btnPemeriksaan.setName("btnPemeriksaan"); // NOI18N
+        btnPemeriksaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemeriksaanActionPerformed(evt);
+            }
+        });
+        btnPemeriksaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPemeriksaanKeyPressed(evt);
+            }
+        });
+        panelGlass7.add(btnPemeriksaan);
+        btnPemeriksaan.setBounds(487, 10, 28, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
@@ -380,21 +472,21 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TKdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
-        Valid.pindah(evt,TCari,TNm);
-}//GEN-LAST:event_TKdKeyPressed
+    private void kdskalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdskalaKeyPressed
+        Valid.pindah(evt,TCari,namaskala);
+}//GEN-LAST:event_kdskalaKeyPressed
 
-    private void TNmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmKeyPressed
-        Valid.pindah(evt,TKd,BtnSimpan);
-}//GEN-LAST:event_TNmKeyPressed
+    private void namaskalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namaskalaKeyPressed
+        Valid.pindah(evt,kdskala,BtnSimpan);
+}//GEN-LAST:event_namaskalaKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(TKd.getText().trim().equals("")){
-            Valid.textKosong(TKd,"Kode");
-        }else if(TNm.getText().trim().equals("")){
-            Valid.textKosong(TNm,"Pengkajian");
+        if(kdskala.getText().trim().equals("")){
+            Valid.textKosong(kdskala,"Kode");
+        }else if(namaskala.getText().trim().equals("")){
+            Valid.textKosong(namaskala,"Pengkajian");
         }else{
-            Sequel.menyimpan("master_triase_skala3","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode");
+            Sequel.menyimpan("master_triase_skala3","'"+kdpemeriksaan.getText()+"','"+kdskala.getText()+"','"+namaskala.getText()+"'","Kode");
             tampil();
             emptTeks();
         }
@@ -404,7 +496,7 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,TNm,BtnBatal);
+            Valid.pindah(evt,namaskala,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -419,7 +511,7 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,TKd,"master_triase_skala3","kode");
+        Valid.hapusTable(tabMode,kdskala,"master_triase_skala3","kode_skala3");
         tampil();
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -433,14 +525,14 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TKd.getText().trim().equals("")){
-            Valid.textKosong(TKd,"Kode");
-        }else if(TNm.getText().trim().equals("")){
-            Valid.textKosong(TNm,"Pengkajian");
+        if(kdskala.getText().trim().equals("")){
+            Valid.textKosong(kdskala,"Kode");
+        }else if(namaskala.getText().trim().equals("")){
+            Valid.textKosong(namaskala,"Pengkajian");
         }else{
             if(tbSpesialis.getSelectedRow()> -1){
-                Sequel.mengedit("master_triase_skala3","kode=?","kode=?,pemeriksaan=?",3,new String[]{
-                    TKd.getText(),TNm.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString()
+                Sequel.mengedit("master_triase_skala3","kode_skala3=?","kode_skala3=?,pengkajian_skala3=?,kode_pemeriksaan=?",4,new String[]{
+                    kdskala.getText(),namaskala.getText(),kdpemeriksaan.getText(),tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),2).toString()
                 });
                 if(tabMode.getRowCount()!=0){tampil();}
                 emptTeks();
@@ -503,7 +595,7 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
         }else{
-            Valid.pindah(evt, BtnCari, TKd);
+            Valid.pindah(evt, BtnCari, kdskala);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -545,6 +637,25 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbSpesialisKeyReleased
 
+    private void kdpemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpemeriksaanKeyPressed
+        Valid.pindah(evt, TCari,kdskala);
+    }//GEN-LAST:event_kdpemeriksaanKeyPressed
+
+    private void nmpemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmpemeriksaanKeyPressed
+        Valid.pindah(evt,kdskala,BtnSimpan);
+    }//GEN-LAST:event_nmpemeriksaanKeyPressed
+
+    private void btnPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPemeriksaanActionPerformed
+        pemeriksaan.isCek();
+        pemeriksaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pemeriksaan.setLocationRelativeTo(internalFrame1);
+        pemeriksaan.setVisible(true);
+    }//GEN-LAST:event_btnPemeriksaanActionPerformed
+
+    private void btnPemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPemeriksaanKeyPressed
+        Valid.pindah(evt,kdpemeriksaan,BtnSimpan);
+    }//GEN-LAST:event_btnPemeriksaanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -572,14 +683,18 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.TextBox TKd;
-    private widget.TextBox TNm;
+    private widget.Button btnPemeriksaan;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
+    private widget.TextBox kdpemeriksaan;
+    private widget.TextBox kdskala;
+    private widget.TextBox namaskala;
+    private widget.TextBox nmpemeriksaan;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -589,13 +704,19 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select * from master_triase_skala3 where kode like ? or pemeriksaan like ? order by kode");
+            ps=koneksi.prepareStatement(
+                    "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan,"+
+                    "master_triase_skala3.kode_skala3,master_triase_skala3.pengkajian_skala3 from master_triase_skala3 "+
+                    "inner join master_triase_pemeriksaan on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala3.kode_pemeriksaan "+
+                    "where master_triase_skala3.kode_skala3 like ? or master_triase_skala3.pengkajian_skala3 like ? or "+
+                    "master_triase_pemeriksaan.nama_pemeriksaan like ? order by master_triase_skala3.kode_skala3");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -614,18 +735,20 @@ public class MasterTriaseSkala3 extends javax.swing.JDialog {
     }
 
     private void emptTeks() {
-        TKd.setText("");
-        TNm.setText("");
+        kdskala.setText("");
+        namaskala.setText("");
         TCari.setText("");
-        TKd.requestFocus();
-        Valid.autoNomer(tabMode,"",3,TKd);
-        TKd.requestFocus();
+        kdskala.requestFocus();
+        Valid.autoNomer(tabMode,"",3,kdskala);
+        kdskala.requestFocus();
     }
 
     private void getData() {
         if(tbSpesialis.getSelectedRow()!= -1){
-            TKd.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString());
-            TNm.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),1).toString());
+            kdpemeriksaan.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString());
+            nmpemeriksaan.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),1).toString());
+            kdskala.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),2).toString());
+            namaskala.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),3).toString());
         }
     }
     

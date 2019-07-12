@@ -501,6 +501,7 @@ import perpustakaan.PerpustakaanPengaturanPeminjaman;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
+import rekammedis.MasterTriasePemeriksaan;
 import rekammedis.MasterTriaseSkala1;
 import rekammedis.MasterTriaseSkala2;
 import rekammedis.MasterTriaseSkala3;
@@ -15028,6 +15029,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterTriasePemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTriasePemeriksaan form=new MasterTriasePemeriksaan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15609,7 +15622,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
-            btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5;
+            btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan;
     
     public void isWall(){
         try{            
@@ -17959,6 +17972,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpengaduan_pasien()==true){
                 Panelmenu.add(btnPengaduan);
+                jmlmenu++;
+            } 
+            
+            if(akses.getmaster_triase_pemeriksaan()==true){
+                Panelmenu.add(btnMasterTriasePemeriksaan);
                 jmlmenu++;
             } 
             
@@ -20600,6 +20618,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpengaduan_pasien()==true){
             Panelmenu.add(btnPengaduan);
+            jmlmenu++;
+        } 
+        
+        if(akses.getmaster_triase_pemeriksaan()==true){
+            Panelmenu.add(btnMasterTriasePemeriksaan);
             jmlmenu++;
         } 
         
@@ -24015,6 +24038,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         } 
         
+        if(akses.getmaster_triase_pemeriksaan()==true){
+            if(btnMasterTriasePemeriksaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterTriasePemeriksaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmaster_triase_skala1()==true){
             if(btnMasterTriaseSkala1.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterTriaseSkala1);
@@ -25816,6 +25846,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterTriaseSkala5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMasterTriaseSkala5ActionPerformed(evt);
+            }
+        });
+        
+        btnMasterTriasePemeriksaan = new widget.ButtonBig();
+        btnMasterTriasePemeriksaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_stethoscope_38717.png")));
+        btnMasterTriasePemeriksaan.setText("Master Triase Pemeriksaan");
+        btnMasterTriasePemeriksaan.setIconTextGap(0);
+        btnMasterTriasePemeriksaan.setName("btnMasterTriasePemeriksaan"); 
+        btnMasterTriasePemeriksaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterTriasePemeriksaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterTriasePemeriksaanActionPerformed(evt);
             }
         });
     }
