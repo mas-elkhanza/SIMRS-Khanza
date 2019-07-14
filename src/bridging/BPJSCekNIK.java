@@ -34,12 +34,18 @@ public class BPJSCekNIK {
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     private BPJSApi api=new BPJSApi();
+    private HttpHeaders headers;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();   
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
         
     public BPJSCekNIK(){
         super();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            link=prop.getProperty("URLAPIBPJS");
+            link=prop.getProperty("URLAPIBPJS");   
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -47,24 +53,21 @@ public class BPJSCekNIK {
     
     public void tampil(String nik) {
         try {
-            URL = link+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	
-
-	    HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
 	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    requestEntity = new HttpEntity(headers);
+            URL = link+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
             if(nameNode.path("code").asText().equals("200")){
-                JsonNode response = root.path("response");
-                nik=response.path("peserta").path("nik").asText();
+                response = root.path("response");
+                this.nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();
                 cobnmAsuransi=response.path("peserta").path("cob").path("nmAsuransi").asText();
                 cobnoAsuransi=response.path("peserta").path("cob").path("noAsuransi").asText();
@@ -80,7 +83,6 @@ public class BPJSCekNIK {
                 mrnoMR=response.path("peserta").path("mr").path("noMR").asText();
                 mrnoTelepon=response.path("peserta").path("mr").path("noTelepon").asText();
                 nama=response.path("peserta").path("nama").asText();
-                nik=response.path("peserta").path("nik").asText();
                 noKartu=response.path("peserta").path("noKartu").asText();
                 pisa=response.path("peserta").path("pisa").asText();
                 provUmumkdProvider=response.path("peserta").path("provUmum").path("kdProvider").asText();

@@ -7,7 +7,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -943,7 +943,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         label9.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label9);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -960,7 +959,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1075,7 +1073,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbRalanDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRalanDokter.setName("tbRalanDokter"); // NOI18N
         tbRalanDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1101,7 +1098,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbRalanParamedis.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRalanParamedis.setName("tbRalanParamedis"); // NOI18N
         tbRalanParamedis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1127,7 +1123,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbRalanDokterParamedis.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRalanDokterParamedis.setName("tbRalanDokterParamedis"); // NOI18N
         tbRalanDokterParamedis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1153,7 +1148,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbOperasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbOperasi.setName("tbOperasi"); // NOI18N
         tbOperasi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1179,7 +1173,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbRanapDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRanapDokter.setName("tbRanapDokter"); // NOI18N
         tbRanapDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1205,7 +1198,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbRanapParamedis.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRanapParamedis.setName("tbRanapParamedis"); // NOI18N
         tbRanapParamedis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1231,7 +1223,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll6.setName("Scroll6"); // NOI18N
         Scroll6.setOpaque(true);
 
-        tbRanapDokterParamedis.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRanapDokterParamedis.setName("tbRanapDokterParamedis"); // NOI18N
         tbRanapDokterParamedis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1257,7 +1248,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll7.setName("Scroll7"); // NOI18N
         Scroll7.setOpaque(true);
 
-        tbRadiologi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologi.setName("tbRadiologi"); // NOI18N
         tbRadiologi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1283,7 +1273,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll8.setName("Scroll8"); // NOI18N
         Scroll8.setOpaque(true);
 
-        tbLaborat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLaborat.setName("tbLaborat"); // NOI18N
         tbLaborat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1309,7 +1298,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll9.setName("Scroll9"); // NOI18N
         Scroll9.setOpaque(true);
 
-        tbDetailLaborat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDetailLaborat.setName("tbDetailLaborat"); // NOI18N
         tbDetailLaborat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1353,17 +1341,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeRalanDokter.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRalanDokter.jrxml",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::");                    
+                    Valid.MyReport("rptDetailTindakanRalanDokter.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::");                    
                 }   break;
             case 1:
                 if(tabModeRalanParamedis.getRowCount()==0){
@@ -1371,17 +1359,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeRalanParamedis.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRalanParamedis.jrxml",param,"::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::");                    
+                    Valid.MyReport("rptDetailTindakanRalanParamedis.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::");                    
                 }   break;
             case 2:
                 if(tabModeRalanDokterParamedis.getRowCount()==0){
@@ -1389,17 +1377,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeRalanDokterParamedis.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRalanDokterParamedis.jrxml",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter & Petugas ]::");                    
+                    Valid.MyReport("rptDetailTindakanRalanDokterParamedis.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter & Petugas ]::");                    
                 }   break;
             case 3:
                 if(tabModeOperasi.getRowCount()==0){
@@ -1407,17 +1395,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeOperasi.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanOperasi.jrxml",param,"::[ Detail Tindakan Operasi ]::");                    
+                    Valid.MyReport("rptDetailTindakanOperasi.jasper",param,"::[ Detail Tindakan Operasi ]::");                    
                 }   break;
             case 4:
                 if(tabModeRanapDokter.getRowCount()==0){
@@ -1425,17 +1413,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeRanapDokter.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRanapDokter.jrxml",param,"::[ Detail Tindakan Ranap Yang Ditangani Dokter ]::");                    
+                    Valid.MyReport("rptDetailTindakanRanapDokter.jasper",param,"::[ Detail Tindakan Ranap Yang Ditangani Dokter ]::");                    
                 }   break;
             case 5:
                 if(tabModeRanapParamedis.getRowCount()==0){
@@ -1443,17 +1431,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeRanapParamedis.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRanapParamedis.jrxml",param,"::[ Detail Tindakan Ranap Yang Ditangani Paramedis ]::");                    
+                    Valid.MyReport("rptDetailTindakanRanapParamedis.jasper",param,"::[ Detail Tindakan Ranap Yang Ditangani Paramedis ]::");                    
                 }   break;
             case 6:
                 if(tabModeRanapDokterParamedis.getRowCount()==0){
@@ -1461,17 +1449,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeRanapDokterParamedis.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRanapDokterParamedis.jrxml",param,"::[ Detail Tindakan Ranap Yang Ditangani Dokter & Paramedis ]::");                    
+                    Valid.MyReport("rptDetailTindakanRanapDokterParamedis.jasper",param,"::[ Detail Tindakan Ranap Yang Ditangani Dokter & Paramedis ]::");                    
                 }   break;
             case 7:
                 if(tabModeRadiologi.getRowCount()==0){
@@ -1479,17 +1467,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeRadiologi.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailRadiologi.jrxml",param,"::[ Detail Pemeriksaan Radiologi ]::");                    
+                    Valid.MyReport("rptDetailRadiologi.jasper",param,"::[ Detail Pemeriksaan Radiologi ]::");                    
                 }   break;
             case 8:
                 if(tabModeLaborat.getRowCount()==0){
@@ -1497,17 +1485,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeLaborat.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailLaborat.jrxml",param,"::[ Detail Pemeriksaan Laborat ]::");                    
+                    Valid.MyReport("rptDetailLaborat.jasper",param,"::[ Detail Pemeriksaan Laborat ]::");                    
                 }   break;
             case 9:
                 if(tabModeDetailLaborat.getRowCount()==0){
@@ -1515,17 +1503,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabModeDetailLaborat.getRowCount()!=0){
                     Map<String, Object> param = new HashMap<>();
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailDetailLaborat.jrxml",param,"::[ Detail Pemeriksaan Laborat ]::");                    
+                    Valid.MyReport("rptDetailDetailLaborat.jasper",param,"::[ Detail Pemeriksaan Laborat ]::");                    
                 }   break;
             default:
                     break;

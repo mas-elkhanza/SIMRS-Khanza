@@ -456,14 +456,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 
@@ -517,14 +517,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 
@@ -578,14 +578,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 
@@ -633,14 +633,14 @@ public final class validasi {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
                 fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
 
-        // Ambil Direktori tempat file RptMaster.jrxml berada
+        // Ambil Direktori tempat file RptMaster.jasper berada
         String[] subRptDir = fullPath.split(reportName);
         String reportDir = subRptDir[0];
 
@@ -859,14 +859,14 @@ public final class validasi {
             Properties prop = new Properties();
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(os.contains("win")) {
-                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
             }else if (os.contains("mac")) {
-                rt.exec( "open " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "open " + "http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
             }else if (os.contains("nix") || os.contains("nux")) {
                 String[] browsers = {"epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
-                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");
+                for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");
                 rt.exec(new String[] { "sh", "-c", cmd.toString() });
             } else {
                 return;
@@ -880,7 +880,7 @@ public final class validasi {
         try{
            Properties prop = new Properties();
            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
+           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
         }catch (Exception e) {
            System.out.println(e);
         }

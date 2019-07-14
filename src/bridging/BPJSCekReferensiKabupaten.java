@@ -4,8 +4,7 @@
   (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
   npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
   nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
-  nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  nyab,tdpai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
   karena telah berdoa buruk, semua ini kami lakukan karena kami ti
   dak pernah rela karya kami dibajak tanpa ijin.
  */
@@ -50,6 +49,12 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
     private int i=0;
     private BPJSApi api=new BPJSApi();
     private String URL="",link="";
+    private HttpHeaders headers ;
+    private HttpEntity requestEntity;
+    private ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root;
+    private JsonNode nameNode;
+    private JsonNode response;
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -83,14 +88,26 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
         
         Kabupaten.setDocument(new batasInput((byte)100).getKata(Kabupaten));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Kabupaten.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(Kabupaten.getText());}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Kabupaten.getText().length()>2){
+                        tampil(Kabupaten.getText());
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(Kabupaten.getText());}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Kabupaten.getText().length()>2){
+                        tampil(Kabupaten.getText());
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(Kabupaten.getText());}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Kabupaten.getText().length()>2){
+                        tampil(Kabupaten.getText());
+                    }
+                }
             });
         } 
         
@@ -177,7 +194,6 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -357,21 +373,18 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            URL = link+"/referensi/kabupaten/propinsi/"+KdProp.getText();	
-
-	    HttpHeaders headers = new HttpHeaders();
+            headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metaData");
+	    requestEntity = new HttpEntity(headers);
+            URL = link+"/referensi/kabupaten/propinsi/"+KdProp.getText();	
+            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");
+                response = root.path("response");
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

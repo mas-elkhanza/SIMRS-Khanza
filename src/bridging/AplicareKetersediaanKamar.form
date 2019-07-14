@@ -365,7 +365,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="213" y="72" width="120" height="23"/>
+                      <AbsoluteConstraints x="244" y="72" width="120" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -382,7 +382,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="336" y="72" width="50" height="23"/>
+                      <AbsoluteConstraints x="367" y="72" width="50" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -532,7 +532,6 @@
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Kelas" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KelasItemStateChanged"/>
@@ -540,7 +539,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="116" y="72" width="90" height="23"/>
+                      <AbsoluteConstraints x="116" y="72" width="120" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

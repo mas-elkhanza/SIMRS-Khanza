@@ -14,7 +14,7 @@
         <MenuItem class="javax.swing.JMenuItem" name="MnRestore">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -904,19 +904,17 @@
                 <Component class="widget.ComboBox" name="Kelas">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="8">
+                      <StringArray count="7">
                         <StringItem index="0" value="-"/>
-                        <StringItem index="1" value="Rawat Jalan"/>
-                        <StringItem index="2" value="Kelas 1"/>
-                        <StringItem index="3" value="Kelas 2"/>
-                        <StringItem index="4" value="Kelas 3"/>
-                        <StringItem index="5" value="Kelas Utama"/>
-                        <StringItem index="6" value="Kelas VIP"/>
-                        <StringItem index="7" value="Kelas VVIP"/>
+                        <StringItem index="1" value="Kelas 1"/>
+                        <StringItem index="2" value="Kelas 2"/>
+                        <StringItem index="3" value="Kelas 3"/>
+                        <StringItem index="4" value="Kelas Utama"/>
+                        <StringItem index="5" value="Kelas VIP"/>
+                        <StringItem index="6" value="Kelas VVIP"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Kelas" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KelasKeyPressed"/>

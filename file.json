@@ -1,0 +1,45 @@
+{
+   "PASIEN": {
+      "NORM": 11223345,               # Nomor Rekam Medis
+	  "NIK": "7371140101010003",      # Nomor Induk Kependudukan
+	  "NO_KARTU_JKN": "0000001234501",# Nomor Kartu Jaminan Kesehatan Nasional / BPJS
+	  "NAMA": "Rahmat Hidayat",       # Nama Pasien (Tanpa Gelar)
+	  "JENIS_KELAMIN": "1",           # Jenis Kelamin 1. Laki - laki, 2. Perempuan
+	  "TANGGAL_LAHIR": "1980-01-03",  # Tanggal Lahir Format yyyy-mm-dd
+	  "TEMPAT_LAHIR": "Makassar",     # Tempat Lahir
+	  "ALAMAT": "Pettarani",          # Alamat
+	  "KONTAK": "085123123122"        # Nomor Kontak / HP
+   },
+   "RUJUKAN": {
+	  "JENIS_RUJUKAN": "2",          # Jenis Rujukan 1. Rawat Jalan, 2. Rawat Darurat/Inap, 3. Parsial
+	  "TANGGAL": "2018-08-29 10:00:00", # Tanggal Rujukan Format yyy-mm-dd hh:ii:ss
+	  "FASKES_TUJUAN": "3404015",     # Kode Faskes Tujuan
+	  "ALASAN": "1",                  # Lihat Referensi Alasan Rujukan
+	  "ALASAN_LAINNYA": "Pusing",     # Alasan Lainnya / Tambahan Alasan Rujukan
+	  "DIAGNOSA": "I10",              # Kode ICD10 Diagnosa Utama
+	  "DOKTER": {                     # Dokter DPJP
+	     "NIK": "7371140101010111",  # NIK Dokter
+		 "NAMA": "Dr. Raffi"         # Nama Dokter
+      },
+	  "PETUGAS": {                    # Petugas yang merujuk
+	     "NIK": "7371140101010112",  # NIK Petugas
+		 "NAMA": "Enal"              # Nama Petugas
+	  }
+   },
+   "KONDISI_UMUM": {
+      "ANAMNESIS_DAN_PEMERIKSAAN_FISIK": "", # Anamnesis dan pemeriksaan fisik
+      "KESADARAN": "1",               # Kondisi Kesadaran Pasien 1. Sadar, 2. Tidak Sadar
+	  "TEKANAN_DARAH": "120/90",      # Tekanan Darah Pasien dalam satuan mmHg
+	  "FREKUENSI_NADI": "50",         # Frekuensi Nadi Pasien (Kali/Menit)
+	  "SUHU": "37",                   # Suhu (Derajat Celcius)
+	  "PERNAPASAN": "25",             # Pernapasan (Kali/Menit)
+	  "KEADAAN_UMUM": "sesak, gelisah", # Keadaan Umum Pasien
+	  "NYERI": 0,                     # Skala Nyeri 0. Tidak Nyeri, 1. Ringan, 2. Sedang, 3. Berat
+	  "ALERGI": "-"                   # Alergi Pasien
+   },
+   "PENUNJANG": {
+      "LABORATORIUM": "WBC:11,2;HB:15,6;PLT:215;", # Hasil Laboratorium format: parameter:hasil;
+	  "RADIOLOGI": "EKG:Sinus Takikardi;Foto Thorax:Cor dan pulmo normal;", # Hasil Radiologi format: tindakan:hasil;
+	  "TERAPI_ATAU_TINDAKAN": "TRP:LOADING NACL 0.9% 500 CC;INJ. RANITIDIN 50 MG;#TDK:TERPASANG INTUBASI ET NO 8 BATAS BIBIR 21CM;" # Terapi atau Tindakan yang diberikan format; TRP:Nama;#TDK:Nama;
+   }
+}

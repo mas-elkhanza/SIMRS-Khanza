@@ -2,7 +2,7 @@ package laporan;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -176,7 +176,6 @@ public class DlgHarianHAIs extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi1.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -188,7 +187,6 @@ public class DlgHarianHAIs extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi1.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -386,14 +384,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             File f = new File("HarianHAIs.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll(
-                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+       
+                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+       
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -628,7 +625,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         jmldarah=jmldarah+1;
                     }
                     if(!rs.getString("ANTIBIOTIK").equals("")){
-                        antibiotik=0;
+                        antibiotik=1;
                         jmlANTIBIOTIK=jmlANTIBIOTIK+1;
                     }
                     
@@ -666,7 +663,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' align='center'>"+sputum+"</td>"+
                             "<td valign='middle' align='center'>"+darah+"</td>"+
                             "<td valign='middle' align='center'>"+urine+"</td>"+
-                            "<td valign='middle' align='left'>"+antibiotik+"</td>"+
+                            "<td valign='middle' align='center'>"+antibiotik+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("ruang")+"</td>"+
                         "</tr>"
                     );
@@ -692,7 +689,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' align='center'>"+jmlsputum+"</td>"+
                             "<td valign='middle' align='center'>"+jmldarah+"</td>"+
                             "<td valign='middle' align='center'>"+jmlurine+"</td>"+
-                            "<td valign='middle' align='left'>"+jmlANTIBIOTIK+"</td>"+
+                            "<td valign='middle' align='center'>"+jmlANTIBIOTIK+"</td>"+
                             "<td valign='middle' align='center'>&nbsp;</td>"+
                         "</tr>"
                     );
@@ -722,7 +719,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getharian_HAIs());
+        BtnPrint.setEnabled(akses.getharian_HAIs());
     }
     
 }

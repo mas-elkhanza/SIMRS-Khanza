@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -103,14 +103,26 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         Kdmem.setDocument(new batasInput((byte)15).getKata(Kdmem));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             
             Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -303,14 +315,13 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppNotaPiutang.setBackground(new java.awt.Color(255, 255, 255));
+        ppNotaPiutang.setBackground(new java.awt.Color(255, 255, 254));
         ppNotaPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppNotaPiutang.setForeground(new java.awt.Color(70, 70, 70));
         ppNotaPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppNotaPiutang.setText("Nota Bayar Piutang");
         ppNotaPiutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppNotaPiutang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppNotaPiutang.setIconTextGap(8);
         ppNotaPiutang.setName("ppNotaPiutang"); // NOI18N
         ppNotaPiutang.setPreferredSize(new java.awt.Dimension(160, 25));
         ppNotaPiutang.addActionListener(new java.awt.event.ActionListener() {
@@ -341,7 +352,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -438,7 +448,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         panelisi4.add(Nmmem);
         Nmmem.setBounds(476, 10, 204, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -483,7 +492,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         jLabel10.setBounds(0, 70, 77, 23);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nama_bayarKeyPressed(evt);
@@ -681,7 +689,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                     Sequel.queryu("delete from tampjurnal");                    
                     Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Bayar_Piutang_Pasien from set_akun")+"','BAYAR PIUTANG','0','"+Cicilan.getText()+"'","Rekening");    
                     Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening"); 
-                    jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG");                   
+                    jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
                     BtnCariActionPerformed(evt);
                     emptTeks();
             }       
@@ -713,7 +721,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                 Sequel.queryu("delete from tampjurnal");                    
                 Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Bayar_Piutang_Pasien from set_akun")+"','BAYAR PIUTANG','"+Cicilan.getText()+"','0'","Rekening");    
                 Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','0','"+Cicilan.getText()+"'","Rekening"); 
-                jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG");                   
+                jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
                 
                 BtnCariActionPerformed(evt);
                 emptTeks();                                           
@@ -750,14 +758,14 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
             BtnKeluar.requestFocus();
         }else if(tabMode.getRowCount()!=0){     
                 Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());        
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReport("rptBayar.jrxml","report","::[ Bayar Piutang ]::","select bayar_piutang.tgl_bayar, bayar_piutang.no_rkm_medis,pasien.nm_pasien, bayar_piutang.besar_cicilan,"+
+            Valid.MyReportqry("rptBayar.jasper","report","::[ Bayar Piutang ]::","select bayar_piutang.tgl_bayar, bayar_piutang.no_rkm_medis,pasien.nm_pasien, bayar_piutang.besar_cicilan,"+
                 "bayar_piutang.catatan, bayar_piutang.no_rawat from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis where "+
                 "bayar_piutang.no_rawat like '%"+TCari.getText()+"%' or "+
                 "bayar_piutang.no_rkm_medis like '%"+TCari.getText()+"%' or "+
@@ -918,7 +926,7 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
             JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau dicetak notanya...!!!!");
             tbKamar.requestFocus();
         }else if(tabMode.getRowCount()!=0){  
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             Sequel.menyimpan("temporary","'0','No.Rawat',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),5).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','Tgl.Bayar',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),0).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
@@ -926,8 +934,8 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
             Sequel.menyimpan("temporary","'0','Nama Pasien',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),2).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','Keterangan',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),4).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','Besar Cicilan',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),3).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.AutoComitTrue();
-            Valid.panggilUrl("billing/LaporanPiutang.php?petugas="+var.getkode().replaceAll(" ","_")+"&tanggal="+Tanggal.getSelectedItem().toString().replaceAll(" ","_"));
+            
+            Valid.panggilUrl("billing/LaporanPiutang.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+Tanggal.getSelectedItem().toString().replaceAll(" ","_"));
         }
         this.setCursor(Cursor.getDefaultCursor());    
 }//GEN-LAST:event_ppNotaPiutangBtnPrintActionPerformed
@@ -1075,8 +1083,8 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getbayar_piutang());
-        BtnHapus.setEnabled(var.getbayar_piutang());
-        BtnPrint.setEnabled(var.getbayar_piutang());
+        BtnSimpan.setEnabled(akses.getbayar_piutang());
+        BtnHapus.setEnabled(akses.getbayar_piutang());
+        BtnPrint.setEnabled(akses.getbayar_piutang());
     }
 }

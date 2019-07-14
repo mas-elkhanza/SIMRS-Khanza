@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -223,38 +223,86 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
 
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
             TCariMedis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilMedis();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilMedis();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilMedis();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariMedis.getText().length()>2){
+                        tampilMedis();
+                    }
+                }
             });
             TCariNonMedis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilNonMedis();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCariNonMedis.getText().length()>2){
+                        tampilNonMedis();
+                    }
+                }
             });
             Komponen.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilKomponen();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Komponen.getText().length()>2){
+                        tampilKomponen();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilKomponen();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Komponen.getText().length()>2){
+                        tampilKomponen();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilKomponen();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Komponen.getText().length()>2){
+                        tampilKomponen();
+                    }
+                }
             });
             
             TCari.setDocument(new batasInput((byte)100).getKata(TCari));
@@ -354,7 +402,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Input Data Pemisahan Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Input Data Pemisahan Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -363,7 +411,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(450, 77));
         panelisi5.setLayout(new java.awt.GridLayout(2, 0));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
@@ -437,7 +485,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
 
         panelisi5.add(jPanel3);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         jPanel4.setName("jPanel4"); // NOI18N
         jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(300, 202));
@@ -538,10 +586,10 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label32);
-        label32.setBounds(220, 12, 57, 23);
+        label32.setBounds(205, 12, 57, 23);
 
         Tanggal.setEditable(false);
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-01-2017" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -550,23 +598,22 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Tanggal);
-        Tanggal.setBounds(280, 12, 95, 23);
+        Tanggal.setBounds(265, 12, 90, 23);
 
         jLabel8.setText("Dinas :");
         jLabel8.setName("jLabel8"); // NOI18N
         panelisi4.add(jLabel8);
-        jLabel8.setBounds(387, 12, 50, 23);
+        jLabel8.setBounds(365, 12, 50, 23);
 
         Dinas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pagi", "Siang", "Sore", "Malam" }));
         Dinas.setName("Dinas"); // NOI18N
-        Dinas.setOpaque(false);
         Dinas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DinasKeyPressed(evt);
             }
         });
         panelisi4.add(Dinas);
-        Dinas.setBounds(440, 12, 70, 23);
+        Dinas.setBounds(418, 12, 90, 23);
 
         KodePetugas.setName("KodePetugas"); // NOI18N
         KodePetugas.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -729,14 +776,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPMedis.setForeground(new java.awt.Color(70,70,70));
+        ppTampilkanBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPMedis.setText("Tampilkan Penggunaan BHP Medis");
         ppTampilkanBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPMedis.setIconTextGap(8);
         ppTampilkanBHPMedis.setName("ppTampilkanBHPMedis"); // NOI18N
         ppTampilkanBHPMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -746,14 +792,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPMedis);
 
-        ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(70,70,70));
+        ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPPenunjang.setText("Tampilkan Penggunaan BHP Non Medis");
         ppTampilkanBHPPenunjang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPPenunjang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPPenunjang.setIconTextGap(8);
         ppTampilkanBHPPenunjang.setName("ppTampilkanBHPPenunjang"); // NOI18N
         ppTampilkanBHPPenunjang.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPPenunjang.addActionListener(new java.awt.event.ActionListener() {
@@ -763,14 +808,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjang);
 
-        ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjangDanMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(70,70,70));
+        ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppTampilkanBHPPenunjangDanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setText("Tampilkan Penggunaan BHP Medis & Non Medis");
         ppTampilkanBHPPenunjangDanMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanBHPPenunjangDanMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanBHPPenunjangDanMedis.setIconTextGap(8);
         ppTampilkanBHPPenunjangDanMedis.setName("ppTampilkanBHPPenunjangDanMedis"); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppTampilkanBHPPenunjangDanMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -780,14 +824,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanBHPPenunjangDanMedis);
 
-        ppHapusBHPMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPMedis.setForeground(new java.awt.Color(70,70,70));
+        ppHapusBHPMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPMedis.setText("Hapus Penggunaan BHP Medis");
         ppHapusBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPMedis.setIconTextGap(8);
         ppHapusBHPMedis.setName("ppHapusBHPMedis"); // NOI18N
         ppHapusBHPMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -797,14 +840,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPMedis);
 
-        ppHapusBHPNonMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusBHPNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPNonMedis.setForeground(new java.awt.Color(70,70,70));
+        ppHapusBHPNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPNonMedis.setText("Hapus Penggunaan BHP Non Medis");
         ppHapusBHPNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPNonMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPNonMedis.setIconTextGap(8);
         ppHapusBHPNonMedis.setName("ppHapusBHPNonMedis"); // NOI18N
         ppHapusBHPNonMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPNonMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -814,14 +856,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPNonMedis);
 
-        ppHapusBHPMedisDanNonMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusBHPMedisDanNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedisDanNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(70,70,70));
+        ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusBHPMedisDanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPMedisDanNonMedis.setText("Hapus Penggunaan BHP Medis & Non Medis");
         ppHapusBHPMedisDanNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusBHPMedisDanNonMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusBHPMedisDanNonMedis.setIconTextGap(8);
         ppHapusBHPMedisDanNonMedis.setName("ppHapusBHPMedisDanNonMedis"); // NOI18N
         ppHapusBHPMedisDanNonMedis.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusBHPMedisDanNonMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -831,14 +872,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapusBHPMedisDanNonMedis);
 
-        ppHapusPemisahan.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusPemisahan.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusPemisahan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusPemisahan.setForeground(new java.awt.Color(70,70,70));
+        ppHapusPemisahan.setForeground(new java.awt.Color(70, 70, 70));
         ppHapusPemisahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusPemisahan.setText("Hapus Pemisahan Komponen");
         ppHapusPemisahan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusPemisahan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapusPemisahan.setIconTextGap(8);
         ppHapusPemisahan.setName("ppHapusPemisahan"); // NOI18N
         ppHapusPemisahan.setPreferredSize(new java.awt.Dimension(280, 25));
         ppHapusPemisahan.addActionListener(new java.awt.event.ActionListener() {
@@ -857,7 +897,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemisahan Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemisahan Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -876,9 +916,8 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         jLabel20.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi2.add(jLabel20);
 
-        TanggalCari1.setEditable(false);
         TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-01-2017" }));
+        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2019" }));
         TanggalCari1.setDisplayFormat("dd-MM-yyyy");
         TanggalCari1.setName("TanggalCari1"); // NOI18N
         TanggalCari1.setOpaque(false);
@@ -891,9 +930,8 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelisi2.add(jLabel21);
 
-        TanggalCari2.setEditable(false);
         TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-01-2017" }));
+        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2019" }));
         TanggalCari2.setDisplayFormat("dd-MM-yyyy");
         TanggalCari2.setName("TanggalCari2"); // NOI18N
         TanggalCari2.setOpaque(false);
@@ -1040,7 +1078,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbPemisahan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPemisahan.setComponentPopupMenu(jPopupMenu1);
         tbPemisahan.setName("tbPemisahan"); // NOI18N
         tbPemisahan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1132,15 +1169,14 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }           
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptUTDPemisahanKomponen.jrxml","report","::[ Data Pemisahan Komponen Darah ]::",
-                "select * from temporary order by no asc",param);
+            Valid.MyReport("rptUTDPemisahanKomponen.jasper","report","::[ Data Pemisahan Komponen Darah ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1411,7 +1447,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(jml==0){
             Valid.textKosong(Komponen,"Data Komponen Darah");
         }else{            
-            Sequel.AutoComitFalse();
+            
             if(Sequel.menyimpantf("utd_pemisahan_komponen","?,?,?,?","Nomor Donor",4,new String[]{
                 NomorDonor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Dinas.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
@@ -1471,7 +1507,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 tampil();
                 JOptionPane.showMessageDialog(null,"Proses simpan selesai..!!!");
             }
-            Sequel.AutoComitTrue();            
+                        
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1510,7 +1546,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         pscekmedis=koneksi.prepareStatement(sqlpscekmedis);
                         try {
                             pscekmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1530,7 +1566,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_medis_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {
@@ -1554,7 +1590,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         psceknonmedis=koneksi.prepareStatement(sqlpsceknonmedis);
                         try {
                             psceknonmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1574,7 +1610,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_penunjang_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {
@@ -1598,7 +1634,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
-                        Sequel.AutoComitFalse();
+                        
                         pscekmedis=koneksi.prepareStatement(sqlpscekmedis);
                         try {
                             pscekmedis.setString(1,tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
@@ -1637,7 +1673,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                         }
                         Sequel.meghapus("utd_penggunaan_penunjang_pemisahan_komponen","no_donor",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        Sequel.AutoComitTrue();
+                        
                         tampil();
                         emptTeks();
                     } catch (Exception e) {
@@ -2016,11 +2052,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.getutd_pemisahan_darah());
-        BtnPrint.setEnabled(var.getutd_pemisahan_darah());
-        btnTambahKomponen.setEnabled(var.getutd_komponen_darah());
-        if(var.getjml2()>=1){
-            KodePetugas.setText(var.getkode());
+        BtnTambah.setEnabled(akses.getutd_pemisahan_darah());
+        BtnPrint.setEnabled(akses.getutd_pemisahan_darah());
+        btnTambahKomponen.setEnabled(akses.getutd_komponen_darah());
+        if(akses.getjml2()>=1){
+            KodePetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NamaPetugas,KodePetugas.getText());
         } 
     }

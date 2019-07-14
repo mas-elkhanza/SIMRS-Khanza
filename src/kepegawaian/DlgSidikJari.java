@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -74,14 +74,26 @@ public final class DlgSidikJari extends javax.swing.JDialog {
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         try{
@@ -131,7 +143,6 @@ public final class DlgSidikJari extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbBangsal.setAutoCreateRowSorter(true);
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
@@ -301,14 +312,14 @@ public final class DlgSidikJari extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){              
                 Map<String, Object> param = new HashMap<>();
                 param.put("parameter","%"+TCari.getText().trim()+"%");     
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSidikJari.jrxml","report","::[ Data Sidik Jari ]::",
+                Valid.MyReportqry("rptSidikJari.jasper","report","::[ Data Sidik Jari ]::",
                     "select  pegawai.id,pegawai.nik,pegawai.nama,sidikjari.sidikjari  from pegawai "+
                     "inner join sidikjari on pegawai.id=sidikjari.id where pegawai.nik like '%"+TCari.getText().trim()+"%' "+
                     "or pegawai.nama like '%"+TCari.getText().trim()+"%' order by pegawai.nik",param);
@@ -412,8 +423,8 @@ public final class DlgSidikJari extends javax.swing.JDialog {
     }
        
      public void isCek(){
-        BtnHapus.setEnabled(var.getsidikjari());
-        BtnPrint.setEnabled(var.getsidikjari());
+        BtnHapus.setEnabled(akses.getsidikjari());
+        BtnPrint.setEnabled(akses.getsidikjari());
      }
 
 }

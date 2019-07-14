@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -86,14 +86,26 @@ public class UTDStokDarah extends javax.swing.JDialog {
         NoKantong.setDocument(new batasInput((byte)20).getKata(NoKantong));
         KodeKomponen.setDocument(new batasInput((byte)5).getKata(KodeKomponen));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }   
         
@@ -208,14 +220,13 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
+        ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70,70,70));
+        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
         ppCetak.setName("ppCetak"); // NOI18N
         ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
         ppCetak.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +245,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -343,14 +354,13 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         GolonganDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "AB", "B", "O" }));
         GolonganDarah.setName("GolonganDarah"); // NOI18N
-        GolonganDarah.setOpaque(false);
         GolonganDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GolonganDarahKeyPressed(evt);
             }
         });
         FormInput.add(GolonganDarah);
-        GolonganDarah.setBounds(398, 72, 60, 23);
+        GolonganDarah.setBounds(398, 72, 65, 23);
 
         jLabel11.setText("Resus :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -359,17 +369,15 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         Resus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(-)", "(+)" }));
         Resus.setName("Resus"); // NOI18N
-        Resus.setOpaque(false);
         Resus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ResusKeyPressed(evt);
             }
         });
         FormInput.add(Resus);
-        Resus.setBounds(294, 72, 60, 23);
+        Resus.setBounds(294, 72, 65, 23);
 
-        Aftap.setEditable(false);
-        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
+        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Aftap.setDisplayFormat("dd-MM-yyyy");
         Aftap.setName("Aftap"); // NOI18N
         Aftap.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -386,8 +394,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(label32);
         label32.setBounds(0, 72, 85, 23);
 
-        Kadaluarsa.setEditable(false);
-        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
+        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Kadaluarsa.setDisplayFormat("dd-MM-yyyy");
         Kadaluarsa.setName("Kadaluarsa"); // NOI18N
         Kadaluarsa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -411,14 +418,13 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         Asal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Produksi Sendiri", "Hibah", "Beli" }));
         Asal.setName("Asal"); // NOI18N
-        Asal.setOpaque(false);
         Asal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 AsalKeyPressed(evt);
             }
         });
         FormInput.add(Asal);
-        Asal.setBounds(294, 102, 164, 23);
+        Asal.setBounds(294, 102, 169, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -457,18 +463,16 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         panelCari.setName("panelCari"); // NOI18N
         panelCari.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
+        panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 7));
 
         jLabel14.setText("Status :");
         jLabel14.setName("jLabel14"); // NOI18N
-        jLabel14.setPreferredSize(new java.awt.Dimension(55, 23));
+        jLabel14.setPreferredSize(new java.awt.Dimension(45, 23));
         panelCari.add(jLabel14);
 
-        CmbCrStatus.setForeground(new java.awt.Color(70,70,70));
         CmbCrStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Diambil", "Dimusnahkan" }));
         CmbCrStatus.setName("CmbCrStatus"); // NOI18N
-        CmbCrStatus.setOpaque(false);
-        CmbCrStatus.setPreferredSize(new java.awt.Dimension(95, 23));
+        CmbCrStatus.setPreferredSize(new java.awt.Dimension(125, 23));
         CmbCrStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbCrStatusItemStateChanged(evt);
@@ -478,13 +482,12 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         jLabel13.setText("Resus :");
         jLabel13.setName("jLabel13"); // NOI18N
-        jLabel13.setPreferredSize(new java.awt.Dimension(55, 23));
+        jLabel13.setPreferredSize(new java.awt.Dimension(43, 23));
         panelCari.add(jLabel13);
 
         CmbCariResus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(-)", "(+)" }));
         CmbCariResus.setName("CmbCariResus"); // NOI18N
-        CmbCariResus.setOpaque(false);
-        CmbCariResus.setPreferredSize(new java.awt.Dimension(50, 23));
+        CmbCariResus.setPreferredSize(new java.awt.Dimension(65, 23));
         CmbCariResus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbCariResusItemStateChanged(evt);
@@ -499,13 +502,12 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         jLabel17.setText("G.D.:");
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(55, 23));
+        jLabel17.setPreferredSize(new java.awt.Dimension(37, 23));
         panelCari.add(jLabel17);
 
         CmbCariGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "AB", "B", "O" }));
         CmbCariGd.setName("CmbCariGd"); // NOI18N
-        CmbCariGd.setOpaque(false);
-        CmbCariGd.setPreferredSize(new java.awt.Dimension(50, 23));
+        CmbCariGd.setPreferredSize(new java.awt.Dimension(65, 23));
         CmbCariGd.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbCariGdItemStateChanged(evt);
@@ -520,13 +522,12 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         jLabel18.setText("Asal Darah :");
         jLabel18.setName("jLabel18"); // NOI18N
-        jLabel18.setPreferredSize(new java.awt.Dimension(90, 23));
+        jLabel18.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(jLabel18);
 
         CmbCariAsal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Produksi Sendiri", "Hibah", "Beli" }));
         CmbCariAsal.setName("CmbCariAsal"); // NOI18N
-        CmbCariAsal.setOpaque(false);
-        CmbCariAsal.setPreferredSize(new java.awt.Dimension(120, 23));
+        CmbCariAsal.setPreferredSize(new java.awt.Dimension(140, 23));
         CmbCariAsal.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbCariAsalItemStateChanged(evt);
@@ -849,15 +850,15 @@ public class UTDStokDarah extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));                 
             if(panelCari.isVisible()==false){
-                Valid.MyReport("rptUTDStokDarah.jrxml","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
@@ -874,7 +875,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                     "utd_stok_darah.status='Ada' and utd_stok_darah.status like '%"+TCari.getText().trim()+"%' "+
                     "order by utd_stok_darah.tanggal_kadaluarsa",param);            
             }else{
-                Valid.MyReport("rptUTDStokDarah.jrxml","report","::[ Data Stok Darah ]::",
+                Valid.MyReportqry("rptUTDStokDarah.jasper","report","::[ Data Stok Darah ]::",
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
                     "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
@@ -1242,10 +1243,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getutd_stok_darah());
-        BtnHapus.setEnabled(var.getutd_stok_darah());
-        BtnEdit.setEnabled(var.getutd_stok_darah());
-        BtnPrint.setEnabled(var.getutd_stok_darah());
+        BtnSimpan.setEnabled(akses.getutd_stok_darah());
+        BtnHapus.setEnabled(akses.getutd_stok_darah());
+        BtnEdit.setEnabled(akses.getutd_stok_darah());
+        BtnPrint.setEnabled(akses.getutd_stok_darah());
     }
     
     private void isForm(){

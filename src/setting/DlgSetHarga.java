@@ -367,14 +367,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppUPdate.setBackground(new java.awt.Color(255, 255, 255));
+        ppUPdate.setBackground(new java.awt.Color(255, 255, 254));
         ppUPdate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppUPdate.setForeground(new java.awt.Color(70, 70, 70));
         ppUPdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUPdate.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUPdate.setIconTextGap(8);
         ppUPdate.setName("ppUPdate"); // NOI18N
         ppUPdate.setPreferredSize(new java.awt.Dimension(300, 25));
         ppUPdate.addActionListener(new java.awt.event.ActionListener() {
@@ -386,14 +385,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         Popup1.setName("Popup1"); // NOI18N
 
-        ppUPdate1.setBackground(new java.awt.Color(255, 255, 255));
+        ppUPdate1.setBackground(new java.awt.Color(255, 255, 254));
         ppUPdate1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppUPdate1.setForeground(new java.awt.Color(70, 70, 70));
         ppUPdate1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate1.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUPdate1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUPdate1.setIconTextGap(8);
         ppUPdate1.setName("ppUPdate1"); // NOI18N
         ppUPdate1.setPreferredSize(new java.awt.Dimension(300, 25));
         ppUPdate1.addActionListener(new java.awt.event.ActionListener() {
@@ -405,14 +403,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         Popup2.setName("Popup2"); // NOI18N
 
-        ppUPdate2.setBackground(new java.awt.Color(255, 255, 255));
+        ppUPdate2.setBackground(new java.awt.Color(255, 255, 254));
         ppUPdate2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppUPdate2.setForeground(new java.awt.Color(70, 70, 70));
         ppUPdate2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate2.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUPdate2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUPdate2.setIconTextGap(8);
         ppUPdate2.setName("ppUPdate2"); // NOI18N
         ppUPdate2.setPreferredSize(new java.awt.Dimension(300, 25));
         ppUPdate2.addActionListener(new java.awt.event.ActionListener() {
@@ -532,8 +529,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
-        TabSetting.setBackground(new java.awt.Color(255, 255, 253));
-        TabSetting.setBorder(null);
+        TabSetting.setBackground(new java.awt.Color(255, 255, 254));
         TabSetting.setForeground(new java.awt.Color(70, 70, 70));
         TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSetting.setName("TabSetting"); // NOI18N
@@ -579,7 +575,6 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         cmbPengaturan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Umum", "Per Jenis", "Per Barang" }));
         cmbPengaturan.setName("cmbPengaturan"); // NOI18N
-        cmbPengaturan.setOpaque(false);
         cmbPengaturan.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbPengaturan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -596,7 +591,6 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         cmbHargaDasar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Harga Beli", "Harga Diskon" }));
         cmbHargaDasar.setName("cmbHargaDasar"); // NOI18N
-        cmbHargaDasar.setOpaque(false);
         cmbHargaDasar.setPreferredSize(new java.awt.Dimension(55, 28));
         cmbHargaDasar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

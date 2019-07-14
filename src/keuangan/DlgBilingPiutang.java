@@ -15,7 +15,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -185,7 +185,6 @@ public class DlgBilingPiutang extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbAdmin.setAutoCreateRowSorter(true);
-        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAdmin.setName("tbAdmin"); // NOI18N
         Scroll.setViewportView(tbAdmin);
 
@@ -299,7 +298,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                         totalx+"','"+tabModeRwJlDr.getValueAt(r,8).toString().replaceAll("'","`")+"','','','','','','','','',''","Rekap Nota Pembayaran"); 
                     }              
                 }
-                Valid.panggilUrl("billing/LaporanBilling2.php?petugas="+var.getkode().replaceAll(" ","_")+"&ttl="+totalx);
+                Valid.panggilUrl("billing/LaporanBilling2.php?petugas="+akses.getkode().replaceAll(" ","_")+"&ttl="+totalx);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -325,7 +324,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         i=Sequel.cariInteger("select count(no_rawat) from bayar_piutang where no_rawat=?",TNoRw.getText());
         if(i==0){
-            Sequel.AutoComitFalse();
+            
             jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau menghapus PIUTANG ini ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");  
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");  
@@ -375,7 +374,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         //jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG RAWAT JALAN");
                     }
 
-                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT JALAN");
+                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT JALAN"+", OLEH "+akses.getkode());
                 }else if(status.equals("Ranap")){
                     Sequel.queryu2("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
                     Sequel.queryu2("delete from tampjurnal");                    
@@ -440,11 +439,11 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                          //jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG RAWAT INAP");
                     }  
 
-                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT INAP");
+                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT INAP"+", OLEH "+akses.getkode());
                 }
                 this.setCursor(Cursor.getDefaultCursor());
             }
-            Sequel.AutoComitTrue();
+            
             JOptionPane.showMessageDialog(null,"Proses hapus selesai, silahkan lakukan refresh\ndi form Data Tagihan Piutang Pasien..!!");
             this.dispose();
         }else{

@@ -9,7 +9,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -514,13 +514,11 @@ public class PanelResume extends widget.panelisi {
 
         Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll12.setOpaque(true);
-
-        tbRegistrasi.setToolTipText("Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan");
         Scroll12.setViewportView(tbRegistrasi);
 
         internalFrame14.add(Scroll12, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Registrasi", internalFrame14);
+        TabRawat.addTab("Kunjungan", internalFrame14);
 
         internalFrame15.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame15.setBorder(null);
@@ -672,7 +670,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -681,7 +679,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi").executeQuery();
                         }
                             
                         urut=1;
@@ -865,8 +863,9 @@ public class PanelResume extends widget.panelisi {
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
                                         "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, "+
-                                        "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl from pemeriksaan_ralan where "+
-                                        "pemeriksaan_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl,"+
+                                        "pemeriksaan_ralan.penilaian from pemeriksaan_ralan where "+
+                                        "pemeriksaan_ralan.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
                                       "<tr class='isi'>"+ 
@@ -923,13 +922,13 @@ public class PanelResume extends widget.panelisi {
                                                  "</tr>");
                                         }
                                         
-                                        if(!rs3.getString("alergi").equals("")){
+                                        if(!rs3.getString("penilaian").equals("")){
                                             htmlContent.append(
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Alergi</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
+                                                    "<td valign='top' colspan='2'>Penilaian</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -940,6 +939,16 @@ public class PanelResume extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("alergi").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Alergi</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
                                                  "</tr>");
                                         }
                                             
@@ -968,7 +977,7 @@ public class PanelResume extends widget.panelisi {
                                         "pemeriksaan_obstetri_ralan.penurunan, pemeriksaan_obstetri_ralan.denominator, pemeriksaan_obstetri_ralan.ketuban, pemeriksaan_obstetri_ralan.feto " +
                                         "from pasien inner join reg_periksa inner join pemeriksaan_obstetri_ralan "+
                                         "on pemeriksaan_obstetri_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                                        "pemeriksaan_obstetri_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "pemeriksaan_obstetri_ralan.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_obstetri_ralan.tgl_perawatan,pemeriksaan_obstetri_ralan.jam_rawat").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
                                       "<tr class='isi'>"+ 
@@ -1095,7 +1104,7 @@ public class PanelResume extends widget.panelisi {
                                         "pemeriksaan_ginekologi_ralan.cavum_douglas " +
                                         "from pasien inner join reg_periksa inner join pemeriksaan_ginekologi_ralan "+
                                         "on pemeriksaan_ginekologi_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                                        "pemeriksaan_ginekologi_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "pemeriksaan_ginekologi_ralan.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ginekologi_ralan.tgl_perawatan,pemeriksaan_ginekologi_ralan.jam_rawat").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
                                       "<tr class='isi'>"+ 
@@ -1192,8 +1201,9 @@ public class PanelResume extends widget.panelisi {
                             try {
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi," +
-                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan," +
-                                        "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
+                                        "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat "+
+                                        "from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
                                       "<tr class='isi'>"+ 
@@ -1249,6 +1259,26 @@ public class PanelResume extends widget.panelisi {
                                                  "</tr>");
                                         }
                                         
+                                        if(!rs3.getString("penilaian").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Penilaian</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("rtl").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
                                         if(!rs3.getString("alergi").equals("")){
                                             htmlContent.append(
                                                  "<tr>"+
@@ -1284,7 +1314,7 @@ public class PanelResume extends widget.panelisi {
                                         "pemeriksaan_obstetri_ranap.penurunan, pemeriksaan_obstetri_ranap.denominator, pemeriksaan_obstetri_ranap.ketuban, pemeriksaan_obstetri_ranap.feto " +
                                         "from pasien inner join reg_periksa inner join pemeriksaan_obstetri_ranap "+
                                         "on pemeriksaan_obstetri_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                                        "pemeriksaan_obstetri_ranap.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "pemeriksaan_obstetri_ranap.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_obstetri_ranap.tgl_perawatan,pemeriksaan_obstetri_ranap.jam_rawat").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
                                       "<tr class='isi'>"+ 
@@ -1411,7 +1441,7 @@ public class PanelResume extends widget.panelisi {
                                         "pemeriksaan_ginekologi_ranap.cavum_douglas " +
                                         "from pasien inner join reg_periksa inner join pemeriksaan_ginekologi_ranap "+
                                         "on pemeriksaan_ginekologi_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                                        "pemeriksaan_ginekologi_ranap.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "pemeriksaan_ginekologi_ranap.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ginekologi_ranap.tgl_perawatan,pemeriksaan_ginekologi_ranap.jam_rawat").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
                                       "<tr class='isi'>"+ 
@@ -1799,7 +1829,7 @@ public class PanelResume extends widget.panelisi {
                                         "kamar_inap.stts_pulang,kamar_inap.lama,kamar_inap.jam_masuk,kamar_inap.jam_keluar,"+
                                         "kamar_inap.ttl_biaya from kamar_inap inner join bangsal inner join kamar "+
                                         "on kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  "+
-                                        "where kamar_inap.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "where kamar_inap.no_rawat='"+rs2.getString("no_rawat")+"' order by kamar_inap.tgl_masuk,kamar_inap.jam_masuk").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -1858,7 +1888,7 @@ public class PanelResume extends widget.panelisi {
                                         "operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
                                         "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+"+
                                         "operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as total from operasi inner join paket_operasi "+
-                                        "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"' order by operasi.tgl_operasi").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -1974,7 +2004,7 @@ public class PanelResume extends widget.panelisi {
                                      "jns_perawatan_radiologi.nm_perawatan,petugas.nama,periksa_radiologi.biaya,periksa_radiologi.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_radiologi inner join jns_perawatan_radiologi inner join petugas inner join dokter "+
                                      "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw and periksa_radiologi.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_radiologi.nip=petugas.nip  where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "and periksa_radiologi.nip=petugas.nip  where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_radiologi.tgl_periksa,periksa_radiologi.jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -2017,7 +2047,7 @@ public class PanelResume extends widget.panelisi {
                             //hasil pemeriksaan radiologi
                             try{
                                 rs3=koneksi.prepareStatement(
-                                     "select tgl_periksa,jam, hasil from hasil_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "select tgl_periksa,jam, hasil from hasil_radiologi where no_rawat='"+rs2.getString("no_rawat")+"' order by tgl_periksa,jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -2052,7 +2082,7 @@ public class PanelResume extends widget.panelisi {
                             //gambar pemeriksaan radiologi
                             try{
                                 rs3=koneksi.prepareStatement(
-                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"' order by tgl_periksa,jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -2069,7 +2099,7 @@ public class PanelResume extends widget.panelisi {
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -2091,7 +2121,7 @@ public class PanelResume extends widget.panelisi {
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.kd_jenis_prw").executeQuery();
+                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
                                 if(rs3.next()){
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
@@ -2195,7 +2225,7 @@ public class PanelResume extends widget.panelisi {
                                       "</table>");
                                 }                                
                             } catch (Exception e) {
-                                System.out.println("Notifikasi : "+e);
+                                System.out.println("Notifikasi Lab : "+e);
                             } finally{
                                 if(rs3!=null){
                                     rs3.close();
@@ -2209,7 +2239,7 @@ public class PanelResume extends widget.panelisi {
                                     "detail_pemberian_obat.kode_brng,detail_pemberian_obat.jml,detail_pemberian_obat.total,"+
                                     "databarang.nama_brng from detail_pemberian_obat inner join databarang "+
                                     "on detail_pemberian_obat.kode_brng=databarang.kode_brng  "+
-                                    "where detail_pemberian_obat.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                    "where detail_pemberian_obat.no_rawat='"+rs2.getString("no_rawat")+"' order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -2255,7 +2285,7 @@ public class PanelResume extends widget.panelisi {
                                     "select beri_obat_operasi.tanggal,beri_obat_operasi.kd_obat,beri_obat_operasi.hargasatuan,obatbhp_ok.kode_sat, "+
                                     "beri_obat_operasi.jumlah, obatbhp_ok.nm_obat,(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) as total "+
                                     "from beri_obat_operasi inner join obatbhp_ok  on  beri_obat_operasi.kd_obat=obatbhp_ok.kd_obat  "+
-                                    "where beri_obat_operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                    "where beri_obat_operasi.no_rawat='"+rs2.getString("no_rawat")+"' order by beri_obat_operasi.tanggal").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -2474,7 +2504,7 @@ public class PanelResume extends widget.panelisi {
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -2607,7 +2637,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -2616,7 +2646,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -2828,7 +2858,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -2837,7 +2867,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -3049,7 +3079,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -3058,7 +3088,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -3375,7 +3405,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -3384,7 +3414,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -3707,7 +3737,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -3716,7 +3746,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -3801,7 +3831,7 @@ public class PanelResume extends widget.panelisi {
                                         "operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
                                         "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+"+
                                         "operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as total from operasi inner join paket_operasi "+
-                                        "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"' order by operasi.tgl_operasi").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -4028,7 +4058,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -4037,7 +4067,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -4110,7 +4140,7 @@ public class PanelResume extends widget.panelisi {
                                      "jns_perawatan_radiologi.nm_perawatan,petugas.nama,periksa_radiologi.biaya,periksa_radiologi.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_radiologi inner join jns_perawatan_radiologi inner join petugas inner join dokter "+
                                      "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw and periksa_radiologi.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_radiologi.nip=petugas.nip  where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "and periksa_radiologi.nip=petugas.nip  where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_radiologi.tgl_periksa,periksa_radiologi.jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -4153,7 +4183,7 @@ public class PanelResume extends widget.panelisi {
                             //hasil pemeriksaan radiologi
                             try{
                                 rs3=koneksi.prepareStatement(
-                                     "select tgl_periksa,jam, hasil from hasil_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "select tgl_periksa,jam, hasil from hasil_radiologi where no_rawat='"+rs2.getString("no_rawat")+"' order by tgl_periksa,jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -4188,7 +4218,7 @@ public class PanelResume extends widget.panelisi {
                             //gambar pemeriksaan radiologi
                             try{
                                 rs3=koneksi.prepareStatement(
-                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"' order by tgl_periksa,jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -4205,7 +4235,7 @@ public class PanelResume extends widget.panelisi {
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -4338,7 +4368,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -4347,7 +4377,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -4420,7 +4450,7 @@ public class PanelResume extends widget.panelisi {
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.kd_jenis_prw").executeQuery();
+                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
                                 if(rs3.next()){ 
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
@@ -4649,7 +4679,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -4658,7 +4688,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -4731,7 +4761,7 @@ public class PanelResume extends widget.panelisi {
                                     "detail_pemberian_obat.kode_brng,detail_pemberian_obat.jml,detail_pemberian_obat.total,"+
                                     "databarang.nama_brng from detail_pemberian_obat inner join databarang "+
                                     "on detail_pemberian_obat.kode_brng=databarang.kode_brng  "+
-                                    "where detail_pemberian_obat.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                    "where detail_pemberian_obat.no_rawat='"+rs2.getString("no_rawat")+"' order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -4931,7 +4961,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -4940,7 +4970,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -5012,7 +5042,7 @@ public class PanelResume extends widget.panelisi {
                                     "select beri_obat_operasi.tanggal,beri_obat_operasi.kd_obat,beri_obat_operasi.hargasatuan,obatbhp_ok.kode_sat, "+
                                     "beri_obat_operasi.jumlah, obatbhp_ok.nm_obat,(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) as total "+
                                     "from beri_obat_operasi inner join obatbhp_ok  on  beri_obat_operasi.kd_obat=obatbhp_ok.kd_obat  "+
-                                    "where beri_obat_operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                    "where beri_obat_operasi.no_rawat='"+rs2.getString("no_rawat")+"' order by beri_obat_operasi.tanggal").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -5168,7 +5198,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -5177,7 +5207,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -5405,7 +5435,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -5414,7 +5444,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -5501,7 +5531,7 @@ public class PanelResume extends widget.panelisi {
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -5769,7 +5799,7 @@ public class PanelResume extends widget.panelisi {
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
                                    "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
-                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }else{
                             rs2=koneksi.prepareStatement(
                                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -5778,7 +5808,7 @@ public class PanelResume extends widget.panelisi {
                                    "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
                                    "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                                    "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
-                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
                         }
                             
                         urut=1;
@@ -6025,7 +6055,7 @@ public class PanelResume extends widget.panelisi {
                 }else if(tabModeRegistrasi.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
                     Sequel.queryu("delete from temporary_resume");
-                    Sequel.AutoComitFalse();
+                    
                     for(int i=0;i<tabModeRegistrasi.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resume","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                             "0",tabModeRegistrasi.getValueAt(i,0).toString(),tabModeRegistrasi.getValueAt(i,1).toString(),tabModeRegistrasi.getValueAt(i,2).toString(),
@@ -6034,17 +6064,16 @@ public class PanelResume extends widget.panelisi {
                             "","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    Sequel.AutoComitTrue();
+                    
                     Map<String, Object> param = new HashMap<>();  
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport2("rptRiwayatRegistrasi.jrxml","report","::[ Riwayat Registrasi ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_resume order by no asc",param);
+                    Valid.MyReport2("rptRiwayatRegistrasi.jasper","report","::[ Riwayat Registrasi ]::",param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
                 break;

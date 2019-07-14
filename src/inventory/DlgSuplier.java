@@ -4,15 +4,13 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -37,7 +35,7 @@ public class DlgSuplier extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Supplier","Nama Supplier","Alamat Supplier","Kota","No.Telp"};
+        Object[] row={"Kode Supplier","Nama Supplier","Alamat Supplier","Kota","No.Telp","Nama Bank","No.Rekening"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -46,18 +44,22 @@ public class DlgSuplier extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
             }else if(i==2){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(100);
             }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(100);
+            }else if(i==5){
+                column.setPreferredWidth(150);
+            }else if(i==6){
+                column.setPreferredWidth(100);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -66,16 +68,30 @@ public class DlgSuplier extends javax.swing.JDialog {
         Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
         Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));  
         Kota.setDocument(new batasInput((byte)20).getKata(Kota));    
+        Bank.setDocument(new batasInput((byte)30).getKata(Bank));    
+        NoRek.setDocument(new batasInput((byte)20).getKata(NoRek));    
         Telp.setDocument(new batasInput((byte)13).getOnlyAngka(Telp)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }   
         ChkInput.setSelected(false);
@@ -91,10 +107,6 @@ public class DlgSuplier extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppGanti = new javax.swing.JMenuItem();
-        ppHapus = new javax.swing.JMenuItem();
-        ppCetak = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
@@ -125,60 +137,11 @@ public class DlgSuplier extends javax.swing.JDialog {
         Alamat = new widget.TextBox();
         label29 = new widget.Label();
         Kota = new widget.TextBox();
+        Bank = new widget.TextBox();
+        label27 = new widget.Label();
+        NoRek = new widget.TextBox();
+        label28 = new widget.Label();
         ChkInput = new widget.CekBox();
-
-        Popup.setName("Popup"); // NOI18N
-
-        ppGanti.setBackground(new java.awt.Color(242, 242, 242));
-        ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(70,70,70));
-        ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        ppGanti.setText("Ganti");
-        ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppGanti.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGanti.setIconTextGap(8);
-        ppGanti.setName("ppGanti"); // NOI18N
-        ppGanti.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppGanti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        Popup.add(ppGanti);
-
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
-        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
-        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        ppHapus.setText("Hapus");
-        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
-        ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        Popup.add(ppHapus);
-
-        ppCetak.setBackground(new java.awt.Color(242, 242, 242));
-        ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70,70,70));
-        ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        ppCetak.setText("Cetak");
-        ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
-        ppCetak.setName("ppCetak"); // NOI18N
-        ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppCetak);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -189,7 +152,7 @@ public class DlgSuplier extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Supplier Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Supplier Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -381,7 +344,6 @@ public class DlgSuplier extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
-        scrollPane1.setComponentPopupMenu(Popup);
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -398,7 +360,6 @@ public class DlgSuplier extends javax.swing.JDialog {
             }
         ));
         tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -426,7 +387,7 @@ public class DlgSuplier extends javax.swing.JDialog {
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label12);
-        label12.setBounds(10, 12, 95, 23);
+        label12.setBounds(0, 12, 90, 23);
 
         Kd.setName("Kd"); // NOI18N
         Kd.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -436,7 +397,7 @@ public class DlgSuplier extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kd);
-        Kd.setBounds(109, 12, 100, 23);
+        Kd.setBounds(94, 12, 100, 23);
 
         Nm.setName("Nm"); // NOI18N
         Nm.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -446,30 +407,30 @@ public class DlgSuplier extends javax.swing.JDialog {
             }
         });
         FormInput.add(Nm);
-        Nm.setBounds(109, 42, 380, 23);
+        Nm.setBounds(94, 42, 310, 23);
 
         label18.setText("Nama Supplier :");
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label18);
-        label18.setBounds(10, 42, 95, 23);
+        label18.setBounds(0, 42, 90, 23);
 
         label26.setText("No.Telp :");
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label26);
-        label26.setBounds(493, 42, 90, 23);
+        label26.setBounds(200, 12, 80, 23);
 
         Telp.setName("Telp"); // NOI18N
         Telp.setPreferredSize(new java.awt.Dimension(207, 23));
-        Telp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                TelpMouseExited(evt);
-            }
-        });
         Telp.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 TelpMouseMoved(evt);
+            }
+        });
+        Telp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TelpMouseExited(evt);
             }
         });
         Telp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -478,13 +439,13 @@ public class DlgSuplier extends javax.swing.JDialog {
             }
         });
         FormInput.add(Telp);
-        Telp.setBounds(587, 42, 140, 23);
+        Telp.setBounds(284, 12, 120, 23);
 
         label31.setText("Alamat :");
         label31.setName("label31"); // NOI18N
         label31.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label31);
-        label31.setBounds(10, 72, 95, 23);
+        label31.setBounds(0, 72, 90, 23);
 
         Alamat.setName("Alamat"); // NOI18N
         Alamat.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -494,13 +455,13 @@ public class DlgSuplier extends javax.swing.JDialog {
             }
         });
         FormInput.add(Alamat);
-        Alamat.setBounds(109, 72, 380, 23);
+        Alamat.setBounds(94, 72, 310, 23);
 
         label29.setText("Kota :");
         label29.setName("label29"); // NOI18N
         label29.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label29);
-        label29.setBounds(493, 12, 90, 23);
+        label29.setBounds(426, 12, 100, 23);
 
         Kota.setName("Kota"); // NOI18N
         Kota.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -510,7 +471,39 @@ public class DlgSuplier extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kota);
-        Kota.setBounds(587, 12, 140, 23);
+        Kota.setBounds(530, 12, 190, 23);
+
+        Bank.setName("Bank"); // NOI18N
+        Bank.setPreferredSize(new java.awt.Dimension(207, 23));
+        Bank.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BankKeyPressed(evt);
+            }
+        });
+        FormInput.add(Bank);
+        Bank.setBounds(530, 42, 190, 23);
+
+        label27.setText("Bank Supplier :");
+        label27.setName("label27"); // NOI18N
+        label27.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label27);
+        label27.setBounds(426, 42, 100, 23);
+
+        NoRek.setName("NoRek"); // NOI18N
+        NoRek.setPreferredSize(new java.awt.Dimension(207, 23));
+        NoRek.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRekKeyPressed(evt);
+            }
+        });
+        FormInput.add(NoRek);
+        NoRek.setBounds(530, 72, 190, 23);
+
+        label28.setText("Rekening Suplier :");
+        label28.setName("label28"); // NOI18N
+        label28.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label28);
+        label28.setBounds(426, 72, 100, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -587,7 +580,7 @@ public class DlgSuplier extends javax.swing.JDialog {
 }//GEN-LAST:event_tbDokterKeyPressed
 
     private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyPressed
-       Valid.pindah(evt,Kd,Alamat);
+       Valid.pindah(evt,Telp,Alamat);
 }//GEN-LAST:event_NmKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
@@ -620,13 +613,16 @@ public class DlgSuplier extends javax.swing.JDialog {
             Valid.textKosong(Telp,"No.Telp");
         }else if(Kota.getText().trim().equals("")){
             Valid.textKosong(Kota,"Kota");
+        }else if(Bank.getText().trim().equals("")){
+            Valid.textKosong(Bank,"Nama Bank Suplier");
+        }else if(NoRek.getText().trim().equals("")){
+            Valid.textKosong(NoRek,"Nomer Rekening");
         }else{
-            Valid.editTable(tabMode,"datasuplier","kode_suplier","?","kode_suplier=?,nama_suplier=?,alamat=?,kota=?,no_telp=?",6,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
+            Valid.editTable(tabMode,"datasuplier","kode_suplier","?","kode_suplier=?,nama_suplier=?,alamat=?,kota=?,no_telp=?,nama_bank=?,rekening=?",8,new String[]{
+                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
             });
             if(tabMode.getRowCount()!=0){tampil();}
             emptTeks();
-
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -640,33 +636,28 @@ public class DlgSuplier extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            String sql="";
-            if(TCari.getText().equals("")){
-                sql="select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
-                    " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp from datasuplier order by datasuplier.kode_suplier";
-            }else if(!TCari.getText().equals("")){
-                sql="select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
-                    " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp from datasuplier "+
+            Map<String, Object> param = new HashMap<>(); 
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::",
+                    " select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
+                    " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
+                    " datasuplier.nama_bank,datasuplier.rekening from datasuplier "+
                     " where datasuplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+
                     " datasuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
                     " datasuplier.alamat like '%"+TCari.getText().trim()+"%' or "+
                     " datasuplier.kota like '%"+TCari.getText().trim()+"%' or "+
-                    " datasuplier.no_telp like '%"+TCari.getText().trim()+"%' order by datasuplier.kode_suplier";
-            } 
-            Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuplier.jrxml","report","::[ Data Suplier ]::",sql,param);            
+                    " datasuplier.nama_bank like '%"+TCari.getText().trim()+"%' or "+
+                    " datasuplier.no_telp like '%"+TCari.getText().trim()+"%' order by datasuplier.kode_suplier",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -713,12 +704,17 @@ public class DlgSuplier extends javax.swing.JDialog {
             Valid.textKosong(Telp,"No.Telp");
         }else if(Kota.getText().trim().equals("")){
             Valid.textKosong(Kota,"Kota");
+        }else if(Bank.getText().trim().equals("")){
+            Valid.textKosong(Bank,"Nama Bank Suplier");
+        }else if(NoRek.getText().trim().equals("")){
+            Valid.textKosong(NoRek,"Nomer Rekening");
         }else{
-            Sequel.menyimpan("datasuplier","?,?,?,?,?","Kode Supplier",5,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText()        
-            });
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("datasuplier","?,?,?,?,?,?,?","Kode Supplier",7,new String[]{
+                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText()
+            })==true){
+                tampil();
+                emptTeks();
+            }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -726,7 +722,7 @@ public class DlgSuplier extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Telp,BtnBatal);
+            Valid.pindah(evt,NoRek,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -743,7 +739,7 @@ public class DlgSuplier extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void TelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelpKeyPressed
-         Valid.pindah(evt,Kota,BtnSimpan);
+         Valid.pindah(evt,Kd,Nm);
     }//GEN-LAST:event_TelpKeyPressed
 
 private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
@@ -756,7 +752,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKeyPressed
-        Valid.pindah(evt,Telp,Nm,TCari);
+        Valid.pindah(evt,NoRek,Telp,TCari);
     }//GEN-LAST:event_KdKeyPressed
 
     private void TelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelpMouseExited
@@ -772,7 +768,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TelpMouseMoved
 
     private void KotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotaKeyPressed
-        Valid.pindah(evt,Alamat,Telp);
+        Valid.pindah(evt,Alamat,Bank);
     }//GEN-LAST:event_KotaKeyPressed
 
 private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -782,6 +778,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
     }//GEN-LAST:event_formWindowOpened
+
+    private void BankKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BankKeyPressed
+        Valid.pindah(evt,Kota,NoRek);
+    }//GEN-LAST:event_BankKeyPressed
+
+    private void NoRekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRekKeyPressed
+        Valid.pindah(evt,Bank,BtnSimpan);
+    }//GEN-LAST:event_NoRekKeyPressed
 
     /**
     * @param args the command line arguments
@@ -801,6 +805,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox Alamat;
+    private widget.TextBox Bank;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -815,8 +820,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Kota;
     private widget.Label LCount;
     private widget.TextBox Nm;
+    private widget.TextBox NoRek;
     private javax.swing.JPanel PanelInput;
-    private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
     private widget.TextBox Telp;
     private widget.InternalFrame internalFrame1;
@@ -825,14 +830,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label label12;
     private widget.Label label18;
     private widget.Label label26;
+    private widget.Label label27;
+    private widget.Label label28;
     private widget.Label label29;
     private widget.Label label31;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
-    private javax.swing.JMenuItem ppCetak;
-    private javax.swing.JMenuItem ppGanti;
-    private javax.swing.JMenuItem ppHapus;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -840,12 +844,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
-                    " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp from datasuplier "+
+            ps=koneksi.prepareStatement(
+                    "select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
+                    " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
+                    " datasuplier.nama_bank,datasuplier.rekening from datasuplier "+
                     " where datasuplier.kode_suplier like ? or "+
                     " datasuplier.nama_suplier like ? or "+
                     " datasuplier.alamat like ? or "+
                     " datasuplier.kota like ? or "+
+                    " datasuplier.nama_bank like ? or "+
                     " datasuplier.no_telp like ? order by datasuplier.kode_suplier");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -853,13 +860,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
                 ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5)});
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7)
+                    });
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -882,6 +889,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Nm.setText("");
         Alamat.setText("");
         Kota.setText("");
+        Bank.setText("");
+        NoRek.setText("");
         Telp.setText("0");
         
         Kd.requestFocus();
@@ -895,6 +904,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Alamat.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
             Kota.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
             Telp.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+            Bank.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
+            NoRek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
         }
     }
 
@@ -903,14 +914,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsuplier());
-        BtnHapus.setEnabled(var.getsuplier());
-        BtnEdit.setEnabled(var.getsuplier());
-        BtnPrint.setEnabled(var.getsuplier());
-        
-        ppGanti.setEnabled(var.getsuplier());        
-        ppHapus.setEnabled(var.getsuplier());
-        ppCetak.setEnabled(var.getsuplier());
+        BtnSimpan.setEnabled(akses.getsuplier());
+        BtnHapus.setEnabled(akses.getsuplier());
+        BtnEdit.setEnabled(akses.getsuplier());
+        BtnPrint.setEnabled(akses.getsuplier());
     }
     
     private void isForm(){

@@ -678,8 +678,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Riwayat Registrasi">
-                <Property name="tabTitle" type="java.lang.String" value="Riwayat Registrasi"/>
+              <JTabbedPaneConstraints tabName="Kunjungan">
+                <Property name="tabTitle" type="java.lang.String" value="Kunjungan"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -709,9 +709,6 @@
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
                 <Component class="widget.Table" name="tbRegistrasi">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan"/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
