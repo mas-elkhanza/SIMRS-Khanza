@@ -392,7 +392,7 @@ public class MasterTriasePemeriksaan extends javax.swing.JDialog {
         if(TKd.getText().trim().equals("")){
             Valid.textKosong(TKd,"Kode");
         }else if(TNm.getText().trim().equals("")){
-            Valid.textKosong(TNm,"Pengkajian");
+            Valid.textKosong(TNm,"Pemeriksaan");
         }else{
             Sequel.menyimpan("master_triase_pemeriksaan","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode");
             tampil();
@@ -436,7 +436,7 @@ public class MasterTriasePemeriksaan extends javax.swing.JDialog {
         if(TKd.getText().trim().equals("")){
             Valid.textKosong(TKd,"Kode");
         }else if(TNm.getText().trim().equals("")){
-            Valid.textKosong(TNm,"Pengkajian");
+            Valid.textKosong(TNm,"Pemeriksaan");
         }else{
             if(tbSpesialis.getSelectedRow()> -1){
                 Sequel.mengedit("master_triase_pemeriksaan","kode_pemeriksaan=?","kode_pemeriksaan=?,nama_pemeriksaan=?",3,new String[]{

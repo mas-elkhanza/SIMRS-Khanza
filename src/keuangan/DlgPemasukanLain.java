@@ -727,7 +727,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         if(rs.next()){
                             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()});
                             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"}); 
-                            jur.simpanJurnal(Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMASUKAN LAIN-LAIN, Petugas : "+NmPtg.getText());
+                            jur.simpanJurnal(Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMASUKAN LAIN-LAIN"+", OLEH "+akses.getkode());
                         }
                     } catch (Exception e) {
                         System.out.println("Jurnal : "+e);
@@ -793,7 +793,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                             if(rs.next()){
                                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"});
                                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()}); 
-                                jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PEMASUKAN LAIN-LAIN, Petugas : "+NmPtg.getText());
+                                jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PEMASUKAN LAIN-LAIN"+", OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {
                             System.out.println("Jurnal : "+e);

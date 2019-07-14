@@ -745,7 +745,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         koderekening,nama_bayar.getSelectedItem().toString(),"0",besar_bayar.getText()
                     });    
-                    jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+no_faktur.getText());
+                    jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());
                     if((sisahutang<=Double.parseDouble(besar_bayar.getText()))||(sisahutang<=-Double.parseDouble(besar_bayar.getText()))){
                         Sequel.mengedit("pemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
                     }else{
@@ -799,7 +799,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                 Sequel.cariIsi("select Bayar_Pemesanan_Obat from set_akun"),"HUTANG USAHA","0",besar_bayar.getText()
             }); 
-            jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BATAL BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+no_faktur.getText());            
+            jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BATAL BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+no_faktur.getText()+", OLEH "+akses.getkode());            
             if(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString())==Double.parseDouble(besar_bayar.getText())){
                 Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
             }else{

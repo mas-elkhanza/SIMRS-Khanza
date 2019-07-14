@@ -501,6 +501,7 @@ import perpustakaan.PerpustakaanPengaturanPeminjaman;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
+import rekammedis.MasterTriaseMacamKasus;
 import rekammedis.MasterTriasePemeriksaan;
 import rekammedis.MasterTriaseSkala1;
 import rekammedis.MasterTriaseSkala2;
@@ -15041,6 +15042,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterTriaseMacamKasusActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTriaseMacamKasus form=new MasterTriaseMacamKasus(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15622,7 +15635,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
-            btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan;
+            btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus;
     
     public void isWall(){
         try{            
@@ -16016,6 +16029,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }else if(jmlmenu<=530){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*102)));
+        }else if(jmlmenu<=535){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*103)));
         }                                              
         Panelmenu.revalidate();
         Panelmenu.repaint();               
@@ -17977,6 +17993,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_triase_pemeriksaan()==true){
                 Panelmenu.add(btnMasterTriasePemeriksaan);
+                jmlmenu++;
+            } 
+            
+            if(akses.getmaster_triase_macamkasus()==true){
+                Panelmenu.add(btnMasterTriaseMacamKasus);
                 jmlmenu++;
             } 
             
@@ -20626,6 +20647,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         } 
         
+        if(akses.getmaster_triase_macamkasus()==true){
+            Panelmenu.add(btnMasterTriaseMacamKasus);
+            jmlmenu++;
+        } 
+
         if(akses.getmaster_triase_skala1()==true){
             Panelmenu.add(btnMasterTriaseSkala1);
             jmlmenu++;
@@ -24045,6 +24071,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_triase_macamkasus()==true){
+            if(btnMasterTriaseMacamKasus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterTriaseMacamKasus);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmaster_triase_skala1()==true){
             if(btnMasterTriaseSkala1.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterTriaseSkala1);
@@ -25858,6 +25891,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterTriasePemeriksaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMasterTriasePemeriksaanActionPerformed(evt);
+            }
+        });
+        
+        btnMasterTriaseMacamKasus = new widget.ButtonBig();
+        btnMasterTriaseMacamKasus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_briefcase_45523.png")));
+        btnMasterTriaseMacamKasus.setText("Master Triase Macam Kasus");
+        btnMasterTriaseMacamKasus.setIconTextGap(0);
+        btnMasterTriaseMacamKasus.setName("btnMasterTriaseMacamKasus"); 
+        btnMasterTriaseMacamKasus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterTriaseMacamKasus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterTriaseMacamKasusActionPerformed(evt);
             }
         });
     }

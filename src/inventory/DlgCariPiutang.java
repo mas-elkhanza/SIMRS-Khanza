@@ -1047,7 +1047,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              Sequel.queryu("delete from tampjurnal");
              Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG PASIEN','0','"+Sequel.cariIsi("select sisapiutang from piutang where nota_piutang='"+rscaripiutang.getString("nota_piutang")+"'")+"'","Rekening");    
              Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','"+Sequel.cariIsi("select sisapiutang  from piutang where nota_piutang='"+rscaripiutang.getString("nota_piutang")+"'")+"','0'","Rekening"); 
-             jur.simpanJurnal(rscaripiutang.getString("nota_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL PIUTANG OBAT DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rscaripiutang.getString("kd_bangsal")+"'").toUpperCase());
+             jur.simpanJurnal(rscaripiutang.getString("nota_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL PIUTANG OBAT DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rscaripiutang.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
          }          
          Sequel.queryu("delete from piutang where nota_piutang='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"'");
          tampil();

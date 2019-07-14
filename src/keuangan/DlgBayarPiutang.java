@@ -689,7 +689,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                     Sequel.queryu("delete from tampjurnal");                    
                     Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Bayar_Piutang_Pasien from set_akun")+"','BAYAR PIUTANG','0','"+Cicilan.getText()+"'","Rekening");    
                     Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening"); 
-                    jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG");                   
+                    jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
                     BtnCariActionPerformed(evt);
                     emptTeks();
             }       
@@ -721,7 +721,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                 Sequel.queryu("delete from tampjurnal");                    
                 Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Bayar_Piutang_Pasien from set_akun")+"','BAYAR PIUTANG','"+Cicilan.getText()+"','0'","Rekening");    
                 Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','0','"+Cicilan.getText()+"'","Rekening"); 
-                jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG");                   
+                jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
                 
                 BtnCariActionPerformed(evt);
                 emptTeks();                                           

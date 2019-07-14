@@ -678,7 +678,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                 if(rs.next()){
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),Pengeluaran.getText(),"0"});
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",Pengeluaran.getText()}); 
-                    jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PENGELUARAN HARIAN, Petugas : "+NmPtg.getText());
+                    jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
                 }                    
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -728,7 +728,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                     if(rs.next()){
                         Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",Pengeluaran.getText()});
                         Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),Pengeluaran.getText(),"0"}); 
-                        jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PENGELUARAN HARIAN, Petugas : "+NmPtg.getText());
+                        jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
                     }                    
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
