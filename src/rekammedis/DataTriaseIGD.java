@@ -422,7 +422,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 column.setPreferredWidth(340);
             }
         }
-        tbSkala5.getTableHeader().setForeground(new Color(170,170,170));
+        tbSkala5.getTableHeader().setForeground(new Color(150,150,150));
         tbSkala5.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
@@ -764,7 +764,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         internalFrame7.add(jLabel24);
         jLabel24.setBounds(360, 70, 119, 23);
 
-        PrimerKubutuhanKusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UPPA", "Airborne", "Dekontaminan" }));
+        PrimerKubutuhanKusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "UPPA", "Airborne", "Dekontaminan" }));
         PrimerKubutuhanKusus.setName("PrimerKubutuhanKusus"); // NOI18N
         PrimerKubutuhanKusus.setPreferredSize(new java.awt.Dimension(55, 28));
         internalFrame7.add(PrimerKubutuhanKusus);
@@ -1569,7 +1569,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         Scroll8.setName("Scroll8"); // NOI18N
         Scroll8.setOpaque(true);
 
-        tbSkala5.setForeground(new java.awt.Color(170, 170, 170));
+        tbSkala5.setForeground(new java.awt.Color(150, 150, 150));
         tbSkala5.setName("tbSkala5"); // NOI18N
         tbSkala5.setSelectionForeground(new java.awt.Color(0, 255, 0));
         Scroll8.setViewportView(tbSkala5);
@@ -2501,8 +2501,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             TCariSkala3.setForeground(new Color(0,170,0));
             BtnTambahSkala2.setEnabled(akses.getmaster_triase_skala4());
         }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
-            label13.setForeground(new Color(170,170,170));
-            TCariSkala3.setForeground(new Color(170,170,170));
+            label13.setForeground(new Color(150,150,150));
+            TCariSkala3.setForeground(new Color(150,150,150));
             BtnTambahSkala2.setEnabled(akses.getmaster_triase_skala5());
         }
     }//GEN-LAST:event_TabSkala3dan4dan5MouseClicked
@@ -2716,7 +2716,33 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private void emptTeks(){
         TNoRw.setText("");
         TPasien.setText("");
-       
+        TNoRM.setText("");
+        Transportasi.setSelectedIndex(0);
+        TanggalKunjungan.setDate(new Date());
+        AlasanKedatangan.setSelectedIndex(0);
+        KdKasus.setText("");
+        NmKasus.setText("");
+        CaraMasuk.setSelectedIndex(0);
+        KeteranganKedatangan.setText("");
+        PrimerKeluhanUtama.setText("");
+        PrimerSuhu.setText("");
+        PrimerNyeri.setText("");
+        PrimerTensi.setText("");
+        PrimerNadi.setText("");
+        PrimerSaturasi.setText("");
+        PrimerRespirasi.setText("");
+        PrimerKubutuhanKusus.setSelectedIndex(0);
+        PrimerCatatan.setText("");
+        PrimerTanggalTriase.setDate(new Date());
+        SekunderAnamnesa.setText("");
+        SekunderSuhu.setText("");
+        SekunderNyeri.setText("");
+        SekunderSaturasi.setText("");
+        SekunderRespirasi.setText("");
+        SekunderTensi.setText("");
+        SekunderNadi.setText("");
+        SekunderCatatan.setText("");
+        SekunderTanggalTriase.setDate(new Date());
     }
     
     public void setNoRm(String norwt,String norm,String namapasien) {
