@@ -51,7 +51,7 @@ import uz.ncipro.calendar.JDateTimePicker;
 public final class sekuel {
     private javax.swing.ImageIcon icon = null;
     private javax.swing.ImageIcon iconThumbnail = null;
-    private String folder;    
+    private String folder,AKTIFKANTRACKSQL=koneksiDB.AKTIFKANTRACKSQL();    
     private final Connection connect=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
@@ -79,6 +79,7 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            SimpanTrack("insert into "+table+" values("+value+")");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
         }            
@@ -96,6 +97,8 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            
+            SimpanTrack("insert into "+table+" values("+value+")");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
         }            
@@ -108,6 +111,8 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             }  
+            
+            SimpanTrack("insert into "+table+" values("+value+")");
             return true;           
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
@@ -123,6 +128,8 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             }  
+            
+            SimpanTrack("insert into "+table+" values("+value+")");
             return true;           
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
@@ -142,6 +149,14 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             } 
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
             bool=true;
         }catch(Exception e){
             try {
@@ -154,6 +169,14 @@ public final class sekuel {
                 if(ps != null){
                     ps.close();
                 } 
+                
+                if(AKTIFKANTRACKSQL.equals("yes")){
+                    dicari="";
+                    for(angka=1;angka<=i;angka++){
+                        dicari=dicari+"|"+b[angka-1];
+                    }
+                }
+                SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
                 bool=true;
             } catch (Exception e2) {
                 bool=false;
@@ -171,6 +194,7 @@ public final class sekuel {
                     ps.setString(angka,a[angka-1]);
                 }            
                 ps.executeUpdate();
+                
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);            
                 JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada "+sama+" yang sama dimasukkan sebelumnya...!");
@@ -179,6 +203,14 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
         }            
@@ -199,6 +231,14 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);            
         }    
@@ -215,6 +255,14 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             }
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
             return true;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);  
@@ -245,6 +293,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         }catch(Exception e){
             bool=false;
             System.out.println("Notifikasi : "+e);  
@@ -267,6 +322,13 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);   
         }            
@@ -287,6 +349,13 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         } catch (Exception e) { 
         }            
     }
@@ -302,6 +371,14 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             } 
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         }catch(Exception e){
             try {
                 ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
@@ -313,6 +390,14 @@ public final class sekuel {
                 if(ps != null){
                     ps.close();
                 } 
+                
+                if(AKTIFKANTRACKSQL.equals("yes")){
+                    dicari="";
+                    for(angka=1;angka<=i;angka++){
+                        dicari=dicari+"|"+b[angka-1];
+                    }
+                }
+                SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
             } catch (Exception e2) {
                 System.out.println("Notifikasi : "+e2);
             }                         
@@ -328,36 +413,40 @@ public final class sekuel {
                 ps.setString(angka,a[angka-1]);
             }            
             ps.executeUpdate();
-            ps=connect.prepareStatement("insert into trackersql values( now(),'insert into "+table+" values("+dicari+")','','jadwal pegawai "+akses.getuser()+"','simpan')");
-            ps.executeUpdate();
             
             if(ps != null){
                   ps.close();
             } 
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         }catch(Exception e){
             try {
-                dicari="";
                 ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
                 for(angka=1;angka<=j;angka++){
-                    dicari=dicari+", "+a[angka-1];
                     ps.setString(angka,b[angka-1]);
                 } 
                 ps.executeUpdate(); 
-                ps=connect.prepareStatement("insert into trackersql values( now(),'update "+table+" set "+update.replaceAll("'","")+" where "+acuan_field.replaceAll("'","")+" "+dicari+"','"+e.toString().replaceAll("'","")+"','jadwal pegawai "+akses.getuser()+"','update')");
-                ps.executeUpdate();
                 
                 if(ps != null){
                     ps.close();
                 } 
+                
+                if(AKTIFKANTRACKSQL.equals("yes")){
+                    dicari="";
+                    for(angka=1;angka<=i;angka++){
+                        dicari=dicari+"|"+b[angka-1];
+                    }
+                }
+                SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
             } catch (Exception e2) {                
                 System.out.println("Notifikasi : "+e2);
-                dicari="";
-                for(angka=1;angka<=j;angka++){
-                    dicari=dicari+", "+a[angka-1];
-                }
-                menyimpan("trackersql","now(),'update "+table+" set "+update.replaceAll("'","")+" where "+acuan_field.replaceAll("'","")+" "+dicari+"','"+e.toString().replaceAll("'","")+"','jadwal pegawai "+akses.getuser()+"','update'");
-            }
-                         
+            }            
         }
     }
     
@@ -373,6 +462,14 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             } 
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("insert into "+table+" values("+dicari+")");
         }catch(Exception e){
             try {
                 ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
@@ -385,6 +482,13 @@ public final class sekuel {
                 if(ps != null){
                     ps.close();
                 } 
+                if(AKTIFKANTRACKSQL.equals("yes")){
+                    dicari="";
+                    for(angka=1;angka<=i;angka++){
+                        dicari=dicari+"|"+b[angka-1];
+                    }
+                }
+                SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
             } catch (Exception e2) {
                 System.out.println("Notifikasi : "+e2);
             }                         
@@ -403,6 +507,7 @@ public final class sekuel {
                     ps.close();
                 }                
             }
+            SimpanTrack("insert into "+table+" values("+value+")");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);  
         }
@@ -415,6 +520,7 @@ public final class sekuel {
             if(ps != null){
                 ps.close();
             }  
+            SimpanTrack("insert into "+table+" values("+isisimpan+")");
         }catch(Exception e){
             try {
                 ps=connect.prepareStatement("update "+table+" set "+isiedit+" where "+acuan_field);
@@ -422,6 +528,7 @@ public final class sekuel {
                 if(ps != null){
                     ps.close();
                 }  
+                SimpanTrack("update "+table+" set "+isiedit+" where "+acuan_field);
             } catch (Exception ex) {
                 System.out.println("Notifikasi Edit : "+ex);
             }
@@ -483,6 +590,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack("delete from "+table+" where "+field+"='"+nilai_field+"'");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -503,6 +611,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack("delete from "+table+" where "+field+"='"+nilai_field+"' and "+field2+"='"+nilai_field2+"'");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -523,6 +632,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack("delete from "+table+" where "+field+"='"+nilai_field+"'");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -541,6 +651,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack("delete from "+table+" where "+field+"='"+nilai_field+"'");
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -559,6 +670,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack("update "+table+" set "+update+" where "+acuan_field);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -580,6 +692,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack("update "+table+" set "+update+" where "+acuan_field);
         } catch (Exception e) {
             bool=false;
             System.out.println("Notifikasi : "+e);
@@ -603,6 +716,14 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }    
@@ -625,6 +746,14 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }    
@@ -645,6 +774,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }    
@@ -669,6 +805,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack("update "+table+" set "+update+" "+dicari+" where "+acuan_field);
         } catch (Exception e) {
             bool=false;
             System.out.println("Notifikasi : "+e);
@@ -708,6 +851,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack(qry);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }            
@@ -726,6 +870,8 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            
+            SimpanTrack(qry);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -747,6 +893,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack(qry);
         } catch (Exception e) {
             bool=false;
             System.out.println("Notifikasi : "+e);
@@ -768,6 +915,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack(qry);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }    
@@ -786,6 +934,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            SimpanTrack(qry);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -806,6 +955,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack(qry+" "+dicari);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -829,6 +985,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack(qry+" "+dicari);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -850,6 +1013,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack(qry+" "+dicari);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
@@ -869,6 +1039,13 @@ public final class sekuel {
                     ps.close();
                 }
             }
+            if(AKTIFKANTRACKSQL.equals("yes")){
+                dicari="";
+                for(angka=1;angka<=i;angka++){
+                    dicari=dicari+"|"+a[angka-1];
+                }
+            }
+            SimpanTrack(qry+" "+dicari);
         } catch (Exception e) {
         }
     }
@@ -1573,6 +1750,27 @@ public final class sekuel {
             
     }
     
+    private void SimpanTrack(String sql){
+        if(AKTIFKANTRACKSQL.equals("yes")){
+            try {
+                ps=connect.prepareStatement("insert into trackersql values(now(),?,?)");
+                try{       
+                    ps.setString(1,sql);
+                    ps.setString(2,akses.getkode());
+                    ps.executeUpdate(); 
+                 }catch(Exception e){
+                    System.out.println("Notifikasi : "+e);
+                 }finally{
+                    if(ps != null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            }
+        }
+    }
+    
     public String cariString(String sql){
         dicari="";
         try {
@@ -1651,9 +1849,7 @@ public final class sekuel {
         System.out.println(str);
     }
 
-
-
-   public class Painter extends Canvas {
+    public class Painter extends Canvas {
 
         Image image;
 

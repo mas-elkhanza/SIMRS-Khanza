@@ -261,7 +261,6 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
             }
         ));
-        Table1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table1.setName("Table1"); // NOI18N
         scrollPane1.setViewportView(Table1);
 
@@ -288,7 +287,6 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
             }
         ));
-        Table2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table2.setName("Table2"); // NOI18N
         scrollPane2.setViewportView(Table2);
 
@@ -315,7 +313,6 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
             }
         ));
-        Table3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table3.setName("Table3"); // NOI18N
         scrollPane3.setViewportView(Table3);
 

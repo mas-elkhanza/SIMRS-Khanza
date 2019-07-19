@@ -86,7 +86,7 @@ public class DlgSetInputParsial extends javax.swing.JDialog {
 
         kdpj.setDocument(new batasInput((byte)3).getKata(kdpj));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

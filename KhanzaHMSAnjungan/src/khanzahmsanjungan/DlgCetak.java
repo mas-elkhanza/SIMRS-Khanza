@@ -10,16 +10,11 @@
  */
 package khanzahmsanjungan;
 
-import component.WarnaTable;
-import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.Window;
-import java.awt.event.KeyEvent;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,9 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -268,7 +260,7 @@ public class DlgCetak extends javax.swing.JDialog {
             param.put("kontakrs",kontak);
             param.put("emailrs",email);
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBuktiRegister2.jasper","report","::[ Bukti Register ]::",
+            Valid.MyReportqry("rptBuktiRegister2.jasper","report","::[ Bukti Register ]::",
                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                    "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"+
                    "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "+
@@ -310,7 +302,7 @@ public class DlgCetak extends javax.swing.JDialog {
                 param.put("kontakrs",kontak);
                 param.put("emailrs",email);
                 param.put("logo",Sequel.cariGambar("select logo from setting"));
-                Valid.MyReport("rptLembarPeriksa.jasper","report","::[ Lembar Periksa ]::",
+                Valid.MyReportqry("rptLembarPeriksa.jasper","report","::[ Lembar Periksa ]::",
                         "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
             }
         this.setCursor(Cursor.getDefaultCursor());
@@ -329,7 +321,7 @@ public class DlgCetak extends javax.swing.JDialog {
                 param.put("propinsirs",propinsi);
                 param.put("kontakrs",kontak);
                 param.put("emailrs",email);   
-                Valid.MyReport("rptBarcodeRawat.jasper","report","::[ Barcode No.Rawat ]::",
+                Valid.MyReportqry("rptBarcodeRawat.jasper","report","::[ Barcode No.Rawat ]::",
                         "select reg_periksa.no_rawat from reg_periksa where no_rawat='"+LblNoRw.getText()+"'",param); 
                 this.setCursor(Cursor.getDefaultCursor());
             }  
@@ -354,7 +346,7 @@ public class DlgCetak extends javax.swing.JDialog {
                 param.put("kontakrs",kontak);
                 param.put("emailrs",email);
                 param.put("logo",Sequel.cariGambar("select logo from setting"));
-                Valid.MyReport("rptLembarPeriksa2.jasper","report","::[ Lembar Periksa ]::",
+                Valid.MyReportqry("rptLembarPeriksa2.jasper","report","::[ Lembar Periksa ]::",
                         "select date_format(current_date(),'%d/%m/%Y') as sekarang",param); 
             }
         this.setCursor(Cursor.getDefaultCursor());
@@ -396,12 +388,12 @@ public class DlgCetak extends javax.swing.JDialog {
             param.put("kontakrs",kontak);
             param.put("emailrs",email);
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBuktiRegister8.jasper","report","::[ Bukti Register ]::",
-                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                   "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"+
-                   "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_peserta,pasien.no_ktp,pasien.tgl_lahir "+
-                   "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "+
-                   "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+            Valid.MyReportqry("rptBuktiRegister8.jasper","report","::[ Bukti Register ]::",
+                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_tlp, "+
+                   "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_peserta,pasien.no_ktp,"+
+                   "pasien.jk,pasien.tgl_lahir,pasien.umur,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,"+
+                   "reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab from reg_periksa inner join dokter inner join pasien "+
+                   "inner join poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"+LblNoRw.getText()+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }

@@ -73,7 +73,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         Departemen.setSelectedItem("Semua");
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -185,7 +185,6 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -460,8 +459,6 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
                         tabMode.getValueAt(tbJadwal.getSelectedRow(),1).toString(),
                         ThnCari.getSelectedItem().toString(),BlnCari.getSelectedItem().toString()
                 });
-                Sequel.menyimpan("trackersql","now(),'delete from jadwal_tambahan where id="+tabMode.getValueAt(tbJadwal.getSelectedRow(),1).toString()+" "+
-                        "and tahun="+ThnCari.getSelectedItem().toString()+" and bulan="+BlnCari.getSelectedItem().toString()+"','','jadwal pegawai','hapus'");
                 tampil();
             }
         }            

@@ -96,7 +96,7 @@ public final class KeslingLimbahB3Medis extends javax.swing.JDialog {
         Sisa.setDocument(new batasInput((byte)10).getKata(Sisa));
         NoDokumen.setDocument(new batasInput((byte)20).getKata(Sisa));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

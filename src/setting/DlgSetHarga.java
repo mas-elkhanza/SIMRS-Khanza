@@ -374,7 +374,6 @@ public class DlgSetHarga extends javax.swing.JDialog {
         ppUPdate.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUPdate.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUPdate.setIconTextGap(8);
         ppUPdate.setName("ppUPdate"); // NOI18N
         ppUPdate.setPreferredSize(new java.awt.Dimension(300, 25));
         ppUPdate.addActionListener(new java.awt.event.ActionListener() {
@@ -393,7 +392,6 @@ public class DlgSetHarga extends javax.swing.JDialog {
         ppUPdate1.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUPdate1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUPdate1.setIconTextGap(8);
         ppUPdate1.setName("ppUPdate1"); // NOI18N
         ppUPdate1.setPreferredSize(new java.awt.Dimension(300, 25));
         ppUPdate1.addActionListener(new java.awt.event.ActionListener() {
@@ -412,7 +410,6 @@ public class DlgSetHarga extends javax.swing.JDialog {
         ppUPdate2.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUPdate2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUPdate2.setIconTextGap(8);
         ppUPdate2.setName("ppUPdate2"); // NOI18N
         ppUPdate2.setPreferredSize(new java.awt.Dimension(300, 25));
         ppUPdate2.addActionListener(new java.awt.event.ActionListener() {

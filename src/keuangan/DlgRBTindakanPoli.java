@@ -272,7 +272,6 @@ public class DlgRBTindakanPoli extends javax.swing.JDialog {
         ppTampilkanPasien.setText("Tampilkan Pasien");
         ppTampilkanPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanPasien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanPasien.setIconTextGap(5);
         ppTampilkanPasien.setName("ppTampilkanPasien"); // NOI18N
         ppTampilkanPasien.setPreferredSize(new java.awt.Dimension(250, 26));
         ppTampilkanPasien.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +288,6 @@ public class DlgRBTindakanPoli extends javax.swing.JDialog {
         ppTampilkanSeleksi.setText("Tampilkan Pasien Per Jenis Bayar");
         ppTampilkanSeleksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanSeleksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanSeleksi.setIconTextGap(5);
         ppTampilkanSeleksi.setName("ppTampilkanSeleksi"); // NOI18N
         ppTampilkanSeleksi.setPreferredSize(new java.awt.Dimension(250, 26));
         ppTampilkanSeleksi.addActionListener(new java.awt.event.ActionListener() {

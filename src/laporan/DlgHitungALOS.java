@@ -274,7 +274,6 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        Tabel1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Tabel1.setName("Tabel1"); // NOI18N
         Tabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -300,7 +299,6 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        Tabel2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Tabel2.setName("Tabel2"); // NOI18N
         Tabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

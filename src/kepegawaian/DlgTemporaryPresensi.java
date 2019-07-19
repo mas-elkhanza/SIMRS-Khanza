@@ -100,7 +100,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         tbTemporary.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -286,7 +286,6 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbTemporary.setAutoCreateRowSorter(true);
-        tbTemporary.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTemporary.setComponentPopupMenu(Popup2);
         tbTemporary.setName("tbTemporary"); // NOI18N
         Scroll.setViewportView(tbTemporary);
