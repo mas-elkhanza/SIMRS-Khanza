@@ -33,6 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -40,6 +41,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 
 /**
@@ -138,7 +145,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         TindakLanjut.setDocument(new batasInput((int)100).getKata(TindakLanjut));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -239,6 +246,14 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppGrafikBatangKejadianIKPPerDampak = new javax.swing.JMenuItem();
+        ppGrafikPieKejadianIKPPerDampak = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerJenis = new javax.swing.JMenuItem();
+        ppGrafikPieKejadianIKPPerJenis = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerTanggal = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerbulan = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerTahun = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -303,6 +318,120 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         TindakLanjut = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppGrafikBatangKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerDampak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerDampak.setText("Grafik Batang Kejadian IKP Per Dampak");
+        ppGrafikBatangKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerDampak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerDampak.setName("ppGrafikBatangKejadianIKPPerDampak"); // NOI18N
+        ppGrafikBatangKejadianIKPPerDampak.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerDampak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerDampakActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerDampak);
+
+        ppGrafikPieKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikPieKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikPieKejadianIKPPerDampak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikPieKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikPieKejadianIKPPerDampak.setText("Grafik Pie Kejadian IKP Per Dampak");
+        ppGrafikPieKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikPieKejadianIKPPerDampak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikPieKejadianIKPPerDampak.setName("ppGrafikPieKejadianIKPPerDampak"); // NOI18N
+        ppGrafikPieKejadianIKPPerDampak.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikPieKejadianIKPPerDampak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikPieKejadianIKPPerDampakActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikPieKejadianIKPPerDampak);
+
+        ppGrafikBatangKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerJenis.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerJenis.setText("Grafik Batang Kejadian IKP Per Jenis");
+        ppGrafikBatangKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerJenis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerJenis.setName("ppGrafikBatangKejadianIKPPerJenis"); // NOI18N
+        ppGrafikBatangKejadianIKPPerJenis.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerJenisActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerJenis);
+
+        ppGrafikPieKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikPieKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikPieKejadianIKPPerJenis.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikPieKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikPieKejadianIKPPerJenis.setText("Grafik Pie Kejadian IKP Per Jenis");
+        ppGrafikPieKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikPieKejadianIKPPerJenis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikPieKejadianIKPPerJenis.setName("ppGrafikPieKejadianIKPPerJenis"); // NOI18N
+        ppGrafikPieKejadianIKPPerJenis.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikPieKejadianIKPPerJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikPieKejadianIKPPerJenisActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikPieKejadianIKPPerJenis);
+
+        ppGrafikBatangKejadianIKPPerTanggal.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerTanggal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerTanggal.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerTanggal.setText("Grafik Batang Kejadian IKP Per Tanggal");
+        ppGrafikBatangKejadianIKPPerTanggal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerTanggal.setName("ppGrafikBatangKejadianIKPPerTanggal"); // NOI18N
+        ppGrafikBatangKejadianIKPPerTanggal.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerTanggalActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerTanggal);
+
+        ppGrafikBatangKejadianIKPPerbulan.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerbulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerbulan.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerbulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerbulan.setText("Grafik Batang Kejadian IKP Per Bulan");
+        ppGrafikBatangKejadianIKPPerbulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerbulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerbulan.setName("ppGrafikBatangKejadianIKPPerbulan"); // NOI18N
+        ppGrafikBatangKejadianIKPPerbulan.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerbulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerbulanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerbulan);
+
+        ppGrafikBatangKejadianIKPPerTahun.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerTahun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerTahun.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerTahun.setText("Grafik Batang Kejadian IKP Per Tahun");
+        ppGrafikBatangKejadianIKPPerTahun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerTahun.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerTahun.setName("ppGrafikBatangKejadianIKPPerTahun"); // NOI18N
+        ppGrafikBatangKejadianIKPPerTahun.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerTahunActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerTahun);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -312,12 +441,14 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -473,7 +604,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -487,7 +618,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -582,7 +713,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         TPasien.setBounds(361, 10, 424, 23);
 
         Kejadian.setForeground(new java.awt.Color(50, 70, 50));
-        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
         Kejadian.setDisplayFormat("dd-MM-yyyy");
         Kejadian.setName("Kejadian"); // NOI18N
         Kejadian.setOpaque(false);
@@ -672,7 +803,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel17.setBounds(420, 40, 50, 23);
 
         Lapor.setForeground(new java.awt.Color(50, 70, 50));
-        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
         Lapor.setDisplayFormat("dd-MM-yyyy");
         Lapor.setName("Lapor"); // NOI18N
         Lapor.setOpaque(false);
@@ -1236,6 +1367,174 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Valid.pindah(evt,Identifikasi,BtnSimpan);
     }//GEN-LAST:event_TindakLanjutKeyPressed
 
+    private void ppGrafikBatangKejadianIKPPerbulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerbulanActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m'),count(DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m')) as jumlah "+
+                "from insiden_keselamatan_pasien where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m')").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+            
+            if(rs!=null){
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Bulan Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Bulan","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Bulan",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);  
+
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerbulanActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerDampakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerDampakActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.dampak,count(insiden_keselamatan.dampak) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.dampak").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+       JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Dampak Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Dampak IKP","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Dampak",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);  
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerDampakActionPerformed
+
+    private void ppGrafikPieKejadianIKPPerDampakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikPieKejadianIKPPerDampakActionPerformed
+        DefaultPieDataset dpd = new DefaultPieDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.dampak,count(insiden_keselamatan.dampak) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.dampak").executeQuery();
+            while(rs.next()) {
+                dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Kejadian IKP Per Dampak Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),dpd,true,true, false);
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Dampak",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);    
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);
+    }//GEN-LAST:event_ppGrafikPieKejadianIKPPerDampakActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerJenisActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.jenis_insiden,count(insiden_keselamatan.jenis_insiden) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.jenis_insiden").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+       JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Jenis Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Jenis IKP","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Jenis",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);   
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerJenisActionPerformed
+
+    private void ppGrafikPieKejadianIKPPerJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikPieKejadianIKPPerJenisActionPerformed
+        DefaultPieDataset dpd = new DefaultPieDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.jenis_insiden,count(insiden_keselamatan.jenis_insiden) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.jenis_insiden").executeQuery();
+            while(rs.next()) {
+                dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Kejadian IKP Per Jenis Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),dpd,true,true, false);
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Jenis",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);
+    }//GEN-LAST:event_ppGrafikPieKejadianIKPPerJenisActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerTanggalActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m-%d'),count(DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m-%d')) as jumlah "+
+                "from insiden_keselamatan_pasien where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m-%d')").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+            
+            if(rs!=null){
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Tanggal Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Tanggal","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Tanggal",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);  
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerTanggalActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerTahunActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select year(insiden_keselamatan_pasien.tgl_kejadian),count(year(insiden_keselamatan_pasien.tgl_kejadian)) as jumlah "+
+                "from insiden_keselamatan_pasien where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by year(insiden_keselamatan_pasien.tgl_kejadian)").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+            
+            if(rs!=null){
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Tahun Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Tahun","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Tahun",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true); 
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerTahunActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1311,10 +1610,18 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox namapetugas;
     private widget.TextBox nip;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerDampak;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerJenis;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerTahun;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerTanggal;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerbulan;
+    private javax.swing.JMenuItem ppGrafikPieKejadianIKPPerDampak;
+    private javax.swing.JMenuItem ppGrafikPieKejadianIKPPerJenis;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 

@@ -92,7 +92,7 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
         
         Subspesialis.setDocument(new batasInput((byte)100).getKata(Subspesialis));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Subspesialis.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

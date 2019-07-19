@@ -125,7 +125,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
         KdKamar.setDocument(new batasInput((int)5).getKata(KdKamar));
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));                  
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

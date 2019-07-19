@@ -74,7 +74,7 @@ public class PerpustakaanDenda extends javax.swing.JDialog {
         NmDenda.setDocument(new batasInput((byte)40).getKata(NmDenda));
         BesarDenda.setDocument(new batasInput((byte)10).getOnlyAngka(BesarDenda));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

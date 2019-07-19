@@ -88,7 +88,7 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
         
         Kabupaten.setDocument(new batasInput((byte)100).getKata(Kabupaten));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Kabupaten.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

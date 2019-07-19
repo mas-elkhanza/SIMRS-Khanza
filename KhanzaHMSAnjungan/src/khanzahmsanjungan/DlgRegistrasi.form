@@ -28,7 +28,7 @@
     </Component>
     <Component class="component.Tanggal" name="Tanggal">
       <Properties>
-        <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
+        <Property name="displayFormat" type="java.lang.String" value="yyyy-MM-dd"/>
       </Properties>
     </Component>
     <Component class="component.TextBox" name="NoReg">

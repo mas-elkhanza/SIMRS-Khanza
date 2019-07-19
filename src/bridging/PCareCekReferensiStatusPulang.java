@@ -88,7 +88,7 @@ public final class PCareCekReferensiStatusPulang extends javax.swing.JDialog {
          
         diagnosa.setDocument(new batasInput((byte)100).getKata(diagnosa));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {

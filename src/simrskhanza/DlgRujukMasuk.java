@@ -168,7 +168,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         JMPerujuk.setDocument(new batasInput((byte)14).getOnlyAngka(JMPerujuk));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TCariPerujuk.setDocument(new batasInput((byte)100).getKata(TCariPerujuk));           
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
