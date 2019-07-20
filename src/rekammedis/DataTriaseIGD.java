@@ -425,11 +425,28 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         tbSkala5.getTableHeader().setForeground(new Color(150,150,150));
         tbSkala5.setDefaultRenderer(Object.class, new WarnaTable());
         
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        TCariPemeriksaan.setDocument(new batasInput((byte)100).getKata(TCariPemeriksaan));
-        TCariPemeriksaan2.setDocument(new batasInput((byte)100).getKata(TCariPemeriksaan2));
-        TCariSkala1.setDocument(new batasInput((byte)100).getKata(TCariSkala1));
-        TCariSkala3.setDocument(new batasInput((byte)100).getKata(TCariSkala3));
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        TCariPemeriksaan.setDocument(new batasInput((int)100).getKata(TCariPemeriksaan));
+        TCariPemeriksaan2.setDocument(new batasInput((int)100).getKata(TCariPemeriksaan2));
+        TCariSkala1.setDocument(new batasInput((int)100).getKata(TCariSkala1));
+        TCariSkala3.setDocument(new batasInput((int)100).getKata(TCariSkala3));
+        KeteranganKedatangan.setDocument(new batasInput((int)100).getKata(KeteranganKedatangan));
+        PrimerSuhu.setDocument(new batasInput((byte)3).getKata(PrimerSuhu));
+        SekunderSuhu.setDocument(new batasInput((byte)3).getKata(SekunderSuhu));
+        PrimerNyeri.setDocument(new batasInput((byte)5).getKata(PrimerNyeri));
+        SekunderNyeri.setDocument(new batasInput((byte)5).getKata(SekunderNyeri));
+        PrimerTensi.setDocument(new batasInput((byte)7).getKata(PrimerTensi));
+        SekunderTensi.setDocument(new batasInput((byte)7).getKata(SekunderTensi));
+        PrimerNadi.setDocument(new batasInput((byte)3).getKata(PrimerNadi));
+        SekunderNadi.setDocument(new batasInput((byte)3).getKata(SekunderNadi));
+        PrimerSaturasi.setDocument(new batasInput((byte)3).getKata(PrimerSaturasi));
+        SekunderSaturasi.setDocument(new batasInput((byte)3).getKata(SekunderSaturasi));
+        PrimerRespirasi.setDocument(new batasInput((byte)3).getKata(PrimerRespirasi));
+        SekunderRespirasi.setDocument(new batasInput((byte)3).getKata(SekunderRespirasi));
+        PrimerCatatan.setDocument(new batasInput((int)100).getKata(PrimerCatatan));
+        SekunderCatatan.setDocument(new batasInput((int)100).getKata(SekunderCatatan));
+        PrimerKeluhanUtama.setDocument(new batasInput((int)400).getKata(PrimerKeluhanUtama));
+        SekunderAnamnesa.setDocument(new batasInput((int)400).getKata(SekunderAnamnesa));
        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -534,7 +551,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         internalFrame1 = new widget.InternalFrame();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabPilihan = new javax.swing.JTabbedPane();
         ScrollTriase = new widget.ScrollPane();
         FormTriase = new widget.InternalFrame();
         TabTriase = new javax.swing.JTabbedPane();
@@ -704,13 +721,13 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
+        TabPilihan.setBackground(new java.awt.Color(255, 255, 254));
+        TabPilihan.setForeground(new java.awt.Color(70, 70, 70));
+        TabPilihan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabPilihan.setName("TabPilihan"); // NOI18N
+        TabPilihan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
+                TabPilihanMouseClicked(evt);
             }
         });
 
@@ -749,6 +766,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         PrimerKeluhanUtama.setColumns(20);
         PrimerKeluhanUtama.setRows(5);
         PrimerKeluhanUtama.setName("PrimerKeluhanUtama"); // NOI18N
+        PrimerKeluhanUtama.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PrimerKeluhanUtamaKeyPressed(evt);
+            }
+        });
         scrollPane1.setViewportView(PrimerKeluhanUtama);
 
         internalFrame7.add(scrollPane1);
@@ -767,6 +789,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         PrimerKubutuhanKusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "UPPA", "Airborne", "Dekontaminan" }));
         PrimerKubutuhanKusus.setName("PrimerKubutuhanKusus"); // NOI18N
         PrimerKubutuhanKusus.setPreferredSize(new java.awt.Dimension(55, 28));
+        PrimerKubutuhanKusus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PrimerKubutuhanKususKeyPressed(evt);
+            }
+        });
         internalFrame7.add(PrimerKubutuhanKusus);
         PrimerKubutuhanKusus.setBounds(483, 70, 202, 23);
 
@@ -911,6 +938,9 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnPrimerPetugasKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnPrimerPetugasKeyReleased(evt);
+            }
         });
         internalFrame8.add(btnPrimerPetugas);
         btnPrimerPetugas.setBounds(660, 40, 28, 23);
@@ -921,10 +951,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(252, 10, 70, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019 21:27:37" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019 23:48:53" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
+        PrimerTanggalTriase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PrimerTanggalTriaseKeyPressed(evt);
+            }
+        });
         internalFrame8.add(PrimerTanggalTriase);
         PrimerTanggalTriase.setBounds(93, 40, 145, 23);
 
@@ -935,6 +970,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         buttonGroup1.add(PrimerResusitasi);
         PrimerResusitasi.setForeground(new java.awt.Color(170, 0, 0));
+        PrimerResusitasi.setSelected(true);
         PrimerResusitasi.setText("Zona Merah Ruang Resusitasi");
         PrimerResusitasi.setName("PrimerResusitasi"); // NOI18N
         PrimerResusitasi.setPreferredSize(new java.awt.Dimension(40, 20));
@@ -1176,6 +1212,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         SekunderAnamnesa.setColumns(20);
         SekunderAnamnesa.setRows(5);
         SekunderAnamnesa.setName("SekunderAnamnesa"); // NOI18N
+        SekunderAnamnesa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SekunderAnamnesaKeyPressed(evt);
+            }
+        });
         scrollPane2.setViewportView(SekunderAnamnesa);
 
         internalFrame11.add(scrollPane2);
@@ -1337,10 +1378,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(252, 10, 70, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019 21:27:37" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019 23:48:54" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
+        SekunderTanggalTriase.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SekunderTanggalTriaseKeyPressed(evt);
+            }
+        });
         internalFrame12.add(SekunderTanggalTriase);
         SekunderTanggalTriase.setBounds(93, 40, 145, 23);
 
@@ -1626,28 +1672,48 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
+        TanggalKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TanggalKunjunganKeyPressed(evt);
+            }
+        });
         FormInput.add(TanggalKunjungan);
         TanggalKunjungan.setBounds(93, 40, 90, 23);
 
         JamKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         JamKunjungan.setName("JamKunjungan"); // NOI18N
         JamKunjungan.setPreferredSize(new java.awt.Dimension(55, 28));
+        JamKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JamKunjunganKeyPressed(evt);
+            }
+        });
         FormInput.add(JamKunjungan);
         JamKunjungan.setBounds(186, 40, 62, 23);
 
         MenitKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         MenitKunjungan.setName("MenitKunjungan"); // NOI18N
         MenitKunjungan.setPreferredSize(new java.awt.Dimension(55, 28));
+        MenitKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenitKunjunganKeyPressed(evt);
+            }
+        });
         FormInput.add(MenitKunjungan);
         MenitKunjungan.setBounds(251, 40, 62, 23);
 
         DetikKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         DetikKunjungan.setName("DetikKunjungan"); // NOI18N
         DetikKunjungan.setPreferredSize(new java.awt.Dimension(55, 28));
+        DetikKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DetikKunjunganKeyPressed(evt);
+            }
+        });
         FormInput.add(DetikKunjungan);
         DetikKunjungan.setBounds(316, 40, 62, 23);
 
@@ -1675,6 +1741,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         CaraMasuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jalan", "Brankar", "Kursi Roda", "Digendong" }));
         CaraMasuk.setName("CaraMasuk"); // NOI18N
         CaraMasuk.setPreferredSize(new java.awt.Dimension(55, 28));
+        CaraMasuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraMasukKeyPressed(evt);
+            }
+        });
         FormInput.add(CaraMasuk);
         CaraMasuk.setBounds(615, 70, 100, 23);
 
@@ -1686,6 +1757,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         Transportasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "AGD", "Sendiri", "Swasta" }));
         Transportasi.setName("Transportasi"); // NOI18N
         Transportasi.setPreferredSize(new java.awt.Dimension(55, 28));
+        Transportasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransportasiKeyPressed(evt);
+            }
+        });
         FormInput.add(Transportasi);
         Transportasi.setBounds(615, 10, 100, 23);
 
@@ -1697,6 +1773,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         AlasanKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Datang Sendiri", "Polisi", "Rujukan", "-" }));
         AlasanKedatangan.setName("AlasanKedatangan"); // NOI18N
         AlasanKedatangan.setPreferredSize(new java.awt.Dimension(55, 28));
+        AlasanKedatangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlasanKedatanganKeyPressed(evt);
+            }
+        });
         FormInput.add(AlasanKedatangan);
         AlasanKedatangan.setBounds(565, 40, 150, 23);
 
@@ -1744,6 +1825,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         btnKasus.setBounds(486, 70, 28, 23);
 
         KeteranganKedatangan.setName("KeteranganKedatangan"); // NOI18N
+        KeteranganKedatangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKedatanganKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganKedatangan);
         KeteranganKedatangan.setBounds(205, 100, 510, 23);
 
@@ -1756,7 +1842,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         ScrollTriase.setViewportView(FormTriase);
 
-        TabRawat.addTab("Input Triase", ScrollTriase);
+        TabPilihan.addTab("Input Triase", ScrollTriase);
 
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
@@ -1794,7 +1880,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1808,7 +1894,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-07-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1859,9 +1945,9 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.addTab("Data Triase", internalFrame4);
+        TabPilihan.addTab("Data Triase", internalFrame4);
 
-        internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
+        internalFrame1.add(TabPilihan, java.awt.BorderLayout.CENTER);
 
         panelGlass8.setName("panelGlass8"); // NOI18N
         panelGlass8.setPreferredSize(new java.awt.Dimension(44, 54));
@@ -2005,7 +2091,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-       
+        if(TabTriase.getSelectedIndex()==0){
+            Valid.pindah(evt,btnPrimerPetugas,BtnBatal);
+        }else if(TabTriase.getSelectedIndex()==1){
+            Valid.pindah(evt,btnSekunderPetugas,BtnBatal);
+        }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
@@ -2135,11 +2225,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_TNoRMActionPerformed
 
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
+    private void TabPilihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabPilihanMouseClicked
+        if(TabPilihan.getSelectedIndex()==1){
             tampil();
         }
-    }//GEN-LAST:event_TabRawatMouseClicked
+    }//GEN-LAST:event_TabPilihanMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if(this.getHeight()<620){   
@@ -2182,7 +2272,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_btnKasusActionPerformed
 
     private void btnKasusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKasusKeyPressed
-        Valid.pindah(evt,KdKasus,BtnSimpan);
+        Valid.pindah(evt,AlasanKedatangan,CaraMasuk);
     }//GEN-LAST:event_btnKasusKeyPressed
 
     private void TabTriaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabTriaseMouseClicked
@@ -2194,15 +2284,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_TabTriaseMouseClicked
 
     private void PrimerSuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerSuhuKeyPressed
-        //Valid.pindah(evt,TPemeriksaan,TTinggi);
+        Valid.pindah(evt,PrimerKeluhanUtama,PrimerNyeri);
     }//GEN-LAST:event_PrimerSuhuKeyPressed
 
     private void PrimerSaturasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerSaturasiKeyPressed
-        Valid.pindah(evt,PrimerSuhu,PrimerNyeri);
+        Valid.pindah(evt,PrimerNadi,PrimerRespirasi);
     }//GEN-LAST:event_PrimerSaturasiKeyPressed
 
     private void PrimerNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerNyeriKeyPressed
-        Valid.pindah(evt,PrimerSaturasi,PrimerTensi);
+        Valid.pindah(evt,PrimerSuhu,PrimerTensi);
     }//GEN-LAST:event_PrimerNyeriKeyPressed
 
     private void PrimerNadiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrimerNadiActionPerformed
@@ -2210,15 +2300,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_PrimerNadiActionPerformed
 
     private void PrimerNadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerNadiKeyPressed
-        //Valid.pindah(evt,TRespirasi,TGCS);
+        Valid.pindah(evt,PrimerTensi,PrimerSaturasi);
     }//GEN-LAST:event_PrimerNadiKeyPressed
 
     private void PrimerRespirasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerRespirasiKeyPressed
-        Valid.pindah(evt,PrimerTensi,PrimerNadi);
+        Valid.pindah(evt,PrimerSaturasi,PrimerKubutuhanKusus);
     }//GEN-LAST:event_PrimerRespirasiKeyPressed
 
     private void PrimerTensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerTensiKeyPressed
-        Valid.pindah(evt,PrimerNyeri,PrimerRespirasi);
+        Valid.pindah(evt,PrimerNyeri,PrimerNadi);
     }//GEN-LAST:event_PrimerTensiKeyPressed
 
     private void PrimerKodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerKodePetugasKeyPressed
@@ -2246,9 +2336,9 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilPemeriksaan();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            BtnCariPemeriksaan.requestFocus();
+            PrimerCatatan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            BtnKeluar.requestFocus();
+            PrimerKubutuhanKusus.requestFocus();
         }
     }//GEN-LAST:event_TCariPemeriksaanKeyPressed
 
@@ -2357,15 +2447,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_TabSkala1dan2MouseClicked
 
     private void SekunderSuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderSuhuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SekunderAnamnesa,SekunderNyeri);
     }//GEN-LAST:event_SekunderSuhuKeyPressed
 
     private void SekunderSaturasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderSaturasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SekunderNyeri,SekunderRespirasi);
     }//GEN-LAST:event_SekunderSaturasiKeyPressed
 
     private void SekunderNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderNyeriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SekunderSuhu,SekunderSaturasi);
     }//GEN-LAST:event_SekunderNyeriKeyPressed
 
     private void SekunderNadiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SekunderNadiActionPerformed
@@ -2373,24 +2463,24 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_SekunderNadiActionPerformed
 
     private void SekunderNadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderNadiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SekunderTensi,TCariPemeriksaan2);
     }//GEN-LAST:event_SekunderNadiKeyPressed
 
     private void SekunderRespirasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderRespirasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SekunderSaturasi,SekunderTensi);
     }//GEN-LAST:event_SekunderRespirasiKeyPressed
 
     private void SekunderTensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderTensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SekunderRespirasi,SekunderNadi);
     }//GEN-LAST:event_SekunderTensiKeyPressed
 
     private void TCariPemeriksaan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariPemeriksaan2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilPemeriksaan2();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            BtnCariPemeriksaan1.requestFocus();
+            SekunderCatatan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            BtnKeluar.requestFocus();
+            SekunderNadi.requestFocus();
         }
     }//GEN-LAST:event_TCariPemeriksaan2KeyPressed
 
@@ -2508,7 +2598,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_TabSkala3dan4dan5MouseClicked
 
     private void PrimerCatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerCatatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TCariPemeriksaan,PrimerTanggalTriase);
     }//GEN-LAST:event_PrimerCatatanKeyPressed
 
     private void SekunderKodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderKodePetugasKeyPressed
@@ -2529,12 +2619,72 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSekunderPetugasActionPerformed
 
     private void btnSekunderPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSekunderPetugasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SekunderTanggalTriase,BtnSimpan);
     }//GEN-LAST:event_btnSekunderPetugasKeyPressed
 
     private void SekunderCatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderCatatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TCariPemeriksaan2,SekunderTanggalTriase);
     }//GEN-LAST:event_SekunderCatatanKeyPressed
+
+    private void TransportasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransportasiKeyPressed
+        Valid.pindah(evt,TCari,TanggalKunjungan);
+    }//GEN-LAST:event_TransportasiKeyPressed
+
+    private void TanggalKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKunjunganKeyPressed
+        Valid.pindah(evt,Transportasi,JamKunjungan);
+    }//GEN-LAST:event_TanggalKunjunganKeyPressed
+
+    private void JamKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKunjunganKeyPressed
+        Valid.pindah(evt,TanggalKunjungan,MenitKunjungan);
+    }//GEN-LAST:event_JamKunjunganKeyPressed
+
+    private void MenitKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenitKunjunganKeyPressed
+        Valid.pindah(evt,JamKunjungan,DetikKunjungan);
+    }//GEN-LAST:event_MenitKunjunganKeyPressed
+
+    private void DetikKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKunjunganKeyPressed
+        Valid.pindah(evt,MenitKunjungan,AlasanKedatangan);
+    }//GEN-LAST:event_DetikKunjunganKeyPressed
+
+    private void AlasanKedatanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasanKedatanganKeyPressed
+        Valid.pindah(evt,DetikKunjungan,btnKasus);
+    }//GEN-LAST:event_AlasanKedatanganKeyPressed
+
+    private void CaraMasukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraMasukKeyPressed
+        Valid.pindah(evt,btnKasus,KeteranganKedatangan);
+    }//GEN-LAST:event_CaraMasukKeyPressed
+
+    private void KeteranganKedatanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKedatanganKeyPressed
+        if(TabTriase.getSelectedIndex()==0){
+            Valid.pindah(evt,CaraMasuk,PrimerKeluhanUtama);
+        }else if(TabTriase.getSelectedIndex()==1){
+            Valid.pindah(evt,CaraMasuk,SekunderAnamnesa);
+        }
+    }//GEN-LAST:event_KeteranganKedatanganKeyPressed
+
+    private void SekunderAnamnesaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderAnamnesaKeyPressed
+        Valid.pindah(evt,KeteranganKedatangan,SekunderSuhu);
+    }//GEN-LAST:event_SekunderAnamnesaKeyPressed
+
+    private void PrimerKeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerKeluhanUtamaKeyPressed
+       Valid.pindah(evt,KeteranganKedatangan,PrimerSuhu);
+    }//GEN-LAST:event_PrimerKeluhanUtamaKeyPressed
+
+    private void PrimerKubutuhanKususKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerKubutuhanKususKeyPressed
+        Valid.pindah(evt,PrimerRespirasi,TCariPemeriksaan);
+    }//GEN-LAST:event_PrimerKubutuhanKususKeyPressed
+
+    private void PrimerTanggalTriaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerTanggalTriaseKeyPressed
+        Valid.pindah(evt,PrimerCatatan,btnPrimerPetugas);
+    }//GEN-LAST:event_PrimerTanggalTriaseKeyPressed
+
+    private void btnPrimerPetugasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPrimerPetugasKeyReleased
+        Valid.pindah(evt,PrimerTanggalTriase,BtnSimpan);
+    }//GEN-LAST:event_btnPrimerPetugasKeyReleased
+
+    private void SekunderTanggalTriaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SekunderTanggalTriaseKeyPressed
+        Valid.pindah(evt,SekunderCatatan,btnSekunderPetugas);
+    }//GEN-LAST:event_SekunderTanggalTriaseKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2627,7 +2777,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private javax.swing.JTabbedPane TabRawat;
+    private javax.swing.JTabbedPane TabPilihan;
     private javax.swing.JTabbedPane TabSkala1dan2;
     private javax.swing.JTabbedPane TabSkala3dan4dan5;
     private javax.swing.JTabbedPane TabTriase;
@@ -2743,9 +2893,13 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         SekunderNadi.setText("");
         SekunderCatatan.setText("");
         SekunderTanggalTriase.setDate(new Date());
+        TabPilihan.setSelectedIndex(0);
+        TabTriase.setSelectedIndex(0);
+        Transportasi.requestFocus();
     }
     
     public void setNoRm(String norwt,String norm,String namapasien) {
+        emptTeks();
         TNoRw.setText(norwt);
         TNoRM.setText(norm);
         TPasien.setText(namapasien);
