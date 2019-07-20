@@ -5429,6 +5429,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         Kd2.setText("");
         if(tbDokter.getSelectedRow()!= -1){
             Kd2.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            NoRawat.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
         }
     }
     

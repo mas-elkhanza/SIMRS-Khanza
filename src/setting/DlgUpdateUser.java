@@ -1454,6 +1454,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 if("[I]KIP Pasien Ralan".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","kip_pasien_ralan='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
+                
+                if("[I]Rekap Permintaan Diet".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","rekap_permintaan_diet='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
 
                 if("[J]Deposit Pasien".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","deposit_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -1992,7 +1996,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 }
                 
                 if("[L]Data Triase".equals(tbUser.getValueAt(i,1).toString())){
-                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","data_triase='"+tbUser.getValueAt(i,2).toString()+"'");
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","data_triase_igd='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
                 if("[L]Master Triase Skala 1".equals(tbUser.getValueAt(i,1).toString())){
@@ -2751,8 +2755,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"+
                         "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"+
                         "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap,kip_pasien_ranap,"+
-                        "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
-                        "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase_igd,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
+                        "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3797,6 +3801,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[I]KIP Pasien Ralan",rs.getBoolean("kip_pasien_ralan")});
                     }
                     
+                    if("[I]Rekap Permintaan Diet".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Rekap Permintaan Diet",rs.getBoolean("rekap_permintaan_diet")});
+                    }
+                    
                     if("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Deposit Pasien",rs.getBoolean("deposit_pasien")});
                     }
@@ -4334,7 +4342,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     }
                     
                     if("[L]Data Triase".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[L]Data Triase",rs.getBoolean("data_triase")});
+                        tabMode.addRow(new Object[]{false,"[L]Data Triase",rs.getBoolean("data_triase_igd")});
                     }
                     
                     if("[L]Master Triase Skala 1".toLowerCase().contains(TCari.getText().toLowerCase())){
