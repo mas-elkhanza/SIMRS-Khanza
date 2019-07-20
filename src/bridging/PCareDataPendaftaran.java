@@ -2603,10 +2603,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                             Perawatan.getSelectedItem().toString(),response.asText()
                         })==true){  
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",15,new String[]{
+                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                 "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"", Keluhan.getText(),"","","-",""
+                                BeratBadan.getText(),"", Keluhan.getText(),"","","-","",""
                             });                        
                             simpanKunjungan();
                             emptTeks();
@@ -2755,10 +2755,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                                 Perawatan.getSelectedItem().toString(),response.asText()
                             })==true){  
-                                Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",15,new String[]{
+                                Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
                                     TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                                     "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                    BeratBadan.getText(),"", Keluhan.getText(),"","","-",""
+                                    BeratBadan.getText(),"", Keluhan.getText(),"","","-","",""
                                 });
                                 emptTeks();   
                             }                     

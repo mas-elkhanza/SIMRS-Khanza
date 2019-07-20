@@ -482,6 +482,7 @@ import kepegawaian.K3RSPeristiwa;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapMutasiBerkas;
+import laporan.DlgRekapPermintaanDiet;
 import laporan.RekapKunjunganRuangPerTahun;
 import laporan.RekapSkriningPernapasanRalanPerTahun;
 import perpustakaan.PerpustakaanAnggota;
@@ -15067,6 +15068,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRekapPermintaanDietActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapPermintaanDiet form=new DlgRekapPermintaanDiet(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15648,7 +15661,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikKunjunganRanapBulan,btnGrafikKunjunganRanapTanggal,btnGrafikKunjunganRanapRuang,btnKunjunganBangsalTahun,btnGrafikJenjangJabatanPegawai,
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
-            btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD;
+            btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
+            btnRekapPermintaanDiet;
     
     public void isWall(){
         try{            
@@ -17291,6 +17305,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getjumlah_macam_diet()==true){  
                 Panelmenu.add(btnJumlahMacamDiet);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getrekap_permintaan_diet()==true){  
+                Panelmenu.add(btnRekapPermintaanDiet);                 
                 jmlmenu++;
             }
             
@@ -19950,6 +19969,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getjumlah_macam_diet()==true){  
             Panelmenu.add(btnJumlahMacamDiet);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getrekap_permintaan_diet()==true){  
+            Panelmenu.add(btnRekapPermintaanDiet);                 
             jmlmenu++;
         }
         
@@ -23098,6 +23122,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getrekap_permintaan_diet()==true){  
+            if(btnRekapPermintaanDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapPermintaanDiet);                 
+                jmlmenu++;
+            }                
+        }
         
         if(akses.getkemenkes_sitt()==true){  
             if(btnDataSITT.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25940,7 +25970,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnDataTriaseIGD = new widget.ButtonBig();
-        btnDataTriaseIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358059_first_aid_kit.png")));
+        btnDataTriaseIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_h2_19724.png")));
         btnDataTriaseIGD.setText("Data Triase IGD");
         btnDataTriaseIGD.setIconTextGap(0);
         btnDataTriaseIGD.setName("btnDataTriaseIGD"); 
@@ -25948,6 +25978,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDataTriaseIGD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDataTriaseIGDActionPerformed(evt);
+            }
+        });
+        
+        btnRekapPermintaanDiet = new widget.ButtonBig();
+        btnRekapPermintaanDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_fried_rice_3377056.png")));
+        btnRekapPermintaanDiet.setText("Rekap Permintaan Diet");
+        btnRekapPermintaanDiet.setIconTextGap(0);
+        btnRekapPermintaanDiet.setName("btnRekapPermintaanDiet"); 
+        btnRekapPermintaanDiet.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPermintaanDiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPermintaanDietActionPerformed(evt);
             }
         });
     }

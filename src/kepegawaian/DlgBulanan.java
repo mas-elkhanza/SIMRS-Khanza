@@ -21,8 +21,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -53,7 +51,6 @@ public final class DlgBulanan extends javax.swing.JDialog {
     private PreparedStatement ps,psketerlambatan;
     private ResultSet rs,rsketerlambatan;
     private String masuk="",pulang="";
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgBarcode bar=new DlgBarcode(null,false);
     private String[] id;
     private String[] tgl;
