@@ -479,6 +479,7 @@ import kepegawaian.K3RSLokasiKejadianPerTahun;
 import kepegawaian.K3RSPenyebab;
 import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
+import laporan.DlgDaftarPasienRanap;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapMutasiBerkas;
@@ -15080,6 +15081,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnDaftarPasienRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDaftarPasienRanap form=new DlgDaftarPasienRanap(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15662,7 +15675,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
-            btnRekapPermintaanDiet;
+            btnRekapPermintaanDiet,btnDaftarPasienRanap;
     
     public void isWall(){
         try{            
@@ -17340,6 +17353,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getkip_pasien_ralan()==true){  
                 Panelmenu.add(btnKIPPasienRalan);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getdaftar_pasien_ranap()==true){  
+                Panelmenu.add(btnDaftarPasienRanap);                 
                 jmlmenu++;
             }
             
@@ -20004,6 +20022,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getkip_pasien_ralan()==true){  
             Panelmenu.add(btnKIPPasienRalan);                 
+            jmlmenu++;
+        }
+
+        if(akses.getdaftar_pasien_ranap()==true){  
+            Panelmenu.add(btnDaftarPasienRanap);                 
             jmlmenu++;
         }
 
@@ -23171,6 +23194,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getdaftar_pasien_ranap()==true){  
+            if(btnDaftarPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDaftarPasienRanap);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(tampilkantni.equals("Yes")){
             if(akses.getanggota_militer_dirawat()==true){
                 if(btnAnggotaMiliterDirawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25990,6 +26020,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapPermintaanDiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRekapPermintaanDietActionPerformed(evt);
+            }
+        });
+        
+        btnDaftarPasienRanap = new widget.ButtonBig();
+        btnDaftarPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_009_95869.png")));
+        btnDaftarPasienRanap.setText("Daftar Pasien Ranap");
+        btnDaftarPasienRanap.setIconTextGap(0);
+        btnDaftarPasienRanap.setName("btnDaftarPasienRanap"); 
+        btnDaftarPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDaftarPasienRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarPasienRanapActionPerformed(evt);
             }
         });
     }

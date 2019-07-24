@@ -471,8 +471,6 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             });
         }  
         
-        jam();
-        
         kasus.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -666,10 +664,6 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         TNoRM = new widget.TextBox();
         jLabel18 = new widget.Label();
         TanggalKunjungan = new widget.Tanggal();
-        JamKunjungan = new widget.ComboBox();
-        MenitKunjungan = new widget.ComboBox();
-        DetikKunjungan = new widget.ComboBox();
-        ChkJln = new widget.CekBox();
         jLabel20 = new widget.Label();
         CaraMasuk = new widget.ComboBox();
         jLabel22 = new widget.Label();
@@ -948,10 +942,10 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel28.setText("Keputusan :");
         jLabel28.setName("jLabel28"); // NOI18N
         internalFrame8.add(jLabel28);
-        jLabel28.setBounds(252, 10, 70, 23);
+        jLabel28.setBounds(382, 10, 70, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019 23:48:53" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2019 01:45:24" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
@@ -961,34 +955,34 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         internalFrame8.add(PrimerTanggalTriase);
-        PrimerTanggalTriase.setBounds(93, 40, 145, 23);
+        PrimerTanggalTriase.setBounds(69, 40, 135, 23);
 
-        jLabel29.setText("Tanggal Triase :");
+        jLabel29.setText("Tgl.Triase :");
         jLabel29.setName("jLabel29"); // NOI18N
         internalFrame8.add(jLabel29);
-        jLabel29.setBounds(0, 40, 89, 23);
+        jLabel29.setBounds(0, 40, 65, 23);
 
         buttonGroup1.add(PrimerResusitasi);
         PrimerResusitasi.setForeground(new java.awt.Color(170, 0, 0));
         PrimerResusitasi.setSelected(true);
-        PrimerResusitasi.setText("Zona Merah Ruang Resusitasi");
+        PrimerResusitasi.setText("Ruang Resusitasi");
         PrimerResusitasi.setName("PrimerResusitasi"); // NOI18N
         PrimerResusitasi.setPreferredSize(new java.awt.Dimension(40, 20));
         internalFrame8.add(PrimerResusitasi);
-        PrimerResusitasi.setBounds(326, 10, 180, 23);
+        PrimerResusitasi.setBounds(456, 10, 120, 23);
 
         buttonGroup1.add(PrimerKritis);
         PrimerKritis.setForeground(new java.awt.Color(250, 0, 0));
-        PrimerKritis.setText("Zona Merah Ruang Kritis");
+        PrimerKritis.setText("Ruang Kritis");
         PrimerKritis.setName("PrimerKritis"); // NOI18N
         internalFrame8.add(PrimerKritis);
-        PrimerKritis.setBounds(515, 10, 180, 23);
+        PrimerKritis.setBounds(590, 10, 100, 23);
 
         label14.setText("Catatan :");
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(60, 23));
         internalFrame8.add(label14);
-        label14.setBounds(0, 10, 89, 23);
+        label14.setBounds(0, 10, 65, 23);
 
         PrimerCatatan.setToolTipText("Alt+C");
         PrimerCatatan.setName("PrimerCatatan"); // NOI18N
@@ -999,7 +993,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         internalFrame8.add(PrimerCatatan);
-        PrimerCatatan.setBounds(93, 10, 145, 23);
+        PrimerCatatan.setBounds(69, 10, 290, 23);
 
         internalFrame5.add(internalFrame8, java.awt.BorderLayout.PAGE_END);
 
@@ -1375,10 +1369,10 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel37.setText("Keputusan :");
         jLabel37.setName("jLabel37"); // NOI18N
         internalFrame12.add(jLabel37);
-        jLabel37.setBounds(252, 10, 70, 23);
+        jLabel37.setBounds(382, 10, 70, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019 23:48:54" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2019 01:45:25" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
@@ -1388,12 +1382,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         internalFrame12.add(SekunderTanggalTriase);
-        SekunderTanggalTriase.setBounds(93, 40, 145, 23);
+        SekunderTanggalTriase.setBounds(69, 40, 135, 23);
 
-        jLabel38.setText("Tanggal Triase :");
+        jLabel38.setText("Tgl.Triase :");
         jLabel38.setName("jLabel38"); // NOI18N
         internalFrame12.add(jLabel38);
-        jLabel38.setBounds(0, 40, 89, 23);
+        jLabel38.setBounds(0, 40, 65, 23);
 
         buttonGroup1.add(SekunderZonaKuning);
         SekunderZonaKuning.setForeground(new java.awt.Color(200, 200, 0));
@@ -1401,20 +1395,20 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         SekunderZonaKuning.setName("SekunderZonaKuning"); // NOI18N
         SekunderZonaKuning.setPreferredSize(new java.awt.Dimension(40, 20));
         internalFrame12.add(SekunderZonaKuning);
-        SekunderZonaKuning.setBounds(326, 10, 180, 23);
+        SekunderZonaKuning.setBounds(456, 10, 140, 23);
 
         buttonGroup1.add(SekunderZonaHijau);
         SekunderZonaHijau.setForeground(new java.awt.Color(0, 170, 0));
         SekunderZonaHijau.setText("Zona Hijau");
         SekunderZonaHijau.setName("SekunderZonaHijau"); // NOI18N
         internalFrame12.add(SekunderZonaHijau);
-        SekunderZonaHijau.setBounds(515, 10, 180, 23);
+        SekunderZonaHijau.setBounds(590, 10, 140, 23);
 
         label15.setText("Catatan :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(60, 23));
         internalFrame12.add(label15);
-        label15.setBounds(0, 10, 89, 23);
+        label15.setBounds(0, 10, 65, 23);
 
         SekunderCatatan.setToolTipText("Alt+C");
         SekunderCatatan.setName("SekunderCatatan"); // NOI18N
@@ -1425,7 +1419,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         internalFrame12.add(SekunderCatatan);
-        SekunderCatatan.setBounds(93, 10, 145, 23);
+        SekunderCatatan.setBounds(69, 10, 290, 23);
 
         internalFrame10.add(internalFrame12, java.awt.BorderLayout.PAGE_END);
 
@@ -1636,7 +1630,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 134));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 104));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -1672,8 +1666,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019" }));
-        TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2019 01:45:25" }));
+        TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
         TanggalKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1682,61 +1676,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         FormInput.add(TanggalKunjungan);
-        TanggalKunjungan.setBounds(93, 40, 90, 23);
-
-        JamKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
-        JamKunjungan.setName("JamKunjungan"); // NOI18N
-        JamKunjungan.setPreferredSize(new java.awt.Dimension(55, 28));
-        JamKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JamKunjunganKeyPressed(evt);
-            }
-        });
-        FormInput.add(JamKunjungan);
-        JamKunjungan.setBounds(186, 40, 62, 23);
-
-        MenitKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        MenitKunjungan.setName("MenitKunjungan"); // NOI18N
-        MenitKunjungan.setPreferredSize(new java.awt.Dimension(55, 28));
-        MenitKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MenitKunjunganKeyPressed(evt);
-            }
-        });
-        FormInput.add(MenitKunjungan);
-        MenitKunjungan.setBounds(251, 40, 62, 23);
-
-        DetikKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
-        DetikKunjungan.setName("DetikKunjungan"); // NOI18N
-        DetikKunjungan.setPreferredSize(new java.awt.Dimension(55, 28));
-        DetikKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DetikKunjunganKeyPressed(evt);
-            }
-        });
-        FormInput.add(DetikKunjungan);
-        DetikKunjungan.setBounds(316, 40, 62, 23);
-
-        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkJln.setSelected(true);
-        ChkJln.setBorderPainted(true);
-        ChkJln.setBorderPaintedFlat(true);
-        ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkJln.setName("ChkJln"); // NOI18N
-        ChkJln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkJlnActionPerformed(evt);
-            }
-        });
-        FormInput.add(ChkJln);
-        ChkJln.setBounds(381, 40, 23, 23);
+        TanggalKunjungan.setBounds(93, 40, 135, 23);
 
         jLabel20.setText("Cara Masuk :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(531, 70, 80, 23);
+        jLabel20.setBounds(241, 40, 80, 23);
 
         CaraMasuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jalan", "Brankar", "Kursi Roda", "Digendong" }));
         CaraMasuk.setName("CaraMasuk"); // NOI18N
@@ -1747,7 +1692,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         FormInput.add(CaraMasuk);
-        CaraMasuk.setBounds(615, 70, 100, 23);
+        CaraMasuk.setBounds(325, 40, 100, 23);
 
         jLabel22.setText("Transportasi :");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -1805,7 +1750,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         FormInput.add(NmKasus);
-        NmKasus.setBounds(145, 70, 339, 23);
+        NmKasus.setBounds(145, 70, 250, 23);
 
         btnKasus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnKasus.setMnemonic('1');
@@ -1822,7 +1767,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnKasus);
-        btnKasus.setBounds(486, 70, 28, 23);
+        btnKasus.setBounds(397, 70, 28, 23);
 
         KeteranganKedatangan.setName("KeteranganKedatangan"); // NOI18N
         KeteranganKedatangan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1831,12 +1776,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
         FormInput.add(KeteranganKedatangan);
-        KeteranganKedatangan.setBounds(205, 100, 510, 23);
+        KeteranganKedatangan.setBounds(520, 70, 195, 23);
 
-        jLabel8.setText("Keterangan Kedatangan :");
+        jLabel8.setText("Keterangan  :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(1, 100, 200, 23);
+        jLabel8.setBounds(430, 70, 86, 23);
 
         FormTriase.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -1880,7 +1825,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1894,7 +1839,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-07-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2087,7 +2032,25 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-       
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"Pasien");
+        }else if(KdKasus.getText().trim().equals("")||NmKasus.getText().trim().equals("")){
+            Valid.textKosong(btnKasus,"Macam Kasus");
+        }else if(KeteranganKedatangan.equals("")){
+            Valid.textKosong(btnKasus,"Keterangan");
+        }else{
+            if(TabTriase.getSelectedIndex()==0){
+                if(PrimerKeluhanUtama.getText().trim().equals("")){
+                    Valid.textKosong(PrimerKeluhanUtama,"Keluhan Utama");
+                }else if(PrimerSuhu.getText().trim().equals("")){
+                    Valid.textKosong(PrimerSuhu,"Suhu");
+                }else if(PrimerNyeri.getText().trim().equals("")){
+                    Valid.textKosong(PrimerNyeri,"Nyeri");
+                }else if(PrimerTensi.getText().trim().equals("")){
+                    Valid.textKosong(PrimerTensi,"Tensi");
+                }
+            }
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -2251,10 +2214,6 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_formWindowActivated
-
-    private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkJlnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ChkJlnActionPerformed
 
     private void KdKasusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKasusKeyPressed
         //Valid.pindah(evt, TCari,kdskala);
@@ -2631,27 +2590,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_TransportasiKeyPressed
 
     private void TanggalKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKunjunganKeyPressed
-        Valid.pindah(evt,Transportasi,JamKunjungan);
+        Valid.pindah(evt,Transportasi,CaraMasuk);
     }//GEN-LAST:event_TanggalKunjunganKeyPressed
 
-    private void JamKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKunjunganKeyPressed
-        Valid.pindah(evt,TanggalKunjungan,MenitKunjungan);
-    }//GEN-LAST:event_JamKunjunganKeyPressed
-
-    private void MenitKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenitKunjunganKeyPressed
-        Valid.pindah(evt,JamKunjungan,DetikKunjungan);
-    }//GEN-LAST:event_MenitKunjunganKeyPressed
-
-    private void DetikKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetikKunjunganKeyPressed
-        Valid.pindah(evt,MenitKunjungan,AlasanKedatangan);
-    }//GEN-LAST:event_DetikKunjunganKeyPressed
-
     private void AlasanKedatanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasanKedatanganKeyPressed
-        Valid.pindah(evt,DetikKunjungan,btnKasus);
+        Valid.pindah(evt,CaraMasuk,btnKasus);
     }//GEN-LAST:event_AlasanKedatanganKeyPressed
 
     private void CaraMasukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraMasukKeyPressed
-        Valid.pindah(evt,btnKasus,KeteranganKedatangan);
+        Valid.pindah(evt,TanggalKunjungan,AlasanKedatangan);
     }//GEN-LAST:event_CaraMasukKeyPressed
 
     private void KeteranganKedatanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKedatanganKeyPressed
@@ -2721,17 +2668,13 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private widget.Button BtnTambahSkala1;
     private widget.Button BtnTambahSkala2;
     private widget.ComboBox CaraMasuk;
-    private widget.CekBox ChkJln;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.ComboBox DetikKunjungan;
     private widget.PanelBiasa FormInput;
     private widget.InternalFrame FormTriase;
-    private widget.ComboBox JamKunjungan;
     private widget.TextBox KdKasus;
     private widget.TextBox KeteranganKedatangan;
     private widget.Label LCount;
-    private widget.ComboBox MenitKunjungan;
     private widget.TextBox NmKasus;
     private widget.TextBox PrimerCatatan;
     private widget.TextArea PrimerKeluhanUtama;
@@ -3276,61 +3219,6 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             Sequel.cariIsi("select nama from petugas where nip=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
             SekunderNamaPetugas.setText(PrimerNamaPetugas.getText());
         } 
-    }
-    
-    private void jam(){
-        ActionListener taskPerformer = new ActionListener(){
-            private int nilai_jam;
-            private int nilai_menit;
-            private int nilai_detik;
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String nol_jam = "";
-                String nol_menit = "";
-                String nol_detik = "";
-                // Membuat Date
-                //Date dt = new Date();
-                Date now = Calendar.getInstance().getTime();
-
-                // Mengambil nilaj JAM, MENIT, dan DETIK Sekarang
-                if(ChkJln.isSelected()==true){
-                    nilai_jam = now.getHours();
-                    nilai_menit = now.getMinutes();
-                    nilai_detik = now.getSeconds();
-                }else if(ChkJln.isSelected()==false){
-                    nilai_jam =JamKunjungan.getSelectedIndex();
-                    nilai_menit =MenitKunjungan.getSelectedIndex();
-                    nilai_detik =DetikKunjungan.getSelectedIndex();
-                }
-
-                // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
-                if (nilai_jam <= 9) {
-                    // Tambahkan "0" didepannya
-                    nol_jam = "0";
-                }
-                // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
-                if (nilai_menit <= 9) {
-                    // Tambahkan "0" didepannya
-                    nol_menit = "0";
-                }
-                // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
-                if (nilai_detik <= 9) {
-                    // Tambahkan "0" didepannya
-                    nol_detik = "0";
-                }
-                // Membuat String JAM, MENIT, DETIK
-                String jam = nol_jam + Integer.toString(nilai_jam);
-                String menit = nol_menit + Integer.toString(nilai_menit);
-                String detik = nol_detik + Integer.toString(nilai_detik);
-                // Menampilkan pada Layar
-                //tampil_jam.setText("  " + jam + " : " + menit + " : " + detik + "  ");
-                JamKunjungan.setSelectedItem(jam);
-                MenitKunjungan.setSelectedItem(menit);
-                DetikKunjungan.setSelectedItem(detik);
-            }
-        };
-        // Timer
-        new Timer(1000, taskPerformer).start();
     }
     
 }

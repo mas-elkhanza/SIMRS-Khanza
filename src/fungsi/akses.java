@@ -116,7 +116,7 @@ public final class akses {
             grafik_bidangpegawai=false,grafik_departemenpegawai=false,grafik_pendidikanpegawai=false,grafik_sttswppegawai=false,
             grafik_sttskerjapegawai=false,grafik_sttspulangranap=false,kip_pasien_ranap=false,kip_pasien_ralan=false,bpjs_mapping_dokterdpjp=false,
             data_triase_igd=false,master_triase_skala1=false,master_triase_skala2=false,master_triase_skala3=false,master_triase_skala4=false,
-            master_triase_skala5=false,master_triase_pemeriksaan=false,master_triase_macamkasus=false,rekap_permintaan_diet=false;
+            master_triase_skala5=false,master_triase_pemeriksaan=false,master_triase_macamkasus=false,rekap_permintaan_diet=false,daftar_pasien_ranap=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -671,6 +671,7 @@ public final class akses {
                         akses.master_triase_pemeriksaan=true;
                         akses.master_triase_macamkasus=true;
                         akses.rekap_permintaan_diet=true;
+                        akses.daftar_pasien_ranap=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1209,6 +1210,7 @@ public final class akses {
                         akses.master_triase_pemeriksaan=rs2.getBoolean("master_triase_pemeriksaan");
                         akses.master_triase_macamkasus=rs2.getBoolean("master_triase_macamkasus");
                         akses.rekap_permintaan_diet=rs2.getBoolean("rekap_permintaan_diet");
+                        akses.daftar_pasien_ranap=rs2.getBoolean("daftar_pasien_ranap");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1745,6 +1747,7 @@ public final class akses {
                         akses.master_triase_pemeriksaan=false;
                         akses.master_triase_macamkasus=false;
                         akses.rekap_permintaan_diet=false;
+                        akses.daftar_pasien_ranap=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2335,4 +2338,5 @@ public final class akses {
     public static boolean getmaster_triase_pemeriksaan(){return akses.master_triase_pemeriksaan;}
     public static boolean getmaster_triase_macamkasus(){return akses.master_triase_macamkasus;}
     public static boolean getrekap_permintaan_diet(){return akses.rekap_permintaan_diet;}
+    public static boolean getdaftar_pasien_ranap(){return akses.daftar_pasien_ranap;}
 }   
