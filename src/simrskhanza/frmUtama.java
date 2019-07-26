@@ -480,6 +480,7 @@ import kepegawaian.K3RSPenyebab;
 import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
 import laporan.DlgDaftarPasienRanap;
+import laporan.DlgDaftarPasienRanapTNI;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapMutasiBerkas;
@@ -6167,7 +6168,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPenyakitRanapCaraBayar);
 
         btnAnggotaMiliterDirawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Soldier-3_379419.png"))); // NOI18N
-        btnAnggotaMiliterDirawat.setText("Anggota Militer Dirawat");
+        btnAnggotaMiliterDirawat.setText("Anggota TNI Dirawat");
         btnAnggotaMiliterDirawat.setIconTextGap(0);
         btnAnggotaMiliterDirawat.setName("btnAnggotaMiliterDirawat"); // NOI18N
         btnAnggotaMiliterDirawat.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6894,7 +6895,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/06/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/07/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -15092,6 +15093,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+
+    private void btnDaftarPasienRanapTNIActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDaftarPasienRanapTNI form=new DlgDaftarPasienRanapTNI(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     
     /**
     * @param args the command line arguments
@@ -15675,7 +15688,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikBidangPegawai,btnGrafikDepartemenPegawai,btnGrafikPendidikanPegawai,btnGrafikStatusWPPegawai,btnGrafikStatusKerjaPegawai,
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
-            btnRekapPermintaanDiet,btnDaftarPasienRanap;
+            btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI;
     
     public void isWall(){
         try{            
@@ -17064,6 +17077,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(tampilkantni.equals("Yes")){
                 if(akses.getanggota_militer_dirawat()==true){
                     Panelmenu.add(btnAnggotaMiliterDirawat);
+                    jmlmenu++;
+                }
+                
+                if(akses.getdaftar_pasien_ranaptni()==true){  
+                    Panelmenu.add(btnDaftarPasienRanapTNI);                 
                     jmlmenu++;
                 }
             }
@@ -19733,6 +19751,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(tampilkantni.equals("Yes")){
             if(akses.getanggota_militer_dirawat()==true){
                 Panelmenu.add(btnAnggotaMiliterDirawat);
+                jmlmenu++;
+            }
+            
+            if(akses.getdaftar_pasien_ranaptni()==true){  
+                Panelmenu.add(btnDaftarPasienRanapTNI);                 
                 jmlmenu++;
             }
         }
@@ -22908,6 +22931,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                     jmlmenu++;
                 }                
             }
+            
+            if(akses.getdaftar_pasien_ranaptni()==true){  
+                if(btnDaftarPasienRanapTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnDaftarPasienRanapTNI);                 
+                    jmlmenu++;
+                }                
+            }
         }
 
         if(akses.getkamar()==true){
@@ -25732,6 +25762,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDaftarPasienRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDaftarPasienRanapActionPerformed(evt);
+            }
+        });
+        
+        btnDaftarPasienRanapTNI = new widget.ButtonBig();
+        btnDaftarPasienRanapTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_009_95869.png")));
+        btnDaftarPasienRanapTNI.setText("Daftar Pasien Ranap TNI");
+        btnDaftarPasienRanapTNI.setIconTextGap(0);
+        btnDaftarPasienRanapTNI.setName("btnDaftarPasienRanapTNI"); 
+        btnDaftarPasienRanapTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDaftarPasienRanapTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarPasienRanapTNIActionPerformed(evt);
             }
         });
     }
