@@ -15790,7 +15790,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         Panelmenu.setLayout(new GridLayout(0,grid));
         Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,tinggi));
         Panelmenu.revalidate();
-        //Panelmenu.repaint();               
+        Panelmenu.repaint();               
     }
     
     

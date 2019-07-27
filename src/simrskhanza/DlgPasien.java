@@ -101,7 +101,6 @@ public class DlgPasien extends javax.swing.JDialog {
     private LocalDate today=LocalDate.now();
     private LocalDate birthday;
     private Period p;
-    private long p2;
 
     /** Creates new form DlgPas
      * @param parent
@@ -5210,7 +5209,6 @@ private void DTPLahirItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
     lahir = DTPLahir.getDate();    
     birthday = lahir.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     p = Period.between(birthday,today);
-    p2 =ChronoUnit.DAYS.between(birthday,today);
     TUmurTh.setText(String.valueOf(p.getYears()));
     TUmurBl.setText(String.valueOf(p.getMonths()));
     TUmurHr.setText(String.valueOf(p.getDays()));

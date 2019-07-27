@@ -338,7 +338,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }else{
                                 harirawat="";
                             }
-                            System.out.println("Data "+harirawat);
                         }
                     } catch (Exception e) {
                         System.out.println("Notif 2 : "+e);
