@@ -9283,6 +9283,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnSKDPBPJS.setEnabled(akses.getskdp_bpjs());
         MnPermintaanLab.setEnabled(akses.getpermintaan_lab());
         MnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
+        MnResepDOkter.setEnabled(akses.getresep_dokter());
         if(akses.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);
         }else{

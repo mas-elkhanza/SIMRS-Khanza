@@ -20,11 +20,15 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,6 +43,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import javax.transaction.SystemException;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -2292,19 +2297,92 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-            Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                param.put("parameter","%"+TCari.getText().trim()+"%");
-            Valid.MyReport("rptBridgingDaftar.jasper","report","::[ Data Bridging SEP ]::",param);
+        }else if(tabMode.getRowCount()!=0){ 
+            keputusan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Triase IGD",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1","Laporan 2"},"Laporan 1");
+            switch (keputusan) {
+                case "Laporan 1":
+                    Map<String, Object> param = new HashMap<>(); 
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReportqry("rptDataTriaseIGD.jasper","report","::[ Data Triase IGD ]::",
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,data_triase_igd.tgl_kunjungan,"+
+                        "data_triase_igd.cara_masuk,data_triase_igd.alat_transportasi,data_triase_igd.alasan_kedatangan,"+
+                        "data_triase_igd.keterangan_kedatangan,data_triase_igd.kode_kasus,master_triase_macam_kasus.macam_kasus "+
+                        "from reg_periksa inner join pasien inner join data_triase_igd inner join master_triase_macam_kasus "+
+                        "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=data_triase_igd.no_rawat "+
+                        "and data_triase_igd.kode_kasus=master_triase_macam_kasus.kode_kasus "+
+                        "where data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                        "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                        "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                        "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_triase_igd.cara_masuk like '%"+TCari.getText().trim()+"%' or "+
+                        "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_triase_igd.alat_transportasi like '%"+TCari.getText().trim()+"%' or "+
+                        "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_triase_igd.alasan_kedatangan like '%"+TCari.getText().trim()+"%' or "+
+                        "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_triase_igd.keterangan_kedatangan like '%"+TCari.getText().trim()+"%' or "+
+                        "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and master_triase_macam_kasus.macam_kasus like '%"+TCari.getText().trim()+"%' order by data_triase_igd.tgl_kunjungan",param);
+                    break;
+                case "Laporan 2":
+                    try{
+                        htmlContent = new StringBuilder();
+                        File g = new File("file2.css");            
+                        BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                        bg.write(
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                            ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                        );
+                        bg.close();
+
+                        File f;            
+                        BufferedWriter bw; 
+                        
+                        htmlContent.append(
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Pasien</td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Kunjungan</td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Kedatangan</td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Pemeriksaan</td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Keluhan</td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Tanda Vital</td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Pemeriksaan</td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='200px'>Keputusan</td>"+
+                            "</tr>"
+                        );
+                        
+                        f = new File("DataTriaseIGD.html");            
+                        bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write("<html>"+
+                                    "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                    "<body>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>Data Triase IGD<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>"+
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            htmlContent.toString()+
+                                        "</table>"+
+                                    "</body>"+                   
+                                 "</html>"
+                        );
+
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    }catch(Exception e){
+                        System.out.println("Notif : ");
+                    }
+                    break;
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2595,10 +2673,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             label11.setForeground(new Color(170,00,0));
             TCariSkala1.setForeground(new Color(170,00,0));
             BtnTambahSkala1.setEnabled(akses.getmaster_triase_skala1());
+            PrimerResusitasi.setSelected(true);
         }else if(TabSkala1dan2.getSelectedIndex()==1){
             label11.setForeground(new Color(255,0,0));
             TCariSkala1.setForeground(new Color(255,00,0));
             BtnTambahSkala1.setEnabled(akses.getmaster_triase_skala2());
+            PrimerKritis.setSelected(true);
         }
     }//GEN-LAST:event_TabSkala1dan2MouseClicked
 
@@ -2742,14 +2822,17 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             label13.setForeground(new Color(200,200,0));
             TCariSkala3.setForeground(new Color(200,200,0));
             BtnTambahSkala2.setEnabled(akses.getmaster_triase_skala3());
+            SekunderZonaKuning.setSelected(true);
         }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
             label13.setForeground(new Color(0,170,0));
             TCariSkala3.setForeground(new Color(0,170,0));
             BtnTambahSkala2.setEnabled(akses.getmaster_triase_skala4());
+            SekunderZonaHijau.setSelected(true);
         }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
             label13.setForeground(new Color(150,150,150));
             TCariSkala3.setForeground(new Color(150,150,150));
             BtnTambahSkala2.setEnabled(akses.getmaster_triase_skala5());
+            SekunderZonaHijau.setSelected(true);
         }
     }//GEN-LAST:event_TabSkala3dan4dan5MouseClicked
 

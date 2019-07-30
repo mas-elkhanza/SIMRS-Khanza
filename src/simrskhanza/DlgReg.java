@@ -9463,6 +9463,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPermintaanLab1.setEnabled(akses.getpermintaan_lab());
         MnPermintaanRadiologi1.setEnabled(akses.getpermintaan_radiologi());
         MnTeridentifikasiTB.setEnabled(akses.getkemenkes_sitt());
+        MnResepDOkter.setEnabled(akses.getresep_dokter());
+        MnResepDOkter1.setEnabled(akses.getresep_dokter());
     }
     
     private void isNumber(){         

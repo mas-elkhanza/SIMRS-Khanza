@@ -6488,6 +6488,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSKDPBPJS.setEnabled(akses.getskdp_bpjs());
         MnPermintaanLab.setEnabled(akses.getpermintaan_lab());
         MnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
+        MnResepDOkter.setEnabled(akses.getresep_dokter());
     }
     
     private void isNumber(){
