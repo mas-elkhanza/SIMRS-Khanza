@@ -584,7 +584,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "kamar.kd_kamar from kamar_inap inner join reg_periksa inner join pasien inner join bangsal inner join kamar "+
                 "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                "where kamar_inap.tgl_keluar between ? and ? and kamar.kd_bangsal like ? and "+
+                "where kamar_inap.stts_pulang<>'Pindah Kamar' and kamar_inap.tgl_keluar between ? and ? and kamar.kd_bangsal like ? and "+
                 "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) "+
                 "order by kamar_inap.tgl_keluar,kamar_inap.jam_keluar");
             try {

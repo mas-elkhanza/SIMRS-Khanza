@@ -84,7 +84,7 @@ public final class DlgPembyaranRanapPerhari extends javax.swing.JDialog {
             ps= koneksi.prepareStatement(
                 "select kamar_inap.no_rawat,kamar_inap.tgl_keluar,kamar_inap.stts_pulang  from kamar_inap inner join reg_periksa inner join pasien inner join penjab inner join nota_inap "+
                 "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and kamar_inap.tgl_keluar=? "+
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and kamar_inap.tgl_keluar=? "+
                 "order by kamar_inap.tgl_keluar");
             pstanggal=koneksi.prepareStatement(
                     "select kamar_inap.tgl_keluar from kamar_inap where kamar_inap.tgl_keluar between ? and ? "+
