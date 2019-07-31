@@ -8495,6 +8495,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSKDPBPJS1.setEnabled(akses.getskdp_bpjs());  
         MnPermintaanLab1.setEnabled(akses.getpermintaan_lab());
         MnPermintaanRadiologi1.setEnabled(akses.getpermintaan_radiologi());
+        MnDataTriaseIGD.setEnabled(akses.getdata_triase_igd());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);
