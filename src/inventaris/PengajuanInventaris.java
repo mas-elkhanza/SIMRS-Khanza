@@ -221,6 +221,10 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppProses = new javax.swing.JMenuItem();
+        ppDosetujui = new javax.swing.JMenuItem();
+        ppDitolak = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -283,6 +287,57 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         btnPetugasPJ = new widget.Button();
         ChkInput = new widget.CekBox();
 
+        jPopupMenu1.setForeground(new java.awt.Color(70, 70, 70));
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppProses.setBackground(new java.awt.Color(255, 255, 254));
+        ppProses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppProses.setForeground(new java.awt.Color(70, 70, 70));
+        ppProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppProses.setText("Set Status Proses Pengajuan");
+        ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppProses.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppProses.setName("ppProses"); // NOI18N
+        ppProses.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppProses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppProsesBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppProses);
+
+        ppDosetujui.setBackground(new java.awt.Color(255, 255, 254));
+        ppDosetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDosetujui.setForeground(new java.awt.Color(70, 70, 70));
+        ppDosetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDosetujui.setText("Set Status Disetujui");
+        ppDosetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDosetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDosetujui.setName("ppDosetujui"); // NOI18N
+        ppDosetujui.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppDosetujui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDosetujuiBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppDosetujui);
+
+        ppDitolak.setBackground(new java.awt.Color(255, 255, 254));
+        ppDitolak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDitolak.setForeground(new java.awt.Color(70, 70, 70));
+        ppDitolak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDitolak.setText("Set Status Ditolak");
+        ppDitolak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDitolak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDitolak.setName("ppDitolak"); // NOI18N
+        ppDitolak.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppDitolak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDitolakBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppDitolak);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -303,6 +358,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
         tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -916,7 +972,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()> -1){
-            Sequel.meghapus("kesling_pest_control","nip","tanggal",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            Sequel.meghapus("pengajuan_inventaris","no_pengajuan",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             tampil();
             emptTeks();
         }
@@ -932,17 +988,32 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(Spesifikasi.getText().trim().equals("")){
-            Valid.textKosong(Spesifikasi,"Rekomendasi");
+            Valid.textKosong(Spesifikasi,"Spesifikasi");
         }else if(LatarBelakang.getText().trim().equals("")){
-            Valid.textKosong(LatarBelakang,"Kegiatan");
+            Valid.textKosong(LatarBelakang,"Latar Belakang");
         }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(KdPetugas,"petugas yang bertugas");
+            Valid.textKosong(KdPetugas,"Yang Mengajukan");
+        }else if(NamaBarang.getText().trim().equals("")){
+            Valid.textKosong(NamaBarang,"Nama Barang");
+        }else if(NoPengajuan.getText().trim().equals("")){
+            Valid.textKosong(NoPengajuan,"No.Pengajuan");
+        }else if(NmPetugasPJ.getText().trim().equals("")){
+            Valid.textKosong(KdPetugasPJ,"P.J. terkait pengajuan");
+        }else if(Jumlah.getText().trim().equals("")||Jumlah.getText().trim().equals("0")){
+            Valid.textKosong(Jumlah,"Jumlah");
+        }else if(Harga.getText().trim().equals("")||Harga.getText().trim().equals("0")){
+            Valid.textKosong(Harga,"Harga");
+        }else if(Total.getText().trim().equals("")||Total.getText().trim().equals("0")){
+            Valid.textKosong(Harga,"Total");
+        }else if(Keterangan.getText().trim().equals("")){
+            Valid.textKosong(Keterangan,"Keterangan");
         }else{
             if(tbObat.getSelectedRow()> -1){
-                if(Sequel.mengedittf("kesling_pest_control","nip=? and tanggal=?","nip=?,tanggal=?,rincian_kegiatan=?,rekomendasi=?",6,new String[]{
-                        KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        LatarBelakang.getText(),Spesifikasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
-                        tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
+                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","no_pengajuan=?,tanggal=?,nik=?,urgensi=?,latar_belakang=?,nama_barang=?,spesifikasi=?,jumlah=?,harga=?,total=?,keterangan=?,nik_pj=?",13,new String[]{
+                        NoPengajuan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),Urgensi.getSelectedItem().toString(),
+                        LatarBelakang.getText(),NamaBarang.getText(),Spesifikasi.getText(),Jumlah.getText(),Harga.getText(),
+                        Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),
+                        KdPetugasPJ.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                     })==true){
                         tampil();
                         emptTeks();
@@ -983,13 +1054,26 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptPestControl.jasper","report","::[ Data Pest Control ]::",
-                   "select kesling_pest_control.nip,petugas.nama,kesling_pest_control.tanggal,"+
-                   "kesling_pest_control.rincian_kegiatan,kesling_pest_control.rekomendasi "+
-                   "from kesling_pest_control inner join petugas on kesling_pest_control.nip=petugas.nip where "+
-                   "kesling_pest_control.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kesling_pest_control.nip like '%"+TCari.getText().trim()+"%' or "+
-                   "kesling_pest_control.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%'  "+
-                   "order by kesling_pest_control.tanggal",param);
+            Valid.MyReportqry("rptPengajuanInventaris.jasper","report","::[ Data Pengajuan Inventaris ]::",
+                   "select pengajuan_inventaris.no_pengajuan,pengajuan_inventaris.tanggal,pengajuan_inventaris.nik,peg1.nama as namapengaju,"+
+                   "peg1.bidang,peg1.departemen,pengajuan_inventaris.urgensi,pengajuan_inventaris.latar_belakang,pengajuan_inventaris.nama_barang,"+
+                   "pengajuan_inventaris.spesifikasi,pengajuan_inventaris.jumlah,pengajuan_inventaris.harga,pengajuan_inventaris.total,"+
+                   "pengajuan_inventaris.keterangan,pengajuan_inventaris.nik_pj,peg2.nama as namapj,pengajuan_inventaris.status "+
+                   "from pengajuan_inventaris inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_inventaris.nik=peg1.nik "+
+                   "and pengajuan_inventaris.nik_pj=peg2.nik where "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.nik like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.urgensi like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.latar_belakang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.nama_barang like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.spesifikasi like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.keterangan like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.nik_pj like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "pengajuan_inventaris.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_inventaris.status like '%"+TCari.getText().trim()+"%' order by pengajuan_inventaris.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1151,6 +1235,57 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         Valid.pindah(evt,btnPetugasPJ,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
+    private void ppProsesBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppProsesBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+        }else{
+            if(tbObat.getSelectedRow()> -1){
+                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Proses Pengajuan'",1,new String[]{
+                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                    })==true){
+                        tampil();
+                        emptTeks();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+            }
+        }
+    }//GEN-LAST:event_ppProsesBtnPrintActionPerformed
+
+    private void ppDosetujuiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDosetujuiBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+        }else{
+            if(tbObat.getSelectedRow()> -1){
+                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Disetujui'",1,new String[]{
+                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                    })==true){
+                        tampil();
+                        emptTeks();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+            }
+        }
+    }//GEN-LAST:event_ppDosetujuiBtnPrintActionPerformed
+
+    private void ppDitolakBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDitolakBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+        }else{
+            if(tbObat.getSelectedRow()> -1){
+                if(Sequel.mengedittf("pengajuan_inventaris","no_pengajuan=?","status='Ditolak'",1,new String[]{
+                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                    })==true){
+                        tampil();
+                        emptTeks();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+            }
+        }
+    }//GEN-LAST:event_ppDitolakBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1224,8 +1359,12 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppDitolak;
+    private javax.swing.JMenuItem ppDosetujui;
+    private javax.swing.JMenuItem ppProses;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.Table tbObat;
@@ -1255,44 +1394,44 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                    "pengajuan_inventaris.tanggal between ? and ? and peg2.nama like ? or "+
                    "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.status like ? order by pengajuan_inventaris.tanggal");
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(27,"%"+TCari.getText().trim()+"%");
-                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(30,"%"+TCari.getText().trim()+"%");
-                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(33,"%"+TCari.getText().trim()+"%");
-                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(36,"%"+TCari.getText().trim()+"%");
-                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(39,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
@@ -1341,8 +1480,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            //"No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Latar Belakang",
-            //"Nama Barang","Spesifikasi","Jml","Harga", "Total", "Keterangan", "NIK P.J.","P.J. Terkait", "Status"
             NoPengajuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
@@ -1380,6 +1517,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         BtnSimpan.setEnabled(akses.getpengajuan_asetinventaris());
         BtnHapus.setEnabled(akses.getpengajuan_asetinventaris());
         BtnEdit.setEnabled(akses.getpengajuan_asetinventaris());
+        ppDitolak.setEnabled(akses.getpengajuan_asetinventaris());
+        ppDosetujui.setEnabled(akses.getpengajuan_asetinventaris());
+        ppProses.setEnabled(akses.getpengajuan_asetinventaris());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
