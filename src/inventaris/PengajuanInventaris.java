@@ -31,9 +31,10 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariPetugas;
+import kepegawaian.DlgCariPegawai;
 
 
 /**
@@ -47,7 +48,8 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;
+    private int i=0,pilihan=0;
+    private double total=0;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -58,7 +60,8 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.","NIP","Petugas","Tanggal","Rincian Kegiatan","Rekomendasi"
+                "No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Latar Belakang",
+                "Nama Barang","Spesifikasi","Jml","Harga", "Total", "Keterangan", "NIK P.J.","P.J. Terkait", "Status"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -68,27 +71,53 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(85);
             }else if(i==1){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(65);
             }else if(i==2){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(85);
             }else if(i==3){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(160);
             }else if(i==4){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(70);
             }else if(i==5){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(70);
+            }else if(i==6){
+                column.setPreferredWidth(70);
+            }else if(i==7){
+                column.setPreferredWidth(170);
+            }else if(i==8){
+                column.setPreferredWidth(160);
+            }else if(i==9){
+                column.setPreferredWidth(170);
+            }else if(i==10){
+                column.setPreferredWidth(35);
+            }else if(i==11){
+                column.setPreferredWidth(80);
+            }else if(i==12){
+                column.setPreferredWidth(90);
+            }else if(i==13){
+                column.setPreferredWidth(140);
+            }else if(i==14){
+                column.setPreferredWidth(85);
+            }else if(i==15){
+                column.setPreferredWidth(160);
+            }else if(i==16){
+                column.setPreferredWidth(95);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kegiatan.setDocument(new batasInput((int)20000).getKata(Kegiatan));
-        Rekomendasi.setDocument(new batasInput((int)20000).getKata(Rekomendasi));
+        NamaBarang.setDocument(new batasInput((int)70).getKata(NamaBarang));
+        LatarBelakang.setDocument(new batasInput((int)200).getKata(LatarBelakang));
+        Spesifikasi.setDocument(new batasInput((int)200).getKata(Spesifikasi));
+        Keterangan.setDocument(new batasInput((int)70).getKata(Keterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        Jumlah.setDocument(new batasInput((byte)4).getOnlyAngka(Jumlah));
+        Harga.setDocument(new batasInput((byte)20).getOnlyAngka(Harga));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -120,10 +149,18 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(petugas.getTable().getSelectedRow()!= -1){
-                    KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    if(pilihan==1){
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        Bidang.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),6).toString());
+                        Departemen.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),5).toString());
+                        btnPetugas.requestFocus();
+                    }else if(pilihan==2){
+                        KdPetugasPJ.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugasPJ.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        btnPetugasPJ.requestFocus();
+                    }
                 }   
-                KdPetugas.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -137,9 +174,43 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();
+        
+        Harga.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isHitung();
+            }
+        });
+        
+        Jumlah.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isHitung();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isHitung();
+            }
+        });
     }
 
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariPegawai petugas=new DlgCariPegawai(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -160,7 +231,8 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnPrint = new widget.Button();
-        BtnAll = new widget.Button();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
@@ -170,8 +242,9 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        jLabel7 = new widget.Label();
-        LCount = new widget.Label();
+        BtnAll = new widget.Button();
+        jLabel18 = new widget.Label();
+        LCount1 = new widget.Label();
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
         jLabel8 = new widget.Label();
@@ -181,11 +254,33 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         NmPetugas = new widget.TextBox();
         scrollPane1 = new widget.ScrollPane();
-        Kegiatan = new widget.TextArea();
+        LatarBelakang = new widget.TextArea();
         jLabel9 = new widget.Label();
         scrollPane2 = new widget.ScrollPane();
-        Rekomendasi = new widget.TextArea();
+        Spesifikasi = new widget.TextArea();
         jLabel10 = new widget.Label();
+        jLabel3 = new widget.Label();
+        NoPengajuan = new widget.TextBox();
+        jLabel20 = new widget.Label();
+        Urgensi = new widget.ComboBox();
+        jLabel4 = new widget.Label();
+        NamaBarang = new widget.TextBox();
+        jLabel11 = new widget.Label();
+        Jumlah = new widget.TextBox();
+        Harga = new widget.TextBox();
+        jLabel12 = new widget.Label();
+        jLabel13 = new widget.Label();
+        Total = new widget.TextBox();
+        jLabel14 = new widget.Label();
+        Keterangan = new widget.TextBox();
+        jLabel15 = new widget.Label();
+        Bidang = new widget.TextBox();
+        jLabel16 = new widget.Label();
+        Departemen = new widget.TextBox();
+        jLabel17 = new widget.Label();
+        KdPetugasPJ = new widget.TextBox();
+        NmPetugasPJ = new widget.TextBox();
+        btnPetugasPJ = new widget.Button();
         ChkInput = new widget.CekBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -322,23 +417,16 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnPrint);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnAll);
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass8.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass8.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -366,15 +454,15 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
         jLabel19.setText("Tanggal :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(57, 23));
+        jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -384,20 +472,20 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(180, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -422,16 +510,33 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         });
         panelGlass9.add(BtnCari);
 
-        jLabel7.setText("Record :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass9.add(jLabel7);
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(BtnAll);
 
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(LCount);
+        jLabel18.setText("Total :");
+        jLabel18.setName("jLabel18"); // NOI18N
+        jLabel18.setPreferredSize(new java.awt.Dimension(45, 23));
+        panelGlass9.add(jLabel18);
+
+        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount1.setText("0");
+        LCount1.setName("LCount1"); // NOI18N
+        LCount1.setPreferredSize(new java.awt.Dimension(110, 23));
+        panelGlass9.add(LCount1);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -439,7 +544,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(72, 154));
+        PanelInput.setPreferredSize(new java.awt.Dimension(72, 205));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -449,11 +554,11 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         jLabel8.setText("Tanggal :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(516, 10, 70, 23);
+        jLabel8.setBounds(238, 10, 55, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019 19:39:43" }));
-        Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
+        Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -462,12 +567,12 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(590, 10, 135, 23);
+        Tanggal.setBounds(297, 10, 90, 23);
 
-        jLabel5.setText("Rincian Kegiatan :");
+        jLabel5.setText("Latar Belakang :");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
-        jLabel5.setBounds(0, 40, 102, 23);
+        jLabel5.setBounds(0, 100, 95, 23);
 
         KdPetugas.setEditable(false);
         KdPetugas.setHighlighter(null);
@@ -478,7 +583,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
             }
         });
         FormInput.add(KdPetugas);
-        KdPetugas.setBounds(106, 10, 120, 23);
+        KdPetugas.setBounds(99, 40, 110, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -489,8 +594,13 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
                 btnPetugasActionPerformed(evt);
             }
         });
+        btnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPetugasKeyPressed(evt);
+            }
+        });
         FormInput.add(btnPetugas);
-        btnPetugas.setBounds(475, 10, 28, 23);
+        btnPetugas.setBounds(400, 40, 28, 23);
 
         NmPetugas.setEditable(false);
         NmPetugas.setHighlighter(null);
@@ -501,41 +611,224 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
             }
         });
         FormInput.add(NmPetugas);
-        NmPetugas.setBounds(229, 10, 243, 23);
+        NmPetugas.setBounds(212, 40, 185, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
 
-        Kegiatan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Kegiatan.setColumns(20);
-        Kegiatan.setRows(5);
-        Kegiatan.setName("Kegiatan"); // NOI18N
-        scrollPane1.setViewportView(Kegiatan);
+        LatarBelakang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        LatarBelakang.setColumns(20);
+        LatarBelakang.setRows(5);
+        LatarBelakang.setName("LatarBelakang"); // NOI18N
+        LatarBelakang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LatarBelakangKeyPressed(evt);
+            }
+        });
+        scrollPane1.setViewportView(LatarBelakang);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(106, 40, 260, 80);
+        scrollPane1.setBounds(99, 100, 286, 42);
 
-        jLabel9.setText("Petugas P.J. :");
+        jLabel9.setText("Diajukan Oleh :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 10, 102, 23);
+        jLabel9.setBounds(0, 40, 95, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
 
-        Rekomendasi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Rekomendasi.setColumns(20);
-        Rekomendasi.setRows(5);
-        Rekomendasi.setName("Rekomendasi"); // NOI18N
-        scrollPane2.setViewportView(Rekomendasi);
+        Spesifikasi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Spesifikasi.setColumns(20);
+        Spesifikasi.setRows(5);
+        Spesifikasi.setName("Spesifikasi"); // NOI18N
+        Spesifikasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SpesifikasiKeyPressed(evt);
+            }
+        });
+        scrollPane2.setViewportView(Spesifikasi);
 
         FormInput.add(scrollPane2);
-        scrollPane2.setBounds(465, 40, 260, 80);
+        scrollPane2.setBounds(484, 100, 286, 42);
 
-        jLabel10.setText("Rekomendasi :");
+        jLabel10.setText("Spesifikasi :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(371, 40, 90, 23);
+        jLabel10.setBounds(390, 100, 90, 23);
+
+        jLabel3.setText("No.Pengajuan :");
+        jLabel3.setName("jLabel3"); // NOI18N
+        FormInput.add(jLabel3);
+        jLabel3.setBounds(0, 10, 95, 23);
+
+        NoPengajuan.setHighlighter(null);
+        NoPengajuan.setName("NoPengajuan"); // NOI18N
+        FormInput.add(NoPengajuan);
+        NoPengajuan.setBounds(99, 10, 130, 23);
+
+        jLabel20.setText("Urgensi :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(0, 70, 95, 23);
+
+        Urgensi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cito", "Emergensi", "Biasa" }));
+        Urgensi.setName("Urgensi"); // NOI18N
+        Urgensi.setPreferredSize(new java.awt.Dimension(55, 28));
+        Urgensi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UrgensiKeyPressed(evt);
+            }
+        });
+        FormInput.add(Urgensi);
+        Urgensi.setBounds(99, 70, 115, 23);
+
+        jLabel4.setText("Nama Barang :");
+        jLabel4.setName("jLabel4"); // NOI18N
+        FormInput.add(jLabel4);
+        jLabel4.setBounds(396, 10, 84, 23);
+
+        NamaBarang.setHighlighter(null);
+        NamaBarang.setName("NamaBarang"); // NOI18N
+        NamaBarang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NamaBarangKeyPressed(evt);
+            }
+        });
+        FormInput.add(NamaBarang);
+        NamaBarang.setBounds(484, 10, 286, 23);
+
+        jLabel11.setText("Jumlah :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(219, 70, 50, 23);
+
+        Jumlah.setHighlighter(null);
+        Jumlah.setName("Jumlah"); // NOI18N
+        Jumlah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JumlahKeyPressed(evt);
+            }
+        });
+        FormInput.add(Jumlah);
+        Jumlah.setBounds(273, 70, 55, 23);
+
+        Harga.setHighlighter(null);
+        Harga.setName("Harga"); // NOI18N
+        Harga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HargaKeyPressed(evt);
+            }
+        });
+        FormInput.add(Harga);
+        Harga.setBounds(385, 70, 120, 23);
+
+        jLabel12.setText("Harga :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(331, 70, 50, 23);
+
+        jLabel13.setText("Total Pengajuan :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(516, 70, 90, 23);
+
+        Total.setEditable(false);
+        Total.setHighlighter(null);
+        Total.setName("Total"); // NOI18N
+        FormInput.add(Total);
+        Total.setBounds(610, 70, 160, 23);
+
+        jLabel14.setText("Keterangan :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(428, 150, 75, 23);
+
+        Keterangan.setHighlighter(null);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(507, 150, 263, 23);
+
+        jLabel15.setText("Bidang :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(430, 40, 50, 23);
+
+        Bidang.setEditable(false);
+        Bidang.setHighlighter(null);
+        Bidang.setName("Bidang"); // NOI18N
+        Bidang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BidangKeyPressed(evt);
+            }
+        });
+        FormInput.add(Bidang);
+        Bidang.setBounds(484, 40, 100, 23);
+
+        jLabel16.setText("Departemen :");
+        jLabel16.setName("jLabel16"); // NOI18N
+        FormInput.add(jLabel16);
+        jLabel16.setBounds(586, 40, 80, 23);
+
+        Departemen.setEditable(false);
+        Departemen.setHighlighter(null);
+        Departemen.setName("Departemen"); // NOI18N
+        Departemen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DepartemenKeyPressed(evt);
+            }
+        });
+        FormInput.add(Departemen);
+        Departemen.setBounds(670, 40, 100, 23);
+
+        jLabel17.setText("P.J.Terkait :");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(0, 150, 95, 23);
+
+        KdPetugasPJ.setEditable(false);
+        KdPetugasPJ.setHighlighter(null);
+        KdPetugasPJ.setName("KdPetugasPJ"); // NOI18N
+        KdPetugasPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdPetugasPJKeyPressed(evt);
+            }
+        });
+        FormInput.add(KdPetugasPJ);
+        KdPetugasPJ.setBounds(99, 150, 110, 23);
+
+        NmPetugasPJ.setEditable(false);
+        NmPetugasPJ.setHighlighter(null);
+        NmPetugasPJ.setName("NmPetugasPJ"); // NOI18N
+        NmPetugasPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NmPetugasPJKeyPressed(evt);
+            }
+        });
+        FormInput.add(NmPetugasPJ);
+        NmPetugasPJ.setBounds(212, 150, 185, 23);
+
+        btnPetugasPJ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPetugasPJ.setMnemonic('2');
+        btnPetugasPJ.setToolTipText("Alt+2");
+        btnPetugasPJ.setName("btnPetugasPJ"); // NOI18N
+        btnPetugasPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPetugasPJActionPerformed(evt);
+            }
+        });
+        btnPetugasPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPetugasPJKeyPressed(evt);
+            }
+        });
+        FormInput.add(btnPetugasPJ);
+        btnPetugasPJ.setBounds(400, 150, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -568,16 +861,32 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Rekomendasi.getText().trim().equals("")){
-            Valid.textKosong(Rekomendasi,"Rekomendasi");
-        }else if(Kegiatan.getText().trim().equals("")){
-            Valid.textKosong(Kegiatan,"Kegiatan");
+        if(Spesifikasi.getText().trim().equals("")){
+            Valid.textKosong(Spesifikasi,"Spesifikasi");
+        }else if(LatarBelakang.getText().trim().equals("")){
+            Valid.textKosong(LatarBelakang,"Latar Belakang");
         }else if(NmPetugas.getText().trim().equals("")){
-            Valid.textKosong(KdPetugas,"petugas yang bertugas");
+            Valid.textKosong(KdPetugas,"Yang Mengajukan");
+        }else if(NamaBarang.getText().trim().equals("")){
+            Valid.textKosong(NamaBarang,"Nama Barang");
+        }else if(NoPengajuan.getText().trim().equals("")){
+            Valid.textKosong(NoPengajuan,"No.Pengajuan");
+        }else if(NmPetugasPJ.getText().trim().equals("")){
+            Valid.textKosong(KdPetugasPJ,"P.J. terkait pengajuan");
+        }else if(Jumlah.getText().trim().equals("")||Jumlah.getText().trim().equals("0")){
+            Valid.textKosong(Jumlah,"Jumlah");
+        }else if(Harga.getText().trim().equals("")||Harga.getText().trim().equals("0")){
+            Valid.textKosong(Harga,"Harga");
+        }else if(Total.getText().trim().equals("")||Total.getText().trim().equals("0")){
+            Valid.textKosong(Harga,"Total");
+        }else if(Keterangan.getText().trim().equals("")){
+            Valid.textKosong(Keterangan,"Keterangan");
         }else{
-            if(Sequel.menyimpantf("kesling_pest_control","?,?,?,?","Data",4,new String[]{
-                    KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    Kegiatan.getText(),Rekomendasi.getText()
+            if(Sequel.menyimpantf("pengajuan_inventaris","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
+                    NoPengajuan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPetugas.getText(),Urgensi.getSelectedItem().toString(),
+                    LatarBelakang.getText(),NamaBarang.getText(),Spesifikasi.getText(),Jumlah.getText(),Harga.getText(),
+                    Double.toString(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())),Keterangan.getText(),
+                    KdPetugasPJ.getText(),"Proses Pengajuan"
                 })==true){
                     tampil();
                     emptTeks();
@@ -589,14 +898,14 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Rekomendasi,BtnBatal);
+            Valid.pindah(evt,Spesifikasi,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        emptTeks();
         ChkInput.setSelected(true);
         isForm(); 
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -622,17 +931,17 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Rekomendasi.getText().trim().equals("")){
-            Valid.textKosong(Rekomendasi,"Rekomendasi");
-        }else if(Kegiatan.getText().trim().equals("")){
-            Valid.textKosong(Kegiatan,"Kegiatan");
+        if(Spesifikasi.getText().trim().equals("")){
+            Valid.textKosong(Spesifikasi,"Rekomendasi");
+        }else if(LatarBelakang.getText().trim().equals("")){
+            Valid.textKosong(LatarBelakang,"Kegiatan");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"petugas yang bertugas");
         }else{
             if(tbObat.getSelectedRow()> -1){
                 if(Sequel.mengedittf("kesling_pest_control","nip=? and tanggal=?","nip=?,tanggal=?,rincian_kegiatan=?,rekomendasi=?",6,new String[]{
                         KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        Kegiatan.getText(),Rekomendasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
+                        LatarBelakang.getText(),Spesifikasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),
                         tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
                     })==true){
                         tampil();
@@ -730,7 +1039,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah(evt,btnPetugas,TCari);
+        Valid.pindah(evt,TCari,NamaBarang);
 }//GEN-LAST:event_TanggalKeyPressed
 
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
@@ -753,7 +1062,7 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_KdPetugasKeyPressed
 
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.isCek();
+        pilihan=1;
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
@@ -779,8 +1088,68 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_tbObatKeyReleased
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        emptTeks();
         tampil();
     }//GEN-LAST:event_formWindowOpened
+
+    private void BidangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BidangKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BidangKeyPressed
+
+    private void DepartemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DepartemenKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DepartemenKeyPressed
+
+    private void KdPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasPJKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdPetugasPJKeyPressed
+
+    private void NmPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmPetugasPJKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NmPetugasPJKeyPressed
+
+    private void btnPetugasPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasPJActionPerformed
+        pilihan=2;
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setVisible(true);
+    }//GEN-LAST:event_btnPetugasPJActionPerformed
+
+    private void NamaBarangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaBarangKeyPressed
+        Valid.pindah(evt,Tanggal,btnPetugas);
+    }//GEN-LAST:event_NamaBarangKeyPressed
+
+    private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
+        Valid.pindah(evt,NamaBarang,Urgensi);
+    }//GEN-LAST:event_btnPetugasKeyPressed
+
+    private void UrgensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrgensiKeyPressed
+        Valid.pindah(evt,btnPetugas,Jumlah);
+    }//GEN-LAST:event_UrgensiKeyPressed
+
+    private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahKeyPressed
+        Valid.pindah(evt,Urgensi,Harga);
+    }//GEN-LAST:event_JumlahKeyPressed
+
+    private void HargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HargaKeyPressed
+        Valid.pindah(evt,Jumlah,LatarBelakang);
+    }//GEN-LAST:event_HargaKeyPressed
+
+    private void LatarBelakangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LatarBelakangKeyPressed
+        Valid.pindah(evt,Harga,Spesifikasi);
+    }//GEN-LAST:event_LatarBelakangKeyPressed
+
+    private void SpesifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpesifikasiKeyPressed
+        Valid.pindah(evt,LatarBelakang,btnPetugasPJ);
+    }//GEN-LAST:event_SpesifikasiKeyPressed
+
+    private void btnPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasPJKeyPressed
+        Valid.pindah(evt,Spesifikasi,Keterangan);
+    }//GEN-LAST:event_btnPetugasPJKeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,btnPetugasPJ,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -799,6 +1168,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Bidang;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -810,21 +1180,44 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.TextBox Departemen;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox Harga;
+    private widget.TextBox Jumlah;
     private widget.TextBox KdPetugas;
-    private widget.TextArea Kegiatan;
+    private widget.TextBox KdPetugasPJ;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
+    private widget.Label LCount1;
+    private widget.TextArea LatarBelakang;
+    private widget.TextBox NamaBarang;
     private widget.TextBox NmPetugas;
+    private widget.TextBox NmPetugasPJ;
+    private widget.TextBox NoPengajuan;
     private javax.swing.JPanel PanelInput;
-    private widget.TextArea Rekomendasi;
     private widget.ScrollPane Scroll;
+    private widget.TextArea Spesifikasi;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
+    private widget.TextBox Total;
+    private widget.ComboBox Urgensi;
     private widget.Button btnPetugas;
+    private widget.Button btnPetugasPJ;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;
+    private widget.Label jLabel12;
+    private widget.Label jLabel13;
+    private widget.Label jLabel14;
+    private widget.Label jLabel15;
+    private widget.Label jLabel16;
+    private widget.Label jLabel17;
+    private widget.Label jLabel18;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel3;
+    private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -842,12 +1235,25 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select kesling_pest_control.nip,petugas.nama,kesling_pest_control.tanggal,"+
-                   "kesling_pest_control.rincian_kegiatan,kesling_pest_control.rekomendasi "+
-                   "from kesling_pest_control inner join petugas on kesling_pest_control.nip=petugas.nip where "+
-                   "kesling_pest_control.tanggal between ? and ? and kesling_pest_control.nip like ? or "+
-                   "kesling_pest_control.tanggal between ? and ? and petugas.nama like ?  "+
-                   "order by kesling_pest_control.tanggal");
+                   "select pengajuan_inventaris.no_pengajuan,pengajuan_inventaris.tanggal,pengajuan_inventaris.nik,peg1.nama as namapengaju,"+
+                   "peg1.bidang,peg1.departemen,pengajuan_inventaris.urgensi,pengajuan_inventaris.latar_belakang,pengajuan_inventaris.nama_barang,"+
+                   "pengajuan_inventaris.spesifikasi,pengajuan_inventaris.jumlah,pengajuan_inventaris.harga,pengajuan_inventaris.total,"+
+                   "pengajuan_inventaris.keterangan,pengajuan_inventaris.nik_pj,peg2.nama as namapj,pengajuan_inventaris.status "+
+                   "from pengajuan_inventaris inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_inventaris.nik=peg1.nik "+
+                   "and pengajuan_inventaris.nik_pj=peg2.nik where "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.no_pengajuan like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nik like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and peg1.nama like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and peg1.bidang like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and peg1.departemen like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.urgensi like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.latar_belakang like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nama_barang like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.spesifikasi like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.keterangan like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.nik_pj like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and peg2.nama like ? or "+
+                   "pengajuan_inventaris.tanggal between ? and ? and pengajuan_inventaris.status like ? order by pengajuan_inventaris.tanggal");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
@@ -855,14 +1261,50 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
+                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(39,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
+                total=0;
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        i+"",rs.getString(1),rs.getString(2),rs.getString(3),
-                        rs.getString(4),rs.getString(5)
+                        rs.getString("no_pengajuan"),rs.getString("tanggal"),rs.getString("nik"),rs.getString("namapengaju"),rs.getString("bidang"),
+                        rs.getString("departemen"),rs.getString("urgensi"),rs.getString("latar_belakang"),rs.getString("nama_barang"),rs.getString("spesifikasi"),
+                        rs.getString("jumlah"),Valid.SetAngka(rs.getDouble("harga")),Valid.SetAngka(rs.getDouble("total")),rs.getString("keterangan"),
+                        rs.getString("nik_pj"),rs.getString("namapj"),rs.getString("status")
                     });
-                    i++;
+                    total=total+rs.getDouble("total");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -878,30 +1320,52 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
+        LCount1.setText(Valid.SetAngka(total));
     }
 
     private void emptTeks() {
         Tanggal.setDate(new Date());
-        Rekomendasi.setText("");
-        Kegiatan.setText("");
-        Kegiatan.requestFocus();
+        Spesifikasi.setText("");
+        LatarBelakang.setText("");
+        NamaBarang.setText("");
+        Jumlah.setText("0");
+        Harga.setText("0");
+        Total.setText("0");
+        Keterangan.setText("");
+        KdPetugasPJ.setText("");
+        NmPetugasPJ.setText("");
+        autoNomor();
+        NamaBarang.requestFocus();
     }
 
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Kegiatan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Rekomendasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            //"No.Pengajuan","Tanggal","NIK","Diajukan Oleh","Bidang","Departemen","Urgensi","Latar Belakang",
+            //"Nama Barang","Spesifikasi","Jml","Harga", "Total", "Keterangan", "NIK P.J.","P.J. Terkait", "Status"
+            NoPengajuan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            Bidang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            Departemen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            Urgensi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            LatarBelakang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            NamaBarang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Spesifikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Jumlah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Harga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Total.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            KdPetugasPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            NmPetugasPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
         }
     }
 
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,154));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,205));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -922,5 +1386,16 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             KdPetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPetugas,KdPetugas.getText());
         }  
+    }
+    
+    private void autoNomor() {
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pengajuan,3),signed)),0) from pengajuan_inventaris where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+                "PI"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
+    }
+    
+    private void isHitung(){
+        if((!Harga.getText().equals(""))&&(!Jumlah.getText().equals(""))){
+            Total.setText(Valid.SetAngka(Double.parseDouble(Harga.getText())*Double.parseDouble(Jumlah.getText())));
+        }
     }
 }
