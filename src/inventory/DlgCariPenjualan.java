@@ -1078,7 +1078,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                     File f = new File("LaporanPenjualan.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML1.getText().replaceAll("<head>","<head><link href=\"filepenjualan.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                    bw.write(LoadHTML1.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"filepenjualan.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                             "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+

@@ -170,9 +170,9 @@ public class frmUtama extends javax.swing.JFrame {
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
             bw.write(LoadHTML.getText().replaceAll(
                 "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-        );
-        bw.close();
-        Desktop.getDesktop().browse(f.toURI());
+            );
+            bw.close();
+            Desktop.getDesktop().browse(f.toURI());
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

@@ -20,11 +20,15 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -102,7 +106,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==9){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(300);
             }
         }
         tbTriase.setDefaultRenderer(Object.class, new WarnaTable());
@@ -455,15 +459,24 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
+        LoadHTML2.setEditable(true);
+        LoadHTML2.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#464646;}"+
                 ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
+        
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        LoadHTML2.setDocument(doc);
         
         ChkAccor.setSelected(false);
         isMenu();
@@ -480,6 +493,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        LoadHTML2 = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         TabPilihan = new javax.swing.JTabbedPane();
         ScrollTriase = new widget.ScrollPane();
@@ -637,6 +651,9 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         BtnEdit = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
+
+        LoadHTML2.setBorder(null);
+        LoadHTML2.setName("LoadHTML2"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -885,7 +902,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(362, 10, 90, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019 05:25:32" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019 20:04:27" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
@@ -1312,7 +1329,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(362, 10, 90, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019 05:25:32" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019 20:04:28" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
@@ -1606,7 +1623,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019 05:25:33" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019 20:04:28" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
@@ -1766,7 +1783,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1780,7 +1797,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1837,7 +1854,6 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkAccor.setBackground(new java.awt.Color(250, 255, 248));
-        ChkAccor.setBorder(null);
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -2503,7 +2519,560 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         "data_triase_igd.tgl_kunjungan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and master_triase_macam_kasus.macam_kasus like '%"+TCari.getText().trim()+"%' order by data_triase_igd.tgl_kunjungan",param);
                     break;
                 case "Laporan 2":
-                    
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    try {
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='12%'><b>Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='12%'><b>Kunjungan</b></td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='18%'><b>Kedatangan</b></td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='13%'><b>Keluhan/Anamnesis Singkat</b></td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'><b>Tanda Vital</b></td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='21%'><b>Pemeriksaan</b></td>"+
+                                "<td valign='middle' bgcolor='#fafff5' align='center' width='14%'><b>Keputusan</b></td>"+
+                            "</tr>"
+                        );
+                        
+                        for(i=0;i<tabMode.getRowCount();i++){  
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='top' cellpadding='0' cellspacing='0'>"+
+                                        "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='34%' valign='top'>No.Rawat</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+tbTriase.getValueAt(i,0).toString()+"</td>"+
+                                            "</tr>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='34%' valign='top'>No.R.M.</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+tbTriase.getValueAt(i,1).toString()+"</td>"+
+                                            "</tr>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='34%' valign='top'>Nama Pasien</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+tbTriase.getValueAt(i,2).toString()+"</td>"+
+                                            "</tr>"+
+                                        "</table>"+
+                                    "</td>"+
+                                    "<td valign='top' cellpadding='0' cellspacing='0'>"+
+                                        "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='34%' valign='top'>Tgl.Kunjungan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+tbTriase.getValueAt(i,3).toString()+"</td>"+
+                                            "</tr>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='34%' valign='top'>Cara Masuk</td><td valign='top'>:</td><td width='65%' valign='top'>"+tbTriase.getValueAt(i,4).toString()+"</td>"+
+                                            "</tr>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='34%' valign='top'>Transportasi</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+tbTriase.getValueAt(i,5).toString()+"</td>"+
+                                            "</tr>"+
+                                        "</table>"+
+                                    "</td>"+
+                                    "<td valign='top' cellpadding='0' cellspacing='0'>"+
+                                        "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='31%' valign='top'>Alasan Kedatangan</td><td valign='top'>:&nbsp;</td><td width='68%' valign='top'>"+tbTriase.getValueAt(i,6).toString()+"</td>"+
+                                            "</tr>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='31%' valign='top'>Keterangan</td><td valign='top'>:&nbsp;</td><td width='68%' valign='top'>"+tbTriase.getValueAt(i,7).toString()+"</td>"+
+                                            "</tr>"+
+                                            "<tr class='isi2'>"+
+                                                "<td width='31%' valign='top'>Macam Kasus</td><td valign='top'>:&nbsp;</td><td width='68%' valign='top'>"+tbTriase.getValueAt(i,9).toString()+"</td>"+
+                                            "</tr>"+
+                                        "</table>"+
+                                    "</td>"
+                            );
+                            
+                            ps=koneksi.prepareStatement(
+                                "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
+                                "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
+                                "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
+                                "data_triase_igd.no_rawat from data_triase_igdprimer inner join data_triase_igd on data_triase_igd.no_rawat="+
+                                "data_triase_igdprimer.no_rawat where data_triase_igd.no_rawat=?");
+                            try {
+                                ps.setString(1,tbTriase.getValueAt(i,0).toString());
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    htmlContent.append(
+                                        "<td valign='top'> Keluhan Utama : "+rs.getString("keluhan_utama")+"<br>Kebutuhan Khusus : "+rs.getString("kebutuhan_khusus")+"</td>"+
+                                        "<td valign='top'> Suhu (C) : "+rs.getString("suhu")+", Respirasi(/menit) : "+rs.getString("pernapasan")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Nyeri : "+rs.getString("nyeri")+"</td>"
+                                    );
+                                    ps2=koneksi.prepareStatement(
+                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "from master_triase_pemeriksaan inner join master_triase_skala1 inner join data_triase_igddetail_skala1 "+
+                                        "on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala1.kode_pemeriksaan and "+
+                                        "master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 where data_triase_igddetail_skala1.no_rawat=? "+
+                                        "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
+                                    try {
+                                        ps2.setString(1,rs.getString("no_rawat"));
+                                        rs2=ps2.executeQuery();
+                                        if(rs2.next()){
+                                            htmlContent.append(
+                                                "<td valign='top'>"+
+                                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                            );
+                                            rs2.beforeFirst();
+                                            while(rs2.next()){
+                                                htmlContent.append(
+                                                    "<tr class='isi5'>"+
+                                                        "<td width='40%' valign='top'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
+                                                        "<td valign='top'>:&nbsp;</td>"+
+                                                        "<td width='59%' valign='top'>"+
+                                                            "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                                    );
+                                                ps3=koneksi.prepareStatement(
+                                                    "select master_triase_skala1.pengkajian_skala1 from master_triase_skala1 inner join data_triase_igddetail_skala1 "+
+                                                    "on master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 where "+
+                                                    "master_triase_skala1.kode_pemeriksaan=? and data_triase_igddetail_skala1.no_rawat=? "+
+                                                    "order by data_triase_igddetail_skala1.kode_skala1");
+                                                try {
+                                                    ps3.setString(1,rs2.getString("kode_pemeriksaan"));
+                                                    ps3.setString(2,rs.getString("no_rawat"));
+                                                    rs3=ps3.executeQuery();
+                                                    while(rs3.next()){
+                                                        htmlContent.append(                             
+                                                            "<tr class='isi5'>"+
+                                                                "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala1")+"</td>"+
+                                                            "</tr>"
+                                                        );
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs3!=null){
+                                                        rs3.close();
+                                                    }
+                                                    if(ps3!=null){
+                                                        ps3.close();
+                                                    }
+                                                }
+                                                htmlContent.append(
+                                                            "</table>"+
+                                                        "</td>"+
+                                                    "</tr>"
+                                                );
+                                            }
+                                            htmlContent.append(
+                                                    "</table>"+
+                                                "</td>"
+                                            );
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs2!=null){
+                                            rs2.close();
+                                        }
+                                        if(ps2!=null){
+                                            ps2.close();
+                                        }
+                                    }
+                                    
+                                    ps2=koneksi.prepareStatement(
+                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "from master_triase_pemeriksaan inner join master_triase_skala2 inner join data_triase_igddetail_skala2 "+
+                                        "on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala2.kode_pemeriksaan and "+
+                                        "master_triase_skala2.kode_skala2=data_triase_igddetail_skala2.kode_skala2 where data_triase_igddetail_skala2.no_rawat=? "+
+                                        "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
+                                    try {
+                                        ps2.setString(1,rs.getString("no_rawat"));
+                                        rs2=ps2.executeQuery();
+                                        if(rs2.next()){
+                                            htmlContent.append(
+                                                "<td valign='top'>"+
+                                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                            );
+                                            rs2.beforeFirst();
+                                            while(rs2.next()){
+                                                htmlContent.append(
+                                                    "<tr class='isi6'>"+
+                                                        "<td width='40%' valign='top'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
+                                                        "<td valign='top'>:&nbsp;</td>"+
+                                                        "<td width='59%' valign='top'>"+
+                                                            "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                                    );
+                                                ps3=koneksi.prepareStatement(
+                                                    "select master_triase_skala2.pengkajian_skala2 from master_triase_skala2 inner join data_triase_igddetail_skala2 "+
+                                                    "on master_triase_skala2.kode_skala2=data_triase_igddetail_skala2.kode_skala2 where "+
+                                                    "master_triase_skala2.kode_pemeriksaan=? and data_triase_igddetail_skala2.no_rawat=? "+
+                                                    "order by data_triase_igddetail_skala2.kode_skala2");
+                                                try {
+                                                    ps3.setString(1,rs2.getString("kode_pemeriksaan"));
+                                                    ps3.setString(2,rs.getString("no_rawat"));
+                                                    rs3=ps3.executeQuery();
+                                                    while(rs3.next()){
+                                                        htmlContent.append(                             
+                                                            "<tr class='isi6'>"+
+                                                                "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala2")+"</td>"+
+                                                            "</tr>"
+                                                        );
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs3!=null){
+                                                        rs3.close();
+                                                    }
+                                                    if(ps3!=null){
+                                                        ps3.close();
+                                                    }
+                                                }
+                                                htmlContent.append(
+                                                            "</table>"+
+                                                        "</td>"+
+                                                    "</tr>"
+                                                );
+                                            }
+                                            htmlContent.append(
+                                                    "</table>"+
+                                                "</td>"
+                                            );
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs2!=null){
+                                            rs2.close();
+                                        }
+                                        if(ps2!=null){
+                                            ps2.close();
+                                        }
+                                    }
+                                    htmlContent.append(
+                                        "<td valign='top' cellpadding='0' cellspacing='0'>"+
+                                            "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Keputusan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>Zona Merah "+rs.getString("plan")+"</td>"+
+                                                "</tr>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Tanggal & Jam</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("tanggaltriase")+"</td>"+
+                                                "</tr>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
+                                                "</tr>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Nama Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
+                                                "</tr>"+
+                                            "</table>"+
+                                        "</td>"
+                                    );
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+                            
+                            ps=koneksi.prepareStatement(
+                                "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
+                                "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
+                                "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
+                                "data_triase_igd.no_rawat from data_triase_igdsekunder inner join data_triase_igd on data_triase_igd.no_rawat="+
+                                "data_triase_igdsekunder.no_rawat where data_triase_igd.no_rawat=?");
+                            try {
+                                ps.setString(1,tbTriase.getValueAt(i,0).toString());
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    htmlContent.append(
+                                        "<td valign='top'> Anamnesa Singkat : "+rs.getString("anamnesa_singkat")+"</td>"+
+                                        "<td valign='top'> Suhu (C) : "+rs.getString("suhu")+", Respirasi(/menit) : "+rs.getString("pernapasan")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Nyeri : "+rs.getString("nyeri")+"</td>"
+                                    );
+                                    ps2=koneksi.prepareStatement(
+                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "from master_triase_pemeriksaan inner join master_triase_skala3 inner join data_triase_igddetail_skala3 "+
+                                        "on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala3.kode_pemeriksaan and "+
+                                        "master_triase_skala3.kode_skala3=data_triase_igddetail_skala3.kode_skala3 where data_triase_igddetail_skala3.no_rawat=? "+
+                                        "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
+                                    try {
+                                        ps2.setString(1,rs.getString("no_rawat"));
+                                        rs2=ps2.executeQuery();
+                                        if(rs2.next()){
+                                            htmlContent.append(
+                                                "<td valign='top'>"+
+                                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                            );
+                                            rs2.beforeFirst();
+                                            while(rs2.next()){
+                                                htmlContent.append(
+                                                    "<tr class='isi7'>"+
+                                                        "<td width='40%' valign='top'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
+                                                        "<td valign='top'>:&nbsp;</td>"+
+                                                        "<td width='59%' valign='top'>"+
+                                                            "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                                    );
+                                                ps3=koneksi.prepareStatement(
+                                                    "select master_triase_skala3.pengkajian_skala3 from master_triase_skala3 inner join data_triase_igddetail_skala3 "+
+                                                    "on master_triase_skala3.kode_skala3=data_triase_igddetail_skala3.kode_skala3 where "+
+                                                    "master_triase_skala3.kode_pemeriksaan=? and data_triase_igddetail_skala3.no_rawat=? "+
+                                                    "order by data_triase_igddetail_skala3.kode_skala3");
+                                                try {
+                                                    ps3.setString(1,rs2.getString("kode_pemeriksaan"));
+                                                    ps3.setString(2,rs.getString("no_rawat"));
+                                                    rs3=ps3.executeQuery();
+                                                    while(rs3.next()){
+                                                        htmlContent.append(                             
+                                                            "<tr class='isi7'>"+
+                                                                "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala3")+"</td>"+
+                                                            "</tr>"
+                                                        );
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs3!=null){
+                                                        rs3.close();
+                                                    }
+                                                    if(ps3!=null){
+                                                        ps3.close();
+                                                    }
+                                                }
+                                                htmlContent.append(
+                                                            "</table>"+
+                                                        "</td>"+
+                                                    "</tr>"
+                                                );
+                                            }
+                                            htmlContent.append(
+                                                    "</table>"+
+                                                "</td>"
+                                            );
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs2!=null){
+                                            rs2.close();
+                                        }
+                                        if(ps2!=null){
+                                            ps2.close();
+                                        }
+                                    }
+                                    
+                                    ps2=koneksi.prepareStatement(
+                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "from master_triase_pemeriksaan inner join master_triase_skala4 inner join data_triase_igddetail_skala4 "+
+                                        "on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala4.kode_pemeriksaan and "+
+                                        "master_triase_skala4.kode_skala4=data_triase_igddetail_skala4.kode_skala4 where data_triase_igddetail_skala4.no_rawat=? "+
+                                        "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
+                                    try {
+                                        ps2.setString(1,rs.getString("no_rawat"));
+                                        rs2=ps2.executeQuery();
+                                        if(rs2.next()){
+                                            htmlContent.append(
+                                                "<td valign='top'>"+
+                                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                            );
+                                            rs2.beforeFirst();
+                                            while(rs2.next()){
+                                                htmlContent.append(
+                                                    "<tr class='isi8'>"+
+                                                        "<td width='40%' valign='top'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
+                                                        "<td valign='top'>:&nbsp;</td>"+
+                                                        "<td width='59%' valign='top'>"+
+                                                            "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                                    );
+                                                ps3=koneksi.prepareStatement(
+                                                    "select master_triase_skala4.pengkajian_skala4 from master_triase_skala4 inner join data_triase_igddetail_skala4 "+
+                                                    "on master_triase_skala4.kode_skala4=data_triase_igddetail_skala4.kode_skala4 where "+
+                                                    "master_triase_skala4.kode_pemeriksaan=? and data_triase_igddetail_skala4.no_rawat=? "+
+                                                    "order by data_triase_igddetail_skala4.kode_skala4");
+                                                try {
+                                                    ps3.setString(1,rs2.getString("kode_pemeriksaan"));
+                                                    ps3.setString(2,rs.getString("no_rawat"));
+                                                    rs3=ps3.executeQuery();
+                                                    while(rs3.next()){
+                                                        htmlContent.append(                             
+                                                            "<tr class='isi8'>"+
+                                                                "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala4")+"</td>"+
+                                                            "</tr>"
+                                                        );
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs3!=null){
+                                                        rs3.close();
+                                                    }
+                                                    if(ps3!=null){
+                                                        ps3.close();
+                                                    }
+                                                }
+                                                htmlContent.append(
+                                                            "</table>"+
+                                                        "</td>"+
+                                                    "</tr>"
+                                                );
+                                            }
+                                            htmlContent.append(
+                                                    "</table>"+
+                                                "</td>"
+                                            );
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs2!=null){
+                                            rs2.close();
+                                        }
+                                        if(ps2!=null){
+                                            ps2.close();
+                                        }
+                                    }
+                                    
+                                    ps2=koneksi.prepareStatement(
+                                        "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
+                                        "from master_triase_pemeriksaan inner join master_triase_skala5 inner join data_triase_igddetail_skala5 "+
+                                        "on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala5.kode_pemeriksaan and "+
+                                        "master_triase_skala5.kode_skala5=data_triase_igddetail_skala5.kode_skala5 where data_triase_igddetail_skala5.no_rawat=? "+
+                                        "group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan");
+                                    try {
+                                        ps2.setString(1,rs.getString("no_rawat"));
+                                        rs2=ps2.executeQuery();
+                                        if(rs2.next()){
+                                            htmlContent.append(
+                                                "<td valign='top'>"+
+                                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                            );
+                                            rs2.beforeFirst();
+                                            while(rs2.next()){
+                                                htmlContent.append(
+                                                    "<tr class='isi9'>"+
+                                                        "<td width='40%' valign='top'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
+                                                        "<td valign='top'>:&nbsp;</td>"+
+                                                        "<td width='59%' valign='top'>"+
+                                                            "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"
+                                                    );
+                                                ps3=koneksi.prepareStatement(
+                                                    "select master_triase_skala5.pengkajian_skala5 from master_triase_skala5 inner join data_triase_igddetail_skala5 "+
+                                                    "on master_triase_skala5.kode_skala5=data_triase_igddetail_skala5.kode_skala5 where "+
+                                                    "master_triase_skala5.kode_pemeriksaan=? and data_triase_igddetail_skala5.no_rawat=? "+
+                                                    "order by data_triase_igddetail_skala5.kode_skala5");
+                                                try {
+                                                    ps3.setString(1,rs2.getString("kode_pemeriksaan"));
+                                                    ps3.setString(2,rs.getString("no_rawat"));
+                                                    rs3=ps3.executeQuery();
+                                                    while(rs3.next()){
+                                                        htmlContent.append(                             
+                                                            "<tr class='isi9'>"+
+                                                                "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala5")+"</td>"+
+                                                            "</tr>"
+                                                        );
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs3!=null){
+                                                        rs3.close();
+                                                    }
+                                                    if(ps3!=null){
+                                                        ps3.close();
+                                                    }
+                                                }
+                                                htmlContent.append(
+                                                            "</table>"+
+                                                        "</td>"+
+                                                    "</tr>"
+                                                );
+                                            }
+                                            htmlContent.append(
+                                                    "</table>"+
+                                                "</td>"
+                                            );
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs2!=null){
+                                            rs2.close();
+                                        }
+                                        if(ps2!=null){
+                                            ps2.close();
+                                        }
+                                    }
+                                    htmlContent.append(
+                                        "<td valign='top' cellpadding='0' cellspacing='0'>"+
+                                            "<table width='100%' border='0' cellpadding='0' cellspacing='0' align='center'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Keputusan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("plan")+"</td>"+
+                                                "</tr>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Tanggal & Jam</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("tanggaltriase")+"</td>"+
+                                                "</tr>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
+                                                "</tr>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td width='34%' valign='top'>Nama Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
+                                                "</tr>"+
+                                            "</table>"+
+                                        "</td>"
+                                    );
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+                            
+                            htmlContent.append(
+                                "</tr>"
+                            );
+                        }
+                        
+                        LoadHTML2.setText(
+                            "<html>"+
+                              "<table width='1400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                               htmlContent.toString()+
+                              "</table>"+
+                            "</html>"
+                        );
+                        
+                        File g = new File("file2.css");            
+                        BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                        bg.write(
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                            ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#464646;}"+
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                            ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                            ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                            ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                            ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                            ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                        );
+                        bg.close();
+
+                        File f = new File("DataTriaseIGD.html");            
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write(LoadHTML2.getText().replaceAll("<head>","<head>"+
+                                    "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                    "<table width='1400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr class='isi2'>"+
+                                            "<td valign='top' align='center'>"+
+                                                "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                "<font size='2' face='Tahoma'>DATA TRIASE IGD<br><br></font>"+        
+                                            "</td>"+
+                                       "</tr>"+
+                                    "</table>")
+                        );
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    }
+                    this.setCursor(Cursor.getDefaultCursor());
+                    TNoRM1.setText("");
+                    TPasien1.setText("");
+                    LoadHTML.setText("");
+                    ChkAccor.setSelected(false);
+                    isMenu();
                     break;
             }
         }
@@ -3463,6 +4032,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private widget.TextBox KeteranganKedatangan;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
+    private widget.editorpane LoadHTML2;
     private widget.TextBox NmKasus;
     private widget.PanelBiasa PanelAccor;
     private widget.TextBox PrimerCatatan;
