@@ -117,7 +117,7 @@ public final class akses {
             grafik_sttskerjapegawai=false,grafik_sttspulangranap=false,kip_pasien_ranap=false,kip_pasien_ralan=false,bpjs_mapping_dokterdpjp=false,
             data_triase_igd=false,master_triase_skala1=false,master_triase_skala2=false,master_triase_skala3=false,master_triase_skala4=false,
             master_triase_skala5=false,master_triase_pemeriksaan=false,master_triase_macamkasus=false,rekap_permintaan_diet=false,daftar_pasien_ranap=false,
-            daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false;
+            daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false,item_apotek_jenis=false,item_apotek_kategori=false,item_apotek_golongan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -675,6 +675,9 @@ public final class akses {
                         akses.daftar_pasien_ranap=true;
                         akses.daftar_pasien_ranaptni=true;
                         akses.pengajuan_asetinventaris=true;
+                        akses.item_apotek_jenis=true;
+                        akses.item_apotek_kategori=true;
+                        akses.item_apotek_golongan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1215,7 +1218,10 @@ public final class akses {
                         akses.rekap_permintaan_diet=rs2.getBoolean("rekap_permintaan_diet");
                         akses.daftar_pasien_ranap=rs2.getBoolean("daftar_pasien_ranap");
                         akses.daftar_pasien_ranaptni=rs2.getBoolean("daftar_pasien_ranaptni");
-                        akses.pengajuan_asetinventaris=rs2.getBoolean("pengajuan_asetinventari");
+                        akses.pengajuan_asetinventaris=rs2.getBoolean("pengajuan_asetinventaris");
+                        akses.item_apotek_jenis=rs2.getBoolean("item_apotek_jenis");
+                        akses.item_apotek_kategori=rs2.getBoolean("item_apotek_kategori");
+                        akses.item_apotek_golongan=rs2.getBoolean("item_apotek_golongan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1755,6 +1761,9 @@ public final class akses {
                         akses.daftar_pasien_ranap=false;
                         akses.daftar_pasien_ranaptni=false;
                         akses.pengajuan_asetinventaris=false;
+                        akses.item_apotek_jenis=false;
+                        akses.item_apotek_kategori=false;
+                        akses.item_apotek_golongan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2348,4 +2357,7 @@ public final class akses {
     public static boolean getdaftar_pasien_ranap(){return akses.daftar_pasien_ranap;}
     public static boolean getdaftar_pasien_ranaptni(){return akses.daftar_pasien_ranaptni;}
     public static boolean getpengajuan_asetinventaris(){return akses.pengajuan_asetinventaris;}
+    public static boolean getitem_apotek_jenis(){return akses.item_apotek_jenis;}
+    public static boolean getitem_apotek_kategori(){return akses.item_apotek_kategori;}
+    public static boolean getitem_apotek_golongan(){return akses.item_apotek_golongan;}
 }   

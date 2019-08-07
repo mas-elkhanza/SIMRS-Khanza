@@ -32,7 +32,6 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariPengeluaranIpsrs form=new DlgCariPengeluaranIpsrs(null,false);
     private int jml=0,i=0,row=0,index=0;
     private double ttl,keluar;

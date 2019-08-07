@@ -446,7 +446,7 @@ public class GrafikPeristiwaK3PerJenisCidera extends javax.swing.JDialog {
                 }
                 tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %"});
                 for(i=0;i<tbBangsal.getRowCount();i++){ 
-                    tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                    tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

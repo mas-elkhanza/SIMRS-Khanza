@@ -1140,30 +1140,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Sequel.queryu2("delete from gambar_radiologi where no_rawat=? and tgl_periksa=? and jam=?",3,new String[]{
                         tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString()
                     });
-                    ps3=koneksi.prepareStatement(
-                        "select beri_bhp_radiologi.kode_brng,ipsrsbarang.nama_brng,beri_bhp_radiologi.kode_sat,beri_bhp_radiologi.jumlah, "+
-                        "beri_bhp_radiologi.total from beri_bhp_radiologi inner join ipsrsbarang on ipsrsbarang.kode_brng=beri_bhp_radiologi.kode_brng "+
-                        "where beri_bhp_radiologi.no_rawat=? and beri_bhp_radiologi.tgl_periksa=? and beri_bhp_radiologi.jam=?");  
-                    try {
-                        ps3.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        ps3.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
-                        ps3.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
-                        rs3=ps3.executeQuery();
-                        while(rs3.next()){  
-                            Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
-                                    rs3.getString("jumlah"),rs3.getString("kode_brng")
-                            });
-                        }
-                    } catch (Exception e) {
-                        System.out.println("simrskhanza.DlgCariPeriksaRadiologi.BtnHapusActionPerformed() ps3 : "+e);
-                    } finally{
-                        if(rs3!=null){
-                            rs3.close();
-                        }
-                        if(ps3!=null){
-                            ps3.close();
-                        }
-                    }
 
                     ttlbhp=Sequel.cariIsiAngka("select sum(total) from beri_bhp_radiologi where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
                               "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
