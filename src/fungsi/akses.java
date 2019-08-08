@@ -117,7 +117,8 @@ public final class akses {
             grafik_sttskerjapegawai=false,grafik_sttspulangranap=false,kip_pasien_ranap=false,kip_pasien_ralan=false,bpjs_mapping_dokterdpjp=false,
             data_triase_igd=false,master_triase_skala1=false,master_triase_skala2=false,master_triase_skala3=false,master_triase_skala4=false,
             master_triase_skala5=false,master_triase_pemeriksaan=false,master_triase_macamkasus=false,rekap_permintaan_diet=false,daftar_pasien_ranap=false,
-            daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false,item_apotek_jenis=false,item_apotek_kategori=false,item_apotek_golongan=false;
+            daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false,item_apotek_jenis=false,item_apotek_kategori=false,item_apotek_golongan=false,
+            item_apotek_industrifarmasi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -678,6 +679,7 @@ public final class akses {
                         akses.item_apotek_jenis=true;
                         akses.item_apotek_kategori=true;
                         akses.item_apotek_golongan=true;
+                        akses.item_apotek_industrifarmasi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1222,6 +1224,7 @@ public final class akses {
                         akses.item_apotek_jenis=rs2.getBoolean("item_apotek_jenis");
                         akses.item_apotek_kategori=rs2.getBoolean("item_apotek_kategori");
                         akses.item_apotek_golongan=rs2.getBoolean("item_apotek_golongan");
+                        akses.item_apotek_industrifarmasi=rs2.getBoolean("item_apotek_industrifarmasi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1764,6 +1767,7 @@ public final class akses {
                         akses.item_apotek_jenis=false;
                         akses.item_apotek_kategori=false;
                         akses.item_apotek_golongan=false;
+                        akses.item_apotek_industrifarmasi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2360,4 +2364,5 @@ public final class akses {
     public static boolean getitem_apotek_jenis(){return akses.item_apotek_jenis;}
     public static boolean getitem_apotek_kategori(){return akses.item_apotek_kategori;}
     public static boolean getitem_apotek_golongan(){return akses.item_apotek_golongan;}
+    public static boolean getitem_apotek_industrifarmasi(){return akses.item_apotek_industrifarmasi;}
 }   

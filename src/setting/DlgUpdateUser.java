@@ -2383,6 +2383,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","item_apotek_golongan='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
+                if("[N]Item Apotek Per Industri Farmasi".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","item_apotek_industrifarmasi='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
                 if("[O]Indeks Surat".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_indeks='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
@@ -2782,7 +2786,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase_igd,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
                         "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet,"+
                         "daftar_pasien_ranap,daftar_pasien_ranaptni,pengajuan_asetinventaris,item_apotek_jenis,item_apotek_kategori,"+
-                        "item_apotek_golongan from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "item_apotek_golongan,item_apotek_industrifarmasi from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -4753,6 +4757,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[N]Item Apotek Per Golongan".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[N]Item Apotek Per Golongan",rs.getBoolean("item_apotek_golongan")});
+                    }
+                    
+                    if("[N]Item Apotek Per Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Item Apotek Per Industri Farmasi",rs.getBoolean("item_apotek_industrifarmasi")});
                     }
                     
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){

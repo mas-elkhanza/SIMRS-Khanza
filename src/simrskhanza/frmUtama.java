@@ -418,6 +418,7 @@ import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
 import bridging.DlgDataTB;
 import grafikanalisa.GrafikItemApotekPerGolongan;
+import grafikanalisa.GrafikItemApotekPerIndustriFarmasi;
 import grafikanalisa.GrafikItemApotekPerJenis;
 import grafikanalisa.GrafikItemApotekPerKategori;
 import grafikanalisa.GrafikKeslingLimbahB3Bulan;
@@ -15128,6 +15129,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikItemApotekPerIndustriFarmasiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikItemApotekPerIndustriFarmasi aplikasi=new GrafikItemApotekPerIndustriFarmasi(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15709,7 +15721,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
-            btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan;
+            btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi;
     
     public void isWall(){
         try{            
@@ -18257,6 +18269,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getitem_apotek_golongan()==true){
                 Panelmenu.add(btnGrafikItemApotekPerGolongan);
+                jmlmenu++;
+            }
+            
+            if(akses.getitem_apotek_industrifarmasi()==true){
+                Panelmenu.add(btnGrafikItemApotekPerIndustriFarmasi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -20946,6 +20963,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getitem_apotek_golongan()==true){
             Panelmenu.add(btnGrafikItemApotekPerGolongan);
+            jmlmenu++;
+        }
+        
+        if(akses.getitem_apotek_industrifarmasi()==true){
+            Panelmenu.add(btnGrafikItemApotekPerIndustriFarmasi);
             jmlmenu++;
         }
 
@@ -24606,6 +24628,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getitem_apotek_industrifarmasi()==true){
+            if(btnGrafikItemApotekPerIndustriFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikItemApotekPerIndustriFarmasi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -25935,6 +25964,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikItemApotekPerGolongan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikItemApotekPerGolonganActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikItemApotekPerIndustriFarmasi = new widget.ButtonBig();
+        btnGrafikItemApotekPerIndustriFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikItemApotekPerIndustriFarmasi.setText("Item Apotek Per Industri Farmasi");
+        btnGrafikItemApotekPerIndustriFarmasi.setIconTextGap(0);
+        btnGrafikItemApotekPerIndustriFarmasi.setName("btnGrafikItemApotekPerIndustriFarmasi"); 
+        btnGrafikItemApotekPerIndustriFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikItemApotekPerIndustriFarmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikItemApotekPerIndustriFarmasiActionPerformed(evt);
             }
         });
     }
