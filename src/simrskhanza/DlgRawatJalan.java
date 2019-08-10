@@ -1502,7 +1502,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-08-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1516,7 +1516,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-08-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3075,6 +3075,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawat.addTab("Catatan Dokter", internalFrame8);
 
+        TabRawat.setSelectedIndex(3);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         FormInput.setName("FormInput"); // NOI18N
@@ -3114,7 +3116,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel23.setBounds(554, 10, 60, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2019" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-08-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -5905,8 +5907,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         isForm3(); 
         ChkInput3.setSelected(true);
         isForm4();
-        TabRawat.setSelectedIndex(0);
-        TabRawatTindakanDokter.setSelectedIndex(0);
+        TabRawatMouseClicked(null);
     }
     
     private void isForm(){
@@ -5970,7 +5971,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSKDP.setEnabled(akses.getskdp_bpjs());     
         BtnCatatan.setEnabled(akses.getcatatan_pasien());     
         TCari.setPreferredSize(new Dimension(207,23));
-        TabRawat.setSelectedIndex(0);    
     }
 
     private void tampilPemeriksaan() {

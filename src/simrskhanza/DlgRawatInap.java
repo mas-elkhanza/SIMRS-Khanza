@@ -2840,6 +2840,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         TabRawat.addTab("Pemeriksaan Ginekologi", internalFrame7);
 
+        TabRawat.setSelectedIndex(3);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         FormInput.setBackground(new java.awt.Color(215, 225, 215));

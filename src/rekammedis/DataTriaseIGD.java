@@ -4860,9 +4860,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Plan/Keputusan</td>"+
                                 "<td valign='middle' bgcolor='"+keputusan+"' color='ffffff'>Zona Merah "+rs.getString("plan")+"</td>"+
-                            "</tr>"
-                        );
-                        htmlContent.append(                             
+                            "</tr>"+                       
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
                                 "<td valign='middle' bgcolor='#fafff5' align='center'>Petugas Triase Primer</td>"+
