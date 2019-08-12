@@ -62,7 +62,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private boolean[] pilih; 
     private String[] kode,pengkajian;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private String keputusan="";
+    private String keputusan="",pilihan="";
     private StringBuilder htmlContent;
     
     /** Creates new form DlgRujuk
@@ -4007,7 +4007,26 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             if(tbTriase.getSelectedRow()> -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 if(LoadHTML.getText().contains("Immediate/Segera")){
-                    System.out.println("primer terdeteksi");
+                    Map<String, Object> param = new HashMap<>(); 
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
+                    param.put("norawat",tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
+                    param.put("norm",tbTriase.getValueAt(tbTriase.getSelectedRow(),1).toString());
+                    param.put("namapasien",tbTriase.getValueAt(tbTriase.getSelectedRow(),2).toString());
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Skala Triase 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lember Triase Skala 1");
+                    switch (pilihan) {
+                        case "Lembar Triase Skala 1":
+                              Valid.MyReport("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::",param);
+                              break;
+                        case "PDF Triase Skala 1":
+                              Valid.MyReportPDF("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::",param);
+                              break;
+                    } 
                 }else if(LoadHTML.getText().contains("Emergensi")){
                     
                 }else if(LoadHTML.getText().contains("Urgensi")){

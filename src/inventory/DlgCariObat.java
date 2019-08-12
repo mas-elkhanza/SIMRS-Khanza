@@ -86,6 +86,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private JsonNode response;
     private PcareApi api=new PcareApi();
     private String[] arrSplit;
+    private boolean sukses=true;
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -1230,7 +1231,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             if (reply == JOptionPane.YES_OPTION) {
                 try {  
                     ChkJln.setSelected(false);
-                    koneksi.setAutoCommit(false);                  
+                    Sequel.AutoComitFalse();
+                    sukses=true;
                     for(i=0;i<tbObat.getRowCount();i++){ 
                         if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){                        
                             if(tbObat.getValueAt(i,0).toString().equals("true")){
@@ -1286,6 +1288,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 );
                                             }
                                         }else{
+                                            sukses=false;
                                             JOptionPane.showMessageDialog(null,"Gagal Menyimpan, Kemungkinan ada data sama/kapasitas tidak ditemukan..!!");
                                         }  
                                     }else{
@@ -1335,6 +1338,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
                                                 );
                                             }
+                                        }else{
+                                            sukses=false;
                                         }                                   
                                     }
                                 } catch (Exception e) {
@@ -1395,20 +1400,23 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
                                         );
                                     }
+                                }else{
+                                    sukses=false;
                                 }                                   
                             }                      
                         }
-                        tbObat.setValueAt("",i,1);
                     }  
 
                     for(i=0;i<tbObatRacikan.getRowCount();i++){ 
                         if(Valid.SetAngka(tbObatRacikan.getValueAt(i,4).toString())>0){ 
-                            Sequel.menyimpan("obat_racikan","?,?,?,?,?,?,?,?,?",9,new String[]{
+                            if(Sequel.menyimpantf2("obat_racikan","?,?,?,?,?,?,?,?,?","Obat Racikan",9,new String[]{
                                Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),
                                tbObatRacikan.getValueAt(i,0).toString(),tbObatRacikan.getValueAt(i,1).toString(),
                                tbObatRacikan.getValueAt(i,2).toString(),tbObatRacikan.getValueAt(i,4).toString(),
                                tbObatRacikan.getValueAt(i,5).toString(),tbObatRacikan.getValueAt(i,6).toString()
-                            });
+                            })==false){
+                                sukses=false;
+                            }
                         }
                     }
 
@@ -1466,7 +1474,11 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             tbDetailObatRacikan.getValueAt(i,1).toString(),tbDetailObatRacikan.getValueAt(i,16).toString()
                                         );
                                     }
+                                }else{
+                                    sukses=false;
                                 }  
+                            }else{
+                                sukses=false;
                             }   
                         }
                     }
@@ -1476,27 +1488,41 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     if(!noresep.equals("")){
                         Sequel.mengedit("resep_obat","no_resep='"+noresep+"'","tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"',jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
                     }
-                    koneksi.setAutoCommit(true);
-                    LTotal.setText("0");
-                    LPpn.setText("0");
-                    LTotalTagihan.setText("0");
-                    if(ChkNoResep.isSelected()==true){
-                        DlgResepObat resep=new DlgResepObat(null,false);
-                        resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                        resep.setLocationRelativeTo(internalFrame1);
-                        resep.emptTeks(); 
-                        resep.isCek();
-                        if(!namadokter.equals("")){
-                            resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter,"ralan");
-                        }else{
-                            resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ralan");
-                            resep.setDokterRalan();
+                    
+                    if(sukses==true){
+                        Sequel.Commit();
+                        for(i=0;i<tbObat.getRowCount();i++){
+                            tbObat.setValueAt("",i,1);
                         }
-                        resep.tampil();
-                        resep.setVisible(true);
+                        LTotal.setText("0");
+                        LPpn.setText("0");
+                        LTotalTagihan.setText("0");
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
                     }
+                    
+                    Sequel.AutoComitTrue();
                     ChkJln.setSelected(true);
-                    dispose();
+                    
+                    if(sukses==true){
+                        if(ChkNoResep.isSelected()==true){
+                            DlgResepObat resep=new DlgResepObat(null,false);
+                            resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                            resep.setLocationRelativeTo(internalFrame1);
+                            resep.emptTeks(); 
+                            resep.isCek();
+                            if(!namadokter.equals("")){
+                                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter,"ralan");
+                            }else{
+                                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ralan");
+                                resep.setDokterRalan();
+                            }
+                            resep.tampil();
+                            resep.setVisible(true);
+                        }
+                        dispose();
+                    }
                 } catch (Exception ex) {
                     System.out.println(ex);                
                 }
