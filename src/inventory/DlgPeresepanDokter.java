@@ -54,7 +54,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private ResultSet rsobat,carikapasitas,rs2;
     private double x=0,y=0,kenaikan=0,ttl=0,ppnobat=0,jumlahracik=0,persenracik=0,kapasitasracik=0;
     private int i=0,z=0,row2=0,r=0;
-    private boolean ubah=false,copy=false;
+    private boolean ubah=false,copy=false,sukses=true;
     private boolean[] pilih; 
     private double[] jumlah,harga,beli,stok,kapasitas,p1,p2;
     private String[] no,kodebarang,namabarang,kodesatuan,kandungan,letakbarang,namajenis,aturan,industri;
@@ -1028,7 +1028,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {                 
-                ChkJln.setSelected(false);        
+                ChkJln.setSelected(false);    
+                Sequel.AutoComitFalse();
+                sukses=true;
                 if(ubah==false){
                     if(ChkRM.isSelected()==true){
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,6),signed)),0) from resep_obat where tgl_perawatan like '%"+DTPBeri.getSelectedItem().toString().substring(6,10)+"%' ",DTPBeri.getSelectedItem().toString().substring(6,10),6,NoResep);           
@@ -1072,6 +1074,20 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ubah=false;
                     simpandata();
                 }                                                      
+                
+                if(sukses==true){
+                    Sequel.Commit();
+                    for(i=0;i<tbResep.getRowCount();i++){
+                        tbResep.setValueAt("",i,1);
+                    }
+                    Valid.tabelKosong(tabModeResepRacikan);
+                    Valid.tabelKosong(tabModeDetailResepRacikan);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();
                 ChkJln.setSelected(true);
             }                
         }
@@ -2937,7 +2953,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void simpandata() {
         try {
-            koneksi.setAutoCommit(false);
             for(i=0;i<tbResep.getRowCount();i++){ 
                 if(Valid.SetAngka(tbResep.getValueAt(i,1).toString())>0){                        
                     if(tbResep.getValueAt(i,0).toString().equals("true")){
@@ -2946,17 +2961,21 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             pscarikapasitas.setString(1,tbResep.getValueAt(i,2).toString());
                             carikapasitas=pscarikapasitas.executeQuery();
                             if(carikapasitas.next()){ 
-                                Sequel.menyimpan("resep_dokter","?,?,?,?","data",4,new String[]{
+                                if(Sequel.menyimpantf2("resep_dokter","?,?,?,?","data",4,new String[]{
                                     NoResep.getText(),tbResep.getValueAt(i,2).toString(),
                                     ""+(Double.parseDouble(tbResep.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),
                                     tbResep.getValueAt(i,8).toString()
-                                });
+                                })==false){
+                                    sukses=false;
+                                }
                             }else{
-                                Sequel.menyimpan("resep_dokter","?,?,?,?","data",4,new String[]{
+                                if(Sequel.menyimpantf2("resep_dokter","?,?,?,?","data",4,new String[]{
                                     NoResep.getText(),tbResep.getValueAt(i,2).toString(),
                                     ""+(Double.parseDouble(tbResep.getValueAt(i,1).toString())),
                                     tbResep.getValueAt(i,8).toString()
-                                });                                
+                                })==false){
+                                    sukses=false;
+                                }                               
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi Kapasitas : "+e);
@@ -2969,41 +2988,40 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }
                         }
                     }else{
-                        Sequel.menyimpan("resep_dokter","?,?,?,?","data",4,new String[]{
+                        if(Sequel.menyimpantf2("resep_dokter","?,?,?,?","data",4,new String[]{
                             NoResep.getText(),tbResep.getValueAt(i,2).toString(),
                             ""+(Double.parseDouble(tbResep.getValueAt(i,1).toString())),
                             tbResep.getValueAt(i,8).toString()
-                        });                                  
+                        })==false){
+                            sukses=false;
+                        }                                   
                     }                      
                 }
-                tbResep.setValueAt("",i,1);
             } 
 
             for(i=0;i<tbObatResepRacikan.getRowCount();i++){ 
                 if(Valid.SetAngka(tbObatResepRacikan.getValueAt(i,4).toString())>0){ 
-                    Sequel.menyimpan("resep_dokter_racikan","?,?,?,?,?,?,?",7,new String[]{
+                    if(Sequel.menyimpantf2("resep_dokter_racikan","?,?,?,?,?,?,?","resep obat racikan",7,new String[]{
                        NoResep.getText(),tbObatResepRacikan.getValueAt(i,0).toString(),tbObatResepRacikan.getValueAt(i,1).toString(),
                        tbObatResepRacikan.getValueAt(i,2).toString(),tbObatResepRacikan.getValueAt(i,4).toString(),
                        tbObatResepRacikan.getValueAt(i,5).toString(),tbObatResepRacikan.getValueAt(i,6).toString()
-                    });
+                    })==false){
+                        sukses=false;
+                    } 
                 }
             }
-
-            Valid.tabelKosong(tabModeResepRacikan);
 
             for(i=0;i<tbDetailResepObatRacikan.getRowCount();i++){ 
                 if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(i,13).toString())>0){
-                    Sequel.menyimpan("resep_dokter_racikan_detail","?,?,?,?,?,?,?",7,new String[]{
+                    if(Sequel.menyimpantf2("resep_dokter_racikan_detail","?,?,?,?,?,?,?","resep dokter racikan detail",7,new String[]{
                         NoResep.getText(),tbDetailResepObatRacikan.getValueAt(i,0).toString(),tbDetailResepObatRacikan.getValueAt(i,1).toString(),
                         tbDetailResepObatRacikan.getValueAt(i,9).toString(),tbDetailResepObatRacikan.getValueAt(i,11).toString(),
                         tbDetailResepObatRacikan.getValueAt(i,12).toString(),tbDetailResepObatRacikan.getValueAt(i,13).toString()
-                    });
+                    })==false){
+                        sukses=false;
+                    } 
                 }
             }
-
-            Valid.tabelKosong(tabModeDetailResepRacikan);
-            koneksi.setAutoCommit(true);
-            dispose();
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         } 
