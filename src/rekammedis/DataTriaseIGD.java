@@ -463,10 +463,10 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         LoadHTML2.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                 ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
                 ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
                 ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
@@ -668,13 +668,13 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Triase IGD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Triase IGD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabPilihan.setBackground(new java.awt.Color(255, 255, 254));
-        TabPilihan.setForeground(new java.awt.Color(70, 70, 70));
+        TabPilihan.setForeground(new java.awt.Color(50,50,50));
         TabPilihan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihan.setName("TabPilihan"); // NOI18N
         TabPilihan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -693,7 +693,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         TabTriase.setBackground(new java.awt.Color(255, 255, 254));
         TabTriase.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        TabTriase.setForeground(new java.awt.Color(70, 70, 70));
+        TabTriase.setForeground(new java.awt.Color(50,50,50));
         TabTriase.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabTriase.setName("TabTriase"); // NOI18N
         TabTriase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -903,7 +903,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(362, 10, 90, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2019 10:42:28" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019 14:32:58" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
@@ -1106,7 +1106,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         TabSkala1dan2.setBackground(new java.awt.Color(255, 255, 254));
         TabSkala1dan2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TabSkala1dan2.setForeground(new java.awt.Color(70, 70, 70));
+        TabSkala1dan2.setForeground(new java.awt.Color(50,50,50));
         TabSkala1dan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSkala1dan2.setName("TabSkala1dan2"); // NOI18N
         TabSkala1dan2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1330,7 +1330,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(362, 10, 90, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2019 10:42:29" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019 14:32:59" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
@@ -1532,7 +1532,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         TabSkala3dan4dan5.setBackground(new java.awt.Color(255, 255, 254));
         TabSkala3dan4dan5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TabSkala3dan4dan5.setForeground(new java.awt.Color(70, 70, 70));
+        TabSkala3dan4dan5.setForeground(new java.awt.Color(50,50,50));
         TabSkala3dan4dan5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSkala3dan4dan5.setName("TabSkala3dan4dan5"); // NOI18N
         TabSkala3dan4dan5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1624,7 +1624,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2019 10:42:29" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019 14:32:59" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
@@ -1784,7 +1784,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1798,7 +1798,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3048,10 +3048,10 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         File g = new File("file2.css");            
                         BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                         bg.write(
-                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                            ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#464646;}"+
-                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                            ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                            ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                             ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
                             ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
                             ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
@@ -4014,10 +4014,48 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
-                    param.put("norawat",tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
-                    param.put("norm",tbTriase.getValueAt(tbTriase.getSelectedRow(),1).toString());
-                    param.put("namapasien",tbTriase.getValueAt(tbTriase.getSelectedRow(),2).toString());
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    try {
+                        ps=koneksi.prepareStatement(
+                            "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
+                            "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
+                            "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
+                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,petugas.nama,data_triase_igd.tgl_kunjungan, "+
+                            "data_triase_igd.cara_masuk,master_triase_macam_kasus.macam_kasus from data_triase_igdprimer inner join data_triase_igd "+
+                            "inner join pasien inner join petugas inner join reg_periksa inner join master_triase_macam_kasus on "+
+                            "data_triase_igd.no_rawat=data_triase_igdprimer.no_rawat and reg_periksa.no_rawat=data_triase_igd.no_rawat "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and petugas.nip=data_triase_igdprimer.nip "+
+                            "and master_triase_macam_kasus.kode_kasus=data_triase_igd.kode_kasus where data_triase_igd.no_rawat=?");
+                        try {
+                            ps.setString(1,tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                param.put("norawat",rs.getString("no_rawat"));
+                                param.put("norm",rs.getString("no_rkm_medis"));
+                                param.put("namapasien",rs.getString("nm_pasien"));
+                                param.put("tanggallahir",rs.getDate("tgl_lahir"));
+                                param.put("jk",rs.getString("jk").replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"));
+                                param.put("tanggalkunjungan",rs.getDate("tgl_kunjungan"));
+                                param.put("jamkunjungan",rs.getString("tgl_kunjungan").toString().substring(11,19));
+                                param.put("caradatang",rs.getString("cara_masuk"));
+                                param.put("macamkasus",rs.getString("macam_kasus"));
+                                param.put("keluhanutama",rs.getString("keluhan_utama"));
+                                param.put("kebutuhankhusus",rs.getString("kebutuhan_khusus"));
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    }
+                                
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Skala Triase 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lember Triase Skala 1");
                     switch (pilihan) {
                         case "Lembar Triase Skala 1":

@@ -160,7 +160,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         Popup.setName("Popup"); // NOI18N
 
         ppOrder.setBackground(new java.awt.Color(250, 255, 245));
-        ppOrder.setForeground(new java.awt.Color(70, 70, 70));
+        ppOrder.setForeground(new java.awt.Color(50,50,50));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -168,7 +168,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrder.setPreferredSize(new java.awt.Dimension(200, 25));
 
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppOrderKode.setForeground(new java.awt.Color(70, 70, 70));
+        ppOrderKode.setForeground(new java.awt.Color(50,50,50));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderKode.setText("Kode Obat");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -183,7 +183,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         ppOrder.add(ppOrderKode);
 
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppOrderNama.setForeground(new java.awt.Color(70, 70, 70));
+        ppOrderNama.setForeground(new java.awt.Color(50,50,50));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderNama.setText("Nama Obat");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -200,7 +200,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         Popup.add(ppOrder);
 
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
+        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -215,7 +215,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         Popup.add(ppBersihkan);
 
         ppHapusObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusObat.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapusObat.setForeground(new java.awt.Color(50,50,50));
         ppHapusObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapusObat.setText("Hapus Obat Terpilih");
         ppHapusObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -265,7 +265,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

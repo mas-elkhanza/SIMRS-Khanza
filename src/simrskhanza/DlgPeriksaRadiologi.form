@@ -76,7 +76,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+              <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -811,7 +811,7 @@
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+                      <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -968,7 +968,7 @@
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+                      <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -1124,7 +1124,7 @@
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+                      <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>

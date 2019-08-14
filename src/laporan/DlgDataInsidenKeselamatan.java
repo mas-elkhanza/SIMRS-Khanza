@@ -322,7 +322,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerDampak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerDampak.setForeground(new java.awt.Color(50,50,50));
         ppGrafikBatangKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerDampak.setText("Grafik Batang Kejadian IKP Per Dampak");
         ppGrafikBatangKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -338,7 +338,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikPieKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPieKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPieKejadianIKPPerDampak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikPieKejadianIKPPerDampak.setForeground(new java.awt.Color(50,50,50));
         ppGrafikPieKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPieKejadianIKPPerDampak.setText("Grafik Pie Kejadian IKP Per Dampak");
         ppGrafikPieKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -354,7 +354,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerJenis.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerJenis.setForeground(new java.awt.Color(50,50,50));
         ppGrafikBatangKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerJenis.setText("Grafik Batang Kejadian IKP Per Jenis");
         ppGrafikBatangKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -370,7 +370,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikPieKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPieKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPieKejadianIKPPerJenis.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikPieKejadianIKPPerJenis.setForeground(new java.awt.Color(50,50,50));
         ppGrafikPieKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPieKejadianIKPPerJenis.setText("Grafik Pie Kejadian IKP Per Jenis");
         ppGrafikPieKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -386,7 +386,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerTanggal.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerTanggal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerTanggal.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerTanggal.setForeground(new java.awt.Color(50,50,50));
         ppGrafikBatangKejadianIKPPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerTanggal.setText("Grafik Batang Kejadian IKP Per Tanggal");
         ppGrafikBatangKejadianIKPPerTanggal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -402,7 +402,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerbulan.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerbulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerbulan.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerbulan.setForeground(new java.awt.Color(50,50,50));
         ppGrafikBatangKejadianIKPPerbulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerbulan.setText("Grafik Batang Kejadian IKP Per Bulan");
         ppGrafikBatangKejadianIKPPerbulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -418,7 +418,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerTahun.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerTahun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerTahun.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikBatangKejadianIKPPerTahun.setForeground(new java.awt.Color(50,50,50));
         ppGrafikBatangKejadianIKPPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerTahun.setText("Grafik Batang Kejadian IKP Per Tahun");
         ppGrafikBatangKejadianIKPPerTahun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -436,7 +436,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
