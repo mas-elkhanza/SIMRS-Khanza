@@ -404,7 +404,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -623,7 +623,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabPilihRawat.setForeground(new java.awt.Color(50,50,50));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
         TabPilihRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -637,7 +637,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame2.setLayout(new java.awt.BorderLayout());
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawatJalan.setForeground(new java.awt.Color(50,50,50));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
         TabRawatJalan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -766,7 +766,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame3.setLayout(new java.awt.BorderLayout());
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawatInap.setForeground(new java.awt.Color(50,50,50));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
         TabRawatInap.addMouseListener(new java.awt.event.MouseAdapter() {

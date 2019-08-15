@@ -24,7 +24,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -43,7 +42,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement pstindakan,pstindakan2,pstampil,pstampil2,pstampil3,pstampil4,pssimpanperiksa,
-            psdetailpriksa,pscariperawatan,psset_tarif,pssetpj,pscariperiksa,pscaridetailperiksa,psrekening;
+            psdetailpriksa,pscariperawatan,psset_tarif,pscariperiksa,pscaridetailperiksa,psrekening;
     private ResultSet rstindakan,rstampil,rscari,rsset_tarif,rssetpj,rsrekening;
     private boolean[] pilih,pilih2; 
     private String[] kode,nama,pemeriksaan2,hasil2,satuan2,nilai_rujukan2,keterangan2,idtemplate2;
@@ -245,20 +244,6 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
             psdetailpriksa=koneksi.prepareStatement(
                                     "insert into detail_periksa_lab values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             pscariperawatan=koneksi.prepareStatement("select kd_jenis_prw from template_laboratorium where id_template=?");
-            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
-            pssetpj=koneksi.prepareStatement("select * from set_pjlab");
-            pscariperiksa=koneksi.prepareStatement(
-                    "select periksa_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,periksa_lab.biaya,"+
-                    "periksa_lab.bagian_rs,periksa_lab.bhp,periksa_lab.tarif_perujuk,"+
-                    "periksa_lab.tarif_tindakan_dokter,periksa_lab.tarif_tindakan_petugas, "+
-                    "periksa_lab.kso,periksa_lab.menejemen from periksa_lab inner join jns_perawatan_lab "+
-                    "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? "+
-                    "and periksa_lab.jam=?");
-            pscaridetailperiksa=koneksi.prepareStatement(
-                    "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai,template_laboratorium.satuan,detail_periksa_lab.nilai_rujukan,detail_periksa_lab.biaya_item,"+
-                    "detail_periksa_lab.bagian_rs,detail_periksa_lab.bhp,detail_periksa_lab.bagian_perujuk,detail_periksa_lab.bagian_dokter,detail_periksa_lab.bagian_laborat,detail_periksa_lab.kso,detail_periksa_lab.menejemen,detail_periksa_lab.keterangan "+
-                    "from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                    "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=?");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -369,7 +354,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
+        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Pilihan");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -385,7 +370,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
 
         ppSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppSemua.setForeground(new java.awt.Color(50,50,50));
         ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemua.setText("Pilih Semua");
         ppSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -403,7 +388,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Data Hasil Periksa Laboratorium & Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Data Hasil Periksa Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1387,12 +1372,25 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=? ",Penjab,TNoRw.getText());
             
             isPsien(); 
-            rsset_tarif=psset_tarif.executeQuery();
-            if(rsset_tarif.next()){
-                cara_bayar_lab=rsset_tarif.getString("cara_bayar_lab");
-            }else{
-                cara_bayar_lab="Yes";
-            }  
+            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
+            try {
+                rsset_tarif=psset_tarif.executeQuery();
+                if(rsset_tarif.next()){
+                    cara_bayar_lab=rsset_tarif.getString("cara_bayar_lab");
+                }else{
+                    cara_bayar_lab="Yes";
+                }  
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rsset_tarif!=null){
+                    rsset_tarif.close();
+                }
+                if(psset_tarif!=null){
+                    psset_tarif.close();
+                }
+            }
+                
             Tanggal.setText(tanggal);
             Jam.setText(jam);
             Sequel.cariIsi("select kd_dokter from periksa_lab where no_rawat='"+TNoRw.getText()+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'",KodePj);
@@ -1402,32 +1400,67 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Sequel.cariIsi("select dokter_perujuk from periksa_lab where no_rawat='"+TNoRw.getText()+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'",KodePerujuk);
             Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=? ",NmPerujuk,KodePerujuk.getText());
             
-            pscariperiksa.setString(1,TNoRw.getText());
-            pscariperiksa.setString(2,tanggal);
-            pscariperiksa.setString(3,jam);
-            rstindakan=pscariperiksa.executeQuery();
-            while(rstindakan.next()){                
-                tabMode2.addRow(new Object[]{true,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10)});
+            pscariperiksa=koneksi.prepareStatement(
+                    "select periksa_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,periksa_lab.biaya,"+
+                    "periksa_lab.bagian_rs,periksa_lab.bhp,periksa_lab.tarif_perujuk,"+
+                    "periksa_lab.tarif_tindakan_dokter,periksa_lab.tarif_tindakan_petugas, "+
+                    "periksa_lab.kso,periksa_lab.menejemen from periksa_lab inner join jns_perawatan_lab "+
+                    "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? "+
+                    "and periksa_lab.jam=?");
+            try {
+                pscariperiksa.setString(1,TNoRw.getText());
+                pscariperiksa.setString(2,tanggal);
+                pscariperiksa.setString(3,jam);
+                rstindakan=pscariperiksa.executeQuery();
+                while(rstindakan.next()){                
+                    tabMode2.addRow(new Object[]{true,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10)});
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rstindakan!=null){
+                    rstindakan.close();
+                }
+                if(pscariperiksa!=null){
+                    pscariperiksa.close();
+                }
             }
             
-            pscaridetailperiksa.setString(1,TNoRw.getText());
-            pscaridetailperiksa.setString(2,tanggal);
-            pscaridetailperiksa.setString(3,jam);
-            rstampil=pscaridetailperiksa.executeQuery();
-            while(rstampil.next()){
-                tabMode.addRow(new Object[]{true,"   "+rstampil.getString("Pemeriksaan"),rstampil.getString("nilai"),
-                                     rstampil.getString("satuan"),
-                                     rstampil.getString("nilai_rujukan"),"",
-                                     rstampil.getString("id_template"),
-                                     rstampil.getDouble("biaya_item"),
-                                     rstampil.getDouble("bagian_rs"),
-                                     rstampil.getDouble("bhp"),
-                                     rstampil.getDouble("bagian_perujuk"),
-                                     rstampil.getDouble("bagian_dokter"),
-                                     rstampil.getDouble("bagian_laborat"),
-                                     rstampil.getDouble("kso"),
-                                     rstampil.getDouble("menejemen")});
-            } 
+            pscaridetailperiksa=koneksi.prepareStatement(
+                    "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai,template_laboratorium.satuan,detail_periksa_lab.nilai_rujukan,detail_periksa_lab.biaya_item,"+
+                    "detail_periksa_lab.bagian_rs,detail_periksa_lab.bhp,detail_periksa_lab.bagian_perujuk,detail_periksa_lab.bagian_dokter,detail_periksa_lab.bagian_laborat,detail_periksa_lab.kso,detail_periksa_lab.menejemen,detail_periksa_lab.keterangan "+
+                    "from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                    "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=?");
+            try {
+                pscaridetailperiksa.setString(1,TNoRw.getText());
+                pscaridetailperiksa.setString(2,tanggal);
+                pscaridetailperiksa.setString(3,jam);
+                rstampil=pscaridetailperiksa.executeQuery();
+                while(rstampil.next()){
+                    tabMode.addRow(new Object[]{true,"   "+rstampil.getString("Pemeriksaan"),rstampil.getString("nilai"),
+                         rstampil.getString("satuan"),
+                         rstampil.getString("nilai_rujukan"),"",
+                         rstampil.getString("id_template"),
+                         rstampil.getDouble("biaya_item"),
+                         rstampil.getDouble("bagian_rs"),
+                         rstampil.getDouble("bhp"),
+                         rstampil.getDouble("bagian_perujuk"),
+                         rstampil.getDouble("bagian_dokter"),
+                         rstampil.getDouble("bagian_laborat"),
+                         rstampil.getDouble("kso"),
+                         rstampil.getDouble("menejemen")
+                    });
+                } 
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rstampil!=null){
+                    rstampil.close();
+                }
+                if(pscaridetailperiksa!=null){
+                    pscaridetailperiksa.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e);
         }         

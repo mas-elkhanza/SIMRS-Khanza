@@ -31,10 +31,9 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
-    private PreparedStatement ps,ps2,psdetailpengeluaran,psradiologi,psradiologi2;
+    private PreparedStatement ps,ps2,psdetailpengeluaran;
     private Jurnal jur=new Jurnal();
     private ResultSet rs,rs2;
     private double tagihan=0,ttltagihan=0,total=0;
@@ -315,7 +314,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapus.setForeground(new java.awt.Color(50,50,50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Stok Keluar");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -333,7 +332,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -613,7 +612,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1140,158 +1139,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         if(ps2!=null){
                             ps2.close();
                         }
-                    }
-                }
-
-                psradiologi=koneksi.prepareStatement("select periksa_radiologi.tgl_periksa,periksa_radiologi.no_rawat,periksa_radiologi.jam,periksa_radiologi.nip,petugas.nama "+
-                    " from periksa_radiologi inner join petugas inner join kodesatuan  "+
-                    " inner join beri_bhp_radiologi inner join ipsrsbarang "+
-                    " on beri_bhp_radiologi.kode_brng=ipsrsbarang.kode_brng "+
-                    " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                    " and periksa_radiologi.no_rawat=beri_bhp_radiologi.no_rawat "+
-                    " and periksa_radiologi.nip=petugas.nip"+
-                    " where periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and periksa_radiologi.no_rawat like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and periksa_radiologi.jam like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and periksa_radiologi.nip like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and petugas.nama like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and beri_bhp_radiologi.kode_brng like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and beri_bhp_radiologi.kode_sat like ? or "+
-                    " periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                    " group by periksa_radiologi.no_rawat order by periksa_radiologi.tgl_periksa,periksa_radiologi.no_rawat ");
-                try {
-                    psradiologi.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(3,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(4,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(5,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(6,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(7,"%"+TCari.getText()+"%");
-                    psradiologi.setString(8,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(9,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(10,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(11,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(12,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(13,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(14,"%"+TCari.getText()+"%");
-                    psradiologi.setString(15,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(16,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(17,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(18,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(19,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(20,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(21,"%"+TCari.getText()+"%");
-                    psradiologi.setString(22,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(23,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(24,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(25,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(26,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(27,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(28,"%"+TCari.getText()+"%");
-                    psradiologi.setString(29,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(30,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(31,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(32,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(33,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(34,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(35,"%"+TCari.getText()+"%");
-                    psradiologi.setString(36,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(37,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(38,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(39,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(40,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(41,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(42,"%"+TCari.getText()+"%");
-                    psradiologi.setString(43,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(44,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(45,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(46,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(47,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(48,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(49,"%"+TCari.getText()+"%");
-                    psradiologi.setString(50,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(51,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(52,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(53,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(54,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(55,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(56,"%"+TCari.getText()+"%");
-                    psradiologi.setString(57,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-                    psradiologi.setString(58,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-                    psradiologi.setString(59,"%"+NoKeluar.getText()+"%");
-                    psradiologi.setString(60,"%"+nmptg.getText()+"%");
-                    psradiologi.setString(61,"%"+kdjenis.getText()+"%");
-                    psradiologi.setString(62,"%"+nmbar.getText()+"%");
-                    psradiologi.setString(63,"%"+TCari.getText()+"%");
-                    rs=psradiologi.executeQuery();
-                    while(rs.next()){
-                        tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)+", "+rs.getString(5),"Stok Keluar :","","","","",""
-                        });    
-                        psradiologi2=koneksi.prepareStatement("select beri_bhp_radiologi.kode_brng,ipsrsbarang.nama_brng, "+
-                            "beri_bhp_radiologi.kode_sat,kodesatuan.satuan,beri_bhp_radiologi.jumlah,beri_bhp_radiologi.harga,beri_bhp_radiologi.total "+
-                            "from beri_bhp_radiologi inner join ipsrsbarang inner join kodesatuan "+
-                            " on beri_bhp_radiologi.kode_brng=ipsrsbarang.kode_brng "+
-                            " and beri_bhp_radiologi.kode_sat=kodesatuan.kode_sat where "+
-                            " beri_bhp_radiologi.no_rawat=? and beri_bhp_radiologi.tgl_periksa=? and beri_bhp_radiologi.jam=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and beri_bhp_radiologi.kode_brng like ? or "+
-                            " beri_bhp_radiologi.no_rawat=? and beri_bhp_radiologi.tgl_periksa=? and beri_bhp_radiologi.jam=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? or "+
-                            " beri_bhp_radiologi.no_rawat=? and beri_bhp_radiologi.tgl_periksa=? and beri_bhp_radiologi.jam=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and beri_bhp_radiologi.kode_sat like ? or "+
-                            " beri_bhp_radiologi.no_rawat=? and beri_bhp_radiologi.tgl_periksa=? and beri_bhp_radiologi.jam=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.jenis like ? order by beri_bhp_radiologi.kode_brng  ");
-                        try {
-                            psradiologi2.setString(1,rs.getString(2));
-                            psradiologi2.setString(2,rs.getString(1));
-                            psradiologi2.setString(3,rs.getString(3));
-                            psradiologi2.setString(4,"%"+nmbar.getText()+"%");
-                            psradiologi2.setString(5,"%"+kdjenis.getText()+"%");
-                            psradiologi2.setString(6,"%"+TCari.getText()+"%");
-                            psradiologi2.setString(7,rs.getString(2));
-                            psradiologi2.setString(8,rs.getString(1));
-                            psradiologi2.setString(9,rs.getString(3));
-                            psradiologi2.setString(10,"%"+nmbar.getText()+"%");
-                            psradiologi2.setString(11,"%"+kdjenis.getText()+"%");
-                            psradiologi2.setString(12,"%"+TCari.getText()+"%");
-                            psradiologi2.setString(13,rs.getString(2));
-                            psradiologi2.setString(14,rs.getString(1));
-                            psradiologi2.setString(15,rs.getString(3));
-                            psradiologi2.setString(16,"%"+nmbar.getText()+"%");
-                            psradiologi2.setString(17,"%"+kdjenis.getText()+"%");
-                            psradiologi2.setString(18,"%"+TCari.getText()+"%");
-                            psradiologi2.setString(19,rs.getString(2));
-                            psradiologi2.setString(20,rs.getString(1));
-                            psradiologi2.setString(21,rs.getString(3));
-                            psradiologi2.setString(22,"%"+nmbar.getText()+"%");
-                            psradiologi2.setString(23,"%"+kdjenis.getText()+"%");
-                            psradiologi2.setString(24,"%"+TCari.getText()+"%");
-                            rs2=psradiologi2.executeQuery();
-                            int no=1;
-                            tagihan=0;
-                            while(rs2.next()){
-                                tagihan=tagihan+rs2.getDouble(7);
-                                ttltagihan=ttltagihan+rs2.getDouble(7);
-                                tabMode.addRow(new Object[]{"","","","",no+". "+rs2.getString(1)+", "+rs2.getString(2),
-                                                rs2.getString(3)+", "+rs2.getString(4),rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7))});
-                                no++;
-                            }
-                            tabMode.addRow(new Object[]{"","","","","Total ","","","",Valid.SetAngka(tagihan)});
-                        } catch (Exception e) {
-                            System.out.println("Notif Radiologi 2 : "+e);
-                        } finally{
-                            if(rs2!=null){
-                                rs2.close();
-                            }
-                            if(psradiologi2!=null){
-                                psradiologi2.close();
-                            }
-                        }                            
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif Radiologi : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(psradiologi!=null){
-                        psradiologi.close();
                     }
                 }
                 LTotal.setText(""+Valid.SetAngka(ttltagihan));

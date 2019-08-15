@@ -26,11 +26,11 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2,ps3;
-    private ResultSet rs,rs2,rs3;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
     private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
     private int i=0;
-    private double jumlah,total,totalkeluar,jumlah2,total2,totalkeluar2;
+    private double jumlah,total,totalkeluar,jumlah2;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -113,8 +113,6 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
             ps2=koneksi.prepareStatement("select sum(ipsrsdetailpengeluaran.jumlah) as jumlah,sum(ipsrsdetailpengeluaran.total) as total "+
                     "from ipsrsdetailpengeluaran inner join ipsrspengeluaran on ipsrsdetailpengeluaran.no_keluar=ipsrspengeluaran.no_keluar "+
                     "where ipsrsdetailpengeluaran.kode_brng=? and ipsrspengeluaran.tanggal between ? and ?");
-            ps3=koneksi.prepareStatement("select sum(beri_bhp_radiologi.jumlah) as jumlah,sum(beri_bhp_radiologi.total) as total "+
-                    "from beri_bhp_radiologi where beri_bhp_radiologi.kode_brng=? and beri_bhp_radiologi.tgl_periksa between ? and ?");
         } catch (Exception e) {
             System.out.println(e);
         }     
@@ -158,7 +156,7 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -504,12 +502,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps.setString(1,"%"+kdbarang.getText().trim()+"%");
             rs=ps.executeQuery();
             totalkeluar=0;
-            totalkeluar2=0;
             while(rs.next()){
                 jumlah=0;
                 total=0;
                 jumlah2=0;
-                total2=0;
                 ps2.setString(1,rs.getString("kode_brng"));
                 ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -519,23 +515,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     total=rs2.getDouble("total");
                     totalkeluar=totalkeluar+total;
                 }
-                ps3.setString(1,rs.getString("kode_brng"));
-                ps3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs3=ps3.executeQuery();
-                while(rs3.next()){
-                    jumlah2=rs3.getDouble("jumlah");
-                    total2=rs3.getDouble("total");
-                    totalkeluar2=totalkeluar2+total2;
-                }
                 if((jumlah+jumlah2)>0){
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),Valid.SetAngka(jumlah+jumlah2),Valid.SetAngka(total+total2)
+                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),Valid.SetAngka(jumlah+jumlah2),Valid.SetAngka(total)
                     });                    
                 }                
             }   
-            if((totalkeluar+totalkeluar2)>0){
-                tabMode.addRow(new Object[]{"Total Pengeluaran :","","","","",Valid.SetAngka(totalkeluar+totalkeluar2)
+            if((totalkeluar)>0){
+                tabMode.addRow(new Object[]{"Total Pengeluaran :","","","","",Valid.SetAngka(totalkeluar)
                 });
             }
             this.setCursor(Cursor.getDefaultCursor());              
