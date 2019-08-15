@@ -1378,6 +1378,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                        )==true){
                             simpan();
                     }else{
+                        sukses=false;
                         JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
                         autoNomor();
                     } 
