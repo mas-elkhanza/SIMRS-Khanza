@@ -1372,7 +1372,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Sequel.mengedit3("skdp_bpjs","no_rkm_medis=? and tanggal_datang=?","status='Sudah Periksa'",2,new String[]{
                         tbObat.getValueAt(i,3).toString(),tbObat.getValueAt(i,5).toString()
                     });
-                    Sequel.queryu2("update booking_registrasi set status='terdaftar' where no_rkm_medis=? and tanggal_periksa=?",2,new String[]{
+                    Sequel.queryu2("update booking_registrasi set status='Terdaftar' where no_rkm_medis=? and tanggal_periksa=?",2,new String[]{
                         tbObat.getValueAt(i,3).toString(),tbObat.getValueAt(i,5).toString()
                     });
                 }

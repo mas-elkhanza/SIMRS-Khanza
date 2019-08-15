@@ -4041,6 +4041,10 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 param.put("macamkasus",rs.getString("macam_kasus"));
                                 param.put("keluhanutama",rs.getString("keluhan_utama"));
                                 param.put("kebutuhankhusus",rs.getString("kebutuhan_khusus"));
+                                param.put("plan",rs.getString("plan"));
+                                param.put("tanggaltriase",rs.getDate("tanggaltriase"));
+                                param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
+                                param.put("petugas",rs.getString("nama"));
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);

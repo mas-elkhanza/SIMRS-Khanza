@@ -38,6 +38,10 @@
 	<parameter name="macamkasus" class="java.lang.String"/>
 	<parameter name="keluhanutama" class="java.lang.String"/>
 	<parameter name="kebutuhankhusus" class="java.lang.String"/>
+	<parameter name="plan" class="java.lang.String"/>
+	<parameter name="tanggaltriase" class="java.sql.Date"/>
+	<parameter name="jamtriase" class="java.lang.String"/>
+	<parameter name="petugas" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan 
 from master_triase_pemeriksaan inner join master_triase_skala1 inner join data_triase_igddetail_skala1
@@ -57,10 +61,10 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="232" splitType="Stretch">
+		<band height="233" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="137" width="201" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="0be9cecd-64f2-4bc0-95e6-5a57df4ce7e8"/>
+				<reportElement mode="Opaque" x="0" y="137" width="175" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="0be9cecd-64f2-4bc0-95e6-5a57df4ce7e8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -68,7 +72,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[KETERANGAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="202" y="137" width="353" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="e2b295a6-9fe4-4f57-b4cf-4bc04f7a3f31"/>
+				<reportElement mode="Opaque" x="176" y="137" width="379" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="e2b295a6-9fe4-4f57-b4cf-4bc04f7a3f31"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -322,7 +326,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<textFieldExpression><![CDATA[$P{jamkunjungan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="8" y="102" width="188" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="59f7173a-a859-425b-b62d-4077f71f6a12"/>
+				<reportElement mode="Transparent" x="8" y="102" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="59f7173a-a859-425b-b62d-4077f71f6a12"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -330,13 +334,13 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[Cara Datang]]></text>
 			</staticText>
 			<line>
-				<reportElement x="201" y="101" width="1" height="131" uuid="2943c41a-5b56-46fc-85b9-59e31805f4e1"/>
+				<reportElement x="175" y="101" width="1" height="131" uuid="2943c41a-5b56-46fc-85b9-59e31805f4e1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement mode="Transparent" x="206" y="102" width="344" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="22514980-917d-4e1a-b937-dc7997efe23d"/>
+				<reportElement mode="Transparent" x="180" y="102" width="370" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="22514980-917d-4e1a-b937-dc7997efe23d"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -350,7 +354,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="8" y="120" width="188" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="157dda80-534b-4af6-9b4a-cbd39c09968e"/>
+				<reportElement mode="Transparent" x="8" y="120" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="157dda80-534b-4af6-9b4a-cbd39c09968e"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -358,7 +362,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[Macam Kasus]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="206" y="120" width="344" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="57b47496-d79d-4c7c-8619-16f0e75ab982"/>
+				<reportElement mode="Transparent" x="180" y="120" width="370" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="57b47496-d79d-4c7c-8619-16f0e75ab982"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -378,7 +382,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="8" y="154" width="188" height="58" forecolor="#000000" backcolor="#F0F0DC" uuid="a4429d2e-0d28-4bda-91e9-fdc7d982c387">
+				<reportElement mode="Transparent" x="8" y="154" width="162" height="58" forecolor="#000000" backcolor="#F0F0DC" uuid="a4429d2e-0d28-4bda-91e9-fdc7d982c387">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -388,7 +392,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[KELUHAN UTAMA]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="206" y="154" width="344" height="58" forecolor="#000000" backcolor="#F0F0DC" uuid="c5699b44-b605-446b-a1ca-2f56188d9f26"/>
+				<reportElement mode="Transparent" x="180" y="154" width="370" height="58" forecolor="#000000" backcolor="#F0F0DC" uuid="c5699b44-b605-446b-a1ca-2f56188d9f26"/>
 				<textElement textAlignment="Left" verticalAlignment="Top">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -402,7 +406,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="8" y="216" width="188" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="40d13bcb-4622-4890-af8e-97d276b72234"/>
+				<reportElement mode="Transparent" x="8" y="216" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="40d13bcb-4622-4890-af8e-97d276b72234"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -410,24 +414,36 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[KEBUTUHAN KHUSUS]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="206" y="216" width="344" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="85d337d6-3362-4949-bb47-d84b0a0253d1"/>
+				<reportElement mode="Transparent" x="180" y="216" width="370" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="85d337d6-3362-4949-bb47-d84b0a0253d1"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kebutuhankhusus}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="1" width="1" height="231" uuid="c136f65e-f149-4c78-88b1-73c987593068"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="555" y="1" width="1" height="231" uuid="a529f0f9-304c-4d86-a671-26fd487c5275"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="23" splitType="Stretch">
+		<band height="15" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Opaque" x="201" y="0" width="354" height="15" forecolor="#FFFFFF" backcolor="#AA0000" uuid="12c5ba2f-f441-4a20-86f1-3141cf1e0bc2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9" isBold="false"/>
+					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[ IMMEDIATE]]></text>
@@ -435,7 +451,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="201" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="d1c45d95-f11e-47d2-9c20-36812068933a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9" isBold="false"/>
+					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[PEMERIKSAAN]]></text>
@@ -458,12 +474,32 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="15" uuid="af601821-44bc-4680-9669-0172a4a72595">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="15" uuid="9470d223-c8ca-4012-b71c-b67ff0240a6a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="16" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="2" y="0" width="56" height="10" uuid="64f36868-1442-4ba1-a9ad-3bfb3164ec74"/>
+				<reportElement mode="Transparent" x="2" y="0" width="168" height="10" uuid="64f36868-1442-4ba1-a9ad-3bfb3164ec74"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -475,65 +511,121 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
-	<pageFooter>
-		<band height="26" splitType="Stretch">
-			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="505" y="6" width="36" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="d370bf09-ce2a-44f4-92dc-f7a0c7c327b2"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
+	<summary>
+		<band height="68" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement mode="Opaque" x="176" y="0" width="379" height="15" forecolor="#FFFFFF" backcolor="#AA0000" uuid="a5a32d90-8204-4271-8866-b37f73c686a4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["   Zona Merah "+$P{plan}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="305" y="6" width="170" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="76a2738c-2536-4c47-9de1-6555319cacea"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Right">
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="0" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="2f2d0dec-81b5-4603-a77f-93855b26d9dc"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+				<text><![CDATA[PLAN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="175" y="0" width="1" height="67" uuid="71d7cde8-2405-462c-84e1-fa036b04fb7d">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="dbd6bfd1-4539-4135-9dbf-599188ad7e50"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="176" y="16" width="379" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="9233d68c-d078-481b-8bc9-d9637b7a50d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Petugas Triase Primer]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="31" width="555" height="1" uuid="bf1a96d9-edaf-43ea-a8c5-4ea4f07cc6f8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="9" y="33" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="133d6b14-2040-4b68-a5a8-5aed58de2740"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal & Jam]]></text>
+			</staticText>
+			<textField pattern="MM-dd-yyyy">
+				<reportElement mode="Transparent" x="180" y="33" width="70" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ffee6f29-f294-48e8-aa61-d533598e06b9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tanggaltriase}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="5" y="6" width="209" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="8ce19cb6-1123-41c8-a867-a983f8959f51"/>
-				<box>
-					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement>
+			<textField>
+				<reportElement mode="Transparent" x="252" y="33" width="80" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="42cc4b85-3dd8-4548-87a6-4ef3feaef947"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{jamtriase}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="555" height="1" uuid="2cf771ae-8694-436a-81d9-cf1d235aa84a"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="49" width="555" height="1" uuid="f52ee872-506a-43eb-93ad-9f01f78b18bf"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="9" y="51" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="f6ea78da-8530-4d3f-a0e0-c7abc8ac3b27"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Petugas]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="180" y="51" width="374" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="0d38c6ea-447e-4b8a-9eb8-6c25a094e0ef"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{petugas}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="67" width="555" height="1" uuid="3fb3b8da-e6fd-4f7e-827c-29315f2c0957"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="23" width="555" height="1" uuid="1846915d-2f2a-4b25-8807-1d25e04ec7fe"/>
+				<reportElement x="0" y="0" width="1" height="67" uuid="db5aac8b-84a0-4aba-8fdf-5b03ebeed26e">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<graphicElement>
-					<pen lineWidth="0.5"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="67" uuid="11ee52ae-4477-4bdb-8607-5bc9130bef4f">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 		</band>
-	</pageFooter>
-	<summary>
-		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

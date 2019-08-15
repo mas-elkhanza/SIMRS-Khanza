@@ -6288,7 +6288,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                     Sequel.mengedit3("skdp_bpjs","no_rkm_medis=? and tanggal_datang=?","status='Sudah Periksa'",2,new String[]{
                         TNo.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")
                     });
-                    Sequel.queryu2("delete from booking_registrasi where no_rkm_medis=? and tanggal_periksa=?",2,new String[]{
+                    Sequel.queryu2("update booking_registrasi set status='Terdaftar' where no_rkm_medis=? and tanggal_periksa=?",2,new String[]{
                         TNo.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")
                     });
                     if(!prb.equals("")){
