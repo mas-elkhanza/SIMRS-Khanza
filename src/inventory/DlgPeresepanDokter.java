@@ -1064,6 +1064,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status
                                 })==true){
                                     simpandata();
+                            }else{
+                                sukses=false;
                             }
                         }
                     }
