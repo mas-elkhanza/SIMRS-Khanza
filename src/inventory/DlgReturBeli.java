@@ -983,7 +983,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else{
                         autonomer();
                         sukses=false;
-                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
+                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Retur sudah ada sebelumnya...!!");
                     }
                 }
                 if(sukses==true){
@@ -1429,7 +1429,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 ps.setString(1,akses.getkode());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    if(Sequel.menyimpantf("detreturbeli","'"+NoRetur.getText()+"','"+rs.getString(1) +"','"+rs.getString(2) +"','"+rs.getString(3) +
+                    if(Sequel.menyimpantf2("detreturbeli","'"+NoRetur.getText()+"','"+rs.getString(1) +"','"+rs.getString(2) +"','"+rs.getString(3) +
                         "','"+rs.getString(4)+"','"+rs.getString(5)+"','"+rs.getString(6)+"','"+rs.getString(7)+"','"+rs.getString(8)+"','"+rs.getString(9)+"','"+rs.getString(10)+"'","data")==true){
                         Trackobat.catatRiwayat(rs.getString(2),0,rs.getDouble(10),"Retur Beli",akses.getkode(),kdgudang.getText(),"Simpan");
                         Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','-"+rs.getString(10)+"'", 

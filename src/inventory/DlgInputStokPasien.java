@@ -617,7 +617,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ttlhpp=0;ttljual=0;
                     for(i=0;i<tbDokter.getRowCount();i++){  
                        if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                            if(Sequel.menyimpantf("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{                            
+                            if(Sequel.menyimpantf2("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{                            
                                 Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
                                 tabMode.getValueAt(i,0).toString(),kdgudang.getText()
                             })==true){
@@ -635,18 +635,26 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     if(sukses==true){
                         Sequel.queryu("delete from tampjurnal");    
                         if(ttljual>0){
-                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                            Sequel.menyimpan2("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                            Sequel.menyimpan2("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
                         }
                         if(ttlhpp>0){
-                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                            Sequel.menyimpan2("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                            Sequel.menyimpan2("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
                         }
                         sukses=jur.simpanJurnal(norawat.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+akses.getkode());  
                     }                                                 
 
                     if(sukses==true){
                         Sequel.Commit();
+                    }else{
+                        sukses=false;
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }   
+                    Sequel.AutoComitTrue();
+                    
+                    if(sukses==true){
                         for(index=0;index<tbDokter.getRowCount();index++){   
                             tbDokter.setValueAt("",index,0);        
                         }
@@ -654,13 +662,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         LTotal.setText("0");
                         LPpn.setText("0");
                         LTotalTagihan.setText("0");
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                        Sequel.RollBack();
-                    }
-                        
-                    Sequel.AutoComitTrue();
-                    if(sukses==true){
                         tampil();
                     }
                 }

@@ -599,15 +599,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 
                 if(sukses==true){
                     Sequel.Commit();
-                    for(index=0;index<tbDokter.getRowCount();index++){   
-                        tbDokter.setValueAt("",index,0);        
-                    }
-                    tampil();
                 }else{
+                    sukses=false;
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
                 }
-                Sequel.AutoComitTrue();  
+                Sequel.AutoComitTrue();
+                
+                if(sukses==true){
+                    for(index=0;index<tbDokter.getRowCount();index++){   
+                        tbDokter.setValueAt("",index,0);        
+                    }
+                    ttl=0;
+                    LTotal.setText("0");
+                    tampil();
+                }
             }
             
         }
