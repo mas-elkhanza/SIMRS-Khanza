@@ -983,22 +983,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else{
                         autonomer();
                         sukses=false;
-                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Retur sudah ada sebelumnya...!!");
                     }
                 }
                 if(sukses==true){
-                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Ke_Suplayer from set_akun")+"','RETUR PEMBELIAN','0','"+ttlretur+"'","Rekening");    
-                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Ke_Suplayer from set_akun")+"','KAS DI TANGAN','"+ttlretur+"','0'","Rekening"); 
+                    Sequel.queryu("delete from tampjurnal");
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Retur_Ke_Suplayer from set_akun")+"','RETUR PEMBELIAN','0','"+ttlretur+"'","Rekening");    
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Ke_Suplayer from set_akun")+"','KAS DI TANGAN','"+ttlretur+"','0'","Rekening"); 
                     sukses=jur.simpanJurnal(NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),"U","RETUR PEMBELIAN DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());
                 }
                 if(sukses==true){
                     Sequel.Commit();
-                    BtnBatalActionPerformed(evt); 
                 }else{
+                    sukses=false;
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
                 }
                 Sequel.AutoComitTrue();
+                if(sukses==true){
+                    BtnBatalActionPerformed(evt); 
+                }
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed

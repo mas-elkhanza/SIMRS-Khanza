@@ -105,7 +105,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
     public  DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
     private DlgCatatan catatan=new DlgCatatan(null,false);
-    private PreparedStatement ps,ps2,ps3,pscaripiutang;
+    private PreparedStatement ps,ps3,pscaripiutang;
     private Properties prop = new Properties();
     private ResultSet rs;
     private int pilihan=0,i=0,kuota=0,jmlparsial=0;

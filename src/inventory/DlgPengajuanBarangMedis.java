@@ -877,13 +877,18 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void getData(){        
         row=tbDokter.getSelectedRow();
-        if(row!= -1){              
-            try {
-                if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);          
-                } 
-            } catch (Exception e) {
-                tbDokter.setValueAt(0, row,8);           
+        if(row!= -1){  
+            if(!tbDokter.getValueAt(row,0).toString().equals("")){
+                try {
+                    if(Double.parseDouble(tbDokter.getValueAt(row,0).toString())>0){                        
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);          
+                    } 
+                } catch (Exception e) {
+                    tbDokter.setValueAt(0, row,8); 
+                    tbDokter.setValueAt("", row,0); 
+                }
+            }else{
+                tbDokter.setValueAt(0, row,8);    
             }
         }
         
@@ -891,13 +896,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         jml=tbDokter.getRowCount();
         for(i=0;i<jml;i++){     
             y=0;
-            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){ 
-                try {
-                    y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
-                } catch (Exception e) {
-                    tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
-                    y=0;                
-                }
+            try {
+                y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
+            } catch (Exception e) {
+                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
+                y=0;                
             }
             total=total+y;   
         }

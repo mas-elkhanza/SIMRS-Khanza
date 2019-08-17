@@ -1032,10 +1032,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Sequel.AutoComitFalse();
                 sukses=true;
                 if(ubah==false){
-                    if(ChkRM.isSelected()==true){
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,6),signed)),0) from resep_obat where tgl_perawatan like '%"+DTPBeri.getSelectedItem().toString().substring(6,10)+"%' ",DTPBeri.getSelectedItem().toString().substring(6,10),6,NoResep);           
-                    }
-                    if(Sequel.menyimpantf("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
+                    emptTeksobat();
+                    if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
                         NoResep.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                         cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                         TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
@@ -1043,10 +1041,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         })==true){
                             simpandata();
                     }else{
-                        if(ChkRM.isSelected()==true){
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,6),signed)),0) from resep_obat where tgl_perawatan like '%"+DTPBeri.getSelectedItem().toString().substring(6,10)+"%' ",DTPBeri.getSelectedItem().toString().substring(6,10),6,NoResep);           
-                        }
-                        if(Sequel.menyimpantf("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
+                        emptTeksobat();
+                        if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
                             NoResep.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                             cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                             TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
@@ -1054,10 +1050,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             })==true){
                                 simpandata();
                         }else{
-                            if(ChkRM.isSelected()==true){
-                                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,6),signed)),0) from resep_obat where tgl_perawatan like '%"+DTPBeri.getSelectedItem().toString().substring(6,10)+"%' ",DTPBeri.getSelectedItem().toString().substring(6,10),6,NoResep);           
-                            }
-                            if(Sequel.menyimpantf("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
+                            emptTeksobat();
+                            if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
                                 NoResep.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                 TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
@@ -1195,7 +1189,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(ChkRM.isSelected()==true){
             NoResep.setEditable(false);
             NoResep.setBackground(new Color(245,250,240));
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,6),signed)),0) from resep_obat where tgl_perawatan like '%"+DTPBeri.getSelectedItem().toString().substring(6,10)+"%' ",DTPBeri.getSelectedItem().toString().substring(6,10),6,NoResep);
+            emptTeksobat();
         }else if(ChkRM.isSelected()==false){
             NoResep.setEditable(true);
             NoResep.setBackground(new Color(250,255,245));
@@ -3090,18 +3084,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
         row2=tabModeDetailResepRacikan.getRowCount();
         for(r=0;r<row2;r++){ 
-            try {
-                if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(r,13).toString())>0){
-                    try {
-                        y=Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,13).toString())*
-                          Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,4).toString());
-                    } catch (Exception e) {
-                        y=0;
-                    }
-                    ttl=ttl+y;
+            if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(r,13).toString())>0){
+                try {
+                    y=Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,13).toString())*
+                      Double.parseDouble(tabModeDetailResepRacikan.getValueAt(r,4).toString());
+                } catch (Exception e) {
+                    y=0;
                 }
-            } catch (Exception e) {
-            }    
+                ttl=ttl+y;
+            }
         }
         LTotal.setText(Valid.SetAngka(ttl));
         ppnobat=0;
@@ -3115,22 +3106,30 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     private void getCekStok() {
         if(tbResep.getSelectedRow()!= -1){
-            if(Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(),1).toString())>0){
-                if(Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(),1).toString())>Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(),11).toString())){
-                    JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
-                    tbResep.setValueAt("",tbResep.getSelectedRow(),1);
+            try {
+                if(Double.parseDouble(tbResep.getValueAt(tbResep.getSelectedRow(),1).toString())>0){
+                    if(Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(),1).toString())>Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(),11).toString())){
+                        JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
+                        tbResep.setValueAt("",tbResep.getSelectedRow(),1);
+                    }
                 }
-            }
+            } catch (Exception e) {
+                tbResep.setValueAt("",tbResep.getSelectedRow(),1);
+            }   
         }               
     }
     
     private void getCekStokRacikan() {
         if(tbDetailResepObatRacikan.getSelectedRow()!= -1){
-            if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),13).toString())>0){
-                if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),13).toString())>Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),7).toString())){
-                    JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
-                    tbDetailResepObatRacikan.setValueAt(0,tbDetailResepObatRacikan.getSelectedRow(),13);
+            try {
+                if(Double.parseDouble(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),13).toString())>0){
+                    if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),13).toString())>Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),7).toString())){
+                        JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
+                        tbDetailResepObatRacikan.setValueAt(0,tbDetailResepObatRacikan.getSelectedRow(),13);
+                    }
                 }
+            } catch (Exception e) {
+                tbDetailResepObatRacikan.setValueAt(0,tbDetailResepObatRacikan.getSelectedRow(),13);
             }
         }               
     }

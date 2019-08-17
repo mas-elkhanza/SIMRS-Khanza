@@ -1287,24 +1287,26 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }else{
                         autoNomor();
                         sukses=false;
-                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
                     }
                 } 
                 
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening");    
-                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening"); 
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening");    
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening"); 
                     sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(TglJual.getSelectedItem()+""),"U","PIUTANG DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());   
                 }
                 if(sukses==true){
                     Sequel.Commit();
-                    BtnBatalActionPerformed(evt); 
                 }else{
+                    sukses=false;
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
                 }
                 Sequel.AutoComitTrue();
+                if(sukses==true){
+                    BtnBatalActionPerformed(evt);
+                }
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed

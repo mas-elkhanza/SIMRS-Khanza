@@ -469,6 +469,7 @@ import inventory.DlgObatPeresep;
 import inventory.DlgPengajuanBarangMedis;
 import inventory.DlgSisaStok;
 import ipsrs.DlgPengajuanBarangNonMedis;
+import java.net.InetAddress;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSBagianTubuhPerTahun;
 import kepegawaian.K3RSDampakCidera;
@@ -561,7 +562,7 @@ public class frmUtama extends javax.swing.JFrame {
     private static frmUtama myInstance;
     private PreparedStatement ps;
     private ResultSet rs;
-    private final Properties prop = new Properties();     
+    private final Properties prop = new Properties();  
     private int jmlmenu=0,grid=0,tinggi=0,i=0;
     private String coder_nik="",pilihpage="",judulform="",tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),
             AKTIFKANTRACKSQL=koneksiDB.AKTIFKANTRACKSQL();
@@ -617,6 +618,13 @@ public class frmUtama extends javax.swing.JFrame {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
         } catch (Exception e) {
             System.out.println("Notif Setting : "+e);
+        }
+        
+        try {
+            InetAddress inetAddress = InetAddress.getLocalHost();
+            LblIP.setText(""+inetAddress.getHostAddress());
+        } catch (Exception e) {
+            System.out.println("Notif IP : "+e);
         }
         
         FlayMenu.setVisible(false);
@@ -1177,6 +1185,8 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         lblTgl = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        LblIP = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         PanelUtama = new javax.swing.JPanel();
         scrollPane1 = new widget.ScrollPane();
@@ -1385,7 +1395,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         panelisi2.add(cmbMenu);
 
-        TCari.setForeground(new java.awt.Color(50,50,50));
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(470, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -6870,7 +6879,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/08/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/08/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7272,7 +7281,7 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setText("Tanggal");
         lblTgl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblTgl.setName("lblTgl"); // NOI18N
-        lblTgl.setPreferredSize(new java.awt.Dimension(150, 23));
+        lblTgl.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblTgl);
 
         jSeparator3.setBackground(new java.awt.Color(90, 130, 80));
@@ -7284,6 +7293,24 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator3.setPreferredSize(new java.awt.Dimension(1, 21));
         internalFrame4.add(jSeparator3);
 
+        LblIP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LblIP.setForeground(new java.awt.Color(50, 50, 50));
+        LblIP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblIP.setText("Alamat IP");
+        LblIP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        LblIP.setName("LblIP"); // NOI18N
+        LblIP.setPreferredSize(new java.awt.Dimension(120, 23));
+        internalFrame4.add(LblIP);
+
+        jSeparator6.setBackground(new java.awt.Color(90, 130, 80));
+        jSeparator6.setForeground(new java.awt.Color(90, 130, 80));
+        jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
+        jSeparator6.setName("jSeparator6"); // NOI18N
+        jSeparator6.setOpaque(true);
+        jSeparator6.setPreferredSize(new java.awt.Dimension(1, 21));
+        internalFrame4.add(jSeparator6);
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(50, 50, 50));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -7292,7 +7319,7 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel7.setIconTextGap(3);
         jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(347, 23));
+        jLabel7.setPreferredSize(new java.awt.Dimension(287, 23));
         internalFrame4.add(jLabel7);
 
         getContentPane().add(internalFrame4, java.awt.BorderLayout.PAGE_END);
@@ -15161,6 +15188,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JDialog DlgHome;
     private javax.swing.JDialog DlgLogin;
     private usu.widget.glass.PanelGlass FlayMenu;
+    private javax.swing.JLabel LblIP;
     private widget.MenuBar MenuBar;
     private javax.swing.JMenuItem MenuKeluar;
     private javax.swing.JMenuItem MnAnjungan;
@@ -15688,6 +15716,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator9;
     private widget.Label label35;

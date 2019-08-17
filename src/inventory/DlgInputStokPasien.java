@@ -656,13 +656,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     
                     if(sukses==true){
                         for(index=0;index<tbDokter.getRowCount();index++){   
-                            tbDokter.setValueAt("",index,0);        
+                            tbDokter.setValueAt("",index,0); 
+                            tbDokter.setValueAt(0,index,9);  
                         }
-
+                        ttl=0;
+                        ttlhpp=0;
+                        ttljual=0;
                         LTotal.setText("0");
                         LPpn.setText("0");
                         LTotalTagihan.setText("0");
-                        tampil();
                     }
                 }
             }
@@ -1089,46 +1091,51 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void getData() {
         int row=tbDokter.getSelectedRow();
         if(nmgudang.getText().trim().equals("")){
-            Valid.textKosong(kdgudang,"Asal Stok");
+             Valid.textKosong(kdgudang,"Asal Stok");
         }else if(row!= -1){         
-            int kolom=tbDokter.getSelectedColumn();  
-            if((kolom==1)||(kolom==0)){    
+             int kolom=tbDokter.getSelectedColumn();  
+             if((kolom==1)||(kolom==0)){    
                if(!tabMode.getValueAt(row,0).toString().equals("")){
-                   if(Double.parseDouble(tabMode.getValueAt(row,0).toString())>Double.parseDouble(tabMode.getValueAt(row,6).toString())){
-                        JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
-                        TCari.requestFocus();
-                        tabMode.setValueAt("", row,0);  
-                   }else{
-                        y=Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString())*
-                            Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
-                            tbDokter.setValueAt(y,tbDokter.getSelectedRow(),9);
-                            
-                        ttl=0;
-                        y=0;
-                        int row2=tabMode.getRowCount();
-                        for(int r=0;r<row2;r++){ 
-                            try {
-                                if(Double.parseDouble(tabMode.getValueAt(r,0).toString())>0){
-                                    y=Double.parseDouble(tabMode.getValueAt(r,0).toString())*
-                                      Double.parseDouble(tabMode.getValueAt(r,7).toString());
-                                }                                 
-                            } catch (Exception e) {
-                                y=0;
-                            }
-                            ttl=ttl+y;
-                        }
-                        LTotal.setText(Valid.SetAngka(ttl));
-                        ppnobat=0;
-                        if(tampilkan_ppnobat_ralan.equals("Yes")){
-                            ppnobat=ttl*0.1;
-                            ttl=ttl+ppnobat;
-                            LPpn.setText(Valid.SetAngka(ppnobat));
-                            LTotalTagihan.setText(Valid.SetAngka(ttl));
-                        }
-                        TCari.setText("");
-                    }                                    
+                   try {
+                       if(Double.parseDouble(tabMode.getValueAt(row,0).toString())>Double.parseDouble(tabMode.getValueAt(row,6).toString())){
+                             JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
+                             TCari.requestFocus();
+                             tabMode.setValueAt("", row,0);  
+                        }else{
+                             y=Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString())*
+                                 Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
+                             tbDokter.setValueAt(y,tbDokter.getSelectedRow(),9);
+                             TCari.setText("");
+                        } 
+                   } catch (Exception e) {
+                       tabMode.setValueAt("", row,0);
+                       tabMode.setValueAt(0, row,9);
+                   }                                       
+                }else{
+                    tabMode.setValueAt("", row,0);
+                    tabMode.setValueAt(0, row,9);
                 }                 
-            }
+             }
+             ttl=0;
+             y=0;
+             int row2=tabMode.getRowCount();
+             for(int r=0;r<row2;r++){ 
+                 try {
+                     y=Double.parseDouble(tabMode.getValueAt(r,0).toString())*
+                       Double.parseDouble(tabMode.getValueAt(r,7).toString());
+                 } catch (Exception e) {
+                     y=0;
+                 }
+                 ttl=ttl+y;
+             }
+             LTotal.setText(Valid.SetAngka(ttl));
+             ppnobat=0;
+             if(tampilkan_ppnobat_ralan.equals("Yes")){
+                 ppnobat=ttl*0.1;
+                 ttl=ttl+ppnobat;
+                 LPpn.setText(Valid.SetAngka(ppnobat));
+                 LTotalTagihan.setText(Valid.SetAngka(ttl));
+             }
         }
     }
     
