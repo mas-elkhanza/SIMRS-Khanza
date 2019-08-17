@@ -1117,9 +1117,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }                 
              }
              ttl=0;
-             y=0;
-             int row2=tabMode.getRowCount();
-             for(int r=0;r<row2;r++){ 
+             for(int r=0;r<tabMode.getRowCount();r++){ 
+                 y=0;
                  try {
                      y=Double.parseDouble(tabMode.getValueAt(r,0).toString())*
                        Double.parseDouble(tabMode.getValueAt(r,7).toString());

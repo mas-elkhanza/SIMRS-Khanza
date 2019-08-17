@@ -592,7 +592,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 }
                             }
                         } catch (Exception e) {
-                            sukses=false;
                         }
                     }   
                 }   
@@ -953,8 +952,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }              
             
             ttl=0;
-            y=0;
             for(i=0;i<tbDokter.getRowCount();i++){ 
+                y=0;
                 try {
                     y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
                 } catch (Exception e) {

@@ -871,6 +871,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengajuan_barang_medis='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
+                if("[D]10 Obat Terbanyak Poli".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","10_obat_terbanyak_poli='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
                 if("[E]Barang Non Medis".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ipsrs_barang='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
@@ -2786,7 +2790,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase_igd,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
                         "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet,"+
                         "daftar_pasien_ranap,daftar_pasien_ranaptni,pengajuan_asetinventaris,item_apotek_jenis,item_apotek_kategori,"+
-                        "item_apotek_golongan,item_apotek_industrifarmasi from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "item_apotek_golongan,item_apotek_industrifarmasi,10_obat_terbanyak_poli from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3245,6 +3249,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[D]Pengajuan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[D]Pengajuan Obat & BHP",rs.getBoolean("pengajuan_barang_medis")});
+                    }
+                    
+                    if("[D]10 Obat Terbanyak Poli".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[D]10 Obat Terbanyak Poli",rs.getBoolean("10_obat_terbanyak_poli")});
                     }
                     
                     if("[E]Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
