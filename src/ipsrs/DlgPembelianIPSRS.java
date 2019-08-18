@@ -9,7 +9,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -33,9 +32,8 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariPembelianIpsrs form=new DlgCariPembelianIpsrs(null,false);
-    private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,meterai=0;
+    private double ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,meterai=0;
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
@@ -1118,12 +1116,16 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     }
                 } catch (Exception e) {
                     tbDokter.setValueAt("",row,0);
-                    tbDokter.setValueAt(0,row,5);                
+                    tbDokter.setValueAt(0,row,5);   
+                    tbDokter.setValueAt(0,row,6);   
+                    tbDokter.setValueAt(0,row,7);                
                     tbDokter.setValueAt(0,row,8);    
                 } 
             }else{
-                tbDokter.setValueAt(0, row,5);                
-                tbDokter.setValueAt(0, row,8); 
+                tbDokter.setValueAt(0,row,5);   
+                tbDokter.setValueAt(0,row,6);   
+                tbDokter.setValueAt(0,row,7);                
+                tbDokter.setValueAt(0,row,8);  
             }               
         }
         
