@@ -414,7 +414,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
             }else{
                 ppStok.setVisible(false);
             }
-            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
+            otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
             URL=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -4123,7 +4123,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+            headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));

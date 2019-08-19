@@ -15163,6 +15163,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btn10BesarObatPoliActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15746,7 +15750,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
-            btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi;
+            btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli;
     
     public void isWall(){
         try{            
@@ -26001,6 +26005,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikItemApotekPerIndustriFarmasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikItemApotekPerIndustriFarmasiActionPerformed(evt);
+            }
+        });
+        
+        btn10BesarObatPoli = new widget.ButtonBig();
+        btn10BesarObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_07_Note_Book_2064482.png"))); // NOI18N
+        btn10BesarObatPoli.setText("10 Obat Terbanyak Poli");
+        btn10BesarObatPoli.setIconTextGap(0);
+        btn10BesarObatPoli.setName("btn10BesarObatPoli"); // NOI18N
+        btn10BesarObatPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btn10BesarObatPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn10BesarObatPoliActionPerformed(evt);
             }
         });
     }

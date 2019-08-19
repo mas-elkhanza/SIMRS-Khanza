@@ -623,11 +623,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
-            otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
+            otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
             URL=prop.getProperty("URLAPIPCARE");
             divreg=prop.getProperty("DIVREGPCARE");
             kacab=prop.getProperty("KACABPCARE");
-            userpcare=prop.getProperty("USERPCARE");
+            userpcare=koneksiDB.USERPCARE();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }        
@@ -2562,7 +2562,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 try {
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -2714,7 +2714,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         bodyWithDeleteRequest2();                    
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                         headers.add("X-Signature",api.getHmac());
                         headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -2813,7 +2813,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     try {
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                         headers.add("X-Signature",api.getHmac());
                         headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -3059,7 +3059,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else{
                 try {
                     headers = new HttpHeaders();
-                    headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -3535,7 +3535,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 }else{
                     try {
                         headers = new HttpHeaders();
-                        headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
                         headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                         headers.add("X-Signature",api.getHmac());
                         headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -4606,7 +4606,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         try {
             headers2 = new HttpHeaders();
             headers2.setContentType(MediaType.APPLICATION_JSON);
-            headers2.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+            headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers2.add("X-Signature",api.getHmac());
             headers2.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -4770,7 +4770,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+            headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -4834,7 +4834,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+            headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
@@ -4898,7 +4898,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+            headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));

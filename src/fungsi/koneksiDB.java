@@ -244,7 +244,7 @@ public class koneksiDB {
     public static String SECRETKEYAPIBPJS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("SECRETKEYAPIBPJS");
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIBPJS"));
         }catch(Exception e){
             var=""; 
         }
@@ -254,7 +254,7 @@ public class koneksiDB {
     public static String CONSIDAPIBPJS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("CONSIDAPIBPJS");
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIBPJS"));
         }catch(Exception e){
             var=""; 
         }
@@ -274,7 +274,7 @@ public class koneksiDB {
     public static String SECRETKEYAPIAPLICARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("SECRETKEYAPIAPLICARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIAPLICARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -284,7 +284,7 @@ public class koneksiDB {
     public static String CONSIDAPIAPLICARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("CONSIDAPIAPLICARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIAPLICARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -304,7 +304,7 @@ public class koneksiDB {
     public static String SECRETKEYAPIPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("SECRETKEYAPIPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIPCARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -314,7 +314,7 @@ public class koneksiDB {
     public static String CONSIDAPIPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("CONSIDAPIPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIPCARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -324,7 +324,7 @@ public class koneksiDB {
     public static String PASSPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSPCARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -334,7 +334,7 @@ public class koneksiDB {
     public static String USERPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("USERPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("USERPCARE"));
         }catch(Exception e){
             var=""; 
         }

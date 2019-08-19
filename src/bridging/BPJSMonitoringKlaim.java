@@ -899,7 +899,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             URL = link+"/Monitoring/Klaim/Tanggal/"+tanggal+"/JnsPelayanan/"+jenispelayanan+"/Status/"+1;	
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             requestEntity = new HttpEntity(headers);

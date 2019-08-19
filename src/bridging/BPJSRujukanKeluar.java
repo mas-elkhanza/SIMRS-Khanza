@@ -805,7 +805,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                     URL = link+"/Rujukan/update";	
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
                     requestJson ="{" +
@@ -1260,7 +1260,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
 
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             requestJson ="{" +

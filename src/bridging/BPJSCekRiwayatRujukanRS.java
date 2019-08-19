@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -398,7 +399,7 @@ public final class BPJSCekRiwayatRujukanRS extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
 	    requestEntity = new HttpEntity(headers);
