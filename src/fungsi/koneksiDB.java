@@ -374,7 +374,7 @@ public class koneksiDB {
     public static String IDSISRUTE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("IDSISRUTE");
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSISRUTE"));
         }catch(Exception e){
             var=""; 
         }
@@ -384,7 +384,7 @@ public class koneksiDB {
     public static String PASSSISRUTE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSSISRUTE");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSISRUTE"));
         }catch(Exception e){
             var=""; 
         }
@@ -404,7 +404,7 @@ public class koneksiDB {
     public static String IDSIRS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("IDSIRS");
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSIRS"));
         }catch(Exception e){
             var=""; 
         }
@@ -414,7 +414,7 @@ public class koneksiDB {
     public static String PASSSIRS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSSIRS");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSIRS"));
         }catch(Exception e){
             var=""; 
         }
@@ -434,7 +434,7 @@ public class koneksiDB {
     public static String IDSITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("IDSITT");
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSITT"));
         }catch(Exception e){
             var=""; 
         }
@@ -444,7 +444,7 @@ public class koneksiDB {
     public static String PASSSITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSSITT");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSITT"));
         }catch(Exception e){
             var=""; 
         }

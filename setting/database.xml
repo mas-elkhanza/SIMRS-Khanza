@@ -34,14 +34,14 @@
     <entry key="DIVREGPCARE">REGIONAL V-JAWA TENGAH</entry>
     <entry key="KACABPCARE">SURAKARTA</entry>
     <entry key="URLAPISISRUTE">https://api.sisrute.kemkes.go.id</entry>
-    <entry key="IDSISRUTE">7303010</entry>
-    <entry key="PASSSISRUTE">12345</entry>
+    <entry key="IDSISRUTE">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="PASSSISRUTE">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
-    <entry key="IDSIRS">7303010</entry>
-    <entry key="PASSSIRS">12345171817</entry>
+    <entry key="IDSIRS">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="PASSSIRS">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="URLAPISITT">http://sitt.kemkes.go.id/webapisimrs/insert_simrs.php</entry>
-    <entry key="IDSITT">7303010</entry>
-    <entry key="PASSSITT">12345171817</entry>
+    <entry key="IDSITT">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="PASSSITT">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="KABUPATENSITT">12345</entry>
     <entry key="KAMARAKTIFRANAP"></entry>
     <entry key="DOKTERAKTIFKASIRRALAN"></entry>

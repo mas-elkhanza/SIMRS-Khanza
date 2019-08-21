@@ -18,6 +18,7 @@ import fungsi.WarnaTable;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -212,7 +213,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
             alarm=prop.getProperty("ALARMRSISRUTE");
-            idrs=prop.getProperty("IDSISRUTE");
+            idrs=koneksiDB.IDSISRUTE();
         } catch (Exception e) {
             alarm="no";
             System.out.println("E : "+e);

@@ -113,7 +113,7 @@ public final class SisruteCekReferensiAlasanRujuk extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml")); 
             link=prop.getProperty("URLAPISISRUTE");
-            idrs=prop.getProperty("IDSISRUTE");
+            idrs=koneksiDB.IDSISRUTE();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
