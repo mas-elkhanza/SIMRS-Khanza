@@ -40,6 +40,7 @@ public class DlgPermintaanNonMedis extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgCariPermintaanNonMedis form=new DlgCariPermintaanNonMedis(null,false);
     private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -511,33 +512,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                
-                if(Sequel.menyimpantf("permintaan_non_medis","?,?,?,?,?","No.Permintaan",5,new String[]{
+                Sequel.AutoComitFalse();
+                sukses=true;
+                if(Sequel.menyimpantf2("permintaan_non_medis","?,?,?,?,?","No.Permintaan",5,new String[]{
                         NoPermintaan.getText(),Ruangan.getText(),kdptg.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"Baru"
                     })==true){
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    Sequel.menyimpan("detail_permintaan_non_medis","?,?,?,?,?","Detail Permintaan",5,new String[]{
+                                    if(Sequel.menyimpantf2("detail_permintaan_non_medis","?,?,?,?,?","Detail Permintaan",5,new String[]{
                                            NoPermintaan.getText(),
                                            tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
                                            tbDokter.getValueAt(i,0).toString(),
                                            tbDokter.getValueAt(i,5).toString().replaceAll("'","").replaceAll("\"","")
-                                    });                                   
+                                    })==false){
+                                        sukses=false;
+                                    }                                    
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
                             }                
                         }
-                        
-                        jml=tbDokter.getRowCount();
-                        for(i=0;i<jml;i++){ 
-                            tbDokter.setValueAt("",i,0);
-                            tbDokter.setValueAt("",i,5);
-                        }
+                }else{
+                    sukses=false;
                 }
                 
+                if(sukses==true){
+                    Sequel.Commit();
+                    jml=tbDokter.getRowCount();
+                    for(i=0;i<jml;i++){ 
+                        tbDokter.setValueAt("",i,0);
+                        tbDokter.setValueAt("",i,5);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue(); 
                 autoNomor();
             }
         }        

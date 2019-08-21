@@ -30,7 +30,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();    
     private double ttl=0,y=0,stokbarang=0;
-    private int jml=0,i=0,row,kolom=0;
+    private int jml=0,i=0,row=0;
     private PreparedStatement ps,psstok;
     private DlgCariPengeluaranApotek form=new DlgCariPengeluaranApotek(null,false);
     private ResultSet rs,rsstok;
