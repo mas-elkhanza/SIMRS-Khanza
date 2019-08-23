@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.sekuel;
 import fungsi.akses;
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -54,8 +55,8 @@ public class DUKCAPILCekNIK {
 	    headers.add("Accept","application/json");
             requestJson="{"+
                           "\"nik\": \""+nik+"\"," +
-                            "\"user_id\" : \""+prop.getProperty("USERDUKCAPIL")+"\"," +
-                            "\"password\": \""+prop.getProperty("PASSDUKCAPIL")+"\"," +
+                            "\"user_id\" : \""+koneksiDB.USERDUKCAPIL()+"\"," +
+                            "\"password\": \""+koneksiDB.PASSDUKCAPIL()+"\"," +
                             "\"IP_USER\":\""+prop.getProperty("IPUSERDUKCAPIL")+"\"" +
                             "}"; 
             //System.out.println("JSON dikirim : "+requestJson);

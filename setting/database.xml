@@ -58,13 +58,13 @@
     <entry key="CETAKRINCIANOBAT">no</entry>
     <entry key="AKTIFKANBILLINGPARSIAL">no</entry>
     <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/wsrs/xml.jsp</entry>
-    <entry key="USERDUKCAPILJAKARTA">WSRSIABK</entry>
-    <entry key="PASSDUKCAPILJAKARTA">R8ud!KSW5</entry>
+    <entry key="USERDUKCAPILJAKARTA">eYTbZ3SMrmsvkl4t8u0zrA==</entry>
+    <entry key="PASSDUKCAPILJAKARTA">iDrX7PhhkIwMup7YcS2RFg==</entry>
     <entry key="VAR1DUKCAPILJAKARTA">RSIABK</entry>
     <entry key="VAR2DUKCAPILJAKARTA">12</entry>
     <entry key="URLDUKCAPIL">http://172.16.160.128:8000/dukcapil/get_json/rsia_aceh/CALL_NIK</entry>
-    <entry key="USERDUKCAPIL">rsia</entry>
-    <entry key="PASSDUKCAPIL">123</entry>
+    <entry key="USERDUKCAPIL">yLT3/8b0KAb5QK1ueFkW7g==</entry>
+    <entry key="PASSDUKCAPIL">7kuCYBm26cREHaUoGVyXUA==</entry>
     <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
     <entry key="AKTIFKANTRACKSQL">no</entry>
 </properties>

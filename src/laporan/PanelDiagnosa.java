@@ -716,7 +716,7 @@ public class PanelDiagnosa extends widget.panelisi {
                     " penyakit.keterangan like ? or "+
                     " kategori_penyakit.nm_kategori like ? or "+
                     " kategori_penyakit.ciri_umum like ? "+
-                    "order by penyakit.kd_penyakit  LIMIT 100");
+                    "order by penyakit.kd_penyakit  LIMIT 1000");
             try {
                 pspenyakit.setString(1,"%"+Diagnosa.getText().trim()+"%");
                 pspenyakit.setString(2,"%"+Diagnosa.getText().trim()+"%");

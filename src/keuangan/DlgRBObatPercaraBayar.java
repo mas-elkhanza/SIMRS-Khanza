@@ -28,14 +28,12 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Jurnal jur=new Jurnal();
     private PreparedStatement pspenjab,psresep,psresep2;
     private ResultSet rspenjab,rsresep; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private int i=0,a=0;
     private double subtotal=0,ttlbiaya=0,embalase=0,ttlembalase=0,tuslah=0,ttltuslah=0;
-    private String carabayar="",jumlah,total,emb,tsl;
+    private String jumlah,total,emb,tsl;
 
     /** Creates new form DlgProgramStudi
      * @param parent

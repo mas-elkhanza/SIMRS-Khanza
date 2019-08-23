@@ -464,6 +464,7 @@ import inventaris.KeslingMutuAirLimbah;
 import inventaris.KeslingPemakaiaanAirPDAM;
 import inventaris.KeslingPestControl;
 import inventaris.PengajuanInventaris;
+import inventory.Dlg10ObatTerbanyakPoli;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgPengajuanBarangMedis;
@@ -6879,7 +6880,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/08/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/08/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7387,10 +7388,10 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
-        MenuBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        MenuBar.setBorder(null);
         MenuBar.setForeground(new java.awt.Color(255, 204, 255));
         MenuBar.setName("MenuBar"); // NOI18N
-        MenuBar.setPreferredSize(new java.awt.Dimension(227, 28));
+        MenuBar.setPreferredSize(new java.awt.Dimension(227, 27));
 
         jMenu1.setBackground(new java.awt.Color(20, 0, 20));
         jMenu1.setBorder(null);
@@ -7400,9 +7401,11 @@ public class frmUtama extends javax.swing.JFrame {
         jMenu1.setText("Program");
         jMenu1.setToolTipText("Alt+A");
         jMenu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jMenu1.setIconTextGap(3);
         jMenu1.setName("jMenu1"); // NOI18N
         jMenu1.setOpaque(false);
-        jMenu1.setPreferredSize(new java.awt.Dimension(82, 28));
+        jMenu1.setPreferredSize(new java.awt.Dimension(79, 27));
 
         MnLogin.setBackground(new java.awt.Color(255, 255, 254));
         MnLogin.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7464,9 +7467,11 @@ public class frmUtama extends javax.swing.JFrame {
         jMenu5.setText("Presensi Pegawai");
         jMenu5.setToolTipText("Alt+P");
         jMenu5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jMenu5.setIconTextGap(3);
         jMenu5.setName("jMenu5"); // NOI18N
         jMenu5.setOpaque(false);
-        jMenu5.setPreferredSize(new java.awt.Dimension(129, 28));
+        jMenu5.setPreferredSize(new java.awt.Dimension(125, 27));
 
         MnBelumDatang1.setBackground(new java.awt.Color(255, 255, 254));
         MnBelumDatang1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7548,9 +7553,11 @@ public class frmUtama extends javax.swing.JFrame {
         jMenu6.setText("Informasi");
         jMenu6.setToolTipText("Alt+I");
         jMenu6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jMenu6.setIconTextGap(3);
         jMenu6.setName("jMenu6"); // NOI18N
         jMenu6.setOpaque(false);
-        jMenu6.setPreferredSize(new java.awt.Dimension(91, 28));
+        jMenu6.setPreferredSize(new java.awt.Dimension(87, 27));
 
         MnRekapBulanan1.setBackground(new java.awt.Color(255, 255, 254));
         MnRekapBulanan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7849,9 +7856,11 @@ public class frmUtama extends javax.swing.JFrame {
         jMenu7.setText("Anjungan & Antrian");
         jMenu7.setToolTipText("Alt+N");
         jMenu7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jMenu7.setIconTextGap(3);
         jMenu7.setName("jMenu7"); // NOI18N
         jMenu7.setOpaque(false);
-        jMenu7.setPreferredSize(new java.awt.Dimension(140, 28));
+        jMenu7.setPreferredSize(new java.awt.Dimension(136, 27));
 
         MnAnjungan.setBackground(new java.awt.Color(255, 255, 254));
         MnAnjungan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7947,9 +7956,11 @@ public class frmUtama extends javax.swing.JFrame {
         jMenu4.setText("Tentang Program");
         jMenu4.setToolTipText("Alt+G");
         jMenu4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jMenu4.setIconTextGap(3);
         jMenu4.setName("jMenu4"); // NOI18N
         jMenu4.setOpaque(false);
-        jMenu4.setPreferredSize(new java.awt.Dimension(126, 28));
+        jMenu4.setPreferredSize(new java.awt.Dimension(120, 27));
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
@@ -15164,7 +15175,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btn10BesarObatPoliActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Dlg10ObatTerbanyakPoli form=new Dlg10ObatTerbanyakPoli(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
@@ -16397,6 +16415,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getobat_per_resep()==true){
                 Panelmenu.add(btnObatPerResep);
+                jmlmenu++;
+            }
+            
+            if(akses.getobat10_terbanyak_poli()==true){
+                Panelmenu.add(btn10BesarObatPoli);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -19107,6 +19130,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getobat_per_resep()==true){
             Panelmenu.add(btnObatPerResep);
+            jmlmenu++;
+        }
+        
+        if(akses.getobat10_terbanyak_poli()==true){
+            Panelmenu.add(btn10BesarObatPoli);
             jmlmenu++;
         }
 
@@ -22017,6 +22045,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getobat_per_resep()==true){
             if(btnObatPerResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPerResep);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getobat10_terbanyak_poli()==true){
+            if(btn10BesarObatPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btn10BesarObatPoli);
                 jmlmenu++;
             }                
         }
