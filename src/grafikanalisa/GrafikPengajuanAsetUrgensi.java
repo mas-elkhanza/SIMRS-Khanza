@@ -511,10 +511,12 @@ public class GrafikPengajuanAsetUrgensi extends javax.swing.JDialog {
                     jumlah=jumlah+rs.getDouble("jumlah");
                     tabMode.addRow(new Object[]{rs.getString("urgensi"),rs.getString("jumlah"),"0",rs.getDouble("total"),"0"});
                 }
-                tabMode.addRow(new Object[]{"Jumlah : ",jumlah+"","100 %",total,"100 %"});
-                for(i=0;i<tbBangsal.getRowCount();i++){ 
-                    tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/jumlah)*100)+" %",i,2);
-                    tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/total)*100)+" %",i,4);
+                if(tabMode.getRowCount()>0){
+                    tabMode.addRow(new Object[]{"Jumlah : ",jumlah+"","100 %",total,"100 %"});
+                    for(i=0;i<tbBangsal.getRowCount();i++){ 
+                        tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/jumlah)*100)+" %",i,2);
+                        tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/total)*100)+" %",i,4);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

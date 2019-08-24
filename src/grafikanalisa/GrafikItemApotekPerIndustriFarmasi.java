@@ -381,9 +381,11 @@ public class GrafikItemApotekPerIndustriFarmasi extends javax.swing.JDialog {
                     total=total+rs.getDouble(2);
                     tabMode.addRow(new String[]{rs.getString(3)+" ("+rs.getString(1)+")",rs.getString(2)});
                 }
-                tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %"});
-                for(i=0;i<tbBangsal.getRowCount();i++){ 
-                    tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                if(tabMode.getRowCount()>0){
+                    tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %"});
+                    for(i=0;i<tbBangsal.getRowCount();i++){ 
+                        tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
