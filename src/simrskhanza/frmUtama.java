@@ -436,6 +436,7 @@ import grafikanalisa.GrafikPegawaiPerJenjangJabatan;
 import grafikanalisa.GrafikPegawaiPerPendidikan;
 import grafikanalisa.GrafikPegawaiPerStatusKerja;
 import grafikanalisa.GrafikPegawaiPerStatusWP;
+import grafikanalisa.GrafikPengajuanAsetStatus;
 import grafikanalisa.GrafikPengajuanAsetUrgensi;
 import grafikanalisa.GrafikPeristiwaK3PerBagianTubuh;
 import grafikanalisa.GrafikPeristiwaK3PerBulan;
@@ -15193,6 +15194,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikPengajuanAsetStatusActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPengajuanAsetStatus aplikasi=new GrafikPengajuanAsetStatus(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15776,7 +15788,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikStatusPulangRanap,btnKIPPasienRanap,btnKIPPasienRalan,btnMappingDokterDPJPVClaim,btnMasterTriaseSkala1,btnMasterTriaseSkala2,
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
-            btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi;
+            btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
+            btnGrafikPengajuanAsetStatus;
     
     public void isWall(){
         try{            
@@ -18339,6 +18352,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_pengajuan_aset_urgensi()==true){
                 Panelmenu.add(btnGrafikPengajuanAsetUrgensi);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_pengajuan_aset_status()==true){
+                Panelmenu.add(btnGrafikPengajuanAsetStatus);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21043,6 +21061,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_pengajuan_aset_urgensi()==true){
             Panelmenu.add(btnGrafikPengajuanAsetUrgensi);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_pengajuan_aset_status()==true){
+            Panelmenu.add(btnGrafikPengajuanAsetStatus);
             jmlmenu++;
         }
 
@@ -24724,6 +24747,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_pengajuan_aset_status()==true){
+            if(btnGrafikPengajuanAsetStatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPengajuanAsetStatus);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26089,6 +26119,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikPengajuanAsetUrgensi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikPengajuanAsetUrgensiActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikPengajuanAsetStatus = new widget.ButtonBig();
+        btnGrafikPengajuanAsetStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikPengajuanAsetStatus.setText("Pengajuan Aset Per Status");
+        btnGrafikPengajuanAsetStatus.setIconTextGap(0);
+        btnGrafikPengajuanAsetStatus.setName("btnGrafikPengajuanAsetStatus"); 
+        btnGrafikPengajuanAsetStatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPengajuanAsetStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPengajuanAsetStatusActionPerformed(evt);
             }
         });
     }
