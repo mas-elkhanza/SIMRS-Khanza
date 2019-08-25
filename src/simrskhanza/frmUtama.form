@@ -19,10 +19,10 @@
             </Property>
             <Property name="name" type="java.lang.String" value="internalFrame2" noResource="true"/>
             <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="64" green="a5" red="6e" type="rgb"/>
+              <Color blue="5a" green="91" red="50" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="55" green="91" red="5f" type="rgb"/>
+              <Color blue="28" green="5f" red="1e" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -7728,7 +7728,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="24/08/2019"/>
+            <StringItem index="0" value="25/08/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

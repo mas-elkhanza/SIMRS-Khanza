@@ -467,6 +467,7 @@ import inventaris.KeslingMutuAirLimbah;
 import inventaris.KeslingPemakaiaanAirPDAM;
 import inventaris.KeslingPestControl;
 import inventaris.PengajuanInventaris;
+import inventaris.RekapPengajuanInventarisDepartemen;
 import inventory.Dlg10ObatTerbanyakPoli;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
@@ -1251,8 +1252,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(110, 165, 100));
-        internalFrame2.setWarnaBawah(new java.awt.Color(95, 145, 85));
+        internalFrame2.setWarnaAtas(new java.awt.Color(80, 145, 90));
+        internalFrame2.setWarnaBawah(new java.awt.Color(30, 95, 40));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -6883,7 +6884,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/08/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/08/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -15217,6 +15218,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRekapPengajuanAsetDepartemenActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RekapPengajuanInventarisDepartemen form=new RekapPengajuanInventarisDepartemen(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15801,7 +15813,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
-            btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen;
+            btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen;
     
     public void isWall(){
         try{            
@@ -16602,7 +16614,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getpengajuan_asetinventaris()==true){
                 Panelmenu.add(btnPengajuanAsetInventaris);
                 jmlmenu++;
-            }  
+            }
+            
+            if(akses.getrekap_pengajuan_aset_departemen()==true){
+                Panelmenu.add(btnRekapPengajuanAsetDepartemen);
+                jmlmenu++;
+            } 
             
             if(akses.getbarang_cssd()==true){
                 Panelmenu.add(btnBarangCSSD);
@@ -19330,6 +19347,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPengajuanAsetInventaris);
             jmlmenu++;
         }  
+        
+        if(akses.getrekap_pengajuan_aset_departemen()==true){
+            Panelmenu.add(btnRekapPengajuanAsetDepartemen);
+            jmlmenu++;
+        }
 
         if(akses.getbarang_cssd()==true){
             Panelmenu.add(btnBarangCSSD);
@@ -22318,6 +22340,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpengajuan_asetinventaris()==true){
             if(btnPengajuanAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengajuanAsetInventaris);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getrekap_pengajuan_aset_departemen()==true){
+            if(btnRekapPengajuanAsetDepartemen.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapPengajuanAsetDepartemen);
                 jmlmenu++;
             }                
         } 
@@ -26172,6 +26201,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikPengajuanAsetDepartemen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikPengajuanAsetDepartemenActionPerformed(evt);
+            }
+        });
+        
+        btnRekapPengajuanAsetDepartemen = new widget.ButtonBig();
+        btnRekapPengajuanAsetDepartemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_x-office-document-template_25011.png"))); 
+        btnRekapPengajuanAsetDepartemen.setText("Rekap Pengajuan Aset Departemen");
+        btnRekapPengajuanAsetDepartemen.setIconTextGap(0);
+        btnRekapPengajuanAsetDepartemen.setName("btnRekapPengajuanAsetDepartemen"); // NOI18N
+        btnRekapPengajuanAsetDepartemen.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPengajuanAsetDepartemen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPengajuanAsetDepartemenActionPerformed(evt);
             }
         });
     }

@@ -1010,6 +1010,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 if("[F]Pengajuan Aset/Inventaris".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengajuan_asetinventaris='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
+                
+                if("[F]Rekap Pengajuan Aset Departemen".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","rekap_pengajuan_aset_departemen='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
 
                 if("[G]Jenis Parkir".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","parkir_jenis='"+tbUser.getValueAt(i,2).toString()+"'");
@@ -2391,15 +2395,15 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","item_apotek_industrifarmasi='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
-                if("[N]Pengajuan Inventaris Per Urgensi".equals(tbUser.getValueAt(i,1).toString())){
+                if("[N]Pengajuan Aset Per Urgensi".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_pengajuan_aset_urgensi='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
-                if("[N]Pengajuan Inventaris Per Status".equals(tbUser.getValueAt(i,1).toString())){
+                if("[N]Pengajuan Aset Per Status".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_pengajuan_aset_status='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
-                if("[N]Pengajuan Inventaris Per Departemen".equals(tbUser.getValueAt(i,1).toString())){
+                if("[N]Pengajuan Aset Per Departemen".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_pengajuan_aset_departemen='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
@@ -2803,7 +2807,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet,"+
                         "daftar_pasien_ranap,daftar_pasien_ranaptni,pengajuan_asetinventaris,item_apotek_jenis,item_apotek_kategori,"+
                         "item_apotek_golongan,item_apotek_industrifarmasi,10_obat_terbanyak_poli,grafik_pengajuan_aset_urgensi,"+
-                        "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen,rekap_pengajuan_aset_departemen from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3402,6 +3406,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[F]Pengajuan Aset/Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[F]Pengajuan Aset/Inventaris",rs.getBoolean("pengajuan_asetinventaris")});
+                    }
+                    
+                    if("[F]Rekap Pengajuan Aset Departemen".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[F]Rekap Pengajuan Aset Departemen",rs.getBoolean("rekap_pengajuan_aset_departemen")});
                     }
                     
                     if("[G]Jenis Parkir".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4784,16 +4792,16 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[N]Item Apotek Per Industri Farmasi",rs.getBoolean("item_apotek_industrifarmasi")});
                     }
                     
-                    if("[N]Pengajuan Inventaris Per Urgensi".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Pengajuan Inventaris Per Urgensi",rs.getBoolean("grafik_pengajuan_aset_urgensi")});
+                    if("[N]Pengajuan Aset Per Urgensi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Pengajuan Aset Per Urgensi",rs.getBoolean("grafik_pengajuan_aset_urgensi")});
                     }
                     
-                    if("[N]Pengajuan Inventaris Per Status".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Pengajuan Inventaris Per Status",rs.getBoolean("grafik_pengajuan_aset_status")});
+                    if("[N]Pengajuan Aset Per Status".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Pengajuan Aset Per Status",rs.getBoolean("grafik_pengajuan_aset_status")});
                     }
                     
-                    if("[N]Pengajuan Inventaris Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Pengajuan Inventaris Per Departemen",rs.getBoolean("grafik_pengajuan_aset_departemen")});
+                    if("[N]Pengajuan Aset Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Pengajuan Aset Per Departemen",rs.getBoolean("grafik_pengajuan_aset_departemen")});
                     }
                     
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){

@@ -294,7 +294,7 @@ public class GrafikPengajuanAsetDepartemen extends javax.swing.JDialog {
     private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint3ActionPerformed
         DefaultCategoryDataset dcd = new DefaultCategoryDataset();
         try {                
-            rs = koneksi.prepareStatement("select departemen.nama,count(departemen.nama) as jumlah from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.nama").executeQuery();
+            rs = koneksi.prepareStatement("select departemen.nama,count(departemen.dep_id) as jumlah from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.dep_id").executeQuery();
             while(rs.next()) {
                 dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
             }
@@ -316,7 +316,7 @@ public class GrafikPengajuanAsetDepartemen extends javax.swing.JDialog {
         
         DefaultCategoryDataset dcd2 = new DefaultCategoryDataset();
         try {                
-            rs = koneksi.prepareStatement("select departemen.nama,sum(total) from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.nama").executeQuery();
+            rs = koneksi.prepareStatement("select departemen.nama,sum(total) from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.dep_id").executeQuery();
             while(rs.next()) {
                 dcd2.setValue(rs.getDouble(2),rs.getString(1)+"("+Valid.SetAngka(rs.getDouble(2))+")",rs.getString(1));
             }
@@ -351,9 +351,9 @@ public class GrafikPengajuanAsetDepartemen extends javax.swing.JDialog {
 
     private void BtnPrint4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint4ActionPerformed
        grafiksql2 kas=new grafiksql2("Pengajuan Aset/Inventaris Per Departemen Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),
-               "select departemen.nama,count(departemen.nama) as jumlah from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id "+
+               "select departemen.nama,count(departemen.dep_id) as jumlah from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id "+
                "where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' "+
-               "group by departemen.nama","Departemen");
+               "group by departemen.dep_id","Departemen");
        kas.setSize(Scroll.getWidth(),Scroll.getHeight());  
        kas.setModal(true);
        kas.setAlwaysOnTop(true);
@@ -363,7 +363,7 @@ public class GrafikPengajuanAsetDepartemen extends javax.swing.JDialog {
        grafiksql2 kas2=new grafiksql2("Pengajuan Aset/Inventaris Per Departemen Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),
                "select departemen.nama,sum(total) as total from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id "+
                "where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' "+
-               "group by departemen.nama","Departemen");
+               "group by departemen.dep_id","Departemen");
        kas2.setSize(Scroll.getWidth(),Scroll.getHeight());  
        kas2.setModal(true);
        kas2.setAlwaysOnTop(true);
@@ -378,7 +378,7 @@ public class GrafikPengajuanAsetDepartemen extends javax.swing.JDialog {
     private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint5ActionPerformed
         DefaultPieDataset dpd = new DefaultPieDataset();
         try {                
-            rs = koneksi.prepareStatement("select departemen.nama,count(departemen.nama) as jumlah from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.nama").executeQuery();
+            rs = koneksi.prepareStatement("select departemen.nama,count(departemen.dep_id) as jumlah from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.dep_id").executeQuery();
             while(rs.next()) {
                 dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
             }
@@ -401,7 +401,7 @@ public class GrafikPengajuanAsetDepartemen extends javax.swing.JDialog {
         
         DefaultPieDataset dpd2 = new DefaultPieDataset();
         try {                
-            rs = koneksi.prepareStatement("select departemen.nama,sum(total) from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.nama").executeQuery();
+            rs = koneksi.prepareStatement("select departemen.nama,sum(total) from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.dep_id").executeQuery();
             while(rs.next()) {
                 dpd2.setValue(rs.getString(1)+"("+Valid.SetAngka(rs.getDouble(2))+")",rs.getDouble(2));
             }
@@ -500,8 +500,8 @@ public class GrafikPengajuanAsetDepartemen extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select departemen.nama,count(departemen.nama) as jumlah,sum(total) as total from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id "+
-                "where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.nama");
+                "select departemen.nama,count(departemen.dep_id) as jumlah,sum(total) as total from pengajuan_inventaris inner join pegawai inner join departemen on pengajuan_inventaris.nik=pegawai.nik and pegawai.departemen=departemen.dep_id "+
+                "where tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by departemen.dep_id");
             try {
                 rs=ps.executeQuery();
                 total=0;
