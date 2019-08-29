@@ -79,11 +79,11 @@
             $jumlah=mysqli_num_rows($hasil);
 
             if(mysqli_num_rows($hasil)!=0) {            
-                echo "<table width='3120px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                echo "<table width='2520px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                         <tr class='head'>
                                      <td width='100px'><div align='center'>Proses</div></td>
                                      <td width='80px'><div align='center'>NIP</div></td>
-                                     <td width='200px'><div align='center'>Nama</div></td>
+                                     <td width='250px'><div align='center'>Nama</div></td>
                                      <td width='50px'><div align='center'>J.K.</div></td>
                                      <td width='150px'><div align='center'>Jabatan</div></td>
                                      <td width='80px'><div align='center'>Jenjang</div></td>
@@ -100,7 +100,7 @@
                                      <td width='80px'><div align='center'>Mulai Kerja</div></td>
                                      <td width='80px'><div align='center'>Kode Ms Kerja</div></td>
                                      <td width='80px'><div align='center'>Kode Index</div></td>
-                                     <td width='40px'><div align='center'>BPD</div></td>
+                                     <td width='40px'><div align='center'>Bank</div></td>
                                      <td width='70px'><div align='center'>Rekening</div></td>
                                      <td width='80px'><div align='center'>Stts Aktif</div></td>
                                      <td width='70px'><div align='center'>Wajib Masuk</div></td>

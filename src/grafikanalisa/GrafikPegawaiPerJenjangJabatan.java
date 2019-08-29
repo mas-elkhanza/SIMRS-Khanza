@@ -47,8 +47,8 @@ public class GrafikPegawaiPerJenjangJabatan extends javax.swing.JDialog {
     private ResultSet rs;
     private PreparedStatement ps;
     private final DefaultTableModel tabMode;
-    private double total=0,totall=0,totalp=0,jmll=0,jmlp=0;
-    private int i=0;
+    private double total=0,totall=0,totalp=0;
+    private int i=0,jmll=0,jmlp=0;
     private String pilihan="";
 
     /** Creates new form DlgSpesialis
@@ -537,9 +537,9 @@ public class GrafikPegawaiPerJenjangJabatan extends javax.swing.JDialog {
                 totalp=0;
                 while(rs.next()){
                     total=total+rs.getDouble(2);
-                    jmll=Sequel.cariIsiAngka("select count(jnj_jabatan.kode) from pegawai inner join jnj_jabatan "+
+                    jmll=Sequel.cariInteger("select count(jnj_jabatan.kode) from pegawai inner join jnj_jabatan "+
                         "on jnj_jabatan.kode=pegawai.jnj_jabatan where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and jnj_jabatan.kode=?",rs.getString(1));
-                    jmlp=Sequel.cariIsiAngka("select count(jnj_jabatan.kode) from pegawai inner join jnj_jabatan "+
+                    jmlp=Sequel.cariInteger("select count(jnj_jabatan.kode) from pegawai inner join jnj_jabatan "+
                         "on jnj_jabatan.kode=pegawai.jnj_jabatan where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and jnj_jabatan.kode=?",rs.getString(1));
                     totall=totall+jmll;
                     totalp=totalp+jmlp;

@@ -47,8 +47,8 @@ public class GrafikPegawaiPerStatusWP extends javax.swing.JDialog {
     private ResultSet rs;
     private PreparedStatement ps;
     private final DefaultTableModel tabMode;
-    private double total=0,totall=0,totalp=0,jmll=0,jmlp=0;
-    private int i=0;
+    private double total=0,totall=0,totalp=0;
+    private int i=0,jmll=0,jmlp=0;
     private String pilihan="";
 
     /** Creates new form DlgSpesialis
@@ -539,8 +539,8 @@ public class GrafikPegawaiPerStatusWP extends javax.swing.JDialog {
                 totalp=0;
                 while(rs.next()){
                     total=total+rs.getDouble(2);
-                    jmll=Sequel.cariIsiAngka("select count(pegawai.stts_wp) from pegawai where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and pegawai.stts_wp=?",rs.getString(1));
-                    jmlp=Sequel.cariIsiAngka("select count(pegawai.stts_wp) from pegawai where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and pegawai.stts_wp=?",rs.getString(1));
+                    jmll=Sequel.cariInteger("select count(pegawai.stts_wp) from pegawai where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and pegawai.stts_wp=?",rs.getString(1));
+                    jmlp=Sequel.cariInteger("select count(pegawai.stts_wp) from pegawai where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and pegawai.stts_wp=?",rs.getString(1));
                     totall=totall+jmll;
                     totalp=totalp+jmlp;
                     tabMode.addRow(new String[]{rs.getString(3)+" ("+rs.getString(1)+")",rs.getString(2),"",jmll+"","",jmlp+"",""});
