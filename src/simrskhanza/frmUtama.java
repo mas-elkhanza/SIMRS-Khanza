@@ -433,6 +433,7 @@ import grafikanalisa.GrafikKunjunganRanapPerTanggal;
 import grafikanalisa.GrafikPegawaiPerBidang;
 import grafikanalisa.GrafikPegawaiPerDepartemen;
 import grafikanalisa.GrafikPegawaiPerJenjangJabatan;
+import grafikanalisa.GrafikPegawaiPerKelompokJabatan;
 import grafikanalisa.GrafikPegawaiPerPendidikan;
 import grafikanalisa.GrafikPegawaiPerStatusKerja;
 import grafikanalisa.GrafikPegawaiPerStatusWP;
@@ -1258,8 +1259,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(215, 255, 215));
-        internalFrame3.setWarnaBawah(new java.awt.Color(230, 245, 230));
+        internalFrame3.setWarnaAtas(new java.awt.Color(215, 255, 220));
+        internalFrame3.setWarnaBawah(new java.awt.Color(235, 250, 235));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
@@ -6884,7 +6885,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/08/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/08/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6959,8 +6960,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(253, 254, 251));
-        internalFrame1.setWarnaBawah(new java.awt.Color(210, 230, 190));
+        internalFrame1.setWarnaAtas(new java.awt.Color(253, 255, 251));
+        internalFrame1.setWarnaBawah(new java.awt.Color(210, 235, 195));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -7240,8 +7241,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(215, 235, 195));
-        internalFrame4.setWarnaBawah(new java.awt.Color(252, 253, 250));
+        internalFrame4.setWarnaAtas(new java.awt.Color(215, 240, 200));
+        internalFrame4.setWarnaBawah(new java.awt.Color(248, 250, 246));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7374,7 +7375,7 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel8.setName("jLabel8"); // NOI18N
         panelJudul.add(jLabel8);
-        jLabel8.setBounds(40, 0, 820, 150);
+        jLabel8.setBounds(40, 0, 1040, 150);
 
         PanelWall.add(panelJudul, java.awt.BorderLayout.PAGE_END);
 
@@ -15228,6 +15229,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikKelompokJabatanPegawaiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPegawaiPerKelompokJabatan aplikasi=new GrafikPegawaiPerKelompokJabatan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15812,7 +15824,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
-            btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen;
+            btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai;
     
     public void isWall(){
         try{            
@@ -18390,6 +18402,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_pengajuan_aset_departemen()==true){
                 Panelmenu.add(btnGrafikPengajuanAsetDepartemen);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_kelompok_jabatanpegawai()==true){
+                Panelmenu.add(btnGrafikKelompokJabatanPegawai);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21109,6 +21126,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_pengajuan_aset_departemen()==true){
             Panelmenu.add(btnGrafikPengajuanAsetDepartemen);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_kelompok_jabatanpegawai()==true){
+            Panelmenu.add(btnGrafikKelompokJabatanPegawai);
             jmlmenu++;
         }
 
@@ -24811,6 +24833,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_kelompok_jabatanpegawai()==true){
+            if(btnGrafikKelompokJabatanPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKelompokJabatanPegawai);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26212,6 +26241,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapPengajuanAsetDepartemen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRekapPengajuanAsetDepartemenActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikKelompokJabatanPegawai = new widget.ButtonBig();
+        btnGrafikKelompokJabatanPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikKelompokJabatanPegawai.setText("Pegawai Per Kelompok Jabatan");
+        btnGrafikKelompokJabatanPegawai.setIconTextGap(0);
+        btnGrafikKelompokJabatanPegawai.setName("btnGrafikKelompokJabatanPegawai"); 
+        btnGrafikKelompokJabatanPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKelompokJabatanPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKelompokJabatanPegawaiActionPerformed(evt);
             }
         });
     }

@@ -862,17 +862,20 @@ public final class DlgPetugas extends javax.swing.JDialog {
             Valid.textKosong(KdJbtn,"jabatan");
         }else{
             try {
-                koneksi.setAutoCommit(false);
+                Sequel.AutoComitFalse();
                 Sequel.menyimpan("jnj_jabatan","?,?,?",3,new String[]{"-","-","0"});
                 Sequel.menyimpan("departemen","?,?",2,new String[]{"-","-"});
                 Sequel.menyimpan("bidang","?",1,new String[]{"-"});
                 Sequel.menyimpan("bank","'T'");
                 Sequel.menyimpan("stts_wp","?,?",2,new String[]{"-","-"});
                 Sequel.menyimpan("stts_kerja","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpan("kelompok_jabatan","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpan("resiko_kerja","?,?,?",3,new String[]{"-","-","0"});
+                Sequel.menyimpan("emergency_index","?,?,?",3,new String[]{"-","-","0"});
                 Sequel.menyimpan("pendidikan","?,?,?,?,?",5,new String[]{"-","0","0","0","0"});
-                Sequel.menyimpan("pegawai","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",31,new String[]{
+                Sequel.menyimpan("pegawai","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",34,new String[]{
                     "0",TNip.getText(),TNm.getText(),CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria"),
-                    "-","-","-","-","-","-","-","-","0",TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),TAlmt.getText(),"-","1900-01-01","<1",
+                    "-","-","-","-","-","-","-","-","-","-","-","0",TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),TAlmt.getText(),"-","1900-01-01","<1",
                     "-","T","-","AKTIF","0","0","0","1900-01-01","0","0","pages/pegawai/photo/","-"
                 });
                 
@@ -882,7 +885,8 @@ public final class DlgPetugas extends javax.swing.JDialog {
                     cmbAgama.getSelectedItem().toString(),CmbStts.getSelectedItem().toString(),
                     TAlmt.getText(),KdJbtn.getText(),TTlp.getText(),"1"
                 });
-                koneksi.setAutoCommit(true);
+                Sequel.Commit();
+                Sequel.AutoComitTrue();
                 tampil();
                 emptTeks();
             } catch (Exception ex) {

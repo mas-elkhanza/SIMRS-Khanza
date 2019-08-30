@@ -119,7 +119,7 @@ public final class akses {
             master_triase_skala5=false,master_triase_pemeriksaan=false,master_triase_macamkasus=false,rekap_permintaan_diet=false,daftar_pasien_ranap=false,
             daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false,item_apotek_jenis=false,item_apotek_kategori=false,item_apotek_golongan=false,
             item_apotek_industrifarmasi=false,obat10_terbanyak_poli=false,grafik_pengajuan_aset_urgensi=false,grafik_pengajuan_aset_status=false,
-            grafik_pengajuan_aset_departemen=false,rekap_pengajuan_aset_departemen=false;
+            grafik_pengajuan_aset_departemen=false,rekap_pengajuan_aset_departemen=false,grafik_kelompok_jabatanpegawai=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -686,6 +686,7 @@ public final class akses {
                         akses.grafik_pengajuan_aset_status=true;
                         akses.grafik_pengajuan_aset_departemen=true;
                         akses.rekap_pengajuan_aset_departemen=true;
+                        akses.grafik_kelompok_jabatanpegawai=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1236,6 +1237,7 @@ public final class akses {
                         akses.grafik_pengajuan_aset_status=rs2.getBoolean("grafik_pengajuan_aset_status");
                         akses.grafik_pengajuan_aset_departemen=rs2.getBoolean("grafik_pengajuan_aset_departemen");
                         akses.rekap_pengajuan_aset_departemen=rs2.getBoolean("rekap_pengajuan_aset_departemen");
+                        akses.grafik_kelompok_jabatanpegawai=rs2.getBoolean("grafik_kelompok_jabatanpegawai");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1784,6 +1786,7 @@ public final class akses {
                         akses.grafik_pengajuan_aset_status=false;
                         akses.grafik_pengajuan_aset_departemen=false;
                         akses.rekap_pengajuan_aset_departemen=false;
+                        akses.grafik_kelompok_jabatanpegawai=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2386,4 +2389,5 @@ public final class akses {
     public static boolean getgrafik_pengajuan_aset_status(){return akses.grafik_pengajuan_aset_status;}
     public static boolean getgrafik_pengajuan_aset_departemen(){return akses.grafik_pengajuan_aset_departemen;}
     public static boolean getrekap_pengajuan_aset_departemen(){return akses.rekap_pengajuan_aset_departemen;}
+    public static boolean getgrafik_kelompok_jabatanpegawai(){return akses.grafik_kelompok_jabatanpegawai;}
 }   

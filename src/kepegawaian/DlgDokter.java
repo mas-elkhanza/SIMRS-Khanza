@@ -901,16 +901,19 @@ public class DlgDokter extends javax.swing.JDialog {
             Valid.textKosong(KdSps,"spesialis");
         }else{
             try { 
-                koneksi.setAutoCommit(false);
+                Sequel.AutoComitFalse();
                 Sequel.menyimpan("jnj_jabatan","'-','-','0'");
                 Sequel.menyimpan("departemen","'-','-'");
                 Sequel.menyimpan("bidang","'-'");
                 Sequel.menyimpan("bank","'T'");
                 Sequel.menyimpan("stts_wp","'-','-'");
                 Sequel.menyimpan("stts_kerja","'-','-','0'");
+                Sequel.menyimpan("kelompok_jabatan","'-','-','0'");
+                Sequel.menyimpan("resiko_kerja","'-','-','0'");
+                Sequel.menyimpan("emergency_index","'-','-','0'");
                 Sequel.menyimpan("pendidikan","'-','0','0','0','0'");
                 Sequel.menyimpan("pegawai","'0','"+TKd.getText()+"','"+TNm.getText()+"','"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+
-                        "'-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/','-'");        
+                        "'-','-','-','-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/','-'");        
                 Sequel.menyimpan("dokter","'"+TKd.getText()+"','"+
                         TNm.getText()+"','"+
                         CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"','"+
@@ -924,7 +927,8 @@ public class DlgDokter extends javax.swing.JDialog {
                         KdSps.getText()+"','"+
                         TAlumni.getText()+"','"+
                         TNoi.getText()+"','1'","Kode Dokter");
-                koneksi.setAutoCommit(true); 
+                Sequel.Commit();
+                Sequel.AutoComitTrue();
                 tampil();
                 emptTeks();
             } catch (Exception ex) {
