@@ -435,6 +435,7 @@ import grafikanalisa.GrafikPegawaiPerDepartemen;
 import grafikanalisa.GrafikPegawaiPerJenjangJabatan;
 import grafikanalisa.GrafikPegawaiPerKelompokJabatan;
 import grafikanalisa.GrafikPegawaiPerPendidikan;
+import grafikanalisa.GrafikPegawaiPerResikoKerja;
 import grafikanalisa.GrafikPegawaiPerStatusKerja;
 import grafikanalisa.GrafikPegawaiPerStatusWP;
 import grafikanalisa.GrafikPengajuanAsetDepartemen;
@@ -6961,7 +6962,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
         internalFrame1.setWarnaAtas(new java.awt.Color(253, 255, 251));
-        internalFrame1.setWarnaBawah(new java.awt.Color(210, 235, 195));
+        internalFrame1.setWarnaBawah(new java.awt.Color(210, 235, 200));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -7241,8 +7242,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(215, 240, 200));
-        internalFrame4.setWarnaBawah(new java.awt.Color(248, 250, 246));
+        internalFrame4.setWarnaAtas(new java.awt.Color(210, 235, 200));
+        internalFrame4.setWarnaBawah(new java.awt.Color(248, 250, 241));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -15240,6 +15241,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikResikoKerjaPegawaiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPegawaiPerResikoKerja aplikasi=new GrafikPegawaiPerResikoKerja(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15824,7 +15836,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterTriaseSkala3,btnMasterTriaseSkala4,btnMasterTriaseSkala5,btnMasterTriasePemeriksaan,btnMasterTriaseMacamKasus,btnDataTriaseIGD,
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
-            btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai;
+            btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
+            btnGrafikResikoKerjaPegawai;
     
     public void isWall(){
         try{            
@@ -18407,6 +18420,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_kelompok_jabatanpegawai()==true){
                 Panelmenu.add(btnGrafikKelompokJabatanPegawai);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_resiko_kerjapegawai()==true){
+                Panelmenu.add(btnGrafikResikoKerjaPegawai);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21131,6 +21149,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_kelompok_jabatanpegawai()==true){
             Panelmenu.add(btnGrafikKelompokJabatanPegawai);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_resiko_kerjapegawai()==true){
+            Panelmenu.add(btnGrafikResikoKerjaPegawai);
             jmlmenu++;
         }
 
@@ -24840,6 +24863,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_resiko_kerjapegawai()==true){
+            if(btnGrafikResikoKerjaPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikResikoKerjaPegawai);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26253,6 +26283,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikKelompokJabatanPegawai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikKelompokJabatanPegawaiActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikResikoKerjaPegawai = new widget.ButtonBig();
+        btnGrafikResikoKerjaPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikResikoKerjaPegawai.setText("Pegawai Per Resiko Kerja");
+        btnGrafikResikoKerjaPegawai.setIconTextGap(0);
+        btnGrafikResikoKerjaPegawai.setName("btnGrafikResikoKerjaPegawai"); 
+        btnGrafikResikoKerjaPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikResikoKerjaPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikResikoKerjaPegawaiActionPerformed(evt);
             }
         });
     }
