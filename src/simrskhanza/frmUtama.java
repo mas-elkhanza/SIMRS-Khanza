@@ -432,6 +432,7 @@ import grafikanalisa.GrafikKunjunganRanapPerRuang;
 import grafikanalisa.GrafikKunjunganRanapPerTanggal;
 import grafikanalisa.GrafikPegawaiPerBidang;
 import grafikanalisa.GrafikPegawaiPerDepartemen;
+import grafikanalisa.GrafikPegawaiPerEmergencyIndex;
 import grafikanalisa.GrafikPegawaiPerJenjangJabatan;
 import grafikanalisa.GrafikPegawaiPerKelompokJabatan;
 import grafikanalisa.GrafikPegawaiPerPendidikan;
@@ -15252,6 +15253,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikEmergencyIndexPegawaiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPegawaiPerEmergencyIndex aplikasi=new GrafikPegawaiPerEmergencyIndex(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15837,7 +15849,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
-            btnGrafikResikoKerjaPegawai;
+            btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai;
     
     public void isWall(){
         try{            
@@ -18425,6 +18437,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_resiko_kerjapegawai()==true){
                 Panelmenu.add(btnGrafikResikoKerjaPegawai);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_emergency_indexpegawai()==true){
+                Panelmenu.add(btnGrafikEmergencyIndexPegawai);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21154,6 +21171,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_resiko_kerjapegawai()==true){
             Panelmenu.add(btnGrafikResikoKerjaPegawai);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_emergency_indexpegawai()==true){
+            Panelmenu.add(btnGrafikEmergencyIndexPegawai);
             jmlmenu++;
         }
 
@@ -24870,6 +24892,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_emergency_indexpegawai()==true){
+            if(btnGrafikEmergencyIndexPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikEmergencyIndexPegawai);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26295,6 +26324,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikResikoKerjaPegawai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikResikoKerjaPegawaiActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikEmergencyIndexPegawai = new widget.ButtonBig();
+        btnGrafikEmergencyIndexPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikEmergencyIndexPegawai.setText("Pegawai Per Emergency Index");
+        btnGrafikEmergencyIndexPegawai.setIconTextGap(0);
+        btnGrafikEmergencyIndexPegawai.setName("btnGrafikEmergencyIndex"); 
+        btnGrafikEmergencyIndexPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikEmergencyIndexPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikEmergencyIndexPegawaiActionPerformed(evt);
             }
         });
     }
