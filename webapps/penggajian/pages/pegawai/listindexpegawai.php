@@ -15,8 +15,8 @@
             $hasilthn        = bukaquery($_sqlthn);
             $baristhn        = mysqli_fetch_row($hasilthn);
             $tahun           = $baristhn[0];
-            $blnini          =$baristhn[1];
-            $hari            =$baristhn[2];
+            $blnini          = $baristhn[1];
+            $hari            = $baristhn[2];
             $bln_leng=strlen($blnini);
             $bulan="0";
             if ($bln_leng==1){
@@ -25,10 +25,10 @@
                 $bulan=$blnini;
             }
   
-                echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
-                echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
+            echo "";
+            $action      =isset($_GET['action'])?$_GET['action']:NULL;
+            $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+            echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -61,7 +61,7 @@
         $jumlah=mysqli_num_rows($hasil);
         
         if(mysqli_num_rows($hasil)!=0) {            
-            echo "<table width='2550px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+            echo "<table width='2950px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                          <td width='60px'><div align='center'>Proses</div></td>
                          <td width='80px'><div align='center'>NIP</div></td>
@@ -77,6 +77,8 @@
                          <td width='100px'><div align='center'>Index Kelompok Jabatan</div></td>
                          <td width='100px'><div align='center'>Index Resiko Kerjo</div></td>
                          <td width='100px'><div align='center'>Index Tingkat Emergency</div></td>
+                         <td width='100px'><div align='center'>Index Evaluasi Kinerja</div></td>
+                         <td width='100px'><div align='center'>Index Pencapaian Kinerja</div></td>
                          <td width='80px'><div align='center'>Index Struktural</div></td>
                          <td width='80px'><div align='center'>Pengurang</div></td>
                          <td width='100px'><div align='center'>Total Index</div></td>
@@ -90,62 +92,80 @@
                          <td width='100px'><div align='center'>Sisa DanKes</div></td>                
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
-                           $_sql4    = "SELECT `gapok1`, `kenaikan`, `maksimal`
-                            from pendidikan  where tingkat='".$baris["pendidikan"]."' ";
-                            $hasil4   = bukaquery($_sql4);
-                            $baris4   = mysqli_fetch_array($hasil4);
-                            $gapok     = 0;
-                            @$gapok1    = $baris4["gapok1"];
-                            @$kenaikan  = $baris4["kenaikan"];
-                            @$maksimal  = $baris4["maksimal"];
-                            $hakcuti   = 0;
+                        $_sql4    = "SELECT `gapok1`, `kenaikan`, `maksimal`
+                        from pendidikan  where tingkat='".$baris["pendidikan"]."' ";
+                        $hasil4   = bukaquery($_sql4);
+                        $baris4   = mysqli_fetch_array($hasil4);
+                        $gapok     = 0;
+                        @$gapok1    = $baris4["gapok1"];
+                        @$kenaikan  = $baris4["kenaikan"];
+                        @$maksimal  = $baris4["maksimal"];
+                        $hakcuti   = 0;
 
-                            $_sql6    = "SELECT sum(jml)
-                            from ketidakhadiran  where id='$baris[0]'
-                            and tgl like '%".$tahun."%' and jns='C' group by id";
-                            $hasil6   = bukaquery($_sql6);
-                            $baris6   = mysqli_fetch_row($hasil6);
-                            if(empty ($baris6[0])){
-                                $ttlc=0;
-                            }
+                        $_sql6    = "SELECT sum(jml)
+                        from ketidakhadiran  where id='$baris[0]'
+                        and tgl like '%".$tahun."%' and jns='C' group by id";
+                        $hasil6   = bukaquery($_sql6);
+                        $baris6   = mysqli_fetch_row($hasil6);
+                        if(empty ($baris6[0])){
+                            $ttlc=0;
+                        }
 
-                            $ttlc     = $baris6[0]+$baris["cuti_diambil"];
+                        $ttlc     = $baris6[0]+$baris["cuti_diambil"];
                             
-                          $masa_kerja=0;
-                          if($baris["masker"]<1){
-                             $masa_kerja=0;
-                          }else if(($baris["masker"]>=1)&&($baris["masker"]<2)){
-                             $masa_kerja=2;
-                          }else if(($baris["masker"]>=2)&&($baris["masker"]<3)){
-                             $masa_kerja=4;
-                          }else if(($baris["masker"]>=3)&&($baris["masker"]<4)){
-                             $masa_kerja=6;
-                          }else if(($baris["masker"]>=4)&&($baris["masker"]<5)){
-                             $masa_kerja=8;
-                          }else if(($baris["masker"]>=5)&&($baris["masker"]<6)){
-                             $masa_kerja=10;
-                          }else if(($baris["masker"]>=6)&&($baris["masker"]<7)){
-                             $masa_kerja=12;
-                          }else if($baris["masker"]>=7){
-                             $masa_kerja=14;
-                          }
-                          
-                          if($baris["maskon"]<$maksimal){
-                             $gapok=$gapok1+($kenaikan*round($baris["maskon"]));
-                             $hakcuti=12;
-                          }elseif($baris["maskon"]>=$maksimal){
-                             $gapok=$gapok1+($kenaikan*$maksimal);
-                             $hakcuti=14;
-                          }
-                          
-                          $total=0;
-                          if($baris["pengurang"]==0){
-                              $total=($baris["index_pendidikan"]+$masa_kerja+$baris["index_status"]+$baris["index_struktural"]+
-                                      $baris["indekjabatan"]+$baris["indekkelompok"]+$baris["indekresiko"]+$baris["indekemergency"]);
-                          }else if($baris["pengurang"]>0){
-                              $total=($baris["index_pendidikan"]+$masa_kerja+$baris["index_status"]+$baris["index_struktural"]+
-                                      $baris["indekjabatan"]+$baris["indekkelompok"]+$baris["indekresiko"]+$baris["indekemergency"])*($baris["pengurang"]/100);
-                          }
+                        $masa_kerja=0;
+                        if($baris["masker"]<1){
+                            $masa_kerja=0;
+                        }else if(($baris["masker"]>=1)&&($baris["masker"]<2)){
+                            $masa_kerja=2;
+                        }else if(($baris["masker"]>=2)&&($baris["masker"]<3)){
+                            $masa_kerja=4;
+                        }else if(($baris["masker"]>=3)&&($baris["masker"]<4)){
+                            $masa_kerja=6;
+                        }else if(($baris["masker"]>=4)&&($baris["masker"]<5)){
+                            $masa_kerja=8;
+                        }else if(($baris["masker"]>=5)&&($baris["masker"]<6)){
+                            $masa_kerja=10;
+                        }else if(($baris["masker"]>=6)&&($baris["masker"]<7)){
+                            $masa_kerja=12;
+                        }else if($baris["masker"]>=7){
+                            $masa_kerja=14;
+                        }
+
+                        if($baris["maskon"]<$maksimal){
+                            $gapok=$gapok1+($kenaikan*round($baris["maskon"]));
+                            $hakcuti=12;
+                        }elseif($baris["maskon"]>=$maksimal){
+                            $gapok=$gapok1+($kenaikan*$maksimal);
+                            $hakcuti=14;
+                        }
+
+                        $indexevaluasi= getOne("select evaluasi_kinerja.indek from evaluasi_kinerja inner join evaluasi_kinerja_pegawai 
+                                                on evaluasi_kinerja_pegawai.kode_evaluasi=evaluasi_kinerja.kode_evaluasi where 
+                                                evaluasi_kinerja_pegawai.id='$baris[0]' order by evaluasi_kinerja_pegawai.tahun,
+                                                evaluasi_kinerja_pegawai.bulan desc limit 1");
+                        if(empty($indexevaluasi)){
+                            $indexevaluasi=0;
+                        }
+                        
+                        $indexpencapaian= getOne("select pencapaian_kinerja.indek from pencapaian_kinerja inner join pencapaian_kinerja_pegawai 
+                                                on pencapaian_kinerja_pegawai.kode_pencapaian=pencapaian_kinerja.kode_pencapaian where 
+                                                pencapaian_kinerja_pegawai.id='$baris[0]' order by pencapaian_kinerja_pegawai.tahun,
+                                                pencapaian_kinerja_pegawai.bulan desc limit 1");
+                        if(empty($indexpencapaian)){
+                            $indexpencapaian=0;
+                        }
+                        
+                        $total=0;
+                        if($baris["pengurang"]==0){
+                            $total=($baris["index_pendidikan"]+$masa_kerja+$baris["index_status"]+$baris["index_struktural"]+
+                                    $baris["indekjabatan"]+$baris["indekkelompok"]+$baris["indekresiko"]+$baris["indekemergency"]+
+                                    $indexevaluasi+$indexpencapaian);
+                        }else if($baris["pengurang"]>0){
+                            $total=($baris["index_pendidikan"]+$masa_kerja+$baris["index_status"]+$baris["index_struktural"]+
+                                    $baris["indekjabatan"]+$baris["indekkelompok"]+$baris["indekresiko"]+$baris["indekemergency"]+
+                                    $indexevaluasi+$indexpencapaian)*($baris["pengurang"]/100);
+                        }
                           
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
                                   <td width='70'>
@@ -166,6 +186,8 @@
                                 <td align='center'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["indekkelompok"]."</a></td>
                                 <td align='center'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["indekresiko"]."</a></td>
                                 <td align='center'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["indekemergency"]."</a></td>
+                                <td align='center'><a href=?act=DetailEvaluasiKinerja&action=TAMBAH&id=$baris[0]>".$indexevaluasi."</a></td>
+                                <td align='center'><a href=?act=DetailPencapaianKinerja&action=TAMBAH&id=$baris[0]>".$indexpencapaian."</a></td>
                                 <td align='center'><a href=?act=EditIndexPegawai&action=UBAH&id=$baris[0]>".$baris["index_struktural"]."</a></td>
                                 <td align='center'><a href=?act=EditIndexPegawai&action=UBAH&id=$baris[0]>".$baris["pengurang"]." %</a></td>
                                 <td align='center'><a href=?act=EditIndexPegawai&action=UBAH&id=$baris[0]>$total</a></td>
@@ -195,7 +217,7 @@
             if($jumlah>0) {
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td><div align='left'>Data : $jumlah <a target=_blank href=../penggajian/pages/pegawai/LaporanIndex.php?&keyword=$keyword>| Laporan |</a></div></td>                        
+                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/pegawai/LaporanIndex.php?&keyword=$keyword> Laporan </a> | <a target=_blank href=../penggajian/pages/pegawai/LaporanIndexExcel.php?&keyword=$keyword>Excel</a> |</div></td>                            
                     </tr>     
                  </table>");
              }

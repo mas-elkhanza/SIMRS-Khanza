@@ -1,29 +1,27 @@
 <?php
- header("Content-type: application/x-msdownload");
+    header("Content-type: application/x-msdownload");
     header("Content-Disposition: attachment; filename=LaporanPegawai.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
- include '../../../conf/conf.php';
+    include '../../../conf/conf.php';
 
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $hari         =$baris[2];
-   $bulan="0";
-   $bulanindex=$baris[1];
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-	$bulan=$baris[1];
-   }
+    $_sql         = "SELECT * FROM set_tahun";
+    $hasil        = bukaquery($_sql);
+    $baris        = mysqli_fetch_row($hasil);
+    $tahun        = $baris[0];
+    $bln_leng     = strlen($baris[1]);
+    $hari         = $baris[2];
+    $bulan        = "0";
+    $bulanindex   = $baris[1];
+    if ($bln_leng==1){
+        $bulan="0".$baris[1];
+    }else{
+        $bulan=$baris[1];
+    }
 
-    $_sqllibur = "select `tanggal`, `ktg`
-                        from set_hari_libur
-                        where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
-                $hasillibur=bukaquery($_sqllibur);
-                $jumlahlibur=mysqli_num_rows($hasillibur);
+    $_sqllibur = "select `tanggal`, `ktg` from set_hari_libur where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
+    $hasillibur=bukaquery($_sqllibur);
+    $jumlahlibur=mysqli_num_rows($hasillibur);
 ?>
 <html>
     <head>
