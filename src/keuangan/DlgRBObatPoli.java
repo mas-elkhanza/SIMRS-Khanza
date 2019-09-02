@@ -7,7 +7,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -28,14 +27,11 @@ public class DlgRBObatPoli extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Jurnal jur=new Jurnal();
     private PreparedStatement pspoli,psdokter,psobat;
     private ResultSet rspoli,rsdokter,rsobat; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private int i=0,a=0;
     private double jmlbiaya=0,ttlbiaya=0,jmlembalase=0,ttlembalase=0,jmltuslah=0,ttltuslah=0,jmltotal=0,ttltotal=0;
-    private String carabayar="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -99,15 +95,14 @@ public class DlgRBObatPoli extends javax.swing.JDialog {
             pspoli=koneksi.prepareStatement("select kd_poli,nm_poli from poliklinik where kd_poli like ?");
             psdokter=koneksi.prepareStatement(
                     "select dokter.kd_dokter,dokter.nm_dokter from dokter inner join reg_periksa "+
-                    "on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "reg_periksa.kd_poli=? and reg_periksa.tgl_registrasi between ? and ? group by dokter.kd_dokter");
+                    "on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.kd_poli=? and reg_periksa.tgl_registrasi between ? and ? group by dokter.kd_dokter");
             psobat=koneksi.prepareStatement(
                     "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,"+
                     "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,"+
                     "sum(detail_pemberian_obat.embalase) as embalase, sum(detail_pemberian_obat.tuslah) as tuslah,"+
                     "sum(detail_pemberian_obat.total) as total from detail_pemberian_obat inner join reg_periksa "+
                     "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng and "+
-                    "detail_pemberian_obat.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
+                    "detail_pemberian_obat.no_rawat=reg_periksa.no_rawat where detail_pemberian_obat.status='Ralan' and "+
                     "reg_periksa.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_poli=? "+
                     "group by detail_pemberian_obat.kode_brng order by databarang.nama_brng");       
         } catch (SQLException e) {
@@ -158,7 +153,7 @@ public class DlgRBObatPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Penggunaan Obat Dokter Per Poli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Penggunaan Obat Dokter Per Poli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -516,28 +511,32 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                psdokter.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                rsdokter=psdokter.executeQuery();
                a=1;
-               while(rsdokter.next()){         
-                   tabMode.addRow(new Object[]{"",a+". "+rsdokter.getString(2),"","","","","",""});
+               while(rsdokter.next()){ 
                    psobat.setString(1,rsdokter.getString(1));
                    psobat.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                    psobat.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                    psobat.setString(4,rspoli.getString(1));
                    rsobat=psobat.executeQuery();
                    jmlbiaya=0;jmlembalase=0;jmltotal=0;jmltuslah=0;
-                   while(rsobat.next()){
-                       tabMode.addRow(new Object[]{
-                           "","",rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
-                           Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
-                       });
-                       jmlbiaya=jmlbiaya+rsobat.getDouble(4);
-                       ttlbiaya=ttlbiaya+rsobat.getDouble(4);
-                       jmlembalase=jmlembalase+rsobat.getDouble(5);
-                       ttlembalase=ttlembalase+rsobat.getDouble(5);
-                       jmltuslah=jmltuslah+rsobat.getDouble(6);
-                       ttltuslah=ttltuslah+rsobat.getDouble(6);
-                       jmltotal=jmltotal+rsobat.getDouble(7);
-                       ttltotal=ttltotal+rsobat.getDouble(7);
+                   if(rsobat.next()){
+                        tabMode.addRow(new Object[]{"",a+". "+rsdokter.getString(2),"","","","","",""});
+                        rsobat.beforeFirst();
+                        while(rsobat.next()){
+                            tabMode.addRow(new Object[]{
+                                "","",rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
+                                Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
+                            });
+                            jmlbiaya=jmlbiaya+rsobat.getDouble(4);
+                            ttlbiaya=ttlbiaya+rsobat.getDouble(4);
+                            jmlembalase=jmlembalase+rsobat.getDouble(5);
+                            ttlembalase=ttlembalase+rsobat.getDouble(5);
+                            jmltuslah=jmltuslah+rsobat.getDouble(6);
+                            ttltuslah=ttltuslah+rsobat.getDouble(6);
+                            jmltotal=jmltotal+rsobat.getDouble(7);
+                            ttltotal=ttltotal+rsobat.getDouble(7);
+                        }
                    }
+                   
                    if(jmltotal>0){
                        tabMode.addRow(new Object[]{
                            "","","","Subtotal :",Valid.SetAngka(jmlbiaya),Valid.SetAngka(jmlembalase),

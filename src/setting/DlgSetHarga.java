@@ -369,7 +369,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         ppUPdate.setBackground(new java.awt.Color(255, 255, 254));
         ppUPdate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUPdate.setForeground(new java.awt.Color(70, 70, 70));
+        ppUPdate.setForeground(new java.awt.Color(50,50,50));
         ppUPdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -387,7 +387,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         ppUPdate1.setBackground(new java.awt.Color(255, 255, 254));
         ppUPdate1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUPdate1.setForeground(new java.awt.Color(70, 70, 70));
+        ppUPdate1.setForeground(new java.awt.Color(50,50,50));
         ppUPdate1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate1.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -405,7 +405,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         ppUPdate2.setBackground(new java.awt.Color(255, 255, 254));
         ppUPdate2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUPdate2.setForeground(new java.awt.Color(70, 70, 70));
+        ppUPdate2.setForeground(new java.awt.Color(50,50,50));
         ppUPdate2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate2.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -428,7 +428,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat/Barang/Alkes ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat/Barang/Alkes ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -530,7 +530,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
         TabSetting.setBackground(new java.awt.Color(255, 255, 254));
-        TabSetting.setForeground(new java.awt.Color(70, 70, 70));
+        TabSetting.setForeground(new java.awt.Color(50,50,50));
         TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSetting.setName("TabSetting"); // NOI18N
         TabSetting.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -35,7 +35,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="07-07-2019"/>
+            <StringItem index="0" value="14-08-2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -130,7 +130,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="46" green="46" red="46" type="rgb"/>
+              <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -156,7 +156,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="46" green="46" red="46" type="rgb"/>
+              <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -182,7 +182,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="46" green="46" red="46" type="rgb"/>
+              <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -359,7 +359,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+              <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -482,7 +482,7 @@
                                     </LineBorder>
                                   </Border>
                                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                                  <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+                                  <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                                 </TitledBorder>
                               </Border>
                             </Property>
@@ -740,7 +740,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="07-07-2019"/>
+                                    <StringItem index="0" value="14-08-2019"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1964,7 +1964,7 @@
                                     </LineBorder>
                                   </Border>
                                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                                  <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+                                  <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                                 </TitledBorder>
                               </Border>
                             </Property>
@@ -2024,7 +2024,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="07-07-2019 11:28:01"/>
+                                    <StringItem index="0" value="14-08-2019 21:44:07"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2061,7 +2061,7 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="07-07-2019"/>
+                                    <StringItem index="0" value="14-08-2019"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2833,7 +2833,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="07-07-2019"/>
+                                    <StringItem index="0" value="14-08-2019"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

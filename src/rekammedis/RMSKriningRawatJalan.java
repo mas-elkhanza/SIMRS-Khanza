@@ -321,7 +321,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
 
         MnLembarSkriningRalan.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarSkriningRalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLembarSkriningRalan.setForeground(new java.awt.Color(70, 70, 70));
+        MnLembarSkriningRalan.setForeground(new java.awt.Color(50,50,50));
         MnLembarSkriningRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarSkriningRalan.setText("Lembar Skrining Ralan");
         MnLembarSkriningRalan.setName("MnLembarSkriningRalan"); // NOI18N
@@ -335,7 +335,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
 
         MnPDFSkriningRalan.setBackground(new java.awt.Color(255, 255, 254));
         MnPDFSkriningRalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPDFSkriningRalan.setForeground(new java.awt.Color(70, 70, 70));
+        MnPDFSkriningRalan.setForeground(new java.awt.Color(50,50,50));
         MnPDFSkriningRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPDFSkriningRalan.setText("PDF Skrining Ralan");
         MnPDFSkriningRalan.setName("MnPDFSkriningRalan"); // NOI18N
@@ -356,7 +356,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Skrining Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Skrining Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

@@ -65,7 +65,6 @@
                     echo "<div align='center' class='link'>
                           <a href=?act=EditIndexPegawai&action=UBAH&id=$prev><<--</a>
                           <a href=?act=ListIndexPegawai>| Index Pegawai |</a>
-                          <a href=?act=HomeAdmin>| Menu Utama |</a>
                           <a href=?act=EditIndexPegawai&action=UBAH&id=$next>-->></a>
                           </div>";
             ?>

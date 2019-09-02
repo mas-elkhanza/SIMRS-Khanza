@@ -9,7 +9,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -33,14 +32,14 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariPemesananIpsrs form=new DlgCariPemesananIpsrs(null,false);
-    private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,meterai=0;
+    private double ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,meterai=0;
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampikan=true;
+    private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -278,7 +277,7 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
+        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -301,7 +300,7 @@ public class DlgPemesananIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Penerimaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Penerimaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -777,7 +776,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                
+                Sequel.AutoComitFalse();
+                sukses=true;
                 if(Sequel.menyimpantf2("ipsrspemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",14,new String[]{
                     NoFaktur.getText(),NoOrder.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),
                     Valid.SetTgl(TglFaktur.getSelectedItem()+""),Valid.SetTgl(TglTempo.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
@@ -794,14 +794,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
                                     tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,1).toString()
                                 });
-                            }
+                            }else{
+                                sukses=false;
+                            } 
                         }                
-                    } 
-
+                    }
+                }else{
+                    sukses=false;
+                }                        
+                   
+                if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Penerimaan_NonMedis from set_akun"),"PERSEDIAAN BARANG NON MEDIS",""+(ttl+ppn+meterai),"0"});
                     Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Penerimaan_NonMedis from set_akun"),"HUTANG BARANG NON MEDIS","0",""+(ttl+ppn+meterai)}); 
-                    jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),"U","PENERIMAAN BARANG NON MEDIS/PENUNJANG"+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),"U","PENERIMAAN BARANG NON MEDIS/PENUNJANG"+", OLEH "+akses.getkode());
+                }
+                
+                if(sukses==true){
+                    Sequel.Commit();
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){ 
                         tbDokter.setValueAt("",i,0);
@@ -812,8 +822,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                     Meterai.setText("0");
                     getData();
-                }                        
-                        
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();  
                 autoNomor();
             }
         }        
@@ -1181,15 +1194,25 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void getData(){
         row=tbDokter.getSelectedRow();
         if(row!= -1){
-            try {
-                if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,4).toString()), row,5);                
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,5).toString())-Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);           
-                }
-            } catch (Exception e) {
-                tbDokter.setValueAt(0, row,5);                
-                tbDokter.setValueAt(0, row,8);    
-            }                 
+            if(!tbDokter.getValueAt(row,0).toString().equals("")){
+                try {
+                    if(Double.parseDouble(tbDokter.getValueAt(row,0).toString())>0){
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,4).toString()), row,5);                
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,5).toString())-Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);           
+                    }
+                } catch (Exception e) {
+                    tbDokter.setValueAt("",row,0);
+                    tbDokter.setValueAt(0,row,5);   
+                    tbDokter.setValueAt(0,row,6);   
+                    tbDokter.setValueAt(0,row,7);                
+                    tbDokter.setValueAt(0,row,8); 
+                }    
+            }else{
+                tbDokter.setValueAt(0,row,5);   
+                tbDokter.setValueAt(0,row,6);   
+                tbDokter.setValueAt(0,row,7);                
+                tbDokter.setValueAt(0,row,8); 
+            }             
         }
         ttl=0;sbttl=0;ttldisk=0;
         y=0;w=0;

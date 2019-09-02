@@ -526,7 +526,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppResepObat.setBackground(new java.awt.Color(255, 255, 254));
         ppResepObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppResepObat.setForeground(new java.awt.Color(70, 70, 70));
+        ppResepObat.setForeground(new java.awt.Color(50,50,50));
         ppResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppResepObat.setText("Buat Nomor Resep Obat");
         ppResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -542,7 +542,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppNoRawat.setBackground(new java.awt.Color(255, 255, 254));
         ppNoRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppNoRawat.setForeground(new java.awt.Color(70, 70, 70));
+        ppNoRawat.setForeground(new java.awt.Color(50,50,50));
         ppNoRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppNoRawat.setText("Rekap Per No.Rawat");
         ppNoRawat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -558,7 +558,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLokasi.setForeground(new java.awt.Color(70, 70, 70));
+        ppLokasi.setForeground(new java.awt.Color(50,50,50));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppLokasi.setText("Tampilkan Per Asal Stok");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -593,7 +593,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

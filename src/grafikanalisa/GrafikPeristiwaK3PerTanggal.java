@@ -119,7 +119,7 @@ public class GrafikPeristiwaK3PerTanggal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Grafik Peristiwa K3 Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Grafik Peristiwa K3 Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -443,9 +443,11 @@ public class GrafikPeristiwaK3PerTanggal extends javax.swing.JDialog {
                     total=total+rs.getDouble(2);
                     tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
                 }
-                tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %"});
-                for(i=0;i<tbBangsal.getRowCount();i++){ 
-                    tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                if(tabMode.getRowCount()>0){
+                    tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %"});
+                    for(i=0;i<tbBangsal.getRowCount();i++){ 
+                        tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
