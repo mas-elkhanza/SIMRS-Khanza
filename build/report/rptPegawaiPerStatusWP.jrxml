@@ -244,15 +244,47 @@
 		<band height="15" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement mode="Opaque" x="360" y="0" width="195" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="12721778-5bb6-4f54-b9da-de7248ff9094"/>
+				<reportElement mode="Opaque" x="279" y="0" width="54" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="5e015bb1-97a8-4a28-a07a-b1501bca393f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Persentase Pegawai Per Status WP(%)]]></text>
+				<text><![CDATA[Laki-Laki]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="190" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ab7daecc-33eb-4b44-9ab1-0a88771ace20"/>
+				<reportElement mode="Opaque" x="333" y="0" width="67" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="3fef3390-db56-405e-94f4-6bf6bec86a1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Laki-Laki(%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="400" y="0" width="75" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="374a6e00-00ac-43de-aa9e-3194513dc08d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Perempuan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="475" y="0" width="80" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="a099281b-8361-47b0-b73f-4f1d1791cfa5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Perempuan(%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="0" width="80" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="d8fa8767-3503-4c42-bebe-54ab6d58b512"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Persentase(%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="140" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="09e425ca-0e9e-4799-8d5c-02fbf8d850bd"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -260,14 +292,14 @@
 				<text><![CDATA[Status WP Pegawai]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="190" y="0" width="170" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="4005dc8d-6084-41a2-b02a-a93ec8dde0a1">
+				<reportElement mode="Opaque" x="140" y="0" width="60" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="83f00e73-830e-4e62-8cd7-b4bc9674fbac">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Jumlah Pegawai Per Status WP]]></text>
+				<text><![CDATA[Jumlah]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="14" width="555" height="1" uuid="4062836c-7beb-40df-b91b-1e0f6e31df07"/>
@@ -280,8 +312,14 @@
 	<detail>
 		<band height="12" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<line>
+				<reportElement stretchType="ElementGroupHeight" x="0" y="11" width="555" height="1" uuid="ab816c35-9a48-43aa-ae3d-a396de49667c"/>
+				<graphicElement>
+					<pen lineWidth="0.3"/>
+				</graphicElement>
+			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="2" y="0" width="188" height="10" uuid="3d9fbee0-c06c-40bd-912d-004cc2293669"/>
+				<reportElement mode="Transparent" x="2" y="0" width="138" height="10" uuid="8b467a14-f442-4a46-ac6d-4447a1cfc0a7"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -289,7 +327,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="190" y="0" width="169" height="10" uuid="9c746498-1b76-4194-8b97-9cff0ec1ce0f">
+				<reportElement mode="Transparent" x="140" y="0" width="59" height="10" uuid="4ae9e254-fab4-4a73-8156-a888af330a4d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -299,19 +337,45 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="360" y="0" width="194" height="10" uuid="425ecdbf-a3b6-46bb-8e5f-2bb181b482c5"/>
+				<reportElement mode="Transparent" x="200" y="0" width="79" height="10" uuid="bd7409e9-ace8-46a4-85bb-3bc42d6811d7"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement stretchType="ElementGroupHeight" x="0" y="11" width="555" height="1" uuid="ab816c35-9a48-43aa-ae3d-a396de49667c"/>
-				<graphicElement>
-					<pen lineWidth="0.3"/>
-				</graphicElement>
-			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="280" y="0" width="53" height="10" uuid="e6fd8f2b-b60c-4728-888a-9344bff65c04"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="333" y="0" width="67" height="10" uuid="6bf35e96-e321-4254-a94d-d931879d7543"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="400" y="0" width="75" height="10" uuid="b9adc1b9-9072-457a-8137-0e90dc9dcb55"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="475" y="0" width="80" height="10" uuid="26ff2119-e8a9-468e-8c3f-daddd76f1c9d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

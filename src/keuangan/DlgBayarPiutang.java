@@ -250,18 +250,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         });
         
         Valid.loadCombo(nama_bayar,"nama_bayar","akun_bayar");
-        
-        try {
-            ps=koneksi.prepareStatement("select bayar_piutang.tgl_bayar, bayar_piutang.no_rkm_medis,pasien.nm_pasien, bayar_piutang.besar_cicilan,"+
-                "bayar_piutang.catatan, bayar_piutang.no_rawat from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis where "+
-                "bayar_piutang.no_rawat like ? or "+
-                "bayar_piutang.no_rkm_medis like ? or "+
-                "pasien.nm_pasien like ? or "+
-                "bayar_piutang.tgl_bayar like ? order by bayar_piutang.tgl_bayar,bayar_piutang.no_rkm_medis");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        
     }
 
 
@@ -299,16 +287,20 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         nama_bayar = new widget.ComboBox();
         jPanel1 = new javax.swing.JPanel();
         panelisi3 = new widget.panelisi();
+        label11 = new widget.Label();
+        Tgl1 = new widget.Tanggal();
+        label18 = new widget.Label();
+        Tgl2 = new widget.Tanggal();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        BtnAll = new widget.Button();
         label10 = new widget.Label();
         LCount = new widget.Label();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnHapus = new widget.Button();
         BtnPrint = new widget.Button();
+        BtnAll = new widget.Button();
         label12 = new widget.Label();
         LTotal = new widget.Label();
         BtnKeluar = new widget.Button();
@@ -317,7 +309,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
 
         ppNotaPiutang.setBackground(new java.awt.Color(255, 255, 254));
         ppNotaPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppNotaPiutang.setForeground(new java.awt.Color(50,50,50));
+        ppNotaPiutang.setForeground(new java.awt.Color(50, 50, 50));
         ppNotaPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppNotaPiutang.setText("Nota Bayar Piutang");
         ppNotaPiutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -343,7 +335,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -511,13 +503,34 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
+        label11.setText("Tgl.Bayar :");
+        label11.setName("label11"); // NOI18N
+        label11.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi3.add(label11);
+
+        Tgl1.setDisplayFormat("dd-MM-yyyy");
+        Tgl1.setName("Tgl1"); // NOI18N
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi3.add(Tgl1);
+
+        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label18.setText("s.d.");
+        label18.setName("label18"); // NOI18N
+        label18.setPreferredSize(new java.awt.Dimension(27, 23));
+        panelisi3.add(label18);
+
+        Tgl2.setDisplayFormat("dd-MM-yyyy");
+        Tgl2.setName("Tgl2"); // NOI18N
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi3.add(Tgl2);
+
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -542,26 +555,9 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         });
         panelisi3.add(BtnCari);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('1');
-        BtnAll.setToolTipText("Alt+1");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelisi3.add(BtnAll);
-
         label10.setText("Record :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(70, 23));
+        label10.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label10);
 
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -628,15 +624,33 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         });
         panelisi1.add(BtnPrint);
 
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('1');
+        BtnAll.setText("Semua");
+        BtnAll.setToolTipText("Alt+1");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnAll);
+
         label12.setText("Total :");
         label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(105, 30));
+        label12.setPreferredSize(new java.awt.Dimension(55, 30));
         panelisi1.add(label12);
 
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(195, 30));
+        LTotal.setPreferredSize(new java.awt.Dimension(140, 30));
         panelisi1.add(LTotal);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -767,10 +781,11 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
             Valid.MyReportqry("rptBayar.jasper","report","::[ Bayar Piutang ]::","select bayar_piutang.tgl_bayar, bayar_piutang.no_rkm_medis,pasien.nm_pasien, bayar_piutang.besar_cicilan,"+
                 "bayar_piutang.catatan, bayar_piutang.no_rawat from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis where "+
-                "bayar_piutang.no_rawat like '%"+TCari.getText()+"%' or "+
-                "bayar_piutang.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                "pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
-                "bayar_piutang.tgl_bayar like '%"+TCari.getText()+"%' order by bayar_piutang.tgl_bayar,bayar_piutang.no_rkm_medis,bayar_piutang.no_rawat ",param);
+                "bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and bayar_piutang.no_rawat like '%"+TCari.getText()+"%' or "+
+                "bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and bayar_piutang.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                "bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
+                "bayar_piutang.tgl_bayar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and bayar_piutang.tgl_bayar like '%"+TCari.getText()+"%' "+
+                "order by bayar_piutang.tgl_bayar,bayar_piutang.no_rkm_medis,bayar_piutang.no_rawat ",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -990,12 +1005,16 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox Sisa;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
+    private widget.Tanggal Tgl1;
+    private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private javax.swing.JPanel jPanel1;
     private widget.Label label10;
+    private widget.Label label11;
     private widget.Label label12;
     private widget.Label label16;
+    private widget.Label label18;
     private widget.Label label32;
     private widget.Label label34;
     private widget.Label label35;
@@ -1012,23 +1031,47 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText()+"%");
-            ps.setString(2,"%"+TCari.getText()+"%");
-            ps.setString(3,"%"+TCari.getText()+"%");
-            ps.setString(4,"%"+TCari.getText()+"%");
-            rs=ps.executeQuery();
-            total=0;
-            while(rs.next()){                
-                total=total+rs.getDouble(4);
-                tabMode.addRow(new Object[]{rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               Valid.SetAngka(rs.getDouble(4)),
-                               rs.getString(5),
-                               rs.getString(6)});
+        try{    
+            ps=koneksi.prepareStatement(
+                    "select bayar_piutang.tgl_bayar, bayar_piutang.no_rkm_medis,pasien.nm_pasien, bayar_piutang.besar_cicilan,"+
+                    "bayar_piutang.catatan, bayar_piutang.no_rawat from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis where "+
+                    "bayar_piutang.tgl_bayar between ? and ? and bayar_piutang.no_rawat like ? or "+
+                    "bayar_piutang.tgl_bayar between ? and ? and bayar_piutang.no_rkm_medis like ? or "+
+                    "bayar_piutang.tgl_bayar between ? and ? and pasien.nm_pasien like ? or "+
+                    "bayar_piutang.tgl_bayar between ? and ? and bayar_piutang.tgl_bayar like ? "+
+                    "order by bayar_piutang.tgl_bayar,bayar_piutang.no_rkm_medis");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText()+"%");
+                rs=ps.executeQuery();
+                total=0;
+                while(rs.next()){                
+                    total=total+rs.getDouble(4);
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),Valid.SetAngka(rs.getDouble(4)),rs.getString(5),rs.getString(6)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif :"+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

@@ -11,7 +11,6 @@
 
 package inventory;
 
-import laporan.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;

@@ -592,22 +592,29 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 }
                             }
                         } catch (Exception e) {
-                            sukses=false;
                         }
                     }   
                 }   
                 
                 if(sukses==true){
                     Sequel.Commit();
-                    for(index=0;index<tbDokter.getRowCount();index++){   
-                        tbDokter.setValueAt("",index,0);        
-                    }
-                    tampil();
                 }else{
+                    sukses=false;
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
                 }
-                Sequel.AutoComitTrue();  
+                Sequel.AutoComitTrue();
+                
+                if(sukses==true){
+                    for(index=0;index<tbDokter.getRowCount();index++){   
+                        tbDokter.setValueAt("",index,0);  
+                        tbDokter.setValueAt(0,index,6);  
+                        tbDokter.setValueAt(0,index,7);  
+                        tbDokter.setValueAt(0,index,8);  
+                    }
+                    ttl=0;
+                    LTotal.setText("0");
+                }
             }
             
         }
@@ -888,57 +895,67 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 tbDokter.setValueAt("",index,0);        
             }
         }else if(i!= -1){   
-            if((tbDokter.getSelectedColumn()==1)||(tbDokter.getSelectedColumn()==0)){   
-                try {
-                    if(!tbDokter.getValueAt(i,0).toString().equals("")){
-                        stokbarang=0;   
-                        psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
-                        try{
-                            psstok.setString(1,kdgudang.getText());
-                            psstok.setString(2,tbDokter.getValueAt(i,1).toString());
-                            rsstok=psstok.executeQuery();
-                            if(rsstok.next()){
-                                 stokbarang=rsstok.getDouble(1);
+            if((tbDokter.getSelectedColumn()==1)||(tbDokter.getSelectedColumn()==0)){  
+                if(!tbDokter.getValueAt(i,0).toString().equals("")){
+                    try {
+                        if(Double.parseDouble(tabMode.getValueAt(i,0).toString())>0){
+                            stokbarang=0;   
+                            psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
+                            try{
+                                psstok.setString(1,kdgudang.getText());
+                                psstok.setString(2,tbDokter.getValueAt(i,1).toString());
+                                rsstok=psstok.executeQuery();
+                                if(rsstok.next()){
+                                     stokbarang=rsstok.getDouble(1);
+                                }
+                            }catch (Exception e) {
+                                tbDokter.setValueAt(0,i,6);
+                            } finally{
+                                if(rsstok!=null){
+                                    rsstok.close();
+                                }
+                                if(psstok!=null){
+                                    psstok.close();
+                                }
                             }
-                        }catch (Exception e) {
-                            tbDokter.setValueAt(0,i,6);
-                        } finally{
-                            if(rsstok!=null){
-                                rsstok.close();
+                            tbDokter.setValueAt(stokbarang,i,6);
+                            try {
+                                kurang=Double.parseDouble(tbDokter.getValueAt(i,6).toString())-Double.parseDouble(tbDokter.getValueAt(i,0).toString());
+                            } catch (Exception e) {
+                                kurang=0;
                             }
-                            if(psstok!=null){
-                                psstok.close();
-                            }
-                        }
-                        tbDokter.setValueAt(stokbarang,i,6);
-                        try {
-                            kurang=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString())-
-                                Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                        } catch (Exception e) {
-                            kurang=0;
-                        }
 
-                        if(kurang>0){
-                            tbDokter.setValueAt(kurang,tbDokter.getSelectedRow(),7);  
-                        }else{
-                            tbDokter.setValueAt(0,tbDokter.getSelectedRow(),7);  
-                        }
+                            if(kurang>0){
+                                tbDokter.setValueAt(kurang,i,7);  
+                            }else{
+                                tbDokter.setValueAt(0,i,7);  
+                            }
 
-                        if(kurang>0){
-                             tbDokter.setValueAt(kurang*Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString()),tbDokter.getSelectedRow(),8);                        
-                        }else{                       
-                             tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);   
+                            if(kurang>0){
+                                 tbDokter.setValueAt(kurang*Double.parseDouble(tbDokter.getValueAt(i,5).toString()),i,8);                        
+                            }else{                       
+                                 tbDokter.setValueAt(0,i,8);   
+                            }
                         }
+                    } catch (Exception e) {
+                        tbDokter.setValueAt(0,i,6);  
+                        tbDokter.setValueAt(0,i,7);  
+                        tbDokter.setValueAt(0,i,8); 
+                        tbDokter.setValueAt("",i,0); 
                     }
-                } catch (Exception e) {
+                }else{
+                    tbDokter.setValueAt(0,i,6);  
+                    tbDokter.setValueAt(0,i,7);  
+                    tbDokter.setValueAt(0,i,8); 
                 }
+                        
             }              
             
             ttl=0;
-            y=0;
             for(i=0;i<tbDokter.getRowCount();i++){ 
+                y=0;
                 try {
-                    y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());     
+                    y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
                 } catch (Exception e) {
                     y=0;           
                 }

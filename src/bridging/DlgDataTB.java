@@ -435,7 +435,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             kdwasor = prop.getProperty("KABUPATENSITT");
-            idrs=prop.getProperty("IDSITT");
+            idrs=koneksiDB.IDSITT();
             URL = prop.getProperty("URLAPISITT");
         } catch (Exception e) {
             System.out.println("E : "+e);

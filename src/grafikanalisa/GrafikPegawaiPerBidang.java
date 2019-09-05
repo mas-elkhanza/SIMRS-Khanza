@@ -47,8 +47,9 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
     private ResultSet rs;
     private PreparedStatement ps;
     private final DefaultTableModel tabMode;
-    private double total=0;
-    private int i=0;
+    private double total=0,totall=0,totalp=0;
+    private int i=0,jmll=0,jmlp=0;
+    private String pilihan="";
 
     /** Creates new form DlgSpesialis
      * @param parent
@@ -57,7 +58,7 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        tabMode=new DefaultTableModel(null,new Object[]{"Bidang/Bagian Pegawai","Jumlah Pegawai Per Bidang/Bagian","Persentase Pegawai Per Bidang/Bagian(%)"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Bidang/Bagian Pegawai","Jumlah","Persentase(%)","Laki-Laki","Laki-Laki(%)","Perempuan","Perempuan(%)"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -67,14 +68,22 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 7; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(170);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(50);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(90);
+            }else if(i==3){
+                column.setPreferredWidth(60);
+            }else if(i==4){
+                column.setPreferredWidth(80);
+            }else if(i==5){
+                column.setPreferredWidth(70);
+            }else if(i==6){
+                column.setPreferredWidth(90);
             }
         }
 
@@ -231,27 +240,81 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint3ActionPerformed
-        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-        try {                
-            rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by pegawai.bidang").executeQuery();
-            while(rs.next()) {
-                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
-            }
-            
-            if(rs!=null){
-                rs.close();
+        try{
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Pegawai","Jumlah Pegawai Laki-Laki","Jumlah Pegawai Perempuan"},"Jumlah Pegawai");
+            switch (pilihan) {
+                case "Jumlah Pegawai":
+                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                    try {                
+                        rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by pegawai.bidang").executeQuery();
+                        while(rs.next()) {
+                            dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+                        }
+
+                        if(rs!=null){
+                            rs.close();
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : " + e);
+                    }
+                    JFreeChart freeChart = ChartFactory.createBarChart("Grafik Pegawai Per Bidang/Bagian","Bidang/Bagian","Jumlah Pegawai", dcd, PlotOrientation.VERTICAL,true, true,true); 
+                    ChartFrame cf = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart);
+                    cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
+                    cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+                    cf.setLocationRelativeTo(Scroll);
+                    cf.setAlwaysOnTop(true);
+                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                    cf.setVisible(true);  
+                    break;
+                case "Jumlah Pegawai Laki-Laki":
+                    DefaultCategoryDataset dcd2 = new DefaultCategoryDataset();
+                    try {                
+                        rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by pegawai.bidang").executeQuery();
+                        while(rs.next()) {
+                            dcd2.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+                        }
+
+                        if(rs!=null){
+                            rs.close();
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : " + e);
+                    }
+                    JFreeChart freeChart2 = ChartFactory.createBarChart("Grafik Pegawai Per Bidang/Bagian","Bidang/Bagian","Jumlah Pegawai", dcd2, PlotOrientation.VERTICAL,true, true,true); 
+                    ChartFrame cf2 = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart2);
+                    cf2.setSize(Scroll.getWidth(),Scroll.getHeight());   
+                    cf2.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+                    cf2.setLocationRelativeTo(Scroll);
+                    cf2.setAlwaysOnTop(true);
+                    cf2.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                    cf2.setVisible(true); 
+                    break;
+                case "Jumlah Pegawai Perempuan":
+                    DefaultCategoryDataset dcd3 = new DefaultCategoryDataset();
+                    try {                
+                        rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by pegawai.bidang").executeQuery();
+                        while(rs.next()) {
+                            dcd3.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+                        }
+
+                        if(rs!=null){
+                            rs.close();
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : " + e);
+                    }
+                    JFreeChart freeChart3 = ChartFactory.createBarChart("Grafik Pegawai Per Bidang/Bagian","Bidang/Bagian","Jumlah Pegawai", dcd3, PlotOrientation.VERTICAL,true, true,true); 
+                    ChartFrame cf3 = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart3);
+                    cf3.setSize(Scroll.getWidth(),Scroll.getHeight());   
+                    cf3.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+                    cf3.setLocationRelativeTo(Scroll);
+                    cf3.setAlwaysOnTop(true);
+                    cf3.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                    cf3.setVisible(true); 
+                    break;
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
-        }
-        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Pegawai Per Bidang/Bagian","Bidang/Bagian","Jumlah Pegawai", dcd, PlotOrientation.VERTICAL,true, true,true); 
-        ChartFrame cf = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart);
-        cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
-        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-        cf.setLocationRelativeTo(Scroll);
-        cf.setAlwaysOnTop(true);
-        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-        cf.setVisible(true);  
+        }  
     }//GEN-LAST:event_BtnPrint3ActionPerformed
 
     private void BtnPrint3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint3KeyPressed
@@ -267,13 +330,39 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
     private void BtnPrint4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint4ActionPerformed
-       grafiksql2 kas=new grafiksql2("Grafik Pegawai Per Bidang/Bagian",
-               "select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by pegawai.bidang","Bidang/Bagian");
-       kas.setSize(Scroll.getWidth(),Scroll.getHeight());  
-       kas.setModal(true);
-       kas.setAlwaysOnTop(true);
-       kas.setLocationRelativeTo(Scroll);
-       kas.setVisible(true);
+        try {
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Pegawai","Jumlah Pegawai Laki-Laki","Jumlah Pegawai Perempuan"},"Jumlah Pegawai");
+            switch (pilihan) {
+                case "Jumlah Pegawai":
+                    grafiksql2 kas=new grafiksql2("Grafik Pegawai Per Bidang/Bagian",
+                            "select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by pegawai.bidang","Bidang/Bagian");
+                    kas.setSize(Scroll.getWidth(),Scroll.getHeight());  
+                    kas.setModal(true);
+                    kas.setAlwaysOnTop(true);
+                    kas.setLocationRelativeTo(Scroll);
+                    kas.setVisible(true);
+                    break;
+                case "Jumlah Pegawai Laki-Laki":
+                    grafiksql2 kas2=new grafiksql2("Grafik Pegawai Per Bidang/Bagian",
+                            "select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by pegawai.bidang","Bidang/Bagian");
+                    kas2.setSize(Scroll.getWidth(),Scroll.getHeight());  
+                    kas2.setModal(true);
+                    kas2.setAlwaysOnTop(true);
+                    kas2.setLocationRelativeTo(Scroll);
+                    kas2.setVisible(true);
+                    break;
+                case "Jumlah Pegawai Perempuan":
+                    grafiksql2 kas3=new grafiksql2("Grafik Pegawai Per Bidang/Bagian",
+                            "select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by pegawai.bidang","Bidang/Bagian");
+                    kas3.setSize(Scroll.getWidth(),Scroll.getHeight());  
+                    kas3.setModal(true);
+                    kas3.setAlwaysOnTop(true);
+                    kas3.setLocationRelativeTo(Scroll);
+                    kas3.setVisible(true);
+                    break;
+            }
+        } catch (Exception e) {
+        }       
     }//GEN-LAST:event_BtnPrint4ActionPerformed
 
     private void BtnPrint4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint4KeyPressed
@@ -281,28 +370,84 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPrint4KeyPressed
 
     private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint5ActionPerformed
-        DefaultPieDataset dpd = new DefaultPieDataset();
-        try {                
-            rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by pegawai.bidang").executeQuery();
-            while(rs.next()) {
-                dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
-            }
-            
-            if(rs!=null){
-                rs.close();
+        try{
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Pegawai","Jumlah Pegawai Laki-Laki","Jumlah Pegawai Perempuan"},"Jumlah Pegawai");
+            switch (pilihan) {
+                case "Jumlah Pegawai":
+                    DefaultPieDataset dpd = new DefaultPieDataset();
+                    try {                
+                        rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI' group by pegawai.bidang").executeQuery();
+                        while(rs.next()) {
+                            dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
+                        }
+
+                        if(rs!=null){
+                            rs.close();
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : " + e);
+                    } 
+
+                    JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pegawai Per Bidang/Bagian",dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+                    ChartFrame cf = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart);
+                    cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
+                    cf.setLocationRelativeTo(Scroll);
+                    cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+                    cf.setAlwaysOnTop(true);
+                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                    cf.setVisible(true);  
+                    break;
+                case "Jumlah Pegawai Laki-Laki":
+                    DefaultPieDataset dpd2 = new DefaultPieDataset();
+                    try {                
+                        rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by pegawai.bidang").executeQuery();
+                        while(rs.next()) {
+                            dpd2.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
+                        }
+
+                        if(rs!=null){
+                            rs.close();
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : " + e);
+                    } 
+
+                    JFreeChart freeChart2 = ChartFactory.createPieChart("Grafik Pegawai Per Bidang/Bagian",dpd2,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+                    ChartFrame cf2 = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart2);
+                    cf2.setSize(Scroll.getWidth(),Scroll.getHeight());   
+                    cf2.setLocationRelativeTo(Scroll);
+                    cf2.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+                    cf2.setAlwaysOnTop(true);
+                    cf2.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                    cf2.setVisible(true);  
+                    break;
+                case "Jumlah Pegawai Perempuan":
+                    DefaultPieDataset dpd3 = new DefaultPieDataset();
+                    try {                
+                        rs = koneksi.prepareStatement("select pegawai.bidang,count(pegawai.bidang) as jumlah from pegawai where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') group by pegawai.bidang").executeQuery();
+                        while(rs.next()) {
+                            dpd3.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
+                        }
+
+                        if(rs!=null){
+                            rs.close();
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : " + e);
+                    } 
+
+                    JFreeChart freeChart3 = ChartFactory.createPieChart("Grafik Pegawai Per Bidang/Bagian",dpd3,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+                    ChartFrame cf3 = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart3);
+                    cf3.setSize(Scroll.getWidth(),Scroll.getHeight());   
+                    cf3.setLocationRelativeTo(Scroll);
+                    cf3.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+                    cf3.setAlwaysOnTop(true);
+                    cf3.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                    cf3.setVisible(true); 
+                    break;
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
-        } 
-        
-        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pegawai Per Bidang/Bagian",dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-        ChartFrame cf = new ChartFrame("Grafik Pegawai Per Bidang/Bagian",freeChart);
-        cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
-        cf.setLocationRelativeTo(Scroll);
-        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-        cf.setAlwaysOnTop(true);
-        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-        cf.setVisible(true);  
+        }  
     }//GEN-LAST:event_BtnPrint5ActionPerformed
 
     private void BtnPrint5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint5KeyPressed
@@ -329,7 +474,11 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
                 Sequel.menyimpan("temporary_grafik","'0','"+
                     tabMode.getValueAt(r,0).toString()+"','"+
                     tabMode.getValueAt(r,1).toString()+"','"+
-                    tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap");
+                    tabMode.getValueAt(r,2).toString()+"','"+
+                    tabMode.getValueAt(r,3).toString()+"','"+
+                    tabMode.getValueAt(r,4).toString()+"','"+
+                    tabMode.getValueAt(r,5).toString()+"','"+
+                    tabMode.getValueAt(r,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap");
             }
 
             Valid.MyReport("rptPegawaiPerBagian.jasper","report","::[ Laporan Jumlah Pegawai Per Bidang/Bagian ]::",param);
@@ -373,13 +522,25 @@ public class GrafikPegawaiPerBidang extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 total=0;
+                totall=0;
+                totalp=0;
                 while(rs.next()){
                     total=total+rs.getDouble(2);
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    jmll=Sequel.cariInteger("select count(bidang) from pegawai where pegawai.jk='Pria' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and bidang=?",rs.getString(1));
+                    jmlp=Sequel.cariInteger("select count(bidang) from pegawai where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and bidang=?",rs.getString(1));
+                    totall=totall+jmll;
+                    totalp=totalp+jmlp;
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),"",jmll+"","",jmlp+"",""
+                    });
                 }
-                tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %"});
-                for(i=0;i<tbBangsal.getRowCount();i++){ 
-                    tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                if(tabMode.getRowCount()>0){
+                    tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %",totall+"","100 %",totalp+"","100 %"});
+                    for(i=0;i<tbBangsal.getRowCount();i++){ 
+                        tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
+                        tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/totall)*100)+" %",i,4);
+                        tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())/totalp)*100)+" %",i,6);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

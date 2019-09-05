@@ -1371,14 +1371,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         simpan();
                 }else{
                     autoNomor();
-                    if(Sequel.menyimpantf("penjualan","?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",12,new String[]{
+                    if(Sequel.menyimpantf2("penjualan","?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",12,new String[]{
                         NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),kdptg.getText(),kdmem.getText(),nmmem.getText(),
                         catatan.getText(),Jenisjual.getSelectedItem().toString(),Double.toString(besarppn),status,kdgudang.getText(),
                         Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),CmbAkun.getSelectedItem().toString()}
                        )==true){
                             simpan();
                     }else{
-                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
+                        sukses=false;
                         autoNomor();
                     } 
                 }
@@ -1488,7 +1488,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             for(i=0;i<tabMode.getRowCount();i++){  
                 try {
                     if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
-                           Sequel.menyimpan("temporary","'0','"+
+                           Sequel.menyimpan2("temporary","'0','"+
                                    tabMode.getValueAt(i,0).toString()+"','"+
                                    tabMode.getValueAt(i,1).toString()+"','"+
                                    tabMode.getValueAt(i,2).toString()+"','"+
@@ -1510,7 +1510,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             for(i=0;i<tbObatRacikan.getRowCount();i++){  
                 try {
                     if(Valid.SetAngka(tbObatRacikan.getValueAt(i,4).toString())>0){
-                           Sequel.menyimpan("temporary","'0','"+tbObatRacikan.getValueAt(i,4).toString()+"','','"+
+                           Sequel.menyimpan2("temporary","'0','"+tbObatRacikan.getValueAt(i,4).toString()+"','','"+
                                    tbObatRacikan.getValueAt(i,0).toString()+". "+tbObatRacikan.getValueAt(i,1).toString()+"','','"+
                                    tbObatRacikan.getValueAt(i,3).toString()+"','','','','','','','"+
                                    tbObatRacikan.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
@@ -1522,7 +1522,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             for(i=0;i<tbDetailObatRacikan.getRowCount();i++){  
                 try {
                     if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,8).toString())>0){
-                           Sequel.menyimpan("temporary","'0','&nbsp;&nbsp;&nbsp;&nbsp;"+
+                           Sequel.menyimpan2("temporary","'0','&nbsp;&nbsp;&nbsp;&nbsp;"+
                                    tbDetailObatRacikan.getValueAt(i,8).toString()+"','"+
                                    tbDetailObatRacikan.getValueAt(i,1).toString()+"','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
                                    tbDetailObatRacikan.getValueAt(i,2).toString()+"','"+
@@ -2853,123 +2853,149 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         if(nmgudang.getText().trim().equals("")){
             Valid.textKosong(kdgudang,"Lokasi");
         }else{
-            if(tbDokter.getSelectedRow()!= -1){ 
-                row=tbDokter.getSelectedRow();
-                try {
-                    kolom=tbDokter.getSelectedColumn();
-                    if(Valid.SetAngka(tabMode.getValueAt(row,0).toString())>0){
-                        if(aktifkanbatch.equals("no")){
-                            try {
-                                stokbarang=0;   
-                                psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
+            row=tbDokter.getSelectedRow();
+            if(row!= -1){ 
+                if(!tbDokter.getValueAt(row,0).toString().equals("")){
+                    try {
+                        kolom=tbDokter.getSelectedColumn();
+                        if(Double.parseDouble(tabMode.getValueAt(row,0).toString())>0){
+                            if(aktifkanbatch.equals("no")){
                                 try {
-                                    psstok.setString(1,kdgudang.getText());
-                                    psstok.setString(2,tbDokter.getValueAt(row,1).toString());
-                                    rsstok=psstok.executeQuery();
-                                    if(rsstok.next()){
-                                        stokbarang=rsstok.getDouble(1);
-                                    }
+                                    stokbarang=0;   
+                                    psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
+                                    try {
+                                        psstok.setString(1,kdgudang.getText());
+                                        psstok.setString(2,tbDokter.getValueAt(row,1).toString());
+                                        rsstok=psstok.executeQuery();
+                                        if(rsstok.next()){
+                                            stokbarang=rsstok.getDouble(1);
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notifikasi : "+e);
+                                    } finally{
+                                        if(rsstok!=null){
+                                            rsstok.close();
+                                        }
+                                        if(psstok!=null){
+                                            psstok.close();
+                                        }
+                                    }  
+
+                                    tabMode.setValueAt(stokbarang,row,14);                                
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi : "+e);
-                                } finally{
-                                    if(rsstok!=null){
-                                        rsstok.close();
-                                    }
-                                    if(psstok!=null){
-                                        psstok.close();
-                                    }
-                                }  
-
-                                tbDokter.setValueAt(stokbarang,row,14);                                
-                            } catch (Exception e) {
-                                tbDokter.setValueAt(0,row,14);
+                                    tabMode.setValueAt(0,row,14);
+                                }
                             }
-                        }
 
-                        y=0;
-                        try {
-                            y=Double.parseDouble(tabMode.getValueAt(row,0).toString());
-                        } catch (Exception e) {
                             y=0;
-                        }
-                        
-                        stokbarang=0;
-                        try {
-                            stokbarang=Double.parseDouble(tabMode.getValueAt(row,14).toString());
-                        } catch (Exception e) {
+                            try {
+                                y=Double.parseDouble(tabMode.getValueAt(row,0).toString());
+                            } catch (Exception e) {
+                                y=0;
+                            }
+
                             stokbarang=0;
-                        }
-                        
-                        if(stokbarang<y){
-                            JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
-                            tbDokter.setValueAt("",row,0);
-                        }
-
-                        if(kolom==1){    
                             try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,0).toString())*Double.parseDouble(tabMode.getValueAt(row,5).toString()), row,6);                   
+                                stokbarang=Double.parseDouble(tabMode.getValueAt(row,14).toString());
                             } catch (Exception e) {
-                                tabMode.setValueAt(0, row,6);                   
+                                stokbarang=0;
                             }
 
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,13);                                                     
-                            }              
-                        }else if(kolom==5){    
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,0).toString())*Double.parseDouble(tabMode.getValueAt(row,5).toString()), row,6);                   
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,6);                   
+                            if(stokbarang<y){
+                                JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
+                                tabMode.setValueAt("",row,0);
                             }
 
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,13);                                                     
-                            }              
-                        }else if(kolom==7){
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())*(Double.parseDouble(tabMode.getValueAt(row,7).toString())/100), row,8); 
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,8); 
-                                tabMode.setValueAt(0, row,13);
-                                tabMode.setValueAt(0, row,7); 
-                            }             
-                        }else if(kolom==8){
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,13);
-                            }                 
-                        }else if(kolom==9){
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,13);
-                            }              
-                        }else if(kolom==10){
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,13);
-                            }              
-                        }else if(kolom==11){
-                            try {
-                                tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
-                            } catch (Exception e) {
-                                tabMode.setValueAt(0, row,13);
-                            }              
+                            if(kolom==0){    
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,0).toString())*Double.parseDouble(tabMode.getValueAt(row,5).toString()), row,6);                   
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,6);                   
+                                }
+
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,13);                                                     
+                                }              
+                            }else if(kolom==1){    
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,0).toString())*Double.parseDouble(tabMode.getValueAt(row,5).toString()), row,6);                   
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,6);                   
+                                }
+
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,13);                                                     
+                                }              
+                            }else if(kolom==5){    
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,0).toString())*Double.parseDouble(tabMode.getValueAt(row,5).toString()), row,6);                   
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,6);                   
+                                }
+
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,13);                                                     
+                                }              
+                            }else if(kolom==7){
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())*(Double.parseDouble(tabMode.getValueAt(row,7).toString())/100), row,8); 
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,8); 
+                                    tabMode.setValueAt(0, row,13);
+                                    tabMode.setValueAt(0, row,7); 
+                                }             
+                            }else if(kolom==8){
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,13);
+                                }                 
+                            }else if(kolom==9){
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,13);
+                                }              
+                            }else if(kolom==10){
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,13);
+                                }              
+                            }else if(kolom==11){
+                                try {
+                                    tabMode.setValueAt(Double.parseDouble(tabMode.getValueAt(row,6).toString())-Double.parseDouble(tabMode.getValueAt(row,8).toString())+Double.parseDouble(tabMode.getValueAt(row,9).toString())+Double.parseDouble(tabMode.getValueAt(row,10).toString())+Double.parseDouble(tabMode.getValueAt(row,11).toString()), row,13);
+                                } catch (Exception e) {
+                                    tabMode.setValueAt(0, row,13);
+                                }              
+                            }
                         }
+                        if((kolom==16)||(kolom==17)){
+                            cariBatch();   
+                            getData2();
+                        }
+                    } catch (Exception e) {
+                        tabMode.setValueAt("",row,0);
+                        tabMode.setValueAt(0,row,6);
+                        tabMode.setValueAt(0,row,7);  
+                        tabMode.setValueAt(0,row,8); 
+                        tabMode.setValueAt(0,row,13);
+                        tabMode.setValueAt(0,row,14);
                     }
-                    if((kolom==16)||(kolom==17)){
-                        cariBatch();   
-                        getData2();
-                    }
-                } catch (Exception e) {
-                }  
+                }else{
+                    tabMode.setValueAt(0,row,6);
+                    tabMode.setValueAt(0,row,7);  
+                    tabMode.setValueAt(0,row,8); 
+                    tabMode.setValueAt(0,row,13);
+                    tabMode.setValueAt(0,row,14);
+                }
             }
             
             if(tbDetailObatRacikan.getSelectedRow()!= -1){
@@ -3522,10 +3548,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         if(verifikasi_penjualan_di_kasir.equals("No")){
             if(sukses==true){
                 Sequel.queryu("delete from tampjurnal");                    
-                Sequel.menyimpan("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN OBAT BEBAS','0','"+ttl+"'","Rekening");    
-                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())+"','CARA BAYAR','"+ttl+"','0'","Rekening"); 
-                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");    
-                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
+                Sequel.menyimpan2("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN OBAT BEBAS','0','"+ttl+"'","Rekening");    
+                Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())+"','CARA BAYAR','"+ttl+"','0'","Rekening"); 
+                Sequel.menyimpan2("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");    
+                Sequel.menyimpan2("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
                 sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PENJUALAN DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());     
                 if(sukses==true){
                     sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+NoNota.getText()+"','"+kdmem.getText()+"','"+nmmem.getText()+"','-',concat('"+Valid.SetTgl(Tgl.getSelectedItem()+"")+

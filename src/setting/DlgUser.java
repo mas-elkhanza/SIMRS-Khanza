@@ -146,7 +146,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Mapping Dokter DPJP VClaim","[L]Data Triase IGD","[L]Master Triase Skala 1","[L]Master Triase Skala 2","[L]Master Triase Skala 3","[L]Master Triase Skala 4",
                     "[L]Master Triase Skala 5","[L]Master Triase Pemeriksaan","[L]Master Triase Macam Kasus","[I]Rekap Permintaan Diet","[I]Daftar Pasien Ranap",
                     "[I]Daftar Pasien Ranap TNI","[F]Pengajuan Aset/Inventaris","[N]Item Apotek Per Jenis","[N]Item Apotek Per Kategori","[N]Item Apotek Per Golongan",
-                    "[N]Item Apotek Per Industri Farmasi"
+                    "[N]Item Apotek Per Industri Farmasi","[D]10 Obat Terbanyak Poli","[N]Pengajuan Aset Per Urgensi","[N]Pengajuan Aset Per Status",
+                    "[N]Pengajuan Aset Per Departemen","[F]Rekap Pengajuan Aset Departemen","[N]Pegawai Per Kelompok Jabatan","[N]Pegawai Per Resiko Kerja",
+                    "[N]Pegawai Per Emergency Index"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -299,6 +301,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -312,7 +315,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 542;i++) {
+        for (i = 0; i < 550;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1031,7 +1034,23 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==540){
                 column.setPreferredWidth(150);
             }else if(i==541){
-                column.setPreferredWidth(185);
+                column.setPreferredWidth(184);
+            }else if(i==542){
+                column.setPreferredWidth(135);
+            }else if(i==543){
+                column.setPreferredWidth(157);
+            }else if(i==544){
+                column.setPreferredWidth(151);
+            }else if(i==545){
+                column.setPreferredWidth(180);
+            }else if(i==546){
+                column.setPreferredWidth(193);
+            }else if(i==547){
+                column.setPreferredWidth(174);
+            }else if(i==548){
+                column.setPreferredWidth(145);
+            }else if(i==549){
+                column.setPreferredWidth(169);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1524,7 +1543,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2108,7 +2127,15 @@ public class DlgUser extends javax.swing.JDialog {
                     "item_apotek_jenis='"+tbUser.getValueAt(i,538).toString()+"',"+
                     "item_apotek_kategori='"+tbUser.getValueAt(i,539).toString()+"',"+
                     "item_apotek_golongan='"+tbUser.getValueAt(i,540).toString()+"',"+
-                    "item_apotek_industrifarmasi='"+tbUser.getValueAt(i,541).toString()+"'");
+                    "item_apotek_industrifarmasi='"+tbUser.getValueAt(i,541).toString()+"',"+
+                    "10_obat_terbanyak_poli='"+tbUser.getValueAt(i,542).toString()+"',"+
+                    "grafik_pengajuan_aset_urgensi='"+tbUser.getValueAt(i,543).toString()+"',"+
+                    "grafik_pengajuan_aset_status='"+tbUser.getValueAt(i,544).toString()+"',"+
+                    "grafik_pengajuan_aset_departemen='"+tbUser.getValueAt(i,545).toString()+"',"+
+                    "rekap_pengajuan_aset_departemen='"+tbUser.getValueAt(i,546).toString()+"',"+
+                    "grafik_kelompok_jabatanpegawai='"+tbUser.getValueAt(i,547).toString()+"',"+
+                    "grafik_resiko_kerjapegawai='"+tbUser.getValueAt(i,548).toString()+"',"+
+                    "grafik_emergency_indexpegawai='"+tbUser.getValueAt(i,549).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2731,7 +2758,15 @@ public class DlgUser extends javax.swing.JDialog {
                                     "item_apotek_jenis='"+tbUser.getValueAt(barisdicopy,538).toString()+"',"+
                                     "item_apotek_kategori='"+tbUser.getValueAt(barisdicopy,539).toString()+"',"+
                                     "item_apotek_golongan='"+tbUser.getValueAt(barisdicopy,540).toString()+"',"+
-                                    "item_apotek_industrifarmasi='"+tbUser.getValueAt(barisdicopy,541).toString()+"'");
+                                    "item_apotek_industrifarmasi='"+tbUser.getValueAt(barisdicopy,541).toString()+"',"+
+                                    "10_obat_terbanyak_poli='"+tbUser.getValueAt(barisdicopy,542).toString()+"',"+
+                                    "grafik_pengajuan_aset_urgensi='"+tbUser.getValueAt(barisdicopy,543).toString()+"',"+
+                                    "grafik_pengajuan_aset_status='"+tbUser.getValueAt(barisdicopy,544).toString()+"',"+
+                                    "grafik_pengajuan_aset_departemen='"+tbUser.getValueAt(barisdicopy,545).toString()+"',"+
+                                    "rekap_pengajuan_aset_departemen='"+tbUser.getValueAt(barisdicopy,546).toString()+"',"+
+                                    "grafik_kelompok_jabatanpegawai='"+tbUser.getValueAt(barisdicopy,547).toString()+"',"+
+                                    "grafik_resiko_kerjapegawai='"+tbUser.getValueAt(barisdicopy,548).toString()+"',"+
+                                    "grafik_emergency_indexpegawai='"+tbUser.getValueAt(barisdicopy,549).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3030,7 +3065,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase_igd,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
                         "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet,"+
                         "daftar_pasien_ranap,daftar_pasien_ranaptni,pengajuan_asetinventaris,item_apotek_jenis,item_apotek_kategori,"+
-                        "item_apotek_golongan,item_apotek_industrifarmasi from user order by AES_DECRYPT(id_user,'nur')");
+                        "item_apotek_golongan,item_apotek_industrifarmasi,10_obat_terbanyak_poli,grafik_pengajuan_aset_urgensi,"+
+                        "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen,rekap_pengajuan_aset_departemen,grafik_kelompok_jabatanpegawai,"+
+                        "grafik_resiko_kerjapegawai,grafik_emergency_indexpegawai from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3584,7 +3621,15 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("item_apotek_jenis"),
                                rs.getBoolean("item_apotek_kategori"),
                                rs.getBoolean("item_apotek_golongan"),
-                               rs.getBoolean("item_apotek_industrifarmasi")
+                               rs.getBoolean("item_apotek_industrifarmasi"),
+                               rs.getBoolean("10_obat_terbanyak_poli"),
+                               rs.getBoolean("grafik_pengajuan_aset_urgensi"),
+                               rs.getBoolean("grafik_pengajuan_aset_status"),
+                               rs.getBoolean("grafik_pengajuan_aset_departemen"),
+                               rs.getBoolean("rekap_pengajuan_aset_departemen"),
+                               rs.getBoolean("grafik_kelompok_jabatanpegawai"),
+                               rs.getBoolean("grafik_resiko_kerjapegawai"),
+                               rs.getBoolean("grafik_emergency_indexpegawai")
                             });
                         }   
                     } catch (Exception e) {
@@ -4127,7 +4172,15 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("item_apotek_jenis"),
                            rs.getBoolean("item_apotek_kategori"),
                            rs.getBoolean("item_apotek_golongan"),
-                           rs.getBoolean("item_apotek_industrifarmasi")
+                           rs.getBoolean("item_apotek_industrifarmasi"),
+                           rs.getBoolean("10_obat_terbanyak_poli"),
+                           rs.getBoolean("grafik_pengajuan_aset_urgensi"),
+                           rs.getBoolean("grafik_pengajuan_aset_status"),
+                           rs.getBoolean("grafik_pengajuan_aset_departemen"),
+                           rs.getBoolean("rekap_pengajuan_aset_departemen"),
+                           rs.getBoolean("grafik_kelompok_jabatanpegawai"),
+                           rs.getBoolean("grafik_resiko_kerjapegawai"),
+                           rs.getBoolean("grafik_emergency_indexpegawai")
                         });
                     }                                             
                  }

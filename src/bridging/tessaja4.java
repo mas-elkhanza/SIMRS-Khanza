@@ -5,6 +5,7 @@
  */
 package bridging;
 
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class tessaja4 {
     public static PcareApi api=new PcareApi();
     public static void tessaja() throws FileNotFoundException, IOException{
         prop.loadFromXML(new FileInputStream("setting/database.xml"));
-        System.out.println("X-cons-id:"+prop.getProperty("IDSISRUTE"));
+        System.out.println("X-cons-id:"+koneksiDB.IDSISRUTE());
 	System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString())); 
 	System.out.println("X-signature:"+api.getHmac()); 
 	System.out.println("Content-type:application/json");             

@@ -361,6 +361,7 @@
                 </Component>
                 <Component class="widget.TextBox" name="kdbar">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="kdbar" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[80, 23]"/>
@@ -423,6 +424,7 @@
                 </Component>
                 <Component class="widget.TextBox" name="kdjenis">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="kdjenis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[207, 23]"/>
@@ -581,6 +583,7 @@
             </Component>
             <Component class="widget.TextBox" name="KdPeg">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="KdPeg" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 23]"/>
@@ -597,7 +600,6 @@
             </Component>
             <Component class="widget.TextBox" name="Ruangan">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="Ruangan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[207, 23]"/>

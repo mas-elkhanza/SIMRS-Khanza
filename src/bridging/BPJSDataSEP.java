@@ -2562,7 +2562,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                     headers.add("X-Signature",api.getHmac());
                     URL = link+"/SEP/1.1/Update";	
@@ -2948,7 +2948,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 URL = link+"/Sep/updtglplg";	
@@ -3030,7 +3030,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 URL = link+"/Sep/pengajuanSEP";	
@@ -3138,7 +3138,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 URL = link+"/Sep/aprovalSEP";	
@@ -3216,7 +3216,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 URL = link+"/Rujukan/insert";	
@@ -3511,7 +3511,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 URL = link+"/SEP/"+NoSEP.getText();	
@@ -4320,7 +4320,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             URL = link+"/SEP/Delete";
@@ -4380,7 +4380,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             URL = link+"/SEP/1.1/insert";            
@@ -4469,7 +4469,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         /*try {
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                             headers.add("X-Signature",api.getHmac());
                             URL = link+"/Sep/updtglplg";	

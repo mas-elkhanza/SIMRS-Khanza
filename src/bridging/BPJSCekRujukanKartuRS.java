@@ -3889,7 +3889,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 URL = link+"/Sep/pengajuanSEP";
                 headers= new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
@@ -3934,7 +3934,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 URL = link+"/Sep/aprovalSEP";
                 headers= new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
@@ -5311,7 +5311,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             URL = link+"/Rujukan/RS/Peserta/"+nomorrujukan;
             headers= new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
 	    requestEntity = new HttpEntity(headers);
@@ -6277,7 +6277,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             
             headers= new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             URL = link+"/SEP/1.1/insert";
@@ -6362,41 +6362,10 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                      KdKecamatan.getText(),NmKecamatan.getText(),NoSKDP.getText(),KdDPJP.getText(),NmDPJP.getText()
                  })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
-                        /*try {
-                            URL = link+"/Sep/updtglplg";
-                            headers2= new HttpHeaders();
-                            headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                            headers2.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                            headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                            headers2.add("X-Signature",api.getHmac());
-                            requestJson ="{" +
-                                          "\"request\":" +
-                                             "{" +
-                                                "\"t_sep\":" +
-                                                   "{" +
-                                                    "\"noSep\":\""+response.asText()+"\"," +
-                                                    "\"tglPulang\":\""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                                                    "\"user\":\""+user+"\"" +                                            
-                                                   "}" +
-                                             "}" +
-                                         "}";
-                            requestEntity = new HttpEntity(requestJson,headers2);
-                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
-                            nameNode = root.path("metaData");
-                            System.out.println("code : "+nameNode.path("code").asText());
-                            System.out.println("message : "+nameNode.path("message").asText());
-                            response = root.path("response");
-                            if(nameNode.path("code").asText().equals("200")){*/
-                                Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
-                                     Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
-                                     response.asText()
-                                }); 
-                            /*}else{
-                                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                            }
-                        }catch (Exception ex) {
-                            System.out.println("Notifikasi Bridging : "+ex);
-                        }*/
+                        Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
+                             Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
+                             response.asText()
+                        }); 
                     }    
                     JOptionPane.showMessageDialog(null,"Proses Selesai...!");
                     if(!nosep.equals("")){

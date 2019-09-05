@@ -21,27 +21,27 @@
     <entry key="ALARMRSISRUTE">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
-    <entry key="SECRETKEYAPIBPJS">3oUEBAF783</entry>
-    <entry key="CONSIDAPIBPJS">1844</entry>
+    <entry key="SECRETKEYAPIBPJS">4NNwqTdoTqRShdDlorgE5A==</entry>
+    <entry key="CONSIDAPIBPJS">xpAVcYWj1J/dXthnAj4TZQ==</entry>
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
-    <entry key="SECRETKEYAPIAPLICARE">9yU9F682BF123123</entry>
-    <entry key="CONSIDAPIAPLICARE">3024123123</entry>
+    <entry key="SECRETKEYAPIAPLICARE">4NNwqTdoTqRShdDlorgE5A==</entry>
+    <entry key="CONSIDAPIAPLICARE">xpAVcYWj1J/dXthnAj4TZQ==</entry>
     <entry key="URLAPIPCARE">https://dvlp.bpjs-kesehatan.go.id:9081/pcare-rest-v3.0</entry>
-    <entry key="SECRETKEYAPIPCARE">7nR046993B</entry>
-    <entry key="CONSIDAPIPCARE">1223</entry>
-    <entry key="PASSPCARE">Iismedika123#</entry>
-    <entry key="USERPCARE">0151B113</entry>
+    <entry key="SECRETKEYAPIPCARE">XDsZgrgdYZ6W9yEhVJnmKw==</entry>
+    <entry key="CONSIDAPIPCARE">biB6o2K89ajom39B15pxFA==</entry>
+    <entry key="PASSPCARE">kcgPDAcWH2TvjVpugkF8lQ==</entry>
+    <entry key="USERPCARE">a0oyg+6WUShhCxivdNS8Zw==</entry>
     <entry key="DIVREGPCARE">REGIONAL V-JAWA TENGAH</entry>
     <entry key="KACABPCARE">SURAKARTA</entry>
     <entry key="URLAPISISRUTE">https://api.sisrute.kemkes.go.id</entry>
-    <entry key="IDSISRUTE">7303010</entry>
-    <entry key="PASSSISRUTE">12345</entry>
+    <entry key="IDSISRUTE">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="PASSSISRUTE">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
-    <entry key="IDSIRS">7303010</entry>
-    <entry key="PASSSIRS">12345171817</entry>
+    <entry key="IDSIRS">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="PASSSIRS">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="URLAPISITT">http://sitt.kemkes.go.id/webapisimrs/insert_simrs.php</entry>
-    <entry key="IDSITT">7303010</entry>
-    <entry key="PASSSITT">12345171817</entry>
+    <entry key="IDSITT">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="PASSSITT">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="KABUPATENSITT">12345</entry>
     <entry key="KAMARAKTIFRANAP"></entry>
     <entry key="DOKTERAKTIFKASIRRALAN"></entry>
@@ -58,13 +58,13 @@
     <entry key="CETAKRINCIANOBAT">no</entry>
     <entry key="AKTIFKANBILLINGPARSIAL">no</entry>
     <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/wsrs/xml.jsp</entry>
-    <entry key="USERDUKCAPILJAKARTA">WSRSIABK</entry>
-    <entry key="PASSDUKCAPILJAKARTA">R8ud!KSW5</entry>
+    <entry key="USERDUKCAPILJAKARTA">eYTbZ3SMrmsvkl4t8u0zrA==</entry>
+    <entry key="PASSDUKCAPILJAKARTA">iDrX7PhhkIwMup7YcS2RFg==</entry>
     <entry key="VAR1DUKCAPILJAKARTA">RSIABK</entry>
     <entry key="VAR2DUKCAPILJAKARTA">12</entry>
     <entry key="URLDUKCAPIL">http://172.16.160.128:8000/dukcapil/get_json/rsia_aceh/CALL_NIK</entry>
-    <entry key="USERDUKCAPIL">rsia</entry>
-    <entry key="PASSDUKCAPIL">123</entry>
+    <entry key="USERDUKCAPIL">yLT3/8b0KAb5QK1ueFkW7g==</entry>
+    <entry key="PASSDUKCAPIL">7kuCYBm26cREHaUoGVyXUA==</entry>
     <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
     <entry key="AKTIFKANTRACKSQL">no</entry>
 </properties>

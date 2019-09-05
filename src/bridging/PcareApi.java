@@ -1,5 +1,6 @@
 package bridging;
 
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
@@ -26,8 +27,8 @@ public class PcareApi {
     public PcareApi(){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            Key = prop.getProperty("SECRETKEYAPIPCARE");
-            Consid = prop.getProperty("CONSIDAPIPCARE");
+            Key = koneksiDB.SECRETKEYAPIPCARE();
+            Consid = koneksiDB.CONSIDAPIPCARE();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }        

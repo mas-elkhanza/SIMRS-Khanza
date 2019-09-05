@@ -1,5 +1,6 @@
 package bridging;
 
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
@@ -37,8 +38,8 @@ public class BPJSApiAplicare {
     public BPJSApiAplicare(){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-            Key = prop.getProperty("SECRETKEYAPIAPLICARE");
-            Consid = prop.getProperty("CONSIDAPIAPLICARE");
+            Key = koneksiDB.SECRETKEYAPIAPLICARE();
+            Consid = koneksiDB.CONSIDAPIAPLICARE();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

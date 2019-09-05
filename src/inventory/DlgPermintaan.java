@@ -566,14 +566,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf("permintaan_medis","?,?,?,?,?","No.Permintaan",5,new String[]{
+                if(Sequel.menyimpantf2("permintaan_medis","?,?,?,?,?","No.Permintaan",5,new String[]{
                         NoPermintaan.getText(),kdgudang.getText(),kdptg.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"Baru"
                     })==true){
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    if(Sequel.menyimpantf("detail_permintaan_medis","?,?,?,?,?","Detail Permintaan",5,new String[]{
+                                    if(Sequel.menyimpantf2("detail_permintaan_medis","?,?,?,?,?","Detail Permintaan",5,new String[]{
                                            NoPermintaan.getText(),
                                            tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
                                            tbDokter.getValueAt(i,0).toString(),

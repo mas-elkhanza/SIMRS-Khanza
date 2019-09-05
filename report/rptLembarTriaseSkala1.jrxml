@@ -42,26 +42,169 @@
 	<parameter name="tanggaltriase" class="java.sql.Date"/>
 	<parameter name="jamtriase" class="java.lang.String"/>
 	<parameter name="petugas" class="java.lang.String"/>
+	<parameter name="finger" class="java.lang.String"/>
+	<parameter name="tandavital" class="java.lang.String"/>
+	<parameter name="catatan" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan 
-from master_triase_pemeriksaan inner join master_triase_skala1 inner join data_triase_igddetail_skala1
-on master_triase_pemeriksaan.kode_pemeriksaan=master_triase_skala1.kode_pemeriksaan and 
-master_triase_skala1.kode_skala1=data_triase_igddetail_skala1.kode_skala1 where data_triase_igddetail_skala1.no_rawat= $P{norawat} 
-group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemeriksaan.kode_pemeriksaan]]>
+		<![CDATA[select * from temporary]]>
 	</queryString>
-	<field name="kode_pemeriksaan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="kode_pemeriksaan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="master_triase_pemeriksaan"/>
+	<field name="no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 	</field>
-	<field name="nama_pemeriksaan" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nama_pemeriksaan"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="master_triase_pemeriksaan"/>
+	<field name="temp1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp15" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp15"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp16" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp16"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp17"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp18" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp18"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp19" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp19"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp20" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp20"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp21" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp21"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp22" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp22"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp23" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp23"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp24" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp24"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp25" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp25"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp26" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp26"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp27" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp27"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp28" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp28"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp29" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp29"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp30" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp30"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp31" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp31"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp32" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp32"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp33" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp33"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp34" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp34"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp35" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp35"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp36" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp36"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
+	</field>
+	<field name="temp37" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp37"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="233" splitType="Stretch">
+		<band height="262" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="137" width="175" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="0be9cecd-64f2-4bc0-95e6-5a57df4ce7e8"/>
@@ -334,7 +477,9 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[Cara Datang]]></text>
 			</staticText>
 			<line>
-				<reportElement x="175" y="101" width="1" height="131" uuid="2943c41a-5b56-46fc-85b9-59e31805f4e1"/>
+				<reportElement x="175" y="101" width="1" height="161" uuid="2943c41a-5b56-46fc-85b9-59e31805f4e1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
@@ -406,7 +551,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="8" y="216" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="40d13bcb-4622-4890-af8e-97d276b72234"/>
+				<reportElement mode="Transparent" x="8" y="245" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="40d13bcb-4622-4890-af8e-97d276b72234"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -414,7 +559,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[KEBUTUHAN KHUSUS]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="180" y="216" width="370" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="85d337d6-3362-4949-bb47-d84b0a0253d1"/>
+				<reportElement mode="Transparent" x="180" y="245" width="370" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="85d337d6-3362-4949-bb47-d84b0a0253d1"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -422,15 +567,43 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<textFieldExpression><![CDATA[$P{kebutuhankhusus}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="1" width="1" height="231" uuid="c136f65e-f149-4c78-88b1-73c987593068"/>
+				<reportElement x="0" y="1" width="1" height="261" uuid="c136f65e-f149-4c78-88b1-73c987593068">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="555" y="1" width="1" height="231" uuid="a529f0f9-304c-4d86-a671-26fd487c5275"/>
+				<reportElement x="555" y="1" width="1" height="261" uuid="a529f0f9-304c-4d86-a671-26fd487c5275"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="217" width="162" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="7fa61a7b-0d9d-47af-a0fc-c4d5a754dc24">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TANDA VITAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="180" y="217" width="370" height="22" forecolor="#000000" backcolor="#F0F0DC" uuid="7f400d00-3efc-4c43-9e10-cedb46341788">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tandavital}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="241" width="555" height="1" uuid="59c2326f-db8f-4723-b778-14190698867e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 		</band>
@@ -441,15 +614,15 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 	<columnHeader>
 		<band height="15" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="201" y="0" width="354" height="15" forecolor="#FFFFFF" backcolor="#AA0000" uuid="12c5ba2f-f441-4a20-86f1-3141cf1e0bc2"/>
+				<reportElement mode="Opaque" x="176" y="0" width="379" height="15" forecolor="#FFFFFF" backcolor="#AA0000" uuid="12c5ba2f-f441-4a20-86f1-3141cf1e0bc2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[ IMMEDIATE]]></text>
+				<text><![CDATA[IMMEDIATE/SEGERA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="201" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="d1c45d95-f11e-47d2-9c20-36812068933a"/>
+				<reportElement mode="Opaque" x="0" y="0" width="175" height="15" forecolor="#000000" backcolor="#F0F0CC" uuid="d1c45d95-f11e-47d2-9c20-36812068933a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -469,7 +642,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="201" y="0" width="1" height="15" uuid="c5b64ba3-4f63-4edb-a0a8-5f6c7035e44e"/>
+				<reportElement x="175" y="0" width="1" height="15" uuid="c5b64ba3-4f63-4edb-a0a8-5f6c7035e44e"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
@@ -497,22 +670,77 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="16" splitType="Stretch">
+		<band height="15" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="2" y="0" width="168" height="10" uuid="64f36868-1442-4ba1-a9ad-3bfb3164ec74"/>
+				<reportElement mode="Opaque" x="181" y="0" width="374" height="15" forecolor="#FFFFFF" backcolor="#AA0000" uuid="25a7dd55-fd3f-4ec8-99b3-176e972a00f4">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="176" y="0" width="5" height="15" forecolor="#000000" backcolor="#AA0000" uuid="355d70da-f55d-45da-bf58-c67a454d8ba0">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="8" y="2" width="162" height="10" uuid="64f36868-1442-4ba1-a9ad-3bfb3164ec74"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_pemeriksaan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="0" width="1" height="15" uuid="b74b9ffc-0907-45fe-b5e3-50333fb816d3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="1" height="15" uuid="c4a304d7-957f-4ae1-8646-962a28907939">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="555" y="0" width="1" height="15" uuid="130a23a1-854d-4293-9e76-389d49ec7665">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="14" width="555" height="1" uuid="a75252dc-41ab-43b2-8b30-99cb8648f81e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<summary>
-		<band height="68" splitType="Stretch">
+		<band height="128" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
 				<reportElement mode="Opaque" x="176" y="0" width="379" height="15" forecolor="#FFFFFF" backcolor="#AA0000" uuid="a5a32d90-8204-4271-8866-b37f73c686a4"/>
@@ -531,7 +759,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[PLAN]]></text>
 			</staticText>
 			<line>
-				<reportElement x="175" y="0" width="1" height="67" uuid="71d7cde8-2405-462c-84e1-fa036b04fb7d">
+				<reportElement x="175" y="0" width="1" height="127" uuid="71d7cde8-2405-462c-84e1-fa036b04fb7d">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -559,7 +787,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="9" y="33" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="133d6b14-2040-4b68-a5a8-5aed58de2740"/>
+				<reportElement mode="Transparent" x="8" y="33" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="133d6b14-2040-4b68-a5a8-5aed58de2740"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -567,7 +795,9 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[Tanggal & Jam]]></text>
 			</staticText>
 			<textField pattern="MM-dd-yyyy">
-				<reportElement mode="Transparent" x="180" y="33" width="70" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ffee6f29-f294-48e8-aa61-d533598e06b9"/>
+				<reportElement mode="Transparent" x="180" y="33" width="45" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ffee6f29-f294-48e8-aa61-d533598e06b9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -575,7 +805,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<textFieldExpression><![CDATA[$P{tanggaltriase}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement mode="Transparent" x="252" y="33" width="80" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="42cc4b85-3dd8-4548-87a6-4ef3feaef947"/>
+				<reportElement mode="Transparent" x="227" y="33" width="80" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="42cc4b85-3dd8-4548-87a6-4ef3feaef947"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -589,7 +819,7 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="9" y="51" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="f6ea78da-8530-4d3f-a0e0-c7abc8ac3b27"/>
+				<reportElement mode="Transparent" x="8" y="74" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="f6ea78da-8530-4d3f-a0e0-c7abc8ac3b27"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -597,21 +827,23 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				<text><![CDATA[Nama Petugas]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="180" y="51" width="374" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="0d38c6ea-447e-4b8a-9eb8-6c25a094e0ef"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<reportElement mode="Transparent" x="180" y="74" width="230" height="50" forecolor="#000000" backcolor="#F0F0DC" uuid="0d38c6ea-447e-4b8a-9eb8-6c25a094e0ef"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{petugas}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="67" width="555" height="1" uuid="3fb3b8da-e6fd-4f7e-827c-29315f2c0957"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="127" width="556" height="1" uuid="3fb3b8da-e6fd-4f7e-827c-29315f2c0957">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="0" width="1" height="67" uuid="db5aac8b-84a0-4aba-8fdf-5b03ebeed26e">
+				<reportElement x="0" y="0" width="1" height="127" uuid="db5aac8b-84a0-4aba-8fdf-5b03ebeed26e">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -619,13 +851,45 @@ group by master_triase_pemeriksaan.kode_pemeriksaan order by master_triase_pemer
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="554" y="0" width="1" height="67" uuid="11ee52ae-4477-4bdb-8607-5bc9130bef4f">
+				<reportElement x="555" y="0" width="1" height="127" uuid="11ee52ae-4477-4bdb-8607-5bc9130bef4f">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<componentElement>
+				<reportElement x="430" y="70" width="114" height="56" isRemoveLineWhenBlank="true" uuid="1a2920de-bf6c-46ec-90bf-5a42a5e0bd3e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="68" width="555" height="1" uuid="f4cbb757-ac05-4a96-bde6-e6653df62601"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="8" y="52" width="162" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ef63177a-9fe7-4d21-a187-dbc0cda5fa77"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Catatan]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="180" y="52" width="370" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="c7b94489-8161-45a1-8a77-3b292c724916"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{catatan}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

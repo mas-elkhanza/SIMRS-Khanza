@@ -335,7 +335,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIAPLICARE());
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
 	    requestEntity = new HttpEntity(headers);

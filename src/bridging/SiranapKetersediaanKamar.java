@@ -187,7 +187,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = prop.getProperty("URLAPISIRS");
-            idrs=prop.getProperty("IDSIRS");
+            idrs=koneksiDB.IDSIRS();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }

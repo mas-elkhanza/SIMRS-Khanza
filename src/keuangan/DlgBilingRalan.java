@@ -4123,6 +4123,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 detailjs=0;
                 while(rscariralandokter.next()){
                     Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+rscariralandokter.getDouble("totaltarif_tindakandr");
+                    KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+rscariralandokter.getDouble("totalmaterial");
                     tamkur=0;
                     pstamkur=koneksi.prepareStatement(sqlpstamkur);
                     try {
@@ -4180,6 +4181,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 while(rscariralandrpr.next()){
                     Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+rscariralandrpr.getDouble("totaltarif_tindakandr");
                     Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+rscariralandrpr.getDouble("totaltarif_tindakanpr");
+                    KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+rscariralandrpr.getDouble("totalmaterial");
                     tamkur=0;
                     pstamkur=koneksi.prepareStatement(sqlpstamkur);
                     try{
@@ -4239,6 +4241,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 subttl=0;
                 while(rscariralanperawat.next()){
                     Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+rscariralanperawat.getDouble("totaltarif_tindakanpr");
+                    KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+rscariralanperawat.getDouble("totalmaterial");
                     tamkur=0;
                     pstamkur=koneksi.prepareStatement(sqlpstamkur);
                     try{

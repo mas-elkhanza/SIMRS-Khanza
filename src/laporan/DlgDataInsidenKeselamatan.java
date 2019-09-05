@@ -76,7 +76,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Object[] row={
             "No.Rawat","No.R.M.","Nama Pasien","Umur","Tgl.Kejadian","Jam Kejadian",
             "Tgl.Lapor","Jam Lapor","NIP","Petugas","Lokasi Insiden","Kode Insiden",
-            "Nama Insiden","Jenis Insiden","Dampak/Severity","Unit Terkait","Akibat",
+            "Nama Insiden","Jenis Insiden","Dampak/Severity","Unit Terkait","Kronologis","Akibat",
             "Tindakan Saat Insiden","Identifikasi Masalah","Rekomendasi & Tindak Lanjut"
         };
         tabMode=new DefaultTableModel(null,row){
@@ -88,7 +88,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(110);
@@ -130,6 +130,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==19){
                 column.setPreferredWidth(150);
+            }else if(i==20){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -139,10 +141,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         KodeInsiden.setDocument(new batasInput((byte)5).getKata(KodeInsiden));
         Lokasi.setDocument(new batasInput((int)60).getKata(Lokasi));
         UnitTerkait.setDocument(new batasInput((int)60).getKata(UnitTerkait));
-        Akibat.setDocument(new batasInput((int)100).getKata(Akibat));
-        Tindakan.setDocument(new batasInput((int)100).getKata(Tindakan));
-        Identifikasi.setDocument(new batasInput((int)100).getKata(Identifikasi));
-        TindakLanjut.setDocument(new batasInput((int)100).getKata(TindakLanjut));
+        Akibat.setDocument(new batasInput((int)150).getKata(Akibat));
+        Tindakan.setDocument(new batasInput((int)150).getKata(Tindakan));
+        Identifikasi.setDocument(new batasInput((int)150).getKata(Identifikasi));
+        TindakLanjut.setDocument(new batasInput((int)150).getKata(TindakLanjut));
+        Kronologis.setDocument(new batasInput((int)200).getKata(Kronologis));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -316,13 +319,15 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Identifikasi = new widget.TextBox();
         jLabel28 = new widget.Label();
         TindakLanjut = new widget.TextBox();
+        Kronologis = new widget.TextBox();
+        jLabel29 = new widget.Label();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         ppGrafikBatangKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerDampak.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikBatangKejadianIKPPerDampak.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikBatangKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerDampak.setText("Grafik Batang Kejadian IKP Per Dampak");
         ppGrafikBatangKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -338,7 +343,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikPieKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPieKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPieKejadianIKPPerDampak.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikPieKejadianIKPPerDampak.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikPieKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPieKejadianIKPPerDampak.setText("Grafik Pie Kejadian IKP Per Dampak");
         ppGrafikPieKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -354,7 +359,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerJenis.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikBatangKejadianIKPPerJenis.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikBatangKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerJenis.setText("Grafik Batang Kejadian IKP Per Jenis");
         ppGrafikBatangKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -370,7 +375,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikPieKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPieKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPieKejadianIKPPerJenis.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikPieKejadianIKPPerJenis.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikPieKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPieKejadianIKPPerJenis.setText("Grafik Pie Kejadian IKP Per Jenis");
         ppGrafikPieKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -386,7 +391,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerTanggal.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerTanggal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerTanggal.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikBatangKejadianIKPPerTanggal.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikBatangKejadianIKPPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerTanggal.setText("Grafik Batang Kejadian IKP Per Tanggal");
         ppGrafikBatangKejadianIKPPerTanggal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -402,7 +407,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerbulan.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerbulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerbulan.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikBatangKejadianIKPPerbulan.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikBatangKejadianIKPPerbulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerbulan.setText("Grafik Batang Kejadian IKP Per Bulan");
         ppGrafikBatangKejadianIKPPerbulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -418,7 +423,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
 
         ppGrafikBatangKejadianIKPPerTahun.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikBatangKejadianIKPPerTahun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikBatangKejadianIKPPerTahun.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikBatangKejadianIKPPerTahun.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikBatangKejadianIKPPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikBatangKejadianIKPPerTahun.setText("Grafik Batang Kejadian IKP Per Tahun");
         ppGrafikBatangKejadianIKPPerTahun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -436,7 +441,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -604,7 +609,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -618,7 +623,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -713,7 +718,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         TPasien.setBounds(361, 10, 424, 23);
 
         Kejadian.setForeground(new java.awt.Color(50, 70, 50));
-        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         Kejadian.setDisplayFormat("dd-MM-yyyy");
         Kejadian.setName("Kejadian"); // NOI18N
         Kejadian.setOpaque(false);
@@ -803,7 +808,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel17.setBounds(420, 40, 50, 23);
 
         Lapor.setForeground(new java.awt.Color(50, 70, 50));
-        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2019" }));
+        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         Lapor.setDisplayFormat("dd-MM-yyyy");
         Lapor.setName("Lapor"); // NOI18N
         Lapor.setOpaque(false);
@@ -859,6 +864,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(0, 70, 100, 23);
 
+        nip.setEditable(false);
         nip.setHighlighter(null);
         nip.setName("nip"); // NOI18N
         nip.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -899,12 +905,12 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(UnitTerkait);
-        UnitTerkait.setBounds(104, 130, 260, 23);
+        UnitTerkait.setBounds(104, 130, 280, 23);
 
         jLabel25.setText("Akibat :");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(401, 130, 60, 23);
+        jLabel25.setBounds(390, 160, 91, 23);
 
         Akibat.setHighlighter(null);
         Akibat.setName("Akibat"); // NOI18N
@@ -914,7 +920,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Akibat);
-        Akibat.setBounds(465, 130, 320, 23);
+        Akibat.setBounds(485, 160, 300, 23);
 
         btnInsiden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnInsiden.setMnemonic('2');
@@ -933,6 +939,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         FormInput.add(NmInsiden);
         NmInsiden.setBounds(176, 100, 349, 23);
 
+        KodeInsiden.setEditable(false);
         KodeInsiden.setHighlighter(null);
         KodeInsiden.setName("KodeInsiden"); // NOI18N
         KodeInsiden.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -961,7 +968,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel26.setText("Identifikasi :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(381, 160, 80, 23);
+        jLabel26.setBounds(0, 190, 100, 23);
 
         Tindakan.setHighlighter(null);
         Tindakan.setName("Tindakan"); // NOI18N
@@ -971,7 +978,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(104, 160, 260, 23);
+        Tindakan.setBounds(104, 160, 280, 23);
 
         jLabel27.setText("Tindakan Insiden :");
         jLabel27.setName("jLabel27"); // NOI18N
@@ -986,12 +993,12 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Identifikasi);
-        Identifikasi.setBounds(465, 160, 320, 23);
+        Identifikasi.setBounds(104, 190, 280, 23);
 
         jLabel28.setText("Tindak Lanjut :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(0, 190, 100, 23);
+        jLabel28.setBounds(390, 190, 91, 23);
 
         TindakLanjut.setHighlighter(null);
         TindakLanjut.setName("TindakLanjut"); // NOI18N
@@ -1001,7 +1008,22 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(TindakLanjut);
-        TindakLanjut.setBounds(104, 190, 260, 23);
+        TindakLanjut.setBounds(485, 190, 300, 23);
+
+        Kronologis.setHighlighter(null);
+        Kronologis.setName("Kronologis"); // NOI18N
+        Kronologis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KronologisKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kronologis);
+        Kronologis.setBounds(485, 130, 300, 23);
+
+        jLabel29.setText("Kronologis :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(390, 130, 91, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1065,11 +1087,13 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             Valid.textKosong(Identifikasi,"Identifikasi Masalah");
         }else if(TindakLanjut.getText().trim().equals("")){
             Valid.textKosong(TindakLanjut,"Rekomendasi & Tindak Lanjut");
+        }else if(Kronologis.getText().trim().equals("")){
+            Valid.textKosong(Kronologis,"Kronologis");
         }else{
-            if(Sequel.menyimpantf("insiden_keselamatan_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
+            if(Sequel.menyimpantf("insiden_keselamatan_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Kejadian.getSelectedItem()+""),JamKejadian.getSelectedItem()+":"+MenitKejadian.getSelectedItem()+":"+DetikKejadian.getSelectedItem(),
                 Valid.SetTgl(Lapor.getSelectedItem()+""),JamLapor.getSelectedItem()+":"+MenitLapor.getSelectedItem()+":"+DetikLapor.getSelectedItem(),KodeInsiden.getText(),
-                nip.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText()
+                nip.getText(),Lokasi.getText(),Kronologis.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText()
             })==true){
                 tampil();
                 emptTeks();
@@ -1139,11 +1163,13 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             Valid.textKosong(Identifikasi,"Identifikasi Masalah");
         }else if(TindakLanjut.getText().trim().equals("")){
             Valid.textKosong(TindakLanjut,"Rekomendasi & Tindak Lanjut");
+        }else if(Kronologis.getText().trim().equals("")){
+            Valid.textKosong(Kronologis,"Kronologis");
         }else{         
-            Sequel.mengedit("insiden_keselamatan_pasien","tgl_kejadian=? and jam_kejadian=? and no_rawat=?","no_rawat=?,tgl_kejadian=?,jam_kejadian=?,tgl_lapor=?,jam_lapor=?,kode_insiden=?,nip=?,lokasi=?,unit_terkait=?,akibat=?,tindakan_insiden=?,identifikasi_masalah=?,rtl=?",16,new String[]{
+            Sequel.mengedit("insiden_keselamatan_pasien","tgl_kejadian=? and jam_kejadian=? and no_rawat=?","no_rawat=?,tgl_kejadian=?,jam_kejadian=?,tgl_lapor=?,jam_lapor=?,kode_insiden=?,nip=?,lokasi=?,unit_terkait=?,akibat=?,tindakan_insiden=?,identifikasi_masalah=?,rtl=?,kronologis=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Kejadian.getSelectedItem()+""),JamKejadian.getSelectedItem()+":"+MenitKejadian.getSelectedItem()+":"+DetikKejadian.getSelectedItem(),
                 Valid.SetTgl(Lapor.getSelectedItem()+""),JamLapor.getSelectedItem()+":"+MenitLapor.getSelectedItem()+":"+DetikLapor.getSelectedItem(),KodeInsiden.getText(),
-                nip.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText(),
+                nip.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText(),Kronologis.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),4).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             });
@@ -1326,11 +1352,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void UnitTerkaitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitTerkaitKeyPressed
-        Valid.pindah(evt,KodeInsiden,Akibat);
+        Valid.pindah(evt,KodeInsiden,Kronologis);
     }//GEN-LAST:event_UnitTerkaitKeyPressed
 
     private void AkibatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkibatKeyPressed
-        Valid.pindah(evt,UnitTerkait,Tindakan);
+        Valid.pindah(evt,Tindakan,Identifikasi);
     }//GEN-LAST:event_AkibatKeyPressed
 
     private void btnInsidenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsidenActionPerformed
@@ -1356,11 +1382,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_KodeInsidenKeyPressed
 
     private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
-        Valid.pindah(evt,Akibat,Identifikasi);
+        Valid.pindah(evt,Kronologis,Akibat);
     }//GEN-LAST:event_TindakanKeyPressed
 
     private void IdentifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdentifikasiKeyPressed
-        Valid.pindah(evt,Tindakan,TindakLanjut);
+        Valid.pindah(evt,Akibat,TindakLanjut);
     }//GEN-LAST:event_IdentifikasiKeyPressed
 
     private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
@@ -1535,6 +1561,10 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         cf.setVisible(true); 
     }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerTahunActionPerformed
 
+    private void KronologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KronologisKeyPressed
+        Valid.pindah(evt,UnitTerkait,Tindakan);
+    }//GEN-LAST:event_KronologisKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1576,6 +1606,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.TextBox Jenis;
     private widget.Tanggal Kejadian;
     private widget.TextBox KodeInsiden;
+    private widget.TextBox Kronologis;
     private widget.Label LCount;
     private widget.Tanggal Lapor;
     private widget.TextBox Lokasi;
@@ -1606,6 +1637,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.Label jLabel26;
     private widget.Label jLabel27;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1635,7 +1667,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 "insiden_keselamatan_pasien.nip,petugas.nama,insiden_keselamatan_pasien.lokasi,"+
                 "insiden_keselamatan_pasien.kode_insiden,insiden_keselamatan.nama_insiden,"+
                 "insiden_keselamatan.jenis_insiden,insiden_keselamatan.dampak,insiden_keselamatan_pasien.unit_terkait,"+
-                "insiden_keselamatan_pasien.akibat,insiden_keselamatan_pasien.tindakan_insiden,"+
+                "insiden_keselamatan_pasien.kronologis,insiden_keselamatan_pasien.akibat,insiden_keselamatan_pasien.tindakan_insiden,"+
                 "insiden_keselamatan_pasien.identifikasi_masalah,insiden_keselamatan_pasien.rtl "+
                 "from insiden_keselamatan_pasien inner join reg_periksa inner join pasien "+
                 "inner join insiden_keselamatan inner join petugas on insiden_keselamatan_pasien.no_rawat=reg_periksa.no_rawat "+
@@ -1652,6 +1684,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan.jenis_insiden like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan.dampak like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.unit_terkait like ? or "+
+                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.kronologis like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.akibat like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.tindakan_insiden like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.identifikasi_masalah like ? or "+
@@ -1702,6 +1735,9 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 ps.setString(43,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(44,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(45,"%"+TCari.getText()+"%");
+                ps.setString(46,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(47,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(48,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
@@ -1711,7 +1747,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                         rs.getString(10),rs.getString(11),rs.getString(12),
                         rs.getString(13),rs.getString(14),rs.getString(15),
                         rs.getString(16),rs.getString(17),rs.getString(18),
-                        rs.getString(19),rs.getString(20),rs.getString(21)
+                        rs.getString(19),rs.getString(20),rs.getString(21),
+                        rs.getString(22)
                     });
                 }
             } catch (Exception e) {
@@ -1740,6 +1777,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Dampak.setText("");
         Lokasi.setText("");
         UnitTerkait.setText("");
+        Kronologis.setText("");
         Akibat.setText("");
         Tindakan.setText("");
         TindakLanjut.setText("");
@@ -1768,10 +1806,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             Jenis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Dampak.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             UnitTerkait.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Akibat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Identifikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            TindakLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Kronologis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Akibat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Identifikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            TindakLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Valid.SetTgl(Kejadian,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             Valid.SetTgl(Lapor,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());            
         }

@@ -81,9 +81,9 @@ public final class DlgPembayaranRalanPerHari extends javax.swing.JDialog {
                         "group by reg_periksa.tgl_registrasi");
             ps= koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab "+
-                        "from reg_periksa inner join pasien inner join penjab inner join dokter inner join nota_jalan on "+
-                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rawat=nota_jalan.no_rawat "+
-                        "where reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and reg_periksa.tgl_registrasi=? ");
+                        "from reg_periksa inner join pasien inner join penjab inner join dokter on "+
+                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_dokter=dokter.kd_dokter  "+
+                        "where reg_periksa.status_lanjut='Ralan' and reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and reg_periksa.tgl_registrasi=? ");
             ps2=koneksi.prepareStatement(
                         "select billing.totalbiaya,billing.status from billing where billing.no_rawat=?");
         } catch (Exception e) {

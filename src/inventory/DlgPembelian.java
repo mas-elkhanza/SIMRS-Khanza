@@ -367,7 +367,7 @@ public class DlgPembelian extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -390,7 +390,7 @@ public class DlgPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -676,6 +676,7 @@ public class DlgPembelian extends javax.swing.JDialog {
         panelisi3.add(label13);
         label13.setBounds(305, 40, 100, 23);
 
+        kdsup.setEditable(false);
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
         kdsup.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -692,6 +693,7 @@ public class DlgPembelian extends javax.swing.JDialog {
         panelisi3.add(label16);
         label16.setBounds(305, 10, 100, 23);
 
+        kdptg.setEditable(false);
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
         kdptg.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -746,6 +748,7 @@ public class DlgPembelian extends javax.swing.JDialog {
         panelisi3.add(label20);
         label20.setBounds(305, 70, 100, 23);
 
+        kdgudang.setEditable(false);
         kdgudang.setName("kdgudang"); // NOI18N
         kdgudang.setPreferredSize(new java.awt.Dimension(80, 23));
         kdgudang.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -876,8 +879,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }  
                         if(sukses==true){
                             Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Obat from set_akun"),"PEMBELIAN",""+(ttl+ppn),"0"});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn)}); 
+                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Obat from set_akun"),"PEMBELIAN",""+(ttl+ppn),"0"});
+                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn)}); 
                             sukses=jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","PEMBELIAN DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());  
                         }
                     }else{
@@ -1448,16 +1451,27 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void getData(){        
         row=tbDokter.getSelectedRow();
-        if(row!= -1){              
-            try {
-                if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);  
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);    
-                } 
-            } catch (Exception e) {
+        if(row!= -1){ 
+            if(!tbDokter.getValueAt(row,0).toString().equals("")){
+                try {
+                    if(Double.parseDouble(tbDokter.getValueAt(row,0).toString())>0){                        
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);  
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);    
+                    } 
+                } catch (Exception e) {
+                    tbDokter.setValueAt("", row,0);
+                    tbDokter.setValueAt(0, row,8);
+                    tbDokter.setValueAt(0, row,9);
+                    tbDokter.setValueAt(0, row,10);
+                    tbDokter.setValueAt(0, row,11);           
+                }
+            }else{
                 tbDokter.setValueAt(0, row,8);                
-                tbDokter.setValueAt(0, row,11);           
+                tbDokter.setValueAt(0, row,9);               
+                tbDokter.setValueAt(0, row,10);               
+                tbDokter.setValueAt(0, row,11);   
             }
+                
         }
                 
         ttl=0;sbttl=0;ppn=0;ttldisk=0;

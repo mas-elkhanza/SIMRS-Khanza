@@ -236,7 +236,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(50,50,50));
+        ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Permintaan Barang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -252,7 +252,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
 
         ppDisetujui.setBackground(new java.awt.Color(255, 255, 254));
         ppDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDisetujui.setForeground(new java.awt.Color(50,50,50));
+        ppDisetujui.setForeground(new java.awt.Color(50, 50, 50));
         ppDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDisetujui.setText("Disetujui");
         ppDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -268,7 +268,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
 
         ppTidakDisetujui.setBackground(new java.awt.Color(255, 255, 254));
         ppTidakDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTidakDisetujui.setForeground(new java.awt.Color(50,50,50));
+        ppTidakDisetujui.setForeground(new java.awt.Color(50, 50, 50));
         ppTidakDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTidakDisetujui.setText("Tidak Disetujui");
         ppTidakDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -291,7 +291,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -433,6 +433,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         panelisi4.add(label17);
         label17.setBounds(325, 10, 60, 23);
 
+        kdbar.setEditable(false);
         kdbar.setName("kdbar"); // NOI18N
         kdbar.setPreferredSize(new java.awt.Dimension(80, 23));
         kdbar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -467,6 +468,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         panelisi4.add(label7);
         label7.setBounds(0, 10, 42, 23);
 
+        kdjenis.setEditable(false);
         kdjenis.setName("kdjenis"); // NOI18N
         kdjenis.setPreferredSize(new java.awt.Dimension(207, 23));
         kdjenis.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -548,6 +550,7 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         panelisi3.add(label13);
         label13.setBounds(305, 40, 110, 23);
 
+        KdPeg.setEditable(false);
         KdPeg.setName("KdPeg"); // NOI18N
         KdPeg.setPreferredSize(new java.awt.Dimension(80, 23));
         KdPeg.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -558,7 +561,6 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
         panelisi3.add(KdPeg);
         KdPeg.setBounds(419, 40, 80, 23);
 
-        Ruangan.setEditable(false);
         Ruangan.setName("Ruangan"); // NOI18N
         Ruangan.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(Ruangan);
