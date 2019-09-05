@@ -7728,7 +7728,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="04/09/2019"/>
+            <StringItem index="0" value="05/09/2019"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -8913,10 +8913,10 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fd" green="fe" red="ff" type="rgb"/>
+          <Color blue="fe" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="d7" red="eb" type="rgb"/>
+          <Color blue="d0" green="d7" red="fa" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -9369,10 +9369,10 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="d7" red="eb" type="rgb"/>
+          <Color blue="d0" green="d7" red="fa" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f9" green="fa" red="fb" type="rgb"/>
+          <Color blue="fa" green="fb" red="fb" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>

@@ -1143,6 +1143,8 @@ public class DlgPiutang extends javax.swing.JDialog {
             Valid.textKosong(kdbar,"barang");
         }else if(Jmljual.getText().trim().equals("")||Jmljual.getText().trim().equals("0")){
             Valid.textKosong(Jmljual,"jumlah barang");
+        }else if(Disc.getText().trim().equals("")||Bsrdisc.getText().trim().equals("")){
+            Valid.textKosong(kdbar,"barang");
         }else{            
             Sequel.menyimpan("tamppiutang","'"+kdbar.getText()+"','"+nmbar.getText()+"','"+satuanbar.getText()+"','"+HrgJual.getText()+"','"+HrgBeli.getText()+"','"+
                              Jmljual.getText()+"','"+subtotal.getText()+"','"+Disc.getText()+"','"+Bsrdisc.getText()+"','"+Total.getText()+"','"+NoBatch.getText()+"','"+Kadaluwarsa.getText()+"','"+akses.getkode()+"'",
@@ -1699,22 +1701,68 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         if(!HrgJual.getText().trim().equals("")){
             hargajual=Double.parseDouble(HrgJual.getText());
         }
-        if(!Tambah.getText().trim().equals("")){
-            tambah=Double.parseDouble(Tambah.getText());
+        
+        try{
+            if(!Tambah.getText().trim().equals("")){
+                tambah=Double.parseDouble(Tambah.getText());
+            }
+        } catch (Exception e) {
+            tambah=0;
+            Tambah.setText("0");
+            if(e.toString().contains("java.lang.NumberFormatException")){
+                JOptionPane.showMessageDialog(null,"Perhatikan format angka yang dipakai oleh komputer..!!");
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat menghitung tambah...!!");
+            }
         }
-        if(!Kurang.getText().trim().equals("")){
-            kurang=Double.parseDouble(Kurang.getText());
+        
+        try{
+            if(!Kurang.getText().trim().equals("")){
+                kurang=Double.parseDouble(Kurang.getText());
+            }
+        } catch (Exception e) {
+            kurang=0;
+            Kurang.setText("0");
+            if(e.toString().contains("java.lang.NumberFormatException")){
+                JOptionPane.showMessageDialog(null,"Perhatikan format angka yang dipakai oleh komputer..!!");
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat menghitung kurang...!!");
+            }
         }
-        if(!Jmljual.getText().trim().equals("")) {
-            jumlah=Double.parseDouble(Jmljual.getText());        
-        }          
+        
+        try {
+            if(!Jmljual.getText().trim().equals("")) {
+                jumlah=Double.parseDouble(Jmljual.getText());        
+            } 
+        } catch (Exception e) {
+            jumlah=0;
+            Jmljual.setText("0");
+            if(e.toString().contains("java.lang.NumberFormatException")){
+                JOptionPane.showMessageDialog(null,"Perhatikan format angka yang dipakai oleh komputer..!!");
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat menghitung jumlah...!!");
+            }
+        }
+                     
         subtotal.setText(Double.toString((hargajual+tambah-kurang)*jumlah)); 
         if(!Stok.getText().trim().equals("")) {
             stok=Double.parseDouble(Stok.getText());        
-        }        
-        if(!Bsrdisc.getText().trim().equals("")) {
-            diskon=Double.parseDouble(Bsrdisc.getText()); 
+        } 
+        
+        try{
+            if(!Bsrdisc.getText().trim().equals("")) {
+                diskon=Double.parseDouble(Bsrdisc.getText()); 
+            }
+        } catch (Exception e) {
+            diskon=0;
+            Bsrdisc.setText("0");
+            if(e.toString().contains("java.lang.NumberFormatException")){
+                JOptionPane.showMessageDialog(null,"Perhatikan format angka yang dipakai oleh komputer..!!");
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat menghitung besar diskon...!!");
+            }
         }
+        
         Total.setText(Double.toString(Double.parseDouble(subtotal.getText())-diskon));    
         if(!UangMuka.getText().trim().equals("")){
            Sisa.setText(Double.toString(Double.parseDouble(subtotal.getText())-Double.parseDouble(UangMuka.getText())));   
@@ -1723,7 +1771,17 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     private void isDiskon(){
         if(!Disc.getText().trim().equals("")) {
-            Bsrdisc.setText(Double.toString((Double.parseDouble(Disc.getText())/100)*Double.parseDouble(subtotal.getText()))); 
+            try {
+                Bsrdisc.setText(Double.toString((Double.parseDouble(Disc.getText())/100)*Double.parseDouble(subtotal.getText()))); 
+            } catch (Exception e) {
+                Disc.setText("0");
+                Bsrdisc.setText("0");
+                if(e.toString().contains("java.lang.NumberFormatException")){
+                    JOptionPane.showMessageDialog(null,"Perhatikan format angka yang dipakai oleh komputer..!!");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat menghitung diskon...!!");
+                }
+            }   
         }        
     }
    
