@@ -92,7 +92,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
         kdjenis.setDocument(new batasInput((byte)3).getKata(kdjenis));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -286,7 +286,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapus.setForeground(new java.awt.Color(50,50,50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Stok Keluar");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -309,7 +309,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -913,7 +913,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       Sequel.queryu("delete from tampjurnal");
                       Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Medis from set_akun"),"PERSEDIAAN BARANG",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'"),"0"});
                       Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Medis from set_akun"),"KONTRA PERSEDIAAN BARANG","0",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'")}); 
-                      jur.simpanJurnal(rs.getString("no_keluar"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP");
+                      jur.simpanJurnal(rs.getString("no_keluar"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP"+", OLEH "+akses.getkode());
                   }         
                   Sequel.queryu("delete from pengeluaran_obat_bhp where no_keluar='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"'");            
                   tampil();

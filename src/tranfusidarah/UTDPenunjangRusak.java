@@ -116,7 +116,7 @@ public class UTDPenunjangRusak extends javax.swing.JDialog {
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         TCari2.setDocument(new batasInput((byte)100).getKata(TCari2));    
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -251,12 +251,11 @@ public class UTDPenunjangRusak extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
+        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setIconTextGap(8);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
         ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
@@ -275,13 +274,13 @@ public class UTDPenunjangRusak extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ BHP Non Medis Rusak ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ BHP Non Medis Rusak ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabSetting.setBackground(new java.awt.Color(255, 255, 253));
         TabSetting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabSetting.setForeground(new java.awt.Color(70, 70, 70));
+        TabSetting.setForeground(new java.awt.Color(50,50,50));
         TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSetting.setName("TabSetting"); // NOI18N
         TabSetting.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -310,7 +309,6 @@ public class UTDPenunjangRusak extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -495,7 +493,6 @@ public class UTDPenunjangRusak extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -516,7 +513,7 @@ public class UTDPenunjangRusak extends javax.swing.JDialog {
         panelisi4.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -530,7 +527,7 @@ public class UTDPenunjangRusak extends javax.swing.JDialog {
         panelisi4.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

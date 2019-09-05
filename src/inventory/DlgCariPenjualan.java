@@ -138,7 +138,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         kdsat.setDocument(new batasInput((byte)3).getKata(kdsat));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -349,12 +349,12 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         LoadHTML1.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                 ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML1.setDocument(doc);
@@ -419,7 +419,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppCetakNota.setBackground(new java.awt.Color(255, 255, 254));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCetakNota.setForeground(new java.awt.Color(70, 70, 70));
+        ppCetakNota.setForeground(new java.awt.Color(50,50,50));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCetakNota.setText("Cetak Ulang Nota");
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -435,7 +435,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapus.setForeground(new java.awt.Color(50,50,50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Penjualan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -451,7 +451,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppVerif.setBackground(new java.awt.Color(255, 255, 254));
         ppVerif.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerif.setForeground(new java.awt.Color(70, 70, 70));
+        ppVerif.setForeground(new java.awt.Color(50,50,50));
         ppVerif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerif.setText("Verifikasi");
         ppVerif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -474,7 +474,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penjualan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penjualan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -793,7 +793,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1067,18 +1067,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     File g = new File("filepenjualan.css");            
                     BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                     bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                        ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                         ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
-                        ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                        ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
                     );
                     bg.close();
 
                     File f = new File("LaporanPenjualan.html");            
                     BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML1.getText().replaceAll("<head>","<head><link href=\"filepenjualan.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                    bw.write(LoadHTML1.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"filepenjualan.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                             "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
@@ -1192,7 +1193,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           Sequel.menyimpan("tampjurnal","'"+rs.getString("kd_rek")+"','KAS DI TANGAN','0','"+ttljual+"'","Rekening"); 
                           Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");    
                           Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");                              
-                          jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase());
+                          jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
                           Sequel.queryu("delete from tagihan_sadewa where no_nota='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"'");
                       }                    
                   }          
@@ -1271,7 +1272,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                              Sequel.menyimpan("tampjurnal","'"+rs.getString("kd_rek")+"','KAS DI TANGAN','"+ttljual+"','0'","Rekening"); 
                              Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");    
                              Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
-                             jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase());
+                             jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
                              Sequel.mengedit("penjualan","nota_jual=?","status='Sudah Dibayar'",1,new String[]{rs.getString("nota_jual")});
                              Sequel.menyimpan("tagihan_sadewa","'"+rs.getString("nota_jual")+"','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"','-',concat('"+rs.getString("tgl_jual")+
                                     "',' ',CURTIME()),'Pelunasan','"+ttljual+"','"+ttljual+"','Sudah','"+akses.getkode()+"'","No.Nota");                        

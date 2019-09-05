@@ -438,7 +438,7 @@ public class DlgBarang extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });    
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -557,7 +557,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         ppBarcode.setBackground(new java.awt.Color(255, 255, 254));
         ppBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBarcode.setForeground(new java.awt.Color(70, 70, 70));
+        ppBarcode.setForeground(new java.awt.Color(50,50,50));
         ppBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBarcode.setText("Barcode");
         ppBarcode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -573,7 +573,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         ppBarcodeItem.setBackground(new java.awt.Color(255, 255, 254));
         ppBarcodeItem.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBarcodeItem.setForeground(new java.awt.Color(70, 70, 70));
+        ppBarcodeItem.setForeground(new java.awt.Color(50,50,50));
         ppBarcodeItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBarcodeItem.setText("Barcode Perbarang");
         ppBarcodeItem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -589,7 +589,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         ppStok.setBackground(new java.awt.Color(255, 255, 254));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok.setForeground(new java.awt.Color(70, 70, 70));
+        ppStok.setForeground(new java.awt.Color(50,50,50));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -605,7 +605,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         ppStok2.setBackground(new java.awt.Color(255, 255, 254));
         ppStok2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok2.setForeground(new java.awt.Color(70, 70, 70));
+        ppStok2.setForeground(new java.awt.Color(50,50,50));
         ppStok2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok2.setText("Tampilkan Stok Per Lokasi");
         ppStok2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -621,7 +621,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(70, 70, 70));
+        MnRestore.setForeground(new java.awt.Color(50,50,50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -644,7 +644,7 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1946,16 +1946,28 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeBarang.jasper", "report", "::[ Data Barang ]::", 
-                    "select databarang.kode_brng  "
-                    + " from databarang inner join kodesatuan inner join jenis "
+                   "select databarang.kode_brng, databarang.nama_brng, "
+                    + " databarang.kode_sat,kodesatuan.satuan,databarang.letak_barang, databarang.h_beli,"
+                    + " databarang.ralan,databarang.kelas1,databarang.kelas2,databarang.kelas3,"
+                    + " databarang.utama,databarang.vip,databarang.vvip,databarang.beliluar,databarang.jualbebas,"
+                    + " databarang.karyawan,databarang.stokminimal, databarang.kdjns,"
+                    + " jenis.nama,kapasitas,databarang.expire,databarang.kode_industri,industrifarmasi.nama_industri, "
+                    + " databarang.kode_kategori,kategori_barang.nama as kategori,databarang.kode_golongan,golongan_barang.nama as golongan "
+                    + " from databarang inner join kodesatuan inner join jenis inner join industrifarmasi inner join golongan_barang inner join kategori_barang "
                     + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
-                    + " where databarang.kode_brng like '%" + TCari.getText().trim() + "%' or "
-                    + " databarang.nama_brng like '%" + TCari.getText().trim() + "%' or "
-                    + " databarang.kode_sat like '%" + TCari.getText().trim() + "%' or "
-                    + " kodesatuan.satuan like '%" + TCari.getText().trim() + "%' or "
-                    + " databarang.letak_barang like '%" + TCari.getText().trim() + "%' or "                    + " databarang.stokminimal like '%" + TCari.getText().trim() + "%' or "
-                    + " databarang.kdjns like '%" + TCari.getText().trim() + "%' or "
-                    + " jenis.nama like '%" + TCari.getText().trim() + "%'  order by databarang.nama_brng",param);
+                    + " and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "
+                    + " and databarang.kode_industri=industrifarmasi.kode_industri "
+                    + " where databarang.status='1' and databarang.kode_brng like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and databarang.nama_brng like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and databarang.kode_sat like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and kodesatuan.satuan like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and databarang.letak_barang like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and databarang.kdjns like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and jenis.nama like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and databarang.kode_industri like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and kategori_barang.nama like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and golongan_barang.nama like '%" + TCari.getText().trim() + "%' or "
+                    + " databarang.status='1' and industrifarmasi.nama_industri like '%" + TCari.getText().trim() + "%' order by databarang.nama_brng",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBarcodeBtnPrintActionPerformed

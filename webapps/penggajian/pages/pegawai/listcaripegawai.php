@@ -47,66 +47,77 @@
             $awal=isset($_GET['awal'])?$_GET['awal']:NULL;
             $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
             if (empty($awal)) $awal=0;
-            $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
-                    npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
-                    indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,photo,no_ktp from pegawai
-                     where
-                     nik like '%".$keyword."%' or
-                     nama like '%".$keyword."%' or
-                     jk like '%".$keyword."%' or
-                     jbtn like '%".$keyword."%' or
-                     jnj_jabatan like '%".$keyword."%' or
-                     departemen like '%".$keyword."%' or
-                     bidang like '%".$keyword."%' or
-                     stts_wp like '%".$keyword."%' or
-                     stts_kerja like '%".$keyword."%' or
-                     npwp like '%".$keyword."%' or
-                     pendidikan like '%".$keyword."%' or
-                     gapok like '%".$keyword."%' or
-                     tmp_lahir like '%".$keyword."%' or
-                     tgl_lahir like '%".$keyword."%' or
-                     alamat like '%".$keyword."%' or
-                     kota like '%".$keyword."%' or
-                     mulai_kerja like '%".$keyword."%' or
-                     ms_kerja like '%".$keyword."%' or
-                     indexins like '%".$keyword."%' or
-                     bpd like '%".$keyword."%' or
-                     rekening like '%".$keyword."%' or
-                     stts_aktif like '%".$keyword."%' or
-                     no_ktp like '%".$keyword."%'
-                     order by id ASC ";
+            $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jk,pegawai.jbtn,jnj_jabatan.nama as jnj_jabatan,kelompok_jabatan.nama_kelompok,
+                    resiko_kerja.nama_resiko,departemen.nama as departemen,pegawai.bidang,emergency_index.nama_emergency,stts_wp.ktg as stts_wp,
+                    stts_kerja.ktg as stts_kerja,pegawai.npwp,pegawai.pendidikan,pegawai.gapok,pegawai.tmp_lahir,pegawai.tgl_lahir,
+                    pegawai.alamat,pegawai.kota,pegawai.mulai_kerja,pegawai.ms_kerja,pegawai.indexins,pegawai.bpd,pegawai.rekening,pegawai.stts_aktif,
+                    pegawai.wajibmasuk,pegawai.mulai_kontrak,pegawai.photo,pegawai.no_ktp from pegawai inner join jnj_jabatan inner join departemen 
+                    inner join stts_wp inner join stts_kerja inner join kelompok_jabatan inner join resiko_kerja inner join emergency_index on 
+                    pegawai.jnj_jabatan=jnj_jabatan.kode and pegawai.departemen=departemen.dep_id and pegawai.stts_wp=stts_wp.stts and pegawai.stts_kerja=stts_kerja.stts
+                    and kelompok_jabatan.kode_kelompok=pegawai.kode_kelompok and resiko_kerja.kode_resiko=pegawai.kode_resiko and 
+                    emergency_index.kode_emergency=pegawai.kode_emergency
+                    where pegawai.nik like '%".$keyword."%' or
+                     pegawai.nama like '%".$keyword."%' or
+                     pegawai.jk like '%".$keyword."%' or
+                     pegawai.jbtn like '%".$keyword."%' or
+                     jnj_jabatan.nama like '%".$keyword."%' or
+                     departemen.nama like '%".$keyword."%' or
+                     pegawai.bidang like '%".$keyword."%' or
+                     stts_wp.ktg like '%".$keyword."%' or
+                     stts_kerja.ktg like '%".$keyword."%' or
+                     kelompok_jabatan.nama_kelompok like '%".$keyword."%' or
+                     resiko_kerja.nama_resiko like '%".$keyword."%' or
+                     emergency_index.nama_emergency like '%".$keyword."%' or
+                     pegawai.npwp like '%".$keyword."%' or
+                     pegawai.pendidikan like '%".$keyword."%' or
+                     pegawai.gapok like '%".$keyword."%' or
+                     pegawai.tmp_lahir like '%".$keyword."%' or
+                     pegawai.tgl_lahir like '%".$keyword."%' or
+                     pegawai.alamat like '%".$keyword."%' or
+                     pegawai.kota like '%".$keyword."%' or
+                     pegawai.mulai_kerja like '%".$keyword."%' or
+                     pegawai.ms_kerja like '%".$keyword."%' or
+                     pegawai.indexins like '%".$keyword."%' or
+                     pegawai.bpd like '%".$keyword."%' or
+                     pegawai.rekening like '%".$keyword."%' or
+                     pegawai.stts_aktif like '%".$keyword."%' or
+                     pegawai.no_ktp like '%".$keyword."%'
+                     order by pegawai.id ASC ";
             $hasil=bukaquery($_sql);
             $jumlah=mysqli_num_rows($hasil);
 
             if(mysqli_num_rows($hasil)!=0) {            
-                echo "<table width='3120px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                echo "<table width='2820px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                         <tr class='head'>
-                                     <td width='100px'><div align='center'>Proses</div></td>
-                                     <td width='80px'><div align='center'>NIP</div></td>
-                                     <td width='200px'><div align='center'>Nama</div></td>
-                                     <td width='50px'><div align='center'>J.K.</div></td>
-                                     <td width='150px'><div align='center'>Jabatan</div></td>
-                                     <td width='80px'><div align='center'>Jenjang</div></td>
-                                     <td width='80px'><div align='center'>Departemen</div></td>
-                                     <td width='80px'><div align='center'>Bagian</div></td>
-                                     <td width='80px'><div align='center'>Status</div></td>
-                                     <td width='80px'><div align='center'>Status Karyawan</div></td>
-                                     <td width='100px'><div align='center'>NPWP</div></td>
-                                     <td width='200px'><div align='center'>Pendidikan</div></td>
-                                     <td width='100px'><div align='center'>Tmp.Lahir</div></td>
-                                     <td width='80px'><div align='center'>Tgl.Lahir</div></td>
-                                     <td width='250px'><div align='center'>Alamat</div></td>
-                                     <td width='100px'><div align='center'>Kota </div></td>
-                                     <td width='80px'><div align='center'>Mulai Kerja</div></td>
-                                     <td width='80px'><div align='center'>Kode Ms Kerja</div></td>
-                                     <td width='80px'><div align='center'>Kode Index</div></td>
-                                     <td width='40px'><div align='center'>BPD</div></td>
-                                     <td width='70px'><div align='center'>Rekening</div></td>
-                                     <td width='80px'><div align='center'>Stts Aktif</div></td>
-                                     <td width='70px'><div align='center'>Wajib Masuk</div></td>
-                                     <td width='100px'><div align='center'>Mulai Kontrak</div></td>
-                                     <td width='120px'><div align='center'>Photo</div></td>
-                                     <td width='100px'><div align='center'>No.KTP</div></td>
+                             <td width='100px'><div align='center'>Proses</div></td>
+                             <td width='80px'><div align='center'>NIP</div></td>
+                             <td width='200px'><div align='center'>Nama</div></td>
+                             <td width='50px'><div align='center'>J.K.</div></td>
+                             <td width='100px'><div align='center'>Jabatan</div></td>
+                             <td width='100px'><div align='center'>Jenjang</div></td>
+                             <td width='100px'><div align='center'>Kelompok Jabatan</div></td>
+                             <td width='90px'><div align='center'>Departemen</div></td>
+                             <td width='80px'><div align='center'>Bagian</div></td>
+                             <td width='80px'><div align='center'>Resiko Kerja</div></td>
+                             <td width='80px'><div align='center'>Tingkat Emergency</div></td>
+                             <td width='120px'><div align='center'>Status WP</div></td>
+                             <td width='100px'><div align='center'>Status Karyawan</div></td>
+                             <td width='100px'><div align='center'>NPWP</div></td>
+                             <td width='190px'><div align='center'>Pendidikan</div></td>
+                             <td width='100px'><div align='center'>Tmp.Lahir</div></td>
+                             <td width='70px'><div align='center'>Tgl.Lahir</div></td>
+                             <td width='250px'><div align='center'>Alamat</div></td>
+                             <td width='100px'><div align='center'>Kota </div></td>
+                             <td width='80px'><div align='center'>Mulai Kerja</div></td>
+                             <td width='80px'><div align='center'>Masa Kerja</div></td>
+                             <td width='80px'><div align='center'>Kode Index</div></td>
+                             <td width='40px'><div align='center'>Bank</div></td>
+                             <td width='70px'><div align='center'>Rekening</div></td>
+                             <td width='80px'><div align='center'>Stts Aktif</div></td>
+                             <td width='40px'><div align='center'>Wajib Masuk</div></td>
+                             <td width='70px'><div align='center'>Mulai Kontrak</div></td>
+                             <td width='120px'><div align='center'>Photo</div></td>
+                             <td width='100px'><div align='center'>No.KTP</div></td>
                         </tr>";					
 
                         while($baris = mysqli_fetch_array($hasil)) {
@@ -149,29 +160,32 @@
                                 <?php
                                echo "       </center>
                                     </td>								
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[1]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[2]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[3]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[4]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[5]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[6]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[7]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[8]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[9]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[10]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[11]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[13]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[14]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[15]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[16]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[17]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[18]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[19]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[20]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[21]</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[22]</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["nik"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["nama"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["jk"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["jbtn"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["jnj_jabatan"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["nama_kelompok"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["departemen"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["bidang"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["nama_resiko"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["nama_emergency"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["stts_wp"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["stts_kerja"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["npwp"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["pendidikan"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["tmp_lahir"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["tgl_lahir"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["alamat"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["kota"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["mulai_kerja"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["ms_kerja"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["indexins"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["bpd"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["rekening"]."</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["stts_aktif"]."</a></td>
                                      <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$jmlmsk</a></td>
-                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[24]</a></td>
+                                     <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["mulai_kontrak"]."</a></td>
                                      <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$gb</a></td>
                                      <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["no_ktp"]."</a></td>
                                    </tr>";
@@ -192,40 +206,10 @@
         </div>
     </form>     
        <?php
-            if(mysqli_num_rows($hasil)!=0) {
-				$hasil1=bukaquery("select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
-                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
-                 indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai
-                 where
-                 nik like '%".$keyword."%' or
-                 nama like '%".$keyword."%' or
-                 jk like '%".$keyword."%' or
-                 jbtn like '%".$keyword."%' or
-                 jnj_jabatan like '%".$keyword."%' or
-                 departemen like '%".$keyword."%' or
-                 bidang like '%".$keyword."%' or
-                 stts_wp like '%".$keyword."%' or
-                 stts_kerja like '%".$keyword."%' or
-                 npwp like '%".$keyword."%' or
-                 pendidikan like '%".$keyword."%' or
-                 gapok like '%".$keyword."%' or
-                 tmp_lahir like '%".$keyword."%' or
-                 tgl_lahir like '%".$keyword."%' or
-                 alamat like '%".$keyword."%' or
-                 kota like '%".$keyword."%' or
-                 mulai_kerja like '%".$keyword."%' or
-                 ms_kerja like '%".$keyword."%' or
-                 indexins like '%".$keyword."%' or
-                 bpd like '%".$keyword."%' or
-                 rekening like '%".$keyword."%' or
-                 stts_aktif like '%".$keyword."%'
-                 order by id ASC");
-                $jumladiv=mysqli_num_rows($hasil1);
-                $i=$jumladiv/19;
-                $i=ceil($i);
+            if($jumlah>0) {
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                        <td><div align='left'>Data : $jumlah<a target=_blank href=../penggajian/pages/pegawai/LaporanPegawai.php?&keyword=$keyword>| Laporan |</a></div></td>                        
+                        <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/pegawai/LaporanPegawai.php?&keyword=$keyword> Laporan </a> | <a target=_blank href=../penggajian/pages/pegawai/LaporanPegawaiExcel.php?&keyword=$keyword>Excel</a> |</div></td>                        
                     </tr>     
                  </table>");
              }

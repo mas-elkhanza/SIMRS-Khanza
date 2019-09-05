@@ -93,7 +93,7 @@ public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
         kdjenis.setDocument(new batasInput((byte)4).getKata(kdjenis));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -308,7 +308,7 @@ public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapus.setForeground(new java.awt.Color(50,50,50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Penerimaan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -324,7 +324,7 @@ public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
 
         ppBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBayar.setForeground(new java.awt.Color(70, 70, 70));
+        ppBayar.setForeground(new java.awt.Color(50,50,50));
         ppBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBayar.setText("Bayar Tagihan");
         ppBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -347,7 +347,7 @@ public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penerimaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penerimaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -938,7 +938,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                  Sequel.cariIsi("select Kontra_Penerimaan_NonMedis from set_akun"),"HUTANG BARANG NON MEDIS",rs.getString("tagihan"),"0"
              }); 
-             jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS");
+             jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
          }          
          Sequel.queryu2("delete from ipsrspemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
          

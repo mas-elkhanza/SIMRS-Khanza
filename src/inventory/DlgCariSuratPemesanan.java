@@ -7,7 +7,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -22,24 +21,19 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import kepegawaian.DlgCariPegawai;
-import kepegawaian.DlgCariPetugas;
 
 public class DlgCariSuratPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgSuplier suplier=new DlgSuplier(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private double tagihan=0;
-    private Jurnal jur=new Jurnal();
     private DlgPemesanan aplikasi=new DlgPemesanan(null,false);
 
     /** Creates new form DlgProgramStudi
@@ -91,7 +85,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
         kdsat.setDocument(new batasInput((byte)4).getKata(kdsat));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -344,7 +338,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapus.setForeground(new java.awt.Color(50,50,50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Surat Pemesanan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -360,7 +354,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
 
         ppDatang.setBackground(new java.awt.Color(255, 255, 254));
         ppDatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDatang.setForeground(new java.awt.Color(70, 70, 70));
+        ppDatang.setForeground(new java.awt.Color(50,50,50));
         ppDatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDatang.setText("Sudah Datang");
         ppDatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -376,7 +370,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
 
         ppProses.setBackground(new java.awt.Color(255, 255, 254));
         ppProses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppProses.setForeground(new java.awt.Color(70, 70, 70));
+        ppProses.setForeground(new java.awt.Color(50,50,50));
         ppProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppProses.setText("Proses Pesan");
         ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -399,7 +393,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Surat Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Surat Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

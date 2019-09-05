@@ -147,12 +147,12 @@ public class INACBGHybrid extends javax.swing.JDialog {
                         if (newState == State.SUCCEEDED) {
                             try {
                                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("inacbg/pages")){
+                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("inacbg/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
                                     dispose();    
                                 }
                             } catch (Exception ex) {
@@ -268,6 +268,6 @@ public class INACBGHybrid extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void setJudul(String Judul){
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), Judul, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), Judul, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
     }
 }

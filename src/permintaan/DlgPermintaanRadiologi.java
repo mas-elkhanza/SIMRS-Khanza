@@ -107,7 +107,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KodePerujuk.setDocument(new batasInput((byte)20).getKata(KodePerujuk));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCariPeriksa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -269,7 +269,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -432,7 +432,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 42, 92, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -598,7 +598,6 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbPemeriksaan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPemeriksaan.setName("tbPemeriksaan"); // NOI18N
         tbPemeriksaan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -863,6 +862,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KodePerujuk.getText()));  
             
             Valid.MyReport("rptPermintaanRadiologi.jasper","report","::[ Permintaan Radiologi ]::",param);            
             ChkJln.setSelected(false);

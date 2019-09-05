@@ -86,7 +86,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         NoKantong.setDocument(new batasInput((byte)20).getKata(NoKantong));
         KodeKomponen.setDocument(new batasInput((byte)5).getKata(KodeKomponen));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -222,12 +222,11 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70, 70, 70));
+        ppCetak.setForeground(new java.awt.Color(50,50,50));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppCetak.setIconTextGap(8);
         ppCetak.setName("ppCetak"); // NOI18N
         ppCetak.setPreferredSize(new java.awt.Dimension(150, 25));
         ppCetak.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +245,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -378,7 +377,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(Resus);
         Resus.setBounds(294, 72, 65, 23);
 
-        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Aftap.setDisplayFormat("dd-MM-yyyy");
         Aftap.setName("Aftap"); // NOI18N
         Aftap.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -395,7 +394,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         FormInput.add(label32);
         label32.setBounds(0, 72, 85, 23);
 
-        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Kadaluarsa.setDisplayFormat("dd-MM-yyyy");
         Kadaluarsa.setName("Kadaluarsa"); // NOI18N
         Kadaluarsa.addKeyListener(new java.awt.event.KeyAdapter() {

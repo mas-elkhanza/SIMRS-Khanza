@@ -64,7 +64,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
+              <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -83,9 +83,6 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="scrollPane1">
           <Properties>
-            <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="scrollPane1" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -101,9 +98,6 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
-                </Property>
-                <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="tbDokter" noResource="true"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">

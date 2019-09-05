@@ -101,7 +101,7 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
         tbBangsal2.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -214,13 +214,13 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Laporan Penyakit Rawat Inap Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Laporan Penyakit Rawat Inap Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,7 +232,6 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -251,7 +250,6 @@ public final class DlgPenyakitRanapPerCaraBayar extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbBangsal2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal2.setName("tbBangsal2"); // NOI18N
         tbBangsal2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

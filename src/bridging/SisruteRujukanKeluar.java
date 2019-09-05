@@ -57,7 +57,6 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private int i=0,pilihan=0;
-    private final Properties prop = new Properties();
     private String idrs="",StatusDirespon="",StatusDiterima="",penyakit="",penyakit2="",keluar="",link="",requestJson="",URL="",cari="",cari2="";
     private SisruteApi api=new SisruteApi();
     private HttpHeaders headers;
@@ -217,7 +216,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         Radiologi.setDocument(new batasInput((int)1000).getKata(Radiologi));
         TerapiTindakan.setDocument(new batasInput((int)1000).getKata(TerapiTindakan));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -391,9 +390,8 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPISISRUTE");
-            idrs=prop.getProperty("IDSISRUTE");
+            link=koneksiDB.URLAPISISRUTE();
+            idrs=koneksiDB.IDSISRUTE();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -518,7 +516,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnSuratRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSuratRujukan.setForeground(new java.awt.Color(70, 70, 70));
+        MnSuratRujukan.setForeground(new java.awt.Color(50,50,50));
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSuratRujukan.setText("Surat Rujukan");
         MnSuratRujukan.setName("MnSuratRujukan"); // NOI18N
@@ -532,7 +530,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
+        ppRiwayat.setForeground(new java.awt.Color(50,50,50));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayat.setText("Riwayat Perawatan");
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -558,13 +556,13 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Keluar Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Keluar Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1265,7 +1263,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRujukan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRujukan.setForeground(new java.awt.Color(70, 70, 70));
+        TabRujukan.setForeground(new java.awt.Color(50,50,50));
         TabRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRujukan.setName("TabRujukan"); // NOI18N
         TabRujukan.addMouseListener(new java.awt.event.MouseAdapter() {

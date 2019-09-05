@@ -177,7 +177,7 @@ public class DlgBilingPiutang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rincian Piutang Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rincian Piutang Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -374,7 +374,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         //jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG RAWAT JALAN");
                     }
 
-                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT JALAN");
+                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT JALAN"+", OLEH "+akses.getkode());
                 }else if(status.equals("Ranap")){
                     Sequel.queryu2("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
                     Sequel.queryu2("delete from tampjurnal");                    
@@ -439,7 +439,7 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                          //jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN BAYAR PIUTANG RAWAT INAP");
                     }  
 
-                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT INAP");
+                    jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PIUTANG PASIEN RAWAT INAP"+", OLEH "+akses.getkode());
                 }
                 this.setCursor(Cursor.getDefaultCursor());
             }

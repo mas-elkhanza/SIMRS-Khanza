@@ -1,5 +1,6 @@
 package bridging;
 
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
@@ -22,7 +23,7 @@ public class SittApi {
     public SittApi(){
         try {            
             prop.loadFromXML(new FileInputStream("setting/database.xml"));   
-            pass = prop.getProperty("PASSSITT");
+            pass = koneksiDB.PASSSITT();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

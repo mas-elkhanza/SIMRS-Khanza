@@ -91,7 +91,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -157,7 +157,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengambilan BHP Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengambilan BHP Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -371,7 +371,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
             Sequel.queryu("delete from tampjurnal");
             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Utd from set_akun"),"PENGAMBILAN BHP MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Utd from set_akun"),"PERSEDIAAN BARANG/OBAT/ALKES/BHP",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
-            jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5));
+            jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5)+", OLEH "+akses.getkode());
             BtnCariActionPerformed(evt);
             
         }

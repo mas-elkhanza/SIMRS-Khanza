@@ -104,7 +104,23 @@ public final class akses {
             grafik_limbahdomestik_pertanggal=false,grafik_limbahdomestik_perbulan=false,mutu_air_limbah=false,pest_control=false,ruang_perpustakaan=false,
             kategori_perpustakaan=false,jenis_perpustakaan=false,pengarang_perpustakaan=false,penerbit_perpustakaan=false,koleksi_perpustakaan=false,
             inventaris_perpustakaan=false,set_peminjaman_perpustakaan=false,denda_perpustakaan=false,anggota_perpustakaan=false,
-            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false;
+            peminjaman_perpustakaan=false,bayar_denda_perpustakaan=false,ebook_perpustakaan=false,jenis_cidera_k3rs=false,penyebab_k3rs=false,
+            jenis_luka_k3rs=false,lokasi_kejadian_k3rs=false,dampak_cidera_k3rs=false,jenis_pekerjaan_k3rs=false,bagian_tubuh_k3rs=false,
+            peristiwa_k3rs=false,grafik_k3_pertahun=false,grafik_k3_perbulan=false,grafik_k3_pertanggal=false,grafik_k3_perjeniscidera=false,
+            grafik_k3_perpenyebab=false,grafik_k3_perjenisluka=false,grafik_k3_lokasikejadian=false,grafik_k3_dampakcidera=false,
+            grafik_k3_perjenispekerjaan=false,grafik_k3_perbagiantubuh=false,jenis_cidera_k3rstahun=false,penyebab_k3rstahun=false,
+            jenis_luka_k3rstahun=false,lokasi_kejadian_k3rstahun=false,dampak_cidera_k3rstahun=false,jenis_pekerjaan_k3rstahun=false,
+            bagian_tubuh_k3rstahun=false,sekrining_rawat_jalan=false,bpjs_histori_pelayanan=false,rekap_mutasi_berkas=false,
+            skrining_ralan_pernapasan_pertahun=false,pengajuan_barang_medis=false,pengajuan_barang_nonmedis=false,grafik_kunjungan_ranapbulan=false,
+            grafik_kunjungan_ranaptanggal=false,grafik_kunjungan_ranap_peruang=false,kunjungan_bangsal_pertahun=false,grafik_jenjang_jabatanpegawai=false,
+            grafik_bidangpegawai=false,grafik_departemenpegawai=false,grafik_pendidikanpegawai=false,grafik_sttswppegawai=false,
+            grafik_sttskerjapegawai=false,grafik_sttspulangranap=false,kip_pasien_ranap=false,kip_pasien_ralan=false,bpjs_mapping_dokterdpjp=false,
+            data_triase_igd=false,master_triase_skala1=false,master_triase_skala2=false,master_triase_skala3=false,master_triase_skala4=false,
+            master_triase_skala5=false,master_triase_pemeriksaan=false,master_triase_macamkasus=false,rekap_permintaan_diet=false,daftar_pasien_ranap=false,
+            daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false,item_apotek_jenis=false,item_apotek_kategori=false,item_apotek_golongan=false,
+            item_apotek_industrifarmasi=false,obat10_terbanyak_poli=false,grafik_pengajuan_aset_urgensi=false,grafik_pengajuan_aset_status=false,
+            grafik_pengajuan_aset_departemen=false,rekap_pengajuan_aset_departemen=false,grafik_kelompok_jabatanpegawai=false,grafik_resiko_kerjapegawai=false,
+            grafik_emergency_indexpegawai=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -605,6 +621,75 @@ public final class akses {
                         akses.peminjaman_perpustakaan=true;
                         akses.bayar_denda_perpustakaan=true;
                         akses.ebook_perpustakaan=true;
+                        akses.jenis_cidera_k3rs=true;
+                        akses.penyebab_k3rs=true;
+                        akses.jenis_luka_k3rs=true;
+                        akses.lokasi_kejadian_k3rs=true;
+                        akses.dampak_cidera_k3rs=true;
+                        akses.jenis_pekerjaan_k3rs=true;
+                        akses.bagian_tubuh_k3rs=true;
+                        akses.peristiwa_k3rs=true;
+                        akses.grafik_k3_pertahun=true;
+                        akses.grafik_k3_perbulan=true;
+                        akses.grafik_k3_pertanggal=true;
+                        akses.grafik_k3_perjeniscidera=true;
+                        akses.grafik_k3_perpenyebab=true;
+                        akses.grafik_k3_perjenisluka=true;
+                        akses.grafik_k3_lokasikejadian=true;
+                        akses.grafik_k3_dampakcidera=true;
+                        akses.grafik_k3_perjenispekerjaan=true;
+                        akses.grafik_k3_perbagiantubuh=true;
+                        akses.jenis_cidera_k3rstahun=true;
+                        akses.penyebab_k3rstahun=true;
+                        akses.jenis_luka_k3rstahun=true;
+                        akses.lokasi_kejadian_k3rstahun=true;
+                        akses.dampak_cidera_k3rstahun=true;
+                        akses.jenis_pekerjaan_k3rstahun=true;
+                        akses.bagian_tubuh_k3rstahun=true;
+                        akses.sekrining_rawat_jalan=true;
+                        akses.bpjs_histori_pelayanan=true;
+                        akses.rekap_mutasi_berkas=true;
+                        akses.skrining_ralan_pernapasan_pertahun=true;
+                        akses.pengajuan_barang_medis=true;
+                        akses.pengajuan_barang_nonmedis=true;
+                        akses.grafik_kunjungan_ranapbulan=true;
+                        akses.grafik_kunjungan_ranaptanggal=true;
+                        akses.grafik_kunjungan_ranap_peruang=true;
+                        akses.kunjungan_bangsal_pertahun=true;
+                        akses.grafik_jenjang_jabatanpegawai=true;
+                        akses.grafik_bidangpegawai=true;
+                        akses.grafik_departemenpegawai=true;
+                        akses.grafik_pendidikanpegawai=true;
+                        akses.grafik_sttswppegawai=true;
+                        akses.grafik_sttskerjapegawai=true;
+                        akses.grafik_sttspulangranap=true;
+                        akses.kip_pasien_ranap=true;
+                        akses.kip_pasien_ralan=true;
+                        akses.bpjs_mapping_dokterdpjp=true;
+                        akses.data_triase_igd=true;
+                        akses.master_triase_skala1=true;
+                        akses.master_triase_skala2=true;
+                        akses.master_triase_skala3=true;
+                        akses.master_triase_skala4=true;
+                        akses.master_triase_skala5=true;
+                        akses.master_triase_pemeriksaan=true;
+                        akses.master_triase_macamkasus=true;
+                        akses.rekap_permintaan_diet=true;
+                        akses.daftar_pasien_ranap=true;
+                        akses.daftar_pasien_ranaptni=true;
+                        akses.pengajuan_asetinventaris=true;
+                        akses.item_apotek_jenis=true;
+                        akses.item_apotek_kategori=true;
+                        akses.item_apotek_golongan=true;
+                        akses.item_apotek_industrifarmasi=true;
+                        akses.obat10_terbanyak_poli=true;
+                        akses.grafik_pengajuan_aset_urgensi=true;
+                        akses.grafik_pengajuan_aset_status=true;
+                        akses.grafik_pengajuan_aset_departemen=true;
+                        akses.rekap_pengajuan_aset_departemen=true;
+                        akses.grafik_kelompok_jabatanpegawai=true;
+                        akses.grafik_resiko_kerjapegawai=true;
+                        akses.grafik_emergency_indexpegawai=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1089,6 +1174,75 @@ public final class akses {
                         akses.peminjaman_perpustakaan=rs2.getBoolean("peminjaman_perpustakaan");
                         akses.bayar_denda_perpustakaan=rs2.getBoolean("bayar_denda_perpustakaan");
                         akses.ebook_perpustakaan=rs2.getBoolean("ebook_perpustakaan");
+                        akses.jenis_cidera_k3rs=rs2.getBoolean("jenis_cidera_k3rs");
+                        akses.penyebab_k3rs=rs2.getBoolean("penyebab_k3rs");
+                        akses.jenis_luka_k3rs=rs2.getBoolean("jenis_luka_k3rs");
+                        akses.lokasi_kejadian_k3rs=rs2.getBoolean("lokasi_kejadian_k3rs");
+                        akses.dampak_cidera_k3rs=rs2.getBoolean("dampak_cidera_k3rs");
+                        akses.jenis_pekerjaan_k3rs=rs2.getBoolean("jenis_pekerjaan_k3rs");
+                        akses.bagian_tubuh_k3rs=rs2.getBoolean("bagian_tubuh_k3rs");
+                        akses.peristiwa_k3rs=rs2.getBoolean("peristiwa_k3rs");
+                        akses.grafik_k3_pertahun=rs2.getBoolean("grafik_k3_pertahun");
+                        akses.grafik_k3_perbulan=rs2.getBoolean("grafik_k3_perbulan");
+                        akses.grafik_k3_pertanggal=rs2.getBoolean("grafik_k3_pertanggal");
+                        akses.grafik_k3_perjeniscidera=rs2.getBoolean("grafik_k3_perjeniscidera");
+                        akses.grafik_k3_perpenyebab=rs2.getBoolean("grafik_k3_perpenyebab");
+                        akses.grafik_k3_perjenisluka=rs2.getBoolean("grafik_k3_perjenisluka");
+                        akses.grafik_k3_lokasikejadian=rs2.getBoolean("grafik_k3_lokasikejadian");
+                        akses.grafik_k3_dampakcidera=rs2.getBoolean("grafik_k3_dampakcidera");
+                        akses.grafik_k3_perjenispekerjaan=rs2.getBoolean("grafik_k3_perjenispekerjaan");
+                        akses.grafik_k3_perbagiantubuh=rs2.getBoolean("grafik_k3_perbagiantubuh");
+                        akses.jenis_cidera_k3rstahun=rs2.getBoolean("jenis_cidera_k3rstahun");
+                        akses.penyebab_k3rstahun=rs2.getBoolean("penyebab_k3rstahun");
+                        akses.jenis_luka_k3rstahun=rs2.getBoolean("jenis_luka_k3rstahun");
+                        akses.lokasi_kejadian_k3rstahun=rs2.getBoolean("lokasi_kejadian_k3rstahun");
+                        akses.dampak_cidera_k3rstahun=rs2.getBoolean("dampak_cidera_k3rstahun");
+                        akses.jenis_pekerjaan_k3rstahun=rs2.getBoolean("jenis_pekerjaan_k3rstahun");
+                        akses.bagian_tubuh_k3rstahun=rs2.getBoolean("bagian_tubuh_k3rstahun");
+                        akses.sekrining_rawat_jalan=rs2.getBoolean("sekrining_rawat_jalan");
+                        akses.bpjs_histori_pelayanan=rs2.getBoolean("bpjs_histori_pelayanan");
+                        akses.rekap_mutasi_berkas=rs2.getBoolean("rekap_mutasi_berkas");
+                        akses.skrining_ralan_pernapasan_pertahun=rs2.getBoolean("skrining_ralan_pernapasan_pertahun");
+                        akses.pengajuan_barang_medis=rs2.getBoolean("pengajuan_barang_medis");
+                        akses.pengajuan_barang_nonmedis=rs2.getBoolean("pengajuan_barang_nonmedis");
+                        akses.grafik_kunjungan_ranapbulan=rs2.getBoolean("grafik_kunjungan_ranapbulan");
+                        akses.grafik_kunjungan_ranaptanggal=rs2.getBoolean("grafik_kunjungan_ranaptanggal");
+                        akses.grafik_kunjungan_ranap_peruang=rs2.getBoolean("grafik_kunjungan_ranap_peruang");
+                        akses.kunjungan_bangsal_pertahun=rs2.getBoolean("kunjungan_bangsal_pertahun");
+                        akses.grafik_jenjang_jabatanpegawai=rs2.getBoolean("grafik_jenjang_jabatanpegawai");
+                        akses.grafik_bidangpegawai=rs2.getBoolean("grafik_bidangpegawai");
+                        akses.grafik_departemenpegawai=rs2.getBoolean("grafik_departemenpegawai");
+                        akses.grafik_pendidikanpegawai=rs2.getBoolean("grafik_pendidikanpegawai");
+                        akses.grafik_sttswppegawai=rs2.getBoolean("grafik_sttswppegawai");
+                        akses.grafik_sttskerjapegawai=rs2.getBoolean("grafik_sttskerjapegawai");
+                        akses.grafik_sttspulangranap=rs2.getBoolean("grafik_sttspulangranap");
+                        akses.kip_pasien_ranap=rs2.getBoolean("kip_pasien_ranap");
+                        akses.kip_pasien_ralan=rs2.getBoolean("kip_pasien_ralan");
+                        akses.bpjs_mapping_dokterdpjp=rs2.getBoolean("bpjs_mapping_dokterdpjp");
+                        akses.data_triase_igd=rs2.getBoolean("data_triase_igd");
+                        akses.master_triase_skala1=rs2.getBoolean("master_triase_skala1");
+                        akses.master_triase_skala2=rs2.getBoolean("master_triase_skala2");
+                        akses.master_triase_skala3=rs2.getBoolean("master_triase_skala3");
+                        akses.master_triase_skala4=rs2.getBoolean("master_triase_skala4");
+                        akses.master_triase_skala5=rs2.getBoolean("master_triase_skala5");
+                        akses.master_triase_pemeriksaan=rs2.getBoolean("master_triase_pemeriksaan");
+                        akses.master_triase_macamkasus=rs2.getBoolean("master_triase_macamkasus");
+                        akses.rekap_permintaan_diet=rs2.getBoolean("rekap_permintaan_diet");
+                        akses.daftar_pasien_ranap=rs2.getBoolean("daftar_pasien_ranap");
+                        akses.daftar_pasien_ranaptni=rs2.getBoolean("daftar_pasien_ranaptni");
+                        akses.pengajuan_asetinventaris=rs2.getBoolean("pengajuan_asetinventaris");
+                        akses.item_apotek_jenis=rs2.getBoolean("item_apotek_jenis");
+                        akses.item_apotek_kategori=rs2.getBoolean("item_apotek_kategori");
+                        akses.item_apotek_golongan=rs2.getBoolean("item_apotek_golongan");
+                        akses.item_apotek_industrifarmasi=rs2.getBoolean("item_apotek_industrifarmasi");
+                        akses.obat10_terbanyak_poli=rs2.getBoolean("10_obat_terbanyak_poli");
+                        akses.grafik_pengajuan_aset_urgensi=rs2.getBoolean("grafik_pengajuan_aset_urgensi");
+                        akses.grafik_pengajuan_aset_status=rs2.getBoolean("grafik_pengajuan_aset_status");
+                        akses.grafik_pengajuan_aset_departemen=rs2.getBoolean("grafik_pengajuan_aset_departemen");
+                        akses.rekap_pengajuan_aset_departemen=rs2.getBoolean("rekap_pengajuan_aset_departemen");
+                        akses.grafik_kelompok_jabatanpegawai=rs2.getBoolean("grafik_kelompok_jabatanpegawai");
+                        akses.grafik_resiko_kerjapegawai=rs2.getBoolean("grafik_resiko_kerjapegawai");
+                        akses.grafik_emergency_indexpegawai=rs2.getBoolean("grafik_emergency_indexpegawai");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1571,6 +1725,75 @@ public final class akses {
                         akses.peminjaman_perpustakaan=false;
                         akses.bayar_denda_perpustakaan=false;
                         akses.ebook_perpustakaan=false;
+                        akses.jenis_cidera_k3rs=false;
+                        akses.penyebab_k3rs=false;
+                        akses.jenis_luka_k3rs=false;
+                        akses.lokasi_kejadian_k3rs=false;
+                        akses.dampak_cidera_k3rs=false;
+                        akses.jenis_pekerjaan_k3rs=false;
+                        akses.bagian_tubuh_k3rs=false;
+                        akses.peristiwa_k3rs=false;
+                        akses.grafik_k3_pertahun=false;
+                        akses.grafik_k3_perbulan=false;
+                        akses.grafik_k3_pertanggal=false;
+                        akses.grafik_k3_perjeniscidera=false;
+                        akses.grafik_k3_perpenyebab=false;
+                        akses.grafik_k3_perjenisluka=false;
+                        akses.grafik_k3_lokasikejadian=false;
+                        akses.grafik_k3_dampakcidera=false;
+                        akses.grafik_k3_perjenispekerjaan=false;
+                        akses.grafik_k3_perbagiantubuh=false;
+                        akses.jenis_cidera_k3rstahun=false;
+                        akses.penyebab_k3rstahun=false;
+                        akses.jenis_luka_k3rstahun=false;
+                        akses.lokasi_kejadian_k3rstahun=false;
+                        akses.dampak_cidera_k3rstahun=false;
+                        akses.jenis_pekerjaan_k3rstahun=false;
+                        akses.bagian_tubuh_k3rstahun=false;
+                        akses.sekrining_rawat_jalan=false;
+                        akses.bpjs_histori_pelayanan=false;
+                        akses.rekap_mutasi_berkas=false;
+                        akses.skrining_ralan_pernapasan_pertahun=false;
+                        akses.pengajuan_barang_medis=false;
+                        akses.pengajuan_barang_nonmedis=false;
+                        akses.grafik_kunjungan_ranapbulan=false;
+                        akses.grafik_kunjungan_ranaptanggal=false;
+                        akses.grafik_kunjungan_ranap_peruang=false;
+                        akses.kunjungan_bangsal_pertahun=false;
+                        akses.grafik_jenjang_jabatanpegawai=false;
+                        akses.grafik_bidangpegawai=false;
+                        akses.grafik_departemenpegawai=false;
+                        akses.grafik_pendidikanpegawai=false;
+                        akses.grafik_sttswppegawai=false;
+                        akses.grafik_sttskerjapegawai=false;
+                        akses.grafik_sttspulangranap=false;
+                        akses.kip_pasien_ranap=false;
+                        akses.kip_pasien_ralan=false;
+                        akses.bpjs_mapping_dokterdpjp=false;
+                        akses.data_triase_igd=false;
+                        akses.master_triase_skala1=false;
+                        akses.master_triase_skala2=false;
+                        akses.master_triase_skala3=false;
+                        akses.master_triase_skala4=false;
+                        akses.master_triase_skala5=false;
+                        akses.master_triase_pemeriksaan=false;
+                        akses.master_triase_macamkasus=false;
+                        akses.rekap_permintaan_diet=false;
+                        akses.daftar_pasien_ranap=false;
+                        akses.daftar_pasien_ranaptni=false;
+                        akses.pengajuan_asetinventaris=false;
+                        akses.item_apotek_jenis=false;
+                        akses.item_apotek_kategori=false;
+                        akses.item_apotek_golongan=false;
+                        akses.item_apotek_industrifarmasi=false;
+                        akses.obat10_terbanyak_poli=false;
+                        akses.grafik_pengajuan_aset_urgensi=false;
+                        akses.grafik_pengajuan_aset_status=false;
+                        akses.grafik_pengajuan_aset_departemen=false;
+                        akses.rekap_pengajuan_aset_departemen=false;
+                        akses.grafik_kelompok_jabatanpegawai=false;
+                        akses.grafik_resiko_kerjapegawai=false;
+                        akses.grafik_emergency_indexpegawai=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2107,4 +2330,73 @@ public final class akses {
     public static boolean getpeminjaman_perpustakaan(){return akses.peminjaman_perpustakaan;}
     public static boolean getbayar_denda_perpustakaan(){return akses.bayar_denda_perpustakaan;}
     public static boolean getebook_perpustakaan(){return akses.ebook_perpustakaan;}
+    public static boolean getjenis_cidera_k3rs(){return akses.jenis_cidera_k3rs;}
+    public static boolean getpenyebab_k3rs(){return akses.penyebab_k3rs;}
+    public static boolean getjenis_luka_k3rs(){return akses.jenis_luka_k3rs;}
+    public static boolean getlokasi_kejadian_k3rs(){return akses.lokasi_kejadian_k3rs;}
+    public static boolean getdampak_cidera_k3rs(){return akses.dampak_cidera_k3rs;}
+    public static boolean getjenis_pekerjaan_k3rs(){return akses.jenis_pekerjaan_k3rs;}
+    public static boolean getbagian_tubuh_k3rs(){return akses.bagian_tubuh_k3rs;}
+    public static boolean getperistiwa_k3rs(){return akses.peristiwa_k3rs;}
+    public static boolean getgrafik_k3_pertahun(){return akses.grafik_k3_pertahun;}
+    public static boolean getgrafik_k3_perbulan(){return akses.grafik_k3_perbulan;}
+    public static boolean getgrafik_k3_pertanggal(){return akses.grafik_k3_pertanggal;}
+    public static boolean getgrafik_k3_perjeniscidera(){return akses.grafik_k3_perjeniscidera;}
+    public static boolean getgrafik_k3_perpenyebab(){return akses.grafik_k3_perpenyebab;}
+    public static boolean getgrafik_k3_perjenisluka(){return akses.grafik_k3_perjenisluka;}
+    public static boolean getgrafik_k3_lokasikejadian(){return akses.grafik_k3_lokasikejadian;}
+    public static boolean getgrafik_k3_dampakcidera(){return akses.grafik_k3_dampakcidera;}
+    public static boolean getgrafik_k3_perjenispekerjaan(){return akses.grafik_k3_perjenispekerjaan;}
+    public static boolean getgrafik_k3_perbagiantubuh(){return akses.grafik_k3_perbagiantubuh;}
+    public static boolean getjenis_cidera_k3rstahun(){return akses.jenis_cidera_k3rstahun;}
+    public static boolean getpenyebab_k3rstahun(){return akses.penyebab_k3rstahun;}
+    public static boolean getjenis_luka_k3rstahun(){return akses.jenis_luka_k3rstahun;}
+    public static boolean getlokasi_kejadian_k3rstahun(){return akses.lokasi_kejadian_k3rstahun;}
+    public static boolean getdampak_cidera_k3rstahun(){return akses.dampak_cidera_k3rstahun;}
+    public static boolean getjenis_pekerjaan_k3rstahun(){return akses.jenis_pekerjaan_k3rstahun;}
+    public static boolean getbagian_tubuh_k3rstahun(){return akses.bagian_tubuh_k3rstahun;}
+    public static boolean getsekrining_rawat_jalan(){return akses.sekrining_rawat_jalan;}
+    public static boolean getbpjs_histori_pelayanan(){return akses.bpjs_histori_pelayanan;}
+    public static boolean getrekap_mutasi_berkas(){return akses.rekap_mutasi_berkas;}
+    public static boolean getskrining_ralan_pernapasan_pertahun(){return akses.skrining_ralan_pernapasan_pertahun;}
+    public static boolean getpengajuan_barang_medis(){return akses.pengajuan_barang_medis;}
+    public static boolean getpengajuan_barang_nonmedis(){return akses.pengajuan_barang_nonmedis;}
+    public static boolean getgrafik_kunjungan_ranapbulan(){return akses.grafik_kunjungan_ranapbulan;}
+    public static boolean getgrafik_kunjungan_ranaptanggal(){return akses.grafik_kunjungan_ranaptanggal;}
+    public static boolean getgrafik_kunjungan_ranap_peruang(){return akses.grafik_kunjungan_ranap_peruang;}
+    public static boolean getkunjungan_bangsal_pertahun(){return akses.kunjungan_bangsal_pertahun;}
+    public static boolean getgrafik_jenjang_jabatanpegawai(){return akses.grafik_jenjang_jabatanpegawai;}
+    public static boolean getgrafik_bidangpegawai(){return akses.grafik_bidangpegawai;}
+    public static boolean getgrafik_departemenpegawai(){return akses.grafik_departemenpegawai;}
+    public static boolean getgrafik_pendidikanpegawai(){return akses.grafik_pendidikanpegawai;}
+    public static boolean getgrafik_sttswppegawai(){return akses.grafik_sttswppegawai;}
+    public static boolean getgrafik_sttskerjapegawai(){return akses.grafik_sttskerjapegawai;}
+    public static boolean getgrafik_sttspulangranap(){return akses.grafik_sttspulangranap;}
+    public static boolean getkip_pasien_ranap(){return akses.kip_pasien_ranap;}
+    public static boolean getkip_pasien_ralan(){return akses.kip_pasien_ralan;}
+    public static boolean getbpjs_mapping_dokterdpjp(){return akses.bpjs_mapping_dokterdpjp;}
+    public static boolean getdata_triase_igd(){return akses.data_triase_igd;}
+    public static boolean getmaster_triase_skala1(){return akses.master_triase_skala1;}
+    public static boolean getmaster_triase_skala2(){return akses.master_triase_skala2;}
+    public static boolean getmaster_triase_skala3(){return akses.master_triase_skala3;}
+    public static boolean getmaster_triase_skala4(){return akses.master_triase_skala4;}
+    public static boolean getmaster_triase_skala5(){return akses.master_triase_skala5;}
+    public static boolean getmaster_triase_pemeriksaan(){return akses.master_triase_pemeriksaan;}
+    public static boolean getmaster_triase_macamkasus(){return akses.master_triase_macamkasus;}
+    public static boolean getrekap_permintaan_diet(){return akses.rekap_permintaan_diet;}
+    public static boolean getdaftar_pasien_ranap(){return akses.daftar_pasien_ranap;}
+    public static boolean getdaftar_pasien_ranaptni(){return akses.daftar_pasien_ranaptni;}
+    public static boolean getpengajuan_asetinventaris(){return akses.pengajuan_asetinventaris;}
+    public static boolean getitem_apotek_jenis(){return akses.item_apotek_jenis;}
+    public static boolean getitem_apotek_kategori(){return akses.item_apotek_kategori;}
+    public static boolean getitem_apotek_golongan(){return akses.item_apotek_golongan;}
+    public static boolean getitem_apotek_industrifarmasi(){return akses.item_apotek_industrifarmasi;}
+    public static boolean getobat10_terbanyak_poli(){return akses.obat10_terbanyak_poli;}
+    public static boolean getgrafik_pengajuan_aset_urgensi(){return akses.grafik_pengajuan_aset_urgensi;}
+    public static boolean getgrafik_pengajuan_aset_status(){return akses.grafik_pengajuan_aset_status;}
+    public static boolean getgrafik_pengajuan_aset_departemen(){return akses.grafik_pengajuan_aset_departemen;}
+    public static boolean getrekap_pengajuan_aset_departemen(){return akses.rekap_pengajuan_aset_departemen;}
+    public static boolean getgrafik_kelompok_jabatanpegawai(){return akses.grafik_kelompok_jabatanpegawai;}
+    public static boolean getgrafik_resiko_kerjapegawai(){return akses.grafik_resiko_kerjapegawai;}
+    public static boolean getgrafik_emergency_indexpegawai(){return akses.grafik_emergency_indexpegawai;}
 }   

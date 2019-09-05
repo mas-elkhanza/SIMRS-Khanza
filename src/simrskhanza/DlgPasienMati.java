@@ -113,7 +113,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         TNoRM.setDocument(new batasInput((byte)15).getKata(TNoRM));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TKtg.setDocument(new batasInput((byte)100).getKata(TKtg));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -309,7 +309,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pasien Meninggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pasien Meninggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -318,7 +318,6 @@ public class DlgPasienMati extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbMati.setAutoCreateRowSorter(true);
-        tbMati.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbMati.setComponentPopupMenu(jPopupMenu1);
         tbMati.setName("tbMati"); // NOI18N
         tbMati.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -540,7 +539,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-02-2019" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);

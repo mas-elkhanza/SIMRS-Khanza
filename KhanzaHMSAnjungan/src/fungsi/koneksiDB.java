@@ -16,13 +16,14 @@ import javax.swing.JOptionPane;
  *
  * @author khanzasoft
  */
-public final class koneksiDB {
-    public koneksiDB(){}    
+public class koneksiDB {
     private static Connection connection=null;
     private static final Properties prop = new Properties();  
     private static final MysqlDataSource dataSource=new MysqlDataSource();
-    private static String caricepat="",var="";
-    public static Connection condb(){      
+    private static String var="";
+    
+    public koneksiDB(){} 
+    public static Connection condb(){ 
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -60,32 +61,12 @@ public final class koneksiDB {
         return connection;        
     }
     
-    public static String cariCepat(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            caricepat=prop.getProperty("CARICEPAT");
-        }catch(Exception e){
-            caricepat="tidak aktif"; 
-        }
-        return caricepat;
-    }
-    
     public static String HOST(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("HOSTHYBRIDWEB"));
+            var=EnkripsiAES.decrypt(prop.getProperty("HOST"));
         }catch(Exception e){
-            var="localhost"; 
-        }
-        return var;
-    }
-    
-    public static String PORT(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("PORT"));
-        }catch(Exception e){
-            var="3306"; 
+            var=""; 
         }
         return var;
     }
@@ -95,10 +76,629 @@ public final class koneksiDB {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=EnkripsiAES.decrypt(prop.getProperty("DATABASE"));
         }catch(Exception e){
-            var="sik"; 
+            var=""; 
         }
         return var;
     }
     
+    public static String PORT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PORT"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USER(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USER"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String CARICEPAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("CARICEPAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String HOSTHYBRIDWEB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("HOSTHYBRIDWEB"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String HYBRIDWEB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("HYBRIDWEB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PORTWEB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("PORTWEB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ANTRIAN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ANTRIAN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMAPOTEK(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMAPOTEK");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String FORMALARMAPOTEK(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("FORMALARMAPOTEK");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMLAB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMLAB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String FORMALARMLAB(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("FORMALARMLAB");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMRADIOLOGI(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMRADIOLOGI");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String FORMALARMRADIOLOGI(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("FORMALARMRADIOLOGI");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String ALARMRSISRUTE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("ALARMRSISRUTE");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String MENUTRANSPARAN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("MENUTRANSPARAN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPIBPJS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPIBPJS");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String SECRETKEYAPIBPJS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIBPJS"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String CONSIDAPIBPJS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIBPJS"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPIAPLICARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPIAPLICARE");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String SECRETKEYAPIAPLICARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIAPLICARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String CONSIDAPIAPLICARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIAPLICARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPIPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPIPCARE");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String SECRETKEYAPIPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIPCARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String CONSIDAPIPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIPCARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSPCARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USERPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERPCARE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String DIVREGPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("DIVREGPCARE");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KACABPCARE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("KACABPCARE");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPISISRUTE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPISISRUTE");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IDSISRUTE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSISRUTE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSSISRUTE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSISRUTE"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPISIRS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPISIRS");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IDSIRS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSIRS"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSSIRS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSIRS"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPISITT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPISITT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IDSITT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSITT"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSSITT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSITT"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KABUPATENSITT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("KABUPATENSITT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KAMARAKTIFRANAP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("KAMARAKTIFRANAP");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String DOKTERAKTIFKASIRRALAN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("DOKTERAKTIFKASIRRALAN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String POLIAKTIFKASIRRALAN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("POLIAKTIFKASIRRALAN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String RUANGANAKTIFINVENTARIS(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("RUANGANAKTIFINVENTARIS");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String BASENOREG(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("BASENOREG");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URUTNOREG(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URUTNOREG");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String JADWALDOKTERDIREGISTRASI(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("JADWALDOKTERDIREGISTRASI");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IPPRINTERTRACER(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("IPPRINTERTRACER");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLAPIINHEALTH(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPIINHEALTH");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String TOKENINHEALTH(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("TOKENINHEALTH");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PEMBULATANHARGAOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("PEMBULATANHARGAOBAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String AKTIFKANBATCHOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("AKTIFKANBATCHOBAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String CETAKRINCIANOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("CETAKRINCIANOBAT");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String AKTIFKANBILLINGPARSIAL(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLDUKCAPILJAKARTA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLDUKCAPILJAKARTA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USERDUKCAPILJAKARTA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERDUKCAPILJAKARTA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSDUKCAPILJAKARTA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSDUKCAPILJAKARTA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String VAR1DUKCAPILJAKARTA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("VAR1DUKCAPILJAKARTA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String VAR2DUKCAPILJAKARTA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("VAR2DUKCAPILJAKARTA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String URLDUKCAPIL(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLDUKCAPIL");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String USERDUKCAPIL(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("USERDUKCAPIL"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSDUKCAPIL(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSDUKCAPIL"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IPUSERDUKCAPIL(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("IPUSERDUKCAPIL");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String AKTIFKANTRACKSQL(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("AKTIFKANTRACKSQL");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
     
 }
