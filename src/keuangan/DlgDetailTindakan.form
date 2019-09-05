@@ -114,6 +114,36 @@
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Tgl2KeyPressed"/>
               </Events>
             </Component>
+            <Component class="widget.Label" name="jLabel18">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Jenis Bayar :"/>
+                <Property name="name" type="java.lang.String" value="jLabel18" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="widget.TextBox" name="CrJnsBayar">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="CrJnsBayar" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[200, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CrJnsBayarKeyPressed"/>
+              </Events>
+            </Component>
+            <Component class="widget.Button" name="btnPenjab">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/190.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="50"/>
+                <Property name="toolTipText" type="java.lang.String" value="ALt+2"/>
+                <Property name="name" type="java.lang.String" value="btnPenjab" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPenjabActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="widget.Label" name="label10">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Key Word :"/>

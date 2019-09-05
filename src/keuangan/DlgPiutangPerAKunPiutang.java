@@ -90,6 +90,31 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try{
+            psakunbayar = koneksi.prepareStatement("select nama_bayar from akun_piutang order by nama_bayar");
+            try {
+                rsakunbayar=psakunbayar.executeQuery();
+                akunPiutang.addItem("");
+                while(rsakunbayar.next()){
+                    akunPiutang.addItem(rsakunbayar.getString("nama_bayar"));
+                }
+            } catch (Exception e) {
+                System.out.println("Akun Bayar : "+e);
+            } finally{
+                if(rsakunbayar!=null){
+                    rsakunbayar.close();
+                }
+                if(psakunbayar!=null){
+                    psakunbayar.close();
+                }
+            }
+        
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+        
     }    
     
      
@@ -115,6 +140,8 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         jLabel11 = new javax.swing.JLabel();
+        label19 = new widget.Label();
+        akunPiutang = new javax.swing.JComboBox<>();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         Scroll = new widget.ScrollPane();
@@ -219,6 +246,16 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
         jLabel11.setName("jLabel11"); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(10, 23));
         panelGlass5.add(jLabel11);
+
+        label19.setText("Akun Piutang :");
+        label19.setMaximumSize(new java.awt.Dimension(80, 14));
+        label19.setMinimumSize(new java.awt.Dimension(80, 14));
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass5.add(label19);
+
+        akunPiutang.setName("akunPiutang"); // NOI18N
+        panelGlass5.add(akunPiutang);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -333,6 +370,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        akunPiutang.setSelectedIndex(0);
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -394,12 +432,14 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private javax.swing.JComboBox<String> akunPiutang;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
+    private widget.Label label19;
     private widget.panelisi panelGlass5;
     // End of variables declaration//GEN-END:variables
 
@@ -443,19 +483,24 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
             no=1;
             uangmuka=0;
             piutang=0;
+            
             ps= koneksi.prepareStatement(
                     "select nota_jalan.no_rawat,nota_jalan.no_nota,nota_jalan.tanggal,pasien.nm_pasien,(piutang_pasien.totalpiutang-piutang_pasien.uangmuka) as totalpiutang,"+
-                    "piutang_pasien.uangmuka from piutang_pasien inner join nota_jalan inner join pasien "+
-                    "on piutang_pasien.no_rawat=nota_jalan.no_rawat and piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where nota_jalan.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                    "nota_jalan.tanggal between ? and ? and nota_jalan.no_nota like ? order by nota_jalan.tanggal,nota_jalan.no_nota");
+                    "piutang_pasien.uangmuka, detail_piutang_pasien.nama_bayar from piutang_pasien "+
+                    "inner join nota_jalan on piutang_pasien.no_rawat=nota_jalan.no_rawat "+
+                    "inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
+                    "left join detail_piutang_pasien on detail_piutang_pasien.no_rawat=piutang_pasien.no_rawat "+
+                    "where nota_jalan.tanggal between ? and ? and detail_piutang_pasien.nama_bayar like ? and pasien.nm_pasien like ? or "+
+                    "nota_jalan.tanggal between ? and ? and detail_piutang_pasien.nama_bayar like ? and nota_jalan.no_nota like ? order by nota_jalan.tanggal,nota_jalan.no_nota");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+akunPiutang.getSelectedItem().toString()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(7,"%"+akunPiutang.getSelectedItem().toString()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     uangmuka=uangmuka+rs.getDouble("uangmuka");
@@ -487,21 +532,26 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            } 
-           
+            }
+
             ps= koneksi.prepareStatement(
-                    "select nota_inap.no_rawat,nota_inap.no_nota,nota_inap.tanggal,pasien.nm_pasien,(piutang_pasien.totalpiutang-piutang_pasien.uangmuka) as totalpiutang,"+
-                    "piutang_pasien.uangmuka from piutang_pasien inner join nota_inap inner join pasien "+
-                    "on piutang_pasien.no_rawat=nota_inap.no_rawat and piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where nota_inap.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                    "nota_inap.tanggal between ? and ? and nota_inap.no_nota like ? order by nota_inap.tanggal,nota_inap.no_nota");
+                "select nota_inap.no_rawat,nota_inap.no_nota,nota_inap.tanggal,pasien.nm_pasien,(piutang_pasien.totalpiutang-piutang_pasien.uangmuka) as totalpiutang,"+
+                "piutang_pasien.uangmuka, detail_piutang_pasien.nama_bayar from piutang_pasien "+
+                "inner join nota_inap on piutang_pasien.no_rawat=nota_inap.no_rawat "+
+                "inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
+                "left join detail_piutang_pasien on detail_piutang_pasien.no_rawat=nota_inap.no_rawat "+
+                "where nota_inap.tanggal between ? and ? and detail_piutang_pasien.nama_bayar like ? and pasien.nm_pasien like ? or "+
+                "nota_inap.tanggal between ? and ? and detail_piutang_pasien.nama_bayar like ? and nota_inap.no_nota like ? order by nota_inap.tanggal,nota_inap.no_nota");
+
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+akunPiutang.getSelectedItem().toString()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(7,"%"+akunPiutang.getSelectedItem().toString()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     uangmuka=uangmuka+rs.getDouble("uangmuka");

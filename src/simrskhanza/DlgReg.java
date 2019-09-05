@@ -4972,13 +4972,20 @@ public final class DlgReg extends javax.swing.JDialog {
             Valid.textKosong(kdpoli,"poliklinik");
         }else if(TBiaya.getText().trim().equals("")){
             Valid.textKosong(TBiaya,"biaya regristrasi");
-        }else if(kdpnj.getText().trim().equals("")||nmpnj.getText().trim().equals("")){
+        }else if(kdpnj.getText().trim().equals("") || nmpnj.getText().trim().equals("")){
+            Valid.textKosong(kdpnj,"Jenis Bayar");
+        }else if(kdpnj.getText().trim().equals("-") || nmpnj.getText().trim().equals("-")){
             Valid.textKosong(kdpnj,"Jenis Bayar");
         }else if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
                  "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "+
                  "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNoRM.getText())>0){
             JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
             TNoRM.requestFocus();
+        }else if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.no_rkm_medis='"+ 
+                TNoRM.getText() +"' and kd_dokter='"+kddokter.getText()+"' and kd_pj='"+ kdpnj.getText() +
+                "' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ")>0){
+                        JOptionPane.showMessageDialog(null,"Eiiits, Hayo pendaftaran double nih!");
+                        TNoRM.requestFocus();
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 isRegistrasi();
@@ -6136,7 +6143,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 Map<String, Object> param = new HashMap<>();
                 param.put("nama",TPasien.getText());
-                param.put("alamat",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",TNoRM.getText()));
+                param.put("tgl",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",TNoRM.getText()));
+                param.put("alamat",Sequel.cariIsi("select alamat from pasien where no_rkm_medis=?",TNoRM.getText()));
                 param.put("norm",TNoRM.getText());
                 param.put("parameter","%"+TCari.getText().trim()+"%");     
                 param.put("namars",akses.getnamars());

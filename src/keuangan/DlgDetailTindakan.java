@@ -11,6 +11,9 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import simrskhanza.DlgPenanggungJawab;
 
 /**
  *
@@ -28,6 +32,7 @@ import javax.swing.table.TableColumn;
 public final class DlgDetailTindakan extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
+    public  DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private DefaultTableModel tabModeRalanDokter,tabModeRalanParamedis,
             tabModeRalanDokterParamedis,tabModeRanapDokter,tabModeRanapParamedis,
             tabModeRanapDokterParamedis,tabModeRadiologi,tabModeLaborat,
@@ -868,6 +873,45 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         tbOperasi.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        
+        penjab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgDetailTindakan")){
+                    if(penjab.getTable().getSelectedRow()!= -1){
+                        CrJnsBayar.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    }  
+                    CrJnsBayar.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        penjab.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgDetailTindakan")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        penjab.dispose();
+                    }                
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
             
     }
     
@@ -887,6 +931,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        jLabel18 = new widget.Label();
+        CrJnsBayar = new widget.TextBox();
+        btnPenjab = new widget.Button();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -968,6 +1015,30 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(Tgl2);
+
+        jLabel18.setText("Jenis Bayar :");
+        jLabel18.setName("jLabel18"); // NOI18N
+        panelGlass5.add(jLabel18);
+
+        CrJnsBayar.setName("CrJnsBayar"); // NOI18N
+        CrJnsBayar.setPreferredSize(new java.awt.Dimension(200, 23));
+        CrJnsBayar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CrJnsBayarKeyPressed(evt);
+            }
+        });
+        panelGlass5.add(CrJnsBayar);
+
+        btnPenjab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPenjab.setMnemonic('2');
+        btnPenjab.setToolTipText("ALt+2");
+        btnPenjab.setName("btnPenjab"); // NOI18N
+        btnPenjab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenjabActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(btnPenjab);
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
@@ -1349,7 +1420,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%"); 
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanRalanDokter.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::");                    
                 }   break;
@@ -1367,7 +1439,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");   
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanRalanParamedis.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::");                    
                 }   break;
@@ -1385,7 +1458,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");    
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanRalanDokterParamedis.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter & Petugas ]::");                    
                 }   break;
@@ -1403,7 +1477,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");    
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanOperasi.jasper",param,"::[ Detail Tindakan Operasi ]::");                    
                 }   break;
@@ -1421,7 +1496,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");   
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanRanapDokter.jasper",param,"::[ Detail Tindakan Ranap Yang Ditangani Dokter ]::");                    
                 }   break;
@@ -1439,7 +1515,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");      
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanRanapParamedis.jasper",param,"::[ Detail Tindakan Ranap Yang Ditangani Paramedis ]::");                    
                 }   break;
@@ -1457,7 +1534,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");       
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanRanapDokterParamedis.jasper",param,"::[ Detail Tindakan Ranap Yang Ditangani Dokter & Paramedis ]::");                    
                 }   break;
@@ -1475,7 +1553,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");  
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailRadiologi.jasper",param,"::[ Detail Pemeriksaan Radiologi ]::");                    
                 }   break;
@@ -1493,7 +1572,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%");   
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailLaborat.jasper",param,"::[ Detail Pemeriksaan Laborat ]::");                    
                 }   break;
@@ -1511,7 +1591,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("cari","%"+TCari.getText().trim()+"%"); 
+                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailDetailLaborat.jasper",param,"::[ Detail Pemeriksaan Laborat ]::");                    
                 }   break;
@@ -1662,6 +1743,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        CrJnsBayar.setText("");
         TabRawatMouseClicked(null);
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1680,6 +1762,18 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private void tbDetailLaboratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDetailLaboratKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbDetailLaboratKeyPressed
+
+    private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
+        akses.setform("DlgDetailTindakan");
+        penjab.isCek();
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setLocationRelativeTo(internalFrame1);
+        penjab.setVisible(true);
+    }//GEN-LAST:event_btnPenjabActionPerformed
+
+    private void CrJnsBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CrJnsBayarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CrJnsBayarKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1702,6 +1796,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.TextBox CrJnsBayar;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
@@ -1716,6 +1811,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private widget.Button btnPenjab;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame10;
     private widget.InternalFrame internalFrame11;
@@ -1727,6 +1823,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame7;
     private widget.InternalFrame internalFrame8;
     private widget.InternalFrame internalFrame9;
+    private widget.Label jLabel18;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label18;
@@ -1746,94 +1843,195 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
     public void tampil(){     
         Valid.tabelKosong(tabModeRalanDokter);
-        try{
-            ps=koneksi.prepareStatement(
-                   "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
-                   "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
-                   "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
-                   "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
-                   "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
-                   "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
-                   "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                   "dokter inner join rawat_jl_dr inner join poliklinik inner join penjab "+
-                   "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and reg_periksa.kd_pj=penjab.kd_pj "+
-                   "and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                   "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                   "and rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
-                   "where rawat_jl_dr.tgl_perawatan between ? and ? and rawat_jl_dr.no_rawat like ? or "+
-                    "rawat_jl_dr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                    "rawat_jl_dr.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
-                    "rawat_jl_dr.tgl_perawatan between ? and ? and jns_perawatan.nm_perawatan like ? or "+
-                    "rawat_jl_dr.tgl_perawatan between ? and ? and rawat_jl_dr.kd_dokter like ? or "+
-                    "rawat_jl_dr.tgl_perawatan between ? and ? and dokter.nm_dokter like ? or "+
-                    "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? or "+
-                    "rawat_jl_dr.tgl_perawatan between ? and ? and poliklinik.nm_poli like ? "+
-                   " order by rawat_jl_dr.no_rawat desc");
-            try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                i=1;
-                material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
-                while(rs.next()){
-                    material=material+rs.getDouble("material");
-                    bhp=bhp+rs.getDouble("bhp");
-                    jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
-                    kso=kso+rs.getDouble("kso");
-                    menejemen=menejemen+rs.getDouble("menejemen");
-                    total=total+rs.getDouble("biaya_rawat");
-                    tabModeRalanDokter.addRow(new Object[]{
-                        i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                        rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
-                        rs.getDouble(17)
-                    });
-                    i++;
-                }
-                if(total>0){
-                    tabModeRalanDokter.addRow(new Object[]{
-                        "","","","","","","","","","","","Jumlah Total :",material,
-                        bhp,jmdokter,kso,menejemen,total
-                    });
-                }
-            } catch (Exception e) {
+        
+        if(CrJnsBayar.getText().isEmpty()){
+            try{
+                ps=koneksi.prepareStatement(
+                       "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                       "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                       "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                       "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                       "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                       "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                       "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
+                       "dokter inner join rawat_jl_dr inner join poliklinik inner join penjab "+
+                       "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                       "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and reg_periksa.kd_pj=penjab.kd_pj "+
+                       "and reg_periksa.kd_poli=poliklinik.kd_poli "+
+                       "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                       "and rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                       "where rawat_jl_dr.tgl_perawatan between ? and ? and rawat_jl_dr.no_rawat like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and jns_perawatan.nm_perawatan like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and rawat_jl_dr.kd_dokter like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and dokter.nm_dokter like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and poliklinik.nm_poli like ? "+
+                       " order by rawat_jl_dr.no_rawat desc");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                    ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(21,"%"+TCari.getText().trim()+"%");
+                    ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(24,"%"+TCari.getText().trim()+"%");
+                    rs=ps.executeQuery();
+                    i=1;
+                    material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
+                    while(rs.next()){
+                        material=material+rs.getDouble("material");
+                        bhp=bhp+rs.getDouble("bhp");
+                        jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
+                        kso=kso+rs.getDouble("kso");
+                        menejemen=menejemen+rs.getDouble("menejemen");
+                        total=total+rs.getDouble("biaya_rawat");
+                        tabModeRalanDokter.addRow(new Object[]{
+                            i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                            rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                            rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
+                            rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
+                            rs.getDouble(17)
+                        });
+                        i++;
+                    }
+                    if(total>0){
+                        tabModeRalanDokter.addRow(new Object[]{
+                            "","","","","","","","","","","","Jumlah Total :",material,
+                            bhp,jmdokter,kso,menejemen,total
+                        });
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }           
+            }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }           
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            }
+        } else {
+            try{
+                ps=koneksi.prepareStatement(
+                       "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                       "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                       "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                       "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                       "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                       "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                       "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
+                       "dokter inner join rawat_jl_dr inner join poliklinik inner join penjab "+
+                       "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                       "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and reg_periksa.kd_pj=penjab.kd_pj "+
+                       "and reg_periksa.kd_poli=poliklinik.kd_poli "+
+                       "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                       "and rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                       "where rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_dr.no_rawat like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and jns_perawatan.nm_perawatan like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_dr.kd_dokter like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and dokter.nm_dokter like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and penjab.png_jawab like ? or "+
+                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and poliklinik.nm_poli like ? "+
+                       " order by rawat_jl_dr.no_rawat desc");
+                try {
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(7,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(11,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(15,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps.setString(17,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(18,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(19,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(23,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(27,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(28,"%"+TCari.getText().trim()+"%");
+                    ps.setString(29,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(30,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(31,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(32,"%"+TCari.getText().trim()+"%");
+                    rs=ps.executeQuery();
+                    i=1;
+                    material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
+                    while(rs.next()){
+                        material=material+rs.getDouble("material");
+                        bhp=bhp+rs.getDouble("bhp");
+                        jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
+                        kso=kso+rs.getDouble("kso");
+                        menejemen=menejemen+rs.getDouble("menejemen");
+                        total=total+rs.getDouble("biaya_rawat");
+                        tabModeRalanDokter.addRow(new Object[]{
+                            i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                            rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                            rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
+                            rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
+                            rs.getDouble(17)
+                        });
+                        i++;
+                    }
+                    if(total>0){
+                        tabModeRalanDokter.addRow(new Object[]{
+                            "","","","","","","","","","","","Jumlah Total :",material,
+                            bhp,jmdokter,kso,menejemen,total
+                        });
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }           
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
+        
     }
 
     public void tampil2(){     
@@ -1930,6 +2128,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     
     public void tampil3(){     
         Valid.tabelKosong(tabModeRalanDokterParamedis);
+        
         try{
             ps=koneksi.prepareStatement(
                    "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,"+
@@ -1947,48 +2146,58 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                    "and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
                    "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
                    "and rawat_jl_drpr.nip=petugas.nip "+
-                   "where rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and jns_perawatan.nm_perawatan like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.kd_dokter like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and dokter.nm_dokter like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.nip like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and petugas.nama like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and poliklinik.nm_poli like ? "+
+                   "where rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_drpr.no_rawat like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and jns_perawatan.nm_perawatan like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_drpr.kd_dokter like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and dokter.nm_dokter like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_drpr.nip like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and petugas.nama like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and penjab.png_jawab like ? or "+
+                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and poliklinik.nm_poli like ? "+
                    " order by rawat_jl_drpr.no_rawat desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(7,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                ps.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(11,"%"+CrJnsBayar.getText().trim()+"%");
                 ps.setString(12,"%"+TCari.getText().trim()+"%");
                 ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(15,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(16,"%"+TCari.getText().trim()+"%");
+                ps.setString(17,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(18,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(19,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(20,"%"+TCari.getText().trim()+"%");
+                ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(23,"%"+CrJnsBayar.getText().trim()+"%");
                 ps.setString(24,"%"+TCari.getText().trim()+"%");
                 ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(27,"%"+TCari.getText().trim()+"%");
-                ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(27,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(28,"%"+TCari.getText().trim()+"%");
+                ps.setString(29,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(30,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(31,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(32,"%"+TCari.getText().trim()+"%");
+                ps.setString(33,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(34,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(35,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
+                ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(39,"%"+CrJnsBayar.getText().trim()+"%");
+                ps.setString(40,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 material=0;bhp=0;jmdokter=0;jmpetugas=0;kso=0;menejemen=0;total=0;

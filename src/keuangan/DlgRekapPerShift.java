@@ -54,7 +54,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                         "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
                         "reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rawat=nota_jalan.no_rawat where reg_periksa.status_lanjut='Ralan' and "+
                         "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                        "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? order by nota_jalan.no_nota",
+                        "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? order by dokter.nm_dokter",
             sqlpspemasukan="select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, kategori_pemasukan_lain.nama_kategori "+
                         "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
                         "where pemasukan_lain.tanggal between ? and ? order by pemasukan_lain.tanggal",
@@ -75,9 +75,10 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         initComponents();
         this.setLocation(10,10);
         setSize(457,249);
+        
         tabModeRalan=new DefaultTableModel(null,new Object[]{
-            "Tanggal","No.Nota","Nama Pasien","Jenis Bayar","Perujuk","Registrasi","Obat+Emb+Tsl",
-            "Paket Tindakan","Operasi","Laborat","Radiologi","Tambahan","Potongan","Total","Dokter"}){
+            "Tanggal","No.Nota","Nama Pasien","Jenis Bayar","Perujuk","Dokter","Obat+Emb+Tsl",
+            "Paket Tindakan","Operasi","Laborat","Radiologi","Tambahan","Potongan","Total"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -85,7 +86,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         tbRalan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbRalan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -470,7 +471,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
                 Sequel.queryu("delete from temporary");
-                for(int r=0;r<tabModeRalan.getRowCount();r++){  
+                for(int r=0;r<tabModeRalan.getRowCount();r++){
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModeRalan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                         tabModeRalan.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
@@ -681,12 +682,13 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                     pspasienralan= koneksi.prepareStatement(sqlpspasienralan);
                     try {
                         pspasienralan.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_masuk"));
-                        if(rs.getString("shift").equals("Malam")){
-                            tanggal2=Sequel.cariIsi("select DATE_ADD('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang")+"',INTERVAL 1 DAY)");
-                            pspasienralan.setString(2,tanggal2);
-                        }else{
-                            pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang"));
-                        }
+//                        if(rs.getString("shift").equals("Malam")){
+//                            tanggal2=Sequel.cariIsi("select DATE_ADD('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang")+"',INTERVAL 1 DAY)");
+//                            pspasienralan.setString(2,tanggal2);
+//                        }else{
+//                            pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang"));
+//                        }
+                        pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang"));
                         rspasien=pspasienralan.executeQuery();
                         all=0;ttlLaborat=0;ttlRadiologi=0;ttlObat=0;ttlRalan_Dokter=0;ttlOperasi=0;
                         ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;                
@@ -745,10 +747,9 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                 tabModeRalan.addRow(new Object[]{
                                     i+". "+rspasien.getString("tanggal")+" "+rspasien.getString("jam"),rspasien.getString("no_nota"),
                                     rspasien.getString("nm_pasien"),rspasien.getString("png_jawab"),Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rspasien.getString("no_rawat")),
-                                    Valid.SetAngka(Registrasi),Valid.SetAngka(Obat),Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis),
+                                    rspasien.getString("nm_dokter"),Valid.SetAngka(Obat),Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis),
                                     Valid.SetAngka(Operasi),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Tambahan),Valid.SetAngka(Potongan),
-                                    Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis+Tambahan+Potongan+Registrasi),
-                                    rspasien.getString("nm_dokter")                        
+                                    Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis+Tambahan+Potongan+Registrasi)   
                                 });
                                 i++;
                             } catch (Exception e) {
