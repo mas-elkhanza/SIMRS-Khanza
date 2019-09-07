@@ -496,6 +496,7 @@ import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
+import laporan.DlgHarianHAIs2;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapMutasiBerkas;
@@ -1256,8 +1257,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(180, 80, 80));
-        internalFrame2.setWarnaBawah(new java.awt.Color(145, 45, 45));
+        internalFrame2.setWarnaAtas(new java.awt.Color(165, 90, 90));
+        internalFrame2.setWarnaBawah(new java.awt.Color(120, 45, 45));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -6964,7 +6965,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
         internalFrame1.setWarnaAtas(new java.awt.Color(255, 255, 254));
-        internalFrame1.setWarnaBawah(new java.awt.Color(250, 212, 205));
+        internalFrame1.setWarnaBawah(new java.awt.Color(250, 210, 200));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -6987,8 +6988,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnMenu);
 
-        jSeparator4.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator4.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator4.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator4.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator4.setName("jSeparator4"); // NOI18N
@@ -7036,8 +7037,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolIGD);
 
-        jSeparator5.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator5.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator5.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator5.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator5.setName("jSeparator5"); // NOI18N
@@ -7142,8 +7143,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolJualObat);
 
-        jSeparator9.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator9.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator9.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator9.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator9.setName("jSeparator9"); // NOI18N
@@ -7191,8 +7192,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolKasir);
 
-        jSeparator7.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator7.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator7.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator7.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator7.setName("jSeparator7"); // NOI18N
@@ -7244,8 +7245,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(250, 212, 205));
-        internalFrame4.setWarnaBawah(new java.awt.Color(251, 251, 250));
+        internalFrame4.setWarnaAtas(new java.awt.Color(250, 210, 200));
+        internalFrame4.setWarnaBawah(new java.awt.Color(252, 252, 251));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7257,8 +7258,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblStts.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblStts);
 
-        jSeparator1.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator1.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator1.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator1.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator1.setName("jSeparator1"); // NOI18N
@@ -7275,8 +7276,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
         internalFrame4.add(lblUser);
 
-        jSeparator2.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator2.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator2.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator2.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator2.setName("jSeparator2"); // NOI18N
@@ -7293,8 +7294,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblTgl);
 
-        jSeparator3.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator3.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator3.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator3.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator3.setName("jSeparator3"); // NOI18N
@@ -7311,8 +7312,8 @@ public class frmUtama extends javax.swing.JFrame {
         LblIP.setPreferredSize(new java.awt.Dimension(120, 23));
         internalFrame4.add(LblIP);
 
-        jSeparator6.setBackground(new java.awt.Color(190, 50, 50));
-        jSeparator6.setForeground(new java.awt.Color(190, 50, 50));
+        jSeparator6.setBackground(new java.awt.Color(195, 50, 50));
+        jSeparator6.setForeground(new java.awt.Color(195, 50, 50));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator6.setName("jSeparator6"); // NOI18N
@@ -15276,6 +15277,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHarianHAIs2ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgHarianHAIs2 aplikasi=new DlgHarianHAIs2(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -15861,7 +15873,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
-            btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang;
+            btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2;
     
     public void isWall(){
         try{            
@@ -17149,6 +17161,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getharian_HAIs()==true){  
                 Panelmenu.add(btnHarianHAIs);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getharian_HAIs2()==true){  
+                Panelmenu.add(btnHarianHAIs2);                 
                 jmlmenu++;
             }
             
@@ -19893,6 +19910,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getharian_HAIs()==true){  
             Panelmenu.add(btnHarianHAIs);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getharian_HAIs2()==true){  
+            Panelmenu.add(btnHarianHAIs2);                 
             jmlmenu++;
         }
         
@@ -23100,6 +23122,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getharian_HAIs()==true){  
             if(btnHarianHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHarianHAIs);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getharian_HAIs2()==true){  
+            if(btnHarianHAIs2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHarianHAIs2);                 
                 jmlmenu++;
             }                
         }
@@ -26377,6 +26406,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikInventarisRuang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikInventarisRuangActionPerformed(evt);
+            }
+        });
+        
+        btnHarianHAIs2 = new widget.ButtonBig();
+        btnHarianHAIs2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); 
+        btnHarianHAIs2.setText("Harian HAIs 2");
+        btnHarianHAIs2.setIconTextGap(0);
+        btnHarianHAIs2.setName("btnHarianHAIs2"); 
+        btnHarianHAIs2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHarianHAIs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHarianHAIs2ActionPerformed(evt);
             }
         });
     }
