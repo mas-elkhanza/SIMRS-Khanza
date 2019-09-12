@@ -287,7 +287,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='40px' rowspan='2'>Tgl</td>"
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px' rowspan='2'>Tgl</td>"
             );
             kolom=Sequel.cariInteger("select count(*) from penjab");
             kodebayar=new String[kolom];
@@ -312,7 +312,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     totalvip[kolom]=0;
                     totalvvip[kolom]=0;
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#fafff5' align='center' width='180px' colspan='6'>"+rs.getString("png_jawab")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='180px' colspan='6'>"+rs.getString("png_jawab")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -325,7 +325,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
             htmlContent.append(
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='50px' rowspan='2'>Jumlah</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px' rowspan='2'>Jumlah</td>"+
                 "</tr>"
             );   
             
@@ -333,7 +333,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "<tr class='isi'>"
             );
             for(i=0;i<kolom;i++){
-                htmlContent.append("<td valign='middle' bgcolor='#fafff5' align='center'>K 1</td><td valign='middle' bgcolor='#fafff5' align='center'>K 2</td><td valign='middle' bgcolor='#fafff5' align='center'>K 3</td><td valign='middle' bgcolor='#fafff5' align='center'>Utama</td><td valign='middle' bgcolor='#fafff5' align='center'>VIP</td><td valign='middle' bgcolor='#fafff5' align='center'>VVIP</td>");
+                htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center'>K 1</td><td valign='middle' bgcolor='#FFFAF8' align='center'>K 2</td><td valign='middle' bgcolor='#FFFAF8' align='center'>K 3</td><td valign='middle' bgcolor='#FFFAF8' align='center'>Utama</td><td valign='middle' bgcolor='#FFFAF8' align='center'>VIP</td><td valign='middle' bgcolor='#FFFAF8' align='center'>VVIP</td>");
             }
             htmlContent.append(
                 "</tr>"
@@ -441,13 +441,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='7'>Status/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>K 1</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>K 2</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>K 3</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>Utama</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>VIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>VVIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='7'>Status/Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>K 1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>K 2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>K 3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Utama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>VIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>VVIP</td>"+
                     "<td valign='middle' colspan='"+((kolom*6)-17)+"'>&nbsp;</td>"+
                 "</tr>"
             );

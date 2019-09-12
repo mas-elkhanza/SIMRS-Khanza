@@ -22,12 +22,12 @@ import javax.swing.table.TableColumn;
  * @author dosen
  */
 public class DlgPengaturanRekening extends javax.swing.JDialog {
-    private DefaultTableModel tabMode;
+    private DefaultTableModel tabMode,tabModeRalan;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
     private int i=0;
     private String Tindakan_Ralan, Laborat_Ralan, Radiologi_Ralan, Obat_Ralan, Registrasi_Ralan, 
             Tambahan_Ralan, Potongan_Ralan, Tindakan_Ranap, Laborat_Ranap, Radiologi_Ranap, 
@@ -69,7 +69,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Beban_Jasa_Medik_Paramedis_Operasi_Ranap, Utang_Jasa_Medik_Paramedis_Operasi_Ranap, 
             HPP_Obat_Operasi_Ranap, Persediaan_Obat_Kamar_Operasi_Ranap,Stok_Keluar_Medis,
             Kontra_Stok_Keluar_Medis,HPP_Obat_Jual_Bebas,Persediaan_Obat_Jual_Bebas,
-            Penerimaan_NonMedis,Kontra_Penerimaan_NonMedis,Bayar_Pemesanan_Non_Medis;
+            Penerimaan_NonMedis,Kontra_Penerimaan_NonMedis,Bayar_Pemesanan_Non_Medis,
+            kode_pendapatan_tindakan,nama_pendapatan_tindakan,kode_beban_jasa_dokter,nama_beban_jasa_dokter, kode_utang_jasa_dokter,
+            nama_utang_jasa_dokter,kode_beban_jasa_paramedis,nama_beban_jasa_paramedis,kode_utang_jasa_paramedis,nama_utang_jasa_paramedis, 
+            kode_beban_kso,nama_beban_kso,kode_utang_kso,nama_utang_kso,kode_hpp_persediaan,nama_hpp_persediaan,kode_persediaan_bhp,
+            nama_persediaan_bhp,kode_beban_jasa_sarana,nama_beban_jasa_sarana,kode_utang_jasa_sarana,nama_utang_jasa_sarana,
+            kode_beban_menejemen,nama_beban_menejemen,kode_utang_menejemen,nama_utang_menejemen;
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
     /** Creates new form DlgJadwal
@@ -79,8 +84,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Letak Akun Rekening","Kode Akun","Nama Akun","Tipe","Balance"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new String[]{"Letak Akun Rekening","Kode Akun","Nama Akun","Tipe","Balance"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -104,6 +108,80 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         }
 
         tbPengaturan.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeRalan=new DefaultTableModel(null,new String[]{
+                "Kode Tindakan","Nama Tnd/Prw/Tagihan","Kategori","Jenis Bayar","Unit/Poli",
+                "Kode Akun","Nama Akun Pendapatan Tindakan Ralan","Kode Akun","Nama Akun Beban Jasa Dokter",
+                "Kode Akun","Nama Akun Utang Jasa Dokter","Kode Akun","Nama Akun Beban Jasa Paramedis",
+                "Kode Akun","Nama Akun Utang Jasa Paramedis","Kode Akun","Nama Akun Beban KSO",
+                "Kode Akun","Nama Akun Utang KSO","Kode Akun","Nama Akun HPP Persediaan Ralan",
+                "Kode Akun","Nama Akun Persediaan BHP Ralan","Kode Akun","Nama Akun Beban Jasa Sarana",
+                "Kode Akun","Nama Akun Utang Jasa Sarana","Kode Akun","Nama Akun Utang Beban Jasa Menejemen",
+                "Kode Akun","Nama Akun Utang Jasa Menejemen"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+
+        tbPengaturan1.setModel(tabModeRalan);
+        tbPengaturan1.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPengaturan1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 25; i++) {
+            TableColumn column = tbPengaturan1.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(80);
+            }else if(i==1){
+                column.setPreferredWidth(330);
+            }else if(i==2){
+                column.setPreferredWidth(110);
+            }else if(i==3){
+                column.setPreferredWidth(130);
+            }else if(i==4){
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setPreferredWidth(80);
+            }else if(i==6){
+                column.setPreferredWidth(300);
+            }else if(i==7){
+                column.setPreferredWidth(80);
+            }else if(i==8){
+                column.setPreferredWidth(300);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(300);
+            }else if(i==11){
+                column.setPreferredWidth(80);
+            }else if(i==12){
+                column.setPreferredWidth(300);
+            }else if(i==13){
+                column.setPreferredWidth(80);
+            }else if(i==14){
+                column.setPreferredWidth(300);
+            }else if(i==15){
+                column.setPreferredWidth(80);
+            }else if(i==16){
+                column.setPreferredWidth(300);
+            }else if(i==17){
+                column.setPreferredWidth(80);
+            }else if(i==18){
+                column.setPreferredWidth(300);
+            }else if(i==19){
+                column.setPreferredWidth(80);
+            }else if(i==20){
+                column.setPreferredWidth(300);
+            }else if(i==21){
+                column.setPreferredWidth(80);
+            }else if(i==22){
+                column.setPreferredWidth(300);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }else if(i==24){
+                column.setPreferredWidth(300);
+            }
+        }
+
+        tbPengaturan1.setDefaultRenderer(Object.class, new WarnaTable());
         
         rekening.addWindowListener(new WindowListener() {
             @Override
@@ -169,6 +247,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         tbPengaturan = new widget.Table();
+        Scroll1 = new widget.ScrollPane();
+        tbPengaturan1 = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -249,6 +329,20 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         Scroll.setViewportView(tbPengaturan);
 
         TabRawat.addTab("Pengaturan Umum", Scroll);
+
+        Scroll1.setName("Scroll1"); // NOI18N
+        Scroll1.setOpaque(true);
+
+        tbPengaturan1.setToolTipText("Semua akun harus terisi");
+        tbPengaturan1.setName("tbPengaturan1"); // NOI18N
+        tbPengaturan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbPengaturan1KeyPressed(evt);
+            }
+        });
+        Scroll1.setViewportView(tbPengaturan1);
+
+        TabRawat.addTab("Tarif Ralan", Scroll1);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -520,9 +614,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         if(TabRawat.getSelectedIndex()==0){
             tampil();
         }else if(TabRawat.getSelectedIndex()==1){
-            
+            tampilralan();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
+
+    private void tbPengaturan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengaturan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbPengaturan1KeyPressed
 
     /**
     * @param args the command line arguments
@@ -544,10 +642,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll1;
     private javax.swing.JTabbedPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private widget.panelisi panelGlass8;
     private widget.Table tbPengaturan;
+    private widget.Table tbPengaturan1;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -1428,6 +1528,111 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
 
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpengaturan_rekening());
+    }
+
+    private void tampilralan() {
+        Valid.tabelKosong(tabModeRalan);
+        try{    
+            /*"Kode Tindakan","Nama Tnd/Prw/Tagihan","Kategori","Jenis Bayar","Unit/Poli",
+                "Kode Akun","Nama Akun Pendapatan Tindakan Ralan","Kode Akun","Nama Akun Beban Jasa Dokter",
+                "Kode Akun","Nama Akun Utang Jasa Dokter","Kode Akun","Nama Akun Beban Jasa Paramedis",
+                "Kode Akun","Nama Akun Utang Jasa Paramedis","Kode Akun","Nama Akun Beban KSO",
+                "Kode Akun","Nama Akun Utang KSO","Kode Akun","Nama Akun HPP Persediaan Ralan",
+                "Kode Akun","Nama Akun Persediaan BHP Ralan","Kode Akun","Nama Akun Beban Jasa Sarana",
+                "Kode Akun","Nama Akun Utang Jasa Sarana","Kode Akun","Nama Akun Utang Beban Jasa Menejemen",
+                "Kode Akun","Nama Akun Utang Jasa Menejemen"*/
+            ps=koneksi.prepareStatement(
+               "select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,penjab.png_jawab,poliklinik.nm_poli "+
+               "from jns_perawatan inner join kategori_perawatan inner join penjab inner join poliklinik on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori "+
+               "and poliklinik.kd_poli=jns_perawatan.kd_poli and penjab.kd_pj=jns_perawatan.kd_pj where jns_perawatan.status='1' order by jns_perawatan.kd_jenis_prw");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    kode_pendapatan_tindakan="";nama_pendapatan_tindakan="";kode_beban_jasa_dokter="";nama_beban_jasa_dokter="";kode_utang_jasa_dokter="";
+                    nama_utang_jasa_dokter="";kode_beban_jasa_paramedis="";nama_beban_jasa_paramedis="";kode_utang_jasa_paramedis="";nama_utang_jasa_paramedis=""; 
+                    kode_beban_kso="";nama_beban_kso="";kode_utang_kso="";nama_utang_kso="";kode_hpp_persediaan="";nama_hpp_persediaan="";kode_persediaan_bhp="";
+                    nama_persediaan_bhp="";kode_beban_jasa_sarana="";nama_beban_jasa_sarana="";kode_utang_jasa_sarana="";nama_utang_jasa_sarana="";
+                    kode_beban_menejemen="";nama_beban_menejemen="";kode_utang_menejemen="";nama_utang_menejemen="";
+                    ps2=koneksi.prepareStatement(
+                        "select matrik_akun_jns_perawatan.pendapatan_tindakan,pendapatantindakan.nm_rek as nama_pendapatan_tindakan, "+
+                        "matrik_akun_jns_perawatan.beban_jasa_dokter,bebanjasadokter.nm_rek as nama_beban_jasa_dokter,"+
+                        "matrik_akun_jns_perawatan.utang_jasa_dokter,utangjasadokter.nm_rek as nama_utang_jasa_dokter,"+
+                        "matrik_akun_jns_perawatan.beban_jasa_paramedis,bebanjasaparamedis.nm_rek as nama_beban_jasa_paramedis,"+
+                        "matrik_akun_jns_perawatan.utang_jasa_paramedis,utangjasaparamedis.nm_rek as nama_utang_jasa_paramedis,"+
+                        "matrik_akun_jns_perawatan.beban_kso,bebankso.nm_rek as nama_beban_kso,"+
+                        "matrik_akun_jns_perawatan.utang_kso,utangkso.nm_rek as nama_utang_kso,"+
+                        "matrik_akun_jns_perawatan.hpp_persediaan,hpppersediaan.nm_rek as nama_hpp_persediaan,"+
+                        "matrik_akun_jns_perawatan.persediaan_bhp,persediaanbhp.nm_rek as nama_persediaan_bhp,"+
+                        "matrik_akun_jns_perawatan.beban_jasa_sarana,bebanjasasarana.nm_rek as nama_beban_jasa_sarana,"+
+                        "matrik_akun_jns_perawatan.utang_jasa_sarana,"+
+                        "matrik_akun_jns_perawatan.beban_menejemen,"+
+                        "matrik_akun_jns_perawatan.utang_menejemen "+
+                        "from matrik_akun_jns_perawatan inner join rekening as pendapatantindakan inner join rekening as bebanjasadokter "+
+                        "inner join rekening as utangjasadokter inner join rekening as bebanjasaparamedis inner join rekening as utangjasaparamedis "+
+                        "inner join rekening as bebankso inner join rekening as utangkso inner join rekening as hpppersediaan "+
+                        "inner join rekening as persediaanbhp inner join rekening as bebanjasasarana on matrik_akun_jns_perawatan.pendapatan_tindakan=pendapatantindakan.kd_rek "+
+                        "and matrik_akun_jns_perawatan.beban_jasa_dokter=bebanjasadokter.kd_rek and matrik_akun_jns_perawatan.utang_jasa_dokter=utangjasadokter.kd_rek "+
+                        "and matrik_akun_jns_perawatan.beban_jasa_paramedis=bebanjasaparamedis.kd_rek and matrik_akun_jns_perawatan.utang_jasa_paramedis=utangjasaparamedis.kd_rek "+
+                        "and matrik_akun_jns_perawatan.beban_kso=bebankso.kd_rek and matrik_akun_jns_perawatan.utang_kso=utangkso.kd_rek "+
+                        "and matrik_akun_jns_perawatan.hpp_persediaan=hpppersediaan.kd_rek and matrik_akun_jns_perawatan.persediaan_bhp=persediaanbhp.kd_rek "+
+                        "and matrik_akun_jns_perawatan.utang_jasa_sarana=bebanjasasarana.kd_rek where matrik_akun_jns_perawatan.kd_jenis_prw=?");
+                    try {
+                        ps2.setString(1,rs.getString("kd_jenis_prw"));
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){
+                            kode_pendapatan_tindakan=rs2.getString("pendapatan_tindakan");
+                            nama_pendapatan_tindakan=rs2.getString("nama_pendapatan_tindakan");
+                            kode_beban_jasa_dokter=rs2.getString("beban_jasa_dokter");
+                            nama_beban_jasa_dokter=rs2.getString("nama_beban_jasa_dokter");
+                            kode_utang_jasa_dokter=rs2.getString("utang_jasa_dokter");
+                            nama_utang_jasa_dokter=rs2.getString("nama_utang_jasa_dokter");
+                            kode_beban_jasa_paramedis=rs2.getString("beban_jasa_paramedis");
+                            nama_beban_jasa_paramedis=rs2.getString("nama_beban_jasa_paramedis");
+                            kode_utang_jasa_paramedis=rs2.getString("utang_jasa_paramedis");
+                            nama_utang_jasa_paramedis=rs2.getString("nama_utang_jasa_paramedis");
+                            kode_beban_kso=rs2.getString("beban_kso");
+                            nama_beban_kso=rs2.getString("nama_beban_kso");
+                            kode_utang_kso=rs2.getString("utang_kso");
+                            nama_utang_kso=rs2.getString("nama_utang_kso");
+                            kode_hpp_persediaan=rs2.getString("hpp_persediaan");
+                            nama_hpp_persediaan=rs2.getString("nama_hpp_persediaan");
+                            kode_persediaan_bhp=rs2.getString("persediaan_bhp");
+                            nama_persediaan_bhp=rs2.getString("nama_persediaan_bhp");
+                            kode_beban_jasa_sarana=rs2.getString("beban_jasa_sarana");
+                            nama_beban_jasa_sarana=rs2.getString("nama_beban_jasa_sarana");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    tabModeRalan.addRow(new Object[]{
+                        rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori"),rs.getString("png_jawab"),rs.getString("nm_poli"),
+                        kode_pendapatan_tindakan,nama_pendapatan_tindakan,kode_beban_jasa_dokter,nama_beban_jasa_dokter,kode_utang_jasa_dokter,nama_utang_jasa_dokter,
+                        kode_beban_jasa_paramedis,nama_beban_jasa_paramedis,kode_utang_jasa_paramedis,nama_utang_jasa_paramedis,kode_beban_kso,nama_beban_kso,
+                        kode_utang_kso,nama_utang_kso,kode_hpp_persediaan,nama_hpp_persediaan,kode_persediaan_bhp,nama_persediaan_bhp,kode_beban_jasa_sarana,
+                        nama_beban_jasa_sarana
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
     }
         
     

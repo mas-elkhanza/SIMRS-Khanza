@@ -5110,12 +5110,12 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='4%'>No.RM</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='12%'>Nama Pasien</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='2%'>Umur</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='1%'>J.K.</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='80%'>Kunjungan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='1%'>No.</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='4%'>No.RM</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='12%'>Nama Pasien</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='2%'>Umur</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='1%'>J.K.</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='80%'>Kunjungan</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
                 "select pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+

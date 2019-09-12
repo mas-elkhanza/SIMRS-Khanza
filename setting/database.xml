@@ -47,7 +47,7 @@
     <entry key="DOKTERAKTIFKASIRRALAN"></entry>
     <entry key="POLIAKTIFKASIRRALAN"></entry>
     <entry key="RUANGANAKTIFINVENTARIS"></entry>
-    <entry key="BASENOREG">registrasi</entry>
+    <entry key="BASENOREG">booking</entry>
     <entry key="URUTNOREG">dokter</entry>
     <entry key="JADWALDOKTERDIREGISTRASI">nonaktif</entry>    
     <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>

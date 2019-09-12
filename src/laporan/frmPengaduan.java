@@ -677,12 +677,12 @@ public class frmPengaduan extends javax.swing.JFrame {
                         if(rs.getString("username").equals(akses.getkode())){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='right' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='right' valign='top' bgcolor='#FFFAF8'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }else{
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='left' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='left' valign='top' bgcolor='#FFFAF8'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }
                     }                        

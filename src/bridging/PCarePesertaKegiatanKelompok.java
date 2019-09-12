@@ -750,16 +750,16 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='6%'>Edu Id</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='6%'>Pelayanan</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='10%'>Kegiatan</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='10%'>Kelompok</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='21%'>Materi</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='14%'>Pembicara</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='14%'>Lokasi</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='12%'>Keterangan</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='6%'>Biaya</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='1%'>No.</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='6%'>Edu Id</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='6%'>Pelayanan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Kegiatan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Kelompok</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='21%'>Materi</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='14%'>Pembicara</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='14%'>Lokasi</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='12%'>Keterangan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='6%'>Biaya</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
                    "select eduId,tglPelayanan,nmKegiatan,nmKelompok,materi, "+
