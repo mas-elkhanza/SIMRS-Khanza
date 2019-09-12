@@ -6889,7 +6889,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08/09/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/09/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -15873,7 +15873,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
-            btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2;
+            btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis;
     
     public void isWall(){
         try{            
@@ -18476,6 +18476,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_inventaris_ruang()==true){
                 Panelmenu.add(btnGrafikInventarisRuang);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_inventaris_jenis()==true){
+                Panelmenu.add(btnGrafikInventarisJenis);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21220,6 +21225,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_inventaris_ruang()==true){
             Panelmenu.add(btnGrafikInventarisRuang);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_inventaris_jenis()==true){
+            Panelmenu.add(btnGrafikInventarisJenis);
             jmlmenu++;
         }
 
@@ -24957,6 +24967,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_inventaris_jenis()==true){
+            if(btnGrafikInventarisJenis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikInventarisJenis);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26418,6 +26435,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHarianHAIs2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHarianHAIs2ActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikInventarisJenis = new widget.ButtonBig();
+        btnGrafikInventarisJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikInventarisJenis.setText("Jumlah Inventaris Jenis");
+        btnGrafikInventarisJenis.setIconTextGap(0);
+        btnGrafikInventarisJenis.setName("btnGrafikInventarisJenis"); 
+        btnGrafikInventarisJenis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikInventarisJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
             }
         });
     }
