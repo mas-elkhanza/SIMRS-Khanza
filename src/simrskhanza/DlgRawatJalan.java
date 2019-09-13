@@ -4228,22 +4228,24 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         switch (TabRawat.getSelectedIndex()) {
             case 0:
-                BtnSimpan.setEnabled(akses.gettindakan_ralan());
-                BtnHapus.setEnabled(akses.gettindakan_ralan());
-                BtnEdit.setEnabled(akses.gettindakan_ralan());
-                BtnPrint.setEnabled(akses.gettindakan_ralan());
-                BtnTambahTindakan.setVisible(true);
-                TCari.setPreferredSize(new Dimension(207,23));            
-                TabRawatTindakanDokterMouseClicked(null);
+//                BtnSimpan.setEnabled(akses.gettindakan_ralan());
+//                BtnHapus.setEnabled(akses.gettindakan_ralan());
+//                BtnEdit.setEnabled(akses.gettindakan_ralan());
+//                BtnPrint.setEnabled(akses.gettindakan_ralan());
+//                BtnTambahTindakan.setVisible(true);
+//                TCari.setPreferredSize(new Dimension(207,23));            
+//                TabRawatTindakanDokterMouseClicked(null);
+                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
                 break;
             case 1:
-                BtnSimpan.setEnabled(akses.gettindakan_ralan());
-                BtnHapus.setEnabled(akses.gettindakan_ralan());
-                BtnEdit.setEnabled(akses.gettindakan_ralan());
-                BtnPrint.setEnabled(akses.gettindakan_ralan());
-                BtnTambahTindakan.setVisible(true); 
-                TCari.setPreferredSize(new Dimension(207,23));
-                TabRawatTindakanPetugasMouseClicked(null);
+//                BtnSimpan.setEnabled(akses.gettindakan_ralan());
+//                BtnHapus.setEnabled(akses.gettindakan_ralan());
+//                BtnEdit.setEnabled(akses.gettindakan_ralan());
+//                BtnPrint.setEnabled(akses.gettindakan_ralan());
+//                BtnTambahTindakan.setVisible(true); 
+//                TCari.setPreferredSize(new Dimension(207,23));
+//                TabRawatTindakanPetugasMouseClicked(null);
+                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
                 break;
             case 2:
                 BtnSimpan.setEnabled(akses.gettindakan_ralan());
