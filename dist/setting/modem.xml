@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>MyKhanza</comment>
+<entry key="GATEWAYNAME">Wavecom.COM4</entry>
+<entry key="PORT">COM1</entry>
+<entry key="BAUDRATE">115200</entry>
+<entry key="MERKHP">WAVECOM</entry>
+<entry key="TIPEHP">M1306B</entry>
+</properties>
+
