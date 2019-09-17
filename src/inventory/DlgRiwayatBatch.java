@@ -389,27 +389,27 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='80px'>No.Batch</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='90px'>Kode Barang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='230px'>Nama Barang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='50px'>Satuan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='70px'>Datang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='70px'>Kadaluarsa</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='70px'>Asal Barang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='95px'>No.Faktur</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.PP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Ralan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Kelas 1</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Kelas 2</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Kelas 3</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Utama</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.VIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.VVIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Beli Luar</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Jual Bebas</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='65px'>Jml.Beli</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='65px'>Sisa</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>No.Batch</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Kode Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='230px'>Nama Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>Satuan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Datang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Kadaluarsa</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Asal Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='95px'>No.Faktur</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.PP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Ralan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Kelas 1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Kelas 2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Kelas 3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Utama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.VIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.VVIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Beli Luar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Jual Bebas</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Karyawan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jml.Beli</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Sisa</td>"+
                 "</tr>"
             );   
             

@@ -368,73 +368,73 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%' rowspan='3'>No.Urut</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='55%' colspan='18'>Jumlah Pasien Hidup dan Mati menurut Golongan Umur & Jenis Kelamin</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%' colspan='2'>Pasien Keluar (Hidup & Mati) Menurut Jenis Kelamin</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='3'>No.Urut</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55%' colspan='18'>Jumlah Pasien Hidup dan Mati menurut Golongan Umur & Jenis Kelamin</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' colspan='2'>Pasien Keluar (Hidup & Mati) Menurut Jenis Kelamin</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>0-6 hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-28hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28hr-<1th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>1-4th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>5-14th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>15-24th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>25-44th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>45-64th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>> 65</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' rowspan='2'>LK</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' rowspan='2'>PR</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>0-6 hr</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>7-28hr</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>28hr-<1th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>1-4th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>5-14th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>15-24th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>25-44th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>45-64th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>> 65</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>LK</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>PR</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>1</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>2</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>3</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>4</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>5</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>6</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>7</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>8</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>9</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>10</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>11</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>12</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>13</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>14</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>15</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>16</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>17</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>18</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>19</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>20</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>21</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>22</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>23</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>24</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>25</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>4</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>5</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>6</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>7</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>8</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>9</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25</td>"+
                 "</tr>"
             );            
             ps=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as nm_penyakit from diagnosa_pasien inner join penyakit "+
@@ -632,73 +632,73 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%' rowspan='3'>No.Urut</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='55%' colspan='18'>Jumlah Pasien Hidup dan Mati menurut Golongan Umur & Jenis Kelamin</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10%' colspan='2'>Pasien Keluar (Hidup & Mati) Menurut Jenis Kelamin</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='3'>No.Urut</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55%' colspan='18'>Jumlah Pasien Hidup dan Mati menurut Golongan Umur & Jenis Kelamin</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' colspan='2'>Pasien Keluar (Hidup & Mati) Menurut Jenis Kelamin</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>0-6 hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-28hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28hr-<1th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>1-4th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>5-14th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>15-24th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>25-44th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>45-64th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>> 65</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' rowspan='2'>LK</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' rowspan='2'>PR</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>0-6 hr</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>7-28hr</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>28hr-<1th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>1-4th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>5-14th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>15-24th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>25-44th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>45-64th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>> 65</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>LK</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' rowspan='2'>PR</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>1</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>2</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>3</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>4</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>5</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>6</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>7</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>8</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>9</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>10</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>11</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>12</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>13</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>14</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>15</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>16</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>17</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>18</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>19</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>20</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>21</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>22</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>23</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>24</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>25</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>4</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>5</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>6</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>7</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>8</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>9</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>10</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>11</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>12</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>13</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>14</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>15</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>16</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>17</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>18</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>19</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>20</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>21</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>22</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>23</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>24</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>25</td>"+
                 "</tr>"
             );            
             ps=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as nm_penyakit from diagnosa_pasien inner join penyakit "+
