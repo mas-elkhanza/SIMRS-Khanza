@@ -1729,7 +1729,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
                                 tabMode.getValueAt(i,4).toString()+"','"+
-                                tabMode.getValueAt(i,33).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi operasi"); 
+                                tabMode.getValueAt(i,33).toString()+"','"+
+                                tabMode.getValueAt(i,34).toString()+"','"+
+                                tabMode.getValueAt(i,35).toString()+"','"+
+                                tabMode.getValueAt(i,36).toString()+"','"+
+                                tabMode.getValueAt(i,37).toString()+"','"+
+                                tabMode.getValueAt(i,38).toString()+"','"+
+                                tabMode.getValueAt(i,39).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi operasi"); 
             }
             
             
@@ -2815,7 +2821,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                            "",
                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_pjanak")),
                            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_umum")),
-                           ""
+                           "","","","","","",""
                     });  
                     tabMode.addRow(new Object[]{"","","","","",Valid.SetAngka(rs2.getDouble("biayaoperator1")),
                            Valid.SetAngka(rs2.getDouble("biayaoperator2")),
@@ -2845,7 +2851,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                            Valid.SetAngka(rs2.getDouble("biayasarpras")),
                            Valid.SetAngka(rs2.getDouble("biaya_dokter_pjanak")),
                            Valid.SetAngka(rs2.getDouble("biaya_dokter_umum")),
-                           Valid.SetAngka(rs2.getDouble("total"))
+                           Valid.SetAngka(rs2.getDouble("total")),"","","","","",""
                     }); 
                     total=total+rs2.getDouble("total");
                     no++;
@@ -2853,7 +2859,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 if(rs2!=null){
                     rs2.close();
                 }
-                tabMode.addRow(new Object[]{"","","","","Obat & BHP", "Satuan", "Harga","Jml","","","","","","","","","","","","","","","","","","","","","","","","","","Biaya Obat"}); 
+                tabMode.addRow(new Object[]{"","","","","Obat & BHP", "Satuan", "Harga","Jml","","","","","","","","","","","","","","","","","","","","","","","","","","Biaya Obat","","","","","",""}); 
                 rs2=koneksi.createStatement().executeQuery(
                         "select beri_obat_operasi.kd_obat,obatbhp_ok.nm_obat,kodesatuan.satuan, beri_obat_operasi.hargasatuan,beri_obat_operasi.jumlah "+
                         "from beri_obat_operasi inner join obatbhp_ok inner join  kodesatuan "+
@@ -2862,8 +2868,8 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 no=1;
                 while(rs2.next()){
                     tabMode.addRow(new Object[]{
-                        "","","","",no+". "+rs2.getString("nm_obat"),rs2.getString("satuan"), rs2.getString("hargasatuan"),rs2.getString("jumlah"),"",
-                        "","","","","","","","","","","","","","","","","","","","","","","","",Valid.SetAngka(rs2.getDouble("jumlah")*rs2.getDouble("hargasatuan"))
+                        "","","","",no+". "+rs2.getString("nm_obat"),rs2.getString("satuan"), rs2.getString("hargasatuan"),rs2.getString("jumlah"),"","","","","","",
+                        "","","","","","","","","","","","","","","","","","","",Valid.SetAngka(rs2.getDouble("jumlah")*rs2.getDouble("hargasatuan")),"","","","","",""
                     });  
                     total=total+(rs2.getDouble("jumlah")*rs2.getDouble("hargasatuan"));
                     no++;
@@ -2871,14 +2877,14 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 if(rs2!=null){
                     rs2.close();
                 }
-                tabMode.addRow(new Object[]{"","","","","Total Biaya :", "", "","","","","","","","","","","","","","","","","","","","",""," ","","","","","",Valid.SetAngka(total)}); 
+                tabMode.addRow(new Object[]{"","","","","Total Biaya :", "", "","","","","","","","","","","","","","","","","","","","",""," ","","","","","",Valid.SetAngka(total),"","","","","",""}); 
             }      
             rs.last();  
             LTotal.setText(""+rs.getRow());
             if(rs!=null){
                 rs.close();
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         
