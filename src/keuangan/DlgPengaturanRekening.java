@@ -1564,18 +1564,19 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                         "matrik_akun_jns_perawatan.hpp_persediaan,hpppersediaan.nm_rek as nama_hpp_persediaan,"+
                         "matrik_akun_jns_perawatan.persediaan_bhp,persediaanbhp.nm_rek as nama_persediaan_bhp,"+
                         "matrik_akun_jns_perawatan.beban_jasa_sarana,bebanjasasarana.nm_rek as nama_beban_jasa_sarana,"+
-                        "matrik_akun_jns_perawatan.utang_jasa_sarana,"+
+                        "matrik_akun_jns_perawatan.utang_jasa_sarana,utangjasasarana.nm_rek as nama_utang_jasa_sarana,"+
                         "matrik_akun_jns_perawatan.beban_menejemen,"+
                         "matrik_akun_jns_perawatan.utang_menejemen "+
                         "from matrik_akun_jns_perawatan inner join rekening as pendapatantindakan inner join rekening as bebanjasadokter "+
                         "inner join rekening as utangjasadokter inner join rekening as bebanjasaparamedis inner join rekening as utangjasaparamedis "+
                         "inner join rekening as bebankso inner join rekening as utangkso inner join rekening as hpppersediaan "+
-                        "inner join rekening as persediaanbhp inner join rekening as bebanjasasarana on matrik_akun_jns_perawatan.pendapatan_tindakan=pendapatantindakan.kd_rek "+
+                        "inner join rekening as persediaanbhp inner join rekening as bebanjasasarana inner join rekening as utangjasasarana "+
+                        "on matrik_akun_jns_perawatan.pendapatan_tindakan=pendapatantindakan.kd_rek "+
                         "and matrik_akun_jns_perawatan.beban_jasa_dokter=bebanjasadokter.kd_rek and matrik_akun_jns_perawatan.utang_jasa_dokter=utangjasadokter.kd_rek "+
                         "and matrik_akun_jns_perawatan.beban_jasa_paramedis=bebanjasaparamedis.kd_rek and matrik_akun_jns_perawatan.utang_jasa_paramedis=utangjasaparamedis.kd_rek "+
                         "and matrik_akun_jns_perawatan.beban_kso=bebankso.kd_rek and matrik_akun_jns_perawatan.utang_kso=utangkso.kd_rek "+
                         "and matrik_akun_jns_perawatan.hpp_persediaan=hpppersediaan.kd_rek and matrik_akun_jns_perawatan.persediaan_bhp=persediaanbhp.kd_rek "+
-                        "and matrik_akun_jns_perawatan.utang_jasa_sarana=bebanjasasarana.kd_rek where matrik_akun_jns_perawatan.kd_jenis_prw=?");
+                        "and matrik_akun_jns_perawatan.utang_jasa_sarana=bebanjasasarana.kd_rek and matrik_akun_jns_perawatan.utang_jasa_sarana=utangjasasarana.kd_rek where matrik_akun_jns_perawatan.kd_jenis_prw=?");
                     try {
                         ps2.setString(1,rs.getString("kd_jenis_prw"));
                         rs2=ps2.executeQuery();
@@ -1600,6 +1601,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                             nama_persediaan_bhp=rs2.getString("nama_persediaan_bhp");
                             kode_beban_jasa_sarana=rs2.getString("beban_jasa_sarana");
                             nama_beban_jasa_sarana=rs2.getString("nama_beban_jasa_sarana");
+                            kode_utang_jasa_sarana=rs2.getString("utang_jasa_sarana");
+                            nama_utang_jasa_sarana=rs2.getString("nama_utang_jasa_sarana");
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1617,7 +1620,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                         kode_pendapatan_tindakan,nama_pendapatan_tindakan,kode_beban_jasa_dokter,nama_beban_jasa_dokter,kode_utang_jasa_dokter,nama_utang_jasa_dokter,
                         kode_beban_jasa_paramedis,nama_beban_jasa_paramedis,kode_utang_jasa_paramedis,nama_utang_jasa_paramedis,kode_beban_kso,nama_beban_kso,
                         kode_utang_kso,nama_utang_kso,kode_hpp_persediaan,nama_hpp_persediaan,kode_persediaan_bhp,nama_persediaan_bhp,kode_beban_jasa_sarana,
-                        nama_beban_jasa_sarana
+                        nama_beban_jasa_sarana,kode_utang_jasa_sarana,nama_utang_jasa_sarana
                     });
                 }
             } catch (Exception e) {

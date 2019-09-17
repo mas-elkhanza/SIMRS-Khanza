@@ -37,12 +37,14 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
     private PreparedStatement psrekening;
     private DlgCariPetugas petugas=new DlgCariPetugas( null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private ResultSet rsrekening,rs,rs2,rs3;
+    private ResultSet rsrekening,rs,rs2;
     private int pilihan=0;
     private double ttljmdokter=0,ttljmpetugas=0,ttlpendapatan=0,ttlbhp=0;
-    private String norm="",kamar="",namakamar="",Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",
+    private String Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",
             Utang_Jasa_Medik_Dokter_Operasi_Ranap="",Beban_Jasa_Medik_Paramedis_Operasi_Ranap="",
-            Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Persediaan_Obat_Kamar_Operasi_Ranap="",status="";
+            Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Persediaan_Obat_Kamar_Operasi_Ranap="",
+            status="",tanggal="",mem="",norawat="",sql="",diagnosa_preop="",diagnosa_postop="",jaringan_dieksekusi="", 
+            selesaioperasi="",permintaan_pa="",laporan_operasi="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -51,11 +53,11 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Tgl.Operasi",
-                      "No.Rawat",
-                      "Pasien",
-                      "Jns.Ans","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "Tgl.Operasi","No.Rawat","Pasien","Jns.Ans","","","","","","","","","","","","","","","","","","","","","","","","","","",
+                "","","","","Diagnosa Pre-operatif","Diagnosa Post-operatif","Jaringan Yang di-Eksisi/-Insisi","Kirim PA","Selesai Operasi",
+                "Laporan Operasi"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
@@ -63,7 +65,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 34; i++) {
+        for (int i = 0; i < 40; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(120);
@@ -75,6 +77,18 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==4){
                 column.setPreferredWidth(200);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(150);
+            }else if(i==36){
+                column.setPreferredWidth(170);
+            }else if(i==37){
+                column.setPreferredWidth(50);
+            }else if(i==38){
+                column.setPreferredWidth(120);
+            }else if(i==39){
+                column.setPreferredWidth(400);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -2694,24 +2708,33 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String tanggal="  operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' ";
-        String mem="";      
+        tanggal="  operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' ";
+        mem="";      
         if(!kdmem.getText().equals("")){
             mem=" and pasien.no_rkm_medis='"+kdmem.getText()+"' ";
         }
-        String norawat="";
+        norawat="";
         if(!NoRawat.getText().equals("")){
             norawat=" and operasi.no_rawat='"+NoRawat.getText()+"' ";
         }
-        String sql="select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,operasi.jenis_anasthesi,"+
-                   "operasi.tgl_operasi from operasi inner join reg_periksa inner join pasien "+
-                    " on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    " where "+tanggal+mem+norawat+" and operasi.no_rawat like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+norawat+" and reg_periksa.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+norawat+" and pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+norawat+" and operasi.tgl_operasi like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+norawat+" and operasi.jenis_anasthesi like '%"+TCari.getText()+"%'  "+                   
-                    " group by operasi.no_rawat,operasi.tgl_operasi order by operasi.tgl_operasi,operasi.no_rawat ";
+        
+        if(TCari.getText().trim().equals("")&&kdmem.getText().trim().equals("")&&NoRawat.getText().trim().equals("")){
+            sql="select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,operasi.jenis_anasthesi,"+
+                "operasi.tgl_operasi from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                " where "+tanggal+" group by operasi.no_rawat,operasi.tgl_operasi order by operasi.tgl_operasi,operasi.no_rawat ";
+        }else{
+            sql="select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,operasi.jenis_anasthesi,"+
+                "operasi.tgl_operasi from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                " where "+tanggal+mem+norawat+" and operasi.no_rawat like '%"+TCari.getText()+"%' or "+
+                tanggal+mem+norawat+" and reg_periksa.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                tanggal+mem+norawat+" and pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
+                tanggal+mem+norawat+" and operasi.tgl_operasi like '%"+TCari.getText()+"%' or "+
+                tanggal+mem+norawat+" and operasi.jenis_anasthesi like '%"+TCari.getText()+"%'  "+                   
+                " group by operasi.no_rawat,operasi.tgl_operasi order by operasi.tgl_operasi,operasi.no_rawat ";
+        }
+            
         prosesCari(sql);
     }
 
@@ -2721,39 +2744,28 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
             rs=koneksi.prepareStatement(sql).executeQuery();
             while(rs.next()){
                 total=0;
-                tabMode.addRow(new Object[]{rs.getString("tgl_operasi"),
-                               rs.getString("no_rawat"),
-                               rs.getString("no_rkm_medis")+", "+rs.getString("nm_pasien"),
-                               rs.getString("jenis_anasthesi"),"Perawatan",
-                               "Operator 1",
-                               "Operator 2",
-                               "Operator 3",
-                               "Asisten Operator 1",
-                               "Asisten Operator 2",
-                               "Asisten Operator 3",
-                               "Instrumen",
-                               "Dokter Anak",
-                               "Perawat Resusitas",
-                               "Dokter Anestesi",
-                               "Asisten Anestesi 1",
-                               "Asisten Anestesi 2",
-                               "Bidan 1",
-                               "Bidan 2",
-                               "Bidan 3",
-                               "Perawat Luar",
-                               "Onloop 1",
-                               "Onloop 2",
-                               "Onloop 3",
-                               "Onloop 4",
-                               "Onloop 5",
-                               "Sewa OK/VK",
-                               "Alat",
-                               "Akomodasi",
-                               "N.M.S.",
-                               "Sarpras",
-                               "Dokter PJ Anak",
-                               "Dokter Umum",
-                               "Biaya Perawatan"});     
+                diagnosa_preop="";diagnosa_postop="";jaringan_dieksekusi="";selesaioperasi="";permintaan_pa="";laporan_operasi="";
+                rs2=koneksi.prepareStatement(
+                        "select diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
+                        "from laporan_operasi where no_rawat='"+rs.getString("no_rawat")+"' and tanggal='"+rs.getString("tgl_operasi")+"'").executeQuery();
+                if(rs2.next()){
+                    diagnosa_preop=rs2.getString("diagnosa_preop");
+                    diagnosa_postop=rs2.getString("diagnosa_postop");
+                    jaringan_dieksekusi=rs2.getString("jaringan_dieksekusi");
+                    selesaioperasi=rs2.getString("selesaioperasi");
+                    permintaan_pa=rs2.getString("permintaan_pa");
+                    laporan_operasi=rs2.getString("laporan_operasi");
+                }
+                if(rs2!=null){
+                    rs2.close();
+                }
+                tabMode.addRow(new Object[]{
+                    rs.getString("tgl_operasi"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+", "+rs.getString("nm_pasien"),rs.getString("jenis_anasthesi"),
+                    "Perawatan","Operator 1","Operator 2","Operator 3","Asisten Operator 1","Asisten Operator 2","Asisten Operator 3","Instrumen","Dokter Anak",
+                    "Perawat Resusitas","Dokter Anestesi","Asisten Anestesi 1","Asisten Anestesi 2","Bidan 1","Bidan 2","Bidan 3","Perawat Luar","Onloop 1",
+                    "Onloop 2","Onloop 3","Onloop 4","Onloop 5","Sewa OK/VK","Alat","Akomodasi","N.M.S.","Sarpras","Dokter PJ Anak","Dokter Umum","Biaya Perawatan",
+                    diagnosa_preop,diagnosa_postop,jaringan_dieksekusi,permintaan_pa,selesaioperasi,laporan_operasi
+                });     
                 rs2=koneksi.prepareStatement(
                         "select operasi.operator1, operasi.operator2, operasi.operator3, operasi.asisten_operator1,"+
                         "operasi.asisten_operator2,operasi.asisten_operator3, operasi.instrumen, operasi.dokter_anak, operasi.perawaat_resusitas, "+
@@ -2774,93 +2786,92 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                         "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs.getString("no_rawat")+"' and operasi.tgl_operasi='"+rs.getString("tgl_operasi")+"'").executeQuery();
                 no=1;
                 while(rs2.next()){
-                    Object[] data2={"","","","",no+". "+rs2.getString("nm_perawatan"),
-                               Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator1")),
-                               Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator2")),
-                               Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator3")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator1")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator2")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator3")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("instrumen")),
-                               Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anak")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("perawaat_resusitas")),
-                               Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anestesi")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi2")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan2")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan3")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("perawat_luar")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop2")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop3")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop4")),
-                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop5")),
-                               "",
-                               "",
-                               "",
-                               "",
-                               "",
-                               Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_pjanak")),
-                               Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_umum")),
-                               ""};
-                    tabMode.addRow(data2);  
-                    Object[] data3={"","","","","",Valid.SetAngka(rs2.getDouble("biayaoperator1")),
-                               Valid.SetAngka(rs2.getDouble("biayaoperator2")),
-                               Valid.SetAngka(rs2.getDouble("biayaoperator3")),
-                               Valid.SetAngka(rs2.getDouble("biayaasisten_operator1")),
-                               Valid.SetAngka(rs2.getDouble("biayaasisten_operator2")),
-                               Valid.SetAngka(rs2.getDouble("biayaasisten_operator3")),
-                               Valid.SetAngka(rs2.getDouble("biayainstrumen")),
-                               Valid.SetAngka(rs2.getDouble("biayadokter_anak")),
-                               Valid.SetAngka(rs2.getDouble("biayaperawaat_resusitas")),
-                               Valid.SetAngka(rs2.getDouble("biayadokter_anestesi")),
-                               Valid.SetAngka(rs2.getDouble("biayaasisten_anestesi")),
-                               Valid.SetAngka(rs2.getDouble("biayaasisten_anestesi2")),
-                               Valid.SetAngka(rs2.getDouble("biayabidan")),
-                               Valid.SetAngka(rs2.getDouble("biayabidan2")),
-                               Valid.SetAngka(rs2.getDouble("biayabidan3")),
-                               Valid.SetAngka(rs2.getDouble("biayaperawat_luar")),
-                               Valid.SetAngka(rs2.getDouble("biaya_omloop")),
-                               Valid.SetAngka(rs2.getDouble("biaya_omloop2")),
-                               Valid.SetAngka(rs2.getDouble("biaya_omloop3")),
-                               Valid.SetAngka(rs2.getDouble("biaya_omloop4")),
-                               Valid.SetAngka(rs2.getDouble("biaya_omloop5")),
-                               Valid.SetAngka(rs2.getDouble("biayasewaok")),
-                               Valid.SetAngka(rs2.getDouble("biayaalat")),
-                               Valid.SetAngka(rs2.getDouble("akomodasi")),
-                               Valid.SetAngka(rs2.getDouble("bagian_rs")),
-                               Valid.SetAngka(rs2.getDouble("biayasarpras")),
-                               Valid.SetAngka(rs2.getDouble("biaya_dokter_pjanak")),
-                               Valid.SetAngka(rs2.getDouble("biaya_dokter_umum")),
-                               Valid.SetAngka(rs2.getDouble("total"))};
-                    tabMode.addRow(data3); 
+                    tabMode.addRow(new Object[]{"","","","",no+". "+rs2.getString("nm_perawatan"),
+                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator1")),
+                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator2")),
+                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator3")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator1")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator2")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator3")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("instrumen")),
+                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anak")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("perawaat_resusitas")),
+                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anestesi")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi2")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan2")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan3")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("perawat_luar")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop2")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop3")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop4")),
+                           Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop5")),
+                           "",
+                           "",
+                           "",
+                           "",
+                           "",
+                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_pjanak")),
+                           Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_umum")),
+                           ""
+                    });  
+                    tabMode.addRow(new Object[]{"","","","","",Valid.SetAngka(rs2.getDouble("biayaoperator1")),
+                           Valid.SetAngka(rs2.getDouble("biayaoperator2")),
+                           Valid.SetAngka(rs2.getDouble("biayaoperator3")),
+                           Valid.SetAngka(rs2.getDouble("biayaasisten_operator1")),
+                           Valid.SetAngka(rs2.getDouble("biayaasisten_operator2")),
+                           Valid.SetAngka(rs2.getDouble("biayaasisten_operator3")),
+                           Valid.SetAngka(rs2.getDouble("biayainstrumen")),
+                           Valid.SetAngka(rs2.getDouble("biayadokter_anak")),
+                           Valid.SetAngka(rs2.getDouble("biayaperawaat_resusitas")),
+                           Valid.SetAngka(rs2.getDouble("biayadokter_anestesi")),
+                           Valid.SetAngka(rs2.getDouble("biayaasisten_anestesi")),
+                           Valid.SetAngka(rs2.getDouble("biayaasisten_anestesi2")),
+                           Valid.SetAngka(rs2.getDouble("biayabidan")),
+                           Valid.SetAngka(rs2.getDouble("biayabidan2")),
+                           Valid.SetAngka(rs2.getDouble("biayabidan3")),
+                           Valid.SetAngka(rs2.getDouble("biayaperawat_luar")),
+                           Valid.SetAngka(rs2.getDouble("biaya_omloop")),
+                           Valid.SetAngka(rs2.getDouble("biaya_omloop2")),
+                           Valid.SetAngka(rs2.getDouble("biaya_omloop3")),
+                           Valid.SetAngka(rs2.getDouble("biaya_omloop4")),
+                           Valid.SetAngka(rs2.getDouble("biaya_omloop5")),
+                           Valid.SetAngka(rs2.getDouble("biayasewaok")),
+                           Valid.SetAngka(rs2.getDouble("biayaalat")),
+                           Valid.SetAngka(rs2.getDouble("akomodasi")),
+                           Valid.SetAngka(rs2.getDouble("bagian_rs")),
+                           Valid.SetAngka(rs2.getDouble("biayasarpras")),
+                           Valid.SetAngka(rs2.getDouble("biaya_dokter_pjanak")),
+                           Valid.SetAngka(rs2.getDouble("biaya_dokter_umum")),
+                           Valid.SetAngka(rs2.getDouble("total"))
+                    }); 
                     total=total+rs2.getDouble("total");
                     no++;
                 }
                 if(rs2!=null){
                     rs2.close();
                 }
-                Object[] data3={"","","","","Obat & BHP", "Satuan", "Harga","Jml","","","","","","","","","","","","","","","","","","","","","","","","","","Biaya Obat"};
-                tabMode.addRow(data3); 
-                rs3=koneksi.createStatement().executeQuery(
+                tabMode.addRow(new Object[]{"","","","","Obat & BHP", "Satuan", "Harga","Jml","","","","","","","","","","","","","","","","","","","","","","","","","","Biaya Obat"}); 
+                rs2=koneksi.createStatement().executeQuery(
                         "select beri_obat_operasi.kd_obat,obatbhp_ok.nm_obat,kodesatuan.satuan, beri_obat_operasi.hargasatuan,beri_obat_operasi.jumlah "+
                         "from beri_obat_operasi inner join obatbhp_ok inner join  kodesatuan "+
                         "on beri_obat_operasi.kd_obat=obatbhp_ok.kd_obat and obatbhp_ok.kode_sat=kodesatuan.kode_sat "+
                         "where beri_obat_operasi.no_rawat='"+rs.getString("no_rawat")+"' and beri_obat_operasi.tanggal='"+rs.getString("tgl_operasi")+"'");
                 no=1;
-                while(rs3.next()){
-                    Object[] data2={"","","","",no+". "+rs3.getString("nm_obat"),rs3.getString("satuan"), rs3.getString("hargasatuan"), 
-                                   rs3.getString("jumlah"),"","","","","","","","","","","","","","","","","","","","","","","","","",Valid.SetAngka(rs3.getDouble("jumlah")*rs3.getDouble("hargasatuan"))};
-                    tabMode.addRow(data2);  
-                    total=total+(rs3.getDouble("jumlah")*rs3.getDouble("hargasatuan"));
+                while(rs2.next()){
+                    tabMode.addRow(new Object[]{
+                        "","","","",no+". "+rs2.getString("nm_obat"),rs2.getString("satuan"), rs2.getString("hargasatuan"),rs2.getString("jumlah"),"",
+                        "","","","","","","","","","","","","","","","","","","","","","","","",Valid.SetAngka(rs2.getDouble("jumlah")*rs2.getDouble("hargasatuan"))
+                    });  
+                    total=total+(rs2.getDouble("jumlah")*rs2.getDouble("hargasatuan"));
                     no++;
                 }
-                if(rs3!=null){
-                    rs3.close();
+                if(rs2!=null){
+                    rs2.close();
                 }
-                Object[] data4={"","","","","Total Biaya :", "", "","","","","","","","","","","","","","","","","","","","",""," ","","","","","",Valid.SetAngka(total)};
-                tabMode.addRow(data4); 
+                tabMode.addRow(new Object[]{"","","","","Total Biaya :", "", "","","","","","","","","","","","","","","","","","","","",""," ","","","","","",Valid.SetAngka(total)}); 
             }      
             rs.last();  
             LTotal.setText(""+rs.getRow());

@@ -1259,8 +1259,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(175, 90, 80));
-        internalFrame2.setWarnaBawah(new java.awt.Color(135, 50, 40));
+        internalFrame2.setWarnaAtas(new java.awt.Color(215, 55, 115));
+        internalFrame2.setWarnaBawah(new java.awt.Color(170, 10, 70));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -6891,7 +6891,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/09/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/09/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6942,6 +6942,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("::[ Khanza SIMKES 2019 ]::");
+        setBackground(new java.awt.Color(254, 254, 254));
         setIconImages(null);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -6990,8 +6991,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnMenu);
 
-        jSeparator4.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator4.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator4.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator4.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator4.setName("jSeparator4"); // NOI18N
@@ -7039,8 +7040,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolIGD);
 
-        jSeparator5.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator5.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator5.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator5.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator5.setName("jSeparator5"); // NOI18N
@@ -7145,8 +7146,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolJualObat);
 
-        jSeparator9.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator9.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator9.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator9.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator9.setName("jSeparator9"); // NOI18N
@@ -7194,8 +7195,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolKasir);
 
-        jSeparator7.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator7.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator7.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator7.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator7.setName("jSeparator7"); // NOI18N
@@ -7260,8 +7261,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblStts.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblStts);
 
-        jSeparator1.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator1.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator1.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator1.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator1.setName("jSeparator1"); // NOI18N
@@ -7278,8 +7279,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
         internalFrame4.add(lblUser);
 
-        jSeparator2.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator2.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator2.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator2.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator2.setName("jSeparator2"); // NOI18N
@@ -7296,8 +7297,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblTgl);
 
-        jSeparator3.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator3.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator3.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator3.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator3.setName("jSeparator3"); // NOI18N
@@ -7314,8 +7315,8 @@ public class frmUtama extends javax.swing.JFrame {
         LblIP.setPreferredSize(new java.awt.Dimension(120, 23));
         internalFrame4.add(LblIP);
 
-        jSeparator6.setBackground(new java.awt.Color(215, 50, 40));
-        jSeparator6.setForeground(new java.awt.Color(215, 50, 40));
+        jSeparator6.setBackground(new java.awt.Color(200, 20, 90));
+        jSeparator6.setForeground(new java.awt.Color(200, 20, 90));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator6.setName("jSeparator6"); // NOI18N
@@ -7398,8 +7399,9 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
+        MenuBar.setBackground(new java.awt.Color(255, 255, 254));
         MenuBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        MenuBar.setForeground(new java.awt.Color(255, 204, 255));
+        MenuBar.setForeground(new java.awt.Color(255, 254, 254));
         MenuBar.setName("MenuBar"); // NOI18N
         MenuBar.setPreferredSize(new java.awt.Dimension(227, 26));
 
