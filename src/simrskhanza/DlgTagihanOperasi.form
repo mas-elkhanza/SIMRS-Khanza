@@ -668,7 +668,7 @@
                     </Component>
                     <Component class="widget.Label" name="label11">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Mulai Operasi :"/>
+                        <Property name="text" type="java.lang.String" value="Mulai :"/>
                         <Property name="name" type="java.lang.String" value="label11" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[70, 23]"/>
@@ -2253,7 +2253,7 @@
                     </Component>
                     <Component class="widget.Label" name="label12">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Selesai Operasi :"/>
+                        <Property name="text" type="java.lang.String" value="Selesai :"/>
                         <Property name="name" type="java.lang.String" value="label12" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[70, 23]"/>

@@ -2472,6 +2472,67 @@ public class PanelResume extends widget.panelisi {
                                 }
                             }
                             
+                            //laporan operasi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                        "select tanggal, diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
+                                        "from laporan_operasi where no_rawat='"+rs2.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'>"+w+"</td>"+
+                                                "<td valign='top' width='20%'>Mulai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("tanggal")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Pre-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_preop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Jaringan Yang di-Eksisi/-Insisi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("jaringan_dieksekusi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Post-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_postop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Selesai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("selesaioperasi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Dikirim Untuk Pemeriksaan PA</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("permintaan_pa")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Laporan</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
                             //tindakan pemeriksaan radiologi
                             try{
                                 rs3=koneksi.prepareStatement(
@@ -4401,6 +4462,67 @@ public class PanelResume extends widget.panelisi {
                                                 ")</td>"+
                                                 "<td valign='top'>"+rs3.getString("jenis_anasthesi")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //laporan operasi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                        "select tanggal, diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
+                                        "from laporan_operasi where no_rawat='"+rs2.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'>"+w+"</td>"+
+                                                "<td valign='top' width='20%'>Mulai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("tanggal")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Pre-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_preop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Jaringan Yang di-Eksisi/-Insisi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("jaringan_dieksekusi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Post-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_postop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Selesai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("selesaioperasi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Dikirim Untuk Pemeriksaan PA</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("permintaan_pa")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Laporan</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -8251,6 +8373,67 @@ public class PanelResume extends widget.panelisi {
                                                 ")</td>"+
                                                 "<td valign='top'>"+rs3.getString("jenis_anasthesi")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //laporan operasi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                        "select tanggal, diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
+                                        "from laporan_operasi where no_rawat='"+rs2.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'>"+w+"</td>"+
+                                                "<td valign='top' width='20%'>Mulai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("tanggal")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Pre-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_preop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Jaringan Yang di-Eksisi/-Insisi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("jaringan_dieksekusi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Post-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_postop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Selesai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("selesaioperasi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Dikirim Untuk Pemeriksaan PA</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("permintaan_pa")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Laporan</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>"); 
                                         w++;
                                     }

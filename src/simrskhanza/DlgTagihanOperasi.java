@@ -949,7 +949,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(BtnOperator1);
         BtnOperator1.setBounds(376, 70, 28, 23);
 
-        label11.setText("Mulai Operasi :");
+        label11.setText("Mulai :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
@@ -1818,7 +1818,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(label38);
         label38.setBounds(406, 370, 101, 23);
 
-        label12.setText("Selesai Operasi :");
+        label12.setText("Selesai :");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label12);
@@ -2730,24 +2730,32 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     }
                 }
-                for(int r=0;r<tbObat.getRowCount();r++){
-                    if(Valid.SetAngka(tbObat.getValueAt(r,0).toString())>0){
-                        if(Sequel.menyimpantf2("beri_obat_operasi","'"+TNoRw.getText()+"','"+Valid.SetTgl(tgl.getSelectedItem()+"")+" "+tgl.getSelectedItem().toString().substring(11,19)+
-                            "','"+tbObat.getValueAt(r,1).toString()+"','"+tbObat.getValueAt(r,4).toString()+
-                            "','"+tbObat.getValueAt(r,0).toString()+"'","data")==true){
-                            ttlbhp=ttlbhp+Double.parseDouble(tbObat.getValueAt(r,5).toString());
-                        }else{
-                            sukses=false;
+                
+                if(sukses==true){
+                    for(int r=0;r<tbObat.getRowCount();r++){
+                        if(Valid.SetAngka(tbObat.getValueAt(r,0).toString())>0){
+                            if(Sequel.menyimpantf2("beri_obat_operasi","'"+TNoRw.getText()+"','"+Valid.SetTgl(tgl.getSelectedItem()+"")+" "+tgl.getSelectedItem().toString().substring(11,19)+
+                                "','"+tbObat.getValueAt(r,1).toString()+"','"+tbObat.getValueAt(r,4).toString()+
+                                "','"+tbObat.getValueAt(r,0).toString()+"'","data")==true){
+                                ttlbhp=ttlbhp+Double.parseDouble(tbObat.getValueAt(r,5).toString());
+                            }else{
+                                sukses=false;
+                            }
                         }
                     }
                 }
-                if(Sequel.menyimpantf2("laporan_operasi","?,?,?,?,?,?,?,?","laporan operasi",8,new String[]{
-                        TNoRw.getText(),Valid.SetTgl(tgl.getSelectedItem()+"")+" "+tgl.getSelectedItem().toString().substring(11,19),PreOp.getText(),
-                        PostOp.getText(),Jaringan.getText(),Valid.SetTgl(tgl2.getSelectedItem()+"")+" "+tgl2.getSelectedItem().toString().substring(11,19),
-                        DikirimPA.getSelectedItem().toString(),Laporan.getText()
-                    })==false){
-                    sukses=false;
-                }
+                    
+                if(sukses==true){
+                    if(!Laporan.getText().equals("")){
+                        if(Sequel.menyimpantf2("laporan_operasi","?,?,?,?,?,?,?,?","laporan operasi",8,new String[]{
+                                TNoRw.getText(),Valid.SetTgl(tgl.getSelectedItem()+"")+" "+tgl.getSelectedItem().toString().substring(11,19),PreOp.getText(),
+                                PostOp.getText(),Jaringan.getText(),Valid.SetTgl(tgl2.getSelectedItem()+"")+" "+tgl2.getSelectedItem().toString().substring(11,19),
+                                DikirimPA.getSelectedItem().toString(),Laporan.getText()
+                            })==false){
+                            sukses=false;
+                        }
+                    }
+                }   
                 if(sukses==true){
                     if(status.equals("Ranap")){
                         Sequel.queryu("delete from tampjurnal");    
