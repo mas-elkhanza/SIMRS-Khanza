@@ -57,13 +57,12 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        Object[] row={
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","Tgl.Kejadian","Jam Kejadian",
-            "Tgl.Lapor","Jam Lapor","NIP","Petugas","Lokasi Insiden","Kode Insiden",
-            "Nama Insiden","Jenis Insiden","Dampak/Severity","Unit Terkait","Kronologis","Akibat",
-            "Tindakan Saat Insiden","Identifikasi Masalah","Rekomendasi & Tindak Lanjut"
-        };
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "Tgl.Rawat","Status","No.Rawat","No.RM","Nama Pasien","Kode Dokter","Dokter Penanggung Jawab","Pulang","Keluhan utama riwayat penyakit yang postif",
+            "Jalannya penyakit selama perawatan","Pemeriksaan penunjang yang positif","Hasil laboratorium yang positif","Diagnosa Utama","ICD10 Utama","Diagnosa Sekunder 1",
+            "ICD10 Sek 1","Diagnosa Sekunder 2","ICD10 Sek 2","Diagnosa Sekunder 3","ICD10 Sek 3","Diagnosa Sekunder 4","ICD10 Sek 4","Prosedur Utama","ICD9 Utama",
+            "Prosedur Sekunder 1","ICD9 Sek1","Prosedur Sekunder 2","ICD9 Sek2","Prosedur Sekunder 3","ICD9 Sek3","Obat-obatan waktu pulang/nasihat"
+        }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbObat.setModel(tabMode);
@@ -72,50 +71,70 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 21; i++) {
+        for (i = 0; i < 31; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(65);
             }else if(i==1){
-                column.setPreferredWidth(70);
-            }else if(i==2){
-                column.setPreferredWidth(200);
-            }else if(i==3){
                 column.setPreferredWidth(40);
+            }else if(i==2){
+                column.setPreferredWidth(105);
+            }else if(i==3){
+                column.setPreferredWidth(70);
             }else if(i==4){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(150);
             }else if(i==5){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(150);
             }else if(i==7){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(250);
             }else if(i==9){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(250);
             }else if(i==10){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(250);
             }else if(i==11){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(250);
             }else if(i==12){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(170);
             }else if(i==13){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(75);
             }else if(i==14){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(170);
             }else if(i==15){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(75);
             }else if(i==16){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(170);
             }else if(i==17){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(75);
             }else if(i==18){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(170);
             }else if(i==19){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(75);
             }else if(i==20){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(170);
+            }else if(i==21){
+                column.setPreferredWidth(75);
+            }else if(i==22){
+                column.setPreferredWidth(170);
+            }else if(i==23){
+                column.setPreferredWidth(75);
+            }else if(i==24){
+                column.setPreferredWidth(170);
+            }else if(i==25){
+                column.setPreferredWidth(75);
+            }else if(i==26){
+                column.setPreferredWidth(170);
+            }else if(i==27){
+                column.setPreferredWidth(75);
+            }else if(i==28){
+                column.setPreferredWidth(170);
+            }else if(i==29){
+                column.setPreferredWidth(75);
+            }else if(i==30){
+                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1076,9 +1095,8 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()!= -1){
-            if(Sequel.queryu2tf("delete from insiden_keselamatan_pasien where tgl_kejadian=? and jam_kejadian=? and no_rawat=?",3,new String[]{
-                tbObat.getValueAt(tbObat.getSelectedRow(),4).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            if(Sequel.queryu2tf("delete from resume_pasien where no_rawat=?",3,new String[]{
+                tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()
             })==true){
                 tampil();
                 emptTeks();
@@ -1461,95 +1479,88 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement(
-                "select insiden_keselamatan_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                "reg_periksa.umurdaftar,reg_periksa.sttsumur,insiden_keselamatan_pasien.tgl_kejadian,"+
-                "insiden_keselamatan_pasien.jam_kejadian,insiden_keselamatan_pasien.tgl_lapor,insiden_keselamatan_pasien.jam_lapor,"+
-                "insiden_keselamatan_pasien.nip,petugas.nama,insiden_keselamatan_pasien.lokasi,"+
-                "insiden_keselamatan_pasien.kode_insiden,insiden_keselamatan.nama_insiden,"+
-                "insiden_keselamatan.jenis_insiden,insiden_keselamatan.dampak,insiden_keselamatan_pasien.unit_terkait,"+
-                "insiden_keselamatan_pasien.kronologis,insiden_keselamatan_pasien.akibat,insiden_keselamatan_pasien.tindakan_insiden,"+
-                "insiden_keselamatan_pasien.identifikasi_masalah,insiden_keselamatan_pasien.rtl "+
-                "from insiden_keselamatan_pasien inner join reg_periksa inner join pasien "+
-                "inner join insiden_keselamatan inner join petugas on insiden_keselamatan_pasien.no_rawat=reg_periksa.no_rawat "+
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and insiden_keselamatan_pasien.kode_insiden="+
-                "insiden_keselamatan.kode_insiden and insiden_keselamatan_pasien.nip=petugas.nip where "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.no_rawat like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and pasien.nm_pasien like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.nip like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and petugas.nama like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.lokasi like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.kode_insiden like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan.nama_insiden like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan.jenis_insiden like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan.dampak like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.unit_terkait like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.kronologis like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.akibat like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.tindakan_insiden like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.identifikasi_masalah like ? or "+
-                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.rtl like ? order by insiden_keselamatan_pasien.tgl_kejadian ");
+            if(TCari.getText().equals("")){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                    "resume_pasien.kd_dokter,dokter.nm_dokter,resume_pasien.kondisi_pulang,resume_pasien.keluhan_utama,resume_pasien.jalannya_penyakit, "+
+                    "resume_pasien.pemeriksaan_penunjang,resume_pasien.hasil_laborat,resume_pasien.diagnosa_utama,resume_pasien.kd_diagnosa_utama, "+
+                    "resume_pasien.diagnosa_sekunder,resume_pasien.kd_diagnosa_sekunder,resume_pasien.diagnosa_sekunder2,resume_pasien.kd_diagnosa_sekunder2, "+
+                    "resume_pasien.diagnosa_sekunder3,resume_pasien.kd_diagnosa_sekunder3,resume_pasien.diagnosa_sekunder4,resume_pasien.kd_diagnosa_sekunder4, "+
+                    "resume_pasien.prosedur_utama,resume_pasien.kd_prosedur_utama,resume_pasien.prosedur_sekunder,resume_pasien.kd_prosedur_sekunder, "+
+                    "resume_pasien.prosedur_sekunder2,resume_pasien.kd_prosedur_sekunder2,resume_pasien.prosedur_sekunder3,resume_pasien.kd_prosedur_sekunder3, "+
+                    "resume_pasien.obat_pulang from resume_pasien inner join reg_periksa on resume_pasien.no_rawat=reg_periksa.no_rawat  "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter "+
+                    "where reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
+            }else{
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,reg_periksa.status_lanjut,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                    "resume_pasien.kd_dokter,dokter.nm_dokter,resume_pasien.kondisi_pulang,resume_pasien.keluhan_utama,resume_pasien.jalannya_penyakit, "+
+                    "resume_pasien.pemeriksaan_penunjang,resume_pasien.hasil_laborat,resume_pasien.diagnosa_utama,resume_pasien.kd_diagnosa_utama, "+
+                    "resume_pasien.diagnosa_sekunder,resume_pasien.kd_diagnosa_sekunder,resume_pasien.diagnosa_sekunder2,resume_pasien.kd_diagnosa_sekunder2, "+
+                    "resume_pasien.diagnosa_sekunder3,resume_pasien.kd_diagnosa_sekunder3,resume_pasien.diagnosa_sekunder4,resume_pasien.kd_diagnosa_sekunder4, "+
+                    "resume_pasien.prosedur_utama,resume_pasien.kd_prosedur_utama,resume_pasien.prosedur_sekunder,resume_pasien.kd_prosedur_sekunder, "+
+                    "resume_pasien.prosedur_sekunder2,resume_pasien.kd_prosedur_sekunder2,resume_pasien.prosedur_sekunder3,resume_pasien.kd_prosedur_sekunder3, "+
+                    "resume_pasien.obat_pulang from resume_pasien inner join reg_periksa on resume_pasien.no_rawat=reg_periksa.no_rawat  "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter "+
+                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and pasien.nm_pasien like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kd_dokter like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and dokter.nm_dokter like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kondisi_pulang like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kd_diagnosa_utama like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.diagnosa_utama like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.prosedur_utama like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and resume_pasien.kd_prosedur_utama like ? "+
+                    "order by reg_periksa.tgl_registrasi,reg_periksa.status_lanjut");
+            }
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText()+"%");
-                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText()+"%");
-                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(24,"%"+TCari.getText()+"%");
-                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(27,"%"+TCari.getText()+"%");
-                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(30,"%"+TCari.getText()+"%");
-                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(33,"%"+TCari.getText()+"%");
-                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(36,"%"+TCari.getText()+"%");
-                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(39,"%"+TCari.getText()+"%");
-                ps.setString(40,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(41,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(42,"%"+TCari.getText()+"%");
-                ps.setString(43,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(44,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(45,"%"+TCari.getText()+"%");
-                ps.setString(46,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(47,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(48,"%"+TCari.getText()+"%");
+                if(TCari.getText().equals("")){
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(12,"%"+TCari.getText()+"%");
+                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(15,"%"+TCari.getText()+"%");
+                    ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(18,"%"+TCari.getText()+"%");
+                    ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(21,"%"+TCari.getText()+"%");
+                    ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(24,"%"+TCari.getText()+"%");
+                    ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(27,"%"+TCari.getText()+"%");
+                    ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(30,"%"+TCari.getText()+"%");
+                }   
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString(2),rs.getString(3),
-                        rs.getString(4)+" "+rs.getString(5),rs.getString(6),
-                        rs.getString(7),rs.getString(8),rs.getString(9),
-                        rs.getString(10),rs.getString(11),rs.getString(12),
-                        rs.getString(13),rs.getString(14),rs.getString(15),
-                        rs.getString(16),rs.getString(17),rs.getString(18),
-                        rs.getString(19),rs.getString(20),rs.getString(21),
-                        rs.getString(22)
+                        rs.getString("tgl_registrasi"),rs.getString("status_lanjut"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
+                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("kondisi_pulang"),rs.getString("keluhan_utama"),
+                        rs.getString("jalannya_penyakit"),rs.getString("pemeriksaan_penunjang"),rs.getString("hasil_laborat"),rs.getString("diagnosa_utama"),
+                        rs.getString("kd_diagnosa_utama"),rs.getString("diagnosa_sekunder"),rs.getString("kd_diagnosa_sekunder"),rs.getString("diagnosa_sekunder2"),
+                        rs.getString("kd_diagnosa_sekunder2"),rs.getString("diagnosa_sekunder3"),rs.getString("kd_diagnosa_sekunder3"),rs.getString("diagnosa_sekunder4"),
+                        rs.getString("kd_diagnosa_sekunder4"),rs.getString("prosedur_utama"),rs.getString("kd_prosedur_utama"),rs.getString("prosedur_sekunder"),
+                        rs.getString("kd_prosedur_sekunder"),rs.getString("prosedur_sekunder2"),rs.getString("kd_prosedur_sekunder2"),rs.getString("prosedur_sekunder3"),
+                        rs.getString("kd_prosedur_sekunder3"),rs.getString("obat_pulang") 
                     });
                 }
             } catch (Exception e) {
@@ -1598,13 +1609,13 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            DiagnosaSekunder2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            DiagnosaUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            DiagnosaSekunder3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            DiagnosaSekunder4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());         
+            /*"Tgl.Rawat","Status","No.Rawat","No.RM","Nama Pasien","Kode Dokter","Dokter Penanggung Jawab","Pulang","Keluhan utama riwayat penyakit yang postif",
+            "Jalannya penyakit selama perawatan","Pemeriksaan penunjang yang positif","Hasil laboratorium yang positif","Diagnosa Utama","ICD10 Utama","Diagnosa Sekunder 1",
+            "ICD10 Sek 1","Diagnosa Sekunder 2","ICD10 Sek 2","Diagnosa Sekunder 3","ICD10 Sek 3","Diagnosa Sekunder 4","ICD10 Sek 4","Prosedur Utama","ICD9 Utama",
+            "Prosedur Sekunder 1","ICD9 Sek1","Prosedur Sekunder 2","ICD9 Sek2","Prosedur Sekunder 3","ICD9 Sek3","Obat-obatan waktu pulang/nasihat"*/
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());  
+            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());  
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());  
         }
     }
 
@@ -1631,7 +1642,7 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-122));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-222));
             scrollInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
