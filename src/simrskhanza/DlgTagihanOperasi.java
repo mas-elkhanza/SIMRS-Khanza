@@ -949,7 +949,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(BtnOperator1);
         BtnOperator1.setBounds(376, 70, 28, 23);
 
-        label11.setText("Mulai :");
+        label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label11);
@@ -2756,6 +2756,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     }
                 }   
+                
                 if(sukses==true){
                     if(status.equals("Ranap")){
                         Sequel.queryu("delete from tampjurnal");    
