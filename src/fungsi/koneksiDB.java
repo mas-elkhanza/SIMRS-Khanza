@@ -232,7 +232,7 @@ public class koneksiDB {
     public static String SECRETKEYAPIBPJS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("SECRETKEYAPIBPJS");
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIBPJS"));
         }catch(Exception e){
             var=""; 
         }
@@ -242,7 +242,7 @@ public class koneksiDB {
     public static String CONSIDAPIBPJS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("CONSIDAPIBPJS");
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIBPJS"));
         }catch(Exception e){
             var=""; 
         }
@@ -262,7 +262,7 @@ public class koneksiDB {
     public static String SECRETKEYAPIAPLICARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("SECRETKEYAPIAPLICARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIAPLICARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -272,7 +272,7 @@ public class koneksiDB {
     public static String CONSIDAPIAPLICARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("CONSIDAPIAPLICARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIAPLICARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -292,7 +292,7 @@ public class koneksiDB {
     public static String SECRETKEYAPIPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("SECRETKEYAPIPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("SECRETKEYAPIPCARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -302,7 +302,7 @@ public class koneksiDB {
     public static String CONSIDAPIPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("CONSIDAPIPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("CONSIDAPIPCARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -312,7 +312,7 @@ public class koneksiDB {
     public static String PASSPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSPCARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -322,7 +322,7 @@ public class koneksiDB {
     public static String USERPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("USERPCARE");
+            var=EnkripsiAES.decrypt(prop.getProperty("USERPCARE"));
         }catch(Exception e){
             var=""; 
         }
@@ -362,7 +362,7 @@ public class koneksiDB {
     public static String IDSISRUTE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("IDSISRUTE");
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSISRUTE"));
         }catch(Exception e){
             var=""; 
         }
@@ -372,7 +372,7 @@ public class koneksiDB {
     public static String PASSSISRUTE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSSISRUTE");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSISRUTE"));
         }catch(Exception e){
             var=""; 
         }
@@ -392,7 +392,7 @@ public class koneksiDB {
     public static String IDSIRS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("IDSIRS");
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSIRS"));
         }catch(Exception e){
             var=""; 
         }
@@ -402,7 +402,7 @@ public class koneksiDB {
     public static String PASSSIRS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSSIRS");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSIRS"));
         }catch(Exception e){
             var=""; 
         }
@@ -422,7 +422,7 @@ public class koneksiDB {
     public static String IDSITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("IDSITT");
+            var=EnkripsiAES.decrypt(prop.getProperty("IDSITT"));
         }catch(Exception e){
             var=""; 
         }
@@ -432,7 +432,7 @@ public class koneksiDB {
     public static String PASSSITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSSITT");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSSITT"));
         }catch(Exception e){
             var=""; 
         }
@@ -602,7 +602,7 @@ public class koneksiDB {
     public static String USERDUKCAPILJAKARTA(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("USERDUKCAPILJAKARTA");
+            var=EnkripsiAES.decrypt(prop.getProperty("USERDUKCAPILJAKARTA"));
         }catch(Exception e){
             var=""; 
         }
@@ -612,7 +612,7 @@ public class koneksiDB {
     public static String PASSDUKCAPILJAKARTA(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSDUKCAPILJAKARTA");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSDUKCAPILJAKARTA"));
         }catch(Exception e){
             var=""; 
         }
@@ -652,7 +652,7 @@ public class koneksiDB {
     public static String USERDUKCAPIL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("USERDUKCAPIL");
+            var=EnkripsiAES.decrypt(prop.getProperty("USERDUKCAPIL"));
         }catch(Exception e){
             var=""; 
         }
@@ -662,7 +662,7 @@ public class koneksiDB {
     public static String PASSDUKCAPIL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("PASSDUKCAPIL");
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSDUKCAPIL"));
         }catch(Exception e){
             var=""; 
         }

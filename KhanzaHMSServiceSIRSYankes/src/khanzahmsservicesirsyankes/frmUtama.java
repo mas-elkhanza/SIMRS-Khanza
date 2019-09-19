@@ -193,7 +193,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     terpakai=Sequel.cariInteger("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and status='ISI' and kd_bangsal='"+rs.getString("kd_bangsal")+"'");
                                     menunggu=Sequel.cariInteger("select count(kd_kamar) from kamar where statusdata='1' and kelas='"+rs.getString("kelas")+"' and status='DIBERSIHKAN' and kd_bangsal='"+rs.getString("kd_bangsal")+"'");
                                     headers = new HttpHeaders();
-                                    headers.add("X-rs-id",prop.getProperty("IDSIRS")); 
+                                    headers.add("X-rs-id",koneksiDB.IDSIRS()); 
                                     headers.add("X-pass",api.getHmac()); 
                                     headers.add("Content-Type","application/xml; charset=ISO-8859-1");
                                     requestXML ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+

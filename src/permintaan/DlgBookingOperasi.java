@@ -194,8 +194,9 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnKamarInap = new javax.swing.JMenuItem();
-        MnOperasi = new javax.swing.JMenuItem();
+        MnPermintaanLab = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
+        MnOperasi = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -258,7 +259,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         MnKamarInap.setBackground(new java.awt.Color(255, 255, 254));
         MnKamarInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKamarInap.setForeground(new java.awt.Color(70, 70, 70));
+        MnKamarInap.setForeground(new java.awt.Color(50,50,50));
         MnKamarInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKamarInap.setText("Kamar Inap");
         MnKamarInap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -272,25 +273,25 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnKamarInap);
 
-        MnOperasi.setBackground(new java.awt.Color(255, 255, 254));
-        MnOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnOperasi.setForeground(new java.awt.Color(70, 70, 70));
-        MnOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnOperasi.setText("Tagihan Operasi/VK");
-        MnOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnOperasi.setName("MnOperasi"); // NOI18N
-        MnOperasi.setPreferredSize(new java.awt.Dimension(180, 26));
-        MnOperasi.addActionListener(new java.awt.event.ActionListener() {
+        MnPermintaanLab.setBackground(new java.awt.Color(255, 255, 254));
+        MnPermintaanLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPermintaanLab.setForeground(new java.awt.Color(50,50,50));
+        MnPermintaanLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPermintaanLab.setText("Permintaan Lab");
+        MnPermintaanLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPermintaanLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPermintaanLab.setName("MnPermintaanLab"); // NOI18N
+        MnPermintaanLab.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnOperasiActionPerformed(evt);
+                MnPermintaanLabActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnOperasi);
+        jPopupMenu1.add(MnPermintaanLab);
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRiwayat.setForeground(new java.awt.Color(70, 70, 70));
+        ppRiwayat.setForeground(new java.awt.Color(50,50,50));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayat.setText("Riwayat Perawatan");
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -304,6 +305,22 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppRiwayat);
 
+        MnOperasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnOperasi.setForeground(new java.awt.Color(50,50,50));
+        MnOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnOperasi.setText("Tagihan Operasi/VK");
+        MnOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnOperasi.setName("MnOperasi"); // NOI18N
+        MnOperasi.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnOperasiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnOperasi);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -313,7 +330,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jadwal Operasi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jadwal Operasi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -542,7 +559,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(80, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -565,7 +582,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -593,7 +610,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(80, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -616,7 +633,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(30, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -699,7 +716,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         TPasien.setBounds(200, 10, 358, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2019" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1266,11 +1283,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_DTPCari4ItemStateChanged
 
     private void ppRiwayatBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRiwayatBtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
-            TCari.requestFocus();
-        }else if(tbObat.getSelectedRow()== -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1282,6 +1296,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_ppRiwayatBtnPrintActionPerformed
+
+    private void MnPermintaanLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPermintaanLabActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgPermintaanLaboratorium dlgro=new DlgPermintaanLaboratorium(null,false);
+            dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgro.setLocationRelativeTo(internalFrame1);
+            dlgro.emptTeks();
+            dlgro.isCek();
+            dlgro.setNoRm(TNoRw.getText(),Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",TNoRw.getText()));
+            dlgro.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnPermintaanLabActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1329,6 +1360,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.ComboBox MenitSelesai;
     private javax.swing.JMenuItem MnKamarInap;
     private javax.swing.JMenuItem MnOperasi;
+    private javax.swing.JMenuItem MnPermintaanLab;
     private widget.TextBox NmDokter;
     private widget.TextBox NmOperasi;
     private javax.swing.JPanel PanelInput;

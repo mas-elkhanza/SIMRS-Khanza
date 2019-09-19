@@ -117,7 +117,10 @@ public final class akses {
             grafik_sttskerjapegawai=false,grafik_sttspulangranap=false,kip_pasien_ranap=false,kip_pasien_ralan=false,bpjs_mapping_dokterdpjp=false,
             data_triase_igd=false,master_triase_skala1=false,master_triase_skala2=false,master_triase_skala3=false,master_triase_skala4=false,
             master_triase_skala5=false,master_triase_pemeriksaan=false,master_triase_macamkasus=false,rekap_permintaan_diet=false,daftar_pasien_ranap=false,
-            daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false;
+            daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false,item_apotek_jenis=false,item_apotek_kategori=false,item_apotek_golongan=false,
+            item_apotek_industrifarmasi=false,obat10_terbanyak_poli=false,grafik_pengajuan_aset_urgensi=false,grafik_pengajuan_aset_status=false,
+            grafik_pengajuan_aset_departemen=false,rekap_pengajuan_aset_departemen=false,grafik_kelompok_jabatanpegawai=false,grafik_resiko_kerjapegawai=false,
+            grafik_emergency_indexpegawai=false,grafik_inventaris_ruang=false,harian_HAIs2=false,grafik_inventaris_jenis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -675,6 +678,21 @@ public final class akses {
                         akses.daftar_pasien_ranap=true;
                         akses.daftar_pasien_ranaptni=true;
                         akses.pengajuan_asetinventaris=true;
+                        akses.item_apotek_jenis=true;
+                        akses.item_apotek_kategori=true;
+                        akses.item_apotek_golongan=true;
+                        akses.item_apotek_industrifarmasi=true;
+                        akses.obat10_terbanyak_poli=true;
+                        akses.grafik_pengajuan_aset_urgensi=true;
+                        akses.grafik_pengajuan_aset_status=true;
+                        akses.grafik_pengajuan_aset_departemen=true;
+                        akses.rekap_pengajuan_aset_departemen=true;
+                        akses.grafik_kelompok_jabatanpegawai=true;
+                        akses.grafik_resiko_kerjapegawai=true;
+                        akses.grafik_emergency_indexpegawai=true;
+                        akses.grafik_inventaris_ruang=true;
+                        akses.harian_HAIs2=true;
+                        akses.grafik_inventaris_jenis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1215,7 +1233,22 @@ public final class akses {
                         akses.rekap_permintaan_diet=rs2.getBoolean("rekap_permintaan_diet");
                         akses.daftar_pasien_ranap=rs2.getBoolean("daftar_pasien_ranap");
                         akses.daftar_pasien_ranaptni=rs2.getBoolean("daftar_pasien_ranaptni");
-                        akses.pengajuan_asetinventaris=rs2.getBoolean("pengajuan_asetinventari");
+                        akses.pengajuan_asetinventaris=rs2.getBoolean("pengajuan_asetinventaris");
+                        akses.item_apotek_jenis=rs2.getBoolean("item_apotek_jenis");
+                        akses.item_apotek_kategori=rs2.getBoolean("item_apotek_kategori");
+                        akses.item_apotek_golongan=rs2.getBoolean("item_apotek_golongan");
+                        akses.item_apotek_industrifarmasi=rs2.getBoolean("item_apotek_industrifarmasi");
+                        akses.obat10_terbanyak_poli=rs2.getBoolean("10_obat_terbanyak_poli");
+                        akses.grafik_pengajuan_aset_urgensi=rs2.getBoolean("grafik_pengajuan_aset_urgensi");
+                        akses.grafik_pengajuan_aset_status=rs2.getBoolean("grafik_pengajuan_aset_status");
+                        akses.grafik_pengajuan_aset_departemen=rs2.getBoolean("grafik_pengajuan_aset_departemen");
+                        akses.rekap_pengajuan_aset_departemen=rs2.getBoolean("rekap_pengajuan_aset_departemen");
+                        akses.grafik_kelompok_jabatanpegawai=rs2.getBoolean("grafik_kelompok_jabatanpegawai");
+                        akses.grafik_resiko_kerjapegawai=rs2.getBoolean("grafik_resiko_kerjapegawai");
+                        akses.grafik_emergency_indexpegawai=rs2.getBoolean("grafik_emergency_indexpegawai");
+                        akses.grafik_inventaris_ruang=rs2.getBoolean("grafik_inventaris_ruang");
+                        akses.harian_HAIs2=rs2.getBoolean("harian_HAIs2");
+                        akses.grafik_inventaris_jenis=rs2.getBoolean("grafik_inventaris_jenis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1755,6 +1788,21 @@ public final class akses {
                         akses.daftar_pasien_ranap=false;
                         akses.daftar_pasien_ranaptni=false;
                         akses.pengajuan_asetinventaris=false;
+                        akses.item_apotek_jenis=false;
+                        akses.item_apotek_kategori=false;
+                        akses.item_apotek_golongan=false;
+                        akses.item_apotek_industrifarmasi=false;
+                        akses.obat10_terbanyak_poli=false;
+                        akses.grafik_pengajuan_aset_urgensi=false;
+                        akses.grafik_pengajuan_aset_status=false;
+                        akses.grafik_pengajuan_aset_departemen=false;
+                        akses.rekap_pengajuan_aset_departemen=false;
+                        akses.grafik_kelompok_jabatanpegawai=false;
+                        akses.grafik_resiko_kerjapegawai=false;
+                        akses.grafik_emergency_indexpegawai=false;
+                        akses.grafik_inventaris_ruang=false;
+                        akses.harian_HAIs2=false;
+                        akses.grafik_inventaris_jenis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2348,4 +2396,19 @@ public final class akses {
     public static boolean getdaftar_pasien_ranap(){return akses.daftar_pasien_ranap;}
     public static boolean getdaftar_pasien_ranaptni(){return akses.daftar_pasien_ranaptni;}
     public static boolean getpengajuan_asetinventaris(){return akses.pengajuan_asetinventaris;}
+    public static boolean getitem_apotek_jenis(){return akses.item_apotek_jenis;}
+    public static boolean getitem_apotek_kategori(){return akses.item_apotek_kategori;}
+    public static boolean getitem_apotek_golongan(){return akses.item_apotek_golongan;}
+    public static boolean getitem_apotek_industrifarmasi(){return akses.item_apotek_industrifarmasi;}
+    public static boolean getobat10_terbanyak_poli(){return akses.obat10_terbanyak_poli;}
+    public static boolean getgrafik_pengajuan_aset_urgensi(){return akses.grafik_pengajuan_aset_urgensi;}
+    public static boolean getgrafik_pengajuan_aset_status(){return akses.grafik_pengajuan_aset_status;}
+    public static boolean getgrafik_pengajuan_aset_departemen(){return akses.grafik_pengajuan_aset_departemen;}
+    public static boolean getrekap_pengajuan_aset_departemen(){return akses.rekap_pengajuan_aset_departemen;}
+    public static boolean getgrafik_kelompok_jabatanpegawai(){return akses.grafik_kelompok_jabatanpegawai;}
+    public static boolean getgrafik_resiko_kerjapegawai(){return akses.grafik_resiko_kerjapegawai;}
+    public static boolean getgrafik_emergency_indexpegawai(){return akses.grafik_emergency_indexpegawai;}
+    public static boolean getgrafik_inventaris_ruang(){return akses.grafik_inventaris_ruang;}
+    public static boolean getharian_HAIs2(){return akses.harian_HAIs2;}
+    public static boolean getgrafik_inventaris_jenis(){return akses.grafik_inventaris_jenis;}
 }   

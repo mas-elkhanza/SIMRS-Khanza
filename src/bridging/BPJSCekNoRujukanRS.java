@@ -1697,7 +1697,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         MnDocument.setBackground(new java.awt.Color(255, 255, 254));
         MnDocument.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDocument.setForeground(new java.awt.Color(70, 70, 70));
+        MnDocument.setForeground(new java.awt.Color(50,50,50));
         MnDocument.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDocument.setText("Cetak Document");
         MnDocument.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1713,7 +1713,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPengajuan.setForeground(new java.awt.Color(70, 70, 70));
+        ppPengajuan.setForeground(new java.awt.Color(50,50,50));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan.setText("Pengajuan SEP");
         ppPengajuan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1729,7 +1729,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPengajuan1.setForeground(new java.awt.Color(70, 70, 70));
+        ppPengajuan1.setForeground(new java.awt.Color(50,50,50));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan1.setText("Aproval SEP");
         ppPengajuan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1805,7 +1805,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Rujukan RS Berdasarkan Nomor Rujukan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Rujukan RS Berdasarkan Nomor Rujukan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1969,7 +1969,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(560, 168));
         FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         FormKelengkapanPasien.setName("FormKelengkapanPasien"); // NOI18N
         FormKelengkapanPasien.setOpaque(false);
         FormKelengkapanPasien.setPreferredSize(new java.awt.Dimension(1000, 485));
@@ -2912,7 +2912,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         FormInput.add(FormKelengkapanPasien);
 
-        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         FormKelengkapanSEP.setName("FormKelengkapanSEP"); // NOI18N
         FormKelengkapanSEP.setOpaque(false);
         FormKelengkapanSEP.setPreferredSize(new java.awt.Dimension(1000, 337));
@@ -3792,7 +3792,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 URL = link+"/Sep/pengajuanSEP";
                 headers= new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
@@ -3837,7 +3837,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 URL = link+"/Sep/aprovalSEP";
                 headers= new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+                headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 requestJson =" {" +
@@ -5188,7 +5188,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             URL = link+"/Rujukan/RS/"+nomorrujukan;
             headers= new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
 	    requestEntity = new HttpEntity(headers);
@@ -6149,7 +6149,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             
             headers= new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+            headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
             headers.add("X-Signature",api.getHmac());
             URL = link+"/SEP/1.1/insert";
@@ -6234,41 +6234,10 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                      KdKecamatan.getText(),NmKecamatan.getText(),NoSKDP.getText(),KdDPJP.getText(),NmDPJP.getText()
                  })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
-                        /*try {
-                            URL = link+"/Sep/updtglplg";	
-                            headers2= new HttpHeaders();
-                            headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                            headers2.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-                            headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-                            headers2.add("X-Signature",api.getHmac());
-                            requestJson ="{" +
-                                          "\"request\":" +
-                                             "{" +
-                                                "\"t_sep\":" +
-                                                   "{" +
-                                                    "\"noSep\":\""+response.asText()+"\"," +
-                                                    "\"tglPulang\":\""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                                                    "\"user\":\""+user+"\"" +                                            
-                                                   "}" +
-                                             "}" +
-                                         "}";
-                            requestEntity = new HttpEntity(requestJson,headers2);
-                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
-                            nameNode = root.path("metaData");
-                            System.out.println("code : "+nameNode.path("code").asText());
-                            System.out.println("message : "+nameNode.path("message").asText());
-                            response = root.path("response");
-                            if(nameNode.path("code").asText().equals("200")){*/
-                                Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
-                                     Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
-                                     response.asText()
-                                }); 
-                            /*}else{
-                                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                            }
-                        }catch (Exception ex) {
-                            System.out.println("Notifikasi Bridging : "+ex);
-                        }*/
+                        Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
+                             Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
+                             response.asText()
+                        }); 
                     }    
                     JOptionPane.showMessageDialog(null,"Proses Selesai...!");
                     if(!nosep.equals("")){
@@ -6290,7 +6259,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                     Sequel.mengedit3("skdp_bpjs","no_rkm_medis=? and tanggal_datang=?","status='Sudah Periksa'",2,new String[]{
                         TNo.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")
                     });
-                    Sequel.queryu2("delete from booking_registrasi where no_rkm_medis=? and tanggal_periksa=?",2,new String[]{
+                    Sequel.queryu2("update booking_registrasi set status='Terdaftar' where no_rkm_medis=? and tanggal_periksa=?",2,new String[]{
                         TNo.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")
                     });
                     if(!prb.equals("")){

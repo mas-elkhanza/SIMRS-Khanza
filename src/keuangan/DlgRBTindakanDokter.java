@@ -266,7 +266,7 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
 
         ppTampilkanPasien.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanPasien.setForeground(new java.awt.Color(70, 70, 70));
+        ppTampilkanPasien.setForeground(new java.awt.Color(50,50,50));
         ppTampilkanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanPasien.setText("Tampilkan Pasien");
         ppTampilkanPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -282,7 +282,7 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
 
         ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanSeleksi.setForeground(new java.awt.Color(70, 70, 70));
+        ppTampilkanSeleksi.setForeground(new java.awt.Color(50,50,50));
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanSeleksi.setText("Tampilkan Pasien Per Jenis Bayar");
         ppTampilkanSeleksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -305,7 +305,7 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Dokter Rawat Jalan (Non Operasi & VK) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Dokter Rawat Jalan (Non Operasi & VK) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

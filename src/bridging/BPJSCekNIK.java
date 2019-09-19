@@ -5,8 +5,10 @@
  */
 package bridging;
 
+import AESsecurity.EnkripsiAES;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -55,7 +57,7 @@ public class BPJSCekNIK {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
+	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
 	    headers.add("X-Signature",api.getHmac());
 	    requestEntity = new HttpEntity(headers);

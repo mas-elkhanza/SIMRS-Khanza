@@ -42,10 +42,10 @@ public class DlgRekapPermintaanDiet extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -82,7 +82,7 @@ public class DlgRekapPermintaanDiet extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Permintaan Diet ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Permintaan Diet ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -208,10 +208,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
 
@@ -287,7 +287,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='40px' rowspan='2'>Tgl</td>"
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px' rowspan='2'>Tgl</td>"
             );
             kolom=Sequel.cariInteger("select count(*) from penjab");
             kodebayar=new String[kolom];
@@ -312,7 +312,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     totalvip[kolom]=0;
                     totalvvip[kolom]=0;
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#fafff5' align='center' width='180px' colspan='6'>"+rs.getString("png_jawab")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='180px' colspan='6'>"+rs.getString("png_jawab")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -325,7 +325,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
             htmlContent.append(
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='50px' rowspan='2'>Jumlah</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px' rowspan='2'>Jumlah</td>"+
                 "</tr>"
             );   
             
@@ -333,7 +333,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 "<tr class='isi'>"
             );
             for(i=0;i<kolom;i++){
-                htmlContent.append("<td valign='middle' bgcolor='#fafff5' align='center'>K 1</td><td valign='middle' bgcolor='#fafff5' align='center'>K 2</td><td valign='middle' bgcolor='#fafff5' align='center'>K 3</td><td valign='middle' bgcolor='#fafff5' align='center'>Utama</td><td valign='middle' bgcolor='#fafff5' align='center'>VIP</td><td valign='middle' bgcolor='#fafff5' align='center'>VVIP</td>");
+                htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center'>K 1</td><td valign='middle' bgcolor='#FFFAF8' align='center'>K 2</td><td valign='middle' bgcolor='#FFFAF8' align='center'>K 3</td><td valign='middle' bgcolor='#FFFAF8' align='center'>Utama</td><td valign='middle' bgcolor='#FFFAF8' align='center'>VIP</td><td valign='middle' bgcolor='#FFFAF8' align='center'>VVIP</td>");
             }
             htmlContent.append(
                 "</tr>"
@@ -441,13 +441,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='7'>Status/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>K 1</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>K 2</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>K 3</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>Utama</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>VIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>VVIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='7'>Status/Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>K 1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>K 2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>K 3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>Utama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>VIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>VVIP</td>"+
                     "<td valign='middle' colspan='"+((kolom*6)-17)+"'>&nbsp;</td>"+
                 "</tr>"
             );

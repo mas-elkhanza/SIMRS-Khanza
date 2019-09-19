@@ -171,7 +171,7 @@ public final class DlgPoli extends javax.swing.JDialog {
         Popup.setName("Popup"); // NOI18N
 
         ppOrder.setBackground(new java.awt.Color(245, 255, 250));
-        ppOrder.setForeground(new java.awt.Color(70, 70, 70));
+        ppOrder.setForeground(new java.awt.Color(50,50,50));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -179,7 +179,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppOrderKode.setBackground(new java.awt.Color(254, 254, 254));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderKode.setForeground(new java.awt.Color(70, 70, 70));
+        ppOrderKode.setForeground(new java.awt.Color(50,50,50));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrderKode.setText("Kode Unit");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -195,7 +195,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppOrderNama.setBackground(new java.awt.Color(254, 254, 254));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderNama.setForeground(new java.awt.Color(70, 70, 70));
+        ppOrderNama.setForeground(new java.awt.Color(50,50,50));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrderNama.setText("Nama Unit");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -211,7 +211,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppOrderKtg.setBackground(new java.awt.Color(254, 254, 254));
         ppOrderKtg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderKtg.setForeground(new java.awt.Color(70, 70, 70));
+        ppOrderKtg.setForeground(new java.awt.Color(50,50,50));
         ppOrderKtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppOrderKtg.setText("Registrasi");
         ppOrderKtg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -228,7 +228,7 @@ public final class DlgPoli extends javax.swing.JDialog {
         Popup.add(ppOrder);
 
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(70, 70, 70));
+        MnRestore.setForeground(new java.awt.Color(50,50,50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -259,7 +259,7 @@ public final class DlgPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

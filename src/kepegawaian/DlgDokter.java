@@ -269,7 +269,7 @@ public class DlgDokter extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(70, 70, 70));
+        MnRestore.setForeground(new java.awt.Color(50,50,50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -293,7 +293,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -901,16 +901,19 @@ public class DlgDokter extends javax.swing.JDialog {
             Valid.textKosong(KdSps,"spesialis");
         }else{
             try { 
-                koneksi.setAutoCommit(false);
+                Sequel.AutoComitFalse();
                 Sequel.menyimpan("jnj_jabatan","'-','-','0'");
                 Sequel.menyimpan("departemen","'-','-'");
                 Sequel.menyimpan("bidang","'-'");
                 Sequel.menyimpan("bank","'T'");
                 Sequel.menyimpan("stts_wp","'-','-'");
                 Sequel.menyimpan("stts_kerja","'-','-','0'");
+                Sequel.menyimpan("kelompok_jabatan","'-','-','0'");
+                Sequel.menyimpan("resiko_kerja","'-','-','0'");
+                Sequel.menyimpan("emergency_index","'-','-','0'");
                 Sequel.menyimpan("pendidikan","'-','0','0','0','0'");
                 Sequel.menyimpan("pegawai","'0','"+TKd.getText()+"','"+TNm.getText()+"','"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+
-                        "'-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/','-'");        
+                        "'-','-','-','-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/','-'");        
                 Sequel.menyimpan("dokter","'"+TKd.getText()+"','"+
                         TNm.getText()+"','"+
                         CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"','"+
@@ -924,7 +927,8 @@ public class DlgDokter extends javax.swing.JDialog {
                         KdSps.getText()+"','"+
                         TAlumni.getText()+"','"+
                         TNoi.getText()+"','1'","Kode Dokter");
-                koneksi.setAutoCommit(true); 
+                Sequel.Commit();
+                Sequel.AutoComitTrue();
                 tampil();
                 emptTeks();
             } catch (Exception ex) {

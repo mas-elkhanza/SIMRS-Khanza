@@ -192,7 +192,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 try {     
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
-                                    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
+                                    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIAPLICARE());
                                     headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                                     headers.add("X-Signature",api.getHmac());
                                     requestJson ="{\"kodekelas\":\""+rs.getString("kode_kelas_aplicare")+"\", "+

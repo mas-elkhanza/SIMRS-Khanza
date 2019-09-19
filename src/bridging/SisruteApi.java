@@ -1,5 +1,6 @@
 package bridging;
 
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -27,8 +28,8 @@ public class SisruteApi {
     public SisruteApi(){
         try {            
             prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-            pass = prop.getProperty("PASSSISRUTE");
-            Consid = prop.getProperty("IDSISRUTE");
+            pass = koneksiDB.PASSSISRUTE();
+            Consid = koneksiDB.IDSISRUTE();
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] hashInBytes = md.digest(pass.getBytes(StandardCharsets.UTF_8));
 

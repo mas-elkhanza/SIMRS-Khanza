@@ -44,11 +44,11 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:9px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:9px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -117,7 +117,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -259,16 +259,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
             File f = new File("rl4b.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
@@ -388,27 +389,27 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='80px'>No.Batch</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='90px'>Kode Barang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='230px'>Nama Barang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='50px'>Satuan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='70px'>Datang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='70px'>Kadaluarsa</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='70px'>Asal Barang</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='95px'>No.Faktur</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.PP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Ralan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Kelas 1</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Kelas 2</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Kelas 3</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Utama</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.VIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.VVIP</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Beli Luar</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Jual Bebas</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='75px'>H.Karyawan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='65px'>Jml.Beli</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='65px'>Sisa</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>No.Batch</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Kode Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='230px'>Nama Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px'>Satuan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Datang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Kadaluarsa</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'>Asal Barang</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='95px'>No.Faktur</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.PP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Ralan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Kelas 1</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Kelas 2</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Kelas 3</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Utama</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.VIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.VVIP</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Beli Luar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Jual Bebas</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='75px'>H.Karyawan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jml.Beli</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Sisa</td>"+
                 "</tr>"
             );   
             

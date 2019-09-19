@@ -151,10 +151,10 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -207,7 +207,7 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Poli Anak ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Poli Anak ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -427,10 +427,10 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
@@ -650,42 +650,42 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                 "<tr class='isi2'>"+
                                     "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                        "<tr class='isi3'>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='3%' rowspan='3'>NO.</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='3'>NO.RM</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='10%' rowspan='3'>NAMA IBU</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='10%' rowspan='3'>NAMA ANAK</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='12%' rowspan='3'>ALAMAT</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='4%' rowspan='3'>TGL.LAHIR</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='6%'>LAHIR</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='1%' rowspan='2'>L/B</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='25%' colspan='10'>USIA</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='20%' rowspan='2'>TINDAKAN & HARGA</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' width='4%'>IMUN KE</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='3'>NO.</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='3'>NO.RM</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='3'>NAMA IBU</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='3'>NAMA ANAK</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%' rowspan='3'>ALAMAT</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%' rowspan='3'>TGL.LAHIR</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>LAHIR</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='1%' rowspan='2'>L/B</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%' colspan='10'>USIA</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%' rowspan='2'>TINDAKAN & HARGA</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>IMUN KE</td>"+
                                         "</tr>"+
                                         "<tr class='isi3'>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>DIMANA</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>0-6 hari</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-28 hari</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28-1 thn</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>1-4 thn</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>5-14 thn</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>BERAPA</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>DIMANA</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>0-6 hari</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>7-28 hari</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>28-1 thn</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>1-4 thn</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>5-14 thn</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>BERAPA</td>"+
                                         "</tr>"+
                                         "<tr class='isi3'>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>&nbsp;</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>&nbsp;</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>&nbsp;</td>"+
-                                            "<td valign='middle' bgcolor='#fafff5' align='center'>&nbsp;</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>&nbsp;</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>&nbsp;</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>&nbsp;</td>"+
+                                            "<td valign='middle' bgcolor='#FFFAF8' align='center'>&nbsp;</td>"+
                                         "</tr>");
                             psreg=koneksi.prepareStatement(
                                     "select reg_periksa.no_rkm_medis,pasien.nm_ibu,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,"+
@@ -924,28 +924,28 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                     "<tr class='isi2'>"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi3'>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='right' width='10%'>Usia : </td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='18%' colspan='2'>0-6 hari</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='18%' colspan='2'>7-28 hari</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='18%' colspan='2'>28-1 thn</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='18%' colspan='2'>1-4 thn</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='18%' colspan='2'>5-14 thn</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='right' width='10%'>Usia : </td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%' colspan='2'>0-6 hari</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%' colspan='2'>7-28 hari</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%' colspan='2'>28-1 thn</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%' colspan='2'>1-4 thn</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%' colspan='2'>5-14 thn</td>"+
                             "</tr>"+
                             "<tr class='isi3'>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='right'>Jenis Kelamin :</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='right'>Jenis Kelamin :</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
                             "</tr>"+
                             "<tr class='isi3'>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='right'>Jumlah Total :</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='right'>Jumlah Total :</td>"+
                                 "<td valign='top' align='center'>"+ttlh0s6l+"</td>"+
                                 "<td valign='top' align='center'>"+ttlh0s6p+"</td>"+
                                 "<td valign='top' align='center'>"+ttlh7s28l+"</td>"+

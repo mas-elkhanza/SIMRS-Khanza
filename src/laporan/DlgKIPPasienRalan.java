@@ -52,10 +52,10 @@ public class DlgKIPPasienRalan extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -125,7 +125,7 @@ public class DlgKIPPasienRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kartu Indeks Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kartu Indeks Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -283,10 +283,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
@@ -424,53 +424,53 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='10px' rowspan='3'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='40px' rowspan='3'>NO.R.M.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='50px' rowspan='3'>TGL.MASUK</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='200px' colspan='18'>GOLONGAN UMUR</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='60px' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='70px' rowspan='2' colspan='3'>TINDAK LANJUT PERAWATAN</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='50px' rowspan='2' colspan='2'>KASUS BARU</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='50px' rowspan='2' colspan='2'>KASUS LAMA</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='"+(70*kolom)+"px' rowspan='2' colspan='"+kolom+"'>KETERANGAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10px' rowspan='3'>NO.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40px' rowspan='3'>NO.R.M.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px' rowspan='3'>TGL.MASUK</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px' colspan='18'>GOLONGAN UMUR</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60px' rowspan='3'>DIAGNOSA KOMPILASI</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px' rowspan='2' colspan='3'>TINDAK LANJUT PERAWATAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px' rowspan='2' colspan='2'>KASUS BARU</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50px' rowspan='2' colspan='2'>KASUS LAMA</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='"+(70*kolom)+"px' rowspan='2' colspan='"+kolom+"'>KETERANGAN</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>0-6 hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>7-27hr</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>28hr-&lsaquo;1th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>1-4th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>5-14th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>15-24th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>25-44th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>45-64th</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' colspan='2'>&rsaquo;&nbsp;64</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>0-6 hr</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>7-27hr</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>28hr-&lsaquo;1th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>1-4th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>5-14th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>15-24th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>25-44th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>45-64th</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='2'>&rsaquo;&nbsp;64</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>PULANG</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>RAWAT</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>RUJUK</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>L</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>P</td>"
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>PULANG</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>RAWAT</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>RUJUK</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>L</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>P</td>"
             );
             i=0;
             ps2=koneksi.prepareStatement("select kd_pj,png_jawab from penjab order by png_jawab");
@@ -480,7 +480,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     kodebayar[i]=rs2.getString("kd_pj");
                     jumlahcarabayar[i]=0;
                     i++;
-                    htmlContent.append("<td valign='middle' bgcolor='#fafff5' align='center'>"+rs2.getString("png_jawab")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center'>"+rs2.getString("png_jawab")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);

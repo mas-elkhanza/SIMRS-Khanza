@@ -122,10 +122,10 @@ public class frmPengaduan extends javax.swing.JFrame {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -178,11 +178,11 @@ public class frmPengaduan extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -677,12 +677,12 @@ public class frmPengaduan extends javax.swing.JFrame {
                         if(rs.getString("username").equals(akses.getkode())){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='right' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='right' valign='top' bgcolor='#FFFAF8'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }else{
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='left' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='left' valign='top' bgcolor='#FFFAF8'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }
                     }                        

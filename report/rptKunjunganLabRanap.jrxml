@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1080" pageHeight="612" orientation="Landscape" columnWidth="1040" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f096c5ea-a76f-45f8-a6a3-56f7daaf3581">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -111,7 +111,7 @@
 	<title>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="6" y="1" width="796" height="16" uuid="8bded361-1216-4719-9d70-3fa65c8971be"/>
+				<reportElement x="6" y="1" width="1024" height="16" uuid="8bded361-1216-4719-9d70-3fa65c8971be"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="13" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
