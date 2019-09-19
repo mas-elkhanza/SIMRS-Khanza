@@ -19,10 +19,10 @@
             </Property>
             <Property name="name" type="java.lang.String" value="internalFrame2" noResource="true"/>
             <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="28" red="fa" type="rgb"/>
+              <Color blue="73" green="28" red="fa" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="46" green="0" red="d2" type="rgb"/>
+              <Color blue="4b" green="0" red="d2" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
