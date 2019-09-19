@@ -19,33 +19,22 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
+import kepegawaian.DlgCariDokter;
 
 
 /**
@@ -60,16 +49,14 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;    
+    private DlgCariDokter dokter=new DlgCariDokter(null,false);
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
     public DlgDataResumePasien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(8,1);
-        setSize(628,674);
-
-
+        
         Object[] row={
             "No.Rawat","No.R.M.","Nama Pasien","Umur","Tgl.Kejadian","Jam Kejadian",
             "Tgl.Lapor","Jam Lapor","NIP","Petugas","Lokasi Insiden","Kode Insiden",
@@ -134,10 +121,29 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Akibat.setDocument(new batasInput((int)150).getKata(Akibat));
-        Tindakan.setDocument(new batasInput((int)150).getKata(Tindakan));
-        Identifikasi.setDocument(new batasInput((int)150).getKata(Identifikasi));
-        TindakLanjut.setDocument(new batasInput((int)150).getKata(TindakLanjut));
+        Keluhan.setDocument(new batasInput((int)1000).getKata(Keluhan));
+        JalannyaPenyakit.setDocument(new batasInput((int)1000).getKata(JalannyaPenyakit));
+        PemeriksaanPenunjang.setDocument(new batasInput((int)1000).getKata(PemeriksaanPenunjang));
+        HasilLaborat.setDocument(new batasInput((int)1000).getKata(HasilLaborat));
+        Obat2an.setDocument(new batasInput((int)1000).getKata(Obat2an));
+        DiagnosaUtama.setDocument(new batasInput((int)80).getKata(DiagnosaUtama));
+        DiagnosaSekunder1.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder1));
+        DiagnosaSekunder2.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder2));
+        DiagnosaSekunder3.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder3));
+        DiagnosaSekunder4.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder4));
+        ProsedurUtama.setDocument(new batasInput((int)80).getKata(ProsedurUtama));
+        ProsedurSekunder1.setDocument(new batasInput((int)80).getKata(ProsedurSekunder1));
+        ProsedurSekunder2.setDocument(new batasInput((int)80).getKata(ProsedurSekunder2));
+        ProsedurSekunder3.setDocument(new batasInput((int)80).getKata(ProsedurSekunder3));
+        KodeDiagnosaUtama.setDocument(new batasInput((int)10).getKata(KodeDiagnosaUtama));
+        KodeDiagnosaSekunder1.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder1));
+        KodeDiagnosaSekunder2.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder2));
+        KodeDiagnosaSekunder3.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder3));
+        KodeDiagnosaSekunder4.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder4));
+        KodeProsedurUtama.setDocument(new batasInput((int)8).getKata(KodeProsedurUtama));
+        KodeProsedurSekunder1.setDocument(new batasInput((int)8).getKata(KodeProsedurSekunder1));
+        KodeProsedurSekunder2.setDocument(new batasInput((int)8).getKata(KodeProsedurSekunder2));
+        KodeProsedurSekunder3.setDocument(new batasInput((int)8).getKata(KodeProsedurSekunder3));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -162,6 +168,29 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
                 }
             });
         }
+        
+        dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dokter.getTable().getSelectedRow()!= -1){
+                    KodeDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                    NamaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                    KodeDokter.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -209,54 +238,54 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
         jLabel25 = new widget.Label();
-        Akibat = new widget.TextBox();
+        DiagnosaSekunder2 = new widget.TextBox();
         jLabel26 = new widget.Label();
-        Tindakan = new widget.TextBox();
+        DiagnosaUtama = new widget.TextBox();
         jLabel27 = new widget.Label();
-        Identifikasi = new widget.TextBox();
+        DiagnosaSekunder3 = new widget.TextBox();
         jLabel28 = new widget.Label();
-        TindakLanjut = new widget.TextBox();
+        DiagnosaSekunder4 = new widget.TextBox();
         scrollPane2 = new widget.ScrollPane();
-        Laporan = new widget.TextArea();
+        Keluhan = new widget.TextArea();
         jLabel5 = new widget.Label();
         jLabel8 = new widget.Label();
         scrollPane3 = new widget.ScrollPane();
-        Laporan1 = new widget.TextArea();
+        JalannyaPenyakit = new widget.TextArea();
         jLabel9 = new widget.Label();
         scrollPane4 = new widget.ScrollPane();
-        Laporan2 = new widget.TextArea();
+        PemeriksaanPenunjang = new widget.TextArea();
         jLabel10 = new widget.Label();
         scrollPane5 = new widget.ScrollPane();
-        Laporan3 = new widget.TextArea();
+        HasilLaborat = new widget.TextArea();
         jLabel11 = new widget.Label();
         scrollPane6 = new widget.ScrollPane();
-        Laporan4 = new widget.TextArea();
+        Obat2an = new widget.TextArea();
         jLabel29 = new widget.Label();
         jLabel30 = new widget.Label();
-        Tindakan1 = new widget.TextBox();
+        DiagnosaSekunder1 = new widget.TextBox();
         jLabel31 = new widget.Label();
-        Tindakan2 = new widget.TextBox();
-        Tindakan3 = new widget.TextBox();
-        Tindakan4 = new widget.TextBox();
-        Tindakan5 = new widget.TextBox();
-        Tindakan6 = new widget.TextBox();
+        KodeDiagnosaUtama = new widget.TextBox();
+        KodeDiagnosaSekunder1 = new widget.TextBox();
+        KodeDiagnosaSekunder2 = new widget.TextBox();
+        KodeDiagnosaSekunder3 = new widget.TextBox();
+        KodeDiagnosaSekunder4 = new widget.TextBox();
         jLabel32 = new widget.Label();
-        TindakLanjut1 = new widget.TextBox();
-        Tindakan7 = new widget.TextBox();
-        TindakLanjut2 = new widget.TextBox();
+        ProsedurUtama = new widget.TextBox();
+        KodeProsedurUtama = new widget.TextBox();
+        ProsedurSekunder1 = new widget.TextBox();
         jLabel33 = new widget.Label();
-        Tindakan8 = new widget.TextBox();
+        KodeProsedurSekunder1 = new widget.TextBox();
         jLabel34 = new widget.Label();
-        TindakLanjut3 = new widget.TextBox();
-        Tindakan9 = new widget.TextBox();
-        Tindakan10 = new widget.TextBox();
-        TindakLanjut4 = new widget.TextBox();
+        ProsedurSekunder2 = new widget.TextBox();
+        KodeProsedurSekunder2 = new widget.TextBox();
+        KodeProsedurSekunder3 = new widget.TextBox();
+        ProsedurSekunder3 = new widget.TextBox();
         jLabel35 = new widget.Label();
         label14 = new widget.Label();
-        kdoperator1 = new widget.TextBox();
-        nmoperator1 = new widget.TextBox();
-        BtnOperator1 = new widget.Button();
-        Kategori = new widget.ComboBox();
+        KodeDokter = new widget.TextBox();
+        NamaDokter = new widget.TextBox();
+        BtnDokter = new widget.Button();
+        Kondisi = new widget.ComboBox();
         jLabel12 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -578,69 +607,74 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         FormInput.add(jLabel25);
         jLabel25.setBounds(0, 380, 145, 23);
 
-        Akibat.setHighlighter(null);
-        Akibat.setName("Akibat"); // NOI18N
-        Akibat.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosaSekunder2.setHighlighter(null);
+        DiagnosaSekunder2.setName("DiagnosaSekunder2"); // NOI18N
+        DiagnosaSekunder2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AkibatKeyPressed(evt);
+                DiagnosaSekunder2KeyPressed(evt);
             }
         });
-        FormInput.add(Akibat);
-        Akibat.setBounds(149, 380, 520, 23);
+        FormInput.add(DiagnosaSekunder2);
+        DiagnosaSekunder2.setBounds(149, 380, 520, 23);
 
         jLabel26.setText("Diagnosa Sekunder 3 :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
         jLabel26.setBounds(0, 410, 145, 23);
 
-        Tindakan.setHighlighter(null);
-        Tindakan.setName("Tindakan"); // NOI18N
-        Tindakan.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosaUtama.setHighlighter(null);
+        DiagnosaUtama.setName("DiagnosaUtama"); // NOI18N
+        DiagnosaUtama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakanKeyPressed(evt);
+                DiagnosaUtamaKeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan);
-        Tindakan.setBounds(149, 320, 520, 23);
+        FormInput.add(DiagnosaUtama);
+        DiagnosaUtama.setBounds(149, 320, 520, 23);
 
         jLabel27.setText("Diagnosa Utama :");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
         jLabel27.setBounds(0, 320, 145, 23);
 
-        Identifikasi.setHighlighter(null);
-        Identifikasi.setName("Identifikasi"); // NOI18N
-        Identifikasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosaSekunder3.setHighlighter(null);
+        DiagnosaSekunder3.setName("DiagnosaSekunder3"); // NOI18N
+        DiagnosaSekunder3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                IdentifikasiKeyPressed(evt);
+                DiagnosaSekunder3KeyPressed(evt);
             }
         });
-        FormInput.add(Identifikasi);
-        Identifikasi.setBounds(149, 410, 520, 23);
+        FormInput.add(DiagnosaSekunder3);
+        DiagnosaSekunder3.setBounds(149, 410, 520, 23);
 
         jLabel28.setText("Diagnosa Sekunder 4 :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(0, 440, 145, 23);
 
-        TindakLanjut.setHighlighter(null);
-        TindakLanjut.setName("TindakLanjut"); // NOI18N
-        TindakLanjut.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosaSekunder4.setHighlighter(null);
+        DiagnosaSekunder4.setName("DiagnosaSekunder4"); // NOI18N
+        DiagnosaSekunder4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjutKeyPressed(evt);
+                DiagnosaSekunder4KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut);
-        TindakLanjut.setBounds(149, 440, 520, 23);
+        FormInput.add(DiagnosaSekunder4);
+        DiagnosaSekunder4.setBounds(149, 440, 520, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
 
-        Laporan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Laporan.setColumns(20);
-        Laporan.setRows(5);
-        Laporan.setName("Laporan"); // NOI18N
-        scrollPane2.setViewportView(Laporan);
+        Keluhan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Keluhan.setColumns(20);
+        Keluhan.setRows(5);
+        Keluhan.setName("Keluhan"); // NOI18N
+        Keluhan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeluhanKeyPressed(evt);
+            }
+        });
+        scrollPane2.setViewportView(Keluhan);
 
         FormInput.add(scrollPane2);
         scrollPane2.setBounds(239, 70, 546, 50);
@@ -658,11 +692,16 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane3.setName("scrollPane3"); // NOI18N
 
-        Laporan1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Laporan1.setColumns(20);
-        Laporan1.setRows(5);
-        Laporan1.setName("Laporan1"); // NOI18N
-        scrollPane3.setViewportView(Laporan1);
+        JalannyaPenyakit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        JalannyaPenyakit.setColumns(20);
+        JalannyaPenyakit.setRows(5);
+        JalannyaPenyakit.setName("JalannyaPenyakit"); // NOI18N
+        JalannyaPenyakit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JalannyaPenyakitKeyPressed(evt);
+            }
+        });
+        scrollPane3.setViewportView(JalannyaPenyakit);
 
         FormInput.add(scrollPane3);
         scrollPane3.setBounds(239, 127, 546, 50);
@@ -675,11 +714,16 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane4.setName("scrollPane4"); // NOI18N
 
-        Laporan2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Laporan2.setColumns(20);
-        Laporan2.setRows(5);
-        Laporan2.setName("Laporan2"); // NOI18N
-        scrollPane4.setViewportView(Laporan2);
+        PemeriksaanPenunjang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        PemeriksaanPenunjang.setColumns(20);
+        PemeriksaanPenunjang.setRows(5);
+        PemeriksaanPenunjang.setName("PemeriksaanPenunjang"); // NOI18N
+        PemeriksaanPenunjang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PemeriksaanPenunjangKeyPressed(evt);
+            }
+        });
+        scrollPane4.setViewportView(PemeriksaanPenunjang);
 
         FormInput.add(scrollPane4);
         scrollPane4.setBounds(239, 184, 546, 50);
@@ -692,11 +736,16 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane5.setName("scrollPane5"); // NOI18N
 
-        Laporan3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Laporan3.setColumns(20);
-        Laporan3.setRows(5);
-        Laporan3.setName("Laporan3"); // NOI18N
-        scrollPane5.setViewportView(Laporan3);
+        HasilLaborat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        HasilLaborat.setColumns(20);
+        HasilLaborat.setRows(5);
+        HasilLaborat.setName("HasilLaborat"); // NOI18N
+        HasilLaborat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HasilLaboratKeyPressed(evt);
+            }
+        });
+        scrollPane5.setViewportView(HasilLaborat);
 
         FormInput.add(scrollPane5);
         scrollPane5.setBounds(239, 241, 546, 50);
@@ -709,11 +758,16 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane6.setName("scrollPane6"); // NOI18N
 
-        Laporan4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Laporan4.setColumns(20);
-        Laporan4.setRows(5);
-        Laporan4.setName("Laporan4"); // NOI18N
-        scrollPane6.setViewportView(Laporan4);
+        Obat2an.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Obat2an.setColumns(20);
+        Obat2an.setRows(5);
+        Obat2an.setName("Obat2an"); // NOI18N
+        Obat2an.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Obat2anKeyPressed(evt);
+            }
+        });
+        scrollPane6.setViewportView(Obat2an);
 
         FormInput.add(scrollPane6);
         scrollPane6.setBounds(239, 590, 546, 50);
@@ -728,167 +782,167 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         FormInput.add(jLabel30);
         jLabel30.setBounds(0, 350, 145, 23);
 
-        Tindakan1.setHighlighter(null);
-        Tindakan1.setName("Tindakan1"); // NOI18N
-        Tindakan1.addKeyListener(new java.awt.event.KeyAdapter() {
+        DiagnosaSekunder1.setHighlighter(null);
+        DiagnosaSekunder1.setName("DiagnosaSekunder1"); // NOI18N
+        DiagnosaSekunder1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan1KeyPressed(evt);
+                DiagnosaSekunder1KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan1);
-        Tindakan1.setBounds(149, 350, 520, 23);
+        FormInput.add(DiagnosaSekunder1);
+        DiagnosaSekunder1.setBounds(149, 350, 520, 23);
 
         jLabel31.setText("Kode ICD :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
         jLabel31.setBounds(530, 297, 210, 23);
 
-        Tindakan2.setHighlighter(null);
-        Tindakan2.setName("Tindakan2"); // NOI18N
-        Tindakan2.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeDiagnosaUtama.setHighlighter(null);
+        KodeDiagnosaUtama.setName("KodeDiagnosaUtama"); // NOI18N
+        KodeDiagnosaUtama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan2KeyPressed(evt);
+                KodeDiagnosaUtamaKeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan2);
-        Tindakan2.setBounds(710, 320, 75, 23);
+        FormInput.add(KodeDiagnosaUtama);
+        KodeDiagnosaUtama.setBounds(710, 320, 75, 23);
 
-        Tindakan3.setHighlighter(null);
-        Tindakan3.setName("Tindakan3"); // NOI18N
-        Tindakan3.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeDiagnosaSekunder1.setHighlighter(null);
+        KodeDiagnosaSekunder1.setName("KodeDiagnosaSekunder1"); // NOI18N
+        KodeDiagnosaSekunder1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan3KeyPressed(evt);
+                KodeDiagnosaSekunder1KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan3);
-        Tindakan3.setBounds(710, 350, 75, 23);
+        FormInput.add(KodeDiagnosaSekunder1);
+        KodeDiagnosaSekunder1.setBounds(710, 350, 75, 23);
 
-        Tindakan4.setHighlighter(null);
-        Tindakan4.setName("Tindakan4"); // NOI18N
-        Tindakan4.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeDiagnosaSekunder2.setHighlighter(null);
+        KodeDiagnosaSekunder2.setName("KodeDiagnosaSekunder2"); // NOI18N
+        KodeDiagnosaSekunder2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan4KeyPressed(evt);
+                KodeDiagnosaSekunder2KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan4);
-        Tindakan4.setBounds(710, 380, 75, 23);
+        FormInput.add(KodeDiagnosaSekunder2);
+        KodeDiagnosaSekunder2.setBounds(710, 380, 75, 23);
 
-        Tindakan5.setHighlighter(null);
-        Tindakan5.setName("Tindakan5"); // NOI18N
-        Tindakan5.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeDiagnosaSekunder3.setHighlighter(null);
+        KodeDiagnosaSekunder3.setName("KodeDiagnosaSekunder3"); // NOI18N
+        KodeDiagnosaSekunder3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan5KeyPressed(evt);
+                KodeDiagnosaSekunder3KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan5);
-        Tindakan5.setBounds(710, 410, 75, 23);
+        FormInput.add(KodeDiagnosaSekunder3);
+        KodeDiagnosaSekunder3.setBounds(710, 410, 75, 23);
 
-        Tindakan6.setHighlighter(null);
-        Tindakan6.setName("Tindakan6"); // NOI18N
-        Tindakan6.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeDiagnosaSekunder4.setHighlighter(null);
+        KodeDiagnosaSekunder4.setName("KodeDiagnosaSekunder4"); // NOI18N
+        KodeDiagnosaSekunder4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan6KeyPressed(evt);
+                KodeDiagnosaSekunder4KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan6);
-        Tindakan6.setBounds(710, 440, 75, 23);
+        FormInput.add(KodeDiagnosaSekunder4);
+        KodeDiagnosaSekunder4.setBounds(710, 440, 75, 23);
 
         jLabel32.setText("Prosedur Utama :");
         jLabel32.setName("jLabel32"); // NOI18N
         FormInput.add(jLabel32);
         jLabel32.setBounds(0, 470, 145, 23);
 
-        TindakLanjut1.setHighlighter(null);
-        TindakLanjut1.setName("TindakLanjut1"); // NOI18N
-        TindakLanjut1.addKeyListener(new java.awt.event.KeyAdapter() {
+        ProsedurUtama.setHighlighter(null);
+        ProsedurUtama.setName("ProsedurUtama"); // NOI18N
+        ProsedurUtama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut1KeyPressed(evt);
+                ProsedurUtamaKeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut1);
-        TindakLanjut1.setBounds(149, 470, 520, 23);
+        FormInput.add(ProsedurUtama);
+        ProsedurUtama.setBounds(149, 470, 520, 23);
 
-        Tindakan7.setHighlighter(null);
-        Tindakan7.setName("Tindakan7"); // NOI18N
-        Tindakan7.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeProsedurUtama.setHighlighter(null);
+        KodeProsedurUtama.setName("KodeProsedurUtama"); // NOI18N
+        KodeProsedurUtama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan7KeyPressed(evt);
+                KodeProsedurUtamaKeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan7);
-        Tindakan7.setBounds(710, 470, 75, 23);
+        FormInput.add(KodeProsedurUtama);
+        KodeProsedurUtama.setBounds(710, 470, 75, 23);
 
-        TindakLanjut2.setHighlighter(null);
-        TindakLanjut2.setName("TindakLanjut2"); // NOI18N
-        TindakLanjut2.addKeyListener(new java.awt.event.KeyAdapter() {
+        ProsedurSekunder1.setHighlighter(null);
+        ProsedurSekunder1.setName("ProsedurSekunder1"); // NOI18N
+        ProsedurSekunder1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut2KeyPressed(evt);
+                ProsedurSekunder1KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut2);
-        TindakLanjut2.setBounds(149, 500, 520, 23);
+        FormInput.add(ProsedurSekunder1);
+        ProsedurSekunder1.setBounds(149, 500, 520, 23);
 
         jLabel33.setText("Prosedur Sekunder 1 :");
         jLabel33.setName("jLabel33"); // NOI18N
         FormInput.add(jLabel33);
         jLabel33.setBounds(0, 500, 145, 23);
 
-        Tindakan8.setHighlighter(null);
-        Tindakan8.setName("Tindakan8"); // NOI18N
-        Tindakan8.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeProsedurSekunder1.setHighlighter(null);
+        KodeProsedurSekunder1.setName("KodeProsedurSekunder1"); // NOI18N
+        KodeProsedurSekunder1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan8KeyPressed(evt);
+                KodeProsedurSekunder1KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan8);
-        Tindakan8.setBounds(710, 500, 75, 23);
+        FormInput.add(KodeProsedurSekunder1);
+        KodeProsedurSekunder1.setBounds(710, 500, 75, 23);
 
         jLabel34.setText("Prosedur Sekunder 2 :");
         jLabel34.setName("jLabel34"); // NOI18N
         FormInput.add(jLabel34);
         jLabel34.setBounds(0, 530, 145, 23);
 
-        TindakLanjut3.setHighlighter(null);
-        TindakLanjut3.setName("TindakLanjut3"); // NOI18N
-        TindakLanjut3.addKeyListener(new java.awt.event.KeyAdapter() {
+        ProsedurSekunder2.setHighlighter(null);
+        ProsedurSekunder2.setName("ProsedurSekunder2"); // NOI18N
+        ProsedurSekunder2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut3KeyPressed(evt);
+                ProsedurSekunder2KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut3);
-        TindakLanjut3.setBounds(149, 530, 520, 23);
+        FormInput.add(ProsedurSekunder2);
+        ProsedurSekunder2.setBounds(149, 530, 520, 23);
 
-        Tindakan9.setHighlighter(null);
-        Tindakan9.setName("Tindakan9"); // NOI18N
-        Tindakan9.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeProsedurSekunder2.setHighlighter(null);
+        KodeProsedurSekunder2.setName("KodeProsedurSekunder2"); // NOI18N
+        KodeProsedurSekunder2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan9KeyPressed(evt);
+                KodeProsedurSekunder2KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan9);
-        Tindakan9.setBounds(710, 530, 75, 23);
+        FormInput.add(KodeProsedurSekunder2);
+        KodeProsedurSekunder2.setBounds(710, 530, 75, 23);
 
-        Tindakan10.setHighlighter(null);
-        Tindakan10.setName("Tindakan10"); // NOI18N
-        Tindakan10.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeProsedurSekunder3.setHighlighter(null);
+        KodeProsedurSekunder3.setName("KodeProsedurSekunder3"); // NOI18N
+        KodeProsedurSekunder3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tindakan10KeyPressed(evt);
+                KodeProsedurSekunder3KeyPressed(evt);
             }
         });
-        FormInput.add(Tindakan10);
-        Tindakan10.setBounds(710, 560, 75, 23);
+        FormInput.add(KodeProsedurSekunder3);
+        KodeProsedurSekunder3.setBounds(710, 560, 75, 23);
 
-        TindakLanjut4.setHighlighter(null);
-        TindakLanjut4.setName("TindakLanjut4"); // NOI18N
-        TindakLanjut4.addKeyListener(new java.awt.event.KeyAdapter() {
+        ProsedurSekunder3.setHighlighter(null);
+        ProsedurSekunder3.setName("ProsedurSekunder3"); // NOI18N
+        ProsedurSekunder3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut4KeyPressed(evt);
+                ProsedurSekunder3KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut4);
-        TindakLanjut4.setBounds(149, 560, 520, 23);
+        FormInput.add(ProsedurSekunder3);
+        ProsedurSekunder3.setBounds(149, 560, 520, 23);
 
-        jLabel35.setText("Prosedur Sekunder 2 :");
+        jLabel35.setText("Prosedur Sekunder 3 :");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
         jLabel35.setBounds(0, 560, 145, 23);
@@ -899,50 +953,50 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         FormInput.add(label14);
         label14.setBounds(0, 40, 100, 23);
 
-        kdoperator1.setEditable(false);
-        kdoperator1.setName("kdoperator1"); // NOI18N
-        kdoperator1.setPreferredSize(new java.awt.Dimension(80, 23));
-        kdoperator1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeDokter.setEditable(false);
+        KodeDokter.setName("KodeDokter"); // NOI18N
+        KodeDokter.setPreferredSize(new java.awt.Dimension(80, 23));
+        KodeDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdoperator1KeyPressed(evt);
+                KodeDokterKeyPressed(evt);
             }
         });
-        FormInput.add(kdoperator1);
-        kdoperator1.setBounds(104, 40, 141, 23);
+        FormInput.add(KodeDokter);
+        KodeDokter.setBounds(104, 40, 141, 23);
 
-        nmoperator1.setEditable(false);
-        nmoperator1.setName("nmoperator1"); // NOI18N
-        nmoperator1.setPreferredSize(new java.awt.Dimension(207, 23));
-        FormInput.add(nmoperator1);
-        nmoperator1.setBounds(247, 40, 270, 23);
+        NamaDokter.setEditable(false);
+        NamaDokter.setName("NamaDokter"); // NOI18N
+        NamaDokter.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(NamaDokter);
+        NamaDokter.setBounds(247, 40, 270, 23);
 
-        BtnOperator1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnOperator1.setMnemonic('2');
-        BtnOperator1.setToolTipText("Alt+2");
-        BtnOperator1.setName("BtnOperator1"); // NOI18N
-        BtnOperator1.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnOperator1.addActionListener(new java.awt.event.ActionListener() {
+        BtnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter.setMnemonic('2');
+        BtnDokter.setToolTipText("Alt+2");
+        BtnDokter.setName("BtnDokter"); // NOI18N
+        BtnDokter.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnOperator1ActionPerformed(evt);
+                BtnDokterActionPerformed(evt);
             }
         });
-        BtnOperator1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnOperator1KeyPressed(evt);
+                BtnDokterKeyPressed(evt);
             }
         });
-        FormInput.add(BtnOperator1);
-        BtnOperator1.setBounds(519, 40, 28, 23);
+        FormInput.add(BtnDokter);
+        BtnDokter.setBounds(519, 40, 28, 23);
 
-        Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hidup", "Meninggal" }));
-        Kategori.setName("Kategori"); // NOI18N
-        Kategori.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kondisi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hidup", "Meninggal" }));
+        Kondisi.setName("Kondisi"); // NOI18N
+        Kondisi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KategoriKeyPressed(evt);
+                KondisiKeyPressed(evt);
             }
         });
-        FormInput.add(Kategori);
-        Kategori.setBounds(685, 40, 100, 23);
+        FormInput.add(Kondisi);
+        Kondisi.setBounds(685, 40, 100, 23);
 
         jLabel12.setText("Kondisi Pasien Pulang :");
         jLabel12.setName("jLabel12"); // NOI18N
@@ -974,14 +1028,37 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        
+        if(TNoRw.getText().equals("")||TNoRM.getText().equals("")||TPasien.getText().equals("")){
+            Valid.textKosong(TNoRw,"Pasien");
+        }else if(KodeDokter.getText().equals("")||NamaDokter.getText().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter Penanggung Jawab");
+        }else if(KodeDokter.getText().equals("")||NamaDokter.getText().equals("")){
+            Valid.textKosong(BtnDokter,"Dokter Penanggung Jawab");
+        }else if(Keluhan.getText().equals("")){
+            Valid.textKosong(Keluhan,"Keluhan utama riwayat penyakit yang postif");
+        }else if(JalannyaPenyakit.getText().equals("")){
+            Valid.textKosong(JalannyaPenyakit,"Jalannya penyakit selama perawatan");
+        }else if(DiagnosaUtama.getText().equals("")){
+            Valid.textKosong(DiagnosaUtama,"Diagnosa Utama");
+        }else{
+            if(Sequel.menyimpantf("resume_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",26,new String[]{
+                    TNoRw.getText(),KodeDokter.getText(),Keluhan.getText(),JalannyaPenyakit.getText(),PemeriksaanPenunjang.getText(),HasilLaborat.getText(), 
+                    DiagnosaUtama.getText(),KodeDiagnosaUtama.getText(),DiagnosaSekunder1.getText(),KodeDiagnosaSekunder1.getText(),DiagnosaSekunder2.getText(), 
+                    KodeDiagnosaSekunder2.getText(),DiagnosaSekunder3.getText(),KodeDiagnosaSekunder3.getText(),DiagnosaSekunder4.getText(),KodeDiagnosaSekunder4.getText(), 
+                    ProsedurUtama.getText(),KodeProsedurUtama.getText(),ProsedurSekunder1.getText(),KodeProsedurSekunder1.getText(),ProsedurSekunder2.getText(), 
+                    KodeProsedurSekunder2.getText(),ProsedurSekunder3.getText(),KodeProsedurSekunder3.getText(),Kondisi.getSelectedItem().toString(),Obat2an.getText()
+                })==true){
+                    tampil();
+                    emptTeks();
+            }
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,TindakLanjut,BtnBatal);
+            Valid.pindah(evt,Obat2an,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1033,7 +1110,7 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        
+        dokter.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1140,93 +1217,147 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void AkibatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkibatKeyPressed
-        Valid.pindah(evt,Tindakan,Identifikasi);
-    }//GEN-LAST:event_AkibatKeyPressed
+    private void DiagnosaSekunder2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaSekunder2KeyPressed
+        Valid.pindah(evt,KodeDiagnosaSekunder1,KodeDiagnosaSekunder2);
+    }//GEN-LAST:event_DiagnosaSekunder2KeyPressed
 
-    private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
-       // Valid.pindah(evt,Kronologis,Akibat);
-    }//GEN-LAST:event_TindakanKeyPressed
+    private void DiagnosaUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaUtamaKeyPressed
+       Valid.pindah(evt,HasilLaborat,KodeDiagnosaUtama);
+    }//GEN-LAST:event_DiagnosaUtamaKeyPressed
 
-    private void IdentifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdentifikasiKeyPressed
-        Valid.pindah(evt,Akibat,TindakLanjut);
-    }//GEN-LAST:event_IdentifikasiKeyPressed
+    private void DiagnosaSekunder3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaSekunder3KeyPressed
+        Valid.pindah(evt,KodeDiagnosaSekunder2,KodeDiagnosaSekunder3);
+    }//GEN-LAST:event_DiagnosaSekunder3KeyPressed
 
-    private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
-        Valid.pindah(evt,Identifikasi,BtnSimpan);
-    }//GEN-LAST:event_TindakLanjutKeyPressed
+    private void DiagnosaSekunder4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaSekunder4KeyPressed
+        Valid.pindah(evt,KodeDiagnosaSekunder3,KodeDiagnosaSekunder4);
+    }//GEN-LAST:event_DiagnosaSekunder4KeyPressed
 
-    private void Tindakan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan1KeyPressed
+    private void DiagnosaSekunder1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaSekunder1KeyPressed
+        Valid.pindah(evt,KodeDiagnosaUtama,KodeDiagnosaSekunder1);
+    }//GEN-LAST:event_DiagnosaSekunder1KeyPressed
 
-    private void Tindakan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan2KeyPressed
+    private void KodeDiagnosaUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeDiagnosaUtamaKeyPressed
+        Valid.pindah(evt,DiagnosaUtama,DiagnosaSekunder1);
+    }//GEN-LAST:event_KodeDiagnosaUtamaKeyPressed
 
-    private void Tindakan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan3KeyPressed
+    private void KodeDiagnosaSekunder1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeDiagnosaSekunder1KeyPressed
+        Valid.pindah(evt,DiagnosaSekunder1,DiagnosaSekunder2);
+    }//GEN-LAST:event_KodeDiagnosaSekunder1KeyPressed
 
-    private void Tindakan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan4KeyPressed
+    private void KodeDiagnosaSekunder2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeDiagnosaSekunder2KeyPressed
+        Valid.pindah(evt,DiagnosaSekunder2,DiagnosaSekunder3);
+    }//GEN-LAST:event_KodeDiagnosaSekunder2KeyPressed
 
-    private void Tindakan5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan5KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan5KeyPressed
+    private void KodeDiagnosaSekunder3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeDiagnosaSekunder3KeyPressed
+        Valid.pindah(evt,DiagnosaSekunder3,DiagnosaSekunder4);
+    }//GEN-LAST:event_KodeDiagnosaSekunder3KeyPressed
 
-    private void Tindakan6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan6KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan6KeyPressed
+    private void KodeDiagnosaSekunder4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeDiagnosaSekunder4KeyPressed
+        Valid.pindah(evt,DiagnosaSekunder4,ProsedurUtama);
+    }//GEN-LAST:event_KodeDiagnosaSekunder4KeyPressed
 
-    private void TindakLanjut1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut1KeyPressed
+    private void ProsedurUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProsedurUtamaKeyPressed
+        Valid.pindah(evt,KodeDiagnosaSekunder4,KodeProsedurUtama);
+    }//GEN-LAST:event_ProsedurUtamaKeyPressed
 
-    private void Tindakan7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan7KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan7KeyPressed
+    private void KodeProsedurUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeProsedurUtamaKeyPressed
+        Valid.pindah(evt,ProsedurUtama,ProsedurSekunder1);
+    }//GEN-LAST:event_KodeProsedurUtamaKeyPressed
 
-    private void TindakLanjut2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut2KeyPressed
+    private void ProsedurSekunder1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProsedurSekunder1KeyPressed
+        Valid.pindah(evt,KodeProsedurUtama,KodeProsedurSekunder1);
+    }//GEN-LAST:event_ProsedurSekunder1KeyPressed
 
-    private void Tindakan8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan8KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan8KeyPressed
+    private void KodeProsedurSekunder1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeProsedurSekunder1KeyPressed
+        Valid.pindah(evt,ProsedurSekunder1,ProsedurSekunder2);
+    }//GEN-LAST:event_KodeProsedurSekunder1KeyPressed
 
-    private void TindakLanjut3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut3KeyPressed
+    private void ProsedurSekunder2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProsedurSekunder2KeyPressed
+        Valid.pindah(evt,KodeProsedurSekunder1,KodeProsedurSekunder2);
+    }//GEN-LAST:event_ProsedurSekunder2KeyPressed
 
-    private void Tindakan9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan9KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan9KeyPressed
+    private void KodeProsedurSekunder2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeProsedurSekunder2KeyPressed
+        Valid.pindah(evt,ProsedurSekunder2,ProsedurSekunder3);
+    }//GEN-LAST:event_KodeProsedurSekunder2KeyPressed
 
-    private void Tindakan10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tindakan10KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tindakan10KeyPressed
+    private void KodeProsedurSekunder3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeProsedurSekunder3KeyPressed
+        Valid.pindah(evt,ProsedurSekunder3,Obat2an);
+    }//GEN-LAST:event_KodeProsedurSekunder3KeyPressed
 
-    private void TindakLanjut4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut4KeyPressed
+    private void ProsedurSekunder3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProsedurSekunder3KeyPressed
+        Valid.pindah(evt,KodeProsedurSekunder2,KodeProsedurSekunder3);
+    }//GEN-LAST:event_ProsedurSekunder3KeyPressed
 
-    private void kdoperator1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdoperator1KeyPressed
-       
-    }//GEN-LAST:event_kdoperator1KeyPressed
+    private void KodeDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeDokterKeyPressed
+        Valid.pindah(evt,TCari,Kondisi);
+    }//GEN-LAST:event_KodeDokterKeyPressed
 
-    private void BtnOperator1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOperator1ActionPerformed
-     
-    }//GEN-LAST:event_BtnOperator1ActionPerformed
+    private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
+        dokter.emptTeks();
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setVisible(true);
+    }//GEN-LAST:event_BtnDokterActionPerformed
 
-    private void BtnOperator1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnOperator1KeyPressed
-       
-    }//GEN-LAST:event_BtnOperator1KeyPressed
+    private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
+       Valid.pindah(evt,TCari,Kondisi);
+    }//GEN-LAST:event_BtnDokterKeyPressed
 
-    private void KategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KategoriKeyPressed
-        
-    }//GEN-LAST:event_KategoriKeyPressed
+    private void KondisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiKeyPressed
+        Valid.pindah(evt, KodeDokter, Keluhan);
+    }//GEN-LAST:event_KondisiKeyPressed
+
+    private void KeluhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(evt.isShiftDown()){
+                JalannyaPenyakit.requestFocus();
+            }
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            Kondisi.requestFocus();
+        }
+    }//GEN-LAST:event_KeluhanKeyPressed
+
+    private void JalannyaPenyakitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalannyaPenyakitKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(evt.isShiftDown()){
+                PemeriksaanPenunjang.requestFocus();
+            }
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            Keluhan.requestFocus();
+        }
+    }//GEN-LAST:event_JalannyaPenyakitKeyPressed
+
+    private void PemeriksaanPenunjangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanPenunjangKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(evt.isShiftDown()){
+                HasilLaborat.requestFocus();
+            }
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            JalannyaPenyakit.requestFocus();
+        }
+    }//GEN-LAST:event_PemeriksaanPenunjangKeyPressed
+
+    private void HasilLaboratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilLaboratKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(evt.isShiftDown()){
+                DiagnosaUtama.requestFocus();
+            }
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            PemeriksaanPenunjang.requestFocus();
+        }
+    }//GEN-LAST:event_HasilLaboratKeyPressed
+
+    private void Obat2anKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Obat2anKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(evt.isShiftDown()){
+                BtnSimpan.requestFocus();
+            }
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            KodeProsedurSekunder3.requestFocus();
+        }
+    }//GEN-LAST:event_Obat2anKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1245,50 +1376,52 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox Akibat;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnDokter;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnOperator1;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.TextBox DiagnosaSekunder1;
+    private widget.TextBox DiagnosaSekunder2;
+    private widget.TextBox DiagnosaSekunder3;
+    private widget.TextBox DiagnosaSekunder4;
+    private widget.TextBox DiagnosaUtama;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox Identifikasi;
-    private widget.ComboBox Kategori;
+    private widget.TextArea HasilLaborat;
+    private widget.TextArea JalannyaPenyakit;
+    private widget.TextArea Keluhan;
+    private widget.TextBox KodeDiagnosaSekunder1;
+    private widget.TextBox KodeDiagnosaSekunder2;
+    private widget.TextBox KodeDiagnosaSekunder3;
+    private widget.TextBox KodeDiagnosaSekunder4;
+    private widget.TextBox KodeDiagnosaUtama;
+    private widget.TextBox KodeDokter;
+    private widget.TextBox KodeProsedurSekunder1;
+    private widget.TextBox KodeProsedurSekunder2;
+    private widget.TextBox KodeProsedurSekunder3;
+    private widget.TextBox KodeProsedurUtama;
+    private widget.ComboBox Kondisi;
     private widget.Label LCount;
-    private widget.TextArea Laporan;
-    private widget.TextArea Laporan1;
-    private widget.TextArea Laporan2;
-    private widget.TextArea Laporan3;
-    private widget.TextArea Laporan4;
+    private widget.TextBox NamaDokter;
+    private widget.TextArea Obat2an;
     private javax.swing.JPanel PanelInput;
+    private widget.TextArea PemeriksaanPenunjang;
+    private widget.TextBox ProsedurSekunder1;
+    private widget.TextBox ProsedurSekunder2;
+    private widget.TextBox ProsedurSekunder3;
+    private widget.TextBox ProsedurUtama;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private widget.TextBox TindakLanjut;
-    private widget.TextBox TindakLanjut1;
-    private widget.TextBox TindakLanjut2;
-    private widget.TextBox TindakLanjut3;
-    private widget.TextBox TindakLanjut4;
-    private widget.TextBox Tindakan;
-    private widget.TextBox Tindakan1;
-    private widget.TextBox Tindakan10;
-    private widget.TextBox Tindakan2;
-    private widget.TextBox Tindakan3;
-    private widget.TextBox Tindakan4;
-    private widget.TextBox Tindakan5;
-    private widget.TextBox Tindakan6;
-    private widget.TextBox Tindakan7;
-    private widget.TextBox Tindakan8;
-    private widget.TextBox Tindakan9;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
@@ -1313,9 +1446,7 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private widget.TextBox kdoperator1;
     private widget.Label label14;
-    private widget.TextBox nmoperator1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1439,10 +1570,30 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        Akibat.setText("");
-        Tindakan.setText("");
-        TindakLanjut.setText("");
-        Identifikasi.setText("");
+        Keluhan.setText("");
+        JalannyaPenyakit.setText("");
+        PemeriksaanPenunjang.setText("");
+        HasilLaborat.setText("");
+        Obat2an.setText("");
+        DiagnosaUtama.setText("");
+        DiagnosaSekunder1.setText("");
+        DiagnosaSekunder2.setText("");
+        DiagnosaSekunder3.setText("");
+        DiagnosaSekunder4.setText("");
+        ProsedurUtama.setText("");
+        ProsedurSekunder1.setText("");
+        ProsedurSekunder2.setText("");
+        ProsedurSekunder3.setText("");
+        KodeDiagnosaUtama.setText("");
+        KodeDiagnosaSekunder1.setText("");
+        KodeDiagnosaSekunder2.setText("");
+        KodeDiagnosaSekunder3.setText("");
+        KodeDiagnosaSekunder4.setText("");
+        KodeProsedurUtama.setText("");
+        KodeProsedurSekunder1.setText("");
+        KodeProsedurSekunder2.setText("");
+        KodeProsedurSekunder3.setText("");
+        Kondisi.requestFocus();
     } 
 
     private void getData() {
@@ -1450,10 +1601,10 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            Akibat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Identifikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            TindakLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());         
+            DiagnosaSekunder2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            DiagnosaUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            DiagnosaSekunder3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            DiagnosaSekunder4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());         
         }
     }
 
@@ -1465,7 +1616,7 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
     }
     
-    public void setNoRm(String norwt, Date tgl1, Date tgl2,String unit) {
+    public void setNoRm(String norwt, Date tgl1, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
         DTPCari1.setDate(tgl1);
@@ -1474,12 +1625,13 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         isPsien();              
         ChkInput.setSelected(true);
         isForm();
+        Kondisi.requestFocus();
     }
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-122));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-122));
             scrollInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1495,6 +1647,14 @@ public final class DlgDataResumePasien extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getdata_resume_pasien());
         BtnPrint.setEnabled(akses.getdata_resume_pasien()); 
         if(akses.getjml2()>=1){
+            KodeDokter.setEditable(false);
+            BtnDokter.setEnabled(false);
+            KodeDokter.setText(akses.getkode());
+            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", NamaDokter,KodeDokter.getText());
+            if(NamaDokter.getText().equals("")){
+                KodeDokter.setText("");
+                JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
+            }
         }            
     }
 

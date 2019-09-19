@@ -52,6 +52,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgJnsPerawatanRalan;
 import laporan.DlgBerkasRawat;
+import laporan.DlgDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.DataTriaseIGD;
@@ -1337,6 +1338,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnRujukKeluar = new widget.Button();
         BtnCatatan = new widget.Button();
         BtnTriaseIGD = new widget.Button();
+        BtnResume = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -3466,6 +3468,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         FormMenu.add(BtnTriaseIGD);
 
+        BtnResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnResume.setText("Resume Pasien");
+        BtnResume.setFocusPainted(false);
+        BtnResume.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnResume.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnResume.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnResume.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnResume.setName("BtnResume"); // NOI18N
+        BtnResume.setPreferredSize(new java.awt.Dimension(120, 23));
+        BtnResume.setRoundRect(false);
+        BtnResume.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnResumeActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnResume);
+
         PanelAccor.add(FormMenu, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelAccor, java.awt.BorderLayout.WEST);
@@ -5384,6 +5403,22 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnTriaseIGDActionPerformed
 
+    private void BtnResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResumeActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgDataResumePasien resume=new DlgDataResumePasien(null,false);
+            resume.isCek();
+            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setLocationRelativeTo(internalFrame1);
+            resume.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+            resume.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnResumeActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5417,6 +5452,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPermintaanRad;
     private widget.Button BtnPrint;
     private widget.Button BtnResepObat;
+    private widget.Button BtnResume;
     private widget.Button BtnRujukInternal;
     private widget.Button BtnRujukKeluar;
     private widget.Button BtnSKDP;
@@ -6006,7 +6042,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnRujukKeluar.setEnabled(akses.getrujukan_keluar());
         BtnSKDP.setEnabled(akses.getskdp_bpjs());     
         BtnCatatan.setEnabled(akses.getcatatan_pasien());
-        BtnTriaseIGD.setEnabled(akses.getdata_triase_igd());         
+        BtnTriaseIGD.setEnabled(akses.getdata_triase_igd());   
+        BtnResume.setEnabled(akses.getdata_resume_pasien());      
         TCari.setPreferredSize(new Dimension(207,23));
     }
 
