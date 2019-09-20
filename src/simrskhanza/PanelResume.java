@@ -804,8 +804,8 @@ public class PanelResume extends widget.panelisi {
                                                 "<td valign='top'>Macam Kasus</td><td valign='top'>: "+rs3.getString("macam_kasus")+"</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='35%'>Keterangan</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='65%'>Triase Primer</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Primer</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Keluhan Utama</td>"+
@@ -831,7 +831,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#AA0000' color='ffffff' align='center'>Immediate/Segera</td>"+
                                                 "</tr>"
                                             );
@@ -887,7 +887,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#FF0000' color='ffffff' align='center'>Emergensi</td>"+
                                                 "</tr>"
                                             );
@@ -940,7 +940,7 @@ public class PanelResume extends widget.panelisi {
                                             "</tr>"+                       
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>&nbsp;</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center'>Petugas Triase Primer</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Primer</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Tanggal & Jam</td>"+
@@ -999,8 +999,8 @@ public class PanelResume extends widget.panelisi {
                                                 "<td valign='top'>Macam Kasus</td><td valign='top'>: "+rs3.getString("macam_kasus")+"</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='35%'>Keterangan</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='65%'>Triase Sekunder</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Sekunder</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Anamnesa Singkat</td>"+
@@ -1022,7 +1022,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#C8C800' color='ffffff' align='center'>Urgensi</td>"+
                                                 "</tr>"
                                             );
@@ -1078,7 +1078,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#00AA00' color='ffffff' align='center'>Semi Urgensi/Urgensi Rendah</td>"+
                                                 "</tr>"
                                             );
@@ -1134,7 +1134,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#969696' color='ffffff' align='center'>Non Urgensi</td>"+
                                                 "</tr>"
                                             );
@@ -1187,7 +1187,7 @@ public class PanelResume extends widget.panelisi {
                                             "</tr>"+                       
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>&nbsp;</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center'>Petugas Triase Sekunder</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Sekunder</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Tanggal & Jam</td>"+
@@ -1227,7 +1227,7 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -1262,7 +1262,7 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -1300,11 +1300,11 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Kode Dokter</td>"+
-                                                "<td valign='top' width='20%' bgcolor='#fafff5'>Nama Dokter</td>"+
-                                                "<td valign='top' width='50%' bgcolor='#fafff5'>Catatan</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode Dokter</td>"+
+                                                "<td valign='top' width='20%' bgcolor='#FFFAF8'>Nama Dokter</td>"+
+                                                "<td valign='top' width='50%' bgcolor='#FFFAF8'>Catatan</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1349,16 +1349,16 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Suhu(C)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Imunisasi Ke</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Imunisasi Ke</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1461,23 +1461,23 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tinggi Fundus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Janin</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Letak</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Panggul</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Denyut</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kontraksi</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Mnt</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Detik</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Fluksus</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Albus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Dalam</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tebal</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Arah</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Ketuban</td>"+
-                                                "<td valign='top' width='7%' bgcolor='#fafff5'>Feto</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tinggi Fundus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Janin</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Letak</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Panggul</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Denyut</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kontraksi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Mnt</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Detik</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Fluksus</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Albus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Dalam</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tebal</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Arah</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Ketuban</td>"+
+                                                "<td valign='top' width='7%' bgcolor='#FFFAF8'>Feto</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1588,9 +1588,9 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='80%' bgcolor='#fafff5'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='80%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1687,15 +1687,15 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Suhu(C)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tensi</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1798,23 +1798,23 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tinggi Fundus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Janin</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Letak</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Panggul</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Denyut</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kontraksi</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Mnt</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Detik</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Fluksus</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Albus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Dalam</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tebal</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Arah</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Ketuban</td>"+
-                                                "<td valign='top' width='7%' bgcolor='#fafff5'>Feto</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tinggi Fundus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Janin</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Letak</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Panggul</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Denyut</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kontraksi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Mnt</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Detik</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Fluksus</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Albus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Dalam</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tebal</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Arah</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Ketuban</td>"+
+                                                "<td valign='top' width='7%' bgcolor='#FFFAF8'>Feto</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1925,9 +1925,9 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='80%' bgcolor='#fafff5'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='80%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -2036,12 +2036,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2080,12 +2080,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2124,13 +2124,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2172,12 +2172,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2218,12 +2218,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2263,13 +2263,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Inap Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2310,13 +2310,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Penggunaan Kamar</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal Masuk</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggak Keluar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Lama Inap</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Kamar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Status</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Masuk</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggak Keluar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Lama Inap</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#FFFAF8'>Kamar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Status</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2369,12 +2369,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Operasi/VK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Tindakan</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Anastesi</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Tindakan</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Anastesi</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2472,6 +2472,67 @@ public class PanelResume extends widget.panelisi {
                                 }
                             }
                             
+                            //laporan operasi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                        "select tanggal, diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
+                                        "from laporan_operasi where no_rawat='"+rs2.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'>"+w+"</td>"+
+                                                "<td valign='top' width='20%'>Mulai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("tanggal")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Pre-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_preop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Jaringan Yang di-Eksisi/-Insisi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("jaringan_dieksekusi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Post-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_postop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Selesai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("selesaioperasi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Dikirim Untuk Pemeriksaan PA</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("permintaan_pa")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Laporan</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
                             //tindakan pemeriksaan radiologi
                             try{
                                 rs3=koneksi.prepareStatement(
@@ -2485,13 +2546,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2528,9 +2589,9 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Hasil Pemeriksaan</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#FFFAF8'>Hasil Pemeriksaan</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2563,9 +2624,9 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Gambar Radiologi</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#FFFAF8'>Gambar Radiologi</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2604,13 +2665,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2642,9 +2703,9 @@ public class PanelResume extends widget.panelisi {
                                                        "<td valign='top' align='center'></td>"+
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'></td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Detail Pemeriksaan</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Hasil</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Nilai Rujukan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Detail Pemeriksaan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Hasil</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Nilai Rujukan</td>"+
                                                        "<td valign='top' align='right'></td>"+
                                                     "</tr>");
                                                 rs4.beforeFirst();
@@ -2720,13 +2781,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Aturan Pakai</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Aturan Pakai</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2766,12 +2827,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Penggunaan Obat/BHP Operasi</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2810,12 +2871,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Resep Pulang</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Dosis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Dosis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2854,11 +2915,11 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Retur Obat</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='65%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='65%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2893,10 +2954,10 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Tambahan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#fafff5'>Nama Tambahan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#fafff5'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#FFFAF8'>Nama Tambahan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#FFFAF8'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2930,10 +2991,10 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Potongan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#fafff5'>Nama Potongan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#fafff5'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#FFFAF8'>Nama Potongan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#FFFAF8'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2970,8 +3031,8 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Berkas Digital Perawatan</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='95%' bgcolor='#fafff5'>Berkas Digital</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='95%' bgcolor='#FFFAF8'>Berkas Digital</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3194,7 +3255,7 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -3415,7 +3476,7 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -3640,12 +3701,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3684,12 +3745,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3728,13 +3789,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='25%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='25%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3969,12 +4030,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4015,12 +4076,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4060,13 +4121,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Inap Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4312,12 +4373,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Operasi/VK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Tindakan</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Anastesi</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Tindakan</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Anastesi</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4401,6 +4462,67 @@ public class PanelResume extends widget.panelisi {
                                                 ")</td>"+
                                                 "<td valign='top'>"+rs3.getString("jenis_anasthesi")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //laporan operasi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                        "select tanggal, diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
+                                        "from laporan_operasi where no_rawat='"+rs2.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'>"+w+"</td>"+
+                                                "<td valign='top' width='20%'>Mulai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("tanggal")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Pre-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_preop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Jaringan Yang di-Eksisi/-Insisi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("jaringan_dieksekusi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Post-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_postop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Selesai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("selesaioperasi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Dikirim Untuk Pemeriksaan PA</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("permintaan_pa")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Laporan</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -4621,13 +4743,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4664,9 +4786,9 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Hasil Pemeriksaan</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#FFFAF8'>Hasil Pemeriksaan</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4699,9 +4821,9 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Gambar Radiologi</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#FFFAF8'>Gambar Radiologi</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4933,13 +5055,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4971,9 +5093,9 @@ public class PanelResume extends widget.panelisi {
                                                        "<td valign='top' align='center'></td>"+
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'></td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Detail Pemeriksaan</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Hasil</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Nilai Rujukan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Detail Pemeriksaan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Hasil</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Nilai Rujukan</td>"+
                                                        "<td valign='top' align='right'></td>"+
                                                     "</tr>");
                                                 rs4.beforeFirst();
@@ -5242,13 +5364,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Aturan Pakai</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Aturan Pakai</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -5288,11 +5410,11 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Retur Obat</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='65%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='65%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -5523,12 +5645,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Penggunaan Obat/BHP Operasi</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -5760,12 +5882,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Resep Pulang</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Dosis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Dosis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -5997,8 +6119,8 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Berkas Digital Perawatan</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='95%' bgcolor='#fafff5'>Berkas Digital</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='95%' bgcolor='#FFFAF8'>Berkas Digital</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -6359,11 +6481,11 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Kode Dokter</td>"+
-                                                "<td valign='top' width='20%' bgcolor='#fafff5'>Nama Dokter</td>"+
-                                                "<td valign='top' width='50%' bgcolor='#fafff5'>Catatan</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode Dokter</td>"+
+                                                "<td valign='top' width='20%' bgcolor='#FFFAF8'>Nama Dokter</td>"+
+                                                "<td valign='top' width='50%' bgcolor='#FFFAF8'>Catatan</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -6597,8 +6719,8 @@ public class PanelResume extends widget.panelisi {
                                                 "<td valign='top'>Macam Kasus</td><td valign='top'>: "+rs3.getString("macam_kasus")+"</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='35%'>Keterangan</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='65%'>Triase Primer</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Primer</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Keluhan Utama</td>"+
@@ -6624,7 +6746,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#AA0000' color='ffffff' align='center'>Immediate/Segera</td>"+
                                                 "</tr>"
                                             );
@@ -6680,7 +6802,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#FF0000' color='ffffff' align='center'>Emergensi</td>"+
                                                 "</tr>"
                                             );
@@ -6733,7 +6855,7 @@ public class PanelResume extends widget.panelisi {
                                             "</tr>"+                       
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>&nbsp;</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center'>Petugas Triase Primer</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Primer</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Tanggal & Jam</td>"+
@@ -6792,8 +6914,8 @@ public class PanelResume extends widget.panelisi {
                                                 "<td valign='top'>Macam Kasus</td><td valign='top'>: "+rs3.getString("macam_kasus")+"</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='35%'>Keterangan</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center' width='65%'>Triase Sekunder</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Sekunder</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Anamnesa Singkat</td>"+
@@ -6815,7 +6937,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#C8C800' color='ffffff' align='center'>Urgensi</td>"+
                                                 "</tr>"
                                             );
@@ -6871,7 +6993,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#00AA00' color='ffffff' align='center'>Semi Urgensi/Urgensi Rendah</td>"+
                                                 "</tr>"
                                             );
@@ -6927,7 +7049,7 @@ public class PanelResume extends widget.panelisi {
                                         if(rs4.next()){
                                             htmlContent.append(                             
                                                 "<tr class='isi'>"+
-                                                    "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                                     "<td valign='middle' bgcolor='#969696' color='ffffff' align='center'>Non Urgensi</td>"+
                                                 "</tr>"
                                             );
@@ -6980,7 +7102,7 @@ public class PanelResume extends widget.panelisi {
                                             "</tr>"+                       
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>&nbsp;</td>"+
-                                                "<td valign='middle' bgcolor='#fafff5' align='center'>Petugas Triase Sekunder</td>"+
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Sekunder</td>"+
                                             "</tr>"+
                                             "<tr class='isi'>"+
                                                 "<td valign='middle'>Tanggal & Jam</td>"+
@@ -7020,7 +7142,7 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -7055,7 +7177,7 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -7093,11 +7215,11 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Kode Dokter</td>"+
-                                                "<td valign='top' width='20%' bgcolor='#fafff5'>Nama Dokter</td>"+
-                                                "<td valign='top' width='50%' bgcolor='#fafff5'>Catatan</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode Dokter</td>"+
+                                                "<td valign='top' width='20%' bgcolor='#FFFAF8'>Nama Dokter</td>"+
+                                                "<td valign='top' width='50%' bgcolor='#FFFAF8'>Catatan</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -7142,16 +7264,16 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Suhu(C)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Imunisasi Ke</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Imunisasi Ke</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -7254,23 +7376,23 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tinggi Fundus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Janin</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Letak</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Panggul</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Denyut</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kontraksi</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Mnt</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Detik</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Fluksus</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Albus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Dalam</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tebal</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Arah</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Ketuban</td>"+
-                                                "<td valign='top' width='7%' bgcolor='#fafff5'>Feto</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tinggi Fundus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Janin</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Letak</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Panggul</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Denyut</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kontraksi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Mnt</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Detik</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Fluksus</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Albus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Dalam</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tebal</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Arah</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Ketuban</td>"+
+                                                "<td valign='top' width='7%' bgcolor='#FFFAF8'>Feto</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -7381,9 +7503,9 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='80%' bgcolor='#fafff5'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='80%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -7480,15 +7602,15 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Suhu(C)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tensi</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#fafff5'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -7591,23 +7713,23 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tinggi Fundus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Janin</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Letak</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Panggul</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Denyut</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kontraksi</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Mnt</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Detik</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Fluksus</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Albus</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Dalam</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tebal</td>"+
-                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Arah</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Ketuban</td>"+
-                                                "<td valign='top' width='7%' bgcolor='#fafff5'>Feto</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tinggi Fundus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Janin</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Letak</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Panggul</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Denyut</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kontraksi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Mnt</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Kualitas Detik</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Fluksus</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Albus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Dalam</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Tebal</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#FFFAF8'>Arah</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Ketuban</td>"+
+                                                "<td valign='top' width='7%' bgcolor='#FFFAF8'>Feto</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -7718,9 +7840,9 @@ public class PanelResume extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                                "<td valign='top' width='80%' bgcolor='#fafff5'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='80%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -7829,12 +7951,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -7873,12 +7995,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -7917,13 +8039,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -7965,12 +8087,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8011,12 +8133,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8056,13 +8178,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Inap Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8103,13 +8225,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Penggunaan Kamar</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal Masuk</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggak Keluar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Lama Inap</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Kamar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Status</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Masuk</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggak Keluar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Lama Inap</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#FFFAF8'>Kamar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Status</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8162,12 +8284,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Operasi/VK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Tindakan</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Anastesi</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Tindakan</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Anastesi</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8265,6 +8387,67 @@ public class PanelResume extends widget.panelisi {
                                 }
                             }
                             
+                            //laporan operasi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                        "select tanggal, diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
+                                        "from laporan_operasi where no_rawat='"+rs2.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'>"+w+"</td>"+
+                                                "<td valign='top' width='20%'>Mulai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("tanggal")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Pre-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_preop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Jaringan Yang di-Eksisi/-Insisi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("jaringan_dieksekusi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Diagnosa Post-operatif</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("diagnosa_postop")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Selesai Operasi</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("selesaioperasi")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Dikirim Untuk Pemeriksaan PA</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("permintaan_pa")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top' width='5%' align='center'></td>"+
+                                                "<td valign='top' width='20%'>Laporan</td>"+
+                                                "<td valign='top' width='75%'>:&nbsp;"+rs3.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
                             //tindakan pemeriksaan radiologi
                             try{
                                 rs3=koneksi.prepareStatement(
@@ -8278,13 +8461,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8321,9 +8504,9 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Hasil Pemeriksaan</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#FFFAF8'>Hasil Pemeriksaan</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8356,9 +8539,9 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Gambar Radiologi</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#FFFAF8'>Gambar Radiologi</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8397,13 +8580,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8435,9 +8618,9 @@ public class PanelResume extends widget.panelisi {
                                                        "<td valign='top' align='center'></td>"+
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'></td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Detail Pemeriksaan</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Hasil</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Nilai Rujukan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Detail Pemeriksaan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Hasil</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#FFFAF8'>Nilai Rujukan</td>"+
                                                        "<td valign='top' align='right'></td>"+
                                                     "</tr>");
                                                 rs4.beforeFirst();
@@ -8513,13 +8696,13 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Aturan Pakai</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Aturan Pakai</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8559,12 +8742,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Penggunaan Obat/BHP Operasi</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8603,12 +8786,12 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Resep Pulang</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Dosis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Dosis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8647,11 +8830,11 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Retur Obat</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='65%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
+                                          "<td valign='top' width='65%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8686,10 +8869,10 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Tambahan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#fafff5'>Nama Tambahan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#fafff5'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#FFFAF8'>Nama Tambahan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#FFFAF8'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8723,10 +8906,10 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Potongan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#fafff5'>Nama Potongan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#fafff5'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#FFFAF8'>Nama Potongan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#FFFAF8'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -8763,8 +8946,8 @@ public class PanelResume extends widget.panelisi {
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Berkas Digital Perawatan</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='95%' bgcolor='#fafff5'>Berkas Digital</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                          "<td valign='top' width='95%' bgcolor='#FFFAF8'>Berkas Digital</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;

@@ -120,7 +120,7 @@ public final class akses {
             daftar_pasien_ranaptni=false,pengajuan_asetinventaris=false,item_apotek_jenis=false,item_apotek_kategori=false,item_apotek_golongan=false,
             item_apotek_industrifarmasi=false,obat10_terbanyak_poli=false,grafik_pengajuan_aset_urgensi=false,grafik_pengajuan_aset_status=false,
             grafik_pengajuan_aset_departemen=false,rekap_pengajuan_aset_departemen=false,grafik_kelompok_jabatanpegawai=false,grafik_resiko_kerjapegawai=false,
-            grafik_emergency_indexpegawai=false;
+            grafik_emergency_indexpegawai=false,grafik_inventaris_ruang=false,harian_HAIs2=false,grafik_inventaris_jenis=false,data_resume_pasien=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -690,6 +690,10 @@ public final class akses {
                         akses.grafik_kelompok_jabatanpegawai=true;
                         akses.grafik_resiko_kerjapegawai=true;
                         akses.grafik_emergency_indexpegawai=true;
+                        akses.grafik_inventaris_ruang=true;
+                        akses.harian_HAIs2=true;
+                        akses.grafik_inventaris_jenis=true;
+                        akses.data_resume_pasien=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1243,6 +1247,10 @@ public final class akses {
                         akses.grafik_kelompok_jabatanpegawai=rs2.getBoolean("grafik_kelompok_jabatanpegawai");
                         akses.grafik_resiko_kerjapegawai=rs2.getBoolean("grafik_resiko_kerjapegawai");
                         akses.grafik_emergency_indexpegawai=rs2.getBoolean("grafik_emergency_indexpegawai");
+                        akses.grafik_inventaris_ruang=rs2.getBoolean("grafik_inventaris_ruang");
+                        akses.harian_HAIs2=rs2.getBoolean("harian_HAIs2");
+                        akses.grafik_inventaris_jenis=rs2.getBoolean("grafik_inventaris_jenis");
+                        akses.data_resume_pasien=rs2.getBoolean("data_resume_pasien");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1794,6 +1802,10 @@ public final class akses {
                         akses.grafik_kelompok_jabatanpegawai=false;
                         akses.grafik_resiko_kerjapegawai=false;
                         akses.grafik_emergency_indexpegawai=false;
+                        akses.grafik_inventaris_ruang=false;
+                        akses.harian_HAIs2=false;
+                        akses.grafik_inventaris_jenis=false;
+                        akses.data_resume_pasien=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2399,4 +2411,8 @@ public final class akses {
     public static boolean getgrafik_kelompok_jabatanpegawai(){return akses.grafik_kelompok_jabatanpegawai;}
     public static boolean getgrafik_resiko_kerjapegawai(){return akses.grafik_resiko_kerjapegawai;}
     public static boolean getgrafik_emergency_indexpegawai(){return akses.grafik_emergency_indexpegawai;}
+    public static boolean getgrafik_inventaris_ruang(){return akses.grafik_inventaris_ruang;}
+    public static boolean getharian_HAIs2(){return akses.harian_HAIs2;}
+    public static boolean getgrafik_inventaris_jenis(){return akses.grafik_inventaris_jenis;}
+    public static boolean getdata_resume_pasien(){return akses.data_resume_pasien;}
 }   

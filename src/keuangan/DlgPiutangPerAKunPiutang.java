@@ -409,12 +409,12 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='80px'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='100px'>No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='220px'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='90px'>Uang Muka</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='90px'>Piutang</td>");
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='100px'>No.Nota</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='220px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Uang Muka</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Piutang</td>");
             kolom=0;
             akunbayar=new String[Sequel.cariInteger("select count(nama_bayar) from akun_piutang")];
             psakunbayar=koneksi.prepareStatement("select nama_bayar from akun_piutang order by nama_bayar");
@@ -423,7 +423,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                 while(rsakunbayar.next()){
                     akunbayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#fafff5' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAF8' align='center' width='130px'>"+rsakunbayar.getString("nama_bayar")+"</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);

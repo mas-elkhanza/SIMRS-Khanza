@@ -417,6 +417,8 @@ import kepegawaian.DlgJadwal;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
 import bridging.DlgDataTB;
+import grafikanalisa.GrafikInventarisPerJenis;
+import grafikanalisa.GrafikInventarisPerRuang;
 import grafikanalisa.GrafikItemApotekPerGolongan;
 import grafikanalisa.GrafikItemApotekPerIndustriFarmasi;
 import grafikanalisa.GrafikItemApotekPerJenis;
@@ -477,6 +479,7 @@ import inventory.DlgObatPeresep;
 import inventory.DlgPengajuanBarangMedis;
 import inventory.DlgSisaStok;
 import ipsrs.DlgPengajuanBarangNonMedis;
+import java.awt.event.ActionEvent;
 import java.net.InetAddress;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSBagianTubuhPerTahun;
@@ -495,6 +498,8 @@ import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
+import laporan.DlgDataResumePasien;
+import laporan.DlgHarianHAIs2;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapMutasiBerkas;
@@ -1255,8 +1260,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(175, 110, 120));
-        internalFrame2.setWarnaBawah(new java.awt.Color(145, 80, 90));
+        internalFrame2.setWarnaAtas(new java.awt.Color(250, 40, 115));
+        internalFrame2.setWarnaBawah(new java.awt.Color(210, 0, 75));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -6887,7 +6892,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/09/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/09/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6938,6 +6943,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("::[ Khanza SIMKES 2019 ]::");
+        setBackground(new java.awt.Color(254, 254, 254));
         setIconImages(null);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -6962,8 +6968,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 254, 253));
-        internalFrame1.setWarnaBawah(new java.awt.Color(235, 215, 205));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 255, 254));
+        internalFrame1.setWarnaBawah(new java.awt.Color(250, 210, 200));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -6986,8 +6992,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnMenu);
 
-        jSeparator4.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator4.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator4.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator4.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator4.setName("jSeparator4"); // NOI18N
@@ -7035,8 +7041,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolIGD);
 
-        jSeparator5.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator5.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator5.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator5.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator5.setName("jSeparator5"); // NOI18N
@@ -7141,8 +7147,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolJualObat);
 
-        jSeparator9.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator9.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator9.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator9.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator9.setName("jSeparator9"); // NOI18N
@@ -7190,8 +7196,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolKasir);
 
-        jSeparator7.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator7.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator7.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator7.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator7.setName("jSeparator7"); // NOI18N
@@ -7243,8 +7249,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(235, 215, 205));
-        internalFrame4.setWarnaBawah(new java.awt.Color(251, 250, 249));
+        internalFrame4.setWarnaAtas(new java.awt.Color(250, 210, 200));
+        internalFrame4.setWarnaBawah(new java.awt.Color(252, 252, 251));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7256,8 +7262,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblStts.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblStts);
 
-        jSeparator1.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator1.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator1.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator1.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator1.setName("jSeparator1"); // NOI18N
@@ -7274,8 +7280,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
         internalFrame4.add(lblUser);
 
-        jSeparator2.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator2.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator2.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator2.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator2.setName("jSeparator2"); // NOI18N
@@ -7292,8 +7298,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblTgl);
 
-        jSeparator3.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator3.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator3.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator3.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator3.setName("jSeparator3"); // NOI18N
@@ -7310,8 +7316,8 @@ public class frmUtama extends javax.swing.JFrame {
         LblIP.setPreferredSize(new java.awt.Dimension(120, 23));
         internalFrame4.add(LblIP);
 
-        jSeparator6.setBackground(new java.awt.Color(130, 80, 90));
-        jSeparator6.setForeground(new java.awt.Color(130, 80, 90));
+        jSeparator6.setBackground(new java.awt.Color(240, 30, 100));
+        jSeparator6.setForeground(new java.awt.Color(240, 30, 100));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 130, 80)));
         jSeparator6.setName("jSeparator6"); // NOI18N
@@ -7394,8 +7400,9 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
+        MenuBar.setBackground(new java.awt.Color(255, 255, 254));
         MenuBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        MenuBar.setForeground(new java.awt.Color(255, 204, 255));
+        MenuBar.setForeground(new java.awt.Color(255, 254, 254));
         MenuBar.setName("MenuBar"); // NOI18N
         MenuBar.setPreferredSize(new java.awt.Dimension(227, 26));
 
@@ -15264,6 +15271,51 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikInventarisRuangActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikInventarisPerRuang aplikasi=new GrafikInventarisPerRuang(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnHarianHAIs2ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgHarianHAIs2 aplikasi=new DlgHarianHAIs2(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnGrafikInventarisJenisActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikInventarisPerJenis aplikasi=new GrafikInventarisPerJenis(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }
+    
+    private void btnResumePasienActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataResumePasien form=new DlgDataResumePasien(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15849,7 +15901,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRekapPermintaanDiet,btnDaftarPasienRanap,btnDaftarPasienRanapTNI,btnfee_visit_dokter,btnUser,btnPengajuanAsetInventaris,btnGrafikItemApotekPerJenis,
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
-            btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai;
+            btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien;
     
     public void isWall(){
         try{            
@@ -17140,6 +17192,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getharian_HAIs2()==true){  
+                Panelmenu.add(btnHarianHAIs2);                 
+                jmlmenu++;
+            }
+            
             if(akses.getbulanan_HAIs()==true){  
                 Panelmenu.add(btnBulananHAIs);                 
                 jmlmenu++;
@@ -17976,6 +18033,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getdata_triase_igd()==true){
                 Panelmenu.add(btnDataTriaseIGD);
                 jmlmenu++;
+            }
+            
+            if(akses.getdata_resume_pasien()==true){
+                Panelmenu.add(btnResumePasien);
+                jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==12){  
             jmlmenu=0;
@@ -18442,6 +18504,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_emergency_indexpegawai()==true){
                 Panelmenu.add(btnGrafikEmergencyIndexPegawai);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_inventaris_ruang()==true){
+                Panelmenu.add(btnGrafikInventarisRuang);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_inventaris_jenis()==true){
+                Panelmenu.add(btnGrafikInventarisJenis);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -19879,6 +19951,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getharian_HAIs2()==true){  
+            Panelmenu.add(btnHarianHAIs2);                 
+            jmlmenu++;
+        }
+        
         if(akses.getbulanan_HAIs()==true){  
             Panelmenu.add(btnBulananHAIs);                 
             jmlmenu++;
@@ -20713,6 +20790,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnDataTriaseIGD);
             jmlmenu++;
         } 
+        
+        if(akses.getdata_resume_pasien()==true){
+            Panelmenu.add(btnResumePasien);
+            jmlmenu++;
+        }
 
         if(akses.getpengambilan_utd2()==true){
             Panelmenu.add(btnPengambilanUTD2); 
@@ -21176,6 +21258,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_emergency_indexpegawai()==true){
             Panelmenu.add(btnGrafikEmergencyIndexPegawai);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_inventaris_ruang()==true){
+            Panelmenu.add(btnGrafikInventarisRuang);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_inventaris_jenis()==true){
+            Panelmenu.add(btnGrafikInventarisJenis);
             jmlmenu++;
         }
 
@@ -23082,6 +23174,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getharian_HAIs2()==true){  
+            if(btnHarianHAIs2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHarianHAIs2);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getbulanan_HAIs()==true){  
             if(btnBulananHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBulananHAIs);                 
@@ -24247,6 +24346,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getdata_resume_pasien()==true){
+            if(btnResumePasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnResumePasien);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -24895,6 +25001,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getgrafik_emergency_indexpegawai()==true){
             if(btnGrafikEmergencyIndexPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikEmergencyIndexPegawai);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_inventaris_ruang()==true){
+            if(btnGrafikInventarisRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikInventarisRuang);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_inventaris_jenis()==true){
+            if(btnGrafikInventarisJenis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikInventarisJenis);
                 jmlmenu++;
             }                
         }
@@ -26336,6 +26456,54 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikEmergencyIndexPegawai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikEmergencyIndexPegawaiActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikInventarisRuang = new widget.ButtonBig();
+        btnGrafikInventarisRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikInventarisRuang.setText("Jumlah Inventaris Ruang");
+        btnGrafikInventarisRuang.setIconTextGap(0);
+        btnGrafikInventarisRuang.setName("btnGrafikInventarisRuang"); 
+        btnGrafikInventarisRuang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikInventarisRuang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikInventarisRuangActionPerformed(evt);
+            }
+        });
+        
+        btnHarianHAIs2 = new widget.ButtonBig();
+        btnHarianHAIs2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); 
+        btnHarianHAIs2.setText("Harian HAIs 2");
+        btnHarianHAIs2.setIconTextGap(0);
+        btnHarianHAIs2.setName("btnHarianHAIs2"); 
+        btnHarianHAIs2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHarianHAIs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHarianHAIs2ActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikInventarisJenis = new widget.ButtonBig();
+        btnGrafikInventarisJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikInventarisJenis.setText("Jumlah Inventaris Jenis");
+        btnGrafikInventarisJenis.setIconTextGap(0);
+        btnGrafikInventarisJenis.setName("btnGrafikInventarisJenis"); 
+        btnGrafikInventarisJenis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikInventarisJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikInventarisJenisActionPerformed(evt);
+            }
+        });
+        
+        btnResumePasien = new widget.ButtonBig();
+        btnResumePasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-56-document-text_314896.png"))); 
+        btnResumePasien.setText("Data Resume Pasien");
+        btnResumePasien.setIconTextGap(0);
+        btnResumePasien.setName("btnResumePasien"); 
+        btnResumePasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnResumePasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResumePasienActionPerformed(evt);
             }
         });
     }

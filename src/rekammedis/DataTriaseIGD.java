@@ -1854,7 +1854,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(250, 255, 248));
+        ChkAccor.setBackground(new java.awt.Color(255,250,248));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);
@@ -2537,13 +2537,13 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         htmlContent = new StringBuilder();
                         htmlContent.append(                             
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='12%'><b>Pasien</b></td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='12%'><b>Kunjungan</b></td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='18%'><b>Kedatangan</b></td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='13%'><b>Keluhan/Anamnesis Singkat</b></td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='10%'><b>Tanda Vital</b></td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='21%'><b>Pemeriksaan</b></td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='14%'><b>Keputusan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'><b>Pasien</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'><b>Kunjungan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='18%'><b>Kedatangan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='13%'><b>Keluhan/Anamnesis Singkat</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'><b>Tanda Vital</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='21%'><b>Pemeriksaan</b></td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%'><b>Keputusan</b></td>"+
                             "</tr>"
                         );
                         
@@ -5270,8 +5270,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         htmlContent = new StringBuilder();
                         htmlContent.append(    
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='35%'>Keterangan</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='65%'>Triase Primer</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Primer</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Keluhan Utama</td>"+
@@ -5299,7 +5299,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             if(rs2.next()){
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#AA0000' color='ffffff' align='center'>Immediate/Segera</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
@@ -5367,7 +5367,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             if(rs2.next()){
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#FF0000' color='ffffff' align='center'>Emergensi</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
@@ -5430,7 +5430,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             "</tr>"+                       
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>Petugas Triase Primer</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Primer</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Tanggal & Jam</td>"+
@@ -5477,8 +5477,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         htmlContent = new StringBuilder();
                         htmlContent.append(    
                             "<tr class='isi'>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='35%'>Keterangan</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center' width='65%'>Triase Sekunder</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Sekunder</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Anamnesa Singkat</td>"+
@@ -5502,7 +5502,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             if(rs2.next()){
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#C8C800' color='ffffff' align='center'>Urgensi</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
@@ -5570,7 +5570,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             if(rs2.next()){
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#00AA00' color='ffffff' align='center'>Semi Urgensi/Urgensi Rendah</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
@@ -5638,7 +5638,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             if(rs2.next()){
                                 htmlContent.append(                             
                                     "<tr class='isi'>"+
-                                        "<td valign='middle' bgcolor='#fafff5' align='center'>Pemeriksaan</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#969696' color='ffffff' align='center'>Non Urgensi</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
@@ -5703,7 +5703,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         htmlContent.append(                             
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
-                                "<td valign='middle' bgcolor='#fafff5' align='center'>Petugas Triase Sekunder</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Sekunder</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Tanggal & Jam</td>"+

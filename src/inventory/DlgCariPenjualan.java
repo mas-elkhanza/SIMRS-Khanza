@@ -1530,15 +1530,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='7%'>No.Nota</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='6%'>Tanggal</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='16%'>Petugas</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='16%'>Pasien</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='7%'>Jenis Jual</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='10%'>Keterangan</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='14%'>Asal Barang</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='15%'>Cara Bayar</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='7%'>PPN</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>No.Nota</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='6%'>Tanggal</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='16%'>Petugas</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='16%'>Pasien</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>Jenis Jual</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Keterangan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='14%'>Asal Barang</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='15%'>Cara Bayar</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>PPN</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement("select penjualan.nota_jual, penjualan.tgl_jual, "+
                     "penjualan.nip,petugas.nama, "+
