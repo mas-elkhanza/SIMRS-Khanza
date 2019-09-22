@@ -52,7 +52,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgJnsPerawatanRalan;
 import laporan.DlgBerkasRawat;
-import laporan.DlgDataResumePasien;
+import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.DataTriaseIGD;
@@ -1296,7 +1296,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TUkuran = new widget.TextBox();
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
-        panelResume1 = new simrskhanza.PanelResume();
+        panelResume1 = new rekammedis.PanelRiwayat();
         panelDiagnosa1 = new laporan.PanelDiagnosa();
         internalFrame8 = new widget.InternalFrame();
         PanelInput3 = new javax.swing.JPanel();
@@ -5409,11 +5409,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgDataResumePasien resume=new DlgDataResumePasien(null,false);
+            RMDataResumePasien resume=new RMDataResumePasien(null,false);
             resume.isCek();
             resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+            resume.tampil();
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -5651,7 +5652,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private simrskhanza.PanelResume panelResume1;
+    private rekammedis.PanelRiwayat panelResume1;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane3;

@@ -1,6 +1,7 @@
 
 package simrskhanza;
 
+import rekammedis.RMRiwayatPerawatan;
 import bridging.DlgSKDPBPJS;
 import keuangan.DlgCariPerawatanRanap;
 import keuangan.DlgCariPerawatanRanap2;
@@ -39,7 +40,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import laporan.DlgBerkasRawat;
-import laporan.DlgDataResumePasien;
+import rekammedis.RMDataResumePasien;
 import laporan.DlgDiagnosaPenyakit;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
@@ -5206,7 +5207,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
+            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
             resume.setNoRm(TNoRM.getText(),TPasien.getText());
             resume.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             resume.setLocationRelativeTo(internalFrame1);
@@ -5229,11 +5230,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{ 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgDataResumePasien resume=new DlgDataResumePasien(null,false);
+            RMDataResumePasien resume=new RMDataResumePasien(null,false);
             resume.isCek();
             resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+            resume.tampil();
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
