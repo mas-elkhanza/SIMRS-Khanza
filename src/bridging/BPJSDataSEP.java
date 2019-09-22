@@ -58,7 +58,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import simrskhanza.DlgKamarInap;
-import simrskhanza.DlgResumePerawatan;
+import rekammedis.RMRiwayatPerawatan;
 
 
 /**
@@ -3709,7 +3709,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()!= -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
+                RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
                 resume.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
                 resume.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                 resume.setLocationRelativeTo(internalFrame1);

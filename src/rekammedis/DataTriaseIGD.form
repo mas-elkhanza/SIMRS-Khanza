@@ -537,7 +537,7 @@
                                     </Property>
                                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                       <StringArray count="1">
-                                        <StringItem index="0" value="16-08-2019 04:58:50"/>
+                                        <StringItem index="0" value="22-09-2019 15:38:18"/>
                                       </StringArray>
                                     </Property>
                                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1376,7 +1376,7 @@
                                     </Property>
                                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                       <StringArray count="1">
-                                        <StringItem index="0" value="16-08-2019 04:58:50"/>
+                                        <StringItem index="0" value="22-09-2019 15:38:19"/>
                                       </StringArray>
                                     </Property>
                                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2005,7 +2005,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="16-08-2019 04:58:51"/>
+                                <StringItem index="0" value="22-09-2019 15:38:19"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2306,7 +2306,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="16-08-2019"/>
+                            <StringItem index="0" value="22-09-2019"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2334,7 +2334,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="16-08-2019"/>
+                            <StringItem index="0" value="22-09-2019"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2427,7 +2427,7 @@
                     <Component class="widget.CekBox" name="ChkAccor">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f8" green="ff" red="fa" type="rgb"/>
+                          <Color blue="f8" green="fa" red="ff" type="rgb"/>
                         </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/picture/kiri.png"/>

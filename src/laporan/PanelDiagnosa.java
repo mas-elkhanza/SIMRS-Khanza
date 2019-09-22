@@ -24,6 +24,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import laporan.DlgICD9;
+import laporan.DlgPenyakit;
 
 /**
  *
@@ -300,7 +302,7 @@ public class PanelDiagnosa extends widget.panelisi {
         tbTindakanPasien = new widget.Table();
 
         MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusBaru.setForeground(new java.awt.Color(50,50,50));
+        MnStatusBaru.setForeground(new java.awt.Color(50, 50, 50));
         MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusBaru.setText("Status Penyakit Baru");
         MnStatusBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -314,7 +316,7 @@ public class PanelDiagnosa extends widget.panelisi {
         jPopupMenu1.add(MnStatusBaru);
 
         MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusLama.setForeground(new java.awt.Color(50,50,50));
+        MnStatusLama.setForeground(new java.awt.Color(50, 50, 50));
         MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusLama.setText("Status Penyakit Lama");
         MnStatusLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -331,7 +333,7 @@ public class PanelDiagnosa extends widget.panelisi {
         setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
