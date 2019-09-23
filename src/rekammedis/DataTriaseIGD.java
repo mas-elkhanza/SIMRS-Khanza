@@ -668,13 +668,13 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Triase IGD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Triase IGD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabPilihan.setBackground(new java.awt.Color(255, 255, 254));
-        TabPilihan.setForeground(new java.awt.Color(50,50,50));
+        TabPilihan.setForeground(new java.awt.Color(50, 50, 50));
         TabPilihan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihan.setName("TabPilihan"); // NOI18N
         TabPilihan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -693,7 +693,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         TabTriase.setBackground(new java.awt.Color(255, 255, 254));
         TabTriase.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        TabTriase.setForeground(new java.awt.Color(50,50,50));
+        TabTriase.setForeground(new java.awt.Color(50, 50, 50));
         TabTriase.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabTriase.setName("TabTriase"); // NOI18N
         TabTriase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -903,7 +903,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(362, 10, 90, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019 14:32:58" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2019 04:58:50" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
@@ -1106,7 +1106,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         TabSkala1dan2.setBackground(new java.awt.Color(255, 255, 254));
         TabSkala1dan2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TabSkala1dan2.setForeground(new java.awt.Color(50,50,50));
+        TabSkala1dan2.setForeground(new java.awt.Color(50, 50, 50));
         TabSkala1dan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSkala1dan2.setName("TabSkala1dan2"); // NOI18N
         TabSkala1dan2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1330,7 +1330,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(362, 10, 90, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019 14:32:59" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2019 04:58:50" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
@@ -1532,7 +1532,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
 
         TabSkala3dan4dan5.setBackground(new java.awt.Color(255, 255, 254));
         TabSkala3dan4dan5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TabSkala3dan4dan5.setForeground(new java.awt.Color(50,50,50));
+        TabSkala3dan4dan5.setForeground(new java.awt.Color(50, 50, 50));
         TabSkala3dan4dan5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSkala3dan4dan5.setName("TabSkala3dan4dan5"); // NOI18N
         TabSkala3dan4dan5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1624,7 +1624,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019 14:32:59" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2019 04:58:51" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
@@ -1784,7 +1784,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1798,7 +1798,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-08-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1854,7 +1854,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,248));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);

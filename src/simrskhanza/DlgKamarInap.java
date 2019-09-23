@@ -11,6 +11,7 @@
  */
 
 package simrskhanza;
+import rekammedis.RMRiwayatPerawatan;
 import permintaan.DlgBookingOperasi;
 import inventory.DlgResepObat;
 import laporan.DlgDataHAIs;
@@ -61,7 +62,7 @@ import keuangan.DlgLhtPiutang;
 import keuangan.DlgPerkiraanBiayaRanap;
 import laporan.DlgBerkasRawat;
 import laporan.DlgDataInsidenKeselamatan;
-import laporan.DlgDataResumePasien;
+import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
 
@@ -6888,7 +6889,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
+            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
             resume.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),2).toString());
             resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             resume.setLocationRelativeTo(internalFrame1);
@@ -8652,11 +8653,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     rs2=psanak.executeQuery();
                     if(rs2.next()){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                        DlgDataResumePasien resume=new DlgDataResumePasien(null,false);
+                        RMDataResumePasien resume=new RMDataResumePasien(null,false);
                         resume.isCek();
                         resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         resume.setLocationRelativeTo(internalFrame1);
                         resume.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),DTPCari2.getDate());
+                        resume.tampil();
                         resume.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }else{
@@ -8678,11 +8680,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgDataResumePasien resume=new DlgDataResumePasien(null,false);
+            RMDataResumePasien resume=new RMDataResumePasien(null,false);
             resume.isCek();
             resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+            resume.tampil();
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
