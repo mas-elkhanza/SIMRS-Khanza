@@ -59,7 +59,6 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
     private String[] kode,nama;
     private int jml=0,i=0,index=0,jmlparsial=0;
     private String kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",pemeriksaan="",kamar,namakamar,status="";
-    private double ttl=0,item=0;
     private String norawatibu="",aktifkanparsial="no";
     private final Properties prop = new Properties();
 

@@ -260,7 +260,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="simrskhanza.PanelResume" name="panelResume1">
+        <Component class="rekammedis.PanelRiwayat" name="panelResume1">
           <Properties>
             <Property name="name" type="java.lang.String" value="panelResume1" noResource="true"/>
           </Properties>

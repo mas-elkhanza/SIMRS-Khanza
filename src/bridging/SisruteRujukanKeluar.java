@@ -42,7 +42,7 @@ import kepegawaian.DlgCariPegawai;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import simrskhanza.DlgResumePerawatan;
+import rekammedis.RMRiwayatPerawatan;
 
 
 /**
@@ -2176,7 +2176,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             tbObat.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
+            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
             resume.setNoRm(TNoRM.getText(),TPasien.getText());
             resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             resume.setLocationRelativeTo(internalFrame1);

@@ -11,6 +11,7 @@
  */
 package simrskhanza;
 
+import rekammedis.RMRiwayatPerawatan;
 import bridging.BPJSCekNIK;
 import bridging.BPJSCekNoKartu;
 import bridging.BPJSNik;
@@ -6571,7 +6572,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             tbPasien.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
+            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
             resume.setNoRm(TNo.getText(),TNm.getText());
             resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             resume.setLocationRelativeTo(internalFrame1);

@@ -9,7 +9,7 @@
  * Created on 12 Jul 10, 16:21:34
  */
 
-package simrskhanza;
+package rekammedis;
 
 import fungsi.batasInput;
 import fungsi.sekuel;
@@ -23,19 +23,20 @@ import java.awt.event.WindowListener;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import simrskhanza.DlgPasien;
 
 /**
  *
  * @author perpustakaan
  */
-public final class DlgResumePerawatan extends javax.swing.JDialog {    
+public final class RMRiwayatPerawatan extends javax.swing.JDialog {    
     private validasi Valid=new validasi();    
     private sekuel Sequel=new sekuel();
 
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
-    public DlgResumePerawatan(java.awt.Frame parent, boolean modal) {
+    public RMRiwayatPerawatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(8,1);
@@ -142,7 +143,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         TPasien = new widget.TextBox();
         BtnSeek2 = new widget.Button();
         BtnCari1 = new widget.Button();
-        panelResume1 = new simrskhanza.PanelResume();
+        panelResume1 = new rekammedis.PanelRiwayat();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
@@ -151,7 +152,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -375,7 +376,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgResumePerawatan dialog = new DlgResumePerawatan(new javax.swing.JFrame(), true);
+            RMRiwayatPerawatan dialog = new RMRiwayatPerawatan(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -402,7 +403,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label18;
     private widget.Label label19;
     private widget.panelisi panelGlass5;
-    private simrskhanza.PanelResume panelResume1;
+    private rekammedis.PanelRiwayat panelResume1;
     private widget.panelisi panelisi4;
     // End of variables declaration//GEN-END:variables
 
