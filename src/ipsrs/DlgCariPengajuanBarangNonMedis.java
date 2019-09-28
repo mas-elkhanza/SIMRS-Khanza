@@ -1,5 +1,4 @@
 package ipsrs;
-import inventory.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -126,8 +125,8 @@ public class DlgCariPengajuanBarangNonMedis extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(barang.getTable().getSelectedRow()!= -1){                   
-                    kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
-                    nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
+                    kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());                    
+                    nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
                 }   
                 kdbar.requestFocus();
             }

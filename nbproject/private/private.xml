@@ -12,10 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/widget/MenuBar.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/PanelRiwayat.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMDataResumePasien.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPenjualan.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgReg.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgKasirRalan.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgKamarInap.java</file>
         </group>
     </open-files>
 </project-private>
