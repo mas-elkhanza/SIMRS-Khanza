@@ -8496,9 +8496,9 @@ public class PanelRiwayat extends widget.panelisi {
                                 rs3=koneksi.prepareStatement(
                                      "select periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.kd_jenis_prw, "+
                                      "jns_perawatan_radiologi.nm_perawatan,petugas.nama,periksa_radiologi.biaya,periksa_radiologi.dokter_perujuk,dokter.nm_dokter "+
-                                     "from periksa_radiologi inner join jns_perawatan_radiologi inner join petugas inner join dokter "+
-                                     "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw and periksa_radiologi.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_radiologi.nip=petugas.nip  where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_radiologi.tgl_periksa,periksa_radiologi.jam").executeQuery();
+                                     "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
+                                     "inner join petugas on periksa_radiologi.nip=petugas.nip inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
+                                     "where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_radiologi.tgl_periksa,periksa_radiologi.jam").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -8613,9 +8613,9 @@ public class PanelRiwayat extends widget.panelisi {
                                 rs3=koneksi.prepareStatement(
                                      "select periksa_lab.tgl_periksa,periksa_lab.jam,periksa_lab.kd_jenis_prw, "+
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
-                                     "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
-                                     "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
+                                     "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                                     "inner join petugas on periksa_lab.nip=petugas.nip inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter "+
+                                     "where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.tgl_periksa,periksa_lab.jam").executeQuery();
                                 if(rs3.next()){
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
@@ -8865,9 +8865,9 @@ public class PanelRiwayat extends widget.panelisi {
                             try{
                                 rs3=koneksi.prepareStatement(
                                     "select databarang.kode_brng,databarang.nama_brng,detreturjual.kode_sat,detreturjual.h_retur, "+
-				    "(detreturjual.jml_retur * -1) as jumlah,(detreturjual.subtotal * -1) as total from detreturjual "+
-				    "inner join databarang inner join returjual on detreturjual.kode_brng=databarang.kode_brng "+
-				    "and returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
+				 "(detreturjual.jml_retur * -1) as jumlah,(detreturjual.subtotal * -1) as total from detreturjual "+
+				 "inner join databarang on detreturjual.kode_brng=databarang.kode_brng  "+
+                                    "inner join returjual on returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -8981,7 +8981,7 @@ public class PanelRiwayat extends widget.panelisi {
                             try{
                                 rs3=koneksi.prepareStatement(
                                     "select master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file "+
-				    "from berkas_digital_perawatan inner join master_berkas_digital "+
+				 "from berkas_digital_perawatan inner join master_berkas_digital "+
                                     "on berkas_digital_perawatan.kode=master_berkas_digital.kode "+
                                     "where berkas_digital_perawatan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
                                 if(rs3.next()){                                    
@@ -9352,13 +9352,9 @@ public class PanelRiwayat extends widget.panelisi {
                     "penjualan.nip,petugas.nama, "+
                     "penjualan.no_rkm_medis,penjualan.nm_pasien,penjualan.nama_bayar, "+
                     "penjualan.keterangan, penjualan.jns_jual, penjualan.ongkir,bangsal.nm_bangsal,penjualan.status "+
-                    " from penjualan inner join petugas inner join bangsal inner join jenis  "+
-                    " inner join detailjual inner join databarang inner join kodesatuan "+
-                    " on detailjual.kode_brng=databarang.kode_brng "+
-                    " and detailjual.kode_sat=kodesatuan.kode_sat "+
-                    " and penjualan.kd_bangsal=bangsal.kd_bangsal "+
-                    " and penjualan.nota_jual=detailjual.nota_jual "+
-                    " and penjualan.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
+                    " from penjualan inner join petugas on penjualan.nip=petugas.nip "+
+                    " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
+                    " inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
                     " where penjualan.no_rkm_medis='"+norm+"' "+
                     " group by penjualan.nota_jual order by penjualan.tgl_jual,penjualan.nota_jual ");
             try {
