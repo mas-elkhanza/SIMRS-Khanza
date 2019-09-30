@@ -205,7 +205,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -304,12 +304,11 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
 
         ppBarcode.setBackground(new java.awt.Color(255, 255, 254));
         ppBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBarcode.setForeground(new java.awt.Color(70, 70, 70));
+        ppBarcode.setForeground(new java.awt.Color(50,50,50));
         ppBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppBarcode.setText("Barcode");
         ppBarcode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBarcode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBarcode.setIconTextGap(8);
         ppBarcode.setName("ppBarcode"); // NOI18N
         ppBarcode.setPreferredSize(new java.awt.Dimension(150, 25));
         ppBarcode.addActionListener(new java.awt.event.ActionListener() {
@@ -323,7 +322,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Inventaris Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Inventaris Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -636,7 +635,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         FormInput.add(btnBarang);
         btnBarang.setBounds(495, 40, 25, 23);
 
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-04-2019" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2019" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);
@@ -725,7 +724,7 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
         FormInput.add(asal_buku);
         asal_buku.setBounds(610, 10, 100, 23);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "Posisi Inventaris Perpustakaan di :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "Posisi Inventaris Perpustakaan di :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
@@ -1397,27 +1396,6 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     }
     
     public void isCek(){
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            namaruang=prop.getProperty("KAMARAKTIFRANAP");
-        } catch (Exception ex) {
-            namaruang="";
-        }
-        
-        if(!namaruang.equals("")){
-            if(akses.getkode().equals("Admin Utama")){
-                nm_ruangcari.setText("");
-                btnRuang1.setEnabled(true);
-                nm_ruangcari.setEditable(true);
-            }else{
-                nm_ruangcari.setText(namaruang);
-                btnRuang1.setEnabled(false);
-                nm_ruangcari.setEditable(false);
-            }                
-        }else{
-            btnRuang1.setEnabled(true);
-            nm_ruangcari.setEditable(true);
-        }
         BtnSimpan.setEnabled(akses.getinventaris_perpustakaan());
         BtnHapus.setEnabled(akses.getinventaris_perpustakaan());
         BtnEdit.setEnabled(akses.getinventaris_perpustakaan());

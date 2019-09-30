@@ -231,7 +231,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         tbRadiologiRanap2.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -413,7 +413,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         MnCetakHasilRadiologi.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilRadiologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilRadiologi.setForeground(new java.awt.Color(70, 70, 70));
+        MnCetakHasilRadiologi.setForeground(new java.awt.Color(50,50,50));
         MnCetakHasilRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilRadiologi.setText("Cetak Permintaan Radiologi");
         MnCetakHasilRadiologi.setName("MnCetakHasilRadiologi"); // NOI18N
@@ -427,7 +427,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBarcodePermintaan.setForeground(new java.awt.Color(70, 70, 70));
+        MnBarcodePermintaan.setForeground(new java.awt.Color(50,50,50));
         MnBarcodePermintaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodePermintaan.setText("Barcode No.Permintaan");
         MnBarcodePermintaan.setName("MnBarcodePermintaan"); // NOI18N
@@ -441,7 +441,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodePermintaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBarcodePermintaan1.setForeground(new java.awt.Color(70, 70, 70));
+        MnBarcodePermintaan1.setForeground(new java.awt.Color(50,50,50));
         MnBarcodePermintaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodePermintaan1.setText("Barcode No.Permintaan 2");
         MnBarcodePermintaan1.setName("MnBarcodePermintaan1"); // NOI18N
@@ -458,7 +458,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         WindowAmbilSampel.setUndecorated(true);
         WindowAmbilSampel.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Waktu Pengambilan Sampel ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Waktu Pengambilan Sampel ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -493,7 +493,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019 21:45:50" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2019 16:40:22" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -518,7 +518,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -722,7 +722,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabPilihRawat.setForeground(new java.awt.Color(50,50,50));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
         TabPilihRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -787,7 +787,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame2.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawatJalan.setForeground(new java.awt.Color(50,50,50));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
         TabRawatJalan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -811,7 +811,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRalan.setComponentPopupMenu(jPopupMenu1);
         tbRadiologiRalan.setName("tbRadiologiRalan"); // NOI18N
         tbRadiologiRalan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -843,7 +842,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRalan2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRalan2.setName("tbRadiologiRalan2"); // NOI18N
         tbRadiologiRalan2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -919,7 +917,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawatInap.setForeground(new java.awt.Color(50,50,50));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
         TabRawatInap.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -943,7 +941,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRanap.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRanap.setComponentPopupMenu(jPopupMenu1);
         tbRadiologiRanap.setName("tbRadiologiRanap"); // NOI18N
         tbRadiologiRanap.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -975,7 +972,6 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
             }
         ));
-        tbRadiologiRanap2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiRanap2.setName("tbRadiologiRanap2"); // NOI18N
         tbRadiologiRanap2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1416,6 +1412,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbRadiologiRalan.getValueAt(tbRadiologiRalan.getSelectedRow(),9).toString()));  
 
                     Valid.MyReport("rptPermintaanRadiologi.jasper","report","::[ Permintaan Radiologi ]::",param);            
                 }
@@ -1489,6 +1486,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbRadiologiRanap.getValueAt(tbRadiologiRanap.getSelectedRow(),9).toString()));  
 
                     Valid.MyReport("rptPermintaanRadiologi.jasper","report","::[ Permintaan Radiologi ]::",param);            
                 }

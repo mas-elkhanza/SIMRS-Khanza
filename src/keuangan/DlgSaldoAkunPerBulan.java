@@ -47,10 +47,10 @@ public class DlgSaldoAkunPerBulan extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -90,7 +90,7 @@ public class DlgSaldoAkunPerBulan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Saldo Akun Per Bulan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Saldo Akun Per Bulan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -224,10 +224,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
@@ -350,70 +350,70 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%' rowspan='2'>Kode Akun</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='6%' rowspan='2'>Akun Rekening</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Januari</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Februari</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Maret</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>April</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Mei</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Juni</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Juli</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Agustus</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>September</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Oktober</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>November</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Desember</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>Kode Akun</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='2'>Akun Rekening</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Januari</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Februari</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Maret</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>April</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Mei</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Juni</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Juli</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Agustus</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>September</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Oktober</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>November</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Desember</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
                 "</tr>"
             );     
             ps=koneksi.prepareStatement("select kd_rek, nm_rek "+
@@ -1901,70 +1901,70 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%' rowspan='2'>Kode Akun</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='6%' rowspan='2'>Akun Rekening</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Januari</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Februari</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Maret</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>April</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Mei</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Juni</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Juli</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Agutus</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>September</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Otober</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>November</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' colspan='4'>Desember</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>Kode Akun</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' rowspan='2'>Akun Rekening</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Januari</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Februari</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Maret</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>April</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Mei</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Juni</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Juli</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Agutus</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>September</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Otober</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>November</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='7%' colspan='4'>Desember</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Awal</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Debet</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Kredit</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Awal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Debet</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kredit</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Saldo Akhir</td>"+
                 "</tr>"
             );     
             ps=koneksi.prepareStatement("select kd_rek, nm_rek "+

@@ -94,7 +94,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
         kdsat.setDocument(new batasInput((byte)4).getKata(kdsat));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -304,12 +304,11 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapus.setForeground(new java.awt.Color(50,50,50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Surat Pemesanan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(165, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -321,12 +320,11 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
         ppDatang.setBackground(new java.awt.Color(255, 255, 254));
         ppDatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDatang.setForeground(new java.awt.Color(70, 70, 70));
+        ppDatang.setForeground(new java.awt.Color(50,50,50));
         ppDatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDatang.setText("Sudah Datang");
         ppDatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDatang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDatang.setIconTextGap(5);
         ppDatang.setName("ppDatang"); // NOI18N
         ppDatang.setPreferredSize(new java.awt.Dimension(200, 25));
         ppDatang.addActionListener(new java.awt.event.ActionListener() {
@@ -338,12 +336,11 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
         ppProses.setBackground(new java.awt.Color(255, 255, 254));
         ppProses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppProses.setForeground(new java.awt.Color(70, 70, 70));
+        ppProses.setForeground(new java.awt.Color(50,50,50));
         ppProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppProses.setText("Proses Pesan");
         ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppProses.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppProses.setIconTextGap(5);
         ppProses.setName("ppProses"); // NOI18N
         ppProses.setPreferredSize(new java.awt.Dimension(200, 25));
         ppProses.addActionListener(new java.awt.event.ActionListener() {
@@ -362,7 +359,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -381,7 +378,6 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);

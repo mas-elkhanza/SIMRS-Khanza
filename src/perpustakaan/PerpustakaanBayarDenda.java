@@ -156,7 +156,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -418,7 +418,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Denda Peminjaman Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Denda Peminjaman Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -543,7 +543,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         jLabel8.setPreferredSize(new java.awt.Dimension(52, 23));
         panelGlass9.add(jLabel8);
 
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2019" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2019" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -561,7 +561,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass9.add(jLabel22);
 
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2019" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2019" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -651,7 +651,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         LblTgl.setBounds(0, 10, 85, 23);
 
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2019" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2019" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -744,7 +744,7 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -762,7 +762,6 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbBayarDenda.setAutoCreateRowSorter(true);
-        tbBayarDenda.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBayarDenda.setName("tbBayarDenda"); // NOI18N
         tbBayarDenda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -828,7 +827,6 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         tbDendaLain.setAutoCreateRowSorter(true);
-        tbDendaLain.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDendaLain.setName("tbDendaLain"); // NOI18N
         tbDendaLain.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

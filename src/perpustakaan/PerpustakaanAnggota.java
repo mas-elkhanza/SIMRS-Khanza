@@ -108,7 +108,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm(); 
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -202,12 +202,11 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 
         MnKartu.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKartu.setForeground(new java.awt.Color(70, 70, 70));
+        MnKartu.setForeground(new java.awt.Color(50,50,50));
         MnKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu.setText("Cetak Kartu Anggota");
         MnKartu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnKartu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnKartu.setIconTextGap(5);
         MnKartu.setName("MnKartu"); // NOI18N
         MnKartu.setPreferredSize(new java.awt.Dimension(200, 28));
         MnKartu.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +228,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Anggota Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Anggota Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -582,7 +581,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         label10.setBounds(0, 40, 92, 23);
 
         TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
+        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         TglLahir.setDisplayFormat("dd-MM-yyyy");
         TglLahir.setName("TglLahir"); // NOI18N
         TglLahir.setOpaque(false);
@@ -639,7 +638,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         label12.setBounds(360, 100, 80, 23);
 
         Gabung.setForeground(new java.awt.Color(50, 70, 50));
-        Gabung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
+        Gabung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Gabung.setDisplayFormat("dd-MM-yyyy");
         Gabung.setName("Gabung"); // NOI18N
         Gabung.setOpaque(false);
@@ -653,7 +652,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         Gabung.setBounds(443, 100, 90, 23);
 
         Habis.setForeground(new java.awt.Color(50, 70, 50));
-        Habis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-04-2019" }));
+        Habis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
         Habis.setDisplayFormat("dd-MM-yyyy");
         Habis.setName("Habis"); // NOI18N
         Habis.setOpaque(false);

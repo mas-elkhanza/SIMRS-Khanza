@@ -150,7 +150,7 @@ public class DlgRBKSO extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Bulanan KSO ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Bulanan KSO ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -168,7 +168,6 @@ public class DlgRBKSO extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
@@ -268,7 +267,6 @@ public class DlgRBKSO extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        chkRalan.setBorder(null);
         chkRalan.setSelected(true);
         chkRalan.setText("Ralan");
         chkRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -282,7 +280,6 @@ public class DlgRBKSO extends javax.swing.JDialog {
         });
         panelisi1.add(chkRalan);
 
-        chkRanap.setBorder(null);
         chkRanap.setSelected(true);
         chkRanap.setText("Ranap");
         chkRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -296,7 +293,6 @@ public class DlgRBKSO extends javax.swing.JDialog {
         });
         panelisi1.add(chkRanap);
 
-        chkLaborat.setBorder(null);
         chkLaborat.setSelected(true);
         chkLaborat.setText("Laboratorium");
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -310,7 +306,6 @@ public class DlgRBKSO extends javax.swing.JDialog {
         });
         panelisi1.add(chkLaborat);
 
-        chkRadiologi.setBorder(null);
         chkRadiologi.setSelected(true);
         chkRadiologi.setText("Radiologi");
         chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

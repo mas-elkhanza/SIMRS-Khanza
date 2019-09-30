@@ -105,7 +105,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         kdpnj.setDocument(new batasInput((int)3).getKata(kdpnj));
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -231,12 +231,11 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 
         ppTemplate.setBackground(new java.awt.Color(255, 255, 254));
         ppTemplate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTemplate.setForeground(new java.awt.Color(70, 70, 70));
+        ppTemplate.setForeground(new java.awt.Color(50,50,50));
         ppTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTemplate.setText("Template UTD");
         ppTemplate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTemplate.setIconTextGap(5);
         ppTemplate.setName("ppTemplate"); // NOI18N
         ppTemplate.setPreferredSize(new java.awt.Dimension(150, 25));
         ppTemplate.addActionListener(new java.awt.event.ActionListener() {
@@ -248,12 +247,11 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(70, 70, 70));
+        MnRestore.setForeground(new java.awt.Color(50,50,50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setIconTextGap(5);
         MnRestore.setName("MnRestore"); // NOI18N
         MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
         MnRestore.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +270,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pelayanan Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pelayanan Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

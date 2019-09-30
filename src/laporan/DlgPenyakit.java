@@ -111,7 +111,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         TCiri.setDocument(new batasInput((int)1500).getKata(TCiri));
         TKeterangan.setDocument(new batasInput((byte)60).getKata(TKeterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -232,7 +232,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data ICD 10 Penyakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data ICD 10 Penyakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -510,7 +510,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         jLabel9.setBounds(0, 42, 100, 23);
 
         ScrollCiri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ScrollCiri.setForeground(new java.awt.Color(70, 70, 70));
+        ScrollCiri.setForeground(new java.awt.Color(50,50,50));
         ScrollCiri.setName("ScrollCiri"); // NOI18N
 
         TCiri.setBorder(null);

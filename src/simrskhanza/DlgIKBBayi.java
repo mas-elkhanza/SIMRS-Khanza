@@ -169,7 +169,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         BPJSBayi.setDocument(new batasInput((byte)40).getKata(BPJSBayi));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -416,12 +416,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafikjkbayi.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikjkbayi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikjkbayi.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikjkbayi.setForeground(new java.awt.Color(50,50,50));
         ppGrafikjkbayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikjkbayi.setText("Grafik Jns.Kelamin Bayi");
         ppGrafikjkbayi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikjkbayi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikjkbayi.setIconTextGap(5);
         ppGrafikjkbayi.setName("ppGrafikjkbayi"); // NOI18N
         ppGrafikjkbayi.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikjkbayi.addActionListener(new java.awt.event.ActionListener() {
@@ -432,22 +431,20 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         Popup.add(ppGrafikjkbayi);
 
         jMenu1.setBackground(new java.awt.Color(250, 255, 245));
-        jMenu1.setForeground(new java.awt.Color(70, 70, 70));
+        jMenu1.setForeground(new java.awt.Color(50,50,50));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu1.setText("Grafik Berat Bayi");
         jMenu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jMenu1.setIconTextGap(5);
         jMenu1.setName("jMenu1"); // NOI18N
         jMenu1.setPreferredSize(new java.awt.Dimension(180, 30));
 
         ppGrafikberat.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikberat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikberat.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikberat.setForeground(new java.awt.Color(50,50,50));
         ppGrafikberat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikberat.setText("Keseluruhan");
         ppGrafikberat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikberat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikberat.setIconTextGap(5);
         ppGrafikberat.setName("ppGrafikberat"); // NOI18N
         ppGrafikberat.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikberat.addActionListener(new java.awt.event.ActionListener() {
@@ -459,12 +456,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafikberatlaki.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikberatlaki.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikberatlaki.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikberatlaki.setForeground(new java.awt.Color(50,50,50));
         ppGrafikberatlaki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikberatlaki.setText("Laki-Laki");
         ppGrafikberatlaki.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikberatlaki.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikberatlaki.setIconTextGap(5);
         ppGrafikberatlaki.setName("ppGrafikberatlaki"); // NOI18N
         ppGrafikberatlaki.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikberatlaki.addActionListener(new java.awt.event.ActionListener() {
@@ -476,12 +472,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafikberatwn.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikberatwn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikberatwn.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikberatwn.setForeground(new java.awt.Color(50,50,50));
         ppGrafikberatwn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikberatwn.setText("Perempuan");
         ppGrafikberatwn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikberatwn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikberatwn.setIconTextGap(5);
         ppGrafikberatwn.setName("ppGrafikberatwn"); // NOI18N
         ppGrafikberatwn.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikberatwn.addActionListener(new java.awt.event.ActionListener() {
@@ -494,22 +489,20 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         Popup.add(jMenu1);
 
         jMenu2.setBackground(new java.awt.Color(250, 255, 245));
-        jMenu2.setForeground(new java.awt.Color(70, 70, 70));
+        jMenu2.setForeground(new java.awt.Color(50,50,50));
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu2.setText("Grafik Panjang Bayi");
         jMenu2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jMenu2.setIconTextGap(5);
         jMenu2.setName("jMenu2"); // NOI18N
         jMenu2.setPreferredSize(new java.awt.Dimension(180, 30));
 
         ppGrafikpanjang.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikpanjang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikpanjang.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikpanjang.setForeground(new java.awt.Color(50,50,50));
         ppGrafikpanjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikpanjang.setText("Keseluruhan");
         ppGrafikpanjang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikpanjang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikpanjang.setIconTextGap(5);
         ppGrafikpanjang.setName("ppGrafikpanjang"); // NOI18N
         ppGrafikpanjang.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikpanjang.addActionListener(new java.awt.event.ActionListener() {
@@ -521,12 +514,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafikpanjanglaki.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikpanjanglaki.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikpanjanglaki.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikpanjanglaki.setForeground(new java.awt.Color(50,50,50));
         ppGrafikpanjanglaki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikpanjanglaki.setText("Laki-Laki");
         ppGrafikpanjanglaki.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikpanjanglaki.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikpanjanglaki.setIconTextGap(5);
         ppGrafikpanjanglaki.setName("ppGrafikpanjanglaki"); // NOI18N
         ppGrafikpanjanglaki.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikpanjanglaki.addActionListener(new java.awt.event.ActionListener() {
@@ -538,12 +530,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafikpanjangwn.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikpanjangwn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikpanjangwn.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikpanjangwn.setForeground(new java.awt.Color(50,50,50));
         ppGrafikpanjangwn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikpanjangwn.setText("Perempuan");
         ppGrafikpanjangwn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikpanjangwn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikpanjangwn.setIconTextGap(5);
         ppGrafikpanjangwn.setName("ppGrafikpanjangwn"); // NOI18N
         ppGrafikpanjangwn.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikpanjangwn.addActionListener(new java.awt.event.ActionListener() {
@@ -556,23 +547,21 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         Popup.add(jMenu2);
 
         jMenu3.setBackground(new java.awt.Color(250, 255, 245));
-        jMenu3.setForeground(new java.awt.Color(70, 70, 70));
+        jMenu3.setForeground(new java.awt.Color(50,50,50));
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu3.setText("Grafik Lahir/Tahun");
         jMenu3.setActionCommand("Grafik Kelahiran Tahunan");
         jMenu3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jMenu3.setIconTextGap(5);
         jMenu3.setName("jMenu3"); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(180, 30));
 
         ppGrafiklahirtahun.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafiklahirtahun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafiklahirtahun.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafiklahirtahun.setForeground(new java.awt.Color(50,50,50));
         ppGrafiklahirtahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafiklahirtahun.setText("Keseluruhan");
         ppGrafiklahirtahun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafiklahirtahun.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafiklahirtahun.setIconTextGap(5);
         ppGrafiklahirtahun.setName("ppGrafiklahirtahun"); // NOI18N
         ppGrafiklahirtahun.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafiklahirtahun.addActionListener(new java.awt.event.ActionListener() {
@@ -584,12 +573,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafiklahirtahunlaki.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafiklahirtahunlaki.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafiklahirtahunlaki.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafiklahirtahunlaki.setForeground(new java.awt.Color(50,50,50));
         ppGrafiklahirtahunlaki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafiklahirtahunlaki.setText("Laki-Laki");
         ppGrafiklahirtahunlaki.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafiklahirtahunlaki.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafiklahirtahunlaki.setIconTextGap(5);
         ppGrafiklahirtahunlaki.setName("ppGrafiklahirtahunlaki"); // NOI18N
         ppGrafiklahirtahunlaki.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafiklahirtahunlaki.addActionListener(new java.awt.event.ActionListener() {
@@ -601,12 +589,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafiklahirtahunwn.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafiklahirtahunwn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafiklahirtahunwn.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafiklahirtahunwn.setForeground(new java.awt.Color(50,50,50));
         ppGrafiklahirtahunwn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafiklahirtahunwn.setText("Perempuan");
         ppGrafiklahirtahunwn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafiklahirtahunwn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafiklahirtahunwn.setIconTextGap(5);
         ppGrafiklahirtahunwn.setName("ppGrafiklahirtahunwn"); // NOI18N
         ppGrafiklahirtahunwn.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafiklahirtahunwn.addActionListener(new java.awt.event.ActionListener() {
@@ -619,23 +606,21 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         Popup.add(jMenu3);
 
         jMenu4.setBackground(new java.awt.Color(250, 255, 245));
-        jMenu4.setForeground(new java.awt.Color(70, 70, 70));
+        jMenu4.setForeground(new java.awt.Color(50,50,50));
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu4.setText("Grafik Lahir/Bulan");
         jMenu4.setActionCommand("Grafik Kelahiran Tahunan");
         jMenu4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jMenu4.setIconTextGap(5);
         jMenu4.setName("jMenu4"); // NOI18N
         jMenu4.setPreferredSize(new java.awt.Dimension(180, 30));
 
         ppGrafiklahirbulan.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafiklahirbulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafiklahirbulan.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafiklahirbulan.setForeground(new java.awt.Color(50,50,50));
         ppGrafiklahirbulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafiklahirbulan.setText("Keseluruhan");
         ppGrafiklahirbulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafiklahirbulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafiklahirbulan.setIconTextGap(5);
         ppGrafiklahirbulan.setName("ppGrafiklahirbulan"); // NOI18N
         ppGrafiklahirbulan.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafiklahirbulan.addActionListener(new java.awt.event.ActionListener() {
@@ -647,12 +632,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafiklahirbulanlaki.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafiklahirbulanlaki.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafiklahirbulanlaki.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafiklahirbulanlaki.setForeground(new java.awt.Color(50,50,50));
         ppGrafiklahirbulanlaki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafiklahirbulanlaki.setText("Laki-Laki");
         ppGrafiklahirbulanlaki.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafiklahirbulanlaki.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafiklahirbulanlaki.setIconTextGap(5);
         ppGrafiklahirbulanlaki.setName("ppGrafiklahirbulanlaki"); // NOI18N
         ppGrafiklahirbulanlaki.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafiklahirbulanlaki.addActionListener(new java.awt.event.ActionListener() {
@@ -664,12 +648,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafiklahirbulanwn.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafiklahirbulanwn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafiklahirbulanwn.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafiklahirbulanwn.setForeground(new java.awt.Color(50,50,50));
         ppGrafiklahirbulanwn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafiklahirbulanwn.setText("Perempuan");
         ppGrafiklahirbulanwn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafiklahirbulanwn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafiklahirbulanwn.setIconTextGap(5);
         ppGrafiklahirbulanwn.setName("ppGrafiklahirbulanwn"); // NOI18N
         ppGrafiklahirbulanwn.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafiklahirbulanwn.addActionListener(new java.awt.event.ActionListener() {
@@ -682,23 +665,21 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         Popup.add(jMenu4);
 
         jMenu5.setBackground(new java.awt.Color(250, 255, 245));
-        jMenu5.setForeground(new java.awt.Color(70, 70, 70));
+        jMenu5.setForeground(new java.awt.Color(50,50,50));
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu5.setText("Grafik Proses Lahir");
         jMenu5.setActionCommand("Grafik Kelahiran Tahunan");
         jMenu5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jMenu5.setIconTextGap(5);
         jMenu5.setName("jMenu5"); // NOI18N
         jMenu5.setPreferredSize(new java.awt.Dimension(180, 30));
 
         ppGrafikproseslahir.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikproseslahir.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikproseslahir.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikproseslahir.setForeground(new java.awt.Color(50,50,50));
         ppGrafikproseslahir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikproseslahir.setText("Keseluruhan");
         ppGrafikproseslahir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikproseslahir.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikproseslahir.setIconTextGap(5);
         ppGrafikproseslahir.setName("ppGrafikproseslahir"); // NOI18N
         ppGrafikproseslahir.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikproseslahir.addActionListener(new java.awt.event.ActionListener() {
@@ -710,12 +691,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafikproseslahirlaki.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikproseslahirlaki.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikproseslahirlaki.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikproseslahirlaki.setForeground(new java.awt.Color(50,50,50));
         ppGrafikproseslahirlaki.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikproseslahirlaki.setText("Laki-Laki");
         ppGrafikproseslahirlaki.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikproseslahirlaki.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikproseslahirlaki.setIconTextGap(5);
         ppGrafikproseslahirlaki.setName("ppGrafikproseslahirlaki"); // NOI18N
         ppGrafikproseslahirlaki.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikproseslahirlaki.addActionListener(new java.awt.event.ActionListener() {
@@ -727,12 +707,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         ppGrafikproseslahirwn.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikproseslahirwn.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikproseslahirwn.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikproseslahirwn.setForeground(new java.awt.Color(50,50,50));
         ppGrafikproseslahirwn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppGrafikproseslahirwn.setText("Perempuan");
         ppGrafikproseslahirwn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikproseslahirwn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikproseslahirwn.setIconTextGap(5);
         ppGrafikproseslahirwn.setName("ppGrafikproseslahirwn"); // NOI18N
         ppGrafikproseslahirwn.setPreferredSize(new java.awt.Dimension(180, 30));
         ppGrafikproseslahirwn.addActionListener(new java.awt.event.ActionListener() {
@@ -746,10 +725,9 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         MnKartu.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKartu.setForeground(new java.awt.Color(70, 70, 70));
+        MnKartu.setForeground(new java.awt.Color(50,50,50));
         MnKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu.setText("Kartu Berobat");
-        MnKartu.setIconTextGap(5);
         MnKartu.setName("MnKartu"); // NOI18N
         MnKartu.setPreferredSize(new java.awt.Dimension(250, 25));
         MnKartu.addActionListener(new java.awt.event.ActionListener() {
@@ -761,10 +739,9 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         MnInformasiBayi.setBackground(new java.awt.Color(255, 255, 254));
         MnInformasiBayi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnInformasiBayi.setForeground(new java.awt.Color(70, 70, 70));
+        MnInformasiBayi.setForeground(new java.awt.Color(50,50,50));
         MnInformasiBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnInformasiBayi.setText("Label Informasi Bayi");
-        MnInformasiBayi.setIconTextGap(5);
         MnInformasiBayi.setName("MnInformasiBayi"); // NOI18N
         MnInformasiBayi.setPreferredSize(new java.awt.Dimension(250, 28));
         MnInformasiBayi.addActionListener(new java.awt.event.ActionListener() {
@@ -776,10 +753,9 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         MnSKL.setBackground(new java.awt.Color(255, 255, 254));
         MnSKL.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSKL.setForeground(new java.awt.Color(70, 70, 70));
+        MnSKL.setForeground(new java.awt.Color(50,50,50));
         MnSKL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSKL.setText("Surat Keterangan Lahir 1");
-        MnSKL.setIconTextGap(5);
         MnSKL.setName("MnSKL"); // NOI18N
         MnSKL.setPreferredSize(new java.awt.Dimension(250, 28));
         MnSKL.addActionListener(new java.awt.event.ActionListener() {
@@ -791,10 +767,9 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         MnSKL1.setBackground(new java.awt.Color(255, 255, 254));
         MnSKL1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSKL1.setForeground(new java.awt.Color(70, 70, 70));
+        MnSKL1.setForeground(new java.awt.Color(50,50,50));
         MnSKL1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSKL1.setText("Surat Keterangan Lahir 2");
-        MnSKL1.setIconTextGap(5);
         MnSKL1.setName("MnSKL1"); // NOI18N
         MnSKL1.setPreferredSize(new java.awt.Dimension(250, 28));
         MnSKL1.addActionListener(new java.awt.event.ActionListener() {
@@ -806,10 +781,9 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         MnSKL2.setBackground(new java.awt.Color(255, 255, 254));
         MnSKL2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSKL2.setForeground(new java.awt.Color(70, 70, 70));
+        MnSKL2.setForeground(new java.awt.Color(50,50,50));
         MnSKL2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSKL2.setText("Surat Keterangan Lahir 3");
-        MnSKL2.setIconTextGap(5);
         MnSKL2.setName("MnSKL2"); // NOI18N
         MnSKL2.setPreferredSize(new java.awt.Dimension(250, 28));
         MnSKL2.addActionListener(new java.awt.event.ActionListener() {
@@ -827,7 +801,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         DlgBridgingLahir.setUndecorated(true);
         DlgBridgingLahir.setResizable(false);
 
-        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Bridging Dukcapil Kelahiran Bayi Wilayah DKI Jakarta ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Bridging Dukcapil Kelahiran Bayi Wilayah DKI Jakarta ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1389,7 +1363,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bayi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bayi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -2793,7 +2767,6 @@ private void BtnEditActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "',nm_pasien='"+NmBayi.getText()+
                     "',jk='"+JKel.getSelectedItem().toString().substring(0,1)+
                     "',tgl_lahir='"+Valid.SetTgl(Lahir.getSelectedItem()+"")+
-                    "',alamat='"+AlamatIbu.getText()+
                     "',tgl_daftar='"+Valid.SetTgl(Daftar.getSelectedItem()+"")+
                     "',umur='"+UmurBayi.getText()+
                     "',nm_ibu='"+Nmibu.getText()+
@@ -2928,6 +2901,8 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
+            Locale locale = new Locale ("id", "ID"); 
+            Locale.setDefault(locale);
             Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
@@ -3495,6 +3470,8 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
+            Locale locale = new Locale ("id", "ID"); 
+            Locale.setDefault(locale);
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());

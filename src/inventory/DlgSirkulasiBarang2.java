@@ -77,7 +77,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());         
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -221,12 +221,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikJualBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikJualBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikJualBanyak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikJualBanyak.setForeground(new java.awt.Color(50,50,50));
         ppGrafikJualBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikJualBanyak.setText("Grafik 10 Barang Penjualan Terbanyak");
         ppGrafikJualBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikJualBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikJualBanyak.setIconTextGap(8);
         ppGrafikJualBanyak.setName("ppGrafikJualBanyak"); // NOI18N
         ppGrafikJualBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikJualBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -238,12 +237,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikJualDikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikJualDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikJualDikit.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikJualDikit.setForeground(new java.awt.Color(50,50,50));
         ppGrafikJualDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikJualDikit.setText("Grafik 10 Barang Penjualan Tersedikit");
         ppGrafikJualDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikJualDikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikJualDikit.setIconTextGap(8);
         ppGrafikJualDikit.setName("ppGrafikJualDikit"); // NOI18N
         ppGrafikJualDikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikJualDikit.addActionListener(new java.awt.event.ActionListener() {
@@ -255,12 +253,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikbeliBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikbeliBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikbeliBanyak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikbeliBanyak.setForeground(new java.awt.Color(50,50,50));
         ppGrafikbeliBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikbeliBanyak.setText("Grafik 10 Barang Pembelian Terbanyak");
         ppGrafikbeliBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikbeliBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikbeliBanyak.setIconTextGap(8);
         ppGrafikbeliBanyak.setName("ppGrafikbeliBanyak"); // NOI18N
         ppGrafikbeliBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikbeliBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -272,12 +269,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikbelidikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikbelidikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikbelidikit.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikbelidikit.setForeground(new java.awt.Color(50,50,50));
         ppGrafikbelidikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikbelidikit.setText("Grafik 10 Barang Pembelian Tersedikit");
         ppGrafikbelidikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikbelidikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikbelidikit.setIconTextGap(8);
         ppGrafikbelidikit.setName("ppGrafikbelidikit"); // NOI18N
         ppGrafikbelidikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikbelidikit.addActionListener(new java.awt.event.ActionListener() {
@@ -289,12 +285,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikPiutangBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPiutangBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPiutangBanyak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikPiutangBanyak.setForeground(new java.awt.Color(50,50,50));
         ppGrafikPiutangBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPiutangBanyak.setText("Grafik 10 Barang Piutang Terbanyak");
         ppGrafikPiutangBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPiutangBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikPiutangBanyak.setIconTextGap(8);
         ppGrafikPiutangBanyak.setName("ppGrafikPiutangBanyak"); // NOI18N
         ppGrafikPiutangBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikPiutangBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -306,12 +301,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikPiutangDikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPiutangDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPiutangDikit.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikPiutangDikit.setForeground(new java.awt.Color(50,50,50));
         ppGrafikPiutangDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPiutangDikit.setText("Grafik 10 Barang Piutang Tersedikit");
         ppGrafikPiutangDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPiutangDikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikPiutangDikit.setIconTextGap(8);
         ppGrafikPiutangDikit.setName("ppGrafikPiutangDikit"); // NOI18N
         ppGrafikPiutangDikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikPiutangDikit.addActionListener(new java.awt.event.ActionListener() {
@@ -323,12 +317,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikResepPaliingBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikResepPaliingBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(50,50,50));
         ppGrafikResepPaliingBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikResepPaliingBanyak.setText("Grafik 10 Barang Resep Ke Pasien Terbanyak");
         ppGrafikResepPaliingBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikResepPaliingBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikResepPaliingBanyak.setIconTextGap(8);
         ppGrafikResepPaliingBanyak.setName("ppGrafikResepPaliingBanyak"); // NOI18N
         ppGrafikResepPaliingBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikResepPaliingBanyak.addActionListener(new java.awt.event.ActionListener() {
@@ -340,12 +333,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikResepPaliingSedikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikResepPaliingSedikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(70, 70, 70));
+        ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(50,50,50));
         ppGrafikResepPaliingSedikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikResepPaliingSedikit.setText("Grafik 10 Barang Resep Ke Pasien Tersedikit");
         ppGrafikResepPaliingSedikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikResepPaliingSedikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppGrafikResepPaliingSedikit.setIconTextGap(8);
         ppGrafikResepPaliingSedikit.setName("ppGrafikResepPaliingSedikit"); // NOI18N
         ppGrafikResepPaliingSedikit.setPreferredSize(new java.awt.Dimension(300, 25));
         ppGrafikResepPaliingSedikit.addActionListener(new java.awt.event.ActionListener() {
@@ -357,12 +349,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLokasi.setForeground(new java.awt.Color(70, 70, 70));
+        ppLokasi.setForeground(new java.awt.Color(50,50,50));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppLokasi.setText("Tampilkan Per Lokasi");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppLokasi.setIconTextGap(8);
         ppLokasi.setName("ppLokasi"); // NOI18N
         ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
         ppLokasi.addActionListener(new java.awt.event.ActionListener() {
@@ -381,7 +372,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

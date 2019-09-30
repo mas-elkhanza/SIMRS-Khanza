@@ -123,8 +123,8 @@ public class DlgRunTeks extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Set Display Antrian Registrasi & Poli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
-        internalFrame1.setForeground(new java.awt.Color(70, 70, 70));
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Set Display Antrian Registrasi & Poli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setForeground(new java.awt.Color(50,50,50));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -314,7 +314,7 @@ public class DlgRunTeks extends javax.swing.JDialog {
         YesNo.setBounds(242, 160, 70, 23);
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Scroll2.setForeground(new java.awt.Color(70, 70, 70));
+        Scroll2.setForeground(new java.awt.Color(50,50,50));
         Scroll2.setName("Scroll2"); // NOI18N
 
         TTeks.setBorder(null);
