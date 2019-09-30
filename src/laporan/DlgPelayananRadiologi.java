@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -96,14 +96,26 @@ public final class DlgPelayananRadiologi extends javax.swing.JDialog {
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
     }    
@@ -149,14 +161,13 @@ public final class DlgPelayananRadiologi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Lama Pelayanan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Lama Pelayanan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,7 +192,6 @@ public final class DlgPelayananRadiologi extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -193,7 +203,6 @@ public final class DlgPelayananRadiologi extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -300,14 +309,14 @@ public final class DlgPelayananRadiologi extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();         
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("tanggal",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());
             Sequel.queryu("delete from temporary_lama_pelayanan_radiologi");
             for(int r=0;r<tabMode.getRowCount();r++){ 
@@ -324,9 +333,8 @@ public final class DlgPelayananRadiologi extends javax.swing.JDialog {
                     tabMode.getValueAt(r,9).toString()+"','"+
                     tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();   
-            Valid.MyReport("rptPelayananRadiologi.jrxml","report","::[ Laporan Lama Pelayanan Radiologi ]::",
-                "select * from temporary_lama_pelayanan_radiologi order by no asc",param);
+               
+            Valid.MyReport("rptPelayananRadiologi.jasper","report","::[ Laporan Lama Pelayanan Radiologi ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -464,14 +472,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "round((TIME_TO_SEC(concat(permintaan_radiologi.tgl_sampel,' ',permintaan_radiologi.jam_sampel))-TIME_TO_SEC(concat(permintaan_radiologi.tgl_permintaan,' ',permintaan_radiologi.jam_permintaan)))/60,2) as permintaansampel, " +
                 "round((TIME_TO_SEC(concat(permintaan_radiologi.tgl_hasil,' ',permintaan_radiologi.jam_hasil))-TIME_TO_SEC(concat(permintaan_radiologi.tgl_sampel,' ',permintaan_radiologi.jam_sampel)))/60,2) as sampelhasil, " +
                 "round((TIME_TO_SEC(concat(permintaan_radiologi.tgl_hasil,' ',permintaan_radiologi.jam_hasil))-TIME_TO_SEC(concat(permintaan_radiologi.tgl_permintaan,' ',permintaan_radiologi.jam_permintaan)))/60,2) as permintaanhasil " +
-                "from reg_periksa inner join dokter inner join pasien inner join permintaan_radiologi " +
-                "on reg_periksa.kd_dokter=dokter.kd_dokter " +
-                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-                "and reg_periksa.no_rawat=permintaan_radiologi.no_rawat "+
-                "where permintaan_radiologi.tgl_permintaan between ? and ? and permintaan_radiologi.noorder like ? or " +
-                "permintaan_radiologi.tgl_permintaan between ? and ? and dokter.nm_dokter like ? or " +
-                "permintaan_radiologi.tgl_permintaan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
-                "permintaan_radiologi.tgl_permintaan between ? and ? and pasien.nm_pasien like ?  "+
+                "from reg_periksa inner join dokter inner join pasien inner join permintaan_radiologi on reg_periksa.kd_dokter=dokter.kd_dokter " +
+                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=permintaan_radiologi.no_rawat where "+
+                "permintaan_radiologi.tgl_sampel<>'0000-00-00' and permintaan_radiologi.tgl_hasil<>'0000-00-00' and permintaan_radiologi.tgl_permintaan between ? and ? and permintaan_radiologi.noorder like ? or " +
+                "permintaan_radiologi.tgl_sampel<>'0000-00-00' and permintaan_radiologi.tgl_hasil<>'0000-00-00' and permintaan_radiologi.tgl_permintaan between ? and ? and dokter.nm_dokter like ? or " +
+                "permintaan_radiologi.tgl_sampel<>'0000-00-00' and permintaan_radiologi.tgl_hasil<>'0000-00-00' and permintaan_radiologi.tgl_permintaan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
+                "permintaan_radiologi.tgl_sampel<>'0000-00-00' and permintaan_radiologi.tgl_hasil<>'0000-00-00' and permintaan_radiologi.tgl_permintaan between ? and ? and pasien.nm_pasien like ?  "+
                 "order by permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));

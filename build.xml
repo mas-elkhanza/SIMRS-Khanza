@@ -73,9 +73,9 @@
     <target name="-post-compile">
         <mkdir dir="${build.dir}/report" />        
         <mkdir dir="${build.dir}/setting" />       
-        <mkdir dir="${build.dir}/suara" />        
+        <mkdir dir="${build.dir}/suara" />      
         <copy todir="${build.dir}/report">
-            <fileset dir="report/" includes="**/*.jrxml" />
+            <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
         </copy>                
         <copy todir="${build.dir}/setting">
             <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />
@@ -88,9 +88,9 @@
     <target name="-post-jar">
         <mkdir dir="${dist.dir}/report" />        
         <mkdir dir="${dist.dir}/setting" />       
-        <mkdir dir="${dist.dir}/suara" />        
+        <mkdir dir="${dist.dir}/suara" />       
         <copy todir="${dist.dir}/report">
-            <fileset dir="report/" includes="**/*.jrxml" />
+            <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
         </copy>               
         <copy todir="${dist.dir}/setting">
             <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />

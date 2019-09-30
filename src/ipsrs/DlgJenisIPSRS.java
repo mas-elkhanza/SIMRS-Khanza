@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -24,6 +24,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -88,14 +90,26 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
         Kd.setDocument(new batasInput((byte)5).getKata(Kd));
         Nm.setDocument(new batasInput((byte)50).getKata(Nm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         try {
@@ -150,7 +164,7 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
 
         ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
         ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppSimpan.setForeground(new java.awt.Color(70,70,70));
+        ppSimpan.setForeground(new java.awt.Color(50,50,50));
         ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         ppSimpan.setText("Simpan");
         ppSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -167,7 +181,7 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
 
         ppGanti.setBackground(new java.awt.Color(242, 242, 242));
         ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(70,70,70));
+        ppGanti.setForeground(new java.awt.Color(50,50,50));
         ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         ppGanti.setText("Ganti");
         ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -184,7 +198,7 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(70,70,70));
+        ppHapus.setForeground(new java.awt.Color(50,50,50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -201,7 +215,7 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(242, 242, 242));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(70,70,70));
+        ppCetak.setForeground(new java.awt.Color(50,50,50));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -225,7 +239,7 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Jenis Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Jenis Barang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -569,10 +583,17 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptIpsrsJenis.jrxml","report","::[ Data Jenis Barang ]::","select kd_jenis, nm_jenis "+
+        }else if(tabMode.getRowCount()!=0){   
+            Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+            Valid.MyReportqry("rptIpsrsJenis.jasper","report","::[ Data Jenis Barang ]::","select kd_jenis, nm_jenis "+
                 " from ipsrsjenisbarang where  kd_jenis like '%"+TCari.getText().trim()+"%' or "+
-                " nm_jenis like '%"+TCari.getText().trim()+"%' order by kd_jenis");
+                " nm_jenis like '%"+TCari.getText().trim()+"%' order by kd_jenis",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -732,15 +753,15 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getipsrs_jenis_barang());
-        BtnHapus.setEnabled(var.getipsrs_jenis_barang());
-        BtnEdit.setEnabled(var.getipsrs_jenis_barang());
-        BtnPrint.setEnabled(var.getipsrs_jenis_barang());
+        BtnSimpan.setEnabled(akses.getipsrs_jenis_barang());
+        BtnHapus.setEnabled(akses.getipsrs_jenis_barang());
+        BtnEdit.setEnabled(akses.getipsrs_jenis_barang());
+        BtnPrint.setEnabled(akses.getipsrs_jenis_barang());
         
-        ppGanti.setEnabled(var.getipsrs_jenis_barang());        
-        ppHapus.setEnabled(var.getipsrs_jenis_barang());
-        ppCetak.setEnabled(var.getipsrs_jenis_barang());
-        ppSimpan.setEnabled(var.getipsrs_jenis_barang());
+        ppGanti.setEnabled(akses.getipsrs_jenis_barang());        
+        ppHapus.setEnabled(akses.getipsrs_jenis_barang());
+        ppCetak.setEnabled(akses.getipsrs_jenis_barang());
+        ppSimpan.setEnabled(akses.getipsrs_jenis_barang());
     }
     
 }

@@ -10,7 +10,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -24,6 +24,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import laporan.DlgICD9;
+import laporan.DlgPenyakit;
 
 /**
  *
@@ -218,25 +220,49 @@ public class PanelDiagnosa extends widget.panelisi {
         Diagnosa.setDocument(new batasInput((byte)100).getKata(Diagnosa));
         Prosedur.setDocument(new batasInput((byte)100).getKata(Prosedur));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Diagnosa.getText().length()>2){
+                        tampildiagnosa();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Diagnosa.getText().length()>2){
+                        tampildiagnosa();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Diagnosa.getText().length()>2){
+                        tampildiagnosa();
+                    }
+                }
             });
         } 
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             Prosedur.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(Prosedur.getText().length()>2){
+                        tampilprosedure();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(Prosedur.getText().length()>2){
+                        tampilprosedure();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampildiagnosa();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(Prosedur.getText().length()>2){
+                        tampilprosedure();
+                    }
+                }
             });
         } 
     }
@@ -275,9 +301,8 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll3 = new widget.ScrollPane();
         tbTindakanPasien = new widget.Table();
 
-        MnStatusBaru.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusBaru.setForeground(new java.awt.Color(70, 70, 70));
+        MnStatusBaru.setForeground(new java.awt.Color(50, 50, 50));
         MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusBaru.setText("Status Penyakit Baru");
         MnStatusBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -290,9 +315,8 @@ public class PanelDiagnosa extends widget.panelisi {
         });
         jPopupMenu1.add(MnStatusBaru);
 
-        MnStatusLama.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusLama.setForeground(new java.awt.Color(70, 70, 70));
+        MnStatusLama.setForeground(new java.awt.Color(50, 50, 50));
         MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusLama.setText("Status Penyakit Lama");
         MnStatusLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -309,8 +333,7 @@ public class PanelDiagnosa extends widget.panelisi {
         setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(null);
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -363,8 +386,6 @@ public class PanelDiagnosa extends widget.panelisi {
 
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll1.setOpaque(true);
-
-        tbDiagnosa.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Scroll1.setViewportView(tbDiagnosa);
 
         FormData.add(Scroll1);
@@ -426,8 +447,6 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll.setOpaque(true);
 
         tbDiagnosaPasien.setAutoCreateRowSorter(true);
-        tbDiagnosaPasien.setBorder(null);
-        tbDiagnosaPasien.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDiagnosaPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll.setViewportView(tbDiagnosaPasien);
 
@@ -442,8 +461,6 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll3.setOpaque(true);
 
         tbTindakanPasien.setAutoCreateRowSorter(true);
-        tbTindakanPasien.setBorder(null);
-        tbTindakanPasien.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTindakanPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll3.setViewportView(tbTindakanPasien);
 
@@ -458,7 +475,7 @@ public class PanelDiagnosa extends widget.panelisi {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampildiagnosa();            
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(var.getpenyakit()==true){
+            if(akses.getpenyakit()==true){
                 btnTambahPenyakitActionPerformed(null);
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -485,7 +502,7 @@ public class PanelDiagnosa extends widget.panelisi {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampilprosedure();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            if(var.geticd9()==true){
+            if(akses.geticd9()==true){
                 btnTambahProsedurActionPerformed(null);
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -701,7 +718,7 @@ public class PanelDiagnosa extends widget.panelisi {
                     " penyakit.keterangan like ? or "+
                     " kategori_penyakit.nm_kategori like ? or "+
                     " kategori_penyakit.ciri_umum like ? "+
-                    "order by penyakit.kd_penyakit  LIMIT 100");
+                    "order by penyakit.kd_penyakit  LIMIT 1000");
             try {
                 pspenyakit.setString(1,"%"+Diagnosa.getText().trim()+"%");
                 pspenyakit.setString(2,"%"+Diagnosa.getText().trim()+"%");
@@ -980,14 +997,14 @@ public class PanelDiagnosa extends widget.panelisi {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(TabModeDiagnosaPasien.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDiagnosa.jrxml","report","::[ Data Diagnosa Pasien ]::",
+                Valid.MyReportqry("rptDiagnosa.jasper","report","::[ Data Diagnosa Pasien ]::",
                         "select reg_periksa.tgl_registrasi,diagnosa_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                         "diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status,diagnosa_pasien.status_penyakit "+
                         "from diagnosa_pasien inner join reg_periksa inner join pasien inner join penyakit "+
@@ -1008,14 +1025,14 @@ public class PanelDiagnosa extends widget.panelisi {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             }else if(TabModeTindakanPasien.getRowCount()!=0){
                 Map<String, Object> param = new HashMap<>();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptProsedur.jrxml","report","::[ Data Prosedur Tindakan Pasien ]::",
+                Valid.MyReportqry("rptProsedur.jasper","report","::[ Data Prosedur Tindakan Pasien ]::",
                         "select reg_periksa.tgl_registrasi,prosedur_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                         "prosedur_pasien.kode,icd9.deskripsi_panjang, prosedur_pasien.status "+
                         "from prosedur_pasien inner join reg_periksa inner join pasien inner join icd9 "+

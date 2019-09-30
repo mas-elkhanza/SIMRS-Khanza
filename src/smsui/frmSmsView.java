@@ -94,7 +94,7 @@ public class frmSmsView extends javax.swing.JFrame {
         internalFrame1.add(panelStatus1);
         panelStatus1.setBounds(2, 495, 540, 32);
 
-        scrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 242, 232), 1, true), "Log SMS Masuk", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(70,70,70))); // NOI18N
+        scrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 242, 232), 1, true), "Log SMS Masuk", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50,50,50))); // NOI18N
 
         logArea.setBorder(null);
         logArea.setColumns(20);
@@ -104,7 +104,7 @@ public class frmSmsView extends javax.swing.JFrame {
         internalFrame1.add(scrollPane1);
         scrollPane1.setBounds(0, 159, 544, 332);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 242, 232), 1, true), "Action", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(70,70,70))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 242, 232), 1, true), "Action", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50,50,50))); // NOI18N
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
 

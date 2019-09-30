@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -95,14 +95,26 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
         Kode.setDocument(new batasInput((byte)5).getKata(Kode));
         Nama.setDocument(new batasInput((int)100).getKata(Nama));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         
@@ -161,7 +173,7 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Insiden Keselamatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Insiden Keselamatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -393,7 +405,7 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kode);
-        Kode.setBounds(88, 12, 90, 23);
+        Kode.setBounds(88, 12, 100, 23);
 
         jLabel8.setText("Nama Insiden :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -417,14 +429,13 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
 
         Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KPC", "KTC", "KNC", "KTD", "Sentinel" }));
         Jenis.setName("Jenis"); // NOI18N
-        Jenis.setOpaque(false);
         Jenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisKeyPressed(evt);
             }
         });
         FormInput.add(Jenis);
-        Jenis.setBounds(88, 42, 90, 23);
+        Jenis.setBounds(88, 42, 100, 23);
 
         jLabel10.setText("Dampak/Severity :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -433,14 +444,13 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
 
         Dampak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Tidak Signifikan", "2. Minor", "3. Moderat", "4. Mayor", "5. Katastropik" }));
         Dampak.setName("Dampak"); // NOI18N
-        Dampak.setOpaque(false);
         Dampak.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DampakKeyPressed(evt);
             }
         });
         FormInput.add(Dampak);
-        Dampak.setBounds(313, 42, 180, 23);
+        Dampak.setBounds(313, 42, 200, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -572,14 +582,14 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){  
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting"));           
-            Valid.MyReport("rptInsidenKeselamatan.jrxml","report","::[ Master Insiden Kecelakaan ]::",
+            Valid.MyReportqry("rptInsidenKeselamatan.jasper","report","::[ Master Insiden Kecelakaan ]::",
                 "select * from insiden_keselamatan where kode_insiden like '%"+TCari.getText().trim()+"%' or "+
                 "nama_insiden like '%"+TCari.getText().trim()+"%' or "+
                 "jenis_insiden like '%"+TCari.getText().trim()+"%' or "+
@@ -796,9 +806,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinsiden_keselamatan());
-        BtnHapus.setEnabled(var.getinsiden_keselamatan());
-        BtnEdit.setEnabled(var.getinsiden_keselamatan());
-        BtnPrint.setEnabled(var.getinsiden_keselamatan());
+        BtnSimpan.setEnabled(akses.getinsiden_keselamatan());
+        BtnHapus.setEnabled(akses.getinsiden_keselamatan());
+        BtnEdit.setEnabled(akses.getinsiden_keselamatan());
+        BtnPrint.setEnabled(akses.getinsiden_keselamatan());
     }
 }

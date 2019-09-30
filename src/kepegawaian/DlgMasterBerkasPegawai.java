@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -102,14 +102,26 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
         TNm.setDocument(new batasInput((int)300).getKata(TNm));
         TUrut.setDocument(new batasInput((byte)3).getKata(TUrut));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         } 
         TKd.requestFocus();
@@ -125,8 +137,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -155,24 +165,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
         jLabel5 = new widget.Label();
         TUrut = new widget.TextBox();
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
-        MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(70, 70, 70));
-        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRestore.setText("Data Sampah");
-        MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setName("MnRestore"); // NOI18N
-        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
-        MnRestore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnRestoreActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnRestore);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
         setIconImages(null);
@@ -184,18 +176,16 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Berkas Pegawai ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Berkas Pegawai ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbBangsal.setAutoCreateRowSorter(true);
         tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -440,7 +430,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
 
         CmbKategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenaga klinis Dokter Umum", "Tenaga klinis Dokter Spesialis", "Tenaga klinis Perawat dan Bidan", "Tenaga klinis Profesi Lain", "Tenaga Non Klinis" }));
         CmbKategori.setName("CmbKategori"); // NOI18N
-        CmbKategori.setOpaque(false);
         CmbKategori.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CmbKategoriKeyPressed(evt);
@@ -582,14 +571,14 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();
             param.put("parameter","%"+TCari.getText().trim()+"%");     
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptMasterBerkasPegawai.jrxml",param,"::[ Master Berkas Pegawai ]::");
+            Valid.MyReport("rptMasterBerkasPegawai.jasper",param,"::[ Master Berkas Pegawai ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -670,13 +659,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
-        DlgRestoreBangsal restore=new DlgRestoreBangsal(null,true);
-        restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        restore.setLocationRelativeTo(internalFrame1);
-        restore.setVisible(true);
-    }//GEN-LAST:event_MnRestoreActionPerformed
-
     private void CmbKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbKategoriKeyPressed
         Valid.pindah(evt,TKd,TNm);
     }//GEN-LAST:event_CmbKategoriKeyPressed
@@ -712,7 +694,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
     private widget.Button BtnSimpan;
     private widget.ComboBox CmbKategori;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnRestore;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
@@ -726,7 +707,6 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;

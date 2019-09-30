@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -109,8 +109,6 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnLaporanBiayaRalan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -127,22 +125,6 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnLaporanBiayaRalan.setBackground(new java.awt.Color(255, 255, 255));
-        MnLaporanBiayaRalan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        MnLaporanBiayaRalan.setForeground(java.awt.Color.darkGray);
-        MnLaporanBiayaRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
-        MnLaporanBiayaRalan.setText("Laporan Biaya Rawat Jalan");
-        MnLaporanBiayaRalan.setName("MnLaporanBiayaRalan"); // NOI18N
-        MnLaporanBiayaRalan.setPreferredSize(new java.awt.Dimension(250, 28));
-        MnLaporanBiayaRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnLaporanBiayaRalanActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnLaporanBiayaRalan);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -152,16 +134,13 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Penyakit Menular di Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Penyakit Menular di Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -186,7 +165,6 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -198,7 +176,6 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -274,7 +251,7 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Map<String, Object> param = new HashMap<>();            
             param.put("tkr1l",(tkr1l+tkr1p));
             param.put("tth1s4l",(tth1s4l+tth1s4p));
@@ -286,12 +263,12 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
             param.put("ttotall",(ttotall+ttotalp));
             param.put("ttotaljml",ttotaljml);
             param.put("tmatil",(tmatil+tmatip));
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());   
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Sequel.queryu("delete from temporary");
             for(int r=0;r<tabMode.getRowCount();r++){  
@@ -317,9 +294,8 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-            Sequel.AutoComitTrue();   
-            Valid.MyReport("rptDkkPenyakitMenularRalan.jrxml","report","::[ Penyakit Menular Rawat Jalan ]::",
-                "select * from temporary order by no asc",param);
+               
+            Valid.MyReport("rptDkkPenyakitMenularRalan.jasper","report","::[ Penyakit Menular Rawat Jalan ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -362,15 +338,6 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbBangsalKeyPressed
 
-private void MnLaporanBiayaRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLaporanBiayaRalanActionPerformed
-     if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            tbBangsal.requestFocus();
-        }else{
-            Valid.panggilUrl("billing/LaporanBiayaRalan.php?tgl1="+Valid.SetTgl(Valid.SetTgl(Tgl1.getSelectedItem()+"")+"")+"&tgl2="+Valid.SetTgl(Tgl2.getSelectedItem()+""));                       
-        } 
-}//GEN-LAST:event_MnLaporanBiayaRalanActionPerformed
-
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         
         tampil();
@@ -410,13 +377,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private javax.swing.JMenuItem MnLaporanBiayaRalan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TKd;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label18;

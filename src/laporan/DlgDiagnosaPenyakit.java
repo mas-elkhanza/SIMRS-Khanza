@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Date;
@@ -49,25 +49,31 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));     
         TCariPasien.setDocument(new batasInput((byte)20).getKata(TCariPasien));     
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-                    panelDiagnosa1.pilihTab();
-                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                    if(TCari.getText().length()>2){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.pilihTab();
+                        LCount.setText(panelDiagnosa1.getRecord()+"");
+                    }                        
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-                    panelDiagnosa1.pilihTab();
-                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                    if(TCari.getText().length()>2){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.pilihTab();
+                        LCount.setText(panelDiagnosa1.getRecord()+"");
+                    } 
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-                    panelDiagnosa1.pilihTab();
-                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                    if(TCari.getText().length()>2){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.pilihTab();
+                        LCount.setText(panelDiagnosa1.getRecord()+"");
+                    } 
                 }
             });
         } 
@@ -266,7 +272,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -409,7 +415,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         jLabel14.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass9.add(jLabel14);
 
-        DTPCari1.setEditable(false);
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
@@ -422,7 +427,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(18, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari2.setEditable(false);
         DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
@@ -543,7 +547,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ralan", "Ranap" }));
         Status.setName("Status"); // NOI18N
-        Status.setOpaque(false);
         Status.setPreferredSize(new java.awt.Dimension(308, 23));
         FormInput.add(Status);
         Status.setBounds(720, 10, 108, 23);
@@ -797,11 +800,11 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getdiagnosa_pasien());
-        BtnHapus.setEnabled(var.getdiagnosa_pasien());        
-        BtnPrint.setEnabled(var.getdiagnosa_pasien());
-        panelDiagnosa1.btnTambahPenyakit.setEnabled(var.getpenyakit());
-        panelDiagnosa1.btnTambahProsedur.setEnabled(var.geticd9());
+        BtnSimpan.setEnabled(akses.getdiagnosa_pasien());
+        BtnHapus.setEnabled(akses.getdiagnosa_pasien());        
+        BtnPrint.setEnabled(akses.getdiagnosa_pasien());
+        panelDiagnosa1.btnTambahPenyakit.setEnabled(akses.getpenyakit());
+        panelDiagnosa1.btnTambahProsedur.setEnabled(akses.geticd9());
     }
 
     

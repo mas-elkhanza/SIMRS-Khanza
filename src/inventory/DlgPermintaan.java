@@ -6,10 +6,9 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -34,7 +33,6 @@ public class DlgPermintaan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int jml=0,i=0,row=0,index=0;
     private String[] jumlah,kodebarang,namabarang,satuan,jenis,kategori,golongan,keterangan;
     private WarnaTable2 warna=new WarnaTable2();
@@ -42,6 +40,7 @@ public class DlgPermintaan extends javax.swing.JDialog {
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     private DlgCariPermintaan form=new DlgCariPermintaan(null,false);
     private DlgBarang barang=new DlgBarang(null,false);
+    private boolean sukses=true;
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -91,14 +90,26 @@ public class DlgPermintaan extends javax.swing.JDialog {
         kdgudang.setDocument(new batasInput((byte)5).getKata(kdgudang));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }
         
@@ -204,14 +215,13 @@ public class DlgPermintaan extends javax.swing.JDialog {
 
         Popup.setName("Popup"); // NOI18N
 
-        ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
+        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBersihkan.setIconTextGap(8);
         ppBersihkan.setName("ppBersihkan"); // NOI18N
         ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
         ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +240,7 @@ public class DlgPermintaan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengajuan Permintaan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Permintaan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -391,7 +401,7 @@ public class DlgPermintaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoPermintaan);
-        NoPermintaan.setBounds(95, 10, 110, 23);
+        NoPermintaan.setBounds(95, 10, 120, 23);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
@@ -399,7 +409,6 @@ public class DlgPermintaan extends javax.swing.JDialog {
         panelisi3.add(label11);
         label11.setBounds(220, 10, 55, 23);
 
-        Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addItemListener(new java.awt.event.ItemListener() {
@@ -556,30 +565,41 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
-                if(Sequel.menyimpantf("permintaan_medis","?,?,?,?,?","No.Permintaan",5,new String[]{
+                sukses=true;
+                if(Sequel.menyimpantf2("permintaan_medis","?,?,?,?,?","No.Permintaan",5,new String[]{
                         NoPermintaan.getText(),kdgudang.getText(),kdptg.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"Baru"
                     })==true){
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    Sequel.menyimpan("detail_permintaan_medis","?,?,?,?,?","Detail Permintaan",5,new String[]{
+                                    if(Sequel.menyimpantf2("detail_permintaan_medis","?,?,?,?,?","Detail Permintaan",5,new String[]{
                                            NoPermintaan.getText(),
                                            tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
                                            tbDokter.getValueAt(i,0).toString(),
                                            tbDokter.getValueAt(i,7).toString().replaceAll("'","").replaceAll("\"","")
-                                    });                                   
+                                    })==false){
+                                        sukses=false;
+                                    }                              
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
                             }                
                         }
-                        
-                        jml=tbDokter.getRowCount();
-                        for(i=0;i<jml;i++){ 
-                            tbDokter.setValueAt("",i,0);
-                            tbDokter.setValueAt("",i,7);
-                        }
+                }else{
+                    sukses=false;
+                    JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Permintaan sudah ada sebelumnya...!!");
+                } 
+                if(sukses==true){
+                    Sequel.Commit();
+                    jml=tbDokter.getRowCount();
+                    for(i=0;i<jml;i++){ 
+                        tbDokter.setValueAt("",i,0);
+                        tbDokter.setValueAt("",i,7);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
                 }
                 Sequel.AutoComitTrue();
                 autoNomor();
@@ -872,12 +892,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
-            kdptg.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getpermintaan_medis());
-            BtnTambah.setEnabled(var.getobat());
+            kdptg.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getpermintaan_medis());
+            BtnTambah.setEnabled(akses.getobat());
             Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             Sequel.cariIsi("select departemen from pegawai where nik=?",Departemen,kdptg.getText());
         }        
@@ -885,7 +905,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_permintaan,3),signed)),0) from permintaan_medis where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PM"+Tanggal.getSelectedItem().toString().substring(8,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPermintaan); 
+                "PM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPermintaan); 
     }
 
  

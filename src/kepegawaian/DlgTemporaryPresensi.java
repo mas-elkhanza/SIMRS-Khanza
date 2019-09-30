@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -100,14 +100,26 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         tbTemporary.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        tampil();
+                    }
+                }
             });
         }  
         
@@ -151,9 +163,9 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         Popup2.setName("Popup2"); // NOI18N
 
-        ppVerify.setBackground(new java.awt.Color(255, 255, 255));
+        ppVerify.setBackground(new java.awt.Color(255, 255, 254));
         ppVerify.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerify.setForeground(new java.awt.Color(70, 70, 70));
+        ppVerify.setForeground(new java.awt.Color(50,50,50));
         ppVerify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerify.setText("Verifikasi Presensi Yang Lebih Dari 16 Jam");
         ppVerify.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -168,9 +180,9 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         });
         Popup2.add(ppVerify);
 
-        ppVerifySemua.setBackground(new java.awt.Color(255, 255, 255));
+        ppVerifySemua.setBackground(new java.awt.Color(255, 255, 254));
         ppVerifySemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerifySemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppVerifySemua.setForeground(new java.awt.Color(50,50,50));
         ppVerifySemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerifySemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppVerifySemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -185,9 +197,9 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         });
         Popup2.add(ppVerifySemua);
 
-        ppHapusSemua.setBackground(new java.awt.Color(255, 255, 255));
+        ppHapusSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusSemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapusSemua.setForeground(new java.awt.Color(50,50,50));
         ppHapusSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -202,9 +214,9 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         });
         Popup2.add(ppHapusSemua);
 
-        ppPilihSemua.setBackground(new java.awt.Color(255, 255, 255));
+        ppPilihSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppPilihSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPilihSemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppPilihSemua.setForeground(new java.awt.Color(50,50,50));
         ppPilihSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -219,9 +231,9 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         });
         Popup2.add(ppPilihSemua);
 
-        ppBersihkanSemua.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkanSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanSemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppBersihkanSemua.setForeground(new java.awt.Color(50,50,50));
         ppBersihkanSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanSemua.setText("Bersihkan Pilihan");
         ppBersihkanSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -236,9 +248,9 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         });
         Popup2.add(ppBersihkanSemua);
 
-        ppVerifyOtomatis.setBackground(new java.awt.Color(255, 255, 255));
+        ppVerifyOtomatis.setBackground(new java.awt.Color(255, 255, 254));
         ppVerifyOtomatis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerifyOtomatis.setForeground(new java.awt.Color(70, 70, 70));
+        ppVerifyOtomatis.setForeground(new java.awt.Color(50,50,50));
         ppVerifyOtomatis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerifyOtomatis.setText("Jalan Verifikasi Otomatis");
         ppVerifyOtomatis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -264,7 +276,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Temporary Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Temporary Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -274,7 +286,6 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbTemporary.setAutoCreateRowSorter(true);
-        tbTemporary.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTemporary.setComponentPopupMenu(Popup2);
         tbTemporary.setName("tbTemporary"); // NOI18N
         Scroll.setViewportView(tbTemporary);
@@ -460,7 +471,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
             if(tbTemporary.getValueAt(i,0).toString().equals("true")){
                 Sequel.queryu2("insert into rekap_presensi values(?,?,?,?,?,?,?,?,?)", 9,new String[]{
@@ -474,7 +485,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 });
             }
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_BtnTambahActionPerformed
 
@@ -487,7 +498,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
             if(tbTemporary.getValueAt(i,0).toString().equals("true")){
                 Sequel.queryu2("delete from temporary_presensi where id=? and jam_datang=?",2,new String[]{
@@ -495,7 +506,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 });
             }
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -517,14 +528,14 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTemporaryPresensi.jrxml","report","::[ Temporary Presensi ]::",
+                Valid.MyReportqry("rptTemporaryPresensi.jasper","report","::[ Temporary Presensi ]::",
                     "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift, " +
                     "temporary_presensi.jam_datang, now() as jam_pulang, temporary_presensi.status,  " +
                     "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,temporary_presensi.photo  from pegawai  " +
@@ -576,7 +587,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void ppVerifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppVerifyActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
             if(Double.parseDouble(tbTemporary.getValueAt(i,9).toString())>16){
                 Sequel.queryu2("insert into rekap_presensi values(?,?,?,?,?,?,?,?,?)", 9,new String[]{
@@ -590,12 +601,12 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 });
             }
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_ppVerifyActionPerformed
 
     private void ppVerifySemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppVerifySemuaActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
                 Sequel.queryu2("insert into rekap_presensi values(?,?,?,?,?,?,?,?,?)", 9,new String[]{
                     tbTemporary.getValueAt(i,1).toString(),tbTemporary.getValueAt(i,4).toString(),
@@ -607,18 +618,18 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                     tbTemporary.getValueAt(i,1).toString(),tbTemporary.getValueAt(i,5).toString()
                 });
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_ppVerifySemuaActionPerformed
 
     private void ppHapusSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusSemuaActionPerformed
-        Sequel.AutoComitFalse();
+        
         for(i=0;i<tbTemporary.getRowCount();i++){ 
                 Sequel.queryu2("delete from temporary_presensi where id=? and jam_datang=?",2,new String[]{
                     tbTemporary.getValueAt(i,1).toString(),tbTemporary.getValueAt(i,5).toString()
                 });
         }
-        Sequel.AutoComitTrue();
+        
         tampil();
     }//GEN-LAST:event_ppHapusSemuaActionPerformed
 
@@ -733,11 +744,11 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnTambah.setEnabled(var.gettemporary_presensi());
-        BtnHapus.setEnabled(var.gettemporary_presensi());
-        BtnPrint.setEnabled(var.gettemporary_presensi());
+        BtnTambah.setEnabled(akses.gettemporary_presensi());
+        BtnHapus.setEnabled(akses.gettemporary_presensi());
+        BtnPrint.setEnabled(akses.gettemporary_presensi());
         
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             ppVerifyOtomatis.setEnabled(true);
         }else{
             ppVerifyOtomatis.setEnabled(false);

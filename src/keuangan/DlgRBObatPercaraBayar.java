@@ -4,7 +4,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -15,14 +15,12 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgPenanggungJawab;
 
 public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
@@ -30,14 +28,12 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Jurnal jur=new Jurnal();
     private PreparedStatement pspenjab,psresep,psresep2;
     private ResultSet rspenjab,rsresep; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private int i=0,a=0;
     private double subtotal=0,ttlbiaya=0,embalase=0,ttlembalase=0,tuslah=0,ttltuslah=0;
-    private String carabayar="",jumlah,total,emb,tsl;
+    private String jumlah,total,emb,tsl;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -190,15 +186,15 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnUrut1.setBackground(new java.awt.Color(255, 255, 255));
+        MnUrut1.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUrut1.setForeground(new java.awt.Color(70, 70, 70));
+        MnUrut1.setForeground(new java.awt.Color(50,50,50));
         MnUrut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUrut1.setText("Urutkan Berdasar Tanggal Pemberian");
         MnUrut1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut1.setName("MnUrut1"); // NOI18N
-        MnUrut1.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUrut1.setPreferredSize(new java.awt.Dimension(250, 26));
         MnUrut1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUrut1ActionPerformed(evt);
@@ -206,16 +202,16 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnUrut1);
 
-        MnUrut2.setBackground(new java.awt.Color(255, 255, 255));
+        MnUrut2.setBackground(new java.awt.Color(255, 255, 254));
         MnUrut2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUrut2.setForeground(new java.awt.Color(70, 70, 70));
+        MnUrut2.setForeground(new java.awt.Color(50,50,50));
         MnUrut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUrut2.setText("Urutkan Berdasar Nama Pasien");
         MnUrut2.setActionCommand("Urutkan Berdasar Nomor Perawatan");
         MnUrut2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnUrut2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnUrut2.setName("MnUrut2"); // NOI18N
-        MnUrut2.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUrut2.setPreferredSize(new java.awt.Dimension(250, 26));
         MnUrut2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUrut2ActionPerformed(evt);
@@ -232,7 +228,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -267,7 +263,6 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label11);
 
-        Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -284,7 +279,6 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
         panelisi4.add(label18);
 
-        Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -430,7 +424,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
+            
             Sequel.queryu("delete from temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 jumlah="";
@@ -464,17 +458,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"','"+
                                 jumlah+"','"+total+"','"+emb+"','"+tsl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Obat Perpenjab Poli"); 
             }
-            Sequel.AutoComitTrue();            
+                        
             Map<String, Object> param = new HashMap<>();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRBObatPerCaraBayar.jrxml","report","[ Rekap Obat Per Cara Bayar ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            Valid.MyReport("rptRBObatPerCaraBayar.jasper","report","[ Rekap Obat Per Cara Bayar ]",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
