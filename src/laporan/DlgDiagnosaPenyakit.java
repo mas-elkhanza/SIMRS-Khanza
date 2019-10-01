@@ -660,7 +660,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         TCariPasien.setText("");
-        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+        panelDiagnosa1.setRM(TNoRw.getText(),TCariPasien.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
         panelDiagnosa1.pilihTab();
         LCount.setText(panelDiagnosa1.getRecord()+"");
 }//GEN-LAST:event_BtnAllActionPerformed

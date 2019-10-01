@@ -971,6 +971,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     "rawat_jl_dr.tarif_tindakandr>0 and rawat_jl_dr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? and rawat_jl_dr.no_rawat=? "+
                                     "group by rawat_jl_dr.kd_jenis_prw order by jns_perawatan.nm_perawatan");   
                                 try {
+                                    a=1;
                                     pstindakanralan.setString(1,rs.getString("kd_dokter"));
                                     pstindakanralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                                     pstindakanralan.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -986,7 +987,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_registrasi"),rspasien.getString("no_rkm_medis")+" "+rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
                                             c++;
                                         }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rspasien.getString("no_rkm_medis")+" "+rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
                                         }                           
                                         a++;
                                     }
