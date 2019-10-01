@@ -149,6 +149,7 @@ public class DlgProyeksiBeriObat extends javax.swing.JDialog {
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
     private double total=0;
+    private double totaltuslah=0;
     private DlgBarang barang=new DlgBarang(null,false);
 
     /** This method is called from within the constructor to
@@ -179,6 +180,8 @@ public class DlgProyeksiBeriObat extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         label9 = new widget.Label();
         LTotal = new widget.Label();
+        label12 = new widget.Label();
+        LTotaltuslah = new widget.Label();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -196,7 +199,7 @@ public class DlgProyeksiBeriObat extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Proyeksi Keuntungan Obat, Alkes & BHP Medis Ranap & Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Proyeksi Keuntungan Obat, Alkes & BHP Medis Ranap & Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -322,6 +325,17 @@ public class DlgProyeksiBeriObat extends javax.swing.JDialog {
         LTotal.setName("LTotal"); // NOI18N
         LTotal.setPreferredSize(new java.awt.Dimension(155, 30));
         panelisi1.add(LTotal);
+
+        label12.setText("Total Tuslah:");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(80, 30));
+        panelisi1.add(label12);
+
+        LTotaltuslah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotaltuslah.setText("0");
+        LTotaltuslah.setName("LTotaltuslah"); // NOI18N
+        LTotaltuslah.setPreferredSize(new java.awt.Dimension(155, 30));
+        panelisi1.add(LTotaltuslah);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('A');
@@ -539,6 +553,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnPrint;
     private widget.TextBox Kd2;
     private widget.Label LTotal;
+    private widget.Label LTotaltuslah;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
@@ -547,6 +562,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox kdbar;
     private widget.Label label10;
     private widget.Label label11;
+    private widget.Label label12;
     private widget.Label label17;
     private widget.Label label18;
     private widget.Label label9;
@@ -585,8 +601,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.no_rawat");
             ResultSet rs=ps.executeQuery();
             total=0;
+            totaltuslah=0;
             while(rs.next()){
                 total=total+rs.getDouble(13);
+                totaltuslah=totaltuslah+rs.getDouble(9);
                 String[] data={rs.getString(1),
                                 rs.getString(2),
                                 rs.getString(3)+", "+rs.getString(4),
@@ -601,7 +619,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 df2.format(rs.getDouble(13))};
                 tabMode.addRow(data);  
             }  
-            LTotal.setText(df2.format(total));                
+            LTotal.setText(df2.format(total)); 
+            LTotaltuslah.setText(df2.format(totaltuslah));
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
