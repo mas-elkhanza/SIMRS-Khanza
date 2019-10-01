@@ -3348,7 +3348,7 @@ public final class DlgReg extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2019" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2019" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -3395,7 +3395,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2019" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2019" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -4414,7 +4414,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4427,7 +4427,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4542,6 +4542,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(TDokter);
         TDokter.setBounds(183, 102, 209, 23);
 
+        TNoRw.setEditable(false);
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
         TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -4567,13 +4568,18 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2019" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2019" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
         DTPReg.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 DTPRegItemStateChanged(evt);
+            }
+        });
+        DTPReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DTPRegActionPerformed(evt);
             }
         });
         DTPReg.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -5043,6 +5049,10 @@ public final class DlgReg extends javax.swing.JDialog {
                  "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNoRM.getText())>0){
             JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
             TNoRM.requestFocus();
+        }else if(Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='"+TNoReg.getText()+"' and kd_dokter='"+kddokter.getText()+
+                "' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ")>0){
+                        JOptionPane.showMessageDialog(null,"Eiiits, Hayo no registrasi double nih!");
+                        TNoReg.requestFocus();
         }else if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.no_rkm_medis='"+ 
                 TNoRM.getText() +"' and kd_dokter='"+kddokter.getText()+"' and kd_pj='"+ kdpnj.getText() +
                 "' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ")>0){
@@ -5237,6 +5247,44 @@ public final class DlgReg extends javax.swing.JDialog {
             Valid.textKosong(kdpoli,"poliklinik");
         }else if(TBiaya.getText().trim().equals("")){
             Valid.textKosong(TBiaya,"biaya regristrasi");
+        }else if(Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='"+TNoReg.getText()+"' and no_rawat='"+TNoRw.getText()+
+                "' and no_rkm_medis='"+ TNoRM.getText() +"' and kd_dokter='"+kddokter.getText()+
+                "' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ")<1){
+            if(Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='"+TNoReg.getText()+"' and kd_dokter='"+kddokter.getText()+
+                "' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ")>0){
+                        JOptionPane.showMessageDialog(null,"Eiiits, Hayo no registrasi double nih!");
+                        TNoReg.requestFocus();
+            } else{
+                if(tbPetugas.getSelectedRow()>-1){
+                    if(akses.getedit_registrasi()==true){
+                        Sequel.queryu2("update reg_periksa set no_rawat=?,no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"+
+                            "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",16,
+                            new String[]{TNoRw.getText(),TNoReg.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
+                                kddokter.getText(),TNoRM.getText(),kdpoli.getText(),TPngJwb.getText(),TAlmt.getText(),TBiaya.getText(),THbngn.getText(),
+                                TStatus.getText(),kdpnj.getText(),umur,sttsumur,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString()
+                            });
+                    }else{
+                        if((Sequel.cariInteger("select count(no_rawat) from rawat_jl_dr where no_rawat=?",TNoRw.getText())>0)||
+                                (Sequel.cariInteger("select count(no_rawat) from rawat_jl_pr where no_rawat=?",TNoRw.getText())>0)||
+                                (Sequel.cariInteger("select count(no_rawat) from rawat_jl_drpr where no_rawat=?",TNoRw.getText())>0)||
+                                (Sequel.cariInteger("select count(no_rawat) from periksa_lab where no_rawat=?",TNoRw.getText())>0)||
+                                (Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0)){
+                            JOptionPane.showMessageDialog(rootPane,"Maaf pasien sudah ada transaksi sebelumnya & tidak bisa diedit..!!! ");
+                            TCari.requestFocus();
+                        }else{
+                            Sequel.queryu2("update reg_periksa set no_rawat=?,no_reg=?,tgl_registrasi=?,jam_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"+
+                                "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",16,
+                                new String[]{TNoRw.getText(),TNoReg.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
+                                    kddokter.getText(),TNoRM.getText(),kdpoli.getText(),TPngJwb.getText(),TAlmt.getText(),TBiaya.getText(),THbngn.getText(),
+                                    TStatus.getText(),kdpnj.getText(),umur,sttsumur,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString()
+                            });
+                        }
+                    }
+
+                    tampil();
+                    emptTeks();
+                }      
+            }
         }else{
             if(tbPetugas.getSelectedRow()>-1){
                 if(akses.getedit_registrasi()==true){
@@ -6221,6 +6269,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 param.put("nama",TPasien.getText());
                 param.put("tgl",Sequel.cariIsi("select date_format(tgl_lahir,'%d/%m/%Y') from pasien where no_rkm_medis=?",TNoRM.getText()));
                 param.put("alamat",Sequel.cariIsi("select alamat from pasien where no_rkm_medis=?",TNoRM.getText()));
+                param.put("kelurahan",Sequel.cariIsi("select kelurahan.nm_kel from kelurahan inner join pasien on kelurahan.kd_kel=pasien.kd_kel where no_rkm_medis=?",TNoRM.getText()));
                 param.put("norm",TNoRM.getText());
                 param.put("parameter","%"+TCari.getText().trim()+"%");     
                 param.put("namars",akses.getnamars());
@@ -8758,6 +8807,10 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }
         }
     }//GEN-LAST:event_ppResumeBtnPrintActionPerformed
+
+    private void DTPRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DTPRegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPRegActionPerformed
 
     /**
     * @param args the command line arguments
