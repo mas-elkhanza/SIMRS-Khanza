@@ -52,7 +52,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
 
         Object[] rowRwJlDr={
             "No.Rawat/No.tagihan","Tgl.Piutang","Pasien","Status","Total Piutang",
-            "Uang Muka","Cicilan","Sisa Piutang","Jatuh Tempo","Cara Bayar"
+            "Uang Muka","Cicilan","Sisa Piutang","Jatuh Tempo","Cara Bayar","Penanggung Jawab"
         };
         tabMode=new DefaultTableModel(null,rowRwJlDr){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -65,7 +65,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -77,7 +77,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(120);
@@ -99,8 +99,12 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==9){
                 column.setPreferredWidth(130);
+           
+            }else if(i==10){
+                column.setPreferredWidth(130);
             }
         }
+         
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
@@ -726,7 +730,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
         try{
             sisapiutang=0;
             ps=koneksi.prepareStatement("select piutang_pasien.no_rawat, piutang_pasien.tgl_piutang, concat(piutang_pasien.no_rkm_medis,' ',pasien.nm_pasien), "+
-                       "piutang_pasien.status,piutang_pasien.totalpiutang, piutang_pasien.uangmuka, piutang_pasien.sisapiutang, piutang_pasien.tgltempo,penjab.png_jawab "+
+                       "piutang_pasien.status,piutang_pasien.totalpiutang, piutang_pasien.uangmuka, piutang_pasien.sisapiutang, piutang_pasien.tgltempo,penjab.png_jawab,reg_periksa.p_jawab "+
                        "from piutang_pasien inner join pasien inner join reg_periksa inner join penjab on  "+
                        "piutang_pasien.no_rkm_medis=pasien.no_rkm_medis and "+
                        "piutang_pasien.no_rawat=reg_periksa.no_rawat and "+
@@ -764,7 +768,8 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
                                         cicilan,
                                         (rs.getDouble(7)-cicilan),
                                         rs.getString(8),
-                                        rs.getString(9)});
+                                        rs.getString(9),
+                                        rs.getString(10)});
                     sisapiutang=sisapiutang+rs.getDouble(7)-cicilan;
                 }
             } catch (Exception e) {
