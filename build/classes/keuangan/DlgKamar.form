@@ -502,7 +502,7 @@
                       <Image iconType="3" name="/picture/145.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="73"/>
-                    <Property name="text" type="java.lang.String" value="  .: Pencarian Data"/>
+                    <Property name="text" type="java.lang.String" value=".: Pencarian Data"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+I"/>
                     <Property name="borderPainted" type="boolean" value="true"/>
                     <Property name="borderPaintedFlat" type="boolean" value="true"/>

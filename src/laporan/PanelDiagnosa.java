@@ -24,8 +24,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import laporan.DlgICD9;
-import laporan.DlgPenyakit;
 
 /**
  *
@@ -40,7 +38,7 @@ public class PanelDiagnosa extends widget.panelisi {
     private ResultSet rs;
     private int jml=0,i=0,index=0;
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek;
-    private boolean[] pilih,pilih2;
+    private boolean[] pilih;
     public String norawat="",status="",norm="",tanggal1="",tanggal2="",keyword="";
     /**
      * Creates new form panelDiagnosa

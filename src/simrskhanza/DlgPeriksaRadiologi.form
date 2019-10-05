@@ -437,7 +437,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="18-09-2019"/>
+                        <StringItem index="0" value="29-09-2019"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -807,7 +807,7 @@
                     <TitledBorder title=" Pemeriksaan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
+                          <Color PropertyName="color" blue="ea" green="f4" red="ef" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -964,7 +964,7 @@
                     <TitledBorder title=" BHP Radiologi ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
+                          <Color PropertyName="color" blue="ea" green="f4" red="ef" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1120,7 +1120,7 @@
                     <TitledBorder title=" Hasil Pemeriksaan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
+                          <Color PropertyName="color" blue="ea" green="f4" red="ef" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
