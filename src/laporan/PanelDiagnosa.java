@@ -24,8 +24,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import laporan.DlgICD9;
-import laporan.DlgPenyakit;
 
 /**
  *
@@ -40,7 +38,7 @@ public class PanelDiagnosa extends widget.panelisi {
     private ResultSet rs;
     private int jml=0,i=0,index=0;
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek;
-    private boolean[] pilih,pilih2;
+    private boolean[] pilih;
     public String norawat="",status="",norm="",tanggal1="",tanggal2="",keyword="";
     /**
      * Creates new form panelDiagnosa
@@ -892,6 +890,7 @@ public class PanelDiagnosa extends widget.panelisi {
     public void simpan(){
         try {
             koneksi.setAutoCommit(false);
+            index=1;
             for(i=0;i<tbDiagnosa.getRowCount();i++){ 
                 if(tbDiagnosa.getValueAt(i,0).toString().equals("true")){
                     if(Sequel.cariInteger(
@@ -909,7 +908,30 @@ public class PanelDiagnosa extends widget.panelisi {
                             norawat,tbDiagnosa.getValueAt(i,1).toString(),status,
                             Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+status+"'",norawat),"Baru"
                         });
-                    }                            
+                    }  
+                    if(index==1){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_utama=?",2,new String[]{
+                            tbDiagnosa.getValueAt(i,1).toString(),norawat
+                        });
+                    }else if(index==2){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder=?",2,new String[]{
+                            tbDiagnosa.getValueAt(i,1).toString(),norawat
+                        });
+                    }else if(index==3){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder2=?",2,new String[]{
+                            tbDiagnosa.getValueAt(i,1).toString(),norawat
+                        });
+                    }else if(index==4){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder3=?",2,new String[]{
+                            tbDiagnosa.getValueAt(i,1).toString(),norawat
+                        });
+                    }else if(index==5){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_diagnosa_sekunder4=?",2,new String[]{
+                            tbDiagnosa.getValueAt(i,1).toString(),norawat
+                        });
+                    }
+                        
+                    index++;
                 }                    
             }
             koneksi.setAutoCommit(true);  
@@ -922,11 +944,32 @@ public class PanelDiagnosa extends widget.panelisi {
 
         try {
             koneksi.setAutoCommit(false);
+            index=1;
             for(i=0;i<tbProsedur.getRowCount();i++){ 
                 if(tbProsedur.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("prosedur_pasien","?,?,?,?","ICD 9",4,new String[]{
                         norawat,tbProsedur.getValueAt(i,1).toString(),status,Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from prosedur_pasien where no_rawat=? and status='"+status+"'",norawat)
                     });
+                    
+                    if(index==1){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_utama=?",2,new String[]{
+                            tbProsedur.getValueAt(i,1).toString(),norawat
+                        });
+                    }else if(index==2){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder=?",2,new String[]{
+                            tbProsedur.getValueAt(i,1).toString(),norawat
+                        });
+                    }else if(index==3){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder2=?",2,new String[]{
+                            tbProsedur.getValueAt(i,1).toString(),norawat
+                        });
+                    }else if(index==4){
+                        Sequel.mengedit("resume_pasien","no_rawat=?","kd_prosedur_sekunder3=?",2,new String[]{
+                            tbProsedur.getValueAt(i,1).toString(),norawat
+                        });
+                    }
+                        
+                    index++;
                 }                    
             }
             koneksi.setAutoCommit(true);  
