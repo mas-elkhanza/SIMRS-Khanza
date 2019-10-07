@@ -487,7 +487,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{     
-            ps=koneksi.prepareStatement("select nm_prop,kd_prop from propinsi where nm_prop like ? ");
+            ps=koneksi.prepareStatement("select nm_prop,kd_prop from propinsi where nm_prop like ? and status=1 group by nm_prop order by kd_prop");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();

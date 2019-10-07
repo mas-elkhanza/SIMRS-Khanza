@@ -488,7 +488,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{   
-            ps=koneksi.prepareStatement("select nm_kab,kd_kab from kabupaten where nm_kab like ? ");
+            ps=koneksi.prepareStatement("select nm_kab,kd_kab from kabupaten where nm_kab like ? and status=1 group by nm_kab order by kd_kab");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();

@@ -487,7 +487,7 @@ public class DlgKelurahan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{    
-            ps=koneksi.prepareStatement("select nm_kel,kd_kel from kelurahan where nm_kel like ?");
+            ps=koneksi.prepareStatement("select nm_kel,kd_kel from kelurahan where nm_kel like ? and status=1 group by nm_kel order by kd_kel");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
