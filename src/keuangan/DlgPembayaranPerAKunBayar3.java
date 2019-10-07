@@ -112,7 +112,32 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-    }    
+        
+        try {
+            psakunbayar = koneksi.prepareStatement("select nama_bayar from akun_bayar order by nama_bayar");
+            try {
+                rsakunbayar = psakunbayar.executeQuery();
+                akunBayar.addItem("");
+                while (rsakunbayar.next()) {
+                    akunBayar.addItem(rsakunbayar.getString("nama_bayar"));
+                }
+            } catch (Exception e) {
+                System.out.println("Akun Bayar : " + e);
+            } finally {
+                if (rsakunbayar != null) {
+                    rsakunbayar.close();
+                }
+                if (psakunbayar != null) {
+                    psakunbayar.close();
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+
+    }
+       
     
      
 
@@ -134,6 +159,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         jLabel11 = new javax.swing.JLabel();
+        akunBayar = new javax.swing.JComboBox<>();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass6 = new widget.panelisi();
@@ -156,7 +182,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Akun Bayar 3 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Akun Bayar 3 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -227,11 +253,18 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(50,50,50));
+        jLabel11.setForeground(new java.awt.Color(50, 50, 50));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Akun Bayar");
+        jLabel11.setMaximumSize(new java.awt.Dimension(54, 50));
+        jLabel11.setMinimumSize(new java.awt.Dimension(54, 50));
         jLabel11.setName("jLabel11"); // NOI18N
-        jLabel11.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel11.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass5.add(jLabel11);
+
+        akunBayar.setName("akunBayar"); // NOI18N
+        akunBayar.setPreferredSize(new java.awt.Dimension(100, 30));
+        panelGlass5.add(akunBayar);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -535,6 +568,7 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.TextBox User;
+    private javax.swing.JComboBox<String> akunBayar;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -588,16 +622,18 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
             
             all=0;
             ps= koneksi.prepareStatement(
-                    "select no_nota,tgl_bayar,nama_pasien,jumlah_bayar,petugas from tagihan_sadewa "+
-                    "where tgl_bayar between ? and ? and nama_pasien like ? or "+
-                    "tgl_bayar between ? and ? and no_nota like ? order by tgl_bayar,no_nota");
+                    "select no_nota,tgl_bayar,nama_pasien,jumlah_bayar,petugas from tagihan_sadewa inner join detail_nota_jalan on detail_nota_jalan.no_rawat=tagihan_sadewa.no_nota "+
+                    "where tgl_bayar between ? and ? and nama_pasien like ? and detail_nota_jalan.nama_bayar like ? or "+
+                    "tgl_bayar between ? and ? and no_nota like ? and detail_nota_jalan.nama_bayar like ? order by tgl_bayar,no_nota");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+akunBayar.getSelectedItem()+"%");
+                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
+                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem());
+                ps.setString(7,"%"+TCari.getText().trim()+"%");
+                ps.setString(8,"%"+akunBayar.getSelectedItem()+"%");
                 rs=ps.executeQuery();
                 no=1;
                 while(rs.next()){                            
