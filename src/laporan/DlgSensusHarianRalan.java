@@ -15,7 +15,7 @@ import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -186,7 +186,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         }
         table2.setDefaultRenderer(Object.class, new WarnaTable());
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -408,7 +408,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -688,7 +688,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -739,12 +739,12 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Map<String, Object> param = new HashMap<>();         
-        param.put("namars",var.getnamars());
-        param.put("alamatrs",var.getalamatrs());
-        param.put("kotars",var.getkabupatenrs());
-        param.put("propinsirs",var.getpropinsirs());
-        param.put("kontakrs",var.getkontakrs());
-        param.put("emailrs",var.getemailrs());   
+        param.put("namars",akses.getnamars());
+        param.put("alamatrs",akses.getalamatrs());
+        param.put("kotars",akses.getkabupatenrs());
+        param.put("propinsirs",akses.getpropinsirs());
+        param.put("kontakrs",akses.getkontakrs());
+        param.put("emailrs",akses.getemailrs());   
         param.put("periode",Tgl1.getSelectedItem()+" S.D. "+Tgl2.getSelectedItem()); 
         if(TabRawat.getSelectedIndex()==0){
             if(tabmode.getRowCount()==0){
@@ -765,8 +765,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                     });
                 }
                  
-                Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
-                    "select * from temporary_sensus_harian order by no asc",param);
+                Valid.MyReport("rptSensusHarianRalan.jasper","report","::[ Laporan Sensus Harian Ralan ]::",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabmode2.getRowCount()==0){
@@ -787,8 +786,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                     });
                 }
                  
-                Valid.MyReport("rptSensusHarianRalan.jrxml","report","::[ Laporan Sensus Harian Ralan ]::",
-                    "select * from temporary_sensus_harian order by no asc",param);
+                Valid.MyReport("rptSensusHarianRalan.jasper","report","::[ Laporan Sensus Harian Ralan ]::",param);
             }            
         }        
         this.setCursor(Cursor.getDefaultCursor());

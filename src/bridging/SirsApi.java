@@ -1,5 +1,6 @@
 package bridging;
 
+import fungsi.koneksiDB;
 import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
@@ -22,7 +23,7 @@ public class SirsApi {
     public SirsApi(){
         try {            
             prop.loadFromXML(new FileInputStream("setting/database.xml"));   
-            pass = prop.getProperty("PASSSIRS");
+            pass = koneksiDB.PASSSIRS();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

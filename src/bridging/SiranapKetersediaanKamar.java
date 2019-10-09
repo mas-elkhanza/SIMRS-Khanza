@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -134,7 +134,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         KdKamar.setDocument(new batasInput((byte)5).getKata(KdKamar)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));                  
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -187,7 +187,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = prop.getProperty("URLAPISIRS");
-            idrs=prop.getProperty("IDSIRS");
+            idrs=koneksiDB.IDSIRS();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -247,7 +247,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019-03-23 07:48:15" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019-04-30 16:26:33" }));
         Tanggal.setDisplayFormat("yyyy-MM-dd HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -262,7 +262,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Ketersediaan Kamar SIRANAP KEMENKES ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Ketersediaan Kamar SIRANAP KEMENKES ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -300,6 +300,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -926,25 +927,15 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
                 Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                String sql="jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori ";
-                Valid.MyReport("rptKamarSiranap.jrxml","report","::[ Data Ketersediaan Kamar Aplicare]::",
-                   "select siranap_ketersediaan_kamar.kode_ruang_siranap,siranap_ketersediaan_kamar.kelas_ruang_siranap,siranap_ketersediaan_kamar.kd_bangsal,"+
-                   "bangsal.nm_bangsal,siranap_ketersediaan_kamar.kelas,siranap_ketersediaan_kamar.kapasitas,"+
-                   "siranap_ketersediaan_kamar.tersedia,siranap_ketersediaan_kamar.tersediapria,"+
-                   "siranap_ketersediaan_kamar.tersediawanita,siranap_ketersediaan_kamar.menunggu "+
-                   "from siranap_ketersediaan_kamar inner join bangsal on siranap_ketersediaan_kamar.kd_bangsal=bangsal.kd_bangsal where "+
-                   "siranap_ketersediaan_kamar.kode_ruang_siranap like '%"+TCari.getText().trim()+"%' or "+
-                   "siranap_ketersediaan_kamar.kelas_ruang_siranap like '%"+TCari.getText().trim()+"%' or "+
-                   "siranap_ketersediaan_kamar.kd_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                   "bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                   "siranap_ketersediaan_kamar.kelas like '%"+TCari.getText().trim()+"%' order by siranap_ketersediaan_kamar.kode_ruang_siranap",param);            
+                param.put("parameter","%"+TCari.getText().trim()+"%");   
+                Valid.MyReport("rptKamarSiranap.jasper","report","::[ Data Ketersediaan Kamar Siranap ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1222,10 +1213,10 @@ private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsiranap_ketersediaan_kamar());
-        BtnHapus.setEnabled(var.getsiranap_ketersediaan_kamar());
-        BtnEdit.setEnabled(var.getsiranap_ketersediaan_kamar());
-        BtnPrint.setEnabled(var.getsiranap_ketersediaan_kamar());
+        BtnSimpan.setEnabled(akses.getsiranap_ketersediaan_kamar());
+        BtnHapus.setEnabled(akses.getsiranap_ketersediaan_kamar());
+        BtnEdit.setEnabled(akses.getsiranap_ketersediaan_kamar());
+        BtnPrint.setEnabled(akses.getsiranap_ketersediaan_kamar());
     }
     
     public JTable getTable(){

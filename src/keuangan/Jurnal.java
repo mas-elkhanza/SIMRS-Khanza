@@ -22,12 +22,13 @@ public class Jurnal {
     private ResultSet rs;
     private PreparedStatement ps2,ps;
     private String nojur="";
-    public void simpanJurnal(String nobukti,String tanggal,String jenis,String keterangan){            
+    private boolean sukses=true;
+    public boolean simpanJurnal(String nobukti,String tanggal,String jenis,String keterangan){            
         if(Sequel.cariInteger("select count(*) from tampjurnal")>0){
             nojur=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_jurnal,6),signed)),0) from jurnal where tgl_jurnal='"+tanggal+"' ",
                 "JR"+tanggal.replaceAll("-",""),6);
             try {
-                 koneksi.setAutoCommit(false);
+                 sukses=true;
                  ps=koneksi.prepareStatement("insert into jurnal values(?,?,?,?,?)");
                  try {
                     ps.setString(1,nojur);
@@ -37,6 +38,7 @@ public class Jurnal {
                     ps.setString(5,keterangan);
                     ps.executeUpdate();
                  } catch (Exception e) {
+                    sukses=false;
                     System.out.println("Notifikasi : "+e);
                  } finally{
                     if(ps!=null){
@@ -55,6 +57,7 @@ public class Jurnal {
                             ps2.setString(4,rs.getString(4));
                             ps2.executeUpdate();
                         } catch (Exception e) {
+                            sukses=false;
                             System.out.println("Notifikasi sub : "+e);
                         } finally{
                             if(ps2!=null){
@@ -63,18 +66,20 @@ public class Jurnal {
                         }
                     }
                  } catch (Exception e) {
+                     sukses=false;
                      System.out.println("Notif Temp Rek : "+e);
                  } finally{
                      if(rs!=null){
                          rs.close();
                      }
                  }
-                 Sequel.queryu2("delete from tampjurnal");   
-                 koneksi.setAutoCommit(true);              
+                 Sequel.queryu2("delete from tampjurnal");               
             } catch (Exception ex) {
+                sukses=false;
                 System.out.println("Notifikasi : "+ex);  
             } 
-        }                       
+        }
+        return sukses;
    }
 }
     

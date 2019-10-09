@@ -17,7 +17,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -113,7 +113,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         pemasukan.setDocument(new batasInput((byte)15).getKata(pemasukan));
         Nomor.setDocument(new batasInput((byte)15).getKata(Nomor));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -143,7 +143,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPemasukanLain")){
+                if(akses.getform().equals("DlgPemasukanLain")){
                     if(petugas.getTable().getSelectedRow()!= -1){        
                         KdPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         NmPtg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -182,7 +182,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(var.getform().equals("DlgPemasukanLain")){
+                if(akses.getform().equals("DlgPemasukanLain")){
                     if(kategori.getTabel().getSelectedRow()!= -1){        
                         KdKategori.setText(kategori.getTabel().getValueAt(kategori.getTabel().getSelectedRow(),0).toString());
                         NmKategori.setText(kategori.getTabel().getValueAt(kategori.getTabel().getSelectedRow(),1).toString());
@@ -282,7 +282,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemasukan Lain-Lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pemasukan Lain-Lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -727,7 +727,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         if(rs.next()){
                             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()});
                             Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"}); 
-                            jur.simpanJurnal(Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMASUKAN LAIN-LAIN, Petugas : "+NmPtg.getText());
+                            jur.simpanJurnal(Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMASUKAN LAIN-LAIN"+", OLEH "+akses.getkode());
                         }
                     } catch (Exception e) {
                         System.out.println("Jurnal : "+e);
@@ -740,7 +740,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         }
                     }
                     Sequel.menyimpan2("tagihan_sadewa","'"+Nomor.getText()+"','-','"+Keterangan.getText()+"','-',concat('"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+
-                        "',' ',CURTIME()),'Pelunasan','"+total+"','"+pemasukan.getText()+"','Sudah','"+var.getkode()+"'","No.Transaksi");
+                        "',' ',CURTIME()),'Pelunasan','"+total+"','"+pemasukan.getText()+"','Sudah','"+akses.getkode()+"'","No.Transaksi");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -793,7 +793,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                             if(rs.next()){
                                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"});
                                 Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()}); 
-                                jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PEMASUKAN LAIN-LAIN, Petugas : "+NmPtg.getText());
+                                jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PEMASUKAN LAIN-LAIN"+", OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {
                             System.out.println("Jurnal : "+e);
@@ -843,14 +843,14 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPemasukanLain.jrxml","report","::[ Data Pemasukan Lain-Lain ]::",
+            Valid.MyReportqry("rptPemasukanLain.jasper","report","::[ Data Pemasukan Lain-Lain ]::",
                 "select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.keperluan, pemasukan_lain.besar, pemasukan_lain.nip, "+
                     "petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori "+
                     "from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip "+
@@ -946,7 +946,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        var.setform("DlgPemasukanLain");
+        akses.setform("DlgPemasukanLain");
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.isCek();
         petugas.setLocationRelativeTo(internalFrame1);
@@ -982,7 +982,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_KdKategoriKeyPressed
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
-        var.setform("DlgPemasukanLain");
+        akses.setform("DlgPemasukanLain");
         kategori.emptTeks();
         kategori.tampil();
         kategori.isCek();
@@ -1203,13 +1203,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        if(var.getjml2()>=1){
+        if(akses.getjml2()>=1){
             KdPtg.setEditable(false);
             btnPetugas.setEnabled(false);
-            KdPtg.setText(var.getkode());
-            BtnSimpan.setEnabled(var.getpemasukan_lain());
-            BtnHapus.setEnabled(var.getpemasukan_lain());
-            BtnPrint.setEnabled(var.getpemasukan_lain());
+            KdPtg.setText(akses.getkode());
+            BtnSimpan.setEnabled(akses.getpemasukan_lain());
+            BtnHapus.setEnabled(akses.getpemasukan_lain());
+            BtnPrint.setEnabled(akses.getpemasukan_lain());
             Sequel.cariIsi("select nama from petugas where nip=?", NmPtg,KdPtg.getText());
         }      
         

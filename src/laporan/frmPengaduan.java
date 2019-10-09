@@ -10,7 +10,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -94,7 +94,7 @@ public class frmPengaduan extends javax.swing.JFrame {
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         Pesan.setDocument(new batasInput((int)255).getKata(Pesan));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -122,10 +122,10 @@ public class frmPengaduan extends javax.swing.JFrame {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
+                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -178,11 +178,11 @@ public class frmPengaduan extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -198,7 +198,6 @@ public class frmPengaduan extends javax.swing.JFrame {
         Scroll.setOpaque(true);
 
         tbPengaduan.setAutoCreateRowSorter(true);
-        tbPengaduan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPengaduan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbPengaduanMouseClicked(evt);
@@ -503,7 +502,7 @@ public class frmPengaduan extends javax.swing.JFrame {
             Valid.textKosong(Pesan,"Pesan");
         }else{
             Sequel.menyimpan("pengaduan","?,?,?,?",4,new String[]{
-                "0",Sequel.cariIsi("select now()"),var.getkode(),Pesan.getText()
+                "0",Sequel.cariIsi("select now()"),akses.getkode(),Pesan.getText()
             });
             Pesan.setText("");
             tampil2();
@@ -524,14 +523,14 @@ public class frmPengaduan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptPengaduan.jrxml","report","::[ Data Pengaduan ]::",
+                Valid.MyReportqry("rptPengaduan.jasper","report","::[ Data Pengaduan ]::",
                         "select id, date_time, username, message from pengaduan where "+
                         "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and id like '%"+TCari.getText().trim()+"%' or "+
                         "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and username like '%"+TCari.getText().trim()+"%' or "+
@@ -663,7 +662,7 @@ public class frmPengaduan extends javax.swing.JFrame {
                 i=1;
                 while(rs.next()){
                     if(i%2==0){
-                        if(rs.getString("username").equals(var.getkode())){
+                        if(rs.getString("username").equals(akses.getkode())){
                             htmlContent.append(
                                 "<tr class='isi'>"+
                                     "<td align='right' valign='top' bgcolor='#ffffff'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
@@ -675,15 +674,15 @@ public class frmPengaduan extends javax.swing.JFrame {
                                 "</tr>");
                         }                            
                     }else if(i%2==1){
-                        if(rs.getString("username").equals(var.getkode())){
+                        if(rs.getString("username").equals(akses.getkode())){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='right' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='right' valign='top' bgcolor='#FFFAF8'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }else{
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='left' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='left' valign='top' bgcolor='#FFFAF8'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }
                     }                        
@@ -712,7 +711,7 @@ public class frmPengaduan extends javax.swing.JFrame {
     }
     
     public void isCek(){
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             BtnHapusTotal.setEnabled(true);
         }else{
             BtnHapusTotal.setEnabled(false);

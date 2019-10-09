@@ -5,7 +5,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -203,7 +203,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         tbDetailResepRanap.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -404,7 +404,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -623,7 +623,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         TabPilihRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabPilihRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabPilihRawat.setForeground(new java.awt.Color(50,50,50));
         TabPilihRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabPilihRawat.setName("TabPilihRawat"); // NOI18N
         TabPilihRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -637,7 +637,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame2.setLayout(new java.awt.BorderLayout());
 
         TabRawatJalan.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatJalan.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawatJalan.setForeground(new java.awt.Color(50,50,50));
         TabRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatJalan.setName("TabRawatJalan"); // NOI18N
         TabRawatJalan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -766,7 +766,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         internalFrame3.setLayout(new java.awt.BorderLayout());
 
         TabRawatInap.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatInap.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawatInap.setForeground(new java.awt.Color(50,50,50));
         TabRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatInap.setName("TabRawatInap"); // NOI18N
         TabRawatInap.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -928,7 +928,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             } catch (java.lang.NullPointerException e) {
             }
             if(evt.getClickCount()==2){
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }
             }
@@ -942,7 +942,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }                    
             }
@@ -963,14 +963,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     param.put("poli","%"+CrPoli.getText().trim()+"%"); 
                     param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+"")); 
                     param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")); 
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptDaftarPermintaanResep.jrxml",param,"::[ Laporan Daftar Permintaan Resep ]::");
+                    Valid.MyReport("rptDaftarPermintaanResep.jasper",param,"::[ Laporan Daftar Permintaan Resep ]::");
                     this.setCursor(Cursor.getDefaultCursor());
                 }   
             }else if(TabRawatJalan.getSelectedIndex()==1){
@@ -989,15 +989,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     }
                     
                     Map<String, Object> param = new HashMap<>();  
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport2("rptDaftarResep.jrxml","report","::[ Daftar Resep Obat ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_resep order by no asc",param);
+                    Valid.MyReport2("rptDaftarResep.jasper","report","::[ Daftar Resep Obat ]::",param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -1014,14 +1013,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     param.put("poli","%"+Kamar.getText().trim()+"%"); 
                     param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+"")); 
                     param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")); 
-                    param.put("namars",var.getnamars());
-                    param.put("alamatrs",var.getalamatrs());
-                    param.put("kotars",var.getkabupatenrs());
-                    param.put("propinsirs",var.getpropinsirs());
-                    param.put("kontakrs",var.getkontakrs());
-                    param.put("emailrs",var.getemailrs());   
+                    param.put("namars",akses.getnamars());
+                    param.put("alamatrs",akses.getalamatrs());
+                    param.put("kotars",akses.getkabupatenrs());
+                    param.put("propinsirs",akses.getpropinsirs());
+                    param.put("kontakrs",akses.getkontakrs());
+                    param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptDaftarPermintaanResep2.jrxml",param,"::[ Laporan Daftar Permintaan Resep ]::");
+                    Valid.MyReport("rptDaftarPermintaanResep2.jasper",param,"::[ Laporan Daftar Permintaan Resep ]::");
                     this.setCursor(Cursor.getDefaultCursor());
                 }   
             }else if(TabRawatInap.getSelectedIndex()==1){
@@ -1040,15 +1039,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     }
                     
                     Map<String, Object> param = new HashMap<>();  
-                        param.put("namars",var.getnamars());
-                        param.put("alamatrs",var.getalamatrs());
-                        param.put("kotars",var.getkabupatenrs());
-                        param.put("propinsirs",var.getpropinsirs());
-                        param.put("kontakrs",var.getkontakrs());
-                        param.put("emailrs",var.getemailrs());   
+                        param.put("namars",akses.getnamars());
+                        param.put("alamatrs",akses.getalamatrs());
+                        param.put("kotars",akses.getkabupatenrs());
+                        param.put("propinsirs",akses.getpropinsirs());
+                        param.put("kontakrs",akses.getkontakrs());
+                        param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport2("rptDaftarResep2.jrxml","report","::[ Daftar Resep Obat ]::",
-                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_resep order by no asc",param);
+                    Valid.MyReport2("rptDaftarResep2.jasper","report","::[ Daftar Resep Obat ]::",param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }
@@ -1221,12 +1219,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",kamar);
                         if(bangsal.equals("")){
                             if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
-                                var.setkdbangsal(kamar);
+                                akses.setkdbangsal(kamar);
                             }else{
-                                var.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                                akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
                             }
                         }else{
-                            var.setkdbangsal(bangsal);
+                            akses.setkdbangsal(bangsal);
                         }
                         DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
                         resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
@@ -1282,7 +1280,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             } catch (java.lang.NullPointerException e) {
             }
             if(evt.getClickCount()==2){
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }
             }
@@ -1296,7 +1294,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     getData2();
                 } catch (java.lang.NullPointerException e) {
                 }
-                if(var.getberi_obat()==true){
+                if(akses.getberi_obat()==true){
                     BtnTambahActionPerformed(null);
                 }                    
             }
@@ -1579,10 +1577,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(var.getberi_obat());
-        BtnEdit.setEnabled(var.getresep_dokter());
-        BtnPrint.setEnabled(var.getresep_dokter());
-        BtnRekap.setEnabled(var.getresep_obat());
+        BtnTambah.setEnabled(akses.getberi_obat());
+        BtnEdit.setEnabled(akses.getresep_dokter());
+        BtnPrint.setEnabled(akses.getresep_dokter());
+        BtnRekap.setEnabled(akses.getresep_obat());
     }
     
     public void setCari(String cari){
@@ -1752,12 +1750,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",kamar);
         if(bangsal.equals("")){
             if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
-                var.setkdbangsal(kamar);
+                akses.setkdbangsal(kamar);
             }else{
-                var.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
             }
         }else{
-            var.setkdbangsal(bangsal);
+            akses.setkdbangsal(bangsal);
         }
         dlgobt2.setNoRm(NoRawat,Valid.SetTgl2(TglPeresepan));
         dlgobt2.isCek();

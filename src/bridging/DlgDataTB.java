@@ -22,7 +22,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -242,7 +242,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         PemeriksaanLaboratBulan2NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan2NoReg));
         PemeriksaanLaboratBulan3NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan3NoReg));
         PemeriksaanLaboratBulan5NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan5NoReg));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -435,7 +435,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             kdwasor = prop.getProperty("KABUPATENSITT");
-            idrs=prop.getProperty("IDSITT");
+            idrs=koneksiDB.IDSITT();
             URL = prop.getProperty("URLAPISITT");
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -452,8 +452,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -603,24 +601,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnRestore.setBackground(new java.awt.Color(255, 255, 254));
-        MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(70, 70, 70));
-        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRestore.setText("Data Sampah");
-        MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setName("MnRestore"); // NOI18N
-        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
-        MnRestore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnRestoreActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnRestore);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -630,7 +610,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pasien Teridentifikasi TB ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pasien Teridentifikasi TB ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -780,7 +760,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel58.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass9.add(jLabel58);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -793,7 +773,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         jLabel59.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel59);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -847,7 +827,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -994,7 +974,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(270, 160, 54, 23);
 
-        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019 11:24:07" }));
+        TanggalLaporan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019 07:14:57" }));
         TanggalLaporan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalLaporan.setName("TanggalLaporan"); // NOI18N
         TanggalLaporan.setOpaque(false);
@@ -1385,7 +1365,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(532, 250, 80, 23);
 
-        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        MulaiBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         MulaiBerobat.setDisplayFormat("dd-MM-yyyy");
         MulaiBerobat.setName("MulaiBerobat"); // NOI18N
         MulaiBerobat.setOpaque(false);
@@ -1637,7 +1617,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel31);
         jLabel31.setBounds(0, 440, 100, 23);
 
-        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        AkhirBerobat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         AkhirBerobat.setDisplayFormat("dd-MM-yyyy");
         AkhirBerobat.setName("AkhirBerobat"); // NOI18N
         AkhirBerobat.setOpaque(false);
@@ -1669,7 +1649,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(jLabel32);
         jLabel32.setBounds(512, 440, 100, 23);
 
-        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        DianjurkanTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         DianjurkanTesHIV.setDisplayFormat("dd-MM-yyyy");
         DianjurkanTesHIV.setName("DianjurkanTesHIV"); // NOI18N
         DianjurkanTesHIV.setOpaque(false);
@@ -1681,7 +1661,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         FormInput.add(DianjurkanTesHIV);
         DianjurkanTesHIV.setBounds(615, 440, 90, 23);
 
-        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2019" }));
+        TanggalTesHIV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
         TanggalTesHIV.setDisplayFormat("dd-MM-yyyy");
         TanggalTesHIV.setName("TanggalTesHIV"); // NOI18N
         TanggalTesHIV.setOpaque(false);
@@ -1902,13 +1882,11 @@ public final class DlgDataTB extends javax.swing.JDialog {
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbJnsPerawatan.setComponentPopupMenu(jPopupMenu1);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2002,13 +1980,13 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                     "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                     "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_2\":"+PemeriksaanLaboratBulan2NoReg.getText()+"," +
+                    "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_3\":"+PemeriksaanLaboratBulan3NoReg.getText()+"," +
+                    "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                    "\"noreglab_bulan_5\":"+PemeriksaanLaboratBulan5NoReg.getText()+"," +
+                    "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                     "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                    "\"akhir_pengobatan_noreglab\":"+PemeriksaanLaboratAkhirNoReg.getText()+"," +
+                    "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                     "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
                     "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
                     "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
@@ -2026,7 +2004,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                     "\"keterangan\":\""+Keterangan.getText()+"\"," +
                     "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                    "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                    "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                     "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                     "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                     "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
@@ -2168,13 +2146,13 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_2\":"+PemeriksaanLaboratBulan2NoReg.getText()+"," +
+                            "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_3\":"+PemeriksaanLaboratBulan3NoReg.getText()+"," +
+                            "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_5\":"+PemeriksaanLaboratBulan5NoReg.getText()+"," +
+                            "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                            "\"akhir_pengobatan_noreglab\":"+PemeriksaanLaboratAkhirNoReg.getText()+"," +
+                            "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                             "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
                             "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
@@ -2192,7 +2170,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
@@ -2236,13 +2214,13 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"sebelum_pengobatan_hasil_mikroskopis\":\""+SebelumPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_tes_cepat\":\""+SebelumPengobatanTesCepat.getSelectedItem()+"\"," +
                             "\"sebelum_pengobatan_hasil_biakan\":\""+SebelumPengobatanBiakan.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_2\":"+PemeriksaanLaboratBulan2NoReg.getText()+"," +
+                            "\"noreglab_bulan_2\":\""+PemeriksaanLaboratBulan2NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_2\":\""+PemeriksaanLaboratBulan2Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_3\":"+PemeriksaanLaboratBulan3NoReg.getText()+"," +
+                            "\"noreglab_bulan_3\":\""+PemeriksaanLaboratBulan3NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_3\":\""+PemeriksaanLaboratBulan3Mikroskopis.getSelectedItem()+"\"," +
-                            "\"noreglab_bulan_5\":"+PemeriksaanLaboratBulan5NoReg.getText()+"," +
+                            "\"noreglab_bulan_5\":\""+PemeriksaanLaboratBulan5NoReg.getText()+"\"," +
                             "\"hasil_mikroskopis_bulan_5\":\""+PemeriksaanLaboratBulan5Mikroskopis.getSelectedItem()+"\"," +
-                            "\"akhir_pengobatan_noreglab\":"+PemeriksaanLaboratAkhirNoReg.getText()+"," +
+                            "\"akhir_pengobatan_noreglab\":\""+PemeriksaanLaboratAkhirNoReg.getText()+"\"," +
                             "\"akhir_pengobatan_hasil_mikroskopis\":\""+PemeriksaanLaboratAkhirPengobatanMikroskopis.getSelectedItem()+"\"," +
                             "\"tanggal_hasil_akhir_pengobatan\":\""+Valid.SetTgl(AkhirBerobat.getSelectedItem()+"")+"\"," +
                             "\"hasil_akhir_pengobatan\":\""+HasilAkhirPengobatan.getSelectedItem()+"\"," +
@@ -2260,7 +2238,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"toraks_tdk_dilakukan\":\""+ToraksTidakDilakukan.getSelectedItem()+"\"," +
                             "\"keterangan\":\""+Keterangan.getText()+"\"," +
                             "\"tahun\":"+Valid.SetTgl(MulaiBerobat.getSelectedItem()+"").substring(0,4)+"," +
-                            "\"nourut_pasien\":"+TNoRM.getText()+"," +
+                            "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
                             "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
@@ -2328,40 +2306,18 @@ public final class DlgDataTB extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>();    
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());  
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());  
             param.put("periode",DTPCari1.getSelectedItem()+" s.d. "+DTPCari2.getSelectedItem());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptDataTB.jrxml","report","::[ Data Pasien Teridentifikasi TB ]::",
-                "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,if(reg_periksa.sttsumur='Th',reg_periksa.umurdaftar,0) as umur,"+
-                "pasien.no_peserta,pasien.no_ktp,pasien.alamat,data_tb.id_kelurahan,kelurahan.nm_kel,data_tb.id_kecamatan,kecamatan.nm_kec,data_tb.kd_kabupaten,kabupaten.nm_kab,"+
-                "data_tb.id_propinsi,propinsi.nm_prop,data_tb.id_periode_laporan,data_tb.tanggal_buat_laporan,data_tb.nama_rujukan,data_tb.sebutkan1,data_tb.klasifikasi_riwayat_pengobatan,"+
-                "data_tb.klasifikasi_lokasi_anatomi,data_tb.tipe_diagnosis,data_tb.klasifikasi_status_hiv,data_tb.total_skoring_anak,data_tb.konfirmasiSkoring5,data_tb.konfirmasiSkoring6,"+
-                "data_tb.tanggal_mulai_pengobatan,data_tb.paduan_oat,data_tb.sumber_obat,data_tb.sebutkan,data_tb.sebelum_pengobatan_hasil_mikroskopis,data_tb.sebelum_pengobatan_hasil_tes_cepat,"+
-                "data_tb.sebelum_pengobatan_hasil_biakan,data_tb.hasil_mikroskopis_bulan_2,data_tb.noreglab_bulan_2,data_tb.hasil_mikroskopis_bulan_3,data_tb.noreglab_bulan_3,"+
-                "data_tb.hasil_mikroskopis_bulan_5,data_tb.noreglab_bulan_5,data_tb.akhir_pengobatan_hasil_mikroskopis,data_tb.akhir_pengobatan_noreglab,data_tb.tanggal_hasil_akhir_pengobatan,"+
-                "data_tb.hasil_akhir_pengobatan,data_tb.tanggal_dianjurkan_tes,data_tb.tanggal_tes_hiv,data_tb.hasil_tes_hiv,data_tb.ppk,data_tb.art,data_tb.tb_dm,data_tb.terapi_dm,"+
-                "data_tb.pindah_ro,data_tb.status_pengobatan,data_tb.foto_toraks,data_tb.toraks_tdk_dilakukan,data_tb.keterangan,data_tb.kode_icd_x,penyakit.nm_penyakit "+
-                "from reg_periksa inner join pasien inner join data_tb inner join kelurahan inner join kecamatan inner join kabupaten inner join penyakit "+
-                "inner join propinsi on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=data_tb.no_rawat and pasien.kd_kel=kelurahan.kd_kel and "+
-                "pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop and data_tb.kode_icd_x=penyakit.kd_penyakit where "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.alamat like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pasien.no_ktp like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kelurahan.nm_kel like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kecamatan.nm_kec like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and kabupaten.nm_kab like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and propinsi.nm_prop like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.nama_rujukan like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.klasifikasi_riwayat_pengobatan like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.klasifikasi_lokasi_anatomi like '%"+TCari.getText().trim()+"%' or "+
-                "data_tb.tanggal_buat_laporan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and data_tb.tipe_diagnosis like '%"+TCari.getText().trim()+"%' order by data_tb.tanggal_buat_laporan",param);
+            param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"); 
+            param.put("parameter","%"+TCari.getText().trim()+"%"); 
+            Valid.MyReport("rptDataTB.jasper","report","::[ Data Pasien Teridentifikasi TB ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -2449,13 +2405,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
             tampil();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
-
-    private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
-        DlgRestoreTarifOperasi restore=new DlgRestoreTarifOperasi(null,true);
-        restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        restore.setLocationRelativeTo(internalFrame1);
-        restore.setVisible(true);
-    }//GEN-LAST:event_MnRestoreActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if(this.getHeight()<750){   
@@ -3107,7 +3056,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.TextBox KeteranganSO;
     private widget.Label LCount;
     private widget.ComboBox Lokasi;
-    private javax.swing.JMenuItem MnRestore;
     private widget.Tanggal MulaiBerobat;
     private widget.TextBox NIK;
     private widget.TextBox NoKartu;
@@ -3212,7 +3160,6 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenyakit;
     private widget.TextBox nmpenyakit;
     private widget.panelisi panelGlass8;
@@ -3423,10 +3370,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
     public void isCek(){
         TabRawat.setSelectedIndex(1);
         tampil();
-        BtnSimpan.setEnabled(var.getkemenkes_sitt());
-        BtnHapus.setEnabled(var.getkemenkes_sitt());
-        BtnEdit.setEnabled(var.getkemenkes_sitt());
-        BtnPrint.setEnabled(var.getkemenkes_sitt());
+        BtnSimpan.setEnabled(akses.getkemenkes_sitt());
+        BtnHapus.setEnabled(akses.getkemenkes_sitt());
+        BtnEdit.setEnabled(akses.getkemenkes_sitt());
+        BtnPrint.setEnabled(akses.getkemenkes_sitt());
     }
     
     public void setNoRM(String norawat){

@@ -15,7 +15,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -100,7 +100,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         tbTemporary.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -165,7 +165,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppVerify.setBackground(new java.awt.Color(255, 255, 254));
         ppVerify.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerify.setForeground(new java.awt.Color(70, 70, 70));
+        ppVerify.setForeground(new java.awt.Color(50,50,50));
         ppVerify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerify.setText("Verifikasi Presensi Yang Lebih Dari 16 Jam");
         ppVerify.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -182,7 +182,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppVerifySemua.setBackground(new java.awt.Color(255, 255, 254));
         ppVerifySemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerifySemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppVerifySemua.setForeground(new java.awt.Color(50,50,50));
         ppVerifySemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerifySemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppVerifySemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -199,7 +199,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppHapusSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusSemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppHapusSemua.setForeground(new java.awt.Color(50,50,50));
         ppHapusSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -216,7 +216,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppPilihSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppPilihSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPilihSemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppPilihSemua.setForeground(new java.awt.Color(50,50,50));
         ppPilihSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -233,7 +233,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppBersihkanSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanSemua.setForeground(new java.awt.Color(70, 70, 70));
+        ppBersihkanSemua.setForeground(new java.awt.Color(50,50,50));
         ppBersihkanSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanSemua.setText("Bersihkan Pilihan");
         ppBersihkanSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -250,7 +250,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppVerifyOtomatis.setBackground(new java.awt.Color(255, 255, 254));
         ppVerifyOtomatis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerifyOtomatis.setForeground(new java.awt.Color(70, 70, 70));
+        ppVerifyOtomatis.setForeground(new java.awt.Color(50,50,50));
         ppVerifyOtomatis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerifyOtomatis.setText("Jalan Verifikasi Otomatis");
         ppVerifyOtomatis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -276,7 +276,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Temporary Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Temporary Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -286,7 +286,6 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbTemporary.setAutoCreateRowSorter(true);
-        tbTemporary.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTemporary.setComponentPopupMenu(Popup2);
         tbTemporary.setName("tbTemporary"); // NOI18N
         Scroll.setViewportView(tbTemporary);
@@ -529,14 +528,14 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptTemporaryPresensi.jrxml","report","::[ Temporary Presensi ]::",
+                Valid.MyReportqry("rptTemporaryPresensi.jasper","report","::[ Temporary Presensi ]::",
                     "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift, " +
                     "temporary_presensi.jam_datang, now() as jam_pulang, temporary_presensi.status,  " +
                     "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,temporary_presensi.photo  from pegawai  " +
@@ -745,11 +744,11 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
     }
 
     public void isCek(){
-        BtnTambah.setEnabled(var.gettemporary_presensi());
-        BtnHapus.setEnabled(var.gettemporary_presensi());
-        BtnPrint.setEnabled(var.gettemporary_presensi());
+        BtnTambah.setEnabled(akses.gettemporary_presensi());
+        BtnHapus.setEnabled(akses.gettemporary_presensi());
+        BtnPrint.setEnabled(akses.gettemporary_presensi());
         
-        if(var.getkode().equals("Admin Utama")){
+        if(akses.getkode().equals("Admin Utama")){
             ppVerifyOtomatis.setEnabled(true);
         }else{
             ppVerifyOtomatis.setEnabled(false);

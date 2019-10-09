@@ -15,14 +15,12 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -53,7 +51,6 @@ public final class DlgBulanan extends javax.swing.JDialog {
     private PreparedStatement ps,psketerlambatan;
     private ResultSet rs,rsketerlambatan;
     private String masuk="",pulang="";
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgBarcode bar=new DlgBarcode(null,false);
     private String[] id;
     private String[] tgl;
@@ -103,7 +100,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         catatan.setDocument(new batasInput((int)100).getKata(catatan));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -265,7 +262,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         DlgInput.setUndecorated(true);
         DlgInput.setResizable(false);
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Presensi Harian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Presensi Harian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setWarnaBawah(new java.awt.Color(255, 254, 255));
         internalFrame2.setLayout(null);
@@ -484,7 +481,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Presensi Bulanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Presensi Bulanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -935,12 +932,12 @@ public final class DlgBulanan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tbBangsal.getRowCount()!=0){            
             Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 String say=" rekap_presensi.jam_datang like '%"+ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"%' ";
                 try{
@@ -948,7 +945,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                       switch (pilih) {
                             case "NIP":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -963,7 +960,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                  this.setCursor(Cursor.getDefaultCursor()); break;
                             case "Nama":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -979,7 +976,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                   break;
                             case "Shift":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -995,7 +992,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                   break;
                             case "Jam Datang":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -1011,7 +1008,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                   break;
                             case "Jam Pulang":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -1027,7 +1024,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                   break;
                             case "Status":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -1043,7 +1040,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                   break;
                             case "Keterlambatan":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -1059,7 +1056,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                   break;
                             case "Durasi":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -1075,7 +1072,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
                                   break;
                             case "Catatan":
                                   this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                  Valid.MyReport("rptHarian.jrxml","report","::[ Rekap Harian ]::",
+                                  Valid.MyReportqry("rptHarian.jasper","report","::[ Rekap Harian ]::",
                                         "select  pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift, rekap_presensi.jam_datang, "+
                                         "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                                         "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
@@ -1307,10 +1304,10 @@ public final class DlgBulanan extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getpresensi_bulanan());
-        BtnHapus.setEnabled(var.getpresensi_bulanan());
-        BtnEdit.setEnabled(var.getpresensi_bulanan());
-        BtnPrint.setEnabled(var.getpresensi_bulanan());
+        BtnSimpan.setEnabled(akses.getpresensi_bulanan());
+        BtnHapus.setEnabled(akses.getpresensi_bulanan());
+        BtnEdit.setEnabled(akses.getpresensi_bulanan());
+        BtnPrint.setEnabled(akses.getpresensi_bulanan());
      }
 
 }

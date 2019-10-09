@@ -16,7 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
+import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -33,6 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -40,6 +41,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 
 /**
@@ -69,7 +76,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Object[] row={
             "No.Rawat","No.R.M.","Nama Pasien","Umur","Tgl.Kejadian","Jam Kejadian",
             "Tgl.Lapor","Jam Lapor","NIP","Petugas","Lokasi Insiden","Kode Insiden",
-            "Nama Insiden","Jenis Insiden","Dampak/Severity","Unit Terkait","Akibat",
+            "Nama Insiden","Jenis Insiden","Dampak/Severity","Unit Terkait","Kronologis","Akibat",
             "Tindakan Saat Insiden","Identifikasi Masalah","Rekomendasi & Tindak Lanjut"
         };
         tabMode=new DefaultTableModel(null,row){
@@ -81,7 +88,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(110);
@@ -123,6 +130,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==19){
                 column.setPreferredWidth(150);
+            }else if(i==20){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -132,13 +141,14 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         KodeInsiden.setDocument(new batasInput((byte)5).getKata(KodeInsiden));
         Lokasi.setDocument(new batasInput((int)60).getKata(Lokasi));
         UnitTerkait.setDocument(new batasInput((int)60).getKata(UnitTerkait));
-        Akibat.setDocument(new batasInput((int)100).getKata(Akibat));
-        Tindakan.setDocument(new batasInput((int)100).getKata(Tindakan));
-        Identifikasi.setDocument(new batasInput((int)100).getKata(Identifikasi));
-        TindakLanjut.setDocument(new batasInput((int)100).getKata(TindakLanjut));
+        Akibat.setDocument(new batasInput((int)150).getKata(Akibat));
+        Tindakan.setDocument(new batasInput((int)150).getKata(Tindakan));
+        Identifikasi.setDocument(new batasInput((int)150).getKata(Identifikasi));
+        TindakLanjut.setDocument(new batasInput((int)150).getKata(TindakLanjut));
+        Kronologis.setDocument(new batasInput((int)200).getKata(Kronologis));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
-        if(koneksiDB.cariCepat().equals("aktif")){
+        if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -239,6 +249,14 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppGrafikBatangKejadianIKPPerDampak = new javax.swing.JMenuItem();
+        ppGrafikPieKejadianIKPPerDampak = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerJenis = new javax.swing.JMenuItem();
+        ppGrafikPieKejadianIKPPerJenis = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerTanggal = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerbulan = new javax.swing.JMenuItem();
+        ppGrafikBatangKejadianIKPPerTahun = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -301,23 +319,141 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Identifikasi = new widget.TextBox();
         jLabel28 = new widget.Label();
         TindakLanjut = new widget.TextBox();
+        Kronologis = new widget.TextBox();
+        jLabel29 = new widget.Label();
         ChkInput = new widget.CekBox();
+
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppGrafikBatangKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerDampak.setForeground(new java.awt.Color(50, 50, 50));
+        ppGrafikBatangKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerDampak.setText("Grafik Batang Kejadian IKP Per Dampak");
+        ppGrafikBatangKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerDampak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerDampak.setName("ppGrafikBatangKejadianIKPPerDampak"); // NOI18N
+        ppGrafikBatangKejadianIKPPerDampak.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerDampak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerDampakActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerDampak);
+
+        ppGrafikPieKejadianIKPPerDampak.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikPieKejadianIKPPerDampak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikPieKejadianIKPPerDampak.setForeground(new java.awt.Color(50, 50, 50));
+        ppGrafikPieKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikPieKejadianIKPPerDampak.setText("Grafik Pie Kejadian IKP Per Dampak");
+        ppGrafikPieKejadianIKPPerDampak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikPieKejadianIKPPerDampak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikPieKejadianIKPPerDampak.setName("ppGrafikPieKejadianIKPPerDampak"); // NOI18N
+        ppGrafikPieKejadianIKPPerDampak.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikPieKejadianIKPPerDampak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikPieKejadianIKPPerDampakActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikPieKejadianIKPPerDampak);
+
+        ppGrafikBatangKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerJenis.setForeground(new java.awt.Color(50, 50, 50));
+        ppGrafikBatangKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerJenis.setText("Grafik Batang Kejadian IKP Per Jenis");
+        ppGrafikBatangKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerJenis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerJenis.setName("ppGrafikBatangKejadianIKPPerJenis"); // NOI18N
+        ppGrafikBatangKejadianIKPPerJenis.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerJenisActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerJenis);
+
+        ppGrafikPieKejadianIKPPerJenis.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikPieKejadianIKPPerJenis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikPieKejadianIKPPerJenis.setForeground(new java.awt.Color(50, 50, 50));
+        ppGrafikPieKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikPieKejadianIKPPerJenis.setText("Grafik Pie Kejadian IKP Per Jenis");
+        ppGrafikPieKejadianIKPPerJenis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikPieKejadianIKPPerJenis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikPieKejadianIKPPerJenis.setName("ppGrafikPieKejadianIKPPerJenis"); // NOI18N
+        ppGrafikPieKejadianIKPPerJenis.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikPieKejadianIKPPerJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikPieKejadianIKPPerJenisActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikPieKejadianIKPPerJenis);
+
+        ppGrafikBatangKejadianIKPPerTanggal.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerTanggal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerTanggal.setForeground(new java.awt.Color(50, 50, 50));
+        ppGrafikBatangKejadianIKPPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerTanggal.setText("Grafik Batang Kejadian IKP Per Tanggal");
+        ppGrafikBatangKejadianIKPPerTanggal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerTanggal.setName("ppGrafikBatangKejadianIKPPerTanggal"); // NOI18N
+        ppGrafikBatangKejadianIKPPerTanggal.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerTanggalActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerTanggal);
+
+        ppGrafikBatangKejadianIKPPerbulan.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerbulan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerbulan.setForeground(new java.awt.Color(50, 50, 50));
+        ppGrafikBatangKejadianIKPPerbulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerbulan.setText("Grafik Batang Kejadian IKP Per Bulan");
+        ppGrafikBatangKejadianIKPPerbulan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerbulan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerbulan.setName("ppGrafikBatangKejadianIKPPerbulan"); // NOI18N
+        ppGrafikBatangKejadianIKPPerbulan.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerbulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerbulanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerbulan);
+
+        ppGrafikBatangKejadianIKPPerTahun.setBackground(new java.awt.Color(255, 255, 254));
+        ppGrafikBatangKejadianIKPPerTahun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikBatangKejadianIKPPerTahun.setForeground(new java.awt.Color(50, 50, 50));
+        ppGrafikBatangKejadianIKPPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikBatangKejadianIKPPerTahun.setText("Grafik Batang Kejadian IKP Per Tahun");
+        ppGrafikBatangKejadianIKPPerTahun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikBatangKejadianIKPPerTahun.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikBatangKejadianIKPPerTahun.setName("ppGrafikBatangKejadianIKPPerTahun"); // NOI18N
+        ppGrafikBatangKejadianIKPPerTahun.setPreferredSize(new java.awt.Dimension(280, 26));
+        ppGrafikBatangKejadianIKPPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikBatangKejadianIKPPerTahunActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikBatangKejadianIKPPerTahun);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -473,7 +609,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -487,7 +623,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -582,7 +718,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         TPasien.setBounds(361, 10, 424, 23);
 
         Kejadian.setForeground(new java.awt.Color(50, 70, 50));
-        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Kejadian.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         Kejadian.setDisplayFormat("dd-MM-yyyy");
         Kejadian.setName("Kejadian"); // NOI18N
         Kejadian.setOpaque(false);
@@ -672,7 +808,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel17.setBounds(420, 40, 50, 23);
 
         Lapor.setForeground(new java.awt.Color(50, 70, 50));
-        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Lapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2019" }));
         Lapor.setDisplayFormat("dd-MM-yyyy");
         Lapor.setName("Lapor"); // NOI18N
         Lapor.setOpaque(false);
@@ -728,6 +864,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(0, 70, 100, 23);
 
+        nip.setEditable(false);
         nip.setHighlighter(null);
         nip.setName("nip"); // NOI18N
         nip.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -768,12 +905,12 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(UnitTerkait);
-        UnitTerkait.setBounds(104, 130, 260, 23);
+        UnitTerkait.setBounds(104, 130, 280, 23);
 
         jLabel25.setText("Akibat :");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(401, 130, 60, 23);
+        jLabel25.setBounds(390, 160, 91, 23);
 
         Akibat.setHighlighter(null);
         Akibat.setName("Akibat"); // NOI18N
@@ -783,7 +920,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Akibat);
-        Akibat.setBounds(465, 130, 320, 23);
+        Akibat.setBounds(485, 160, 300, 23);
 
         btnInsiden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnInsiden.setMnemonic('2');
@@ -802,6 +939,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         FormInput.add(NmInsiden);
         NmInsiden.setBounds(176, 100, 349, 23);
 
+        KodeInsiden.setEditable(false);
         KodeInsiden.setHighlighter(null);
         KodeInsiden.setName("KodeInsiden"); // NOI18N
         KodeInsiden.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -830,7 +968,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         jLabel26.setText("Identifikasi :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(381, 160, 80, 23);
+        jLabel26.setBounds(0, 190, 100, 23);
 
         Tindakan.setHighlighter(null);
         Tindakan.setName("Tindakan"); // NOI18N
@@ -840,7 +978,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(104, 160, 260, 23);
+        Tindakan.setBounds(104, 160, 280, 23);
 
         jLabel27.setText("Tindakan Insiden :");
         jLabel27.setName("jLabel27"); // NOI18N
@@ -855,12 +993,12 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Identifikasi);
-        Identifikasi.setBounds(465, 160, 320, 23);
+        Identifikasi.setBounds(104, 190, 280, 23);
 
         jLabel28.setText("Tindak Lanjut :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(0, 190, 100, 23);
+        jLabel28.setBounds(390, 190, 91, 23);
 
         TindakLanjut.setHighlighter(null);
         TindakLanjut.setName("TindakLanjut"); // NOI18N
@@ -870,7 +1008,22 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         });
         FormInput.add(TindakLanjut);
-        TindakLanjut.setBounds(104, 190, 260, 23);
+        TindakLanjut.setBounds(485, 190, 300, 23);
+
+        Kronologis.setHighlighter(null);
+        Kronologis.setName("Kronologis"); // NOI18N
+        Kronologis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KronologisKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kronologis);
+        Kronologis.setBounds(485, 130, 300, 23);
+
+        jLabel29.setText("Kronologis :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(390, 130, 91, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -934,11 +1087,13 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             Valid.textKosong(Identifikasi,"Identifikasi Masalah");
         }else if(TindakLanjut.getText().trim().equals("")){
             Valid.textKosong(TindakLanjut,"Rekomendasi & Tindak Lanjut");
+        }else if(Kronologis.getText().trim().equals("")){
+            Valid.textKosong(Kronologis,"Kronologis");
         }else{
-            if(Sequel.menyimpantf("insiden_keselamatan_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
+            if(Sequel.menyimpantf("insiden_keselamatan_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Kejadian.getSelectedItem()+""),JamKejadian.getSelectedItem()+":"+MenitKejadian.getSelectedItem()+":"+DetikKejadian.getSelectedItem(),
                 Valid.SetTgl(Lapor.getSelectedItem()+""),JamLapor.getSelectedItem()+":"+MenitLapor.getSelectedItem()+":"+DetikLapor.getSelectedItem(),KodeInsiden.getText(),
-                nip.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText()
+                nip.getText(),Lokasi.getText(),Kronologis.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText()
             })==true){
                 tampil();
                 emptTeks();
@@ -1008,11 +1163,13 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             Valid.textKosong(Identifikasi,"Identifikasi Masalah");
         }else if(TindakLanjut.getText().trim().equals("")){
             Valid.textKosong(TindakLanjut,"Rekomendasi & Tindak Lanjut");
+        }else if(Kronologis.getText().trim().equals("")){
+            Valid.textKosong(Kronologis,"Kronologis");
         }else{         
-            Sequel.mengedit("insiden_keselamatan_pasien","tgl_kejadian=? and jam_kejadian=? and no_rawat=?","no_rawat=?,tgl_kejadian=?,jam_kejadian=?,tgl_lapor=?,jam_lapor=?,kode_insiden=?,nip=?,lokasi=?,unit_terkait=?,akibat=?,tindakan_insiden=?,identifikasi_masalah=?,rtl=?",16,new String[]{
+            Sequel.mengedit("insiden_keselamatan_pasien","tgl_kejadian=? and jam_kejadian=? and no_rawat=?","no_rawat=?,tgl_kejadian=?,jam_kejadian=?,tgl_lapor=?,jam_lapor=?,kode_insiden=?,nip=?,lokasi=?,unit_terkait=?,akibat=?,tindakan_insiden=?,identifikasi_masalah=?,rtl=?,kronologis=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Kejadian.getSelectedItem()+""),JamKejadian.getSelectedItem()+":"+MenitKejadian.getSelectedItem()+":"+DetikKejadian.getSelectedItem(),
                 Valid.SetTgl(Lapor.getSelectedItem()+""),JamLapor.getSelectedItem()+":"+MenitLapor.getSelectedItem()+":"+DetikLapor.getSelectedItem(),KodeInsiden.getText(),
-                nip.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText(),
+                nip.getText(),Lokasi.getText(),UnitTerkait.getText(),Akibat.getText(),Tindakan.getText(),Identifikasi.getText(),TindakLanjut.getText(),Kronologis.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),4).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             });
@@ -1051,17 +1208,17 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
                 param.put("tanggal1",Valid.SetTgl(DTPCari1.getSelectedItem()+""));   
                 param.put("tanggal2",Valid.SetTgl(DTPCari2.getSelectedItem()+""));   
                 param.put("parameter","%"+TCari.getText().trim()+"%");   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDataInsidenKeselamatanPasien.jrxml",param,"::[ Data Insiden Keselamatan Pasien ]::");
+                Valid.MyReport("rptDataInsidenKeselamatanPasien.jasper",param,"::[ Data Insiden Keselamatan Pasien ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1195,11 +1352,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void UnitTerkaitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UnitTerkaitKeyPressed
-        Valid.pindah(evt,KodeInsiden,Akibat);
+        Valid.pindah(evt,KodeInsiden,Kronologis);
     }//GEN-LAST:event_UnitTerkaitKeyPressed
 
     private void AkibatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AkibatKeyPressed
-        Valid.pindah(evt,UnitTerkait,Tindakan);
+        Valid.pindah(evt,Tindakan,Identifikasi);
     }//GEN-LAST:event_AkibatKeyPressed
 
     private void btnInsidenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsidenActionPerformed
@@ -1225,16 +1382,188 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_KodeInsidenKeyPressed
 
     private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
-        Valid.pindah(evt,Akibat,Identifikasi);
+        Valid.pindah(evt,Kronologis,Akibat);
     }//GEN-LAST:event_TindakanKeyPressed
 
     private void IdentifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdentifikasiKeyPressed
-        Valid.pindah(evt,Tindakan,TindakLanjut);
+        Valid.pindah(evt,Akibat,TindakLanjut);
     }//GEN-LAST:event_IdentifikasiKeyPressed
 
     private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
         Valid.pindah(evt,Identifikasi,BtnSimpan);
     }//GEN-LAST:event_TindakLanjutKeyPressed
+
+    private void ppGrafikBatangKejadianIKPPerbulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerbulanActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m'),count(DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m')) as jumlah "+
+                "from insiden_keselamatan_pasien where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m')").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+            
+            if(rs!=null){
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Bulan Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Bulan","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Bulan",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);  
+
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerbulanActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerDampakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerDampakActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.dampak,count(insiden_keselamatan.dampak) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.dampak").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+       JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Dampak Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Dampak IKP","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Dampak",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);  
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerDampakActionPerformed
+
+    private void ppGrafikPieKejadianIKPPerDampakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikPieKejadianIKPPerDampakActionPerformed
+        DefaultPieDataset dpd = new DefaultPieDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.dampak,count(insiden_keselamatan.dampak) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.dampak").executeQuery();
+            while(rs.next()) {
+                dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Kejadian IKP Per Dampak Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),dpd,true,true, false);
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Dampak",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);    
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);
+    }//GEN-LAST:event_ppGrafikPieKejadianIKPPerDampakActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerJenisActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.jenis_insiden,count(insiden_keselamatan.jenis_insiden) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.jenis_insiden").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+       JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Jenis Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Jenis IKP","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Jenis",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);   
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerJenisActionPerformed
+
+    private void ppGrafikPieKejadianIKPPerJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikPieKejadianIKPPerJenisActionPerformed
+        DefaultPieDataset dpd = new DefaultPieDataset();
+        try {                
+            rs = koneksi.prepareStatement("select insiden_keselamatan.jenis_insiden,count(insiden_keselamatan.jenis_insiden) as jumlah "+
+                   "from insiden_keselamatan_pasien inner join insiden_keselamatan on insiden_keselamatan_pasien.kode_insiden=insiden_keselamatan.kode_insiden "+
+                   "where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by insiden_keselamatan.jenis_insiden").executeQuery();
+            while(rs.next()) {
+                dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        
+        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Kejadian IKP Per Jenis Periode "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),dpd,true,true, false);
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Jenis",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);
+    }//GEN-LAST:event_ppGrafikPieKejadianIKPPerJenisActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerTanggalActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m-%d'),count(DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m-%d')) as jumlah "+
+                "from insiden_keselamatan_pasien where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by DATE_FORMAT(insiden_keselamatan_pasien.tgl_kejadian, '%y-%m-%d')").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+            
+            if(rs!=null){
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Tanggal Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Tanggal","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Tanggal",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true);  
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerTanggalActionPerformed
+
+    private void ppGrafikBatangKejadianIKPPerTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikBatangKejadianIKPPerTahunActionPerformed
+        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        try {                
+            rs = koneksi.prepareStatement("select year(insiden_keselamatan_pasien.tgl_kejadian),count(year(insiden_keselamatan_pasien.tgl_kejadian)) as jumlah "+
+                "from insiden_keselamatan_pasien where tgl_kejadian between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' group by year(insiden_keselamatan_pasien.tgl_kejadian)").executeQuery();
+            while(rs.next()) {
+                dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
+            }
+            
+            if(rs!=null){
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kejadian IKP Per Tahun Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Tahun","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        ChartFrame cf = new ChartFrame("Grafik Kejadian IKP Per Tahun",freeChart);
+        cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);   
+        cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+        cf.setLocationRelativeTo(internalFrame1);
+        cf.setAlwaysOnTop(true);
+        cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        cf.setVisible(true); 
+    }//GEN-LAST:event_ppGrafikBatangKejadianIKPPerTahunActionPerformed
+
+    private void KronologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KronologisKeyPressed
+        Valid.pindah(evt,UnitTerkait,Tindakan);
+    }//GEN-LAST:event_KronologisKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1277,6 +1606,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.TextBox Jenis;
     private widget.Tanggal Kejadian;
     private widget.TextBox KodeInsiden;
+    private widget.TextBox Kronologis;
     private widget.Label LCount;
     private widget.Tanggal Lapor;
     private widget.TextBox Lokasi;
@@ -1307,14 +1637,23 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private widget.Label jLabel26;
     private widget.Label jLabel27;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox namapetugas;
     private widget.TextBox nip;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerDampak;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerJenis;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerTahun;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerTanggal;
+    private javax.swing.JMenuItem ppGrafikBatangKejadianIKPPerbulan;
+    private javax.swing.JMenuItem ppGrafikPieKejadianIKPPerDampak;
+    private javax.swing.JMenuItem ppGrafikPieKejadianIKPPerJenis;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
@@ -1328,7 +1667,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 "insiden_keselamatan_pasien.nip,petugas.nama,insiden_keselamatan_pasien.lokasi,"+
                 "insiden_keselamatan_pasien.kode_insiden,insiden_keselamatan.nama_insiden,"+
                 "insiden_keselamatan.jenis_insiden,insiden_keselamatan.dampak,insiden_keselamatan_pasien.unit_terkait,"+
-                "insiden_keselamatan_pasien.akibat,insiden_keselamatan_pasien.tindakan_insiden,"+
+                "insiden_keselamatan_pasien.kronologis,insiden_keselamatan_pasien.akibat,insiden_keselamatan_pasien.tindakan_insiden,"+
                 "insiden_keselamatan_pasien.identifikasi_masalah,insiden_keselamatan_pasien.rtl "+
                 "from insiden_keselamatan_pasien inner join reg_periksa inner join pasien "+
                 "inner join insiden_keselamatan inner join petugas on insiden_keselamatan_pasien.no_rawat=reg_periksa.no_rawat "+
@@ -1345,6 +1684,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan.jenis_insiden like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan.dampak like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.unit_terkait like ? or "+
+                "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.kronologis like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.akibat like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.tindakan_insiden like ? or "+
                 "insiden_keselamatan_pasien.tgl_kejadian between ? and ? and insiden_keselamatan_pasien.identifikasi_masalah like ? or "+
@@ -1395,6 +1735,9 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                 ps.setString(43,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(44,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(45,"%"+TCari.getText()+"%");
+                ps.setString(46,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(47,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(48,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
@@ -1404,7 +1747,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
                         rs.getString(10),rs.getString(11),rs.getString(12),
                         rs.getString(13),rs.getString(14),rs.getString(15),
                         rs.getString(16),rs.getString(17),rs.getString(18),
-                        rs.getString(19),rs.getString(20),rs.getString(21)
+                        rs.getString(19),rs.getString(20),rs.getString(21),
+                        rs.getString(22)
                     });
                 }
             } catch (Exception e) {
@@ -1433,6 +1777,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         Dampak.setText("");
         Lokasi.setText("");
         UnitTerkait.setText("");
+        Kronologis.setText("");
         Akibat.setText("");
         Tindakan.setText("");
         TindakLanjut.setText("");
@@ -1461,10 +1806,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             Jenis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Dampak.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             UnitTerkait.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Akibat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Identifikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            TindakLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Kronologis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Akibat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Identifikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            TindakLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Valid.SetTgl(Kejadian,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             Valid.SetTgl(Lapor,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());            
         }
@@ -1505,11 +1851,11 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getinsiden_keselamatan_pasien());
-        BtnHapus.setEnabled(var.getinsiden_keselamatan_pasien());
-        BtnPrint.setEnabled(var.getinsiden_keselamatan_pasien()); 
-        if(var.getjml2()>=1){
-            nip.setText(var.getkode());
+        BtnSimpan.setEnabled(akses.getinsiden_keselamatan_pasien());
+        BtnHapus.setEnabled(akses.getinsiden_keselamatan_pasien());
+        BtnPrint.setEnabled(akses.getinsiden_keselamatan_pasien()); 
+        if(akses.getjml2()>=1){
+            nip.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?",namapetugas,nip.getText());
         }            
     }
