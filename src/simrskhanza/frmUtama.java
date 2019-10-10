@@ -15332,6 +15332,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRekapObatPoliActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15918,7 +15922,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
             btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien,
-            btnPerkiraanBiayaRanap;
+            btnPerkiraanBiayaRanap,btnRekapObatPoli;
     
     public void isWall(){
         try{            
@@ -16575,6 +16579,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getobat10_terbanyak_poli()==true){
                 Panelmenu.add(btn10BesarObatPoli);
+                jmlmenu++;
+            }
+            
+            if(akses.getrekap_obat_poli()==true){
+                Panelmenu.add(btnRekapObatPoli);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -19350,6 +19359,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getobat10_terbanyak_poli()==true){
             Panelmenu.add(btn10BesarObatPoli);
+            jmlmenu++;
+        }
+        
+        if(akses.getrekap_obat_poli()==true){
+            Panelmenu.add(btnRekapObatPoli);
             jmlmenu++;
         }
 
@@ -22329,6 +22343,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getobat10_terbanyak_poli()==true){
             if(btn10BesarObatPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btn10BesarObatPoli);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getrekap_obat_poli()==true){
+            if(btnRekapObatPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapObatPoli);
                 jmlmenu++;
             }                
         }
@@ -26550,6 +26571,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPerkiraanBiayaRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPerkiraanBiayaRanapActionPerformed(evt);
+            }
+        });
+        
+        btnRekapObatPoli = new widget.ButtonBig();
+        btnRekapObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); 
+        btnRekapObatPoli.setText("Rekap Obat Per Poli");
+        btnRekapObatPoli.setIconTextGap(0);
+        btnRekapObatPoli.setName("btnRekapObatPoli"); 
+        btnRekapObatPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapObatPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapObatPoliActionPerformed(evt);
             }
         });
     }
