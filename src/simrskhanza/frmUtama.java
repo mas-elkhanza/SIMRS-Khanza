@@ -478,6 +478,7 @@ import inventory.Dlg10ObatTerbanyakPoli;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgPengajuanBarangMedis;
+import inventory.DlgRekapObatPoli;
 import inventory.DlgSisaStok;
 import ipsrs.DlgPengajuanBarangNonMedis;
 import java.awt.event.ActionEvent;
@@ -15333,7 +15334,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnRekapObatPoliActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapObatPoli rbpoli=new DlgRekapObatPoli(this,false);
+        rbpoli.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rbpoli.setLocationRelativeTo(PanelUtama);
+        rbpoli.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
