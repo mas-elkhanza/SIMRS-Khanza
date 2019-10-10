@@ -23,7 +23,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -43,8 +45,14 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
     private validasi Valid=new validasi(); 
     private Connection koneksi=koneksiDB.condb(); 
     private riwayatobat Trackobat=new riwayatobat();
+    private PreparedStatement ps;
     private ResultSet rs;
     private String tgl="",sql="";
+    private DlgCariJenis jenis = new DlgCariJenis(null, false);
+    private DlgCariKategori kategori = new DlgCariKategori(null, false);
+    private DlgCariGolongan golongan = new DlgCariGolongan(null, false);
+    private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
+    private double nilaitotal=0;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -158,6 +166,114 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    kdjenis.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 0).toString());
+                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+        
+        golongan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (golongan.getTable().getSelectedRow() != -1) {
+                    kdgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 0).toString());
+                    nmgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 1).toString());
+                }
+                
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                golongan.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+        
+        kategori.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (kategori.getTable().getSelectedRow() != -1) {
+                    kdkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 0).toString());
+                    nmkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 1).toString());
+                }
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                kategori.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+        
     } 
     int pilihan=0;
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
@@ -192,6 +308,9 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         nmbarang = new widget.TextBox();
         harga = new widget.TextBox();
         total = new widget.TextBox();
+        kdjenis = new widget.TextBox();
+        kdkategori = new widget.TextBox();
+        kdgolongan = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -204,13 +323,25 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnHapus = new widget.Button();
-        BtnCetak = new widget.Button();
-        BtnAll = new widget.Button();
         label10 = new widget.Label();
         LCount = new widget.Label();
+        label13 = new widget.Label();
+        LTotalMutasi = new widget.Label();
+        BtnCetak = new widget.Button();
         BtnKeluar = new widget.Button();
+        panelBiasa1 = new widget.PanelBiasa();
+        label20 = new widget.Label();
+        nmjns = new widget.TextBox();
+        BtnJenis = new widget.Button();
+        label22 = new widget.Label();
+        nmkategori = new widget.TextBox();
+        BtnKategori = new widget.Button();
+        label23 = new widget.Label();
+        nmgolongan = new widget.TextBox();
+        BtnGolongan = new widget.Button();
 
         panelisi4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         panelisi4.setName("panelisi4"); // NOI18N
@@ -358,6 +489,33 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelisi4.add(total);
         total.setBounds(440, 100, 100, 23);
 
+        kdjenis.setEditable(false);
+        kdjenis.setName("kdjenis"); // NOI18N
+        kdjenis.setPreferredSize(new java.awt.Dimension(75, 23));
+        kdjenis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdjenisKeyPressed(evt);
+            }
+        });
+
+        kdkategori.setEditable(false);
+        kdkategori.setName("kdkategori"); // NOI18N
+        kdkategori.setPreferredSize(new java.awt.Dimension(75, 23));
+        kdkategori.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdkategoriKeyPressed(evt);
+            }
+        });
+
+        kdgolongan.setEditable(false);
+        kdgolongan.setName("kdgolongan"); // NOI18N
+        kdgolongan.setPreferredSize(new java.awt.Dimension(75, 23));
+        kdgolongan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdgolonganKeyPressed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -367,7 +525,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mutasi Antar Gudang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mutasi Antar Gudang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -404,7 +562,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelisi3.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -418,7 +576,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         panelisi3.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -427,11 +585,11 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
 
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(70, 23));
+        label9.setPreferredSize(new java.awt.Dimension(100, 23));
         panelisi3.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -457,6 +615,23 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         });
         panelisi3.add(BtnCari);
 
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi3.add(BtnAll);
+
         jPanel1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
         panelisi1.setName("panelisi1"); // NOI18N
@@ -480,6 +655,28 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         });
         panelisi1.add(BtnHapus);
 
+        label10.setText("Record :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(100, 30));
+        panelisi1.add(label10);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(100, 30));
+        panelisi1.add(LCount);
+
+        label13.setText("Nilai Mutasi Barang :");
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(125, 30));
+        panelisi1.add(label13);
+
+        LTotalMutasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotalMutasi.setText("0");
+        LTotalMutasi.setName("LTotalMutasi"); // NOI18N
+        LTotalMutasi.setPreferredSize(new java.awt.Dimension(205, 30));
+        panelisi1.add(LTotalMutasi);
+
         BtnCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnCetak.setMnemonic('C');
         BtnCetak.setText("Cetak");
@@ -497,35 +694,6 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnCetak);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnAll);
-
-        label10.setText("Record :");
-        label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(100, 30));
-        panelisi1.add(label10);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(150, 30));
-        panelisi1.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -548,6 +716,78 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         jPanel1.add(panelisi1, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        panelBiasa1.setName("panelBiasa1"); // NOI18N
+        panelBiasa1.setPreferredSize(new java.awt.Dimension(1023, 47));
+        panelBiasa1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 10));
+
+        label20.setText("Jenis :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelBiasa1.add(label20);
+
+        nmjns.setEditable(false);
+        nmjns.setName("nmjns"); // NOI18N
+        nmjns.setPreferredSize(new java.awt.Dimension(192, 23));
+        panelBiasa1.add(nmjns);
+
+        BtnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnJenis.setMnemonic('2');
+        BtnJenis.setToolTipText("Alt+2");
+        BtnJenis.setName("BtnJenis"); // NOI18N
+        BtnJenis.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJenisActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnJenis);
+
+        label22.setText("Kategori :");
+        label22.setName("label22"); // NOI18N
+        label22.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelBiasa1.add(label22);
+
+        nmkategori.setEditable(false);
+        nmkategori.setName("nmkategori"); // NOI18N
+        nmkategori.setPreferredSize(new java.awt.Dimension(192, 23));
+        panelBiasa1.add(nmkategori);
+
+        BtnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnKategori.setMnemonic('2');
+        BtnKategori.setToolTipText("Alt+2");
+        BtnKategori.setName("BtnKategori"); // NOI18N
+        BtnKategori.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnKategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKategoriActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnKategori);
+
+        label23.setText("Golongan :");
+        label23.setName("label23"); // NOI18N
+        label23.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelBiasa1.add(label23);
+
+        nmgolongan.setEditable(false);
+        nmgolongan.setName("nmgolongan"); // NOI18N
+        nmgolongan.setPreferredSize(new java.awt.Dimension(192, 23));
+        panelBiasa1.add(nmgolongan);
+
+        BtnGolongan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnGolongan.setMnemonic('2');
+        BtnGolongan.setToolTipText("Alt+2");
+        BtnGolongan.setName("BtnGolongan"); // NOI18N
+        BtnGolongan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnGolongan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGolonganActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnGolongan);
+
+        internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -641,6 +881,11 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        kdgolongan.setText("");
+        kdjenis.setText("");
+        kdkategori.setText("");nmgolongan.setText("");
+        nmjns.setText("");
+        nmkategori.setText("");
         tampil(" order by mutasibarang.tanggal");
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -659,15 +904,21 @@ private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting"));      
             
-            tgl=" mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' ";
-            sql="select mutasibarang.kd_bangsaldari,(select nm_bangsal from bangsal where kd_bangsal=kd_bangsaldari) as dari,"+
-                "mutasibarang.kd_bangsalke,(select nm_bangsal from bangsal where kd_bangsal=kd_bangsalke) as ke, "+
+            tgl=" mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' ";
+            sql="select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal as dari,"+
+                "mutasibarang.kd_bangsalke,bangsalke.nm_bangsal as ke, "+
                 "mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,"+
-                "mutasibarang.tanggal,mutasibarang.keterangan from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
-                "where "+tgl+" and mutasibarang.kd_bangsaldari like '%"+TCari.getText().trim()+"%' or "+
-                  tgl+" and (select nm_bangsal from bangsal where kd_bangsal=kd_bangsaldari) like '%"+TCari.getText().trim()+"%' or "+
+                "mutasibarang.tanggal,mutasibarang.keterangan "+
+                "from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
+                "inner join bangsal as bangsaldari on mutasibarang.kd_bangsaldari=bangsaldari.kd_bangsal "+
+                "inner join bangsal as bangsalke on mutasibarang.kd_bangsalke=bangsalke.kd_bangsal "+
+                "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                  tgl+" and mutasibarang.kd_bangsaldari like '%"+TCari.getText().trim()+"%' or "+
+                  tgl+" and bangsaldari.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
                   tgl+" and mutasibarang.kd_bangsalke like '%"+TCari.getText().trim()+"%' or "+
-                  tgl+" and (select nm_bangsal from bangsal where kd_bangsal=kd_bangsalke) like '%"+TCari.getText().trim()+"%' or "+ 
+                  tgl+" and bangsalke.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+ 
                   tgl+" and mutasibarang.kode_brng like '%"+TCari.getText().trim()+"%' or "+ 
                   tgl+" and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+ 
                   tgl+" and mutasibarang.tanggal like '%"+TCari.getText().trim()+"%' or "+
@@ -744,6 +995,42 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         Valid.pindah(evt,Keterangan,TCari);
     }//GEN-LAST:event_TanggalKeyPressed
 
+    private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
+        jenis.isCek();
+        jenis.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
+        jenis.setLocationRelativeTo(internalFrame1);
+        jenis.setAlwaysOnTop(false);
+        jenis.setVisible(true);
+    }//GEN-LAST:event_BtnJenisActionPerformed
+
+    private void BtnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKategoriActionPerformed
+        kategori.isCek();
+        kategori.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
+        kategori.setLocationRelativeTo(internalFrame1);
+        kategori.setAlwaysOnTop(false);
+        kategori.setVisible(true);
+    }//GEN-LAST:event_BtnKategoriActionPerformed
+
+    private void BtnGolonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganActionPerformed
+        golongan.isCek();
+        golongan.setSize(internalFrame1.getWidth() -20, internalFrame1.getHeight() -20);
+        golongan.setLocationRelativeTo(internalFrame1);
+        golongan.setAlwaysOnTop(false);
+        golongan.setVisible(true);
+    }//GEN-LAST:event_BtnGolonganActionPerformed
+
+    private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdjenisKeyPressed
+
+    private void kdkategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkategoriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdkategoriKeyPressed
+
+    private void kdgolonganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgolonganKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdgolonganKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -764,12 +1051,16 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnCetak;
+    private widget.Button BtnGolongan;
     private widget.Button BtnHapus;
+    private widget.Button BtnJenis;
+    private widget.Button BtnKategori;
     private widget.Button BtnKeluar;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
+    private widget.Label LTotalMutasi;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
@@ -783,18 +1074,29 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox jumlah;
     private widget.TextBox kdbarang;
     private widget.TextBox kddari;
+    private widget.TextBox kdgolongan;
+    private widget.TextBox kdjenis;
+    private widget.TextBox kdkategori;
     private widget.TextBox kdke;
     private widget.Label label10;
+    private widget.Label label13;
     private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;
+    private widget.Label label20;
+    private widget.Label label22;
+    private widget.Label label23;
     private widget.Label label32;
     private widget.Label label37;
     private widget.Label label39;
     private widget.Label label9;
     private widget.TextBox nmbarang;
     private widget.TextBox nmdari;
+    private widget.TextBox nmgolongan;
+    private widget.TextBox nmjns;
+    private widget.TextBox nmkategori;
     private widget.TextBox nmke;
+    private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
@@ -803,25 +1105,33 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String order) {
-        tgl=" mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' ";
-        sql="select mutasibarang.kd_bangsaldari,(select nm_bangsal from bangsal where kd_bangsal=kd_bangsaldari),"+
-                "mutasibarang.kd_bangsalke,(select nm_bangsal from bangsal where kd_bangsal=kd_bangsalke), "+
-                "mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,"+
-                "mutasibarang.tanggal,mutasibarang.keterangan from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
-                "where "+tgl+" and mutasibarang.kd_bangsaldari like '%"+TCari.getText().trim()+"%' or "+
-                tgl+" and (select nm_bangsal from bangsal where kd_bangsal=kd_bangsaldari) like '%"+TCari.getText().trim()+"%' or "+
-                tgl+" and mutasibarang.kd_bangsalke like '%"+TCari.getText().trim()+"%' or "+
-                tgl+" and (select nm_bangsal from bangsal where kd_bangsal=kd_bangsalke) like '%"+TCari.getText().trim()+"%' or "+ 
-                tgl+" and mutasibarang.kode_brng like '%"+TCari.getText().trim()+"%' or "+ 
-                tgl+" and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+ 
-                tgl+" and mutasibarang.tanggal like '%"+TCari.getText().trim()+"%' or "+
-                tgl+" and mutasibarang.keterangan like '%"+TCari.getText().trim()+"%' "+order;
-        
         Valid.tabelKosong(tabMode);
         try{
+            nilaitotal=0;
+            tgl=" mutasibarang.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and concat(databarang.kdjns,jenis.nama) like '%"+kdjenis.getText()+nmjns.getText().trim()+"%' and concat(databarang.kode_kategori,kategori_barang.nama) like '%"+kdkategori.getText()+nmkategori.getText().trim()+"%' and concat(databarang.kode_golongan,golongan_barang.nama) like '%"+kdgolongan.getText()+nmgolongan.getText().trim()+"%' ";
+            ps=koneksi.prepareStatement(
+                    "select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal,"+
+                    "mutasibarang.kd_bangsalke,bangsalke.nm_bangsal, "+
+                    "mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,"+
+                    "mutasibarang.tanggal,mutasibarang.keterangan "+
+                    "from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng "+
+                    "inner join bangsal as bangsaldari on mutasibarang.kd_bangsaldari=bangsaldari.kd_bangsal "+
+                    "inner join bangsal as bangsalke on mutasibarang.kd_bangsalke=bangsalke.kd_bangsal "+
+                    "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                    "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode where "+
+                    tgl+" and mutasibarang.kd_bangsaldari like '%"+TCari.getText().trim()+"%' or "+
+                    tgl+" and bangsaldari.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
+                    tgl+" and mutasibarang.kd_bangsalke like '%"+TCari.getText().trim()+"%' or "+
+                    tgl+" and bangsalke.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+ 
+                    tgl+" and mutasibarang.kode_brng like '%"+TCari.getText().trim()+"%' or "+ 
+                    tgl+" and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+ 
+                    tgl+" and mutasibarang.tanggal like '%"+TCari.getText().trim()+"%' or "+
+                    tgl+" and mutasibarang.keterangan like '%"+TCari.getText().trim()+"%' "+order);
             try {
-                rs=koneksi.prepareStatement(sql).executeQuery();
-                while(rs.next()){                
+                rs=ps.executeQuery();
+                while(rs.next()){    
+                    nilaitotal=nilaitotal+rs.getDouble(9);
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getDouble(7),rs.getDouble(8),
@@ -834,11 +1144,15 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 if(rs!=null){
                     rs.close();
                 }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
+        LTotalMutasi.setText(df2.format(nilaitotal));
     }
 
     private void getData() {

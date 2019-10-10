@@ -38,6 +38,7 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampilkanpermintaan=false;
     private boolean sukses=false;
+    private DlgPindahGudang pindah=new DlgPindahGudang(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -493,7 +494,6 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPindahGudang pindah=new DlgPindahGudang(null,true);
         pindah.tampil(" order by mutasibarang.tanggal");
         pindah.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pindah.setLocationRelativeTo(internalFrame1);

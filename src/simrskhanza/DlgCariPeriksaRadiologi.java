@@ -1675,36 +1675,57 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void tampil() {
         try {
             Valid.tabelKosong(tabMode);   
-            ps=koneksi.prepareStatement(
-                    "select periksa_radiologi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,petugas.nama,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,"+
-                    "periksa_radiologi.dokter_perujuk,periksa_radiologi.kd_dokter,dokter.nm_dokter from periksa_radiologi inner join reg_periksa inner join pasien inner join petugas inner join dokter "+
-                    "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_radiologi.kd_dokter=dokter.kd_dokter and periksa_radiologi.nip=petugas.nip where "+
-                    "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and pasien.nm_pasien like ? or "+
-                    "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and petugas.nama like ? or "+
-                    "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and reg_periksa.no_rkm_medis like ? group by concat(periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,periksa_radiologi.jam) "+
-                    "order by periksa_radiologi.tgl_periksa desc,periksa_radiologi.jam desc");
+            if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")&&TCari.getText().equals("")){
+                ps=koneksi.prepareStatement(
+                        "select periksa_radiologi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,petugas.nama,periksa_radiologi.tgl_periksa,"+
+                        "periksa_radiologi.jam,periksa_radiologi.dokter_perujuk,periksa_radiologi.kd_dokter,dokter.nm_dokter "+
+                        "from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join petugas on periksa_radiologi.nip=petugas.nip "+
+                        "inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter where "+
+                        "periksa_radiologi.tgl_periksa between ? and ? order by periksa_radiologi.tgl_periksa desc,periksa_radiologi.jam desc");
+            }else{
+                ps=koneksi.prepareStatement(
+                        "select periksa_radiologi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,petugas.nama,periksa_radiologi.tgl_periksa,"+
+                        "periksa_radiologi.jam,periksa_radiologi.dokter_perujuk,periksa_radiologi.kd_dokter,dokter.nm_dokter "+
+                        "from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join petugas on periksa_radiologi.nip=petugas.nip "+
+                        "inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter where "+
+                        "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
+                        "and petugas.nip like ? and pasien.nm_pasien like ? or "+
+                        "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
+                        "and petugas.nip like ? and petugas.nama like ? or "+
+                        "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
+                        "and petugas.nip like ? and reg_periksa.no_rkm_medis like ? group by concat(periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,periksa_radiologi.jam) "+
+                        "order by periksa_radiologi.tgl_periksa desc,periksa_radiologi.jam desc");
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+NoRawat.getText()+"%");
-                ps.setString(4,"%"+kdmem.getText()+"%");
-                ps.setString(5,"%"+kdptg.getText()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+NoRawat.getText()+"%");
-                ps.setString(10,"%"+kdmem.getText()+"%");
-                ps.setString(11,"%"+kdptg.getText()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+NoRawat.getText()+"%");
-                ps.setString(16,"%"+kdmem.getText()+"%");
-                ps.setString(17,"%"+kdptg.getText()+"%");
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")&&TCari.getText().equals("")){
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3,"%"+NoRawat.getText()+"%");
+                    ps.setString(4,"%"+kdmem.getText()+"%");
+                    ps.setString(5,"%"+kdptg.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(9,"%"+NoRawat.getText()+"%");
+                    ps.setString(10,"%"+kdmem.getText()+"%");
+                    ps.setString(11,"%"+kdptg.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(15,"%"+NoRawat.getText()+"%");
+                    ps.setString(16,"%"+kdmem.getText()+"%");
+                    ps.setString(17,"%"+kdptg.getText()+"%");
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 ttl=0;
                 while(rs.next()){
@@ -1843,8 +1864,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             ps5=koneksi.prepareStatement(
                 "select periksa_radiologi.nip,petugas.nama,periksa_radiologi.dokter_perujuk,"+
                 "periksa_radiologi.kd_dokter,dokter.nm_dokter from periksa_radiologi "+
-                "inner join petugas inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
-                "and periksa_radiologi.nip=petugas.nip where periksa_radiologi.no_rawat=? "+
+                "inner join petugas on periksa_radiologi.nip=petugas.nip "+
+                "inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
+                "where periksa_radiologi.no_rawat=? "+
                 "and periksa_radiologi.tgl_periksa=? and periksa_radiologi.jam=?");  
             try {
                 ps5.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());

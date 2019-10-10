@@ -1031,7 +1031,7 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
                                 "inner join kategori_barang on kategori_barang.kode=databarang.kode_kategori inner join golongan_barang on golongan_barang.kode=databarang.kode_golongan "+
                                 "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                                 "where detail_pemberian_obat.status='Ralan' and reg_periksa.kd_pj=? and reg_periksa.kd_poli=? "+
-                                "and reg_periksa.tgl_registrasi between ? and ?  and concat(reg_periksa.kd_dokter,dokter.nm_dokter) like ? "+
+                                "and reg_periksa.tgl_registrasi between ? and ? and concat(reg_periksa.kd_dokter,dokter.nm_dokter) like ? "+
                                 "and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? "+
                                 "and concat(databarang.kode_golongan,golongan_barang.nama) like ? "+
                                 "group by detail_pemberian_obat.kode_brng order by jml desc limit 10");   
