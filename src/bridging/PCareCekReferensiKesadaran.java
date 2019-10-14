@@ -255,7 +255,7 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+

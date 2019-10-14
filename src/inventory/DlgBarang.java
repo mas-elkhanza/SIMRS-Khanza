@@ -1989,7 +1989,7 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
             if (jml > 0) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 jml = Math.round(jml / 3);
                 for (int i = 0; i < jml; i++) {
                     Sequel.menyimpan("temporary", "'0','" + Kd.getText() + "','" + Kd.getText() + "','" + Kd.getText() + "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Barcode");

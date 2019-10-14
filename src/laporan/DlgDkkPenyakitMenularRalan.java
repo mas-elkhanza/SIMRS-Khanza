@@ -270,7 +270,7 @@ public final class DlgDkkPenyakitMenularRalan extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(int r=0;r<tabMode.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+

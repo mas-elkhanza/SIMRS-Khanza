@@ -846,24 +846,37 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],kategori[i],golongan[i],keterangan[i]});
             }
             
-            ps=koneksi.prepareStatement(
-                "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
-                "kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
-                " from databarang inner join jenis inner join golongan_barang "+
-                " inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                " and databarang.kode_golongan=golongan_barang.kode "+
-                " and databarang.kode_kategori=kategori_barang.kode "+
-                " where databarang.status='1' and databarang.kode_brng like ? or "+
-                " databarang.status='1' and databarang.nama_brng like ? or "+
-                " databarang.status='1' and kategori_barang.nama like ? or "+
-                " databarang.status='1' and golongan_barang.nama like ? or "+
-                " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+            if(TCari.getText().equals("")){
+                ps=koneksi.prepareStatement(
+                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
+                    "kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
+                    " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
+                    " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                    " where databarang.status='1' order by databarang.nama_brng");
+            }else{
+                ps=koneksi.prepareStatement(
+                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
+                    "kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
+                    " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                    " inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
+                    " inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
+                    " where databarang.status='1' and databarang.kode_brng like ? or "+
+                    " databarang.status='1' and databarang.nama_brng like ? or "+
+                    " databarang.status='1' and kategori_barang.nama like ? or "+
+                    " databarang.status='1' and golongan_barang.nama like ? or "+
+                    " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+            }
+                
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")){}else{
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                }
+                
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

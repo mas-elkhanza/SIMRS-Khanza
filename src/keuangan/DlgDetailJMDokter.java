@@ -242,7 +242,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail J.M Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail J.M Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -272,7 +272,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label11.setText("Pasien Masuk :");
+        label11.setText("Tgl.Tindakan :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi4.add(label11);
@@ -534,7 +534,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(i=0;i<tabMode.getRowCount();i++){  
                 try {
                     uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
@@ -724,7 +724,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(i=1;i<tabMode.getRowCount();i++){  
                     try {
                         uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
@@ -807,7 +807,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){                
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(i=1;i<tabMode.getRowCount();i++){  
                     try {
                         uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));

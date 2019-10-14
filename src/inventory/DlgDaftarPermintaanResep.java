@@ -979,7 +979,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabMode2.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-                    Sequel.queryu("delete from temporary_resep");
+                    Sequel.queryu("truncate table temporary_resep");
                     
                     for(int i=0;i<tabMode2.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
@@ -1029,7 +1029,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else if(tabMode4.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-                    Sequel.queryu("delete from temporary_resep");
+                    Sequel.queryu("truncate table temporary_resep");
                     
                     for(int i=0;i<tabMode4.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{

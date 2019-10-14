@@ -111,6 +111,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML14.setEditorKit(kit);
         LoadHTML15.setEditorKit(kit);
         LoadHTML16.setEditorKit(kit);
+        LoadHTML17.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
@@ -131,6 +132,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML14.setDocument(doc);
         LoadHTML15.setDocument(doc);
         LoadHTML16.setDocument(doc);
+        LoadHTML17.setDocument(doc);
         LoadHTML.setEditable(false);
         LoadHTML2.setEditable(false);
         LoadHTML3.setEditable(false);
@@ -147,6 +149,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML14.setEditable(false);
         LoadHTML15.setEditable(false);
         LoadHTML16.setEditable(false);
+        LoadHTML17.setEditable(false);
         
         LoadHTML.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -309,6 +312,16 @@ public class PanelRiwayat extends widget.panelisi {
               }
             }
         });
+        LoadHTML17.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
     }
 
     /**
@@ -372,6 +385,9 @@ public class PanelRiwayat extends widget.panelisi {
         internalFrame18 = new widget.InternalFrame();
         Scroll16 = new widget.ScrollPane();
         LoadHTML16 = new widget.editorpane();
+        internalFrame19 = new widget.InternalFrame();
+        Scroll17 = new widget.ScrollPane();
+        LoadHTML17 = new widget.editorpane();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -622,6 +638,20 @@ public class PanelRiwayat extends widget.panelisi {
 
         TabRawat.addTab("Pembelian Obat", internalFrame18);
 
+        internalFrame19.setBackground(new java.awt.Color(255, 255, 255));
+        internalFrame19.setBorder(null);
+        internalFrame19.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll17.setOpaque(true);
+
+        LoadHTML17.setBorder(null);
+        Scroll17.setViewportView(LoadHTML17);
+
+        internalFrame19.add(Scroll17, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Piutang Obat", internalFrame19);
+
         add(TabRawat, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -639,6 +669,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.editorpane LoadHTML14;
     private widget.editorpane LoadHTML15;
     private widget.editorpane LoadHTML16;
+    private widget.editorpane LoadHTML17;
     private widget.editorpane LoadHTML2;
     private widget.editorpane LoadHTML3;
     private widget.editorpane LoadHTML4;
@@ -656,6 +687,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.ScrollPane Scroll14;
     private widget.ScrollPane Scroll15;
     private widget.ScrollPane Scroll16;
+    private widget.ScrollPane Scroll17;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -674,6 +706,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.InternalFrame internalFrame16;
     private widget.InternalFrame internalFrame17;
     private widget.InternalFrame internalFrame18;
+    private widget.InternalFrame internalFrame19;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
@@ -9354,7 +9387,6 @@ public class PanelRiwayat extends widget.panelisi {
                     "penjualan.keterangan, penjualan.jns_jual, penjualan.ongkir,bangsal.nm_bangsal,penjualan.status "+
                     " from penjualan inner join petugas on penjualan.nip=petugas.nip "+
                     " inner join bangsal on penjualan.kd_bangsal=bangsal.kd_bangsal "+
-                    " inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
                     " where penjualan.no_rkm_medis='"+norm+"' "+
                     " group by penjualan.nota_jual order by penjualan.tgl_jual,penjualan.nota_jual ");
             try {
@@ -9392,7 +9424,8 @@ public class PanelRiwayat extends widget.panelisi {
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='11%'>Aturan Pakai</td>"+       
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='5%'>No.Batch</td>"+                                        
                                     "</tr>");
-                    ps2=koneksi.prepareStatement("select detailjual.kode_brng,databarang.nama_brng, detailjual.kode_sat,"+
+                    ps2=koneksi.prepareStatement(
+                            "select detailjual.kode_brng,databarang.nama_brng, detailjual.kode_sat,"+
                             " kodesatuan.satuan,detailjual.h_jual, detailjual.jumlah, "+
                             " detailjual.subtotal, detailjual.dis, detailjual.bsr_dis,"+
                             " detailjual.tambahan,detailjual.embalase,detailjual.tuslah,"+
@@ -9531,6 +9564,119 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    public void tampil18(){ 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try{
+            htmlContent = new StringBuilder();
+            htmlContent.append(
+                "<tr class='isi'>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='11%'>No.Nota</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Tanggal</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='24%'>Petugas</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='11%'>Jenis</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='19%'>Catatan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='23%'>Asal Barang</td>"+
+                "</tr>"); 
+            ps=koneksi.prepareStatement(
+                    "select piutang.nota_piutang, piutang.tgl_piutang, "+
+                    "piutang.nip,petugas.nama, piutang.no_rkm_medis,piutang.nm_pasien,piutang.jns_jual,"+
+                    "bangsal.nm_bangsal,piutang.catatan from piutang inner join petugas on piutang.nip=petugas.nip "+
+                    " inner join bangsal on piutang.kd_bangsal=bangsal.kd_bangsal where piutang.no_rkm_medis='"+norm+"' "+
+                    " order by piutang.tgl_piutang,piutang.nota_piutang ");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){ 
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='top' align='center'>"+rs.getString("nota_piutang")+"</td>"+
+                            "<td valign='top' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
+                            "<td valign='top'>"+rs.getString("nip")+" "+rs.getString("nama")+"</td>"+
+                            "<td valign='top'>"+rs.getString("jns_jual")+"</td>"+
+                            "<td valign='top'>"+rs.getString("catatan")+"</td>"+
+                            "<td valign='top'>"+rs.getString("nm_bangsal")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+
+                            "<td></td>"+
+                            "<td colspan='5'>"+
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi'>"+
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='1%'>No.</td>"+
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='7%'>Kode Barang</td>"+
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='31%'>Nama Barang</td>"+
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='4%'>Jml</td>"+
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='5%'>Satuan</td>"+
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='10%'>Harga(Rp)</td>"+
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='11%'>Subtotal(Rp)</td>"+    
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='4%'>Ptg(%)</td>"+    
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='7%'>Potongan(Rp)</td>"+        
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='12%'>Total(Rp)</td>"+          
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='8%'>No.Batch</td>"+                                        
+                                    "</tr>");
+                    ps2=koneksi.prepareStatement("select detailpiutang.kode_brng,databarang.nama_brng, detailpiutang.kode_sat,"+
+                            " kodesatuan.satuan,detailpiutang.h_jual, detailpiutang.jumlah, "+
+                            " detailpiutang.subtotal, detailpiutang.dis, detailpiutang.bsr_dis,"+
+                            " detailpiutang.total,detailpiutang.no_batch from "+
+                            " detailpiutang inner join databarang inner join kodesatuan inner join jenis "+
+                            " on detailpiutang.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
+                            " and detailpiutang.kode_sat=kodesatuan.kode_sat "+
+                            " where detailpiutang.nota_piutang='"+rs.getString("nota_piutang")+"' order by detailpiutang.kode_brng");
+                    try {
+                        i=1;
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='top' align='center'>"+i+"</td>"+
+                                    "<td valign='top' align='left'>"+rs2.getString("kode_brng")+"</td>"+
+                                    "<td valign='top' align='left'>"+rs2.getString("nama_brng")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("jumlah")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("satuan")+"</td>"+
+                                    "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("h_jual"))+"</td>"+
+                                    "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("subtotal"))+"</td>"+
+                                    "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("dis"))+"</td>"+
+                                    "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("bsr_dis"))+"</td>"+
+                                    "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("total"))+"</td>"+
+                                    "<td valign='top' align='left'>"+rs2.getString("no_batch")+"</td>"+
+                                "</tr>");
+                            i++;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    htmlContent.append(
+                                "</table>"+
+                            "</td>"+
+                        "</tr>");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LoadHTML17.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        }catch (Exception e) {
+            System.out.println("Notif : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
         this.norm=norm;
         this.tanggal1=tanggal1;
@@ -9591,6 +9737,9 @@ public class PanelRiwayat extends widget.panelisi {
             case 16:
                 tampil17();
                 break;
+            case 17:
+                tampil18();
+                break;
             default:
                 break;
         }
@@ -9644,7 +9793,7 @@ public class PanelRiwayat extends widget.panelisi {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 }else if(tabModeRegistrasi.getRowCount()!=0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-                    Sequel.queryu("delete from temporary_resume");
+                    Sequel.queryu("truncate table temporary_resume");
                     
                     for(int i=0;i<tabModeRegistrasi.getRowCount();i++){  
                         Sequel.menyimpan("temporary_resume","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
@@ -9675,6 +9824,9 @@ public class PanelRiwayat extends widget.panelisi {
                 break;
             case 16:
                 panggilLaporan(LoadHTML16.getText());
+                break;
+            case 17:
+                panggilLaporan(LoadHTML17.getText());
                 break;
             default:
                 break;

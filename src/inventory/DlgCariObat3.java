@@ -643,7 +643,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 pspasien.setString(1,TNoRw.getText());
                 rspasien=pspasien.executeQuery();
                 while(rspasien.next()){
-                    Sequel.queryu("delete from temporary");
+                    Sequel.queryu("truncate table temporary");
                     for(i=0;i<tbObat.getRowCount();i++){
                         Sequel.menyimpan("temporary","'0','"+
                                 tbObat.getValueAt(i,2).toString()+"','"+

@@ -306,7 +306,7 @@ public final class DlgPembatalanPeriksaPerDokter extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                 if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
                     Sequel.menyimpan("temporary","'0','"+
