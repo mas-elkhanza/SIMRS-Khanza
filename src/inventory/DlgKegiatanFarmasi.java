@@ -391,7 +391,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
             param.put("tanggal",Tgl2.getDate());   
             if(TabRawat.getSelectedIndex()==0){
                             
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
                         Sequel.menyimpan("temporary","'0','"+
@@ -405,7 +405,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                 Valid.MyReport("rptKegiatanFarmasi1.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }else if(TabRawat.getSelectedIndex()==1){
                             
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
                         Sequel.menyimpan("temporary","'0','"+
@@ -419,7 +419,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                 Valid.MyReport("rptKegiatanFarmasi2.jasper","report","::[ Laporan Kegiatan Farmasi ]::",param);
             }else if(TabRawat.getSelectedIndex()==2){
                             
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabMode3.getRowCount();r++){ 
                     if(!tbBangsal3.getValueAt(r,0).toString().contains(">>")){
                         Sequel.menyimpan("temporary","'0','"+

@@ -939,7 +939,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tbDokter.getRowCount()!=0){
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 int row=tbDokter.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -959,7 +959,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tbDokter2.getRowCount()!=0){
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 int row=tbDokter2.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+

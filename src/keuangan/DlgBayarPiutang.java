@@ -942,7 +942,7 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
             tbKamar.requestFocus();
         }else if(tabMode.getRowCount()!=0){  
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             Sequel.menyimpan("temporary","'0','No.Rawat',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),5).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','Tgl.Bayar',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),0).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
             Sequel.menyimpan("temporary","'0','No.Rekam Medik',': "+tabMode.getValueAt(tbKamar.getSelectedRow(),1).toString() +"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 

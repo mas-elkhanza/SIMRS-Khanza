@@ -807,7 +807,7 @@ public final class DlgRekening extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(TCari.getText().trim().equals("")){
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 int row=tabMode.getRowCount();
                 for(int i=0;i<row;i++){  
                     Sequel.menyimpan("temporary","'0','"+

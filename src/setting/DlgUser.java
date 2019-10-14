@@ -2845,7 +2845,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 Sequel.menyimpan("temporary","'0','"+

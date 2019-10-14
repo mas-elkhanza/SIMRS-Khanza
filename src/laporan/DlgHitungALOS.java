@@ -340,7 +340,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
                 param.put("tanggal",Tgl2.getDate());   
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!Tabel1.getValueAt(r,0).toString().contains(">>")){
                         Sequel.menyimpan("temporary","'0','"+
@@ -373,7 +373,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()); 
                 param.put("tanggal",Tgl2.getDate());   
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!Tabel2.getValueAt(r,0).toString().contains(">>")){
                         Sequel.menyimpan("temporary","'0','"+

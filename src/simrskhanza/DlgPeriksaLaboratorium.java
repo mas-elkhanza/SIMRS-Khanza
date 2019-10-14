@@ -1075,7 +1075,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             Valid.textKosong(Pemeriksaan,"Data Pemeriksaan");
         }else{
             
-            Sequel.queryu("delete from temporary_lab");
+            Sequel.queryu("truncate table temporary_lab");
             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("temporary_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
