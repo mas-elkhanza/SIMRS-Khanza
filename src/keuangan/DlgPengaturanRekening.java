@@ -28,7 +28,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private int i=0;
+    private int i=0,barisdicopy=-1;
     private String Tindakan_Ralan, Laborat_Ralan, Radiologi_Ralan, Obat_Ralan, Registrasi_Ralan, 
             Tambahan_Ralan, Potongan_Ralan, Tindakan_Ranap, Laborat_Ranap, Radiologi_Ranap, 
             Obat_Ranap, Registrasi_Ranap, Tambahan_Ranap, Potongan_Ranap, Retur_Obat_Ranap, 
@@ -75,6 +75,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             kode_beban_kso,nama_beban_kso,kode_utang_kso,nama_utang_kso,kode_hpp_persediaan,nama_hpp_persediaan,kode_persediaan_bhp,
             nama_persediaan_bhp,kode_beban_jasa_sarana,nama_beban_jasa_sarana,kode_utang_jasa_sarana,nama_utang_jasa_sarana,
             kode_beban_menejemen,nama_beban_menejemen,kode_utang_menejemen,nama_utang_menejemen;
+    private String copyakun="";
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
     /** Creates new form DlgJadwal
@@ -344,6 +345,50 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                         }                      
                     }   
                     tbPengaturanRalan.requestFocus();
+                }else if(akses.getform().equals("DlgPengaturanRekeningRanap")){
+                    if(rekening.getTabel().getSelectedRow()!= -1){    
+                        if(tbPengaturanRanap.getSelectedColumn()==6){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),6);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),7);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==8){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),8);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),9);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==10){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),10);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),11);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==12){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),12);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),13);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==14){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),14);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),15);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==16){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),16);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),17);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==18){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),18);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),19);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==20){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),20);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),21);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==22){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),22);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),23);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==24){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),24);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),25);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==26){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),26);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),27);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==28){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),28);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),29);
+                        }else if(tbPengaturanRanap.getSelectedColumn()==30){
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString(),tbPengaturanRanap.getSelectedRow(),30);
+                            tabModeRanap.setValueAt(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString(),tbPengaturanRanap.getSelectedRow(),31);
+                        }                      
+                    }   
+                    tbPengaturanRanap.requestFocus();
                 }
             }
             @Override
@@ -369,6 +414,10 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }
+                }else if(akses.getform().equals("DlgPengaturanRekeningRanap")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        rekening.dispose();
+                    }
                 }
                 
             }
@@ -389,6 +438,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnCopyRekening = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -400,6 +451,23 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         tbPengaturanRalan = new widget.Table();
         Scroll2 = new widget.ScrollPane();
         tbPengaturanRanap = new widget.Table();
+
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnCopyRekening.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCopyRekening.setForeground(new java.awt.Color(50, 50, 50));
+        MnCopyRekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCopyRekening.setText("Copy Rekening");
+        MnCopyRekening.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCopyRekening.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCopyRekening.setName("MnCopyRekening"); // NOI18N
+        MnCopyRekening.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnCopyRekening.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCopyRekeningActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCopyRekening);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -485,7 +553,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         tbPengaturanRalan.setToolTipText("Semua akun harus terisi");
+        tbPengaturanRalan.setComponentPopupMenu(jPopupMenu1);
         tbPengaturanRalan.setName("tbPengaturanRalan"); // NOI18N
+        tbPengaturanRalan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbPengaturanRalanMouseClicked(evt);
+            }
+        });
         tbPengaturanRalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbPengaturanRalanKeyPressed(evt);
@@ -499,6 +573,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         tbPengaturanRanap.setToolTipText("Semua akun harus terisi");
+        tbPengaturanRanap.setComponentPopupMenu(jPopupMenu1);
         tbPengaturanRanap.setName("tbPengaturanRanap"); // NOI18N
         tbPengaturanRanap.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -823,13 +898,129 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
                 tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),5);
                 tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),6);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),7);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),8);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),9);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),10);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),11);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),12);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),13);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),14);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),15);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),16);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),17);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),18);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),19);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),20);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),21);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),22);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),23);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),24);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),25);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),26);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),27);                
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),28);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),29);
+                tabModeRalan.setValueAt("",tbPengaturanRalan.getSelectedRow(),30);
+
             }
         }
     }//GEN-LAST:event_tbPengaturanRalanKeyPressed
 
     private void tbPengaturanRanapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengaturanRanapKeyPressed
-        // TODO add your handling code here:
+        if(tabModeRanap.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                akses.setform("DlgPengaturanRekeningRanap");
+                rekening.emptTeks();
+                rekening.tampil();
+                rekening.isCek();
+                rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                rekening.setLocationRelativeTo(internalFrame1);
+                rekening.setVisible(true);
+            }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),6);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),7);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),8);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),9);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),10);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),11);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),12);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),13);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),14);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),15);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),16);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),17);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),18);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),19);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),20);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),21);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),22);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),23);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),24);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),25);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),26);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),27);                
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),28);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),29);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),30);
+                tabModeRanap.setValueAt("",tbPengaturanRanap.getSelectedRow(),31);
+            }
+        }
     }//GEN-LAST:event_tbPengaturanRanapKeyPressed
+
+    private void MnCopyRekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCopyRekeningActionPerformed
+        if(TabRawat.getSelectedIndex()==1){
+            if(tbPengaturanRalan.getSelectedRow()!= -1){
+                i=tbPengaturanRalan.getSelectedRow();
+                if((!tbPengaturanRalan.getValueAt(i,5).equals(""))&&(!tbPengaturanRalan.getValueAt(i,6).equals(""))&&(!tbPengaturanRalan.getValueAt(i,7).equals(""))&&
+                        (!tbPengaturanRalan.getValueAt(i,8).equals(""))&&(!tbPengaturanRalan.getValueAt(i,9).equals(""))&&(!tbPengaturanRalan.getValueAt(i,10).equals(""))&&
+                         (!tbPengaturanRalan.getValueAt(i,11).equals(""))&&(!tbPengaturanRalan.getValueAt(i,12).equals(""))&&(!tbPengaturanRalan.getValueAt(i,13).equals(""))&&
+                          (!tbPengaturanRalan.getValueAt(i,14).equals(""))&&(!tbPengaturanRalan.getValueAt(i,15).equals(""))&&(!tbPengaturanRalan.getValueAt(i,16).equals(""))&&
+                           (!tbPengaturanRalan.getValueAt(i,17).equals(""))&&(!tbPengaturanRalan.getValueAt(i,18).equals(""))&&(!tbPengaturanRalan.getValueAt(i,19).equals(""))&&
+                            (!tbPengaturanRalan.getValueAt(i,20).equals(""))&&(!tbPengaturanRalan.getValueAt(i,21).equals(""))&&(!tbPengaturanRalan.getValueAt(i,22).equals(""))&&
+                             (!tbPengaturanRalan.getValueAt(i,23).equals(""))&&(!tbPengaturanRalan.getValueAt(i,24).equals(""))&&(!tbPengaturanRalan.getValueAt(i,25).equals(""))&&
+                              (!tbPengaturanRalan.getValueAt(i,26).equals(""))&&(!tbPengaturanRalan.getValueAt(i,27).equals(""))&&(!tbPengaturanRalan.getValueAt(i,28).equals(""))&&
+                               (!tbPengaturanRalan.getValueAt(i,29).equals(""))&&(!tbPengaturanRalan.getValueAt(i,30).equals(""))){
+                    copyakun="copy";
+                    barisdicopy=i;
+                    JOptionPane.showMessageDialog(null,"Silahkan pilih tindakan tujuan..!!"); 
+                }else{
+                    barisdicopy=-1;
+                    copyakun="";
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data tindakan yang mau dicopy akun rekeningnya...!!!");
+                    tbPengaturanRalan.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_MnCopyRekeningActionPerformed
+
+    private void tbPengaturanRalanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPengaturanRalanMouseClicked
+        if(tabModeRalan.getRowCount()!=0){
+            if(evt.getClickCount()==1){
+                if(copyakun.equals("copy")){
+                    int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data copy akun rekeningnya..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        Sequel.meghapus("matrik_akun_jns_perawatan","kd_jenis_prw",tbPengaturanRalan.getValueAt(tbPengaturanRalan.getSelectedRow(),0).toString());
+                        Sequel.menyimpan("matrik_akun_jns_perawatan","?,?,?,?,?,?,?,?,?,?,?,?,?,?", 14,new String[]{
+                            tbPengaturanRalan.getValueAt(tbPengaturanRalan.getSelectedRow(),0).toString(),tbPengaturanRalan.getValueAt(barisdicopy,5).toString(),
+                            tbPengaturanRalan.getValueAt(barisdicopy,7).toString(),tbPengaturanRalan.getValueAt(barisdicopy,9).toString(),
+                            tbPengaturanRalan.getValueAt(barisdicopy,11).toString(),tbPengaturanRalan.getValueAt(barisdicopy,13).toString(),
+                            tbPengaturanRalan.getValueAt(barisdicopy,15).toString(),tbPengaturanRalan.getValueAt(barisdicopy,17).toString(),
+                            tbPengaturanRalan.getValueAt(barisdicopy,19).toString(),tbPengaturanRalan.getValueAt(barisdicopy,21).toString(),
+                            tbPengaturanRalan.getValueAt(barisdicopy,23).toString(),tbPengaturanRalan.getValueAt(barisdicopy,25).toString(),
+                            tbPengaturanRalan.getValueAt(barisdicopy,27).toString(),tbPengaturanRalan.getValueAt(barisdicopy,29).toString()
+                        });
+                        tampilralan();
+                        barisdicopy=-1;
+                        copyakun="";
+                    }else{
+                        barisdicopy=-1;
+                        copyakun="";
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_tbPengaturanRalanMouseClicked
 
     /**
     * @param args the command line arguments
@@ -850,11 +1041,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
+    private javax.swing.JMenuItem MnCopyRekening;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private javax.swing.JTabbedPane TabRawat;
     private widget.InternalFrame internalFrame1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.Table tbPengaturan;
     private widget.Table tbPengaturanRalan;
