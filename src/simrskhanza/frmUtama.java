@@ -478,6 +478,7 @@ import inventory.Dlg10ObatTerbanyakPoli;
 import inventory.DlgKadaluarsaBatch;
 import inventory.DlgObatPeresep;
 import inventory.DlgPengajuanBarangMedis;
+import inventory.DlgRekapObatPasien;
 import inventory.DlgRekapObatPoli;
 import inventory.DlgSisaStok;
 import ipsrs.DlgPengajuanBarangNonMedis;
@@ -15344,6 +15345,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRekapObatPasienActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapObatPasien rbpoli=new DlgRekapObatPasien(this,false);
+        rbpoli.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rbpoli.setLocationRelativeTo(PanelUtama);
+        rbpoli.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15930,7 +15942,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
             btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien,
-            btnPerkiraanBiayaRanap,btnRekapObatPoli;
+            btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien;
     
     public void isWall(){
         try{            
@@ -16592,6 +16604,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekap_obat_poli()==true){
                 Panelmenu.add(btnRekapObatPoli);
+                jmlmenu++;
+            }
+            
+            if(akses.getrekap_obat_pasien()==true){
+                Panelmenu.add(btnRekapObatPasien);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -19372,6 +19389,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekap_obat_poli()==true){
             Panelmenu.add(btnRekapObatPoli);
+            jmlmenu++;
+        }
+        
+        if(akses.getrekap_obat_pasien()==true){
+            Panelmenu.add(btnRekapObatPasien);
             jmlmenu++;
         }
 
@@ -22358,6 +22380,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekap_obat_poli()==true){
             if(btnRekapObatPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapObatPoli);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getrekap_obat_pasien()==true){
+            if(btnRekapObatPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapObatPasien);
                 jmlmenu++;
             }                
         }
@@ -26591,6 +26620,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapObatPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRekapObatPoliActionPerformed(evt);
+            }
+        });
+        
+        btnRekapObatPasien = new widget.ButtonBig();
+        btnRekapObatPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); 
+        btnRekapObatPasien.setText("Rekap Obat Per Pasien");
+        btnRekapObatPasien.setIconTextGap(0);
+        btnRekapObatPasien.setName("btnRekapObatPasien"); 
+        btnRekapObatPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapObatPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapObatPasienActionPerformed(evt);
             }
         });
     }

@@ -835,7 +835,31 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 }
             }
             tampilralan();
-        }   
+        }else if(TabRawat.getSelectedIndex()==2){
+            for(i=0;i<tbPengaturanRanap.getRowCount();i++){ 
+                if((!tbPengaturanRanap.getValueAt(i,6).equals(""))&&(!tbPengaturanRanap.getValueAt(i,7).equals(""))&&(!tbPengaturanRanap.getValueAt(i,8).equals(""))&&
+                    (!tbPengaturanRanap.getValueAt(i,9).equals(""))&&(!tbPengaturanRanap.getValueAt(i,10).equals(""))&&(!tbPengaturanRanap.getValueAt(i,11).equals(""))&&
+                     (!tbPengaturanRanap.getValueAt(i,12).equals(""))&&(!tbPengaturanRanap.getValueAt(i,13).equals(""))&&(!tbPengaturanRanap.getValueAt(i,14).equals(""))&&
+                      (!tbPengaturanRanap.getValueAt(i,15).equals(""))&&(!tbPengaturanRanap.getValueAt(i,16).equals(""))&&(!tbPengaturanRanap.getValueAt(i,17).equals(""))&&
+                       (!tbPengaturanRanap.getValueAt(i,18).equals(""))&&(!tbPengaturanRanap.getValueAt(i,19).equals(""))&&(!tbPengaturanRanap.getValueAt(i,20).equals(""))&&
+                        (!tbPengaturanRanap.getValueAt(i,21).equals(""))&&(!tbPengaturanRanap.getValueAt(i,22).equals(""))&&(!tbPengaturanRanap.getValueAt(i,23).equals(""))&&
+                         (!tbPengaturanRanap.getValueAt(i,24).equals(""))&&(!tbPengaturanRanap.getValueAt(i,25).equals(""))&&(!tbPengaturanRanap.getValueAt(i,26).equals(""))&&
+                          (!tbPengaturanRanap.getValueAt(i,27).equals(""))&&(!tbPengaturanRanap.getValueAt(i,28).equals(""))&&(!tbPengaturanRanap.getValueAt(i,29).equals(""))&&
+                           (!tbPengaturanRanap.getValueAt(i,30).equals(""))&&(!tbPengaturanRanap.getValueAt(i,31).equals(""))){
+                    Sequel.meghapus("matrik_akun_jns_perawatan","kd_jenis_prw",tbPengaturanRanap.getValueAt(i,0).toString());
+                    Sequel.menyimpan("matrik_akun_jns_perawatan","?,?,?,?,?,?,?,?,?,?,?,?,?,?", 14,new String[]{
+                        tbPengaturanRanap.getValueAt(i,0).toString(),tbPengaturanRanap.getValueAt(i,6).toString(),
+                        tbPengaturanRanap.getValueAt(i,8).toString(),tbPengaturanRanap.getValueAt(i,10).toString(),
+                        tbPengaturanRanap.getValueAt(i,12).toString(),tbPengaturanRanap.getValueAt(i,14).toString(),
+                        tbPengaturanRanap.getValueAt(i,16).toString(),tbPengaturanRanap.getValueAt(i,15).toString(),
+                        tbPengaturanRanap.getValueAt(i,20).toString(),tbPengaturanRanap.getValueAt(i,22).toString(),
+                        tbPengaturanRanap.getValueAt(i,24).toString(),tbPengaturanRanap.getValueAt(i,26).toString(),
+                        tbPengaturanRanap.getValueAt(i,28).toString(),tbPengaturanRanap.getValueAt(i,30).toString()
+                    });
+                }
+            }
+            tampilranap();
+        }     
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
