@@ -692,9 +692,6 @@
             </Component>
             <Component class="widget.ComboBox" name="Shift">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="eb" green="ff" red="f5" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="60">
                     <StringItem index="0" value="Pagi"/>

@@ -470,7 +470,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_Tgl2KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
+        Tgl1.requestFocus();
     }//GEN-LAST:event_formWindowOpened
 
     /**
