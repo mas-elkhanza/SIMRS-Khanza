@@ -703,7 +703,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRekapObatPoli.jasper","report","[ Rekap Penggunaan Obat Per Poli]",param);
+            Valid.MyReport("rptRekapObatPoli.jasper","report","[ Rekap Penggunaan Obat Per Poli ]",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
