@@ -999,14 +999,17 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     }
                     ps2=koneksi.prepareStatement("select detreturjual.nota_jual,detreturjual.kode_brng,databarang.nama_brng, "+
                             "detreturjual.kode_sat,kodesatuan.satuan,detreturjual.h_retur,detreturjual.jml_retur, "+
-                            "detreturjual.subtotal,detreturjual.no_batch from detreturjual inner join databarang inner join kodesatuan "+
+                            "detreturjual.subtotal,detreturjual.no_batch from detreturjual inner join databarang inner join kodesatuan inner join returjual inner join pasien "+
                             " on detreturjual.kode_brng=databarang.kode_brng "+
+                            " and detreturjual.no_retur_jual=returjual.no_retur_jual"+
+                            " and returjual.no_rkm_medis=pasien.no_rkm_medis"+
                             " and detreturjual.kode_sat=kodesatuan.kode_sat where "+
                             " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturjual.kode_brng like '%"+TCari.getText()+"%' or "+
                             " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
                             " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturjual.nota_jual like '%"+TCari.getText()+"%' or "+
                             " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturjual.kode_sat like '%"+TCari.getText()+"%' or "+
                             " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturjual.nota_jual like '%"+TCari.getText()+"%' or "+
+                            " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and returjual.no_rkm_medis like '%"+TCari.getText()+"%' or "+        
                             " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and kodesatuan.satuan like '%"+TCari.getText()+"%' order by detreturjual.kode_brng  ");
                     try {
                         subtotal=0;
