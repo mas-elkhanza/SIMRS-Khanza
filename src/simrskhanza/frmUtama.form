@@ -22,7 +22,7 @@
               <Color blue="78" green="0" red="fa" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5a" green="0" red="dc" type="rgb"/>
+              <Color blue="55" green="0" red="d7" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
