@@ -121,7 +121,7 @@ public final class akses {
             item_apotek_industrifarmasi=false,obat10_terbanyak_poli=false,grafik_pengajuan_aset_urgensi=false,grafik_pengajuan_aset_status=false,
             grafik_pengajuan_aset_departemen=false,rekap_pengajuan_aset_departemen=false,grafik_kelompok_jabatanpegawai=false,grafik_resiko_kerjapegawai=false,
             grafik_emergency_indexpegawai=false,grafik_inventaris_ruang=false,harian_HAIs2=false,grafik_inventaris_jenis=false,data_resume_pasien=false,
-            perkiraan_biaya_ranap=false,rekap_obat_poli=false,rekap_obat_pasien=false;
+            perkiraan_biaya_ranap=false,rekap_obat_poli=false,rekap_obat_pasien=false,grafik_HAIs_pasienbangsal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -698,6 +698,7 @@ public final class akses {
                         akses.perkiraan_biaya_ranap=true;
                         akses.rekap_obat_poli=true;
                         akses.rekap_obat_pasien=true;
+                        akses.grafik_HAIs_pasienbangsal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1258,6 +1259,7 @@ public final class akses {
                         akses.perkiraan_biaya_ranap=rs2.getBoolean("perkiraan_biaya_ranap");
                         akses.rekap_obat_poli=rs2.getBoolean("rekap_obat_poli");
                         akses.rekap_obat_pasien=rs2.getBoolean("rekap_obat_pasien");
+                        akses.grafik_HAIs_pasienbangsal=rs2.getBoolean("grafik_HAIs_pasienbangsal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1816,6 +1818,7 @@ public final class akses {
                         akses.perkiraan_biaya_ranap=false;
                         akses.rekap_obat_poli=false;
                         akses.rekap_obat_pasien=false;
+                        akses.grafik_HAIs_pasienbangsal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2428,4 +2431,5 @@ public final class akses {
     public static boolean getperkiraan_biaya_ranap(){return akses.perkiraan_biaya_ranap;}
     public static boolean getrekap_obat_poli(){return akses.rekap_obat_poli;}
     public static boolean getrekap_obat_pasien(){return akses.rekap_obat_pasien;}
+    public static boolean getgrafik_HAIs_pasienbangsal(){return akses.grafik_HAIs_pasienbangsal;}
 }   

@@ -433,6 +433,7 @@ import grafikanalisa.GrafikKeslingPDAMPertanggal;
 import grafikanalisa.GrafikKunjunganRanapPerBulan;
 import grafikanalisa.GrafikKunjunganRanapPerRuang;
 import grafikanalisa.GrafikKunjunganRanapPerTanggal;
+import grafikanalisa.GrafikPasienHAIsRuang;
 import grafikanalisa.GrafikPegawaiPerBidang;
 import grafikanalisa.GrafikPegawaiPerDepartemen;
 import grafikanalisa.GrafikPegawaiPerEmergencyIndex;
@@ -15356,6 +15357,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikHAIsPasienRuangActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikPasienHAIsRuang aplikasi=new GrafikPasienHAIsRuang(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15942,7 +15954,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
             btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien,
-            btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien;
+            btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang;
     
     public void isWall(){
         try{            
@@ -18570,6 +18582,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_inventaris_jenis()==true){
                 Panelmenu.add(btnGrafikInventarisJenis);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_HAIs_pasienbangsal()==true){
+                Panelmenu.add(btnGrafikHAIsPasienRuang);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21339,6 +21356,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_inventaris_jenis()==true){
             Panelmenu.add(btnGrafikInventarisJenis);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_HAIs_pasienbangsal()==true){
+            Panelmenu.add(btnGrafikHAIsPasienRuang);
             jmlmenu++;
         }
 
@@ -25111,6 +25133,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_HAIs_pasienbangsal()==true){
+            if(btnGrafikHAIsPasienRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHAIsPasienRuang);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26632,6 +26661,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapObatPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRekapObatPasienActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikHAIsPasienRuang = new widget.ButtonBig();
+        btnGrafikHAIsPasienRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikHAIsPasienRuang.setText("Pasien HAIs Per Ruang");
+        btnGrafikHAIsPasienRuang.setIconTextGap(0);
+        btnGrafikHAIsPasienRuang.setName("btnGrafikHAIsPasienRuang"); 
+        btnGrafikHAIsPasienRuang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHAIsPasienRuang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHAIsPasienRuangActionPerformed(evt);
             }
         });
     }
