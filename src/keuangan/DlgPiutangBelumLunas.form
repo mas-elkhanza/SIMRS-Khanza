@@ -234,6 +234,15 @@
                 <Property name="verticalGap" type="int" value="9"/>
               </Layout>
               <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="checkAll">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Semua"/>
+                    <Property name="name" type="java.lang.String" value="checkAll" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="checkAllMouseClicked"/>
+                  </Events>
+                </Component>
                 <Component class="widget.Label" name="label19">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cara Bayar :"/>

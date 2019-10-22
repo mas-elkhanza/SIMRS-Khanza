@@ -51,6 +51,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         initComponents();
         this.setLocation(8,1);
         setSize(885,674);
+        checkAll.setSelected(false);
 
         Object[] rowRwJlDr={
             "P","No.Rawat/No.tagihan","Tgl.Piutang","Pasien","Status","Total Piutang",
@@ -199,6 +200,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         nama_bayar = new widget.ComboBox();
         jPanel1 = new javax.swing.JPanel();
         panelisi3 = new widget.panelisi();
+        checkAll = new javax.swing.JCheckBox();
         label19 = new widget.Label();
         kdpenjab = new widget.TextBox();
         nmpenjab = new widget.TextBox();
@@ -318,6 +320,15 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         panelisi3.setName("panelisi3"); // NOI18N
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
+
+        checkAll.setText("Semua");
+        checkAll.setName("checkAll"); // NOI18N
+        checkAll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkAllMouseClicked(evt);
+            }
+        });
+        panelisi3.add(checkAll);
 
         label19.setText("Cara Bayar :");
         label19.setName("label19"); // NOI18N
@@ -735,6 +746,16 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         Valid.pindah(evt, Tgl1,kdpenjab);
     }//GEN-LAST:event_Tgl2KeyPressed
 
+    private void checkAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkAllMouseClicked
+        int jumlahBaris = tbBangsal.getRowCount();
+        
+        if(checkAll.isSelected()){
+            System.out.println("Contoh dicentang");
+        } else{
+            System.out.println("Contoh buang centang");
+        }
+    }//GEN-LAST:event_checkAllMouseClicked
+
     /**
     * @param args the command line arguments
     */
@@ -766,6 +787,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Tanggal Tanggal;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private javax.swing.JCheckBox checkAll;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
     private widget.Label jLabel11;

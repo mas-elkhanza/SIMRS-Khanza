@@ -2184,12 +2184,38 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     }//GEN-LAST:event_TtlSemuaKeyPressed
 
     private void BtnNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNotaActionPerformed
-            if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-                Valid.textKosong(TNoRw,"Pasien");
-            }else if(tabModeRwJlDr.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
-            }else if(tabModeRwJlDr.getRowCount()!=0){
+        try {
+            pscekbilling=koneksi.prepareStatement(sqlpscekbilling);
+            try {
+                pscekbilling.setString(1,TNoRw.getText());
+                rscekbilling=pscekbilling.executeQuery();
+                if(rscekbilling.next()){
+                    cek=rscekbilling.getInt(1);
+                }
+            } catch (Exception e) {
+                cek=0;
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rscekbilling != null){
+                    rscekbilling.close();
+                }
+                if(pscekbilling != null){
+                    pscekbilling.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+            
+        if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"Pasien");
+        }else if(tabModeRwJlDr.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            //TCari.requestFocus();
+        }else if(tabModeRwJlDr.getRowCount()!=0){
+            if(cek==0){
+                JOptionPane.showMessageDialog(null,"Maaf, pembayaran pasien masih kurang atau belum disimpan ...!!!");    
+            } else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try{
                     koneksi.setAutoCommit(false);
@@ -2214,7 +2240,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                             } catch (Exception e) {
                                 totals="";
                             }
-                            
+
                             pstemporary=koneksi.prepareStatement(sqlpstemporary);
                             try {
                                 pstemporary.setString(1,tabModeRwJlDr.getValueAt(i,1).toString().replaceAll("'","`"));
@@ -2244,7 +2270,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                             }
                         }                
                     }
-                    
+
                     if(piutang<=0){                        
                         Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL TAGIHAN',':','','','','','"+TtlSemua.getText()+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
                         Sequel.menyimpan("temporary_bayar_ralan","'0','PPN',':','','','','','"+Valid.SetAngka(besarppn)+"','Tagihan','"+akses.getkode()+"','','','','','','','',''","Tagihan"); 
@@ -2300,13 +2326,14 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         }
                         this.setCursor(Cursor.getDefaultCursor());
                     }
-                    
+
                     koneksi.setAutoCommit(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }catch(Exception ex){
                     System.out.println(ex);
-                }      
-          }        
+                }
+            }
+        }        
 }//GEN-LAST:event_BtnNotaActionPerformed
 
     private void BtnNotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnNotaKeyPressed
@@ -3196,7 +3223,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, data tagihan pasien dengan No.Rawat tersebut sudah pernah disimpan...!!!");
         }else if(cek==0){
             if(piutang<=0){
-                if(kekurangan<0){
+                if(kekurangan==0 && kekurangan==-0){
+                    isSimpan();
+                }else if(kekurangan<0){
                     JOptionPane.showMessageDialog(null,"Maaf, pembayaran pasien masih kurang ...!!!");
                 }else if(kekurangan>0){
                     if(countbayar>1){
@@ -3204,8 +3233,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }else{
                         isSimpan();
                     }                        
-                }else if(kekurangan==0){
-                    isSimpan();
                 }                
             }else if(piutang>=1){
                 if(kekurangan<0){
@@ -5100,7 +5127,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     
     private void isSimpan(){
         if(notaralan.equals("Yes")){
-            BtnNotaActionPerformed(null);
             chkLaborat.setSelected(true);
             chkRadiologi.setSelected(true);    
             chkPotongan.setSelected(true);  
@@ -5421,8 +5447,10 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
                 Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
                 koneksi.setAutoCommit(true);
-                JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");     
+                JOptionPane.showMessageDialog(null,"Proses simpan selesai...!"); 
+                
                 if(notaralan.equals("Yes")){
+                    BtnNotaActionPerformed(null);
                     this.dispose();
                 }
             }catch (SQLException ex) {
@@ -5431,6 +5459,5 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }
         }
     }
-    
     
 }
