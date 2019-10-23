@@ -28,6 +28,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import java.awt.Window;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  *
@@ -54,7 +57,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                         "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
                         "reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rawat=nota_jalan.no_rawat where reg_periksa.status_lanjut='Ralan' and "+
                         "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                        "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? order by dokter.nm_dokter",
+                        "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? and dokter.nm_dokter like ? order by dokter.nm_dokter",
             sqlpspemasukan="select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, kategori_pemasukan_lain.nama_kategori "+
                         "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
                         "where pemasukan_lain.tanggal between ? and ? order by pemasukan_lain.tanggal",
@@ -67,6 +70,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                     ttlLaborat=0,ttlRadiologi=0,ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlRegistrasi=0,ttlOperasi=0,
                     ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlKamar=0,ttlHarian=0,ttlRetur_Obat=0,ttlResep_Pulang=0,ttlService=0,
                     Retur_Obat=0,Resep_Pulang=0,Harian=0,Kamar=0,Operasi=0,Ranap_Dokter=0,Ranap_Dokter_Paramedis=0,Ranap_Paramedis=0;
+    public DlgBilingRalan billing=new DlgBilingRalan(null,false);
     /** Creates new form DlgAdmin
      * @param parent
      * @param modal */
@@ -77,7 +81,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         setSize(457,249);
         
         tabModeRalan=new DefaultTableModel(null,new Object[]{
-            "Tanggal","No.Nota","Nama Pasien","Jenis Bayar","Perujuk","Dokter","Obat+Emb+Tsl",
+            "Tanggal","No.Nota","Nama Pasien","Jenis Bayar","Dokter","Perujuk","Obat+Emb+Tsl",
             "Paket Tindakan","Operasi","Laborat","Radiologi","Tambahan","Potongan","Total"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -97,7 +101,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(85);
             }else if(i==4){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(170);
             }else{
                 column.setPreferredWidth(85);
             }
@@ -182,6 +186,30 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         tbPengeluaran.setDefaultRenderer(Object.class, new WarnaTable());
         
+        billing.dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgRekapPerShift")){
+                    if(billing.dokter.getTable().getSelectedRow()!= -1){
+                        CrDokter.setText(billing.dokter.getTable().getValueAt(billing.dokter.getTable().getSelectedRow(),1).toString());
+                        TabRawatMouseClicked(null);
+                        CrDokter.requestFocus();
+                    }                
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         
     }
 
@@ -198,9 +226,13 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         panelGlass5 = new widget.panelisi();
         label12 = new widget.Label();
         Tgl1 = new widget.Tanggal();
+        jLabel14 = new widget.Label();
+        CrDokter = new widget.TextBox();
+        BtnSeek3 = new widget.Button();
         jLabel9 = new widget.Label();
         CmbStatus = new widget.ComboBox();
         BtnCari1 = new widget.Button();
+        BtnAll = new widget.Button();
         label19 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -227,7 +259,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -245,6 +277,28 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass5.add(Tgl1);
+
+        jLabel14.setText("Dokter :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        jLabel14.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass5.add(jLabel14);
+
+        CrDokter.setEditable(false);
+        CrDokter.setName("CrDokter"); // NOI18N
+        CrDokter.setPreferredSize(new java.awt.Dimension(280, 23));
+        panelGlass5.add(CrDokter);
+
+        BtnSeek3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSeek3.setMnemonic('4');
+        BtnSeek3.setToolTipText("ALt+4");
+        BtnSeek3.setName("BtnSeek3"); // NOI18N
+        BtnSeek3.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnSeek3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeek3ActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(BtnSeek3);
 
         jLabel9.setText("Shift :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -272,6 +326,23 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(BtnCari1);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass5.add(BtnAll);
 
         label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label19.setName("label19"); // NOI18N
@@ -318,7 +389,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -625,6 +696,23 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbPengeluaranKeyPressed
 
+    private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
+        akses.setform("DlgRekapPerShift");
+        billing.dokter.isCek();
+        billing.dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        billing.dokter.setLocationRelativeTo(internalFrame1);
+        billing.dokter.setVisible(true);
+    }//GEN-LAST:event_BtnSeek3ActionPerformed
+
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        CrDokter.setText("");
+        TabRawatMouseClicked(null);
+    }//GEN-LAST:event_BtnAllActionPerformed
+
+    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
+        //
+    }//GEN-LAST:event_BtnAllKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -642,10 +730,13 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnAll;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.Button BtnSeek3;
     private widget.ComboBox CmbStatus;
+    private widget.TextBox CrDokter;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
@@ -657,6 +748,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
+    private widget.Label jLabel14;
     private widget.Label jLabel9;
     private widget.Label label12;
     private widget.Label label19;
@@ -689,6 +781,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 //                            pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang"));
 //                        }
                         pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang"));
+                        pspasienralan.setString(3,"%"+CrDokter.getText()+"%");
                         rspasien=pspasienralan.executeQuery();
                         all=0;ttlLaborat=0;ttlRadiologi=0;ttlObat=0;ttlRalan_Dokter=0;ttlOperasi=0;
                         ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;                
@@ -746,8 +839,8 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                 all=all+Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Registrasi;
                                 tabModeRalan.addRow(new Object[]{
                                     i+". "+rspasien.getString("tanggal")+" "+rspasien.getString("jam"),rspasien.getString("no_nota"),
-                                    rspasien.getString("nm_pasien"),rspasien.getString("png_jawab"),Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rspasien.getString("no_rawat")),
-                                    rspasien.getString("nm_dokter"),Valid.SetAngka(Obat),Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis),
+                                    rspasien.getString("nm_pasien"),rspasien.getString("png_jawab"),rspasien.getString("nm_dokter"),Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rspasien.getString("no_rawat")),
+                                    Valid.SetAngka(Obat),Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis),
                                     Valid.SetAngka(Operasi),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Tambahan),Valid.SetAngka(Potongan),
                                     Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis+Tambahan+Potongan+Registrasi)   
                                 });
