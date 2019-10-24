@@ -235,7 +235,7 @@ public final class DlgDkkSurveilansRalan extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             Map<String, Object> param = new HashMap<>();
             param.put("tanggal",Tgl2.getDate());
             param.put("jmltotal",jmltotal+"");

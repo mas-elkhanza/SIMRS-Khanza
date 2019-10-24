@@ -469,7 +469,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModeRalan.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModeRalan.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModeRalan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -505,7 +505,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModeRanap.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModeRanap.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModeRanap.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -545,7 +545,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModePemasukan.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModePemasukan.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModePemasukan.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -571,7 +571,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }else if(tabModePengeluaran.getRowCount()!=0){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 
-                Sequel.queryu("delete from temporary");
+                Sequel.queryu("truncate table temporary");
                 for(int r=0;r<tabModePengeluaran.getRowCount();r++){  
                         Sequel.menyimpan("temporary","'0','"+
                                         tabModePengeluaran.getValueAt(r,0).toString().replaceAll("'","`") +"','"+

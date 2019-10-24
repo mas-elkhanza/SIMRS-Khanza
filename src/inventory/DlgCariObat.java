@@ -3148,6 +3148,29 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                 }
 
                                 tbObat.setValueAt(stokbarang,row,10);
+                            }else{
+                                stokbarang=0;  
+                                psstok=koneksi.prepareStatement("select ifnull(sisa,'0') from data_batch where no_batch=? and kode_brng=?");
+                                try {
+                                    psstok.setString(1,tbObat.getValueAt(row,16).toString());
+                                    psstok.setString(2,tbObat.getValueAt(row,2).toString());
+                                    rsstok=psstok.executeQuery();
+                                    if(rsstok.next()){
+                                        stokbarang=rsstok.getDouble(1);
+                                    }                                
+                                } catch (Exception e) {
+                                    stokbarang=0;
+                                    System.out.println("Notifikasi : "+e);
+                                }finally{
+                                    if(rsstok != null){
+                                        rsstok.close();
+                                    }
+                                    if(psstok != null){
+                                        psstok.close();
+                                    }
+                                }
+
+                                tbObat.setValueAt(stokbarang,row,10);
                             }
 
                             y=0;

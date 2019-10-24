@@ -1316,7 +1316,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 try {

@@ -306,7 +306,7 @@ public final class DlgRl34 extends javax.swing.JDialog {
             param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());   
             param.put("tanggal",Tgl2.getDate());  
             param.put("logo",Sequel.cariGambar("select logo from setting"));  
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                 if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
                     Sequel.menyimpan("temporary","'0','"+

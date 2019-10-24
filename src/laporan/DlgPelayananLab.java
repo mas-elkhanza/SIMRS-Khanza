@@ -319,7 +319,7 @@ public final class DlgPelayananLab extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("tanggal",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());
-            Sequel.queryu("delete from temporary_lama_pelayanan_radiologi");
+            Sequel.queryu("truncate table temporary_lama_pelayanan_radiologi");
             for(int r=0;r<tabMode.getRowCount();r++){ 
                 Sequel.menyimpan("temporary_lama_pelayanan_radiologi","'0','"+
                     tabMode.getValueAt(r,0).toString()+"','"+

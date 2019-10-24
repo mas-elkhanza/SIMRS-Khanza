@@ -1062,7 +1062,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode.getRowCount()!=0){
                     
-                    Sequel.queryu("delete from temporary_permintaan_radiologi");
+                    Sequel.queryu("truncate table temporary_permintaan_radiologi");
                     int row=tabMode.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -1108,7 +1108,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode2.getRowCount()!=0){
                     
-                    Sequel.queryu("delete from temporary_permintaan_radiologi");
+                    Sequel.queryu("truncate table temporary_permintaan_radiologi");
                     int row=tabMode2.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -1157,7 +1157,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode3.getRowCount()!=0){
                     
-                    Sequel.queryu("delete from temporary_permintaan_radiologi");
+                    Sequel.queryu("truncate table temporary_permintaan_radiologi");
                     int row=tabMode3.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -1203,7 +1203,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     TCari.requestFocus();
                 }else if(tabMode4.getRowCount()!=0){
                     
-                    Sequel.queryu("delete from temporary_permintaan_radiologi");
+                    Sequel.queryu("truncate table temporary_permintaan_radiologi");
                     int row=tabMode4.getRowCount();
                     for(i=0;i<row;i++){  
                         tglsampel="";
@@ -1353,7 +1353,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     
-                    Sequel.queryu("delete from temporary_permintaan_radiologi");
+                    Sequel.queryu("truncate table temporary_permintaan_radiologi");
                     try {
                         ps2=koneksi.prepareStatement(
                                 "select permintaan_pemeriksaan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan "+
@@ -1428,7 +1428,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                     Valid.textKosong(TCari,"No.Permintaan");
                 }else{   
                     
-                    Sequel.queryu("delete from temporary_permintaan_radiologi");
+                    Sequel.queryu("truncate table temporary_permintaan_radiologi");
                     try {
                         ps2=koneksi.prepareStatement(
                                 "select permintaan_pemeriksaan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan "+

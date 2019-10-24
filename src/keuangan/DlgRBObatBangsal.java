@@ -115,7 +115,7 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
                     "select dokter.kd_dokter,dokter.nm_dokter from dokter inner join reg_periksa inner join kamar_inap inner join kamar inner join bangsal "+
                     "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rawat=kamar_inap.no_rawat and kamar_inap.kd_kamar=kamar.kd_kamar and "+
                     "kamar.kd_bangsal=bangsal.kd_bangsal where bangsal.kd_bangsal=? and "+
-                    "kamar_inap.tgl_masuk between ? and ? group by dokter.kd_dokter");
+                    "kamar_inap.stts_pulang<>'Pindah Kamar' and kamar_inap.tgl_masuk between ? and ? group by dokter.kd_dokter");
             psobat=koneksi.prepareStatement(
                     "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,"+
                     "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,"+
@@ -123,7 +123,7 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
                     "from detail_pemberian_obat inner join reg_periksa inner join kamar_inap inner join kamar inner join bangsal "+
                     "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng and reg_periksa.no_rawat=kamar_inap.no_rawat and  "+
                     "kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                    "where reg_periksa.kd_dokter=? and detail_pemberian_obat.tgl_perawatan between ? and ? and bangsal.kd_bangsal=? group by detail_pemberian_obat.kode_brng order by databarang.nama_brng");       
+                    "where kamar_inap.stts_pulang<>'Pindah Kamar' and reg_periksa.kd_dokter=? and detail_pemberian_obat.tgl_perawatan between ? and ? and bangsal.kd_bangsal=? group by detail_pemberian_obat.kode_brng order by databarang.nama_brng");       
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -363,7 +363,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -470,7 +470,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_Tgl2KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
+        Tgl1.requestFocus();
     }//GEN-LAST:event_formWindowOpened
 
     /**

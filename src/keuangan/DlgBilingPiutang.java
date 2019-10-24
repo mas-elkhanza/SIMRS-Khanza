@@ -260,7 +260,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnKeluar.requestFocus();
         }else if(tabModeRwJlDr.getRowCount()!=0){            
-            Sequel.queryu("delete from temporary_bayar_ranap");
+            Sequel.queryu("truncate table temporary_bayar_ranap");
                 int row=tabModeRwJlDr.getRowCount();
                 for(int r=0;r<row;r++){  
                     if(tabModeRwJlDr.getValueAt(r,0).toString().equals("true")){
