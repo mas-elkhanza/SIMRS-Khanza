@@ -22,7 +22,7 @@ public class MenuBar extends JMenuBar {
     private static final long serialVersionUID = 1L;
     private BufferedImage gradientImage;
     private BufferedImage ligthImage;
-    private final Color light = new Color(1F, 1F, 1F, 0.34F);
+    private final Color light = new Color(1F, 1F, 1F, 0.35F);
     private final Color dark = new Color(1F, 1F, 1F, 0.35F);
     //private Color black = Color.black;
     //private Color warna = Color.magenta.darker().darker().darker().darker();

@@ -18,9 +18,6 @@
           <Dimension value="[75, 23]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdasalKeyPressed"/>
-      </Events>
     </Component>
     <Component class="widget.TextBox" name="kdpenjab">
       <Properties>
@@ -29,9 +26,6 @@
           <Dimension value="[60, 23]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdpenjabKeyPressed"/>
-      </Events>
     </Component>
     <Component class="widget.TextBox" name="kdpoli">
       <Properties>
@@ -40,9 +34,6 @@
           <Dimension value="[60, 23]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdpoliKeyPressed"/>
-      </Events>
     </Component>
     <Component class="widget.TextBox" name="kdjenis">
       <Properties>
@@ -52,9 +43,6 @@
           <Dimension value="[75, 23]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdjenisKeyPressed"/>
-      </Events>
     </Component>
     <Component class="widget.TextBox" name="kdkategori">
       <Properties>
@@ -64,9 +52,6 @@
           <Dimension value="[75, 23]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdkategoriKeyPressed"/>
-      </Events>
     </Component>
     <Component class="widget.TextBox" name="kdgolongan">
       <Properties>
@@ -76,9 +61,6 @@
           <Dimension value="[75, 23]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdgolonganKeyPressed"/>
-      </Events>
     </Component>
   </NonVisualComponents>
   <Properties>
