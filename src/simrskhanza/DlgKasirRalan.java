@@ -19,6 +19,8 @@ import fungsi.akses;
 import inventory.DlgPenjualan;
 import inventory.DlgPeresepanDokter;
 import inventory.DlgPiutang;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Window;
@@ -35,12 +37,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingParsialRalan;
 import keuangan.DlgLhtPiutang;
@@ -340,10 +345,12 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgKasirRalan")){
                     if(penjab.getTable().getSelectedRow()!= -1){
                         if(filter=="no"){
-                            kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                            nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            kdpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            nmpenjab.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
                             caripenjab=penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString();
                         }else if(filter=="yes"){
+                            kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
                             caripenjab=penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString();
                             TabRawatMouseClicked(null);
                         }                            
@@ -5329,11 +5336,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
 
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         akses.setform("DlgKasirRalan");
-        billing.penjab.emptTeks();
-        billing.penjab.isCek();
-        billing.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        billing.penjab.setLocationRelativeTo(internalFrame1);
-        billing.penjab.setVisible(true);
+        penjab.emptTeks();
+        penjab.isCek();
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setLocationRelativeTo(internalFrame1);
+        penjab.setVisible(true);
     }//GEN-LAST:event_btnBayarActionPerformed
 
     private void MnHapusAturanPkaiObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusAturanPkaiObatActionPerformed
@@ -7935,6 +7942,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
 
     private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
         akses.setform("DlgKasirRalan");
+        filter="yes";
         penjab.onCari();
         penjab.isCek();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -9048,6 +9056,34 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbKasirRalan.requestFocus();
         } 
+    }
+    
+    private JComponent createData(DefaultTableModel model){
+        JTable table = new JTable( model )
+        {
+                public Component prepareRenderer(TableCellRenderer renderer, int row, int column)
+                {
+                        Component c = super.prepareRenderer(renderer, row, column);
+
+                        //  Color row based on a cell value
+
+                        if (!isRowSelected(row))
+                        {
+                                c.setBackground(getBackground());
+                                int modelRow = convertRowIndexToModel(row);
+                                String type = (String)getModel().getValueAt(modelRow, 0);
+                                if ("Buy".equals(type)) c.setBackground(Color.GREEN);
+                                if ("Sell".equals(type)) c.setBackground(Color.YELLOW);
+                        }
+
+                        return c;
+                }
+        };
+
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+        table.changeSelection(0, 0, false, false);
+        table.setAutoCreateRowSorter(true);
+        return new JScrollPane( table );
     }
     
 }
