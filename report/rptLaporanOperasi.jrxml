@@ -394,7 +394,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Double"/>
 				</box>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
@@ -402,7 +402,7 @@
 			<textField isStretchWithOverflow="true">
 				<reportElement x="82" y="97" width="167" height="10" uuid="02ee7169-fe45-4d8f-ade8-83cb3fdb7891"/>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{umurdaftar}+" "+$F{sttsumur}]]></textFieldExpression>
@@ -410,7 +410,7 @@
 			<textField isStretchWithOverflow="true">
 				<reportElement x="363" y="97" width="171" height="10" uuid="8ba764f1-13be-4578-882c-951d85af5580"/>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ruang}]]></textFieldExpression>
@@ -418,7 +418,7 @@
 			<textField isStretchWithOverflow="true">
 				<reportElement x="363" y="85" width="171" height="10" uuid="4c92438f-ef12-4fc7-b1d4-ed614616f408"/>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
@@ -426,7 +426,7 @@
 			<textField isStretchWithOverflow="true">
 				<reportElement x="363" y="109" width="171" height="10" uuid="5401fa3a-94a9-4807-8084-61cd5c9053f4"/>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{jk}.toLowerCase().equals("p") ?    "Perempuan":"Laki-Laki")]]></textFieldExpression>
@@ -478,7 +478,7 @@
 			<textField isStretchWithOverflow="true" pattern="dd-MM-yyyy">
 				<reportElement x="82" y="109" width="167" height="10" uuid="4ca07946-8809-4620-8767-23143ee369b4"/>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
@@ -859,7 +859,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{operator1}]]></textFieldExpression>
@@ -899,7 +899,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{perawatresusitas}]]></textFieldExpression>
@@ -909,7 +909,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{instrumen}]]></textFieldExpression>
@@ -939,7 +939,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{anastesi}]]></textFieldExpression>
@@ -969,7 +969,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{asistenoperator1}]]></textFieldExpression>
@@ -1069,7 +1069,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{asistenoperator2}]]></textFieldExpression>
@@ -1079,7 +1079,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{operator2}]]></textFieldExpression>
@@ -1089,7 +1089,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{asistenanastesi}]]></textFieldExpression>
@@ -1126,7 +1126,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true" isUnderline="false"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true" isUnderline="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{diagnosa_postop}]]></textFieldExpression>
@@ -1154,7 +1154,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bidan1}]]></textFieldExpression>
@@ -1164,7 +1164,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pjanak}]]></textFieldExpression>
@@ -1214,7 +1214,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dokumum}]]></textFieldExpression>
@@ -1244,7 +1244,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{omloop}]]></textFieldExpression>
@@ -1281,7 +1281,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true" isUnderline="false"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true" isUnderline="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{diagnosa_preop}]]></textFieldExpression>
@@ -1298,7 +1298,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement>
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true" isUnderline="false"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true" isUnderline="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jaringan_dieksekusi}]]></textFieldExpression>
@@ -1332,7 +1332,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jenis_anasthesi}]]></textFieldExpression>
@@ -1379,7 +1379,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kategori}]]></textFieldExpression>
@@ -1419,7 +1419,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Top">
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{laporan_operasi}]]></textFieldExpression>
@@ -1427,7 +1427,7 @@
 			<textField isStretchWithOverflow="true">
 				<reportElement x="413" y="750" width="120" height="46" uuid="61481e35-032b-4bda-8774-c5fa08d79a61"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="false" isUnderline="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="false" isUnderline="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{operator1}]]></textFieldExpression>
@@ -1445,7 +1445,7 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="true" isItalic="true"/>
+					<font fontName="Tahoma" size="8" isBold="false" isItalic="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{permintaan_pa}]]></textFieldExpression>
