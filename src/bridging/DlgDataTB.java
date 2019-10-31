@@ -1945,7 +1945,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.add("X-rs-id",idrs);
-                headers.add("TimeStamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-pass",api.getHmac()); 
                 headers.add("Content-Type","application/json");
                 requestJson ="{" +
@@ -2007,7 +2007,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                     "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                     "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                    "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
+                    "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                    "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
                 "}";
                 System.out.println(requestJson);
                 requestEntity = new HttpEntity(requestJson,headers);
@@ -2110,7 +2111,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 try {
                     headers = new HttpHeaders();
                     headers.add("X-rs-id",idrs);
-                    headers.add("TimeStamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-pass",api.getHmac()); 
                     headers.add("Content-Type","application/json");
                     if(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),59).toString().equals("")){
@@ -2173,7 +2174,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
+                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                            "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
                         "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);
@@ -2241,7 +2243,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
+                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                            "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
                         "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);

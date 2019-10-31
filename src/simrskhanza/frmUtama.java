@@ -590,7 +590,7 @@ public class frmUtama extends javax.swing.JFrame {
         super();
         initComponents();
         initKhanza();
-        setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+        setIconImage(new ImageIcon(super.getClass().getResource("/picture/yaski24.png")).getImage());
         
         this.setSize(screen.width,screen.height);
         //desktop.setPreferredSize(new Dimension(800,1000));
@@ -6899,7 +6899,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/10/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31/10/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6975,8 +6975,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 255, 254));
-        internalFrame1.setWarnaBawah(new java.awt.Color(250, 210, 205));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 254, 254));
+        internalFrame1.setWarnaBawah(new java.awt.Color(255, 200, 200));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -7256,8 +7256,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(250, 210, 205));
-        internalFrame4.setWarnaBawah(new java.awt.Color(252, 252, 251));
+        internalFrame4.setWarnaAtas(new java.awt.Color(255, 200, 200));
+        internalFrame4.setWarnaBawah(new java.awt.Color(255, 254, 254));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7385,7 +7385,7 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(50, 50, 50));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Hospital .png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/yaski_icon.png"))); // NOI18N
         jLabel8.setText("Khanza HMS+, Hospital Management System");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel8.setName("jLabel8"); // NOI18N
@@ -15381,6 +15381,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPermintaanPerbaikanInventarisActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15967,7 +15971,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikItemApotekPerKategori,btnGrafikItemApotekPerGolongan,btnGrafikItemApotekPerIndustriFarmasi,btn10BesarObatPoli,btnGrafikPengajuanAsetUrgensi,
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
             btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien,
-            btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang,btnGrafikHAIsPasienBulan;
+            btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang,btnGrafikHAIsPasienBulan,btnPermintaanPerbaikanInventaris;
     
     public void isWall(){
         try{            
@@ -16777,6 +16781,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getinventaris_sirkulasi()==true){
                 Panelmenu.add(btnSirkulasiInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.getpermintaan_perbaikan_inventaris()==true){
+                Panelmenu.add(btnPermintaanPerbaikanInventaris);
                 jmlmenu++;
             }
             
@@ -19570,7 +19579,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getinventaris_sirkulasi()==true){
             Panelmenu.add(btnSirkulasiInventaris);
             jmlmenu++;
-        }     
+        }    
+        
+        if(akses.getpermintaan_perbaikan_inventaris()==true){
+            Panelmenu.add(btnPermintaanPerbaikanInventaris);
+            jmlmenu++;
+        }
         
         if(akses.getpengajuan_asetinventaris()==true){
             Panelmenu.add(btnPengajuanAsetInventaris);
@@ -22631,6 +22645,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }   
+        
+        if(akses.getpermintaan_perbaikan_inventaris()==true){
+            if(btnPermintaanPerbaikanInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPermintaanPerbaikanInventaris);
+                jmlmenu++;
+            }                
+        } 
         
         if(akses.getpengajuan_asetinventaris()==true){
             if(btnPengajuanAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -26715,6 +26736,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikHAIsPasienBulan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikHAIsPasienBulanActionPerformed(evt);
+            }
+        });
+        
+        btnPermintaanPerbaikanInventaris = new widget.ButtonBig();
+        btnPermintaanPerbaikanInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ordering_49597.png"))); 
+        btnPermintaanPerbaikanInventaris.setText("Permintaan Perbaikan Inventaris");
+        btnPermintaanPerbaikanInventaris.setIconTextGap(0);
+        btnPermintaanPerbaikanInventaris.setName("btnPermintaanPerbaikanInventaris"); 
+        btnPermintaanPerbaikanInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanPerbaikanInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPermintaanPerbaikanInventarisActionPerformed(evt);
             }
         });
     }

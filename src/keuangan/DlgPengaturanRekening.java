@@ -846,12 +846,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                          (!tbPengaturanRanap.getValueAt(i,24).equals(""))&&(!tbPengaturanRanap.getValueAt(i,25).equals(""))&&(!tbPengaturanRanap.getValueAt(i,26).equals(""))&&
                           (!tbPengaturanRanap.getValueAt(i,27).equals(""))&&(!tbPengaturanRanap.getValueAt(i,28).equals(""))&&(!tbPengaturanRanap.getValueAt(i,29).equals(""))&&
                            (!tbPengaturanRanap.getValueAt(i,30).equals(""))&&(!tbPengaturanRanap.getValueAt(i,31).equals(""))){
-                    Sequel.meghapus("matrik_akun_jns_perawatan","kd_jenis_prw",tbPengaturanRanap.getValueAt(i,0).toString());
-                    Sequel.menyimpan("matrik_akun_jns_perawatan","?,?,?,?,?,?,?,?,?,?,?,?,?,?", 14,new String[]{
+                    Sequel.meghapus("matrik_akun_jns_perawatan_inap","kd_jenis_prw",tbPengaturanRanap.getValueAt(i,0).toString());
+                    Sequel.menyimpan("matrik_akun_jns_perawatan_inap","?,?,?,?,?,?,?,?,?,?,?,?,?,?", 14,new String[]{
                         tbPengaturanRanap.getValueAt(i,0).toString(),tbPengaturanRanap.getValueAt(i,6).toString(),
                         tbPengaturanRanap.getValueAt(i,8).toString(),tbPengaturanRanap.getValueAt(i,10).toString(),
                         tbPengaturanRanap.getValueAt(i,12).toString(),tbPengaturanRanap.getValueAt(i,14).toString(),
-                        tbPengaturanRanap.getValueAt(i,16).toString(),tbPengaturanRanap.getValueAt(i,15).toString(),
+                        tbPengaturanRanap.getValueAt(i,16).toString(),tbPengaturanRanap.getValueAt(i,18).toString(),
                         tbPengaturanRanap.getValueAt(i,20).toString(),tbPengaturanRanap.getValueAt(i,22).toString(),
                         tbPengaturanRanap.getValueAt(i,24).toString(),tbPengaturanRanap.getValueAt(i,26).toString(),
                         tbPengaturanRanap.getValueAt(i,28).toString(),tbPengaturanRanap.getValueAt(i,30).toString()
