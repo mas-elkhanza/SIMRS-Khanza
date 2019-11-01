@@ -53,10 +53,10 @@
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d7" green="dc" red="ff" type="rgb"/>
+                  <Color blue="c8" green="c8" red="ff" type="rgb"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f0" green="f5" red="ff" type="rgb"/>
+                  <Color blue="fc" green="fc" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>

@@ -522,6 +522,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(kddari,"Stok Asal");
         }else if(nmke.getText().trim().equals("")||kdke.getText().trim().equals("")){
             Valid.textKosong(kdke,"Stok Tujuan");
+        }else if(kdke.getText().trim().equals(kddari.getText().trim())){
+            JOptionPane.showMessageDialog(null,"Dari dan Ke harus beda...!!!");
+            kdke.requestFocus();
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else{
