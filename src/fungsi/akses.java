@@ -122,7 +122,7 @@ public final class akses {
             grafik_pengajuan_aset_departemen=false,rekap_pengajuan_aset_departemen=false,grafik_kelompok_jabatanpegawai=false,grafik_resiko_kerjapegawai=false,
             grafik_emergency_indexpegawai=false,grafik_inventaris_ruang=false,harian_HAIs2=false,grafik_inventaris_jenis=false,data_resume_pasien=false,
             perkiraan_biaya_ranap=false,rekap_obat_poli=false,rekap_obat_pasien=false,grafik_HAIs_pasienbangsal=false,grafik_HAIs_pasienbulan=false,
-            permintaan_perbaikan_inventaris=false;
+            permintaan_perbaikan_inventaris=false,grafik_HAIs_laju_vap=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -702,6 +702,7 @@ public final class akses {
                         akses.grafik_HAIs_pasienbangsal=true;
                         akses.grafik_HAIs_pasienbulan=true;
                         akses.permintaan_perbaikan_inventaris=true;
+                        akses.grafik_HAIs_laju_vap=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1265,6 +1266,7 @@ public final class akses {
                         akses.grafik_HAIs_pasienbangsal=rs2.getBoolean("grafik_HAIs_pasienbangsal");
                         akses.grafik_HAIs_pasienbulan=rs2.getBoolean("grafik_HAIs_pasienbulan");
                         akses.permintaan_perbaikan_inventaris=rs2.getBoolean("permintaan_perbaikan_inventaris");
+                        akses.grafik_HAIs_laju_vap=rs2.getBoolean("grafik_HAIs_laju_vap");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1826,6 +1828,7 @@ public final class akses {
                         akses.grafik_HAIs_pasienbangsal=false;
                         akses.grafik_HAIs_pasienbulan=false;
                         akses.permintaan_perbaikan_inventaris=false;
+                        akses.grafik_HAIs_laju_vap=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2441,4 +2444,5 @@ public final class akses {
     public static boolean getgrafik_HAIs_pasienbangsal(){return akses.grafik_HAIs_pasienbangsal;}
     public static boolean getgrafik_HAIs_pasienbulan(){return akses.grafik_HAIs_pasienbulan;}
     public static boolean getpermintaan_perbaikan_inventaris(){return akses.permintaan_perbaikan_inventaris;}
+    public static boolean getgrafik_HAIs_laju_vap(){return akses.grafik_HAIs_laju_vap;} 
 }   
