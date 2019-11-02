@@ -39,8 +39,8 @@
     <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
     <entry key="IDSIRS">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSSIRS">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPISITT">http://sitt.kemkes.go.id/webapisimrs/insert_simrs.php</entry>
-    <entry key="IDSITT">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="URLAPISITT">http://sirs.yankes.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
+    <entry key="IDSITT">e+txvupo3MKf+ksCxp06Sw==</entry>
     <entry key="PASSSITT">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="KABUPATENSITT">12345</entry>
     <entry key="KAMARAKTIFRANAP"></entry>
