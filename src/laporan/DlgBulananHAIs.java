@@ -524,7 +524,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>UC</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>VAP</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>IAD</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>PLEB</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pleb</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>ISK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>ILO</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>HAP</td>"+
