@@ -2471,6 +2471,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_HAIs_laju_pleb='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
                 
+                if("[N]Laju HAIs ISK Per Ruang".equals(tbUser.getValueAt(i,1).toString())){
+                    Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_HAIs_laju_isk='"+tbUser.getValueAt(i,2).toString()+"'");
+                }
+                
                 if("[O]Indeks Surat".equals(tbUser.getValueAt(i,1).toString())){
                     Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_indeks='"+tbUser.getValueAt(i,2).toString()+"'");
                 }
@@ -2873,8 +2877,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "item_apotek_golongan,item_apotek_industrifarmasi,10_obat_terbanyak_poli,grafik_pengajuan_aset_urgensi,"+
                         "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen,rekap_pengajuan_aset_departemen,grafik_kelompok_jabatanpegawai,"+
                         "grafik_resiko_kerjapegawai,grafik_emergency_indexpegawai,grafik_inventaris_ruang,harian_HAIs2,grafik_inventaris_jenis,"+
-                        "data_resume_pasien,perkiraan_biaya_ranap,rekap_obat_poli,rekap_obat_pasien,permintaan_perbaikan_inventaris,"+
-                        "grafik_HAIs_pasienbangsal,grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "data_resume_pasien,perkiraan_biaya_ranap,rekap_obat_poli,rekap_obat_pasien,permintaan_perbaikan_inventaris,grafik_HAIs_pasienbangsal,"+
+                        "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -4933,6 +4937,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[N]Laju HAIs Plebitis Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[N]Laju HAIs Plebitis Per Ruang",rs.getBoolean("grafik_HAIs_laju_pleb")});
+                    }
+                    
+                    if("[N]Laju HAIs ISK Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Laju HAIs ISK Per Ruang",rs.getBoolean("grafik_HAIs_laju_isk")});
                     }
                     
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){

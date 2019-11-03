@@ -150,7 +150,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Pengajuan Aset Per Departemen","[F]Rekap Pengajuan Aset Departemen","[N]Pegawai Per Kelompok Jabatan","[N]Pegawai Per Resiko Kerja",
                     "[N]Pegawai Per Emergency Index","[N]Jumlah Inventaris Per Ruang","[I]Harian HAIs 2","[N]Jumlah Inventaris Per Jenis","[L]Data Resume Pasien",
                     "[A]Perkiraan Biaya Ranap","[D]Rekap Obat Per Poli","[D]Rekap Obat Per Pasien","[F]Permintaan Perbaikan Inventaris","[N]Pasien HAIs Per Ruang",
-                    "[N]Pasien HAIs Per Bulan","[N]Laju HAIs VAP Per Ruang","[N]Laju HAIs IAD Per Ruang","[N]Laju HAIs Plebitis Per Ruang"
+                    "[N]Pasien HAIs Per Bulan","[N]Laju HAIs VAP Per Ruang","[N]Laju HAIs IAD Per Ruang","[N]Laju HAIs Plebitis Per Ruang","[N]Laju HAIs ISK Per Ruang"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -322,7 +322,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 563;i++) {
+        for (i = 0; i < 564;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1084,6 +1084,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(142);
             }else if(i==562){
                 column.setPreferredWidth(160);
+            }else if(i==563){
+                column.setPreferredWidth(140);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1576,7 +1578,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2181,7 +2184,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_HAIs_pasienbulan='"+tbUser.getValueAt(i,559).toString()+"',"+
                     "grafik_HAIs_laju_vap='"+tbUser.getValueAt(i,560).toString()+"',"+
                     "grafik_HAIs_laju_iad='"+tbUser.getValueAt(i,561).toString()+"',"+
-                    "grafik_HAIs_laju_pleb='"+tbUser.getValueAt(i,562).toString()+"'");
+                    "grafik_HAIs_laju_pleb='"+tbUser.getValueAt(i,562).toString()+"',"+
+                    "grafik_HAIs_laju_isk='"+tbUser.getValueAt(i,563).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2825,7 +2829,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "grafik_HAIs_pasienbulan='"+tbUser.getValueAt(barisdicopy,559).toString()+"',"+
                                     "grafik_HAIs_laju_vap='"+tbUser.getValueAt(barisdicopy,560).toString()+"',"+
                                     "grafik_HAIs_laju_iad='"+tbUser.getValueAt(barisdicopy,561).toString()+"',"+
-                                    "grafik_HAIs_laju_pleb='"+tbUser.getValueAt(barisdicopy,562).toString()+"'");
+                                    "grafik_HAIs_laju_pleb='"+tbUser.getValueAt(barisdicopy,562).toString()+"',"+
+                                    "grafik_HAIs_laju_isk='"+tbUser.getValueAt(barisdicopy,563).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3128,7 +3133,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen,rekap_pengajuan_aset_departemen,grafik_kelompok_jabatanpegawai,"+
                         "grafik_resiko_kerjapegawai,grafik_emergency_indexpegawai,grafik_inventaris_ruang,harian_HAIs2,grafik_inventaris_jenis,"+
                         "data_resume_pasien,perkiraan_biaya_ranap,rekap_obat_poli,rekap_obat_pasien,permintaan_perbaikan_inventaris,grafik_HAIs_pasienbangsal,"+
-                        "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3703,7 +3708,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_HAIs_pasienbulan"),
                                rs.getBoolean("grafik_HAIs_laju_vap"),
                                rs.getBoolean("grafik_HAIs_laju_iad"),
-                               rs.getBoolean("grafik_HAIs_laju_pleb")
+                               rs.getBoolean("grafik_HAIs_laju_pleb"),
+                               rs.getBoolean("grafik_HAIs_laju_isk")
                             });
                         }   
                     } catch (Exception e) {
@@ -4267,7 +4273,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_HAIs_pasienbulan"),
                            rs.getBoolean("grafik_HAIs_laju_vap"),
                            rs.getBoolean("grafik_HAIs_laju_iad"),
-                           rs.getBoolean("grafik_HAIs_laju_pleb")
+                           rs.getBoolean("grafik_HAIs_laju_pleb"),
+                           rs.getBoolean("grafik_HAIs_laju_isk")
                         });
                     }                                             
                  }
