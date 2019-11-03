@@ -57,7 +57,7 @@ public class GrafikLajuHAIsPlebPerRuang extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        tabMode=new DefaultTableModel(null,new Object[]{"Kamar/Bangsal","Jumlah Pasien","Jumlah Lama Hari","Laju Plebitis","Persentase Plebitis(%)"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Kamar/Bangsal","Jumlah Pasien (Numerator)","Jumlah Hari (Denumerator)","Laju Plebitis","Persentase Plebitis(%)"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -72,9 +72,9 @@ public class GrafikLajuHAIsPlebPerRuang extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(300);
             }else if(i==1){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(150);
             }else if(i==2){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(150);
             }else if(i==3){
                 column.setPreferredWidth(90);
             }else if(i==4){
