@@ -433,7 +433,9 @@ import grafikanalisa.GrafikKeslingPDAMPertanggal;
 import grafikanalisa.GrafikKunjunganRanapPerBulan;
 import grafikanalisa.GrafikKunjunganRanapPerRuang;
 import grafikanalisa.GrafikKunjunganRanapPerTanggal;
+import grafikanalisa.GrafikLajuHAIsHAPPerRuang;
 import grafikanalisa.GrafikLajuHAIsIADPerRuang;
+import grafikanalisa.GrafikLajuHAIsILOPerRuang;
 import grafikanalisa.GrafikLajuHAIsISKPerRuang;
 import grafikanalisa.GrafikLajuHAIsPlebPerRuang;
 import grafikanalisa.GrafikLajuHAIsVAPPerRuang;
@@ -15443,6 +15445,28 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikHAIsLajuILOActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikLajuHAIsILOPerRuang aplikasi=new GrafikLajuHAIsILOPerRuang(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnGrafikHAIsLajuHAPActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikLajuHAIsHAPPerRuang aplikasi=new GrafikLajuHAIsHAPPerRuang(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16030,7 +16054,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
             btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien,
             btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang,btnGrafikHAIsPasienBulan,btnPermintaanPerbaikanInventaris,
-            btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK;
+            btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK,btnGrafikHAIsLajuILO,btnGrafikHAIsLajuHAP;
     
     public void isWall(){
         try{            
@@ -18693,6 +18717,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_HAIs_laju_isk()==true){
                 Panelmenu.add(btnGrafikHAIsLajuISK);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_HAIs_laju_ilo()==true){
+                Panelmenu.add(btnGrafikHAIsLajuILO);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_HAIs_laju_hap()==true){
+                Panelmenu.add(btnGrafikHAIsLajuHAP);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21497,6 +21531,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_HAIs_laju_isk()==true){
             Panelmenu.add(btnGrafikHAIsLajuISK);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_HAIs_laju_ilo()==true){
+            Panelmenu.add(btnGrafikHAIsLajuILO);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_HAIs_laju_hap()==true){
+            Panelmenu.add(btnGrafikHAIsLajuHAP);
             jmlmenu++;
         }
 
@@ -25318,6 +25362,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_HAIs_laju_ilo()==true){
+            if(btnGrafikHAIsLajuILO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHAIsLajuILO);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_HAIs_laju_hap()==true){
+            if(btnGrafikHAIsLajuHAP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHAIsLajuHAP);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26923,6 +26981,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikHAIsLajuISK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikHAIsLajuISKActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikHAIsLajuILO = new widget.ButtonBig();
+        btnGrafikHAIsLajuILO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikHAIsLajuILO.setText("Laju HAIs ILO Per Ruang");
+        btnGrafikHAIsLajuILO.setIconTextGap(0);
+        btnGrafikHAIsLajuILO.setName("btnGrafikHAIsLajuILO"); 
+        btnGrafikHAIsLajuILO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHAIsLajuILO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHAIsLajuILOActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikHAIsLajuHAP = new widget.ButtonBig();
+        btnGrafikHAIsLajuHAP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikHAIsLajuHAP.setText("Laju HAIs HAP Per Ruang");
+        btnGrafikHAIsLajuHAP.setIconTextGap(0);
+        btnGrafikHAIsLajuHAP.setName("btnGrafikHAIsLajuHAP"); 
+        btnGrafikHAIsLajuHAP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHAIsLajuHAP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHAIsLajuHAPActionPerformed(evt);
             }
         });
     }
