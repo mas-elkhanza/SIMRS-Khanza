@@ -433,6 +433,7 @@ import grafikanalisa.GrafikKeslingPDAMPertanggal;
 import grafikanalisa.GrafikKunjunganRanapPerBulan;
 import grafikanalisa.GrafikKunjunganRanapPerRuang;
 import grafikanalisa.GrafikKunjunganRanapPerTanggal;
+import grafikanalisa.GrafikLajuHAIsIADPerRuang;
 import grafikanalisa.GrafikLajuHAIsVAPPerRuang;
 import grafikanalisa.GrafikPasienHAIsBulan;
 import grafikanalisa.GrafikPasienHAIsRuang;
@@ -15407,6 +15408,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikHAIsLajuIADActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikLajuHAIsIADPerRuang aplikasi=new GrafikLajuHAIsIADPerRuang(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15994,7 +16006,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikPengajuanAsetStatus,btnGrafikPengajuanAsetDepartemen,btnRekapPengajuanAsetDepartemen,btnGrafikKelompokJabatanPegawai,
             btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien,
             btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang,btnGrafikHAIsPasienBulan,btnPermintaanPerbaikanInventaris,
-            btnGrafikHAIsLajuVAP;
+            btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD;
     
     public void isWall(){
         try{            
@@ -18642,6 +18654,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_HAIs_laju_vap()==true){
                 Panelmenu.add(btnGrafikHAIsLajuVAP);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_HAIs_laju_iad()==true){
+                Panelmenu.add(btnGrafikHAIsLajuIAD);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -21431,6 +21448,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getgrafik_HAIs_laju_vap()==true){
             Panelmenu.add(btnGrafikHAIsLajuVAP);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_HAIs_laju_iad()==true){
+            Panelmenu.add(btnGrafikHAIsLajuIAD);
             jmlmenu++;
         }
 
@@ -25231,6 +25253,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_HAIs_laju_iad()==true){
+            if(btnGrafikHAIsLajuIAD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHAIsLajuIAD);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -26800,6 +26829,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikHAIsLajuVAP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikHAIsLajuVAPActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikHAIsLajuIAD = new widget.ButtonBig();
+        btnGrafikHAIsLajuIAD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikHAIsLajuIAD.setText("Laju HAIs IAD Per Ruang");
+        btnGrafikHAIsLajuIAD.setIconTextGap(0);
+        btnGrafikHAIsLajuIAD.setName("btnGrafikHAIsLajuIAD"); 
+        btnGrafikHAIsLajuIAD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHAIsLajuIAD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHAIsLajuIADActionPerformed(evt);
             }
         });
     }
