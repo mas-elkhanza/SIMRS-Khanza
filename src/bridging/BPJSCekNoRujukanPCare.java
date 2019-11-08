@@ -76,7 +76,6 @@ import simrskhanza.DlgSuku;
  */
 public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
@@ -1310,10 +1309,9 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             user=akses.getkode();
         }
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
-            link=prop.getProperty("URLAPIBPJS");
-            URUTNOREG=prop.getProperty("URUTNOREG");
-            BASENOREG=prop.getProperty("BASENOREG");
+            link=koneksiDB.URLAPIBPJS();
+            URUTNOREG=koneksiDB.URUTNOREG();
+            BASENOREG=koneksiDB.BASENOREG();
         } catch (Exception e) {
             URUTNOREG="";
             BASENOREG="";

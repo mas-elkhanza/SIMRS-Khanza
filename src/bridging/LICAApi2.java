@@ -34,21 +34,17 @@ import org.springframework.web.client.RestTemplate;
  * @author khanzasoft
  */
 public class LICAApi2 {
-    private final Properties prop = new Properties();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private String URL="",KEY="",requestJson="",requestJson2="",stringbalik="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private RestTemplate rest = new RestTemplate();	            
-    private ObjectMapper mapper = new ObjectMapper();
     public LICAApi2(){
         super();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("HOSTWSLICA");
-            KEY = prop.getProperty("KEYWSLICA");
+            URL = koneksiDB.HOSTWSLICA();
+            KEY = koneksiDB.KEYWSLICA();
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }

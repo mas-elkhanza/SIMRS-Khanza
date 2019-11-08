@@ -75,8 +75,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private YaskiReferensiKelurahan kelurahan=new YaskiReferensiKelurahan(null,false);
     private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     private String id_tb_03="",kdwasor="",idrs="",URL="",requestJson="";
-    private final Properties prop = new Properties();
-
+    
     /** Creates new form DlgJnsPerawatan
      * @param parent
      * @param modal */
@@ -433,10 +432,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            kdwasor = prop.getProperty("KABUPATENSITT");
+            kdwasor = koneksiDB.KABUPATENSITT();
             idrs=koneksiDB.IDSITT();
-            URL = prop.getProperty("URLAPISITT");
+            URL = koneksiDB.URLAPISITT();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
