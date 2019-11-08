@@ -5,9 +5,10 @@
  */
 package bridging;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.koneksiDB;
-import java.io.FileInputStream;
+import fungsi.sekuel;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -16,7 +17,6 @@ import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Properties;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
@@ -40,6 +40,11 @@ public class LICAApi {
     private String URL="",KEY="",requestJson="",requestJson2="",stringbalik="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
+    private JsonNode root;
+    private sekuel Sequel=new sekuel();
+    private JsonNode response;
+    private ObjectMapper mapper = new ObjectMapper();
+    
     public LICAApi(){
         super();
         try {
@@ -73,7 +78,7 @@ public class LICAApi {
                             "select permintaan_detail_permintaan_lab.id_template,template_laboratorium.Pemeriksaan,"+
                             "template_laboratorium.urut from permintaan_detail_permintaan_lab "+
                             "inner join template_laboratorium on permintaan_detail_permintaan_lab.id_template=template_laboratorium.id_template "+
-                            "where permintaan_detail_permintaan_lab.noorder=? order by template_laboratorium.urut desc");
+                            "where permintaan_detail_permintaan_lab.noorder=? order by template_laboratorium.kd_jenis_prw,template_laboratorium.urut desc");
                     try {
                         ps2.setString(1,rs.getString("noorder"));
                         rs2=ps2.executeQuery();
@@ -126,7 +131,7 @@ public class LICAApi {
                     System.out.println("JSON : "+requestJson);
                     requestEntity = new HttpEntity(requestJson,headers);	    
                     stringbalik=getRest().exchange(URL+"/insert", HttpMethod.POST, requestEntity, String.class).getBody();
-                    System.out.println("Result : "+stringbalik);
+                    JOptionPane.showMessageDialog(null,stringbalik);
                 }
              } catch (Exception e) {
                  System.out.println("Notif : "+e);
@@ -141,6 +146,37 @@ public class LICAApi {
                      ps.close();
                  }
              }
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("UnknownHostException")||ex.toString().contains("404")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server LICA terputus...!");
+            }
+        }
+    }
+    
+    public void ambil(String nopermintaan) {
+        try{
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("Content-Type","application/json;charset=UTF-8");
+            headers.add("x-api-key",KEY);
+            requestEntity = new HttpEntity(headers);
+            stringbalik=getRest().exchange(URL+"/get/"+nopermintaan, HttpMethod.GET, requestEntity, String.class).getBody();
+            System.out.println("JSON : "+stringbalik);
+            root = mapper.readTree(stringbalik);
+            response = root.path("tpas");
+            Sequel.queryu("truncate table temporary_permintaan_lab");
+            if(response.isArray()){
+                for(JsonNode list:response){
+                    Sequel.menyimpan("temporary_permintaan_lab","'0','"+response+"','"+
+                            list.path("nmdisplay").asText()+"','"+
+                            list.path("hasil").asText()+"','"+
+                            list.path("nn").asText()+"','"+
+                            list.path("satuan").asText()+"','"+
+                            list.path("keterangan").asText()+"','"+
+                            list.path("tindakan_id").asText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                }
+            }
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
             if(ex.toString().contains("UnknownHostException")||ex.toString().contains("404")){
