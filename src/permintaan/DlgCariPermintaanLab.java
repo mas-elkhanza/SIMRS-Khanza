@@ -2435,6 +2435,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         BtnSampel.setEnabled(akses.getperiksa_lab());
         BtnHapus.setEnabled(akses.getpermintaan_lab());
         BtnPrint.setEnabled(akses.getpermintaan_lab());
+        MnKirimLica.setEnabled(akses.getpermintaan_lab());
+        MnAmbilLica.setEnabled(akses.getperiksa_lab());
     }
     
     public void setPasien(String pasien){
