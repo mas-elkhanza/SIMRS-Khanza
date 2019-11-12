@@ -418,6 +418,7 @@ import kepegawaian.DlgJadwal;
 import inventory.DlgResepPulang;
 import keuangan.DlgPembayaranPerAKunBayar3;
 import bridging.DlgDataTB;
+import bridging.InhealthMapingDokter;
 import bridging.InhealthMapingPoli;
 import grafikanalisa.GrafikInventarisPerJenis;
 import grafikanalisa.GrafikInventarisPerRuang;
@@ -15481,6 +15482,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMappingDokterInhealthActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InhealthMapingDokter form=new InhealthMapingDokter(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16069,7 +16081,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikResikoKerjaPegawai,btnGrafikEmergencyIndexPegawai,btnGrafikInventarisRuang,btnHarianHAIs2,btnGrafikInventarisJenis,btnResumePasien,
             btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang,btnGrafikHAIsPasienBulan,btnPermintaanPerbaikanInventaris,
             btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK,btnGrafikHAIsLajuILO,btnGrafikHAIsLajuHAP,
-            btnMappingPoliInhealth;
+            btnMappingPoliInhealth,btnMappingDokterInhealth;
     
     public void isWall(){
         try{            
@@ -17872,6 +17884,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getinhealth_mapping_poli()==true){
                 Panelmenu.add(btnMappingPoliInhealth);
+                jmlmenu++;
+            }
+            
+            if(akses.getinhealth_mapping_dokter()==true){
+                Panelmenu.add(btnMappingDokterInhealth);
                 jmlmenu++;
             }
             
@@ -20694,6 +20711,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getinhealth_mapping_poli()==true){
             Panelmenu.add(btnMappingPoliInhealth);
+            jmlmenu++;
+        }
+        
+        if(akses.getinhealth_mapping_dokter()==true){
+            Panelmenu.add(btnMappingDokterInhealth);
             jmlmenu++;
         }
 
@@ -24187,6 +24209,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getinhealth_mapping_dokter()==true){
+            if(btnMappingDokterInhealth.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMappingDokterInhealth);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getinhealth_referensi_faskes()==true){
             if(btnCekInhealthFaskes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -27049,6 +27078,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMappingPoliInhealth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMappingPoliInhealthActionPerformed(evt);
+            }
+        });
+        
+        btnMappingDokterInhealth = new widget.ButtonBig();
+        btnMappingDokterInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (1).png"))); 
+        btnMappingDokterInhealth.setText("Mapping Dokter Inhealth");
+        btnMappingDokterInhealth.setIconTextGap(0);
+        btnMappingDokterInhealth.setName("btnMappingDokterInhealth"); 
+        btnMappingDokterInhealth.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMappingDokterInhealth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMappingDokterInhealthActionPerformed(evt);
             }
         });
     }
