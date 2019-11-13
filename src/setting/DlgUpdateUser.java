@@ -415,6 +415,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             Valid.textKosong(TPass,"Password");            
         }else{ 
             Simpan();
+            Simpan2();
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -638,7 +639,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_resiko_kerjapegawai,grafik_emergency_indexpegawai,grafik_inventaris_ruang,harian_HAIs2,grafik_inventaris_jenis,"+
                         "data_resume_pasien,perkiraan_biaya_ranap,rekap_obat_poli,rekap_obat_pasien,permintaan_perbaikan_inventaris,grafik_HAIs_pasienbangsal,"+
                         "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk,grafik_HAIs_laju_ilo,"+
-                        "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2165,6 +2166,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[K]Mapping Dokter Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Mapping Dokter Inhealth",rs.getBoolean("inhealth_mapping_dokter")});
+                    }
+                    
+                    if("[K]Tarif Ralan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[K]Tarif Ralan Inhealth",rs.getBoolean("inhealth_mapping_tindakan_ralan")});
                     }
                     
                     if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4129,7 +4134,11 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             if("[J]Saldo Akun Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","saldo_akun_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
-
+        }
+    }
+    
+    private void Simpan2() {
+        for(i=0;i<tbUser.getRowCount();i++){ 
             if("[K]Cek NIK".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bpjs_cek_nik='"+tbUser.getValueAt(i,2).toString()+"'");
             }
@@ -4448,6 +4457,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
             if("[K]Mapping Dokter Inhealth".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","inhealth_mapping_dokter='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Tarif Ralan Inhealth".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","inhealth_mapping_tindakan_ralan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[L]Pasien".equals(tbUser.getValueAt(i,1).toString())){
