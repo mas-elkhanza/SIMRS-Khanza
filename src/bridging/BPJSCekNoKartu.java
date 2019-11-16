@@ -5,7 +5,6 @@
  */
 package bridging;
 
-import AESsecurity.EnkripsiAES;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.koneksiDB;
@@ -32,7 +31,6 @@ public class BPJSCekNoKartu {
             provUmumkdProvider="",provUmumnmProvider="",sex="",statusPesertaketerangan="",
             statusPesertakode="",tglCetakKartu="",tglLahir="",tglTAT="",
             tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="";
-    private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     private BPJSApi api=new BPJSApi();
@@ -47,8 +45,7 @@ public class BPJSCekNoKartu {
     public BPJSCekNoKartu(){
         super();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/";	
+            URL =koneksiDB.URLAPIBPJS()+"/Peserta/nokartu/";	
         } catch (Exception e) {
             System.out.println("E : "+e);
         }

@@ -50,9 +50,9 @@ public class DUKCAPILCekNIK {
     
     public void tampil(String nik) {
         try {
-	    headers = new HttpHeaders();
+	   headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("Accept","application/json");
+	   headers.add("Accept","application/json");
             requestJson="{"+
                           "\"nik\": \""+nik+"\"," +
                             "\"user_id\" : \""+koneksiDB.USERDUKCAPIL()+"\"," +

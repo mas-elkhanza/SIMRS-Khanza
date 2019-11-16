@@ -701,4 +701,24 @@ public class koneksiDB {
         return var;
     }
     
+    public static String HOSTWSLICA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("HOSTWSLICA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KEYWSLICA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("KEYWSLICA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
 }

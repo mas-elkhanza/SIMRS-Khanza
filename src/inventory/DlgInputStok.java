@@ -580,7 +580,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 for(i=0;i<tbDokter.getRowCount();i++){  
                     if(!tbDokter.getValueAt(i,0).toString().equals("")){
                         try {
-                            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>=0){
+                            if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>=0){
                                 if(Sequel.menyimpantf2("opname","?,?,?,?,?,?,?,?,?","Stok Opname",9,new String[]{
                                         tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,5).toString(),Valid.SetTgl(Tgl.getSelectedItem()+""),tbDokter.getValueAt(i,6).toString(),
                                         tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,7).toString(),tbDokter.getValueAt(i,8).toString(),catatan.getText(),kdgudang.getText()})==true){
@@ -592,6 +592,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 }
                             }
                         } catch (Exception e) {
+                            sukses=false;
                         }
                     }   
                 }   
@@ -898,7 +899,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             if((tbDokter.getSelectedColumn()==1)||(tbDokter.getSelectedColumn()==0)){  
                 if(!tbDokter.getValueAt(i,0).toString().equals("")){
                     try {
-                        if(Double.parseDouble(tabMode.getValueAt(i,0).toString())>0){
+                        if(Double.parseDouble(tabMode.getValueAt(i,0).toString())>=0){
                             stokbarang=0;   
                             psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
                             try{

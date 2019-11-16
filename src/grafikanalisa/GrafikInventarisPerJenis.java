@@ -223,7 +223,6 @@ public class GrafikInventarisPerJenis extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbInventaris.setAutoCreateRowSorter(true);
         tbInventaris.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbInventaris.setName("tbInventaris"); // NOI18N
         Scroll.setViewportView(tbInventaris);
