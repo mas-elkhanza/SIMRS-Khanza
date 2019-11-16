@@ -898,6 +898,11 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                             NmDokterRalanDokterParamedis.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                             BtnDokterRalanDokterParamedis.requestFocus();
                             break;
+                        case 3:
+                            KdOperatorOperasi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            NmOperatorOperasi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            BtnOperatorOperasi.requestFocus();
+                            break;
                         case 4:
                             KdDokterRanapDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                             NmDokterRanapDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
@@ -969,6 +974,11 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                             KdPetugasRalanDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                             NmPetugasRalanDokterParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                             BtnPetugasRalanDokterParamedis.requestFocus();
+                            break;
+                        case 3:
+                            KdAsistenOperasi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                            NmAsistenOperasi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                            BtnAsistenOperasi.requestFocus();
                             break;
                         case 5:
                             KdPetugasRanapParamedis.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
@@ -1086,6 +1096,11 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                             NmCaraBayarRalanDokterParamedis.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
                             BtnCaraBayarRalanDokterParamedis.requestFocus();
                             break;
+                        case 3:
+                            KdCaraBayarOperasi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                            NmCaraBayarOperasi.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                            BtnCaraBayarOperasi.requestFocus();
+                            break;
                         case 4:
                             KdCaraBayarRanapDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
                             NmCaraBayarRanapDokter.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
@@ -1163,6 +1178,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         isForm8();
         ChkInput9.setSelected(false);
         isForm9();
+        ChkInput10.setSelected(false);
+        isForm10();
     }
     
 
@@ -1252,6 +1269,21 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         internalFrame5 = new widget.InternalFrame();
         Scroll3 = new widget.ScrollPane();
         tbOperasi = new widget.Table();
+        PanelInput10 = new javax.swing.JPanel();
+        ChkInput10 = new widget.CekBox();
+        FormInput10 = new widget.panelisi();
+        label48 = new widget.Label();
+        KdAsistenOperasi = new widget.TextBox();
+        NmAsistenOperasi = new widget.TextBox();
+        BtnAsistenOperasi = new widget.Button();
+        label49 = new widget.Label();
+        KdCaraBayarOperasi = new widget.TextBox();
+        NmCaraBayarOperasi = new widget.TextBox();
+        BtnCaraBayarOperasi = new widget.Button();
+        label50 = new widget.Label();
+        KdOperatorOperasi = new widget.TextBox();
+        NmOperatorOperasi = new widget.TextBox();
+        BtnOperatorOperasi = new widget.Button();
         internalFrame6 = new widget.InternalFrame();
         Scroll4 = new widget.ScrollPane();
         tbRanapDokter = new widget.Table();
@@ -2011,6 +2043,133 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll3.setViewportView(tbOperasi);
 
         internalFrame5.add(Scroll3, java.awt.BorderLayout.CENTER);
+
+        PanelInput10.setBackground(new java.awt.Color(255, 255, 255));
+        PanelInput10.setName("PanelInput10"); // NOI18N
+        PanelInput10.setOpaque(false);
+        PanelInput10.setPreferredSize(new java.awt.Dimension(192, 65));
+        PanelInput10.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkInput10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput10.setMnemonic('M');
+        ChkInput10.setText(".: Filter Data");
+        ChkInput10.setBorderPainted(true);
+        ChkInput10.setBorderPaintedFlat(true);
+        ChkInput10.setFocusable(false);
+        ChkInput10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput10.setName("ChkInput10"); // NOI18N
+        ChkInput10.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput10.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput10.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput10.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkInput10ActionPerformed(evt);
+            }
+        });
+        PanelInput10.add(ChkInput10, java.awt.BorderLayout.PAGE_END);
+
+        FormInput10.setName("FormInput10"); // NOI18N
+        FormInput10.setPreferredSize(new java.awt.Dimension(100, 74));
+        FormInput10.setLayout(null);
+
+        label48.setText("Asisten 1 :");
+        label48.setName("label48"); // NOI18N
+        label48.setPreferredSize(new java.awt.Dimension(50, 23));
+        FormInput10.add(label48);
+        label48.setBounds(320, 10, 60, 23);
+
+        KdAsistenOperasi.setEditable(false);
+        KdAsistenOperasi.setName("KdAsistenOperasi"); // NOI18N
+        KdAsistenOperasi.setPreferredSize(new java.awt.Dimension(80, 23));
+        FormInput10.add(KdAsistenOperasi);
+        KdAsistenOperasi.setBounds(385, 10, 65, 23);
+
+        NmAsistenOperasi.setEditable(false);
+        NmAsistenOperasi.setName("NmAsistenOperasi"); // NOI18N
+        NmAsistenOperasi.setPreferredSize(new java.awt.Dimension(150, 23));
+        FormInput10.add(NmAsistenOperasi);
+        NmAsistenOperasi.setBounds(452, 10, 150, 23);
+
+        BtnAsistenOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnAsistenOperasi.setMnemonic('3');
+        BtnAsistenOperasi.setToolTipText("Alt+3");
+        BtnAsistenOperasi.setName("BtnAsistenOperasi"); // NOI18N
+        BtnAsistenOperasi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAsistenOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAsistenOperasiActionPerformed(evt);
+            }
+        });
+        FormInput10.add(BtnAsistenOperasi);
+        BtnAsistenOperasi.setBounds(605, 10, 28, 23);
+
+        label49.setText("Cara Bayar :");
+        label49.setName("label49"); // NOI18N
+        label49.setPreferredSize(new java.awt.Dimension(75, 23));
+        FormInput10.add(label49);
+        label49.setBounds(640, 10, 70, 23);
+
+        KdCaraBayarOperasi.setEditable(false);
+        KdCaraBayarOperasi.setName("KdCaraBayarOperasi"); // NOI18N
+        KdCaraBayarOperasi.setPreferredSize(new java.awt.Dimension(50, 23));
+        FormInput10.add(KdCaraBayarOperasi);
+        KdCaraBayarOperasi.setBounds(713, 10, 65, 23);
+
+        NmCaraBayarOperasi.setEditable(false);
+        NmCaraBayarOperasi.setName("NmCaraBayarOperasi"); // NOI18N
+        NmCaraBayarOperasi.setPreferredSize(new java.awt.Dimension(150, 23));
+        FormInput10.add(NmCaraBayarOperasi);
+        NmCaraBayarOperasi.setBounds(780, 10, 150, 23);
+
+        BtnCaraBayarOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnCaraBayarOperasi.setMnemonic('3');
+        BtnCaraBayarOperasi.setToolTipText("Alt+3");
+        BtnCaraBayarOperasi.setName("BtnCaraBayarOperasi"); // NOI18N
+        BtnCaraBayarOperasi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCaraBayarOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCaraBayarOperasiActionPerformed(evt);
+            }
+        });
+        FormInput10.add(BtnCaraBayarOperasi);
+        BtnCaraBayarOperasi.setBounds(933, 10, 28, 23);
+
+        label50.setText("Operator :");
+        label50.setName("label50"); // NOI18N
+        label50.setPreferredSize(new java.awt.Dimension(50, 23));
+        FormInput10.add(label50);
+        label50.setBounds(0, 10, 62, 23);
+
+        KdOperatorOperasi.setEditable(false);
+        KdOperatorOperasi.setName("KdOperatorOperasi"); // NOI18N
+        KdOperatorOperasi.setPreferredSize(new java.awt.Dimension(80, 23));
+        FormInput10.add(KdOperatorOperasi);
+        KdOperatorOperasi.setBounds(65, 10, 65, 23);
+
+        NmOperatorOperasi.setEditable(false);
+        NmOperatorOperasi.setName("NmOperatorOperasi"); // NOI18N
+        NmOperatorOperasi.setPreferredSize(new java.awt.Dimension(150, 23));
+        FormInput10.add(NmOperatorOperasi);
+        NmOperatorOperasi.setBounds(132, 10, 150, 23);
+
+        BtnOperatorOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnOperatorOperasi.setMnemonic('3');
+        BtnOperatorOperasi.setToolTipText("Alt+3");
+        BtnOperatorOperasi.setName("BtnOperatorOperasi"); // NOI18N
+        BtnOperatorOperasi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnOperatorOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnOperatorOperasiActionPerformed(evt);
+            }
+        });
+        FormInput10.add(BtnOperatorOperasi);
+        BtnOperatorOperasi.setBounds(285, 10, 28, 23);
+
+        PanelInput10.add(FormInput10, java.awt.BorderLayout.CENTER);
+
+        internalFrame5.add(PanelInput10, java.awt.BorderLayout.PAGE_START);
 
         TabRawat.addTab("Operasi & VK", internalFrame5);
 
@@ -3223,7 +3382,260 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanOperasi.jasper",param,"::[ Detail Tindakan Operasi ]::");                    
+                    if(KdOperatorOperasi.getText().equals("")&&NmOperatorOperasi.getText().equals("")&&KdAsistenOperasi.getText().equals("")&&NmAsistenOperasi.getText().equals("")&&KdCaraBayarOperasi.getText().equals("")&&NmCaraBayarOperasi.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                        Valid.MyReportqry("rptDetailTindakanOperasi.jasper","report","::[ Detail Tindakan Operasi ]::",
+                               "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                               "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                               "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                               "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                               "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                               "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                               "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                               "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                               "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                               "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                               "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                               "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                               "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                               "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                               "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                               "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                               "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                               "bidan.nama as bidan,operasi.biayabidan, "+
+                               "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                               "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                               "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                               "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                               "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                               "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                               "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                               "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                               "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                               "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                               "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras, "+
+                               "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras) as total "+
+                               "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                               "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                               "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                               "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                               "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                               "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                               "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                               "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                               "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                               "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                               "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                               "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                               "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                               "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                               "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                               "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                               "where operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' order by operasi.no_rawat desc",param);
+                    }else{
+                        if(cmbStatus.getSelectedItem().equals("Semua")){
+                            Valid.MyReportqry("rptDetailTindakanOperasi.jasper","report","::[ Detail Tindakan Operasi ]::",
+                                   "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                                   "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                                   "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                                   "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                                   "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                                   "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                                   "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                                   "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                                   "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                                   "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                                   "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                                   "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                                   "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                                   "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                                   "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                                   "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                                   "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                                   "bidan.nama as bidan,operasi.biayabidan, "+
+                                   "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                                   "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                                   "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                                   "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras, "+
+                                   "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras) as total "+
+                                   "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                   "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                                   "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                                   "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                                   "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                                   "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                                   "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                                   "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                                   "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                                   "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                                   "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                                   "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                                   "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                                   "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                                   "where operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operasi.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operasi.kode_paket like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and paket_operasi.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator1.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator2.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator3.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and dokter_anak.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator1.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator2.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator3.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and instrumen.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and perawaat_resusitas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_anestesi.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and bidan.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and dokter_anestesi.nm_dokter like '%"+TCari.getText().trim()+"%' "+
+                                   "order by operasi.no_rawat desc",param);   
+                        }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                            Valid.MyReportqry("rptDetailTindakanOperasi.jasper","report","::[ Detail Tindakan Operasi ]::",
+                                   "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                                   "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                                   "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                                   "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                                   "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                                   "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                                   "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                                   "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                                   "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                                   "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                                   "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                                   "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                                   "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                                   "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                                   "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                                   "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                                   "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                                   "bidan.nama as bidan,operasi.biayabidan, "+
+                                   "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                                   "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                                   "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                                   "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras, "+
+                                   "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras) as total "+
+                                   "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                   "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                                   "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                                   "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                                   "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                                   "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                                   "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                                   "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                                   "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                                   "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                                   "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                                   "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                                   "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                                   "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                                   "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                                   "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operasi.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operasi.kode_paket like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and paket_operasi.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator1.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator2.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator3.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and dokter_anak.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator1.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator2.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator3.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and instrumen.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and perawaat_resusitas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_anestesi.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and bidan.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and dokter_anestesi.nm_dokter like '%"+TCari.getText().trim()+"%' "+
+                                   "order by operasi.no_rawat desc",param);
+                        }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                            Valid.MyReportqry("rptDetailTindakanOperasi.jasper","report","::[ Detail Tindakan Operasi ]::",
+                                   "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                                   "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                                   "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                                   "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                                   "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                                   "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                                   "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                                   "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                                   "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                                   "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                                   "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                                   "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                                   "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                                   "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                                   "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                                   "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                                   "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                                   "bidan.nama as bidan,operasi.biayabidan, "+
+                                   "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                                   "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                                   "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                                   "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                                   "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras, "+
+                                   "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras) as total "+
+                                   "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                   "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                                   "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                                   "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                                   "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                                   "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                                   "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                                   "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                                   "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                                   "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                                   "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                                   "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                                   "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                                   "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                                   "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operasi.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operasi.kode_paket like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and paket_operasi.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator1.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator2.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and operator3.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and dokter_anak.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator1.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator2.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_operator3.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and instrumen.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and perawaat_resusitas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and asisten_anestesi.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and bidan.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and concat(operasi.operator1,operator1.nm_dokter) like '%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%' and concat(operasi.asisten_operator1,asisten_operator1.nama) like '%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%' and dokter_anestesi.nm_dokter like '%"+TCari.getText().trim()+"%' "+
+                                   "order by operasi.no_rawat desc",param);
+                        }   
+                    }
                 }   break;
             case 4:
                 if(tabModeRanapDokter.getRowCount()==0){
@@ -3772,18 +4184,18 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                                    "inner join petugas on periksa_lab.nip=petugas.nip "+
                                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                                    "inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
-                                   "where periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.no_rawat like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and reg_periksa.no_rkm_medis like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and pasien.nm_pasien like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.kd_jenis_prw like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and jns_perawatan_lab.nm_perawatan like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.kd_dokter like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and dokter.nm_dokter like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.nip like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and petugas.nama like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.dokter_perujuk like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and perujuk.nm_dokter like ? or "+
-                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and penjab.png_jawab like ? "+
+                                   "where periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and jns_perawatan_lab.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.nip like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and periksa_lab.dokter_perujuk like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and perujuk.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                   "periksa_lab.tgl_periksa between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(periksa_lab.dokter_perujuk,perujuk.nm_dokter) like '%"+KdDokterPerujukLab.getText()+NmDokterPerujukLab.getText()+"%' and concat(periksa_lab.nip,petugas.nama) like '%"+KdPetugasLab.getText()+NmPetugasLab.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarLab.getText()+NmCaraBayarLab.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' "+
                                    " order by periksa_lab.tgl_periksa",param);
                         }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
                             Valid.MyReportqry("rptDetailLaborat.jasper","report","::[ Detail Pemeriksaan Laborat ]::",
@@ -4186,6 +4598,14 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 KdCaraBayarRalanDokterParamedis.setText("");
                 NmCaraBayarRalanDokterParamedis.setText("");
                 break;
+            case 3:
+                KdOperatorOperasi.setText("");
+                NmOperatorOperasi.setText("");
+                KdAsistenOperasi.setText("");
+                NmAsistenOperasi.setText("");
+                KdCaraBayarOperasi.setText("");
+                NmCaraBayarOperasi.setText("");
+                break;
             case 4:
                 KdDokterRanapDokter.setText("");
                 NmDokterRanapDokter.setText("");
@@ -4408,6 +4828,22 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         BtnDokterRalanDokterActionPerformed(null);
     }//GEN-LAST:event_BtnDokterPerujukDetailLabActionPerformed
 
+    private void ChkInput10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInput10ActionPerformed
+        isForm10();
+    }//GEN-LAST:event_ChkInput10ActionPerformed
+
+    private void BtnAsistenOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAsistenOperasiActionPerformed
+        BtnPetugasRalanParamedisActionPerformed(null);
+    }//GEN-LAST:event_BtnAsistenOperasiActionPerformed
+
+    private void BtnCaraBayarOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarOperasiActionPerformed
+        BtnCaraBayarRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnCaraBayarOperasiActionPerformed
+
+    private void BtnOperatorOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOperatorOperasiActionPerformed
+        BtnDokterRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnOperatorOperasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -4426,8 +4862,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
+    private widget.Button BtnAsistenOperasi;
     private widget.Button BtnCaraBayarDetailLab;
     private widget.Button BtnCaraBayarLab;
+    private widget.Button BtnCaraBayarOperasi;
     private widget.Button BtnCaraBayarRad;
     private widget.Button BtnCaraBayarRalanDokter;
     private widget.Button BtnCaraBayarRalanDokterParamedis;
@@ -4444,6 +4882,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.Button BtnDokterRanapDokter;
     private widget.Button BtnDokterRanapDokterParamedis;
     private widget.Button BtnKeluar;
+    private widget.Button BtnOperatorOperasi;
     private widget.Button BtnPetugasDetailLab;
     private widget.Button BtnPetugasLab;
     private widget.Button BtnPetugasRad;
@@ -4457,6 +4896,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkInput1;
+    private widget.CekBox ChkInput10;
     private widget.CekBox ChkInput2;
     private widget.CekBox ChkInput3;
     private widget.CekBox ChkInput4;
@@ -4466,6 +4906,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.CekBox ChkInput9;
     private widget.panelisi FormInput;
     private widget.panelisi FormInput1;
+    private widget.panelisi FormInput10;
     private widget.panelisi FormInput2;
     private widget.panelisi FormInput3;
     private widget.panelisi FormInput4;
@@ -4473,8 +4914,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.panelisi FormInput7;
     private widget.panelisi FormInput8;
     private widget.panelisi FormInput9;
+    private widget.TextBox KdAsistenOperasi;
     private widget.TextBox KdCaraBayarDetailLab;
     private widget.TextBox KdCaraBayarLab;
+    private widget.TextBox KdCaraBayarOperasi;
     private widget.TextBox KdCaraBayarRad;
     private widget.TextBox KdCaraBayarRalanDokter;
     private widget.TextBox KdCaraBayarRalanDokterParamedis;
@@ -4489,6 +4932,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.TextBox KdDokterRalanDokterParamedis;
     private widget.TextBox KdDokterRanapDokter;
     private widget.TextBox KdDokterRanapDokterParamedis;
+    private widget.TextBox KdOperatorOperasi;
     private widget.TextBox KdPetugasDetailLab;
     private widget.TextBox KdPetugasLab;
     private widget.TextBox KdPetugasRad;
@@ -4499,8 +4943,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.TextBox KdPoliRalanDokter;
     private widget.TextBox KdPoliRalanDokterParamedis;
     private widget.TextBox KdPoliRalanParamedis;
+    private widget.TextBox NmAsistenOperasi;
     private widget.TextBox NmCaraBayarDetailLab;
     private widget.TextBox NmCaraBayarLab;
+    private widget.TextBox NmCaraBayarOperasi;
     private widget.TextBox NmCaraBayarRad;
     private widget.TextBox NmCaraBayarRalanDokter;
     private widget.TextBox NmCaraBayarRalanDokterParamedis;
@@ -4515,6 +4961,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.TextBox NmDokterRalanDokterParamedis;
     private widget.TextBox NmDokterRanapDokter;
     private widget.TextBox NmDokterRanapDokterParamedis;
+    private widget.TextBox NmOperatorOperasi;
     private widget.TextBox NmPetugasDetailLab;
     private widget.TextBox NmPetugasLab;
     private widget.TextBox NmPetugasRad;
@@ -4527,6 +4974,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.TextBox NmPoliRalanParamedis;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPanel PanelInput1;
+    private javax.swing.JPanel PanelInput10;
     private javax.swing.JPanel PanelInput2;
     private javax.swing.JPanel PanelInput3;
     private javax.swing.JPanel PanelInput4;
@@ -4590,6 +5038,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.Label label45;
     private widget.Label label46;
     private widget.Label label47;
+    private widget.Label label48;
+    private widget.Label label49;
+    private widget.Label label50;
     private widget.Label label9;
     private widget.panelisi panelGlass5;
     private widget.Table tbDetailLaborat;
@@ -5201,100 +5652,373 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     
     public void tampil4(){     
         Valid.tabelKosong(tabModeOperasi);
-        try{ps=koneksi.prepareStatement(
-                   "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
-                   "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
-                   "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
-                   "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                   "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator1) as operator1,operasi.biayaoperator1, "+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator2) as operator2,operasi.biayaoperator2, "+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator3) as operator3,operasi.biayaoperator3,"+
-                   "(select nama from petugas where petugas.nip=operasi.asisten_operator1) as asisten_operator1,operasi.biayaasisten_operator1, "+
-                   "(select nama from petugas where petugas.nip=operasi.asisten_operator2) as asisten_operator2,operasi.biayaasisten_operator2, "+
-                   "(select nama from petugas where petugas.nip=operasi.asisten_operator3) as asisten_operator3,operasi.biayaasisten_operator3, "+
-                   "(select nama from petugas where petugas.nip=operasi.instrumen) as instrumen,operasi.biayainstrumen, "+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_anak) as dokter_anak,operasi.biayadokter_anak, "+
-                   "(select nama from petugas where petugas.nip=operasi.perawaat_resusitas) as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_anestesi) as dokter_anestesi,operasi.biayadokter_anestesi, "+
-                   "(select nama from petugas where petugas.nip=operasi.asisten_anestesi) as asisten_anestesi,operasi.biayaasisten_anestesi, "+
-                   "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
-                   "(select nama from petugas where petugas.nip=operasi.bidan) as bidan,operasi.biayabidan, "+
-                   "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
-                   "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
-                   "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
-                   "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
-                   "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
-                   "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
-                   "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
-                   "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
-                   "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras "+
-                   "from operasi inner join reg_periksa inner join pasien "+
-                   "inner join paket_operasi inner join penjab "+
-                   "on operasi.no_rawat=reg_periksa.no_rawat and "+
-                   "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and "+
-                   "operasi.kode_paket=paket_operasi.kode_paket and "+
-                   "reg_periksa.kd_pj=penjab.kd_pj "+
-                   "where operasi.tgl_operasi between ? and ? and operasi.no_rawat like ? or "+
-                   "operasi.tgl_operasi between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                   "operasi.tgl_operasi between ? and ? and pasien.nm_pasien like ? or "+
-                   "operasi.tgl_operasi between ? and ? and operasi.kode_paket like ? or "+
-                   "operasi.tgl_operasi between ? and ? and paket_operasi.nm_perawatan like ? or "+
-                   "operasi.tgl_operasi between ? and ? and penjab.png_jawab like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.operator1) like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.operator2) like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.operator3) like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.asisten_operator1) like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.asisten_operator2) like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.asisten_operator3) like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.bidan) like ? or "+
-                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_anestesi) like ? "+
-                   "order by operasi.no_rawat desc");
+        try{
+            if(KdOperatorOperasi.getText().equals("")&&NmOperatorOperasi.getText().equals("")&&KdAsistenOperasi.getText().equals("")&&NmAsistenOperasi.getText().equals("")&&KdCaraBayarOperasi.getText().equals("")&&NmCaraBayarOperasi.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                ps=koneksi.prepareStatement(
+                       "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                       "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                       "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                       "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                       "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                       "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                       "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                       "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                       "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                       "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                       "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                       "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                       "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                       "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                       "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                       "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                       "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                       "bidan.nama as bidan,operasi.biayabidan, "+
+                       "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                       "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                       "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                       "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                       "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                       "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                       "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                       "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                       "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                       "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                       "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras "+
+                       "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                       "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                       "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                       "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                       "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                       "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                       "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                       "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                       "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                       "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                       "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                       "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                       "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                       "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                       "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                       "where operasi.tgl_operasi between ? and ? order by operasi.no_rawat desc");
+            }else{
+                if(cmbStatus.getSelectedItem().equals("Semua")){
+                    ps=koneksi.prepareStatement(
+                           "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                           "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                           "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                           "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                           "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                           "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                           "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                           "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                           "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                           "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                           "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                           "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                           "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                           "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                           "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                           "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                           "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                           "bidan.nama as bidan,operasi.biayabidan, "+
+                           "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                           "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                           "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                           "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                           "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                           "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras "+
+                           "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                           "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                           "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                           "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                           "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                           "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                           "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                           "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                           "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                           "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                           "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                           "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                           "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                           "where operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.no_rawat like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.kode_paket like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and paket_operasi.nm_perawatan like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator1.nm_dokter like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator2.nm_dokter like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator3.nm_dokter like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter_anak.nm_dokter like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator1.nama like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator2.nama like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator3.nama like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and instrumen.nama like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and perawaat_resusitas.nama like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_anestesi.nama like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bidan.nama like ? or "+
+                           "operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter_anestesi.nm_dokter like ? "+
+                           "order by operasi.no_rawat desc");    
+                }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                           "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                           "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                           "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                           "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                           "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                           "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                           "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                           "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                           "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                           "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                           "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                           "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                           "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                           "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                           "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                           "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                           "bidan.nama as bidan,operasi.biayabidan, "+
+                           "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                           "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                           "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                           "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                           "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                           "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras "+
+                           "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                           "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                           "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                           "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                           "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                           "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                           "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                           "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                           "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                           "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                           "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                           "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                           "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                           "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.kode_paket like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and paket_operasi.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator1.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator2.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator3.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter_anak.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator1.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator2.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator3.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and instrumen.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and perawaat_resusitas.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_anestesi.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bidan.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter_anestesi.nm_dokter like ? "+
+                           "order by operasi.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                           "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                           "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                           "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                           "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                           "operator1.nm_dokter as operator1,operasi.biayaoperator1, "+
+                           "operator2.nm_dokter as operator2,operasi.biayaoperator2, "+
+                           "operator3.nm_dokter as operator3,operasi.biayaoperator3,"+
+                           "asisten_operator1.nama as asisten_operator1,operasi.biayaasisten_operator1, "+
+                           "asisten_operator2.nama as asisten_operator2,operasi.biayaasisten_operator2, "+
+                           "asisten_operator3.nama as asisten_operator3,operasi.biayaasisten_operator3, "+
+                           "instrumen.nama as instrumen,operasi.biayainstrumen, "+
+                           "dokter_anak.nm_dokter as dokter_anak,operasi.biayadokter_anak, "+
+                           "perawaat_resusitas.nama as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                           "dokter_anestesi.nm_dokter as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                           "asisten_anestesi.nama as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                           "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                           "bidan.nama as bidan,operasi.biayabidan, "+
+                           "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                           "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                           "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                           "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                           "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                           "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                           "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras "+
+                           "from operasi inner join reg_periksa on operasi.no_rawat=reg_periksa.no_rawat "+
+                           "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join dokter as operator1 on operator1.kd_dokter=operasi.operator1 "+
+                           "inner join dokter as operator2 on operator2.kd_dokter=operasi.operator2 "+
+                           "inner join dokter as operator3 on operator3.kd_dokter=operasi.operator3 "+
+                           "inner join dokter as dokter_anak on dokter_anak.kd_dokter=operasi.dokter_anak "+
+                           "inner join dokter as dokter_anestesi on dokter_anestesi.kd_dokter=operasi.dokter_anestesi "+
+                           "inner join petugas as asisten_operator1 on asisten_operator1.nip=operasi.asisten_operator1 "+
+                           "inner join petugas as asisten_operator2 on asisten_operator2.nip=operasi.asisten_operator2 "+
+                           "inner join petugas as asisten_operator3 on asisten_operator3.nip=operasi.asisten_operator3 "+
+                           "inner join petugas as asisten_anestesi on asisten_anestesi.nip=operasi.asisten_anestesi "+
+                           "inner join petugas as bidan on bidan.nip=operasi.bidan "+
+                           "inner join petugas as instrumen on instrumen.nip=operasi.instrumen "+
+                           "inner join petugas as perawaat_resusitas on perawaat_resusitas.nip=operasi.perawaat_resusitas "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operasi.kode_paket like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and paket_operasi.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator1.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator2.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and operator3.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter_anak.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator1.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator2.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_operator3.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and instrumen.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and perawaat_resusitas.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and asisten_anestesi.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and bidan.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and operasi.tgl_operasi between ? and ? and concat(operasi.operator1,operator1.nm_dokter) like ? and concat(operasi.asisten_operator1,asisten_operator1.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter_anestesi.nm_dokter like ? "+
+                           "order by operasi.no_rawat desc");
+                }   
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(27,"%"+TCari.getText().trim()+"%");
-                ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(30,"%"+TCari.getText().trim()+"%");
-                ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(33,"%"+TCari.getText().trim()+"%");
-                ps.setString(34,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(35,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(36,"%"+TCari.getText().trim()+"%");
-                ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(39,"%"+TCari.getText().trim()+"%");
-                ps.setString(40,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                ps.setString(41,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                ps.setString(42,"%"+TCari.getText().trim()+"%");
+                if(KdOperatorOperasi.getText().equals("")&&NmOperatorOperasi.getText().equals("")&&KdAsistenOperasi.getText().equals("")&&NmAsistenOperasi.getText().equals("")&&KdCaraBayarOperasi.getText().equals("")&&NmCaraBayarOperasi.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(3,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(4,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(5,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(9,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(10,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(11,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(15,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(16,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(17,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(21,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(22,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(23,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(27,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(28,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(29,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(30,"%"+TCari.getText().trim()+"%");
+                    ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(33,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(34,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(35,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(36,"%"+TCari.getText().trim()+"%");
+                    ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(39,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(40,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(41,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(42,"%"+TCari.getText().trim()+"%");
+                    ps.setString(43,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(44,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(45,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(46,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(47,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(48,"%"+TCari.getText().trim()+"%");
+                    ps.setString(49,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(50,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(51,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(52,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(53,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(54,"%"+TCari.getText().trim()+"%");
+                    ps.setString(55,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(56,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(57,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(58,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(59,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(60,"%"+TCari.getText().trim()+"%");
+                    ps.setString(61,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(62,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(63,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(64,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(65,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(66,"%"+TCari.getText().trim()+"%");
+                    ps.setString(67,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(68,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(69,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(70,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(71,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(72,"%"+TCari.getText().trim()+"%");
+                    ps.setString(73,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(74,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(75,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(76,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(77,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(78,"%"+TCari.getText().trim()+"%");
+                    ps.setString(79,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(80,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(81,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(82,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(83,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(84,"%"+TCari.getText().trim()+"%");
+                    ps.setString(85,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(86,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(87,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(88,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(89,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(90,"%"+TCari.getText().trim()+"%");
+                    ps.setString(91,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(92,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(93,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(94,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(95,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(96,"%"+TCari.getText().trim()+"%");
+                    ps.setString(97,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(98,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(99,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(100,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(101,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(102,"%"+TCari.getText().trim()+"%");
+                    ps.setString(103,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(104,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    ps.setString(105,"%"+KdOperatorOperasi.getText()+NmOperatorOperasi.getText()+"%");
+                    ps.setString(106,"%"+KdAsistenOperasi.getText()+NmAsistenOperasi.getText()+"%");
+                    ps.setString(107,"%"+KdCaraBayarOperasi.getText()+NmCaraBayarOperasi.getText()+"%");
+                    ps.setString(108,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 i=1;
                 total=0;biayaoperator1=0;biayaoperator2=0; 
@@ -6895,6 +7619,20 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             PanelInput9.setPreferredSize(new Dimension(WIDTH,20));
             FormInput9.setVisible(false);      
             ChkInput9.setVisible(true);
+        }
+    }
+    
+    private void isForm10(){
+        if(ChkInput10.isSelected()==true){
+            ChkInput10.setVisible(false);
+            PanelInput10.setPreferredSize(new Dimension(WIDTH,65));
+            FormInput10.setVisible(true);      
+            ChkInput10.setVisible(true);
+        }else if(ChkInput10.isSelected()==false){           
+            ChkInput10.setVisible(false);            
+            PanelInput10.setPreferredSize(new Dimension(WIDTH,20));
+            FormInput10.setVisible(false);      
+            ChkInput10.setVisible(true);
         }
     }
  
