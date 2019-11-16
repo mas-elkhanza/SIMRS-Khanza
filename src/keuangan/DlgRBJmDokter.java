@@ -131,6 +131,8 @@ public class DlgRBJmDokter extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });     
+        ChkInput.setSelected(false);
+        isForm();
     }
 
     /** This method is called from within the constructor to
@@ -147,17 +149,6 @@ public class DlgRBJmDokter extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
-        panelisi4 = new widget.panelisi();
-        label11 = new widget.Label();
-        Tgl1 = new widget.Tanggal();
-        label18 = new widget.Label();
-        Tgl2 = new widget.Tanggal();
-        label17 = new widget.Label();
-        nmdokter = new widget.TextBox();
-        BtnSeek2 = new widget.Button();
-        label19 = new widget.Label();
-        NmCaraBayar = new widget.TextBox();
-        BtnCaraBayarRalanDokter = new widget.Button();
         panelisi1 = new widget.panelisi();
         chkRalan = new widget.CekBox();
         chkRanap = new widget.CekBox();
@@ -170,6 +161,19 @@ public class DlgRBJmDokter extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
+        PanelInput = new javax.swing.JPanel();
+        ChkInput = new widget.CekBox();
+        FormInput = new widget.panelisi();
+        label11 = new widget.Label();
+        Tgl1 = new widget.Tanggal();
+        label18 = new widget.Label();
+        Tgl2 = new widget.Tanggal();
+        label17 = new widget.Label();
+        nmdokter = new widget.TextBox();
+        btnDokter = new widget.Button();
+        label19 = new widget.Label();
+        NmCaraBayar = new widget.TextBox();
+        BtnCaraBayarRalanDokter = new widget.Button();
 
         KdCaraBayar.setEditable(false);
         KdCaraBayar.setName("KdCaraBayar"); // NOI18N
@@ -177,11 +181,6 @@ public class DlgRBJmDokter extends javax.swing.JDialog {
 
         kddokter.setName("kddokter"); // NOI18N
         kddokter.setPreferredSize(new java.awt.Dimension(70, 23));
-        kddokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kddokterKeyPressed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -214,92 +213,6 @@ public class DlgRBJmDokter extends javax.swing.JDialog {
         scrollPane1.setViewportView(tbDokter);
 
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
-
-        panelisi4.setName("panelisi4"); // NOI18N
-        panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
-        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
-
-        label11.setText("Tgl.Tindakan :");
-        label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(75, 23));
-        panelisi4.add(label11);
-
-        Tgl1.setDisplayFormat("dd-MM-yyyy");
-        Tgl1.setName("Tgl1"); // NOI18N
-        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
-        Tgl1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tgl1KeyPressed(evt);
-            }
-        });
-        panelisi4.add(Tgl1);
-
-        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label18.setText("s.d.");
-        label18.setName("label18"); // NOI18N
-        label18.setPreferredSize(new java.awt.Dimension(30, 23));
-        panelisi4.add(label18);
-
-        Tgl2.setDisplayFormat("dd-MM-yyyy");
-        Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
-        Tgl2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tgl2KeyPressed(evt);
-            }
-        });
-        panelisi4.add(Tgl2);
-
-        label17.setText("Dokter :");
-        label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelisi4.add(label17);
-
-        nmdokter.setEditable(false);
-        nmdokter.setName("nmdokter"); // NOI18N
-        nmdokter.setPreferredSize(new java.awt.Dimension(230, 23));
-        panelisi4.add(nmdokter);
-
-        BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnSeek2.setMnemonic('3');
-        BtnSeek2.setToolTipText("Alt+3");
-        BtnSeek2.setName("BtnSeek2"); // NOI18N
-        BtnSeek2.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnSeek2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSeek2ActionPerformed(evt);
-            }
-        });
-        BtnSeek2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek2KeyPressed(evt);
-            }
-        });
-        panelisi4.add(BtnSeek2);
-
-        label19.setText("Cara Bayar :");
-        label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(75, 23));
-        panelisi4.add(label19);
-
-        NmCaraBayar.setEditable(false);
-        NmCaraBayar.setName("NmCaraBayar"); // NOI18N
-        NmCaraBayar.setPreferredSize(new java.awt.Dimension(150, 23));
-        panelisi4.add(NmCaraBayar);
-
-        BtnCaraBayarRalanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnCaraBayarRalanDokter.setMnemonic('3');
-        BtnCaraBayarRalanDokter.setToolTipText("Alt+3");
-        BtnCaraBayarRalanDokter.setName("BtnCaraBayarRalanDokter"); // NOI18N
-        BtnCaraBayarRalanDokter.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCaraBayarRalanDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCaraBayarRalanDokterActionPerformed(evt);
-            }
-        });
-        panelisi4.add(BtnCaraBayarRalanDokter);
-
-        internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
         panelisi1.setName("panelisi1"); // NOI18N
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
@@ -452,6 +365,120 @@ public class DlgRBJmDokter extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
+        PanelInput.setBackground(new java.awt.Color(255, 255, 255));
+        PanelInput.setName("PanelInput"); // NOI18N
+        PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 66));
+        PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setMnemonic('M');
+        ChkInput.setText(".: Filter Data");
+        ChkInput.setBorderPainted(true);
+        ChkInput.setBorderPaintedFlat(true);
+        ChkInput.setFocusable(false);
+        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput.setName("ChkInput"); // NOI18N
+        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkInputActionPerformed(evt);
+            }
+        });
+        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
+
+        FormInput.setName("FormInput"); // NOI18N
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 44));
+        FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        label11.setText("Tgl.Tindakan :");
+        label11.setName("label11"); // NOI18N
+        label11.setPreferredSize(new java.awt.Dimension(75, 23));
+        FormInput.add(label11);
+
+        Tgl1.setDisplayFormat("dd-MM-yyyy");
+        Tgl1.setName("Tgl1"); // NOI18N
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
+        Tgl1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tgl1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Tgl1);
+
+        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label18.setText("s.d.");
+        label18.setName("label18"); // NOI18N
+        label18.setPreferredSize(new java.awt.Dimension(30, 23));
+        FormInput.add(label18);
+
+        Tgl2.setDisplayFormat("dd-MM-yyyy");
+        Tgl2.setName("Tgl2"); // NOI18N
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
+        Tgl2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tgl2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Tgl2);
+
+        label17.setText("Dokter :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(60, 23));
+        FormInput.add(label17);
+
+        nmdokter.setEditable(false);
+        nmdokter.setName("nmdokter"); // NOI18N
+        nmdokter.setPreferredSize(new java.awt.Dimension(230, 23));
+        FormInput.add(nmdokter);
+
+        btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnDokter.setMnemonic('3');
+        btnDokter.setToolTipText("Alt+3");
+        btnDokter.setName("btnDokter"); // NOI18N
+        btnDokter.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDokterActionPerformed(evt);
+            }
+        });
+        btnDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDokterKeyPressed(evt);
+            }
+        });
+        FormInput.add(btnDokter);
+
+        label19.setText("Cara Bayar :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(75, 23));
+        FormInput.add(label19);
+
+        NmCaraBayar.setEditable(false);
+        NmCaraBayar.setName("NmCaraBayar"); // NOI18N
+        NmCaraBayar.setPreferredSize(new java.awt.Dimension(150, 23));
+        FormInput.add(NmCaraBayar);
+
+        BtnCaraBayarRalanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnCaraBayarRalanDokter.setMnemonic('3');
+        BtnCaraBayarRalanDokter.setToolTipText("Alt+3");
+        BtnCaraBayarRalanDokter.setName("BtnCaraBayarRalanDokter"); // NOI18N
+        BtnCaraBayarRalanDokter.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCaraBayarRalanDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCaraBayarRalanDokterActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnCaraBayarRalanDokter);
+
+        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
+
+        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -511,25 +538,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{Valid.pindah(evt,BtnPrint,Tgl1);}
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
-            Tgl2.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
-            BtnAll.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnSeek2ActionPerformed(null);
-        }
-    }//GEN-LAST:event_kddokterKeyPressed
-
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         kddokter.setText("");
         nmdokter.setText("");
         KdCaraBayar.setText("");
         NmCaraBayar.setText("");
+        cmbStatus.setSelectedIndex(0);
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         prosesCari();
         this.setCursor(Cursor.getDefaultCursor());
@@ -542,18 +556,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.pindah(evt, kddokter, BtnPrint);
         }
     }//GEN-LAST:event_BtnAllKeyPressed
-
-private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setAlwaysOnTop(false);
-        dokter.setVisible(true);
-}//GEN-LAST:event_BtnSeek2ActionPerformed
-
-private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek2KeyPressed
-   //Valid.pindah(evt,DTPCari2,TCari);
-}//GEN-LAST:event_BtnSeek2KeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -568,14 +570,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.pindah(evt, kddokter, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
-
-    private void Tgl1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl1KeyPressed
-        Valid.pindah(evt, BtnKeluar,Tgl2);
-    }//GEN-LAST:event_Tgl1KeyPressed
-
-    private void Tgl2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl2KeyPressed
-        Valid.pindah(evt, Tgl1,kddokter);
-    }//GEN-LAST:event_Tgl2KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Tgl1.requestFocus();
@@ -600,6 +594,30 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void chkRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapActionPerformed
         prosesCari();
     }//GEN-LAST:event_chkRanapActionPerformed
+
+    private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
+        isForm();
+    }//GEN-LAST:event_ChkInputActionPerformed
+
+    private void Tgl1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl1KeyPressed
+        Valid.pindah(evt, BtnKeluar,Tgl2);
+    }//GEN-LAST:event_Tgl1KeyPressed
+
+    private void Tgl2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl2KeyPressed
+        Valid.pindah(evt, Tgl1,kddokter);
+    }//GEN-LAST:event_Tgl2KeyPressed
+
+    private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
+    }//GEN-LAST:event_btnDokterActionPerformed
+
+    private void btnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterKeyPressed
+        //Valid.pindah(evt,DTPCari2,TCari);
+    }//GEN-LAST:event_btnDokterKeyPressed
 
     private void BtnCaraBayarRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterActionPerformed
         carabayar.isCek();
@@ -631,11 +649,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.Button BtnSeek2;
+    private widget.CekBox ChkInput;
+    private widget.panelisi FormInput;
     private widget.TextBox KdCaraBayar;
     private widget.TextBox NmCaraBayar;
+    private javax.swing.JPanel PanelInput;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private widget.Button btnDokter;
     private widget.CekBox chkLaborat;
     private widget.CekBox chkOperasi;
     private widget.CekBox chkRadiologi;
@@ -651,7 +672,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label label19;
     private widget.TextBox nmdokter;
     private widget.panelisi panelisi1;
-    private widget.panelisi panelisi4;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -2602,4 +2622,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
        // BtnPrint.setEnabled(var.getbulanan_dokter());
     }
     
+    private void isForm(){
+        if(ChkInput.isSelected()==true){
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,65));
+            FormInput.setVisible(true);      
+            ChkInput.setVisible(true);
+        }else if(ChkInput.isSelected()==false){           
+            ChkInput.setVisible(false);            
+            PanelInput.setPreferredSize(new Dimension(WIDTH,20));
+            FormInput.setVisible(false);      
+            ChkInput.setVisible(true);
+        }
+    }
 }
