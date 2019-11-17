@@ -69,7 +69,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private PreparedStatement psotomatis,psotomatis2,pskasir,pscaripiutang;
     private ResultSet rskasir;
     private final Properties prop = new Properties();
-    private Date cal=new Date();
     private DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
     private String aktifkanparsial="no",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
             sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?,?,?,'Belum')",
