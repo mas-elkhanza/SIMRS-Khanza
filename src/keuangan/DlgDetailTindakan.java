@@ -35,7 +35,6 @@ import simrskhanza.DlgPenanggungJawab;
 public final class DlgDetailTindakan extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
-    public  DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private DefaultTableModel tabModeRalanDokter,tabModeRalanParamedis,
             tabModeRalanDokterParamedis,tabModeRanapDokter,tabModeRanapParamedis,
             tabModeRanapDokterParamedis,tabModeRadiologi,tabModeLaborat,
@@ -43,8 +42,11 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private ResultSet rs;
     private PreparedStatement ps;
-    private String sql;
     private int i=0;
+    private DlgCariPoli poli=new DlgCariPoli(null,false);
+    private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private double material=0,bhp=0,jmdokter=0,jmpetugas=0,jmperujuk=0,kso=0,
             menejemen=0,total=0,biayaoperator1=0,biayaoperator2=0, 
             biayaoperator3=0,biayaasisten_operator1=0,biayaasisten_operator2=0,
@@ -877,7 +879,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
-        penjab.addWindowListener(new WindowListener() {
+        dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -1013,9 +1015,22 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             @Override
             public void windowDeiconified(WindowEvent e) {}
             @Override
-            public void windowActivated(WindowEvent e) {}
+            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
             @Override
             public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        petugas.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    petugas.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
         });
         
         poli.addWindowListener(new WindowListener() {
@@ -1136,15 +1151,14 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgDetailTindakan")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        penjab.dispose();
-                    }                
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penjab.dispose();
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+        
             
         ChkInput.setSelected(false);
         isForm();
@@ -1184,9 +1198,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
-        jLabel18 = new widget.Label();
-        CrJnsBayar = new widget.TextBox();
-        btnPenjab = new widget.Button();
+        jLabel12 = new widget.Label();
+        cmbStatus = new widget.ComboBox();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -1198,12 +1211,61 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbRalanDokter = new widget.Table();
+        PanelInput = new javax.swing.JPanel();
+        ChkInput = new widget.CekBox();
+        FormInput = new widget.panelisi();
+        label17 = new widget.Label();
+        KdDokterRalanDokter = new widget.TextBox();
+        NmDokterRalanDokter = new widget.TextBox();
+        BtnDokterRalanDokter = new widget.Button();
+        label19 = new widget.Label();
+        KdCaraBayarRalanDokter = new widget.TextBox();
+        NmCaraBayarRalanDokter = new widget.TextBox();
+        BtnCaraBayarRalanDokter = new widget.Button();
+        label20 = new widget.Label();
+        KdPoliRalanDokter = new widget.TextBox();
+        NmPoliRalanDokter = new widget.TextBox();
+        BtnPoliRalanDokter = new widget.Button();
         internalFrame3 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         tbRalanParamedis = new widget.Table();
+        PanelInput1 = new javax.swing.JPanel();
+        ChkInput1 = new widget.CekBox();
+        FormInput1 = new widget.panelisi();
+        label21 = new widget.Label();
+        KdPetugasRalanParamedis = new widget.TextBox();
+        NmPetugasRalanParamedis = new widget.TextBox();
+        BtnPetugasRalanParamedis = new widget.Button();
+        label22 = new widget.Label();
+        KdCaraBayarRalanParamedis = new widget.TextBox();
+        NmCaraBayarRalanParamedis = new widget.TextBox();
+        BtnCaraBayarRalanParamedis = new widget.Button();
+        label23 = new widget.Label();
+        KdPoliRalanParamedis = new widget.TextBox();
+        NmPoliRalanParamedis = new widget.TextBox();
+        BtnPoliRalanParamedis = new widget.Button();
         internalFrame4 = new widget.InternalFrame();
         Scroll2 = new widget.ScrollPane();
         tbRalanDokterParamedis = new widget.Table();
+        PanelInput2 = new javax.swing.JPanel();
+        ChkInput2 = new widget.CekBox();
+        FormInput2 = new widget.panelisi();
+        label24 = new widget.Label();
+        KdPetugasRalanDokterParamedis = new widget.TextBox();
+        NmPetugasRalanDokterParamedis = new widget.TextBox();
+        BtnPetugasRalanDokterParamedis = new widget.Button();
+        label25 = new widget.Label();
+        KdCaraBayarRalanDokterParamedis = new widget.TextBox();
+        NmCaraBayarRalanDokterParamedis = new widget.TextBox();
+        BtnCaraBayarRalanDokterParamedis = new widget.Button();
+        label26 = new widget.Label();
+        KdPoliRalanDokterParamedis = new widget.TextBox();
+        NmPoliRalanDokterParamedis = new widget.TextBox();
+        BtnPoliRalanDokterParamedis = new widget.Button();
+        label27 = new widget.Label();
+        KdDokterRalanDokterParamedis = new widget.TextBox();
+        NmDokterRalanDokterParamedis = new widget.TextBox();
+        BtnDokterRalanDokterParamedis = new widget.Button();
         internalFrame5 = new widget.InternalFrame();
         Scroll3 = new widget.ScrollPane();
         tbOperasi = new widget.Table();
@@ -1225,6 +1287,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         internalFrame6 = new widget.InternalFrame();
         Scroll4 = new widget.ScrollPane();
         tbRanapDokter = new widget.Table();
+        PanelInput3 = new javax.swing.JPanel();
+        ChkInput3 = new widget.CekBox();
+        FormInput3 = new widget.panelisi();
+        label28 = new widget.Label();
+        KdDokterRanapDokter = new widget.TextBox();
+        NmDokterRanapDokter = new widget.TextBox();
+        BtnDokterRanapDokter = new widget.Button();
+        label29 = new widget.Label();
+        KdCaraBayarRanapDokter = new widget.TextBox();
+        NmCaraBayarRanapDokter = new widget.TextBox();
+        BtnCaraBayarRanapDokter = new widget.Button();
         internalFrame7 = new widget.InternalFrame();
         Scroll5 = new widget.ScrollPane();
         tbRanapParamedis = new widget.Table();
@@ -1316,7 +1389,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1355,29 +1428,15 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         });
         panelGlass5.add(Tgl2);
 
-        jLabel18.setText("Jenis Bayar :");
-        jLabel18.setName("jLabel18"); // NOI18N
-        panelGlass5.add(jLabel18);
+        jLabel12.setText("Status :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(jLabel12);
 
-        CrJnsBayar.setName("CrJnsBayar"); // NOI18N
-        CrJnsBayar.setPreferredSize(new java.awt.Dimension(200, 23));
-        CrJnsBayar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CrJnsBayarKeyPressed(evt);
-            }
-        });
-        panelGlass5.add(CrJnsBayar);
-
-        btnPenjab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPenjab.setMnemonic('2');
-        btnPenjab.setToolTipText("ALt+2");
-        btnPenjab.setName("btnPenjab"); // NOI18N
-        btnPenjab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenjabActionPerformed(evt);
-            }
-        });
-        panelGlass5.add(btnPenjab);
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Belum Lunas", "Sudah Lunas" }));
+        cmbStatus.setName("cmbStatus"); // NOI18N
+        cmbStatus.setPreferredSize(new java.awt.Dimension(115, 23));
+        panelGlass5.add(cmbStatus);
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
@@ -1385,7 +1444,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         panelGlass5.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(160, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -1466,7 +1525,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1497,6 +1556,133 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         Scroll.setViewportView(tbRalanDokter);
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
+
+        PanelInput.setBackground(new java.awt.Color(255, 255, 255));
+        PanelInput.setName("PanelInput"); // NOI18N
+        PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 66));
+        PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setMnemonic('M');
+        ChkInput.setText(".: Filter Data");
+        ChkInput.setBorderPainted(true);
+        ChkInput.setBorderPaintedFlat(true);
+        ChkInput.setFocusable(false);
+        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput.setName("ChkInput"); // NOI18N
+        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkInputActionPerformed(evt);
+            }
+        });
+        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
+
+        FormInput.setName("FormInput"); // NOI18N
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 74));
+        FormInput.setLayout(null);
+
+        label17.setText("Dokter :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(50, 23));
+        FormInput.add(label17);
+        label17.setBounds(0, 10, 55, 23);
+
+        KdDokterRalanDokter.setEditable(false);
+        KdDokterRalanDokter.setName("KdDokterRalanDokter"); // NOI18N
+        KdDokterRalanDokter.setPreferredSize(new java.awt.Dimension(80, 23));
+        FormInput.add(KdDokterRalanDokter);
+        KdDokterRalanDokter.setBounds(58, 10, 65, 23);
+
+        NmDokterRalanDokter.setEditable(false);
+        NmDokterRalanDokter.setName("NmDokterRalanDokter"); // NOI18N
+        NmDokterRalanDokter.setPreferredSize(new java.awt.Dimension(150, 23));
+        FormInput.add(NmDokterRalanDokter);
+        NmDokterRalanDokter.setBounds(125, 10, 150, 23);
+
+        BtnDokterRalanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokterRalanDokter.setMnemonic('3');
+        BtnDokterRalanDokter.setToolTipText("Alt+3");
+        BtnDokterRalanDokter.setName("BtnDokterRalanDokter"); // NOI18N
+        BtnDokterRalanDokter.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokterRalanDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokterRalanDokterActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDokterRalanDokter);
+        BtnDokterRalanDokter.setBounds(278, 10, 28, 23);
+
+        label19.setText("Cara Bayar :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(75, 23));
+        FormInput.add(label19);
+        label19.setBounds(640, 10, 70, 23);
+
+        KdCaraBayarRalanDokter.setEditable(false);
+        KdCaraBayarRalanDokter.setName("KdCaraBayarRalanDokter"); // NOI18N
+        KdCaraBayarRalanDokter.setPreferredSize(new java.awt.Dimension(50, 23));
+        FormInput.add(KdCaraBayarRalanDokter);
+        KdCaraBayarRalanDokter.setBounds(713, 10, 65, 23);
+
+        NmCaraBayarRalanDokter.setEditable(false);
+        NmCaraBayarRalanDokter.setName("NmCaraBayarRalanDokter"); // NOI18N
+        NmCaraBayarRalanDokter.setPreferredSize(new java.awt.Dimension(150, 23));
+        FormInput.add(NmCaraBayarRalanDokter);
+        NmCaraBayarRalanDokter.setBounds(780, 10, 150, 23);
+
+        BtnCaraBayarRalanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnCaraBayarRalanDokter.setMnemonic('3');
+        BtnCaraBayarRalanDokter.setToolTipText("Alt+3");
+        BtnCaraBayarRalanDokter.setName("BtnCaraBayarRalanDokter"); // NOI18N
+        BtnCaraBayarRalanDokter.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCaraBayarRalanDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCaraBayarRalanDokterActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnCaraBayarRalanDokter);
+        BtnCaraBayarRalanDokter.setBounds(933, 10, 28, 23);
+
+        label20.setText("Unit/Poli :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(45, 23));
+        FormInput.add(label20);
+        label20.setBounds(310, 10, 62, 23);
+
+        KdPoliRalanDokter.setEditable(false);
+        KdPoliRalanDokter.setName("KdPoliRalanDokter"); // NOI18N
+        KdPoliRalanDokter.setPreferredSize(new java.awt.Dimension(50, 23));
+        FormInput.add(KdPoliRalanDokter);
+        KdPoliRalanDokter.setBounds(375, 10, 65, 23);
+
+        NmPoliRalanDokter.setEditable(false);
+        NmPoliRalanDokter.setName("NmPoliRalanDokter"); // NOI18N
+        NmPoliRalanDokter.setPreferredSize(new java.awt.Dimension(150, 23));
+        FormInput.add(NmPoliRalanDokter);
+        NmPoliRalanDokter.setBounds(442, 10, 150, 23);
+
+        BtnPoliRalanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPoliRalanDokter.setMnemonic('3');
+        BtnPoliRalanDokter.setToolTipText("Alt+3");
+        BtnPoliRalanDokter.setName("BtnPoliRalanDokter"); // NOI18N
+        BtnPoliRalanDokter.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPoliRalanDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPoliRalanDokterActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnPoliRalanDokter);
+        BtnPoliRalanDokter.setBounds(595, 10, 28, 23);
+
+        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
+
+        internalFrame2.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
         TabRawat.addTab("Ralan Dokter", internalFrame2);
 
@@ -2868,13 +3054,96 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());
-                    param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%"); 
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("emailrs",akses.getemailrs());                  
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRalanDokter.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::");                    
+                    if(KdDokterRalanDokter.getText().equals("")&&NmDokterRalanDokter.getText().equals("")&&KdPoliRalanDokter.getText().equals("")&&NmPoliRalanDokter.getText().equals("")&&KdCaraBayarRalanDokter.getText().equals("")&&NmCaraBayarRalanDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                        Valid.MyReportqry("rptDetailTindakanRalanDokter.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::",
+                           "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                           "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                           "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                           "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                           "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                           "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                           "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                           "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "where rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by rawat_jl_dr.no_rawat desc",param);
+                    }else{
+                        if(cmbStatus.getSelectedItem().equals("Semua")){
+                            Valid.MyReportqry("rptDetailTindakanRalanDokter.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::",
+                                "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                                "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                                "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                                "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                                "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                                "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                                "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                                "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                                "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                                "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                "where rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and rawat_jl_dr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                "rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                "rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                "rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                "rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and rawat_jl_dr.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                "rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                "rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                "rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' "+
+                               " order by rawat_jl_dr.no_rawat desc",param);
+                        }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                            Valid.MyReportqry("rptDetailTindakanRalanDokter.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::",
+                                "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                                "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                                "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                                "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                                "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                                "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                                "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                                "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                                "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                                "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                                "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and rawat_jl_dr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and rawat_jl_dr.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' "+
+                               " order by rawat_jl_dr.no_rawat desc",param);
+                        }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                            Valid.MyReportqry("rptDetailTindakanRalanDokter.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Dokter ]::",
+                                "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                                "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                                "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                                "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                                "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                                "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                                "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                                "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                                "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                                "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and rawat_jl_dr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and rawat_jl_dr.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%' and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%' and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' "+
+                               " order by rawat_jl_dr.no_rawat desc",param);
+                        }
+                    }
                 }   break;
             case 1:
                 if(tabModeRalanParamedis.getRowCount()==0){
@@ -2890,10 +3159,96 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");   
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRalanParamedis.jasper",param,"::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::");                    
+                    if(KdPetugasRalanParamedis.getText().equals("")&&NmPetugasRalanParamedis.getText().equals("")&&KdPoliRalanParamedis.getText().equals("")&&NmPoliRalanParamedis.getText().equals("")&&KdCaraBayarRalanParamedis.getText().equals("")&&NmCaraBayarRalanParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                        Valid.MyReportqry("rptDetailTindakanRalanParamedis.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::",
+                                "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                               "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                               "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                               "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                               "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                               "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                               "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                               "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                               "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                               "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                               "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                               "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                               "where rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by rawat_jl_pr.no_rawat desc",param);  
+                    }else{
+                        if(cmbStatus.getSelectedItem().equals("Semua")){
+                            Valid.MyReportqry("rptDetailTindakanRalanParamedis.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::",
+                                "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                                   "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                                   "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                                   "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                                   "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                                   "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                                   "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                   "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                   "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                                   "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "where rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and rawat_jl_pr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                   "rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                   "rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                   "rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                   "rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and rawat_jl_pr.nip like '%"+TCari.getText().trim()+"%' or "+
+                                   "rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                   "rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' "+
+                                   " order by rawat_jl_pr.no_rawat desc",param);  
+                        }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                            Valid.MyReportqry("rptDetailTindakanRalanParamedis.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::",
+                                "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                                   "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                                   "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                                   "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                                   "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                                   "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                                   "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                   "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                   "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                                   "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                                   "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and rawat_jl_pr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and rawat_jl_pr.nip like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' "+
+                                   " order by rawat_jl_pr.no_rawat desc",param);  
+                        }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                            Valid.MyReportqry("rptDetailTindakanRalanParamedis.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Petugas ]::",
+                                "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                                   "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                                   "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                                   "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                                   "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                                   "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                                   "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                   "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                                   "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                   "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                                   "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and rawat_jl_pr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and rawat_jl_pr.nip like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%' and concat(rawat_jl_pr.nip,petugas.nama) like '%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%' and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' "+
+                                   " order by rawat_jl_pr.no_rawat desc",param);  
+                        }
+                    }
                 }   break;
             case 2:
                 if(tabModeRalanDokterParamedis.getRowCount()==0){
@@ -2909,8 +3264,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");    
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     if(KdDokterRalanDokterParamedis.getText().equals("")&&NmDokterRalanDokterParamedis.getText().equals("")&&KdPetugasRalanDokterParamedis.getText().equals("")&&NmPetugasRalanDokterParamedis.getText().equals("")&&KdPoliRalanDokterParamedis.getText().equals("")&&NmPoliRalanDokterParamedis.getText().equals("")&&KdCaraBayarRalanDokterParamedis.getText().equals("")&&NmCaraBayarRalanDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                         Valid.MyReportqry("rptDetailTindakanRalanDokterParamedis.jasper","report","::[ Detail Tindakan Ralan Yang Ditangani Dokter & Petugas ]::",
@@ -3026,8 +3380,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                    param.put("cari","%"+TCari.getText().trim()+"%");    
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     if(KdOperatorOperasi.getText().equals("")&&NmOperatorOperasi.getText().equals("")&&KdAsistenOperasi.getText().equals("")&&NmAsistenOperasi.getText().equals("")&&KdCaraBayarOperasi.getText().equals("")&&NmCaraBayarOperasi.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                         Valid.MyReportqry("rptDetailTindakanOperasi.jasper","report","::[ Detail Tindakan Operasi ]::",
@@ -3412,8 +3765,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");      
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     if(KdPetugasRanapParamedis.getText().equals("")&&NmPetugasRanapParamedis.getText().equals("")&&KdCaraBayarRanapParamedis.getText().equals("")&&NmCaraBayarRanapParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                         Valid.MyReportqry("rptDetailTindakanRanapParamedis.jasper","report","::[ Detail Tindakan Ranap Yang Ditangani Paramedis ]::",
@@ -3527,8 +3879,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");       
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     if(KdDokterRanapDokterParamedis.getText().equals("")&&NmDokterRanapDokterParamedis.getText().equals("")&&KdPetugasRanapDokterParamedis.getText().equals("")&&NmPetugasRanapDokterParamedis.getText().equals("")&&KdCaraBayarRanapDokterParamedis.getText().equals("")&&NmCaraBayarRanapDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                         Valid.MyReportqry("rptDetailTindakanRanapDokterParamedis.jasper","report","::[ Detail Tindakan Ranap Yang Ditangani Dokter & Paramedis ]::",
@@ -3648,8 +3999,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%");  
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     if(KdDokterPerujukRad.getText().equals("")&&NmDokterPerujukRad.getText().equals("")&&KdPetugasRad.getText().equals("")&&NmPetugasRad.getText().equals("")&&KdCaraBayarRad.getText().equals("")&&NmCaraBayarRad.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                         Valid.MyReportqry("rptDetailRadiologi.jasper","report","::[ Detail Pemeriksaan Radiologi ]::",
@@ -3931,8 +4281,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("emailrs",akses.getemailrs());
                     param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    param.put("cari","%"+TCari.getText().trim()+"%"); 
-                    param.put("jenisbayar","%"+CrJnsBayar.getText().trim()+"%");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     if(KdDokterPerujukDetailLab.getText().equals("")&&NmDokterPerujukDetailLab.getText().equals("")&&KdPetugasDetailLab.getText().equals("")&&NmPetugasDetailLab.getText().equals("")&&KdCaraBayarDetailLab.getText().equals("")&&NmCaraBayarDetailLab.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                         Valid.MyReportqry("rptDetailDetailLaborat.jasper","report","::[ Detail Detail Pemeriksaan Laborat ]::",
@@ -4323,17 +4672,85 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbDetailLaboratKeyPressed
 
-    private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
-        akses.setform("DlgDetailTindakan");
+    private void BtnDokterRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterRalanDokterActionPerformed
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
+    }//GEN-LAST:event_BtnDokterRalanDokterActionPerformed
+
+    private void BtnCaraBayarRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterActionPerformed
         penjab.isCek();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
+        penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);
-    }//GEN-LAST:event_btnPenjabActionPerformed
+    }//GEN-LAST:event_BtnCaraBayarRalanDokterActionPerformed
 
-    private void CrJnsBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CrJnsBayarKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CrJnsBayarKeyPressed
+    private void BtnPoliRalanDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliRalanDokterActionPerformed
+        poli.isCek();
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setLocationRelativeTo(internalFrame1);
+        poli.setAlwaysOnTop(false);
+        poli.setVisible(true);
+    }//GEN-LAST:event_BtnPoliRalanDokterActionPerformed
+
+    private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
+        isForm();
+    }//GEN-LAST:event_ChkInputActionPerformed
+
+    private void ChkInput1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInput1ActionPerformed
+        isForm2();
+    }//GEN-LAST:event_ChkInput1ActionPerformed
+
+    private void BtnPetugasRalanParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasRalanParamedisActionPerformed
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
+    }//GEN-LAST:event_BtnPetugasRalanParamedisActionPerformed
+
+    private void BtnCaraBayarRalanParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanParamedisActionPerformed
+        BtnCaraBayarRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnCaraBayarRalanParamedisActionPerformed
+
+    private void BtnPoliRalanParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliRalanParamedisActionPerformed
+        BtnPoliRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnPoliRalanParamedisActionPerformed
+
+    private void ChkInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInput2ActionPerformed
+        isForm3();
+    }//GEN-LAST:event_ChkInput2ActionPerformed
+
+    private void BtnPetugasRalanDokterParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasRalanDokterParamedisActionPerformed
+        BtnPetugasRalanParamedisActionPerformed(null);
+    }//GEN-LAST:event_BtnPetugasRalanDokterParamedisActionPerformed
+
+    private void BtnCaraBayarRalanDokterParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRalanDokterParamedisActionPerformed
+        BtnCaraBayarRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnCaraBayarRalanDokterParamedisActionPerformed
+
+    private void BtnPoliRalanDokterParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliRalanDokterParamedisActionPerformed
+        BtnPoliRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnPoliRalanDokterParamedisActionPerformed
+
+    private void BtnDokterRalanDokterParamedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterRalanDokterParamedisActionPerformed
+        BtnDokterRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnDokterRalanDokterParamedisActionPerformed
+
+    private void ChkInput3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInput3ActionPerformed
+        isForm4();
+    }//GEN-LAST:event_ChkInput3ActionPerformed
+
+    private void BtnDokterRanapDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterRanapDokterActionPerformed
+        BtnDokterRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnDokterRanapDokterActionPerformed
+
+    private void BtnCaraBayarRanapDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarRanapDokterActionPerformed
+        BtnCaraBayarRalanDokterActionPerformed(null);
+    }//GEN-LAST:event_BtnCaraBayarRanapDokterActionPerformed
 
     private void ChkInput4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInput4ActionPerformed
         isForm5();
@@ -4579,7 +4996,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
-    private widget.Button btnPenjab;
+    private widget.ComboBox cmbStatus;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame10;
     private widget.InternalFrame internalFrame11;
@@ -4591,9 +5008,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame7;
     private widget.InternalFrame internalFrame8;
     private widget.InternalFrame internalFrame9;
-    private widget.Label jLabel18;
+    private widget.Label jLabel12;
     private widget.Label label10;
     private widget.Label label11;
+    private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;
     private widget.Label label20;
@@ -4639,249 +5057,338 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
     public void tampil(){     
         Valid.tabelKosong(tabModeRalanDokter);
-        
-        if(CrJnsBayar.getText().isEmpty()){
-            try{
+        try{
+            if(KdDokterRalanDokter.getText().equals("")&&NmDokterRalanDokter.getText().equals("")&&KdPoliRalanDokter.getText().equals("")&&NmPoliRalanDokter.getText().equals("")&&KdCaraBayarRalanDokter.getText().equals("")&&NmCaraBayarRalanDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                 ps=koneksi.prepareStatement(
-                       "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
-                       "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
-                       "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
-                       "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
-                       "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
-                       "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
-                       "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                       "dokter inner join rawat_jl_dr inner join poliklinik inner join penjab "+
-                       "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
-                       "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                       "and reg_periksa.kd_pj=penjab.kd_pj "+
-                       "and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                       "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                       "and rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
-                       "where rawat_jl_dr.tgl_perawatan between ? and ? and rawat_jl_dr.no_rawat like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and jns_perawatan.nm_perawatan like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and rawat_jl_dr.kd_dokter like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and dokter.nm_dokter like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and poliklinik.nm_poli like ? "+
+                   "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                   "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                   "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                   "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                   "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                   "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                   "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                   "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                   "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                   "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                   "where rawat_jl_dr.tgl_perawatan between ? and ? order by rawat_jl_dr.no_rawat desc");
+            }else{
+                if(cmbStatus.getSelectedItem().equals("Semua")){
+                    ps=koneksi.prepareStatement(
+                        "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                        "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                        "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                        "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                        "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                        "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                        "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                        "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                        "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "where rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.no_rawat like ? or "+
+                        "rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                        "rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                        "rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                        "rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.kd_dokter like ? or "+
+                        "rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                        "rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                        "rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
                        " order by rawat_jl_dr.no_rawat desc");
-                try {
+                }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                    ps=koneksi.prepareStatement(
+                        "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                        "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                        "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                        "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                        "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                        "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                        "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                        "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                        "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                        "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.no_rawat like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.kd_dokter like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                       " order by rawat_jl_dr.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                    ps=koneksi.prepareStatement(
+                        "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                        "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                        "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
+                        "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                        "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
+                        "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
+                        "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join rawat_jl_dr on reg_periksa.no_rawat=rawat_jl_dr.no_rawat "+
+                        "inner join dokter on rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                        "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.no_rawat like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.kd_dokter like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                        "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_dr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                       " order by rawat_jl_dr.no_rawat desc");
+                }
+            }
+            
+            try {
+                if(KdDokterRalanDokter.getText().equals("")&&NmDokterRalanDokter.getText().equals("")&&KdPoliRalanDokter.getText().equals("")&&NmPoliRalanDokter.getText().equals("")&&KdCaraBayarRalanDokter.getText().equals("")&&NmCaraBayarRalanDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
                     ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(3,"%"+TCari.getText().trim()+"%");
-                    ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(4,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(5,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
                     ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(9,"%"+TCari.getText().trim()+"%");
-                    ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(9,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(10,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(11,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
                     ps.setString(12,"%"+TCari.getText().trim()+"%");
                     ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(15,"%"+TCari.getText().trim()+"%");
-                    ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(15,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(16,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(17,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
                     ps.setString(18,"%"+TCari.getText().trim()+"%");
                     ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(21,"%"+TCari.getText().trim()+"%");
-                    ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(24,"%"+TCari.getText().trim()+"%");
-                    rs=ps.executeQuery();
-                    i=1;
-                    material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
-                    while(rs.next()){
-                        material=material+rs.getDouble("material");
-                        bhp=bhp+rs.getDouble("bhp");
-                        jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
-                        kso=kso+rs.getDouble("kso");
-                        menejemen=menejemen+rs.getDouble("menejemen");
-                        total=total+rs.getDouble("biaya_rawat");
-                        tabModeRalanDokter.addRow(new Object[]{
-                            i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                            rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                            rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                            rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
-                            rs.getDouble(17)
-                        });
-                        i++;
-                    }
-                    if(total>0){
-                        tabModeRalanDokter.addRow(new Object[]{
-                            "","","","","","","","","","","","Jumlah Total :",material,
-                            bhp,jmdokter,kso,menejemen,total
-                        });
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }           
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
-            }
-        } else {
-            try{
-                ps=koneksi.prepareStatement(
-                       "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,"+
-                       "pasien.nm_pasien,rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
-                       "rawat_jl_dr.kd_dokter,dokter.nm_dokter,rawat_jl_dr.tgl_perawatan,"+
-                       "rawat_jl_dr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
-                       "rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,"+
-                       "rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat "+
-                       "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                       "dokter inner join rawat_jl_dr inner join poliklinik inner join penjab "+
-                       "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
-                       "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                       "and reg_periksa.kd_pj=penjab.kd_pj "+
-                       "and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                       "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                       "and rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
-                       "where rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_dr.no_rawat like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and jns_perawatan.nm_perawatan like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_dr.kd_dokter like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and dokter.nm_dokter like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and penjab.png_jawab like ? or "+
-                       "rawat_jl_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and poliklinik.nm_poli like ? "+
-                       " order by rawat_jl_dr.no_rawat desc");
-                try {
-                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(3,"%"+CrJnsBayar.getText().trim()+"%");
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(7,"%"+CrJnsBayar.getText().trim()+"%");
-                    ps.setString(8,"%"+TCari.getText().trim()+"%");
-                    ps.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(11,"%"+CrJnsBayar.getText().trim()+"%");
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(15,"%"+CrJnsBayar.getText().trim()+"%");
-                    ps.setString(16,"%"+TCari.getText().trim()+"%");
-                    ps.setString(17,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(18,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(19,"%"+CrJnsBayar.getText().trim()+"%");
-                    ps.setString(20,"%"+TCari.getText().trim()+"%");
-                    ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(23,"%"+CrJnsBayar.getText().trim()+"%");
+                    ps.setString(21,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(22,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(23,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
                     ps.setString(24,"%"+TCari.getText().trim()+"%");
                     ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(27,"%"+CrJnsBayar.getText().trim()+"%");
-                    ps.setString(28,"%"+TCari.getText().trim()+"%");
-                    ps.setString(29,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(30,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(31,"%"+CrJnsBayar.getText().trim()+"%");
-                    ps.setString(32,"%"+TCari.getText().trim()+"%");
-                    rs=ps.executeQuery();
-                    i=1;
-                    material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
-                    while(rs.next()){
-                        material=material+rs.getDouble("material");
-                        bhp=bhp+rs.getDouble("bhp");
-                        jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
-                        kso=kso+rs.getDouble("kso");
-                        menejemen=menejemen+rs.getDouble("menejemen");
-                        total=total+rs.getDouble("biaya_rawat");
-                        tabModeRalanDokter.addRow(new Object[]{
-                            i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                            rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                            rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                            rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
-                            rs.getDouble(17)
-                        });
-                        i++;
-                    }
-                    if(total>0){
-                        tabModeRalanDokter.addRow(new Object[]{
-                            "","","","","","","","","","","","Jumlah Total :",material,
-                            bhp,jmdokter,kso,menejemen,total
-                        });
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }           
-            }catch(Exception e){
+                    ps.setString(27,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(28,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(29,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
+                    ps.setString(30,"%"+TCari.getText().trim()+"%");
+                    ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(33,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(34,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(35,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
+                    ps.setString(36,"%"+TCari.getText().trim()+"%");
+                    ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(39,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(40,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(41,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
+                    ps.setString(42,"%"+TCari.getText().trim()+"%");
+                    ps.setString(43,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(44,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(45,"%"+KdPoliRalanDokter.getText()+NmPoliRalanDokter.getText()+"%");
+                    ps.setString(46,"%"+KdDokterRalanDokter.getText()+NmDokterRalanDokter.getText()+"%");
+                    ps.setString(47,"%"+KdCaraBayarRalanDokter.getText()+NmCaraBayarRalanDokter.getText()+"%");
+                    ps.setString(48,"%"+TCari.getText().trim()+"%");
+                }
+                    
+                rs=ps.executeQuery();
+                i=1;
+                material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
+                while(rs.next()){
+                    material=material+rs.getDouble("material");
+                    bhp=bhp+rs.getDouble("bhp");
+                    jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
+                    kso=kso+rs.getDouble("kso");
+                    menejemen=menejemen+rs.getDouble("menejemen");
+                    total=total+rs.getDouble("biaya_rawat");
+                    tabModeRalanDokter.addRow(new Object[]{
+                        i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
+                        rs.getDouble(17)
+                    });
+                    i++;
+                }
+                if(total>0){
+                    tabModeRalanDokter.addRow(new Object[]{
+                        "","","","","","","","","","","","Jumlah Total :",material,
+                        bhp,jmdokter,kso,menejemen,total
+                    });
+                }
+            } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
-            }
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }           
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
-        
     }
 
     public void tampil2(){     
         Valid.tabelKosong(tabModeRalanParamedis);
         try{
-            ps=koneksi.prepareStatement(
-                   "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
-                   "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
-                   "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
-                   "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
-                   "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
-                   "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
-                   "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                   "petugas inner join rawat_jl_pr inner join poliklinik inner join penjab "+
-                   "on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and reg_periksa.kd_pj=penjab.kd_pj "+
-                   "and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                   "and rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                   "and rawat_jl_pr.nip=petugas.nip "+
-                   "where rawat_jl_pr.tgl_perawatan between ? and ? and rawat_jl_pr.no_rawat like ? or "+
-                    "rawat_jl_pr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                    "rawat_jl_pr.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
-                    "rawat_jl_pr.tgl_perawatan between ? and ? and jns_perawatan.nm_perawatan like ? or "+
-                    "rawat_jl_pr.tgl_perawatan between ? and ? and rawat_jl_pr.nip like ? or "+
-                    "rawat_jl_pr.tgl_perawatan between ? and ? and petugas.nama like ? or "+
-                    "rawat_jl_pr.tgl_perawatan between ? and ? and penjab.png_jawab like ? or "+
-                    "rawat_jl_pr.tgl_perawatan between ? and ? and poliklinik.nm_poli like ? "+
-                   " order by rawat_jl_pr.no_rawat desc");
+            if(KdPetugasRalanParamedis.getText().equals("")&&NmPetugasRalanParamedis.getText().equals("")&&KdPoliRalanParamedis.getText().equals("")&&NmPoliRalanParamedis.getText().equals("")&&KdCaraBayarRalanParamedis.getText().equals("")&&NmCaraBayarRalanParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                ps=koneksi.prepareStatement(
+                       "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                       "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                       "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                       "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                       "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                       "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                       "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                       "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                       "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                       "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                       "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                       "where rawat_jl_pr.tgl_perawatan between ? and ? order by rawat_jl_pr.no_rawat desc");
+            }else{
+                if(cmbStatus.getSelectedItem().equals("Semua")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                           "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                           "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                           "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                           "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                           "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                           "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "where rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_pr.no_rawat like ? or "+
+                           "rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                           "rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_pr.nip like ? or "+
+                           "rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? or "+
+                           "rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                           " order by rawat_jl_pr.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                           "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                           "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                           "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                           "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                           "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                           "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_pr.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_pr.nip like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                           " order by rawat_jl_pr.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                           "rawat_jl_pr.nip,petugas.nama,rawat_jl_pr.tgl_perawatan,"+
+                           "rawat_jl_pr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                           "rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,"+
+                           "rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_jl_pr on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                           "inner join petugas on rawat_jl_pr.nip=petugas.nip "+
+                           "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_pr.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_pr.nip like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_pr.tgl_perawatan between ? and ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_pr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                           " order by rawat_jl_pr.no_rawat desc");
+                }
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                if(KdPetugasRalanParamedis.getText().equals("")&&NmPetugasRalanParamedis.getText().equals("")&&KdPoliRalanParamedis.getText().equals("")&&NmPoliRalanParamedis.getText().equals("")&&KdCaraBayarRalanParamedis.getText().equals("")&&NmCaraBayarRalanParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(4,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(5,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(9,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(10,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(11,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(15,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(16,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(17,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(21,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(22,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(23,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(27,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(28,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(29,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(30,"%"+TCari.getText().trim()+"%");
+                    ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(33,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(34,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(35,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(36,"%"+TCari.getText().trim()+"%");
+                    ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(39,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(40,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(41,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(42,"%"+TCari.getText().trim()+"%");
+                    ps.setString(43,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(44,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(45,"%"+KdPoliRalanParamedis.getText()+NmPoliRalanParamedis.getText()+"%");
+                    ps.setString(46,"%"+KdPetugasRalanParamedis.getText()+NmPetugasRalanParamedis.getText()+"%");
+                    ps.setString(47,"%"+KdCaraBayarRalanParamedis.getText()+NmCaraBayarRalanParamedis.getText()+"%");
+                    ps.setString(48,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 i=1;
                 material=0;bhp=0;jmpetugas=0;kso=0;menejemen=0;total=0;
@@ -4924,76 +5431,184 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     
     public void tampil3(){     
         Valid.tabelKosong(tabModeRalanDokterParamedis);
-        
         try{
-            ps=koneksi.prepareStatement(
-                   "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,"+
-                   "pasien.nm_pasien,rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
-                   "rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,rawat_jl_drpr.tgl_perawatan,"+
-                   "rawat_jl_drpr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
-                   "rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,"+
-                   "rawat_jl_drpr.kso,rawat_jl_drpr.menejemen,rawat_jl_drpr.biaya_rawat "+
-                   "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                   "dokter inner join rawat_jl_drpr inner join poliklinik inner join penjab "+
-                   "inner join petugas on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and reg_periksa.kd_pj=penjab.kd_pj "+
-                   "and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                   "and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                   "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
-                   "and rawat_jl_drpr.nip=petugas.nip "+
-                   "where rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_drpr.no_rawat like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and jns_perawatan.nm_perawatan like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_drpr.kd_dokter like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and dokter.nm_dokter like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and rawat_jl_drpr.nip like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and petugas.nama like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and penjab.png_jawab like ? or "+
-                    "rawat_jl_drpr.tgl_perawatan between ? and ? and penjab.png_jawab like ? and poliklinik.nm_poli like ? "+
-                   " order by rawat_jl_drpr.no_rawat desc");
+            if(KdDokterRalanDokterParamedis.getText().equals("")&&NmDokterRalanDokterParamedis.getText().equals("")&&KdPetugasRalanDokterParamedis.getText().equals("")&&NmPetugasRalanDokterParamedis.getText().equals("")&&KdPoliRalanDokterParamedis.getText().equals("")&&NmPoliRalanDokterParamedis.getText().equals("")&&KdCaraBayarRalanDokterParamedis.getText().equals("")&&NmCaraBayarRalanDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                ps=koneksi.prepareStatement(
+                       "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,"+
+                       "pasien.nm_pasien,rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                       "rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,rawat_jl_drpr.tgl_perawatan,"+
+                       "rawat_jl_drpr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                       "rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,"+
+                       "rawat_jl_drpr.kso,rawat_jl_drpr.menejemen,rawat_jl_drpr.biaya_rawat "+
+                       "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "inner join rawat_jl_drpr on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
+                       "inner join jns_perawatan on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                       "inner join dokter on rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
+                       "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                       "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                       "inner join petugas on rawat_jl_drpr.nip=petugas.nip "+
+                       "where rawat_jl_drpr.tgl_perawatan between ? and ? order by rawat_jl_drpr.no_rawat desc");
+            }else{
+                if(cmbStatus.getSelectedItem().equals("Semua")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                           "rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,rawat_jl_drpr.tgl_perawatan,"+
+                           "rawat_jl_drpr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                           "rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,"+
+                           "rawat_jl_drpr.kso,rawat_jl_drpr.menejemen,rawat_jl_drpr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_jl_drpr on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                           "inner join dokter on rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
+                           "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join petugas on rawat_jl_drpr.nip=petugas.nip "+
+                           "where rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.no_rawat like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.kd_dokter like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.nip like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                           " order by rawat_jl_drpr.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                           "rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,rawat_jl_drpr.tgl_perawatan,"+
+                           "rawat_jl_drpr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                           "rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,"+
+                           "rawat_jl_drpr.kso,rawat_jl_drpr.menejemen,rawat_jl_drpr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_jl_drpr on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                           "inner join dokter on rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
+                           "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join petugas on rawat_jl_drpr.nip=petugas.nip "+
+                           "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.kd_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.nip like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                           " order by rawat_jl_drpr.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,"+
+                           "rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,rawat_jl_drpr.tgl_perawatan,"+
+                           "rawat_jl_drpr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli, " +
+                           "rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,"+
+                           "rawat_jl_drpr.kso,rawat_jl_drpr.menejemen,rawat_jl_drpr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_jl_drpr on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                           "inner join dokter on rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
+                           "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join petugas on rawat_jl_drpr.nip=petugas.nip "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.kd_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.nip like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and petugas.nama like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_jl_drpr.tgl_perawatan between ? and ? and concat(rawat_jl_drpr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like ? and concat(rawat_jl_drpr.nip,petugas.nama) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and poliklinik.nm_poli like ? "+
+                           " order by rawat_jl_drpr.no_rawat desc");
+                }
+                    
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(7,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(11,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(16,"%"+TCari.getText().trim()+"%");
-                ps.setString(17,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(19,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(23,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(27,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(28,"%"+TCari.getText().trim()+"%");
-                ps.setString(29,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(30,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(31,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(32,"%"+TCari.getText().trim()+"%");
-                ps.setString(33,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(34,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(35,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(36,"%"+TCari.getText().trim()+"%");
-                ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(39,"%"+CrJnsBayar.getText().trim()+"%");
-                ps.setString(40,"%"+TCari.getText().trim()+"%");
+                if(KdDokterRalanDokterParamedis.getText().equals("")&&NmDokterRalanDokterParamedis.getText().equals("")&&KdPetugasRalanDokterParamedis.getText().equals("")&&NmPetugasRalanDokterParamedis.getText().equals("")&&KdPoliRalanDokterParamedis.getText().equals("")&&NmPoliRalanDokterParamedis.getText().equals("")&&KdCaraBayarRalanDokterParamedis.getText().equals("")&&NmCaraBayarRalanDokterParamedis.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(4,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(5,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(6,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(9,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(10,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(11,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(12,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(13,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(14,"%"+TCari.getText().trim()+"%");
+                    ps.setString(15,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(16,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(17,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(18,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(19,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(20,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(21,"%"+TCari.getText().trim()+"%");
+                    ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(24,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(25,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(26,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(27,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(28,"%"+TCari.getText().trim()+"%");
+                    ps.setString(29,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(30,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(31,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(32,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(33,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(34,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(35,"%"+TCari.getText().trim()+"%");
+                    ps.setString(36,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(37,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(38,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(39,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(40,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(41,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(42,"%"+TCari.getText().trim()+"%");
+                    ps.setString(43,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(44,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(45,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(46,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(47,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(48,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(49,"%"+TCari.getText().trim()+"%");
+                    ps.setString(50,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(51,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(52,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(53,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(54,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(55,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(56,"%"+TCari.getText().trim()+"%");
+                    ps.setString(57,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(58,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(59,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(60,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(61,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(62,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(63,"%"+TCari.getText().trim()+"%");
+                    ps.setString(64,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(65,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(66,"%"+KdDokterRalanDokterParamedis.getText()+NmDokterRalanDokterParamedis.getText()+"%");
+                    ps.setString(67,"%"+KdPoliRalanDokterParamedis.getText()+NmPoliRalanDokterParamedis.getText()+"%");
+                    ps.setString(68,"%"+KdPetugasRalanDokterParamedis.getText()+NmPetugasRalanDokterParamedis.getText()+"%");
+                    ps.setString(69,"%"+KdCaraBayarRalanDokterParamedis.getText()+NmCaraBayarRalanDokterParamedis.getText()+"%");
+                    ps.setString(70,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 i=1;
                 material=0;bhp=0;jmdokter=0;jmpetugas=0;kso=0;menejemen=0;total=0;
@@ -5527,54 +6142,146 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     public void tampil5(){     
         Valid.tabelKosong(tabModeRanapDokter);
         try{
-            ps=koneksi.prepareStatement(
-                   "select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,"+
-                   "pasien.nm_pasien,rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
-                   "rawat_inap_dr.kd_dokter,dokter.nm_dokter,rawat_inap_dr.tgl_perawatan,"+
-                   "rawat_inap_dr.jam_rawat,penjab.png_jawab,"+
-                   "(select bangsal.nm_bangsal from kamar_inap "+
-                   "inner join kamar inner join bangsal on "+
-                   "kamar_inap.kd_kamar=kamar.kd_kamar "+
-                   "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=rawat_inap_dr.no_rawat limit 1 ) , " +
-                   "rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,"+
-                   "rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat "+
-                   "from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
-                   "dokter inner join rawat_inap_dr inner join penjab "+
-                   "on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and reg_periksa.kd_pj=penjab.kd_pj "+
-                   "and rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                   "and rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
-                   "where rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat like ? or "+
-                    "rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                    "rawat_inap_dr.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
-                    "rawat_inap_dr.tgl_perawatan between ? and ? and jns_perawatan_inap.nm_perawatan like ? or "+
-                    "rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.kd_dokter like ? or "+
-                    "rawat_inap_dr.tgl_perawatan between ? and ? and dokter.nm_dokter like ? or "+
-                    "rawat_inap_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? "+
-                   " order by rawat_inap_dr.no_rawat desc");
+            if(KdDokterRanapDokter.getText().equals("")&&NmDokterRanapDokter.getText().equals("")&&KdCaraBayarRanapDokter.getText().equals("")&&NmCaraBayarRanapDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                ps=koneksi.prepareStatement(
+                       "select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                       "pasien.nm_pasien,rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
+                       "rawat_inap_dr.kd_dokter,dokter.nm_dokter,rawat_inap_dr.tgl_perawatan,"+
+                       "rawat_inap_dr.jam_rawat,penjab.png_jawab,"+
+                       "ifnull((select bangsal.nm_bangsal from kamar_inap "+
+                       "inner join kamar inner join bangsal on "+
+                       "kamar_inap.kd_kamar=kamar.kd_kamar "+
+                       "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=rawat_inap_dr.no_rawat limit 1),'Ruang Terhapus' ) as ruang , " +
+                       "rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,"+
+                       "rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat "+
+                       "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "inner join rawat_inap_dr on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
+                       "inner join jns_perawatan_inap on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                       "inner join dokter on rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
+                       "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                       "where rawat_inap_dr.tgl_perawatan between ? and ? order by rawat_inap_dr.no_rawat desc");
+            }else{
+                if(cmbStatus.getSelectedItem().equals("Semua")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
+                           "rawat_inap_dr.kd_dokter,dokter.nm_dokter,rawat_inap_dr.tgl_perawatan,"+
+                           "rawat_inap_dr.jam_rawat,penjab.png_jawab,"+
+                           "ifnull((select bangsal.nm_bangsal from kamar_inap "+
+                           "inner join kamar inner join bangsal on "+
+                           "kamar_inap.kd_kamar=kamar.kd_kamar "+
+                           "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=rawat_inap_dr.no_rawat limit 1),'Ruang Terhapus' ) as ruang , " +
+                           "rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,"+
+                           "rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_inap_dr on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan_inap on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                           "inner join dokter on rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "where rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.no_rawat like ? or "+
+                           "rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan_inap.nm_perawatan like ? or "+
+                           "rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.kd_dokter like ? or "+
+                           "rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                           "rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? "+
+                           " order by rawat_inap_dr.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
+                           "rawat_inap_dr.kd_dokter,dokter.nm_dokter,rawat_inap_dr.tgl_perawatan,"+
+                           "rawat_inap_dr.jam_rawat,penjab.png_jawab,"+
+                           "ifnull((select bangsal.nm_bangsal from kamar_inap "+
+                           "inner join kamar inner join bangsal on "+
+                           "kamar_inap.kd_kamar=kamar.kd_kamar "+
+                           "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=rawat_inap_dr.no_rawat limit 1),'Ruang Terhapus' ) as ruang , " +
+                           "rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,"+
+                           "rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_inap_dr on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan_inap on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                           "inner join dokter on rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan_inap.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.kd_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and piutang_pasien.status='Belum Lunas' and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? "+
+                           " order by rawat_inap_dr.no_rawat desc");
+                }else if(cmbStatus.getSelectedItem().equals("Sudah Lunas")){
+                    ps=koneksi.prepareStatement(
+                           "select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                           "pasien.nm_pasien,rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
+                           "rawat_inap_dr.kd_dokter,dokter.nm_dokter,rawat_inap_dr.tgl_perawatan,"+
+                           "rawat_inap_dr.jam_rawat,penjab.png_jawab,"+
+                           "ifnull((select bangsal.nm_bangsal from kamar_inap "+
+                           "inner join kamar inner join bangsal on "+
+                           "kamar_inap.kd_kamar=kamar.kd_kamar "+
+                           "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=rawat_inap_dr.no_rawat limit 1),'Ruang Terhapus' ) as ruang , " +
+                           "rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,"+
+                           "rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat "+
+                           "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                           "inner join rawat_inap_dr on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
+                           "inner join jns_perawatan_inap on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                           "inner join dokter on rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
+                           "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                           "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.no_rawat like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and reg_periksa.no_rkm_medis like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and jns_perawatan_inap.nm_perawatan like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_inap_dr.kd_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and dokter.nm_dokter like ? or "+
+                           "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and rawat_inap_dr.tgl_perawatan between ? and ? and concat(rawat_inap_dr.kd_dokter,dokter.nm_dokter) like ? and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and penjab.png_jawab like ? "+
+                           " order by rawat_inap_dr.no_rawat desc");
+                }
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                if(KdDokterRanapDokter.getText().equals("")&&NmDokterRanapDokter.getText().equals("")&&KdCaraBayarRanapDokter.getText().equals("")&&NmCaraBayarRanapDokter.getText().equals("")&&TCari.getText().equals("")&&cmbStatus.getSelectedItem().equals("Semua")){
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3,"%"+KdDokterRanapDokter.getText()+NmDokterRanapDokter.getText()+"%");
+                    ps.setString(4,"%"+KdCaraBayarRanapDokter.getText()+NmCaraBayarRanapDokter.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(7,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(8,"%"+KdDokterRanapDokter.getText()+NmDokterRanapDokter.getText()+"%");
+                    ps.setString(9,"%"+KdCaraBayarRanapDokter.getText()+NmCaraBayarRanapDokter.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(12,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(13,"%"+KdDokterRanapDokter.getText()+NmDokterRanapDokter.getText()+"%");
+                    ps.setString(14,"%"+KdCaraBayarRanapDokter.getText()+NmCaraBayarRanapDokter.getText()+"%");
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                    ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(18,"%"+KdDokterRanapDokter.getText()+NmDokterRanapDokter.getText()+"%");
+                    ps.setString(19,"%"+KdCaraBayarRanapDokter.getText()+NmCaraBayarRanapDokter.getText()+"%");
+                    ps.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(23,"%"+KdDokterRanapDokter.getText()+NmDokterRanapDokter.getText()+"%");
+                    ps.setString(24,"%"+KdCaraBayarRanapDokter.getText()+NmCaraBayarRanapDokter.getText()+"%");
+                    ps.setString(25,"%"+TCari.getText().trim()+"%");
+                    ps.setString(26,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(27,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(28,"%"+KdDokterRanapDokter.getText()+NmDokterRanapDokter.getText()+"%");
+                    ps.setString(29,"%"+KdCaraBayarRanapDokter.getText()+NmCaraBayarRanapDokter.getText()+"%");
+                    ps.setString(30,"%"+TCari.getText().trim()+"%");
+                    ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(33,"%"+KdDokterRanapDokter.getText()+NmDokterRanapDokter.getText()+"%");
+                    ps.setString(34,"%"+KdCaraBayarRanapDokter.getText()+NmCaraBayarRanapDokter.getText()+"%");
+                    ps.setString(35,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 i=1;
                 material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
