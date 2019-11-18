@@ -563,7 +563,7 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");   
-                Valid.MyReport("rptMapingTindakanInhealth.jasper","report","::[ Mapping Tindakan Inhealth ]::",param);            
+                Valid.MyReport("rptMapingTindakanInhealth.jasper","report","::[ Mapping Tarif Rawat Jalan Inhealth ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed

@@ -68,7 +68,7 @@ like $P{parameter} order by jns_perawatan.nm_perawatan]]>
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[MAPPING TARIF TINDAKAN RS & INHEALTH]]></text>
+				<text><![CDATA[MAPPING TARIF TINDAKAN RAWAT JALAN RS & INHEALTH]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="0" width="798" height="17" uuid="be2d25a7-d909-4743-b67e-1112c4c8ec42"/>
