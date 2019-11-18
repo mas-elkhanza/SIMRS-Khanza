@@ -257,7 +257,7 @@ color: #323232;
 .head td{
 	color:#323232;
 	font: 11px  tahoma;
-	background: #fafff5;
+	background: #FFFAF8;
 	border-bottom: 1px solid #f1f6ec;
         border-right: 1px solid #f1f6ec;
 	border-top: 1px solid #f1f6ec;
@@ -268,7 +268,7 @@ color: #323232;
 .head3 td{
 	color:#323232;
 	font: 11px  tahoma;
-	background: #fafff5;
+	background: #FFFAF8;
 	border-bottom: 1px solid #f1f6ec;
 	border-top: 1px solid #f1f6ec;
 	letter-spacing: 1px;
@@ -279,7 +279,7 @@ color: #323232;
 .head2 td{
 	color:#323232;
 	font: 11px  tahoma;
-	background: #fafff5;
+	background: #FFFAF8;
 	border-bottom: 1px solid #e2e7dd;
         border-right: 1px solid #777777;
 	letter-spacing: 1px;

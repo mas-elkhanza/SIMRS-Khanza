@@ -4,7 +4,7 @@
         <?php
             echo "";
             $codernik       = isset($_GET['codernik'])?$_GET['codernik']:NULL;
-            $norawat     = isset($_GET['norawat'])?$_GET['norawat']:NULL;
+            $norawat        = isset($_GET['norawat'])?$_GET['norawat']:NULL;
             $tahunawal      =isset($_GET['tahunawal'])?$_GET['tahunawal']:NULL;
             $bulanawal      =isset($_GET['bulanawal'])?$_GET['bulanawal']:NULL;
             $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
@@ -30,6 +30,7 @@
             $tgl_lahir    = $baris["tgl_lahir"];
             $jk           = $baris["jk"];
             $almt_pj      = $baris["almt_pj"];
+            $norawat      = $baris["no_rawat"];
             $tgl_registrasi = $baris["tgl_registrasi"];
             $jam_reg      = $baris["jam_reg"];
             $nm_poli      = $baris["nm_poli"];
@@ -99,7 +100,7 @@
             <tr class="head">
                 <td width="31%" >No.SEP</td><td width="">:</td>
                 <td width="67%">
-                    <input name="nosep" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="" size="40" maxlength="40">
+                    <input name="nosep" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo getOne("select no_sep from bridging_sep where no_rawat='$norawat'")?>" size="40" maxlength="40">
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>
@@ -476,7 +477,15 @@
             <tr class="head">
                 <td width="31%" >Nama Dokter</td><td width="">:</td>
                 <td width="67%">
-                    <input name="nama_dokter" class="text" type="text" class="inputbox" value="<?php echo $nm_dokter;?>" size="60" maxlength="100">
+                    <select name="nama_dokter" class="text2">
+                       <option value="<?php echo $nm_dokter;?>"><?php echo $nm_dokter;?></option>
+                       <?php        
+                            $hasildokter=bukaquery("select nm_dokter from dokter order by nm_dokter asc");
+                            while($barisdokter = mysqli_fetch_array($hasildokter)) {
+                                echo "<option value=".$barisdokter["nm_dokter"].">".$barisdokter["nm_dokter"]."</option>";
+                            }
+                       ?>
+                    </select> 
                 </td>
             </tr>
         </table>                
