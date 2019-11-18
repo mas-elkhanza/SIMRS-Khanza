@@ -68,16 +68,13 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
         setSize(885,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-            "No.Rawat","No.RM","Cara Bayar","Waktu Masuk","Waktu Keluar",
-            "LOS(hari)","J.K.","Tgl.Lahir","Tipe Rawat","Kelas Rawat",
+            "No.Rawat","No.RM","Nama","Cara Bayar","Waktu Masuk","Waktu Keluar",
+            "LOS(hari)","Dokter","Tipe Rawat","Kelas Rawat",
             "Stts Keluar","D.U","D.S 1","D.S 2","D.S 3","D.S 4","D.S 5",
             "D.S 6","D.S 7","D.S 8","D.S 9","D.S 10","D.S 11","D.S 12",
-            "D.S 13","D.S 14","D.S 15","D.S 16","D.S 17","D.S 18","D.S 19",
-            "D.S 20","D.S 21","D.S 22","D.S 23","D.S 24","D.S 25","D.S 26",
-            "D.S 27","D.S 28","D.S 29","P 1","P 2","P 3","P 4","P 5","P 6",
+            "D.S 13","D.S 14","P 1","P 2","P 3","P 4","P 5","P 6",
             "P 7","P 8","P 9","P 10","P 11","P 12","P 13","P 14","P 15",
-            "P 16","P 17","P 18","P 19","P 20","P 21","P 22","P 23","P 24",
-            "P 25","P 26","P 27","P 28","P 29","P 30","INA-CBG","Total Trf RS",
+            "INA-CBG","Total Trf RS",
             "Trf P. Non-Bedah","Trf P. Bedah","Trf Ksl/Vst Dokter",
             "Trf Ksl/Vst Tng. Ahli","Trf Tnd Keperawatan","Tarif Penunjang",
             "Trf Radioterapi","Trf Lab","Trf UTD","Trf Radiologi",
@@ -92,24 +89,24 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 93; i++) {
+        for (int i = 0; i < 63; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(110);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==3){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(130);
             }else if(i==4){
                 column.setPreferredWidth(110);
             }else if(i==5){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(110);
             }else if(i==6){
-                column.setPreferredWidth(32);
+                column.setPreferredWidth(55);
             }else if(i==7){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(150);
             }else if(i==8){
                 column.setPreferredWidth(65);
             }else if(i==9){
@@ -118,14 +115,10 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if((i==11)||(i==12)||(i==13)||(i==14)||(i==15)||(i==16)||
                     (i==17)||(i==18)||(i==19)||(i==20)||(i==21)||(i==22)||
-                    (i==23)||(i==24)||(i==25)||(i==26)||(i==27)||(i==28)||
-                    (i==29)||(i==30)||(i==31)||(i==32)||(i==33)||(i==34)||
-                    (i==35)||(i==36)||(i==37)||(i==38)||(i==39)||(i==66)||
+                    (i==23)||(i==24)||(i==25)||
                     (i==40)||(i==41)||(i==42)||(i==43)||(i==44)||(i==45)||
                     (i==46)||(i==47)||(i==48)||(i==49)||(i==50)||(i==51)||
-                    (i==52)||(i==53)||(i==54)||(i==55)||(i==56)||(i==57)||
-                    (i==58)||(i==59)||(i==60)||(i==61)||(i==62)||(i==63)||
-                    (i==64)||(i==65)||(i==67)||(i==68)||(i==69)||(i==70)){
+                    (i==52)||(i==53)||(i==54)){
                 column.setPreferredWidth(47);
             }else if(i==71){
                 column.setPreferredWidth(55);
@@ -511,37 +504,8 @@ public final class ReklasifikasiRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,58).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,59).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,60).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,61).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,62).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,63).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,64).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,65).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,67).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,68).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,69).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,70).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,71).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,72).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,73).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,74).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,75).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,76).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,77).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,78).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,79).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,80).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,81).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,82).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,83).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,84).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,85).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,86).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,87).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,88).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,89).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,90).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,91).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,92).toString().replaceAll("'","`")+"','','','','','','','',''","data");
+                                    tabMode.getValueAt(r,60).toString().replaceAll("'","`")+"','"+
+                                    tabMode.getValueAt(r,62).toString().replaceAll("'","`")+"','','','','','','','',''","data");
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -723,8 +687,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         try{     
             ps= koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,penjab.png_jawab, "+
-                        "nota_jalan.tanggal,nota_jalan.jam,pasien.jk,pasien.tgl_lahir from reg_periksa inner join penjab inner join nota_jalan inner join pasien "+
-                        "on reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.no_rawat=nota_jalan.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "nota_jalan.tanggal,nota_jalan.jam,pasien.nm_pasien,dokter.nm_dokter from reg_periksa inner join penjab inner join nota_jalan inner join pasien inner join dokter "+
+                        "on reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.no_rawat=nota_jalan.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and dokter.kd_dokter=reg_periksa.kd_dokter "+
                         "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and reg_periksa.no_rkm_medis like ?"+
                         "order by reg_periksa.kd_dokter,reg_periksa.tgl_registrasi");
             try {
@@ -744,9 +708,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     
                     du="";ds1="";ds2="";ds3="";ds4="";ds5="";ds6="";
-                    ds7="";ds8="";ds9="";ds10="";ds11="";ds12="";ds13="";ds14="";ds15="";
-                    ds16="";ds17="";ds18="";ds19="";ds20="";ds21="";ds22="";ds23="";
-                    ds24="";ds25="";ds26="";ds27="";ds28="";ds29="";
+                    ds7="";ds8="";ds9="";ds10="";ds11="";ds12="";ds13="";ds14="";
             
                     pspenyakit=koneksi.prepareStatement(
                             "select kd_penyakit,prioritas from diagnosa_pasien where "+
@@ -800,51 +762,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             if(rs2.getInt("prioritas")==15){
                                 ds14=rs2.getString("kd_penyakit");
                             }
-                            if(rs2.getInt("prioritas")==16){
-                                ds15=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==17){
-                                ds16=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==18){
-                                ds17=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==19){
-                                ds18=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==20){
-                                ds19=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==21){
-                                ds20=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==22){
-                                ds21=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==23){
-                                ds22=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==24){
-                                ds23=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==25){
-                                ds24=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==26){
-                                ds25=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==27){
-                                ds26=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==28){
-                                ds27=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==29){
-                                ds28=rs2.getString("kd_penyakit");
-                            }
-                            if(rs2.getInt("prioritas")==30){
-                                ds29=rs2.getString("kd_penyakit");
-                            }
+                           
                         }
                     } catch (Exception e) {
                         System.out.println("Notif Penyakit : "+e);
@@ -858,9 +776,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     
                     p1="";p2="";p3="";p4="";p5="";p6="";p7="";p8="";p9="";
-                    p10="";p11="";p12="";p13="";p14="";p15="";p16="";p17="";
-                    p18="";p19="";p20="";p21="";p22="";p23="";p24="";p25="";
-                    p26="";p27="";p28="";p29="";p30="";
+                    p10="";p11="";p12="";p13="";p14="";p15="";
                     
                     psprosedur=koneksi.prepareStatement(
                             "select kode,prioritas from prosedur_pasien where "+
@@ -914,51 +830,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             if(rs2.getInt("prioritas")==15){
                                 p15=rs2.getString("kode");
                             }
-                            if(rs2.getInt("prioritas")==16){
-                                p16=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==17){
-                                p17=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==18){
-                                p18=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==19){
-                                p19=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==20){
-                                p20=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==21){
-                                p21=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==22){
-                                p22=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==23){
-                                p23=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==24){
-                                p24=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==25){
-                                p25=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==26){
-                                p26=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==27){
-                                p27=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==28){
-                                p28=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==29){
-                                p29=rs2.getString("kode");
-                            }
-                            if(rs2.getInt("prioritas")==30){
-                                p30=rs2.getString("kode");
-                            }
+                            
                         }
                     } catch (Exception e) {
                         System.out.println("Notif Penyakit : "+e);
@@ -1058,11 +930,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("png_jawab"),rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),
-                        rs.getString("tanggal")+" "+rs.getString("jam"),"1",rs.getString("jk"),rs.getString("tgl_lahir"),
-                        "RJ","Reguler",status,du,ds1,ds2,ds3,ds4,ds5,ds6,ds7,ds8,ds9,ds10,ds11,ds12,ds13,ds14,ds15,ds16,
-                        ds17,ds18,ds19,ds20,ds21,ds22,ds23,ds24,ds25,ds26,ds27,ds28,ds29,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,
-                        p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("png_jawab"),rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),
+                        rs.getString("tanggal")+" "+rs.getString("jam"),"1",rs.getString("nm_dokter"),
+                        "RJ","Reguler",status,du,ds1,ds2,ds3,ds4,ds5,ds6,ds7,ds8,ds9,ds10,ds11,ds12,ds13,ds14,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,
+                        p11,p12,p13,p14,p15,
                         Sequel.cariIsi("select code_cbg from inacbg_grouping_stage1 inner join bridging_sep on bridging_sep.no_sep=inacbg_grouping_stage1.no_sep where bridging_sep.no_rawat=?",rs.getString("no_rawat")),
                         Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Dokter_paramedis+Ralan_Paramedis+Tambahan+Potongan+Registrasi),
                         Valid.SetAngka(kebidanan),Valid.SetAngka(operasi2),Valid.SetAngka(Ralan_Dokter+Ralan_Dokter_paramedis),
@@ -1084,9 +955,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             if(all>0){
                 tabMode.addRow(new Object[]{
                     "Total",":","","","","","","","","","","","","","","","","","","",
-                    "","","","","","","","","","","","","","","","","","","","","","","",
-                    "","","","","","","","","","","","","","","","","","","","","","","",
-                    "","","","","","",Valid.SetAngka(all),Valid.SetAngka(ttlkebidanan),
+                    "","","","","","","","",
+                    "","","","","","","","","","","","","",Valid.SetAngka(all),Valid.SetAngka(ttlkebidanan),
                     Valid.SetAngka(ttlOperasi-ttlkebidanan),Valid.SetAngka(ttlRalan_Dokter),
                     "",Valid.SetAngka(ttlRalan_Paramedis),Valid.SetAngka(ttlTambahan+ttlRegistrasi),
                     "",Valid.SetAngka(ttlLaborat),"",Valid.SetAngka(ttlRadiologi),"","","",
