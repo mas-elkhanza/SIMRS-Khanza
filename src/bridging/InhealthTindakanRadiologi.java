@@ -563,7 +563,7 @@ public final class InhealthTindakanRadiologi extends javax.swing.JDialog {
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 param.put("parameter","%"+TCari.getText().trim()+"%");   
-                Valid.MyReport("rptMapingTindakanInhealthRadiologi.jasper","report","::[ Mapping Tarif Rawat Inap Inhealth ]::",param);            
+                Valid.MyReport("rptMapingTindakanInhealthRadiologi.jasper","report","::[ Mapping Tarif Radiologi Inhealth ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -725,7 +725,7 @@ public final class InhealthTindakanRadiologi extends javax.swing.JDialog {
        if(tbJnsPerawatan.getSelectedRow()!= -1){
            kdtindakan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
            TTindakan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
-           KdTindakanInhealth.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString());
+           KdTindakanInhealth.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
         }
     }
     
