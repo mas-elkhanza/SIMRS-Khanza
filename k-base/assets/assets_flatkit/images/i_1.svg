@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-	<rect x="20" y="32" width="8" height="8" fill="{{app.setting.color.primary}}"/>
-	<rect x="8" y="20" width="8" height="8" fill="{{app.setting.color.primary}}"/>
-	<rect x="20" y="8" width="8" height="8" fill="{{app.setting.color.primary}}"/>
-	<rect x="32" y="20" width="8" height="8" fill="{{app.setting.color.primary}}"/>
-</svg>

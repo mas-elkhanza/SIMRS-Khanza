@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
-	<path d="M 4 4 L 44 4 L 44 44 Z" fill="rgba(255,255,255,0.5" />
-	<path d="M 4 4 L 34 4 L 24 24 Z" fill="rgba(0,0,0,0.15)" />
-	<path d="M 4 4 L 24 4 L 4  44 Z" fill="#fff" />
-</svg>
