@@ -52,7 +52,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private boolean aktif=false;
     private LICAApi lica=new LICAApi();
     private LICAApi2 lica2=new LICAApi2();
-    private String alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",
+    private String pilihan="",alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",
                     NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     
     /** Creates new form DlgProgramStudi
@@ -538,7 +538,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2019 13:53:13" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2019 14:26:21" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -1408,8 +1408,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TCari,"No.Permintaan");
-                }else{   
-                    
+                }else{  
                     Sequel.queryu("truncate table temporary_permintaan_lab");
                     try {
                         ps2=koneksi.prepareStatement(
@@ -1650,17 +1649,21 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     if(NoPermintaan.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
-                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                        DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
-                        dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgro.setLocationRelativeTo(internalFrame1);
-                        dlgro.emptTeks();
-                        dlgro.isCek(); 
-                        dlgro.setOrder(NoPermintaan,NoRawat,"Ralan");
-                        dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
-                        TeksKosong();
-                        dlgro.setVisible(true);
-                        this.setCursor(Cursor.getDefaultCursor());
+                        if(Sampel.equals("")){
+                            JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
+                        }else{
+                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                            DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                            dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            dlgro.setLocationRelativeTo(internalFrame1);
+                            dlgro.emptTeks();
+                            dlgro.isCek(); 
+                            dlgro.setOrder(NoPermintaan,NoRawat,"Ralan");
+                            dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
+                            TeksKosong();
+                            dlgro.setVisible(true);
+                            this.setCursor(Cursor.getDefaultCursor());
+                        }
                     }
                 }else{            
                     JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
@@ -1677,17 +1680,21 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     if(NoPermintaan.trim().equals("")){
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{ 
-                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                        DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
-                        dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgro.setLocationRelativeTo(internalFrame1);
-                        dlgro.emptTeks();
-                        dlgro.isCek(); 
-                        dlgro.setOrder(NoPermintaan,NoRawat,"Ranap");
-                        dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
-                        TeksKosong();
-                        dlgro.setVisible(true);
-                        this.setCursor(Cursor.getDefaultCursor());
+                        if(Sampel.equals("")){
+                            JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
+                        }else{
+                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                            DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                            dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            dlgro.setLocationRelativeTo(internalFrame1);
+                            dlgro.emptTeks();
+                            dlgro.isCek(); 
+                            dlgro.setOrder(NoPermintaan,NoRawat,"Ranap");
+                            dlgro.setDokterPerujuk(KodeDokter,DokterPerujuk);
+                            TeksKosong();
+                            dlgro.setVisible(true);
+                            this.setCursor(Cursor.getDefaultCursor());
+                        }
                     }
                 }else{            
                     JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
@@ -1882,12 +1889,39 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TanggalPulang,"No.Permintaan");
                 }else{
-                    Sequel.mengedit("permintaan_lab","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
+                    if(Sequel.mengedittf("permintaan_lab","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
                         Valid.SetTgl(TanggalPulang.getSelectedItem()+""),TanggalPulang.getSelectedItem().toString().substring(11,19),NoPermintaan
-                    });
-                    tampil();
-                    TeksKosong();
-                    WindowAmbilSampel.dispose();
+                        })==true){
+                            WindowAmbilSampel.dispose();
+                            pilihan = (String)JOptionPane.showInputDialog(null,"Waktu pengambilan sampel berhasil disimpan, apakah ada yang ingin dicetak..?","Konfirmasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tidak Ada","Barcode No.Permintaan 1","Barcode No.Permintaan 2","Lembar Permintaan Lab","Lembar Permintaan Lab & Barcode No.Permintaan 1","Lembar Permintaan Lab & Barcode No.Permintaan 2"},"Tidak Ada");
+                            switch (pilihan) {
+                                case "Tidak Ada":
+                                    break;
+                                case "Barcode No.Permintaan 1":
+                                    MnBarcodePermintaanActionPerformed(evt);
+                                    break;
+                                case "Barcode No.Permintaan 2":
+                                    MnBarcodePermintaan1ActionPerformed(evt);
+                                    break;
+                                case "Lembar Permintaan Lab":
+                                    MnCetakHasilLabActionPerformed(evt);
+                                    break;
+                                case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
+                                    MnBarcodePermintaanActionPerformed(evt);
+                                    getData();
+                                    getData2();
+                                    MnCetakHasilLabActionPerformed(evt);
+                                    break;
+                                case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
+                                    MnBarcodePermintaan1ActionPerformed(evt);
+                                    getData();
+                                    getData2();
+                                    MnCetakHasilLabActionPerformed(evt);
+                                    break;
+                            }  
+                            TeksKosong();
+                            tampil();
+                    }
                 }
             }else{            
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
@@ -1898,12 +1932,32 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 if(NoPermintaan.trim().equals("")){
                     Valid.textKosong(TanggalPulang,"No.Permintaan");
                 }else{
-                    Sequel.mengedit("permintaan_lab","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
+                    if(Sequel.mengedittf("permintaan_lab","noorder=?","tgl_sampel=?,jam_sampel=?",3,new String[]{
                         Valid.SetTgl(TanggalPulang.getSelectedItem()+""),TanggalPulang.getSelectedItem().toString().substring(11,19),NoPermintaan
-                    });
-                    tampil3();
-                    TeksKosong();
-                    WindowAmbilSampel.dispose();
+                        })==true){
+                            WindowAmbilSampel.dispose();
+                            pilihan = (String)JOptionPane.showInputDialog(null,"Waktu pengambilan sampel berhasil disimpan, Apakah ada yang ingin dicetak..?","Konfirmasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Tidak Ada","Barcode No.Permintaan 1","Barcode No.Permintaan 2","Lembar Permintaan Lab & Barcode No.Permintaan 1","Lembar Permintaan Lab & Barcode No.Permintaan 2"},"Tidak Ada");
+                            switch (pilihan) {
+                                case "Tidak Ada":
+                                    break;
+                                case "Barcode No.Permintaan 1":
+                                    MnBarcodePermintaanActionPerformed(evt);
+                                    break;
+                                case "Barcode No.Permintaan 2":
+                                    MnBarcodePermintaan1ActionPerformed(evt);
+                                    break;
+                                case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
+                                    MnBarcodePermintaanActionPerformed(evt);
+                                    MnCetakHasilLabActionPerformed(null);
+                                    break;
+                                case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
+                                    MnBarcodePermintaan1ActionPerformed(evt);
+                                    MnCetakHasilLabActionPerformed(null);
+                                    break;
+                            }  
+                            TeksKosong();
+                            tampil();
+                    }
                 }
             }else{            
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
