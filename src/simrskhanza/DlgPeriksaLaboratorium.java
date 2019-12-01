@@ -1173,6 +1173,18 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                     case "Model 7":
                           Valid.MyReport("rptPeriksaLab7Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
                           break;
+                    case "Model 8":
+                          Valid.MyReport("rptPeriksaLab8Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                          break;
+                    case "Model 9":
+                          Valid.MyReport("rptPeriksaLab9Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                          break;
+                    case "Model 10":
+                          Valid.MyReport("rptPeriksaLab10Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                          break;
+                    case "Model 11":
+                          Valid.MyReport("rptPeriksaLab11Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                          break;
                 }
             }
                        
