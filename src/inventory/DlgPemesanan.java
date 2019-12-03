@@ -13,11 +13,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -50,7 +48,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
     private boolean sukses=true;
     private String aktifkanbatch="no",pengaturanharga=Sequel.cariIsi("select setharga from set_harga_obat"),
             hargadasar=Sequel.cariIsi("select hargadasar from set_harga_obat");
-    private final Properties prop = new Properties();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -60,8 +57,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
         initComponents();
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
-            aktifkanbatch = prop.getProperty("AKTIFKANBATCHOBAT");
+            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
@@ -136,8 +132,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }else{
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                   
-            }            
-            
+            }    
         }
         warna.kolom=0;
         tbDokter.setDefaultRenderer(Object.class,warna);
@@ -1687,32 +1682,23 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             (!tbDokter.getValueAt(i,19).toString().equals(""))&&(!tbDokter.getValueAt(i,20).toString().equals(""))&&
             (!tbDokter.getValueAt(i,21).toString().equals(""))&&(!tbDokter.getValueAt(i,22).toString().equals(""))&&
             (!tbDokter.getValueAt(i,23).toString().equals(""))&&(!tbDokter.getValueAt(i,24).toString().equals(""))){
-            Sequel.menyimpan2("data_batch","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Batch",19,new String[]{
-                tbDokter.getValueAt(i,13).toString(),tbDokter.getValueAt(i,2).toString(), 
-                Valid.SetTgl(TglPesan.getSelectedItem()+""),Valid.SetTgl(tbDokter.getValueAt(i,6).toString()), 
-                "Penerimaan",NoFaktur.getText(), tbDokter.getValueAt(i,24).toString(),
-                tbDokter.getValueAt(i,14).toString(),tbDokter.getValueAt(i,15).toString(),
-                tbDokter.getValueAt(i,16).toString(),tbDokter.getValueAt(i,17).toString(),
-                tbDokter.getValueAt(i,18).toString(),tbDokter.getValueAt(i,19).toString(),
-                tbDokter.getValueAt(i,20).toString(),tbDokter.getValueAt(i,21).toString(),
-                tbDokter.getValueAt(i,22).toString(),tbDokter.getValueAt(i,23).toString(),
-                tbDokter.getValueAt(i,12).toString(),tbDokter.getValueAt(i,12).toString()
+            Sequel.menyimpan2("data_batch","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Batch",20,new String[]{
+                tbDokter.getValueAt(i,13).toString(),tbDokter.getValueAt(i,2).toString(),Valid.SetTgl(TglPesan.getSelectedItem()+""),Valid.SetTgl(tbDokter.getValueAt(i,6).toString()),"Penerimaan",NoFaktur.getText(),
+                Valid.roundUp((Double.parseDouble(tbDokter.getValueAt(i,11).toString())/Double.parseDouble(tbDokter.getValueAt(i,12).toString()))+((Double.parseDouble(tppn.getText())/100)*(Double.parseDouble(tbDokter.getValueAt(i,11).toString())/Double.parseDouble(tbDokter.getValueAt(i,12).toString()))),100)+"",
+                tbDokter.getValueAt(i,24).toString(),tbDokter.getValueAt(i,14).toString(),tbDokter.getValueAt(i,15).toString(),tbDokter.getValueAt(i,16).toString(),tbDokter.getValueAt(i,17).toString(),tbDokter.getValueAt(i,18).toString(),tbDokter.getValueAt(i,19).toString(),
+                tbDokter.getValueAt(i,20).toString(),tbDokter.getValueAt(i,21).toString(),tbDokter.getValueAt(i,22).toString(),tbDokter.getValueAt(i,23).toString(),tbDokter.getValueAt(i,12).toString(),tbDokter.getValueAt(i,12).toString()
             });
         }
         if(akses.getobat()==true){
             if(tbDokter.getValueAt(i,5).toString().equals("true")){
-                Sequel.mengedit("databarang","kode_brng=?","expire=?,h_beli=?,ralan=?,kelas1=?,kelas2=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?",13,new String[]{
-                    Valid.SetTgl(tbDokter.getValueAt(i,6).toString()),tbDokter.getValueAt(i,24).toString(),
-                    tbDokter.getValueAt(i,14).toString(),tbDokter.getValueAt(i,15).toString(),
-                    tbDokter.getValueAt(i,16).toString(),tbDokter.getValueAt(i,17).toString(),
-                    tbDokter.getValueAt(i,18).toString(),tbDokter.getValueAt(i,19).toString(),
-                    tbDokter.getValueAt(i,20).toString(),tbDokter.getValueAt(i,21).toString(),
-                    tbDokter.getValueAt(i,22).toString(),tbDokter.getValueAt(i,23).toString(),
+                Sequel.mengedit("databarang","kode_brng=?","expire=?,h_beli=?,ralan=?,kelas1=?,kelas2=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?,dasar=?",14,new String[]{
+                    Valid.SetTgl(tbDokter.getValueAt(i,6).toString()),tbDokter.getValueAt(i,24).toString(),tbDokter.getValueAt(i,14).toString(),tbDokter.getValueAt(i,15).toString(),tbDokter.getValueAt(i,16).toString(),tbDokter.getValueAt(i,17).toString(),
+                    tbDokter.getValueAt(i,18).toString(),tbDokter.getValueAt(i,19).toString(),tbDokter.getValueAt(i,20).toString(),tbDokter.getValueAt(i,21).toString(),tbDokter.getValueAt(i,22).toString(),tbDokter.getValueAt(i,23).toString(),
+                    Valid.roundUp((Double.parseDouble(tbDokter.getValueAt(i,11).toString())/Double.parseDouble(tbDokter.getValueAt(i,12).toString()))+((Double.parseDouble(tppn.getText())/100)*(Double.parseDouble(tbDokter.getValueAt(i,11).toString())/Double.parseDouble(tbDokter.getValueAt(i,12).toString()))),100)+"",
                     tbDokter.getValueAt(i,2).toString()
                 });  
             }
-        }            
-            
+        }  
     }
     
     private void setKonversi(int baris){        
