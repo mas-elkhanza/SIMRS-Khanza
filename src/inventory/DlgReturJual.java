@@ -145,35 +145,37 @@ public class DlgReturJual extends javax.swing.JDialog {
                     if(form.barang.getTable().getSelectedRow()!= -1){                   
                         Kdbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),2).toString());
-                        Satuanbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),3).toString());
-                        
+                        Satuanbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString());
                         if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),15).toString()); 
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),20).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Karyawan")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),16).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),7).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),8).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),9).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),10).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Utama/BPJS")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),11).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("VIP")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),12).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("VVIP")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),13).toString()); 
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),14).toString()); 
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),19).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),12).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),13).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),14).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),15).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Utama/BPJS")){
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),16).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("VIP")){
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),17).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("VVIP")){
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),18).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Harga Beli")){
-                           Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString()); 
-                        }         
+                               Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),11).toString()); 
+                        }        
                         
                         if(aktifkanbatch.equals("yes")){
-                            NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),28).toString());
-                            Kadaluwarsa.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString());
+                            NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),32).toString());
+                            try{
+                                Kadaluwarsa.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),25).toString());
+                            }catch(Exception er){
+                            }
                         }
                     }                
                     Kdbar.requestFocus();

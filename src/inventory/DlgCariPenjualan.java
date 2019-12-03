@@ -15,7 +15,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +22,6 @@ import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -58,7 +56,6 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             HPP_Obat_Jual_Bebas=Sequel.cariIsi("select HPP_Obat_Jual_Bebas from set_akun"),
             Persediaan_Obat_Jual_Bebas=Sequel.cariIsi("select Persediaan_Obat_Jual_Bebas from set_akun");
     private String aktifkanbatch="no";
-    private final Properties prop = new Properties();
     private StringBuilder htmlContent;
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -68,8 +65,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         initComponents();
 
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
-            aktifkanbatch = prop.getProperty("AKTIFKANBATCHOBAT");
+            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";

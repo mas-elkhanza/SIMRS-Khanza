@@ -7,7 +7,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -33,7 +32,6 @@ public class DlgReturBeli extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgSuplier suplier=new DlgSuplier(null,false);
     private DlgCariReturBeli form=new DlgCariReturBeli(null,false);  
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
@@ -146,11 +144,13 @@ public class DlgReturBeli extends javax.swing.JDialog {
                     if(form.barang.getTable().getSelectedRow()!= -1){                   
                         Kdbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),2).toString());
-                        Satuanbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),3).toString());
-                        Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString());                    
+                        Satuanbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString());
+                        satuanretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString());
+                        Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),10).toString());                    
                         if(aktifkanbatch.equals("yes")){
-                            NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),28).toString());
-                            Kadaluwarsa.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString());
+                            NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),32).toString());
+                            NoFaktur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),33).toString());
+                            Kadaluwarsa.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),25).toString());
                         }
                     } 
                     Kdbar.requestFocus();
@@ -1340,6 +1340,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             formkonversi.setAlwaysOnTop(false);
                             formkonversi.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
+                        }else{
+                            satuanretur.setText(Satuanbar.getText());
                         }                            
                     }                    
                 } catch (SQLException ex) {

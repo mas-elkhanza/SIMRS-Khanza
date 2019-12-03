@@ -292,35 +292,38 @@ public class DlgPiutang extends javax.swing.JDialog {
                     if(form.barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),1).toString());                    
                         nmbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),2).toString());
-                        satuanbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),3).toString());
-                        HrgBeli.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString());
+                        satuanbar.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString());
+                        HrgBeli.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),11).toString());
                         if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),15).toString()); 
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),20).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Karyawan")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),16).toString()); 
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),14).toString()); 
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),19).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),7).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),8).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),9).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),10).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("Utama")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),11).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("VIP")){
                                HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),12).toString()); 
-                        }else if(Jenisjual.getSelectedItem().equals("VVIP")){
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
                                HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),13).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),14).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),15).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("Utama")){
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),16).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("VIP")){
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),17).toString()); 
+                        }else if(Jenisjual.getSelectedItem().equals("VVIP")){
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),18).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Harga Beli")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString()); 
+                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),11).toString()); 
                         } 
                         
                         if(aktifkanbatch.equals("yes")){
-                            NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),28).toString());
-                            Kadaluwarsa.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString());
+                            NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),32).toString());
+                            try{
+                                Kadaluwarsa.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),25).toString());
+                            }catch(Exception er){
+                            }
                             Stok.setText(Double.toString(Sequel.cariIsiAngka("select sisa from data_batch where no_batch='"+NoBatch.getText()+"' and kode_brng='"+kdbar.getText()+"'")));
                         }else{
                             Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"'")));
