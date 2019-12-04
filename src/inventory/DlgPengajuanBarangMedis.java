@@ -31,10 +31,11 @@ public class DlgPengajuanBarangMedis extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int jml=0,i=0,row=0,index=0;
-    private String[] jumlah,kodebarang,namabarang,satuan,jenis,kategori,golongan;
-    private Double[] harga,subtotal;
+    private String[] jumlah,satuanbesar,kodebarang,namabarang,satuan,jenis,kategori,golongan;
+    private Double[] harga,subtotal,jumlah2,isi,isibesar;
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+    private DlgCariDataKonversi datakonversi=new DlgCariDataKonversi(null,false);
     private DlgBarang barang=new DlgBarang(null,false);
     private double total=0,y=0;
     private boolean sukses=true;
@@ -45,11 +46,11 @@ public class DlgPengajuanBarangMedis extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] judul={"Jml","Kode Barang","Nama Barang","Satuan","Jenis Obat","Kategori","Golongan","H.Pengajuan","Sub Total"};
+        Object[] judul={"Jml","Sat.Pengajuan","Kode Barang","Nama Barang","Satuan","Jenis Obat","Kategori","Golongan","H.Pengajuan","Sub Total","Jml2","Isi","Isi Besar"};
         tabMode=new DefaultTableModel(null,judul){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                boolean a = false;
-               if ((colIndex==0)||(colIndex==7)) {
+               if ((colIndex==0)||(colIndex==8)) {
                    a=true;
                }
                return a;
@@ -57,7 +58,8 @@ public class DlgPengajuanBarangMedis extends javax.swing.JDialog {
               
              Class[] types = new Class[] {
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class,java.lang.Double.class,java.lang.Double.class
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.Double.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -69,26 +71,31 @@ public class DlgPengajuanBarangMedis extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(42);
             }else if(i==1){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(90);
             }else if(i==3){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(200);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(50);
             }else if(i==5){
                 column.setPreferredWidth(100);
             }else if(i==6){
                 column.setPreferredWidth(100);
             }else if(i==7){
-                column.setPreferredWidth(90);
-            }else if(i==8){
                 column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(90);
+            }else if(i==9){
+                column.setPreferredWidth(100);
+            }else{
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         warna.kolom=0;
@@ -157,6 +164,54 @@ public class DlgPengajuanBarangMedis extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+        
+        datakonversi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(datakonversi.getTable().getSelectedRow()!= -1){    
+                    tbDokter.setValueAt(datakonversi.getTable().getValueAt(datakonversi.getTable().getSelectedRow(),1).toString(),tbDokter.getSelectedRow(),1);
+                    try{
+                        tbDokter.setValueAt(Double.parseDouble(datakonversi.getTable().getValueAt(datakonversi.getTable().getSelectedRow(),3).toString()),tbDokter.getSelectedRow(),11);
+                    }catch(Exception er){
+                        JOptionPane.showMessageDialog(null,"Gagal mengambil nilai konversi, nilai barang satuan kecil dianggap bernilai 1..!!");
+                        tbDokter.setValueAt(1,tbDokter.getSelectedRow(),11);
+                    }
+                    
+                    try{
+                        tbDokter.setValueAt(Double.parseDouble(datakonversi.getTable().getValueAt(datakonversi.getTable().getSelectedRow(),0).toString()),tbDokter.getSelectedRow(),12);
+                    }catch(Exception er){
+                        JOptionPane.showMessageDialog(null,"Gagal mengambil nilai konversi, nilai barang satuan besar dianggap bernilai 1..!!");
+                        tbDokter.setValueAt(1,tbDokter.getSelectedRow(),12);
+                    }   
+                }   
+                tbDokter.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        datakonversi.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    datakonversi.dispose();
+                }     
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
     }
 
     /** This method is called from within the constructor to
@@ -565,9 +620,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    if(Sequel.menyimpantf2("detail_pengajuan_barang_medis","?,?,?,?,?,?","Detail Pengajuan Barang Medis",6,new String[]{
-                                         NoPengajuan.getText(),tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
-                                         tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,7).toString(),tbDokter.getValueAt(i,8).toString()
+                                    if(Sequel.menyimpantf2("detail_pengajuan_barang_medis","?,?,?,?,?,?,?","Detail Pengajuan Barang Medis",7,new String[]{
+                                        NoPengajuan.getText(),tbDokter.getValueAt(i,2).toString(),tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,0).toString(),
+                                        tbDokter.getValueAt(i,8).toString(),tbDokter.getValueAt(i,9).toString(),tbDokter.getValueAt(i,10).toString()
                                     })==false){
                                         sukses=false;
                                     }                                  
@@ -585,7 +640,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){ 
                         tbDokter.setValueAt("",i,0);
-                        tbDokter.setValueAt(0,i,8);
+                        tbDokter.setValueAt(0,i,9);
+                        tbDokter.setValueAt(0,i,10);
                     }
                     total=0;
                     LTotal.setText("0");
@@ -642,7 +698,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
             for(i=0;i<tbDokter.getRowCount();i++){ 
                 tbDokter.setValueAt("",i,0);
-                tbDokter.setValueAt("",i,7);
+                tbDokter.setValueAt(0,i,9);
+                tbDokter.setValueAt(0,i,10);
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
@@ -664,10 +721,29 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 i=tbDokter.getSelectedRow();
                 if(i!= -1){
                     tbDokter.setValueAt("", i,0);
+                    getData();
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCari.setText("");
                 TCari.requestFocus();
+            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                if(tbDokter.getSelectedColumn()==1){
+                    y=0;
+                    try {
+                        y=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());                        
+                    } catch (Exception e) {
+                        y=0;
+                    }
+                    if(y>0){
+                        datakonversi.setSatuanKecil(tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                        datakonversi.isCek();
+                        datakonversi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
+                        datakonversi.setLocationRelativeTo(internalFrame1);
+                        datakonversi.setVisible(true);                       
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah pengajuan terelebih dahulu..!!");
+                    }
+                }
             }
         }
 }//GEN-LAST:event_tbDokterKeyPressed
@@ -808,6 +884,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             namabarang=new String[jml];
             satuan=null;
             satuan=new String[jml];
+            satuanbesar=null;
+            satuanbesar=new String[jml];
             jumlah=null;
             jumlah=new String[jml];
             jenis=null;
@@ -820,50 +898,71 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             harga=new Double[jml];
             subtotal=null;
             subtotal=new Double[jml];
+            jumlah2=new Double[jml];
+            isi=new Double[jml];
+            isibesar=new Double[jml];
             
             index=0;        
             for(i=0;i<row;i++){
                 if(!tbDokter.getValueAt(i,0).toString().equals("")){
                     jumlah[index]=tbDokter.getValueAt(i,0).toString();
-                    kodebarang[index]=tbDokter.getValueAt(i,1).toString();
-                    namabarang[index]=tbDokter.getValueAt(i,2).toString();
-                    satuan[index]=tbDokter.getValueAt(i,3).toString();
-                    jenis[index]=tbDokter.getValueAt(i,4).toString();
-                    kategori[index]=tbDokter.getValueAt(i,5).toString();
-                    golongan[index]=tbDokter.getValueAt(i,6).toString();
-                    harga[index]=Double.parseDouble(tbDokter.getValueAt(i,7).toString());
-                    subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
+                    satuanbesar[index]=tbDokter.getValueAt(i,1).toString();
+                    kodebarang[index]=tbDokter.getValueAt(i,2).toString();
+                    namabarang[index]=tbDokter.getValueAt(i,3).toString();
+                    satuan[index]=tbDokter.getValueAt(i,4).toString();
+                    jenis[index]=tbDokter.getValueAt(i,5).toString();
+                    kategori[index]=tbDokter.getValueAt(i,6).toString();
+                    golongan[index]=tbDokter.getValueAt(i,7).toString();
+                    harga[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
+                    subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,9).toString());
+                    jumlah2[index]=Double.parseDouble(tbDokter.getValueAt(i,10).toString());
+                    isi[index]=Double.parseDouble(tbDokter.getValueAt(i,11).toString());
+                    isibesar[index]=Double.parseDouble(tbDokter.getValueAt(i,12).toString());
                     index++;
                 }
             }
             Valid.tabelKosong(tabMode);
             for(i=0;i<jml;i++){
-                tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],kategori[i],golongan[i],harga[i],subtotal[i]});
+                tabMode.addRow(new Object[]{jumlah[i],satuanbesar[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],kategori[i],golongan[i],harga[i],subtotal[i],jumlah2[i],isi[i],isibesar[i]});
             }
             
-            ps=koneksi.prepareStatement(
-                "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
-                "kategori_barang.nama as kategori,golongan_barang.nama as golongan,databarang.h_beli "+
-                " from databarang inner join jenis inner join golongan_barang "+
-                " inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
-                " and databarang.kode_golongan=golongan_barang.kode "+
-                " and databarang.kode_kategori=kategori_barang.kode "+
-                " where databarang.status='1' and databarang.kode_brng like ? or "+
-                " databarang.status='1' and databarang.nama_brng like ? or "+
-                " databarang.status='1' and kategori_barang.nama like ? or "+
-                " databarang.status='1' and golongan_barang.nama like ? or "+
-                " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+            if(TCari.getText().trim().equals("")){
+                ps=koneksi.prepareStatement(
+                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_satbesar,databarang.kode_sat,jenis.nama,"+
+                    "kategori_barang.nama as kategori,golongan_barang.nama as golongan,(databarang.h_beli*databarang.isi) as h_beli,databarang.isi "+
+                    " from databarang inner join jenis inner join golongan_barang "+
+                    " inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                    " and databarang.kode_golongan=golongan_barang.kode "+
+                    " and databarang.kode_kategori=kategori_barang.kode "+
+                    " where databarang.status='1' order by databarang.nama_brng");
+            }else{
+                ps=koneksi.prepareStatement(
+                    "select databarang.kode_brng,databarang.nama_brng,databarang.kode_satbesar,databarang.kode_sat,jenis.nama,"+
+                    "kategori_barang.nama as kategori,golongan_barang.nama as golongan,(databarang.h_beli*databarang.isi) as h_beli,databarang.isi "+
+                    " from databarang inner join jenis inner join golongan_barang "+
+                    " inner join kategori_barang on databarang.kdjns=jenis.kdjns "+
+                    " and databarang.kode_golongan=golongan_barang.kode "+
+                    " and databarang.kode_kategori=kategori_barang.kode "+
+                    " where databarang.status='1' and databarang.kode_brng like ? or "+
+                    " databarang.status='1' and databarang.nama_brng like ? or "+
+                    " databarang.status='1' and kategori_barang.nama like ? or "+
+                    " databarang.status='1' and golongan_barang.nama like ? or "+
+                    " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
+            }
+                
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().trim().equals("")){}else{
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        "",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getDouble(7),0
+                        "",rs.getString("kode_satbesar"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),rs.getString("nama"),
+                        rs.getString("kategori"),rs.getString("golongan"),rs.getDouble("h_beli"),0,0,rs.getDouble("isi"),1
                     });
                 } 
             } catch (Exception e) {
@@ -909,14 +1008,15 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             if(!tbDokter.getValueAt(row,0).toString().equals("")){
                 try {
                     if(Double.parseDouble(tbDokter.getValueAt(row,0).toString())>0){                        
-                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);          
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,8).toString()), row,9);   
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*(Double.parseDouble(tbDokter.getValueAt(row,11).toString())/Double.parseDouble(tbDokter.getValueAt(row,12).toString())), row,10); 
                     } 
                 } catch (Exception e) {
-                    tbDokter.setValueAt(0, row,8); 
+                    tbDokter.setValueAt(0, row,9); 
                     tbDokter.setValueAt("", row,0); 
                 }
             }else{
-                tbDokter.setValueAt(0, row,8);    
+                tbDokter.setValueAt(0, row,9);    
             }
         }
         
@@ -925,9 +1025,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         for(i=0;i<jml;i++){     
             y=0;
             try {
-                y=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
+                y=Double.parseDouble(tbDokter.getValueAt(i,9).toString());
             } catch (Exception e) {
-                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
+                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),9);
                 y=0;                
             }
             total=total+y;   

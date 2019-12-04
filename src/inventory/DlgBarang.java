@@ -1689,12 +1689,12 @@ public class DlgBarang extends javax.swing.JDialog {
                 tanggal = "0000-00-00";
             }
             Valid.editTable(tabMode, "databarang", "kode_brng", "?", "nama_brng=?,kode_brng=?,kapasitas=?,kode_sat=?,letak_barang=?,"
-                    + "h_beli=?,ralan=?,kelas1=?,kelas2=?,stokminimal=?,kdjns=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?,expire=?,kode_industri=?,kode_kategori=?,kode_golongan=?", 23, new String[]{
+                    + "h_beli=?,ralan=?,kelas1=?,kelas2=?,stokminimal=?,kdjns=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,"
+                    + "karyawan=?,expire=?,kode_industri=?,kode_kategori=?,kode_golongan=?,kode_satbesar=?,dasar=?,isi=?", 26, new String[]{
                         Nm.getText(), Kd.getText(), Kapasitas.getText(), kdsat.getText(), Letak.getText(), beli.getText(), ralan.getText(),
-                        kelas1.getText(), kelas2.getText(), stok_minimal.getText(), kdjns.getText(), 
-                        kelas3.getText(), utama.getText(), kelasvip.getText(), kelasvvip.getText(),
-                        beliluar.getText(), jualbebas.getText(), karyawan.getText(), 
-                        tanggal,KdIF.getText(),kdkategori.getText(),kdgolongan.getText(),
+                        kelas1.getText(), kelas2.getText(), stok_minimal.getText(), kdjns.getText(),kelas3.getText(), utama.getText(), 
+                        kelasvip.getText(), kelasvvip.getText(),beliluar.getText(), jualbebas.getText(), karyawan.getText(),tanggal,KdIF.getText(),
+                        kdkategori.getText(),kdgolongan.getText(),kdsatBesar.getText(),dasar.getText(),Isi.getText(),
                         tbDokter.getValueAt(tbDokter.getSelectedRow(), 1).toString(),
                     });
             if (tabMode.getRowCount() != 0) {
@@ -1863,15 +1863,15 @@ public class DlgBarang extends javax.swing.JDialog {
             } else {
                 tanggal = "0000-00-00";
             }
-            Sequel.menyimpan("databarang", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Kode Barang", 23, new String[]{
-                Kd.getText(), Nm.getText(), kdsat.getText(), Letak.getText(), beli.getText(), ralan.getText(),
-                kelas1.getText(), kelas2.getText(), kelas3.getText(),
-                utama.getText(), kelasvip.getText(), kelasvvip.getText(),
-                beliluar.getText(), jualbebas.getText(), karyawan.getText(),
-                stok_minimal.getText(), kdjns.getText(), Kapasitas.getText(), tanggal,"1",KdIF.getText(),kdkategori.getText(),kdgolongan.getText()
-            });
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("databarang", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Kode Barang", 26, new String[]{
+                Kd.getText(), Nm.getText(), kdsatBesar.getText(), kdsat.getText(), Letak.getText(),dasar.getText(), beli.getText(), ralan.getText(),
+                kelas1.getText(), kelas2.getText(), kelas3.getText(),utama.getText(), kelasvip.getText(), kelasvvip.getText(),beliluar.getText(), 
+                jualbebas.getText(), karyawan.getText(),stok_minimal.getText(), kdjns.getText(), Isi.getText(),Kapasitas.getText(), tanggal,"1",
+                KdIF.getText(),kdkategori.getText(),kdgolongan.getText()
+                })==true){
+                    tampil();
+                    emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
