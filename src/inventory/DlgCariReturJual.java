@@ -34,7 +34,6 @@ public class DlgCariReturJual extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private riwayatobat Trackobat=new riwayatobat();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private double ttlretur=0,subtotal=0;
@@ -61,17 +60,9 @@ public class DlgCariReturJual extends javax.swing.JDialog {
             aktifkanbatch = "no";
         }
         
-        Object[] row={"No.Retur",
-                    "Tgl.Retur",
-                    "Petugas",
-                    "Pasien",
-                    "No.Nota",
-                    "Barang",
-                    "Satuan",
-                    "Harga Retur(Rp)",
-                    "Jml.Retur",
-                    "SubTotal(Rp)"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "No.Retur","Tgl.Retur","Petugas","Pasien","No.Nota","Barang","Satuan","Harga Retur(Rp)","Jml.Retur","SubTotal(Rp)"
+        }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbRetur.setModel(tabMode);
@@ -90,9 +81,9 @@ public class DlgCariReturJual extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==5){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(250);
             }else if(i==6){
                 column.setPreferredWidth(60);
             }else if(i==7){
@@ -999,7 +990,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     }
                     ps2=koneksi.prepareStatement("select detreturjual.nota_jual,detreturjual.kode_brng,databarang.nama_brng, "+
                             "detreturjual.kode_sat,kodesatuan.satuan,detreturjual.h_retur,detreturjual.jml_retur, "+
-                            "detreturjual.subtotal,detreturjual.no_batch from detreturjual inner join databarang inner join kodesatuan "+
+                            "detreturjual.subtotal,detreturjual.no_batch,detreturjual.no_faktur from detreturjual inner join databarang inner join kodesatuan "+
                             " on detreturjual.kode_brng=databarang.kode_brng "+
                             " and detreturjual.kode_sat=kodesatuan.kode_sat where "+
                             " detreturjual.no_retur_jual='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturjual.kode_brng like '%"+TCari.getText()+"%' or "+
@@ -1016,8 +1007,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ttlretur=ttlretur+rs2.getDouble(8);
                             subtotal=subtotal+rs2.getDouble(8);                            
                             tabMode.addRow(new Object[]{
-                                "","","",no+". No.Batch "+rs2.getString("no_batch"),rs2.getString(1),rs2.getString(2)+", "+rs2.getString(3),
-                                rs2.getString(4)+", "+rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),
+                                "","",no+". Batch : "+rs2.getString("no_batch"),"Faktur : "+rs2.getString("no_faktur"),"Nota : "+rs2.getString(1),
+                                rs2.getString(2)+", "+rs2.getString(3),rs2.getString(4)+", "+rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),
                                 rs2.getString(7),Valid.SetAngka(rs2.getDouble(8))
                             });
                             no++;

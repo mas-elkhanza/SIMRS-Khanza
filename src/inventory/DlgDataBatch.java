@@ -1323,7 +1323,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         } else if (NoBatch.getText().trim().equals("")) {
             Valid.textKosong(NoBatch, "Kategori");
         } else {
-            if(Sequel.menyimpantf("data_batch", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Kode Barang", 20, new String[]{
+            if(Sequel.menyimpantf("data_batch", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Kode Barang,No.Batch & No.Faktur", 20, new String[]{
                     NoBatch.getText(),Kd.getText(),Valid.SetTgl(TanggalDatang.getSelectedItem()+ ""),Valid.SetTgl(DTPExpired.getSelectedItem() + ""),
                     AsalBarang.getSelectedItem().toString(),NoFaktur.getText(),dasar.getText(),beli.getText(),ralan.getText(),kelas1.getText(),kelas2.getText(), 
                     kelas3.getText(),utama.getText(),kelasvip.getText(),kelasvvip.getText(),beliluar.getText(),jualbebas.getText(),karyawan.getText(),

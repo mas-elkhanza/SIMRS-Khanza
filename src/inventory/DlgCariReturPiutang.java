@@ -34,7 +34,6 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private riwayatobat Trackobat=new riwayatobat();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public DlgBarang barang=new DlgBarang(null,false);
     private double ttlretur=0,subtotal=0;
@@ -991,7 +990,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     }
                     ps2=koneksi.prepareStatement("select detreturpiutang.nota_piutang,detreturpiutang.kode_brng,databarang.nama_brng, "+
                             "detreturpiutang.kode_sat,kodesatuan.satuan,detreturpiutang.h_retur,detreturpiutang.jml_retur, "+
-                            "detreturpiutang.subtotal,detreturpiutang.no_batch from detreturpiutang inner join databarang inner join kodesatuan "+
+                            "detreturpiutang.subtotal,detreturpiutang.no_batch,detreturjual.no_faktur from detreturpiutang inner join databarang inner join kodesatuan "+
                             " on detreturpiutang.kode_brng=databarang.kode_brng "+
                             " and detreturpiutang.kode_sat=kodesatuan.kode_sat where "+
                             " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.kode_brng like '%"+TCari.getText()+"%' or "+
@@ -1008,7 +1007,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ttlretur=ttlretur+rs2.getDouble(8);
                             subtotal=subtotal+rs2.getDouble(8);
                             tabMode.addRow(new Object[]{
-                                "","","",no+". No.Batch "+rs2.getString("no_batch"),rs2.getString(1),rs2.getString(2)+", "+rs2.getString(3),
+                                "","",no+". No.Batch "+rs2.getString("no_batch"),"Faktur : "+rs2.getString("no_faktur"),"Nota : "+rs2.getString(1),rs2.getString(2)+", "+rs2.getString(3),
                                 rs2.getString(4)+", "+rs2.getString(5),
                                 Valid.SetAngka(rs2.getDouble(6)),rs2.getString(7),Valid.SetAngka(rs2.getDouble(8))
                             });

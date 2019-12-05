@@ -875,6 +875,10 @@ public class DlgReturBeli extends javax.swing.JDialog {
             Valid.textKosong(Jmlretur,"jumlah retur");
         }else if(Jmlretur.getText().trim().equals("0")){
             Valid.textKosong(Jmlretur,"jumlah retur");
+        }else if(aktifkanbatch.equals("yes")&&NoFaktur.getText().equals("")){
+            Valid.textKosong(NoFaktur,"No.Faktur");
+        }else if(aktifkanbatch.equals("yes")&&NoBatch.getText().equals("")){
+            Valid.textKosong(NoBatch,"No.Batch");
         }else if(Hargaretur.getText().trim().equals("")){
             Valid.textKosong(Hargaretur,"harga retur");
         }else{
