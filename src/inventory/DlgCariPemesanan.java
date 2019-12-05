@@ -1016,7 +1016,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, yakin mau dihapus...??","Konfirmasi",JOptionPane.YES_NO_OPTION);
       if (reply == JOptionPane.YES_OPTION) {
           try {
-              
               pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, kd_bangsal,tgl_faktur,status from pemesanan where no_faktur=?");
               try {
                  pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
@@ -1030,8 +1029,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                              Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Penerimaan",akses.getkode(),rs.getString("kd_bangsal"),"Hapus");
                              Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
                                               "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
-                             Sequel.queryu3("delete from data_batch where kode_brng=? and no_batch=?",2,new String[]{
-                                 rs2.getString("kode_brng"),rs2.getString("no_batch")
+                             Sequel.queryu3("delete from data_batch where kode_brng=? and no_batch=? and no_faktur=?",3,new String[]{
+                                 rs2.getString("kode_brng"),rs2.getString("no_batch"),rs2.getString("no_faktur")
                              });
                          }
                      } catch (Exception e) {
@@ -1065,8 +1064,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       pscaripesan.close();
                   }
               }
-
-              
               tampil();
           } catch (SQLException ex) {
               System.out.println(ex);
