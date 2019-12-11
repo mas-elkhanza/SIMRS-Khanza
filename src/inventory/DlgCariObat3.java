@@ -329,13 +329,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         beli=0;
                         pscariharga=koneksi.prepareStatement("select databarang.kelas1,databarang.kelas2,databarang.kelas3,"+
                             "databarang.utama,databarang.vip,databarang.vvip,databarang.beliluar,databarang.karyawan,databarang.h_beli,"+
-                            "IFNULL(kapasitas,0) as kapasitas from databarang "+
+                            "IFNULL(kapasitas,0) as kapasitas,databarang.dasar from databarang "+
                             "where databarang.kode_brng=?");
                         try {
                             pscariharga.setString(1,tbObat.getValueAt(i,1).toString());
                             rscariharga=pscariharga.executeQuery();
                             while(rscariharga.next()){
-                                beli=rscariharga.getDouble("h_beli");
+                                beli=rscariharga.getDouble("dasar");
                                 if(kenaikan>0){
                                     harga=Valid.roundUp(rscariharga.getDouble("h_beli")+(rscariharga.getDouble("h_beli")*kenaikan),100);
                                 }else{

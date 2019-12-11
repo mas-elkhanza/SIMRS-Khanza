@@ -41,15 +41,14 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private Jurnal jur=new Jurnal();
-    private PreparedStatement pstampil,psstok,psrekening;
-    private ResultSet rstampil,rsstok,rsrekening;
+    private PreparedStatement pstampil,psrekening;
+    private ResultSet rstampil,rsrekening;
     private WarnaTable2 warna=new WarnaTable2();
     private riwayatobat Trackobat=new riwayatobat();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
     private DecimalFormat df3 = new DecimalFormat("###");
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private double ttl=0,y=0,stokbarang=0,ttlhpp=0,ttljual=0,ppnobat=0;
+    private double ttl=0,y=0,ttlhpp=0,ttljual=0,ppnobat=0;
     private int jml=0,i=0,index=0;
     private String Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="",
                    tampilkan_ppnobat_ralan="",aktifkanbatch="no";
@@ -622,9 +621,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ttlhpp=0;ttljual=0;
                     for(i=0;i<tbDokter.getRowCount();i++){  
                        if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                            if(Sequel.menyimpantf2("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{                            
+                            if(Sequel.menyimpantf2("stok_obat_pasien","?,?,?,?,?,?,?","Stok Obat Pasien",7,new String[]{                            
                                 Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
-                                tabMode.getValueAt(i,0).toString(),kdgudang.getText()
+                                tabMode.getValueAt(i,0).toString(),kdgudang.getText(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString()
                             })==true){
                                 ttlhpp=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,8).toString()));
                                 ttljual=ttljual+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,7).toString()));
@@ -634,8 +633,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ""+tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,11).toString()
                                     });
                                 }
-                                Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
-                                                "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"','"+tabMode.getValueAt(i,10).toString()+"','"+tabMode.getValueAt(i,11).toString()+"'", 
+                                                "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='"+tabMode.getValueAt(i,10).toString()+"' and no_faktur='"+tabMode.getValueAt(i,11).toString()+"'");
                             }else{
                                 sukses=false;
                             }                            
@@ -954,18 +953,23 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 pstampil=koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng,jenis.nama,"+
                         " databarang.kapasitas,databarang.kode_sat,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"+
                         " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.karyawan,"+
-                        " data_batch.dasar,data_batch.sisa,data_batch.no_batch,data_batch.no_faktur  "+
+                        " data_batch.dasar,gudangbarang.stok,data_batch.no_batch,data_batch.no_faktur  "+
                         " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "+
                         " inner join jenis on databarang.kdjns=jenis.kdjns "+
-                        " where data_batch.sisa>0 and databarang.kode_brng like ? or "+
-                        " data_batch.sisa>0 and databarang.nama_brng like ? or "+
-                        " data_batch.sisa>0 and databarang.kode_sat like ? or "+
-                        " data_batch.sisa>0 and jenis.nama like ? order by databarang.nama_brng");  
+                        " inner join gudangbarang on gudangbarang.kode_brng=data_batch.kode_brng and gudangbarang.no_batch=data_batch.no_batch and gudangbarang.no_faktur=data_batch.no_faktur "+
+                        " where gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                        " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                        " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and databarang.kode_sat like ? or "+
+                        " gudangbarang.stok>0 and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");  
                 try{
-                    pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(1,kdgudang.getText());
                     pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(3,kdgudang.getText());
                     pstampil.setString(4,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(5,kdgudang.getText());
+                    pstampil.setString(6,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(7,kdgudang.getText());
+                    pstampil.setString(8,"%"+TCari.getText().trim()+"%");
                     rstampil=pstampil.executeQuery();
                     while(rstampil.next()){
                         if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
@@ -973,7 +977,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("kelas1"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -983,7 +987,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("kelas2"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -993,7 +997,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("kelas3"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -1003,7 +1007,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("utama"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -1013,7 +1017,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("vip"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -1023,7 +1027,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("vvip"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -1033,7 +1037,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("beliluar"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -1043,7 +1047,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),rstampil.getDouble("sisa"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("karyawan"),100),
                                rstampil.getDouble("dasar"),0,rstampil.getString("no_batch"),
                                rstampil.getString("no_faktur")
@@ -1064,46 +1068,30 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama,"+
                         " databarang.kapasitas,databarang.kode_sat,databarang.kelas1,"+
                         " databarang.kelas2,databarang.kelas3,databarang.utama,databarang.vip,"+
-                        " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang.dasar  "+
+                        " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang.dasar,gudangbarang.stok  "+
                         " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                        " where databarang.status='1' and databarang.kode_brng like ? or "+
-                        " databarang.status='1' and databarang.nama_brng like ? or "+
-                        " databarang.status='1' and databarang.kode_sat like ? or "+
-                        " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");                
+                        " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng where"+
+                        " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                        " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                        " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_sat like ? or "+
+                        " gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");                
                 try{
-                    pstampil.setString(1,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(1,kdgudang.getText());
                     pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                    pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(3,kdgudang.getText());
                     pstampil.setString(4,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(5,kdgudang.getText());
+                    pstampil.setString(6,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(7,kdgudang.getText());
+                    pstampil.setString(8,"%"+TCari.getText().trim()+"%");
                     rstampil=pstampil.executeQuery();
                     while(rstampil.next()){
-                        stokbarang=0;          
-                        psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
-                        try {
-                            psstok.setString(1,kdgudang.getText());
-                            psstok.setString(2,rstampil.getString("kode_brng"));
-                            rsstok=psstok.executeQuery();
-                            if(rsstok.next()){
-                                stokbarang=rsstok.getDouble(1);
-                            }  
-                        } catch (Exception e) {
-                            stokbarang=0;
-                            System.out.println("Notif Stok : "+e);
-                        } finally{
-                            if(rsstok!=null){
-                                rsstok.close();
-                            }
-                            if(psstok!=null){
-                                psstok.close();
-                            }
-                        }
-
                         if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
                             tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("kelas1"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });
@@ -1112,7 +1100,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("kelas2"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });
@@ -1121,7 +1109,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("kelas3"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });
@@ -1130,7 +1118,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("utama"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });
@@ -1139,7 +1127,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("vip"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });
@@ -1148,7 +1136,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("vvip"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });
@@ -1157,7 +1145,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("beliluar"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });
@@ -1166,7 +1154,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                rstampil.getString("nama_brng"),
                                rstampil.getString("nama"),
                                rstampil.getString("kode_sat"),
-                               rstampil.getDouble("kapasitas"),stokbarang,
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
                                Valid.roundUp(rstampil.getDouble("karyawan"),100),
                                rstampil.getDouble("dasar"),0,"",""
                             });

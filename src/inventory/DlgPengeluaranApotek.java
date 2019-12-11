@@ -34,12 +34,13 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     private PreparedStatement ps,psstok;
     private DlgCariPengeluaranApotek form=new DlgCariPengeluaranApotek(null,false);
     private ResultSet rs,rsstok;
-    private String[] kodebarang,nobatch,namabarang,kategori,satuan;
+    private String[] kodebarang,nobatch,namabarang,kategori,satuan,nofaktur;
     private double[] harga,jumlah,total,stok;
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampilkanpermintaan=false;
     private double stok_asal=0;
     private boolean sukses=true;
+    private String aktifkanbatch="no";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -50,11 +51,11 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "Jml","Kode Barang","No.Batch","Nama Barang","Kategori",
-            "Satuan","Harga(Rp)","Total(Rp)","Stok"
+            "Satuan","Harga(Rp)","Total(Rp)","Stok","No.Faktur"
         }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==2)) {
+                if ((colIndex==0)||(colIndex==2)||(colIndex==9)) {
                     a=true;
                 }
                 return a;
@@ -62,7 +63,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
             
             Class[] types = new Class[] {
                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                java.lang.String.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+                java.lang.String.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.String.class
             };
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -74,14 +75,14 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(42);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==3){
                 column.setPreferredWidth(210);
             }else if(i==4){
@@ -94,6 +95,8 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }else if(i==8){
                 column.setPreferredWidth(40);
+            }else if(i==9){
+                column.setPreferredWidth(100);
             }
         }
         warna.kolom=0;
@@ -199,6 +202,13 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         });
         
         TCari.requestFocus();
+        
+        try {
+            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            aktifkanbatch = "no";
+        }
         
     }
     
@@ -688,8 +698,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             sukses=jur.simpanJurnal(NoKeluar.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP"+", OLEH "+akses.getkode());
                         }
                     } catch (Exception ex) {
+                        sukses=false;
                         System.out.println(ex);
                     }
+                }else{
+                    sukses=false;
                 }
                 if(sukses==true){
                     Sequel.Commit();
@@ -974,6 +987,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         jumlah=new double[jml];
         total=new double[jml];
         stok=new double[jml];
+        nofaktur=new String[jml];
         int index=0;        
         for(i=0;i<row;i++){
             try {
@@ -987,6 +1001,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     harga[index]=Double.parseDouble(tabMode.getValueAt(i,6).toString());
                     total[index]=Double.parseDouble(tabMode.getValueAt(i,7).toString());
                     stok[index]=Double.parseDouble(tabMode.getValueAt(i,8).toString());
+                    nofaktur[index]=tabMode.getValueAt(i,9).toString();
                     index++;
                 }
             } catch (Exception e) {
@@ -996,7 +1011,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         for(i=0;i<jml;i++){   
             tabMode.addRow(new Object[]{
                 jumlah[i],kodebarang[i],nobatch[i],namabarang[i],
-                kategori[i],satuan[i],harga[i],total[i],stok[i]
+                kategori[i],satuan[i],harga[i],total[i],stok[i],nofaktur[i]
             });
         }
         try{
@@ -1016,7 +1031,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     tabMode.addRow(new Object[]{
                         "",rs.getString("kode_brng"),"",rs.getString("nama_brng"),
                         rs.getString("nama"),rs.getString("kode_sat"),rs.getDouble("h_beli"),
-                        0,0
+                        0,0,""
                     });
                 }
             } catch (Exception e) {
