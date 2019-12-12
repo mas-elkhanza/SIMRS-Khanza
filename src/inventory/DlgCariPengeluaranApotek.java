@@ -53,7 +53,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Keluar","Tanggal","Petugas","Bangsal","Keterangan","","",""
+                "No.Keluar","Tanggal","Keterangan","Bangsal","Petugas","","",""
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -67,11 +67,11 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(170);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(340);
             }else if(i==3){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(150);
             }else if(i==4){
                 column.setPreferredWidth(130);
             }else if(i==5){
@@ -1045,15 +1045,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 while(rs.next()){     
                     tabMode.addRow(new String[]{
                         rs.getString("no_keluar"),rs.getString("tanggal"),
-                        rs.getString("nip")+", "+rs.getString("nama"),
+                        rs.getString("keterangan"),
                         rs.getString("kd_bangsal")+", "+rs.getString("nm_bangsal"),
-                        rs.getString("keterangan"),"","",""
+                        rs.getString("nip")+", "+rs.getString("nama"),"","",""
                     });
                     tabMode.addRow(new String[]{
-                        "","No.Batch","Barang","Jenis","Satuan","Harga","Jml","Total"
+                        "","No.Batch & Faktur","Barang","Jenis","Satuan","Harga","Jml","Total"
                     });
                     ps2=koneksi.prepareStatement(
-                            " select detail_pengeluaran_obat_bhp.kode_brng,databarang.nama_brng,"+
+                            " select detail_pengeluaran_obat_bhp.kode_brng,databarang.nama_brng,detail_pengeluaran_obat_bhp.no_faktur,"+
                             " jenis.nama,detail_pengeluaran_obat_bhp.harga_beli,detail_pengeluaran_obat_bhp.jumlah, "+
                             " detail_pengeluaran_obat_bhp.kode_sat,detail_pengeluaran_obat_bhp.no_batch,detail_pengeluaran_obat_bhp.total from "+
                             " detail_pengeluaran_obat_bhp inner join databarang inner join jenis "+
@@ -1071,7 +1071,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             subttl=subttl+rs2.getDouble("total");
                             ttl=ttl+rs2.getDouble("total");
                             tabMode.addRow(new String[]{
-                                "",no+". "+rs2.getString("no_batch"),rs2.getString("kode_brng")+", "+rs2.getString("nama_brng"),
+                                "",no+". Btach "+rs2.getString("no_batch")+", Faktur "+rs2.getString("no_faktur"),rs2.getString("kode_brng")+", "+rs2.getString("nama_brng"),
                                 rs2.getString("nama"),rs2.getString("kode_sat"),df2.format(rs2.getDouble("harga_beli")),
                                 df2.format(rs2.getDouble("jumlah")),df2.format(rs2.getDouble("total"))
                             });

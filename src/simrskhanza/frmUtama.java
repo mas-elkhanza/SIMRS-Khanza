@@ -1280,7 +1280,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(250, 0, 110));
+        internalFrame2.setWarnaAtas(new java.awt.Color(250, 0, 105));
         internalFrame2.setWarnaBawah(new java.awt.Color(235, 0, 90));
         internalFrame2.setLayout(null);
 
@@ -1288,7 +1288,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setRequestFocusEnabled(false);
         internalFrame3.setWarnaAtas(new java.awt.Color(255, 200, 200));
-        internalFrame3.setWarnaBawah(new java.awt.Color(255, 252, 252));
+        internalFrame3.setWarnaBawah(new java.awt.Color(255, 250, 250));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.red);
@@ -6913,7 +6913,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/12/2019" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/12/2019" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6964,7 +6964,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("::[ Khanza SIMKES 2019 ]::");
-        setBackground(new java.awt.Color(254, 254, 254));
+        setBackground(new java.awt.Color(255, 254, 254));
         setIconImages(null);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentMoved(java.awt.event.ComponentEvent evt) {
@@ -6989,7 +6989,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 252, 252));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 250, 250));
         internalFrame1.setWarnaBawah(new java.awt.Color(255, 200, 200));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
@@ -7271,7 +7271,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
         internalFrame4.setWarnaAtas(new java.awt.Color(255, 200, 200));
-        internalFrame4.setWarnaBawah(new java.awt.Color(255, 252, 252));
+        internalFrame4.setWarnaBawah(new java.awt.Color(255, 250, 250));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N

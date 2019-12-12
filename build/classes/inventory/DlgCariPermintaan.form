@@ -117,6 +117,42 @@
         </MenuItem>
       </SubComponents>
     </Container>
+    <Component class="widget.TextBox" name="kdjenis">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="name" type="java.lang.String" value="kdjenis" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[207, 23]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdjenisKeyPressed"/>
+      </Events>
+    </Component>
+    <Component class="widget.TextBox" name="kdgolongan">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="name" type="java.lang.String" value="kdgolongan" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[207, 23]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdgolonganKeyPressed"/>
+      </Events>
+    </Component>
+    <Component class="widget.TextBox" name="kdkategori">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="name" type="java.lang.String" value="kdkategori" noResource="true"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[207, 23]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdkategoriKeyPressed"/>
+      </Events>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -140,7 +176,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,83,0,0,3,50"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,29,0,0,3,64"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -194,7 +230,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik pada nomor permintaan untuk verifikasi pilihan"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
@@ -240,6 +276,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
                 <Property name="alignment" type="int" value="0"/>
+                <Property name="horizontalGap" type="int" value="4"/>
                 <Property name="verticalGap" type="int" value="9"/>
               </Layout>
               <SubComponents>
@@ -368,51 +405,29 @@
                 </Constraint>
               </Constraints>
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-                <Property name="useNullLayout" type="boolean" value="true"/>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
+                <Property name="horizontalGap" type="int" value="4"/>
+                <Property name="verticalGap" type="int" value="9"/>
               </Layout>
               <SubComponents>
                 <Component class="widget.Label" name="label7">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Jenis :"/>
                     <Property name="name" type="java.lang.String" value="label7" noResource="true"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="0" y="10" width="65" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.TextBox" name="kdjenis">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="kdjenis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[207, 23]"/>
+                      <Dimension value="[40, 23]"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdjenisKeyPressed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="70" y="10" width="61" height="23"/>
-                    </Constraint>
-                  </Constraints>
                 </Component>
                 <Component class="widget.TextBox" name="nmjenis">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="nmjenis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[207, 23]"/>
+                      <Dimension value="[155, 23]"/>
                     </Property>
                   </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="133" y="10" width="180" height="23"/>
-                    </Constraint>
-                  </Constraints>
                 </Component>
                 <Component class="widget.Button" name="btnJenis">
                   <Properties>
@@ -429,11 +444,40 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJenisActionPerformed"/>
                   </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="315" y="10" width="25" height="23"/>
-                    </Constraint>
-                  </Constraints>
+                </Component>
+                <Component class="widget.Label" name="label22">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Kategori :"/>
+                    <Property name="name" type="java.lang.String" value="label22" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[65, 23]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="widget.TextBox" name="nmkategori">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="name" type="java.lang.String" value="nmkategori" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[155, 23]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="widget.Button" name="BtnKategori">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/190.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="50"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+2"/>
+                    <Property name="name" type="java.lang.String" value="BtnKategori" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[28, 23]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnKategoriActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="widget.Label" name="label23">
                   <Properties>
@@ -443,42 +487,15 @@
                       <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="394" y="10" width="90" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.TextBox" name="kdgolongan">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="kdgolongan" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[207, 23]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdgolonganKeyPressed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="488" y="10" width="61" height="-1"/>
-                    </Constraint>
-                  </Constraints>
                 </Component>
                 <Component class="widget.TextBox" name="nmgolongan">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="nmgolongan" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[205, 23]"/>
+                      <Dimension value="[155, 23]"/>
                     </Property>
                   </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="551" y="10" width="180" height="-1"/>
-                    </Constraint>
-                  </Constraints>
                 </Component>
                 <Component class="widget.Button" name="BtnGolongan">
                   <Properties>
@@ -495,11 +512,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnGolonganActionPerformed"/>
                   </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="734" y="10" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
                 </Component>
               </SubComponents>
             </Container>
@@ -605,7 +617,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="95" y="10" width="-1" height="23"/>
+                      <AbsoluteConstraints x="95" y="10" width="170" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -633,13 +645,13 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="95" y="40" width="100" height="23"/>
+                      <AbsoluteConstraints x="95" y="40" width="90" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="widget.Label" name="label16">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ruangan/Depo :"/>
+                    <Property name="text" type="java.lang.String" value="Asal Permintaan :"/>
                     <Property name="name" type="java.lang.String" value="label16" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[60, 23]"/>
@@ -647,7 +659,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="356" y="10" width="90" height="23"/>
+                      <AbsoluteConstraints x="326" y="10" width="110" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -661,7 +673,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="356" y="40" width="90" height="23"/>
+                      <AbsoluteConstraints x="326" y="40" width="110" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -678,7 +690,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="449" y="10" width="80" height="23"/>
+                      <AbsoluteConstraints x="439" y="10" width="90" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -695,7 +707,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="449" y="40" width="80" height="23"/>
+                      <AbsoluteConstraints x="439" y="40" width="90" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -780,7 +792,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="199" y="40" width="27" height="23"/>
+                      <AbsoluteConstraints x="189" y="40" width="27" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -794,73 +806,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="230" y="40" width="100" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.Label" name="label22">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Kategori :"/>
-                    <Property name="name" type="java.lang.String" value="label22" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 23]"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="0" y="70" width="92" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.TextBox" name="nmkategori">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="nmkategori" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[205, 23]"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="149" y="70" width="150" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.Button" name="BtnKategori">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/190.png"/>
-                    </Property>
-                    <Property name="mnemonic" type="int" value="50"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Alt+2"/>
-                    <Property name="name" type="java.lang.String" value="BtnKategori" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[28, 23]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnKategoriActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="302" y="70" width="-1" height="-1"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.TextBox" name="kdkategori">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="kdkategori" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[207, 23]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdkategoriKeyPressed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="95" y="70" width="52" height="23"/>
+                      <AbsoluteConstraints x="220" y="40" width="90" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -912,7 +858,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="449" y="70" width="80" height="23"/>
+                      <AbsoluteConstraints x="439" y="70" width="90" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -926,7 +872,42 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="356" y="70" width="90" height="23"/>
+                      <AbsoluteConstraints x="326" y="70" width="110" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Label" name="label14">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Status :"/>
+                    <Property name="name" type="java.lang.String" value="label14" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 23]"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="0" y="70" width="92" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.ComboBox" name="Status">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="Semua"/>
+                        <StringItem index="1" value="Baru"/>
+                        <StringItem index="2" value="Disetujui"/>
+                        <StringItem index="3" value="Tidak Disetujui"/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="Status" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[40, 23]"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="95" y="70" width="170" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

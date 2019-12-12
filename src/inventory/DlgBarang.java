@@ -2886,7 +2886,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         totalstok = 0;
                         while (rs2.next()) {
                             stokgudang = 0;
-                            ps3 = koneksi.prepareStatement("select stok from gudangbarang where kode_brng=? and kd_bangsal=?");
+                            ps3 = koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=?");
                             try {
                                 ps3.setString(1, rs.getString(1));
                                 ps3.setString(2, rs2.getString(1));
@@ -3038,7 +3038,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         rs.getString("golongan")
                     });
                     stokgudang = 0;
-                    ps3 = koneksi.prepareStatement("select stok from gudangbarang where kode_brng=? and kd_bangsal=?");
+                    ps3 = koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=?");
                     try {
                         ps3.setString(1, rs.getString(1));
                         ps3.setString(2, kdlokasi);
