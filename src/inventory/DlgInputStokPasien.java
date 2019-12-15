@@ -19,7 +19,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -48,7 +47,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
     private DecimalFormat df3 = new DecimalFormat("###");
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private double ttl=0,y=0,ttlhpp=0,ttljual=0,ppnobat=0;
+    private double ttl=0,y=0,ttlhpp=0,ttljual=0,ppnobat=0,stokobat;
     private int jml=0,i=0,index=0;
     private String Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="",
                    tampilkan_ppnobat_ralan="",aktifkanbatch="no";
@@ -602,10 +601,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        if(aktifkanbatch.equals("yes")){
+            index=0;
+            jml=tbDokter.getRowCount();
+            for(i=0;i<jml;i++){
+                if((Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0)&&(tbDokter.getValueAt(i,10).toString().trim().equals("")||tbDokter.getValueAt(i,11).toString().trim().equals(""))){
+                    index++;
+                }
+            }
+        }
+        
         if(nmgudang.getText().trim().equals("")||kdgudang.getText().trim().equals("")){
             Valid.textKosong(kdgudang,"Gudang");
         }else if(catatan.getText().trim().equals("")){
             Valid.textKosong(catatan,"Keterangan");
+        }else if(aktifkanbatch.equals("yes")&&(index>0)){
+            Valid.textKosong(TCari,"No.Batch/No.Faktur");
         }else if(tbDokter.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data kosong..!!!!");
             tbDokter.requestFocus();
@@ -1208,30 +1219,58 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         int row=tbDokter.getSelectedRow();
         if(nmgudang.getText().trim().equals("")){
              Valid.textKosong(kdgudang,"Asal Stok");
-        }else if(row!= -1){         
-             int kolom=tbDokter.getSelectedColumn();  
-             if((kolom==1)||(kolom==0)){    
-               if(!tabMode.getValueAt(row,0).toString().equals("")){
-                   try {
-                       if(Double.parseDouble(tabMode.getValueAt(row,0).toString())>Double.parseDouble(tabMode.getValueAt(row,6).toString())){
-                             JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
-                             TCari.requestFocus();
-                             tabMode.setValueAt("", row,0);  
+        }else if(row!= -1){            
+             if(!tabMode.getValueAt(row,0).toString().equals("")){
+                try {
+                    if(Double.parseDouble(tabMode.getValueAt(row,0).toString())>0){
+                        stokobat=0;   
+                        pstampil=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                        try {
+                            pstampil.setString(1,kdgudang.getText());
+                            pstampil.setString(2,tbDokter.getValueAt(row,1).toString());
+                            pstampil.setString(3,tbDokter.getValueAt(row,10).toString());
+                            pstampil.setString(4,tbDokter.getValueAt(row,11).toString());
+                            rstampil=pstampil.executeQuery();
+                            if(rstampil.next()){
+                                stokobat=rstampil.getDouble(1);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rstampil!=null){
+                                rstampil.close();
+                            }
+                            if(pstampil!=null){
+                                pstampil.close();
+                            }
+                        }  
+
+                        tbDokter.setValueAt(stokobat,row,6);
+                        y=0;
+                        try {
+                            y=Double.parseDouble(tabMode.getValueAt(row,0).toString());
+                        } catch (Exception e) {
+                            y=0;
+                        }
+                        
+                        if(stokobat<y){
+                              JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
+                              TCari.requestFocus();
+                              tabMode.setValueAt("", row,0); 
+                              tabMode.setValueAt(0, row,9); 
                         }else{
-                             y=Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString())*
-                                 Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
-                             tbDokter.setValueAt(y,tbDokter.getSelectedRow(),9);
-                             TCari.setText("");
+                              y=Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString())*
+                                  Double.parseDouble(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
+                              tbDokter.setValueAt(y,tbDokter.getSelectedRow(),9);
+                              TCari.setText("");
                         } 
-                   } catch (Exception e) {
-                       tabMode.setValueAt("", row,0);
-                       tabMode.setValueAt(0, row,9);
-                   }                                       
-                }else{
+                    }
+                } catch (Exception e) {
                     tabMode.setValueAt("", row,0);
                     tabMode.setValueAt(0, row,9);
-                }                 
-             }
+                }                                       
+             } 
+             
              ttl=0;
              for(int r=0;r<tabMode.getRowCount();r++){ 
                  y=0;
