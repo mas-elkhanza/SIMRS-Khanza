@@ -1100,7 +1100,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       pscaripesan.close();
                   }
               }
-          } catch (SQLException ex) {
+          } catch (Exception ex) {
               System.out.println(ex);
           }  
       }

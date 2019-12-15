@@ -819,14 +819,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
       Valid.textKosong(TCari,"No.Faktur");
   }else{
-     Sequel.AutoComitFalse();
-     sukses=true;
      try {
          ps=koneksi.prepareStatement("select no_retur_beli, kd_bangsal from returbeli where no_retur_beli=?");
          try {
              ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
              rs=ps.executeQuery();
              if(rs.next()){
+                Sequel.AutoComitFalse();
+                sukses=true;
                 ps2=koneksi.prepareStatement(
                      "select kode_brng,jml_retur2,no_batch,no_faktur from detreturbeli where no_retur_beli=? ");
                 try {
@@ -868,6 +868,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                     Sequel.RollBack();
                 }
+                
+                Sequel.AutoComitTrue();
+                if(sukses==true){
+                    tampil();
+                }
             }   
          } catch (Exception e) {
              System.out.println("Notif Retur : "+e);
@@ -882,11 +887,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
      } catch (SQLException ex) {
          System.out.println(ex);
      }  
-     
-     Sequel.AutoComitTrue();
-     if(sukses==true){
-         tampil();
-     }
   }       
     
 }//GEN-LAST:event_ppHapusActionPerformed

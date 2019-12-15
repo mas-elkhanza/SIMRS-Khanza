@@ -23,10 +23,12 @@ public class riwayatobat {
     public void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String kdbangsal,String status,String nobatch,String nofaktur){        
         try {
             stokakhir=0;stokawal=0;            
-            psawal=koneksi.prepareStatement("select stok from gudangbarang where kode_brng=? and kd_bangsal=?");
+            psawal=koneksi.prepareStatement("select stok from gudangbarang where kode_brng=? and kd_bangsal=? and no_batch=? and no_faktur=?");
             try {
                 psawal.setString(1,kodebarang);
                 psawal.setString(2,kdbangsal);
+                psawal.setString(3,nobatch);
+                psawal.setString(4,nofaktur);
                 rs=psawal.executeQuery();
                 if(rs.next()){
                     stokawal=rs.getDouble("stok");
