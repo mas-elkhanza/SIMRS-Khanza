@@ -1427,7 +1427,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 while(rs.next()){
                     nmbar.setText(rs.getString("nama_brng"));
                     Satuanbar.setText(rs.getString("kode_sat"));
-                    Hargaretur.setText(rs.getString("h_beli"));                    
+                    Hargaretur.setText(rs.getString("dasar"));                    
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
