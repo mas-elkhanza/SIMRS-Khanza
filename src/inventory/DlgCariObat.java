@@ -1599,64 +1599,16 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_ChkNoResepItemStateChanged
 
     private void ppStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppStokActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            for(i=0;i<tbObat.getRowCount();i++){ 
-                try {
-                    stokbarang=0; 
-                    psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
-                    try {
-                        psstok.setString(1,kdgudang.getText());
-                        psstok.setString(2,tbObat.getValueAt(i,2).toString());
-                        rsstok=psstok.executeQuery();
-                        if(rsstok.next()){
-                            stokbarang=rsstok.getDouble(1);
-                        }
-                    } catch (Exception e) {
-                        stokbarang=0;
-                        System.out.println("Notifikasi : "+e);
-                    }finally{
-                        if(rsstok != null){
-                            rsstok.close();
-                        }
-
-                        if(psstok != null){
-                            psstok.close();
-                        }
-                    }
-
-                    tbObat.setValueAt(stokbarang,i,10);
-                } catch (Exception e) {
-                    tbObat.setValueAt(0,i,10);
-                }
-            }   
-        }else if(TabRawat.getSelectedIndex()==1){
-            for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
-                try {
-                    stokbarang=0; 
-                    psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
-                    try {
-                        psstok.setString(1,kdgudang.getText());
-                        psstok.setString(2,tbDetailObatRacikan.getValueAt(i,1).toString());
-                        rsstok=psstok.executeQuery();
-                        if(rsstok.next()){
-                            stokbarang=rsstok.getDouble(1);
-                        }
-                    } catch (Exception e) {
-                        stokbarang=0;
-                        System.out.println("Notifikasi : "+e);
-                    }finally{
-                        if(rsstok != null){
-                            rsstok.close();
-                        }
-
-                        if(psstok != null){
-                            psstok.close();
-                        }
-                    }
-
-                    tbDetailObatRacikan.setValueAt(stokbarang,i,7);
-                } catch (Exception e) {
-                    tbDetailObatRacikan.setValueAt(0,i,7);
+        if(kdgudang.getText().equals("")){
+            Valid.textKosong(TCari,"Lokasi");                              
+        }else{
+            if(TabRawat.getSelectedIndex()==0){
+                for(i=0;i<tbObat.getRowCount();i++){ 
+                    getDataobat(i); 
+                }   
+            }else if(TabRawat.getSelectedIndex()==1){
+                for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
+                    getDatadetailobatracikan(i);
                 }
             }
         }
