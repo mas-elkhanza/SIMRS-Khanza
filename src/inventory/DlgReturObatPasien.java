@@ -24,7 +24,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
@@ -41,12 +40,11 @@ import javax.swing.table.TableColumn;
 public final class DlgReturObatPasien extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();  
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
+    private final validasi Valid=new validasi();
     private PreparedStatement pstampil;
     private ResultSet rstampil;
-    private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -56,8 +54,7 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"Tanggal Retur","No.Rawat","Pasien","Barang","Jml.Retur","Kode Barang"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{"Tanggal Retur","No.Rawat","Pasien","Barang","Jml.Retur","Kode Barang","Asal Stok","No.Batch","No.Faktur"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -65,7 +62,7 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 9; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -80,6 +77,13 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(i==6){
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+            }else if(i==7){
+                column.setPreferredWidth(70);
+            }else if(i==8){
+                column.setPreferredWidth(100);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -339,14 +343,15 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
-                
-                Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString(),0,Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()),"Retur Pasien",akses.getkode(),bangsal,"Hapus");                
-                Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"','"+bangsal+"','-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'", 
-                                 "stok=stok-'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'","kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");                    
+                //"Tanggal Retur"1,"No.Rawat"2,"Pasien"3,"Barang"4,"Jml.Retur"5,"Kode Barang"6,"Asal Stok"7,"No.Batch"8,"No.Faktur"9
+                Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString(),0,Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()),"Retur Pasien",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString(),"Hapus",tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString());                
+                Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString()+"'", 
+                                 "stok=stok-'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'","kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"' and kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' and no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString()+"' and no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString()+"'");                    
                 Sequel.queryu("delete from returpasien where tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' "+
                               "and no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' "+
-                              "and kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"'");
-                
+                              "and kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"' "+
+                              "and no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString()+"' "+
+                              "and no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString()+"'");
                 BtnCariActionPerformed(evt);
             }
         }       
@@ -494,8 +499,8 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{            
-            pstampil=koneksi.prepareStatement("select returpasien.tanggal, returpasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien),"+
-                      " concat(returpasien.kode_brng,' ',databarang.nama_brng), returpasien.jml,returpasien.kode_brng "+
+            pstampil=koneksi.prepareStatement("select returpasien.tanggal, returpasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien) as pasien,"+
+                      " concat(returpasien.kode_brng,' ',databarang.nama_brng) as barang, returpasien.jml,returpasien.kode_brng,returpasien.no_batch,returpasien.no_faktur "+
                       "from returpasien inner join reg_periksa inner join pasien inner join databarang "+
                       "on returpasien.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                       "and returpasien.kode_brng=databarang.kode_brng "+
@@ -517,10 +522,12 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
                 pstampil.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 pstampil.setString(12,"%"+TCari.getText().trim()+"%");
                 rstampil=pstampil.executeQuery();
-                while(rstampil.next()){                
+                while(rstampil.next()){              
                     tabMode.addRow(new Object[]{
-                        rstampil.getString(1),rstampil.getString(2),rstampil.getString(3),
-                        rstampil.getString(4),rstampil.getString(5),rstampil.getString(6)
+                        rstampil.getString("tanggal"),rstampil.getString("no_rawat"),rstampil.getString("pasien"),
+                        rstampil.getString("barang"),rstampil.getString("jml"),rstampil.getString("kode_brng"),
+                        Sequel.cariIsi("select kd_bangsal from stok_obat_pasien where kode_brng='"+rstampil.getString("kode_brng")+"' and no_batch='"+rstampil.getString("no_batch")+"' and no_faktur='"+rstampil.getString("no_faktur")+"'"),
+                        rstampil.getString("no_batch"),rstampil.getString("no_faktur")
                     });
                 }
             } catch (Exception e) {
