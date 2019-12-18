@@ -75,7 +75,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(150);
             }else if(i==2){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(270);
             }else if(i==3){
                 column.setPreferredWidth(300);
             }else if(i==4){
