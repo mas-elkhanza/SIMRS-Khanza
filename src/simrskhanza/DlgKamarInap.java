@@ -6025,8 +6025,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 akses.setkdbangsal(bangsal);
                             }
                             billing.reseppulang.inputresep.isCek();
-                            billing.reseppulang.inputresep.setNoRm(rs2.getString("no_rawat2"),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",norawat.getText()),
-                                    Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",norawat.getText()));
+                            billing.reseppulang.inputresep.setNoRm(rs2.getString("no_rawat2"),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
                             billing.reseppulang.inputresep.tampil();
                             billing.reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             billing.reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
@@ -6065,8 +6064,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     akses.setkdbangsal(bangsal);
                 }
                 billing.reseppulang.inputresep.isCek();
-                billing.reseppulang.inputresep.setNoRm(norawat.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",norawat.getText()),
-                        Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",norawat.getText()));
+                billing.reseppulang.inputresep.setNoRm(norawat.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
                 billing.reseppulang.inputresep.tampil();
                 billing.reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 billing.reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
