@@ -22,5 +22,6 @@ pendaftaran2
 presensi
 resumepasien
 nbproject/project.properties
-.DS_Store
 nbproject/private/private.xml
+.DS_Store
+src/.DS_Store
