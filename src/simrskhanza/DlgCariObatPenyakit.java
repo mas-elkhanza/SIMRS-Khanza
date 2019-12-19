@@ -29,8 +29,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -50,7 +50,11 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
     private WarnaTable2 warna=new WarnaTable2();
-    private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+    private String bangsal="",awal="0";
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private double jumlah,x,i;
+    private int z=0;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -60,23 +64,11 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={
-                "Kode Obat",
-                "Nama Obat",
-                "Jenis Obat",
-                "Harga Obat",
-                "Jml",
-                "Embalase",
-                "Tuslah",
-                "Total Biaya",
-                "Kode Penyakit",
-                "Nama Penyakit",
-                "Ciri-ciri Penyakit",
-                "Keterangan",
-                "Kategori Penyakit",
-                "Ciri-ciri Umum",
-                "Referensi","H.Beli"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "Kode Obat","Nama Obat","Jenis Obat","Harga Obat","Jml","Embalase","Tuslah","Total Biaya",
+            "Kode Penyakit","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Kategori Penyakit",
+            "Ciri-ciri Umum", "Referensi","H.Beli","Stok","No.Batch","No.Faktur"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
                     if ((colIndex==4)||(colIndex==5)||(colIndex==6)) {
@@ -89,41 +81,47 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (int i = 0; i < 16; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
-            if(i==0){
+        for (z = 0; z < 19; z++) {
+            TableColumn column = tbKamar.getColumnModel().getColumn(z);
+            if(z==0){
                 column.setPreferredWidth(100);
-            }else if(i==1){
+            }else if(z==1){
                 column.setPreferredWidth(200);
-            }else if(i==2){
+            }else if(z==2){
                 column.setPreferredWidth(90);
-            }else if(i==3){
+            }else if(z==3){
                 column.setPreferredWidth(90);
-            }else if(i==4){
+            }else if(z==4){
                 column.setPreferredWidth(40);
-            }else if(i==5){
+            }else if(z==5){
                 column.setPreferredWidth(90);
-            }else if(i==6){
+            }else if(z==6){
                 column.setPreferredWidth(90);
-            }else if(i==7){
+            }else if(z==7){
                 column.setPreferredWidth(90);
-            }else if(i==8){
+            }else if(z==8){
                 column.setPreferredWidth(90);
-            }else if(i==9){
+            }else if(z==9){
                 column.setPreferredWidth(170);
-            }else if(i==10){
+            }else if(z==10){
                 column.setPreferredWidth(170);
-            }else if(i==11){
+            }else if(z==11){
                 column.setPreferredWidth(170);
-            }else if(i==12){
+            }else if(z==12){
                 column.setPreferredWidth(170);
-            }else if(i==13){
+            }else if(z==13){
                 column.setPreferredWidth(170);
-            }else if(i==14){
+            }else if(z==14){
                 column.setPreferredWidth(170);
-            }else if(i==15){
+            }else if(z==15){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(z==16){
+                column.setPreferredWidth(40);
+            }else if(z==17){
+                column.setPreferredWidth(70);
+            }else if(z==18){
+                column.setPreferredWidth(100);
             }
         }
         warna.kolom=4;
@@ -685,57 +683,56 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String sql="select obat_penyakit.kd_penyakit,nm_penyakit,ciri_ciri,penyakit.keterangan, "+
-                   "nm_kategori,ciri_umum,obat_penyakit.kode_brng,nama_brng,jenis.nama,ralan,referensi,databarang.h_beli "+
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement("select obat_penyakit.kd_penyakit,nm_penyakit,ciri_ciri,penyakit.keterangan, "+
+                   "nm_kategori,ciri_umum,obat_penyakit.kode_brng,databarang.nama_brng,jenis.nama,databarang.ralan,referensi,databarang.h_beli "+
                    "from obat_penyakit inner join penyakit inner join kategori_penyakit inner join databarang inner join jenis "+
                    "on penyakit.kd_ktg=kategori_penyakit.kd_ktg and databarang.kdjns=jenis.kdjns and "+
                    "obat_penyakit.kd_penyakit=penyakit.kd_penyakit and obat_penyakit.kode_brng=databarang.kode_brng "+
-                   "where penyakit.nm_penyakit like '%"+PenyakitCari.getText()+"%' order by databarang.nama_brng";
-        prosesCari(sql);
-    }
+                   "where penyakit.nm_penyakit like ? order by databarang.nama_brng LIMIT "+awal+",500");
+            try {
+                awal="0";
+                if(cmbHlm.getItemCount()>0){
+                    awal=hlm[Integer.parseInt(cmbHlm.getSelectedItem().toString())];
+                }
+                
+                ps.setString(1,"%"+PenyakitCari.getText()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    //"Kode Obat","Nama Obat","Jenis Obat","Harga Obat","Jml","Embalase","Tuslah","Total Biaya",
+                    //"Kode Penyakit","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Kategori Penyakit",
+                    //"Ciri-ciri Umum", "Referensi","H.Beli","Stok","No.Batch","No.Faktur"
+                    tabMode.addRow(new String[]{
+                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("nama"),rs.getString("ralan"),"","0","0","0",
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
+                        rs.getString(6),rs.getString(11),rs.getString("h_beli")
+                    });
+                }
 
-    private void prosesCari(String sql) {
-        Valid.tabelKosong(tabMode);
-        try{
-            java.sql.Statement stat=koneksi.createStatement();
-            String awal="0";
-            if(cmbHlm.getItemCount()>0){
-                awal=hlm[Integer.parseInt(cmbHlm.getSelectedItem().toString())];
+                cmbHlm.removeAllItems();
+                rs.last();
+                jumlah=rs.getRow();
+                x=jumlah/499;
+                i=Math.ceil(x);
+                z=(int) i;
+
+                hlm=new String[z+1];
+                for(int j=1;j<=i;j++){
+                     int mulai=((j-1)*499+j)-1;
+                     hlm[j]=Integer.toString(mulai);
+                     cmbHlm.addItem(j);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-            ResultSet rs=stat.executeQuery(sql+" LIMIT "+awal+",500");
-            while(rs.next()){
-                String[] data={rs.getString(7),
-                               rs.getString(8),
-                               rs.getString(9),
-                               rs.getString(10),"","0","0","0",
-                               rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(11),
-                               rs.getString("h_beli")};
-                tabMode.addRow(data);
-            }
-            
-            cmbHlm.removeAllItems();
-            ResultSet rs2=koneksi.prepareStatement(sql).executeQuery();
-            rs2.last();
-            double jumlah=rs2.getRow();
-            double x=jumlah/499;
-            double i=Math.ceil(x);
-            int z=(int) i;
-            
-            hlm=new String[z+1];
-            for(int j=1;j<=i;j++){
-                 int mulai=((j-1)*499+j)-1;
-                 hlm[j]=Integer.toString(mulai);
-                 cmbHlm.addItem(j);
-            }
-            //rs2.close();
-            //rs.close();
-            //stat.close();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -773,6 +770,11 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",Kd2,TNoRw.getText());
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,Kd2.getText());
+        
+        bangsal=Sequel.cariIsi("select kd_bangsal from set_depo_ralan where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));
+        if(bangsal.equals("")){
+            bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+        }
     }
     
     private void jam(){

@@ -1280,7 +1280,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     nokunjungan,"false",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbObat.getValueAt(i,2).toString()),
                                                     signa1,signa2,""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),"0","",TNoRw.getText(),
                                                     Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                                                    tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
+                                                    tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString()
                                                 );
                                             }
                                         }else{
@@ -1330,7 +1330,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     nokunjungan,"false",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbObat.getValueAt(i,2).toString()),
                                                     signa1,signa2,""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),"0","",TNoRw.getText(),
                                                     Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                                                    tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
+                                                    tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString()
                                                 );
                                             }
                                         }else{
@@ -1392,7 +1392,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             nokunjungan,"false",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbObat.getValueAt(i,2).toString()),
                                             signa1,signa2,""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),"0","",TNoRw.getText(),
                                             Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                                            tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString()
+                                            tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString()
                                         );
                                     }
                                 }else{
@@ -1464,7 +1464,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             nokunjungan,"true",Sequel.cariIsi("select kode_brng_pcare from maping_obat_pcare where kode_brng=?",tbDetailObatRacikan.getValueAt(i,1).toString()),
                                             signa1,signa2,""+Double.parseDouble(tbDetailObatRacikan.getValueAt(i,10).toString()),"0","",TNoRw.getText(),
                                             Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                                            tbDetailObatRacikan.getValueAt(i,1).toString(),tbDetailObatRacikan.getValueAt(i,16).toString()
+                                            tbDetailObatRacikan.getValueAt(i,1).toString(),tbDetailObatRacikan.getValueAt(i,16).toString(),tbObat.getValueAt(i,17).toString()
                                         );
                                     }
                                 }else{
@@ -4028,7 +4028,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         nokunjungan=nokunjung;
     }
     
-    private void simpanObatPCare(String noKunjungan,String racikan,String kdObat,String signa1,String signa2,String jmlObat,String jmlPermintaan,String nmObatNonDPHO,String no_rawat,String tgl_perawatan,String jam,String kode_brng,String no_batch){
+    private void simpanObatPCare(String noKunjungan,String racikan,String kdObat,String signa1,String signa2,String jmlObat,String jmlPermintaan,String nmObatNonDPHO,String no_rawat,String tgl_perawatan,String jam,String kode_brng,String no_batch,String no_faktur){
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -4067,8 +4067,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                 }
-                Sequel.menyimpan2("pcare_obat_diberikan","?,?,?,?,?,?,?",7,new String[]{
-                    no_rawat,noKunjungan,kdObatSK,tgl_perawatan,jam,kode_brng,no_batch
+                Sequel.menyimpan2("pcare_obat_diberikan","?,?,?,?,?,?,?,?",8,new String[]{
+                    no_rawat,noKunjungan,kdObatSK,tgl_perawatan,jam,kode_brng,no_batch,no_faktur
                 });
             }
         }catch (Exception ex) {
