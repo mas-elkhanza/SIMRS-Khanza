@@ -21,8 +21,8 @@
     <entry key="ALARMRSISRUTE">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
-    <entry key="SECRETKEYAPIBPJS">s3HrkUEiqrwWyWUdSHi65g==</entry>
-    <entry key="CONSIDAPIBPJS">4JjSh1wbb1R/zn0kqM3DwA==</entry>
+    <entry key="SECRETKEYAPIBPJS">s3HrkUEiqrsasassaswWyWUdSHi65g==</entry>
+    <entry key="CONSIDAPIBPJS">4JjassqqSh1wbb1R/zn0kqM3DasasaswA==</entry>
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">4NNwqTdoTqRShdDlorgE5A==</entry>
     <entry key="CONSIDAPIAPLICARE">xpAVcYWj1J/dXthnAj4TZQ==</entry>
