@@ -780,7 +780,7 @@
                 <Component class="widget.ComboBox" name="Kelas">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="8">
+                      <StringArray count="18">
                         <StringItem index="0" value="-"/>
                         <StringItem index="1" value="Rawat Jalan"/>
                         <StringItem index="2" value="Kelas 1"/>
@@ -788,7 +788,17 @@
                         <StringItem index="4" value="Kelas 3"/>
                         <StringItem index="5" value="Kelas Utama"/>
                         <StringItem index="6" value="Kelas VIP"/>
-                        <StringItem index="7" value="Kelas VVIP"/>
+                        <StringItem index="7" value="ICU BIASA"/>
+                        <StringItem index="8" value="ICU VIP"/>
+                        <StringItem index="9" value="Isolasi"/>
+                        <StringItem index="10" value="PICU"/>
+                        <StringItem index="11" value="NICU"/>
+                        <StringItem index="12" value="VVIP 1"/>
+                        <StringItem index="13" value="VVIP 2"/>
+                        <StringItem index="14" value="VVIP 3"/>
+                        <StringItem index="15" value="Suite I"/>
+                        <StringItem index="16" value="Suite II"/>
+                        <StringItem index="17" value="President"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Kelas" noResource="true"/>
