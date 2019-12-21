@@ -27,11 +27,23 @@ public class koneksiDB {
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull");
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                 connection=dataSource.getConnection();       
-                System.out.println("                                                                           \n"+
+                System.out.println("  Koneksi Berhasil. Sorry bro loading, silahkan baca dulu.... \n\n"+
+                        "	Software ini adalah Software Menejemen Rumah Sakit/Klinik/\n" +
+                        "  Puskesmas yang  gratis dan boleh digunakan siapa saja tanpa dikenai \n" +
+                        "  biaya apapun. Dilarang keras memperjualbelikan/mengambil \n" +
+                        "  keuntungan dari Software ini dalam bentuk apapun tanpa seijin pembuat \n" +
+                        "  software (Khanza.Soft Media). Bagi yang sengaja memperjualbelikan/\n" +
+                        "  mengambil keuntangan dari softaware ini tanpa ijin, kami sumpahi sial \n" +
+                        "  1000 turunan, miskin sampai 500 turunan. Selalu mendapat kecelakaan \n" +
+                        "  sampai 400 turunan. Anak pertamanya cacat tidak punya kaki sampai 300 \n" +
+                        "  turunan. Susah cari jodoh sampai umur 50 tahun sampai 200 turunan.\n" +
+                        "  Ya Alloh maafkan kami karena telah berdoa buruk, semua ini kami lakukan\n" +
+                        "  karena kami tidak pernah rela karya kami dibajak tanpa ijin.\n\n"+
+                        "                                                                           \n"+
                         "  #    ____  ___  __  __  ____   ____    _  __ _                              \n" +
                         "  #   / ___||_ _||  \\/  ||  _ \\ / ___|  | |/ /| |__    __ _  _ __   ____ __ _ \n" +
                         "  #   \\___ \\ | | | |\\/| || |_) |\\___ \\  | ' / | '_ \\  / _` || '_ \\ |_  // _` |\n" +
@@ -683,6 +695,26 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=prop.getProperty("AKTIFKANTRACKSQL");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String HOSTWSLICA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("HOSTWSLICA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String KEYWSLICA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("KEYWSLICA"));
         }catch(Exception e){
             var=""; 
         }
