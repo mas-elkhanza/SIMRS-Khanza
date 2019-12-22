@@ -661,11 +661,16 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnBarangKeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        inputresep.setNoRm(TNoRw.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
-        inputresep.tampil();
-        inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        inputresep.setLocationRelativeTo(internalFrame1);
-        inputresep.setVisible(true);
+        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                TCari.requestFocus();
+        }else{
+            inputresep.setNoRm(TNoRw.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
+            inputresep.tampil();
+            inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            inputresep.setLocationRelativeTo(internalFrame1);
+            inputresep.setVisible(true);
+        }
     }//GEN-LAST:event_btnBarangActionPerformed
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
