@@ -25,12 +25,14 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
+import simrskhanza.DlgRawatInap;
 
 /**
  *
@@ -287,8 +289,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         NoRawat = new widget.TextBox();
         panelisi4 = new widget.panelisi();
         BtnSimpan = new widget.Button();
-        BtnHapus = new widget.Button();
         jLabel1 = new javax.swing.JLabel();
+        BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -367,27 +369,27 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         });
         panelisi4.add(BtnSimpan);
 
-        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnHapus.setMnemonic('R');
-        BtnHapus.setText("Reset");
-        BtnHapus.setToolTipText("Alt+R");
-        BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapusKeyPressed(evt);
-            }
-        });
-        panelisi4.add(BtnHapus);
-
         jLabel1.setName("jLabel1"); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(400, 23));
+        jLabel1.setPreferredSize(new java.awt.Dimension(383, 23));
         panelisi4.add(jLabel1);
+
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnCari.setMnemonic('E');
+        BtnCari.setText("Cari");
+        BtnCari.setToolTipText("Alt+E");
+        BtnCari.setName("BtnCari"); // NOI18N
+        BtnCari.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariActionPerformed(evt);
+            }
+        });
+        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariKeyPressed(evt);
+            }
+        });
+        panelisi4.add(BtnCari);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -864,15 +866,6 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TCariTindakanKeyPressed
 
-    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.queryu("delete from rawat_jl_dr where no_rawat=?",NoRawat.getText());
-        Sequel.queryu("delete from detail_pemberian_obat where no_rawat=? and tgl_perawatan=current_date()",NoRawat.getText());
-    }//GEN-LAST:event_BtnHapusActionPerformed
-
-    private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
-        
-    }//GEN-LAST:event_BtnHapusKeyPressed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         NoRawat.setText("");
         TCariObat.setText("");
@@ -917,6 +910,28 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbObatMouseClicked
 
+    private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        if(NoRawat.getText().trim().equals("")){
+            Valid.textKosong(NoRawat,"Pasien");
+        }else{
+            DlgRawatInap rawatinap=new DlgRawatInap(null,false);
+            rawatinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            rawatinap.setLocationRelativeTo(internalFrame1);
+            rawatinap.isCek();
+            rawatinap.setNoRm(NoRawat.getText(),new Date(),new Date());    
+            rawatinap.tampilDr();
+            rawatinap.setVisible(true);
+        }
+    }//GEN-LAST:event_BtnCariActionPerformed
+
+    private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            //BtnEditActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnSimpan,BtnKeluar);
+        }
+    }//GEN-LAST:event_BtnCariKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -936,7 +951,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAllBhp;
     private widget.Button BtnAllPeriksa;
-    private widget.Button BtnHapus;
+    private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
     private widget.PanelBiasa FormInput;
