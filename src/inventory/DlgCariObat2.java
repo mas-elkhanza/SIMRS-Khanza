@@ -95,7 +95,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"K","Jumlah","Kode","Nama Barang","Satuan","Letak Barang",
+        Object[] row={"K","Jumlah","Kode","Nama Barang","Satuan","Kandungan",
             "Harga(Rp)","Jenis Obat","Emb","Tslh","Stok","I.F.","H.Beli",
             "Aturan Pakai","Kategori","Golongan","No.Batch","No.Faktur","Kadaluarsa"
         };

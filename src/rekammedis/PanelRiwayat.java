@@ -6730,7 +6730,7 @@ public class PanelRiwayat extends widget.panelisi {
                                "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                                "where stts<>'Batal' and "+
-                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi limit 3").executeQuery();
+                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi desc limit 3").executeQuery();
                         urut=1;
                         while(rs2.next()){      
                             try {

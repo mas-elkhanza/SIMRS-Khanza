@@ -1645,7 +1645,7 @@ public class DlgBarang extends javax.swing.JDialog {
         } else if (Nm.getText().trim().equals("")) {
             Valid.textKosong(Nm, "Nama Barang");
         } else if (Letak.getText().trim().equals("")) {
-            Valid.textKosong(Letak, "Letak Barang");
+            Valid.textKosong(Letak, "Kandungan");
         } else if (beli.getText().trim().equals("")) {
             Valid.textKosong(beli, "Harga Beli");
         } else if (ralan.getText().trim().equals("")) {
@@ -1820,7 +1820,7 @@ public class DlgBarang extends javax.swing.JDialog {
         } else if (Nm.getText().trim().equals("")) {
             Valid.textKosong(Nm, "Nama Barang");
         } else if (Letak.getText().trim().equals("")) {
-            Valid.textKosong(Letak, "Letak Barang");
+            Valid.textKosong(Letak, "Kandungan");
         } else if (beli.getText().trim().equals("")) {
             Valid.textKosong(beli, "Harga Beli");
         } else if (ralan.getText().trim().equals("")) {

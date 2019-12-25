@@ -96,7 +96,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
 
         tabModeobat=new DefaultTableModel(null,new Object[]{
                 "K","Jumlah","Kode Barang","Nama Barang","Satuan",
-                "Letak Barang","Harga(Rp)","Jenis Obat","Emb","Tsl",
+                "Kandungan","Harga(Rp)","Jenis Obat","Emb","Tsl",
                 "Stok","Aturan Pakai","I.F.","H.Beli","Kategori","Golongan",
                 "No.Batch","No.Faktur","Kadaluarsa"
             }){
