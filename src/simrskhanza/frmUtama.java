@@ -482,6 +482,7 @@ import grafikanalisa.GrafikTBSkoringAnak;
 import grafikanalisa.GrafikTBStatusHIV;
 import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
+import inventaris.AsalHibah;
 import inventaris.InventarisPermintaanPerbaikan;
 import inventaris.KeslingLimbahB3Medis;
 import inventaris.KeslingLimbahDomestik;
@@ -497,6 +498,7 @@ import inventory.DlgPengajuanBarangMedis;
 import inventory.DlgRekapObatPasien;
 import inventory.DlgRekapObatPoli;
 import inventory.DlgSisaStok;
+import inventory.HibahObatBHP;
 import ipsrs.DlgPengajuanBarangNonMedis;
 import java.awt.event.ActionEvent;
 import java.net.InetAddress;
@@ -15560,6 +15562,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHibahObatBHPActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        HibahObatBHP pembelian=new HibahObatBHP(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnAsalHibahActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        AsalHibah form=new AsalHibah(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16149,7 +16175,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang,btnGrafikHAIsPasienBulan,btnPermintaanPerbaikanInventaris,
             btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK,btnGrafikHAIsLajuILO,btnGrafikHAIsLajuHAP,
             btnMappingPoliInhealth,btnMappingDokterInhealth,btnMappingTindakanRalanInhealth,btnMappingTindakanRanapInhealth,btnMappingTindakanRadiologiInhealth,
-            btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth;
+            btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah;
     
     public void isWall(){
         try{            
@@ -16664,6 +16690,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
 
+            if(akses.gethibah_obat_bhp()==true){
+                Panelmenu.add(btnHibahObatBHP);
+                jmlmenu++;
+            }
+             
             if(akses.getpenjualan_obat()==true){
                 Panelmenu.add(btnPenjualan);
                 jmlmenu++;
@@ -16922,6 +16953,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         }else if(cmbMenu.getSelectedIndex()==5){ 
             jmlmenu=0;
+            if(akses.getasal_hibah()==true){
+                Panelmenu.add(btnAsalHibah);  
+                jmlmenu++;
+            }   
+            
             if(akses.getinventaris_jenis()==true){
                 Panelmenu.add(btnJenisInventaris);  
                 jmlmenu++;
@@ -19528,6 +19564,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPemesanan);
             jmlmenu++;
         }
+        
+        if(akses.gethibah_obat_bhp()==true){
+            Panelmenu.add(btnHibahObatBHP);
+            jmlmenu++;
+        }
 
         if(akses.getpenjualan_obat()==true){
             Panelmenu.add(btnPenjualan);
@@ -19784,6 +19825,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
 
+        if(akses.getasal_hibah()==true){
+            Panelmenu.add(btnAsalHibah);  
+            jmlmenu++;
+        }
+        
         if(akses.getinventaris_jenis()==true){
             Panelmenu.add(btnJenisInventaris);  
             jmlmenu++;
@@ -22541,6 +22587,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
 
+        if(akses.gethibah_obat_bhp()==true){
+            if(btnHibahObatBHP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHibahObatBHP);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenjualan_obat()==true){
             if(btnPenjualan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenjualan);
@@ -22898,6 +22951,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         } 
 
+        if(akses.getasal_hibah()==true){
+            if(btnAsalHibah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAsalHibah);  
+                jmlmenu++;
+            }                
+        }  
+        
         if(akses.getinventaris_jenis()==true){
             if(btnJenisInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJenisInventaris);  
@@ -27303,6 +27363,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMappingTindakanOperasiInhealth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMappingTindakanOperasiInhealthActionPerformed(evt);
+            }
+        });
+        
+        btnHibahObatBHP = new widget.ButtonBig();
+        btnHibahObatBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address_Book_Alt_blue_86952.png"))); 
+        btnHibahObatBHP.setText("Hibah Obat & BHP");
+        btnHibahObatBHP.setIconTextGap(0);
+        btnHibahObatBHP.setName("btnHibahObatBHP"); 
+        btnHibahObatBHP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHibahObatBHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHibahObatBHPActionPerformed(evt);
+            }
+        });
+        
+        btnAsalHibah = new widget.ButtonBig();
+        btnAsalHibah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_filing_cabinet_search-g_86207.png"))); 
+        btnAsalHibah.setText("Asal Hibah");
+        btnAsalHibah.setIconTextGap(0);
+        btnAsalHibah.setName("btnAsalHibah"); 
+        btnAsalHibah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAsalHibah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsalHibahActionPerformed(evt);
             }
         });
     }

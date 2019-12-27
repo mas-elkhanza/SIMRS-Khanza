@@ -14,11 +14,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -122,7 +120,7 @@ public class DlgPembelian extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(85);
             }else if(i==13){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else{
                 column.setMinWidth(0);
                 column.setMaxWidth(0);                   
