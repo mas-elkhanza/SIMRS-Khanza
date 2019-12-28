@@ -500,7 +500,6 @@ import inventory.DlgRekapObatPoli;
 import inventory.DlgSisaStok;
 import inventory.HibahObatBHP;
 import ipsrs.DlgPengajuanBarangNonMedis;
-import java.awt.event.ActionEvent;
 import java.net.InetAddress;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSBagianTubuhPerTahun;
@@ -15586,6 +15585,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnAsuhanGiziActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
+    private void btnKirimTagihanInheathActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16175,7 +16182,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPerkiraanBiayaRanap,btnRekapObatPoli,btnRekapObatPasien,btnGrafikHAIsPasienRuang,btnGrafikHAIsPasienBulan,btnPermintaanPerbaikanInventaris,
             btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK,btnGrafikHAIsLajuILO,btnGrafikHAIsLajuHAP,
             btnMappingPoliInhealth,btnMappingDokterInhealth,btnMappingTindakanRalanInhealth,btnMappingTindakanRanapInhealth,btnMappingTindakanRadiologiInhealth,
-            btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah;
+            btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath;
     
     public void isWall(){
         try{            
@@ -18036,6 +18043,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getinhealth_kirim_tagihan()==true){
+                Panelmenu.add(btnKirimTagihanInheath);
+                jmlmenu++;
+            }
+            
             if(akses.getpcare_cek_penyakit()==true){
                 Panelmenu.add(btnCekPCareDiagnosa);
                 jmlmenu++;
@@ -18376,6 +18388,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdata_resume_pasien()==true){
                 Panelmenu.add(btnResumePasien);
+                jmlmenu++;
+            }
+            
+            if(akses.getasuhan_gizi()==true){
+                Panelmenu.add(btnAsuhanGizi);
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==12){  
@@ -20898,6 +20915,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getinhealth_kirim_tagihan()==true){
+            Panelmenu.add(btnKirimTagihanInheath);
+            jmlmenu++;
+        }
+        
         if(akses.getpcare_cek_penyakit()==true){
             Panelmenu.add(btnCekPCareDiagnosa);
             jmlmenu++;
@@ -21239,6 +21261,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnResumePasien);
             jmlmenu++;
         }
+        
+        if(akses.getasuhan_gizi()==true){
+            Panelmenu.add(btnAsuhanGizi);
+            jmlmenu++;
+        } 
 
         if(akses.getpengambilan_utd2()==true){
             Panelmenu.add(btnPengambilanUTD2); 
@@ -24451,6 +24478,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getinhealth_kirim_tagihan()==true){
+            if(btnKirimTagihanInheath.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKirimTagihanInheath);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpcare_cek_penyakit()==true){
             if(btnCekPCareDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekPCareDiagnosa);
@@ -24925,6 +24959,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdata_resume_pasien()==true){
             if(btnResumePasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnResumePasien);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getasuhan_gizi()==true){
+            if(btnAsuhanGizi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAsuhanGizi);
                 jmlmenu++;
             }                
         }
@@ -27387,6 +27428,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAsalHibah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAsalHibahActionPerformed(evt);
+            }
+        });
+        
+        btnAsuhanGizi= new widget.ButtonBig();
+        btnAsuhanGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_cake_3_61139.png"))); 
+        btnAsuhanGizi.setText("Asuhan Gizi");
+        btnAsuhanGizi.setIconTextGap(0);
+        btnAsuhanGizi.setName("btnAsuhanGizi"); 
+        btnAsuhanGizi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAsuhanGizi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsuhanGiziActionPerformed(evt);
+            }
+        });
+        
+        btnKirimTagihanInheath= new widget.ButtonBig();
+        btnKirimTagihanInheath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_constr_account_statements_1267308.png"))); 
+        btnKirimTagihanInheath.setText("Tagihan Inhealth");
+        btnKirimTagihanInheath.setIconTextGap(0);
+        btnKirimTagihanInheath.setName("btnKirimTagihanInheath"); 
+        btnKirimTagihanInheath.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKirimTagihanInheath.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKirimTagihanInheathActionPerformed(evt);
             }
         });
     }
