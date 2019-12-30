@@ -42,7 +42,6 @@ import org.springframework.http.MediaType;
  */
 public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private BPJSApi api=new BPJSApi();
@@ -87,8 +86,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable()); 
         SEP.setDocument(new batasInput((byte)60).getKata(SEP));
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/";
+            URL = koneksiDB.URLAPIBPJS()+"/SEP/";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }

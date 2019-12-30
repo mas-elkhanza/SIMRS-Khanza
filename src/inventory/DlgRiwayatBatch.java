@@ -1,9 +1,6 @@
 package inventory;
-import keuangan.Jurnal;
 import fungsi.batasInput;
-import keuangan.*;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
@@ -21,13 +18,10 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 public class DlgRiwayatBatch extends javax.swing.JDialog {
-    private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private final Jurnal jur=new Jurnal();
     private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs,rs2;
-    private final String diagnosa="";
     private StringBuilder htmlContent;
 
     
@@ -476,7 +470,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from penjualan inner join detailjual inner join databarang inner join bangsal inner join petugas "+
                                 "on penjualan.nota_jual=detailjual.nota_jual and databarang.kode_brng=detailjual.kode_brng "+
                                 "and penjualan.kd_bangsal=bangsal.kd_bangsal and penjualan.nip=petugas.nip "+
-                                "where detailjual.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                                "where detailjual.no_batch='"+rs.getString("no_batch")+"' and detailjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -528,7 +522,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang inner join bangsal "+
                                 "on databarang.kode_brng=detail_pemberian_obat.kode_brng and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat and "+
                                 "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
-                                "where detail_pemberian_obat.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                                "where detail_pemberian_obat.no_batch='"+rs.getString("no_batch")+"' and detail_pemberian_obat.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -578,7 +572,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from returjual inner join detreturjual inner join databarang inner join bangsal inner join petugas inner join pasien "+
                                 "on returjual.no_retur_jual=detreturjual.no_retur_jual and databarang.kode_brng=detreturjual.kode_brng "+
                                 "and returjual.kd_bangsal=bangsal.kd_bangsal and returjual.nip=petugas.nip and returjual.no_rkm_medis=pasien.no_rkm_medis "+
-                                "where detreturjual.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                                "where detreturjual.no_batch='"+rs.getString("no_batch")+"' and detreturjual.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -630,7 +624,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from piutang inner join detailpiutang inner join databarang inner join bangsal inner join petugas "+
                                 "on piutang.nota_piutang=detailpiutang.nota_piutang and databarang.kode_brng=detailpiutang.kode_brng "+
                                 "and piutang.kd_bangsal=bangsal.kd_bangsal and piutang.nip=petugas.nip "+
-                                "where detailpiutang.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                                "where detailpiutang.no_batch='"+rs.getString("no_batch")+"' and detailpiutang.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -682,7 +676,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from returpiutang inner join detreturpiutang inner join databarang inner join bangsal inner join petugas inner join pasien "+
                                 "on returpiutang.no_retur_piutang=detreturpiutang.no_retur_piutang and databarang.kode_brng=detreturpiutang.kode_brng "+
                                 "and returpiutang.kd_bangsal=bangsal.kd_bangsal and returpiutang.nip=petugas.nip and returpiutang.no_rkm_medis=pasien.no_rkm_medis "+
-                                "where detreturpiutang.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                                "where detreturpiutang.no_batch='"+rs.getString("no_batch")+"' and detreturpiutang.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -734,7 +728,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from returbeli inner join detreturbeli inner join databarang inner join bangsal inner join petugas inner join datasuplier "+
                                 "on returbeli.no_retur_beli=detreturbeli.no_retur_beli and databarang.kode_brng=detreturbeli.kode_brng "+
                                 "and returbeli.kd_bangsal=bangsal.kd_bangsal and returbeli.nip=petugas.nip and returbeli.kode_suplier=datasuplier.kode_suplier "+
-                                "where detreturbeli.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                                "where detreturbeli.no_batch='"+rs.getString("no_batch")+"' and detreturbeli.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+

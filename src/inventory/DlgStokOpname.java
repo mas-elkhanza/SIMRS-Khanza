@@ -62,7 +62,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         setSize(628,674);
 
         Object[] row={"Kode Barang","Nama Barang","Harga Beli","Satuan","Tanggal","Stok","Real",
-                      "Selisih","Total Real","Nominal Hilang(Rp)","Keterangan","Kode Lokasi","Nama Lokasi"};
+                      "Selisih","Total Real","Nominal Hilang(Rp)","Keterangan","Kode Lokasi","Nama Lokasi","No.Batch","No.Faktur"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -71,7 +71,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 15; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -99,6 +99,10 @@ public final class DlgStokOpname extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }else if(i==12){
                 column.setPreferredWidth(130);
+            }else if(i==13){
+                column.setPreferredWidth(70);
+            }else if(i==14){
+                column.setPreferredWidth(100);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -277,6 +281,8 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         kdjenis = new widget.TextBox();
         kdkategori = new widget.TextBox();
         kdgolongan = new widget.TextBox();
+        nobatch = new widget.TextBox();
+        nofaktur = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -497,6 +503,24 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         kdgolongan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kdgolonganKeyPressed(evt);
+            }
+        });
+
+        nobatch.setEditable(false);
+        nobatch.setName("nobatch"); // NOI18N
+        nobatch.setPreferredSize(new java.awt.Dimension(75, 23));
+        nobatch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nobatchKeyPressed(evt);
+            }
+        });
+
+        nofaktur.setEditable(false);
+        nofaktur.setName("nofaktur"); // NOI18N
+        nofaktur.setPreferredSize(new java.awt.Dimension(75, 23));
+        nofaktur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nofakturKeyPressed(evt);
             }
         });
 
@@ -786,7 +810,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Kdbar,"opname","kd_bangsal='"+kdgudang.getText()+"' and tanggal='"+Tanggal.getSelectedItem()+"' and kode_brng");
+        Valid.hapusTable(tabMode,Kdbar,"opname","kd_bangsal='"+kdgudang.getText()+"' and tanggal='"+Tanggal.getSelectedItem()+"' and no_batch='"+nobatch.getText()+"' and no_faktur='"+nofaktur.getText()+"' and kode_brng");
         BtnCariActionPerformed(evt);
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -974,6 +998,14 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         // TODO add your handling code here:
     }//GEN-LAST:event_kdgolonganKeyPressed
 
+    private void nobatchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nobatchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nobatchKeyPressed
+
+    private void nofakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nofakturKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nofakturKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1043,6 +1075,8 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
     private widget.TextBox nmgudang;
     private widget.TextBox nmjns;
     private widget.TextBox nmkategori;
+    private widget.TextBox nobatch;
+    private widget.TextBox nofaktur;
     private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -1057,8 +1091,8 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         try{     
             if(nmjns.getText().equals("")&&nmkategori.getText().equals("")&&nmgolongan.getText().equals("")&&TCari.getText().equals("")){
                 pstampil=koneksi.prepareStatement("select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
-                     "opname.real, opname.selisih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal "+
-                     "from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
+                     "opname.real, opname.selisih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, "+
+                     "opname.no_batch,opname.no_faktur from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
                      "inner join bangsal on opname.kd_bangsal=bangsal.kd_bangsal "+
                      "inner join jenis on databarang.kdjns=jenis.kdjns "+
                      "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
@@ -1066,8 +1100,8 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
                      "opname.tanggal between ? and ? order by opname.tanggal");
             }else{
                 pstampil=koneksi.prepareStatement("select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
-                     "opname.real, opname.selisih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal "+
-                     "from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
+                     "opname.real, opname.selisih, (opname.real*opname.h_beli) as totalreal,opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, "+
+                     "opname.no_batch,opname.no_faktur from opname inner join databarang on opname.kode_brng=databarang.kode_brng "+
                      "inner join bangsal on opname.kd_bangsal=bangsal.kd_bangsal "+
                      "inner join jenis on databarang.kdjns=jenis.kdjns "+
                      "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode "+
@@ -1139,7 +1173,8 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
                         rstampil.getString(1),rstampil.getString(2),df2.format(rstampil.getDouble(3)),
                         rstampil.getString(4),rstampil.getString(5),rstampil.getString(6),rstampil.getString(7),                              
                         rstampil.getString(8),df2.format(rstampil.getDouble(9)),df2.format(rstampil.getDouble(10)),
-                        rstampil.getString(11),rstampil.getString(12),rstampil.getString(13)
+                        rstampil.getString(11),rstampil.getString(12),rstampil.getString(13),rstampil.getString(14),
+                        rstampil.getString(15)
                     });
                 }
             } catch (Exception e) {
@@ -1167,7 +1202,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         Harga.setText("0");
         Real.setText("0");
         Selisih.setText("0");        
-        Keterangan.setText("");
+        Keterangan.setText("");   
+        nobatch.setText("");   
+        nofaktur.setText("");
         Tanggal.setDate(new Date());
         Nominal.setText("0");
         Stok.requestFocus();
@@ -1185,7 +1222,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
             Nominal.setText(tbKamar.getValueAt(row,8).toString());      
             Keterangan.setText(tbKamar.getValueAt(row,9).toString());   
             kdgudang.setText(tbKamar.getValueAt(row,11).toString());   
-            nmgudang.setText(tbKamar.getValueAt(row,12).toString());       
+            nmgudang.setText(tbKamar.getValueAt(row,12).toString());   
+            nobatch.setText(tbKamar.getValueAt(row,13).toString());  
+            nofaktur.setText(tbKamar.getValueAt(row,14).toString());      
             Valid.SetTgl(Tanggal,tbKamar.getValueAt(row,4).toString());
         }
     }

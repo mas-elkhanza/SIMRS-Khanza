@@ -44,6 +44,8 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
     private double ttl=0,subttl=0;
     private String nokeluar="",bang="",ptg="",jen="",bar="",tanggal="";
+    private String aktifkanbatch="no";
+    private boolean sukses=true;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -53,7 +55,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Keluar","Tanggal","Petugas","Bangsal","Keterangan","","",""
+                "No.Keluar","Tanggal","Keterangan","Lokasi","Petugas","","",""
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -67,17 +69,17 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(200);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(350);
             }else if(i==3){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(140);
             }else if(i==4){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(30);
             }else if(i==7){
                 column.setPreferredWidth(90);
             }
@@ -230,7 +232,12 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });      
         
-        
+        try {
+            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            aktifkanbatch = "no";
+        }
     }    
 
     /** This method is called from within the constructor to
@@ -883,6 +890,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
             Valid.textKosong(TCari,"No.Keluar");
         }else{
+           Sequel.AutoComitFalse();
+           sukses=true;
            try {
                ps=koneksi.prepareStatement(
                        "select no_keluar, kd_bangsal from pengeluaran_obat_bhp where no_keluar=?");
@@ -891,16 +900,22 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                   rs=ps.executeQuery();
                   if(rs.next()){
                       ps2=koneksi.prepareStatement(
-                           "select kode_brng,jumlah from detail_pengeluaran_obat_bhp where no_keluar=? ");
+                           "select kode_brng,jumlah,no_batch,no_faktur from detail_pengeluaran_obat_bhp where no_keluar=? ");
                       try {
                           ps2.setString(1,rs.getString(1));                
                           rs2=ps2.executeQuery();
                           while(rs2.next()){
-                              Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Stok Keluar",akses.getkode(),rs.getString("kd_bangsal"),"Hapus");
-                              Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal")+"','"+rs2.getString("jumlah") +"'", 
-                                                     "stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                              Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Stok Keluar",akses.getkode(),rs.getString("kd_bangsal"),"Hapus",rs2.getString("no_batch"),rs2.getString("no_faktur"));
+                              if(aktifkanbatch.equals("yes")){
+                                 Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
+                                    ""+rs2.getDouble("jumlah"),rs2.getString("no_batch"),rs2.getString("kode_brng"),rs2.getString("no_faktur")
+                                 });
+                              }
+                              Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal")+"','"+rs2.getString("jumlah") +"','"+rs2.getString("no_batch")+"','"+rs2.getString("no_faktur")+"'", 
+                                                     "stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and no_batch='"+rs2.getString("no_batch")+"' and no_faktur='"+rs2.getString("no_faktur")+"'");
                           }
                       } catch (Exception e) {
+                          sukses=false;
                           System.out.println("Notifikasi : "+e);
                       } finally{
                           if(rs2!=null){
@@ -910,13 +925,21 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                               ps2.close();
                           }
                       }
-                      Sequel.queryu("delete from tampjurnal");
-                      Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Medis from set_akun"),"PERSEDIAAN BARANG",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'"),"0"});
-                      Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Medis from set_akun"),"KONTRA PERSEDIAAN BARANG","0",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'")}); 
-                      jur.simpanJurnal(rs.getString("no_keluar"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP"+", OLEH "+akses.getkode());
-                  }         
-                  Sequel.queryu("delete from pengeluaran_obat_bhp where no_keluar='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"'");            
-                  tampil();
+                      if(sukses==true){
+                         Sequel.queryu("delete from tampjurnal");
+                         Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Medis from set_akun"),"PERSEDIAAN BARANG",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'"),"0"});
+                         Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Medis from set_akun"),"KONTRA PERSEDIAAN BARANG","0",Sequel.cariIsi("select sum(total) from detail_pengeluaran_obat_bhp where no_keluar='"+rs.getString("no_keluar")+"'")}); 
+                         sukses=jur.simpanJurnal(rs.getString("no_keluar"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP"+", OLEH "+akses.getkode());  
+                      } 
+                  }    
+                  if(sukses==true){
+                      Sequel.queryu("delete from pengeluaran_obat_bhp where no_keluar='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"'");   
+                      Sequel.Commit();
+                  }else{
+                      sukses=false;
+                      JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                      Sequel.RollBack();
+                  }
                } catch (Exception e) {
                    System.out.println("Notifikasi : "+e);
                } finally{
@@ -929,7 +952,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                }            
            } catch (Exception ex) {
                System.out.println(ex);
-           }     
+           } 
+           if(sukses==true){
+               tampil();
+           }
         }
     }           
 }//GEN-LAST:event_ppHapusActionPerformed
@@ -1045,15 +1071,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 while(rs.next()){     
                     tabMode.addRow(new String[]{
                         rs.getString("no_keluar"),rs.getString("tanggal"),
-                        rs.getString("nip")+", "+rs.getString("nama"),
+                        rs.getString("keterangan"),
                         rs.getString("kd_bangsal")+", "+rs.getString("nm_bangsal"),
-                        rs.getString("keterangan"),"","",""
+                        rs.getString("nip")+", "+rs.getString("nama"),"","",""
                     });
                     tabMode.addRow(new String[]{
-                        "","No.Batch","Barang","Jenis","Satuan","Harga","Jml","Total"
+                        "","No.Batch & Faktur","Barang","Jenis","Satuan","Harga","Jml","Total"
                     });
                     ps2=koneksi.prepareStatement(
-                            " select detail_pengeluaran_obat_bhp.kode_brng,databarang.nama_brng,"+
+                            " select detail_pengeluaran_obat_bhp.kode_brng,databarang.nama_brng,detail_pengeluaran_obat_bhp.no_faktur,"+
                             " jenis.nama,detail_pengeluaran_obat_bhp.harga_beli,detail_pengeluaran_obat_bhp.jumlah, "+
                             " detail_pengeluaran_obat_bhp.kode_sat,detail_pengeluaran_obat_bhp.no_batch,detail_pengeluaran_obat_bhp.total from "+
                             " detail_pengeluaran_obat_bhp inner join databarang inner join jenis "+
@@ -1071,7 +1097,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             subttl=subttl+rs2.getDouble("total");
                             ttl=ttl+rs2.getDouble("total");
                             tabMode.addRow(new String[]{
-                                "",no+". "+rs2.getString("no_batch"),rs2.getString("kode_brng")+", "+rs2.getString("nama_brng"),
+                                "",no+". B "+rs2.getString("no_batch")+", F "+rs2.getString("no_faktur"),rs2.getString("kode_brng")+", "+rs2.getString("nama_brng"),
                                 rs2.getString("nama"),rs2.getString("kode_sat"),df2.format(rs2.getDouble("harga_beli")),
                                 df2.format(rs2.getDouble("jumlah")),df2.format(rs2.getDouble("total"))
                             });

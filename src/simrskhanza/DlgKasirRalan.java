@@ -69,7 +69,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private PreparedStatement psotomatis,psotomatis2,pskasir,pscaripiutang;
     private ResultSet rskasir;
     private final Properties prop = new Properties();
-    private Date cal=new Date();
     private DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
     private String aktifkanparsial="no",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
             sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?,?,?,'Belum')",
@@ -5838,26 +5837,15 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKasirRalan.requestFocus();
         }else{
-            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
-            }else {
-                jmlparsial=0;
-                if(aktifkanparsial.equals("yes")){
-                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
-                }
-                if(jmlparsial>0){
-                    DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
-                    resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    resep.setLocationRelativeTo(internalFrame1);
-                    resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),Jam.getText().substring(0,2),Jam.getText().substring(3,5),Jam.getText().substring(6,8),
-                            tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),"ralan");
-                    resep.isCek();
-                    resep.tampilobat();
-                    resep.setVisible(true);
-                }else{
-                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                    }else{ 
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+                }else {
+                    jmlparsial=0;
+                    if(aktifkanparsial.equals("yes")){
+                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
+                    }
+                    if(jmlparsial>0){
                         DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
                         resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         resep.setLocationRelativeTo(internalFrame1);
@@ -5866,9 +5854,25 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         resep.isCek();
                         resep.tampilobat();
                         resep.setVisible(true);
-                    }
-                }                      
-            }            
+                    }else{
+                        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                        }else{ 
+                            DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
+                            resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                            resep.setLocationRelativeTo(internalFrame1);
+                            resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),Jam.getText().substring(0,2),Jam.getText().substring(3,5),Jam.getText().substring(6,8),
+                                    tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),"ralan");
+                            resep.isCek();
+                            resep.tampilobat();
+                            resep.setVisible(true);
+                        }
+                    }                      
+                }  
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+                tbKasirRalan.requestFocus();
+            }          
         }
     }//GEN-LAST:event_MnResepDOkterActionPerformed
 

@@ -6290,7 +6290,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void ChkRMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkRMItemStateChanged
         if(ChkRM.isSelected()==true){
             TNo.setEditable(false);
-            TNo.setBackground(new Color(245,250,240));            
+            TNo.setBackground(new Color(245,250,240));  
+            autoNomor();
         }else if(ChkRM.isSelected()==false){
             TNo.setEditable(true);
             TNo.setBackground(new Color(250,255,245));

@@ -33,7 +33,6 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgPasien member=new DlgPasien(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private final Properties prop = new Properties(); 
@@ -1683,7 +1682,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join petugas on periksa_radiologi.nip=petugas.nip "+
                         "inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter where "+
-                        "periksa_radiologi.tgl_periksa between ? and ? order by periksa_radiologi.tgl_periksa desc,periksa_radiologi.jam desc");
+                        "periksa_radiologi.tgl_periksa between ? and ? group by concat(periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,periksa_radiologi.jam) "+
+                        "order by periksa_radiologi.tgl_periksa desc,periksa_radiologi.jam desc");
             }else{
                 ps=koneksi.prepareStatement(
                         "select periksa_radiologi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,petugas.nama,periksa_radiologi.tgl_periksa,"+

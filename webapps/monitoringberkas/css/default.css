@@ -257,7 +257,7 @@ color: #323232;
 .head td{
 	color:#323232;
 	font: 11px  tahoma;
-	background: #fafff5;
+	background: #FFFAF8;
 	border-bottom: 1px solid #f1f6ec;
         border-right: 1px solid #f1f6ec;
 	border-top: 1px solid #f1f6ec;
@@ -268,7 +268,7 @@ color: #323232;
 .head3 td{
 	color:#323232;
 	font: 11px  tahoma;
-	background: #fafff5;
+	background: #FFFAF8;
 	border-bottom: 1px solid #f1f6ec;
 	border-top: 1px solid #f1f6ec;
 	letter-spacing: 1px;
@@ -278,7 +278,7 @@ color: #323232;
 .head4 td{
 	color:#323232;
 	font: 11px  tahoma;
-	background: #fafff5;
+	background: #FFFAF8;
 	border-bottom: 1px solid #e2e7dd;
 	letter-spacing: 1px;
 	padding: 4px 2px 4px 10px;
@@ -287,7 +287,7 @@ color: #323232;
 .head2 td{
 	color:#323232;
 	font: 11px  tahoma;
-	background: #fafff5;
+	background: #FFFAF8;
 	border-bottom: 1px solid #e2e7dd;
         border-right: 1px solid #777777;
 	letter-spacing: 1px;
@@ -441,11 +441,11 @@ color: #323232;
 }
 
 .text6 {
-	background: #fafff5;
+	background: #FFFAF8;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
-	border: 1px solid #fafff5;
+	border: 1px solid #FFFAF8;
 	color: #323232;
 }
 

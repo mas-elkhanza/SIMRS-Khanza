@@ -45,7 +45,7 @@ public class PanelRiwayat extends widget.panelisi {
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rs5,rshal;
     private PreparedStatement ps,ps2;
-    private String tanggal="",jam="",dpjp="",kddpjp="",tanggal1="",tanggal2="",norm="",keputusan="";
+    private String tanggal="",jam="",dpjp="",kddpjp="",tanggal1="",tanggal2="",norm="",keputusan="",dokterrujukan="",polirujukan="";
     private StringBuilder htmlContent;
     private boolean caritanggal=false;
     private int i=0,y=0,w=0,urut;
@@ -813,7 +813,27 @@ public class PanelRiwayat extends widget.panelisi {
                         }
                             
                         urut=1;
-                        while(rs2.next()){      
+                        while(rs2.next()){ 
+                            try {
+                                dokterrujukan="";
+                                polirujukan="";
+                                rs3=koneksi.prepareStatement(
+                                    "select poliklinik.nm_poli,dokter.nm_dokter from rujukan_internal_poli "+
+                                    "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli "+
+                                    "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
+                                    "where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                while(rs3.next()){
+                                    polirujukan=polirujukan+", "+rs3.getString("nm_poli");
+                                    dokterrujukan=dokterrujukan+", "+rs3.getString("nm_dokter");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }   
+                            
                             htmlContent.append(
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;"+urut+". No.Rawat</td>"+
@@ -833,12 +853,12 @@ public class PanelRiwayat extends widget.panelisi {
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unit/Poliklinik</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
-                                "<td valign='top' width='79%'>"+rs2.getString("nm_poli")+"</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_poli")+polirujukan+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dokter</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
-                                "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+"</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+dokterrujukan+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cara Bayar</td>"+
@@ -6713,6 +6733,26 @@ public class PanelRiwayat extends widget.panelisi {
                                "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi desc limit 3").executeQuery();
                         urut=1;
                         while(rs2.next()){      
+                            try {
+                                dokterrujukan="";
+                                polirujukan="";
+                                rs3=koneksi.prepareStatement(
+                                    "select poliklinik.nm_poli,dokter.nm_dokter from rujukan_internal_poli "+
+                                    "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli "+
+                                    "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
+                                    "where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                while(rs3.next()){
+                                    polirujukan=polirujukan+", "+rs3.getString("nm_poli");
+                                    dokterrujukan=dokterrujukan+", "+rs3.getString("nm_dokter");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }   
+                            
                             htmlContent.append(
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;"+urut+". No.Rawat</td>"+
@@ -6732,12 +6772,12 @@ public class PanelRiwayat extends widget.panelisi {
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unit/Poliklinik</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
-                                "<td valign='top' width='79%'>"+rs2.getString("nm_poli")+"</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_poli")+polirujukan+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dokter</td>"+
                                 "<td valign='top' width='1%' align='center'>:</td>"+
-                                "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+"</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+dokterrujukan+"</td>"+
                               "</tr>"+
                               "<tr class='isi'>"+ 
                                 "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cara Bayar</td>"+

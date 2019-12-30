@@ -26,10 +26,8 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
@@ -43,7 +41,6 @@ import org.springframework.http.MediaType;
  */
 public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
@@ -113,8 +110,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            link=koneksiDB.URLAPIBPJS();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -339,10 +335,10 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    requestEntity = new HttpEntity(headers);
+	   headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	   headers.add("X-Signature",api.getHmac());
+            requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/poli/"+poli;	
             //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());

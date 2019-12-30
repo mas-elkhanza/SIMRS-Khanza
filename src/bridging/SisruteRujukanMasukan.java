@@ -55,7 +55,6 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0,nilai_detik,rujukanbaru=0;
     private String pilihan="",alarm="",URL="",link="",norm="",statusreg="",statuspasien="",norujuk="",nol_detik,detik;
-    private final Properties prop = new Properties();
     private SisruteApi api=new SisruteApi();
     private BackgroundMusic music;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
@@ -210,9 +209,8 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPISISRUTE");
-            alarm=prop.getProperty("ALARMRSISRUTE");
+            link=koneksiDB.URLAPISISRUTE();
+            alarm=koneksiDB.ALARMRSISRUTE();
             idrs=koneksiDB.IDSISRUTE();
         } catch (Exception e) {
             alarm="no";
