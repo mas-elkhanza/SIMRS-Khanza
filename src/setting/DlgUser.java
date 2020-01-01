@@ -148,12 +148,12 @@ public class DlgUser extends javax.swing.JDialog {
                     "[I]Daftar Pasien Ranap TNI","[F]Pengajuan Aset/Inventaris","[N]Item Apotek Per Jenis","[N]Item Apotek Per Kategori","[N]Item Apotek Per Golongan",
                     "[N]Item Apotek Per Industri Farmasi","[D]10 Obat Terbanyak Poli","[N]Pengajuan Aset Per Urgensi","[N]Pengajuan Aset Per Status",
                     "[N]Pengajuan Aset Per Departemen","[F]Rekap Pengajuan Aset Departemen","[N]Pegawai Per Kelompok Jabatan","[N]Pegawai Per Resiko Kerja",
-                    "[N]Pegawai Per Emergency Index","[N]Jumlah Inventaris Per Ruang","[I]Harian HAIs 2","[N]Jumlah Inventaris Per Jenis","[L]Data Resume Pasien",
+                    "[N]Pegawai Per Emergency Index","[N]Jumlah Inventaris Per Ruang","[I]Harian HAIs 2","[N]Jumlah Inventaris Per Jenis","[L]Resume Pasien",
                     "[A]Perkiraan Biaya Ranap","[D]Rekap Obat Per Poli","[D]Rekap Obat Per Pasien","[F]Permintaan Perbaikan Inventaris","[N]Pasien HAIs Per Ruang",
                     "[N]Pasien HAIs Per Bulan","[N]Laju HAIs VAP Per Ruang","[N]Laju HAIs IAD Per Ruang","[N]Laju HAIs Plebitis Per Ruang","[N]Laju HAIs ISK Per Ruang",
                     "[N]Laju HAIs ILO Per Ruang","[N]Laju HAIs HAP Per Ruang","[K]Mapping Poli Inhealth","[K]Mapping Dokter Inhealth","[K]Tarif Ralan Inhealth",
                     "[K]Tarif Ranap Inhealth","[K]Tarif Radiologi Inhealth","[K]Tarif Laborat Inhealth","[K]Tarif Operasi Inhealth","[D]Hibah Obat & BHP","[F]Asal Hibah",
-                    "[L]Asuhan Gizi","[K]Tagihan Inhealth"
+                    "[L]Asuhan Gizi","[K]Tagihan Inhealth","[D]Sirkulasi Obat, Alkes & BHP 4"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -327,7 +327,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 577;i++) {
+        for (i = 0; i < 578;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1070,7 +1070,7 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==552){
                 column.setPreferredWidth(156);
             }else if(i==553){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(95);
             }else if(i==554){
                 column.setPreferredWidth(132);
             }else if(i==555){
@@ -1116,7 +1116,9 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==575){
                 column.setPreferredWidth(77);
             }else if(i==576){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(104);
+            }else if(i==577){
+                column.setPreferredWidth(162);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1610,7 +1612,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2229,7 +2231,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "hibah_obat_bhp='"+tbUser.getValueAt(i,573).toString()+"',"+
                     "asal_hibah='"+tbUser.getValueAt(i,574).toString()+"',"+
                     "asuhan_gizi='"+tbUser.getValueAt(i,575).toString()+"',"+
-                    "inhealth_kirim_tagihan='"+tbUser.getValueAt(i,576).toString()+"'");
+                    "inhealth_kirim_tagihan='"+tbUser.getValueAt(i,576).toString()+"',"+
+                    "sirkulasi_obat4='"+tbUser.getValueAt(i,577).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2887,7 +2890,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "hibah_obat_bhp='"+tbUser.getValueAt(barisdicopy,573).toString()+"',"+
                                     "asal_hibah='"+tbUser.getValueAt(barisdicopy,574).toString()+"',"+
                                     "asuhan_gizi='"+tbUser.getValueAt(barisdicopy,575).toString()+"',"+
-                                    "inhealth_kirim_tagihan='"+tbUser.getValueAt(barisdicopy,576).toString()+"'");
+                                    "inhealth_kirim_tagihan='"+tbUser.getValueAt(barisdicopy,576).toString()+"',"+
+                                    "sirkulasi_obat4='"+tbUser.getValueAt(barisdicopy,577).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3193,7 +3197,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk,grafik_HAIs_laju_ilo,"+
                         "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan,inhealth_mapping_tindakan_ranap,"+
                         "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"+
-                        "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan from user order by AES_DECRYPT(id_user,'nur')");
+                        "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4 from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3782,7 +3786,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("hibah_obat_bhp"),
                                rs.getBoolean("asal_hibah"),
                                rs.getBoolean("asuhan_gizi"),
-                               rs.getBoolean("inhealth_kirim_tagihan")
+                               rs.getBoolean("inhealth_kirim_tagihan"),
+                               rs.getBoolean("sirkulasi_obat4")
                             });
                         }   
                     } catch (Exception e) {
@@ -4360,7 +4365,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("hibah_obat_bhp"),
                            rs.getBoolean("asal_hibah"),
                            rs.getBoolean("asuhan_gizi"),
-                           rs.getBoolean("inhealth_kirim_tagihan")
+                           rs.getBoolean("inhealth_kirim_tagihan"),
+                           rs.getBoolean("sirkulasi_obat4")
                         });
                     }                                             
                  }

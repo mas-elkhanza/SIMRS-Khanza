@@ -29,7 +29,7 @@ import javax.swing.table.TableColumn;
  *
  * @author dosen
  */
-public final class RMCariHasilLaborat extends javax.swing.JDialog {
+public final class RMCariJumlahObat extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -40,13 +40,13 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
-    public RMCariHasilLaborat(java.awt.Frame parent, boolean modal) {
+    public RMCariJumlahObat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Tanggal","Jam","Hasil Pemeriksaan"};
+        Object[] row={"Tanggal","Jam","Obat Diberikan"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -124,7 +124,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Pemeriksaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Obat Diberikan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -303,7 +303,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            RMCariHasilLaborat dialog = new RMCariHasilLaborat(new javax.swing.JFrame(), true);
+            RMCariJumlahObat dialog = new RMCariJumlahObat(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -332,10 +332,10 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai "+
-                    "from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template where "+
-                    "detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa like ? or "+
-                    "detail_periksa_lab.no_rawat=? and template_laboratorium.Pemeriksaan like ? order by detail_periksa_lab.tgl_periksa, detail_periksa_lab.jam");
+                    "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,databarang.nama_brng, detail_pemberian_obat.jml, "+
+                    "databarang.kode_sat from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng where "+
+                    "detail_pemberian_obat.no_rawat=? and detail_pemberian_obat.tgl_perawatan like ? or "+
+                    "detail_pemberian_obat.no_rawat=? and databarang.nama_brng like ? order by detail_pemberian_obat.tgl_perawatan, detail_pemberian_obat.jam");
             try{
                 ps.setString(1,norawat);
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -344,7 +344,7 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {
-                        rs.getString(1),rs.getString(2),rs.getString(3)+" : "+rs.getString(4)
+                        rs.getString(1),rs.getString(2),rs.getString(3)+" : "+rs.getString(4)+" "+rs.getString(5)
                     });
                 }
             }catch(Exception ex){

@@ -1098,6 +1098,7 @@ private void BtnBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         akses.setform("DlgReturBeli");
         if(aktifkanbatch.equals("yes")){
             form.barang.aktifkanbatch="yes";
+            form.barang.isBatch();
         }
         form.barang.emptTeks();
         form.barang.isCek();

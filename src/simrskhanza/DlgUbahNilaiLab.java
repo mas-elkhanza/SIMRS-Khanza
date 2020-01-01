@@ -253,7 +253,6 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
         panelGlass11.add(CmbDetik);
         CmbDetik.setBounds(521, 40, 62, 23);
 
-        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setSelected(true);
         ChkJln.setBorderPainted(true);
         ChkJln.setBorderPaintedFlat(true);

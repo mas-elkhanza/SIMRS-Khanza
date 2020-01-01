@@ -1132,6 +1132,7 @@ private void BtnBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         akses.setform("DlgReturJual");
         if(aktifkanbatch.equals("yes")){
             form.barang.aktifkanbatch="yes";
+            form.barang.isBatch();
         }
         form.barang.emptTeks();
         form.barang.isCek();
@@ -1412,7 +1413,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,2),signed)),0) from returjual where no_retur_jual like '%"+norawat+"%' ",norawat,2,NoRetur); 
         formvalid="No";
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",nmmem,kdmem.getText());
-        kdgudang.setText(Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"));
+        kdgudang.setText(akses.getkdbangsal());
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
     }
     

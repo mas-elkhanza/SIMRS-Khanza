@@ -1225,6 +1225,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         akses.setform("DlgReturPiutang");
         if(aktifkanbatch.equals("yes")){
             form.barang.aktifkanbatch="yes";
+            form.barang.isBatch();
         }
         form.barang.emptTeks();
         form.barang.isCek();

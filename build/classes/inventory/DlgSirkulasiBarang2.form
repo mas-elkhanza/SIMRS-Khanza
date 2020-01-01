@@ -316,6 +316,7 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="scrollPane1">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok Opname pada tanggal terdekat pencarian di tanggal pertama. &lt;br&gt;&#xa;Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari &lt;br&gt;&#xa;Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.&lt;/html&gt;"/>
             <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jPopupMenu1"/>
             </Property>
@@ -335,7 +336,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok Opname pada tanggal pencarian di tanggal pertama.&#xa;&lt;br&gt;Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari&#xa;&lt;br&gt;Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Stok Awal mengambil data dari Stok Opname pada tanggal terdekat pencarian di tanggal pertama. &lt;br&gt;Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari &lt;br&gt;Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.&lt;/html&gt;"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>

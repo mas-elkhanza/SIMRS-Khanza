@@ -1254,6 +1254,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             if(aktifkanbatch.equals("yes")){
                 form.barang.aktifkanbatch="yes";
+                form.barang.isBatch();
             }
             akses.setform("DlgPiutang");
             form.barang.emptTeks();
