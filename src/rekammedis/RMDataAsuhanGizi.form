@@ -339,7 +339,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="01-01-2020"/>
+                        <StringItem index="0" value="02-01-2020"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -367,7 +367,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="01-01-2020"/>
+                        <StringItem index="0" value="02-01-2020"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -752,6 +752,9 @@
                           <Dimension value="[95, 23]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TglAsuhanKeyPressed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="689" y="40" width="90" height="23"/>
@@ -785,6 +788,9 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="BB" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BBKeyPressed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="164" y="90" width="60" height="23"/>
@@ -808,6 +814,9 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="TB" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TBKeyPressed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="344" y="90" width="60" height="23"/>
@@ -842,6 +851,9 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="IMT" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IMTKeyPressed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="520" y="90" width="60" height="23"/>
@@ -875,6 +887,9 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="LiLA" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LiLAKeyPressed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="693" y="90" width="60" height="23"/>
@@ -897,6 +912,9 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="TL" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TLKeyPressed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="164" y="120" width="60" height="23"/>
@@ -1187,10 +1205,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="TSuhu13">
+                    <Component class="widget.TextBox" name="PolaMakan">
                       <Properties>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="TSuhu13" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="PolaMakan" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1209,10 +1227,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="TSuhu14">
+                    <Component class="widget.TextBox" name="DiagnosisGizi">
                       <Properties>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="TSuhu14" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="DiagnosisGizi" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1222,7 +1240,7 @@
                     </Component>
                     <Component class="widget.Label" name="jLabel40">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Diganosis :"/>
+                        <Property name="text" type="java.lang.String" value="Diagnosis Gizi :"/>
                         <Property name="name" type="java.lang.String" value="jLabel40" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1242,10 +1260,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="TSuhu16">
+                    <Component class="widget.TextBox" name="IntervensiGizi">
                       <Properties>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="TSuhu16" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="IntervensiGizi" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1264,10 +1282,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="TSuhu17">
+                    <Component class="widget.TextBox" name="Monitoring">
                       <Properties>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="TSuhu17" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Monitoring" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1438,13 +1456,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R7">
+                    <Component class="widget.RadioButton" name="GlutenYa">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup4"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ya"/>
-                        <Property name="name" type="java.lang.String" value="R7" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="GlutenYa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[40, 20]"/>
                         </Property>
@@ -1455,13 +1473,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R8">
+                    <Component class="widget.RadioButton" name="GlutenNo">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup4"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tidak"/>
-                        <Property name="name" type="java.lang.String" value="R8" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="GlutenNo" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1481,13 +1499,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R9">
+                    <Component class="widget.RadioButton" name="UdangYa">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup5"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ya"/>
-                        <Property name="name" type="java.lang.String" value="R9" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="UdangYa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[40, 20]"/>
                         </Property>
@@ -1498,13 +1516,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R10">
+                    <Component class="widget.RadioButton" name="UdangTidak">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup5"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tidak"/>
-                        <Property name="name" type="java.lang.String" value="R10" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="UdangTidak" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1524,13 +1542,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R11">
+                    <Component class="widget.RadioButton" name="IkanYa">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup6"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ya"/>
-                        <Property name="name" type="java.lang.String" value="R11" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="IkanYa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[40, 20]"/>
                         </Property>
@@ -1541,13 +1559,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R12">
+                    <Component class="widget.RadioButton" name="IkanTidak">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup6"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tidak"/>
-                        <Property name="name" type="java.lang.String" value="R12" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="IkanTidak" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1555,13 +1573,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R13">
+                    <Component class="widget.RadioButton" name="HazelnutYa">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup7"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ya"/>
-                        <Property name="name" type="java.lang.String" value="R13" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="HazelnutYa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[40, 20]"/>
                         </Property>
@@ -1572,13 +1590,13 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.RadioButton" name="R14">
+                    <Component class="widget.RadioButton" name="HazelnutTidak">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup7"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tidak"/>
-                        <Property name="name" type="java.lang.String" value="R14" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="HazelnutTidak" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1609,10 +1627,10 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="TSuhu15">
+                    <Component class="widget.TextBox" name="RiwayatPersonal">
                       <Properties>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="TSuhu15" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="RiwayatPersonal" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

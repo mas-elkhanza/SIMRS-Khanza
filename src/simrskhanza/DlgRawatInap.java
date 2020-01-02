@@ -5280,13 +5280,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{ 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            RMDataAsuhanGizi resume=new RMDataAsuhanGizi(null,false);
-            resume.isCek();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            resume.setLocationRelativeTo(internalFrame1);
-            resume.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
-            resume.tampil();
-            resume.setVisible(true);
+            RMDataAsuhanGizi form=new RMDataAsuhanGizi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+            form.tampil();
+            form.emptTeks();
+            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnAsuhanGiziActionPerformed
