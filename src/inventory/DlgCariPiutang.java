@@ -313,6 +313,9 @@ public class DlgCariPiutang extends javax.swing.JDialog {
         ppCetakNota = new javax.swing.JMenuItem();
         ppHapus = new javax.swing.JMenuItem();
         MnDetailCicilan = new javax.swing.JMenuItem();
+        ppResepObat = new javax.swing.JMenuItem();
+        ppResepObat1 = new javax.swing.JMenuItem();
+        ppResepObat2 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -355,14 +358,14 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         ppCetakNota.setBackground(new java.awt.Color(255, 255, 254));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCetakNota.setForeground(new java.awt.Color(50,50,50));
+        ppCetakNota.setForeground(new java.awt.Color(50, 50, 50));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCetakNota.setText("Cetak Ulang Nota");
         ppCetakNota.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetakNota.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppCetakNota.setName("ppCetakNota"); // NOI18N
-        ppCetakNota.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppCetakNota.setPreferredSize(new java.awt.Dimension(190, 25));
         ppCetakNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppCetakNotaActionPerformed(evt);
@@ -372,14 +375,14 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(50,50,50));
+        ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Piutang");
         ppHapus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppHapus.setPreferredSize(new java.awt.Dimension(190, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppHapusActionPerformed(evt);
@@ -389,18 +392,66 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         MnDetailCicilan.setBackground(new java.awt.Color(255, 255, 254));
         MnDetailCicilan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDetailCicilan.setForeground(new java.awt.Color(50,50,50));
+        MnDetailCicilan.setForeground(new java.awt.Color(50, 50, 50));
         MnDetailCicilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailCicilan.setText("Bayar Piutang");
         MnDetailCicilan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MnDetailCicilan.setName("MnDetailCicilan"); // NOI18N
-        MnDetailCicilan.setPreferredSize(new java.awt.Dimension(150, 25));
+        MnDetailCicilan.setPreferredSize(new java.awt.Dimension(190, 25));
         MnDetailCicilan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDetailCicilanActionPerformed(evt);
             }
         });
         jPopupMenu1.add(MnDetailCicilan);
+
+        ppResepObat.setBackground(new java.awt.Color(255, 255, 254));
+        ppResepObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppResepObat.setForeground(new java.awt.Color(50, 50, 50));
+        ppResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppResepObat.setText("Cetak Aturan Pakai Model 1");
+        ppResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppResepObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppResepObat.setName("ppResepObat"); // NOI18N
+        ppResepObat.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppResepObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppResepObatActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppResepObat);
+
+        ppResepObat1.setBackground(new java.awt.Color(255, 255, 254));
+        ppResepObat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppResepObat1.setForeground(new java.awt.Color(50, 50, 50));
+        ppResepObat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppResepObat1.setText("Cetak Aturan Pakai Model 2");
+        ppResepObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppResepObat1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppResepObat1.setName("ppResepObat1"); // NOI18N
+        ppResepObat1.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppResepObat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppResepObat1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppResepObat1);
+
+        ppResepObat2.setBackground(new java.awt.Color(255, 255, 254));
+        ppResepObat2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppResepObat2.setForeground(new java.awt.Color(50, 50, 50));
+        ppResepObat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppResepObat2.setText("Cetak Aturan Pakai Model 3");
+        ppResepObat2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppResepObat2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppResepObat2.setName("ppResepObat2"); // NOI18N
+        ppResepObat2.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppResepObat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppResepObat2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppResepObat2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -411,7 +462,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Piutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Piutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1090,6 +1141,119 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_MnDetailCicilanActionPerformed
 
+    private void ppResepObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppResepObatActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbDokter.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+        }else{
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"No.Nota");
+            }else{
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
+                param.put("logo",Sequel.cariGambar("select logo from setting"));
+
+                if(Sequel.cariInteger(
+                        "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                    Valid.MyReportqry("rptItemResepPiutang.jasper","report","::[ Aturan Pakai Obat ]::",
+                        "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
+                        "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                        "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
+                        "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                        "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                        "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                        "where piutang.nota_piutang='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and detailpiutang.aturan_pakai<>''",param);
+                }  
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppResepObatActionPerformed
+
+    private void ppResepObat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppResepObat1ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbDokter.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+        }else{
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"No.Nota");
+            }else{
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
+                param.put("logo",Sequel.cariGambar("select logo from setting"));
+
+                if(Sequel.cariInteger(
+                        "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                    Valid.MyReportqry("rptItemResepPiutang2.jasper","report","::[ Aturan Pakai Obat ]::",
+                        "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
+                        "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                        "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
+                        "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                        "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                        "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                        "inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "where piutang.nota_piutang='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and detailpiutang.aturan_pakai<>''",param);
+                }    
+
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppResepObat1ActionPerformed
+
+    private void ppResepObat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppResepObat2ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbDokter.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+        }else{
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"No.Nota");
+            }else{
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
+                param.put("logo",Sequel.cariGambar("select logo from setting"));
+                if(Sequel.cariInteger(
+                        "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
+                    Valid.MyReportqry("rptItemResepPiutang3.jasper","report","::[ Aturan Pakai Obat ]::",
+                        "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
+                        "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                        "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
+                        "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                        "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
+                        "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
+                        "where piutang.nota_piutang='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and detailpiutang.aturan_pakai<>''",param);
+                }  
+
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_ppResepObat2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1146,6 +1310,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.panelisi panelisi4;
     private javax.swing.JMenuItem ppCetakNota;
     private javax.swing.JMenuItem ppHapus;
+    private javax.swing.JMenuItem ppResepObat;
+    private javax.swing.JMenuItem ppResepObat1;
+    private javax.swing.JMenuItem ppResepObat2;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -1224,8 +1391,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     no=1;
                     ps2=koneksi.prepareStatement("select detailpiutang.kode_brng,databarang.nama_brng, detailpiutang.kode_sat,"+
                             " kodesatuan.satuan,detailpiutang.h_jual, detailpiutang.jumlah,detailpiutang.subtotal, detailpiutang.dis, "+
-                            " detailpiutang.bsr_dis, detailpiutang.total,detailpiutang.no_batch,detailpiutang.no_faktur from "+
-                            " detailpiutang inner join databarang inner join kodesatuan inner join jenis "+
+                            " detailpiutang.bsr_dis, detailpiutang.total,detailpiutang.no_batch,detailpiutang.no_faktur,detailpiutang.aturan_pakai  "+
+                            " from detailpiutang inner join databarang inner join kodesatuan inner join jenis "+
                             " on detailpiutang.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
                             " and detailpiutang.kode_sat=kodesatuan.kode_sat where "+
                             " detailpiutang.nota_piutang='"+rs.getString(1)+"' "+sat+bar+" and detailpiutang.kode_brng like '%"+TCari.getText()+"%' or "+
@@ -1242,7 +1409,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ttljual=ttljual+rs2.getDouble(10);
                             subttljual=subttljual+rs2.getDouble(10);
                             tabMode.addRow(new String[]{
-                                "",no+". "+rs2.getString("no_batch"),rs2.getString("no_faktur"),rs2.getString("kode_brng")+", "+rs2.getString("nama_brng"),
+                                "",no+". "+rs2.getString("no_batch"),rs2.getString("no_faktur"),rs2.getString("kode_brng")+" "+rs2.getString("nama_brng")+" "+rs2.getString("aturan_pakai"),
                                 rs2.getString("satuan"),df2.format(rs2.getDouble("h_jual")),rs2.getString("jumlah"),df2.format(rs2.getDouble("subtotal")),
                                 rs2.getString("dis"),df2.format(rs2.getDouble("bsr_dis")),df2.format(rs2.getDouble("total"))
                             });

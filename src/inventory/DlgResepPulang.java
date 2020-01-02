@@ -48,7 +48,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     private PreparedStatement ps,psbarang;
     private ResultSet rs;
     public DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
-    private double total=0,jumlahtotal=0;
+    private double jumlahtotal=0;
     private riwayatobat Trackobat=new riwayatobat();
     private String aktifkanbatch="no";
     private int i=0;

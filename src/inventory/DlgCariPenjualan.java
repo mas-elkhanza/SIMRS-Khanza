@@ -1384,7 +1384,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
 
                 if(Sequel.cariInteger(
                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
@@ -1435,7 +1434,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 
                 if(Sequel.cariInteger(
                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
