@@ -29,7 +29,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import keuangan.DlgKamar;
 import org.springframework.http.HttpEntity;
@@ -54,7 +52,6 @@ import simrskhanza.DlgPilihanCetakDokumen;
  */
 public final class BPJSCekNIK2 extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -1395,10 +1392,9 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             user=akses.getkode();
         }
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
-            URUTNOREG=prop.getProperty("URUTNOREG");
-            BASENOREG=prop.getProperty("BASENOREG");
+            link=koneksiDB.URLAPIBPJS();
+            URUTNOREG=koneksiDB.URUTNOREG();
+            BASENOREG=koneksiDB.BASENOREG();
         } catch (Exception e) {
             URUTNOREG="";
             BASENOREG="";
@@ -3763,7 +3759,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -5072,12 +5068,27 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         }else if(Catatan.getText().trim().equals("")){
             Valid.textKosong(Catatan, "Catatan");
         }else{
-            if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
-                            "no_kartu='"+TNoPeserta.getText()+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' ")>=1){
-                JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
-                TNik.requestFocus();
-            }else{
+            if((JenisPelayanan.getSelectedIndex()==1)&&(NmPoli.getText().toLowerCase().contains("darurat"))){
+                if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
+                    "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
+                    "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                    "nmpolitujuan like '%darurat%'")>=3){
+                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
+                    TNik.requestFocus();
+                }else{
+                    insertPasien();
+                }
+            }else if((JenisPelayanan.getSelectedIndex()==1)&&(!NmPoli.getText().toLowerCase().contains("darurat"))){
+                if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
+                    "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
+                    "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                    "nmpolitujuan not like '%darurat%'")>=1){
+                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan rawat jalan..!!");
+                    TNik.requestFocus();
+                }else{
+                    insertPasien();
+                }
+            }else if(JenisPelayanan.getSelectedIndex()==0){
                 insertPasien();
             }
         }
@@ -6193,7 +6204,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }
         }else if(JenisPelayanan.getSelectedIndex()==0){
             isNumber();
-            Sequel.menyimpan("poliklinik","?,?,?,?",4,new String[]{"IGDK","Unit IGD","0","0"});
+            Sequel.menyimpan("poliklinik","?,?,?,?,?",5,new String[]{"IGDK","Unit IGD","0","0","1"});
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),"IGDK",Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),

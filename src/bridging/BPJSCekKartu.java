@@ -3763,7 +3763,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -4465,13 +4465,28 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             Valid.textKosong(KdPoli, "Poli/Kamar");
         }else if(Catatan.getText().trim().equals("")){
             Valid.textKosong(Catatan, "Catatan");
-        }else{         
-            if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
-                            "no_kartu='"+NoKartu.getText()+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' ")>=1){
-                JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
-                NoKartu.requestFocus();
-            }else{
+        }else{            
+            if((JenisPelayanan.getSelectedIndex()==1)&&(NmPoli.getText().toLowerCase().contains("darurat"))){
+                if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
+                        "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
+                        "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                        "nmpolitujuan like '%darurat%'")>=3){
+                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
+                    NoKartu.requestFocus();
+                }else{
+                   insertPasien(); 
+                }
+            }else if((JenisPelayanan.getSelectedIndex()==1)&&(!NmPoli.getText().toLowerCase().contains("darurat"))){
+                if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
+                        "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
+                        "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                        "nmpolitujuan not like '%darurat%'")>=1){
+                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan rawat jalan..!!");
+                    NoKartu.requestFocus();
+                }else{
+                   insertPasien(); 
+                }
+            }else if(JenisPelayanan.getSelectedIndex()==0){
                 insertPasien();
             }
         }
@@ -6190,7 +6205,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             }
         }else if(JenisPelayanan.getSelectedIndex()==0){
             isNumber();
-            Sequel.menyimpan("poliklinik","?,?,?,?",4,new String[]{"IGDK","Unit IGD","0","0"});
+            Sequel.menyimpan("poliklinik","?,?,?,?,?",5,new String[]{"IGDK","Unit IGD","0","0","1"});
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),"IGDK",Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),
