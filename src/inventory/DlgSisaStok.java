@@ -367,7 +367,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             
             no=1;
             ps= koneksi.prepareStatement(
-                    "select kode_brng,nama_brng,kode_sat,h_beli from databarang where "+
+                    "select kode_brng,nama_brng,kode_sat,dasar from databarang where "+
                     "kode_brng like ? or nama_brng like ? order by kode_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -381,9 +381,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             "<td valign='middle' align='left'>"+rs.getString("kode_brng")+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("nama_brng")+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("kode_sat")+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("h_beli"))+"</td>");
+                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("dasar"))+"</td>");
                     for(i=0;i<kolom;i++){
-                        stok=Sequel.cariIsiAngka2("select stok from gudangbarang where kode_brng=? and kd_bangsal=?",rs.getString("kode_brng"),posisigudang[i]);
+                        stok=Sequel.cariIsiAngka2("select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=?",rs.getString("kode_brng"),posisigudang[i]);
                         htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(stok)+"</td>");
                         total=total+stok;
                     }

@@ -36,7 +36,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class DlgDataBatch extends javax.swing.JDialog {
-    private DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode;
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private Connection koneksi = koneksiDB.condb();
@@ -51,9 +51,9 @@ public class DlgDataBatch extends javax.swing.JDialog {
         
         tabMode = new DefaultTableModel(null,new Object[]{
             "P", "Kode Barang", "Nama Barang", "No.Batch", "No.Faktur", "Tgl.Datang","Kadaluwarsa",
-            "Hrg.Beli(Rp)", "Ralan(Rp)", "Ranap K1(Rp)", "Ranap K2(Rp)", "Ranap K3(Rp)",
-            "Kelas Utama/BPJS(Rp)", "Ranap VIP(Rp)", "Ranap VVIP(Rp)", "Beli Luar(Rp)",
-            "Jual Bebas(Rp)", "Karyawan(Rp)","Asal Barang","Jml.Beli","Sisa"
+            "Hrg.Dasar(Rp)","Hrg.Beli(Rp)", "Ralan(Rp)", "Ranap K1(Rp)", "Ranap K2(Rp)", "Ranap K3(Rp)",
+            "Kelas Utama/BPJS(Rp)", "Ranap VIP(Rp)", "Ranap VVIP(Rp)", "Beli Luar(Rp)","Jual Bebas(Rp)", 
+            "Karyawan(Rp)","Asal Barang","Jml.Beli","Sisa"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -69,8 +69,9 @@ public class DlgDataBatch extends javax.swing.JDialog {
                 java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Object.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Object.class, java.lang.Double.class, 
+                java.lang.Double.class
             };
 
             @Override
@@ -83,7 +84,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 21; i++) {
+        for (i = 0; i < 22; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(20);
@@ -122,10 +123,12 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }else if (i == 17) {
                 column.setPreferredWidth(85);
             }else if (i == 18) {
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(85);
             }else if (i == 19) {
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(75);
             }else if (i == 20) {
+                column.setPreferredWidth(55);
+            }else if (i == 21) {
                 column.setPreferredWidth(55);
             } 
         }
@@ -134,6 +137,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
 
         Kd.setDocument(new batasInput((byte) 15).getKata(Kd));
         Nm.setDocument(new batasInput((byte) 80).getKata(Nm));
+        dasar.setDocument(new batasInput((byte) 15).getKata(dasar));
         beli.setDocument(new batasInput((byte) 15).getKata(beli));
         ralan.setDocument(new batasInput((byte) 15).getKata(ralan));
         kelas1.setDocument(new batasInput((byte) 15).getKata(kelas1));
@@ -287,6 +291,8 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label20 = new widget.Label();
         Sisa = new widget.TextBox();
         BtnIF = new widget.Button();
+        dasar = new widget.TextBox();
+        label40 = new widget.Label();
         ChkInput = new widget.CekBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -298,7 +304,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Batch Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Batch Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -592,7 +598,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label26);
-        label26.setBounds(230, 162, 129, 23);
+        label26.setBounds(230, 162, 127, 23);
 
         kelas1.setName("kelas1"); // NOI18N
         kelas1.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -618,7 +624,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label28.setName("label28"); // NOI18N
         label28.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label28);
-        label28.setBounds(230, 192, 129, 23);
+        label28.setBounds(230, 192, 127, 23);
 
         kelas2.setName("kelas2"); // NOI18N
         kelas2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -650,7 +656,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label27.setName("label27"); // NOI18N
         label27.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label27);
-        label27.setBounds(0, 192, 107, 23);
+        label27.setBounds(0, 192, 115, 23);
 
         ralan.setName("ralan"); // NOI18N
         ralan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -670,7 +676,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(ralan);
-        ralan.setBounds(110, 192, 110, 23);
+        ralan.setBounds(119, 192, 110, 23);
 
         label14.setText("No.Faktur :");
         label14.setName("label14"); // NOI18N
@@ -686,13 +692,13 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoFaktur);
-        NoFaktur.setBounds(100, 102, 100, 23);
+        NoFaktur.setBounds(100, 102, 130, 23);
 
         label29.setText("Harga Beli : Rp.");
         label29.setName("label29"); // NOI18N
         label29.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label29);
-        label29.setBounds(0, 162, 107, 23);
+        label29.setBounds(0, 162, 115, 23);
 
         beli.setName("beli"); // NOI18N
         beli.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -712,7 +718,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(beli);
-        beli.setBounds(110, 162, 110, 23);
+        beli.setBounds(119, 162, 110, 23);
 
         kelas3.setName("kelas3"); // NOI18N
         kelas3.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -732,19 +738,19 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(kelas3);
-        kelas3.setBounds(660, 12, 110, 23);
+        kelas3.setBounds(640, 12, 110, 23);
 
         label30.setText("Hrg Rnp Kelas 3 : Rp.");
         label30.setName("label30"); // NOI18N
         label30.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label30);
-        label30.setBounds(500, 12, 159, 23);
+        label30.setBounds(480, 12, 157, 23);
 
         label33.setText("Hrg Rnp Utama/BPJS : Rp.");
         label33.setName("label33"); // NOI18N
         label33.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label33);
-        label33.setBounds(500, 42, 159, 23);
+        label33.setBounds(480, 42, 157, 23);
 
         utama.setName("utama"); // NOI18N
         utama.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -764,7 +770,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(utama);
-        utama.setBounds(660, 42, 110, 23);
+        utama.setBounds(640, 42, 110, 23);
 
         kelasvip.setName("kelasvip"); // NOI18N
         kelasvip.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -784,19 +790,19 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(kelasvip);
-        kelasvip.setBounds(660, 72, 110, 23);
+        kelasvip.setBounds(640, 72, 110, 23);
 
         label34.setText("Hrg Rnp Kelas VIP : Rp.");
         label34.setName("label34"); // NOI18N
         label34.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label34);
-        label34.setBounds(500, 72, 159, 23);
+        label34.setBounds(480, 72, 157, 23);
 
         label35.setText("Hrg Rnp Kelas VVIP : Rp.");
         label35.setName("label35"); // NOI18N
         label35.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label35);
-        label35.setBounds(500, 102, 159, 23);
+        label35.setBounds(480, 102, 157, 23);
 
         kelasvvip.setName("kelasvvip"); // NOI18N
         kelasvvip.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -816,13 +822,13 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(kelasvvip);
-        kelasvvip.setBounds(660, 102, 110, 23);
+        kelasvvip.setBounds(640, 102, 110, 23);
 
-        label36.setText("Hrg Jika Beli dari Apotek Lain : Rp.");
+        label36.setText("Hrg Apotek Luar : Rp.");
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label36);
-        label36.setBounds(480, 132, 179, 23);
+        label36.setBounds(480, 132, 157, 23);
 
         beliluar.setName("beliluar"); // NOI18N
         beliluar.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -842,7 +848,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(beliluar);
-        beliluar.setBounds(660, 132, 110, 23);
+        beliluar.setBounds(640, 132, 110, 23);
 
         jualbebas.setName("jualbebas"); // NOI18N
         jualbebas.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -862,19 +868,19 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(jualbebas);
-        jualbebas.setBounds(660, 162, 110, 23);
+        jualbebas.setBounds(640, 162, 110, 23);
 
         label37.setText("Hrg Jual Obat Bebas : Rp.");
         label37.setName("label37"); // NOI18N
         label37.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label37);
-        label37.setBounds(480, 162, 179, 23);
+        label37.setBounds(480, 162, 157, 23);
 
         label38.setText("Hrg Karyawan : Rp.");
         label38.setName("label38"); // NOI18N
         label38.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label38);
-        label38.setBounds(480, 192, 179, 23);
+        label38.setBounds(480, 192, 157, 23);
 
         karyawan.setName("karyawan"); // NOI18N
         karyawan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -894,10 +900,10 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(karyawan);
-        karyawan.setBounds(660, 192, 110, 23);
+        karyawan.setBounds(640, 192, 110, 23);
 
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2019" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2019" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);
@@ -958,7 +964,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
         label17.setBounds(267, 72, 100, 23);
 
         TanggalDatang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDatang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2019" }));
+        TanggalDatang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-12-2019" }));
         TanggalDatang.setDisplayFormat("dd-MM-yyyy");
         TanggalDatang.setName("TanggalDatang"); // NOI18N
         TanggalDatang.setOpaque(false);
@@ -984,13 +990,13 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(JmlBeli);
-        JmlBeli.setBounds(100, 132, 100, 23);
+        JmlBeli.setBounds(100, 132, 45, 23);
 
         label20.setText("Sisa :");
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(85, 23));
         FormInput.add(label20);
-        label20.setBounds(267, 132, 100, 23);
+        label20.setBounds(149, 132, 32, 23);
 
         Sisa.setHighlighter(null);
         Sisa.setName("Sisa"); // NOI18N
@@ -1000,7 +1006,7 @@ public class DlgDataBatch extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sisa);
-        Sisa.setBounds(370, 132, 100, 23);
+        Sisa.setBounds(185, 132, 45, 23);
 
         BtnIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnIF.setMnemonic('1');
@@ -1019,6 +1025,32 @@ public class DlgDataBatch extends javax.swing.JDialog {
         });
         FormInput.add(BtnIF);
         BtnIF.setBounds(231, 12, 25, 23);
+
+        dasar.setName("dasar"); // NOI18N
+        dasar.setPreferredSize(new java.awt.Dimension(207, 23));
+        dasar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                dasarMouseMoved(evt);
+            }
+        });
+        dasar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                dasarMouseExited(evt);
+            }
+        });
+        dasar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dasarKeyPressed(evt);
+            }
+        });
+        FormInput.add(dasar);
+        dasar.setBounds(360, 132, 110, 23);
+
+        label40.setText("Harga Dasar : Rp.");
+        label40.setName("label40"); // NOI18N
+        label40.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label40);
+        label40.setBounds(230, 132, 127, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1123,6 +1155,8 @@ public class DlgDataBatch extends javax.swing.JDialog {
             Valid.textKosong(Nm, "Nama Barang");
         } else if (Sisa.getText().trim().equals("")) {
             Valid.textKosong(Sisa, "Sisa Barang");
+        } else if (dasar.getText().trim().equals("")) {
+            Valid.textKosong(dasar, "Harga Dasar");
         } else if (beli.getText().trim().equals("")) {
             Valid.textKosong(beli, "Harga Beli");
         } else if (ralan.getText().trim().equals("")) {
@@ -1153,9 +1187,9 @@ public class DlgDataBatch extends javax.swing.JDialog {
             Valid.textKosong(NoBatch, "Kategori");
         } else {
             if(tbDokter.getSelectedRow()!= -1){
-                if(Sequel.mengedittf("data_batch","no_batch=? and kode_brng=?","no_batch=?,kode_brng=?,tgl_beli=?,tgl_kadaluarsa=?,asal=?,no_faktur=?,h_beli=?,ralan=?,kelas1=?,kelas2=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?,jumlahbeli=?,sisa=?",21,new String[]{
+                if(Sequel.mengedittf("data_batch","no_batch=? and kode_brng=?","no_batch=?,kode_brng=?,tgl_beli=?,tgl_kadaluarsa=?,asal=?,no_faktur=?,dasar=?,h_beli=?,ralan=?,kelas1=?,kelas2=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?,jumlahbeli=?,sisa=?",22,new String[]{
                         NoBatch.getText(),Kd.getText(),Valid.SetTgl(TanggalDatang.getSelectedItem()+ ""),Valid.SetTgl(DTPExpired.getSelectedItem() + ""),
-                        AsalBarang.getSelectedItem().toString(),NoFaktur.getText(),beli.getText(),ralan.getText(),kelas1.getText(),kelas2.getText(), 
+                        AsalBarang.getSelectedItem().toString(),NoFaktur.getText(),dasar.getText(),beli.getText(),ralan.getText(),kelas1.getText(),kelas2.getText(), 
                         kelas3.getText(),utama.getText(),kelasvip.getText(),kelasvvip.getText(),beliluar.getText(),jualbebas.getText(),karyawan.getText(),
                         JmlBeli.getText(),Sisa.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(), 3).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(), 1).toString()
                     })==true){
@@ -1191,18 +1225,29 @@ public class DlgDataBatch extends javax.swing.JDialog {
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
-            Valid.MyReportqry("rptDataBatch.jasper", "report", "::[ Data Batch ]::", 
-                "select data_batch.kode_brng, databarang.nama_brng, "
-                + " data_batch.no_faktur,data_batch.no_batch,data_batch.tgl_beli, data_batch.h_beli,"
-                + " data_batch.ralan,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"
-                + " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"
-                + " data_batch.karyawan,data_batch.tgl_kadaluarsa, data_batch.asal,data_batch.jumlahbeli,data_batch.sisa "
-                + " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "
-                + " where data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.kode_brng like '%" + TCari.getText().trim() + "%' or "
-                + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%" + TCari.getText().trim() + "%' or "
-                + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.no_batch like '%" + TCari.getText().trim() + "%' or "
-                + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.no_faktur like '%" + TCari.getText().trim() + "%' or "
-                + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.asal like '%" + TCari.getText().trim() + "%' order by databarang.nama_brng", param);
+            if(TCari.getText().trim().equals("")){
+                Valid.MyReportqry("rptDataBatch.jasper", "report", "::[ Data Batch ]::", 
+                    "select data_batch.kode_brng, databarang.nama_brng,data_batch.no_faktur, "
+                    + " data_batch.no_batch,data_batch.tgl_beli,data_batch.dasar,data_batch.h_beli,"
+                    + " data_batch.ralan,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"
+                    + " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"
+                    + " data_batch.karyawan,data_batch.tgl_kadaluarsa, data_batch.asal,data_batch.jumlahbeli,data_batch.sisa "
+                    + " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "
+                    + " where data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by databarang.nama_brng", param);
+            }else{
+                Valid.MyReportqry("rptDataBatch.jasper", "report", "::[ Data Batch ]::", 
+                    "select data_batch.kode_brng, databarang.nama_brng,data_batch.no_faktur, "
+                    + " data_batch.no_batch,data_batch.tgl_beli,data_batch.dasar,data_batch.h_beli,"
+                    + " data_batch.ralan,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"
+                    + " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"
+                    + " data_batch.karyawan,data_batch.tgl_kadaluarsa, data_batch.asal,data_batch.jumlahbeli,data_batch.sisa "
+                    + " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "
+                    + " where data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.kode_brng like '%" + TCari.getText().trim() + "%' or "
+                    + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and databarang.nama_brng like '%" + TCari.getText().trim() + "%' or "
+                    + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.no_batch like '%" + TCari.getText().trim() + "%' or "
+                    + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.no_faktur like '%" + TCari.getText().trim() + "%' or "
+                    + " data_batch.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and data_batch.asal like '%" + TCari.getText().trim() + "%' order by databarang.nama_brng", param);
+            }   
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1249,6 +1294,8 @@ public class DlgDataBatch extends javax.swing.JDialog {
             Valid.textKosong(Sisa, "Sisa Barang");
         } else if (beli.getText().trim().equals("")) {
             Valid.textKosong(beli, "Harga Beli");
+        } else if (dasar.getText().trim().equals("")) {
+            Valid.textKosong(dasar, "Harga Dasar");
         } else if (ralan.getText().trim().equals("")) {
             Valid.textKosong(ralan, "Harga Ralan");
         } else if (kelas1.getText().trim().equals("")) {
@@ -1276,9 +1323,9 @@ public class DlgDataBatch extends javax.swing.JDialog {
         } else if (NoBatch.getText().trim().equals("")) {
             Valid.textKosong(NoBatch, "Kategori");
         } else {
-            if(Sequel.menyimpantf("data_batch", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Kode Barang", 19, new String[]{
+            if(Sequel.menyimpantf("data_batch", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Kode Barang,No.Batch & No.Faktur", 20, new String[]{
                     NoBatch.getText(),Kd.getText(),Valid.SetTgl(TanggalDatang.getSelectedItem()+ ""),Valid.SetTgl(DTPExpired.getSelectedItem() + ""),
-                    AsalBarang.getSelectedItem().toString(),NoFaktur.getText(),beli.getText(),ralan.getText(),kelas1.getText(),kelas2.getText(), 
+                    AsalBarang.getSelectedItem().toString(),NoFaktur.getText(),dasar.getText(),beli.getText(),ralan.getText(),kelas1.getText(),kelas2.getText(), 
                     kelas3.getText(),utama.getText(),kelasvip.getText(),kelasvvip.getText(),beliluar.getText(),jualbebas.getText(),karyawan.getText(),
                     JmlBeli.getText(),Sisa.getText()
                 })==true){
@@ -1384,7 +1431,7 @@ private void NoFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             ralan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sisa.requestFocus();
+            dasar.requestFocus();
         }
     }//GEN-LAST:event_beliKeyPressed
 
@@ -1548,7 +1595,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_JmlBeliKeyPressed
 
     private void SisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SisaKeyPressed
-        Valid.pindah(evt, JmlBeli,beli);
+        Valid.pindah(evt, JmlBeli,dasar);
     }//GEN-LAST:event_SisaKeyPressed
 
     private void BtnIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIFActionPerformed
@@ -1564,6 +1611,22 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void BtnIFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnIFKeyPressed
         Valid.pindah(evt, TCari,NoBatch);
     }//GEN-LAST:event_BtnIFKeyPressed
+
+    private void dasarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dasarMouseMoved
+        if (dasar.getText().equals("0")) {
+            dasar.setText("");
+        }
+    }//GEN-LAST:event_dasarMouseMoved
+
+    private void dasarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dasarMouseExited
+        if (dasar.getText().equals("")) {
+            dasar.setText("0");
+        }
+    }//GEN-LAST:event_dasarMouseExited
+
+    private void dasarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dasarKeyPressed
+        Valid.pindah(evt,Sisa,beli);
+    }//GEN-LAST:event_dasarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1609,6 +1672,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Tanggal Tgl2;
     private widget.TextBox beli;
     private widget.TextBox beliluar;
+    private widget.TextBox dasar;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel2;
     private widget.TextBox jualbebas;
@@ -1641,6 +1705,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label label36;
     private widget.Label label37;
     private widget.Label label38;
+    private widget.Label label40;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
@@ -1653,39 +1718,56 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
-            ps = koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng, "
-                + " data_batch.no_faktur,data_batch.no_batch,data_batch.tgl_beli, data_batch.h_beli,"
-                + " data_batch.ralan,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"
-                + " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"
-                + " data_batch.karyawan,data_batch.tgl_kadaluarsa, data_batch.asal,data_batch.jumlahbeli,data_batch.sisa "
-                + " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "
-                + " where data_batch.tgl_beli between ? and ? and data_batch.kode_brng like ? or "
-                + " data_batch.tgl_beli between ? and ? and databarang.nama_brng like ? or "
-                + " data_batch.tgl_beli between ? and ? and data_batch.no_batch like ? or "
-                + " data_batch.tgl_beli between ? and ? and data_batch.no_faktur like ? or "
-                + " data_batch.tgl_beli between ? and ? and data_batch.asal like ? order by databarang.nama_brng");
+            if(TCari.getText().trim().equals("")){
+                ps = koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng, "
+                    + " data_batch.no_faktur,data_batch.no_batch,data_batch.tgl_beli, data_batch.dasar,data_batch.h_beli,"
+                    + " data_batch.ralan,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"
+                    + " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"
+                    + " data_batch.karyawan,data_batch.tgl_kadaluarsa, data_batch.asal,data_batch.jumlahbeli,data_batch.sisa "
+                    + " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "
+                    + " where data_batch.tgl_beli between ? and ? order by databarang.nama_brng");
+            }else{
+                ps = koneksi.prepareStatement("select data_batch.kode_brng, databarang.nama_brng, "
+                    + " data_batch.no_faktur,data_batch.no_batch,data_batch.tgl_beli, data_batch.dasar,data_batch.h_beli,"
+                    + " data_batch.ralan,data_batch.kelas1,data_batch.kelas2,data_batch.kelas3,"
+                    + " data_batch.utama,data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"
+                    + " data_batch.karyawan,data_batch.tgl_kadaluarsa, data_batch.asal,data_batch.jumlahbeli,data_batch.sisa "
+                    + " from data_batch inner join databarang on data_batch.kode_brng=databarang.kode_brng "
+                    + " where data_batch.tgl_beli between ? and ? and data_batch.kode_brng like ? or "
+                    + " data_batch.tgl_beli between ? and ? and databarang.nama_brng like ? or "
+                    + " data_batch.tgl_beli between ? and ? and data_batch.no_batch like ? or "
+                    + " data_batch.tgl_beli between ? and ? and data_batch.no_faktur like ? or "
+                    + " data_batch.tgl_beli between ? and ? and data_batch.asal like ? order by databarang.nama_brng");
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3, "%" + TCari.getText().trim() + "%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6, "%" + TCari.getText().trim() + "%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9, "%" + TCari.getText().trim() + "%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12, "%" + TCari.getText().trim() + "%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15, "%" + TCari.getText().trim() + "%");
+                if(TCari.getText().trim().equals("")){
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(3, "%" + TCari.getText().trim() + "%");
+                    ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(6, "%" + TCari.getText().trim() + "%");
+                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(9, "%" + TCari.getText().trim() + "%");
+                    ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(12, "%" + TCari.getText().trim() + "%");
+                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    ps.setString(15, "%" + TCari.getText().trim() + "%");
+                }
+                    
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     tabMode.addRow(new Object[]{
                         false, rs.getString("kode_brng"),rs.getString("nama_brng"),
                         rs.getString("no_batch"),rs.getString("no_faktur"),
-                        rs.getString("tgl_beli"),rs.getString("tgl_kadaluarsa"),
+                        rs.getString("tgl_beli"),rs.getString("tgl_kadaluarsa"),rs.getDouble("dasar"),
                         rs.getDouble("h_beli"),rs.getDouble("ralan"),rs.getDouble("kelas1"),
                         rs.getDouble("kelas2"),rs.getDouble("kelas3"),rs.getDouble("utama"),
                         rs.getDouble("vip"),rs.getDouble("vvip"),rs.getDouble("beliluar"),
@@ -1713,6 +1795,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void emptTeks() {
         Kd.setText("");
         Nm.setText("");
+        dasar.setText("0");
         beli.setText("0");
         kelas2.setText("0");
         kelas1.setText("0");
@@ -1740,20 +1823,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             NoFaktur.setText(tbDokter.getValueAt(row, 4).toString());
             Valid.SetTgl(TanggalDatang, tbDokter.getValueAt(row,5).toString());
             Valid.SetTgl(DTPExpired, tbDokter.getValueAt(row,6).toString());
-            beli.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 7).toString())));
-            ralan.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 8).toString())));
-            kelas1.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 9).toString())));
-            kelas2.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 10).toString())));
-            kelas3.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 11).toString())));
-            utama.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 12).toString())));
-            kelasvip.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 13).toString())));
-            kelasvvip.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 14).toString())));
-            beliluar.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 15).toString())));
-            jualbebas.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 16).toString())));
-            karyawan.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 17).toString())));
-            AsalBarang.setSelectedItem(tbDokter.getValueAt(row,18).toString());
-            JmlBeli.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 19).toString())));
-            Sisa.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 20).toString())));
+            dasar.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 7).toString())));
+            beli.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 8).toString())));
+            ralan.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 9).toString())));
+            kelas1.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 10).toString())));
+            kelas2.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 11).toString())));
+            kelas3.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 12).toString())));
+            utama.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 13).toString())));
+            kelasvip.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 14).toString())));
+            kelasvvip.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 15).toString())));
+            beliluar.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 16).toString())));
+            jualbebas.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 17).toString())));
+            karyawan.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 18).toString())));
+            AsalBarang.setSelectedItem(tbDokter.getValueAt(row,19).toString());
+            JmlBeli.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 20).toString())));
+            Sisa.setText(Double.toString(Double.parseDouble(tbDokter.getValueAt(row, 21).toString())));
         }
     }
 

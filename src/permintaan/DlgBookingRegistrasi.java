@@ -42,7 +42,6 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Properties prop = new Properties();
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0,kuota=0;
@@ -406,9 +405,8 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            aktifjadwal=prop.getProperty("JADWALDOKTERDIREGISTRASI");
-            URUTNOREG=prop.getProperty("URUTNOREG");
+            aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
+            URUTNOREG=koneksiDB.URUTNOREG();
         } catch (Exception ex) {
             aktifjadwal="";
             URUTNOREG="";

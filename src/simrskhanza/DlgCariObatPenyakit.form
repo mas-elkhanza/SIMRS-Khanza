@@ -89,6 +89,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbKamarMouseClicked"/>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tbKamarPropertyChange"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbKamarKeyPressed"/>
               </Events>
             </Component>
@@ -343,7 +344,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="2019-02-27"/>
+                    <StringItem index="0" value="2019-12-20"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="yyyy-MM-dd"/>
