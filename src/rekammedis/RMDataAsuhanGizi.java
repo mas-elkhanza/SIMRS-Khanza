@@ -897,6 +897,11 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
 
         ULNA.setFocusTraversalPolicyProvider(true);
         ULNA.setName("ULNA"); // NOI18N
+        ULNA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ULNAKeyPressed(evt);
+            }
+        });
         FormInput.add(ULNA);
         ULNA.setBounds(344, 120, 60, 23);
 
@@ -912,6 +917,11 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
 
         BBIdeal.setFocusTraversalPolicyProvider(true);
         BBIdeal.setName("BBIdeal"); // NOI18N
+        BBIdeal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BBIdealKeyPressed(evt);
+            }
+        });
         FormInput.add(BBIdeal);
         BBIdeal.setBounds(520, 120, 60, 23);
 
@@ -1496,6 +1506,14 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private void TLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TLKeyPressed
         Valid.pindah(evt,LiLA,ULNA);
     }//GEN-LAST:event_TLKeyPressed
+
+    private void ULNAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ULNAKeyPressed
+        Valid.pindah(evt,TL,BBIdeal);
+    }//GEN-LAST:event_ULNAKeyPressed
+
+    private void BBIdealKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBIdealKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BBIdealKeyPressed
 
     /**
     * @param args the command line arguments
