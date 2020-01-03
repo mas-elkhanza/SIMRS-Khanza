@@ -35,7 +35,6 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariJenis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     public DlgJenis jenis=new DlgJenis(null,false);
     private PreparedStatement ps;

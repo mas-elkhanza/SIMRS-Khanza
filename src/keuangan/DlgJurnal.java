@@ -684,7 +684,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {                    
-                    jurnal.simpanJurnal(NoBukti.getText(),Valid.SetTgl(TglJurnal.getSelectedItem()+""), Jenis.getSelectedItem().toString().substring(0,1),Ktg.getText());                                    
+                    jurnal.simpanJurnal(NoBukti.getText(),Valid.SetTgl(TglJurnal.getSelectedItem()+""), Jenis.getSelectedItem().toString().substring(0,1),Ktg.getText()+", OLEH "+akses.getkode());                                    
                     tampil();
                 } catch (Exception ex) {
                     System.out.print("Notifikasi : "+ex);

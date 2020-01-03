@@ -42,8 +42,8 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
     private DlgPasien member=new DlgPasien(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int i,jmlkunjungan=0,jmlpemeriksaan=0,jmlsubpemeriksaan=0;
-    private PreparedStatement ps,ps2,ps3,ps4,psrekening,ps5;
-    private ResultSet rs,rs2,rs3,rs5,rsrekening;
+    private PreparedStatement ps,ps2,ps3,ps4,psrekening,ps5,pspermintaan;
+    private ResultSet rs,rs2,rs3,rs5,rsrekening,rspermintaan;
     private String kamar,namakamar,datapasien="";
     private double ttl=0,item=0;
     private StringBuilder htmlContent;
@@ -1576,7 +1576,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TCari.requestFocus();
         }else if(Kd2.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal mencetak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
-        }else if(!(Kd2.getText().trim().equals(""))){    
+        }else if(!(Kd2.getText().trim().equals(""))){   
             try {   
                 ps4=koneksi.prepareStatement(
                     "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,petugas.nama,DATE_FORMAT(periksa_lab.tgl_periksa,'%d-%m-%Y') as tgl_periksa,periksa_lab.jam,periksa_lab.nip,"+
@@ -1591,7 +1591,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                     rs=ps4.executeQuery();
                     while(rs.next()){
-                        
                         kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat='"+rs.getString("no_rawat")+"' order by tgl_masuk desc limit 1");
                         if(!kamar.equals("")){
                             namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
@@ -1618,9 +1617,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("namakamar",namakamar);
                         param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                         param.put("finger2",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
-            
-
-                        Sequel.queryu("delete from temporary_lab");
+                        Sequel.queryu("truncate table temporary_lab");
 
                         ps2=koneksi.prepareStatement(
                             "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,periksa_lab.biaya from periksa_lab inner join jns_perawatan_lab "+
@@ -1669,7 +1666,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             }
                         }
 
-                        
                         param.put("namars",akses.getnamars());
                         param.put("alamatrs",akses.getalamatrs());
                         param.put("kotars",akses.getkabupatenrs());
@@ -1677,7 +1673,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLabPermintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -1929,7 +1950,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);     
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab2Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);  
+                            }else{
+                                Valid.MyReport("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);  
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }   
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2054,7 +2100,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab3Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2173,7 +2244,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 ps2.close();
                             }
                         }
-
                         
                         param.put("namars",akses.getnamars());
                         param.put("alamatrs",akses.getalamatrs());
@@ -2182,7 +2252,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab4Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2310,7 +2405,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab5Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2428,7 +2548,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 ps2.close();
                             }
                         }
-
                         
                         param.put("namars",akses.getnamars());
                         param.put("alamatrs",akses.getalamatrs());
@@ -2436,8 +2555,33 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("propinsirs",akses.getpropinsirs());
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
-                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        param.put("logo",Sequel.cariGambar("select logo from setting"));        
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab6Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2568,7 +2712,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab7Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
 
                     }
                 } catch (Exception e) {
@@ -2698,7 +2867,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab8Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }        
 
                     }
                 } catch (Exception e) {
@@ -2849,7 +3043,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab9Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }          
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -2999,7 +3218,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab10Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }         
 
                     }
                 } catch (Exception e) {
@@ -3150,7 +3394,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReport("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReport("rptPeriksaLab11Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }else{
+                                Valid.MyReport("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }         
 
                     }
                 } catch (Exception e) {
@@ -3376,7 +3645,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLabPermintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -3503,7 +3797,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab2Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab2.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }         
 
                     }
                 } catch (Exception e) {
@@ -3631,7 +3950,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab3Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab3.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -3759,7 +4103,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab4Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab4.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }           
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -3887,7 +4256,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab5Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab5.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }          
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -4014,7 +4408,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab6Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab6.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }            
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -4145,7 +4564,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab7Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab7.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }         
 
                     }
                 } catch (Exception e) {
@@ -4276,7 +4720,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab8Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab8.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }           
 
                     }
                 } catch (Exception e) {
@@ -4428,7 +4897,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab9Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab9.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }         
                     }
                 } catch (Exception e) {
                     System.out.println("Notif ps4 : "+e);
@@ -4579,7 +5073,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab10Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab10.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }         
 
                     }
                 } catch (Exception e) {
@@ -4731,7 +5250,32 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("kontakrs",akses.getkontakrs());
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                        Valid.MyReportPDF("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);            
+                        pspermintaan=koneksi.prepareStatement(
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "no_rawat=? and tgl_hasil=? and jam_hasil=?");
+                        try {
+                            pspermintaan.setString(1,rs.getString("no_rawat"));
+                            pspermintaan.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                            pspermintaan.setString(3,rs.getString("jam"));
+                            rspermintaan=pspermintaan.executeQuery();
+                            if(rspermintaan.next()){
+                                param.put("nopermintaan",rspermintaan.getString("noorder"));   
+                                param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
+                                param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                Valid.MyReportPDF("rptPeriksaLab11Permintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);
+                            }else{
+                                Valid.MyReportPDF("rptPeriksaLab11.jasper","report","::[ Pemeriksaan Laboratorium ]::",param); 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rspermintaan!=null){
+                                rspermintaan.close();
+                            }
+                            if(pspermintaan!=null){
+                                pspermintaan.close();
+                            }
+                        }         
 
                     }
                 } catch (Exception e) {
@@ -4867,8 +5411,21 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             Valid.tabelKosong(tabMode);  
             ps=koneksi.prepareStatement(
                     "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,petugas.nama,periksa_lab.tgl_periksa,periksa_lab.jam,"+
-                    "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,dokter.nm_dokter from periksa_lab inner join reg_periksa inner join pasien inner join petugas inner join dokter "+
-                    "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.kd_dokter=dokter.kd_dokter and periksa_lab.nip=petugas.nip where "+
+                    "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,dokter.nm_dokter "+
+                    "from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on periksa_lab.nip=petugas.nip "+
+                    "inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter where "+
+                    "periksa_lab.tgl_periksa between ? and ? group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam) "+
+                    "order by periksa_lab.tgl_periksa desc,periksa_lab.jam desc");
+            }else{
+                ps=koneksi.prepareStatement(
+                    "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,petugas.nama,periksa_lab.tgl_periksa,periksa_lab.jam,"+
+                    "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,dokter.nm_dokter "+
+                    "from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on periksa_lab.nip=petugas.nip "+
+                    "inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter where "+
                     "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
                     "and petugas.nip like ? and pasien.nm_pasien like ? or "+
                     "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
