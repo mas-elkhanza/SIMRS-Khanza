@@ -1242,7 +1242,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             isRawat();
             isPsien();
         }else{            
-            //Valid.pindah(evt,TCari,Kejadian);
+            Valid.pindah(evt,TCari,BtnDokter);
         }
 }//GEN-LAST:event_TNoRwKeyPressed
 
@@ -1496,6 +1496,13 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                try {
+                    ChkInput.setSelected(true);
+                    isForm(); 
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
