@@ -227,7 +227,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnLaporanResume = new javax.swing.JMenuItem();
+        MnAsuhanGizi = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
@@ -351,19 +351,19 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnLaporanResume.setBackground(new java.awt.Color(255, 255, 254));
-        MnLaporanResume.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLaporanResume.setForeground(new java.awt.Color(50, 50, 50));
-        MnLaporanResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnLaporanResume.setText("Laporan Asuhan Gizi Pasien");
-        MnLaporanResume.setName("MnLaporanResume"); // NOI18N
-        MnLaporanResume.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnLaporanResume.addActionListener(new java.awt.event.ActionListener() {
+        MnAsuhanGizi.setBackground(new java.awt.Color(255, 255, 254));
+        MnAsuhanGizi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnAsuhanGizi.setForeground(new java.awt.Color(50, 50, 50));
+        MnAsuhanGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnAsuhanGizi.setText("Laporan Asuhan Gizi Pasien");
+        MnAsuhanGizi.setName("MnAsuhanGizi"); // NOI18N
+        MnAsuhanGizi.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnAsuhanGizi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnLaporanResumeActionPerformed(evt);
+                MnAsuhanGiziActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnLaporanResume);
+        jPopupMenu1.add(MnAsuhanGizi);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1684,7 +1684,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         Valid.pindah(evt,Monitoring,BtnSimpan);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
-    private void MnLaporanResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLaporanResumeActionPerformed
+    private void MnAsuhanGiziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnAsuhanGiziActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();    
             param.put("namars",akses.getnamars());
@@ -1693,19 +1693,23 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
+            param.put("diagnosa",DiagnosaMasukRanap.getText());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())); 
-            if(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString().equals("Ralan")){
-                param.put("ruang",Sequel.cariIsi("select poliklinik.nm_poli from poliklinik inner join reg_periksa on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()));
-                param.put("tanggalkeluar",Sequel.cariIsi("select DATE_FORMAT(tgl_registrasi, '%d-%m-%Y') from reg_periksa where no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()));
-            }else{
-                param.put("ruang",Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar inner join kamar_inap on bangsal.kd_bangsal=kamar.kd_bangsal and kamar_inap.kd_kamar=kamar.kd_kamar where no_rawat=? order by tgl_masuk desc limit 1 ",tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()));
-                param.put("tanggalkeluar",Sequel.cariIsi("select DATE_FORMAT(tgl_keluar, '%d-%m-%Y') from kamar_inap where no_rawat=? order by tgl_keluar desc limit 1 ",tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()));
-            }
-            Valid.MyReport("rptLaporanResume.jasper","report","::[ Laporan Resume Pasien ]::",param);
+            param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString())); 
+            Valid.MyReportqry("rptCetakAsuhanGizi.jasper","report","::[ Laporan Asuhan Gizi Pasien ]::",
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,asuhan_gizi.tanggal,"+
+                        "asuhan_gizi.antropometri_bb,asuhan_gizi.antropometri_tb,asuhan_gizi.antropometri_imt,asuhan_gizi.antropometri_lla,"+
+                        "asuhan_gizi.antropometri_tl,asuhan_gizi.antropometri_ulna,asuhan_gizi.antropometri_bbideal,asuhan_gizi.antropometri_bbperu,"+
+                        "asuhan_gizi.antropometri_tbperu,asuhan_gizi.antropometri_bbpertb,asuhan_gizi.antropometri_llaperu,asuhan_gizi.biokimia,"+
+                        "asuhan_gizi.fisik_klinis,asuhan_gizi.alergi_telur,asuhan_gizi.alergi_susu_sapi,asuhan_gizi.alergi_kacang,asuhan_gizi.alergi_gluten,"+
+                        "asuhan_gizi.alergi_udang,asuhan_gizi.alergi_ikan,asuhan_gizi.alergi_hazelnut,asuhan_gizi.pola_makan,asuhan_gizi.riwayat_personal,"+
+                        "asuhan_gizi.diagnosis,asuhan_gizi.intervensi_gizi,asuhan_gizi.monitoring_evaluasi,asuhan_gizi.nip,petugas.nama,reg_periksa.umurdaftar,reg_periksa.sttsumur, penjab.png_jawab "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join asuhan_gizi on reg_periksa.no_rawat=asuhan_gizi.no_rawat "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "inner join petugas on asuhan_gizi.nip=petugas.nip where asuhan_gizi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnLaporanResumeActionPerformed
+    }//GEN-LAST:event_MnAsuhanGiziActionPerformed
 
     private void TglLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglLahirKeyPressed
         // TODO add your handling code here:
@@ -1848,7 +1852,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.TextBox LiLA;
     private widget.TextBox LiLAPerU;
-    private javax.swing.JMenuItem MnLaporanResume;
+    private javax.swing.JMenuItem MnAsuhanGizi;
     private widget.TextBox Monitoring;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
