@@ -726,7 +726,7 @@
                                           <SubComponents>
                                             <Component class="widget.Label" name="label10">
                                               <Properties>
-                                                <Property name="text" type="java.lang.String" value="Key Word :"/>
+                                                <Property name="text" type="java.lang.String" value="Keyword :"/>
                                                 <Property name="name" type="java.lang.String" value="label10" noResource="true"/>
                                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                                   <Dimension value="[60, 23]"/>
@@ -867,7 +867,7 @@
                                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                                   <Color blue="0" green="0" red="aa" type="rgb"/>
                                                 </Property>
-                                                <Property name="text" type="java.lang.String" value="Key Word :"/>
+                                                <Property name="text" type="java.lang.String" value="Keyword :"/>
                                                 <Property name="name" type="java.lang.String" value="label11" noResource="true"/>
                                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                                   <Dimension value="[60, 23]"/>
@@ -1564,7 +1564,7 @@
                                           <SubComponents>
                                             <Component class="widget.Label" name="label12">
                                               <Properties>
-                                                <Property name="text" type="java.lang.String" value="Key Word :"/>
+                                                <Property name="text" type="java.lang.String" value="Keyword :"/>
                                                 <Property name="name" type="java.lang.String" value="label12" noResource="true"/>
                                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                                   <Dimension value="[60, 23]"/>
@@ -1705,7 +1705,7 @@
                                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                                   <Color blue="0" green="c8" red="c8" type="rgb"/>
                                                 </Property>
-                                                <Property name="text" type="java.lang.String" value="Key Word :"/>
+                                                <Property name="text" type="java.lang.String" value="Keyword :"/>
                                                 <Property name="name" type="java.lang.String" value="label13" noResource="true"/>
                                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                                   <Dimension value="[60, 23]"/>
@@ -2347,7 +2347,7 @@
                     </Component>
                     <Component class="widget.Label" name="jLabel6">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Key Word :"/>
+                        <Property name="text" type="java.lang.String" value="Keyword :"/>
                         <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[70, 23]"/>

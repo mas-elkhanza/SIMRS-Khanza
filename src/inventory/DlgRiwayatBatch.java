@@ -24,15 +24,15 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private StringBuilder htmlContent;
 
-    
+
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
     public DlgRiwayatBatch(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        
+
+
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
@@ -46,7 +46,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-        
+
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -72,7 +72,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
             });
         }
     }
-   
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -111,7 +111,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Riwayat Data Batch Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -140,7 +140,7 @@ public class DlgRiwayatBatch extends javax.swing.JDialog {
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
         panelisi1.add(Tgl2);
 
-        label10.setText("Key Word :");
+        label10.setText("Keyword :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi1.add(label10);
@@ -249,19 +249,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            
-            File g = new File("file2.css");            
+
+            File g = new File("file2.css");
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
                     ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+
                     ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                     ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
             );
             bg.close();
-            
-            File f = new File("rl4b.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+
+            File f = new File("rl4b.html");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -270,17 +270,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>DATA KEADAAN MORBIDITAS PASIEN RAWAT JALAN RUMAH SAKIT PENYEBAB KECELAKAN<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                    "<font size='2' face='Tahoma'>DATA KEADAAN MORBIDITAS PASIEN RAWAT JALAN RUMAH SAKIT PENYEBAB KECELAKAN<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+
                                 "</td>"+
                            "</tr>"+
                         "</table>")
             );
-            bw.close();                         
+            bw.close();
             Desktop.getDesktop().browse(f.toURI());
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
-        }     
-        
+        }
+
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -381,7 +381,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             htmlContent = new StringBuilder();
-            htmlContent.append(                             
+            htmlContent.append(
                 "<tr class='head'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'>No.Batch</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='90px'>Kode Barang</td>"+
@@ -405,8 +405,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Jml.Beli</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'>Sisa</td>"+
                 "</tr>"
-            );   
-            
+            );
+
             ps=koneksi.prepareStatement(
                     "select data_batch.no_batch,data_batch.kode_brng,databarang.nama_brng,"+
                     "databarang.kode_sat,data_batch.tgl_beli,data_batch.tgl_kadaluarsa,"+
@@ -513,7 +513,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             rs2.close();
                         }
                     }
-                    
+
                     //detail pemberian obat
                     try {
                         rs2=koneksi.prepareStatement(
@@ -522,7 +522,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang inner join bangsal "+
                                 "on databarang.kode_brng=detail_pemberian_obat.kode_brng and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat and "+
                                 "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
-                                "where detail_pemberian_obat..kode_brng='"+rs.getString("kode_brng")+"' and detail_pemberian_obat.no_batch='"+rs.getString("no_batch")+"' and detail_pemberian_obat.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
+                                "where detail_pemberian_obat.kode_brng='"+rs.getString("kode_brng")+"' and detail_pemberian_obat.no_batch='"+rs.getString("no_batch")+"' and detail_pemberian_obat.no_faktur='"+rs.getString("no_faktur")+"'").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
@@ -563,7 +563,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             rs2.close();
                         }
                     }
-                    
+
                     //pengambilan UTD
                     try {
                         rs2=koneksi.prepareStatement(
@@ -608,7 +608,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             rs2.close();
                         }
                     }
-                    
+
                     //retur jual
                     try {
                         rs2=koneksi.prepareStatement(
@@ -660,7 +660,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             rs2.close();
                         }
                     }
-                    
+
                     //piutang
                     try {
                         rs2=koneksi.prepareStatement(
@@ -712,7 +712,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             rs2.close();
                         }
                     }
-                    
+
                     //retur piutang
                     try {
                         rs2=koneksi.prepareStatement(
@@ -764,7 +764,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             rs2.close();
                         }
                     }
-                    
+
                     //retur suplier
                     try {
                         rs2=koneksi.prepareStatement(
@@ -816,7 +816,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             rs2.close();
                         }
                     }
-                    
+
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -828,7 +828,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     ps.close();
                 }
             }
-            
+
             LoadHTML.setText(
                     "<html>"+
                       "<table width='1400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -837,13 +837,13 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "</html>");
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        } 
+        }
         this.setCursor(Cursor.getDefaultCursor());
-        
+
     }
-    
+
     public void isCek(){
         BtnPrint.setEnabled(akses.getriwayat_data_batch());
     }
-    
+
 }

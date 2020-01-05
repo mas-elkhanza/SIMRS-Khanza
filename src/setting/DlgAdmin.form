@@ -105,7 +105,7 @@
           <SubComponents>
             <Component class="widget.Label" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ID Admin :"/>
+                <Property name="text" type="java.lang.String" value="Username :"/>
                 <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
               </Properties>
               <Constraints>

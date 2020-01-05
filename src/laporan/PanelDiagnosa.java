@@ -382,7 +382,7 @@ public class PanelDiagnosa extends widget.panelisi {
         FormData.add(btnTambahPenyakit);
         btnTambahPenyakit.setBounds(792, 10, 28, 23);
 
-        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)));
         Scroll1.setOpaque(true);
         Scroll1.setViewportView(tbDiagnosa);
 
@@ -425,7 +425,7 @@ public class PanelDiagnosa extends widget.panelisi {
         FormData.add(BtnCariProsedur);
         BtnCariProsedur.setBounds(761, 211, 28, 23);
 
-        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)));
         Scroll2.setOpaque(true);
 
         tbProsedur.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");

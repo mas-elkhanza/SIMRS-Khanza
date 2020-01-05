@@ -36,7 +36,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
-    private ResultSet rs;    
+    private ResultSet rs;
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private int i=0;
     private DlgTemplateUTD template=new DlgTemplateUTD(null,false);
@@ -51,7 +51,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);
 
-        Object[] row={"P","Kode Periksa","Nama Pelayanan","J.S.Rumah Sakit","Paket BHP","J.M.Perujuk","J.M. Dokter","J.M. Petugas","K.S.O.","Manajemen","Total Tarif","Jenis Bayar"};
+        Object[] row={"P","Kode Periksa","Nama Pelayanan","J.S.Rumah Sakit","Paket BHP","J.M.Perujuk","J.M. Dokter","J.M. Petugas","K.S.O.","Menejemen","Total Tarif","Jenis Bayar"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -61,8 +61,8 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
-                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class
              };
              @Override
@@ -100,11 +100,11 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         JMDokter.setDocument(new batasInput((int)15).getOnlyAngka(JMDokter));
         JMLaborat.setDocument(new batasInput((int)15).getOnlyAngka(JMLaborat));
         KSO.setDocument(new batasInput((int)15).getOnlyAngka(KSO));
-        Manajemen.setDocument(new batasInput((int)15).getOnlyAngka(Manajemen));
+        Menejemen.setDocument(new batasInput((int)15).getOnlyAngka(Menejemen));
         TotalBiaya.setDocument(new batasInput((int)20).getOnlyAngka(TotalBiaya));
         kdpnj.setDocument(new batasInput((int)3).getKata(kdpnj));
 
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -126,10 +126,10 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
                     }
                 }
             });
-        }  
+        }
         ChkInput.setSelected(false);
-        isForm(); 
-        
+        isForm();
+
         penjab.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -140,7 +140,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
                 if(penjab.getTable().getSelectedRow()!= -1){
                     kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
                     nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
-                }    
+                }
                 kdpnj.requestFocus();
             }
             @Override
@@ -152,7 +152,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         penjab.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -165,9 +165,9 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-    
+
     }
-    
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -222,7 +222,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         jLabel14 = new widget.Label();
         Bhp = new widget.TextBox();
         KSO = new widget.TextBox();
-        Manajemen = new widget.TextBox();
+        Menejemen = new widget.TextBox();
         jLabel15 = new widget.Label();
         jLabel16 = new widget.Label();
         ChkInput = new widget.CekBox();
@@ -231,7 +231,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 
         ppTemplate.setBackground(new java.awt.Color(255, 255, 254));
         ppTemplate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTemplate.setForeground(new java.awt.Color(50,50,50));
+        ppTemplate.setForeground(new java.awt.Color(50, 50, 50));
         ppTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTemplate.setText("Template UTD");
         ppTemplate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -247,7 +247,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(50,50,50));
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -270,7 +270,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pelayanan Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Tarif Pelayanan Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -439,7 +439,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel6.setText("Key Word :");
+        jLabel6.setText("Keyword :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -662,23 +662,23 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         FormInput.add(KSO);
         KSO.setBounds(453, 42, 170, 23);
 
-        Manajemen.setText("0");
-        Manajemen.setHighlighter(null);
-        Manajemen.setName("Manajemen"); // NOI18N
-        Manajemen.addKeyListener(new java.awt.event.KeyAdapter() {
+        Menejemen.setText("0");
+        Menejemen.setHighlighter(null);
+        Menejemen.setName("Menejemen"); // NOI18N
+        Menejemen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ManajemenKeyPressed(evt);
+                MenejemenKeyPressed(evt);
             }
         });
-        FormInput.add(Manajemen);
-        Manajemen.setBounds(453, 72, 170, 23);
+        FormInput.add(Menejemen);
+        Menejemen.setBounds(453, 72, 170, 23);
 
         jLabel15.setText("K.S.O : Rp. ");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
         jLabel15.setBounds(300, 42, 153, 23);
 
-        jLabel16.setText("Manajemen : Rp. ");
+        jLabel16.setText("Menejemen : Rp. ");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
         jLabel16.setBounds(300, 72, 153, 23);
@@ -727,14 +727,14 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
             Bhp.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             TNm.requestFocus();
         }
 }//GEN-LAST:event_BagianRsKeyPressed
 
     private void TotalBiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalBiayaKeyPressed
-        Valid.pindah(evt,Manajemen,kdpnj);
+        Valid.pindah(evt,Menejemen,kdpnj);
 }//GEN-LAST:event_TotalBiayaKeyPressed
 
     private void JMLaboratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JMLaboratKeyPressed
@@ -743,7 +743,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
             JMPerujuk.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             JMDokter.requestFocus();
         }
@@ -768,15 +768,15 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             Valid.textKosong(JMPerujuk,"J.M. Perujuk");
         }else if(KSO.getText().trim().equals("")){
             Valid.textKosong(KSO,"K.S.O");
-        }else if(Manajemen.getText().trim().equals("")){
-            Valid.textKosong(Manajemen,"Manajemen");
+        }else if(Menejemen.getText().trim().equals("")){
+            Valid.textKosong(Menejemen,"Menejemen");
         }else{
             if(Sequel.menyimpantf("jns_perawatan_utd","?,?,?,?,?,?,?,?,?,?,?,?","Kode Periksa",12,new String[]{
-                TKd.getText(),TNm.getText(),BagianRs.getText(),Bhp.getText(),JMPerujuk.getText(),JMDokter.getText(),JMLaborat.getText(),KSO.getText(),Manajemen.getText(),TotalBiaya.getText(),kdpnj.getText(),"1"
+                TKd.getText(),TNm.getText(),BagianRs.getText(),Bhp.getText(),JMPerujuk.getText(),JMDokter.getText(),JMLaborat.getText(),KSO.getText(),Menejemen.getText(),TotalBiaya.getText(),kdpnj.getText(),"1"
             })==true){
                 BtnCariActionPerformed(evt);
                 emptTeks();
-            }                
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -790,7 +790,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         ChkInput.setSelected(true);
-        isForm(); 
+        isForm();
         emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
@@ -801,11 +801,11 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        for(i=0;i<tbJnsPerawatan.getRowCount();i++){ 
+        for(i=0;i<tbJnsPerawatan.getRowCount();i++){
             if(tbJnsPerawatan.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit("jns_perawatan_utd","kd_jenis_prw='"+tbJnsPerawatan.getValueAt(i,1).toString()+"'","status='0'");
             }
-        }  
+        }
         BtnCariActionPerformed(evt);
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -837,13 +837,13 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             Valid.textKosong(JMPerujuk,"J.M. Perujuk");
         }else if(KSO.getText().trim().equals("")){
             Valid.textKosong(KSO,"K.S.O");
-        }else if(Manajemen.getText().trim().equals("")){
-            Valid.textKosong(Manajemen,"Manajemen");
+        }else if(Menejemen.getText().trim().equals("")){
+            Valid.textKosong(Menejemen,"Menejemen");
         }else{
             Sequel.mengedit("jns_perawatan_utd","kd_jenis_prw=?","kd_jenis_prw=?,nm_perawatan=?,bagian_rs=?,tarif_tindakan_petugas=?,total_byr=?,kd_pj=?,tarif_tindakan_dokter=?,tarif_perujuk=?,bhp=?,kso=?,manajemen=?",12,new String[]{
                 TKd.getText(),TNm.getText(),BagianRs.getText(),JMLaborat.getText(),TotalBiaya.getText(),
                 kdpnj.getText(),JMDokter.getText(),JMPerujuk.getText(),Bhp.getText(),KSO.getText(),
-                Manajemen.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString()
+                Menejemen.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString()
             });
             if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
             emptTeks();
@@ -876,15 +876,15 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-                Map<String, Object> param = new HashMap<>();  
+        }else if(tabMode.getRowCount()!=0){
+                Map<String, Object> param = new HashMap<>();
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("emailrs",akses.getemailrs());
+                param.put("logo",Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptTarifUtd.jasper","report","::[ Data Tarif Radiologi ]::","select jns_perawatan_utd.kd_jenis_prw,jns_perawatan_utd.nm_perawatan,jns_perawatan_utd.bagian_rs,"+
                     "jns_perawatan_utd.bhp,jns_perawatan_utd.tarif_perujuk,jns_perawatan_utd.tarif_tindakan_dokter,jns_perawatan_utd.tarif_tindakan_petugas,jns_perawatan_utd.kso,"+
                     "jns_perawatan_utd.manajemen,jns_perawatan_utd.total_byr,penjab.png_jawab "+
@@ -892,7 +892,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
                     " jns_perawatan_utd.status='1' and jns_perawatan_utd.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
                     " jns_perawatan_utd.status='1' and jns_perawatan_utd.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
                     " jns_perawatan_utd.status='1' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' "+
-                    "order by jns_perawatan_utd.kd_jenis_prw",param);   
+                    "order by jns_perawatan_utd.kd_jenis_prw",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -952,27 +952,27 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 
     private void tbJnsPerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyPressed
         if(tabMode.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_A){                
-                for(i=0;i<tbJnsPerawatan.getRowCount();i++){ 
+            if(evt.getKeyCode()==KeyEvent.VK_A){
+                for(i=0;i<tbJnsPerawatan.getRowCount();i++){
                     tbJnsPerawatan.setValueAt(true,i,0);
                 }
-            }             
+            }
         }
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
 private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
-  isForm();                
+  isForm();
 }//GEN-LAST:event_ChkInputActionPerformed
 
 private void kdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpnjKeyPressed
        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());         
+            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());
             TotalBiaya.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());
-            BtnSimpan.requestFocus();   
+            BtnSimpan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPjActionPerformed(null);
         }
@@ -995,7 +995,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
             JMLaborat.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             Bhp.requestFocus();
         }
@@ -1019,7 +1019,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
             JMDokter.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             BagianRs.requestFocus();
         }
@@ -1037,24 +1037,24 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
             isjml();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
-            Manajemen.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+            Menejemen.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             JMPerujuk.requestFocus();
         }
     }//GEN-LAST:event_KSOKeyPressed
 
-    private void ManajemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManajemenKeyPressed
+    private void MenejemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenejemenKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isjml();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
             TotalBiaya.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             KSO.requestFocus();
         }
-    }//GEN-LAST:event_ManajemenKeyPressed
+    }//GEN-LAST:event_MenejemenKeyPressed
 
     private void ppTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTemplateActionPerformed
         if(TNm.getText().trim().equals("")){
@@ -1076,7 +1076,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
-            }           
+            }
         }
     }//GEN-LAST:event_tbJnsPerawatanKeyReleased
 
@@ -1114,7 +1114,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     private widget.TextBox JMPerujuk;
     private widget.TextBox KSO;
     private widget.Label LCount;
-    private widget.TextBox Manajemen;
+    private widget.TextBox Menejemen;
     private javax.swing.JMenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -1159,7 +1159,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
                         "jns_perawatan_utd.status='1' and jns_perawatan_utd.nm_perawatan like ? or "+
                         "jns_perawatan_utd.status='1' and penjab.png_jawab like ? "+
                         "order by jns_perawatan_utd.kd_jenis_prw");
-            try {            
+            try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
@@ -1186,7 +1186,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
                 if(ps!=null){
                     ps.close();
                 }
-            }                
+            }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1203,8 +1203,8 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         JMDokter.setText("0");
         JMPerujuk.setText("0");
         JMLaborat.setText("0");
-        KSO.setText("0");        
-        Manajemen.setText("0");
+        KSO.setText("0");
+        Menejemen.setText("0");
         TotalBiaya.setText("0");
         //Valid.autoNomer(" jns_perawatan_utd ","JP",6,TKd);
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,3),signed)),0) from jns_perawatan_utd","J",6,TKd);
@@ -1221,7 +1221,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
             JMDokter.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString())));
             JMLaborat.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),7).toString())));
             KSO.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString())));
-            Manajemen.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString())));
+            Menejemen.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString())));
             TotalBiaya.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),10).toString())));
             Sequel.cariIsi("select kd_pj from jns_perawatan_utd where kd_jenis_prw=?", kdpnj,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
             nmpnj.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString());
@@ -1230,31 +1230,31 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
 
     private void isjml(){
         if((! BagianRs.getText().equals(""))&&(! JMLaborat.getText().equals(""))&&(! JMDokter.getText().equals(""))&&(! JMPerujuk.getText().equals(""))&&
-                (! Bhp.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Manajemen.getText().equals(""))){
+                (! Bhp.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Menejemen.getText().equals(""))){
             TotalBiaya.setText(Valid.SetAngka2(Double.parseDouble(BagianRs.getText().trim())+Double.parseDouble(JMDokter.getText().trim())+
                     Double.parseDouble(Bhp.getText().trim())+Double.parseDouble(JMLaborat.getText().trim())+Double.parseDouble(JMPerujuk.getText().trim())+
-                    Double.parseDouble(KSO.getText().trim())+Double.parseDouble(Manajemen.getText().trim())));
+                    Double.parseDouble(KSO.getText().trim())+Double.parseDouble(Menejemen.getText().trim())));
         }
     }
-    
+
     public JTextField getTextField(){
         return TKd;
     }
-   
+
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
             PanelInput.setPreferredSize(new Dimension(WIDTH,220));
-            FormInput.setVisible(true);      
+            FormInput.setVisible(true);
             ChkInput.setVisible(true);
-        }else if(ChkInput.isSelected()==false){           
-            ChkInput.setVisible(false);            
+        }else if(ChkInput.isSelected()==false){
+            ChkInput.setVisible(false);
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
-            FormInput.setVisible(false);      
+            FormInput.setVisible(false);
             ChkInput.setVisible(true);
         }
     }
-    
+
     public void isCek(){
         BtnSimpan.setEnabled(akses.gettarif_utd());
         BtnHapus.setEnabled(akses.gettarif_utd());
@@ -1264,12 +1264,12 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);
-        } 
+        }
     }
-    
+
     public JTable getTable(){
         return tbJnsPerawatan;
     }
 
-    
+
 }
