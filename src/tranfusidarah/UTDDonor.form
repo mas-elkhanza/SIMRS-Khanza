@@ -401,7 +401,7 @@
                           <SubComponents>
                             <Component class="widget.Label" name="label10">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Key Word :"/>
+                                <Property name="text" type="java.lang.String" value="Keyword :"/>
                                 <Property name="name" type="java.lang.String" value="label10" noResource="true"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[60, 23]"/>
@@ -541,7 +541,7 @@
                           <SubComponents>
                             <Component class="widget.Label" name="label11">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Key Word :"/>
+                                <Property name="text" type="java.lang.String" value="Keyword :"/>
                                 <Property name="name" type="java.lang.String" value="label11" noResource="true"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[60, 23]"/>
@@ -1731,7 +1731,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Key Word :"/>
+                    <Property name="text" type="java.lang.String" value="Keyword :"/>
                     <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[70, 23]"/>

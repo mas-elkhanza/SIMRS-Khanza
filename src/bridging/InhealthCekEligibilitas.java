@@ -101,7 +101,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     public  DlgGolonganPolri golonganpolri=new DlgGolonganPolri(null,false);
     public  DlgSatuanPolri satuanpolri=new DlgSatuanPolri(null,false);
     private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
-            
+
     public  DlgPangkatPolri pangkatpolri=new DlgPangkatPolri(null,false);
     public  DlgJabatanPolri jabatanpolri=new DlgJabatanPolri(null,false);
     private int pilih=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
@@ -124,7 +124,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private LocalDate birthday;
     private Period p;
     private long p2;
-    
+
 
     /** Creates new form DlgKamar
      * @param parent
@@ -154,9 +154,9 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 column.setPreferredWidth(470);
             }
         }
-        
+
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         pasien.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -164,27 +164,27 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(pasien.getTable().getSelectedRow()!= -1){                   
+                if(pasien.getTable().getSelectedRow()!= -1){
                     if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString().equals("")){
                         JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
                     }else{
                         NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString());
-                    }                     
-                }  
-                if(pasien.getTable2().getSelectedRow()!= -1){ 
+                    }
+                }
+                if(pasien.getTable2().getSelectedRow()!= -1){
                     if(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),20).toString().equals("")){
                         JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
                     }else{
                         NoKartu.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),20).toString());
-                    } 
+                    }
                 }
-                if(pasien.getTable3().getSelectedRow()!= -1){ 
+                if(pasien.getTable3().getSelectedRow()!= -1){
                     if(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),20).toString().equals("")){
                         JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
                     }else{
                         NoKartu.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),20).toString());
-                    } 
-                }                        
+                    }
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -195,7 +195,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         pasien.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -207,8 +207,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });   
-        
+        });
+
         pasien.getTable2().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -220,8 +220,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        }); 
-        
+        });
+
         pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -233,8 +233,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });        
-    
+        });
+
         faskes.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -242,10 +242,10 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(faskes.getTable().getSelectedRow()!= -1){                   
+                if(faskes.getTable().getSelectedRow()!= -1){
                     KdPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),1).toString());
                     NmPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),2).toString());
-                }  
+                }
                 KdPpkRujukan.requestFocus();
             }
             @Override
@@ -257,7 +257,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         faskes.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -269,8 +269,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });  
-        
+        });
+
         penyakit.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -278,16 +278,16 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(penyakit.getTable().getSelectedRow()!= -1){     
-                    if(pilih==1){  
+                if(penyakit.getTable().getSelectedRow()!= -1){
+                    if(pilih==1){
                         KdPenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
                         NmPenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
                     }else if(pilih==2){
                         KdPenyakit2.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
                         NmPenyakit2.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
                     }
-                        
-                }  
+
+                }
                 KdPenyakit.requestFocus();
             }
             @Override
@@ -299,7 +299,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         penyakit.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -311,8 +311,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });  
-        
+        });
+
         poli.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -320,14 +320,14 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(poli.getTable().getSelectedRow()!= -1){                   
+                if(poli.getTable().getSelectedRow()!= -1){
                     kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
                     TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
                     KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),2).toString());
                     NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),3).toString());
                     isNumber();
                     KdPoli.requestFocus();
-                }                  
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -338,7 +338,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         poli.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -350,8 +350,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });  
-        
+        });
+
         penjab.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -363,7 +363,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     Kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
                     nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
                     Kdpnj.requestFocus();
-                }                  
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -374,7 +374,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         penjab.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -382,12 +382,12 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
                     penjab.dispose();
-                }                
+                }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         kab.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -396,14 +396,14 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kab.getTable().getSelectedRow()!= -1){
-                    if(pilih==1){                    
+                    if(pilih==1){
                         Kabupaten.setText(kab.getTable().getValueAt(kab.getTable().getSelectedRow(),0).toString());
                         Kabupaten.requestFocus();
-                    }else if(pilih==2){                    
+                    }else if(pilih==2){
                         KabupatenPj.setText(kab.getTable().getValueAt(kab.getTable().getSelectedRow(),0).toString());
                         KabupatenPj.requestFocus();
                     }
-                }       
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -414,7 +414,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         kec.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -423,14 +423,14 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kec.getTable().getSelectedRow()!= -1){
-                    if(pilih==1){                    
+                    if(pilih==1){
                         Kecamatan.setText(kec.getTable().getValueAt(kec.getTable().getSelectedRow(),0).toString());
                         Kecamatan.requestFocus();
-                    }else if(pilih==2){                    
+                    }else if(pilih==2){
                         KecamatanPj.setText(kec.getTable().getValueAt(kec.getTable().getSelectedRow(),0).toString());
                         KecamatanPj.requestFocus();
                     }
-                }  
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -441,7 +441,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         kel.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -450,14 +450,14 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kel.getTable().getSelectedRow()!= -1){
-                    if(pilih==1){                    
+                    if(pilih==1){
                         Kelurahan.setText(kel.getTable().getValueAt(kel.getTable().getSelectedRow(),0).toString());
                         Kelurahan.requestFocus();
-                    }else if(pilih==2){                    
+                    }else if(pilih==2){
                         KelurahanPj.setText(kel.getTable().getValueAt(kel.getTable().getSelectedRow(),0).toString());
                         KelurahanPj.requestFocus();
                     }
-                }   
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -468,7 +468,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {;}
@@ -476,11 +476,11 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){    
+                if(dokter.getTable().getSelectedRow()!= -1){
                     kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                     TDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                     isNumber();
-                }      
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -491,7 +491,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         kamar.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -499,18 +499,18 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(kamar.getTable().getSelectedRow()!= -1){   
+                if(kamar.getTable().getSelectedRow()!= -1){
                     if(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),7).toString().equals("KOSONG")){
-                        KdKamar.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),0).toString());  
-                        NmBangsal.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),2).toString());  
-                        TBiaya.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),6).toString()); 
-                        KdJenpel.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),3).toString());  
+                        KdKamar.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),0).toString());
+                        NmBangsal.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),2).toString());
+                        TBiaya.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),6).toString());
+                        KdJenpel.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),3).toString());
                         KdPoli.requestFocus();
                     }else{
                         JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silahkan cari yang kosong..!!");
                         KdPoli.requestFocus();
                     }
-                }  
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -521,7 +521,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         kamar.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -533,8 +533,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        }); 
-        
+        });
+
         perusahaan.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -546,7 +546,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(perusahaan.getTable().getSelectedRow()!= -1){
                         kdperusahaan.setText(perusahaan.getTable().getValueAt(perusahaan.getTable().getSelectedRow(),0).toString());
                         nmperusahaan.setText(perusahaan.getTable().getValueAt(perusahaan.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdperusahaan.requestFocus();
                 }
             }
@@ -559,7 +559,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         perusahaan.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -568,13 +568,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         perusahaan.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         golongantni.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -586,7 +586,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(golongantni.getTable().getSelectedRow()!= -1){
                         kdgolongantni.setText(golongantni.getTable().getValueAt(golongantni.getTable().getSelectedRow(),0).toString());
                         nmgolongantni.setText(golongantni.getTable().getValueAt(golongantni.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdgolongantni.requestFocus();
                 }
             }
@@ -599,7 +599,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         golongantni.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -608,13 +608,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         golongantni.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         jabatantni.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -626,7 +626,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(jabatantni.getTable().getSelectedRow()!= -1){
                         kdjabatantni.setText(jabatantni.getTable().getValueAt(jabatantni.getTable().getSelectedRow(),0).toString());
                         nmjabatantni.setText(jabatantni.getTable().getValueAt(jabatantni.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdjabatantni.requestFocus();
                 }
             }
@@ -639,7 +639,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         jabatantni.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -648,13 +648,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         jabatantni.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         satuantni.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -666,7 +666,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(satuantni.getTable().getSelectedRow()!= -1){
                         kdsatuantni.setText(satuantni.getTable().getValueAt(satuantni.getTable().getSelectedRow(),0).toString());
                         nmsatuantni.setText(satuantni.getTable().getValueAt(satuantni.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdsatuantni.requestFocus();
                 }
             }
@@ -679,7 +679,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         satuantni.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -688,13 +688,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         satuantni.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         pangkattni.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -706,7 +706,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(pangkattni.getTable().getSelectedRow()!= -1){
                         kdpangkattni.setText(pangkattni.getTable().getValueAt(pangkattni.getTable().getSelectedRow(),0).toString());
                         nmpangkattni.setText(pangkattni.getTable().getValueAt(pangkattni.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdpangkattni.requestFocus();
                 }
             }
@@ -719,7 +719,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         pangkattni.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -728,13 +728,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         pangkattni.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         golonganpolri.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -746,7 +746,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(golonganpolri.getTable().getSelectedRow()!= -1){
                         kdgolonganpolri.setText(golonganpolri.getTable().getValueAt(golonganpolri.getTable().getSelectedRow(),0).toString());
                         nmgolonganpolri.setText(golonganpolri.getTable().getValueAt(golonganpolri.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdgolonganpolri.requestFocus();
                 }
             }
@@ -759,7 +759,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         golonganpolri.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -768,13 +768,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         golonganpolri.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         jabatanpolri.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -786,7 +786,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(jabatanpolri.getTable().getSelectedRow()!= -1){
                         kdjabatanpolri.setText(jabatanpolri.getTable().getValueAt(jabatanpolri.getTable().getSelectedRow(),0).toString());
                         nmjabatanpolri.setText(jabatanpolri.getTable().getValueAt(jabatanpolri.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdjabatanpolri.requestFocus();
                 }
             }
@@ -799,7 +799,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         jabatanpolri.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -808,13 +808,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         jabatanpolri.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         satuanpolri.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -826,7 +826,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(satuanpolri.getTable().getSelectedRow()!= -1){
                         kdsatuanpolri.setText(satuanpolri.getTable().getValueAt(satuanpolri.getTable().getSelectedRow(),0).toString());
                         nmsatuanpolri.setText(satuanpolri.getTable().getValueAt(satuanpolri.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdsatuanpolri.requestFocus();
                 }
             }
@@ -839,7 +839,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         satuanpolri.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -848,13 +848,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         satuanpolri.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         pangkatpolri.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -866,7 +866,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(pangkatpolri.getTable().getSelectedRow()!= -1){
                         kdpangkatpolri.setText(pangkatpolri.getTable().getValueAt(pangkatpolri.getTable().getSelectedRow(),0).toString());
                         nmpangkatpolri.setText(pangkatpolri.getTable().getValueAt(pangkatpolri.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdpangkatpolri.requestFocus();
                 }
             }
@@ -879,7 +879,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         pangkatpolri.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -888,13 +888,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         pangkatpolri.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         bahasa.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -906,7 +906,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(bahasa.getTable().getSelectedRow()!= -1){
                         kdbahasa.setText(bahasa.getTable().getValueAt(bahasa.getTable().getSelectedRow(),0).toString());
                         nmbahasa.setText(bahasa.getTable().getValueAt(bahasa.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdbahasa.requestFocus();
                 }
             }
@@ -919,7 +919,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         bahasa.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -928,13 +928,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         bahasa.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         suku.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -946,7 +946,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(suku.getTable().getSelectedRow()!= -1){
                         kdsuku.setText(suku.getTable().getValueAt(suku.getTable().getSelectedRow(),0).toString());
                         nmsukubangsa.setText(suku.getTable().getValueAt(suku.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdsuku.requestFocus();
                 }
             }
@@ -959,7 +959,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         suku.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -968,13 +968,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         suku.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         propin.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -984,14 +984,14 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgPasien")){
                     if(propin.getTable().getSelectedRow()!= -1){
-                        if(pilih==1){                    
+                        if(pilih==1){
                             Propinsi.setText(propin.getTable().getValueAt(propin.getTable().getSelectedRow(),0).toString());
                             Propinsi.requestFocus();
-                        }else if(pilih==2){                    
+                        }else if(pilih==2){
                             PropinsiPj.setText(propin.getTable().getValueAt(propin.getTable().getSelectedRow(),0).toString());
                             PropinsiPj.requestFocus();
                         }
-                    }                
+                    }
                 }
             }
             @Override
@@ -1003,7 +1003,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         cacat.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -1015,7 +1015,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(cacat.getTable().getSelectedRow()!= -1){
                         kdcacat.setText(cacat.getTable().getValueAt(cacat.getTable().getSelectedRow(),0).toString());
                         nmcacat.setText(cacat.getTable().getValueAt(cacat.getTable().getSelectedRow(),1).toString());
-                    }  
+                    }
                     kdcacat.requestFocus();
                 }
             }
@@ -1028,7 +1028,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         cacat.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -1037,13 +1037,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgPasien")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         cacat.dispose();
-                    }                
+                    }
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         ChkCari.setSelected(false);
         isForm();
         NoKartu.setDocument(new batasInput((int)80).getKata(NoKartu));
@@ -1078,9 +1078,9 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         Catatan.setDocument(new batasInput((byte)50).getKata(Catatan));
         LokasiLaka.setDocument(new batasInput((byte)100).getKata(LokasiLaka));
         try{
-            KdPPK.setText(Sequel.cariIsi("select kode_ppkinhealth from setting")); 
-            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting")); 
-            
+            KdPPK.setText(Sequel.cariIsi("select kode_ppkinhealth from setting"));
+            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));
+
             pssetalamat=koneksi.prepareStatement("select * from set_alamat_pasien");
             try {
                 rs=pssetalamat.executeQuery();
@@ -1088,9 +1088,9 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     Kelurahan.setEditable(rs.getBoolean("kelurahan"));
                     KelurahanPj.setEditable(rs.getBoolean("kelurahan"));
                     Kecamatan.setEditable(rs.getBoolean("kecamatan"));
-                    KecamatanPj.setEditable(rs.getBoolean("kecamatan"));                    
+                    KecamatanPj.setEditable(rs.getBoolean("kecamatan"));
                     Kabupaten.setEditable(rs.getBoolean("kabupaten"));
-                    KabupatenPj.setEditable(rs.getBoolean("kabupaten"));                    
+                    KabupatenPj.setEditable(rs.getBoolean("kabupaten"));
                     Propinsi.setEditable(rs.getBoolean("propinsi"));
                     PropinsiPj.setEditable(rs.getBoolean("propinsi"));
                 }
@@ -1104,7 +1104,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     pssetalamat.close();
                 }
             }
-            
+
             pskelengkapan=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
             try {
                 rs=pskelengkapan.executeQuery();
@@ -1171,7 +1171,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         } catch (Exception e) {
             user=akses.getkode();
         }
-        
+
         if(tampilkantni.equals("Yes")){
             chkPolri.setVisible(true);
             nmgolonganpolri.setVisible(true);
@@ -1217,7 +1217,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             nmpangkattni.setVisible(false);
             BtnPangkatTNI.setVisible(false);
             nmjabatantni.setVisible(false);
-            BtnJabatanTNI.setVisible(false);     
+            BtnJabatanTNI.setVisible(false);
             LabelGolonganPolri.setVisible(false);
             LabelGolonganTNI.setVisible(false);
             LabelSatuanPolri.setVisible(false);
@@ -1228,8 +1228,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             LabelJabatanTNI.setVisible(false);
         }
     }
-    
-    
+
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -1582,7 +1582,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Eligibilitas Peserta Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Pencarian Eligibilitas Peserta Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1678,7 +1678,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         FormKelengkapanPasien.add(jLabel19);
         jLabel19.setBounds(235, 85, 45, 23);
 
-        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "BELUM MENIKAH", "JANDA", "DUDHA" }));
+        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KAWIN", "BELUM KAWIN", "CERAI HIDUP", "CERAI MATI" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
         CmbStts.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3207,26 +3207,26 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            
+
             Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
+            for(int r=0;r<row;r++){
                 Sequel.menyimpan("temporary","'0','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
-                                tabMode.getValueAt(r,1).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,1).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs");
             }
-            
-            Map<String, Object> param = new HashMap<>();                 
+
+            Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
             Valid.MyReport("rptCariBPJSNoPeserta.jasper","report","[ Pencarian Peserta BPJS Berdasarkan Nomor Kepesertaan ]",param);
             this.setCursor(Cursor.getDefaultCursor());
-        }        
+        }
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void NoKartuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKartuKeyPressed
@@ -3254,7 +3254,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         if(ChkCari.isSelected()==true){
             ChkCari.setSelected(false);
             isForm();
-        }           
+        }
         ChkRM.setSelected(true);
         cekEligibilitas(NoKartu.getText());
         this.setCursor(Cursor.getDefaultCursor());
@@ -3277,11 +3277,11 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         }else{
             TTmp.requestFocus();
             isForm();
-        }            
+        }
     }//GEN-LAST:event_ChkCariActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void TanggalSEPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalSEPKeyPressed
@@ -3322,7 +3322,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             poli.setLocationRelativeTo(internalFrame1);
             poli.setVisible(true);
-                   
+
     }//GEN-LAST:event_btnPoliActionPerformed
 
     private void btnPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliKeyPressed
@@ -3390,7 +3390,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     }//GEN-LAST:event_kddokterKeyPressed
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
-        dokter.isCek();        
+        dokter.isCek();
         dokter.TCari.requestFocus();
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
@@ -3405,43 +3405,43 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         }else if(nmpnj.getText().trim().equals("")||Kdpnj.getText().trim().equals("")){
             Valid.textKosong(Kdpnj,"Asuransi/Askes/Png.Jawab");
         }else if(no_ktp.equals("Yes")&&(TKtp.getText().trim().length()<p_no_ktp)){
-            Valid.textKosong(TKtp,"No.KTP/SIM minimal "+p_no_ktp+" karakter dan ");            
+            Valid.textKosong(TKtp,"No.KTP/SIM minimal "+p_no_ktp+" karakter dan ");
         }else if(tmp_lahir.equals("Yes")&&(TTmp.getText().trim().length()<p_tmp_lahir)){
-            Valid.textKosong(TTmp,"Tempat Lahir minimal "+p_tmp_lahir+" karakter dan ");            
+            Valid.textKosong(TTmp,"Tempat Lahir minimal "+p_tmp_lahir+" karakter dan ");
         }else if(nm_ibu.equals("Yes")&&(NmIbu.getText().trim().length()<p_nm_ibu)){
-            Valid.textKosong(NmIbu,"Nama Ibu minimal "+p_nm_ibu+" karakter dan ");            
+            Valid.textKosong(NmIbu,"Nama Ibu minimal "+p_nm_ibu+" karakter dan ");
         }else if(alamat.equals("Yes")&&(Alamat.getText().trim().length()<p_alamat)){
-            Valid.textKosong(Alamat,"Alamat Pasien minimal "+p_alamat+" karakter dan ");            
+            Valid.textKosong(Alamat,"Alamat Pasien minimal "+p_alamat+" karakter dan ");
         }else if(pekerjaan.equals("Yes")&&(Pekerjaan.getText().trim().length()<p_pekerjaan)){
-            Valid.textKosong(Pekerjaan,"Pekerjaan Pasien minimal "+p_pekerjaan+" karakter dan ");            
+            Valid.textKosong(Pekerjaan,"Pekerjaan Pasien minimal "+p_pekerjaan+" karakter dan ");
         }else if(no_tlp.equals("Yes")&&(TTlp.getText().trim().length()<p_no_tlp)){
-            Valid.textKosong(TTlp,"Telp Pasien minimal "+p_no_tlp+" karakter dan ");            
+            Valid.textKosong(TTlp,"Telp Pasien minimal "+p_no_tlp+" karakter dan ");
         }else if(umur.equals("Yes")&&(TUmur.getText().trim().length()<p_umur)){
-            Valid.textKosong(TUmur,"Umur Pasien minimal "+p_umur+" karakter dan ");            
+            Valid.textKosong(TUmur,"Umur Pasien minimal "+p_umur+" karakter dan ");
         }else if(namakeluarga.equals("Yes")&&(Saudara.getText().trim().length()<p_namakeluarga)){
-            Valid.textKosong(Saudara,"Penanggung Jawab Pasien minimal "+p_namakeluarga+" karakter dan ");            
+            Valid.textKosong(Saudara,"Penanggung Jawab Pasien minimal "+p_namakeluarga+" karakter dan ");
         }else if(no_peserta.equals("Yes")&&(TNoPeserta.getText().trim().length()<p_no_peserta)){
-            Valid.textKosong(TNoPeserta,"No.Peserta Pasien minimal "+p_no_peserta+" karakter dan ");            
+            Valid.textKosong(TNoPeserta,"No.Peserta Pasien minimal "+p_no_peserta+" karakter dan ");
         }else if(kelurahan.equals("Yes")&&(Kelurahan.getText().trim().length()<p_kelurahan)){
-            Valid.textKosong(Kelurahan,"Kelurahan minimal "+p_kelurahan+" karakter dan ");            
+            Valid.textKosong(Kelurahan,"Kelurahan minimal "+p_kelurahan+" karakter dan ");
         }else if(kecamatan.equals("Yes")&&(Kecamatan.getText().trim().length()<p_kecamatan)){
-            Valid.textKosong(Kecamatan,"Kecamatan minimal "+p_kecamatan+" karakter dan ");            
+            Valid.textKosong(Kecamatan,"Kecamatan minimal "+p_kecamatan+" karakter dan ");
         }else if(kabupaten.equals("Yes")&&(Kabupaten.getText().trim().length()<p_kabupaten)){
-            Valid.textKosong(Kabupaten,"Kabupaten minimal "+p_kabupaten+" karakter dan ");            
+            Valid.textKosong(Kabupaten,"Kabupaten minimal "+p_kabupaten+" karakter dan ");
         }else if(pekerjaanpj.equals("Yes")&&(PekerjaanPj.getText().trim().length()<p_pekerjaanpj)){
-            Valid.textKosong(PekerjaanPj,"Pekerjaan P.J. minimal "+p_pekerjaanpj+" karakter dan ");            
+            Valid.textKosong(PekerjaanPj,"Pekerjaan P.J. minimal "+p_pekerjaanpj+" karakter dan ");
         }else if(alamatpj.equals("Yes")&&(AlamatPj.getText().trim().length()<p_alamatpj)){
-            Valid.textKosong(AlamatPj,"Alamat P.J. minimal "+p_alamatpj+" karakter dan ");            
+            Valid.textKosong(AlamatPj,"Alamat P.J. minimal "+p_alamatpj+" karakter dan ");
         }else if(kelurahanpj.equals("Yes")&&(KelurahanPj.getText().trim().length()<p_kelurahanpj)){
-            Valid.textKosong(KelurahanPj,"Kelurahan P.J. minimal "+p_kelurahanpj+" karakter dan ");            
+            Valid.textKosong(KelurahanPj,"Kelurahan P.J. minimal "+p_kelurahanpj+" karakter dan ");
         }else if(kecamatanpj.equals("Yes")&&(KecamatanPj.getText().trim().length()<p_kecamatanpj)){
-            Valid.textKosong(KecamatanPj,"Kecamatan P.J. minimal "+p_kecamatanpj+" karakter dan ");            
+            Valid.textKosong(KecamatanPj,"Kecamatan P.J. minimal "+p_kecamatanpj+" karakter dan ");
         }else if(kabupatenpj.equals("Yes")&&(KabupatenPj.getText().trim().length()<p_kabupatenpj)){
-            Valid.textKosong(KabupatenPj,"Kabupaten P.J. minimal "+p_kabupatenpj+" karakter dan ");            
+            Valid.textKosong(KabupatenPj,"Kabupaten P.J. minimal "+p_kabupatenpj+" karakter dan ");
         }else if(propinsi.equals("Yes")&&(Propinsi.getText().trim().length()<p_propinsi)){
-            Valid.textKosong(Propinsi,"Propinsi minimal "+p_propinsi+" karakter dan ");            
+            Valid.textKosong(Propinsi,"Propinsi minimal "+p_propinsi+" karakter dan ");
         }else if(propinsipj.equals("Yes")&&(PropinsiPj.getText().trim().length()<p_propinsipj)){
-            Valid.textKosong(PropinsiPj,"Propinsi P.J. minimal "+p_propinsipj+" karakter dan ");            
+            Valid.textKosong(PropinsiPj,"Propinsi P.J. minimal "+p_propinsipj+" karakter dan ");
         }else if(nmsukubangsa.getText().trim().equals("")){
             Valid.textKosong(nmsukubangsa,"Suku/Bangsa");
         }else if(nmbahasa.getText().trim().equals("")){
@@ -3465,7 +3465,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         }else if((chkPolri.isSelected()==true)&&nmjabatanpolri.getText().trim().equals("")){
             Valid.textKosong(nmjabatanpolri,"Jabatan POLRI");
         }else if(TNoReg.getText().trim().equals("")){
-            Valid.textKosong(TNoReg,"No.Regristrasi");
+            Valid.textKosong(TNoReg,"No.Registrasi");
         }else if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
         }else if(TDokter.getText().trim().equals("")){
@@ -3484,8 +3484,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             Valid.textKosong(KdPoli, "Poli/Kamar");
         }else if(Catatan.getText().trim().equals("")){
             Valid.textKosong(Catatan, "Catatan");
-        }else{    
-            insertPasien();            
+        }else{
+            insertPasien();
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -3499,11 +3499,11 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         emptTeks();
-        BtnSimpan.setVisible(false);        
+        BtnSimpan.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void TNmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmKeyPressed
-        
+
     }//GEN-LAST:event_TNmKeyPressed
 
     private void CmbJkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJkKeyPressed
@@ -3522,11 +3522,11 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     }//GEN-LAST:event_DTPLahirItemStateChanged
 
     private void DTPLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahirKeyPressed
-       
+
     }//GEN-LAST:event_DTPLahirKeyPressed
 
     private void TUmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TUmurKeyPressed
-       
+
     }//GEN-LAST:event_TUmurKeyPressed
 
     private void TNoPesertaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoPesertaKeyPressed
@@ -3538,7 +3538,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     }//GEN-LAST:event_TKtpKeyPressed
 
     private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
-        
+
     }//GEN-LAST:event_kdpoliKeyPressed
 
     private void TBiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBiayaKeyPressed
@@ -3553,12 +3553,12 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         if(!nosep.equals("")){
             pilihan.tampil3();
             if((JenisPelayanan.getSelectedIndex()==0)||(JenisPelayanan.getSelectedIndex()==2)){
-                pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
-                        TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(),
+                        TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(),
                         Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ranap");
             }else{
-                pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
-                        TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(),
+                        TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(),
                         Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ralan");
             }
 
@@ -4554,8 +4554,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     public void cekEligibilitas(String nomorpeserta){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/EligibilitasPeserta";	
-	    HttpHeaders headers = new HttpHeaders();            
+            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/EligibilitasPeserta";
+	    HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Type","application/json");
 	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
                             "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
@@ -4574,7 +4574,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "No Kartu Peserta",": "+root.path("NOKAPST").asText()
                 });
-                TNoPeserta.setText(root.path("NOKAPST").asText());                
+                TNoPeserta.setText(root.path("NOKAPST").asText());
                 tabMode.addRow(new Object[]{
                     "Nama Peserta",": "+root.path("NMPST").asText()
                 });
@@ -4582,14 +4582,14 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "Tanggal Lahir",": "+root.path("TGLLAHIR").asText()
                 });
-                
+
                 Valid.SetTgl(DTPLahir,root.path("TGLLAHIR").asText());
-                lahir = DTPLahir.getDate();    
+                lahir = DTPLahir.getDate();
                 birthday = lahir.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 p = Period.between(birthday,today);
                 p2 =ChronoUnit.DAYS.between(birthday,today);
                 TUmur.setText(String.valueOf(p.getYears())+" Th "+String.valueOf(p.getMonths())+" Bl "+String.valueOf(p.getDays())+" Hr");
-                
+
                 tabMode.addRow(new Object[]{
                     "Kode Produk",": "+root.path("KODEPRODUK").asText()
                 });
@@ -4621,7 +4621,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 });
                 tabMode.addRow(new Object[]{
                     "Kode Provider BPJS",": "+root.path("KODEPROVIDERBPJS").asText()
-                });                
+                });
                 tabMode.addRow(new Object[]{
                     "Nama Provider BPJS",": "+root.path("NAMAPROVIDERBPJS").asText()
                 });
@@ -4630,7 +4630,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 });
                 tabMode.addRow(new Object[]{
                     "Produk COB",": "+root.path("PRODUKCOB").asText()
-                });                                
+                });
                 Kdpnj.setText("INH");
                 nmpnj.setText("Mandiri Inhealth");
                 ps=koneksi.prepareStatement(
@@ -4650,7 +4650,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     ps.setString(1,root.path("NOKAPST").asText());
                     rs=ps.executeQuery();
                     if(rs.next()){
-                        statuspasien="lama";                        
+                        statuspasien="lama";
                         TNo.setText(rs.getString("no_rkm_medis"));
                         TNm.setText(rs.getString("nm_pasien"));
                         CMbGd.setSelectedItem(rs.getString("gol_darah"));
@@ -4662,16 +4662,16 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                         Pekerjaan.setText(rs.getString("pekerjaan"));
                         PekerjaanPj.setText(rs.getString("pekerjaanpj"));
                         TTlp.setText(rs.getString("no_tlp"));
-                        Saudara.setText(rs.getString("namakeluarga"));     
+                        Saudara.setText(rs.getString("namakeluarga"));
                         NmIbu.setText(rs.getString("nm_ibu"));
-                        Kelurahan.setText(rs.getString("nm_kel"));      
-                        Kecamatan.setText(rs.getString("nm_kec"));      
-                        Kabupaten.setText(rs.getString("nm_kab"));      
-                        Propinsi.setText(rs.getString("nm_prop")); 
-                        KelurahanPj.setText(rs.getString("kelurahanpj"));      
-                        KecamatanPj.setText(rs.getString("kecamatanpj"));      
-                        KabupatenPj.setText(rs.getString("kabupatenpj"));    
-                        PropinsiPj.setText(rs.getString("propinsipj")); 
+                        Kelurahan.setText(rs.getString("nm_kel"));
+                        Kecamatan.setText(rs.getString("nm_kec"));
+                        Kabupaten.setText(rs.getString("nm_kab"));
+                        Propinsi.setText(rs.getString("nm_prop"));
+                        KelurahanPj.setText(rs.getString("kelurahanpj"));
+                        KecamatanPj.setText(rs.getString("kecamatanpj"));
+                        KabupatenPj.setText(rs.getString("kabupatenpj"));
+                        PropinsiPj.setText(rs.getString("propinsipj"));
                         EMail.setText(rs.getString("email"));
                         NIP.setText(rs.getString("nip"));
                         kdsuku.setText(rs.getString("suku_bangsa"));
@@ -4681,7 +4681,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                         kdcacat.setText(rs.getString("cacat_fisik"));
                         nmcacat.setText(rs.getString("nama_cacat"));
                         kdperusahaan.setText(rs.getString("kode_perusahaan"));
-                        nmperusahaan.setText(rs.getString("nama_perusahaan")); 
+                        nmperusahaan.setText(rs.getString("nama_perusahaan"));
                         TKtp.setText(rs.getString("no_ktp"));
                         switch (rs.getString("namakeluarga")) {
                             case "AYAH":
@@ -4693,7 +4693,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                             case "ISTRI":
                                 R3.setSelected(true);
                                 break;
-                            case "SUAMI":  
+                            case "SUAMI":
                                 R4.setSelected(true);
                                 break;
                             case "SAUDARA":
@@ -4702,7 +4702,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                             case "ANAK":
                                 R6.setSelected(true);
                                 break;
-                        } 
+                        }
                         if(tampilkantni.equals("Yes")){
                             pstni=koneksi.prepareStatement(
                                 "select pasien_tni.no_rkm_medis,pasien_tni.golongan_tni,golongan_tni.nama_golongan,"+
@@ -4737,7 +4737,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                                     pstni.close();
                                 }
                             }
-                                
+
                             pspolri=koneksi.prepareStatement(
                                 "select pasien_polri.no_rkm_medis,pasien_polri.golongan_polri,golongan_polri.nama_golongan,"+
                                 "pasien_polri.satuan_polri,satuan_polri.nama_satuan,pasien_polri.pangkat_polri,"+
@@ -4788,8 +4788,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 }
             }else {
                 emptTeks();
-                JOptionPane.showMessageDialog(null,root.path("ERRORDESC").asText());                
-            } 
+                JOptionPane.showMessageDialog(null,root.path("ERRORDESC").asText());
+            }
         } catch (Exception e) {
             System.out.println("Notifikasi Peserta : "+e);
             if(e.toString().contains("UnknownHostException")){
@@ -4797,13 +4797,13 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
         }
     }
-    
-      
-    
+
+
+
     private void isForm(){
         if(ChkCari.isSelected()==true){
             panelCari.setVisible(true);
-                
+
             if(tampilkantni.equals("Yes")){
                 FormInput.setPreferredSize(new Dimension(955,730));
                 if(internalFrame1.getHeight()>530){
@@ -4859,17 +4859,17 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     }
                 }
             }
-                
+
             isNumber();
             BtnSimpan.setVisible(true);
             TTmp.requestFocus();
-        }else if(ChkCari.isSelected()==false){           
-            panelCari.setVisible(false);      
+        }else if(ChkCari.isSelected()==false){
+            panelCari.setVisible(false);
             PanelInput.setPreferredSize(new Dimension(WIDTH,77));
             BtnSimpan.setVisible(false);
         }
     }
-    
+
     public void emptTeks() {
         TNo.setText("");
         TNm.setText("");
@@ -4886,14 +4886,14 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         PekerjaanPj.setText("");
         TTlp.setText("");
         TUmur.setText("");
-        Saudara.setText("");     
+        Saudara.setText("");
         NmIbu.setText("");
-        Kelurahan.setText("KELURAHAN");      
-        Kecamatan.setText("KECAMATAN");      
-        Kabupaten.setText("KABUPATEN"); 
-        KelurahanPj.setText("KELURAHAN");      
-        KecamatanPj.setText("KECAMATAN");      
-        KabupatenPj.setText("KABUPATEN"); 
+        Kelurahan.setText("KELURAHAN");
+        Kecamatan.setText("KECAMATAN");
+        Kabupaten.setText("KABUPATEN");
+        KelurahanPj.setText("KELURAHAN");
+        KecamatanPj.setText("KECAMATAN");
+        KabupatenPj.setText("KABUPATEN");
         R5.setSelected(true);
         DTPLahir.setDate(new Date());
         DTPDaftar.setDate(new Date());
@@ -4917,21 +4917,21 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         LokasiLaka.setText("");
         JenisPelayananItemStateChanged(null);
         statuspasien="";
-           
+
         TNo.requestFocus();
     }
-    
-    private void isNumber(){     
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"' ","BR/"+dateformat.format(TanggalSEP.getDate())+"/",4,NoBalasan); 
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"'","",3,TNoReg); 
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"' ",dateformat.format(TanggalSEP.getDate())+"/",6,TNoRw);                              
+
+    private void isNumber(){
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"' ","BR/"+dateformat.format(TanggalSEP.getDate())+"/",4,NoBalasan);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"'","",3,TNoReg);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"' ",dateformat.format(TanggalSEP.getDate())+"/",6,TNoRw);
     }
-    
+
     private void isPoli(){
         try {
             ps=koneksi.prepareStatement("select registrasi, registrasilama "+
                 " from poliklinik where kd_poli=? order by nm_poli");
-            try{            
+            try{
                 ps.setString(1,kdpoli.getText().trim());
                 rs=ps.executeQuery();
                 if(rs.next()){
@@ -4949,7 +4949,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 if(rs != null){
                     rs.close();
                 }
-                
+
                 if(ps != null){
                     ps.close();
                 }
@@ -4958,8 +4958,8 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             System.out.println("Notif Cari Poli : "+e);
         }
     }
- 
-    private void autoNomor() {        
+
+    private void autoNomor() {
         if(ChkRM.isSelected()==true){
             if(tahun.equals("Yes")){
                 awalantahun=DTPDaftar.getSelectedItem().toString().substring(8,10);
@@ -4996,7 +4996,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     case "Middle":
                         Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
                         break;
-                }            
+                }
             }
 
             if(posisitahun.equals("Depan")){
@@ -5006,16 +5006,16 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     TNo.setText(NoRm.getText()+"-"+awalanbulan+awalantahun);
                 }else{
                     TNo.setText(NoRm.getText());
-                }            
+                }
             }
         }
     }
-    
+
     private void insertSJP(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/SimpanSJP";	
-	    HttpHeaders headers = new HttpHeaders();            
+            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/SimpanSJP";
+	    HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Type","application/json");
 	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
                             "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
@@ -5046,9 +5046,9 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 nosep=root.path("NOSJP").asText();
                 if(Sequel.menyimpantf("bridging_inhealth","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data SJP",35,new String[]{
                       nosep,TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
-                      Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19), 
+                      Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19),
                       NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(),
-                      JenisPelayanan.getSelectedItem().toString().substring(0,1),Catatan.getText(),KdPenyakit.getText(), 
+                      JenisPelayanan.getSelectedItem().toString().substring(0,1),Catatan.getText(),KdPenyakit.getText(),
                       NmPenyakit.getText(),KdPenyakit2.getText(),NmPenyakit2.getText(),KdPoli.getText(),NmPoli.getText(),
                       Kelas.getSelectedItem().toString().substring(0,3),root.path("KELASDESC").asText(),root.path("KDBU").asText(),
                       root.path("NMBU").asText(),LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),user,
@@ -5060,19 +5060,19 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     if(!nosep.equals("")){
                         pilihan.tampil3();
                         if(JenisPelayanan.getSelectedIndex()==1){
-                            pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
-                                    TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                            pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(),
+                                    TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(),
                                     Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ranap");
                         }else{
-                            pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
-                                    TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                            pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(),
+                                    TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(),
                                     Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ralan");
                         }
-                        
+
                         pilihan.setSize(500,400);
                         pilihan.setLocationRelativeTo(internalFrame1);
                         pilihan.setVisible(true);
-                    }                    
+                    }
                 }
             }else{
                 Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
@@ -5099,7 +5099,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private void inputRegistrasi(){
         try {
             pscariumur=koneksi.prepareStatement(
@@ -5108,7 +5108,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                 "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari "+
                 "from pasien where no_rkm_medis=?");
             try {
-                pscariumur.setString(1,TNo.getText());                            
+                pscariumur.setString(1,TNo.getText());
                 rs=pscariumur.executeQuery();
                 if(rs.next()){
                     umur="0";
@@ -5124,7 +5124,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                             umur=rs.getString("hari");
                             sttsumur="Hr";
                         }
-                    }                                
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi Umur : "+e);
@@ -5139,7 +5139,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
-        
+
         status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+TNo.getText()+"' and kd_poli='"+kdpoli.getText()+"')>0,'Lama','Baru' )");
         if((JenisPelayanan.getSelectedIndex()==0)||(JenisPelayanan.getSelectedIndex()==2)){
             isNumber();
@@ -5150,7 +5150,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     klg,TBiaya.getText(),"Belum","Lama","Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
-                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");             
+                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
                     if(Sequel.cariInteger(
                             "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
@@ -5183,7 +5183,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     klg,Sequel.cariIsi("select registrasilama from poliklinik where kd_poli='IGDK'"),"Belum","Lama","Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
-                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");                                     
+                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
                     if(Sequel.cariInteger(
                             "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
@@ -5205,7 +5205,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     }else{
                         Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit2.getText(),"Ralan","2","Baru"});
                     }
-                    
+
                     jmlhari=0;
                     biaya=0;
                     if(hariawal.equals("Yes")){
@@ -5218,9 +5218,9 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                             "'00:00:00','"+jmlhari+"','"+biaya+"','-'","No.Rawat"
                         )==true){
                             Sequel.mengedit("reg_periksa","no_rawat='"+TNoRw.getText()+"'","status_lanjut='Ranap'");
-                            Sequel.mengedit("kamar","kd_kamar='"+KdKamar.getText()+"'","status='ISI'"); 
+                            Sequel.mengedit("kamar","kd_kamar='"+KdKamar.getText()+"'","status='ISI'");
                             insertSJP();
-                    }       
+                    }
             }
         }
     }
@@ -5238,15 +5238,15 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             klg="SAUDARA";
         }else if(R6.isSelected()==true){
             klg="ANAK";
-        }    
+        }
 
-                        
+
         Sequel.queryu4("insert into kelurahan values(?,?)",2,new String[]{"0",Kelurahan.getText().replaceAll("KELURAHAN","-")});
         Sequel.queryu4("insert into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText().replaceAll("KECAMATAN","-")});
         Sequel.queryu4("insert into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
         Sequel.queryu4("insert into penjab values(?,?)",2,new String[]{Kdpnj.getText(),nmpnj.getText()});
         Sequel.queryu4("insert into propinsi values(?,?)",2,new String[]{"0",Propinsi.getText().replaceAll("PROPINSI","-")});
-        
+
         if(statuspasien.equals("baru")){
             autoNomor();
             if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
@@ -5267,7 +5267,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                             TNo.getText(),kdgolongantni.getText(),kdpangkattni.getText(),
                             kdsatuantni.getText(),kdjabatantni.getText()
                         });
-                    }  
+                    }
                     if(chkPolri.isSelected()==true){
                         Sequel.menyimpan2("pasien_polri","?,?,?,?,?,?","Data",5,new String[]{
                             TNo.getText(),kdgolonganpolri.getText(),kdpangkatpolri.getText(),
@@ -5276,12 +5276,12 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     }
                     if(ChkRM.isSelected()==true){
                         Sequel.queryu2("delete from set_no_rkm_medis");
-                        Sequel.queryu2("insert into set_no_rkm_medis values(?)",1,new String[]{TNo.getText()});            
-                    }             
+                        Sequel.queryu2("insert into set_no_rkm_medis values(?)",1,new String[]{TNo.getText()});
+                    }
 
-                    inputRegistrasi();                        
+                    inputRegistrasi();
             }else{
-                autoNomor();                    
+                autoNomor();
             }
         }else if(statuspasien.equals("lama")){
             Sequel.mengedit("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,no_ktp=?,jk=?,tmp_lahir=?,"+
@@ -5296,22 +5296,22 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                     TTlp.getText(),TUmur.getText(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                     Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText()),
                     Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText()),
-                    Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText()), 
+                    Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText()),
                     NmIbu.getText(),PekerjaanPj.getText(),AlamatPj.getText(),KelurahanPj.getText(),KecamatanPj.getText(),
                     KabupatenPj.getText(),kdperusahaan.getText(),kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),
                     Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText()),
                     PropinsiPj.getText(),TNo.getText()
-            });   
+            });
 
-            inputRegistrasi();                                
-        }                
-        
+            inputRegistrasi();
+        }
+
     }
-    
+
     private void UpdateUmur(){
         Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{TNo.getText()});
     }
-    
+
     public void isCek(){
         BtnSimpan.setEnabled(akses.getinhealth_sjp());
     }

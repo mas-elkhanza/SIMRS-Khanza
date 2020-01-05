@@ -788,10 +788,10 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="4">
-                                    <StringItem index="0" value="MENIKAH"/>
-                                    <StringItem index="1" value="BELUM MENIKAH"/>
-                                    <StringItem index="2" value="JANDA"/>
-                                    <StringItem index="3" value="DUDHA"/>
+                                    <StringItem index="0" value="KAWIN"/>
+                                    <StringItem index="1" value="BELUM KAWIN"/>
+                                    <StringItem index="2" value="CERAI HIDUP"/>
+                                    <StringItem index="3" value="CERAI MATI"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>

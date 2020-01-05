@@ -310,7 +310,7 @@
               <SubComponents>
                 <Component class="widget.Label" name="jLabel6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Key Word :"/>
+                    <Property name="text" type="java.lang.String" value="Keyword :"/>
                     <Property name="name" type="java.lang.String" value="jLabel6" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[70, 23]"/>
@@ -712,7 +712,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel16">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Manajemen : Rp. "/>
+                    <Property name="text" type="java.lang.String" value="Menejemen : Rp. "/>
                     <Property name="name" type="java.lang.String" value="jLabel16" noResource="true"/>
                   </Properties>
                   <Constraints>

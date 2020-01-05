@@ -577,7 +577,7 @@ object frmUtama: TfrmUtama
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
-        Caption = 'Key Word :'
+        Caption = 'Keyword :'
       end
       object PRegBtnSimpan: TsuiButton
         Left = 4
@@ -1028,7 +1028,7 @@ object frmUtama: TfrmUtama
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
-        Caption = 'Key Word :'
+        Caption = 'Keyword :'
       end
       object suiButton6: TsuiButton
         Left = 680
@@ -1268,7 +1268,7 @@ object frmUtama: TfrmUtama
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
-        Caption = 'Key Word :'
+        Caption = 'Keyword :'
       end
       object suiButton1: TsuiButton
         Left = 680
@@ -1508,7 +1508,7 @@ object frmUtama: TfrmUtama
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
-        Caption = 'Key Word :'
+        Caption = 'Keyword :'
       end
       object Label9: TLabel
         Left = 5

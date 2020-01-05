@@ -99,7 +99,7 @@
               <SubComponents>
                 <Component class="widget.Label" name="label9">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Key Word :"/>
+                    <Property name="text" type="java.lang.String" value="Keyword :"/>
                     <Property name="name" type="java.lang.String" value="label9" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[70, 23]"/>
@@ -435,7 +435,7 @@
                 </Component>
                 <Component class="widget.Label" name="label26">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Manajemen : Rp"/>
+                    <Property name="text" type="java.lang.String" value="Menejemen : Rp"/>
                     <Property name="name" type="java.lang.String" value="label26" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[65, 23]"/>
@@ -447,16 +447,16 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="Manajemen">
+                <Component class="widget.TextBox" name="Menejemen">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
-                    <Property name="name" type="java.lang.String" value="Manajemen" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="Menejemen" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[207, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ManajemenKeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MenejemenKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

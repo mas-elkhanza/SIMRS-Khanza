@@ -1,11 +1,11 @@
 /*
-  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
+  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile
   Software ini dalam bentuk apapun tanpa seijin pembuat software
   (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
   npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
   nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
   nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami
   karena telah berdoa buruk, semua ini kami lakukan karena kami ti
   dak pernah rela karya kami dibajak tanpa ijin.
  */
@@ -139,12 +139,12 @@ public class DlgDokter extends javax.swing.JDialog {
                     }
                 }
             });
-        } 
-        
+        }
+
         ChkInput.setSelected(false);
-        isForm(); 
-        
-              
+        isForm();
+
+
         spesial.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -152,10 +152,10 @@ public class DlgDokter extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(spesial.getTable().getSelectedRow()!= -1){                   
+                if(spesial.getTable().getSelectedRow()!= -1){
                     KdSps.setText(spesial.getTable().getValueAt(spesial.getTable().getSelectedRow(),0).toString());
                     TSpesialis.setText(spesial.getTable().getValueAt(spesial.getTable().getSelectedRow(),1).toString());
-                }   
+                }
                 KdSps.requestFocus();
             }
             @Override
@@ -167,7 +167,7 @@ public class DlgDokter extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         pegawai.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -175,14 +175,14 @@ public class DlgDokter extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){                   
+                if(pegawai.getTable().getSelectedRow()!= -1){
                     TKd.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
                     TNm.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
                     CmbJk.setSelectedItem(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),2).toString().replaceAll("Wanita","PEREMPUAN").replaceAll("Pria","LAKI-LAKI"));
                     TTmp.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),11).toString());
                     TAlmt.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),13).toString());
                     Valid.SetTgl(DTPLahir,pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),12).toString());
-                }   
+                }
                 TKd.requestFocus();
             }
             @Override
@@ -195,7 +195,6 @@ public class DlgDokter extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
     }
-    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -269,7 +268,7 @@ public class DlgDokter extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(50,50,50));
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -293,7 +292,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -518,7 +517,7 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel16.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass8.add(jLabel16);
 
-        CmbCrStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "MENIKAH", "SINGLE", "JANDA", "DUDHA" }));
+        CmbCrStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "KAWIN", "BELUM KAWIN", "CERAI HIDUP", "CERAI MATI" }));
         CmbCrStts.setLightWeightPopupEnabled(false);
         CmbCrStts.setName("CmbCrStts"); // NOI18N
         CmbCrStts.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -542,7 +541,7 @@ public class DlgDokter extends javax.swing.JDialog {
         jSeparator4.setPreferredSize(new java.awt.Dimension(1, 23));
         panelGlass8.add(jSeparator4);
 
-        jLabel6.setText("Key Word :");
+        jLabel6.setText("Keyword :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(jLabel6);
@@ -686,7 +685,7 @@ public class DlgDokter extends javax.swing.JDialog {
         FormInput.add(jLabel19);
         jLabel19.setBounds(639, 12, 90, 23);
 
-        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "SINGLE", "JANDA", "DUDHA", "JOMBLO" }));
+        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KAWIN", "BELUM KAWIN", "CERAI HIDUP", "CERAI MATI" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
         CmbStts.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -877,7 +876,7 @@ public class DlgDokter extends javax.swing.JDialog {
 }//GEN-LAST:event_TTlpKeyPressed
 
     private void TKdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_UP){  
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnCariPegawaiActionPerformed(null);
         }else{
             Valid.pindah(evt,TCari,TNm);
@@ -900,7 +899,7 @@ public class DlgDokter extends javax.swing.JDialog {
         }else if(TSpesialis.getText().trim().equals("")||KdSps.getText().trim().equals("")){
             Valid.textKosong(KdSps,"spesialis");
         }else{
-            try { 
+            try {
                 Sequel.AutoComitFalse();
                 Sequel.menyimpan("jnj_jabatan","'-','-','0'");
                 Sequel.menyimpan("departemen","'-','-'");
@@ -913,7 +912,7 @@ public class DlgDokter extends javax.swing.JDialog {
                 Sequel.menyimpan("emergency_index","'-','-','0'");
                 Sequel.menyimpan("pendidikan","'-','0','0','0','0'");
                 Sequel.menyimpan("pegawai","'0','"+TKd.getText()+"','"+TNm.getText()+"','"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+
-                        "'-','-','-','-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/','-'");        
+                        "'-','-','-','-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/','-'");
                 Sequel.menyimpan("dokter","'"+TKd.getText()+"','"+
                         TNm.getText()+"','"+
                         CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"','"+
@@ -933,7 +932,7 @@ public class DlgDokter extends javax.swing.JDialog {
                 emptTeks();
             } catch (Exception ex) {
                 return;
-            }            
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -947,8 +946,8 @@ public class DlgDokter extends javax.swing.JDialog {
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         ChkInput.setSelected(true);
-        isForm(); 
-        emptTeks();        
+        isForm();
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -965,7 +964,7 @@ public class DlgDokter extends javax.swing.JDialog {
             emptTeks();
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
-        } 
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -982,14 +981,14 @@ public class DlgDokter extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();   
+            Map<String, Object> param = new HashMap<>();
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                param.put("emailrs",akses.getemailrs());
+                param.put("logo",Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptDokter.jasper","report","::[ Data Dokter ]::",
                         "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir, "+
                    "dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
@@ -1007,7 +1006,7 @@ public class DlgDokter extends javax.swing.JDialog {
                    "dokter.status='1' and dokter.jk like '%"+cmbCrJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"%' and dokter.gol_drh like '%"+CmbCrGd.getSelectedItem().toString().trim()+"%' and dokter.stts_nikah like '%"+CmbCrStts.getSelectedItem().toString().trim()+"%' and dokter.alumni like '%"+TCari.getText().trim()+"%' or "+
                    "dokter.status='1' and dokter.jk like '%"+cmbCrJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"%' and dokter.gol_drh like '%"+CmbCrGd.getSelectedItem().toString().trim()+"%' and dokter.stts_nikah like '%"+CmbCrStts.getSelectedItem().toString().trim()+"%' and dokter.no_ijn_praktek like '%"+TCari.getText().trim()+"%' "+
                    "order by dokter.kd_dokter",param);
-            
+
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1054,7 +1053,7 @@ public class DlgDokter extends javax.swing.JDialog {
         }else if(TSpesialis.getText().trim().equals("")||KdSps.getText().trim().equals("")){
             Valid.textKosong(KdSps,"spesialis");
         }else{
-            try { 
+            try {
                 koneksi.setAutoCommit(false);
                 Sequel.mengedit("pegawai","nik='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"'",
                         "nik='"+TKd.getText()+"',nama='"+TNm.getText()+"',jk='"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+
@@ -1076,7 +1075,7 @@ public class DlgDokter extends javax.swing.JDialog {
                 emptTeks();
             } catch (SQLException ex) {
                 return;
-            }            
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1146,11 +1145,11 @@ public class DlgDokter extends javax.swing.JDialog {
 }//GEN-LAST:event_tbDokterMouseClicked
 
 private void KdSpsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdSpsKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){            
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
                 Sequel.cariIsi("select nm_sps from spesialis where kd_sps=?",TSpesialis,KdSps.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){  
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSpesialActionPerformed(null);
-        }else{            
+        }else{
             Valid.pindah(evt,TTlp,TAlumni);
         }
 }//GEN-LAST:event_KdSpsKeyPressed
@@ -1164,7 +1163,7 @@ private void btnSpesialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnSpesialActionPerformed
 
 private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
-  isForm();                
+  isForm();
 }//GEN-LAST:event_ChkInputActionPerformed
 
     private void BtnCariPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariPegawaiActionPerformed
@@ -1362,7 +1361,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(rs != null){
                     rs.close();
                 }
-                
+
                 if(stat != null){
                     stat.close();
                 }
@@ -1407,7 +1406,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Sequel.cariIsi("select kd_sps from spesialis where nm_sps='"+tbDokter.getValueAt(row,10).toString()+"'", KdSps);
             TAlumni.setText(tbDokter.getValueAt(row,11).toString());
             TNoi.setText(tbDokter.getValueAt(row,12).toString());
-            
+
             switch (tbDokter.getValueAt(row,2).toString()) {
                 case "L":
                     CmbJk.setSelectedItem("LAKI-LAKI");
@@ -1416,12 +1415,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     CmbJk.setSelectedItem("PEREMPUAN");
                     break;
             }
-            
+
             Valid.SetTgl(DTPLahir,tbDokter.getValueAt(row,4).toString());
         }
     }
 
-    
+
     public JTextField getTextField(){
         return TKd;
     }
@@ -1429,21 +1428,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public JButton getButton(){
         return BtnKeluar;
     }
-    
+
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
             PanelInput.setPreferredSize(new Dimension(WIDTH,189));
-            FormInput.setVisible(true);      
+            FormInput.setVisible(true);
             ChkInput.setVisible(true);
-        }else if(ChkInput.isSelected()==false){           
-            ChkInput.setVisible(false);            
+        }else if(ChkInput.isSelected()==false){
+            ChkInput.setVisible(false);
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
-            FormInput.setVisible(false);      
+            FormInput.setVisible(false);
             ChkInput.setVisible(true);
         }
     }
-    
+
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdokter());
         BtnHapus.setEnabled(akses.getdokter());
@@ -1453,6 +1452,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             MnRestore.setEnabled(true);
         }else{
             MnRestore.setEnabled(false);
-        } 
+        }
     }
 }
