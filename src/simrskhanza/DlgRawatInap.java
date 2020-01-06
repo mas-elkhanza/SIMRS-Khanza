@@ -793,7 +793,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             TTnd.setText(perawatan.getTable().getValueAt(perawatan.getTable().getSelectedRow(),4).toString());
                             TKdPrw2.requestFocus(); 
                         }
-                    }   
+                    }  
+                    BtnCariActionPerformed(null);
                 }
             }
             @Override
@@ -849,7 +850,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             TTnd.setText(perawatan2.getTable().getValueAt(perawatan2.getTable().getSelectedRow(),7).toString());
                             TKdPrw2.requestFocus();
                         }
-                    }   
+                    } 
+                    BtnCariActionPerformed(null);
                 }
             }
             @Override
@@ -5278,13 +5280,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{ 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            RMDataAsuhanGizi resume=new RMDataAsuhanGizi(null,false);
-            resume.isCek();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            resume.setLocationRelativeTo(internalFrame1);
-            resume.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
-            resume.tampil();
-            resume.setVisible(true);
+            RMDataAsuhanGizi form=new RMDataAsuhanGizi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+            form.tampil();
+            form.emptTeks();
+            form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnAsuhanGiziActionPerformed
@@ -5549,7 +5552,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void tampilDr() {
         Valid.tabelKosong(tabModeDr);
         try{
-            ps=koneksi.prepareStatement("select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+            if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                ps=koneksi.prepareStatement("select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                   "concat(rawat_inap_dr.kd_jenis_prw,' ',jns_perawatan_inap.nm_perawatan),rawat_inap_dr.kd_dokter,dokter.nm_dokter,"+
+                   "rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat,rawat_inap_dr.biaya_rawat,rawat_inap_dr.kd_jenis_prw, " +
+                   "rawat_inap_dr.tarif_tindakandr,rawat_inap_dr.kso from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
+                   "dokter inner join rawat_inap_dr "+
+                   "on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
+                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "and rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                   "and rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
+                   "where rawat_inap_dr.tgl_perawatan between ? and ? order by rawat_inap_dr.no_rawat desc");
+            }else{
+                ps=koneksi.prepareStatement("select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                    "concat(rawat_inap_dr.kd_jenis_prw,' ',jns_perawatan_inap.nm_perawatan),rawat_inap_dr.kd_dokter,dokter.nm_dokter,"+
                    "rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat,rawat_inap_dr.biaya_rawat,rawat_inap_dr.kd_jenis_prw, " +
                    "rawat_inap_dr.tarif_tindakandr,rawat_inap_dr.kso from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
@@ -5566,35 +5581,43 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and dokter.nm_dokter like ? or "+
                     "rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and tgl_perawatan like ? "+
                    " order by rawat_inap_dr.no_rawat desc");
+            }
+            
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCariPasien.getText()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(7,"%"+TCariPasien.getText()+"%");
-                ps.setString(8,"%"+TCari.getText().trim()+"%");
-                ps.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(11,"%"+TCariPasien.getText()+"%");
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCariPasien.getText()+"%");
-                ps.setString(16,"%"+TCari.getText().trim()+"%");
-                ps.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(19,"%"+TCariPasien.getText()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+TCariPasien.getText()+"%");
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(27,"%"+TCariPasien.getText()+"%");
-                ps.setString(28,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(3,"%"+TCariPasien.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(7,"%"+TCariPasien.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(11,"%"+TCariPasien.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(15,"%"+TCariPasien.getText()+"%");
+                    ps.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(19,"%"+TCariPasien.getText()+"%");
+                    ps.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(23,"%"+TCariPasien.getText()+"%");
+                    ps.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(27,"%"+TCariPasien.getText()+"%");
+                    ps.setString(28,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabModeDr.addRow(new Object[]{
@@ -5638,7 +5661,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampilPr() {
         Valid.tabelKosong(tabModePr);
         try{  
-            ps2=koneksi.prepareStatement("select rawat_inap_pr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+            if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                ps2=koneksi.prepareStatement("select rawat_inap_pr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                   "concat(rawat_inap_pr.kd_jenis_prw,' ',jns_perawatan_inap.nm_perawatan),rawat_inap_pr.nip,petugas.nama,"+
+                   "rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat,rawat_inap_pr.biaya_rawat,rawat_inap_pr.kd_jenis_prw, " +
+                   "rawat_inap_pr.tarif_tindakanpr,rawat_inap_pr.kso from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
+                   "petugas inner join rawat_inap_pr "+
+                   "on rawat_inap_pr.no_rawat=reg_periksa.no_rawat "+
+                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "and rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                   "and rawat_inap_pr.nip=petugas.nip where  "+
+                    "rawat_inap_pr.tgl_perawatan between ? and ? order by rawat_inap_pr.no_rawat desc"); 
+            }else{
+                ps2=koneksi.prepareStatement("select rawat_inap_pr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                    "concat(rawat_inap_pr.kd_jenis_prw,' ',jns_perawatan_inap.nm_perawatan),rawat_inap_pr.nip,petugas.nama,"+
                    "rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat,rawat_inap_pr.biaya_rawat,rawat_inap_pr.kd_jenis_prw, " +
                    "rawat_inap_pr.tarif_tindakanpr,rawat_inap_pr.kso from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
@@ -5655,35 +5690,43 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "rawat_inap_pr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and petugas.nama like ? or "+
                     "rawat_inap_pr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and rawat_inap_pr.tgl_perawatan like ? "+
                    "order by rawat_inap_pr.no_rawat desc"); 
+            }
+                
             try{
-                ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps2.setString(3,"%"+TCariPasien.getText()+"%");
-                ps2.setString(4,"%"+TCari.getText().trim()+"%");
-                ps2.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps2.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps2.setString(7,"%"+TCariPasien.getText()+"%");
-                ps2.setString(8,"%"+TCari.getText().trim()+"%");
-                ps2.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps2.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps2.setString(11,"%"+TCariPasien.getText()+"%");
-                ps2.setString(12,"%"+TCari.getText().trim()+"%");
-                ps2.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps2.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps2.setString(15,"%"+TCariPasien.getText()+"%");
-                ps2.setString(16,"%"+TCari.getText().trim()+"%");
-                ps2.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps2.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps2.setString(19,"%"+TCariPasien.getText()+"%");
-                ps2.setString(20,"%"+TCari.getText().trim()+"%");
-                ps2.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps2.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps2.setString(23,"%"+TCariPasien.getText()+"%");
-                ps2.setString(24,"%"+TCari.getText().trim()+"%");
-                ps2.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps2.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps2.setString(27,"%"+TCariPasien.getText()+"%");
-                ps2.setString(28,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                    ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps2.setString(3,"%"+TCariPasien.getText()+"%");
+                    ps2.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps2.setString(7,"%"+TCariPasien.getText()+"%");
+                    ps2.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps2.setString(11,"%"+TCariPasien.getText()+"%");
+                    ps2.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps2.setString(15,"%"+TCariPasien.getText()+"%");
+                    ps2.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps2.setString(19,"%"+TCariPasien.getText()+"%");
+                    ps2.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps2.setString(23,"%"+TCariPasien.getText()+"%");
+                    ps2.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps2.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps2.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps2.setString(27,"%"+TCariPasien.getText()+"%");
+                    ps2.setString(28,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps2.executeQuery();
                 while(rs.next()){
                     tabModePr.addRow(new Object[]{false,rs.getString(1),
@@ -5736,7 +5779,17 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     public void tampilDrPr() {
         Valid.tabelKosong(tabModeDrPr);
         try{
-            ps3=koneksi.prepareStatement("select rawat_inap_drpr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+            if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                ps3=koneksi.prepareStatement("select rawat_inap_drpr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                   "concat(rawat_inap_drpr.kd_jenis_prw,' ',jns_perawatan_inap.nm_perawatan),rawat_inap_drpr.kd_dokter,dokter.nm_dokter,"+
+                   "rawat_inap_drpr.nip,petugas.nama,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.biaya_rawat,rawat_inap_drpr.kd_jenis_prw, " +
+                   "rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,rawat_inap_drpr.kso from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
+                   "dokter inner join rawat_inap_drpr inner join petugas on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "+
+                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                   "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter and rawat_inap_drpr.nip=petugas.nip "+
+                   "where rawat_inap_drpr.tgl_perawatan between ? and ? order by rawat_inap_drpr.no_rawat desc");
+            }else{
+                ps3=koneksi.prepareStatement("select rawat_inap_drpr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                    "concat(rawat_inap_drpr.kd_jenis_prw,' ',jns_perawatan_inap.nm_perawatan),rawat_inap_drpr.kd_dokter,dokter.nm_dokter,"+
                    "rawat_inap_drpr.nip,petugas.nama,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.biaya_rawat,rawat_inap_drpr.kd_jenis_prw, " +
                    "rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,rawat_inap_drpr.kso from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
@@ -5753,43 +5806,51 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "rawat_inap_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and petugas.nama like ? or "+
                     "rawat_inap_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and tgl_perawatan like ?  "+
                    " order by rawat_inap_drpr.no_rawat desc");
+            }
+                
             try{
-                ps3.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(3,"%"+TCariPasien.getText()+"%");
-                ps3.setString(4,"%"+TCari.getText().trim()+"%");
-                ps3.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(7,"%"+TCariPasien.getText()+"%");
-                ps3.setString(8,"%"+TCari.getText().trim()+"%");
-                ps3.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(11,"%"+TCariPasien.getText()+"%");
-                ps3.setString(12,"%"+TCari.getText().trim()+"%");
-                ps3.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(15,"%"+TCariPasien.getText()+"%");
-                ps3.setString(16,"%"+TCari.getText().trim()+"%");
-                ps3.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(19,"%"+TCariPasien.getText()+"%");
-                ps3.setString(20,"%"+TCari.getText().trim()+"%");
-                ps3.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(23,"%"+TCariPasien.getText()+"%");
-                ps3.setString(24,"%"+TCari.getText().trim()+"%");
-                ps3.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(27,"%"+TCariPasien.getText()+"%");
-                ps3.setString(28,"%"+TCari.getText().trim()+"%");
-                ps3.setString(29,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(30,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(31,"%"+TCariPasien.getText()+"%");
-                ps3.setString(32,"%"+TCari.getText().trim()+"%");
-                ps3.setString(33,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps3.setString(34,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps3.setString(35,"%"+TCariPasien.getText()+"%");
-                ps3.setString(36,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                    ps3.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps3.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(3,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(7,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(11,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(15,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(19,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(23,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(27,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(28,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(29,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(30,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(31,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(32,"%"+TCari.getText().trim()+"%");
+                    ps3.setString(33,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps3.setString(34,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps3.setString(35,"%"+TCariPasien.getText()+"%");
+                    ps3.setString(36,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps3.executeQuery();
                 while(rs.next()){
                     tabModeDrPr.addRow(new Object[]{
@@ -5990,7 +6051,16 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampilPemeriksaan() {
         Valid.tabelKosong(tabModePemeriksaan);
         try{  
-            ps4=koneksi.prepareStatement("select pemeriksaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+            if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                ps4=koneksi.prepareStatement("select pemeriksaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi, " +
+                    "pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi, " +
+                    "pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan, " +
+                    "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl from pasien inner join reg_periksa inner join pemeriksaan_ranap "+
+                    "on pemeriksaan_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
+                    "pemeriksaan_ranap.tgl_perawatan between ? and ? order by pemeriksaan_ranap.no_rawat desc"); 
+            }else{
+                ps4=koneksi.prepareStatement("select pemeriksaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                     "pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi, " +
                     "pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi,pemeriksaan_ranap.tinggi, " +
                     "pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan, " +
@@ -6005,39 +6075,47 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "pemeriksaan_ranap.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ranap.rtl like ? or "+
                     "pemeriksaan_ranap.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ranap.pemeriksaan like ? "+
                    "order by pemeriksaan_ranap.no_rawat desc"); 
+            }
+                
             try{
-                ps4.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(3,"%"+TCariPasien.getText()+"%");
-                ps4.setString(4,"%"+TCari.getText().trim()+"%");
-                ps4.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(7,"%"+TCariPasien.getText()+"%");
-                ps4.setString(8,"%"+TCari.getText().trim()+"%");
-                ps4.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(11,"%"+TCariPasien.getText()+"%");
-                ps4.setString(12,"%"+TCari.getText().trim()+"%");
-                ps4.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(15,"%"+TCariPasien.getText()+"%");
-                ps4.setString(16,"%"+TCari.getText().trim()+"%");
-                ps4.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(19,"%"+TCariPasien.getText()+"%");
-                ps4.setString(20,"%"+TCari.getText().trim()+"%");
-                ps4.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(23,"%"+TCariPasien.getText()+"%");
-                ps4.setString(24,"%"+TCari.getText().trim()+"%");
-                ps4.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(27,"%"+TCariPasien.getText()+"%");
-                ps4.setString(28,"%"+TCari.getText().trim()+"%");
-                ps4.setString(29,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps4.setString(30,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps4.setString(31,"%"+TCariPasien.getText()+"%");
-                ps4.setString(32,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                    ps4.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps4.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(3,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps4.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(7,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps4.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(11,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps4.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(15,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps4.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(19,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps4.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(23,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps4.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(27,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(28,"%"+TCari.getText().trim()+"%");
+                    ps4.setString(29,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps4.setString(30,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps4.setString(31,"%"+TCariPasien.getText()+"%");
+                    ps4.setString(32,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps4.executeQuery();
                 while(rs.next()){
                     tabModePemeriksaan.addRow(new Object[]{
@@ -6091,7 +6169,18 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampilPemeriksaanObstetri() {
         Valid.tabelKosong(tabModeObstetri);
         try{
-            ps5=koneksi.prepareStatement("select pemeriksaan_obstetri_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+            if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                ps5=koneksi.prepareStatement("select pemeriksaan_obstetri_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "pemeriksaan_obstetri_ranap.tgl_perawatan,pemeriksaan_obstetri_ranap.jam_rawat,pemeriksaan_obstetri_ranap.tinggi_uteri,pemeriksaan_obstetri_ranap.janin,pemeriksaan_obstetri_ranap.letak, " +
+                    "pemeriksaan_obstetri_ranap.panggul,pemeriksaan_obstetri_ranap.denyut,pemeriksaan_obstetri_ranap.kontraksi, " +
+                    "pemeriksaan_obstetri_ranap.kualitas_mnt,pemeriksaan_obstetri_ranap.kualitas_dtk,pemeriksaan_obstetri_ranap.fluksus,pemeriksaan_obstetri_ranap.albus, " +
+                    "pemeriksaan_obstetri_ranap.vulva,pemeriksaan_obstetri_ranap.portio,pemeriksaan_obstetri_ranap.dalam, pemeriksaan_obstetri_ranap.tebal, pemeriksaan_obstetri_ranap.arah, pemeriksaan_obstetri_ranap.pembukaan," +
+                    "pemeriksaan_obstetri_ranap.penurunan, pemeriksaan_obstetri_ranap.denominator, pemeriksaan_obstetri_ranap.ketuban, pemeriksaan_obstetri_ranap.feto " +
+                    "from pasien inner join reg_periksa inner join pemeriksaan_obstetri_ranap "+
+                    "on pemeriksaan_obstetri_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
+                    "pemeriksaan_obstetri_ranap.tgl_perawatan between ? and ? order by pemeriksaan_obstetri_ranap.no_rawat desc");
+            }else{
+                ps5=koneksi.prepareStatement("select pemeriksaan_obstetri_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                     "pemeriksaan_obstetri_ranap.tgl_perawatan,pemeriksaan_obstetri_ranap.jam_rawat,pemeriksaan_obstetri_ranap.tinggi_uteri,pemeriksaan_obstetri_ranap.janin,pemeriksaan_obstetri_ranap.letak, " +
                     "pemeriksaan_obstetri_ranap.panggul,pemeriksaan_obstetri_ranap.denyut,pemeriksaan_obstetri_ranap.kontraksi, " +
                     "pemeriksaan_obstetri_ranap.kualitas_mnt,pemeriksaan_obstetri_ranap.kualitas_dtk,pemeriksaan_obstetri_ranap.fluksus,pemeriksaan_obstetri_ranap.albus, " +
@@ -6106,31 +6195,39 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "pemeriksaan_obstetri_ranap.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_obstetri_ranap.janin like ? or "+
                     "pemeriksaan_obstetri_ranap.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_obstetri_ranap.letak like ? "+
                     "order by pemeriksaan_obstetri_ranap.no_rawat desc");
+            }
+                
             try {
-                ps5.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps5.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps5.setString(3,"%"+TCariPasien.getText()+"%");
-                ps5.setString(4,"%"+TCari.getText().trim()+"%");
-                ps5.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps5.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps5.setString(7,"%"+TCariPasien.getText()+"%");
-                ps5.setString(8,"%"+TCari.getText().trim()+"%");
-                ps5.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps5.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps5.setString(11,"%"+TCariPasien.getText()+"%");
-                ps5.setString(12,"%"+TCari.getText().trim()+"%");
-                ps5.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps5.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps5.setString(15,"%"+TCariPasien.getText()+"%");
-                ps5.setString(16,"%"+TCari.getText().trim()+"%");
-                ps5.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps5.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps5.setString(19,"%"+TCariPasien.getText()+"%");
-                ps5.setString(20,"%"+TCari.getText().trim()+"%");
-                ps5.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps5.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps5.setString(23,"%"+TCariPasien.getText()+"%");
-                ps5.setString(24,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")&&TCariPasien.getText().equals("")){
+                    ps5.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps5.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps5.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps5.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps5.setString(3,"%"+TCariPasien.getText()+"%");
+                    ps5.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps5.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps5.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps5.setString(7,"%"+TCariPasien.getText()+"%");
+                    ps5.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps5.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps5.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps5.setString(11,"%"+TCariPasien.getText()+"%");
+                    ps5.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps5.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps5.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps5.setString(15,"%"+TCariPasien.getText()+"%");
+                    ps5.setString(16,"%"+TCari.getText().trim()+"%");
+                    ps5.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps5.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps5.setString(19,"%"+TCariPasien.getText()+"%");
+                    ps5.setString(20,"%"+TCari.getText().trim()+"%");
+                    ps5.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps5.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps5.setString(23,"%"+TCariPasien.getText()+"%");
+                    ps5.setString(24,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps5.executeQuery();
                 while(rs.next()) {
                     tabModeObstetri.addRow(new Object[] {
