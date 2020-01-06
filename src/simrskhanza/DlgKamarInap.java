@@ -680,6 +680,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
         cmbStatus = new widget.ComboBox();
         jLabel26 = new widget.Label();
         btnDiagnosa = new widget.Button();
+        upf = new widget.ComboBox();
+        jLabel39 = new widget.Label();
+        kirimanDari = new widget.ComboBox();
+        jLabel40 = new widget.Label();
         TOut = new widget.TextBox();
         TIn = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
@@ -724,6 +728,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnFormulirPenerimaan1 = new javax.swing.JMenuItem();
         MnCetakSuratSakit1 = new javax.swing.JMenuItem();
         MnSuratJaminanPelayanan = new javax.swing.JMenuItem();
+        MnLembarMasukKeluar = new javax.swing.JMenuItem();
         MnGelang = new javax.swing.JMenu();
         MnLabelTracker = new javax.swing.JMenuItem();
         MnLabelTracker1 = new javax.swing.JMenuItem();
@@ -930,7 +935,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel10.setText("Proses :");
         jLabel10.setName("jLabel10"); // NOI18N
         internalFrame2.add(jLabel10);
-        jLabel10.setBounds(0, 175, 72, 23);
+        jLabel10.setBounds(0, 195, 72, 23);
 
         ttlbiaya.setEditable(false);
         ttlbiaya.setText("0");
@@ -1098,12 +1103,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(BtnCloseIn);
-        BtnCloseIn.setBounds(560, 225, 100, 30);
+        BtnCloseIn.setBounds(560, 230, 100, 30);
 
         jLabel19.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         jLabel19.setName("jLabel19"); // NOI18N
         internalFrame2.add(jLabel19);
-        jLabel19.setBounds(-10, 200, 850, 14);
+        jLabel19.setBounds(-10, 215, 850, 14);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
@@ -1121,7 +1126,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(BtnSimpan);
-        BtnSimpan.setBounds(14, 225, 100, 30);
+        BtnSimpan.setBounds(14, 230, 100, 30);
 
         BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
         BtnBatal.setMnemonic('B');
@@ -1139,7 +1144,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(BtnBatal);
-        BtnBatal.setBounds(117, 225, 100, 30);
+        BtnBatal.setBounds(117, 230, 100, 30);
 
         jLabel14.setText("Stts.Kamar :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -1161,7 +1166,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         LblStts.setText("Check In");
         LblStts.setName("LblStts"); // NOI18N
         internalFrame2.add(LblStts);
-        LblStts.setBounds(75, 175, 180, 23);
+        LblStts.setBounds(75, 195, 180, 23);
 
         jLabel18.setText("Diagnosa Awal Masuk :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -1250,12 +1255,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         internalFrame2.add(cmbStatus);
-        cmbStatus.setBounds(418, 175, 240, 23);
+        cmbStatus.setBounds(418, 195, 240, 20);
 
         jLabel26.setText("Status Pulang/Keluar :");
         jLabel26.setName("jLabel26"); // NOI18N
         internalFrame2.add(jLabel26);
-        jLabel26.setBounds(275, 175, 140, 23);
+        jLabel26.setBounds(275, 195, 140, 23);
 
         btnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDiagnosa.setMnemonic('3');
@@ -1273,6 +1278,36 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         internalFrame2.add(btnDiagnosa);
         btnDiagnosa.setBounds(630, 115, 28, 23);
+
+        upf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Penyakit Dalam", "Bedah", "Anak", "Kebidanan/Kandungan", "THT", "Mata", "JP", "Paru", "Lain-lain" }));
+        upf.setName("upf"); // NOI18N
+        upf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                upfKeyPressed(evt);
+            }
+        });
+        internalFrame2.add(upf);
+        upf.setBounds(75, 170, 200, 20);
+
+        jLabel39.setText("UPF :");
+        jLabel39.setName("jLabel39"); // NOI18N
+        internalFrame2.add(jLabel39);
+        jLabel39.setBounds(0, 170, 72, 23);
+
+        kirimanDari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Poliklinik", "IGD", "Puskesmas", "Dokter", "RS Pemerintah", "RS Swasta", "Lain-lain" }));
+        kirimanDari.setName("kirimanDari"); // NOI18N
+        kirimanDari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kirimanDariKeyPressed(evt);
+            }
+        });
+        internalFrame2.add(kirimanDari);
+        kirimanDari.setBounds(418, 170, 240, 20);
+
+        jLabel40.setText("Kiriman dari :");
+        jLabel40.setName("jLabel40"); // NOI18N
+        internalFrame2.add(jLabel40);
+        jLabel40.setBounds(275, 170, 140, 23);
 
         WindowInputKamar.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
 
@@ -1926,6 +1961,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnLaporan.add(MnSuratJaminanPelayanan);
+
+        MnLembarMasukKeluar.setText("jMenuItem1");
+        MnLembarMasukKeluar.setName("MnLembarMasukKeluar"); // NOI18N
+        MnLembarMasukKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLembarMasukKeluarActionPerformed(evt);
+            }
+        });
+        MnLaporan.add(MnLembarMasukKeluar);
 
         jPopupMenu1.add(MnLaporan);
 
@@ -3541,7 +3585,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3564,7 +3608,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3591,7 +3635,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -3614,7 +3658,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-01-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-01-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -4085,6 +4129,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     kdkamar.getText()+"','"+TTarif.getText()+"','"+
                                     diagnosaawal.getText()+"','"+
                                     diagnosaakhir.getText()+"','"+
+                                    upf.getSelectedItem()+"','"+
+                                    kirimanDari.getSelectedItem()+"','"+
                                     CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+"','"+
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','0000-00-00','00:00:00','"+TJmlHari.getText()+"','"+
                                     ttlbiaya.getText()+"','-'","No.Rawat")==true){
@@ -9040,6 +9086,18 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         } 
     }//GEN-LAST:event_ppAsuhanGiziBtnPrintActionPerformed
 
+    private void MnLembarMasukKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLembarMasukKeluarActionPerformed
+        //
+    }//GEN-LAST:event_MnLembarMasukKeluarActionPerformed
+
+    private void upfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_upfKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_upfKeyPressed
+
+    private void kirimanDariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kirimanDariKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kirimanDariKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -9134,6 +9192,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnLabelTracker2;
     private javax.swing.JMenuItem MnLabelTracker3;
     private javax.swing.JMenu MnLaporan;
+    private javax.swing.JMenuItem MnLembarMasukKeluar;
     private javax.swing.JMenuItem MnNoResep;
     private javax.swing.JMenu MnObat;
     private javax.swing.JMenuItem MnOperasi;
@@ -9275,7 +9334,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Label jLabel36;
     private widget.Label jLabel37;
     private widget.Label jLabel38;
+    private widget.Label jLabel39;
     private widget.Label jLabel4;
+    private widget.Label jLabel40;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -9286,6 +9347,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.TextBox kdkamar;
     private widget.TextBox kdkamarpindah;
     private widget.TextBox kdpenjab;
+    private widget.ComboBox kirimanDari;
     private widget.TextBox nmpenjab;
     private widget.TextBox norawat;
     private widget.TextBox norawatpindah;
@@ -9304,6 +9366,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Table tbKamIn;
     private widget.TextBox ttlbiaya;
     private widget.TextBox ttlbiayapindah;
+    private widget.ComboBox upf;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -9467,6 +9530,10 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private void isKmr() {          
         if(i==1){
             kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norawat.getText());
+            String txtUpf = Sequel.cariIsi("select upf from kamar_inap where no_rawat=?",norawat.getText());
+            String txtKiriman = Sequel.cariIsi("select asal_kiriman from kamar_inap where no_rawat=?",norawat.getText());
+            upf.setSelectedItem(txtUpf);
+            kirimanDari.setSelectedItem(txtKiriman);
             Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=? ",TKdBngsal,kdkamar.getText());
             Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=? ",TBangsal,TKdBngsal.getText());
             Sequel.cariIsi("select status from kamar where kd_kamar=? ",TSttsKamar,kdkamar.getText());            
