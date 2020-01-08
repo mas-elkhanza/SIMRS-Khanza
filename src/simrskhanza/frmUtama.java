@@ -503,6 +503,7 @@ import inventory.DlgSirkulasiBarang5;
 import inventory.DlgSisaStok;
 import inventory.HibahObatBHP;
 import ipsrs.DlgPengajuanBarangNonMedis;
+import ipsrs.DlgSirkulasiNonMedis2;
 import java.net.InetAddress;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSBagianTubuhPerTahun;
@@ -15638,6 +15639,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSirkulasiNonMedis2ActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSirkulasiNonMedis2 sirkulasi=new DlgSirkulasiNonMedis2(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }   
+    
     /**
     * @param args the command line arguments
     */
@@ -16228,7 +16241,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK,btnGrafikHAIsLajuILO,btnGrafikHAIsLajuHAP,
             btnMappingPoliInhealth,btnMappingDokterInhealth,btnMappingTindakanRalanInhealth,btnMappingTindakanRanapInhealth,btnMappingTindakanRadiologiInhealth,
             btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath,
-            btnSirkulasiObat4,btnSirkulasiObat5;
+            btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2;
     
     public void isWall(){
         try{            
@@ -17011,6 +17024,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsirkulasi_non_medis()==true){
                 Panelmenu.add(btnSirkulasiNonMedis);
+                jmlmenu++;
+            }
+            
+            if(akses.getsirkulasi_non_medis2()==true){
+                Panelmenu.add(btnSirkulasiNonMedis2);
                 jmlmenu++;
             }
 
@@ -19905,6 +19923,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsirkulasi_non_medis()==true){
             Panelmenu.add(btnSirkulasiNonMedis);
+            jmlmenu++;
+        }
+        
+        if(akses.getsirkulasi_non_medis2()==true){
+            Panelmenu.add(btnSirkulasiNonMedis2);
             jmlmenu++;
         }
 
@@ -23054,6 +23077,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsirkulasi_non_medis()==true){
             if(btnSirkulasiNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasiNonMedis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsirkulasi_non_medis2()==true){
+            if(btnSirkulasiNonMedis2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSirkulasiNonMedis2);
                 jmlmenu++;
             }                
         } 
@@ -27558,6 +27588,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 btnSirkulasiObat5ActionPerformed(evt);
             }
         });
+        
+        btnSirkulasiNonMedis2=new widget.ButtonBig();
+        btnSirkulasiNonMedis2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasiNonMedis2.setText("Sirkulasi Non Medis 2");
+        btnSirkulasiNonMedis2.setIconTextGap(0);
+        btnSirkulasiNonMedis2.setName("btnSirkulasiNonMedis2"); // NOI18N
+        btnSirkulasiNonMedis2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiNonMedis2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiNonMedis2ActionPerformed(evt);
+            }
+        });
+
     }
 
 }
