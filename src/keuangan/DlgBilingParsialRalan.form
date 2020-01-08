@@ -1064,7 +1064,7 @@
           <SubComponents>
             <Component class="widget.Label" name="label9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Key Word :"/>
+                <Property name="text" type="java.lang.String" value="Keyword :"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[68, 23]"/>
                 </Property>

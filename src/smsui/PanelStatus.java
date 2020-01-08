@@ -57,7 +57,7 @@ public class PanelStatus extends javax.swing.JPanel {
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(50,50,50));
+        jLabel1.setForeground(new java.awt.Color(50, 50, 50));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smsimage/mobile_phone.png"))); // NOI18N
         jLabel1.setText("Tidak ada Service");
         jLabel1.setName("jLabel1"); // NOI18N
