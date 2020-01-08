@@ -435,7 +435,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 					<font fontName="Tahoma" size="11"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[ASSESMENT GIZI]]></text>
+				<text><![CDATA[PENILAIAN GIZI]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="6" y="157" width="82" height="14" uuid="84b9be1c-8f09-4c16-b50c-1a1cd5373def"/>
@@ -787,7 +787,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[MONOTORING DAN EVALUASI]]></text>
+				<text><![CDATA[MONOTORING DAN EVALUASI :]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="85" y="115" width="207" height="14" uuid="527e3e76-406d-484c-9b4e-daf880c4233f"/>

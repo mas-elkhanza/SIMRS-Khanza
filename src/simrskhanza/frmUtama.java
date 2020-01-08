@@ -420,6 +420,7 @@ import keuangan.DlgPembayaranPerAKunBayar3;
 import bridging.DlgDataTB;
 import bridging.InhealthMapingDokter;
 import bridging.InhealthMapingPoli;
+import bridging.InhealthTagihan;
 import bridging.InhealthTindakanLaborat;
 import bridging.InhealthTindakanOperasi;
 import bridging.InhealthTindakanRadiologi;
@@ -15607,7 +15608,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
 
     private void btnKirimTagihanInheathActionPerformed(java.awt.event.ActionEvent evt) {
-
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InhealthTagihan form=new InhealthTagihan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
 
     private void btnSirkulasiObat4ActionPerformed(java.awt.event.ActionEvent evt) {

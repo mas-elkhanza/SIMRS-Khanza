@@ -146,6 +146,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                     KdBarang.setText(inputresep.getTable().getValueAt(inputresep.getTable().getSelectedRow(),1).toString());
                     NmBarang.setText(inputresep.getTable().getValueAt(inputresep.getTable().getSelectedRow(),2).toString());
                     Satuan.setText(inputresep.getTable().getValueAt(inputresep.getTable().getSelectedRow(),3).toString());
+                    tampil();
                 }
                 KdBarang.requestFocus();
             }
