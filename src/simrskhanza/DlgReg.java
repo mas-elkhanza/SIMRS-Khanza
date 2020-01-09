@@ -8762,11 +8762,19 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             Valid.MyReportqry("rptLembarKeluarMasuk3.jasper","report","::[ Ringkasan Masuk Keluar ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                 "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
                 "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj, suku_bangsa.nama_suku_bangsa,"+
-                "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj"+
-                " from pasien "+
-                "inner join kelurahan inner join kecamatan inner join kabupaten inner join suku_bangsa "+
-                "inner join penjab inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
-                "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and suku_bangsa.id=pasien.suku_bangsa where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",param);
+                "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj, kamar_inap.tgl_masuk, kamar_inap.jam_masuk, "+
+                "kamar.kelas, bangsal.nm_bangsal, kamar_inap.kd_kamar from reg_periksa "+
+                "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                "inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "+
+                "inner join penjab on pasien.kd_pj=penjab.kd_pj "+
+                "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "+
+                "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                "inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal "+
+                "where reg_periksa.no_rawat='"+TNoRw.getText()+"'", param);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnLembarKeluarMasuk2ActionPerformed
