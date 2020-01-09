@@ -904,14 +904,24 @@
                 <Component class="widget.ComboBox" name="Kelas">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="7">
+                      <StringArray count="17">
                         <StringItem index="0" value="-"/>
                         <StringItem index="1" value="Kelas 1"/>
                         <StringItem index="2" value="Kelas 2"/>
                         <StringItem index="3" value="Kelas 3"/>
                         <StringItem index="4" value="Kelas Utama"/>
                         <StringItem index="5" value="Kelas VIP"/>
-                        <StringItem index="6" value="Kelas VVIP"/>
+                        <StringItem index="6" value="ICU BIASA"/>
+                        <StringItem index="7" value="ICU VIP"/>
+                        <StringItem index="8" value="Isolasi"/>
+                        <StringItem index="9" value="PICU"/>
+                        <StringItem index="10" value="NICU"/>
+                        <StringItem index="11" value="VVIP 1"/>
+                        <StringItem index="12" value="VVIP 2"/>
+                        <StringItem index="13" value="VVIP 3"/>
+                        <StringItem index="14" value="Suite I"/>
+                        <StringItem index="15" value="Suite II"/>
+                        <StringItem index="16" value="President"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Kelas" noResource="true"/>

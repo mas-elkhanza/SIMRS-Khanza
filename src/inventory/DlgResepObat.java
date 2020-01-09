@@ -1785,7 +1785,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.tabelKosong(tabMode);
         try{  
             ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,"+
-                    " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter "+
+                    " resep_obat.no_rawat,reg_periksa.kd_pj,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter "+
                     " from resep_obat inner join reg_periksa inner join pasien inner join dokter on resep_obat.no_rawat=reg_periksa.no_rawat  "+
                     " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
                     " resep_obat.tgl_perawatan between ? and ? and resep_obat.no_resep like ? or "+
@@ -1814,7 +1814,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_resep"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),
-                        rs.getString("no_rawat")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
+                        rs.getString("no_rawat")+" "+rs.getString("kd_pj")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
                         rs.getString("nm_dokter")
                     });
                     tabMode.addRow(new String[]{"","Nama Obat","Jumlah x Harga + Embalase + Tuslah = Total","Aturan Pakai"});                
