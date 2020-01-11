@@ -126,7 +126,7 @@ public final class akses {
             grafik_HAIs_laju_ilo=false,grafik_HAIs_laju_hap=false,inhealth_mapping_poli=false,inhealth_mapping_dokter=false,inhealth_mapping_tindakan_ralan=false,
             inhealth_mapping_tindakan_ranap=false,inhealth_mapping_tindakan_radiologi=false,inhealth_mapping_tindakan_laborat=false,
             inhealth_mapping_tindakan_operasi=false,hibah_obat_bhp=false,asal_hibah=false,asuhan_gizi=false,inhealth_kirim_tagihan=false,
-            sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false;
+            sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -726,6 +726,7 @@ public final class akses {
                         akses.sirkulasi_obat4=true;
                         akses.sirkulasi_obat5=true;
                         akses.sirkulasi_non_medis2=true;
+                        akses.monitoring_asuhan_gizi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1309,6 +1310,7 @@ public final class akses {
                         akses.sirkulasi_obat4=rs2.getBoolean("sirkulasi_obat4");
                         akses.sirkulasi_obat5=rs2.getBoolean("sirkulasi_obat5");
                         akses.sirkulasi_non_medis2=rs2.getBoolean("sirkulasi_non_medis2");
+                        akses.monitoring_asuhan_gizi=rs2.getBoolean("monitoring_asuhan_gizi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1890,6 +1892,7 @@ public final class akses {
                         akses.sirkulasi_obat4=false;
                         akses.sirkulasi_obat5=false;
                         akses.sirkulasi_non_medis2=false;
+                        akses.monitoring_asuhan_gizi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2525,4 +2528,5 @@ public final class akses {
     public static boolean getsirkulasi_obat4(){return akses.sirkulasi_obat4;}
     public static boolean getsirkulasi_obat5(){return akses.sirkulasi_obat5;}
     public static boolean getsirkulasi_non_medis2(){return akses.sirkulasi_non_medis2;}
+    public static boolean getmonitoring_asuhan_gizi(){return akses.monitoring_asuhan_gizi;}
 }   
