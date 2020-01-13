@@ -766,7 +766,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
         if(aktifkanbatch.equals("yes")){
             row=0;
-            jml=tbDokter.getRowCount();
             for(i=0;i<jml;i++){
                 if((Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0)&&tbDokter.getValueAt(i,11).toString().trim().equals("")){
                     row++;
