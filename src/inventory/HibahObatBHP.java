@@ -757,6 +757,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        jml=tbDokter.getRowCount();
+        index=0;
+        for(i=0;i<jml;i++){
+            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                index++;
+            }
+        }
         if(aktifkanbatch.equals("yes")){
             row=0;
             jml=tbDokter.getRowCount();
@@ -780,8 +787,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(aktifkanbatch.equals("yes")&&(row>0)){
             Valid.textKosong(TCari,"No.Batch");
-        }else if(ttl2<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, nilai diakui wajib diisi...!!!!");
+        }else if(index<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data hibah...!!!!");
             tbDokter.requestFocus();
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -829,10 +836,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }                
                         }  
                         if(sukses==true){
-                            Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Obat from set_akun"),"PERSEDIAAN HIBAH OBAT & BHP",""+(ttl2),"0"});
-                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Obat from set_akun"),"PENDAPATAN HIBAH","0",""+(ttl2)}); 
-                            sukses=jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","HIBAH OBAT & BHP DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());  
+                            if(ttl2>0){
+                                Sequel.queryu("delete from tampjurnal");
+                                Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Obat from set_akun"),"PERSEDIAAN HIBAH OBAT & BHP",""+(ttl2),"0"});
+                                Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Obat from set_akun"),"PENDAPATAN HIBAH","0",""+(ttl2)}); 
+                                sukses=jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","HIBAH OBAT & BHP DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());  
+                            }   
                         }
                     }else{
                         sukses=false;

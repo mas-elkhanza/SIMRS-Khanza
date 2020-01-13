@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="184" pageHeight="113" columnWidth="174" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="47ff644c-0f7e-4ff8-9a5b-471993fcb9e1">
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
@@ -256,7 +256,7 @@ resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat]]>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tgl_perawatan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="102" y="44" width="33" height="9" uuid="c258d614-d227-4445-b57b-260525f89b7a">

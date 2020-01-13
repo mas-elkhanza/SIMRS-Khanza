@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="184" pageHeight="113" columnWidth="174" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="662d5359-f1cb-4a1f-b4a1-29dfb5df5c10">
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
@@ -24,33 +24,57 @@ and resep_obat.no_rawat=detail_pemberian_obat.no_rawat and resep_obat.tgl_perawa
 resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode_sat]]>
 	</queryString>
 	<field name="no_resep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_resep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep_obat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl_perawatan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_perawatan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep_obat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="jam"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep_obat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="resep_obat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="tgl_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
 	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="databarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="aturan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="aturan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aturan_pakai"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jml" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="jml"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_pemberian_obat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="satuan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="satuan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kodesatuan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -229,7 +253,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tgl_perawatan}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="102" y="44" width="33" height="9" uuid="3e7b3a48-0feb-4a01-a7bf-a24acead8fd7">

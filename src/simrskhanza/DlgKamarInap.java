@@ -3982,7 +3982,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                  param3.put("logo",Sequel.cariGambar("select logo from setting")); 
                                  this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                  Valid.MyReportqry("rptKamarInap3.jasper","report","::[ Data Kamar Inap Pasien ]::","select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
-                                    "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
+                                    "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,pasien.agama," +
                                     "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,"+
                                     "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"+
                                     "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"+
