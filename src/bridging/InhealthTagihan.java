@@ -218,8 +218,9 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         jLabel34 = new widget.Label();
         TNoRM1 = new widget.TextBox();
         TPasien1 = new widget.TextBox();
-        ScrollHTML = new widget.ScrollPane();
-        LoadHTML = new widget.editorpane();
+        TabTarif = new javax.swing.JTabbedPane();
+        Scroll1 = new widget.ScrollPane();
+        Scroll2 = new widget.ScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -331,7 +332,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-01-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -345,7 +346,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-01-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -439,16 +440,22 @@ public final class InhealthTagihan extends javax.swing.JDialog {
 
         PanelAccor.add(FormMenu, java.awt.BorderLayout.NORTH);
 
-        ScrollHTML.setBorder(null);
-        ScrollHTML.setName("ScrollHTML"); // NOI18N
-        ScrollHTML.setOpaque(true);
-        ScrollHTML.setPreferredSize(new java.awt.Dimension(470, 16));
+        TabTarif.setBackground(new java.awt.Color(255, 255, 254));
+        TabTarif.setForeground(new java.awt.Color(50, 50, 50));
+        TabTarif.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabTarif.setName("TabTarif"); // NOI18N
 
-        LoadHTML.setBorder(null);
-        LoadHTML.setName("LoadHTML"); // NOI18N
-        ScrollHTML.setViewportView(LoadHTML);
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll1.setName("Scroll1"); // NOI18N
+        Scroll1.setOpaque(true);
+        TabTarif.addTab("Maping Tarif", Scroll1);
 
-        PanelAccor.add(ScrollHTML, java.awt.BorderLayout.CENTER);
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+        TabTarif.addTab("Tarif Terkirim", Scroll2);
+
+        PanelAccor.add(TabTarif, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelAccor, java.awt.BorderLayout.EAST);
 
@@ -569,13 +576,14 @@ public final class InhealthTagihan extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormMenu;
     private widget.Label LCount;
-    private widget.editorpane LoadHTML;
     private widget.PanelBiasa PanelAccor;
     private widget.ScrollPane Scroll;
-    private widget.ScrollPane ScrollHTML;
+    private widget.ScrollPane Scroll1;
+    private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM1;
     private widget.TextBox TPasien1;
+    private javax.swing.JTabbedPane TabTarif;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
@@ -670,13 +678,13 @@ public final class InhealthTagihan extends javax.swing.JDialog {
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(470,HEIGHT));
             FormMenu.setVisible(true);  
-            ScrollHTML.setVisible(true);  
+            TabTarif.setVisible(true);  
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){           
             ChkAccor.setVisible(false);            
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);  
-            ScrollHTML.setVisible(false);      
+            TabTarif.setVisible(false);      
             ChkAccor.setVisible(true);
         }
     }
