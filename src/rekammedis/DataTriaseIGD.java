@@ -1,11 +1,11 @@
 /*
-  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
+  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile
   Software ini dalam bentuk apapun tanpa seijin pembuat software
   (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
   npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
   nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
   nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami
   karena telah berdoa buruk, semua ini kami lakukan karena kami ti
   dak pernah rela karya kami dibajak tanpa ijin.
  */
@@ -59,12 +59,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private ResultSet rs,rs2,rs3;
     private int i=0,jml=0,index=0,jmlskala1=0,jmlskala2=0,jmlskala3=0,jmlskala4=0,jmlskala5=0;
     private MasterTriaseMacamKasus kasus=new MasterTriaseMacamKasus(null,false);
-    private boolean[] pilih; 
+    private boolean[] pilih;
     private String[] kode,pengkajian;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String keputusan="",pilihan="",datatriase="";
     private StringBuilder htmlContent;
-    
+
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -110,7 +110,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
         tbTriase.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         tabModePemeriksaan=new DefaultTableModel(null,new Object[]{
                 "Kode Pemeriksaan","Pemeriksaan"
             }){
@@ -132,7 +132,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
         tbPemeriksaan.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         tabModePemeriksaan2=new DefaultTableModel(null,new Object[]{
                 "Kode Pemeriksaan","Pemeriksaan"
             }){
@@ -154,7 +154,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
         tbPemeriksaan2.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         tabModeSkala1=new DefaultTableModel(null,new Object[]{
                 "P","Kode","Immediate/Segera"
             }){
@@ -192,7 +192,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         }
         tbSkala1.getTableHeader().setForeground(new Color(170,00,0));
         tbSkala1.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         tabModeSkala2=new DefaultTableModel(null,new Object[]{
                 "P","Kode","Emergensi"
             }){
@@ -230,7 +230,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         }
         tbSkala2.getTableHeader().setForeground(new Color(255,00,0));
         tbSkala2.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         tabModeSkala3=new DefaultTableModel(null,new Object[]{
                 "P","Kode","Urgensi"
             }){
@@ -268,7 +268,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         }
         tbSkala3.getTableHeader().setForeground(new Color(200,200,0));
         tbSkala3.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         tabModeSkala4=new DefaultTableModel(null,new Object[]{
                 "P","Kode","Semi Urgensi/Urgensi Rendah"
             }){
@@ -292,7 +292,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbSkala4.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSkala4.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        
+
         for (i = 0; i < 3; i++) {
             TableColumn column = tbSkala4.getColumnModel().getColumn(i);
             if(i==0){
@@ -306,7 +306,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         }
         tbSkala4.getTableHeader().setForeground(new Color(0,170,0));
         tbSkala4.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         tabModeSkala5=new DefaultTableModel(null,new Object[]{
                 "P","Kode","Non Urgensi"
             }){
@@ -344,7 +344,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         }
         tbSkala5.getTableHeader().setForeground(new Color(150,150,150));
         tbSkala5.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         TCariPemeriksaan.setDocument(new batasInput((int)100).getKata(TCariPemeriksaan));
         TCariPemeriksaan2.setDocument(new batasInput((int)100).getKata(TCariPemeriksaan2));
@@ -367,7 +367,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         SekunderCatatan.setDocument(new batasInput((int)100).getKata(SekunderCatatan));
         PrimerKeluhanUtama.setDocument(new batasInput((int)400).getKata(PrimerKeluhanUtama));
         SekunderAnamnesa.setDocument(new batasInput((int)400).getKata(SekunderAnamnesa));
-       
+
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -389,8 +389,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     }
                 }
             });
-        }  
-        
+        }
+
         kasus.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -401,7 +401,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 if(kasus.getTable().getSelectedRow()!= -1){
                     KdKasus.setText(kasus.getTable().getValueAt(kasus.getTable().getSelectedRow(),0).toString());
                     NmKasus.setText(kasus.getTable().getValueAt(kasus.getTable().getSelectedRow(),1).toString());
-                }  
+                }
                 btnKasus.requestFocus();
             }
             @Override
@@ -413,7 +413,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         kasus.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -421,12 +421,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
                     kasus.dispose();
-                }                
+                }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
+
         petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -434,7 +434,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){       
+                if(petugas.getTable().getSelectedRow()!= -1){
                     if(index==1){
                         PrimerKodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         PrimerNamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -444,7 +444,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         SekunderNamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                         btnSekunderPetugas.requestFocus();
                     }
-                }   
+                }
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -455,7 +455,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-        
+
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
@@ -473,11 +473,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
                 ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
-        
+
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
-        
+
         ChkAccor.setSelected(false);
         isMenu();
     }
@@ -2079,12 +2079,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         }else{
             if(TabTriase.getSelectedIndex()==0){
                 jmlskala1=0;jmlskala2=0;
-                for(i=0;i<tbSkala1.getRowCount();i++){ 
+                for(i=0;i<tbSkala1.getRowCount();i++){
                     if(tbSkala1.getValueAt(i,0).toString().equals("true")){
                         jmlskala1++;
                     }
                 }
-                for(i=0;i<tbSkala2.getRowCount();i++){ 
+                for(i=0;i<tbSkala2.getRowCount();i++){
                     if(tbSkala2.getValueAt(i,0).toString().equals("true")){
                         jmlskala2++;
                     }
@@ -2112,7 +2112,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 }else{
                     if(Sequel.menyimpantf("data_triase_igd","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",13,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+"")+" "+TanggalKunjungan.getSelectedItem().toString().substring(11,19),
-                            CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(), 
+                            CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(),
                             KeteranganKedatangan.getText(),KdKasus.getText(),PrimerTensi.getText(),PrimerNadi.getText(),PrimerRespirasi.getText(),PrimerSuhu.getText(),
                             PrimerSaturasi.getText(),PrimerNyeri.getText()
                         })==true){
@@ -2123,11 +2123,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         }
                         Sequel.menyimpan("data_triase_igdprimer","?,?,?,?,?,?,?", 7,new String[]{
                             TNoRw.getText(),PrimerKeluhanUtama.getText(),PrimerKubutuhanKusus.getSelectedItem().toString(),PrimerCatatan.getText(),keputusan,
-                            Valid.SetTgl(PrimerTanggalTriase.getSelectedItem()+"")+" "+PrimerTanggalTriase.getSelectedItem().toString().substring(11,19), 
+                            Valid.SetTgl(PrimerTanggalTriase.getSelectedItem()+"")+" "+PrimerTanggalTriase.getSelectedItem().toString().substring(11,19),
                             PrimerKodePetugas.getText()
                         });
                         if(TabSkala1dan2.getSelectedIndex()==0){
-                            for(i=0;i<tbSkala1.getRowCount();i++){ 
+                            for(i=0;i<tbSkala1.getRowCount();i++){
                                 if(tbSkala1.getValueAt(i,0).toString().equals("true")){
                                     if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
                                             TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
@@ -2137,7 +2137,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 }
                             }
                         }else if(TabSkala1dan2.getSelectedIndex()==1){
-                            for(i=0;i<tbSkala2.getRowCount();i++){ 
+                            for(i=0;i<tbSkala2.getRowCount();i++){
                                 if(tbSkala2.getValueAt(i,0).toString().equals("true")){
                                     if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
                                             TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
@@ -2152,17 +2152,17 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 }
             }else if(TabTriase.getSelectedIndex()==1){
                 jmlskala3=0;jmlskala4=0;jmlskala5=0;
-                for(i=0;i<tbSkala3.getRowCount();i++){ 
+                for(i=0;i<tbSkala3.getRowCount();i++){
                     if(tbSkala3.getValueAt(i,0).toString().equals("true")){
                         jmlskala3++;
                     }
                 }
-                for(i=0;i<tbSkala4.getRowCount();i++){ 
+                for(i=0;i<tbSkala4.getRowCount();i++){
                     if(tbSkala4.getValueAt(i,0).toString().equals("true")){
                         jmlskala4++;
                     }
                 }
-                for(i=0;i<tbSkala5.getRowCount();i++){ 
+                for(i=0;i<tbSkala5.getRowCount();i++){
                     if(tbSkala5.getValueAt(i,0).toString().equals("true")){
                         jmlskala5++;
                     }
@@ -2190,7 +2190,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 }else{
                     if(Sequel.menyimpantf("data_triase_igd","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",13,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+"")+" "+TanggalKunjungan.getSelectedItem().toString().substring(11,19),
-                            CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(), 
+                            CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(),
                             KeteranganKedatangan.getText(),KdKasus.getText(),SekunderTensi.getText(),SekunderNadi.getText(),SekunderRespirasi.getText(),SekunderSuhu.getText(),
                             SekunderSaturasi.getText(),SekunderNyeri.getText()
                         })==true){
@@ -2201,11 +2201,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         }
                         Sequel.menyimpan("data_triase_igdsekunder","?,?,?,?,?,?", 6,new String[]{
                             TNoRw.getText(),SekunderAnamnesa.getText(),SekunderCatatan.getText(),keputusan,
-                            Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19), 
+                            Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19),
                             SekunderKodePetugas.getText()
                         });
                         if(TabSkala3dan4dan5.getSelectedIndex()==0){
-                            for(i=0;i<tbSkala3.getRowCount();i++){ 
+                            for(i=0;i<tbSkala3.getRowCount();i++){
                                 if(tbSkala3.getValueAt(i,0).toString().equals("true")){
                                     if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
                                             TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
@@ -2215,7 +2215,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 }
                             }
                         }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
-                            for(i=0;i<tbSkala4.getRowCount();i++){ 
+                            for(i=0;i<tbSkala4.getRowCount();i++){
                                 if(tbSkala4.getValueAt(i,0).toString().equals("true")){
                                     if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
                                             TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
@@ -2225,7 +2225,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 }
                             }
                         }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
-                            for(i=0;i<tbSkala5.getRowCount();i++){ 
+                            for(i=0;i<tbSkala5.getRowCount();i++){
                                 if(tbSkala5.getValueAt(i,0).toString().equals("true")){
                                     if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
                                             TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
@@ -2312,12 +2312,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 Sequel.meghapus("data_triase_igddetail_skala5","no_rawat",tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
                 if(TabTriase.getSelectedIndex()==0){
                     jmlskala1=0;jmlskala2=0;
-                    for(i=0;i<tbSkala1.getRowCount();i++){ 
+                    for(i=0;i<tbSkala1.getRowCount();i++){
                         if(tbSkala1.getValueAt(i,0).toString().equals("true")){
                             jmlskala1++;
                         }
                     }
-                    for(i=0;i<tbSkala2.getRowCount();i++){ 
+                    for(i=0;i<tbSkala2.getRowCount();i++){
                         if(tbSkala2.getValueAt(i,0).toString().equals("true")){
                             jmlskala2++;
                         }
@@ -2345,7 +2345,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     }else{
                         if(Sequel.mengedittf("data_triase_igd","no_rawat=?","no_rawat=?,tgl_kunjungan=?,cara_masuk=?,alat_transportasi=?,alasan_kedatangan=?,keterangan_kedatangan=?,kode_kasus=?,tekanan_darah=?,nadi=?,pernapasan=?,suhu=?,saturasi_o2=?,nyeri=?",14,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+"")+" "+TanggalKunjungan.getSelectedItem().toString().substring(11,19),
-                                CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(), 
+                                CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(),
                                 KeteranganKedatangan.getText(),KdKasus.getText(),PrimerTensi.getText(),PrimerNadi.getText(),PrimerRespirasi.getText(),PrimerSuhu.getText(),
                                 PrimerSaturasi.getText(),PrimerNyeri.getText(),tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString()
                             })==true){
@@ -2356,11 +2356,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             }
                             Sequel.menyimpan("data_triase_igdprimer","?,?,?,?,?,?,?", 7,new String[]{
                                 TNoRw.getText(),PrimerKeluhanUtama.getText(),PrimerKubutuhanKusus.getSelectedItem().toString(),PrimerCatatan.getText(),keputusan,
-                                Valid.SetTgl(PrimerTanggalTriase.getSelectedItem()+"")+" "+PrimerTanggalTriase.getSelectedItem().toString().substring(11,19), 
+                                Valid.SetTgl(PrimerTanggalTriase.getSelectedItem()+"")+" "+PrimerTanggalTriase.getSelectedItem().toString().substring(11,19),
                                 PrimerKodePetugas.getText()
                             });
                             if(TabSkala1dan2.getSelectedIndex()==0){
-                                for(i=0;i<tbSkala1.getRowCount();i++){ 
+                                for(i=0;i<tbSkala1.getRowCount();i++){
                                     if(tbSkala1.getValueAt(i,0).toString().equals("true")){
                                         if(Sequel.menyimpantf2("data_triase_igddetail_skala1","?,?","Skala 1",2,new String[]{
                                                 TNoRw.getText(),tbSkala1.getValueAt(i,1).toString()
@@ -2370,7 +2370,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                     }
                                 }
                             }else if(TabSkala1dan2.getSelectedIndex()==1){
-                                for(i=0;i<tbSkala2.getRowCount();i++){ 
+                                for(i=0;i<tbSkala2.getRowCount();i++){
                                     if(tbSkala2.getValueAt(i,0).toString().equals("true")){
                                         if(Sequel.menyimpantf2("data_triase_igddetail_skala2","?,?","Skala 2",2,new String[]{
                                                 TNoRw.getText(),tbSkala2.getValueAt(i,1).toString()
@@ -2387,17 +2387,17 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     }
                 }else if(TabTriase.getSelectedIndex()==1){
                     jmlskala3=0;jmlskala4=0;jmlskala5=0;
-                    for(i=0;i<tbSkala3.getRowCount();i++){ 
+                    for(i=0;i<tbSkala3.getRowCount();i++){
                         if(tbSkala3.getValueAt(i,0).toString().equals("true")){
                             jmlskala3++;
                         }
                     }
-                    for(i=0;i<tbSkala4.getRowCount();i++){ 
+                    for(i=0;i<tbSkala4.getRowCount();i++){
                         if(tbSkala4.getValueAt(i,0).toString().equals("true")){
                             jmlskala4++;
                         }
                     }
-                    for(i=0;i<tbSkala5.getRowCount();i++){ 
+                    for(i=0;i<tbSkala5.getRowCount();i++){
                         if(tbSkala5.getValueAt(i,0).toString().equals("true")){
                             jmlskala5++;
                         }
@@ -2425,7 +2425,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     }else{
                         if(Sequel.mengedittf("data_triase_igd","no_rawat=?","no_rawat=?,tgl_kunjungan=?,cara_masuk=?,alat_transportasi=?,alasan_kedatangan=?,keterangan_kedatangan=?,kode_kasus=?,tekanan_darah=?,nadi=?,pernapasan=?,suhu=?,saturasi_o2=?,nyeri=?",14,new String[]{
                                 TNoRw.getText(),Valid.SetTgl(TanggalKunjungan.getSelectedItem()+"")+" "+TanggalKunjungan.getSelectedItem().toString().substring(11,19),
-                                CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(), 
+                                CaraMasuk.getSelectedItem().toString(),Transportasi.getSelectedItem().toString(),AlasanKedatangan.getSelectedItem().toString(),
                                 KeteranganKedatangan.getText(),KdKasus.getText(),SekunderTensi.getText(),SekunderNadi.getText(),SekunderRespirasi.getText(),SekunderSuhu.getText(),
                                 SekunderSaturasi.getText(),SekunderNyeri.getText(),tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString()
                             })==true){
@@ -2436,11 +2436,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             }
                             Sequel.menyimpan("data_triase_igdsekunder","?,?,?,?,?,?", 6,new String[]{
                                 TNoRw.getText(),SekunderAnamnesa.getText(),SekunderCatatan.getText(),keputusan,
-                                Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19), 
+                                Valid.SetTgl(SekunderTanggalTriase.getSelectedItem()+"")+" "+SekunderTanggalTriase.getSelectedItem().toString().substring(11,19),
                                 SekunderKodePetugas.getText()
                             });
                             if(TabSkala3dan4dan5.getSelectedIndex()==0){
-                                for(i=0;i<tbSkala3.getRowCount();i++){ 
+                                for(i=0;i<tbSkala3.getRowCount();i++){
                                     if(tbSkala3.getValueAt(i,0).toString().equals("true")){
                                         if(Sequel.menyimpantf2("data_triase_igddetail_skala3","?,?","Skala 3",2,new String[]{
                                                 TNoRw.getText(),tbSkala3.getValueAt(i,1).toString()
@@ -2450,7 +2450,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                     }
                                 }
                             }else if(TabSkala3dan4dan5.getSelectedIndex()==1){
-                                for(i=0;i<tbSkala4.getRowCount();i++){ 
+                                for(i=0;i<tbSkala4.getRowCount();i++){
                                     if(tbSkala4.getValueAt(i,0).toString().equals("true")){
                                         if(Sequel.menyimpantf2("data_triase_igddetail_skala4","?,?","Skala 4",2,new String[]{
                                                 TNoRw.getText(),tbSkala4.getValueAt(i,1).toString()
@@ -2460,7 +2460,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                     }
                                 }
                             }else if(TabSkala3dan4dan5.getSelectedIndex()==2){
-                                for(i=0;i<tbSkala5.getRowCount();i++){ 
+                                for(i=0;i<tbSkala5.getRowCount();i++){
                                     if(tbSkala5.getValueAt(i,0).toString().equals("true")){
                                         if(Sequel.menyimpantf2("data_triase_igddetail_skala5","?,?","Skala 5",2,new String[]{
                                                 TNoRw.getText(),tbSkala5.getValueAt(i,1).toString()
@@ -2503,18 +2503,18 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){ 
+        }else if(tabMode.getRowCount()!=0){
             keputusan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Triase IGD",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1","Laporan 2"},"Laporan 1");
             switch (keputusan) {
                 case "Laporan 1":
-                    Map<String, Object> param = new HashMap<>(); 
+                    Map<String, Object> param = new HashMap<>();
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptDataTriaseIGD.jasper","report","::[ Data Triase IGD ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,data_triase_igd.tgl_kunjungan,"+
                         "data_triase_igd.cara_masuk,data_triase_igd.alat_transportasi,data_triase_igd.alasan_kedatangan,"+
@@ -2535,7 +2535,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     try {
                         htmlContent = new StringBuilder();
-                        htmlContent.append(                             
+                        htmlContent.append(
                             "<tr class='isi'>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'><b>Pasien</b></td>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='12%'><b>Kunjungan</b></td>"+
@@ -2546,9 +2546,9 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%'><b>Keputusan</b></td>"+
                             "</tr>"
                         );
-                        
-                        for(i=0;i<tabMode.getRowCount();i++){  
-                            htmlContent.append(                             
+
+                        for(i=0;i<tabMode.getRowCount();i++){
+                            htmlContent.append(
                                 "<tr class='isi'>"+
                                     "<td valign='top' cellpadding='0' cellspacing='0'>"+
                                         "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
@@ -2590,7 +2590,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                         "</table>"+
                                     "</td>"
                             );
-                            
+
                             ps=koneksi.prepareStatement(
                                 "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
                                 "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
@@ -2638,7 +2638,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                     ps3.setString(2,rs.getString("no_rawat"));
                                                     rs3=ps3.executeQuery();
                                                     while(rs3.next()){
-                                                        htmlContent.append(                             
+                                                        htmlContent.append(
                                                             "<tr class='isi5'>"+
                                                                 "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala1")+"</td>"+
                                                             "</tr>"
@@ -2675,7 +2675,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                             ps2.close();
                                         }
                                     }
-                                    
+
                                     ps2=koneksi.prepareStatement(
                                         "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala2 inner join data_triase_igddetail_skala2 "+
@@ -2709,7 +2709,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                     ps3.setString(2,rs.getString("no_rawat"));
                                                     rs3=ps3.executeQuery();
                                                     while(rs3.next()){
-                                                        htmlContent.append(                             
+                                                        htmlContent.append(
                                                             "<tr class='isi6'>"+
                                                                 "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala2")+"</td>"+
                                                             "</tr>"
@@ -2775,7 +2775,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                     ps.close();
                                 }
                             }
-                            
+
                             ps=koneksi.prepareStatement(
                                 "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
                                 "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
@@ -2823,7 +2823,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                     ps3.setString(2,rs.getString("no_rawat"));
                                                     rs3=ps3.executeQuery();
                                                     while(rs3.next()){
-                                                        htmlContent.append(                             
+                                                        htmlContent.append(
                                                             "<tr class='isi7'>"+
                                                                 "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala3")+"</td>"+
                                                             "</tr>"
@@ -2860,7 +2860,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                             ps2.close();
                                         }
                                     }
-                                    
+
                                     ps2=koneksi.prepareStatement(
                                         "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala4 inner join data_triase_igddetail_skala4 "+
@@ -2894,7 +2894,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                     ps3.setString(2,rs.getString("no_rawat"));
                                                     rs3=ps3.executeQuery();
                                                     while(rs3.next()){
-                                                        htmlContent.append(                             
+                                                        htmlContent.append(
                                                             "<tr class='isi8'>"+
                                                                 "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala4")+"</td>"+
                                                             "</tr>"
@@ -2931,7 +2931,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                             ps2.close();
                                         }
                                     }
-                                    
+
                                     ps2=koneksi.prepareStatement(
                                         "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                         "from master_triase_pemeriksaan inner join master_triase_skala5 inner join data_triase_igddetail_skala5 "+
@@ -2965,7 +2965,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                     ps3.setString(2,rs.getString("no_rawat"));
                                                     rs3=ps3.executeQuery();
                                                     while(rs3.next()){
-                                                        htmlContent.append(                             
+                                                        htmlContent.append(
                                                             "<tr class='isi9'>"+
                                                                 "<td border='0' valign='middle' width='100%'>"+rs3.getString("pengkajian_skala5")+"</td>"+
                                                             "</tr>"
@@ -3031,12 +3031,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                     ps.close();
                                 }
                             }
-                            
+
                             htmlContent.append(
                                 "</tr>"
                             );
                         }
-                        
+
                         LoadHTML2.setText(
                             "<html>"+
                               "<table width='1400px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
@@ -3044,8 +3044,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                               "</table>"+
                             "</html>"
                         );
-                        
-                        File g = new File("file2.css");            
+
+                        File g = new File("file2.css");
                         BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                         bg.write(
                             ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -3060,8 +3060,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         );
                         bg.close();
 
-                        File f = new File("DataTriaseIGD.html");            
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                        File f = new File("DataTriaseIGD.html");
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(f));
                         bw.write(LoadHTML2.getText().replaceAll("<head>","<head>"+
                                     "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                                     "<table width='1400px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -3070,12 +3070,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                 "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                 akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                 akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                "<font size='2' face='Tahoma'>DATA TRIASE IGD<br><br></font>"+        
+                                                "<font size='2' face='Tahoma'>DATA TRIASE IGD<br><br></font>"+
                                             "</td>"+
                                        "</tr>"+
                                     "</table>")
                         );
-                        bw.close();                         
+                        bw.close();
                         Desktop.getDesktop().browse(f.toURI());
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -3298,7 +3298,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 }else if(rs.getString("plan").equals("Ruang Kritis")){
                                     PrimerKritis.setSelected(true);
                                 }
-                                
+
                                 PrimerTanggalTriase.setDate(rs.getDate("tanggaltriase"));
                                 PrimerCatatan.setText(rs.getString("catatan"));
                                 PrimerKodePetugas.setText(rs.getString("nip"));
@@ -3492,7 +3492,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 }else if(rs.getString("plan").equals("Zona Hijau")){
                                     SekunderZonaHijau.setSelected(true);
                                 }
-                                
+
                                 SekunderTanggalTriase.setDate(rs.getDate("tanggaltriase"));
                                 SekunderCatatan.setText(rs.getString("catatan"));
                                 SekunderKodePetugas.setText(rs.getString("nip"));
@@ -3517,7 +3517,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     ChkAccor.setSelected(false);
                     isMenu();
                 }
-            }           
+            }
         }
 }//GEN-LAST:event_tbTriaseKeyPressed
 
@@ -3538,22 +3538,22 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_TabPilihanMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(this.getHeight()<620){   
+        if(this.getHeight()<620){
             ScrollTriase.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             FormTriase.setPreferredSize(new Dimension(FormTriase.WIDTH,500));
             if(this.getWidth()<780){
-                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
+                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
                 FormTriase.setPreferredSize(new Dimension(770,500));
             }else{
-                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
+                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             }
         }else{
-            ScrollTriase.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
+            ScrollTriase.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
             if(this.getWidth()<780){
-                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
+                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
                 FormTriase.setPreferredSize(new Dimension(770,FormTriase.HEIGHT));
             }else{
-                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
+                ScrollTriase.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             }
         }
     }//GEN-LAST:event_formWindowActivated
@@ -3710,7 +3710,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCariPemeriksaan.setText("");
                 TCariPemeriksaan.requestFocus();
-            }           
+            }
         }
     }//GEN-LAST:event_tbPemeriksaanKeyPressed
 
@@ -3722,7 +3722,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     tampilskala2();
                 } catch (java.lang.NullPointerException e) {
                 }
-            }          
+            }
         }
     }//GEN-LAST:event_tbPemeriksaanKeyReleased
 
@@ -3822,7 +3822,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
                 TCariPemeriksaan2.setText("");
                 TCariPemeriksaan2.requestFocus();
-            }           
+            }
         }
     }//GEN-LAST:event_tbPemeriksaan2KeyPressed
 
@@ -3835,7 +3835,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     tampilskala5();
                 } catch (java.lang.NullPointerException e) {
                 }
-            }          
+            }
         }
     }//GEN-LAST:event_tbPemeriksaan2KeyReleased
 
@@ -3988,7 +3988,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
-            }          
+            }
         }
     }//GEN-LAST:event_tbTriaseKeyReleased
 
@@ -4007,14 +4007,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             if(tbTriase.getSelectedRow()> -1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 if(LoadHTML.getText().contains("#AA0000")){
-                    Map<String, Object> param = new HashMap<>(); 
+                    Map<String, Object> param = new HashMap<>();
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
@@ -4047,7 +4047,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 param.put("petugas",rs.getString("nama"));
                                 param.put("catatan",rs.getString("catatan"));
                                 param.put("tandavital","Suhu (C) : "+rs.getString("suhu")+", Nyeri : "+rs.getString("nyeri")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Respirasi(/menit) : "+rs.getString("pernapasan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala1 inner join data_triase_igddetail_skala1 "+
@@ -4082,7 +4082,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                 ps3.close();
                                             }
                                         }
-                                        
+
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
@@ -4112,7 +4112,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
+
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lambar Triase Skala 1");
                     switch (pilihan) {
                         case "Lembar Triase Skala 1":
@@ -4121,16 +4121,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         case "PDF Triase Skala 1":
                               Valid.MyReportPDF("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::",param);
                               break;
-                    } 
+                    }
                 }else if(LoadHTML.getText().contains("#FF0000")){
-                    Map<String, Object> param = new HashMap<>(); 
+                    Map<String, Object> param = new HashMap<>();
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
@@ -4163,7 +4163,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
                                 param.put("petugas",rs.getString("nama"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala2 inner join data_triase_igddetail_skala2 "+
@@ -4198,7 +4198,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                 ps3.close();
                                             }
                                         }
-                                        
+
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
@@ -4228,7 +4228,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
+
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 2..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 2","PDF Triase Skala 2"},"Lambar Triase Skala 2");
                     switch (pilihan) {
                         case "Lembar Triase Skala 2":
@@ -4237,16 +4237,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         case "PDF Triase Skala 2":
                               Valid.MyReportPDF("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::",param);
                               break;
-                    } 
+                    }
                 }else if(LoadHTML.getText().contains("#C8C800")){
-                    Map<String, Object> param = new HashMap<>(); 
+                    Map<String, Object> param = new HashMap<>();
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
@@ -4278,7 +4278,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
                                 param.put("petugas",rs.getString("nama"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala3 inner join data_triase_igddetail_skala3 "+
@@ -4313,7 +4313,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                 ps3.close();
                                             }
                                         }
-                                        
+
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
@@ -4343,7 +4343,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
+
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 3..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 3","PDF Triase Skala 3"},"Lembar Triase Skala 3");
                     switch (pilihan) {
                         case "Lembar Triase Skala 3":
@@ -4354,14 +4354,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                               break;
                     }
                 }else if(LoadHTML.getText().contains("#00AA00")){
-                    Map<String, Object> param = new HashMap<>(); 
+                    Map<String, Object> param = new HashMap<>();
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
@@ -4393,7 +4393,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
                                 param.put("petugas",rs.getString("nama"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala4 inner join data_triase_igddetail_skala4 "+
@@ -4428,7 +4428,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                 ps3.close();
                                             }
                                         }
-                                        
+
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
@@ -4458,7 +4458,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
+
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 4..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 4","PDF Triase Skala 4"},"Lembar Triase Skala 4");
                     switch (pilihan) {
                         case "Lembar Triase Skala 4":
@@ -4469,14 +4469,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                               break;
                     }
                 }else if(LoadHTML.getText().contains("#969696")){
-                    Map<String, Object> param = new HashMap<>(); 
+                    Map<String, Object> param = new HashMap<>();
                     param.put("namars",akses.getnamars());
                     param.put("alamatrs",akses.getalamatrs());
                     param.put("kotars",akses.getkabupatenrs());
                     param.put("propinsirs",akses.getpropinsirs());
                     param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    param.put("emailrs",akses.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
@@ -4508,7 +4508,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
                                 param.put("petugas",rs.getString("nama"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala5 inner join data_triase_igddetail_skala5 "+
@@ -4543,7 +4543,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                                 ps3.close();
                                             }
                                         }
-                                        
+
                                         if(datatriase.endsWith(", ")){
                                             datatriase = datatriase.substring(0,datatriase.length() - 2);
                                         }
@@ -4573,7 +4573,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
                     }
-                                
+
                     pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 5..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 5","PDF Triase Skala 5"},"Lembar Triase Skala 5");
                     switch (pilihan) {
                         case "Lembar Triase Skala 5":
@@ -4770,7 +4770,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     private widget.Table tbTriase;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {        
+    public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
@@ -4836,7 +4836,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         }
         LCount.setText(""+tabMode.getRowCount());
     }
-    
+
     private void emptTeks(){
         TNoRw.setText("");
         TPasien.setText("");
@@ -4871,16 +4871,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         TabTriase.setSelectedIndex(0);
         Transportasi.requestFocus();
     }
-    
+
     public void setNoRm(String norwt,String norm,String namapasien) {
         emptTeks();
         TNoRw.setText(norwt);
         TNoRM.setText(norm);
         TPasien.setText(namapasien);
-        TCari.setText(norwt);   
+        TCari.setText(norwt);
     }
-    
-    public void tampilPemeriksaan() {        
+
+    public void tampilPemeriksaan() {
         Valid.tabelKosong(tabModePemeriksaan);
         try{
             ps=koneksi.prepareStatement("select * from master_triase_pemeriksaan where kode_pemeriksaan like ? or nama_pemeriksaan like ? order by kode_pemeriksaan");
@@ -4905,8 +4905,8 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
     }
-    
-    public void tampilPemeriksaan2() {        
+
+    public void tampilPemeriksaan2() {
         Valid.tabelKosong(tabModePemeriksaan2);
         try{
             ps=koneksi.prepareStatement("select * from master_triase_pemeriksaan where kode_pemeriksaan like ? or nama_pemeriksaan like ? order by kode_pemeriksaan");
@@ -4931,7 +4931,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
     }
-      
+
     private void tampilskala1() {
         if(tbPemeriksaan.getSelectedRow()!= -1){
             try{
@@ -4941,15 +4941,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         jml++;
                     }
                 }
-                
+
                 pilih=null;
-                pilih=new boolean[jml]; 
+                pilih=new boolean[jml];
                 kode=null;
                 kode=new String[jml];
                 pengkajian=null;
                 pengkajian=new String[jml];
-                
-                index=0;        
+
+                index=0;
                 for(i=0;i<tbSkala1.getRowCount();i++){
                     if(tbSkala1.getValueAt(i,0).toString().equals("true")){
                         pilih[index]=true;
@@ -4957,16 +4957,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         pengkajian[index]=tbSkala1.getValueAt(i,2).toString();
                         index++;
                     }
-                } 
+                }
 
                 Valid.tabelKosong(tabModeSkala1);
-                
+
                 for(i=0;i<jml;i++){
                     tabModeSkala1.addRow(new Object[] {
                         pilih[i],kode[i],pengkajian[i]
                     });
                 }
-                
+
                 ps=koneksi.prepareStatement(
                         "select * from master_triase_skala1 where kode_pemeriksaan=? and pengkajian_skala1 like ? order by master_triase_skala1.kode_skala1");
                 try {
@@ -4991,7 +4991,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private void tampilskala2() {
         if(tbPemeriksaan.getSelectedRow()!= -1){
             try{
@@ -5001,15 +5001,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         jml++;
                     }
                 }
-                
+
                 pilih=null;
-                pilih=new boolean[jml]; 
+                pilih=new boolean[jml];
                 kode=null;
                 kode=new String[jml];
                 pengkajian=null;
                 pengkajian=new String[jml];
-                
-                index=0;        
+
+                index=0;
                 for(i=0;i<tbSkala2.getRowCount();i++){
                     if(tbSkala2.getValueAt(i,0).toString().equals("true")){
                         pilih[index]=true;
@@ -5017,16 +5017,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         pengkajian[index]=tbSkala2.getValueAt(i,2).toString();
                         index++;
                     }
-                } 
+                }
 
                 Valid.tabelKosong(tabModeSkala2);
-                
+
                 for(i=0;i<jml;i++){
                     tabModeSkala2.addRow(new Object[] {
                         pilih[i],kode[i],pengkajian[i]
                     });
                 }
-                
+
                 ps=koneksi.prepareStatement(
                         "select * from master_triase_skala2 where kode_pemeriksaan=? and pengkajian_skala2 like ? order by master_triase_skala2.kode_skala2");
                 try {
@@ -5051,7 +5051,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private void tampilskala3() {
         if(tbPemeriksaan2.getSelectedRow()!= -1){
             try{
@@ -5061,15 +5061,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         jml++;
                     }
                 }
-                
+
                 pilih=null;
-                pilih=new boolean[jml]; 
+                pilih=new boolean[jml];
                 kode=null;
                 kode=new String[jml];
                 pengkajian=null;
                 pengkajian=new String[jml];
-                
-                index=0;        
+
+                index=0;
                 for(i=0;i<tbSkala3.getRowCount();i++){
                     if(tbSkala3.getValueAt(i,0).toString().equals("true")){
                         pilih[index]=true;
@@ -5077,16 +5077,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         pengkajian[index]=tbSkala3.getValueAt(i,2).toString();
                         index++;
                     }
-                } 
+                }
 
                 Valid.tabelKosong(tabModeSkala3);
-                
+
                 for(i=0;i<jml;i++){
                     tabModeSkala3.addRow(new Object[] {
                         pilih[i],kode[i],pengkajian[i]
                     });
                 }
-                
+
                 ps=koneksi.prepareStatement(
                         "select * from master_triase_skala3 where kode_pemeriksaan=? and pengkajian_skala3 like ? order by master_triase_skala3.kode_skala3");
                 try {
@@ -5111,7 +5111,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private void tampilskala4() {
         if(tbPemeriksaan2.getSelectedRow()!= -1){
             try{
@@ -5121,15 +5121,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         jml++;
                     }
                 }
-                
+
                 pilih=null;
-                pilih=new boolean[jml]; 
+                pilih=new boolean[jml];
                 kode=null;
                 kode=new String[jml];
                 pengkajian=null;
                 pengkajian=new String[jml];
-                
-                index=0;        
+
+                index=0;
                 for(i=0;i<tbSkala4.getRowCount();i++){
                     if(tbSkala4.getValueAt(i,0).toString().equals("true")){
                         pilih[index]=true;
@@ -5137,16 +5137,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         pengkajian[index]=tbSkala4.getValueAt(i,2).toString();
                         index++;
                     }
-                } 
+                }
 
                 Valid.tabelKosong(tabModeSkala4);
-                
+
                 for(i=0;i<jml;i++){
                     tabModeSkala4.addRow(new Object[] {
                         pilih[i],kode[i],pengkajian[i]
                     });
                 }
-                
+
                 ps=koneksi.prepareStatement(
                         "select * from master_triase_skala4 where kode_pemeriksaan=? and pengkajian_skala4 like ? order by master_triase_skala4.kode_skala4");
                 try {
@@ -5171,7 +5171,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private void tampilskala5() {
         if(tbPemeriksaan2.getSelectedRow()!= -1){
             try{
@@ -5181,15 +5181,15 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         jml++;
                     }
                 }
-                
+
                 pilih=null;
-                pilih=new boolean[jml]; 
+                pilih=new boolean[jml];
                 kode=null;
                 kode=new String[jml];
                 pengkajian=null;
                 pengkajian=new String[jml];
-                
-                index=0;        
+
+                index=0;
                 for(i=0;i<tbSkala5.getRowCount();i++){
                     if(tbSkala5.getValueAt(i,0).toString().equals("true")){
                         pilih[index]=true;
@@ -5197,16 +5197,16 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         pengkajian[index]=tbSkala5.getValueAt(i,2).toString();
                         index++;
                     }
-                } 
+                }
 
                 Valid.tabelKosong(tabModeSkala5);
-                
+
                 for(i=0;i<jml;i++){
                     tabModeSkala5.addRow(new Object[] {
                         pilih[i],kode[i],pengkajian[i]
                     });
                 }
-                
+
                 ps=koneksi.prepareStatement(
                         "select * from master_triase_skala5 where kode_pemeriksaan=? and pengkajian_skala5 like ? order by master_triase_skala5.kode_skala5");
                 try {
@@ -5231,17 +5231,17 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             }
         }
     }
-    
+
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdata_triase_igd());
         BtnHapus.setEnabled(akses.getdata_triase_igd());
         BtnPrint.setEnabled(akses.getdata_triase_igd());
-        BtnEdit.setEnabled(akses.getdata_triase_igd());  
+        BtnEdit.setEnabled(akses.getdata_triase_igd());
         BtnTambahPemeriksaan.setEnabled(akses.getmaster_triase_pemeriksaan());
         BtnTambahPemeriksaan1.setEnabled(akses.getmaster_triase_pemeriksaan());
         BtnTambahSkala1.setEnabled(akses.getmaster_triase_skala1());
         BtnTambahSkala2.setEnabled(akses.getmaster_triase_skala3());
-        
+
         if(akses.getjml2()>=1){
             btnPrimerPetugas.setEnabled(false);
             btnSekunderPetugas.setEnabled(false);
@@ -5249,9 +5249,9 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             SekunderKodePetugas.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
             SekunderNamaPetugas.setText(PrimerNamaPetugas.getText());
-        } 
+        }
     }
-    
+
     private void getData() {
         if(tbTriase.getSelectedRow()!= -1){
             try {
@@ -5268,7 +5268,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent = new StringBuilder();
-                        htmlContent.append(    
+                        htmlContent.append(
                             "<tr class='isi'>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Primer</td>"+
@@ -5286,7 +5286,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 "<td valign='middle'>"+rs.getString("kebutuhan_khusus")+"</td>"+
                             "</tr>"
                         );
-                        
+
                         ps2=koneksi.prepareStatement(
                                 "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                 "from master_triase_pemeriksaan inner join master_triase_skala1 inner join data_triase_igddetail_skala1 "+
@@ -5297,14 +5297,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
                             if(rs2.next()){
-                                htmlContent.append(                             
+                                htmlContent.append(
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#AA0000' color='ffffff' align='center'>Immediate/Segera</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
                                 while(rs2.next()){
-                                    htmlContent.append(                             
+                                    htmlContent.append(
                                         "<tr class='isi'>"+
                                             "<td valign='middle'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
                                             "<td valign='middle' bgcolor='#AA0000' color='ffffff'>"+
@@ -5320,7 +5320,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                         ps3.setString(2,rs.getString("no_rawat"));
                                         rs3=ps3.executeQuery();
                                         while(rs3.next()){
-                                            htmlContent.append(                             
+                                            htmlContent.append(
                                                 "<tr class='isi'>"+
                                                     "<td border='0' valign='middle' bgcolor='#AA0000' color='ffffff' width='100%'>"+rs3.getString("pengkajian_skala1")+"</td>"+
                                                 "</tr>"
@@ -5354,7 +5354,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 ps2.close();
                             }
                         }
-                        
+
                         ps2=koneksi.prepareStatement(
                                 "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                 "from master_triase_pemeriksaan inner join master_triase_skala2 inner join data_triase_igddetail_skala2 "+
@@ -5365,14 +5365,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
                             if(rs2.next()){
-                                htmlContent.append(                             
+                                htmlContent.append(
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#FF0000' color='ffffff' align='center'>Emergensi</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
                                 while(rs2.next()){
-                                    htmlContent.append(                             
+                                    htmlContent.append(
                                         "<tr class='isi'>"+
                                             "<td valign='middle'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
                                             "<td valign='middle' bgcolor='#FF0000' color='ffffff'>"+
@@ -5388,7 +5388,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                         ps3.setString(2,rs.getString("no_rawat"));
                                         rs3=ps3.executeQuery();
                                         while(rs3.next()){
-                                            htmlContent.append(                             
+                                            htmlContent.append(
                                                 "<tr class='isi'>"+
                                                     "<td border='0' valign='middle' bgcolor='#FF0000' color='ffffff' width='100%'>"+rs3.getString("pengkajian_skala2")+"</td>"+
                                                 "</tr>"
@@ -5422,12 +5422,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 ps2.close();
                             }
                         }
-                        
-                        htmlContent.append(    
+
+                        htmlContent.append(
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Plan/Keputusan</td>"+
                                 "<td valign='middle' bgcolor='"+keputusan+"' color='ffffff'>Zona Merah "+rs.getString("plan")+"</td>"+
-                            "</tr>"+                       
+                            "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Primer</td>"+
@@ -5445,7 +5445,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 "<td valign='middle'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
                             "</tr>"
                         );
-                        
+
                         LoadHTML.setText(
                             "<html>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -5463,7 +5463,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         ps.close();
                     }
                 }
-                
+
                 ps=koneksi.prepareStatement(
                         "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
                         "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
@@ -5475,7 +5475,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                     rs=ps.executeQuery();
                     if(rs.next()){
                         htmlContent = new StringBuilder();
-                        htmlContent.append(    
+                        htmlContent.append(
                             "<tr class='isi'>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='35%'>Keterangan</td>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65%'>Triase Sekunder</td>"+
@@ -5489,7 +5489,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 "<td valign='middle'>Suhu (C) : "+rs.getString("suhu")+", Nyeri : "+rs.getString("nyeri")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Respirasi(/menit) : "+rs.getString("pernapasan")+"</td>"+
                             "</tr>"
                         );
-                        
+
                         ps2=koneksi.prepareStatement(
                                 "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                 "from master_triase_pemeriksaan inner join master_triase_skala3 inner join data_triase_igddetail_skala3 "+
@@ -5500,14 +5500,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
                             if(rs2.next()){
-                                htmlContent.append(                             
+                                htmlContent.append(
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#C8C800' color='ffffff' align='center'>Urgensi</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
                                 while(rs2.next()){
-                                    htmlContent.append(                             
+                                    htmlContent.append(
                                         "<tr class='isi'>"+
                                             "<td valign='middle'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
                                             "<td valign='middle' bgcolor='#C8C800' color='ffffff'>"+
@@ -5523,7 +5523,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                         ps3.setString(2,rs.getString("no_rawat"));
                                         rs3=ps3.executeQuery();
                                         while(rs3.next()){
-                                            htmlContent.append(                             
+                                            htmlContent.append(
                                                 "<tr class='isi'>"+
                                                     "<td border='0' valign='middle' bgcolor='#C8C800' color='ffffff' width='100%'>"+rs3.getString("pengkajian_skala3")+"</td>"+
                                                 "</tr>"
@@ -5557,7 +5557,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 ps2.close();
                             }
                         }
-                        
+
                         ps2=koneksi.prepareStatement(
                                 "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                 "from master_triase_pemeriksaan inner join master_triase_skala4 inner join data_triase_igddetail_skala4 "+
@@ -5568,14 +5568,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
                             if(rs2.next()){
-                                htmlContent.append(                             
+                                htmlContent.append(
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#00AA00' color='ffffff' align='center'>Semi Urgensi/Urgensi Rendah</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
                                 while(rs2.next()){
-                                    htmlContent.append(                             
+                                    htmlContent.append(
                                         "<tr class='isi'>"+
                                             "<td valign='middle'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
                                             "<td valign='middle' bgcolor='#00AA00' color='ffffff'>"+
@@ -5591,7 +5591,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                         ps3.setString(2,rs.getString("no_rawat"));
                                         rs3=ps3.executeQuery();
                                         while(rs3.next()){
-                                            htmlContent.append(                             
+                                            htmlContent.append(
                                                 "<tr class='isi'>"+
                                                     "<td border='0' valign='middle' bgcolor='#00AA00' color='ffffff' width='100%'>"+rs3.getString("pengkajian_skala4")+"</td>"+
                                                 "</tr>"
@@ -5625,7 +5625,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 ps2.close();
                             }
                         }
-                        
+
                         ps2=koneksi.prepareStatement(
                                 "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                 "from master_triase_pemeriksaan inner join master_triase_skala5 inner join data_triase_igddetail_skala5 "+
@@ -5636,14 +5636,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                             ps2.setString(1,rs.getString("no_rawat"));
                             rs2=ps2.executeQuery();
                             if(rs2.next()){
-                                htmlContent.append(                             
+                                htmlContent.append(
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pemeriksaan</td>"+
                                         "<td valign='middle' bgcolor='#969696' color='ffffff' align='center'>Non Urgensi</td>"+
                                     "</tr>");
                                 rs2.beforeFirst();
                                 while(rs2.next()){
-                                    htmlContent.append(                             
+                                    htmlContent.append(
                                         "<tr class='isi'>"+
                                             "<td valign='middle'>"+rs2.getString("nama_pemeriksaan")+"</td>"+
                                             "<td valign='middle' bgcolor='#969696' color='ffffff'>"+
@@ -5659,7 +5659,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                         ps3.setString(2,rs.getString("no_rawat"));
                                         rs3=ps3.executeQuery();
                                         while(rs3.next()){
-                                            htmlContent.append(                             
+                                            htmlContent.append(
                                                 "<tr class='isi'>"+
                                                     "<td border='0' valign='middle' bgcolor='#969696' color='ffffff' width='100%'>"+rs3.getString("pengkajian_skala5")+"</td>"+
                                                 "</tr>"
@@ -5693,14 +5693,14 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 ps2.close();
                             }
                         }
-                        
-                        htmlContent.append(    
+
+                        htmlContent.append(
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Plan/Keputusan</td>"+
                                 "<td valign='middle' bgcolor='"+keputusan+"' color='ffffff'>"+rs.getString("plan")+"</td>"+
                             "</tr>"
                         );
-                        htmlContent.append(                             
+                        htmlContent.append(
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
                                 "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Sekunder</td>"+
@@ -5718,7 +5718,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                                 "<td valign='middle'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
                             "</tr>"
                         );
-                        
+
                         LoadHTML.setText(
                             "<html>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -5738,24 +5738,24 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
-            } 
+            }
         }
     }
-    
+
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(470,HEIGHT));
-            FormMenu.setVisible(true);  
-            ScrollHTML.setVisible(true);  
+            FormMenu.setVisible(true);
+            ScrollHTML.setVisible(true);
             ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){           
-            ChkAccor.setVisible(false);            
+        }else if(ChkAccor.isSelected()==false){
+            ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
-            FormMenu.setVisible(false);  
-            ScrollHTML.setVisible(false);      
+            FormMenu.setVisible(false);
+            ScrollHTML.setVisible(false);
             ChkAccor.setVisible(true);
         }
     }
-    
+
 }

@@ -60,7 +60,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         WindowAmbilSampel.setSize(530,80);
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam",
-            "Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi"
+            "Periksa","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -102,7 +102,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         tabMode2=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan",
-                "Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi"
+                "Jam","Periksa","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Poli Registrasi"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -146,7 +146,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         tabMode3=new DefaultTableModel(null,new Object[]{
             "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam",
-            "Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Kamar Terakhir"
+            "Periksa","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Kamar Terakhir"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -188,7 +188,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         tabMode4=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Permintaan",
-                "Jam","Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Hasil Akhir"
+                "Jam","Periksa","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk","Hasil Akhir"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -458,7 +458,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         WindowAmbilSampel.setUndecorated(true);
         WindowAmbilSampel.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Update Waktu Pengambilan Sampel ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Update Waktu Pemeriksaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -618,7 +618,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         BtnHasil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
         BtnHasil.setMnemonic('P');
-        BtnHasil.setText("Sampel");
+        BtnHasil.setText("Periksa");
         BtnHasil.setToolTipText("Alt+P");
         BtnHasil.setName("BtnHasil"); // NOI18N
         BtnHasil.setPreferredSize(new java.awt.Dimension(100, 30));
