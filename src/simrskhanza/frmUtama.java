@@ -503,6 +503,7 @@ import inventory.DlgSirkulasiBarang5;
 import inventory.DlgSisaStok;
 import inventory.HibahObatBHP;
 import ipsrs.DlgPengajuanBarangNonMedis;
+import ipsrs.DlgSirkulasiNonMedis2;
 import java.net.InetAddress;
 import kepegawaian.K3RSBagianTubuh;
 import kepegawaian.K3RSBagianTubuhPerTahun;
@@ -556,6 +557,7 @@ import rekammedis.MasterTriaseSkala3;
 import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMDataAsuhanGizi;
+import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMSKriningRawatJalan;
 import setting.DlgPasswordAsuransi;
 import smsui.frmSmsView;
@@ -15642,7 +15644,32 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-
+    
+    private void btnSirkulasiNonMedis2ActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSirkulasiNonMedis2 sirkulasi=new DlgSirkulasiNonMedis2(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnMonitoringAsuhanGiziActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataMonitoringAsuhanGizi form=new RMDataMonitoringAsuhanGizi(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.tampil();
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16233,8 +16260,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK,btnGrafikHAIsLajuILO,btnGrafikHAIsLajuHAP,
             btnMappingPoliInhealth,btnMappingDokterInhealth,btnMappingTindakanRalanInhealth,btnMappingTindakanRanapInhealth,btnMappingTindakanRadiologiInhealth,
             btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath,
-            btnSirkulasiObat4,btnSirkulasiObat5;
-
+            btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi;
+    
     public void isWall(){
         try{
             ps=koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");
@@ -17016,6 +17043,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getsirkulasi_non_medis()==true){
                 Panelmenu.add(btnSirkulasiNonMedis);
+                jmlmenu++;
+            }
+            
+            if(akses.getsirkulasi_non_medis2()==true){
+                Panelmenu.add(btnSirkulasiNonMedis2);
                 jmlmenu++;
             }
 
@@ -18456,7 +18488,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnAsuhanGizi);
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==12){
+            
+            if(akses.getmonitoring_asuhan_gizi()==true){
+                Panelmenu.add(btnMonitoringAsuhanGizi);
+                jmlmenu++;
+            } 
+        }else if(cmbMenu.getSelectedIndex()==12){  
             jmlmenu=0;
             if(akses.getpengambilan_utd2()==true){
                 Panelmenu.add(btnPengambilanUTD2);
@@ -19912,6 +19949,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnSirkulasiNonMedis);
             jmlmenu++;
         }
+        
+        if(akses.getsirkulasi_non_medis2()==true){
+            Panelmenu.add(btnSirkulasiNonMedis2);
+            jmlmenu++;
+        }
 
         if(akses.getasal_hibah()==true){
             Panelmenu.add(btnAsalHibah);
@@ -21336,7 +21378,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getasuhan_gizi()==true){
             Panelmenu.add(btnAsuhanGizi);
             jmlmenu++;
-        }
+        } 
+        
+        if(akses.getmonitoring_asuhan_gizi()==true){
+            Panelmenu.add(btnMonitoringAsuhanGizi);
+            jmlmenu++;
+        } 
 
         if(akses.getpengambilan_utd2()==true){
             Panelmenu.add(btnPengambilanUTD2);
@@ -23062,6 +23109,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
         }
+        
+        if(akses.getsirkulasi_non_medis2()==true){
+            if(btnSirkulasiNonMedis2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSirkulasiNonMedis2);
+                jmlmenu++;
+            }                
+        } 
 
         if(akses.getasal_hibah()==true){
             if(btnAsalHibah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25053,6 +25107,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnAsuhanGizi);
                 jmlmenu++;
             }
+        }
+        
+        if(akses.getmonitoring_asuhan_gizi()==true){
+            if(btnMonitoringAsuhanGizi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMonitoringAsuhanGizi);
+                jmlmenu++;
+            }                
         }
 
         if(akses.getpengambilan_utd2()==true){
@@ -27563,6 +27624,31 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 btnSirkulasiObat5ActionPerformed(evt);
             }
         });
+        
+        btnSirkulasiNonMedis2=new widget.ButtonBig();
+        btnSirkulasiNonMedis2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasiNonMedis2.setText("Sirkulasi Non Medis 2");
+        btnSirkulasiNonMedis2.setIconTextGap(0);
+        btnSirkulasiNonMedis2.setName("btnSirkulasiNonMedis2"); // NOI18N
+        btnSirkulasiNonMedis2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiNonMedis2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiNonMedis2ActionPerformed(evt);
+            }
+        });
+        
+        btnMonitoringAsuhanGizi= new widget.ButtonBig();
+        btnMonitoringAsuhanGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_constr_account_statements_1267308.png"))); 
+        btnMonitoringAsuhanGizi.setText("Monitoring Asuhan Gizi");
+        btnMonitoringAsuhanGizi.setIconTextGap(0);
+        btnMonitoringAsuhanGizi.setName("btnMonitoringAsuhanGizi"); 
+        btnMonitoringAsuhanGizi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMonitoringAsuhanGizi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMonitoringAsuhanGiziActionPerformed(evt);
+            }
+        });
+
     }
 
 }

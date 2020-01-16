@@ -77,7 +77,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(105);
             }else if(i==1){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(65);
             }else if(i==2){
                 column.setPreferredWidth(150);
             }else if(i==3){
@@ -1509,9 +1509,6 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
@@ -1933,6 +1930,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                         "asuhan_gizi.tanggal between ? and ? and asuhan_gizi.diagnosis like ? or "+
                         "asuhan_gizi.tanggal between ? and ? and petugas.nama like ? order by asuhan_gizi.tanggal");
             }
+                
             try {
                 if(TCari.getText().equals("")){
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
@@ -2095,10 +2093,10 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         Sequel.cariIsi("select tgl_lahir from pasien where no_rkm_medis=? ",TglLahir,TNoRM.getText());
     }
     
-    public void setNoRm(String norwt, Date tgl1, Date tgl2) {
+    public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        DTPCari1.setDate(tgl1);
+        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);    
         isRawat();
         isPsien();              

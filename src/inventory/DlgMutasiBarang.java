@@ -530,9 +530,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        jml=tbDokter.getRowCount();
+        index=0;
+        for(i=0;i<jml;i++){
+            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                index++;
+            }
+        }
         if(aktifkanbatch.equals("yes")){
             row=0;
-            jml=tbDokter.getRowCount();
             for(i=0;i<jml;i++){
                 if((Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0)&&(tbDokter.getValueAt(i,8).toString().trim().equals("")||tbDokter.getValueAt(i,9).toString().trim().equals(""))){
                     row++;
@@ -549,6 +555,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             kdke.requestFocus();
         }else if(aktifkanbatch.equals("yes")&&(row>0)){
             Valid.textKosong(TCari,"No.Batch/No.Faktur");
+        }else if(index<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan jumlah mutasi...!!!!");
+            tbDokter.requestFocus();
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else{

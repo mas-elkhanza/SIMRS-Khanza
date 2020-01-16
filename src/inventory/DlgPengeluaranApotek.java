@@ -29,7 +29,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private double ttl=0,y=0,stokbarang=0;
-    private int jml=0,i=0,row=0;
+    private int jml=0,i=0,row=0,index=0;
     private PreparedStatement ps,psstok;
     private DlgCariPengeluaranApotek form=new DlgCariPengeluaranApotek(null,false);
     private ResultSet rs,rsstok;
@@ -655,6 +655,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        jml=tbDokter.getRowCount();
+        index=0;
+        for(i=0;i<jml;i++){
+            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                index++;
+            }
+        }
+        
         if(aktifkanbatch.equals("yes")){
             row=0;
             jml=tbDokter.getRowCount();
@@ -676,8 +684,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             tbDokter.requestFocus();
         }else if(aktifkanbatch.equals("yes")&&(row>0)){
             Valid.textKosong(TCari,"No.Batch/No.Faktur");
-        }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pengeluaran...!!!!");
+        }else if(index<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan pengeluaran...!!!!");
             tbDokter.requestFocus();
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -707,10 +715,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }                
                         } 
                         if(sukses==true){
-                            Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Medis from set_akun"),"PERSEDIAAN BARANG","0",""+(ttl)});
-                            Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Medis from set_akun"),"KONTRA PERSEDIAAN BARANG",""+(ttl),"0"}); 
-                            sukses=jur.simpanJurnal(NoKeluar.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP"+", OLEH "+akses.getkode());
+                            if(ttl>0){
+                                Sequel.queryu("delete from tampjurnal");
+                                Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Stok_Keluar_Medis from set_akun"),"PERSEDIAAN BARANG","0",""+(ttl)});
+                                Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Stok_Keluar_Medis from set_akun"),"KONTRA PERSEDIAAN BARANG",""+(ttl),"0"}); 
+                                sukses=jur.simpanJurnal(NoKeluar.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","STOK KELUAR BARANG MEDIS/OBAT/ALKES/BHP"+", OLEH "+akses.getkode());
+                            }
                         }
                     } catch (Exception ex) {
                         sukses=false;
@@ -1003,7 +1013,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         total=new double[jml];
         stok=new double[jml];
         nofaktur=new String[jml];
-        int index=0;        
+        index=0;        
         for(i=0;i<row;i++){
             try {
                 if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>0){
