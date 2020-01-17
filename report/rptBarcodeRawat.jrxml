@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="162" pageHeight="53" columnWidth="158" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="3c80a3ce-0b0f-4a4b-96e2-d807fd204657">
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 3.5.2  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="162" pageHeight="60" columnWidth="158" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -13,6 +13,7 @@
 	<parameter name="alamat" class="java.lang.String"/>
 	<parameter name="norm" class="java.lang.String"/>
 	<parameter name="no_rawat" class="java.lang.String"/>
+	<parameter name="tgl" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select no_rawat from reg_periksa where no_rawat= $P{no_rawat}]]>
 	</queryString>
@@ -23,101 +24,102 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="47" splitType="Stretch">
+		<band height="56" splitType="Stretch">
 			<componentElement>
-				<reportElement x="1" y="21" width="143" height="18" uuid="307596c3-82c5-4f2a-97d6-51a3c60671a8"/>
+				<reportElement x="1" y="32" width="143" height="18"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="1" barHeight="25">
 					<jr:codeExpression><![CDATA[$F{no_rawat}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<line>
-				<reportElement x="4" y="0" width="140" height="1" forecolor="#000000" uuid="a0986ede-0638-4a79-b82d-c85155865063"/>
+				<reportElement x="4" y="0" width="140" height="1" forecolor="#000000"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="4" y="44" width="140" height="1" forecolor="#000000" uuid="dca918d2-62e4-44bc-b3fa-e12c9a56c862"/>
+				<reportElement x="4" y="55" width="140" height="1" forecolor="#000000"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="31" y="11" width="113" height="9" uuid="277042cb-3a19-4bd4-a8b4-15b9da9beb57"/>
-				<textElement>
+				<reportElement x="31" y="11" width="113" height="9"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="71" y="2" width="73" height="9" uuid="6fc028a2-7445-4785-a611-56b4ecb1c105"/>
-				<textElement>
+				<reportElement x="71" y="2" width="73" height="9"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Tgl.lahir : "+$P{alamat}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["Tgl.lahir : "+$P{tgl}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="31" y="2" width="40" height="9" uuid="fb8036c8-2827-449a-b20f-dfa24ad89ac4"/>
-				<textElement>
+				<reportElement x="31" y="2" width="40" height="9"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{norm}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{norm}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="8" y="38" width="136" height="6" uuid="ab8cbd9e-9176-429b-b1f1-a418aee857f7"/>
-				<textElement>
+				<reportElement x="8" y="49" width="136" height="6"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="4"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_rawat}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rawat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="7" y="11" width="21" height="9" uuid="e013931d-a7eb-48fd-a45e-b1fd057526e8"/>
-				<textElement>
+				<reportElement x="7" y="11" width="21" height="9"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Nama]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="2" width="21" height="9" uuid="58576ec9-42c5-4dc4-94fa-88024e5298be"/>
-				<textElement>
+				<reportElement x="7" y="2" width="21" height="9"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[No.RM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="28" y="2" width="3" height="9" uuid="8e56cc05-9581-4605-8043-5d467d197102"/>
-				<textElement>
+				<reportElement x="28" y="2" width="3" height="9"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="28" y="11" width="3" height="9" uuid="7ff09409-6ac8-4487-80f8-e871acab5976"/>
-				<textElement>
+				<reportElement x="28" y="11" width="3" height="9"/>
+				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="3" y="1" width="1" height="43" forecolor="#000000" uuid="0c1bef96-6e12-47ae-b697-5d3763af5cbc"/>
+				<reportElement x="3" y="1" width="1" height="54" forecolor="#000000"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="144" y="1" width="1" height="43" forecolor="#000000" uuid="50e7e974-2eb6-4eee-95b0-b2b2de3baa62"/>
+				<reportElement x="144" y="1" width="1" height="54" forecolor="#000000">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement x="7" y="20" width="137" height="12"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{alamat}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
