@@ -67,7 +67,7 @@ public class HibahObatBHP extends javax.swing.JDialog {
             "Jual Bebas", "Karyawan","Isi","Isibesar","Dasar"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                boolean a = false;
-               if ((colIndex==0)||(colIndex==6)||(colIndex==8)||(colIndex==11)) {
+               if ((colIndex==0)||(colIndex==5)||(colIndex==6)||(colIndex==8)||(colIndex==11)) {
                    a=true;
                }
                return a;
