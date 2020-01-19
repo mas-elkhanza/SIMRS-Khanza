@@ -3993,7 +3993,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_tbTriaseKeyReleased
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        isMenu();
+        if(tbTriase.getSelectedRow()!= -1){
+            isMenu();
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan triasenya...!!!!");
+        }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void TNoRM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNoRM1ActionPerformed
