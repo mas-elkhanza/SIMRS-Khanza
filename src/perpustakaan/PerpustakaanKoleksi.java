@@ -90,7 +90,7 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         KodeBuku.setDocument(new batasInput((byte)10).getKata(KodeBuku));
-        Judul.setDocument(new batasInput((int)200).getKata(Judul));
+        Judul.setDocument(new batasInput(200).getKata(Judul));
         Halaman.setDocument(new batasInput((byte)5).getOnlyAngka(Halaman));
         KodePenerbit.setDocument(new batasInput((byte)10).getKata(KodePenerbit));
         KodePengarang.setDocument(new batasInput((byte)7).getKata(KodePengarang));

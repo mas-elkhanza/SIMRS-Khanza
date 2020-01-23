@@ -234,9 +234,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
         KdKab.setDocument(new batasInput((byte)10).getOnlyAngka(KdKab));
         KdKel.setDocument(new batasInput((byte)10).getOnlyAngka(KdKel));
         KeteranganRujukan.setDocument(new batasInput((byte)100).getKata(KeteranganRujukan));
-        PaduanOAT.setDocument(new batasInput((int)500).getKata(PaduanOAT));
-        KeteranganSO.setDocument(new batasInput((int)500).getKata(KeteranganSO));
-        Keterangan.setDocument(new batasInput((int)100).getKata(Keterangan));
+        PaduanOAT.setDocument(new batasInput(500).getKata(PaduanOAT));
+        KeteranganSO.setDocument(new batasInput(500).getKata(KeteranganSO));
+        Keterangan.setDocument(new batasInput(100).getKata(Keterangan));
         PemeriksaanLaboratAkhirNoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratAkhirNoReg));
         PemeriksaanLaboratBulan2NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan2NoReg));
         PemeriksaanLaboratBulan3NoReg.setDocument(new batasInput((byte)15).getKata(PemeriksaanLaboratBulan3NoReg));

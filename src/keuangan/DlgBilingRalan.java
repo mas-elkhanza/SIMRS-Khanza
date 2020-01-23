@@ -556,8 +556,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             centangobatralan="No";
         }
         
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        TCari1.setDocument(new batasInput((int)100).getKata(TCari1));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
+        TCari1.setDocument(new batasInput(100).getKata(TCari1));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

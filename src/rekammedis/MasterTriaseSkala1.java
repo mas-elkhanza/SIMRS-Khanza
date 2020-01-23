@@ -79,7 +79,7 @@ public class MasterTriaseSkala1 extends javax.swing.JDialog {
         tbSpesialis.setDefaultRenderer(Object.class, new WarnaTable());
 
         kdskala.setDocument(new batasInput((byte)3).getKata(kdskala));
-        namaskala.setDocument(new batasInput((int)150).getKata(namaskala));
+        namaskala.setDocument(new batasInput(150).getKata(namaskala));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

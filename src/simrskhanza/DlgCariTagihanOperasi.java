@@ -96,10 +96,10 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
         kdmem.setDocument(new batasInput((byte)10).getKata(kdmem));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
-        PreOp.setDocument(new batasInput((int)100).getKata(PreOp));      
-        PostOp.setDocument(new batasInput((int)100).getKata(PostOp));      
-        Jaringan.setDocument(new batasInput((int)100).getKata(Jaringan));
-        Laporan.setDocument(new batasInput((int)8000).getKata(Laporan));
+        PreOp.setDocument(new batasInput(100).getKata(PreOp));      
+        PostOp.setDocument(new batasInput(100).getKata(PostOp));      
+        Jaringan.setDocument(new batasInput(100).getKata(Jaringan));
+        Laporan.setDocument(new batasInput(8000).getKata(Laporan));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override

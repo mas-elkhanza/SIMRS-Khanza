@@ -77,7 +77,7 @@ public final class DlgPerujukRadiologiPerTahun extends javax.swing.JDialog {
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TCari.setDocument(new batasInput((int)200).getKata(TCari));
+        TCari.setDocument(new batasInput(200).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override

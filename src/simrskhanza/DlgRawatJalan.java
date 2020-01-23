@@ -762,15 +762,15 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         KdDok2.setDocument(new batasInput((byte)20).getKata(KdDok2));
         TSuhu.setDocument(new batasInput((byte)5).getKata(TSuhu));
         TTensi.setDocument(new batasInput((byte)7).getKata(TTensi));
-        TKeluhan.setDocument(new batasInput((int)400).getKata(TKeluhan));
-        TPemeriksaan.setDocument(new batasInput((int)400).getKata(TPemeriksaan));
-        TPenilaian.setDocument(new batasInput((int)400).getKata(TPenilaian));     
-        TAlergi.setDocument(new batasInput((int)50).getKata(TAlergi));        
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));       
+        TKeluhan.setDocument(new batasInput(400).getKata(TKeluhan));
+        TPemeriksaan.setDocument(new batasInput(400).getKata(TPemeriksaan));
+        TPenilaian.setDocument(new batasInput(400).getKata(TPenilaian));     
+        TAlergi.setDocument(new batasInput(50).getKata(TAlergi));        
+        TCari.setDocument(new batasInput(100).getKata(TCari));       
         TGCS.setDocument(new batasInput((byte)10).getKata(TGCS));
         TTinggi.setDocument(new batasInput((byte)5).getKata(TTinggi));
         TBerat.setDocument(new batasInput((byte)5).getKata(TBerat));
-        TindakLanjut.setDocument(new batasInput((int)400).getKata(TindakLanjut));
+        TindakLanjut.setDocument(new batasInput(400).getKata(TindakLanjut));
         TNadi.setDocument(new batasInput((byte)3).getOnlyAngka(TNadi));
         TRespirasi.setDocument(new batasInput((byte)3).getOnlyAngka(TRespirasi));
         TTinggi_uteri.setDocument(new batasInput((byte)5).getKata(TTinggi_uteri));
@@ -797,7 +797,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TAdnexaKanan.setDocument(new batasInput((byte)50).getKata(TAdnexaKanan));
         TAdnexaKiri.setDocument(new batasInput((byte)50).getKata(TAdnexaKiri));
         TCavumDouglas.setDocument(new batasInput((byte)50).getKata(TCavumDouglas));
-        Catatan.setDocument(new batasInput((int)700).getKata(Catatan));
+        Catatan.setDocument(new batasInput(700).getKata(Catatan));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

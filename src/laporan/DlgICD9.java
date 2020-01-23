@@ -91,8 +91,8 @@ public final class DlgICD9 extends javax.swing.JDialog {
 
         
         Kode.setDocument(new batasInput((byte)10).getKata(Kode));
-        Pendek.setDocument(new batasInput((int)100).getKata(Pendek));
-        Panjang.setDocument(new batasInput((int)1500).getKata(Panjang));
+        Pendek.setDocument(new batasInput(100).getKata(Pendek));
+        Panjang.setDocument(new batasInput(1500).getKata(Panjang));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

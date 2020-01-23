@@ -94,7 +94,7 @@ public class DlgPengajuanBarangNonMedis extends javax.swing.JDialog {
         NoPengajuan.setDocument(new batasInput((byte)15).getKata(NoPengajuan));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        Keterangan.setDocument(new batasInput((int)150).getKata(Keterangan));
+        Keterangan.setDocument(new batasInput(150).getKata(Keterangan));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

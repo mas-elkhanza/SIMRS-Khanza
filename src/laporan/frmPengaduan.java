@@ -93,7 +93,7 @@ public class frmPengaduan extends javax.swing.JFrame {
         tbPengaduan.setDefaultRenderer(Object.class, new WarnaTable());
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        Pesan.setDocument(new batasInput((int)255).getKata(Pesan));
+        Pesan.setDocument(new batasInput(255).getKata(Pesan));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override

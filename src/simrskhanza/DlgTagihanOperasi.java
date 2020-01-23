@@ -182,10 +182,10 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         kdonloop5.setDocument(new batasInput((byte)20).getKata(kdonloop5));
         kdpjanak.setDocument(new batasInput((byte)20).getKata(kdpjanak));        
         kddrumum.setDocument(new batasInput((byte)20).getKata(kddrumum));      
-        PreOp.setDocument(new batasInput((int)100).getKata(PreOp));      
-        PostOp.setDocument(new batasInput((int)100).getKata(PostOp));      
-        Jaringan.setDocument(new batasInput((int)100).getKata(Jaringan));
-        Laporan.setDocument(new batasInput((int)8000).getKata(Laporan));
+        PreOp.setDocument(new batasInput(100).getKata(PreOp));      
+        PostOp.setDocument(new batasInput(100).getKata(PostOp));      
+        Jaringan.setDocument(new batasInput(100).getKata(Jaringan));
+        Laporan.setDocument(new batasInput(8000).getKata(Laporan));
         
         TCariPaket.setDocument(new batasInput((byte)100).getKata(TCari)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari)); 

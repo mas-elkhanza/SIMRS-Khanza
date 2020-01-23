@@ -81,7 +81,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
         Nm.setDocument(new batasInput((byte)60).getKata(Nm));
-        Almt.setDocument(new batasInput((int)150).getKata(Almt));
+        Almt.setDocument(new batasInput(150).getKata(Almt));
         Kota.setDocument(new batasInput((byte)30).getKata(Kota));
         Propinsi.setDocument(new batasInput((byte)30).getKata(Propinsi));
         Kontak.setDocument(new batasInput((byte)50).getKata(Kontak));

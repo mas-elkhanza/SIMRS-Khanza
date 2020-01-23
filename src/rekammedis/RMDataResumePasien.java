@@ -147,30 +147,30 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Keluhan.setDocument(new batasInput((int)1000).getKata(Keluhan));
-        JalannyaPenyakit.setDocument(new batasInput((int)1000).getKata(JalannyaPenyakit));
-        PemeriksaanPenunjang.setDocument(new batasInput((int)1000).getKata(PemeriksaanPenunjang));
-        HasilLaborat.setDocument(new batasInput((int)1000).getKata(HasilLaborat));
-        Obat2an.setDocument(new batasInput((int)1000).getKata(Obat2an));
-        DiagnosaUtama.setDocument(new batasInput((int)80).getKata(DiagnosaUtama));
-        DiagnosaSekunder1.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder1));
-        DiagnosaSekunder2.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder2));
-        DiagnosaSekunder3.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder3));
-        DiagnosaSekunder4.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder4));
-        ProsedurUtama.setDocument(new batasInput((int)80).getKata(ProsedurUtama));
-        ProsedurSekunder1.setDocument(new batasInput((int)80).getKata(ProsedurSekunder1));
-        ProsedurSekunder2.setDocument(new batasInput((int)80).getKata(ProsedurSekunder2));
-        ProsedurSekunder3.setDocument(new batasInput((int)80).getKata(ProsedurSekunder3));
-        KodeDiagnosaUtama.setDocument(new batasInput((int)10).getKata(KodeDiagnosaUtama));
-        KodeDiagnosaSekunder1.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder1));
-        KodeDiagnosaSekunder2.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder2));
-        KodeDiagnosaSekunder3.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder3));
-        KodeDiagnosaSekunder4.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder4));
-        KodeProsedurUtama.setDocument(new batasInput((int)8).getKata(KodeProsedurUtama));
-        KodeProsedurSekunder1.setDocument(new batasInput((int)8).getKata(KodeProsedurSekunder1));
-        KodeProsedurSekunder2.setDocument(new batasInput((int)8).getKata(KodeProsedurSekunder2));
-        KodeProsedurSekunder3.setDocument(new batasInput((int)8).getKata(KodeProsedurSekunder3));
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        Keluhan.setDocument(new batasInput(1000).getKata(Keluhan));
+        JalannyaPenyakit.setDocument(new batasInput(1000).getKata(JalannyaPenyakit));
+        PemeriksaanPenunjang.setDocument(new batasInput(1000).getKata(PemeriksaanPenunjang));
+        HasilLaborat.setDocument(new batasInput(1000).getKata(HasilLaborat));
+        Obat2an.setDocument(new batasInput(1000).getKata(Obat2an));
+        DiagnosaUtama.setDocument(new batasInput(80).getKata(DiagnosaUtama));
+        DiagnosaSekunder1.setDocument(new batasInput(80).getKata(DiagnosaSekunder1));
+        DiagnosaSekunder2.setDocument(new batasInput(80).getKata(DiagnosaSekunder2));
+        DiagnosaSekunder3.setDocument(new batasInput(80).getKata(DiagnosaSekunder3));
+        DiagnosaSekunder4.setDocument(new batasInput(80).getKata(DiagnosaSekunder4));
+        ProsedurUtama.setDocument(new batasInput(80).getKata(ProsedurUtama));
+        ProsedurSekunder1.setDocument(new batasInput(80).getKata(ProsedurSekunder1));
+        ProsedurSekunder2.setDocument(new batasInput(80).getKata(ProsedurSekunder2));
+        ProsedurSekunder3.setDocument(new batasInput(80).getKata(ProsedurSekunder3));
+        KodeDiagnosaUtama.setDocument(new batasInput(10).getKata(KodeDiagnosaUtama));
+        KodeDiagnosaSekunder1.setDocument(new batasInput(10).getKata(KodeDiagnosaSekunder1));
+        KodeDiagnosaSekunder2.setDocument(new batasInput(10).getKata(KodeDiagnosaSekunder2));
+        KodeDiagnosaSekunder3.setDocument(new batasInput(10).getKata(KodeDiagnosaSekunder3));
+        KodeDiagnosaSekunder4.setDocument(new batasInput(10).getKata(KodeDiagnosaSekunder4));
+        KodeProsedurUtama.setDocument(new batasInput(8).getKata(KodeProsedurUtama));
+        KodeProsedurSekunder1.setDocument(new batasInput(8).getKata(KodeProsedurSekunder1));
+        KodeProsedurSekunder2.setDocument(new batasInput(8).getKata(KodeProsedurSekunder2));
+        KodeProsedurSekunder3.setDocument(new batasInput(8).getKata(KodeProsedurSekunder3));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
 
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

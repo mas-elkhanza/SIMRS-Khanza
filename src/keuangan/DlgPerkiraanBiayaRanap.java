@@ -224,9 +224,9 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
         }
         tbNilaiINACBG.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        Diagnosa.setDocument(new batasInput((int)100).getKata(Diagnosa));
-        Prosedur.setDocument(new batasInput((int)100).getKata(Prosedur));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
+        Diagnosa.setDocument(new batasInput(100).getKata(Diagnosa));
+        Prosedur.setDocument(new batasInput(100).getKata(Prosedur));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override

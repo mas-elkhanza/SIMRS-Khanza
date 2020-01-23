@@ -107,8 +107,8 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 
         
         TKd.setDocument(new batasInput((byte)10).getKata(TKd));
-        TNm.setDocument(new batasInput((int)100).getKata(TNm));
-        TCiri.setDocument(new batasInput((int)1500).getKata(TCiri));
+        TNm.setDocument(new batasInput(100).getKata(TNm));
+        TCiri.setDocument(new batasInput(1500).getKata(TCiri));
         TKeterangan.setDocument(new batasInput((byte)60).getKata(TKeterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){

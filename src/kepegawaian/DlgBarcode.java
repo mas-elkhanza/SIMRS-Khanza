@@ -74,9 +74,9 @@ public final class DlgBarcode extends javax.swing.JDialog {
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Bcd.setDocument(new batasInput((int)25).getKata(Bcd));
+        Bcd.setDocument(new batasInput(25).getKata(Bcd));
         
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override

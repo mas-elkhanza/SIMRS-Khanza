@@ -185,14 +185,14 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         NoLaporan.setDocument(new batasInput((byte)15).getKata(NoLaporan));
-        Kronologi.setDocument(new batasInput((int)300).getKata(Kronologi));
-        KondisiTidakAman.setDocument(new batasInput((int)100).getKata(KondisiTidakAman));
-        TindakanTidakAman.setDocument(new batasInput((int)100).getKata(TindakanTidakAman));
-        Pribadi.setDocument(new batasInput((int)100).getKata(Pribadi));
-        Pekerjaan.setDocument(new batasInput((int)100).getKata(Pekerjaan));
-        Rencana.setDocument(new batasInput((int)200).getKata(Rencana));
-        Catatan.setDocument(new batasInput((int)200).getKata(Catatan));
-        Wewenang.setDocument(new batasInput((int)100).getKata(Wewenang));
+        Kronologi.setDocument(new batasInput(300).getKata(Kronologi));
+        KondisiTidakAman.setDocument(new batasInput(100).getKata(KondisiTidakAman));
+        TindakanTidakAman.setDocument(new batasInput(100).getKata(TindakanTidakAman));
+        Pribadi.setDocument(new batasInput(100).getKata(Pribadi));
+        Pekerjaan.setDocument(new batasInput(100).getKata(Pekerjaan));
+        Rencana.setDocument(new batasInput(200).getKata(Rencana));
+        Catatan.setDocument(new batasInput(200).getKata(Catatan));
+        Wewenang.setDocument(new batasInput(100).getKata(Wewenang));
         LT.setDocument(new batasInput((byte)10).getOnlyAngka(LT));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

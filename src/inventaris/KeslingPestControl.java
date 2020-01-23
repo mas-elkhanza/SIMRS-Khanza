@@ -86,8 +86,8 @@ public final class KeslingPestControl extends javax.swing.JDialog {
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kegiatan.setDocument(new batasInput((int)20000).getKata(Kegiatan));
-        Rekomendasi.setDocument(new batasInput((int)20000).getKata(Rekomendasi));
+        Kegiatan.setDocument(new batasInput(20000).getKata(Kegiatan));
+        Rekomendasi.setDocument(new batasInput(20000).getKata(Rekomendasi));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

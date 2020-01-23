@@ -103,7 +103,7 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         nama.setDocument(new batasInput((byte)50).getKata(nama));
         kdrek.setDocument(new batasInput((byte)15).getKata(kdrek));
-        kdpnj.setDocument(new batasInput((int)3).getKata(kdpnj));
+        kdpnj.setDocument(new batasInput(3).getKata(kdpnj));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

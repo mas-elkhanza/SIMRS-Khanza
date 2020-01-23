@@ -139,14 +139,14 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         nip.setDocument(new batasInput((byte)20).getKata(nip));
         KodeInsiden.setDocument(new batasInput((byte)5).getKata(KodeInsiden));
-        Lokasi.setDocument(new batasInput((int)60).getKata(Lokasi));
-        UnitTerkait.setDocument(new batasInput((int)60).getKata(UnitTerkait));
-        Akibat.setDocument(new batasInput((int)150).getKata(Akibat));
-        Tindakan.setDocument(new batasInput((int)150).getKata(Tindakan));
-        Identifikasi.setDocument(new batasInput((int)150).getKata(Identifikasi));
-        TindakLanjut.setDocument(new batasInput((int)150).getKata(TindakLanjut));
-        Kronologis.setDocument(new batasInput((int)200).getKata(Kronologis));
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        Lokasi.setDocument(new batasInput(60).getKata(Lokasi));
+        UnitTerkait.setDocument(new batasInput(60).getKata(UnitTerkait));
+        Akibat.setDocument(new batasInput(150).getKata(Akibat));
+        Tindakan.setDocument(new batasInput(150).getKata(Tindakan));
+        Identifikasi.setDocument(new batasInput(150).getKata(Identifikasi));
+        TindakLanjut.setDocument(new batasInput(150).getKata(TindakLanjut));
+        Kronologis.setDocument(new batasInput(200).getKata(Kronologis));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

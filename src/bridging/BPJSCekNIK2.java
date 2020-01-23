@@ -1263,7 +1263,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
         ChkCari.setSelected(false);
         isForm();
-        TNik.setDocument(new batasInput((int)80).getKata(TNik));
+        TNik.setDocument(new batasInput(80).getKata(TNik));
         TNo.setDocument(new batasInput((byte)15).getKata(TNo));
         TNm.setDocument(new batasInput((byte)40).getKata(TNm));
         NmIbu.setDocument(new batasInput((byte)40).getKata(NmIbu));
@@ -1271,8 +1271,8 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         Kdpnj.setDocument(new batasInput((byte)3).getKata(Kdpnj));
         TTlp.setDocument(new batasInput((byte)13).getOnlyAngka(TTlp));
         TTmp.setDocument(new batasInput((byte)15).getKata(TTmp));
-        Alamat.setDocument(new batasInput((int)200).getFilter(Alamat));
-        AlamatPj.setDocument(new batasInput((int)100).getFilter(AlamatPj));
+        Alamat.setDocument(new batasInput(200).getFilter(Alamat));
+        AlamatPj.setDocument(new batasInput(100).getFilter(AlamatPj));
         Pekerjaan.setDocument(new batasInput((byte)15).getKata(Pekerjaan));
         PekerjaanPj.setDocument(new batasInput((byte)15).getKata(PekerjaanPj));
         TUmur.setDocument(new batasInput((byte)10).getKata(TUmur));

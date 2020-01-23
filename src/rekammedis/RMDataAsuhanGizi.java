@@ -156,15 +156,15 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         TBPerU.setDocument(new batasInput((byte)5).getKata(TBPerU));
         BBPerTB.setDocument(new batasInput((byte)5).getKata(BBPerTB));
         LiLAPerU.setDocument(new batasInput((byte)5).getKata(LiLAPerU));
-        Biokimia.setDocument(new batasInput((int)100).getKata(Biokimia));
-        FisikKlinis.setDocument(new batasInput((int)100).getKata(FisikKlinis));
-        RiwayatPersonal.setDocument(new batasInput((int)100).getKata(RiwayatPersonal));
-        PolaMakan.setDocument(new batasInput((int)100).getKata(PolaMakan));
-        DiagnosisGizi.setDocument(new batasInput((int)100).getKata(DiagnosisGizi));
-        IntervensiGizi.setDocument(new batasInput((int)100).getKata(IntervensiGizi));
-        Monitoring.setDocument(new batasInput((int)100).getKata(Monitoring));
+        Biokimia.setDocument(new batasInput(100).getKata(Biokimia));
+        FisikKlinis.setDocument(new batasInput(100).getKata(FisikKlinis));
+        RiwayatPersonal.setDocument(new batasInput(100).getKata(RiwayatPersonal));
+        PolaMakan.setDocument(new batasInput(100).getKata(PolaMakan));
+        DiagnosisGizi.setDocument(new batasInput(100).getKata(DiagnosisGizi));
+        IntervensiGizi.setDocument(new batasInput(100).getKata(IntervensiGizi));
+        Monitoring.setDocument(new batasInput(100).getKata(Monitoring));
         
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

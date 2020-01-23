@@ -114,12 +114,12 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
 
         TNoRM.setDocument(new batasInput((byte)15).getKata(TNoRM));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        Diagnosa.setDocument(new batasInput((int)50).getKata(Diagnosa));
-        Terapi.setDocument(new batasInput((int)50).getKata(Terapi));
-        Alasan1.setDocument(new batasInput((int)50).getKata(Alasan1));
-        Alasan2.setDocument(new batasInput((int)50).getKata(Alasan2));
-        Rtl1.setDocument(new batasInput((int)50).getKata(Rtl1));
-        Rtl2.setDocument(new batasInput((int)50).getKata(Rtl2));
+        Diagnosa.setDocument(new batasInput(50).getKata(Diagnosa));
+        Terapi.setDocument(new batasInput(50).getKata(Terapi));
+        Alasan1.setDocument(new batasInput(50).getKata(Alasan1));
+        Alasan2.setDocument(new batasInput(50).getKata(Alasan2));
+        Rtl1.setDocument(new batasInput(50).getKata(Rtl1));
+        Rtl2.setDocument(new batasInput(50).getKata(Rtl2));
         NoReg.setDocument(new batasInput((byte)6).getKata(NoReg));
         KdDokter.setDocument(new batasInput((byte)20).getKata(KdDokter));
         if(koneksiDB.CARICEPAT().equals("aktif")){

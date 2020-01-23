@@ -90,7 +90,7 @@ public final class KeslingLimbahDomestik extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         Jumlah.setDocument(new batasInput((byte)10).getKata(Jumlah));
-        Keterangan.setDocument(new batasInput((int)50).getKata(Keterangan));
+        Keterangan.setDocument(new batasInput(50).getKata(Keterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

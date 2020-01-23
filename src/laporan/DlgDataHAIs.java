@@ -131,12 +131,12 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         PLEB.setDocument(new batasInput((byte)2).getOnlyAngka(PLEB));
         ISK.setDocument(new batasInput((byte)2).getOnlyAngka(ISK));
         ILO.setDocument(new batasInput((byte)2).getOnlyAngka(ILO));
-        Sputum.setDocument(new batasInput((int)200).getKata(Sputum));
-        Darah.setDocument(new batasInput((int)200).getKata(Darah));
-        Urine.setDocument(new batasInput((int)200).getKata(Urine));
-        Antibiotik.setDocument(new batasInput((int)200).getKata(Antibiotik));
+        Sputum.setDocument(new batasInput(200).getKata(Sputum));
+        Darah.setDocument(new batasInput(200).getKata(Darah));
+        Urine.setDocument(new batasInput(200).getKata(Urine));
+        Antibiotik.setDocument(new batasInput(200).getKata(Antibiotik));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

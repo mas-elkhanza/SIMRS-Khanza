@@ -70,7 +70,7 @@ public class K3RSDampakCidera extends javax.swing.JDialog {
         tbSpesialis.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)5).getKata(TKd));
-        TNm.setDocument(new batasInput((int)150).getKata(TNm));
+        TNm.setDocument(new batasInput(150).getKata(TNm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

@@ -94,7 +94,7 @@ public final class DlgKtgPenyakit extends javax.swing.JDialog {
 
         TKd.setDocument(new batasInput((byte)8).getKata(TKd));
         TNm.setDocument(new batasInput((byte)30).getKata(TNm));
-        TCiri.setDocument(new batasInput((int)200).getKata(TCiri));
+        TCiri.setDocument(new batasInput(200).getKata(TCiri));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

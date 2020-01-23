@@ -156,8 +156,8 @@ public class DlgSetHarga extends javax.swing.JDialog {
         jualbebas.setDocument(new batasInput((byte)10).getKata(jualbebas));
         karyawan.setDocument(new batasInput((byte)10).getKata(karyawan));
         kdjns.setDocument(new batasInput((byte)4).getKata(kdjns));
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        TCari1.setDocument(new batasInput((int)100).getKata(TCari1));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
+        TCari1.setDocument(new batasInput(100).getKata(TCari1));
         ralanumum.setDocument(new batasInput((byte)10).getKata(ralanumum));
         ranapk1umum.setDocument(new batasInput((byte)10).getKata(ranapk1umum));
         ranapk2umum.setDocument(new batasInput((byte)10).getKata(ranapk2umum));

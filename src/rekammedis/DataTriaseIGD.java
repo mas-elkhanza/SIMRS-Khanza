@@ -345,12 +345,12 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         tbSkala5.getTableHeader().setForeground(new Color(150,150,150));
         tbSkala5.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        TCariPemeriksaan.setDocument(new batasInput((int)100).getKata(TCariPemeriksaan));
-        TCariPemeriksaan2.setDocument(new batasInput((int)100).getKata(TCariPemeriksaan2));
-        TCariSkala1.setDocument(new batasInput((int)100).getKata(TCariSkala1));
-        TCariSkala3.setDocument(new batasInput((int)100).getKata(TCariSkala3));
-        KeteranganKedatangan.setDocument(new batasInput((int)100).getKata(KeteranganKedatangan));
+        TCari.setDocument(new batasInput(100).getKata(TCari));
+        TCariPemeriksaan.setDocument(new batasInput(100).getKata(TCariPemeriksaan));
+        TCariPemeriksaan2.setDocument(new batasInput(100).getKata(TCariPemeriksaan2));
+        TCariSkala1.setDocument(new batasInput(100).getKata(TCariSkala1));
+        TCariSkala3.setDocument(new batasInput(100).getKata(TCariSkala3));
+        KeteranganKedatangan.setDocument(new batasInput(100).getKata(KeteranganKedatangan));
         PrimerSuhu.setDocument(new batasInput((byte)3).getKata(PrimerSuhu));
         SekunderSuhu.setDocument(new batasInput((byte)3).getKata(SekunderSuhu));
         PrimerNyeri.setDocument(new batasInput((byte)5).getKata(PrimerNyeri));
@@ -363,10 +363,10 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         SekunderSaturasi.setDocument(new batasInput((byte)3).getKata(SekunderSaturasi));
         PrimerRespirasi.setDocument(new batasInput((byte)3).getKata(PrimerRespirasi));
         SekunderRespirasi.setDocument(new batasInput((byte)3).getKata(SekunderRespirasi));
-        PrimerCatatan.setDocument(new batasInput((int)100).getKata(PrimerCatatan));
-        SekunderCatatan.setDocument(new batasInput((int)100).getKata(SekunderCatatan));
-        PrimerKeluhanUtama.setDocument(new batasInput((int)400).getKata(PrimerKeluhanUtama));
-        SekunderAnamnesa.setDocument(new batasInput((int)400).getKata(SekunderAnamnesa));
+        PrimerCatatan.setDocument(new batasInput(100).getKata(PrimerCatatan));
+        SekunderCatatan.setDocument(new batasInput(100).getKata(SekunderCatatan));
+        PrimerKeluhanUtama.setDocument(new batasInput(400).getKata(PrimerKeluhanUtama));
+        SekunderAnamnesa.setDocument(new batasInput(400).getKata(SekunderAnamnesa));
 
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

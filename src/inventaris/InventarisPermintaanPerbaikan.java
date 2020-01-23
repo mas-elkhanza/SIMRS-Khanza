@@ -107,7 +107,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         nopermintaan.setDocument(new batasInput((byte)15).getKata(nopermintaan));
-        deskripsi.setDocument(new batasInput((int)300).getKata(deskripsi));
+        deskripsi.setDocument(new batasInput(300).getKata(deskripsi));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TCari.requestFocus();
         

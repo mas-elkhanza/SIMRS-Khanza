@@ -244,7 +244,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Keluhan.setDocument(new batasInput((int)400).getKata(Keluhan));
+        Keluhan.setDocument(new batasInput(400).getKata(Keluhan));
         Sistole.setDocument(new batasInput((byte)3).getOnlyAngka(Sistole));
         Diastole.setDocument(new batasInput((byte)3).getOnlyAngka(Diastole));
         TinggiBadan.setDocument(new batasInput((byte)5).getOnlyAngka(TinggiBadan));

@@ -91,7 +91,7 @@ public final class KeslingPemakaiaanAirPDAM extends javax.swing.JDialog {
 
         Meteran.setDocument(new batasInput((byte)10).getKata(Meteran));
         JmlHarian.setDocument(new batasInput((byte)10).getKata(JmlHarian));
-        Keterangan.setDocument(new batasInput((int)50).getKata(Keterangan));
+        Keterangan.setDocument(new batasInput(50).getKata(Keterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

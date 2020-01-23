@@ -93,8 +93,8 @@ public final class KeslingMutuAirLimbah extends javax.swing.JDialog {
 
         Meteran.setDocument(new batasInput((byte)10).getKata(Meteran));
         JmlHarian.setDocument(new batasInput((byte)10).getKata(JmlHarian));
-        PH.setDocument(new batasInput((int)10).getKata(PH));
-        Suhu.setDocument(new batasInput((int)10).getKata(Suhu));
+        PH.setDocument(new batasInput(10).getKata(PH));
+        Suhu.setDocument(new batasInput(10).getKata(Suhu));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

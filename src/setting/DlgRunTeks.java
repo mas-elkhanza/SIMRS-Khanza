@@ -75,7 +75,7 @@ public class DlgRunTeks extends javax.swing.JDialog {
         }
 
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
-        TTeks.setDocument(new batasInput((int)1500).getKata(TTeks));
+        TTeks.setDocument(new batasInput(1500).getKata(TTeks));
     }
     Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private javax.swing.JFileChooser jfc = new JFileChooser();

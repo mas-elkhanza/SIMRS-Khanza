@@ -95,7 +95,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         NoDonor.setDocument(new batasInput((byte)15).getKata(NoDonor));
-        Keterangan.setDocument(new batasInput((int)100).getKata(Keterangan));
+        Keterangan.setDocument(new batasInput(100).getKata(Keterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         KodePetugas.setDocument(new batasInput((byte)20).getKata(KodePetugas));
         if(koneksiDB.CARICEPAT().equals("aktif")){

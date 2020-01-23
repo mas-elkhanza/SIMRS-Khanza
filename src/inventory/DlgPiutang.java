@@ -118,7 +118,7 @@ public class DlgPiutang extends javax.swing.JDialog {
         Jmljual.setDocument(new batasInput((byte)13).getKata(Jmljual));
         NoBatch.setDocument(new batasInput((byte)20).getKata(NoBatch));
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
-        Aturan.setDocument(new batasInput((int)150).getKata(Aturan));
+        Aturan.setDocument(new batasInput(150).getKata(Aturan));
 
         Jmljual.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
             @Override

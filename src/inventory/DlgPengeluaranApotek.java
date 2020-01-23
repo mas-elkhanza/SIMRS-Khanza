@@ -104,8 +104,8 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         NoKeluar.setDocument(new batasInput((byte)15).getKata(NoKeluar));
         kdgudang.setDocument(new batasInput((byte)5).getKata(kdgudang));
         kdptg.setDocument(new batasInput((byte)20).getKata(kdptg));
-        catatan.setDocument(new batasInput((int)200).getKata(catatan));   
-        TCari.setDocument(new batasInput((int)100).getKata(TCari)); 
+        catatan.setDocument(new batasInput(200).getKata(catatan));   
+        TCari.setDocument(new batasInput(100).getKata(TCari)); 
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

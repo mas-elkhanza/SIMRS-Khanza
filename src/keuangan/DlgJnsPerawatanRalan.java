@@ -118,17 +118,17 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
         TKd.setDocument(new batasInput((byte)15).getKata(TKd));
         TNm.setDocument(new batasInput((byte)80).getKata(TNm));
         KdKtg.setDocument(new batasInput((byte)5).getKata(KdKtg));
-        BagianRs.setDocument(new batasInput((int)15).getOnlyAngka(BagianRs));
-        BhpMedis.setDocument(new batasInput((int)15).getOnlyAngka(BhpMedis));
-        TTndDr.setDocument(new batasInput((int)15).getOnlyAngka(TTndDr));
-        TTndPr.setDocument(new batasInput((int)15).getOnlyAngka(TTndPr));
-        TJmlDr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlDr));
-        TJmlPr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlPr));
-        TJmlDrPr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlPr));
-        KSO.setDocument(new batasInput((int)20).getOnlyAngka(KSO));
-        Menejemen.setDocument(new batasInput((int)20).getOnlyAngka(Menejemen));
-        kdpnj.setDocument(new batasInput((int)3).getKata(kdpnj));
-        kdpoli.setDocument(new batasInput((int)5).getKata(kdpoli));
+        BagianRs.setDocument(new batasInput(15).getOnlyAngka(BagianRs));
+        BhpMedis.setDocument(new batasInput(15).getOnlyAngka(BhpMedis));
+        TTndDr.setDocument(new batasInput(15).getOnlyAngka(TTndDr));
+        TTndPr.setDocument(new batasInput(15).getOnlyAngka(TTndPr));
+        TJmlDr.setDocument(new batasInput(20).getOnlyAngka(TJmlDr));
+        TJmlPr.setDocument(new batasInput(20).getOnlyAngka(TJmlPr));
+        TJmlDrPr.setDocument(new batasInput(20).getOnlyAngka(TJmlPr));
+        KSO.setDocument(new batasInput(20).getOnlyAngka(KSO));
+        Menejemen.setDocument(new batasInput(20).getOnlyAngka(Menejemen));
+        kdpnj.setDocument(new batasInput(3).getKata(kdpnj));
+        kdpoli.setDocument(new batasInput(5).getKata(kdpoli));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

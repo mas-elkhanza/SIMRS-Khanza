@@ -144,7 +144,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         NoRm.setDocument(new batasInput((byte)15).getKata(NoRm));
         NmBayi.setDocument(new batasInput((byte)40).getKata(NmBayi));
-        AlamatIbu.setDocument(new batasInput((int)200).getKata(AlamatIbu));
+        AlamatIbu.setDocument(new batasInput(200).getKata(AlamatIbu));
         Nmibu.setDocument(new batasInput((byte)50).getKata(Nmibu));
         UmurIbu.setDocument(new batasInput((byte)8).getKata(UmurIbu));
         NmAyah.setDocument(new batasInput((byte)50).getKata(NmAyah));

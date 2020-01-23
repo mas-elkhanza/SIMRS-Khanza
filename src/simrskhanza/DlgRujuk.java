@@ -114,8 +114,8 @@ public final class DlgRujuk extends javax.swing.JDialog {
         TNoRj.setDocument(new batasInput((byte)10).getKata(TNoRj));
         TTmpRujuk.setDocument(new batasInput((byte)45).getKata(TTmpRujuk));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TDiagnosa.setDocument(new batasInput((int)5000).getKata(TDiagnosa));
-        ket.setDocument(new batasInput((int)5000).getKata(ket));
+        TDiagnosa.setDocument(new batasInput(5000).getKata(TDiagnosa));
+        ket.setDocument(new batasInput(5000).getKata(ket));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         KdDok.setDocument(new batasInput((byte)20).getKata(KdDok));
         if(koneksiDB.CARICEPAT().equals("aktif")){

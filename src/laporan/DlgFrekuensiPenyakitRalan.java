@@ -88,7 +88,7 @@ public class DlgFrekuensiPenyakitRalan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TCari.setDocument(new batasInput((int)90).getKata(TCari));
+        TCari.setDocument(new batasInput(90).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
