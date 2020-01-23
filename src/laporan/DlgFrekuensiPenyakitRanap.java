@@ -1209,7 +1209,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
@@ -1411,7 +1411,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }
     }//GEN-LAST:event_ppGrafikTerbanyakBatangActionPerformed
@@ -1607,7 +1607,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
@@ -1799,7 +1799,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }
             
@@ -2006,7 +2006,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
@@ -2208,7 +2208,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }            
     }//GEN-LAST:event_ppGrafikTerkecilBatangActionPerformed
@@ -2404,7 +2404,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
@@ -2596,7 +2596,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 cf.setVisible(true);
 
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
             }
         }            
     }//GEN-LAST:event_ppGrafikTerkecilPieActionPerformed

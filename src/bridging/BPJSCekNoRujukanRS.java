@@ -440,7 +440,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                         TBiaya.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),5).toString());
                         KdPoli.requestFocus();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silahkan cari yang kosong..!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silakan cari yang kosong..!!");
                         KdPoli.requestFocus();
                     }
                 }
@@ -1811,7 +1811,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(jPopupMenu1);
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
@@ -3618,7 +3618,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             nosep="";
             ChkCari.setSelected(false);
             isForm();
-            JOptionPane.showMessageDialog(null,"Maaf, data rujukan BPJS masih kosong. Silahkan lakukan pencarian berdasar No.Rujukan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, data rujukan BPJS masih kosong. Silakan lakukan pencarian berdasar No.Rujukan...!!!!");
         }else{
             TTmp.requestFocus();
             isForm();
@@ -3822,7 +3822,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan data yang hendak dimapping transaksinya...!!!!");
             NoRujukan.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -3867,7 +3867,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan data yang hendak dimapping transaksinya...!!!!");
             NoRujukan.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -4755,7 +4755,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
     private void btnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKabupatenActionPerformed
         if(KdPropinsi.getText().trim().equals("")||NmPropinsi.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih propinsi dulu..!!");
             btnPropinsi.requestFocus();
         }else{
             kabupatenkll.setPropinsi(KdPropinsi.getText(),NmPropinsi.getText());
@@ -4771,7 +4771,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
     private void btnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKecamatanActionPerformed
         if(KdKabupaten.getText().trim().equals("")||NmKabupaten.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih kabupaten dulu..!!");
             btnKabupaten.requestFocus();
         }else{
             kecamatankll.setPropinsi(KdKabupaten.getText(),NmKabupaten.getText());
@@ -5314,7 +5314,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
                     isPoli();
                 }else{
                     if(!response.path("poliRujukan").path("kode").asText().equals("")){
-                        int jawab=JOptionPane.showConfirmDialog(null, "Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                        int jawab=JOptionPane.showConfirmDialog(null, "Mapping poli tidak ditemukan.\nSilakan lakukan mapping terlebih dahulu..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
                         if(jawab==JOptionPane.YES_OPTION){
                             poli.isCek();
                             poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

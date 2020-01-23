@@ -358,7 +358,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
@@ -368,7 +368,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbBangsal2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal2.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbBangsal2.setName("tbBangsal2"); // NOI18N
         tbBangsal2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -568,7 +568,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     BtnCari.requestFocus();
                 }                    
             }else{            
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
                 BtnCari.requestFocus();
             }                 
         }else if(TabRawat.getSelectedIndex()==1){
@@ -587,7 +587,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     BtnCari.requestFocus();
                 }
             }else{            
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
                 BtnCari.requestFocus();
             } 
         }

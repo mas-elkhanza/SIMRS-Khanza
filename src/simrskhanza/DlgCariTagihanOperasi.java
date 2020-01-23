@@ -2011,7 +2011,7 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
     if(tbDokter.getSelectedRow()>-1){
         if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals("")){
             if(Sequel.cariRegistrasi(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;status="";
@@ -2064,7 +2064,7 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
                 tampil();
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
         }  
     }               
 }//GEN-LAST:event_MnHapusTagihanOperasiActionPerformed
@@ -2073,7 +2073,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     if(tbDokter.getSelectedRow()>-1){
         if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals("")){            
             if(Sequel.cariRegistrasi(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;
@@ -2095,7 +2095,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 tampil();
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
         }   
     }        
 }//GEN-LAST:event_MnHapusObatOperasiActionPerformed
@@ -2108,7 +2108,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         if(tbDokter.getSelectedRow()>-1){
             if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals("")){
                 if(Sequel.cariRegistrasi(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh diubah.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh diubah.\nSilakan hubungi bagian kasir/keuangan ..!!");
                     TCari.requestFocus();
                 }else{
                     try {
@@ -2178,7 +2178,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                     WindowGantiDokterParamedis.setVisible(true);
                 }                
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
             } 
         }                
     }//GEN-LAST:event_MnUbahOperatorPetugasActionPerformed
@@ -2874,7 +2874,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 }
                 Valid.MyReport("rptLaporanOperasi.jasper","report","::[ Laporan Operasi ]::",param);
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
             } 
         }
     }//GEN-LAST:event_MnLaporanOperasiActionPerformed
@@ -2904,7 +2904,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 WindowLaporan.setLocationRelativeTo(internalFrame1);
                 WindowLaporan.setVisible(true);
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
             } 
         }
     }//GEN-LAST:event_MnUbahLaporanActionPerformed

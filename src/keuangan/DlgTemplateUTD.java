@@ -127,7 +127,7 @@ public final class DlgTemplateUTD extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -242,7 +242,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     if(KdPeriksa.getText().equals("")||NmPeriksa.getText().equals("")){
         Valid.textKosong(KdPeriksa,"Pemeriksaan");
     }else{
-        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if(reply == JOptionPane.YES_OPTION) {
              int row=tbKamar.getRowCount();
              if(row>-1){
@@ -275,7 +275,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
        tabMode.removeRow(tbKamar.getSelectedRow());
        urut();
    }catch(Exception ex){
-       JOptionPane.showMessageDialog(null,"Pilih dulu data yang mau dihapus..!!");
+       JOptionPane.showMessageDialog(null,"Pilih dulu data yang hendak dihapus..!!");
    }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

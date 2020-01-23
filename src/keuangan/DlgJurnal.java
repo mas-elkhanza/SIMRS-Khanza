@@ -681,7 +681,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, Antara total debet dan total kredit harus balance...!!!!");
             kdrek.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {                    
                     jurnal.simpanJurnal(NoBukti.getText(),Valid.SetTgl(TglJurnal.getSelectedItem()+""), Jenis.getSelectedItem().toString().substring(0,1),Ktg.getText()+", OLEH "+akses.getkode());                                    

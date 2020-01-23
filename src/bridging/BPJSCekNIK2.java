@@ -483,7 +483,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                         TBiaya.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),5).toString());
                         KdPoli.requestFocus();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silahkan cari yang kosong..!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silakan cari yang kosong..!!");
                         KdPoli.requestFocus();
                     }
                 }
@@ -3824,7 +3824,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             nosep="";
             ChkCari.setSelected(false);
             isForm();
-            JOptionPane.showMessageDialog(null,"Maaf, data peserta BPJS masih kosong. Silahkan lakukan pencarian berdasar No.Kartu...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, data peserta BPJS masih kosong. Silakan lakukan pencarian berdasar No.Kartu...!!!!");
         }else{
             TTmp.requestFocus();
             isForm();
@@ -3970,7 +3970,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan data yang hendak dimapping transaksinya...!!!!");
             NoRujukan.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -4015,7 +4015,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan data yang hendak dimapping transaksinya...!!!!");
             NoRujukan.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -4914,7 +4914,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
     private void btnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKabupatenActionPerformed
         if(KdPropinsi.getText().trim().equals("")||NmPropinsi.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih propinsi dulu..!!");
             btnPropinsi.requestFocus();
         }else{
             kabupatenkll.setPropinsi(KdPropinsi.getText(),NmPropinsi.getText());
@@ -4930,7 +4930,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
     private void btnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKecamatanActionPerformed
         if(KdKabupaten.getText().trim().equals("")||NmKabupaten.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih kabupaten dulu..!!");
             btnKabupaten.requestFocus();
         }else{
             kecamatankll.setPropinsi(KdKabupaten.getText(),NmKabupaten.getText());

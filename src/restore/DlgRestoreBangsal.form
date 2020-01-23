@@ -106,7 +106,7 @@
             </Component>
             <Component class="widget.TextBox" name="TCari">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan masukkan kata kunci pencarian kemudian tekan ENTER atau tekan tombol centang. Pencarian bisa berdasar kode, nama perawatan, kategori, poli dan jenis bayar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan masukkan kata kunci pencarian kemudian tekan ENTER atau tekan tombol centang. Pencarian bisa berdasar kode, nama perawatan, kategori, poli dan jenis bayar"/>
                 <Property name="name" type="java.lang.String" value="TCari" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[250, 23]"/>

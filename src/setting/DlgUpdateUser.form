@@ -204,7 +204,7 @@
           <SubComponents>
             <Component class="widget.Table" name="tbUser">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Untuk memegang hak akses agar tidak hilang karena pencarian data, silahkan klik di bagian P. &#xa;Untuk memberikan hak akses klik pada akses. Gunakan klik kanan untuk menampilkan popup menu."/>
+                <Property name="toolTipText" type="java.lang.String" value="Untuk memegang hak akses agar tidak hilang karena pencarian data, silakan klik di bagian P. &#xa;Untuk memberikan hak akses klik pada akses. Gunakan klik kanan untuk menampilkan popup menu."/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="Popup"/>
                 </Property>

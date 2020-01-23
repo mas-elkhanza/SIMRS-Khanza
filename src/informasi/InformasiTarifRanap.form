@@ -218,7 +218,7 @@
                 <Component class="widget.Table" name="tbJnsPerawatan">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                     <Property name="name" type="java.lang.String" value="tbJnsPerawatan" noResource="true"/>
                   </Properties>
                 </Component>
@@ -249,7 +249,7 @@
                 <Component class="widget.Table" name="tbJnsPerawatan1">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                     <Property name="name" type="java.lang.String" value="tbJnsPerawatan1" noResource="true"/>
                   </Properties>
                 </Component>
@@ -280,7 +280,7 @@
                 <Component class="widget.Table" name="tbJnsPerawatan2">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                     <Property name="name" type="java.lang.String" value="tbJnsPerawatan2" noResource="true"/>
                   </Properties>
                 </Component>

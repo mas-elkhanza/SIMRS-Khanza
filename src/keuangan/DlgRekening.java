@@ -429,7 +429,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamar.setComponentPopupMenu(jPopupMenu1);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -954,7 +954,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(Nm.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu Akun Rekening...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu Akun Rekening...!!!");
             tbKamar.requestFocus();
         }else{
             KdSub.requestFocus();
@@ -972,7 +972,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(Nm.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu Akun Rekening...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu Akun Rekening...!!!");
             tbKamar.requestFocus();
         }else{
             KdSubInduk.requestFocus();
@@ -1033,7 +1033,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         }else if(Nm.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu Akun Rekening...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu Akun Rekening...!!!");
             tbKamar.requestFocus();
         }else{
             Valid.editTable(tabMode,"rekening","kd_rek",Kd2,"level='0'");

@@ -195,7 +195,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -384,7 +384,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
             Valid.textKosong(NoKartu,"No.Kartu");
         }else{
             try{
-                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Cek No.Kartu VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim","Via Cek No.Rujukan PCare di VClaim","Via Cek No.Rujukan RS di VClaim"},"Via Cek No.Kartu VClaim");
+                pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Cek No.Kartu VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim","Via Cek No.Rujukan PCare di VClaim","Via Cek No.Rujukan RS di VClaim"},"Via Cek No.Kartu VClaim");
                 switch (pilihan) {
                     case "Via Cek No.Kartu VClaim":
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -427,7 +427,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
                             form4.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
-                            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+                            JOptionPane.showMessageDialog(null,"Maaf silakan pilih data terlebih dahulu..!!");
                         }
                         break;
                     case "Via Cek No.Rujukan RS di VClaim":
@@ -441,7 +441,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
                             form5.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
-                            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+                            JOptionPane.showMessageDialog(null,"Maaf silakan pilih data terlebih dahulu..!!");
                         }
                         break;
                     

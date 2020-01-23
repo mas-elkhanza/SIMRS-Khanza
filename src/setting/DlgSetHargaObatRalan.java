@@ -164,7 +164,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObatPenyakit.setAutoCreateRowSorter(true);
-        tbObatPenyakit.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObatPenyakit.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObatPenyakit.setName("tbObatPenyakit"); // NOI18N
         tbObatPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -442,7 +442,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             kdpj.requestFocus();
         }else if(nmpj.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(nmpj.getText().trim().equals(""))){
             Valid.hapusTable(tabMode,kdpj,"set_harga_obat_ralan","kd_pj");
             tampil();

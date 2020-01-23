@@ -507,7 +507,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
                         KdJenpel.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),3).toString());
                         KdPoli.requestFocus();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silahkan cari yang kosong..!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silakan cari yang kosong..!!");
                         KdPoli.requestFocus();
                     }
                 }
@@ -3273,7 +3273,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             nosep="";
             ChkCari.setSelected(false);
             isForm();
-            JOptionPane.showMessageDialog(null,"Maaf, data peserta Inhealth masih kosong. Silahkan lakukan pencarian berdasar No.Kartu...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, data peserta Inhealth masih kosong. Silakan lakukan pencarian berdasar No.Kartu...!!!!");
         }else{
             TTmp.requestFocus();
             isForm();

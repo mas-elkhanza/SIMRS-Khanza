@@ -301,7 +301,7 @@ public class DlgDokter extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbDokter.setAutoCreateRowSorter(true);
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {

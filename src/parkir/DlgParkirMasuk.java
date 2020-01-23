@@ -637,7 +637,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamIn.setAutoCreateRowSorter(true);
-        tbKamIn.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamIn.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamIn.setName("tbKamIn"); // NOI18N
         tbKamIn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -860,7 +860,7 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }else{
                 Sequel.cariIsi("select nomer_kartu from parkir_barcode where kode_barcode=?",NomorKartu,Barcode.getText());
                 if(NomorKartu.getText().trim().equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, kartu tidak teridentifikasi. Silahkan cek ...!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, kartu tidak teridentifikasi. Silakan cek ...!!!");
                     Barcode.requestFocus();
                 }else{
                     WindowInputParkir.setVisible(true);

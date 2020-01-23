@@ -335,7 +335,7 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(KdSpesialis.getText().trim().equals("")||NmSpesialis.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih spesialis dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih spesialis dulu..!!");
             BtnPropinsi.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

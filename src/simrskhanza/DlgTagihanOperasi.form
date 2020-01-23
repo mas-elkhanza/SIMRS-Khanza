@@ -126,7 +126,7 @@
                     <TitledBorder title=" Tindakan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
+                          <Color PropertyName="color" blue="ea" green="f4" red="ef" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -263,7 +263,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbtindakan">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbtindakan" noResource="true"/>
                       </Properties>
                       <Events>
@@ -282,7 +282,7 @@
                     <TitledBorder title=" Obat &amp; BHP ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
+                          <Color PropertyName="color" blue="ea" green="f4" red="ef" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -419,7 +419,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbObat">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbObat" noResource="true"/>
                       </Properties>
                       <Events>

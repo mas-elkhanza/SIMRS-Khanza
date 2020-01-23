@@ -272,7 +272,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             <div class="body text-center">
             <h5>Username (No.RM):</h5><h2><?php echo $no_rm_next; ?></h2><br>
             <p>Gunakan No. KTP anda sebagai password.</p>
-            <p>Silahkan klik tombol login dibawah</p><br>
+            <p>Silakan klik tombol login dibawah</p><br>
             <a href="login.php"><button type="button" class="btn bg-green btn-lg waves-effect">LOGIN</button></a>
             </div>
         </div>

@@ -1884,7 +1884,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
-        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJnsPerawatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2514,7 +2514,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
         if(KdKec.getText().trim().equals("")||Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih kecamatan dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih kecamatan dulu..!!");
             BtnKelurahan.requestFocus();
         }else{
             kelurahan.setPropinsi(KdKec.getText(),Kecamatan.getText());
@@ -2548,7 +2548,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
         if(KdKab.getText().trim().equals("")||Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih kabupaten dulu..!!");
             BtnKabupaten.requestFocus();
         }else{
             kecamatan.setPropinsi(KdKab.getText(),Kabupaten.getText());
@@ -2588,7 +2588,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
         if(KdProp.getText().trim().equals("")||Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih propinsi dulu..!!");
             BtnPropinsi.requestFocus();
         }else{
             kabupaten.setPropinsi(KdProp.getText(),Propinsi.getText());
@@ -2622,7 +2622,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         if(Propinsi.getText().equals("")||Propinsi.getText().equals("-")||Propinsi.getText().equals("PROPINSI")){
-            JOptionPane.showMessageDialog(null,"Nama Propinsi masih kosong, silahkan pilih propinsi yang ada...!!!");
+            JOptionPane.showMessageDialog(null,"Nama Propinsi masih kosong, silakan pilih propinsi yang ada...!!!");
             BtnPropinsi.requestFocus();
         }else{
             try {
@@ -2669,11 +2669,11 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnCari2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari2ActionPerformed
         if(KdKec.getText().equals("")||KdKec.getText().equals("0")){
-            JOptionPane.showMessageDialog(null,"Kode Kecamatan masih kosong, silahkan pilih kecamatan yang ada...!!!");
+            JOptionPane.showMessageDialog(null,"Kode Kecamatan masih kosong, silakan pilih kecamatan yang ada...!!!");
             BtnKecamatan.requestFocus();
         }else{
             if(Kelurahan.getText().equals("")||Kelurahan.getText().equals("-")||Kelurahan.getText().equals("KELURAHAN")){
-                JOptionPane.showMessageDialog(null,"Nama Kelurahan masih kosong, silahkan pilih kelurahan yang ada...!!!");
+                JOptionPane.showMessageDialog(null,"Nama Kelurahan masih kosong, silakan pilih kelurahan yang ada...!!!");
                 BtnKelurahan.requestFocus();
             }else{
                 try {
@@ -2730,11 +2730,11 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnCari3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari3ActionPerformed
         if(KdKab.getText().equals("")||KdKab.getText().equals("0")){
-            JOptionPane.showMessageDialog(null,"Kode Kabupaten masih kosong, silahkan pilih kabupaten yang ada...!!!");
+            JOptionPane.showMessageDialog(null,"Kode Kabupaten masih kosong, silakan pilih kabupaten yang ada...!!!");
             BtnKabupaten.requestFocus();
         }else{
             if(Kecamatan.getText().equals("")||Kecamatan.getText().equals("-")||Kecamatan.getText().equals("KECAMATAN")){
-                JOptionPane.showMessageDialog(null,"Nama Kecamatan masih kosong, silahkan pilih kecamatan yang ada...!!!");
+                JOptionPane.showMessageDialog(null,"Nama Kecamatan masih kosong, silakan pilih kecamatan yang ada...!!!");
                 BtnKecamatan.requestFocus();
             }else{
                 try {
@@ -2778,11 +2778,11 @@ public final class DlgDataTB extends javax.swing.JDialog {
 
     private void BtnCari4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari4ActionPerformed
         if(KdProp.getText().equals("")||KdProp.getText().equals("0")){
-            JOptionPane.showMessageDialog(null,"Kode Propinsi masih kosong, silahkan pilih propinsi yang ada...!!!");
+            JOptionPane.showMessageDialog(null,"Kode Propinsi masih kosong, silakan pilih propinsi yang ada...!!!");
             BtnPropinsi.requestFocus();
         }else{
             if(Kabupaten.getText().equals("")||Kabupaten.getText().equals("-")||Kabupaten.getText().equals("KABUPATEN")){
-                JOptionPane.showMessageDialog(null,"Nama Kabupaten masih kosong, silahkan pilih kabupaten yang ada...!!!");
+                JOptionPane.showMessageDialog(null,"Nama Kabupaten masih kosong, silakan pilih kabupaten yang ada...!!!");
                 BtnPropinsi.requestFocus();
             }else{
                 try {

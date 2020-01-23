@@ -83,7 +83,7 @@ include_once('layout/header.php');
 if($_SERVER['REQUEST_METHOD'] == "POST") {
 
   	if($_POST['tgl_registrasi'] == $date && $time > LIMITJAM) {
-      	$errors[] = 'Silahkan pilih hari berikutnya. Anda tidak diperkenankan mendaftar dihari ini.';
+      	$errors[] = 'Silakan pilih hari berikutnya. Anda tidak diperkenankan mendaftar dihari ini.';
     }
   	if($_POST['tgl_registrasi'] > $date_next) {
       	$errors[] = 'Maksimal pendaftaran 30 hari kedepan.';
@@ -227,7 +227,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         }
 } else {
-    echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Anda sudah terdaftar untuk tanggal '.$_POST[tgl_registrasi].'. Silahkan pilih tanggal periksa yang lain.</div>';
+    echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Anda sudah terdaftar untuk tanggal '.$_POST[tgl_registrasi].'. Silakan pilih tanggal periksa yang lain.</div>';
 
 }
 }
@@ -389,7 +389,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                                         <div id="admDivCheck" style="display:none;">
                                                 <!--<img id="image_upload_preview" width="200px" src="images/upload-rujukan.png" onclick="upload_rujukan()" style="cursor:pointer;" />-->
                                           		<br/>
-                                          		<div class="alert bg-green alert-dismissible" role="alert">Anda memilih cara bayar BPJS. <br/>Apakah anda memiliki surat rujukan atau surat kontrol? <br/>Jika tidak, silahkan pilih cara bayar umum. <br/>Jika ya, silahkan lanjutkan pendaftaran anda.</div>
+                                          		<div class="alert bg-green alert-dismissible" role="alert">Anda memilih cara bayar BPJS. <br/>Apakah anda memiliki surat rujukan atau surat kontrol? <br/>Jika tidak, silakan pilih cara bayar umum. <br/>Jika ya, silakan lanjutkan pendaftaran anda.</div>
                                         </div>
                                     </div>
                                 </div>

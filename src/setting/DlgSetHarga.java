@@ -548,7 +548,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbPengaturanUmum.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengaturanUmum.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPengaturanUmum.setName("tbPengaturanUmum"); // NOI18N
         tbPengaturanUmum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -882,7 +882,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbPengaturanHargaUmum.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengaturanHargaUmum.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPengaturanHargaUmum.setComponentPopupMenu(Popup1);
         tbPengaturanHargaUmum.setName("tbPengaturanHargaUmum"); // NOI18N
         tbPengaturanHargaUmum.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1214,7 +1214,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAdmin.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbAdmin.setComponentPopupMenu(Popup);
         tbAdmin.setName("tbAdmin"); // NOI18N
         tbAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1611,7 +1611,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbPengaturanHargaPerBarang.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengaturanHargaPerBarang.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPengaturanHargaPerBarang.setComponentPopupMenu(Popup2);
         tbPengaturanHargaPerBarang.setName("tbPengaturanHargaPerBarang"); // NOI18N
         tbPengaturanHargaPerBarang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1858,7 +1858,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 ranapvipumum.requestFocus();
             }else if(ranapvvipumum.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! ranapvvipumum.getText().trim().equals("")){
                 Sequel.queryu("delete from setpenjualanumum");
                 tampilpengaturanhargaumum();
@@ -1869,7 +1869,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 ranapvip.requestFocus();
             }else if(ranapvvip.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! ranapvvip.getText().trim().equals("")){
                 Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
                 tampil();
@@ -1880,7 +1880,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 ranapvipperbarang.requestFocus();
             }else if(ranapvvipperbarang.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! ranapvvipperbarang.getText().trim().equals("")){
                 Sequel.queryu("delete from setpenjualanperbarang where kode_brng='"+kdbarang.getText()+"'");
                 tampilpengaturanhargaperbarang();

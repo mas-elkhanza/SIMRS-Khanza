@@ -349,7 +349,7 @@ public final class DlgCariPengambilanPenunjangUTD extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbKamar.getSelectedRow()<= -1){ 
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak dihapus..!!");
         }else{
             
             Sequel.queryu("delete from utd_pengambilan_penunjang where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+

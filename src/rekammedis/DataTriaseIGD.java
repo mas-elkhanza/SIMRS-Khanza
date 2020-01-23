@@ -1755,7 +1755,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbTriase.setAutoCreateRowSorter(true);
-        tbTriase.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTriase.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTriase.setName("tbTriase"); // NOI18N
         tbTriase.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2281,7 +2281,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 ChkAccor.setSelected(false);
                 isMenu();
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau dihapus terlebih dahulu ...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data yang hendak dihapus terlebih dahulu ...!!!!");
             }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -2504,7 +2504,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            keputusan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Triase IGD",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1","Laporan 2"},"Laporan 1");
+            keputusan = (String)JOptionPane.showInputDialog(null,"Silakan pilih laporan..!","Laporan Triase IGD",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1","Laporan 2"},"Laporan 1");
             switch (keputusan) {
                 case "Laporan 1":
                     Map<String, Object> param = new HashMap<>();
@@ -3677,7 +3677,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             tampilskala1();
             tampilskala2();
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih pemeriksaan terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih pemeriksaan terlebih dahulu..!!");
         }
     }//GEN-LAST:event_BtnCariSkala1ActionPerformed
 
@@ -3849,7 +3849,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
             tampilskala4();
             tampilskala5();
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih pemeriksaan terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih pemeriksaan terlebih dahulu..!!");
         }
     }//GEN-LAST:event_BtnCariSkala2ActionPerformed
 
@@ -3993,7 +3993,11 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
     }//GEN-LAST:event_tbTriaseKeyReleased
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        isMenu();
+        if(tbTriase.getSelectedRow()!= -1){
+            isMenu();
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data yang hendak ditampilkan triasenya...!!!!");
+        }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void TNoRM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNoRM1ActionPerformed
@@ -4113,7 +4117,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         System.out.println("Notif : "+e);
                     }
 
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lambar Triase Skala 1");
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih Lembar/PDF Triase Skala 1..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 1","PDF Triase Skala 1"},"Lambar Triase Skala 1");
                     switch (pilihan) {
                         case "Lembar Triase Skala 1":
                               Valid.MyReport("rptLembarTriaseSkala1.jasper","report","::[ Triase Skala 1 ]::",param);
@@ -4229,7 +4233,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         System.out.println("Notif : "+e);
                     }
 
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 2..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 2","PDF Triase Skala 2"},"Lambar Triase Skala 2");
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih Lembar/PDF Triase Skala 2..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 2","PDF Triase Skala 2"},"Lambar Triase Skala 2");
                     switch (pilihan) {
                         case "Lembar Triase Skala 2":
                               Valid.MyReport("rptLembarTriaseSkala2.jasper","report","::[ Triase Skala 2 ]::",param);
@@ -4344,7 +4348,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         System.out.println("Notif : "+e);
                     }
 
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 3..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 3","PDF Triase Skala 3"},"Lembar Triase Skala 3");
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih Lembar/PDF Triase Skala 3..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 3","PDF Triase Skala 3"},"Lembar Triase Skala 3");
                     switch (pilihan) {
                         case "Lembar Triase Skala 3":
                               Valid.MyReport("rptLembarTriaseSkala3.jasper","report","::[ Triase Skala 3 ]::",param);
@@ -4459,7 +4463,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         System.out.println("Notif : "+e);
                     }
 
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 4..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 4","PDF Triase Skala 4"},"Lembar Triase Skala 4");
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih Lembar/PDF Triase Skala 4..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 4","PDF Triase Skala 4"},"Lembar Triase Skala 4");
                     switch (pilihan) {
                         case "Lembar Triase Skala 4":
                               Valid.MyReport("rptLembarTriaseSkala4.jasper","report","::[ Triase Skala 4 ]::",param);
@@ -4574,7 +4578,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                         System.out.println("Notif : "+e);
                     }
 
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih Lembar/PDF Triase Skala 5..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 5","PDF Triase Skala 5"},"Lembar Triase Skala 5");
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih Lembar/PDF Triase Skala 5..!","Pilihan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Lembar Triase Skala 5","PDF Triase Skala 5"},"Lembar Triase Skala 5");
                     switch (pilihan) {
                         case "Lembar Triase Skala 5":
                               Valid.MyReport("rptLembarTriaseSkala5.jasper","report","::[ Triase Skala 5 ]::",param);
@@ -4586,7 +4590,7 @@ public final class DataTriaseIGD extends javax.swing.JDialog {
                 }
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
-                JOptionPane.showMessageDialog(null,"Silahkan pilih terlebih dahulu data yang mau dicetak data personal triasenya..!!!");
+                JOptionPane.showMessageDialog(null,"Silakan pilih terlebih dahulu data yang hendak dicetak data personal triasenya..!!!");
             }
         }
     }//GEN-LAST:event_BtnPrint1ActionPerformed

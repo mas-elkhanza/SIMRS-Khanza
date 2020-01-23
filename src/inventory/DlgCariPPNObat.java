@@ -275,7 +275,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPengadaan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengadaan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPengadaan.setName("tbPengadaan"); // NOI18N
         tbPengadaan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -295,7 +295,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbPembelian.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPembelian.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPembelian.setName("tbPembelian"); // NOI18N
         tbPembelian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -315,7 +315,7 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbRawatJalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRawatJalan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbRawatJalan.setName("tbRawatJalan"); // NOI18N
         tbRawatJalan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

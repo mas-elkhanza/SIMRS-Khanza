@@ -516,7 +516,7 @@ public class InformasiKamarInap extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamIn.setAutoCreateRowSorter(true);
-        tbKamIn.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamIn.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamIn.setName("tbKamIn"); // NOI18N
         Scroll.setViewportView(tbKamIn);
 

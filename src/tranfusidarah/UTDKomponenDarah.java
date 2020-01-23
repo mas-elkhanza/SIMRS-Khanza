@@ -368,7 +368,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbKomponen.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKomponen.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKomponen.setName("tbKomponen"); // NOI18N
         tbKomponen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

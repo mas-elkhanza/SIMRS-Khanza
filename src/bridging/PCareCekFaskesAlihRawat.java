@@ -239,7 +239,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -433,7 +433,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(NoKartu.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih/masukkan no kartu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih/masukkan no kartu..!!");
             NoKartu.requestFocus();
         }else{
             tampil(Khusus.getSelectedItem().toString().substring(0,3),NoKartu.getText(),Tanggal.getSelectedItem().toString());

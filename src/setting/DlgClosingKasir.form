@@ -58,7 +58,7 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="Scroll">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Untuk mengatur closing shift silahkan gunakkan jam secara bersambung,&lt;br&gt;&#xa;jangan menggunakan jam yang sama antara jam mulai dengan jam selesai&lt;br&gt;&#xa;pada shift sebelumnya&lt;/html&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Untuk mengatur closing shift silakan gunakkan jam secara bersambung,&lt;br&gt;&#xa;jangan menggunakan jam yang sama antara jam mulai dengan jam selesai&lt;br&gt;&#xa;pada shift sebelumnya&lt;/html&gt;"/>
             <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -73,7 +73,7 @@
             <Component class="widget.Table" name="tbJadwal">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Untuk mengatur closing shift silahkan gunakkan jam secara bersambung,&lt;br&gt;&#xa;jangan menggunakan jam yang sama antara jam mulai dengan jam selesai&lt;br&gt;&#xa;pada shift sebelumnya&lt;/html&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Untuk mengatur closing shift silakan gunakkan jam secara bersambung,&lt;br&gt;&#xa;jangan menggunakan jam yang sama antara jam mulai dengan jam selesai&lt;br&gt;&#xa;pada shift sebelumnya&lt;/html&gt;"/>
                 <Property name="name" type="java.lang.String" value="tbJadwal" noResource="true"/>
               </Properties>
               <Events>

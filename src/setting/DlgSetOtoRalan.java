@@ -550,7 +550,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         Table1.setAutoCreateRowSorter(true);
-        Table1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table1.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table1.setName("Table1"); // NOI18N
         Table1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -706,7 +706,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         Table2.setAutoCreateRowSorter(true);
-        Table2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table2.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table2.setName("Table2"); // NOI18N
         Table2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -948,7 +948,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         Table3.setAutoCreateRowSorter(true);
-        Table3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table3.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table3.setName("Table3"); // NOI18N
         Table3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1063,7 +1063,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 kddokter.requestFocus();
             }else if(nmtindakan.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(!(nmtindakan.getText().trim().equals(""))){
                 Valid.hapusTable(tabMode,kddokter,"set_otomatis_tindakan_ralan","kd_pj='"+kdpj.getText()+"' and kd_jenis_prw='"+kdtindakan.getText()+"' and kd_dokter");
                 tampil();
@@ -1074,7 +1074,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 kdpj2.requestFocus();
             }else if(nmtindakan2.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(!(nmtindakan2.getText().trim().equals(""))){
                 Valid.hapusTable(tabMode2,kdtindakan2,"set_otomatis_tindakan_ralan_petugas","kd_pj='"+kdpj2.getText()+"' and kd_jenis_prw");
                 tampil2();
@@ -1085,7 +1085,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 kddokter3.requestFocus();
             }else if(nmtindakan3.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(!(nmtindakan3.getText().trim().equals(""))){
                 Valid.hapusTable(tabMode3,kddokter3,"set_otomatis_tindakan_ralan_dokterpetugas","kd_pj='"+kdpj3.getText()+"' and kd_jenis_prw='"+kdtindakan3.getText()+"' and kd_dokter");
                 tampil3();

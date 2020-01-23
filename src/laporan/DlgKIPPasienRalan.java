@@ -334,7 +334,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
     if(nmpenyakit.getText().trim().equals("")){
-        JOptionPane.showMessageDialog(null,"Silahkan masukkan penyakit yang mau dicari terlebih dahulu..!!!");
+        JOptionPane.showMessageDialog(null,"Silakan masukkan penyakit yang hendak dicari terlebih dahulu..!!!");
     }else{
         prosesCari();
     }

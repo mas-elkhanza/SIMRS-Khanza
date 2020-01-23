@@ -221,7 +221,7 @@ public class GrafikInventarisPerRuang extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
@@ -242,7 +242,7 @@ public class GrafikInventarisPerRuang extends javax.swing.JDialog {
 
     private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint3ActionPerformed
         try {
-            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Inventaris","Nilai Inventaris"},"Jumlah Inventaris");
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Inventaris","Nilai Inventaris"},"Jumlah Inventaris");
             switch (pilihan) {
                 case "Jumlah Inventaris":
                     DefaultCategoryDataset dcd = new DefaultCategoryDataset();
@@ -312,7 +312,7 @@ public class GrafikInventarisPerRuang extends javax.swing.JDialog {
 
     private void BtnPrint4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint4ActionPerformed
        try {
-            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Inventaris","Nilai Inventaris"},"Jumlah Inventaris");
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Inventaris","Nilai Inventaris"},"Jumlah Inventaris");
             switch (pilihan) {
                 case "Jumlah Inventaris":
                     grafiksql2 kas=new grafiksql2("Grafik Jumlah Inventaris Per Ruang",
@@ -346,7 +346,7 @@ public class GrafikInventarisPerRuang extends javax.swing.JDialog {
 
     private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint5ActionPerformed
         try {
-            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Inventaris","Nilai Inventaris"},"Jumlah Inventaris");
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih grafik..!","Info Grafik",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Jumlah Inventaris","Nilai Inventaris"},"Jumlah Inventaris");
             switch (pilihan) {
                 case "Jumlah Inventaris":
                     DefaultPieDataset dpd = new DefaultPieDataset();

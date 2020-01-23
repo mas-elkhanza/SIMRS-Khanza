@@ -39,7 +39,7 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public final class InhealthTagihan extends javax.swing.JDialog {
-    private DefaultTableModel tabMode;
+    private DefaultTableModel tabMode,tabModeTagihanKamar,tabModeTagihanRalan;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -48,6 +48,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
     private int pilih=0,i=0;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="",kelas="";
+    private double totaltagihan=0;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -68,14 +69,14 @@ public final class InhealthTagihan extends javax.swing.JDialog {
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
-        tbObat.setModel(tabMode);
+        tbSJP.setModel(tabMode);
 
-        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
-        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //tbSJP.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbSJP.getBackground()));
+        tbSJP.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbSJP.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 35; i++) {
-            TableColumn column = tbObat.getColumnModel().getColumn(i);
+            TableColumn column = tbSJP.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(125);
             }else if(i==1){
@@ -153,7 +154,48 @@ public final class InhealthTagihan extends javax.swing.JDialog {
                 column.setPreferredWidth(100);
             }
         }
-        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        tbSJP.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeTagihanKamar=new DefaultTableModel(null,new Object[]{
+                "P","Kode Jenis","Jenis Pelayanan Ruang Rawat","Tarif","Hari","Total"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbTagihanKamar.setModel(tabModeTagihanKamar);
+        tbTagihanKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        tbTagihanKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbTagihanKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbTagihanKamar.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tbTagihanKamar.getColumnModel().getColumn(1).setPreferredWidth(105);
+        tbTagihanKamar.getColumnModel().getColumn(2).setPreferredWidth(170);
+        tbTagihanKamar.getColumnModel().getColumn(3).setPreferredWidth(70);
+        tbTagihanKamar.getColumnModel().getColumn(4).setPreferredWidth(30);
+        tbTagihanKamar.getColumnModel().getColumn(5).setPreferredWidth(80);
+        
+        tabModeTagihanRalan=new DefaultTableModel(null,new Object[]{
+                "P","Kode Jenis","Jenis Pelayanan Ruang Rawat","Tarif","Hari","Total"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                java.lang.Boolean.class,java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbTagihanRawatJalan.setModel(tabModeTagihanRalan);
+        tbTagihanRawatJalan.setDefaultRenderer(Object.class, new WarnaTable());
+        tbTagihanRawatJalan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbTagihanRawatJalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbTagihanRawatJalan.getColumnModel().getColumn(0).setPreferredWidth(20);
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         
@@ -196,13 +238,12 @@ public final class InhealthTagihan extends javax.swing.JDialog {
 
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbObat = new widget.Table();
+        tbSJP = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
-        jLabel7 = new widget.Label();
-        LCount = new widget.Label();
         BtnPrint = new widget.Button();
-        BtnAll = new widget.Button();
+        jLabel8 = new widget.Label();
+        LTagihan = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
@@ -212,15 +253,32 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         FormMenu = new widget.PanelBiasa();
         jLabel34 = new widget.Label();
-        TNoRM1 = new widget.TextBox();
-        TPasien1 = new widget.TextBox();
+        TNoRM = new widget.TextBox();
+        TPasien = new widget.TextBox();
         TabTarif = new javax.swing.JTabbedPane();
         Scroll1 = new widget.ScrollPane();
+        panelBiasa1 = new widget.PanelBiasa();
+        Scroll3 = new widget.ScrollPane();
+        tbTagihanKamar = new widget.Table();
+        Scroll4 = new widget.ScrollPane();
+        tbTagihanRawatJalan = new widget.Table();
+        Scroll5 = new widget.ScrollPane();
+        tbTagihanRawatInap = new widget.Table();
+        Scroll6 = new widget.ScrollPane();
+        tbTagihanOperasi = new widget.Table();
+        Scroll7 = new widget.ScrollPane();
+        tbTagihanRadiologi = new widget.Table();
+        Scroll8 = new widget.ScrollPane();
+        tbTagihanLaborat = new widget.Table();
         Scroll2 = new widget.ScrollPane();
+        panelBiasa2 = new widget.PanelBiasa();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -239,10 +297,20 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.setName("tbObat"); // NOI18N
-        Scroll.setViewportView(tbObat);
+        tbSJP.setAutoCreateRowSorter(true);
+        tbSJP.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbSJP.setName("tbSJP"); // NOI18N
+        tbSJP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbSJPMouseClicked(evt);
+            }
+        });
+        tbSJP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbSJPKeyReleased(evt);
+            }
+        });
+        Scroll.setViewportView(tbSJP);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
@@ -254,17 +322,6 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         panelGlass8.setName("panelGlass8"); // NOI18N
         panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
-
-        jLabel7.setText("Record :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass8.add(jLabel7);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass8.add(LCount);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -284,23 +341,16 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnPrint);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnAll);
+        jLabel8.setText("Tagihan Pasien :");
+        jLabel8.setName("jLabel8"); // NOI18N
+        jLabel8.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass8.add(jLabel8);
+
+        LTagihan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTagihan.setText("0");
+        LTagihan.setName("LTagihan"); // NOI18N
+        LTagihan.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelGlass8.add(LTagihan);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -332,7 +382,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-01-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -346,7 +396,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-01-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -384,13 +434,41 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         });
         panelGlass9.add(BtnCari);
 
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(BtnAll);
+
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelGlass9.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass9.add(LCount);
+
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
         PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(470, 43));
+        PanelAccor.setPreferredSize(new java.awt.Dimension(550, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
@@ -422,21 +500,21 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         jLabel34.setPreferredSize(new java.awt.Dimension(55, 23));
         FormMenu.add(jLabel34);
 
-        TNoRM1.setHighlighter(null);
-        TNoRM1.setName("TNoRM1"); // NOI18N
-        TNoRM1.setPreferredSize(new java.awt.Dimension(100, 23));
-        TNoRM1.addActionListener(new java.awt.event.ActionListener() {
+        TNoRM.setHighlighter(null);
+        TNoRM.setName("TNoRM"); // NOI18N
+        TNoRM.setPreferredSize(new java.awt.Dimension(100, 23));
+        TNoRM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TNoRM1ActionPerformed(evt);
+                TNoRMActionPerformed(evt);
             }
         });
-        FormMenu.add(TNoRM1);
+        FormMenu.add(TNoRM);
 
-        TPasien1.setBackground(new java.awt.Color(245, 250, 240));
-        TPasien1.setHighlighter(null);
-        TPasien1.setName("TPasien1"); // NOI18N
-        TPasien1.setPreferredSize(new java.awt.Dimension(250, 23));
-        FormMenu.add(TPasien1);
+        TPasien.setBackground(new java.awt.Color(245, 250, 240));
+        TPasien.setHighlighter(null);
+        TPasien.setName("TPasien"); // NOI18N
+        TPasien.setPreferredSize(new java.awt.Dimension(250, 23));
+        FormMenu.add(TPasien);
 
         PanelAccor.add(FormMenu, java.awt.BorderLayout.NORTH);
 
@@ -448,12 +526,91 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
-        TabTarif.addTab("Maping Tarif", Scroll1);
+
+        panelBiasa1.setBorder(null);
+        panelBiasa1.setName("panelBiasa1"); // NOI18N
+        panelBiasa1.setPreferredSize(new java.awt.Dimension(410, 1020));
+        panelBiasa1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Tagihan Kamar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll3.setName("Scroll3"); // NOI18N
+        Scroll3.setOpaque(true);
+        Scroll3.setPreferredSize(new java.awt.Dimension(492, 170));
+
+        tbTagihanKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTagihanKamar.setName("tbTagihanKamar"); // NOI18N
+        Scroll3.setViewportView(tbTagihanKamar);
+
+        panelBiasa1.add(Scroll3);
+
+        Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Tagihan Rawat Jalan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll4.setName("Scroll4"); // NOI18N
+        Scroll4.setOpaque(true);
+        Scroll4.setPreferredSize(new java.awt.Dimension(492, 170));
+
+        tbTagihanRawatJalan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTagihanRawatJalan.setName("tbTagihanRawatJalan"); // NOI18N
+        Scroll4.setViewportView(tbTagihanRawatJalan);
+
+        panelBiasa1.add(Scroll4);
+
+        Scroll5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Tagihan Rawat Inap ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll5.setName("Scroll5"); // NOI18N
+        Scroll5.setOpaque(true);
+        Scroll5.setPreferredSize(new java.awt.Dimension(492, 170));
+
+        tbTagihanRawatInap.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTagihanRawatInap.setName("tbTagihanRawatInap"); // NOI18N
+        Scroll5.setViewportView(tbTagihanRawatInap);
+
+        panelBiasa1.add(Scroll5);
+
+        Scroll6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Tagihan Operasi ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll6.setName("Scroll6"); // NOI18N
+        Scroll6.setOpaque(true);
+        Scroll6.setPreferredSize(new java.awt.Dimension(492, 170));
+
+        tbTagihanOperasi.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTagihanOperasi.setName("tbTagihanOperasi"); // NOI18N
+        Scroll6.setViewportView(tbTagihanOperasi);
+
+        panelBiasa1.add(Scroll6);
+
+        Scroll7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Tagihan Radiologi ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll7.setName("Scroll7"); // NOI18N
+        Scroll7.setOpaque(true);
+        Scroll7.setPreferredSize(new java.awt.Dimension(492, 170));
+
+        tbTagihanRadiologi.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTagihanRadiologi.setName("tbTagihanRadiologi"); // NOI18N
+        Scroll7.setViewportView(tbTagihanRadiologi);
+
+        panelBiasa1.add(Scroll7);
+
+        Scroll8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Tagihan Laborat ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        Scroll8.setName("Scroll8"); // NOI18N
+        Scroll8.setOpaque(true);
+        Scroll8.setPreferredSize(new java.awt.Dimension(492, 170));
+
+        tbTagihanLaborat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTagihanLaborat.setName("tbTagihanLaborat"); // NOI18N
+        Scroll8.setViewportView(tbTagihanLaborat);
+
+        panelBiasa1.add(Scroll8);
+
+        Scroll1.setViewportView(panelBiasa1);
+
+        TabTarif.addTab("Tagihan Inhealth", Scroll1);
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
-        TabTarif.addTab("Tarif Terkirim", Scroll2);
+
+        panelBiasa2.setBorder(null);
+        panelBiasa2.setName("panelBiasa2"); // NOI18N
+        Scroll2.setViewportView(panelBiasa2);
+
+        TabTarif.addTab("Tagihan Terkirim", Scroll2);
 
         PanelAccor.add(TabTarif, java.awt.BorderLayout.CENTER);
 
@@ -543,12 +700,38 @@ public final class InhealthTagihan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        isMenu();
+        if(tbSJP.getSelectedRow()!= -1){
+            isMenu();
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data yang hendak ditampilkan tagihannya...!!!!");
+        }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
-    private void TNoRM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNoRM1ActionPerformed
+    private void TNoRMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNoRMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TNoRM1ActionPerformed
+    }//GEN-LAST:event_TNoRMActionPerformed
+
+    private void tbSJPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSJPMouseClicked
+        if(tabMode.getRowCount()!=0){
+            try {
+                ChkAccor.setSelected(true);
+                isMenu();
+                getData();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbSJPMouseClicked
+
+    private void tbSJPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbSJPKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }          
+        }
+    }//GEN-LAST:event_tbSJPKeyReleased
 
     /**
     * @param args the command line arguments
@@ -576,13 +759,20 @@ public final class InhealthTagihan extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormMenu;
     private widget.Label LCount;
+    private widget.Label LTagihan;
     private widget.PanelBiasa PanelAccor;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
+    private widget.ScrollPane Scroll3;
+    private widget.ScrollPane Scroll4;
+    private widget.ScrollPane Scroll5;
+    private widget.ScrollPane Scroll6;
+    private widget.ScrollPane Scroll7;
+    private widget.ScrollPane Scroll8;
     private widget.TextBox TCari;
-    private widget.TextBox TNoRM1;
-    private widget.TextBox TPasien1;
+    private widget.TextBox TNoRM;
+    private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabTarif;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel19;
@@ -590,10 +780,19 @@ public final class InhealthTagihan extends javax.swing.JDialog {
     private widget.Label jLabel34;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
+    private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
+    private widget.PanelBiasa panelBiasa1;
+    private widget.PanelBiasa panelBiasa2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private widget.Table tbObat;
+    private widget.Table tbSJP;
+    private widget.Table tbTagihanKamar;
+    private widget.Table tbTagihanLaborat;
+    private widget.Table tbTagihanOperasi;
+    private widget.Table tbTagihanRadiologi;
+    private widget.Table tbTagihanRawatInap;
+    private widget.Table tbTagihanRawatJalan;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {        
@@ -676,7 +875,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(470,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(550,HEIGHT));
             FormMenu.setVisible(true);  
             TabTarif.setVisible(true);  
             ChkAccor.setVisible(true);
@@ -686,6 +885,86 @@ public final class InhealthTagihan extends javax.swing.JDialog {
             FormMenu.setVisible(false);  
             TabTarif.setVisible(false);      
             ChkAccor.setVisible(true);
+        }
+    }
+
+    private void getData() {
+        if(tbSJP.getSelectedRow()!= -1){
+            TNoRM.setText(tbSJP.getValueAt(tbSJP.getSelectedRow(),24).toString());
+            TPasien.setText(tbSJP.getValueAt(tbSJP.getSelectedRow(),25).toString());
+            totaltagihan=0;
+            tagihanKamar(tbSJP.getValueAt(tbSJP.getSelectedRow(),1).toString());
+            LTagihan.setText(Valid.SetAngka(totaltagihan));
+        }
+    }
+    
+    private void tagihanKamar(String norawat){
+        Valid.tabelKosong(tabModeTagihanKamar);
+        try {
+            //"P","Kode Jenis","Jenis Pelayanan Ruang Rawat","Tarif","Hari","Total"
+            ps=koneksi.prepareStatement(
+                    "select inhealth_jenpel_ruang_rawat.kode_jenpel_ruang_rawat,inhealth_jenpel_ruang_rawat.nama_jenpel_ruang_rawat,inhealth_jenpel_ruang_rawat.tarif, "+
+                    "kamar_inap.lama,(kamar_inap.lama*inhealth_jenpel_ruang_rawat.tarif) as total "+
+                    "from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                    "inner join inhealth_jenpel_ruang_rawat on inhealth_jenpel_ruang_rawat.kd_kamar=kamar.kd_kamar "+
+                    "where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk,inhealth_jenpel_ruang_rawat.kode_jenpel_ruang_rawat");
+            try {
+                ps.setString(1,norawat);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    totaltagihan=totaltagihan+rs.getDouble("total");
+                    tabModeTagihanKamar.addRow(new Object[]{
+                        true,rs.getString("kode_jenpel_ruang_rawat"),rs.getString("nama_jenpel_ruang_rawat"),rs.getDouble("tarif"),rs.getDouble("lama"),rs.getDouble("total")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }
+    }
+    
+    private void tagihanRalan(String norawat){
+        Valid.tabelKosong(tabModeTagihanKamar);
+        try {
+            //"P","Kode Jenis","Jenis Pelayanan Ruang Rawat","Tarif","Hari","Total"
+            ps=koneksi.prepareStatement(
+                    "select inhealth_jenpel_ruang_rawat.kode_jenpel_ruang_rawat,inhealth_jenpel_ruang_rawat.nama_jenpel_ruang_rawat,inhealth_jenpel_ruang_rawat.tarif, "+
+                    "kamar_inap.lama,(kamar_inap.lama*inhealth_jenpel_ruang_rawat.tarif) as total "+
+                    "from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                    "inner join inhealth_jenpel_ruang_rawat on inhealth_jenpel_ruang_rawat.kd_kamar=kamar.kd_kamar "+
+                    "where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk,inhealth_jenpel_ruang_rawat.kode_jenpel_ruang_rawat");
+            try {
+                ps.setString(1,norawat);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    totaltagihan=totaltagihan+rs.getDouble("total");
+                    tabModeTagihanKamar.addRow(new Object[]{
+                        true,rs.getString("kode_jenpel_ruang_rawat"),rs.getString("nama_jenpel_ruang_rawat"),rs.getDouble("tarif"),rs.getDouble("lama"),rs.getDouble("total")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
         }
     }
 }

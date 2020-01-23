@@ -277,7 +277,7 @@ object frmUtama: TfrmUtama
     Width = 409
     Height = 241
     UIStyle = MacOS
-    Caption = ':: Silahkan Anda Login ::'
+    Caption = ':: Silakan Anda Login ::'
     Color = 16711679
     Font.Charset = ANSI_CHARSET
     Font.Color = clGreen

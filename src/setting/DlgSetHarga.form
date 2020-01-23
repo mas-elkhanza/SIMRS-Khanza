@@ -345,7 +345,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbPengaturanUmum">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbPengaturanUmum" noResource="true"/>
                       </Properties>
                       <Events>
@@ -830,7 +830,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbPengaturanHargaUmum">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="Popup1"/>
                         </Property>
@@ -1297,7 +1297,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbAdmin">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="Popup"/>
                         </Property>
@@ -1858,7 +1858,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbPengaturanHargaPerBarang">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="Popup2"/>
                         </Property>

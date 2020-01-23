@@ -463,7 +463,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbNoRM.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbNoRM.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbNoRM.setName("tbNoRM"); // NOI18N
         tbNoRM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -489,7 +489,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbNoUrut.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbNoUrut.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbNoUrut.setName("tbNoUrut"); // NOI18N
         tbNoUrut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -585,7 +585,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbAlamat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAlamat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbAlamat.setName("tbAlamat"); // NOI18N
         tbAlamat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -681,7 +681,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbKelengkapan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKelengkapan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKelengkapan.setName("tbKelengkapan"); // NOI18N
         tbKelengkapan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1348,7 +1348,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbValidasiRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbValidasiRegistrasi.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbValidasiRegistrasi.setName("tbValidasiRegistrasi"); // NOI18N
         tbValidasiRegistrasi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1396,7 +1396,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll6.setName("Scroll6"); // NOI18N
         Scroll6.setOpaque(true);
 
-        tbValidasiCatatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbValidasiCatatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbValidasiCatatan.setName("tbValidasiCatatan"); // NOI18N
         tbValidasiCatatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1444,7 +1444,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll7.setName("Scroll7"); // NOI18N
         Scroll7.setOpaque(true);
 
-        tbTniPolri.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTniPolri.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTniPolri.setName("tbTniPolri"); // NOI18N
         tbTniPolri.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -142,7 +142,7 @@ public class DlgAturanPakai extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbkabupaten.setAutoCreateRowSorter(true);
-        tbkabupaten.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbkabupaten.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbkabupaten.setName("tbkabupaten"); // NOI18N
         tbkabupaten.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

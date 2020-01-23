@@ -218,7 +218,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -320,7 +320,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         tbRegistrasi.setAutoCreateRowSorter(true);
-        tbRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRegistrasi.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbRegistrasi.setName("tbRegistrasi"); // NOI18N
         Scroll1.setViewportView(tbRegistrasi);
 
@@ -681,7 +681,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                 System.out.println("Notifikasi : "+e);
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data peserta...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data peserta...!!!!");
             TCari.requestFocus();
         }
     }

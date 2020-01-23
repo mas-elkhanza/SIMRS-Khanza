@@ -603,7 +603,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if(TabRawat.getSelectedIndex()==0){
         if(tbDokter.getSelectedRow()!= -1){
             if(Sequel.cariRegistrasi(tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 try {
@@ -664,13 +664,13 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } 
             }            
         }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data peserta...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data peserta...!!!!");
             TCari.requestFocus();
         }   
     }else if(TabRawat.getSelectedIndex()==1){
         if(tbDokter2.getSelectedRow()!= -1){
             if(Sequel.cariRegistrasi(tbDokter2.getValueAt(tbDokter2.getSelectedRow(),3).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 try {
@@ -754,7 +754,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } 
             }  
         }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data peserta...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data peserta...!!!!");
             TCari.requestFocus();
         }
     }

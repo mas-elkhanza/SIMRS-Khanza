@@ -297,7 +297,7 @@ public final class PCareCekReferensiObat extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(diagnosa.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan masukkan kode/nama obat terlebih dahulu..!!!");
+            JOptionPane.showMessageDialog(null,"Silakan masukkan kode/nama obat terlebih dahulu..!!!");
         }else{
             tampil(diagnosa.getText());
         }        

@@ -1331,7 +1331,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }else{
                     if((Sequel.cariInteger("select count(noorder) from permintaan_pemeriksaan_lab where stts_bayar='Sudah' and noorder=?",NoPermintaan)+
                             Sequel.cariInteger("select count(noorder) from permintaan_detail_permintaan_lab where stts_bayar='Sudah' and noorder=?",NoPermintaan))>0){
-                        JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilahkan hubungi kasir...!!!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilakan hubungi kasir...!!!!");
                     }else{
                         Sequel.meghapus("permintaan_lab","noorder",NoPermintaan);
                         TeksKosong();
@@ -1339,7 +1339,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabRawatJalan.getSelectedIndex()==1){
@@ -1355,7 +1355,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }else{
                     if((Sequel.cariInteger("select count(noorder) from permintaan_pemeriksaan_lab where stts_bayar='Sudah' and noorder=?",NoPermintaan)+
                             Sequel.cariInteger("select count(noorder) from permintaan_detail_permintaan_lab where stts_bayar='Sudah' and noorder=?",NoPermintaan))>0){
-                        JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilahkan hubungi kasir...!!!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilakan hubungi kasir...!!!!");
                     }else{
                         Sequel.meghapus("permintaan_lab","noorder",NoPermintaan);
                         TeksKosong();
@@ -1363,7 +1363,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabRawatInap.getSelectedIndex()==1){
@@ -1509,7 +1509,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1620,7 +1620,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }
@@ -1650,7 +1650,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{
                         if(Sampel.equals("")){
-                            JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
+                            JOptionPane.showMessageDialog(rootPane,"Maaf, silakan ambil sampel terlebih dahulu..!!");
                         }else{
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                             DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
@@ -1666,11 +1666,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                     TCari.requestFocus();
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih Data Permintaan...!!!!");
                 TabRawatJalan.setSelectedIndex(0);
                 TCari.requestFocus();
             }
@@ -1681,7 +1681,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         Valid.textKosong(TCari,"No.Permintaan");
                     }else{
                         if(Sampel.equals("")){
-                            JOptionPane.showMessageDialog(rootPane,"Maaf, silahkan ambil sampel terlebih dahulu..!!");
+                            JOptionPane.showMessageDialog(rootPane,"Maaf, silakan ambil sampel terlebih dahulu..!!");
                         }else{
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                             DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
@@ -1697,11 +1697,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                     TCari.requestFocus();
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih Data Permintaan...!!!!");
                 TabRawatInap.setSelectedIndex(0);
                 TCari.requestFocus();
             }
@@ -1726,11 +1726,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                     TCari.requestFocus();
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih Data Permintaan...!!!!");
                 TabRawatJalan.setSelectedIndex(0);
                 TCari.requestFocus();
             }
@@ -1747,11 +1747,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                     TCari.requestFocus();
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih Data Permintaan...!!!!");
                 TabRawatInap.setSelectedIndex(0);
                 TCari.requestFocus();
             }
@@ -1787,7 +1787,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1814,7 +1814,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }
@@ -1846,7 +1846,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1873,7 +1873,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     this.setCursor(Cursor.getDefaultCursor());
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }
@@ -1924,7 +1924,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1960,7 +1960,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }
@@ -2054,7 +2054,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -2068,7 +2068,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 TeksKosong();
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                 TCari.requestFocus();
             }
         }
@@ -2095,11 +2095,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                     TCari.requestFocus();
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih Data Permintaan...!!!!");
                 TabRawatJalan.setSelectedIndex(0);
                 TCari.requestFocus();
             }
@@ -2123,11 +2123,11 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         this.setCursor(Cursor.getDefaultCursor());
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data permintaan...!!!!");
                     TCari.requestFocus();
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih Data Permintaan...!!!!");
                 TabRawatInap.setSelectedIndex(0);
                 TCari.requestFocus();
             }

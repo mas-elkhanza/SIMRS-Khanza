@@ -854,7 +854,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2063,7 +2063,7 @@ private void stok_minimalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         } else if (tabMode.getRowCount() != 0) {
             int jml;
             try {
-                jml = Integer.parseInt(JOptionPane.showInputDialog("Masukkan jumlah barcode yang mau dicetak !!!"));
+                jml = Integer.parseInt(JOptionPane.showInputDialog("Masukkan jumlah barcode yang hendak dicetak !!!"));
             } catch (HeadlessException | NumberFormatException e) {
                 jml = 0;
             }

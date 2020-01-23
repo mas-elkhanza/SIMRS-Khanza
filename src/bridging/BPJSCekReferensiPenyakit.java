@@ -291,7 +291,7 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(diagnosa.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan masukkan pencarian terlebih dahulu..!!!");
+            JOptionPane.showMessageDialog(null,"Silakan masukkan pencarian terlebih dahulu..!!!");
         }else{
             tampil(diagnosa.getText());
         }        

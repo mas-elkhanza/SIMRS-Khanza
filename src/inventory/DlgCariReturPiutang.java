@@ -300,7 +300,7 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
 
             }
         ));
-        tbRetur.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRetur.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbRetur.setComponentPopupMenu(jPopupMenu1);
         tbRetur.setName("tbRetur"); // NOI18N
         scrollPane1.setViewportView(tbRetur);

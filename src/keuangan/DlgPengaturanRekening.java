@@ -756,7 +756,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Stok_Keluar_Medis.equals("")||Kontra_Stok_Keluar_Medis.equals("")||HPP_Obat_Jual_Bebas.equals("")||
                 Persediaan_Obat_Jual_Bebas.equals("")||Penerimaan_NonMedis.equals("")||Kontra_Penerimaan_NonMedis.equals("")||
                 Bayar_Pemesanan_Non_Medis.equals("")||Hibah_Obat.equals("")||Kontra_Hibah_Obat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
+                    JOptionPane.showMessageDialog(null,"Silakan lengkapi seluruh data Akun...!!!!");
                     tbPengaturan.requestFocus();
             }else{
                 Sequel.queryu("delete from set_akun_ralan");
@@ -1009,11 +1009,11 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                                (!tbPengaturanRalan.getValueAt(i,29).equals(""))&&(!tbPengaturanRalan.getValueAt(i,30).equals(""))){
                     copyakun="copy";
                     barisdicopy=i;
-                    JOptionPane.showMessageDialog(null,"Silahkan pilih tindakan tujuan..!!");
+                    JOptionPane.showMessageDialog(null,"Silakan pilih tindakan tujuan..!!");
                 }else{
                     barisdicopy=-1;
                     copyakun="";
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data tindakan yang mau dicopy akun rekeningnya...!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data tindakan yang hendak dicopy akun rekeningnya...!!!");
                     tbPengaturanRalan.requestFocus();
                 }
             }

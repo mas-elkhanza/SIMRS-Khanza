@@ -444,10 +444,10 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 this.setCursor(Cursor.getDefaultCursor());
             }
             
-            JOptionPane.showMessageDialog(null,"Proses hapus selesai, silahkan lakukan refresh\ndi form Data Tagihan Piutang Pasien..!!");
+            JOptionPane.showMessageDialog(null,"Proses hapus selesai, silakan lakukan refresh\ndi form Data Tagihan Piutang Pasien..!!");
             this.dispose();
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, Sudah ada data pembayaran piutang pasien.\nSilahkan hapus terlebih dahulu data pembayaran piutang tersebut..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Sudah ada data pembayaran piutang pasien.\nSilakan hapus terlebih dahulu data pembayaran piutang tersebut..!!");
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 

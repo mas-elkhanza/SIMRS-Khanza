@@ -441,7 +441,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbAdmin.setAutoCreateRowSorter(true);
-        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAdmin.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbAdmin.setName("tbAdmin"); // NOI18N
         tbAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -558,7 +558,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         tbRalan.setAutoCreateRowSorter(true);
-        tbRalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRalan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbRalan.setName("tbRalan"); // NOI18N
         tbRalan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -675,7 +675,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         tbRanap.setAutoCreateRowSorter(true);
-        tbRanap.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRanap.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbRanap.setName("tbRanap"); // NOI18N
         tbRanap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -762,7 +762,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 kdbangsal.requestFocus();
             }else if(nmbangsal.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! nmbangsal.getText().trim().equals("")){
                 Sequel.queryu("delete from set_lokasi where kd_bangsal='"+kdbangsal.getText()+"'");
                 tampil();
@@ -773,7 +773,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 KodePoli.requestFocus();
             }else if(NmPoli.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! NmPoli.getText().trim().equals("")){
                 Sequel.queryu("delete from set_depo_ralan where kd_bangsal='"+KodeDepoRalan.getText()+"' and kd_poli='"+KodePoli.getText()+"'");
                 tampilralan();
@@ -784,7 +784,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 KodeBangsalRanap.requestFocus();
             }else if(NamaBangsalRanap.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(! NamaBangsalRanap.getText().trim().equals("")){
                 Sequel.queryu("delete from set_depo_ranap where kd_bangsal='"+KodeBangsalRanap.getText()+"' and kd_depo='"+KodeDepoRanap.getText()+"'");
                 tampilranap();
@@ -888,7 +888,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 KodePoli.requestFocus();
             }else if(NmPoli.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang hendak diedit.\nKlik data pada table untuk memilih...!!!!");
             }else if(! NmPoli.getText().trim().equals("")){
                 Sequel.queryu("update set_depo_ralan set kd_bangsal='"+KodeDepoRalan.getText()+"', kd_poli='"+KodePoli.getText()+"' "+
                               "where kd_bangsal='"+tbRalan.getValueAt(tbRalan.getSelectedRow(),2).toString()+"' and "+
@@ -901,7 +901,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 KodeBangsalRanap.requestFocus();
             }else if(NamaBangsalRanap.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang hendak diedit.\nKlik data pada table untuk memilih...!!!!");
             }else if(! NamaBangsalRanap.getText().trim().equals("")){
                 Sequel.queryu("update set_depo_ranap set kd_bangsal='"+KodeBangsalRanap.getText()+"',kd_depo='"+KodeDepoRanap.getText()+"' "+
                               "where kd_bangsal='"+tbRanap.getValueAt(tbRanap.getSelectedRow(),0).toString()+"' and "+

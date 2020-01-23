@@ -319,7 +319,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
 
             }
         ));
-        tbPerujuk.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPerujuk.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPerujuk.setName("tbPerujuk"); // NOI18N
         tbPerujuk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -478,7 +478,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1267,7 +1267,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void MnBalasanRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBalasanRujukanActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
         }else{
             Map<String, Object> param = new HashMap<>();
             diagnosa="";
@@ -1391,7 +1391,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void MnBalasanRujukan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBalasanRujukan1ActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
         }else{
             Map<String, Object> param = new HashMap<>();
             diagnosa="";
@@ -1528,7 +1528,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void MnBalasanRujukan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBalasanRujukan2ActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
         }else{
             Map<String, Object> param = new HashMap<>();
             diagnosa="";

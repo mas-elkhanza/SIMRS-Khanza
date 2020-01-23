@@ -348,7 +348,7 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
              TCari.requestFocus();
         }else if(tbKamar.getSelectedRow()!= -1){            
             if(Sequel.cariRegistrasi(tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else if(tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString().equals("")){
                 JOptionPane.showMessageDialog(rootPane,"Maaf data stok obat pasien ranap untuk obat ini tidak ditemukan..!!!");

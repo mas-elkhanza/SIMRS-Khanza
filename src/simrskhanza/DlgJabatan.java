@@ -153,7 +153,7 @@ public final class DlgJabatan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJabatan.setAutoCreateRowSorter(true);
-        tbJabatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJabatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbJabatan.setName("tbJabatan"); // NOI18N
         tbJabatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

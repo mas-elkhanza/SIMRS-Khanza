@@ -472,7 +472,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1310,7 +1310,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silakan anda pilih data terlebih dahulu..!!");
         }
 
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -1350,7 +1350,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                        emptTeks();
                 }
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silakan anda pilih data terlebih dahulu..!!");
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -1715,7 +1715,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 
     private void MnInputDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInputDiagnosaActionPerformed
         if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
             penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

@@ -67,7 +67,7 @@ public class HibahObatBHP extends javax.swing.JDialog {
             "Jual Bebas", "Karyawan","Isi","Isibesar","Dasar"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                boolean a = false;
-               if ((colIndex==0)||(colIndex==6)||(colIndex==8)||(colIndex==11)) {
+               if ((colIndex==0)||(colIndex==5)||(colIndex==6)||(colIndex==8)||(colIndex==11)) {
                    a=true;
                }
                return a;
@@ -787,10 +787,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(aktifkanbatch.equals("yes")&&(row>0)){
             Valid.textKosong(TCari,"No.Batch");
         }else if(index<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data hibah...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan data hibah...!!!!");
             tbDokter.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {
                     Sequel.AutoComitFalse();
@@ -1129,7 +1129,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             datakonversi.setLocationRelativeTo(internalFrame1);
                             datakonversi.setVisible(true);
                         }else{
-                            JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah hibah obat & bhp terelebih dahulu..!!");
+                            JOptionPane.showMessageDialog(null,"Silakan masukkan jumlah hibah obat & bhp terelebih dahulu..!!");
                         }
                     }   break;
                 default:

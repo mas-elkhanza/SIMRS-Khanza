@@ -1088,7 +1088,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             cf.setVisible(true);
 
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
         }
 
     }//GEN-LAST:event_ppGrafikTerbanyakBatangActionPerformed
@@ -1283,7 +1283,7 @@ private void ppGrafikTerbanyakPieActionPerformed(java.awt.event.ActionEvent evt)
             cf.setVisible(true);
 
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
         }
 }//GEN-LAST:event_ppGrafikTerbanyakPieActionPerformed
 
@@ -1488,7 +1488,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             cf.setVisible(true);
 
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
         }
 }//GEN-LAST:event_ppGrafikTerkecilBatangActionPerformed
 
@@ -1682,7 +1682,7 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
             cf.setVisible(true);
 
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
         }
 }//GEN-LAST:event_ppGrafikTerkecilPieActionPerformed
 

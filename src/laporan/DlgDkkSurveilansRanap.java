@@ -480,7 +480,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
             cf.setVisible(true); 
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data penyakit terlebih dahulu");
+            JOptionPane.showMessageDialog(rootPane,"Silakan pilih data penyakit terlebih dahulu");
         }      
     }//GEN-LAST:event_ppGrafikHidupMatiActionPerformed
 
@@ -497,7 +497,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
             cf.setVisible(true); 
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data penyakit terlebih dahulu");
+            JOptionPane.showMessageDialog(rootPane,"Silakan pilih data penyakit terlebih dahulu");
         }
     }//GEN-LAST:event_ppGrafikLakiPerempuanActionPerformed
 
@@ -524,7 +524,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
             cf.setVisible(true); 
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data penyakit terlebih dahulu");
+            JOptionPane.showMessageDialog(rootPane,"Silakan pilih data penyakit terlebih dahulu");
         }
     }//GEN-LAST:event_ppGrafikGolonganUmurActionPerformed
 

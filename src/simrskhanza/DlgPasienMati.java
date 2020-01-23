@@ -881,7 +881,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 
 private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratMatiActionPerformed
       if(TPasien.getText().trim().equals("")){
-          JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");                
+          JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");                
       }else{
           Map<String, Object> param = new HashMap<>(); 
                 param.put("namars",akses.getnamars());
@@ -906,7 +906,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
 
     private void MnAngkutJenazahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnAngkutJenazahActionPerformed
         if(TPasien.getText().trim().equals("")){
-          JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");                
+          JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");                
         }else{
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());

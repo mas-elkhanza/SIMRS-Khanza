@@ -151,7 +151,7 @@ include_once ('layout/header.php');
                         if($antri == '') {
                             echo '<div class="font-20">Anda belum terdaftar dalam antrian Poliklinik</div>';
                             echo '<br><a href="pendaftaran.php"><button type="button" class="btn bg-green btn-lg waves-effect">Daftar</button></a><br><br>';
-                            echo '<div class="font-15">Silahkan klik tombol diatas untuk mendaftar antrian On-Line</div>';
+                            echo '<div class="font-15">Silakan klik tombol di atas untuk mendaftar antrian On-Line</div>';
                         } else {
                         ?>
                         <div class="font-20"><?php echo $antri[3]; ?></div>

@@ -938,7 +938,7 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnKeluar.requestFocus();
         }else if(Cicilan.getText().equals("")||Cicilan.getText().equals("0")){
-            JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang mau dicetak notanya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, pilih dulu data yang hendak dicetak notanya...!!!!");
             tbKamar.requestFocus();
         }else if(tabMode.getRowCount()!=0){  
             

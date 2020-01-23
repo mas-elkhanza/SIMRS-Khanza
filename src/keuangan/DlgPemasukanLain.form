@@ -109,7 +109,7 @@
             <Component class="widget.Table" name="tbResep">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus" postCode="tbResep.setComponentPopupMenu(Popup);"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus" postCode="tbResep.setComponentPopupMenu(Popup);"/>
                 <Property name="name" type="java.lang.String" value="tbResep" noResource="true"/>
               </Properties>
               <Events>

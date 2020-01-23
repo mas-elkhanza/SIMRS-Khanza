@@ -1629,7 +1629,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2845,7 +2845,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
             NoRm.requestFocus();
         }else if(NmBayi.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien yang mau pulang dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data pasien yang hendak pulang dengan menklik data pada table...!!!");
             tbDokter.requestFocus();
         }else{
             Map<String, Object> param = new HashMap<>();
@@ -3015,7 +3015,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         if(NIKIbu.getText().trim().equals("")){
             NIKIbu.requestFocus();
-            JOptionPane.showMessageDialog(null,"Silahkan isi terlebih dahulu NIK Ibu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan isi terlebih dahulu NIK Ibu..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             cekViaDukcapilJakarta.tampil(NIKIbu.getText());
@@ -3047,7 +3047,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void BtnCari2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari2ActionPerformed
         if(NIKIbu.getText().trim().equals("")){
             NIKIbu.requestFocus();
-            JOptionPane.showMessageDialog(null,"Silahkan isi terlebih dahulu NIK Ibu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan isi terlebih dahulu NIK Ibu..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             cekViaDukcapilJakarta.tampil(NIKAyah.getText());
@@ -3334,7 +3334,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void BtnCari3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari3ActionPerformed
         if(NIKPelapor.getText().trim().equals("")){
             NIKPelapor.requestFocus();
-            JOptionPane.showMessageDialog(null,"Silahkan isi terlebih dahulu NIK Pelapor..!!");
+            JOptionPane.showMessageDialog(null,"Silakan isi terlebih dahulu NIK Pelapor..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             cekViaDukcapilJakarta.tampil(NIKPelapor.getText());
@@ -3378,7 +3378,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void BtnCari4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari4ActionPerformed
         if(NIKSaksi1.getText().trim().equals("")){
             NIKSaksi1.requestFocus();
-            JOptionPane.showMessageDialog(null,"Silahkan isi terlebih dahulu NIK Saksi 1..!!");
+            JOptionPane.showMessageDialog(null,"Silakan isi terlebih dahulu NIK Saksi 1..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             cekViaDukcapilJakarta.tampil(NIKSaksi1.getText());
@@ -3426,7 +3426,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void BtnCari5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari5ActionPerformed
         if(NIKSaksi2.getText().trim().equals("")){
             NIKSaksi2.requestFocus();
-            JOptionPane.showMessageDialog(null,"Silahkan isi terlebih dahulu NIK Saksi 2..!!");
+            JOptionPane.showMessageDialog(null,"Silakan isi terlebih dahulu NIK Saksi 2..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             cekViaDukcapilJakarta.tampil(NIKSaksi2.getText());

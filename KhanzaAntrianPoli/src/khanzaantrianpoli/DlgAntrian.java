@@ -669,7 +669,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        Table1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table1.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table1.setComponentPopupMenu(Popup1);
         Table1.setName("Table1"); // NOI18N
         Scroll.setViewportView(Table1);
@@ -782,7 +782,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        Table2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table2.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table2.setComponentPopupMenu(Popup2);
         Table2.setName("Table2"); // NOI18N
         Scroll1.setViewportView(Table2);
@@ -895,7 +895,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        Table3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table3.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table3.setComponentPopupMenu(Popup3);
         Table3.setName("Table3"); // NOI18N
         Scroll2.setViewportView(Table3);
@@ -1519,7 +1519,7 @@ private void BtnBatal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }
             }
         }catch(SQLException e){
-            System.out.println(e+"Error : Silahkan Set Aplikasi");
+            System.out.println(e+"Error : Silakan Set Aplikasi");
         }
     } 
     

@@ -290,7 +290,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbResep.setAutoCreateRowSorter(true);
-        tbResep.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbResep.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbResep.setComponentPopupMenu(Popup);
         tbResep.setName("tbResep"); // NOI18N
         tbResep.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -776,7 +776,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
              Keterangan.requestFocus();
         }else if(Keterangan.getText().trim().equals("")){
-             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(Keterangan.getText().trim().equals(""))){
             if(tbResep.getSelectedRow()>-1){
                                 

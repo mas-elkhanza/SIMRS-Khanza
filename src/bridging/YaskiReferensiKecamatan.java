@@ -306,7 +306,7 @@ public final class YaskiReferensiKecamatan extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(KdKab.getText().trim().equals("")||NmKab.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih kabupaten dulu..!!");
             BtnPropinsi.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

@@ -1187,10 +1187,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(alamatpengambil.getText().trim().equals("")){
             Valid.textKosong(alamatpengambil,"Alamat Pengambil Darah");
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan data penyerahan darah...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan masukkan data penyerahan darah...!!!!");
             TCari.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 if(verifikasi_penyerahan_darah_di_kasir.equals("No")){
                     status="Sudah Dibayar";
@@ -1311,7 +1311,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             tbDarah.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penjualan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan masukkan penjualan...!!!!");
             tbDarah.requestFocus();
         }else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        

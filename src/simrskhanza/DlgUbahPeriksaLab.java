@@ -735,7 +735,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         }else if(jml==0){
             Valid.textKosong(Pemeriksaan,"Data Pemeriksaan");
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {                    
                     koneksi.setAutoCommit(false);
@@ -977,7 +977,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    try{
        tabMode.removeRow(tbPemeriksaan.getSelectedRow());
    }catch(Exception ex){
-       JOptionPane.showMessageDialog(null,"Pilih dulu data yang mau dihapus..!!");
+       JOptionPane.showMessageDialog(null,"Pilih dulu data yang hendak dihapus..!!");
    }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

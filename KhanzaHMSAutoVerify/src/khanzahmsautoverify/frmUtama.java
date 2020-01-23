@@ -128,7 +128,7 @@ public class frmUtama extends javax.swing.JFrame {
         Scroll.setOpaque(true);
 
         tbTemporary.setAutoCreateRowSorter(true);
-        tbTemporary.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTemporary.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Scroll.setViewportView(tbTemporary);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);

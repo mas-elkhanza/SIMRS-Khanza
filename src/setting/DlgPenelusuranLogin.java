@@ -351,7 +351,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                     tampil();
                 }catch(Exception e){
                     System.out.println("Notifikasi : "+e);
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih terlebih dulu data yang hendak anda hapus...\n Klik data pada table untuk memilih data...!!!!");
                 }
             }
         }else if(TabRawat.getSelectedIndex()==1){
@@ -364,7 +364,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                     tampil2();
                 }catch(Exception e){
                     System.out.println("Notifikasi : "+e);
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih terlebih dulu data yang hendak anda hapus...\n Klik data pada table untuk memilih data...!!!!");
                 }
             }
         }

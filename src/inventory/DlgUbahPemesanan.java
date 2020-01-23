@@ -740,10 +740,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penerimaan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan masukkan penerimaan...!!!!");
             tbDokter.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(null,"Eeiiiiiits, udah bener belum data yang mau disimpan..??\nBisa jadi stok menjadi tidak sinkron karena data stok sudah digunakan..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??\nBisa jadi stok menjadi tidak sinkron karena data stok sudah digunakan..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 sukses=true;
                 try {
@@ -1163,7 +1163,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             datakonversi.setLocationRelativeTo(internalFrame1);
                             datakonversi.setVisible(true);
                         }else{
-                            JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah pembelian terelebih dahulu..!!");
+                            JOptionPane.showMessageDialog(null,"Silakan masukkan jumlah pembelian terelebih dahulu..!!");
                         }
                     }   break;
                 default:

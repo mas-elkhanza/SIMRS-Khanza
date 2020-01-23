@@ -451,7 +451,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik pada nomor permintaan untuk verifikasi pilihan");
+        tbDokter.setToolTipText("Silakan klik pada nomor permintaan untuk verifikasi pilihan");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);

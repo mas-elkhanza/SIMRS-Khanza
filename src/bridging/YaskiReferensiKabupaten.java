@@ -304,7 +304,7 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(KdProp.getText().trim().equals("")||NmProp.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih propinsi dulu..!!");
             BtnPropinsi.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

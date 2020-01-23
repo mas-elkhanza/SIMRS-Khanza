@@ -372,7 +372,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -776,7 +776,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
         }  
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -958,7 +958,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
             Valid.MyReport("rptBridgingRujukanBPJS.jasper",param,"::[ Surat Rujukan Keluar VClaim ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
         }   
     }//GEN-LAST:event_MnSuratRujukanActionPerformed
 

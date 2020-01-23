@@ -212,7 +212,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbUser.setToolTipText("Untuk memegang hak akses agar tidak hilang karena pencarian data, silahkan klik di bagian P. \nUntuk memberikan hak akses klik pada akses. Gunakan klik kanan untuk menampilkan popup menu.");
+        tbUser.setToolTipText("Untuk memegang hak akses agar tidak hilang karena pencarian data, silakan klik di bagian P. \nUntuk memberikan hak akses klik pada akses. Gunakan klik kanan untuk menampilkan popup menu.");
         tbUser.setComponentPopupMenu(Popup);
         tbUser.setName("tbUser"); // NOI18N
         Scroll.setViewportView(tbUser);
@@ -641,7 +641,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk,grafik_HAIs_laju_ilo,"+
                         "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan,inhealth_mapping_tindakan_ranap,"+
                         "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"+
-                        "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis,monitoring_asuhan_gizi from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis,monitoring_asuhan_gizi,"+
+                        "penerimaan_obat_perbulan from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2773,7 +2774,11 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     if("[N]Laju HAIs HAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[N]Laju HAIs HAP Per Ruang",rs.getBoolean("grafik_HAIs_laju_hap")});
                     }
-
+                    
+                    if("[N]Penerimaan Obat, Alkes & BHP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Penerimaan Obat, Alkes & BHP Per Bulan",rs.getBoolean("penerimaan_obat_perbulan")});
+                    }
+                    
                     if("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[O]Indeks Surat",rs.getBoolean("surat_indeks")});
                     }
@@ -5111,6 +5116,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
             if("[N]Laju HAIs HAP Per Ruang".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_HAIs_laju_hap='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[N]Penerimaan Obat, Alkes & BHP Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penerimaan_obat_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[O]Indeks Surat".equals(tbUser.getValueAt(i,1).toString())){

@@ -353,7 +353,7 @@
                     <Component class="widget.Table" name="Table1">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="Table1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -608,7 +608,7 @@
                     <Component class="widget.Table" name="Table2">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="Table2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1004,7 +1004,7 @@
                     <Component class="widget.Table" name="Table3">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="Table3" noResource="true"/>
                       </Properties>
                       <Events>

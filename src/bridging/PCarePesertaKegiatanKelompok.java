@@ -234,7 +234,7 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
@@ -591,7 +591,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }             
         }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data peserta...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data peserta...!!!!");
             TCari.requestFocus();
         }
     }else if(TabRawat.getSelectedIndex()==1){

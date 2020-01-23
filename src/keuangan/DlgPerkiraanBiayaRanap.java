@@ -598,7 +598,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
         Scroll2.setPreferredSize(new java.awt.Dimension(452, 100));
 
-        tbProsedur.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbProsedur.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbProsedur.setName("tbProsedur"); // NOI18N
         Scroll2.setViewportView(tbProsedur);
 
@@ -781,7 +781,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             }
         }
         if(jml==0){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih diagnosa terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih diagnosa terlebih dahulu..!!");
             Diagnosa.requestFocus();
         }else{
             System.out.println(sql);

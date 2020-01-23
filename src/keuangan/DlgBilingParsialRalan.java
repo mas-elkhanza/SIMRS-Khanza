@@ -2753,10 +2753,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(statushapus==false){
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan lanjutkan proses simpan terlebih dahulu ...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan lanjutkan proses simpan terlebih dahulu ...!!!");
         }else{
             if(ttl<=0){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan tagihan yang mau dihapus ...!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan tagihan yang hendak dihapus ...!!!");
             }else{
                 if(kekurangan<0){
                     JOptionPane.showMessageDialog(null,"Maaf, pembayaran/dana pengembalian pasien masih kurang ...!!!");
@@ -2812,14 +2812,14 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(statushapus==true){
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan lanjutkan proses hapus terlebih dahulu ...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan lanjutkan proses hapus terlebih dahulu ...!!!");
         }else{
             if(TabRawat.getSelectedIndex()==6){
                 if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
                     Valid.textKosong(TNoRw,"Pasien");
                 }else{
                     if(ttl<=0){
-                        JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan tagihan ...!!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan tagihan ...!!!");
                     }else{
                         if(kekurangan<0){
                             JOptionPane.showMessageDialog(null,"Maaf, pembayaran pasien masih kurang ...!!!");
@@ -2835,7 +2835,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     }                        
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Silahkan buka tagihan ...!!");
+                JOptionPane.showMessageDialog(null,"Silakan buka tagihan ...!!");
                 TCari.requestFocus();
             }
         }            
@@ -2897,7 +2897,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 
                 i = 0;
                 try{
-                      biaya = (String)JOptionPane.showInputDialog(null,"Silahkan pilih nota yang mau dicetak!","Nota",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Nota", "Kwitansi", "Nota & Kwitansi"},"Nota");
+                      biaya = (String)JOptionPane.showInputDialog(null,"Silakan pilih nota yang hendak dicetak!","Nota",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Nota", "Kwitansi", "Nota & Kwitansi"},"Nota");
                       switch (biaya) {
                             case "Nota":
                                   i=1;
@@ -5555,7 +5555,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     }
 
     private void isSimpan() {        
-        int jawab=JOptionPane.showConfirmDialog(null, "Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        int jawab=JOptionPane.showConfirmDialog(null, "Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if(jawab==JOptionPane.YES_OPTION){
             if(notaralan.equals("Yes")){
                 BtnNotaActionPerformed(null);
@@ -6135,7 +6135,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     }   
     
     private void isSimpanHapus() {
-        int jawab=JOptionPane.showConfirmDialog(null, "Eeiiiiiits, udah bener belum data yang mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        int jawab=JOptionPane.showConfirmDialog(null, "Eeiiiiiits, udah bener belum data yang hendak dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if(jawab==JOptionPane.YES_OPTION){
             try {
                 koneksi.setAutoCommit(false);

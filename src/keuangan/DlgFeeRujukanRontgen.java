@@ -430,7 +430,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(kddokter.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih dokter terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silakan pilih dokter terlebih dahulu..!!");
         }else{
             prosesCari();
         }

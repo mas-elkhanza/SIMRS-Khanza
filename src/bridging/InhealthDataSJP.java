@@ -329,7 +329,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                         KdJenpel.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),3).toString());  
                         KdPoli.requestFocus();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silahkan cari yang kosong..!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silakan cari yang kosong..!!");
                         KdPoli.requestFocus();
                     }
                 }  
@@ -599,7 +599,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1330,7 +1330,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             deleteSJP();  
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
         }            
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1362,11 +1362,11 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                 if(tbObat.getSelectedRow()!= -1){
                     UpdateSEP();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+                    JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
                 } 
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak diganti..!!");
         } 
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1563,7 +1563,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SJP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SJP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         }        
     }//GEN-LAST:event_ppSEPBtnPrintActionPerformed
@@ -1574,7 +1574,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             WindowUpdatePulang.setLocationRelativeTo(internalFrame1);
             WindowUpdatePulang.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau diupdate tanggal pulangnya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak diupdate tanggal pulangnya...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1617,7 +1617,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dimapping transaksinya...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());

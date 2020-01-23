@@ -847,7 +847,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             no_inventaris.requestFocus();
         }else if(nama_barang.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(TOut.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Data sirkulasi dengan No.Inventaris "+no_inventaris.getText()+" belum kembali. Data belum bisa anda hapus...!!!!");
         }else if(!(nama_barang.getText().trim().equals(""))){
@@ -856,7 +856,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
                 tampil();
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih terlebih dulu data yang hendak anda hapus...\n Klik data pada table untuk memilih data...!!!!");
             }
         }
 

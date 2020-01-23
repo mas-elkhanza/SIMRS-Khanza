@@ -633,7 +633,7 @@ public class DlgDpjp extends javax.swing.JDialog {
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)));
         Scroll1.setName("Scroll1"); // NOI18N
 
-        tbDiagnosa.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDiagnosa.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbDiagnosa.setName("tbDiagnosa"); // NOI18N
         tbDiagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -807,7 +807,7 @@ public class DlgDpjp extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
              TNoRw.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
             for(i=0;i<tbPasien.getRowCount();i++){ 
                 if(tbPasien.getValueAt(i,0).toString().equals("true")){

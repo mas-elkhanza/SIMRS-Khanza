@@ -319,7 +319,7 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan centang di depan untuk memilih data hutang yang mau dibayar");
+        tbBangsal.setToolTipText("Silakan centang di depan untuk memilih data hutang yang hendak dibayar");
         tbBangsal.setComponentPopupMenu(Popup);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {

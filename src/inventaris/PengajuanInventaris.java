@@ -357,7 +357,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1247,7 +1247,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         emptTeks();
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data terlebih dahulu..!!!!");
             }
         }
     }//GEN-LAST:event_ppProsesBtnPrintActionPerformed
@@ -1264,7 +1264,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         emptTeks();
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data terlebih dahulu..!!!!");
             }
         }
     }//GEN-LAST:event_ppDosetujuiBtnPrintActionPerformed
@@ -1281,7 +1281,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         emptTeks();
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data terlebih dahulu..!!!!");
             }
         }
     }//GEN-LAST:event_ppDitolakBtnPrintActionPerformed

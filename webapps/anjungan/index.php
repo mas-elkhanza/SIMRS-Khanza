@@ -110,8 +110,8 @@ include_once('layout/header.php');
             				</div>
                           
             				<div class="block-header align-center" style="margin-top: 80px;">
-                				<p class="col-red font-18">Sentuh tombol diatas untuk memilih layanan dan informasi.</p>
-                				<p class="col-red font-18">Silahkan hubungi petugas jika anda mengalami kesulitan.</p>
+                				<p class="col-red font-18">Sentuh tombol di atas untuk memilih layanan dan informasi.</p>
+                				<p class="col-red font-18">Silakan hubungi petugas jika anda mengalami kesulitan.</p>
             				</div>                          
                           
                         </div>

@@ -1,4 +1,4 @@
-//Main configuration. Silahkan sesuaikan settingan dibawah ini sesuai. Baca komentar dibelakangnya
+//Main configuration. Silakan sesuaikan settingan dibawah ini sesuai. Baca komentar dibelakangnya
 const nama_instansi = 'RSUD H. Damanhuri'; // Hospital Name
 const apiUrl = 'http://localhost/basoro.net-dev/pasien-rest/'; // API Server URL
 const startDate = -1; // Start date of day for registration
@@ -558,7 +558,7 @@ $$(document).on('page:init', '.page[data-name="daftar"]', function(e) {
     var tanggal = $$('.tanggal').val();
 
     if(tanggal == "") {
-      app.dialog.alert('Silahkan pilih tanggal berobat.');
+      app.dialog.alert('Silakan pilih tanggal berobat.');
     } else {
 
       app.dialog.preloader("Loading...");
@@ -655,16 +655,16 @@ $$(document).on('page:init', '.page[data-name="daftar"]', function(e) {
       app.dialog.alert('Nomor rekam medis anda tidak sesuai dengan akun login.');
     }
     else if(tanggal == "") {
-      app.dialog.alert('Silahkan masukkan tanggal berobat.');
+      app.dialog.alert('Silakan masukkan tanggal berobat.');
     }
     else if(kd_poli == "") {
       app.dialog.alert('Pilih klinik tujuan anda.');
     }
     else if(kd_dokter == "") {
-      app.dialog.alert('Silahkan pilih dokter.');
+      app.dialog.alert('Silakan pilih dokter.');
     }
     else if(kd_pj == "") {
-      app.dialog.alert('Silahkan pilih cara bayar.');
+      app.dialog.alert('Silakan pilih cara bayar.');
     }
     else {
       // Show Preloader

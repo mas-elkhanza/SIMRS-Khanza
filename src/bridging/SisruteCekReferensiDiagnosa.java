@@ -292,7 +292,7 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(diagnosa.getText().trim().length()<3){
-            JOptionPane.showMessageDialog(null,"Silahkan masukkan pencarian terlebih dahulu. Minimal 3 karakter...!!!");
+            JOptionPane.showMessageDialog(null,"Silakan masukkan pencarian terlebih dahulu. Minimal 3 karakter...!!!");
             diagnosa.requestFocus();
         }else{
             tampil(diagnosa.getText());

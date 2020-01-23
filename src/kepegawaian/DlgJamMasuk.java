@@ -171,7 +171,7 @@ public class DlgJamMasuk extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJadwal.setAutoCreateRowSorter(true);
-        tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJadwal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

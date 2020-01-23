@@ -181,7 +181,7 @@ public final class DlgInsidenKeselamatan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbPenyakit.setAutoCreateRowSorter(true);
-        tbPenyakit.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPenyakit.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPenyakit.setName("tbPenyakit"); // NOI18N
         tbPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

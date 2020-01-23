@@ -433,7 +433,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
                 }
             }
         }catch(SQLException e){
-            System.out.println(e+"Error : Silahkan Set Aplikasi");
+            System.out.println(e+"Error : Silakan Set Aplikasi");
         }
     } 
     

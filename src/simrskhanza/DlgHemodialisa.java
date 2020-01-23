@@ -228,7 +228,7 @@ public class DlgHemodialisa extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbPemberianObat.setAutoCreateRowSorter(true);
-        tbPemberianObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPemberianObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPemberianObat.setName("tbPemberianObat"); // NOI18N
         tbPemberianObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

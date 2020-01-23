@@ -136,7 +136,7 @@ public class INACBGCariCoderNIK extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbSpesialis.setAutoCreateRowSorter(true);
-        tbSpesialis.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbSpesialis.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbSpesialis.setName("tbSpesialis"); // NOI18N
         Scroll.setViewportView(tbSpesialis);
 

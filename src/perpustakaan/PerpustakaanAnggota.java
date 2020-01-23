@@ -236,7 +236,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
-        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJnsPerawatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1016,7 +1016,7 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
                         "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                         "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where no_anggota='"+NoAnggota.getText()+"'",param);
             }else{
-                JOptionPane.showMessageDialog(null,"Silahkan pilih data yang mau dicetak kartu anggotanya ..!!!");
+                JOptionPane.showMessageDialog(null,"Silakan pilih data yang hendak dicetak kartu anggotanya ..!!!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());

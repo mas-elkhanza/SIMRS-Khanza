@@ -384,7 +384,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -607,7 +607,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 akses.setAktif(false);
             }else{
                 try{
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Registrasi","Via IGD","Via Cek No.Kartu VClaim","Via Cek NIK VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim"},"Via Registrasi");
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Registrasi","Via IGD","Via Cek No.Kartu VClaim","Via Cek NIK VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim"},"Via Registrasi");
                     switch (pilihan) {
                         case "Via Registrasi":  
                             if(SttsPasien.equals("Lama")){
@@ -724,7 +724,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
         }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
             akses.setAktif(false);
             TCari.requestFocus();
         }   
@@ -839,7 +839,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
         }else{  
             akses.setAktif(false);
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
             TCari.requestFocus();
         }  
     }//GEN-LAST:event_BtnJawabActionPerformed

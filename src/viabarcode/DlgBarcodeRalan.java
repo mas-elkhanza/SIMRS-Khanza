@@ -563,7 +563,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
             Valid.textKosong(TCariObat,"Lokasi");
         }else{
             if(Sequel.cariRegistrasi(NoRawat.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, silahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, silakan hubungi bagian kasir/keuangan ..!!");
                 NoRawat.requestFocus();
             }else{
                 for(i=0;i<tbTindakan.getRowCount();i++){ 
