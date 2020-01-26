@@ -372,13 +372,6 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                   "and jml='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"' "+
                   "and no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9)+"' "+
                   "and no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10)+"' ")==true){
-                Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus",tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString());
-                Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
-                                 "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
-                                 "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"'", 
-                                 "stok=stok+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
-                                 "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' and "+
-                                 "kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"'");
                 Sequel.menyimpan("utd_stok_medis","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
                                  "'-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'", 
                                  "stok=stok-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
@@ -387,6 +380,26 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                     Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
                         ""+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()
                     });
+                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus",tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString());
+                    Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10)+"'", 
+                                     "stok=stok+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
+                                     "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' and "+
+                                     "kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
+                                     "and no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9)+"' "+
+                                     "and no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10)+"' ");
+                }else{
+                    Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",akses.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus","","");
+                    Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
+                                     "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','',''", 
+                                     "stok=stok+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),
+                                     "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' and "+
+                                     "kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
+                                     "and no_batch='' and no_faktur='' ");
                 }
             }else{
                 sukses=false;

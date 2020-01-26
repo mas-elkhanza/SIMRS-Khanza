@@ -4675,7 +4675,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));
             }
             
-            Sequel.mengedit("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,no_ktp=?,jk=?,tmp_lahir=?,"+
+            if(Sequel.mengedittf("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,no_ktp=?,jk=?,tmp_lahir=?,"+
                 "tgl_lahir=?,alamat=?,gol_darah=?,pekerjaan=?,stts_nikah=?,agama=?,tgl_daftar=?,no_tlp=?,umur=?"+
                 ",pnd=?,keluarga=?,namakeluarga=?,kd_pj=?,no_peserta=?,kd_kel=?,kd_kec=?,kd_kab=?,nm_ibu=?,pekerjaanpj=?,"+
                 "alamatpj=?,kelurahanpj=?,kecamatanpj=?,kabupatenpj=?,perusahaan_pasien=?,suku_bangsa=?,bahasa_pasien=?,"+
@@ -4692,27 +4692,30 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     KabupatenPj.getText(),kdperusahaan.getText(),kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),
                     Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText()),
                     PropinsiPj.getText(),Kd2.getText()
-            });
-            if(chkTNI.isSelected()==true){
-                Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
-                Sequel.menyimpan2("pasien_tni","?,?,?,?,?","Data",5,new String[]{
-                    TNo.getText(),kdgolongantni.getText(),kdpangkattni.getText(),
-                    kdsatuantni.getText(),kdjabatantni.getText()
-                });
-            }else if(chkTNI.isSelected()==false){
-                Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
-            }  
-            if(chkPolri.isSelected()==true){
-                Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
-                Sequel.menyimpan2("pasien_polri","?,?,?,?,?","Data",5,new String[]{
-                    TNo.getText(),kdgolonganpolri.getText(),kdpangkatpolri.getText(),
-                    kdsatuanpolri.getText(),kdjabatanpolri.getText()
-                });
-            }else if(chkPolri.isSelected()==false){
-                Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
+            })==true){
+                if(chkTNI.isSelected()==true){
+                    Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
+                    Sequel.menyimpan2("pasien_tni","?,?,?,?,?","Data",5,new String[]{
+                        TNo.getText(),kdgolongantni.getText(),kdpangkattni.getText(),
+                        kdsatuantni.getText(),kdjabatantni.getText()
+                    });
+                }else if(chkTNI.isSelected()==false){
+                    Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
+                }  
+                if(chkPolri.isSelected()==true){
+                    Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
+                    Sequel.menyimpan2("pasien_polri","?,?,?,?,?","Data",5,new String[]{
+                        TNo.getText(),kdgolonganpolri.getText(),kdpangkatpolri.getText(),
+                        kdsatuanpolri.getText(),kdjabatanpolri.getText()
+                    });
+                }else if(chkPolri.isSelected()==false){
+                    Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
+                }
+
+                emptTeks();
+                TabRawat.setSelectedIndex(1);
+                tampil();
             }
-            
-            emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -8041,7 +8044,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Table tbPasien3;
     // End of variables declaration//GEN-END:variables
     
-    private void tampil() {     
+    private void tampil() {    
         Valid.tabelKosong(tabMode);
         try{
             if(cmbHlm.getSelectedItem().toString().equals("Semua")){
