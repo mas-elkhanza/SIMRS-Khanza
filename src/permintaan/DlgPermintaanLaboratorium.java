@@ -58,7 +58,6 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
     private String[] kode,nama,pemeriksaan2,satuan2,nilai_rujukan2,idtemplate2;
     private int jml=0,i=0,index=0,jml2=0,i2=0,index2=0,jmlparsial=0;
     private String aktifkanparsial="no",norawatibu="",kelas="",kamar,namakamar,cara_bayar_lab="Yes",kelas_lab="Yes",status="",la="",ld="",pa="",pd="";
-    private double ttl=0,item=0;
     private final Properties prop = new Properties();
     
 
@@ -151,7 +150,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KodePerujuk.setDocument(new batasInput((byte)20).getKata(KodePerujuk));
-        Pemeriksaan.setDocument(new batasInput((byte)100).getKata(Pemeriksaan));   
+        Pemeriksaan.setDocument(new batasInput((int)100).getKata(Pemeriksaan));    
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));        
         TNoPermintaan.setDocument(new batasInput((byte)15).getKata(TNoPermintaan));        
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -327,7 +326,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Pilihan");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -343,7 +342,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
 
         ppSemua.setBackground(new java.awt.Color(255, 255, 254));
         ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemua.setForeground(new java.awt.Color(50,50,50));
+        ppSemua.setForeground(new java.awt.Color(50, 50, 50));
         ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemua.setText("Pilih Semua");
         ppSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -378,7 +377,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -461,7 +460,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         Pemeriksaan.setBounds(95, 72, 410, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-01-2020" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
