@@ -188,15 +188,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             );
             bg.close();
             
-            File f = new File("rl4b.html");            
+            File f = new File("rekapkunjungan.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
                                     "<font size='2' face='Tahoma'>REKAP KUNJUNGAN TAHUN "+ThnCari.getSelectedItem()+" <br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
@@ -281,10 +279,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%' rowspan='4'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%' rowspan='4'>BULAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='56%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='28%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='4'>NO.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='4'>BULAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>RAWAT JALAN</td>"+
@@ -542,10 +540,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='4'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='4'>BULAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='4'>NO.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='4'>BULAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='54%' colspan='8'>JUMLAH KUNJUNGAN</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='27%' colspan='4'>KUNJUNGAN GANGGUAN JIWA"+
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' colspan='4'>RAWAT JALAN</td>"+

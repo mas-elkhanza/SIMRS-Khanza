@@ -572,6 +572,7 @@ import surat.SuratMap;
 import surat.SuratMasuk;
 import surat.SuratRak;
 import surat.SuratRuang;
+import surat.SuratSakit;
 import surat.SuratSifat;
 import surat.SuratStatus;
 import tranfusidarah.UTDCariPenyerahanDarah;
@@ -15689,6 +15690,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratSakitActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratSakit aplikasi=new SuratSakit(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16279,7 +16292,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikHAIsLajuVAP,btnGrafikHAIsLajuIAD,btnGrafikHAIsLajuPleb,btnGrafikHAIsLajuISK,btnGrafikHAIsLajuILO,btnGrafikHAIsLajuHAP,
             btnMappingPoliInhealth,btnMappingDokterInhealth,btnMappingTindakanRalanInhealth,btnMappingTindakanRanapInhealth,btnMappingTindakanRadiologiInhealth,
             btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath,
-            btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan;
+            btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan,
+            btnSuratSakit;
     
     public void isWall(){
         try{            
@@ -19093,6 +19107,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_keluar()==true){
                 Panelmenu.add(btnSuratKeluar);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_sakit()==true){
+                Panelmenu.add(btnSuratSakit);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==15){ 
@@ -21991,6 +22010,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_keluar()==true){
             Panelmenu.add(btnSuratKeluar);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_sakit()==true){
+            Panelmenu.add(btnSuratSakit);
             jmlmenu++;
         }
         
@@ -25967,6 +25991,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_sakit()==true){
+            if(btnSuratSakit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratSakit);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getruang_perpustakaan()==true){
             if(btnRuangPerpustakaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRuangPerpustakaan);
@@ -27723,6 +27754,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapKunjungan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRekapKunjunganActionPerformed(evt);
+            }
+        });
+        
+        btnSuratSakit= new widget.ButtonBig();
+        btnSuratSakit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_order-history_49596.png"))); 
+        btnSuratSakit.setText("Surat Keterangan Sakit");
+        btnSuratSakit.setIconTextGap(0);
+        btnSuratSakit.setName("btnSuratSakit"); 
+        btnSuratSakit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratSakit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratSakitActionPerformed(evt);
             }
         });
 
