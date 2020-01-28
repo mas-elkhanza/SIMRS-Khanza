@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="561" leftMargin="17" rightMargin="17" topMargin="17" bottomMargin="17" uuid="eeb60c86-7702-4e97-933f-bc659d1bee0c">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
@@ -86,7 +86,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 	</background>
 	<title>
 		<band height="139" splitType="Stretch">
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="48" y="14" width="242" height="14" uuid="21999308-a9b7-4a06-a44d-232077eca403"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="10"/>
@@ -94,7 +94,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="48" y="42" width="242" height="14" uuid="e04f9d4a-c6cf-4e9b-9bec-aaca6861a505"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="10"/>
@@ -102,7 +102,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="48" y="28" width="242" height="14" uuid="6822fafe-a347-4216-b9f6-7441c3b478a3"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="10"/>
@@ -110,7 +110,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="48" y="0" width="242" height="14" uuid="e5f69eb5-88ac-4c8a-84d4-6b628c20db68">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -203,7 +203,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="96" y="83" width="194" height="12" uuid="4ff74457-9947-4ff8-915f-b0102264f08d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -214,7 +214,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pasien}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="96" y="95" width="194" height="12" uuid="978be72d-f2f5-4227-aafb-0f995660e0b9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -224,7 +224,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$P{norm}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="96" y="107" width="194" height="12" uuid="948089cb-d920-422b-86e0-c40204c1d6ab">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -234,7 +234,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$P{penanggung}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="96" y="119" width="194" height="12" uuid="490f770c-cdfa-484f-8d42-3ab17c238d0a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -244,7 +244,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$P{peresep}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="147" y="64" width="143" height="12" uuid="08b21648-2a93-4464-bca8-ab33814c5ef2">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -261,7 +261,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 	</pageHeader>
 	<detail>
 		<band height="24" splitType="Stretch">
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="16" y="0" width="144" height="12" uuid="50e9c382-8f9a-44c1-8334-27dfe86fb708"/>
 				<textElement>
 					<font fontName="Times New Roman" size="9"/>
@@ -269,7 +269,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="0" y="0" width="16" height="12" uuid="995e89dc-36b2-48ed-97c3-4b683bee02d8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -279,7 +279,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$V{no}]]></textFieldExpression>
 			</textField>
-			<textField pattern="Rp #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="Rp #,##0.00">
 				<reportElement mode="Transparent" x="207" y="0" width="83" height="12" uuid="0bf50cb4-dac3-4ef0-ba9e-f532d748e43a"/>
 				<textElement textAlignment="Right">
 					<font fontName="Times New Roman" size="9"/>
@@ -287,7 +287,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="161" y="0" width="46" height="12" uuid="fc4776f5-448e-4a9e-b500-fe907d0d5c96"/>
 				<textElement>
 					<font fontName="Times New Roman" size="9"/>
@@ -295,7 +295,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jml}+" "+$F{kode_sat}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement mode="Transparent" x="16" y="11" width="144" height="12" uuid="d0495648-8e23-4e58-ab12-0859be0d5e70"/>
 				<textElement>
 					<font fontName="Times New Roman" size="9"/>
@@ -320,7 +320,7 @@ where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.
 				</textElement>
 				<text><![CDATA[T]]></text>
 			</staticText>
-			<textField pattern="Rp #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="Rp #,##0.00">
 				<reportElement mode="Transparent" x="207" y="0" width="83" height="12" uuid="08cdd412-e84b-4162-a608-9e449a483624"/>
 				<textElement textAlignment="Right">
 					<font fontName="Times New Roman" size="10"/>

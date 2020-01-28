@@ -1677,8 +1677,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         TPasien.setText(nama);
         KdPoli.setText(kodepoli);
         NmPoli.setText(namapoli);
-        KdDokter.setText(kodedokter);
-        NmDokter.setText(namadokter);
+//        KdDokter.setText(kodedokter);
+//        NmDokter.setText(namadokter);
         TCari.setText(norm);
         ChkInput.setSelected(true);
         isForm();

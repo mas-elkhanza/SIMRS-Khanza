@@ -17,14 +17,44 @@
 	<parameter name="asal_kiriman" class="java.lang.String"/>
 	<parameter name="doktermasuk" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, 
-pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,
-pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,
-pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj, suku_bangsa.nama_suku_bangsa,
-concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien 
-inner join kelurahan inner join kecamatan inner join kabupaten inner join suku_bangsa
-inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel 
-and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and suku_bangsa.id=pasien.suku_bangsa]]>
+		<![CDATA[select 
+pasien.no_rkm_medis, 
+pasien.nm_pasien, 
+pasien.no_ktp, 
+pasien.jk, 
+pasien.tmp_lahir, 
+pasien.tgl_lahir,pasien.nm_ibu, 
+concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, 
+pasien.gol_darah, 
+pasien.pekerjaan,
+pasien.stts_nikah,
+pasien.agama,
+pasien.tgl_daftar,
+pasien.no_tlp,
+pasien.umur,
+pasien.pnd, 
+pasien.keluarga, 
+pasien.namakeluarga,
+penjab.png_jawab,
+pasien.pekerjaanpj, 
+suku_bangsa.nama_suku_bangsa,
+concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj,
+kamar_inap.tgl_masuk, 
+kamar_inap.jam_masuk,
+kamar.kelas,
+bangsal.nm_bangsal,
+kamar_inap.kd_kamar
+from reg_periksa
+inner join pasien.no_rkm_medis=reg_periksa.no_rkm_medis 
+inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel 
+inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec 
+inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab 
+inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa 
+inner join penjab on pasien.kd_pj=penjab.kd_pj 
+inner join propinsi on pasien.kd_prop=propinsi.kd_prop 
+inner join kamar_inap.no_rawat=reg_periksa.no_rawat
+inner join kamar.kd_rawat=kamar_inap.kd_kamar
+inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 	</queryString>
 	<field name="no_rkm_medis" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -90,6 +120,9 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and suku_b
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_suku_bangsa" class="java.lang.String"/>
+	<field name="nm_bangsal" class="java.lang.String"/>
+	<field name="kd_kamar" class="java.lang.String"/>
+	<field name="kelas" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
@@ -138,13 +171,13 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and suku_b
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="11" isUnderline="false"/>
+					<font fontName="Tahoma" size="11" isBold="true" isUnderline="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[SURAT PERNYATAAN]]></text>
 			</staticText>
 			<line>
-				<reportElement x="231" y="43" width="110" height="1" uuid="73be2951-f26b-460a-9740-d0f9b05133c4">
+				<reportElement x="226" y="41" width="120" height="1" uuid="73be2951-f26b-460a-9740-d0f9b05133c4">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -319,7 +352,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and suku_b
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nm_bangsal} + " / " + $F{kd_kamar} + " / " + $F{kelas}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="173" y="224" width="5" height="13" uuid="4686d62a-5bb9-4091-8c52-f4325299edf3"/>
@@ -533,21 +566,13 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and suku_b
 				</textElement>
 				<text><![CDATA[Demikian surat pernyataan ini saya buat dan saya tandatangani demi kelancaran administrasi RSU Islam Harapan Anda Tegal.]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="370" y="620" width="40" height="13" uuid="debec863-510f-443d-ab14-664dc3d35c03"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="10"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[TEGAL, ]]></text>
-			</staticText>
 			<textField textAdjust="StretchHeight">
-				<reportElement mode="Transparent" x="410" y="620" width="120" height="13" uuid="6a8538ce-0231-4301-8809-630636816fc1"/>
+				<reportElement mode="Transparent" x="420" y="620" width="110" height="13" uuid="6a8538ce-0231-4301-8809-630636816fc1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="370" y="636" width="160" height="13" uuid="957c6fe2-b9f1-4069-bbe2-34944f813212"/>
@@ -564,6 +589,22 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and suku_b
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{namakeluarga}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="42" y="722" width="489" height="13" uuid="b19176ee-323c-4776-8df5-8e0f8b91b043"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[*PMK 51 tahun 2018 tentang Pengenaan Urun Biaya dan Selisih Biaya dalam program JKN]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="370" y="620" width="50" height="13" uuid="10868d27-ff1c-4ea2-9651-e9e35b5bdf80"/>
+				<textElement>
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kotars}+","]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
