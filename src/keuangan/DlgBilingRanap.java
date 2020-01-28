@@ -136,7 +136,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "(sum(rawat_jl_drpr.material)+sum(rawat_jl_drpr.menejemen)+sum(rawat_jl_drpr.kso)) as totalmaterial,"+
                     "rawat_jl_drpr.tarif_tindakandr,"+
                     "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr,"+
-                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr  "+
+                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr "+
                     "from rawat_jl_drpr inner join jns_perawatan inner join kategori_perawatan "+
                     "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
                     "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
@@ -157,11 +157,12 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "(sum(rawat_inap_drpr.material)+sum(rawat_inap_drpr.menejemen)+sum(rawat_inap_drpr.kso)) as totalmaterial,"+
                     "rawat_inap_drpr.tarif_tindakandr,"+
                     "sum(rawat_inap_drpr.tarif_tindakanpr) as totaltarif_tindakanpr, "+
-                    "sum(rawat_inap_drpr.tarif_tindakandr) as totaltarif_tindakandr "+
-                    "from rawat_inap_drpr inner join jns_perawatan_inap inner join kategori_perawatan "+
+                    "sum(rawat_inap_drpr.tarif_tindakandr) as totaltarif_tindakandr, "+
+                    "dokter.nm_dokter, rawat_inap_drpr.kd_dokter " +
+                    "from rawat_inap_drpr inner join jns_perawatan_inap inner join kategori_perawatan inner join dokter "+
                     "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
-                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "rawat_inap_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by rawat_inap_drpr.kd_jenis_prw",
+                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori and dokter.kd_dokter=rawat_inap_drpr.kd_dokter where "+
+                    "rawat_inap_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by rawat_inap_drpr.kd_dokter, rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan",
             sqlpsralanperawat="select jns_perawatan.nm_perawatan,jns_perawatan.total_byrpr,count(jns_perawatan.nm_perawatan) as jml, "+
                                            "jns_perawatan.total_byrpr*count(jns_perawatan.nm_perawatan) as biaya "+
                                            "from rawat_jl_pr inner join jns_perawatan inner join kategori_perawatan  "+
@@ -5213,13 +5214,18 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
 
                                 if(rinciandokterranap.equals("Yes")){
+                                    String namaTindakan = rsranapdrpr.getString("nm_perawatan");
+                                    
                                     detailbhp=detailbhp+rsranapdrpr.getDouble("totalbhp");
                                     detailjs=detailjs+rsranapdrpr.getDouble("totalmaterial")+rsranapdrpr.getDouble("totaltarif_tindakanpr");
-                                    tabModeRwJlDr.addRow(new Object[]{true,"",rsranapdrpr.getString("nm_perawatan"),":",
+                                    tabModeRwJlDr.addRow(new Object[]{true,"", namaTindakan,":",
                                                 rsranapdrpr.getDouble("tarif_tindakandr"),rsranapdrpr.getDouble("jml"),tamkur,(rsranapdrpr.getDouble("totaltarif_tindakandr")+tamkur),"Ranap Dokter Paramedis"});
                                     subttl=subttl+rsranapdrpr.getDouble("totaltarif_tindakandr")+tamkur; 
                                 }else{
-                                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsranapdrpr.getString("nm_perawatan"),":",
+                                    String namaTindakan = rsranapdrpr.getString("nm_perawatan").contains("Visit") ? 
+                                                            rsranapdrpr.getString("nm_perawatan") + " (" + rsranapdrpr.getString("nm_dokter") + ")" : rsranapdrpr.getString("nm_perawatan");
+                                    
+                                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",namaTindakan,":",
                                                        rsranapdrpr.getDouble("total_byrdr"),rsranapdrpr.getDouble("jml"),tamkur,(tamkur+rsranapdrpr.getDouble("biaya")),"Ranap Dokter Paramedis"});
                                     subttl=subttl+rsranapdrpr.getDouble("biaya")+tamkur;
                                 }
