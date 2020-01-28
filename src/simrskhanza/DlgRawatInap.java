@@ -4077,10 +4077,14 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         isJns();
         switch (TabRawat.getSelectedIndex()) {
             case 0:
-                tampilDr();
+//                tampilDr();
+                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                TabRawat.setSelectedIndex(2);
                 break;
             case 1:
-                tampilPr();
+//                tampilPr();
+                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                TabRawat.setSelectedIndex(2);
                 break;
             case 2:
                 tampilDrPr();
