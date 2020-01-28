@@ -89,6 +89,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         this.setLocation(8,1);
         setSize(885,674);
+        TabRawat.setSelectedIndex(2);
         tabModeDr=new DefaultTableModel(null,new Object[]{
             "P","No.Rawat","No.R.M.","Nama Pasien","Perawatan/Tindakan","Kode Dokter",
             "Dokter Yg Menangani","Tgl.Rawat","Jam Rawat","Biaya","Kode","Tarif Dokter",
@@ -4274,6 +4275,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 //                TCari.setPreferredSize(new Dimension(207,23));            
 //                TabRawatTindakanDokterMouseClicked(null);
                 JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                TabRawat.setSelectedIndex(2);
                 break;
             case 1:
 //                BtnSimpan.setEnabled(akses.gettindakan_ralan());
@@ -4284,6 +4286,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 //                TCari.setPreferredSize(new Dimension(207,23));
 //                TabRawatTindakanPetugasMouseClicked(null);
                 JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                TabRawat.setSelectedIndex(2);
                 break;
             case 2:
                 BtnSimpan.setEnabled(akses.gettindakan_ralan());
