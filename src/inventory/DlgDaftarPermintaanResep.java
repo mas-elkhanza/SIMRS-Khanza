@@ -61,8 +61,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Resep","Tgl.Peresepan","Jam Peresepan","No.Rawat","Jenis Bayar","No.RM",
-                "Pasien","Dokter Peresep","Status","Kode Dokter","Poli/Unit","Kode Poli"
+                "No.Resep","Tgl.Peresepan","Jam Peresepan","No.Rawat","No.RM",
+                "Pasien","Dokter Peresep","Status","Poli/Unit","Jenis Bayar"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +72,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         tbResepRalan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResepRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i <11; i++) {
+        for (int i = 0; i <10; i++) {
             TableColumn column = tbResepRalan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(75);
@@ -83,23 +83,17 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(105);
             }else if(i==4){
-                column.setPreferredWidth(105);
-            }else if(i==5){
                 column.setPreferredWidth(70);
+            }else if(i==5){
+                column.setPreferredWidth(190);
             }else if(i==6){
                 column.setPreferredWidth(190);
             }else if(i==7){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(105);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(105);
             }else if(i==9){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }else if(i==10){
-                column.setPreferredWidth(140);
-            }else if(i==11){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(130);
             }
         }
         tbResepRalan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1499,7 +1493,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         tabMode.addRow(new String[]{
                             rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
-                            rs.getString("kd_dokter"),rs.getString("nm_poli"),rs.getString("kd_poli")
+                            rs.getString("nm_poli"),rs.getString("png_jawab")
                         });              
                     }  
                 }else{
@@ -1508,7 +1502,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode.addRow(new String[]{
                                 rs.getString("no_resep"),rs.getString("tgl_peresepan"),rs.getString("jam_peresepan"),rs.getString("no_rawat"),
                                 rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
-                                rs.getString("kd_dokter"),rs.getString("nm_poli"),rs.getString("kd_poli")
+                                rs.getString("nm_poli"),rs.getString("png_jawab")
                             });
                         }                    
                     }  
