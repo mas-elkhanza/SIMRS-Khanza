@@ -70,7 +70,8 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private String Suspen_Piutang_Radiologi_Ranap="",Radiologi_Ranap="",Beban_Jasa_Medik_Dokter_Radiologi_Ranap="",
             Utang_Jasa_Medik_Dokter_Radiologi_Ranap="",Beban_Jasa_Medik_Petugas_Radiologi_Ranap="",
             Utang_Jasa_Medik_Petugas_Radiologi_Ranap="",Beban_Kso_Radiologi_Ranap="",Utang_Kso_Radiologi_Ranap="",
-            HPP_Persediaan_Radiologi_Rawat_Inap="",Persediaan_BHP_Radiologi_Rawat_Inap="",norawatibu="";
+            HPP_Persediaan_Radiologi_Rawat_Inap="",Persediaan_BHP_Radiologi_Rawat_Inap="",norawatibu="",
+            proyeksi="",kV="",mAS="",FFD="",BSF="",inak="",jml_penyinaran="",dosis="";
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -79,11 +80,13 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        Object[] row={"P","Kode Periksa","Nama Pemeriksaan","Tarif","Bagian RS","BHP","Tarif Perujuk","Tarif Dokter","Tarif Petugas","Kso","Menejemen"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "P","Kode Periksa","Nama Pemeriksaan","Tarif","Bagian RS","BHP","Tarif Perujuk","Tarif Dokter","Tarif Petugas","Kso","Menejemen",
+            "Proyeksi","kV","mAS","FFD","BSF","Inak","Jml Penyinaran","Dosis Radiasi"
+        }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if (colIndex==0) {
+                if ((colIndex==0)||(colIndex==11)||(colIndex==12)||(colIndex==13)||(colIndex==14)||(colIndex==15)||(colIndex==16)||(colIndex==17)||(colIndex==18)) {
                     a=true;
                 }
                 return a;
@@ -91,7 +94,9 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -104,7 +109,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         tbPemeriksaan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPemeriksaan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 11; i++) {
+        for(i = 0; i < 19; i++) {
             TableColumn column = tbPemeriksaan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -114,6 +119,22 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==3){
                 column.setPreferredWidth(75);
+            }else if(i==11){
+                column.setPreferredWidth(100);
+            }else if(i==12){
+                column.setPreferredWidth(35);
+            }else if(i==13){
+                column.setPreferredWidth(35);
+            }else if(i==14){
+                column.setPreferredWidth(35);
+            }else if(i==15){
+                column.setPreferredWidth(35);
+            }else if(i==16){
+                column.setPreferredWidth(35);
+            }else if(i==17){
+                column.setPreferredWidth(85);
+            }else if(i==18){
+                column.setPreferredWidth(95);
             }else {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -648,7 +669,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-09-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1360,7 +1381,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             pemeriksaan="";
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                    pemeriksaan=tbPemeriksaan.getValueAt(i,2).toString()+", "+pemeriksaan;
+                    pemeriksaan=tbPemeriksaan.getValueAt(i,2).toString()+" dengan Proyeksi : "+tbPemeriksaan.getValueAt(i,11).toString()+", kV : "+tbPemeriksaan.getValueAt(i,12).toString()+", mAS : "+tbPemeriksaan.getValueAt(i,13).toString()+", FFD : "+tbPemeriksaan.getValueAt(i,14).toString()+", BSF : "+tbPemeriksaan.getValueAt(i,15).toString()+", Inak : "+tbPemeriksaan.getValueAt(i,16).toString()+", Jml Penyinaran : "+tbPemeriksaan.getValueAt(i,17).toString()+", Dosis Radiasi : "+tbPemeriksaan.getValueAt(i,18).toString()+", "+pemeriksaan;
                 }
             }
             Map<String, Object> param = new HashMap<>();
@@ -1654,6 +1675,14 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         jml=tbPemeriksaan.getRowCount();
         for(i=0;i<jml;i++){ 
             tbPemeriksaan.setValueAt(false,i,0);
+            tbPemeriksaan.setValueAt("",i,11);
+            tbPemeriksaan.setValueAt("",i,12);
+            tbPemeriksaan.setValueAt("",i,13);
+            tbPemeriksaan.setValueAt("",i,14);
+            tbPemeriksaan.setValueAt("",i,15);
+            tbPemeriksaan.setValueAt("",i,16);
+            tbPemeriksaan.setValueAt("",i,17);
+            tbPemeriksaan.setValueAt("",i,18);
         }
         jml=tbObat.getRowCount();
         for(i=0;i<jml;i++){ 
@@ -2008,13 +2037,69 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             
             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                    if(Sequel.menyimpantf2("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",16,new String[]{
+                    proyeksi="";
+                    if(tbPemeriksaan.getValueAt(i,11).toString().length()>50){
+                        proyeksi=tbPemeriksaan.getValueAt(i,11).toString().substring(0,49);
+                    }else{
+                        proyeksi=tbPemeriksaan.getValueAt(i,11).toString();
+                    }
+                    
+                    kV="";
+                    if(tbPemeriksaan.getValueAt(i,12).toString().length()>10){
+                        kV=tbPemeriksaan.getValueAt(i,12).toString().substring(0,9);
+                    }else{
+                        kV=tbPemeriksaan.getValueAt(i,12).toString();
+                    }
+                    
+                    mAS="";
+                    if(tbPemeriksaan.getValueAt(i,13).toString().length()>10){
+                        kV=tbPemeriksaan.getValueAt(i,13).toString().substring(0,9);
+                    }else{
+                        kV=tbPemeriksaan.getValueAt(i,13).toString();
+                    }
+                    
+                    FFD="";
+                    if(tbPemeriksaan.getValueAt(i,14).toString().length()>10){
+                        kV=tbPemeriksaan.getValueAt(i,14).toString().substring(0,9);
+                    }else{
+                        kV=tbPemeriksaan.getValueAt(i,14).toString();
+                    }
+                    
+                    BSF="";
+                    if(tbPemeriksaan.getValueAt(i,15).toString().length()>10){
+                        kV=tbPemeriksaan.getValueAt(i,15).toString().substring(0,9);
+                    }else{
+                        kV=tbPemeriksaan.getValueAt(i,15).toString();
+                    }
+                    
+                    inak="";
+                    if(tbPemeriksaan.getValueAt(i,16).toString().length()>10){
+                        inak=tbPemeriksaan.getValueAt(i,16).toString().substring(0,9);
+                    }else{
+                        inak=tbPemeriksaan.getValueAt(i,16).toString();
+                    }
+                    
+                    jml_penyinaran="";
+                    if(tbPemeriksaan.getValueAt(i,17).toString().length()>10){
+                        jml_penyinaran=tbPemeriksaan.getValueAt(i,17).toString().substring(0,9);
+                    }else{
+                        jml_penyinaran=tbPemeriksaan.getValueAt(i,17).toString();
+                    }
+                    
+                    dosis="";
+                    if(tbPemeriksaan.getValueAt(i,18).toString().length()>20){
+                        dosis=tbPemeriksaan.getValueAt(i,18).toString().substring(0,19);
+                    }else{
+                        dosis=tbPemeriksaan.getValueAt(i,18).toString();
+                    }
+                    
+                    if(Sequel.menyimpantf2("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",24,new String[]{
                         TNoRw.getText(),KdPtg.getText(),tbPemeriksaan.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                         CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),KodePerujuk.getText(),
                         tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,5).toString(),tbPemeriksaan.getValueAt(i,6).toString(),
                         tbPemeriksaan.getValueAt(i,7).toString(),tbPemeriksaan.getValueAt(i,8).toString(),tbPemeriksaan.getValueAt(i,9).toString(),
                         tbPemeriksaan.getValueAt(i,10).toString(),tbPemeriksaan.getValueAt(i,3).toString(),
-                        KodePj.getText(),status
+                        KodePj.getText(),status,proyeksi, kV, mAS, FFD, BSF, inak, jml_penyinaran, dosis
                     })==true){
                         ttljmdokter=ttljmdokter+Double.parseDouble(tbPemeriksaan.getValueAt(i,6).toString())+Double.parseDouble(tbPemeriksaan.getValueAt(i,7).toString());
                         ttljmpetugas=ttljmpetugas+Double.parseDouble(tbPemeriksaan.getValueAt(i,8).toString());
