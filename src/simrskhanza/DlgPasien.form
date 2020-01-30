@@ -2399,7 +2399,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel7">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Key Word :"/>
+                    <Property name="text" type="java.lang.String" value="Keyword :"/>
                     <Property name="name" type="java.lang.String" value="jLabel7" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[68, 23]"/>
@@ -2745,10 +2745,10 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="4">
-                                <StringItem index="0" value="MENIKAH"/>
-                                <StringItem index="1" value="BELUM MENIKAH"/>
-                                <StringItem index="2" value="JANDA"/>
-                                <StringItem index="3" value="DUDHA"/>
+                                <StringItem index="0" value="KAWIN"/>
+                                <StringItem index="1" value="BELUM KAWIN"/>
+                                <StringItem index="2" value="CERAI HIDUP"/>
+                                <StringItem index="3" value="CERAI MATI"/>
                               </StringArray>
                             </Property>
                             <Property name="lightWeightPopupEnabled" type="boolean" value="false"/>
@@ -4326,7 +4326,7 @@
                     <Component class="widget.Table" name="tbPasien">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="jPopupMenu1"/>
                         </Property>
@@ -4391,7 +4391,7 @@
                     <Component class="widget.Table" name="tbPasien2">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="jPopupMenu1"/>
                         </Property>
@@ -4456,7 +4456,7 @@
                     <Component class="widget.Table" name="tbPasien3">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="jPopupMenu1"/>
                         </Property>

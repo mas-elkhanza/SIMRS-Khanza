@@ -321,7 +321,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
 
         MnLembarSkriningRalan.setBackground(new java.awt.Color(255, 255, 254));
         MnLembarSkriningRalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLembarSkriningRalan.setForeground(new java.awt.Color(50,50,50));
+        MnLembarSkriningRalan.setForeground(new java.awt.Color(50, 50, 50));
         MnLembarSkriningRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarSkriningRalan.setText("Lembar Skrining Ralan");
         MnLembarSkriningRalan.setName("MnLembarSkriningRalan"); // NOI18N
@@ -335,7 +335,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
 
         MnPDFSkriningRalan.setBackground(new java.awt.Color(255, 255, 254));
         MnPDFSkriningRalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPDFSkriningRalan.setForeground(new java.awt.Color(50,50,50));
+        MnPDFSkriningRalan.setForeground(new java.awt.Color(50, 50, 50));
         MnPDFSkriningRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPDFSkriningRalan.setText("PDF Skrining Ralan");
         MnPDFSkriningRalan.setName("MnPDFSkriningRalan"); // NOI18N
@@ -356,7 +356,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Skrining Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Skrining Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -546,7 +546,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass7.add(DTPCari2);
 
-        jLabel6.setText("Key Word :");
+        jLabel6.setText("Keyword :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass7.add(jLabel6);
@@ -948,7 +948,7 @@ public class RMSKriningRawatJalan extends javax.swing.JDialog {
                 tampil();
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null,"Maaf silakan pilih data terlebih dahulu..!!");
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1051,7 +1051,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(tbObat.getSelectedRow()> -1){ 
             try{
-                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Registrasi","Via IGD","Via Cek No.Kartu VClaim","Via Cek NIK VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim"},"Via Registrasi");
+                pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Registrasi","Via IGD","Via Cek No.Kartu VClaim","Via Cek NIK VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim"},"Via Registrasi");
                 switch (pilihan) {
                     case "Via Registrasi":  
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1140,7 +1140,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 System.out.println("Notif : "+e);
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null,"Maaf silakan pilih data terlebih dahulu..!!");
         }
     }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1267,7 +1267,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "skrining_rawat_jalan.nyeri_dada,skrining_rawat_jalan.skala_nyeri,skrining_rawat_jalan.keputusan,skrining_rawat_jalan.nip,petugas.nama "+
                     "from skrining_rawat_jalan inner join pasien inner join petugas on skrining_rawat_jalan.no_rkm_medis=pasien.no_rkm_medis and skrining_rawat_jalan.nip=petugas.nip where skrining_rawat_jalan.no_rkm_medis='"+TNoRM.getText()+"'",param);
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null,"Maaf silakan pilih data terlebih dahulu..!!");
         }
     }//GEN-LAST:event_MnLembarSkriningRalanActionPerformed
 
@@ -1288,7 +1288,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "skrining_rawat_jalan.nyeri_dada,skrining_rawat_jalan.skala_nyeri,skrining_rawat_jalan.keputusan,skrining_rawat_jalan.nip,petugas.nama "+
                     "from skrining_rawat_jalan inner join pasien inner join petugas on skrining_rawat_jalan.no_rkm_medis=pasien.no_rkm_medis and skrining_rawat_jalan.nip=petugas.nip where skrining_rawat_jalan.no_rkm_medis='"+TNoRM.getText()+"'",param);
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null,"Maaf silakan pilih data terlebih dahulu..!!");
         }
     }//GEN-LAST:event_MnPDFSkriningRalanActionPerformed
 
@@ -1563,7 +1563,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isPas(){
         if(validasiregistrasi.equals("Yes")){
             if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' and stts<>'Batal'",TNoRM.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
+                JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilakan konfirmasi dengan pihak kasir.. !!");
             }else{
                 if(validasicatatan.equals("Yes")){
                     if(Sequel.cariInteger("select count(no_rkm_medis) from catatan_pasien where no_rkm_medis=?",TNoRM.getText())>0){

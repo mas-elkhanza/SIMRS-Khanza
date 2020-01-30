@@ -22,19 +22,19 @@ include_once('../config.php');
 
 		if($tgl_registrasi == $date && $time > LIMITJAM)
 		{
-			$view_error = '<div class="alert bg-pink alert-dismissible" role="alert">Jam pendaftaran anda sudah lewat jam '.LIMITJAM.' WIB. Silahkan pilih tanggal periksa yang lain.</div>';
+			$view_error = '<div class="alert bg-pink alert-dismissible" role="alert">Jam pendaftaran anda sudah lewat jam '.LIMITJAM.' WIB. Silakan pilih tanggal periksa yang lain.</div>';
 			$status = 1;
 		}
 
 		else if($tgl_registrasi < $date)
 		{
-			$view_error = '<div class="alert bg-pink alert-dismissible" role="alert">Tanggal pendaftaran anda sudah lewat. Silahkan pilih tanggal periksa yang lain.</div>';
+			$view_error = '<div class="alert bg-pink alert-dismissible" role="alert">Tanggal pendaftaran anda sudah lewat. Silakan pilih tanggal periksa yang lain.</div>';
 			$status = 1;
 		}
 
 		else if($tgl_registrasi > $tgl_kedepan)
 		{
-			$view_error = '<div class="alert bg-pink alert-dismissible" role="alert">Tanggal pendaftaran anda lebih dari hari yang ditentukan. Silahkan pilih tanggal periksa yang lain.</div>';
+			$view_error = '<div class="alert bg-pink alert-dismissible" role="alert">Tanggal pendaftaran anda lebih dari hari yang ditentukan. Silakan pilih tanggal periksa yang lain.</div>';
 			$status = 1;
 		}
 		else
@@ -165,7 +165,7 @@ include_once('../config.php');
 			    		'status' => 'booking-penuh',
 			    		'url'	=> 'regis_booking.php',
 			    		'dokter' => '<button type="button" class="btn btn-warning" data-dismiss="modal">Pilih Dokter Lain</button>',
-			    		'view' => '<div class="alert bg-pink alert-dismissible" role="alert">Mohon maaf untuk Dokter : '. $nm_dokter['nm_dokter'] .' pada Poli : '. $rnmp['nm_poli'] .' sudah penuh kuota pendaftaran online untuk Tanggal '. date('d M Y', strtotime($tgl_registrasi)) .', Silahkan daftar secara langsung ke RSUD Kota Depok.</div>'
+			    		'view' => '<div class="alert bg-pink alert-dismissible" role="alert">Mohon maaf untuk Dokter : '. $nm_dokter['nm_dokter'] .' pada Poli : '. $rnmp['nm_poli'] .' sudah penuh kuota pendaftaran online untuk Tanggal '. date('d M Y', strtotime($tgl_registrasi)) .', Silakan daftar secara langsung ke RSUD Kota Depok.</div>'
 		    		);
 				}
 
@@ -238,7 +238,7 @@ include_once('../config.php');
 		    		'status' => 'booking-penuh',
 		    		'url'	=> 'regis_booking.php',
 		    		'dokter' => '<button type="button" class="btn btn-warning" data-dismiss="modal">Pilih Dokter Lain</button>',
-		    		'view' => '<div class="alert bg-pink alert-dismissible" role="alert">Mohon maaf untuk Dokter : '. $nm_dokter['nm_dokter'] .' pada Poli : '. $rnmp['nm_poli'] .' sudah penuh kuota pendaftaran online untuk Tanggal '. date('d M Y', strtotime($tgl_registrasi)) .', Silahkan daftar secara langsung ke RSUD Kota Depok.</div>'
+		    		'view' => '<div class="alert bg-pink alert-dismissible" role="alert">Mohon maaf untuk Dokter : '. $nm_dokter['nm_dokter'] .' pada Poli : '. $rnmp['nm_poli'] .' sudah penuh kuota pendaftaran online untuk Tanggal '. date('d M Y', strtotime($tgl_registrasi)) .', Silakan daftar secara langsung ke RSUD Kota Depok.</div>'
 	    		);
 			}
 			else
@@ -393,7 +393,7 @@ include_once('../config.php');
 	    		'status' => 'penuh',
 	    		'url'	=> 'regis_booking.php',
 	    		'cabar' => '<button type="button" class="btn btn-warning" data-dismiss="modal">Pilih Cara Bayar Lain</button>',
-	    		'view' => '<div class="alert bg-pink alert-dismissible" role="alert">Mohon maaf untuk kuota pendaftaran online dengan cara bayar '.$nnm_pnjb['png_jawab'].' sudah penuh silahkan gunakan cara bayar yang lain atau datang langsung ke RSUD KOTA DEPOK.</div>'
+	    		'view' => '<div class="alert bg-pink alert-dismissible" role="alert">Mohon maaf untuk kuota pendaftaran online dengan cara bayar '.$nnm_pnjb['png_jawab'].' sudah penuh silakan gunakan cara bayar yang lain atau datang langsung ke RSUD KOTA DEPOK.</div>'
     		);
 		}
 		else
@@ -631,7 +631,7 @@ include_once('../config.php');
 		$pdf->Cell(40,8,'Di Cetak Tanggal : ' . tanggal_indo(date('Y-m-d')), 0 ,0 , 'L' , 0);
 		$pdf->SetY(128);
 		$pdf->SetX(2);
-		$pdf->Cell(25,6,'Catatan : Silahkan datang sesuai pada jam waktu datang yang telah ditentukan...',0,'L');
+		$pdf->Cell(25,6,'Catatan : Silakan datang sesuai pada jam waktu datang yang telah ditentukan...',0,'L');
 
 		$pdf->SetY(145);
 		$pdf->SetFont('Arial','I',8);

@@ -117,7 +117,7 @@ public final class DlgTemplateLaboratorium extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Template Hasil Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Template Hasil Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -238,7 +238,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     if(KdPeriksa.getText().equals("")||NmPeriksa.getText().equals("")){
         Valid.textKosong(KdPeriksa,"Pemeriksaan");
     }else{
-        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if(reply == JOptionPane.YES_OPTION) {
              int row=tbKamar.getRowCount();
              if(row>-1){
@@ -275,7 +275,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
        tabMode.removeRow(tbKamar.getSelectedRow());
        urut();
    }catch(Exception ex){
-       JOptionPane.showMessageDialog(null,"Pilih dulu data yang mau dihapus..!!");
+       JOptionPane.showMessageDialog(null,"Pilih dulu data yang hendak dihapus..!!");
    }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

@@ -33,11 +33,11 @@ include_once ('layout/header.php');
 
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             if($_POST['tgl_registrasi'] == $date && $time > LIMITJAM) {
-                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Jam pendaftaran anda sudah lewat jam '.LIMITJAM.' WITA. Silahkan pilih tanggal periksa yang lain.</div>';
+                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Jam pendaftaran anda sudah lewat jam '.LIMITJAM.' WITA. Silakan pilih tanggal periksa yang lain.</div>';
             } else if($_POST['tgl_registrasi'] < $date) {
-                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Tanggal pendaftaran anda sudah lewat. Silahkan pilih tanggal periksa yang lain.</div>';
+                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Tanggal pendaftaran anda sudah lewat. Silakan pilih tanggal periksa yang lain.</div>';
             } else if($_POST['tgl_registrasi'] > $date_next) {
-                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Tanggal pendaftaran anda lebih dari hari yang ditentukan. Silahkan pilih tanggal periksa yang lain.</div>';
+                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Tanggal pendaftaran anda lebih dari hari yang ditentukan. Silakan pilih tanggal periksa yang lain.</div>';
             } else {
                 redirect("pendaftaran.php?action=pilih-poli&tgl_registrasi=$_POST[tgl_registrasi]");
             }
@@ -122,7 +122,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
         // Check file size not empty
         if ($_POST['kd_pj'] == "A02" &&  $_FILES["file"]["name"] == "") {
-        $errors[] = 'Anda memilih cara bayar BPJS. Silahkan upload berkas rujukan anda.';
+        $errors[] = 'Anda memilih cara bayar BPJS. Silakan upload berkas rujukan anda.';
         }
         // Check file size
         if ($_FILES["file"]["size"] > UKURAN_BERKAS) {
@@ -198,7 +198,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         }
 } else {
-    echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Anda sudah terdaftar untuk tanggal '.$_POST[tgl_registrasi].'. Silahkan pilih tanggal periksa yang lain.</div>';
+    echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Anda sudah terdaftar untuk tanggal '.$_POST[tgl_registrasi].'. Silakan pilih tanggal periksa yang lain.</div>';
 }
 }
 
@@ -325,7 +325,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                                         <div id="admDivCheck" style="display:none;">
                                                 <img id="image_upload_preview" width="200px" src="images/upload-rujukan.png" onclick="upload_rujukan()" style="cursor:pointer;" />
                                           		<br/>
-                                          		<div class="alert bg-green alert-dismissible" role="alert">Anda memilih cara bayar BPJS. <br/>Apakah anda memiliki surat rujukan atau surat kontrol? <br/>Jika tidak, silahkan pilih cara bayar umum. <br/>Jika ya, silahkan lanjutkan pendaftaran anda dengan mengunggah/upload surat rujukan atau surat kontrol.</div>
+                                          		<div class="alert bg-green alert-dismissible" role="alert">Anda memilih cara bayar BPJS. <br/>Apakah anda memiliki surat rujukan atau surat kontrol? <br/>Jika tidak, silakan pilih cara bayar umum. <br/>Jika ya, silakan lanjutkan pendaftaran anda dengan mengunggah/upload surat rujukan atau surat kontrol.</div>
                                                 <input name="file" id="inputFile" type="file" style="display:none;" />
                                         </div>
                                     </div>

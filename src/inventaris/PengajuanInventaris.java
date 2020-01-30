@@ -111,10 +111,10 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NamaBarang.setDocument(new batasInput((int)70).getKata(NamaBarang));
-        LatarBelakang.setDocument(new batasInput((int)200).getKata(LatarBelakang));
-        Spesifikasi.setDocument(new batasInput((int)200).getKata(Spesifikasi));
-        Keterangan.setDocument(new batasInput((int)70).getKata(Keterangan));
+        NamaBarang.setDocument(new batasInput(70).getKata(NamaBarang));
+        LatarBelakang.setDocument(new batasInput(200).getKata(LatarBelakang));
+        Spesifikasi.setDocument(new batasInput(200).getKata(Spesifikasi));
+        Keterangan.setDocument(new batasInput(70).getKata(Keterangan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         Jumlah.setDocument(new batasInput((byte)4).getOnlyAngka(Jumlah));
         Harga.setDocument(new batasInput((byte)20).getOnlyAngka(Harga));
@@ -287,12 +287,12 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         btnPetugasPJ = new widget.Button();
         ChkInput = new widget.CekBox();
 
-        jPopupMenu1.setForeground(new java.awt.Color(50,50,50));
+        jPopupMenu1.setForeground(new java.awt.Color(50, 50, 50));
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         ppProses.setBackground(new java.awt.Color(255, 255, 254));
         ppProses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppProses.setForeground(new java.awt.Color(50,50,50));
+        ppProses.setForeground(new java.awt.Color(50, 50, 50));
         ppProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppProses.setText("Set Status Proses Pengajuan");
         ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -308,7 +308,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
         ppDosetujui.setBackground(new java.awt.Color(255, 255, 254));
         ppDosetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDosetujui.setForeground(new java.awt.Color(50,50,50));
+        ppDosetujui.setForeground(new java.awt.Color(50, 50, 50));
         ppDosetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDosetujui.setText("Set Status Disetujui");
         ppDosetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -324,7 +324,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
 
         ppDitolak.setBackground(new java.awt.Color(255, 255, 254));
         ppDitolak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDitolak.setForeground(new java.awt.Color(50,50,50));
+        ppDitolak.setForeground(new java.awt.Color(50, 50, 50));
         ppDitolak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDitolak.setText("Set Status Ditolak");
         ppDitolak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -347,7 +347,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengajuan Pembelian Aset/Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Pengajuan Pembelian Aset/Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -357,7 +357,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -535,7 +535,7 @@ public final class PengajuanInventaris extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Key Word :");
+        jLabel6.setText("Keyword :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel6);
@@ -1247,7 +1247,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         emptTeks();
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data terlebih dahulu..!!!!");
             }
         }
     }//GEN-LAST:event_ppProsesBtnPrintActionPerformed
@@ -1264,7 +1264,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         emptTeks();
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data terlebih dahulu..!!!!");
             }
         }
     }//GEN-LAST:event_ppDosetujuiBtnPrintActionPerformed
@@ -1281,7 +1281,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         emptTeks();
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data terlebih dahulu..!!!!");
             }
         }
     }//GEN-LAST:event_ppDitolakBtnPrintActionPerformed

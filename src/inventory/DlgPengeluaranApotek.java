@@ -103,8 +103,8 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         NoKeluar.setDocument(new batasInput((byte)15).getKata(NoKeluar));
         kdgudang.setDocument(new batasInput((byte)5).getKata(kdgudang));
         kdptg.setDocument(new batasInput((byte)20).getKata(kdptg));
-        catatan.setDocument(new batasInput((int)200).getKata(catatan));   
-        TCari.setDocument(new batasInput((int)100).getKata(TCari)); 
+        catatan.setDocument(new batasInput(200).getKata(catatan));   
+        TCari.setDocument(new batasInput(100).getKata(TCari)); 
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -316,7 +316,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Transaksi Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -486,7 +486,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label9.setText("Key Word :");
+        label9.setText("Keyword :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi1.add(label9);
@@ -684,10 +684,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(aktifkanbatch.equals("yes")&&(row>0)){
             Valid.textKosong(TCari,"No.Batch/No.Faktur");
         }else if(index<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan pengeluaran...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan pengeluaran...!!!!");
             tbDokter.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;

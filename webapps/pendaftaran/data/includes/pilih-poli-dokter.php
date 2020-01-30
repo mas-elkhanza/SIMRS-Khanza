@@ -138,7 +138,7 @@ function wp_damanhuri_options_page()
 ?>
 	    <div class="wrap">
 	    <h1>Pengaturan Database SIK</h1>
-        <p>Silahkan lakukan penyesuaian pengaturan database SIMRS Khanza.</p>
+        <p>Silakan lakukan penyesuaian pengaturan database SIMRS Khanza.</p>
 	    <form method="post" action="options.php">
 	        <?php
 	            settings_fields("section");

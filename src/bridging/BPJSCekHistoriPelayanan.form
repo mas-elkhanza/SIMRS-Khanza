@@ -85,7 +85,7 @@
             <Component class="widget.Table" name="tbKamar">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                 <Property name="name" type="java.lang.String" value="tbKamar" noResource="true"/>
               </Properties>
             </Component>

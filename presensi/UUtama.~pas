@@ -984,7 +984,7 @@ begin
    else
    if(Trim(PRegMemo2.Text)='')then
    begin
-      MessageDlg('Maaf, silahkan ambil data sidikjari terlebih dahulu...!!!', mtInformation,[mbOK],0);
+      MessageDlg('Maaf, silakan ambil data sidikjari terlebih dahulu...!!!', mtInformation,[mbOK],0);
       PRegGrid.SetFocus;
    end
    else
@@ -1014,7 +1014,7 @@ procedure TfrmUtama.PRegBtnHapusClick(Sender: TObject);
 begin
    if(Trim(PRegIdPeg.Text)='') or (Trim(PRegNIP.Text)='')then
    begin
-      MessageDlg('Maaf, pilih pegawai yang mau dihapus sidik jarinya terlebih dulu...!!', mtInformation,[mbOK],0);
+      MessageDlg('Maaf, pilih pegawai yang hendak dihapus sidik jarinya terlebih dulu...!!', mtInformation,[mbOK],0);
       PRegGrid.SetFocus;
    end
    else
@@ -1057,7 +1057,7 @@ begin
    else
    if(Trim(PRegMemo2.Text)='')then
    begin
-      MessageDlg('Maaf, silahkan ambil data sidikjari terlebih dahulu...!!!', mtInformation,[mbOK],0);
+      MessageDlg('Maaf, silakan ambil data sidikjari terlebih dahulu...!!!', mtInformation,[mbOK],0);
       PRegGrid.SetFocus;
    end
    else
@@ -1426,7 +1426,7 @@ begin
 							  end;
 							end;
 					  7   : begin
-							  PHomMemo1.lines.add('Silahkan hubungkan dengan alat sidik jari....!!!!');
+							  PHomMemo1.lines.add('Silakan hubungkan dengan alat sidik jari....!!!!');
 							  {mp3Player.FileName:=ExtractFilePath(Application.EXEName)+FIni.ReadString('sound','alattakterhubung','\suara\alattakterhubung.mp3');
 							  if FileExists(mp3Player.FileName)then
 							  begin

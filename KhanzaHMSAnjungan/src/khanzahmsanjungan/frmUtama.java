@@ -71,7 +71,7 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(254, 184, 254));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/folder.png"))); // NOI18N
-        jLabel1.setText("Anjungan Registrasi Mandiri, Silahkan Scan Kartu Pasien Anda !!!");
+        jLabel1.setText("Anjungan Registrasi Mandiri, Silakan Scan Kartu Pasien Anda !!!");
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel1.setIconTextGap(10);
@@ -142,12 +142,12 @@ public class frmUtama extends javax.swing.JFrame {
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(TCari.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(rootPane,"<html><div align='center'><font size='5' face='Tahoma' color='#825082'>Silahkan masukkan No.RM/KTP/Asuransi/JKN !!!</font></div></html>");
+                JOptionPane.showMessageDialog(rootPane,"<html><div align='center'><font size='5' face='Tahoma' color='#825082'>Silakan masukkan No.RM/KTP/Asuransi/JKN !!!</font></div></html>");
             }else{
                 if(Sequel.cariInteger("select count(no_rkm_medis) from pasien where no_rkm_medis=?",TCari.getText().trim())>0){
                      if(validasiregistrasi.equals("Yes")){
                          if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' and stts<>'Batal'",TCari.getText())>0){
-                             JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
+                             JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilakan konfirmasi dengan pihak kasir.. !!");
                          }else{
                              DlgPilihPoli pilih=new DlgPilihPoli(this,true);
                              pilih.setSize(this.getWidth()-20,this.getHeight()-70);
@@ -167,7 +167,7 @@ public class frmUtama extends javax.swing.JFrame {
                 }else if(Sequel.cariInteger("select count(no_ktp) from pasien where no_ktp=?",TCari.getText().trim())>0){
                      if(validasiregistrasi.equals("Yes")){
                          if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' and stts<>'Batal'",Sequel.cariIsi("select no_rkm_medis from pasien where no_ktp=?",TCari.getText().trim()))>0){
-                             JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
+                             JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilakan konfirmasi dengan pihak kasir.. !!");
                          }else{
                              DlgPilihPoli pilih=new DlgPilihPoli(this,true);
                              pilih.setSize(this.getWidth()-20,this.getHeight()-70);
@@ -187,7 +187,7 @@ public class frmUtama extends javax.swing.JFrame {
                 }else if(Sequel.cariInteger("select count(no_peserta) from pasien where no_peserta=?",TCari.getText().trim())>0){
                      if(validasiregistrasi.equals("Yes")){
                          if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' and stts<>'Batal'",Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",TCari.getText().trim()))>0){
-                             JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
+                             JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilakan konfirmasi dengan pihak kasir.. !!");
                          }else{
                              DlgPilihPoli pilih=new DlgPilihPoli(this,true);
                              pilih.setSize(this.getWidth()-20,this.getHeight()-70);
@@ -207,7 +207,7 @@ public class frmUtama extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(rootPane,
                         "<html><div align='center'><font size='5' face='Tahoma' color='#825082'>Maaf, data pasien dengan No.RM/KTP/Asuransi/JKN tersebut tidak ditemukan." +
-                        "<br>Bagi pasien yang baru pertama kali periksa, silahkan ke petugas pendaftaran </font></div></html>");
+                        "<br>Bagi pasien yang baru pertama kali periksa, silakan ke petugas pendaftaran </font></div></html>");
                     TCari.requestFocus();
                 }
             }

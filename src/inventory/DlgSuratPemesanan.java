@@ -469,7 +469,7 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surat Pemesanan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Surat Pemesanan Obat/Alkes/BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -639,7 +639,7 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 107));
         panelisi1.setLayout(null);
 
-        label10.setText("Key Word :");
+        label10.setText("Keyword :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi1.add(label10);
@@ -1132,7 +1132,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                         datakonversi.setLocationRelativeTo(internalFrame1);
                         datakonversi.setVisible(true);                        
                     }else{
-                        JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah pemesanan terelebih dahulu..!!");
+                        JOptionPane.showMessageDialog(null,"Silakan masukkan jumlah pemesanan terelebih dahulu..!!");
                     }
                 }
             }
@@ -1152,10 +1152,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pemesanan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan masukkan pemesanan...!!!!");
             tbDokter.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
@@ -1253,7 +1253,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pemesanan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan masukkan pemesanan...!!!!");
             tbDokter.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
             

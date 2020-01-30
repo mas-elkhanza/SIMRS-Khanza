@@ -805,7 +805,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP.setForeground(new java.awt.Color(50,50,50));
+        ppSEP.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP.setText("Print SEP Model 1");
         ppSEP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -821,7 +821,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP1.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP1.setForeground(new java.awt.Color(50,50,50));
+        ppSEP1.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP1.setText("Print SEP Model 2");
         ppSEP1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -837,7 +837,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP2.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP2.setForeground(new java.awt.Color(50,50,50));
+        ppSEP2.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP2.setText("Print SEP Model 3");
         ppSEP2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -853,7 +853,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP3.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP3.setForeground(new java.awt.Color(50,50,50));
+        ppSEP3.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP3.setText("Print SEP Model 4");
         ppSEP3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -869,7 +869,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP4.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP4.setForeground(new java.awt.Color(50,50,50));
+        ppSEP4.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP4.setText("Print SEP Model 1 PDF");
         ppSEP4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -885,7 +885,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP5.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP5.setForeground(new java.awt.Color(50,50,50));
+        ppSEP5.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP5.setText("Print SEP Model 2 PDF");
         ppSEP5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -901,7 +901,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP6.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP6.setForeground(new java.awt.Color(50,50,50));
+        ppSEP6.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP6.setText("Print SEP Model 3 PDF");
         ppSEP6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -917,7 +917,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppSEP7.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP7.setForeground(new java.awt.Color(50,50,50));
+        ppSEP7.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP7.setText("Print SEP Model 4 PDF");
         ppSEP7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -933,7 +933,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppPulang.setBackground(new java.awt.Color(255, 255, 254));
         ppPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPulang.setForeground(new java.awt.Color(50,50,50));
+        ppPulang.setForeground(new java.awt.Color(50, 50, 50));
         ppPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPulang.setText("Update Tanggal Pulang");
         ppPulang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -949,7 +949,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppDetailSEPPeserta.setBackground(new java.awt.Color(255, 255, 254));
         ppDetailSEPPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDetailSEPPeserta.setForeground(new java.awt.Color(50,50,50));
+        ppDetailSEPPeserta.setForeground(new java.awt.Color(50, 50, 50));
         ppDetailSEPPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDetailSEPPeserta.setText("Detail SEP Peserta");
         ppDetailSEPPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -965,7 +965,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppRujukan.setBackground(new java.awt.Color(255, 255, 254));
         ppRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRujukan.setForeground(new java.awt.Color(50,50,50));
+        ppRujukan.setForeground(new java.awt.Color(50, 50, 50));
         ppRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRujukan.setText("Buat Rujukan Keluar");
         ppRujukan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -981,7 +981,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppRiwayatPerawatan.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayatPerawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRiwayatPerawatan.setForeground(new java.awt.Color(50,50,50));
+        ppRiwayatPerawatan.setForeground(new java.awt.Color(50, 50, 50));
         ppRiwayatPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayatPerawatan.setText("Riwayat Perawatan");
         ppRiwayatPerawatan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1000,7 +1000,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         WindowUpdatePulang.setUndecorated(true);
         WindowUpdatePulang.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -1053,7 +1053,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         WindowRujukan.setUndecorated(true);
         WindowRujukan.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Buat Rujukan Keluar VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Buat Rujukan Keluar VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(null);
 
@@ -1272,7 +1272,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppPengajuan.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPengajuan.setForeground(new java.awt.Color(50,50,50));
+        ppPengajuan.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan.setText("Pengajuan SEP");
         ppPengajuan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1288,7 +1288,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppPengajuan1.setBackground(new java.awt.Color(255, 255, 254));
         ppPengajuan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPengajuan1.setForeground(new java.awt.Color(50,50,50));
+        ppPengajuan1.setForeground(new java.awt.Color(50, 50, 50));
         ppPengajuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPengajuan1.setText("Aproval SEP");
         ppPengajuan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1304,7 +1304,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         ppAmbilSep.setBackground(new java.awt.Color(255, 255, 254));
         ppAmbilSep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppAmbilSep.setForeground(new java.awt.Color(50,50,50));
+        ppAmbilSep.setForeground(new java.awt.Color(50, 50, 50));
         ppAmbilSep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppAmbilSep.setText("Ambil SEP di VClaim");
         ppAmbilSep.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1323,7 +1323,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         WindowCariSEP.setUndecorated(true);
         WindowCariSEP.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ambil SEP di VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Ambil SEP di VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setLayout(null);
 
@@ -1400,13 +1400,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SEP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Bridging SEP BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2169,7 +2169,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2218,7 +2218,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Key Word :");
+        jLabel6.setText("Keyword :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -2488,7 +2488,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 System.out.println("Notifikasi Bridging : "+ex);
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
         }            
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -2663,7 +2663,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak diganti..!!");
         } 
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -2908,7 +2908,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         }        
     }//GEN-LAST:event_ppSEPBtnPrintActionPerformed
@@ -2919,7 +2919,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             WindowUpdatePulang.setLocationRelativeTo(internalFrame1);
             WindowUpdatePulang.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau diupdate tanggal pulangnya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak diupdate tanggal pulangnya...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -3063,7 +3063,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data peserta yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data peserta yang hendak dimapping transaksinya...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -3078,7 +3078,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             detail.setLocationRelativeTo(internalFrame1);
             detail.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP ...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP ...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());            
@@ -3171,7 +3171,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data peserta yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data peserta yang hendak dimapping transaksinya...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -3187,7 +3187,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             WindowRujukan.setLocationRelativeTo(internalFrame1);
             WindowRujukan.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dibuatkan rujukan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dibuatkan rujukan...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -3358,7 +3358,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         }   
     }//GEN-LAST:event_ppSEP1BtnPrintActionPerformed
@@ -3384,7 +3384,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         } 
     }//GEN-LAST:event_ppSEP2BtnPrintActionPerformed
@@ -3412,7 +3412,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         } 
     }//GEN-LAST:event_ppSEP3BtnPrintActionPerformed
@@ -3672,7 +3672,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKabupatenActionPerformed
         if(KdPropinsi.getText().trim().equals("")||NmPropinsi.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih propinsi dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih propinsi dulu..!!");
             btnPropinsi.requestFocus();
         }else{
             kabupaten.setPropinsi(KdPropinsi.getText(),NmPropinsi.getText());
@@ -3688,7 +3688,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKecamatanActionPerformed
         if(KdKabupaten.getText().trim().equals("")||NmKabupaten.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan pilih kabupaten dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silakan pilih kabupaten dulu..!!");
             btnKabupaten.requestFocus();
         }else{
             kecamatan.setPropinsi(KdKabupaten.getText(),NmKabupaten.getText());
@@ -3704,7 +3704,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void ppRiwayatPerawatanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRiwayatPerawatanBtnPrintActionPerformed
         if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()!= -1){
@@ -3738,7 +3738,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         }  
     }//GEN-LAST:event_ppSEP4BtnPrintActionPerformed
@@ -3762,7 +3762,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         }  
     }//GEN-LAST:event_ppSEP5BtnPrintActionPerformed
@@ -3788,7 +3788,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         } 
     }//GEN-LAST:event_ppSEP6BtnPrintActionPerformed
@@ -3816,7 +3816,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dicetak...!!!!");
             BtnBatal.requestFocus();
         } 
     }//GEN-LAST:event_ppSEP7BtnPrintActionPerformed

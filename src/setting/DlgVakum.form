@@ -29,7 +29,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title=".: Silahkan klik tombol untuk menghapus isi table">
+            <TitledBorder title=".: Silakan klik tombol untuk menghapus isi table">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -83,7 +83,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Akun Bayar"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -108,7 +108,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Akun Piutang"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -133,7 +133,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Akun Rekening"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -158,7 +158,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Barang Non Medis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -183,7 +183,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Barcode Parkir"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -208,7 +208,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Barcode Presensi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -233,7 +233,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Biaya Harian"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -258,7 +258,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Biaya Sekali Masuk"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -283,7 +283,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Bidang Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -308,7 +308,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Bridging SEP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -333,7 +333,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Catatan Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -358,7 +358,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Daftar Kasift"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -383,7 +383,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Data Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -408,7 +408,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Departemen Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -433,7 +433,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Deposit Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -458,7 +458,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Diagnosa Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -483,7 +483,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Diet Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -508,7 +508,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dokter"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -533,7 +533,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="DPJP Ranap"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -558,7 +558,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Golongan Barang"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -583,7 +583,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="INACBG Klaim Baru"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -608,7 +608,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Insentif Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -633,7 +633,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inventaris"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -658,7 +658,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jadwal Dokter"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -683,7 +683,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jadwal Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -708,7 +708,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jam Jaga Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -733,7 +733,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jam Presensi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -758,7 +758,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jasa Lain Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -783,7 +783,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jenis Barang"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -808,7 +808,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jenis Inventaris"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -833,7 +833,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jenis Parkir"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -858,7 +858,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jenjang Jabatan"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -883,7 +883,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jurnal Akuntansi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -908,7 +908,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kamar"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -933,7 +933,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kamar Aplicare"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -958,7 +958,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kamar Inap"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -983,7 +983,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kategori Barang"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1008,7 +1008,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kategori Inventaris"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1033,7 +1033,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Keanggotaan Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1058,7 +1058,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kelahiran Bayi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1083,7 +1083,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Koleksi Inventaris"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1108,7 +1108,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Konversi Satuan"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1133,7 +1133,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Koperasi Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1158,7 +1158,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Lembur Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1183,7 +1183,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Merk Inventaris"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1208,7 +1208,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Obat, Alkes &amp; BHP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1233,7 +1233,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Obat BHP OK"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1258,7 +1258,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Obat Penyakit"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1283,7 +1283,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Penyakit PD3I"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1308,7 +1308,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1333,7 +1333,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pasien Meninggal"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1358,7 +1358,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pemasukan Lain-Lain"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1383,7 +1383,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pemberian Obat"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1408,7 +1408,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pemesanan Obat &amp; BHP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1433,7 +1433,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pemesanan Non Medis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1458,7 +1458,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Peminjaman Berkas RM"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1483,7 +1483,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Penjualan Obat &amp; BHP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1508,7 +1508,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pendapatan Akte"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1533,7 +1533,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pendapatan Resume"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1558,7 +1558,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pendapatan Tuslah"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1583,7 +1583,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pendapatan Warung"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1608,7 +1608,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pendidikan Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1633,7 +1633,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pengadaan Barang Non Medis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1658,7 +1658,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pengadaan Obat &amp; BHP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1683,7 +1683,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pengeluaran Harian"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1708,7 +1708,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Penyakit"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1733,7 +1733,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Periksa Lab"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1758,7 +1758,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Periksa Radiologi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1783,7 +1783,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Petugas"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1808,7 +1808,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Piutang Obat &amp; BHP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1833,7 +1833,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Piutang Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1858,7 +1858,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Potongan Biaya"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1883,7 +1883,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Presensi Pegawai"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1908,7 +1908,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Produsen Inventaris"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1933,7 +1933,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rekap Parkir"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1958,7 +1958,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registrasi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -1983,7 +1983,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ralan Dokter"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2008,7 +2008,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ralan Paramedis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2033,7 +2033,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ranap Dokter"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2058,7 +2058,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ranap Paramedis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2083,7 +2083,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Potongan Gaji"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2108,7 +2108,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rekening Tahun"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2133,7 +2133,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Resep Obat"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2158,7 +2158,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Resep Pulang"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2183,7 +2183,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Retur Dari Pembeli"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2208,7 +2208,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Retur Ke Suplier"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2233,7 +2233,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Retur Obat Ranap"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2258,7 +2258,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Retur Piutang Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2283,7 +2283,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Riwayat Obat, Alkes &amp; BHP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2308,7 +2308,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Riwayat Gaji"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2333,7 +2333,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Riwayat Jabatan"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2358,7 +2358,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Riwayat Pelatihan &amp; Kgt.Ilmiah"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2383,7 +2383,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Riwayat Pendidikan"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2408,7 +2408,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ruang Rumah Sakit"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2433,7 +2433,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rujukan Keluar"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2458,7 +2458,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rujukan Masuk"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2483,7 +2483,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Satuan Barang"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2508,7 +2508,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sms Masuk"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2533,7 +2533,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sidik Jari"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2558,7 +2558,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sirkulasi Inventaris"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2583,7 +2583,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Status Kerja"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2608,7 +2608,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Status WP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2633,7 +2633,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Stok Keluar Barang Non Medis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2658,7 +2658,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Stok Opname Obat &amp; BHP"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2683,7 +2683,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Stok Obat Pasien"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2708,7 +2708,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Suplier Medis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2733,7 +2733,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Suplier Non Medis"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2758,7 +2758,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tagihan Masuk"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2783,7 +2783,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tagihan Operasi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2808,7 +2808,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tahun &amp; Bulan Gaji"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2833,7 +2833,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tambahan Biaya"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2858,7 +2858,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Lab"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2883,7 +2883,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Operasi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2908,7 +2908,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Radiologi"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2933,7 +2933,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Ralan"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2958,7 +2958,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarif Ranap"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -2983,7 +2983,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tunjangan"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
@@ -3008,7 +3008,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tracker Login"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan hapus terlebih dahulu tabel yang bereferensi !!"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan hapus terlebih dahulu tabel yang bereferensi !!"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>

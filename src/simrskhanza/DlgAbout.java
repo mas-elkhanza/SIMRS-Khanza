@@ -1,11 +1,11 @@
 /*
-  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
+  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile
   Software ini dalam bentuk apapun tanpa seijin pembuat software
   (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
   npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
   nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
   nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami
   karena telah berdoa buruk, semua ini kami lakukan karena kami ti
   dak pernah rela karya kami dibajak tanpa ijin.
  */
@@ -18,7 +18,7 @@ package simrskhanza;
  */
 public class DlgAbout extends javax.swing.JDialog {
 
-    
+
     public DlgAbout(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -157,7 +157,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel14.setText("gunakan. Jagan lupa untuk mengatur hak");
+        jLabel14.setText("gunakan. Jangan lupa untuk mengatur hak");
         jLabel14.setName("jLabel14"); // NOI18N
         panelGlass1.add(jLabel14);
         jLabel14.setBounds(230, 50, 220, 14);

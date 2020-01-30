@@ -340,12 +340,12 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Berdasar Tanggal Rujukan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Rujukan Berdasar Tanggal Rujukan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -358,7 +358,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
@@ -368,7 +368,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbBangsal2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal2.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbBangsal2.setName("tbBangsal2"); // NOI18N
         tbBangsal2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -568,7 +568,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     BtnCari.requestFocus();
                 }                    
             }else{            
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
                 BtnCari.requestFocus();
             }                 
         }else if(TabRawat.getSelectedIndex()==1){
@@ -587,7 +587,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     BtnCari.requestFocus();
                 }
             }else{            
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
                 BtnCari.requestFocus();
             } 
         }

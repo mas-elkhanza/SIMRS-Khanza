@@ -337,7 +337,7 @@ public final class DlgStokOpnameIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Barang Non Medis, Penunjang Lab & Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Stok Opname Barang Non Medis, Penunjang Lab & Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -345,7 +345,7 @@ public final class DlgStokOpnameIPSRS extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
+        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -391,7 +391,7 @@ public final class DlgStokOpnameIPSRS extends javax.swing.JDialog {
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi3.add(Tgl2);
 
-        label9.setText("Key Word :");
+        label9.setText("Keyword :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(100, 23));
         panelisi3.add(label9);

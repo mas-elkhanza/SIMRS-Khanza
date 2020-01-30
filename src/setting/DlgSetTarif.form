@@ -71,7 +71,7 @@
           <SubComponents>
             <Component class="widget.Table" name="tbAdmin">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                 <Property name="name" type="java.lang.String" value="tbAdmin" noResource="true"/>
               </Properties>
               <Events>

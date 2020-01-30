@@ -55,7 +55,7 @@ public class PanelIndikator extends javax.swing.JPanel {
         baterai = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(245, 180, 245));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 242, 232), 1, true), "Keterangan Modem/HP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50,50,50))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 242, 232), 1, true), "Keterangan Modem/HP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         setOpaque(false);
         setLayout(new java.awt.BorderLayout());
 
@@ -64,25 +64,25 @@ public class PanelIndikator extends javax.swing.JPanel {
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
 
         manufacture.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        manufacture.setForeground(new java.awt.Color(50,50,50));
+        manufacture.setForeground(new java.awt.Color(50, 50, 50));
         manufacture.setText("Modem Manufacture :");
         manufacture.setName("manufacture"); // NOI18N
         jPanel2.add(manufacture);
 
         model.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        model.setForeground(new java.awt.Color(50,50,50));
+        model.setForeground(new java.awt.Color(50, 50, 50));
         model.setText("Modem Model :");
         model.setName("model"); // NOI18N
         jPanel2.add(model);
 
         serialNo.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        serialNo.setForeground(new java.awt.Color(50,50,50));
+        serialNo.setForeground(new java.awt.Color(50, 50, 50));
         serialNo.setText("Serial No :");
         serialNo.setName("serialNo"); // NOI18N
         jPanel2.add(serialNo);
 
         imsi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        imsi.setForeground(new java.awt.Color(50,50,50));
+        imsi.setForeground(new java.awt.Color(50, 50, 50));
         imsi.setText("SIM IMSI");
         imsi.setName("imsi"); // NOI18N
         jPanel2.add(imsi);
@@ -94,33 +94,33 @@ public class PanelIndikator extends javax.swing.JPanel {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        jLabel1.setForeground(new java.awt.Color(50,50,50));
+        jLabel1.setForeground(new java.awt.Color(50, 50, 50));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smsimage/signal.png"))); // NOI18N
         jLabel1.setToolTipText("Signal");
         jLabel1.setName("jLabel1"); // NOI18N
         jPanel1.add(jLabel1);
 
         signal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        signal.setForeground(new java.awt.Color(50,50,50));
+        signal.setForeground(new java.awt.Color(50, 50, 50));
         signal.setText("0%");
         signal.setName("signal"); // NOI18N
         signal.setPreferredSize(new java.awt.Dimension(35, 15));
         jPanel1.add(signal);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(50,50,50));
+        jLabel3.setForeground(new java.awt.Color(50, 50, 50));
         jLabel3.setText("||");
         jLabel3.setName("jLabel3"); // NOI18N
         jPanel1.add(jLabel3);
 
-        jLabel4.setForeground(new java.awt.Color(50,50,50));
+        jLabel4.setForeground(new java.awt.Color(50, 50, 50));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smsimage/baterai.png"))); // NOI18N
         jLabel4.setToolTipText("Baterai");
         jLabel4.setName("jLabel4"); // NOI18N
         jPanel1.add(jLabel4);
 
         baterai.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        baterai.setForeground(new java.awt.Color(50,50,50));
+        baterai.setForeground(new java.awt.Color(50, 50, 50));
         baterai.setText("0%");
         baterai.setName("baterai"); // NOI18N
         baterai.setPreferredSize(new java.awt.Dimension(35, 15));

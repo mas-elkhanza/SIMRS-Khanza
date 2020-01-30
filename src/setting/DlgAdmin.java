@@ -1,11 +1,11 @@
 /*
-  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
+  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile
   Software ini dalam bentuk apapun tanpa seijin pembuat software
   (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
   npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
   nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
   nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami
   karena telah berdoa buruk, semua ini kami lakukan karena kami ti
   dak pernah rela karya kami dibajak tanpa ijin.
  */
@@ -47,7 +47,7 @@ public class DlgAdmin extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(457,249);
 
-        Object[] row={"ID Admin",
+        Object[] row={"Username",
                       "Password"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -110,7 +110,7 @@ public class DlgAdmin extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Admin ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Setup Admin ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -119,7 +119,7 @@ public class DlgAdmin extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbAdmin.setAutoCreateRowSorter(true);
-        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAdmin.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbAdmin.setName("tbAdmin"); // NOI18N
         tbAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,7 +139,7 @@ public class DlgAdmin extends javax.swing.JDialog {
         panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
         panelGlass7.setLayout(null);
 
-        jLabel3.setText("ID Admin :");
+        jLabel3.setText("Username :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass7.add(jLabel3);
         jLabel3.setBounds(0, 12, 69, 23);
@@ -285,7 +285,7 @@ public class DlgAdmin extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TKd.getText().trim().equals("")){
-            Valid.textKosong(TKd,"ID Admin");
+            Valid.textKosong(TKd,"Username");
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"Password");
         }else if(tabMode.getRowCount()==0){
@@ -293,7 +293,7 @@ public class DlgAdmin extends javax.swing.JDialog {
             tampil();
             emptTeks();
         }else if(tabMode.getRowCount()>0){
-            JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu Admin Utama ...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, hanya diijinkan satu Admin Utama ...!!!!");
             TKd.requestFocus();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -321,7 +321,7 @@ public class DlgAdmin extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TKd.requestFocus();
         }else if(TNm.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! TNm.getText().trim().equals("")){
             Sequel.queryu("delete from admin");
             tampil();

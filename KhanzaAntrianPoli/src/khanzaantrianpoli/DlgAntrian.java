@@ -571,7 +571,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Antrian Periksa Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Antrian Periksa Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -614,7 +614,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         jPanel1.setLayout(new java.awt.GridLayout(1, 3));
 
         jPanel2.setBackground(new java.awt.Color(245, 180, 245));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Antrian Pasien 1 :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), ".: Antrian Pasien 1 :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.BorderLayout(1, 1));
@@ -669,7 +669,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        Table1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table1.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table1.setComponentPopupMenu(Popup1);
         Table1.setName("Table1"); // NOI18N
         Scroll.setViewportView(Table1);
@@ -727,7 +727,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         jPanel1.add(jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(245, 180, 245));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Antrian Pasien 2 :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), ".: Antrian Pasien 2 :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
@@ -782,7 +782,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        Table2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table2.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table2.setComponentPopupMenu(Popup2);
         Table2.setName("Table2"); // NOI18N
         Scroll1.setViewportView(Table2);
@@ -840,7 +840,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         jPanel1.add(jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(245, 180, 245));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Antrian Pasien 3 :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), ".: Antrian Pasien 3 :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         jPanel4.setName("jPanel4"); // NOI18N
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.BorderLayout(1, 1));
@@ -895,7 +895,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        Table3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table3.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         Table3.setComponentPopupMenu(Popup3);
         Table3.setName("Table3"); // NOI18N
         Scroll2.setViewportView(Table3);
@@ -1519,7 +1519,7 @@ private void BtnBatal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }
             }
         }catch(SQLException e){
-            System.out.println(e+"Error : Silahkan Set Aplikasi");
+            System.out.println(e+"Error : Silakan Set Aplikasi");
         }
     } 
     

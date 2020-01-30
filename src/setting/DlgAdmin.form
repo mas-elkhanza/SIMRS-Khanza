@@ -76,7 +76,7 @@
             <Component class="widget.Table" name="tbAdmin">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan klik untuk memilih data yang hendak diedit ataupun dihapus"/>
                 <Property name="name" type="java.lang.String" value="tbAdmin" noResource="true"/>
               </Properties>
               <Events>
@@ -105,7 +105,7 @@
           <SubComponents>
             <Component class="widget.Label" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ID Admin :"/>
+                <Property name="text" type="java.lang.String" value="Username :"/>
                 <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
               </Properties>
               <Constraints>

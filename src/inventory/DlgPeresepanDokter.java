@@ -490,7 +490,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -499,7 +499,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label9.setText("Key Word :");
+        label9.setText("Keyword :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi3.add(label9);
@@ -952,15 +952,15 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                             tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),4).toString().equals("")||
                             tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),5).toString().equals("")||
                             tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),6).toString().equals("")){
-                        JOptionPane.showMessageDialog(null,"Silahkan lengkapi data racikan..!!");
+                        JOptionPane.showMessageDialog(null,"Silakan lengkapi data racikan..!!");
                     }else{
                         tampildetailracikanresep();
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Silahkan pilih racikan..!!");
+                    JOptionPane.showMessageDialog(null,"Silakan pilih racikan..!!");
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Silahkan masukkan racikan..!!");
+                JOptionPane.showMessageDialog(null,"Silakan masukkan racikan..!!");
             }
         }  
 }//GEN-LAST:event_BtnCariActionPerformed
@@ -1054,7 +1054,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else if(NoResep.getText().trim().equals("")){
             Valid.textKosong(NoResep,"No.Resep");
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {                 
                 ChkJln.setSelected(false);    
                 Sequel.AutoComitFalse();
@@ -1260,7 +1260,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     aturanpakai.setVisible(true);
                 }else if(i==3){
                     if(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),1).equals("")){
-                        JOptionPane.showMessageDialog(null,"Silahkan masukkan nama racikan..!!");
+                        JOptionPane.showMessageDialog(null,"Silakan masukkan nama racikan..!!");
                         tbObatResepRacikan.requestFocus();
                     }else{
                         metoderacik.isCek();

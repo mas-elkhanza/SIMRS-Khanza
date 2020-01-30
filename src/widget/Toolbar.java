@@ -22,10 +22,10 @@ public class Toolbar extends JToolBar {
     private final Color light = new Color(1F, 1F, 1F, 0.5F);
     private final Color dark = new Color(1F, 1F, 1F, 0.0F);
     private final Color black = Color.BLACK;
-    private final Color warna = Color.MAGENTA;
+    private final Color warna = Color.BLACK;
 
     /**
-     * 
+     *
      */
     public Toolbar() {
         super();

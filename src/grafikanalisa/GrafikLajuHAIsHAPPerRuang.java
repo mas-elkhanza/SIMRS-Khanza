@@ -56,7 +56,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
     public GrafikLajuHAIsHAPPerRuang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         tabMode=new DefaultTableModel(null,new Object[]{"Kamar/Bangsal","Jumlah Pasien (Numerator)","Jumlah Hari (Denumerator)","Laju HAP","Persentase HAP(%)"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -83,7 +83,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
         }
 
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
-        
+
     }
 
     /** This method is called from within the constructor to
@@ -123,7 +123,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Grafik Laju HAIs HAP Per Ruang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Grafik Laju HAIs HAP Per Ruang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -266,7 +266,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbBangsal.setAutoCreateRowSorter(true);
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
@@ -278,41 +278,41 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint3ActionPerformed
         DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-        try {                
+        try {
             rs = koneksi.prepareStatement("select bangsal.nm_bangsal,ROUND((count(distinct data_HAIs.no_rawat)/sum(data_HAIs.HAP))*1000,2) from data_HAIs inner join kamar inner join bangsal "+
                "on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal "+
                "between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' and data_HAIs.HAP>0 group by bangsal.kd_bangsal").executeQuery();
             while(rs.next()) {
                 dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
             }
-            
+
             if(rs!=null){
                 rs.close();
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
         }
-        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Laju HAIs HAP Per Ruang Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Ruang","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Laju HAIs HAP Per Ruang Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Ruang","Jumlah", dcd, PlotOrientation.VERTICAL,true, true,true);
         ChartFrame cf = new ChartFrame("Grafik Laju HAIs HAP Per Ruang",freeChart);
-        cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
+        cf.setSize(Scroll.getWidth(),Scroll.getHeight());
         cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
         cf.setLocationRelativeTo(Scroll);
         cf.setAlwaysOnTop(true);
         cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-        cf.setVisible(true);  
+        cf.setVisible(true);
     }//GEN-LAST:event_BtnPrint3ActionPerformed
 
     private void BtnPrint3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint3KeyPressed
-        
+
     }//GEN-LAST:event_BtnPrint3KeyPressed
 
     private void BtnKeluar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar3ActionPerformed
@@ -320,7 +320,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluar3ActionPerformed
 
     private void BtnKeluar3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluar3KeyPressed
-        
+
     }//GEN-LAST:event_BtnKeluar3KeyPressed
 
     private void BtnPrint4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint4ActionPerformed
@@ -329,7 +329,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
                "on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal "+
                "between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' "+
                "and data_HAIs.HAP>0 group by bangsal.kd_bangsal","Ruang");
-       kas.setSize(Scroll.getWidth(),Scroll.getHeight());  
+       kas.setSize(Scroll.getWidth(),Scroll.getHeight());
        kas.setModal(true);
        kas.setAlwaysOnTop(true);
        kas.setLocationRelativeTo(Scroll);
@@ -342,29 +342,29 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
 
     private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint5ActionPerformed
         DefaultPieDataset dpd = new DefaultPieDataset();
-        try {                
+        try {
             rs = koneksi.prepareStatement("select bangsal.nm_bangsal,ROUND((count(distinct data_HAIs.no_rawat)/sum(data_HAIs.HAP))*1000,2) from data_HAIs inner join kamar inner join bangsal "+
                "on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal "+
                "between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' and data_HAIs.HAP>0 group by bangsal.kd_bangsal").executeQuery();
             while(rs.next()) {
                 dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
             }
-            
+
             if(rs!=null){
                 rs.close();
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
-        } 
-        
-        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Laju HAIs HAP Per Ruang Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
+        }
+
+        JFreeChart freeChart = ChartFactory.createPieChart("Grafik Laju HAIs HAP Per Ruang Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
         ChartFrame cf = new ChartFrame("Grafik Laju HAIs HAP Per Ruang",freeChart);
-        cf.setSize(Scroll.getWidth(),Scroll.getHeight());   
+        cf.setSize(Scroll.getWidth(),Scroll.getHeight());
         cf.setLocationRelativeTo(Scroll);
         cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
         cf.setAlwaysOnTop(true);
         cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-        cf.setVisible(true);  
+        cf.setVisible(true);
     }//GEN-LAST:event_BtnPrint5ActionPerformed
 
     private void BtnPrint5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint5KeyPressed
@@ -381,18 +381,18 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
-            Map<String, Object> param = new HashMap<>();         
+
+            Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("periode","Periode "+Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());   
-            param.put("logo",Sequel.cariGambar("select logo from setting"));  
+            param.put("emailrs",akses.getemailrs());
+            param.put("periode","Periode "+Tanggal1.getSelectedItem()+" s.d. "+Tanggal2.getSelectedItem());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
             Sequel.queryu("truncate table temporary_grafik");
-            for(int r=0;r<tabMode.getRowCount();r++){ 
+            for(int r=0;r<tabMode.getRowCount();r++){
                     Sequel.menyimpan("temporary_grafik","'0','"+
                                     tabMode.getValueAt(r,0).toString()+"','"+
                                     tabMode.getValueAt(r,1).toString()+"','"+
@@ -400,7 +400,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,3).toString()+"','"+
                                     tabMode.getValueAt(r,4).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-               
+
             Valid.MyReport("rptLajuHAIsHAPPerRuang.jasper","report","::[ Laporan Laju HAIs HAP Per Ruang ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -457,7 +457,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
                 }
                 if(tabMode.getRowCount()>0){
                     tabMode.addRow(new String[]{"Jumlah : ","","",total+"","100 %"});
-                    for(i=0;i<tbBangsal.getRowCount();i++){ 
+                    for(i=0;i<tbBangsal.getRowCount();i++){
                         tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/total)*100)+" %",i,4);
                     }
                 }
@@ -470,7 +470,7 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }                
+            }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }

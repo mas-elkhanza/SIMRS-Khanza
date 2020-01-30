@@ -147,7 +147,7 @@
           <SubComponents>
             <Component class="widget.Table" name="tbBangsal">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan centang di depan untuk memilih data hutang yang mau dibayar"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silakan centang di depan untuk memilih data hutang yang hendak dibayar"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="Popup"/>
                 </Property>
@@ -249,7 +249,7 @@
                 </Component>
                 <Component class="widget.Label" name="label17">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Key Word :"/>
+                    <Property name="text" type="java.lang.String" value="Keyword :"/>
                     <Property name="name" type="java.lang.String" value="label17" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[75, 23]"/>

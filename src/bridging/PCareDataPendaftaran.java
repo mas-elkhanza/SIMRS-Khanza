@@ -244,7 +244,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Keluhan.setDocument(new batasInput((int)400).getKata(Keluhan));
+        Keluhan.setDocument(new batasInput(400).getKata(Keluhan));
         Sistole.setDocument(new batasInput((byte)3).getOnlyAngka(Sistole));
         Diastole.setDocument(new batasInput((byte)3).getOnlyAngka(Diastole));
         TinggiBadan.setDocument(new batasInput((byte)5).getOnlyAngka(TinggiBadan));
@@ -824,7 +824,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnGelang.setBackground(new java.awt.Color(252, 255, 250));
-        MnGelang.setForeground(new java.awt.Color(50,50,50));
+        MnGelang.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang.setText("Label & Barcode");
         MnGelang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -836,7 +836,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnGelang1.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGelang1.setForeground(new java.awt.Color(50,50,50));
+        MnGelang1.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang1.setText("Gelang Pasien 1");
         MnGelang1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -852,7 +852,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnGelang2.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGelang2.setForeground(new java.awt.Color(50,50,50));
+        MnGelang2.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang2.setText("Gelang Pasien 2");
         MnGelang2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -868,7 +868,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnGelang3.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGelang3.setForeground(new java.awt.Color(50,50,50));
+        MnGelang3.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang3.setText("Gelang Pasien 3");
         MnGelang3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -884,7 +884,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnGelang4.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGelang4.setForeground(new java.awt.Color(50,50,50));
+        MnGelang4.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang4.setText("Gelang Pasien 4");
         MnGelang4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -900,7 +900,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnGelang5.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGelang5.setForeground(new java.awt.Color(50,50,50));
+        MnGelang5.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang5.setText("Gelang Pasien 5");
         MnGelang5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -916,7 +916,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnGelang6.setBackground(new java.awt.Color(255, 255, 254));
         MnGelang6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnGelang6.setForeground(new java.awt.Color(50,50,50));
+        MnGelang6.setForeground(new java.awt.Color(50, 50, 50));
         MnGelang6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnGelang6.setText("Gelang Pasien 6");
         MnGelang6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -932,7 +932,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnLabelTracker.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLabelTracker.setForeground(new java.awt.Color(50,50,50));
+        MnLabelTracker.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker.setText("Label Tracker 1");
         MnLabelTracker.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -948,7 +948,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnLabelTracker1.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLabelTracker1.setForeground(new java.awt.Color(50,50,50));
+        MnLabelTracker1.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker1.setText("Label Tracker 2");
         MnLabelTracker1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -964,7 +964,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnLabelTracker2.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLabelTracker2.setForeground(new java.awt.Color(50,50,50));
+        MnLabelTracker2.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker2.setText("Label Tracker 3");
         MnLabelTracker2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -980,7 +980,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnLabelTracker3.setBackground(new java.awt.Color(255, 255, 254));
         MnLabelTracker3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLabelTracker3.setForeground(new java.awt.Color(50,50,50));
+        MnLabelTracker3.setForeground(new java.awt.Color(50, 50, 50));
         MnLabelTracker3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLabelTracker3.setText("Label Tracker 4");
         MnLabelTracker3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -996,7 +996,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnBarcode1.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcode1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBarcode1.setForeground(new java.awt.Color(50,50,50));
+        MnBarcode1.setForeground(new java.awt.Color(50, 50, 50));
         MnBarcode1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcode1.setText("Barcode Perawatan 1");
         MnBarcode1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1012,7 +1012,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnBarcode2.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcode2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBarcode2.setForeground(new java.awt.Color(50,50,50));
+        MnBarcode2.setForeground(new java.awt.Color(50, 50, 50));
         MnBarcode2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcode2.setText("Barcode Perawatan 2");
         MnBarcode2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1028,7 +1028,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnBarcodeRM9.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBarcodeRM9.setForeground(new java.awt.Color(50,50,50));
+        MnBarcodeRM9.setForeground(new java.awt.Color(50, 50, 50));
         MnBarcodeRM9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM9.setMnemonic('L');
         MnBarcodeRM9.setText("Label Rekam Medis 10");
@@ -1046,7 +1046,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnPemberianObat.setBackground(new java.awt.Color(255, 255, 254));
         MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPemberianObat.setForeground(new java.awt.Color(50,50,50));
+        MnPemberianObat.setForeground(new java.awt.Color(50, 50, 50));
         MnPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPemberianObat.setText("Pemberian Obat");
         MnPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1062,7 +1062,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnPemberianObat1.setBackground(new java.awt.Color(255, 255, 254));
         MnPemberianObat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPemberianObat1.setForeground(new java.awt.Color(50,50,50));
+        MnPemberianObat1.setForeground(new java.awt.Color(50, 50, 50));
         MnPemberianObat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPemberianObat1.setText("Data Pemberian Obat");
         MnPemberianObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1078,7 +1078,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnTIndakan.setBackground(new java.awt.Color(255, 255, 254));
         MnTIndakan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnTIndakan.setForeground(new java.awt.Color(50,50,50));
+        MnTIndakan.setForeground(new java.awt.Color(50, 50, 50));
         MnTIndakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnTIndakan.setText("Pemberian Tindakan");
         MnTIndakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1094,7 +1094,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         MnTIndakan1.setBackground(new java.awt.Color(255, 255, 254));
         MnTIndakan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnTIndakan1.setForeground(new java.awt.Color(50,50,50));
+        MnTIndakan1.setForeground(new java.awt.Color(50, 50, 50));
         MnTIndakan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnTIndakan1.setText("Data Pemberian Tindakan");
         MnTIndakan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1110,7 +1110,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRiwayat.setForeground(new java.awt.Color(50,50,50));
+        ppRiwayat.setForeground(new java.awt.Color(50, 50, 50));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayat.setText("Riwayat Perawatan");
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1126,7 +1126,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         ppBuktiKunjungan.setBackground(new java.awt.Color(255, 255, 254));
         ppBuktiKunjungan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBuktiKunjungan.setForeground(new java.awt.Color(50,50,50));
+        ppBuktiKunjungan.setForeground(new java.awt.Color(50, 50, 50));
         ppBuktiKunjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBuktiKunjungan.setText("Bukti Kunjungan");
         ppBuktiKunjungan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1160,13 +1160,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2190,7 +2190,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPendaftaran.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPendaftaran.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbPendaftaran.setName("tbPendaftaran"); // NOI18N
         tbPendaftaran.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2238,7 +2238,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Key Word :");
+        jLabel6.setText("Keyword :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -2292,7 +2292,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbKunjungan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKunjungan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbKunjungan.setComponentPopupMenu(jPopupMenu1);
         tbKunjungan.setName("tbKunjungan"); // NOI18N
         tbKunjungan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2341,7 +2341,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         DTPCari4.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass10.add(DTPCari4);
 
-        jLabel9.setText("Key Word :");
+        jLabel9.setText("Keyword :");
         jLabel9.setName("jLabel9"); // NOI18N
         jLabel9.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass10.add(jLabel9);
@@ -2665,7 +2665,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     System.out.println("Notifikasi Bridging : "+ex);                    
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+                JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
             } 
         }else if(TabRawat.getSelectedIndex()==2){
             if(tbKunjungan.getSelectedRow()!= -1){
@@ -2785,7 +2785,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+                JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
             }    
         }else if(pilihan==2){
             if(tbKunjungan.getSelectedRow()!= -1){
@@ -2894,7 +2894,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+                JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
             }    
         }                    
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -3648,7 +3648,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3666,7 +3666,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbKunjungan.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3726,7 +3726,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void MnLabelTracker3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLabelTracker3ActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
@@ -3745,7 +3745,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void MnLabelTracker2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLabelTracker2ActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
@@ -3764,7 +3764,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void MnLabelTracker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLabelTracker1ActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
@@ -3783,7 +3783,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void MnLabelTrackerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLabelTrackerActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
@@ -3805,7 +3805,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3829,7 +3829,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3853,7 +3853,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3877,7 +3877,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3901,7 +3901,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3925,7 +3925,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3949,7 +3949,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu dengan menklik data pada table...!!!");
             tbKunjungan.requestFocus();
         }else{
             if(tbKunjungan.getSelectedRow()!= -1){
@@ -3997,7 +3997,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu dengan menklik data pada table...!!!");
             tbKunjungan.requestFocus();
         }else{
             if(tbKunjungan.getSelectedRow()!= -1){
@@ -4047,7 +4047,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu dengan menklik data pada table...!!!");
             tbKunjungan.requestFocus();
         }else{
             if(tbKunjungan.getSelectedRow()!= -1){
@@ -4066,7 +4066,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu dengan menklik data pada table...!!!");
             tbKunjungan.requestFocus();
         }else{
             if(tbKunjungan.getSelectedRow()!= -1){
@@ -4085,7 +4085,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data kunjungan sudah habis...!!!!");
             TCari1.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kunjungan pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu data kunjungan pada table...!!!");
             TCari1.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

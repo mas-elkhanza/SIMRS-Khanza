@@ -298,7 +298,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbSJP.setAutoCreateRowSorter(true);
-        tbSJP.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbSJP.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbSJP.setName("tbSJP"); // NOI18N
         tbSJP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -537,7 +537,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll3.setOpaque(true);
         Scroll3.setPreferredSize(new java.awt.Dimension(492, 170));
 
-        tbTagihanKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTagihanKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTagihanKamar.setName("tbTagihanKamar"); // NOI18N
         Scroll3.setViewportView(tbTagihanKamar);
 
@@ -548,7 +548,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll4.setOpaque(true);
         Scroll4.setPreferredSize(new java.awt.Dimension(492, 170));
 
-        tbTagihanRawatJalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTagihanRawatJalan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTagihanRawatJalan.setName("tbTagihanRawatJalan"); // NOI18N
         Scroll4.setViewportView(tbTagihanRawatJalan);
 
@@ -559,7 +559,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll5.setOpaque(true);
         Scroll5.setPreferredSize(new java.awt.Dimension(492, 170));
 
-        tbTagihanRawatInap.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTagihanRawatInap.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTagihanRawatInap.setName("tbTagihanRawatInap"); // NOI18N
         Scroll5.setViewportView(tbTagihanRawatInap);
 
@@ -570,7 +570,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll6.setOpaque(true);
         Scroll6.setPreferredSize(new java.awt.Dimension(492, 170));
 
-        tbTagihanOperasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTagihanOperasi.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTagihanOperasi.setName("tbTagihanOperasi"); // NOI18N
         Scroll6.setViewportView(tbTagihanOperasi);
 
@@ -581,7 +581,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll7.setOpaque(true);
         Scroll7.setPreferredSize(new java.awt.Dimension(492, 170));
 
-        tbTagihanRadiologi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTagihanRadiologi.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTagihanRadiologi.setName("tbTagihanRadiologi"); // NOI18N
         Scroll7.setViewportView(tbTagihanRadiologi);
 
@@ -592,7 +592,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         Scroll8.setOpaque(true);
         Scroll8.setPreferredSize(new java.awt.Dimension(492, 170));
 
-        tbTagihanLaborat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTagihanLaborat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbTagihanLaborat.setName("tbTagihanLaborat"); // NOI18N
         Scroll8.setViewportView(tbTagihanLaborat);
 
@@ -703,7 +703,7 @@ public final class InhealthTagihan extends javax.swing.JDialog {
         if(tbSJP.getSelectedRow()!= -1){
             isMenu();
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan tagihannya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data yang hendak ditampilkan tagihannya...!!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 

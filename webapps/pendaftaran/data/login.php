@@ -137,7 +137,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
 
             <div class="body">
                 <form id="sign_in" method="POST">
-                    <div class="msg">Silahkan login dulu untuk memulai</div>
+                    <div class="msg">Silakan login dulu untuk memulai</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>

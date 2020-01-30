@@ -183,7 +183,7 @@ public final class sekuel {
             ps.executeUpdate();
          }catch(Exception e){
             System.out.println("Pesan Error : "+e);
-            JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang mau anda edit...\n Klik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang hendak anda edit...\n Klik data pada table untuk memilih...!!!!");
          }
     }
 

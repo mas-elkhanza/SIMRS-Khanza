@@ -182,10 +182,10 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         kdonloop5.setDocument(new batasInput((byte)20).getKata(kdonloop5));
         kdpjanak.setDocument(new batasInput((byte)20).getKata(kdpjanak));        
         kddrumum.setDocument(new batasInput((byte)20).getKata(kddrumum));      
-        PreOp.setDocument(new batasInput((int)100).getKata(PreOp));      
-        PostOp.setDocument(new batasInput((int)100).getKata(PostOp));      
-        Jaringan.setDocument(new batasInput((int)100).getKata(Jaringan));
-        Laporan.setDocument(new batasInput((int)8000).getKata(Laporan));
+        PreOp.setDocument(new batasInput(100).getKata(PreOp));      
+        PostOp.setDocument(new batasInput(100).getKata(PostOp));      
+        Jaringan.setDocument(new batasInput(100).getKata(Jaringan));
+        Laporan.setDocument(new batasInput(8000).getKata(Laporan));
         
         TCariPaket.setDocument(new batasInput((byte)100).getKata(TCari)); 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari)); 
@@ -606,7 +606,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tagihan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Tagihan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -626,7 +626,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label10.setText("Key Word :");
+        label10.setText("Keyword :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi5.add(label10);
@@ -693,7 +693,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbtindakan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbtindakan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbtindakan.setName("tbtindakan"); // NOI18N
         tbtindakan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -722,7 +722,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label9.setText("Key Word :");
+        label9.setText("Keyword :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi4.add(label9);
@@ -789,7 +789,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2657,7 +2657,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             TCari.requestFocus();
         }else{            
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
                 TCariPaket.requestFocus();
             }else{
                 Sequel.AutoComitFalse();
