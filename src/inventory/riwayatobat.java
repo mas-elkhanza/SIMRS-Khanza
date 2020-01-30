@@ -5,8 +5,6 @@
 package inventory;
 
 import fungsi.koneksiDB;
-import fungsi.sekuel;
-import fungsi.validasi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

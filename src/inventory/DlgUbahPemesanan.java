@@ -29,8 +29,8 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,pskonversi,pscaripesan,psdetailpesan,ps2,pscaribatch;
-    private ResultSet rs,rskonversi,rs2;
+    private PreparedStatement ps,pscaripesan,psdetailpesan,ps2;
+    private ResultSet rs,rs2;
     private riwayatobat Trackobat=new riwayatobat();
     private DlgCariDataKonversi datakonversi=new DlgCariDataKonversi(null,false);
     private double hargakonversi=0,meterai=0,ttl=0,y=0,w=0,ttldisk=0,tagihan=0,

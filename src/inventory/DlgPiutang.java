@@ -188,8 +188,12 @@ public class DlgPiutang extends javax.swing.JDialog {
                     if(bangsal.getTable().getSelectedRow()!= -1){
                         kdgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                         nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"'")));
-                    }
+                        if(aktifkanbatch.equals("yes")){
+                            Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"'")));
+                        }else{
+                            Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='' and no_faktur=''")));
+                        }   
+                    } 
                     kdgudang.requestFocus();
                 }
             }
@@ -323,9 +327,12 @@ public class DlgPiutang extends javax.swing.JDialog {
                         if(aktifkanbatch.equals("yes")){
                             NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),32).toString());
                             NoFaktur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),33).toString());
+                            Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"'")));
+                        }else{
+                            Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='' and no_faktur=''")));
                         }
-                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"'")));
-                    }
+                            
+                    } 
                     kdbar.requestFocus();
                 }
             }
@@ -1011,13 +1018,9 @@ public class DlgPiutang extends javax.swing.JDialog {
         panelisi3.add(kdpasien);
         kdpasien.setBounds(439, 10, 100, 23);
 
+        kdptg.setEditable(false);
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
-        kdptg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdptgKeyPressed(evt);
-            }
-        });
         panelisi3.add(kdptg);
         kdptg.setBounds(439, 40, 100, 23);
 
@@ -1118,13 +1121,9 @@ public class DlgPiutang extends javax.swing.JDialog {
         panelisi3.add(label32);
         label32.setBounds(366, 70, 70, 23);
 
+        kdgudang.setEditable(false);
         kdgudang.setName("kdgudang"); // NOI18N
         kdgudang.setPreferredSize(new java.awt.Dimension(80, 23));
-        kdgudang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdgudangKeyPressed(evt);
-            }
-        });
         panelisi3.add(kdgudang);
         kdgudang.setBounds(439, 70, 100, 23);
 
@@ -1187,28 +1186,49 @@ public class DlgPiutang extends javax.swing.JDialog {
             Valid.textKosong(kdbar,"barang");
         }else{
              try {
-                stok=0;
-                ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
-                try {
-                    ps.setString(1,kdgudang.getText());
-                    ps.setString(2,kdbar.getText());
-                    ps.setString(3,NoBatch.getText());
-                    ps.setString(4,NoFaktur.getText());
-                    rs=ps.executeQuery();
-                    if(rs.next()){
-                        stok=rs.getDouble(1);
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+                stok=0;   
+                if(aktifkanbatch.equals("yes")){
+                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                    try {
+                        ps.setString(1,kdgudang.getText());
+                        ps.setString(2,kdbar.getText());
+                        ps.setString(3,NoBatch.getText());
+                        ps.setString(4,NoFaktur.getText());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            stok=rs.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    } 
+                }else{
+                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch='' and no_faktur=''");
+                    try {
+                        ps.setString(1,kdgudang.getText());
+                        ps.setString(2,kdbar.getText());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            stok=rs.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    } 
                 }
-
+                
                 jumlah=Valid.SetAngka(Jmljual.getText());
                 if(jumlah>stok){
                     Stok.setText(""+stok);
@@ -1468,37 +1488,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
     }//GEN-LAST:event_BtnBatalKeyPressed
 
-    private void kdpasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpasienKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
-            TglJual.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
-            catatan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnPasienActionPerformed(null);
-        }
-    }//GEN-LAST:event_kdpasienKeyPressed
-
     private void NoNotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoNotaKeyPressed
         Valid.pindah(evt, BtnTambah, TglJual);
     }//GEN-LAST:event_NoNotaKeyPressed
-
-    private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
-            Jenisjual.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
-            kdbar.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnPtgActionPerformed(null);
-        }
-    }//GEN-LAST:event_kdptgKeyPressed
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -1583,23 +1575,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         // TODO add your handling code here:
     }//GEN-LAST:event_TglTempoKeyPressed
 
-private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
-    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"'")));
-    }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"'")));
-        kdptg.requestFocus();
-    }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"'")));
-        BtnSimpan.requestFocus();
-    }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-        BtnGudangActionPerformed(null);
-    }
-}//GEN-LAST:event_kdgudangKeyPressed
-
 private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
     akses.setform("DlgPiutang");
     bangsal.isCek();
@@ -1635,6 +1610,20 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         aturan_pakai.setLocationRelativeTo(internalFrame1);
         aturan_pakai.setVisible(true);
     }//GEN-LAST:event_BtnBrg1ActionPerformed
+
+    private void kdpasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpasienKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
+            TglJual.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmpasien,kdpasien.getText());
+            catatan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnPasienActionPerformed(null);
+        }
+    }//GEN-LAST:event_kdpasienKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1909,105 +1898,54 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void cariBatch() {
         try {
-            if(aktifkanbatch.equals("yes")){
-                ps=koneksi.prepareStatement(
-                        "select data_batch.no_batch, data_batch.kode_brng, data_batch.tgl_beli, data_batch.tgl_kadaluarsa, data_batch.asal, data_batch.no_faktur, "+
-                        "data_batch.h_beli, data_batch.ralan, data_batch.kelas1, data_batch.kelas2, data_batch.kelas3, data_batch.utama, data_batch.vip, data_batch.vvip, data_batch.beliluar, "+
-                        "data_batch.jualbebas, data_batch.karyawan, data_batch.jumlahbeli,gudangbarang.stok,data_batch.dasar from data_batch inner join gudangbarang "+
-                        "on data_batch.kode_brng=gudangbarang.kode_brng and data_batch.no_batch=gudangbarang.no_batch and data_batch.no_faktur=gudangbarang.no_faktur where "+
-                        "data_batch.kode_brng=? and gudangbarang.no_batch=? and gudangbarang.no_faktur=? and gudangbarang.kd_bangsal=?");
-                try {
-                    ps.setString(1,kdbar.getText());
-                    ps.setString(2,NoBatch.getText());
-                    ps.setString(3,NoFaktur.getText());
-                    ps.setString(4,kdgudang.getText());
-                    rs=ps.executeQuery();
-                    if(rs.next()){
-                        if(Jenisjual.getSelectedItem().equals("Karyawan")){
-                            HrgJual.setText(rs.getString("karyawan"));
-                        }else if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
-                            HrgJual.setText(rs.getString("jualbebas"));
-                        }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
-                            HrgJual.setText(rs.getString("beliluar"));
-                        }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
-                            HrgJual.setText(rs.getString("ralan"));
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
-                            HrgJual.setText(rs.getString("kelas1"));
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
-                            HrgJual.setText(rs.getString("kelas2"));
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
-                            HrgJual.setText(rs.getString("kelas3"));
-                        }else if(Jenisjual.getSelectedItem().equals("Utama/BPJS")){
-                            HrgJual.setText(rs.getString("utama"));
-                        }else if(Jenisjual.getSelectedItem().equals("VIP")){
-                            HrgJual.setText(rs.getString("vip"));
-                        }else if(Jenisjual.getSelectedItem().equals("VVIP")){
-                            HrgJual.setText(rs.getString("vvip"));
-                        }else if(Jenisjual.getSelectedItem().equals("Harga Beli")){
-                            HrgJual.setText(rs.getString("h_beli"));
-                        }
-                        HrgBeli.setText(rs.getString("dasar"));
-                        Stok.setText(""+rs.getDouble("stok"));
+            ps=koneksi.prepareStatement(
+                    "select * from data_batch where no_batch=? and kode_brng=? and no_faktur=?");
+            try {
+                ps.setString(1,NoBatch.getText());
+                ps.setString(2,kdbar.getText());
+                ps.setString(3,NoFaktur.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    if(Jenisjual.getSelectedItem().equals("Karyawan")){
+                        HrgJual.setText(rs.getString("karyawan"));
+                    }else if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
+                        HrgJual.setText(rs.getString("jualbebas"));
+                    }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
+                        HrgJual.setText(rs.getString("beliluar"));
+                    }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
+                        HrgJual.setText(rs.getString("ralan"));
+                    }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
+                        HrgJual.setText(rs.getString("kelas1"));
+                    }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
+                        HrgJual.setText(rs.getString("kelas2"));
+                    }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
+                        HrgJual.setText(rs.getString("kelas3"));
+                    }else if(Jenisjual.getSelectedItem().equals("Utama/BPJS")){
+                        HrgJual.setText(rs.getString("utama"));
+                    }else if(Jenisjual.getSelectedItem().equals("VIP")){
+                        HrgJual.setText(rs.getString("vip"));
+                    }else if(Jenisjual.getSelectedItem().equals("VVIP")){
+                        HrgJual.setText(rs.getString("vvip"));
+                    }else if(Jenisjual.getSelectedItem().equals("Harga Beli")){
+                        HrgJual.setText(rs.getString("h_beli"));
                     }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
+                    
+                    if(aktifkanbatch.equals("yes")){
+                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='"+NoBatch.getText()+"' and no_faktur='"+NoFaktur.getText()+"'")));
+                    }else{
+                        Stok.setText(Double.toString(Sequel.cariIsiAngka("select stok from gudangbarang where kd_bangsal='"+kdgudang.getText()+"' and kode_brng='"+kdbar.getText()+"' and no_batch='' and no_faktur=''")));
                     }
                 }
-            }else{
-                ps=koneksi.prepareStatement(
-                        "select databarang.kode_brng,databarang.h_beli, databarang.ralan, databarang.kelas1, databarang.kelas2, databarang.kelas3, databarang.utama, "+
-                        "databarang.vip,databarang.vvip,databarang.beliluar,databarang.jualbebas,databarang.karyawan,gudangbarang.stok,databarang.dasar from "+
-                        "databarang inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng where gudangbarang.no_batch='' and gudangbarang.no_faktur='' "+
-                        "and gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=?");
-                try {
-                    ps.setString(1,kdbar.getText());
-                    ps.setString(2,kdgudang.getText());
-                    rs=ps.executeQuery();
-                    if(rs.next()){
-                        if(Jenisjual.getSelectedItem().equals("Karyawan")){
-                            HrgJual.setText(rs.getString("karyawan"));
-                        }else if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
-                            HrgJual.setText(rs.getString("jualbebas"));
-                        }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
-                            HrgJual.setText(rs.getString("beliluar"));
-                        }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
-                            HrgJual.setText(rs.getString("ralan"));
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
-                            HrgJual.setText(rs.getString("kelas1"));
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
-                            HrgJual.setText(rs.getString("kelas2"));
-                        }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
-                            HrgJual.setText(rs.getString("kelas3"));
-                        }else if(Jenisjual.getSelectedItem().equals("Utama/BPJS")){
-                            HrgJual.setText(rs.getString("utama"));
-                        }else if(Jenisjual.getSelectedItem().equals("VIP")){
-                            HrgJual.setText(rs.getString("vip"));
-                        }else if(Jenisjual.getSelectedItem().equals("VVIP")){
-                            HrgJual.setText(rs.getString("vvip"));
-                        }else if(Jenisjual.getSelectedItem().equals("Harga Beli")){
-                            HrgJual.setText(rs.getString("h_beli"));
-                        }
-                        HrgBeli.setText(rs.getString("dasar"));
-                        Stok.setText(""+rs.getDouble("stok"));
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
                 }
-            }
-
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -2033,14 +1971,18 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 while(rs.next()){
                     if(Sequel.menyimpantf2("detailpiutang","'"+NoNota.getText()+"','"+rs.getString(1)+"','"+rs.getString(2)+"','"+rs.getString(3)+
                         "','"+rs.getString(4)+"','"+rs.getString(5)+"','"+rs.getString(6)+"','"+rs.getString(7)+"','"+rs.getString(8)+"','"+rs.getString(9)+"','"+rs.getString("no_batch")+"','"+rs.getString("no_faktur")+"','"+rs.getString("aturan_pakai")+"'","Obat/BHP/Alkes")==true){
-                        Trackobat.catatRiwayat(rs.getString(1),0,rs.getDouble(5),"Piutang",akses.getkode(),kdgudang.getText(),"Simpan",rs.getString("no_batch"),rs.getString("no_faktur"));
-                        Sequel.menyimpan("gudangbarang","'"+rs.getString(1)+"','"+kdgudang.getText()+"','-"+rs.getString(5)+"','"+rs.getString("no_batch")+"','"+rs.getString("no_faktur")+"'",
-                                        "stok=stok-'"+rs.getString(5)+"'","kode_brng='"+rs.getString(1)+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='"+rs.getString("no_batch")+"' and no_faktur='"+rs.getString("no_faktur")+"'");
                         if(aktifkanbatch.equals("yes")){
                             Sequel.mengedit("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa-?",4,new String[]{
                                 rs.getString(5),rs.getString("no_batch"),rs.getString(1),rs.getString("no_faktur")
                             });
-                        }
+                            Trackobat.catatRiwayat(rs.getString(1),0,rs.getDouble(5),"Piutang",akses.getkode(),kdgudang.getText(),"Simpan",rs.getString("no_batch"),rs.getString("no_faktur"));
+                            Sequel.menyimpan("gudangbarang","'"+rs.getString(1)+"','"+kdgudang.getText()+"','-"+rs.getString(5)+"','"+rs.getString("no_batch")+"','"+rs.getString("no_faktur")+"'", 
+                                        "stok=stok-'"+rs.getString(5)+"'","kode_brng='"+rs.getString(1)+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='"+rs.getString("no_batch")+"' and no_faktur='"+rs.getString("no_faktur")+"'");
+                        }else{
+                            Trackobat.catatRiwayat(rs.getString(1),0,rs.getDouble(5),"Piutang",akses.getkode(),kdgudang.getText(),"Simpan","","");
+                            Sequel.menyimpan("gudangbarang","'"+rs.getString(1)+"','"+kdgudang.getText()+"','-"+rs.getString(5)+"','',''", 
+                                        "stok=stok-'"+rs.getString(5)+"'","kode_brng='"+rs.getString(1)+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
+                        } 
                     }else{
                        sukses=false;
                     }

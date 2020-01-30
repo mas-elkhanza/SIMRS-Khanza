@@ -58,7 +58,6 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
     private String[] kode,nama,pemeriksaan2,satuan2,nilai_rujukan2,idtemplate2;
     private int jml=0,i=0,index=0,jml2=0,i2=0,index2=0,jmlparsial=0;
     private String aktifkanparsial="no",norawatibu="",kelas="",kamar,namakamar,cara_bayar_lab="Yes",kelas_lab="Yes",status="",la="",ld="",pa="",pd="";
-    private double ttl=0,item=0;
     private final Properties prop = new Properties();
 
 
@@ -151,9 +150,9 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KodePerujuk.setDocument(new batasInput((byte)20).getKata(KodePerujuk));
-        Pemeriksaan.setDocument(new batasInput((byte)100).getKata(Pemeriksaan));
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        TNoPermintaan.setDocument(new batasInput((byte)15).getKata(TNoPermintaan));
+        Pemeriksaan.setDocument(new batasInput((int)100).getKata(Pemeriksaan));    
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));        
+        TNoPermintaan.setDocument(new batasInput((byte)15).getKata(TNoPermintaan));        
         if(koneksiDB.CARICEPAT().equals("aktif")){
             Pemeriksaan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -461,7 +460,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         Pemeriksaan.setBounds(95, 72, 410, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-01-2020" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);

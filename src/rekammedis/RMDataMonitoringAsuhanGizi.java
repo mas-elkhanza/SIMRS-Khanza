@@ -102,9 +102,9 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         nip.setDocument(new batasInput((byte)20).getKata(nip));
-        Monitoring.setDocument(new batasInput(60).getKata(Monitoring));
-        Evaluasi.setDocument(new batasInput(200).getKata(Evaluasi));
-        TCari.setDocument(new batasInput(100).getKata(TCari));
+        Monitoring.setDocument(new batasInput((int)60).getKata(Monitoring));
+        Evaluasi.setDocument(new batasInput((int)200).getKata(Evaluasi));
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
