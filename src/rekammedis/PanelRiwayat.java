@@ -2818,8 +2818,15 @@ public class PanelRiwayat extends widget.panelisi {
                                 rs3=koneksi.prepareStatement(
                                      "select periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.kd_jenis_prw, "+
                                      "jns_perawatan_radiologi.nm_perawatan,petugas.nama,periksa_radiologi.biaya,periksa_radiologi.dokter_perujuk,"+
-                                     "dokter.nm_dokter,periksa_radiologi.proyeksi,periksa_radiologi.kV,periksa_radiologi.mAS,periksa_radiologi.FFD,"+
-                                     "periksa_radiologi.BSF,periksa_radiologi.inak,periksa_radiologi.jml_penyinaran,periksa_radiologi.dosis "+
+                                     "dokter.nm_dokter,concat("+
+                                    "if(periksa_radiologi.proyeksi<>'',concat('Proyeksi : ',periksa_radiologi.proyeksi,', '),''),"+
+                                    "if(periksa_radiologi.kV<>'',concat('kV : ',periksa_radiologi.kV,', '),''),"+
+                                    "if(periksa_radiologi.mAS<>'',concat('mAS : ',periksa_radiologi.mAS,', '),''),"+
+                                    "if(periksa_radiologi.FFD<>'',concat('FFD : ',periksa_radiologi.FFD,', '),''),"+
+                                    "if(periksa_radiologi.BSF<>'',concat('BSF : ',periksa_radiologi.BSF,', '),''),"+
+                                    "if(periksa_radiologi.inak<>'',concat('Inak : ',periksa_radiologi.inak,', '),''),"+
+                                    "if(periksa_radiologi.jml_penyinaran<>'',concat('Jml Penyinaran : ',periksa_radiologi.jml_penyinaran,', '),''),"+
+                                    "if(periksa_radiologi.dosis<>'',concat('Dosis Radiasi : ',periksa_radiologi.dosis),'')) as proyeksi "+
                                      "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                                      "inner join petugas on periksa_radiologi.nip=petugas.nip inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                                      "where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_radiologi.tgl_periksa,periksa_radiologi.jam").executeQuery();
@@ -2844,7 +2851,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+" dengan Proyeksi : "+rs3.getString("proyeksi")+", kV : "+rs3.getString("kV")+", mAS : "+rs3.getString("mAS")+", FFD : "+rs3.getString("FFD")+", BSF : "+rs3.getString("BSF")+", Inak : "+rs3.getString("inak")+", Jml Penyinaran : "+rs3.getString("jml_penyinaran")+", Dosis Radiasi : "+rs3.getString("dosis")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+"<br>"+rs3.getString("proyeksi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya"))+"</td>"+
@@ -5013,8 +5020,15 @@ public class PanelRiwayat extends widget.panelisi {
                                 rs3=koneksi.prepareStatement(
                                      "select periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.kd_jenis_prw, "+
                                      "jns_perawatan_radiologi.nm_perawatan,petugas.nama,periksa_radiologi.biaya,periksa_radiologi.dokter_perujuk,"+
-                                     "dokter.nm_dokter,periksa_radiologi.proyeksi,periksa_radiologi.kV,periksa_radiologi.mAS,periksa_radiologi.FFD,"+
-                                     "periksa_radiologi.BSF,periksa_radiologi.inak,periksa_radiologi.jml_penyinaran,periksa_radiologi.dosis "+
+                                     "dokter.nm_dokter,concat("+
+                                    "if(periksa_radiologi.proyeksi<>'',concat('Proyeksi : ',periksa_radiologi.proyeksi,', '),''),"+
+                                    "if(periksa_radiologi.kV<>'',concat('kV : ',periksa_radiologi.kV,', '),''),"+
+                                    "if(periksa_radiologi.mAS<>'',concat('mAS : ',periksa_radiologi.mAS,', '),''),"+
+                                    "if(periksa_radiologi.FFD<>'',concat('FFD : ',periksa_radiologi.FFD,', '),''),"+
+                                    "if(periksa_radiologi.BSF<>'',concat('BSF : ',periksa_radiologi.BSF,', '),''),"+
+                                    "if(periksa_radiologi.inak<>'',concat('Inak : ',periksa_radiologi.inak,', '),''),"+
+                                    "if(periksa_radiologi.jml_penyinaran<>'',concat('Jml Penyinaran : ',periksa_radiologi.jml_penyinaran,', '),''),"+
+                                    "if(periksa_radiologi.dosis<>'',concat('Dosis Radiasi : ',periksa_radiologi.dosis),'')) as proyeksi "+
                                      "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                                      "inner join petugas on periksa_radiologi.nip=petugas.nip inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                                      "where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_radiologi.tgl_periksa,periksa_radiologi.jam").executeQuery();
@@ -5039,7 +5053,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+" dengan Proyeksi : "+rs3.getString("proyeksi")+", kV : "+rs3.getString("kV")+", mAS : "+rs3.getString("mAS")+", FFD : "+rs3.getString("FFD")+", BSF : "+rs3.getString("BSF")+", Inak : "+rs3.getString("inak")+", Jml Penyinaran : "+rs3.getString("jml_penyinaran")+", Dosis Radiasi : "+rs3.getString("dosis")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+"<br>"+rs3.getString("proyeksi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya"))+"</td>"+
@@ -8883,8 +8897,15 @@ public class PanelRiwayat extends widget.panelisi {
                                 rs3=koneksi.prepareStatement(
                                      "select periksa_radiologi.tgl_periksa,periksa_radiologi.jam,periksa_radiologi.kd_jenis_prw, "+
                                      "jns_perawatan_radiologi.nm_perawatan,petugas.nama,periksa_radiologi.biaya,periksa_radiologi.dokter_perujuk,"+
-                                     "dokter.nm_dokter,periksa_radiologi.proyeksi,periksa_radiologi.kV,periksa_radiologi.mAS,periksa_radiologi.FFD,"+
-                                     "periksa_radiologi.BSF,periksa_radiologi.inak,periksa_radiologi.jml_penyinaran,periksa_radiologi.dosis "+
+                                     "dokter.nm_dokter,concat("+
+                                    "if(periksa_radiologi.proyeksi<>'',concat('Proyeksi : ',periksa_radiologi.proyeksi,', '),''),"+
+                                    "if(periksa_radiologi.kV<>'',concat('kV : ',periksa_radiologi.kV,', '),''),"+
+                                    "if(periksa_radiologi.mAS<>'',concat('mAS : ',periksa_radiologi.mAS,', '),''),"+
+                                    "if(periksa_radiologi.FFD<>'',concat('FFD : ',periksa_radiologi.FFD,', '),''),"+
+                                    "if(periksa_radiologi.BSF<>'',concat('BSF : ',periksa_radiologi.BSF,', '),''),"+
+                                    "if(periksa_radiologi.inak<>'',concat('Inak : ',periksa_radiologi.inak,', '),''),"+
+                                    "if(periksa_radiologi.jml_penyinaran<>'',concat('Jml Penyinaran : ',periksa_radiologi.jml_penyinaran,', '),''),"+
+                                    "if(periksa_radiologi.dosis<>'',concat('Dosis Radiasi : ',periksa_radiologi.dosis),'')) as proyeksi "+
                                      "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
                                      "inner join petugas on periksa_radiologi.nip=petugas.nip inner join dokter on periksa_radiologi.kd_dokter=dokter.kd_dokter "+
                                      "where periksa_radiologi.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_radiologi.tgl_periksa,periksa_radiologi.jam").executeQuery();
@@ -8909,7 +8930,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+" dengan Proyeksi : "+rs3.getString("proyeksi")+", kV : "+rs3.getString("kV")+", mAS : "+rs3.getString("mAS")+", FFD : "+rs3.getString("FFD")+", BSF : "+rs3.getString("BSF")+", Inak : "+rs3.getString("inak")+", Jml Penyinaran : "+rs3.getString("jml_penyinaran")+", Dosis Radiasi : "+rs3.getString("dosis")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_perawatan")+"<br>"+rs3.getString("proyeksi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya"))+"</td>"+

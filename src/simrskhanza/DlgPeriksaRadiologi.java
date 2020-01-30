@@ -60,7 +60,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private PreparedStatement psset_tarif,pssetpj,pspemeriksaan,pspemeriksaan2,pspemeriksaan3,pspemeriksaan4,psbhp,psrekening;
     private ResultSet rs,rsset_tarif,rssetpj,rsrekening;
     private boolean[] pilih; 
-    private String[] kode,nama,kodebarang,namabarang,satuan;
+    private String[] kode,nama,kodebarang,namabarang,satuan,pproyeksi,pkV,pmAS,pFFD,pBSF,pinak,pjml_penyinaran,pdosis;
     private double[] jumlah,total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen;
     private int jml=0,i=0,index=0,jmlparsial=0;
     private String aktifkanparsial="no",noorder="",kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",pilihan="",pemeriksaan="",kamar,namakamar,status="";
@@ -1552,6 +1552,22 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             kso=new double[jml];
             menejemen=null;
             menejemen=new double[jml];
+            pproyeksi=null;
+            pproyeksi=new String[jml];
+            pkV=null;
+            pkV=new String[jml];
+            pmAS=null;
+            pmAS=new String[jml];
+            pFFD=null;
+            pFFD=new String[jml];
+            pBSF=null;
+            pBSF=new String[jml];
+            pinak=null;
+            pinak=new String[jml];
+            pjml_penyinaran=null;
+            pjml_penyinaran=new String[jml];
+            pdosis=null;
+            pdosis=new String[jml];
             
             index=0; 
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
@@ -1567,13 +1583,21 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     tarif_tindakan_petugas[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,8).toString());
                     kso[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,9).toString());
                     menejemen[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,10).toString());
+                    pproyeksi[index]=tbPemeriksaan.getValueAt(i,11).toString();
+                    pkV[index]=tbPemeriksaan.getValueAt(i,12).toString();
+                    pmAS[index]=tbPemeriksaan.getValueAt(i,13).toString();
+                    pFFD[index]=tbPemeriksaan.getValueAt(i,14).toString();
+                    pBSF[index]=tbPemeriksaan.getValueAt(i,15).toString();
+                    pinak[index]=tbPemeriksaan.getValueAt(i,16).toString();
+                    pjml_penyinaran[index]=tbPemeriksaan.getValueAt(i,17).toString();
+                    pdosis[index]=tbPemeriksaan.getValueAt(i,18).toString();
                     index++;
                 }
             }
 
             Valid.tabelKosong(tabMode);
             for(i=0;i<jml;i++){                
-                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i],total[i],bagian_rs[i],bhp[i],tarif_perujuk[i],tarif_tindakan_dokter[i],tarif_tindakan_petugas[i],kso[i],menejemen[i]});
+                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i],total[i],bagian_rs[i],bhp[i],tarif_perujuk[i],tarif_tindakan_dokter[i],tarif_tindakan_petugas[i],kso[i],menejemen[i],pproyeksi[i],pkV[i],pmAS[i],pFFD[i],pBSF[i],pinak[i],pjml_penyinaran[i],pdosis[i]});
             }    
             
             if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("No")){
@@ -1645,7 +1669,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
             
                 while(rs.next()){                
-                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getDouble(9),rs.getDouble(10)});
+                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getDouble(9),rs.getDouble(10),"","","","","","","",""});
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);

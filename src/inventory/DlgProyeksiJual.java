@@ -55,9 +55,9 @@ public class DlgProyeksiJual extends javax.swing.JDialog {
         for (int i = 0; i < 14; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(85);
             }else if(i==2){
                 column.setPreferredWidth(200);
             }else if(i==3){
