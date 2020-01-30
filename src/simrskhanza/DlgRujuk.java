@@ -114,8 +114,8 @@ public final class DlgRujuk extends javax.swing.JDialog {
         TNoRj.setDocument(new batasInput((byte)10).getKata(TNoRj));
         TTmpRujuk.setDocument(new batasInput((byte)45).getKata(TTmpRujuk));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TDiagnosa.setDocument(new batasInput(5000).getKata(TDiagnosa));
-        ket.setDocument(new batasInput(5000).getKata(ket));
+        TDiagnosa.setDocument(new batasInput((int)5000).getKata(TDiagnosa));
+        ket.setDocument(new batasInput((int)5000).getKata(ket));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         KdDok.setDocument(new batasInput((byte)20).getKata(KdDok));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -240,7 +240,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 
         MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnSuratRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSuratRujukan.setForeground(new java.awt.Color(50, 50, 50));
+        MnSuratRujukan.setForeground(new java.awt.Color(50,50,50));
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSuratRujukan.setText("Surat Rujukan");
         MnSuratRujukan.setName("MnSuratRujukan"); // NOI18N
@@ -256,7 +256,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Rujukan Keluar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rujukan Keluar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -266,7 +266,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -451,7 +451,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -1010,7 +1010,7 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void MnSuratRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSuratRujukanActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();

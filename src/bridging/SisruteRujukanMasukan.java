@@ -271,7 +271,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         WindowAmbilSampel.setUndecorated(true);
         WindowAmbilSampel.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Balas Rujukan Masuk Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Balas Rujukan Masuk Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -377,14 +377,14 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Rujukan Masuk Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Masuk Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -430,7 +430,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         cmbStatus.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass8.add(cmbStatus);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass8.add(jLabel6);
@@ -607,7 +607,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 akses.setAktif(false);
             }else{
                 try{
-                    pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Registrasi","Via IGD","Via Cek No.Kartu VClaim","Via Cek NIK VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim"},"Via Registrasi");
+                    pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih cara registrasi..!!","Pilihan Registrasi",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Via Registrasi","Via IGD","Via Cek No.Kartu VClaim","Via Cek NIK VClaim","Via Cek Rujukan Kartu PCare di VClaim","Via Cek Rujukan Kartu RS di VClaim"},"Via Registrasi");
                     switch (pilihan) {
                         case "Via Registrasi":  
                             if(SttsPasien.equals("Lama")){
@@ -724,7 +724,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
         }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
             akses.setAktif(false);
             TCari.requestFocus();
         }   
@@ -839,7 +839,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
         }else{  
             akses.setAktif(false);
-            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data rujukan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
             TCari.requestFocus();
         }  
     }//GEN-LAST:event_BtnJawabActionPerformed

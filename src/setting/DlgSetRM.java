@@ -358,7 +358,7 @@ public class DlgSetRM extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Setup Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -425,7 +425,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -463,7 +463,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbNoRM.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbNoRM.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbNoRM.setName("tbNoRM"); // NOI18N
         tbNoRM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -489,7 +489,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbNoUrut.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbNoUrut.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbNoUrut.setName("tbNoUrut"); // NOI18N
         tbNoUrut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -585,7 +585,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbAlamat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbAlamat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAlamat.setName("tbAlamat"); // NOI18N
         tbAlamat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -681,7 +681,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbKelengkapan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbKelengkapan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKelengkapan.setName("tbKelengkapan"); // NOI18N
         tbKelengkapan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1348,7 +1348,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbValidasiRegistrasi.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbValidasiRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbValidasiRegistrasi.setName("tbValidasiRegistrasi"); // NOI18N
         tbValidasiRegistrasi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1396,7 +1396,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll6.setName("Scroll6"); // NOI18N
         Scroll6.setOpaque(true);
 
-        tbValidasiCatatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbValidasiCatatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbValidasiCatatan.setName("tbValidasiCatatan"); // NOI18N
         tbValidasiCatatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1444,7 +1444,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll7.setName("Scroll7"); // NOI18N
         Scroll7.setOpaque(true);
 
-        tbTniPolri.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTniPolri.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTniPolri.setName("tbTniPolri"); // NOI18N
         tbTniPolri.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

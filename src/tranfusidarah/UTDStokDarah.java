@@ -48,7 +48,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         Object[] row={
             "No.Kantung","Komponen","G.D.","Rhesus","Aftap","Kadaluarsa",
             "Asal Darah","Status","Jasa Sarana","Paket BHP",
-            "KSO","Menejemen","Biaya","Pembatalan","Kode Komponen"
+            "KSO","Manajemen","Biaya","Pembatalan","Kode Komponen"
         };
         tabMode=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}            
@@ -222,7 +222,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(255, 255, 254));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(50, 50, 50));
+        ppCetak.setForeground(new java.awt.Color(50,50,50));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -245,7 +245,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -271,7 +271,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -570,7 +570,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label9.setText("Keyword :");
+        label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi2.add(label9);

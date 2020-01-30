@@ -716,7 +716,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
                         LblNoRm.getText(),LblDokter.getText(),NmBayar.getText(),PngJawab.getText());
                     cetak.setVisible(true);
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silakan hubungi petugas kami, terjadi masalah pada system..!!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan hubungi petugas kami, terjadi masalah pada system..!!!");
                 PngJawab.requestFocus();
             }
         }            

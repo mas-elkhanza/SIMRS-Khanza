@@ -827,7 +827,7 @@ public final class sekuel {
                 ps.executeUpdate();
              }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
-                JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang hendak anda edit...\n Klik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang mau anda edit...\n Klik data pada table untuk memilih...!!!!");
              }finally{
                 if(ps != null){
                     ps.close();
@@ -1834,9 +1834,9 @@ public final class sekuel {
         try {
             Image inImage = icon.getImage();
 
-            double scale = maxDim / (double) inImage.getHeight(null);
+            double scale = (double) maxDim / (double) inImage.getHeight(null);
             if (inImage.getWidth(null) > inImage.getHeight(null)) {
-                scale = maxDim / (double) inImage.getWidth(null);
+                scale = (double) maxDim / (double) inImage.getWidth(null);
             }
 
             int scaledW = (int) (scale * inImage.getWidth(null));

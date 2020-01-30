@@ -273,14 +273,14 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Pencarian Data Faskes Rujukan Thalasemia & Hemofili PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Faskes Rujukan Thalasemia & Hemofili PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -500,10 +500,10 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(KdSpesialis.getText().trim().equals("")||NmSpesialis.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silakan pilih subspesialis dulu..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih subspesialis dulu..!!");
             BtnPropinsi.requestFocus();
         }else if(NoKartu.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silakan pilih/masukkan no kartu..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih/masukkan no kartu..!!");
             NoKartu.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

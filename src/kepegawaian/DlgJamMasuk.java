@@ -163,7 +163,7 @@ public class DlgJamMasuk extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Jam Masuk Pegawai Via Finger Print ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jam Masuk Pegawai Via Finger Print ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -171,7 +171,7 @@ public class DlgJamMasuk extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJadwal.setAutoCreateRowSorter(true);
-        tbJadwal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -310,7 +310,7 @@ public class DlgJamMasuk extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);

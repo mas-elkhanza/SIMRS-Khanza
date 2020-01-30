@@ -35,7 +35,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        tabModeKomponen=new DefaultTableModel(null,new String[]{"Kode","Nama Komponen","Lama(Hari)","Jasa Sarana","Paket BHP","KSO","Menejemen","Total","Pembatalan"}){
+        tabModeKomponen=new DefaultTableModel(null,new String[]{"Kode","Nama Komponen","Lama(Hari)","Jasa Sarana","Paket BHP","KSO","Manajemen","Total","Pembatalan"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
             Class[] types = new Class[]{
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
@@ -73,7 +73,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         JasaSarana.setDocument(new batasInput((byte)10).getOnlyAngka(JasaSarana));  
         PaketBHP.setDocument(new batasInput((byte)10).getOnlyAngka(PaketBHP));  
         KSO.setDocument(new batasInput((byte)10).getOnlyAngka(KSO));  
-        Menejemen.setDocument(new batasInput((byte)10).getOnlyAngka(Menejemen));  
+        Manajemen.setDocument(new batasInput((byte)10).getOnlyAngka(Manajemen));  
         Total.setDocument(new batasInput((byte)10).getOnlyAngka(Total));  
         Pembatalan.setDocument(new batasInput((byte)10).getOnlyAngka(Pembatalan));        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
@@ -137,7 +137,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         Nama = new widget.TextBox();
         label18 = new widget.Label();
         label26 = new widget.Label();
-        Menejemen = new widget.TextBox();
+        Manajemen = new widget.TextBox();
         label31 = new widget.Label();
         Lama = new widget.TextBox();
         label29 = new widget.Label();
@@ -162,7 +162,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -176,7 +176,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label9.setText("Keyword :");
+        label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi2.add(label9);
@@ -368,7 +368,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbKomponen.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbKomponen.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKomponen.setName("tbKomponen"); // NOI18N
         tbKomponen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -424,22 +424,22 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         FormInput.add(label18);
         label18.setBounds(0, 42, 105, 23);
 
-        label26.setText("Menejemen : Rp");
+        label26.setText("Manajemen : Rp");
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label26);
         label26.setBounds(70, 123, 100, 23);
 
-        Menejemen.setText("0");
-        Menejemen.setName("Menejemen"); // NOI18N
-        Menejemen.setPreferredSize(new java.awt.Dimension(207, 23));
-        Menejemen.addKeyListener(new java.awt.event.KeyAdapter() {
+        Manajemen.setText("0");
+        Manajemen.setName("Manajemen"); // NOI18N
+        Manajemen.setPreferredSize(new java.awt.Dimension(207, 23));
+        Manajemen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                MenejemenKeyPressed(evt);
+                ManajemenKeyPressed(evt);
             }
         });
-        FormInput.add(Menejemen);
-        Menejemen.setBounds(173, 123, 95, 23);
+        FormInput.add(Manajemen);
+        Manajemen.setBounds(173, 123, 95, 23);
 
         label31.setText("Lama(Hari) :");
         label31.setName("label31"); // NOI18N
@@ -652,8 +652,8 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Nama");
         }else if(Lama.getText().trim().equals("")){
             Valid.textKosong(Lama,"Lama");
-        }else if(Menejemen.getText().trim().equals("")){
-            Valid.textKosong(Menejemen,"Menejemen");
+        }else if(Manajemen.getText().trim().equals("")){
+            Valid.textKosong(Manajemen,"Manajemen");
         }else if(KSO.getText().trim().equals("")){
             Valid.textKosong(KSO,"KSO");
         }else if(PaketBHP.getText().trim().equals("")){
@@ -668,7 +668,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             if(Sequel.mengedittf("utd_komponen_darah","kode=?","kode=?,nama=?,lama=?,jasa_sarana=?,"+
                    "paket_bhp=?,kso=?,manajemen=?,total=?,pembatalan=?",10,new String[]{
                 Kode.getText(),Nama.getText(),Lama.getText(),JasaSarana.getText(),PaketBHP.getText(),
-                KSO.getText(),Menejemen.getText(),Total.getText(),Pembatalan.getText(),
+                KSO.getText(),Manajemen.getText(),Total.getText(),Pembatalan.getText(),
                 tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),0).toString()
               })==true){
                 emptTeks();
@@ -744,8 +744,8 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Nama");
         }else if(Lama.getText().trim().equals("")){
             Valid.textKosong(Lama,"Lama");
-        }else if(Menejemen.getText().trim().equals("")){
-            Valid.textKosong(Menejemen,"Menejemen");
+        }else if(Manajemen.getText().trim().equals("")){
+            Valid.textKosong(Manajemen,"Manajemen");
         }else if(KSO.getText().trim().equals("")){
             Valid.textKosong(KSO,"KSO");
         }else if(PaketBHP.getText().trim().equals("")){
@@ -759,7 +759,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         }else{
             if(Sequel.menyimpantf("utd_komponen_darah","?,?,?,?,?,?,?,?,?","Kode",9,new String[]{
                 Kode.getText(),Nama.getText(),Lama.getText(),JasaSarana.getText(),PaketBHP.getText(),
-                KSO.getText(),Menejemen.getText(),Total.getText(),Pembatalan.getText()
+                KSO.getText(),Manajemen.getText(),Total.getText(),Pembatalan.getText()
               })==true){
                 emptTeks();
                 tampil();
@@ -787,7 +787,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
 }//GEN-LAST:event_BtnBatalKeyPressed
 
-    private void MenejemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenejemenKeyPressed
+    private void ManajemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManajemenKeyPressed
           if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isjml();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -797,7 +797,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             isjml();
             KSO.requestFocus();
         }
-    }//GEN-LAST:event_MenejemenKeyPressed
+    }//GEN-LAST:event_ManajemenKeyPressed
 
 private void LamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LamaKeyPressed
         Valid.pindah(evt,Kode,Nama);
@@ -817,7 +817,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             isjml();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
-            Menejemen.requestFocus();
+            Manajemen.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             PaketBHP.requestFocus();
@@ -861,7 +861,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_TotalKeyPressed
 
     private void PembatalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembatalanKeyPressed
-       Valid.pindah(evt,Menejemen,BtnSimpan);
+       Valid.pindah(evt,Manajemen,BtnSimpan);
     }//GEN-LAST:event_PembatalanKeyPressed
 
     /**
@@ -896,7 +896,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Kode;
     private widget.Label LCount;
     private widget.TextBox Lama;
-    private widget.TextBox Menejemen;
+    private widget.TextBox Manajemen;
     private widget.TextBox Nama;
     private widget.TextBox PaketBHP;
     private javax.swing.JPanel PanelInput;
@@ -962,7 +962,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         JasaSarana.setText("0");
         PaketBHP.setText("0");
         KSO.setText("0");
-        Menejemen.setText("0");
+        Manajemen.setText("0");
         Total.setText("0");
         Pembatalan.setText("0");
         
@@ -977,7 +977,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JasaSarana.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),3).toString())));
             PaketBHP.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),4).toString())));
             KSO.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),5).toString())));
-            Menejemen.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),6).toString())));
+            Manajemen.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),6).toString())));
             Total.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),7).toString())));
             Pembatalan.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),8).toString())));
         }
@@ -1009,8 +1009,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }    
 
     private void isjml() {
-        if((! JasaSarana.getText().equals(""))&&(! PaketBHP.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Menejemen.getText().equals(""))){
-            Total.setText(Valid.SetAngka2(Double.parseDouble(JasaSarana.getText().trim())+Double.parseDouble(PaketBHP.getText().trim())+Double.parseDouble(KSO.getText().trim())+Double.parseDouble(Menejemen.getText().trim())));
+        if((! JasaSarana.getText().equals(""))&&(! PaketBHP.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Manajemen.getText().equals(""))){
+            Total.setText(Valid.SetAngka2(Double.parseDouble(JasaSarana.getText().trim())+Double.parseDouble(PaketBHP.getText().trim())+Double.parseDouble(KSO.getText().trim())+Double.parseDouble(Manajemen.getText().trim())));
         }
     }
  

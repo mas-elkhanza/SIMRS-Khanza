@@ -54,7 +54,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" title="::[ Proses Registrasi Berhasil, Silakan Cetak Dokumen Yang Diperlukan !!! ]::">
+            <TitledBorder justification="2" title="::[ Proses Registrasi Berhasil, Silahkan Cetak Dokumen Yang Diperlukan !!! ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="ff" green="d7" red="ff" type="rgb"/>

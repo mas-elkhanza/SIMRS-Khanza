@@ -107,7 +107,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
         nopermintaan.setDocument(new batasInput((byte)15).getKata(nopermintaan));
-        deskripsi.setDocument(new batasInput(300).getKata(deskripsi));
+        deskripsi.setDocument(new batasInput((int)300).getKata(deskripsi));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         TCari.requestFocus();
         
@@ -325,7 +325,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Permintaan Perbaikan Aset/Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Permintaan Perbaikan Aset/Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -334,7 +334,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
-        tbJnsPerawatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -544,7 +544,7 @@ public final class InventarisPermintaanPerbaikan extends javax.swing.JDialog {
         panelGlass9.add(btnRuang1);
         btnRuang1.setBounds(488, 10, 28, 23);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel6);

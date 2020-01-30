@@ -205,13 +205,13 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Peserta Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peserta Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,7 +234,7 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
@@ -290,7 +290,7 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
         });
         panelGlass8.add(DTPCari2);
 
-        label10.setText("Keyword :");
+        label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass8.add(label10);
@@ -591,7 +591,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }             
         }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data peserta...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data peserta...!!!!");
             TCari.requestFocus();
         }
     }else if(TabRawat.getSelectedIndex()==1){

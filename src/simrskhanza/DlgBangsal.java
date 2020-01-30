@@ -184,7 +184,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Kamar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kamar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -194,7 +194,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbBangsal.setAutoCreateRowSorter(true);
-        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,7 +222,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
         panelGlass7.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         jLabel6.setRequestFocusEnabled(false);

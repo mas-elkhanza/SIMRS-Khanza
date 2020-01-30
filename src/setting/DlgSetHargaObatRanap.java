@@ -190,7 +190,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Setup Harga Obat, Alkes & BHP Medis di Rawat Inap Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat, Alkes & BHP Medis di Rawat Inap Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -198,7 +198,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObatPenyakit.setAutoCreateRowSorter(true);
-        tbObatPenyakit.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObatPenyakit.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObatPenyakit.setName("tbObatPenyakit"); // NOI18N
         tbObatPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -312,7 +312,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 10));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel6);
@@ -491,7 +491,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             kdpj.requestFocus();
         }else if(nmpj.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(nmpj.getText().trim().equals(""))){
             Valid.hapusTable(tabMode,kdpj,"set_harga_obat_ranap","kelas='"+Kelas.getSelectedItem()+"' and kd_pj");
             tampil();

@@ -91,8 +91,8 @@ public final class DlgICD9 extends javax.swing.JDialog {
 
         
         Kode.setDocument(new batasInput((byte)10).getKata(Kode));
-        Pendek.setDocument(new batasInput(100).getKata(Pendek));
-        Panjang.setDocument(new batasInput(1500).getKata(Panjang));
+        Pendek.setDocument(new batasInput((int)100).getKata(Pendek));
+        Panjang.setDocument(new batasInput((int)1500).getKata(Panjang));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -171,7 +171,7 @@ public final class DlgICD9 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data ICD 9 Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data ICD 9 Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -179,7 +179,7 @@ public final class DlgICD9 extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbPenyakit.setAutoCreateRowSorter(true);
-        tbPenyakit.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbPenyakit.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPenyakit.setName("tbPenyakit"); // NOI18N
         tbPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -317,7 +317,7 @@ public final class DlgICD9 extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         jLabel6.setRequestFocusEnabled(false);
@@ -426,7 +426,7 @@ public final class DlgICD9 extends javax.swing.JDialog {
         jLabel9.setBounds(0, 42, 100, 23);
 
         ScrollCiri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ScrollCiri.setForeground(new java.awt.Color(50, 50, 50));
+        ScrollCiri.setForeground(new java.awt.Color(50,50,50));
         ScrollCiri.setName("ScrollCiri"); // NOI18N
 
         Panjang.setBorder(null);

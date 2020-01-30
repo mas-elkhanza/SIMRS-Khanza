@@ -251,7 +251,7 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Mutasi Antar Gudang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Mutasi Antar Gudang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -316,7 +316,7 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
         });
         panelisi1.add(BtnSimpan);
 
-        label10.setText("Keyword :");
+        label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(77, 23));
         panelisi1.add(label10);
@@ -556,12 +556,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(aktifkanbatch.equals("yes")&&(row>0)){
             Valid.textKosong(TCari,"No.Batch/No.Faktur");
         }else if(index<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, silakan masukkan jumlah mutasi...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan jumlah mutasi...!!!!");
             tbDokter.requestFocus();
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else{
-            i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (i == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;

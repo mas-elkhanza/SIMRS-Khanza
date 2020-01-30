@@ -406,7 +406,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1091,7 +1091,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TCari.requestFocus();
                 }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data resep dokter yang hendak divalidasi..!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
@@ -1112,7 +1112,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     }
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silakan buka Daftar Resep...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
                 TCari.requestFocus();
             } 
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1121,7 +1121,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TCari.requestFocus();
                 }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data resep dokter yang hendak divalidasi..!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
@@ -1134,7 +1134,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     }
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silakan buka Daftar Resep...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
                 TCari.requestFocus();
             }
         }            
@@ -1168,7 +1168,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TCari.requestFocus();
                 }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data resep dokter yang hendak divalidasi..!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
@@ -1185,7 +1185,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }                    
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silakan buka Daftar Resep...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1194,7 +1194,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TCari.requestFocus();
                 }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data resep dokter yang hendak divalidasi..!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
@@ -1223,7 +1223,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }                    
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silakan buka Daftar Resep...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
                 TCari.requestFocus();
             } 
         }
@@ -1328,7 +1328,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TCari.requestFocus();
                 }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data resep dokter yang hendak divalidasi..!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
@@ -1339,7 +1339,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }                    
                 }
             }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silakan buka Daftar Resep...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
                 TCari.requestFocus();
             }
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -1348,7 +1348,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                     TCari.requestFocus();
                 }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data resep dokter yang hendak divalidasi..!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 }else{
                     if(Status.equals("Sudah Terlayani")){
                         JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
@@ -1359,7 +1359,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }                    
                 }
             }else if(TabRawatInap.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silakan buka Daftar Resep...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
                 TCari.requestFocus();
             } 
         }

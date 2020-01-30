@@ -41,7 +41,7 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;
+    private int i=0;   
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -72,7 +72,7 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
 
-
+        
         try {
             ps=koneksi.prepareStatement(
                     "select * from sms where tgl_sms between ? and ? and sms_masuk like ? or "+
@@ -81,7 +81,7 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
+    }    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -120,7 +120,7 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Pesan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pesan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -157,7 +157,7 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass5.add(Tgl2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass5.add(jLabel6);
@@ -258,14 +258,14 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();
+            Map<String, Object> param = new HashMap<>();         
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting"));  
             Valid.MyReportqry("rptSms.jasper","report","::[ Data SMS Masuk ]::",
                 "select * from sms where tgl_sms between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and sms_masuk like '%"+TCari.getText().trim()+"%' or "+
                             "tgl_sms between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59' and no_hp like '%"+TCari.getText().trim()+"%' or "+
@@ -298,7 +298,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -329,7 +329,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
         }else{
-
+            
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -372,10 +372,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){
-        try{
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Valid.tabelKosong(tabMode);
+    public void tampil(){        
+        try{   
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
+            Valid.tabelKosong(tabMode);   
             ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
             ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
             ps.setString(3,"%"+TCari.getText().trim()+"%");
@@ -391,7 +391,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
                 });
                 i++;
-            }
+            }            
             this.setCursor(Cursor.getDefaultCursor());
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

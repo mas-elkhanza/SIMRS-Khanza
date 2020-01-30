@@ -244,7 +244,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
-        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {

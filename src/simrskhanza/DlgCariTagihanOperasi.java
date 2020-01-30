@@ -96,10 +96,10 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
         kdmem.setDocument(new batasInput((byte)10).getKata(kdmem));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
-        PreOp.setDocument(new batasInput(100).getKata(PreOp));      
-        PostOp.setDocument(new batasInput(100).getKata(PostOp));      
-        Jaringan.setDocument(new batasInput(100).getKata(Jaringan));
-        Laporan.setDocument(new batasInput(8000).getKata(Laporan));
+        PreOp.setDocument(new batasInput((int)100).getKata(PreOp));      
+        PostOp.setDocument(new batasInput((int)100).getKata(PostOp));      
+        Jaringan.setDocument(new batasInput((int)100).getKata(Jaringan));
+        Laporan.setDocument(new batasInput((int)8000).getKata(Laporan));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -603,9 +603,9 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         WindowGantiDokterParamedis.setUndecorated(true);
         WindowGantiDokterParamedis.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Ubah Operator & Paramedis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Operator & Paramedis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
-        internalFrame5.setWarnaBawah(new java.awt.Color(255, 253, 247));
+        internalFrame5.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame5.setLayout(new java.awt.BorderLayout());
 
         scrollPane2.setBorder(null);
@@ -1458,7 +1458,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         WindowLaporan.setResizable(false);
         WindowLaporan.getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Laporan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1622,7 +1622,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Cari Tagihan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Tagihan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1751,7 +1751,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label10.setText("Keyword :");
+        label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi1.add(label10);
@@ -2011,7 +2011,7 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
     if(tbDokter.getSelectedRow()>-1){
         if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals("")){
             if(Sequel.cariRegistrasi(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;status="";
@@ -2064,7 +2064,7 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
                 tampil();
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
         }  
     }               
 }//GEN-LAST:event_MnHapusTagihanOperasiActionPerformed
@@ -2073,7 +2073,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     if(tbDokter.getSelectedRow()>-1){
         if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals("")){            
             if(Sequel.cariRegistrasi(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 ttljmdokter=0;ttljmpetugas=0;ttlpendapatan=0;ttlbhp=0;
@@ -2095,7 +2095,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 tampil();
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
         }   
     }        
 }//GEN-LAST:event_MnHapusObatOperasiActionPerformed
@@ -2108,7 +2108,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         if(tbDokter.getSelectedRow()>-1){
             if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals("")){
                 if(Sequel.cariRegistrasi(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh diubah.\nSilakan hubungi bagian kasir/keuangan ..!!");
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh diubah.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                     TCari.requestFocus();
                 }else{
                     try {
@@ -2178,7 +2178,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                     WindowGantiDokterParamedis.setVisible(true);
                 }                
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
             } 
         }                
     }//GEN-LAST:event_MnUbahOperatorPetugasActionPerformed
@@ -2874,7 +2874,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 }
                 Valid.MyReport("rptLaporanOperasi.jasper","report","::[ Laporan Operasi ]::",param);
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
             } 
         }
     }//GEN-LAST:event_MnLaporanOperasiActionPerformed
@@ -2904,7 +2904,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 WindowLaporan.setLocationRelativeTo(internalFrame1);
                 WindowLaporan.setVisible(true);
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silakan pilih data, klik pada No.Rawat ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data, klik pada No.Rawat ..!!");
             } 
         }
     }//GEN-LAST:event_MnUbahLaporanActionPerformed

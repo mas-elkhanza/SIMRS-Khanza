@@ -202,7 +202,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
 
         MnKartu.setBackground(new java.awt.Color(255, 255, 254));
         MnKartu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKartu.setForeground(new java.awt.Color(50, 50, 50));
+        MnKartu.setForeground(new java.awt.Color(50,50,50));
         MnKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu.setText("Cetak Kartu Anggota");
         MnKartu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -228,7 +228,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Anggota Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Anggota Perpustakaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -236,7 +236,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
-        tbJnsPerawatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -449,7 +449,7 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
         panelGlass10.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass10.add(jLabel6);
@@ -1016,7 +1016,7 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
                         "select no_anggota, nama_anggota, tmp_lahir, tgl_lahir, j_kel, alamat, no_telp, email,"+
                         "tgl_gabung, masa_berlaku, jenis_anggota, nomer_id from perpustakaan_anggota where no_anggota='"+NoAnggota.getText()+"'",param);
             }else{
-                JOptionPane.showMessageDialog(null,"Silakan pilih data yang hendak dicetak kartu anggotanya ..!!!");
+                JOptionPane.showMessageDialog(null,"Silahkan pilih data yang mau dicetak kartu anggotanya ..!!!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());

@@ -361,7 +361,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         WindowInput.setUndecorated(true);
         WindowInput.setResizable(false);
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(null);
 
@@ -627,7 +627,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -779,7 +779,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         });
         panelGlass11.add(BtnSeek2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass11.add(jLabel6);
@@ -964,7 +964,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             NoRm.requestFocus();
         }else if(NmPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(TOut.getText().toString().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Data berkas dengan No.R.M. "+NoRm.getText()+" belum kembali. Data belum bisa anda hapus...!!!!");
         }else{

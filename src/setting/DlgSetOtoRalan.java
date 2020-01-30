@@ -63,7 +63,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
         this.setLocation(8,1);
         setSize(885,674);
-
+ 
         tabMode=new DefaultTableModel(null,new String[]{
             "Kode Dokter","Nama Dokter","Kode Tindakan","Nama Tindakan","Kode Bayar","Nama Bayar"
             }){
@@ -92,7 +92,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             }
         }
         Table1.setDefaultRenderer(Object.class, new WarnaTable());
-
+        
         tabMode2=new DefaultTableModel(null,new String[]{
             "Kode Tindakan","Nama Tindakan","Kode Bayar","Nama Bayar"
             }){
@@ -117,7 +117,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             }
         }
         Table2.setDefaultRenderer(Object.class, new WarnaTable());
-
+        
         tabMode3=new DefaultTableModel(null,new String[]{
             "Kode Dokter","Nama Dokter","Kode Tindakan","Nama Tindakan","Kode Bayar","Nama Bayar"
             }){
@@ -146,6 +146,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             }
         }
         Table3.setDefaultRenderer(Object.class, new WarnaTable());
+        
 
         kdtindakan.setDocument(new batasInput((byte)15).getKata(kdtindakan));
         kddokter.setDocument(new batasInput((byte)20).getKata(kddokter));
@@ -173,8 +174,8 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                         nmpj3.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
                         kdpj3.requestFocus();
                     }
-
-                }
+                        
+                }                      
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -185,7 +186,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-
+        
         penjab.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -193,12 +194,12 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
                     penjab.dispose();
-                }
+                }                
             }
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-
+        
         datatindakan.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -206,21 +207,21 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(datatindakan.getTable().getSelectedRow()!= -1){
+                if(datatindakan.getTable().getSelectedRow()!= -1){    
                     if(TabRawat.getSelectedIndex()==0){
-                        kdtindakan.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),1).toString());
-                        nmtindakan.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),2).toString());
+                        kdtindakan.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),1).toString());   
+                        nmtindakan.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),2).toString()); 
                         kdtindakan.requestFocus();
                     }else if(TabRawat.getSelectedIndex()==1){
-                        kdtindakan2.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),1).toString());
-                        nmtindakan2.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),2).toString());
+                        kdtindakan2.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),1).toString());   
+                        nmtindakan2.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),2).toString()); 
                         kdtindakan2.requestFocus();
                     }else if(TabRawat.getSelectedIndex()==2){
-                        kdtindakan3.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),1).toString());
-                        nmtindakan3.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),2).toString());
+                        kdtindakan3.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),1).toString());   
+                        nmtindakan3.setText(datatindakan.getTable().getValueAt(datatindakan.getTable().getSelectedRow(),2).toString()); 
                         kdtindakan3.requestFocus();
-                    }
-                }
+                    }                        
+                }                        
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -231,11 +232,11 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-
+        
         datatindakan.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
-
+            
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
@@ -246,7 +247,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-
+        
         dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -263,8 +264,8 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                         kddokter3.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                         nmdokter3.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                         kddokter3.requestFocus();
-                    }
-                }
+                    }                        
+                }                       
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -275,7 +276,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-
+        
     }
 
     /** This method is called from within the constructor to
@@ -358,7 +359,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Setup Tindakan Otomatis Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Tindakan Otomatis Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -467,7 +468,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 10));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel6);
@@ -532,7 +533,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -550,7 +551,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         Table1.setAutoCreateRowSorter(true);
-        Table1.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        Table1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table1.setName("Table1"); // NOI18N
         Table1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -706,7 +707,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         Table2.setAutoCreateRowSorter(true);
-        Table2.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        Table2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table2.setName("Table2"); // NOI18N
         Table2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -948,7 +949,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         Table3.setAutoCreateRowSorter(true);
-        Table3.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        Table3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         Table3.setName("Table3"); // NOI18N
         Table3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -995,7 +996,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                         "Tindakan")==true){
                     tampil();
                     emptTeks();
-                }
+                }                
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(kdtindakan2.getText().trim().equals("")||nmtindakan2.getText().trim().equals("")){
@@ -1007,7 +1008,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                         "set_otomatis_tindakan_ralan_petugas","'"+kdtindakan2.getText()+"','"+kdpj2.getText()+"'","Tindakan")==true){
                     tampil2();
                     emptTeks2();
-                }
+                }                
             }
         }else if(TabRawat.getSelectedIndex()==2){
             if(kddokter3.getText().trim().equals("")||nmdokter3.getText().trim().equals("")){
@@ -1022,7 +1023,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                         "Tindakan")==true){
                     tampil3();
                     emptTeks3();
-                }
+                }                
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1037,7 +1038,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 Valid.pindah(evt,kdtindakan2,BtnBatal);
             }else if(TabRawat.getSelectedIndex()==2){
                 Valid.pindah(evt,kdtindakan3,BtnBatal);
-            }
+            }                
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1063,7 +1064,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 kddokter.requestFocus();
             }else if(nmtindakan.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(!(nmtindakan.getText().trim().equals(""))){
                 Valid.hapusTable(tabMode,kddokter,"set_otomatis_tindakan_ralan","kd_pj='"+kdpj.getText()+"' and kd_jenis_prw='"+kdtindakan.getText()+"' and kd_dokter");
                 tampil();
@@ -1074,7 +1075,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 kdpj2.requestFocus();
             }else if(nmtindakan2.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(!(nmtindakan2.getText().trim().equals(""))){
                 Valid.hapusTable(tabMode2,kdtindakan2,"set_otomatis_tindakan_ralan_petugas","kd_pj='"+kdpj2.getText()+"' and kd_jenis_prw");
                 tampil2();
@@ -1085,14 +1086,14 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
                 kddokter3.requestFocus();
             }else if(nmtindakan3.getText().trim().equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.\nKlik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
             }else if(!(nmtindakan3.getText().trim().equals(""))){
                 Valid.hapusTable(tabMode3,kddokter3,"set_otomatis_tindakan_ralan_dokterpetugas","kd_pj='"+kdpj3.getText()+"' and kd_jenis_prw='"+kdtindakan3.getText()+"' and kd_dokter");
                 tampil3();
                 emptTeks3();
             }
         }
-
+            
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1109,15 +1110,15 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();
+        }else if(tabMode.getRowCount()!=0){    
+            Map<String, Object> param = new HashMap<>();    
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());
-                param.put("logo",Sequel.cariGambar("select logo from setting"));
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
                     Valid.MyReportqry("rptOtoRalan.jasper","report","::[ Data Tindakan Otomatis Dokter Ralan ]::","select set_otomatis_tindakan_ralan.kd_dokter,dokter.nm_dokter, set_otomatis_tindakan_ralan.kd_jenis_prw,jns_perawatan.nm_perawatan "+
                    "from set_otomatis_tindakan_ralan inner join dokter inner join jns_perawatan on  "+
                    "set_otomatis_tindakan_ralan.kd_dokter=dokter.kd_dokter and "+
@@ -1528,7 +1529,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                "set_otomatis_tindakan_ralan.kd_pj like ? or "+
                "penjab.png_jawab like ? "+
                " order by dokter.nm_dokter");
-            try{
+            try{            
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
@@ -1554,11 +1555,11 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }
         } catch (Exception e) {
             System.out.println("setting.DlgSetOtoRalan.tampil() : "+e);
-        }
-
+        } 
+            
         LCount.setText(""+tabMode.getRowCount());
     }
-
+    
     private void tampil2() {
         Valid.tabelKosong(tabMode2);
         try {
@@ -1573,7 +1574,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                "set_otomatis_tindakan_ralan_petugas.kd_pj like ? or "+
                "penjab.png_jawab like ? "+
                " order by set_otomatis_tindakan_ralan_petugas.kd_jenis_prw ");
-            try{
+            try{            
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
@@ -1597,11 +1598,11 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }
         } catch (Exception e) {
             System.out.println("setting.DlgSetOtoRalan.tampil2() : "+e);
-        }
-
+        } 
+            
         LCount.setText(""+tabMode2.getRowCount());
     }
-
+    
     private void tampil3() {
         Valid.tabelKosong(tabMode3);
         try {
@@ -1621,7 +1622,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                "set_otomatis_tindakan_ralan_dokterpetugas.kd_pj like ? or "+
                "penjab.png_jawab like ? "+
                " order by dokter.nm_dokter");
-            try{
+            try{            
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
@@ -1647,8 +1648,8 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }
         } catch (Exception e) {
             System.out.println("setting.DlgSetOtoRalan.tampil3() : "+e);
-        }
-
+        } 
+            
         LCount.setText(""+tabMode3.getRowCount());
     }
 
@@ -1657,13 +1658,13 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         nmtindakan.setText("");
         kdtindakan.requestFocus();
     }
-
+    
     public void emptTeks2() {
         kdtindakan2.setText("");
         nmtindakan2.setText("");
         kdtindakan2.requestFocus();
     }
-
+    
     public void emptTeks3() {
         kdtindakan3.setText("");
         nmtindakan3.setText("");
@@ -1681,7 +1682,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             nmpj.setText(Table1.getValueAt(row,5).toString());
         }
     }
-
+    
     private void getData2() {
         int row=Table2.getSelectedRow();
         if(row!= -1){
@@ -1691,7 +1692,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             nmpj2.setText(Table2.getValueAt(row,3).toString());
         }
     }
-
+    
     private void getData3() {
         int row=Table3.getSelectedRow();
         if(row!= -1){

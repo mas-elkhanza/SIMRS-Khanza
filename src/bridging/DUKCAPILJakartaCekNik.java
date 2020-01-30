@@ -41,7 +41,7 @@ public class DUKCAPILJakartaCekNik {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
-
+    
     public DUKCAPILJakartaCekNik(){
         super();
         try {
@@ -50,7 +50,7 @@ public class DUKCAPILJakartaCekNik {
             System.out.println("Notif : "+e);
         }
     }
-
+    
     public void tampil(String nik) {
         try {
             URL = prop.getProperty("URLDUKCAPILJAKARTA")+"?usernm="+koneksiDB.USERDUKCAPILJAKARTA()+"&pass="+koneksiDB.PASSDUKCAPILJAKARTA()+"&app=SILaporLahir&pget=Kelahiran&pusr=admin&proc=GETNIK&nik="+nik+"&pkey="+Sequel.cariIsi("select md5(concat('"+prop.getProperty("VAR1DUKCAPILJAKARTA")+"',md5(date_format(current_date(),'%d%m%Y')),'"+prop.getProperty("VAR2DUKCAPILJAKARTA")+"'))");
@@ -85,7 +85,7 @@ public class DUKCAPILJakartaCekNik {
                 NO_RW=nameNode.path("NO_RW").asText();
                 NO_PROP=nameNode.path("NO_PROP").asText();
                 NO_KEC=nameNode.path("NO_KEC").asText();
-                DSC_STAT_KWN=nameNode.path("DSC_STAT_KWN").asText().replaceAll("Belum Kawin","BELUM KAWIN").replaceAll("Sudah Kawin","KAWIN");
+                DSC_STAT_KWN=nameNode.path("DSC_STAT_KWN").asText().replaceAll("Belum Kawin","BELUM MENIKAH").replaceAll("Sudah Kawin","MENIKAH");
                 DSC_STAT_HBKEL=nameNode.path("DSC_STAT_HBKEL").asText();
                 DSC_GOL_DRH=nameNode.path("DSC_GOL_DRH").asText().replaceAll("Tidak Tahu","-");
             } catch (Exception e) {
@@ -114,7 +114,7 @@ public class DUKCAPILJakartaCekNik {
                 DSC_STAT_KWN="";
                 DSC_STAT_HBKEL="";
                 DSC_GOL_DRH="";
-            }
+            }            
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : "+ex);
             if(ex.toString().contains("UnknownHostException")){
@@ -122,5 +122,5 @@ public class DUKCAPILJakartaCekNik {
             }
         }
     }
-
+    
 }

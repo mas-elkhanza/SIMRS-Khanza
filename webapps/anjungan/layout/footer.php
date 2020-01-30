@@ -165,7 +165,7 @@ function admSelectCheck(nameSelect)
             //swal("Good job!", "Submitted!", "success");
           	//swal({ 
   			//	title: "Selesai",
-   			//	text: "Pendaftaran pasien sukses. Silakan cetak antrian anda!!",
+   			//	text: "Pendaftaran pasien sukses. Silahkan cetak antrian anda!!",
     		//	type: "success" 
   			//},
   			//function(){

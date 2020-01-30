@@ -329,7 +329,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                         KdJenpel.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),3).toString());  
                         KdPoli.requestFocus();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silakan cari yang kosong..!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silahkan cari yang kosong..!!");
                         KdPoli.requestFocus();
                     }
                 }  
@@ -532,7 +532,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         WindowUpdatePulang.setUndecorated(true);
         WindowUpdatePulang.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -590,7 +590,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -599,7 +599,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -784,7 +784,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -1330,7 +1330,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             deleteSJP();  
         }else{
-            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
         }            
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1362,11 +1362,11 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                 if(tbObat.getSelectedRow()!= -1){
                     UpdateSEP();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
+                    JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
                 } 
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak diganti..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
         } 
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1563,7 +1563,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }                
             this.setCursor(Cursor.getDefaultCursor());
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SJP yang hendak dicetak...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SJP yang mau dicetak...!!!!");
             BtnBatal.requestFocus();
         }        
     }//GEN-LAST:event_ppSEPBtnPrintActionPerformed
@@ -1574,7 +1574,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             WindowUpdatePulang.setLocationRelativeTo(internalFrame1);
             WindowUpdatePulang.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak diupdate tanggal pulangnya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau diupdate tanggal pulangnya...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1617,7 +1617,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silakan pilih data SEP yang hendak dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dimapping transaksinya...!!!!");
             BtnBatal.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());

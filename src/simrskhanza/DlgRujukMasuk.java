@@ -301,7 +301,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         WindowPerujuk.setUndecorated(true);
         WindowPerujuk.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Perujuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perujuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -319,7 +319,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
 
             }
         ));
-        tbPerujuk.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbPerujuk.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPerujuk.setName("tbPerujuk"); // NOI18N
         tbPerujuk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -339,7 +339,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label9.setText("Keyword :");
+        label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi2.add(label9);
@@ -469,7 +469,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Rujukan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rujukan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -478,7 +478,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -663,7 +663,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -1267,7 +1267,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void MnBalasanRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBalasanRujukanActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
             Map<String, Object> param = new HashMap<>();
             diagnosa="";
@@ -1391,7 +1391,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void MnBalasanRujukan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBalasanRujukan1ActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
             Map<String, Object> param = new HashMap<>();
             diagnosa="";
@@ -1528,7 +1528,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void MnBalasanRujukan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBalasanRujukan2ActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
             Map<String, Object> param = new HashMap<>();
             diagnosa="";

@@ -452,7 +452,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         WindowInput3.setUndecorated(true);
         WindowInput3.setResizable(false);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Ubah Aturan Pakai Obat Umum ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Aturan Pakai Obat Umum ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -470,7 +470,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
             }
         ));
-        tbTambahan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTambahan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTambahan.setName("tbTambahan"); // NOI18N
         tbTambahan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -535,7 +535,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         WindowInput4.setUndecorated(true);
         WindowInput4.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Ubah Aturan Pakai Obat Racik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Aturan Pakai Obat Racik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -553,7 +553,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
             }
         ));
-        tbTambahan1.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTambahan1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTambahan1.setName("tbTambahan1"); // NOI18N
         tbTambahan1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -617,14 +617,14 @@ public final class DlgResepObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Resep Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbResep.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbResep.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbResep.setComponentPopupMenu(Popup2);
         tbResep.setName("tbResep"); // NOI18N
         tbResep.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -805,7 +805,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel6);
@@ -1078,7 +1078,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
              TNoRw.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang hendak dihapus.Klik data pada table untuk memilih...!!!!");
+             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.Klik data pada table untuk memilih...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
            Sequel.meghapus("resep_obat","no_resep",NoResep.getText());
            Sequel.meghapus("resep_dokter","no_resep",NoResep.getText());

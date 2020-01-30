@@ -96,10 +96,10 @@ public final class DlgBulanan extends javax.swing.JDialog {
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Nik.setDocument(new batasInput(25).getKata(Nik));
-        catatan.setDocument(new batasInput(100).getKata(catatan));
+        Nik.setDocument(new batasInput((int)25).getKata(Nik));
+        catatan.setDocument(new batasInput((int)100).getKata(catatan));
         
-        TCari.setDocument(new batasInput(100).getKata(TCari));
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -480,7 +480,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Rekap Presensi Bulanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Presensi Bulanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -489,7 +489,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbBangsal.setAutoCreateRowSorter(true);
-        tbBangsal.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -536,7 +536,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
         Departemen.setPreferredSize(new java.awt.Dimension(130, 23));
         panelGlass7.add(Departemen);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(66, 23));
         jLabel6.setRequestFocusEnabled(false);

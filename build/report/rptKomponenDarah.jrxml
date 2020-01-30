@@ -109,7 +109,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<text><![CDATA[Menejemen]]></text>
+				<text><![CDATA[Manajemen]]></text>
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="439" y="0" width="58" height="18" forecolor="#000000" backcolor="#F0F0DC"/>

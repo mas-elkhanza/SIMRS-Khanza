@@ -260,7 +260,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
             }
         });
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame2.setLayout(null);
@@ -337,7 +337,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Transaksi Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Parkir Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -350,7 +350,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
         panelGlass10.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass10.add(jLabel6);
@@ -637,7 +637,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamIn.setAutoCreateRowSorter(true);
-        tbKamIn.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbKamIn.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamIn.setName("tbKamIn"); // NOI18N
         tbKamIn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -860,7 +860,7 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }else{
                 Sequel.cariIsi("select nomer_kartu from parkir_barcode where kode_barcode=?",NomorKartu,Barcode.getText());
                 if(NomorKartu.getText().trim().equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, kartu tidak teridentifikasi. Silakan cek ...!!!");
+                    JOptionPane.showMessageDialog(null,"Maaf, kartu tidak teridentifikasi. Silahkan cek ...!!!");
                     Barcode.requestFocus();
                 }else{
                     WindowInputParkir.setVisible(true);

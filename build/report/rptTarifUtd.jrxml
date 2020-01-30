@@ -112,7 +112,7 @@ from jns_perawatan_utd inner join penjab on penjab.kd_pj=jns_perawatan_utd.kd_pj
 				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Menejemen]]></text>
+				<text><![CDATA[Manajemen]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="599" y="0" width="65" height="16" forecolor="#000000" backcolor="#F0F0DC"/>

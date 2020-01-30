@@ -263,7 +263,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -294,7 +294,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Ubah Penerimaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Penerimaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -356,7 +356,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
         panelisi1.add(BtnSimpan);
         BtnSimpan.setBounds(10, 70, 100, 30);
 
-        label10.setText("Keyword :");
+        label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi1.add(label10);
@@ -740,10 +740,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan masukkan penerimaan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penerimaan...!!!!");
             tbDokter.requestFocus();
         }else{
-            int reply = JOptionPane.showConfirmDialog(null,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??\nBisa jadi stok menjadi tidak sinkron karena data stok sudah digunakan..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(null,"Eeiiiiiits, udah bener belum data yang mau disimpan..??\nBisa jadi stok menjadi tidak sinkron karena data stok sudah digunakan..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 sukses=true;
                 try {
@@ -1163,7 +1163,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             datakonversi.setLocationRelativeTo(internalFrame1);
                             datakonversi.setVisible(true);
                         }else{
-                            JOptionPane.showMessageDialog(null,"Silakan masukkan jumlah pembelian terelebih dahulu..!!");
+                            JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah pembelian terelebih dahulu..!!");
                         }
                     }   break;
                 default:

@@ -118,17 +118,17 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
         TKd.setDocument(new batasInput((byte)15).getKata(TKd));
         TNm.setDocument(new batasInput((byte)80).getKata(TNm));
         KdKtg.setDocument(new batasInput((byte)5).getKata(KdKtg));
-        BagianRs.setDocument(new batasInput(15).getOnlyAngka(BagianRs));
-        BhpMedis.setDocument(new batasInput(15).getOnlyAngka(BhpMedis));
-        TTndDr.setDocument(new batasInput(15).getOnlyAngka(TTndDr));
-        TTndPr.setDocument(new batasInput(15).getOnlyAngka(TTndPr));
-        TJmlDr.setDocument(new batasInput(20).getOnlyAngka(TJmlDr));
-        TJmlPr.setDocument(new batasInput(20).getOnlyAngka(TJmlPr));
-        TJmlDrPr.setDocument(new batasInput(20).getOnlyAngka(TJmlPr));
-        KSO.setDocument(new batasInput(20).getOnlyAngka(KSO));
-        Menejemen.setDocument(new batasInput(20).getOnlyAngka(Menejemen));
-        kdpnj.setDocument(new batasInput(3).getKata(kdpnj));
-        kdpoli.setDocument(new batasInput(5).getKata(kdpoli));
+        BagianRs.setDocument(new batasInput((int)15).getOnlyAngka(BagianRs));
+        BhpMedis.setDocument(new batasInput((int)15).getOnlyAngka(BhpMedis));
+        TTndDr.setDocument(new batasInput((int)15).getOnlyAngka(TTndDr));
+        TTndPr.setDocument(new batasInput((int)15).getOnlyAngka(TTndPr));
+        TJmlDr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlDr));
+        TJmlPr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlPr));
+        TJmlDrPr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlPr));
+        KSO.setDocument(new batasInput((int)20).getOnlyAngka(KSO));
+        Menejemen.setDocument(new batasInput((int)20).getOnlyAngka(Menejemen));
+        kdpnj.setDocument(new batasInput((int)3).getKata(kdpnj));
+        kdpoli.setDocument(new batasInput((int)5).getKata(kdpoli));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -327,7 +327,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
+        MnRestore.setForeground(new java.awt.Color(50,50,50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -350,7 +350,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Tarif Tindakan/Perawatan/Tagihan Rawat Jalan]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Tindakan/Perawatan/Tagihan Rawat Jalan]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -359,7 +359,7 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
-        tbJnsPerawatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit, untuk menghapus data silakan centang kemudian klik hapus");
+        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit, untuk menghapus data silahkan centang kemudian klik hapus");
         tbJnsPerawatan.setComponentPopupMenu(jPopupMenu1);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -519,12 +519,12 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
 
-        TCari.setToolTipText("Silakan masukkan kata kunci pencarian kemudian tekan ENTER atau tekan tombol centang. Pencarian bisa berdasar kode, nama perawatan, kategori, poli dan jenis bayar");
+        TCari.setToolTipText("Silahkan masukkan kata kunci pencarian kemudian tekan ENTER atau tekan tombol centang. Pencarian bisa berdasar kode, nama perawatan, kategori, poli dan jenis bayar");
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(450, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {

@@ -185,7 +185,7 @@
                             
                         } 
                     }elseif (empty($idpeg)||empty($shift)){
-                        echo "<b>ID Pegawai atau Jam Masuk ada yang salah, Silakan pilih berdasarkan shift departemen anda</b>";
+                        echo "<b>ID Pegawai atau Jam Masuk ada yang salah, Silahkan pilih berdasarkan shift departemen anda</b>";
                     }
                 }
             ?>

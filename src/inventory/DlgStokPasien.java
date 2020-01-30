@@ -174,7 +174,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Pemberian Stok Obat, Alkes & BHP Medis Pasien Di Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemberian Stok Obat, Alkes & BHP Medis Pasien Di Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -217,7 +217,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi3.add(Tgl2);
 
-        label9.setText("Keyword :");
+        label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi3.add(label9);
@@ -353,10 +353,10 @@ public final class DlgStokPasien extends javax.swing.JDialog {
                 "no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' and "+
                 "no_batch='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),8).toString()+"' and "+
                 "no_faktur='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString()+"' ")>0){
-            JOptionPane.showMessageDialog(null,"Maaf, data Obat/Alkes/BHP sudah digunakan dalam pemberian obat.\nSilakan hapus data Obat/Alkes/BHP yang ada dalam pemberian obat terlebih dahulu..!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, data Obat/Alkes/BHP sudah digunakan dalam pemberian obat.\nSilahkan hapus data Obat/Alkes/BHP yang ada dalam pemberian obat terlebih dahulu..!!!");
         }else{            
             if(Sequel.cariRegistrasi(tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilakan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 Sequel.queryu("delete from stok_obat_pasien where tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' "+

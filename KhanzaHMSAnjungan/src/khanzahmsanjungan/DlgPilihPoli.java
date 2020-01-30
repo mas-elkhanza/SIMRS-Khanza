@@ -106,7 +106,7 @@ public class DlgPilihPoli extends javax.swing.JDialog {
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Silakan Pilih Unit/Poliklinik !!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(160, 130, 160))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Silahkan Pilih Unit/Poliklinik !!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 24), new java.awt.Color(160, 130, 160))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 

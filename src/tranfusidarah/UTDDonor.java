@@ -426,7 +426,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppTampilkanBHPMedis.setForeground(new java.awt.Color(50,50,50));
         ppTampilkanBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPMedis.setText("Tampilkan Penggunaan BHP Medis");
         ppTampilkanBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -442,7 +442,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(50, 50, 50));
+        ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(50,50,50));
         ppTampilkanBHPPenunjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPPenunjang.setText("Tampilkan Penggunaan BHP Non Medis");
         ppTampilkanBHPPenunjang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -458,7 +458,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppTampilkanBHPPenunjangDanMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(50,50,50));
         ppTampilkanBHPPenunjangDanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanBHPPenunjangDanMedis.setText("Tampilkan Penggunaan BHP Medis & Non Medis");
         ppTampilkanBHPPenunjangDanMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -474,7 +474,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppUbah.setBackground(new java.awt.Color(255, 255, 254));
         ppUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUbah.setForeground(new java.awt.Color(50, 50, 50));
+        ppUbah.setForeground(new java.awt.Color(50,50,50));
         ppUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUbah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppUbah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -490,7 +490,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppHapusBHPMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppHapusBHPMedis.setForeground(new java.awt.Color(50,50,50));
         ppHapusBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPMedis.setText("Hapus Penggunaan BHP Medis");
         ppHapusBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -506,7 +506,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppHapusBHPNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPNonMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppHapusBHPNonMedis.setForeground(new java.awt.Color(50,50,50));
         ppHapusBHPNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPNonMedis.setText("Hapus Penggunaan BHP Non Medis");
         ppHapusBHPNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -522,7 +522,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppHapusBHPMedisDanNonMedis.setBackground(new java.awt.Color(255, 255, 254));
         ppHapusBHPMedisDanNonMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(50, 50, 50));
+        ppHapusBHPMedisDanNonMedis.setForeground(new java.awt.Color(50,50,50));
         ppHapusBHPMedisDanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusBHPMedisDanNonMedis.setText("Hapus Penggunaan BHP Medis & Non Medis");
         ppHapusBHPMedisDanNonMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -538,7 +538,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         ppCekal.setBackground(new java.awt.Color(255, 255, 254));
         ppCekal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCekal.setForeground(new java.awt.Color(50, 50, 50));
+        ppCekal.setForeground(new java.awt.Color(50,50,50));
         ppCekal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCekal.setText("Cekal Darah");
         ppCekal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -564,13 +564,13 @@ public final class UTDDonor extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Donor Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Donor Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -588,7 +588,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(450, 77));
         panelisi5.setLayout(new java.awt.GridLayout(2, 0));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
@@ -599,7 +599,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         panelisi6.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label10.setText("Keyword :");
+        label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi6.add(label10);
@@ -672,7 +672,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         panelisi5.add(jPanel3);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         jPanel4.setName("jPanel4"); // NOI18N
         jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(300, 202));
@@ -683,7 +683,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         panelisi7.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label11.setText("Keyword :");
+        label11.setText("Key Word :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi7.add(label11);
@@ -1177,7 +1177,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbTranfusiDarah.setAutoCreateRowSorter(true);
-        tbTranfusiDarah.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbTranfusiDarah.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTranfusiDarah.setComponentPopupMenu(jPopupMenu1);
         tbTranfusiDarah.setName("tbTranfusiDarah"); // NOI18N
         tbTranfusiDarah.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1366,7 +1366,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         TanggalCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(TanggalCari2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -1663,7 +1663,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbTranfusiDarah.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
             if(!tbTranfusiDarah.getValueAt(tbTranfusiDarah.getSelectedRow(),0).toString().equals("")){
                 try {
@@ -1748,7 +1748,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbTranfusiDarah.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
             if(!tbTranfusiDarah.getValueAt(tbTranfusiDarah.getSelectedRow(),0).toString().equals("")){
                 
@@ -2098,7 +2098,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbTranfusiDarah.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
             if(!tbTranfusiDarah.getValueAt(tbTranfusiDarah.getSelectedRow(),0).toString().equals("")){
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -2142,7 +2142,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbTranfusiDarah.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
             if(!tbTranfusiDarah.getValueAt(tbTranfusiDarah.getSelectedRow(),0).toString().equals("")){
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -2186,7 +2186,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbTranfusiDarah.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
             if(!tbTranfusiDarah.getValueAt(tbTranfusiDarah.getSelectedRow(),0).toString().equals("")){
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, Yakin mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -2249,7 +2249,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbTranfusiDarah.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak diubah..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau diubah..!!");
         }else{
             if(!tbTranfusiDarah.getValueAt(tbTranfusiDarah.getSelectedRow(),0).toString().equals("")){
                 TabRawat.setSelectedIndex(0);
@@ -2339,7 +2339,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbTranfusiDarah.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data darah yang hendak dimusnahkan..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data darah yang mau dimusnahkan..!!");
         }else{
             if(!tbTranfusiDarah.getValueAt(tbTranfusiDarah.getSelectedRow(),0).toString().equals("")){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

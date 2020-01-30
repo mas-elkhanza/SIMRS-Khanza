@@ -4,7 +4,7 @@
  */
 
 /*
- * DlgPembayaranRanap.java
+ * DlgLhtBiaya.java
  *
  * Created on 12 Jul 10, 16:21:34
  */
@@ -51,7 +51,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
              Service=0,ttlLaborat=0,ttlRadiologi=0,ttlOperasi=0,ttlObat=0,ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlRalan_Dokter=0,
              ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlKamar=0,ttlRegistrasi=0,ttlHarian=0,ttlRetur_Obat=0,ttlResep_Pulang=0,ttlService=0;
     private String sqlps2="select sum(totalbiaya) from billing where no_rawat=? and status=? ";
-
+    
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -92,7 +92,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
-
+        
         bangsal.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -104,7 +104,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
                     kdpenjab.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                     nmpenjab.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
                     tampil();
-                }
+                }      
                 kdpenjab.requestFocus();
             }
             @Override
@@ -116,7 +116,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-
+        
         bangsal.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -130,8 +130,8 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
 
-    }
-
+    }    
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -172,7 +172,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
 
         MnBilling.setBackground(new java.awt.Color(255, 255, 254));
         MnBilling.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBilling.setForeground(new java.awt.Color(50, 50, 50));
+        MnBilling.setForeground(new java.awt.Color(50,50,50));
         MnBilling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBilling.setText("Billing/Pembayaran Pasien");
         MnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -195,7 +195,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Pembayaran Pasien Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pembayaran Pasien Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -259,7 +259,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
         panelGlass5.add(BtnPrint);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel10.setForeground(new java.awt.Color(50,50,50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total Pembayaran :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -267,7 +267,7 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(50, 50, 50));
+        LCount.setForeground(new java.awt.Color(50,50,50));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
@@ -385,9 +385,9 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-
+            
             Sequel.queryu("truncate table temporary");
-            for(int r=0;r<tabMode.getRowCount();r++){
+            for(int r=0;r<tabMode.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
@@ -408,15 +408,15 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
-
-            Map<String, Object> param = new HashMap<>();
+            
+            Map<String, Object> param = new HashMap<>();                 
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
             param.put("propinsirs",akses.getpropinsirs());
             param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRTagihanRanap.jasper","report","::[ Rekap Tagihan Ranap Masuk ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -461,13 +461,13 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
 }//GEN-LAST:event_tbBangsalKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-
+        
         tampil();
 }//GEN-LAST:event_BtnCari1ActionPerformed
 
 private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             tampil();
             this.setCursor(Cursor.getDefaultCursor());
         }else{
@@ -521,15 +521,15 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingActionPerformed
         if(TKd.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
         }else{
             DlgBilingRanap billing=new DlgBilingRanap(null,false);
-            billing.TNoRw.setText(Sequel.cariIsi("select no_rawat from nota_inap where no_nota=?",TKd.getText()));
+            billing.TNoRw.setText(Sequel.cariIsi("select no_rawat from nota_inap where no_nota=?",TKd.getText()));            
             billing.isCek();
             billing.isRawat();
             billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             billing.setLocationRelativeTo(internalFrame1);
-            billing.setVisible(true);
+            billing.setVisible(true); 
         }
     }//GEN-LAST:event_MnBillingActionPerformed
 
@@ -575,9 +575,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     // End of variables declaration//GEN-END:variables
 
     public void tampil(){
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabMode);
-        try{
+        try{      
             ps= koneksi.prepareStatement(
                 "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,kamar_inap.tgl_keluar,bangsal.nm_bangsal,kamar_inap.stts_pulang, "+
                 "kamar.kd_kamar from kamar_inap inner join reg_periksa inner join pasien inner join bangsal inner join kamar "+
@@ -599,7 +599,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 while(rs.next()){
                     if(!rs.getString("stts_pulang").equals("-")){
                     if(!rs.getString("stts_pulang").equals("Pindah Kamar")){
-                        Laborat=0;
+                        Laborat=0;   
                         ps2=koneksi.prepareStatement(sqlps2);
                         try {
                             ps2.setString(1,rs.getString("no_rawat"));
@@ -702,7 +702,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             if(ps2!=null){
                                 ps2.close();
                             }
-                        }
+                        }                        
 
                         Ranap_Dokter_Paramedis=0;
                         ps2=koneksi.prepareStatement(sqlps2);
@@ -988,7 +988,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Kamar+Registrasi+Harian+Retur_Obat+Resep_Pulang+Service)
                         });
                         all=all+Laborat+Radiologi+Operasi+Obat+Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Kamar+Registrasi+Harian+Retur_Obat+Resep_Pulang+Service;
-                    }}
+                    }}                
                 }
                 tabMode.addRow(new Object[]{
                         ">> Total ",":","","","",Valid.SetAngka(ttlRegistrasi),Valid.SetAngka(ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+ttlRalan_Paramedis),
@@ -1006,7 +1006,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.close();
                 }
             }
-
+            
             this.setCursor(Cursor.getDefaultCursor());
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

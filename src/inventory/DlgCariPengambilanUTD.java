@@ -169,14 +169,14 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Pengambilan BHP Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengambilan BHP Medis Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -218,7 +218,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi3.add(DTPCari2);
 
-        label9.setText("Keyword :");
+        label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label9);
@@ -362,7 +362,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbKamar.getSelectedRow()<= -1){ 
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan pilih data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
             Sequel.AutoComitFalse();
             sukses=true;

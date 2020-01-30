@@ -366,7 +366,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         ppPeserta.setBackground(new java.awt.Color(255, 255, 254));
         ppPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPeserta.setForeground(new java.awt.Color(50, 50, 50));
+        ppPeserta.setForeground(new java.awt.Color(50,50,50));
         ppPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPeserta.setText("Masukkan Daftar Peserta Kegiatan");
         ppPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -385,7 +385,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         WindowInputPeserta.setUndecorated(true);
         WindowInputPeserta.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Input Daftar Peserta Kegiatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Daftar Peserta Kegiatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setLayout(null);
 
@@ -494,7 +494,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -502,7 +502,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
-        tbJnsPerawatan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -687,7 +687,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);

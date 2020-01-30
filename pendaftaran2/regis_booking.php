@@ -178,7 +178,7 @@ echo '<section class="content">';
 				else if(@$_GET['st'] == 'e')
 				{
 					
-					echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Maaf pembatalan booking anda gagal, Silakan coba beberapa saat lagi...</div>';
+					echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Maaf pembatalan booking anda gagal, Silahkan coba beberapa saat lagi...</div>';
 				}
 
 				echo '<div class="row clearfix">';
@@ -269,7 +269,7 @@ echo '<section class="content">';
 				else if(@$_GET['st'] == 'e')
 				{
 					
-					echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Maaf pembatalan booking anda gagal, Silakan coba beberapa saat lagi...</div>';
+					echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Maaf pembatalan booking anda gagal, Silahkan coba beberapa saat lagi...</div>';
 				}
 
 				echo '<div class="row clearfix">';

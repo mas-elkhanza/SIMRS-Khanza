@@ -572,7 +572,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -581,7 +581,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
-        label9.setText("Keyword :");
+        label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi3.add(label9);
@@ -955,7 +955,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -987,7 +987,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
         Scroll1.setPreferredSize(new java.awt.Dimension(454, 90));
 
-        tbObatRacikan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObatRacikan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObatRacikan.setName("tbObatRacikan"); // NOI18N
         tbObatRacikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1003,7 +1003,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         tbDetailObatRacikan.setAutoCreateRowSorter(true);
-        tbDetailObatRacikan.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbDetailObatRacikan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDetailObatRacikan.setComponentPopupMenu(Popup);
         tbDetailObatRacikan.setName("tbDetailObatRacikan"); // NOI18N
         tbDetailObatRacikan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1060,15 +1060,15 @@ public final class DlgCariObat extends javax.swing.JDialog {
                             tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString().equals("")||
                             tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),5).toString().equals("")||
                             tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),6).toString().equals("")){
-                        JOptionPane.showMessageDialog(null,"Silakan lengkapi data racikan..!!");
+                        JOptionPane.showMessageDialog(null,"Silahkan lengkapi data racikan..!!");
                     }else{
                         tampildetailracikanobat();
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Silakan pilih racikan..!!");
+                    JOptionPane.showMessageDialog(null,"Silahkan pilih racikan..!!");
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Silakan masukkan racikan..!!");
+                JOptionPane.showMessageDialog(null,"Silahkan masukkan racikan..!!");
             }
         }   
 }//GEN-LAST:event_BtnCariActionPerformed
@@ -1223,7 +1223,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else if(kdgudang.getText().equals("")){
             Valid.textKosong(TCari,"Lokasi");
         }else{
-            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang hendak disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {  
                     ChkJln.setSelected(false);
@@ -1733,7 +1733,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     aturanpakai.setVisible(true);
                 }else if(i==3){
                     if(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),1).equals("")){
-                        JOptionPane.showMessageDialog(null,"Silakan masukkan nama racikan..!!");
+                        JOptionPane.showMessageDialog(null,"Silahkan masukkan nama racikan..!!");
                         tbObatRacikan.requestFocus();
                     }else{
                         metoderacik.isCek();
@@ -1755,13 +1755,13 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),3).toString().equals("")||
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString().equals("")||
                                 tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),5).toString().equals("")){
-                            JOptionPane.showMessageDialog(null,"Silakan lengkapi data racikan..!!");
+                            JOptionPane.showMessageDialog(null,"Silahkan lengkapi data racikan..!!");
                         }else{
                             tampildetailracikanobat();
                             TCari.requestFocus();
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null,"Silakan pilih racikan..!!");
+                        JOptionPane.showMessageDialog(null,"Silahkan pilih racikan..!!");
                     }
                 }
             }
@@ -1881,7 +1881,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 }   
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silakan pilih No.Racikan terlebih dahulu");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Racikan terlebih dahulu");
         } 
     }//GEN-LAST:event_tbDetailObatRacikanKeyPressed
 

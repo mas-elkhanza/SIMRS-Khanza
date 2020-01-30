@@ -27,7 +27,7 @@
             echo "<tr class='isi8'> 
                     <td width='99%'>
                         <object data='../".$baris2["lokasi_file"]."' type='application/pdf' width='100%' height='730px'>
-                        Tidak suport pdf, Silakan download <a href='../".$baris2["lokasi_file"]."'>Download PDF</a>
+                        Tidak suport pdf, Silahkan download <a href='../".$baris2["lokasi_file"]."'>Download PDF</a>
                         </object>
                     </td>
                   </tr>";

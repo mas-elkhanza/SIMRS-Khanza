@@ -205,16 +205,16 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         AlasanLainnya.setDocument(new batasInput((byte)50).getKata(AlasanLainnya));
-        Anamnesis.setDocument(new batasInput(700).getKata(Anamnesis));
+        Anamnesis.setDocument(new batasInput((int)700).getKata(Anamnesis));
         TekananDarah.setDocument(new batasInput((byte)7).getKata(TekananDarah));
         FrekuensiNadi.setDocument(new batasInput((byte)3).getKata(FrekuensiNadi));
         SuhuBadan.setDocument(new batasInput((byte)5).getKata(SuhuBadan));
         Respirasi.setDocument(new batasInput((byte)3).getKata(Respirasi));
-        KeadaanUmum.setDocument(new batasInput(300).getKata(KeadaanUmum));
+        KeadaanUmum.setDocument(new batasInput((int)300).getKata(KeadaanUmum));
         Alergi.setDocument(new batasInput((byte)50).getKata(Alergi));
-        Laborat.setDocument(new batasInput(1000).getKata(Laborat));
-        Radiologi.setDocument(new batasInput(1000).getKata(Radiologi));
-        TerapiTindakan.setDocument(new batasInput(1000).getKata(TerapiTindakan));
+        Laborat.setDocument(new batasInput((int)1000).getKata(Laborat));
+        Radiologi.setDocument(new batasInput((int)1000).getKata(Radiologi));
+        TerapiTindakan.setDocument(new batasInput((int)1000).getKata(TerapiTindakan));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -516,7 +516,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnSuratRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSuratRujukan.setForeground(new java.awt.Color(50, 50, 50));
+        MnSuratRujukan.setForeground(new java.awt.Color(50,50,50));
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSuratRujukan.setText("Surat Rujukan");
         MnSuratRujukan.setName("MnSuratRujukan"); // NOI18N
@@ -530,7 +530,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRiwayat.setForeground(new java.awt.Color(50, 50, 50));
+        ppRiwayat.setForeground(new java.awt.Color(50,50,50));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayat.setText("Riwayat Perawatan");
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -556,13 +556,13 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Rujukan Keluar Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Keluar Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setForeground(new java.awt.Color(50,50,50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1218,7 +1218,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
@@ -1263,7 +1263,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRujukan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRujukan.setForeground(new java.awt.Color(50, 50, 50));
+        TabRujukan.setForeground(new java.awt.Color(50,50,50));
         TabRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRujukan.setName("TabRujukan"); // NOI18N
         TabRujukan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1277,7 +1277,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1299,7 +1299,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         tbObat2.setAutoCreateRowSorter(true);
-        tbObat2.setToolTipText("Silakan klik untuk memilih data yang hendak diedit ataupun dihapus");
+        tbObat2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObat2.setComponentPopupMenu(jPopupMenu1);
         tbObat2.setName("tbObat2"); // NOI18N
         tbObat2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1645,10 +1645,10 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     }
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak diganti..!!");
+                JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
             } 
         }else{
-            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak dihapus..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
             TabRujukan.setSelectedIndex(0);
         }        
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -1789,7 +1789,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silakan pilih dulu data yang hendak diganti..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
         }             
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1833,7 +1833,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             }
             this.setCursor(Cursor.getDefaultCursor());
         }else if(TabRujukan.getSelectedIndex()==1){
-            JOptionPane.showMessageDialog(null,"Silakan tampilkan data yang hendak dicetak..!!");
+            JOptionPane.showMessageDialog(null,"Silahkan tampilkan data yang mau dicetak..!!");
             TabRujukan.setSelectedIndex(0);
         }
             
@@ -2076,7 +2076,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
     private void MnSuratRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSuratRujukanActionPerformed
         if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
@@ -2172,7 +2172,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             //TNoReg.requestFocus();
         }else if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silakan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbObat.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2199,7 +2199,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         if(TNoRw.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Silakan pilih data rujukan terlebih dahulu");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data rujukan terlebih dahulu");
         }else{
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 setPasien2(TNoRw.getText());

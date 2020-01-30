@@ -244,7 +244,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 253, 247)), "::[ Detail J.M Dokter 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail J.M Dokter 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -283,7 +283,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
         });
         panelisi4.add(Tgl2);
 
-        jLabel6.setText("Keyword :");
+        jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi4.add(jLabel6);
@@ -492,7 +492,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File f;            
             BufferedWriter bw; 
             
-            pilihan = (String)JOptionPane.showInputDialog(null,"Silakan pilih laporan..!","Laporan Jasa Medis",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (HTML)","Laporan 3 (WPS)","Laporan 4 (WPS)","Laporan 5 (CSV)","Laporan 6 (CSV)"},"Laporan 1 (HTML)");
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Jasa Medis",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (HTML)","Laporan 3 (WPS)","Laporan 4 (WPS)","Laporan 5 (CSV)","Laporan 6 (CSV)"},"Laporan 1 (HTML)");
             switch (pilihan) {
                 case "Laporan 1 (HTML)":
                         htmlContent = new StringBuilder();
