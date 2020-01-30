@@ -412,7 +412,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["dilakukan tindakan seperti diatas."]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["dilakukan tindakan seperti di atas."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="15" y="406" width="276" height="13"/>
