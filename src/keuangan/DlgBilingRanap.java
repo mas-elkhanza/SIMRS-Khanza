@@ -204,7 +204,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpstemporary="insert into temporary_bayar_ranap values('0',?,?,?,?,?,?,?,?,'','','','','','','','','')",
             sqlpsubahpenjab="select tgl_ubah,kd_pj1,kd_pj2 from ubah_penjab where no_rawat=?";    
     private double ttl=0,y=0,subttl=0,lab,ttl1,ttl2,ttlobat,ttlretur,ppnobat,piutang=0,kekurangan=0,itembayar=0,itempiutang=0, 
-            tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,bayar=0,total=0,uangdeposit=0,
+            tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,bayar=0,total=0,uangdeposit=0,uangMuka,uangLunasObat,
             ttlLaborat=0,ttlRadiologi=0,ttlOperasi=0,ttlObat=0,ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlRalan_Dokter=0,
             ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlKamar=0,ttlRegistrasi=0,ttlHarian=0,ttlRetur_Obat=0,ttlResep_Pulang=0,
             laboratserv=0,radiologiserv=0,operasiserv=0,obatserv=0,
@@ -553,7 +553,9 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
                     if(status.equals("belum")){
-                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());                  
+                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
+                        uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                        uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
                     }else{
                         uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
                     }
@@ -3342,7 +3344,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     Sequel.menyimpan("temporary_bayar_ranap","'0','PPN',':','','','','','<b>"+Valid.SetAngka(besarppn)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','TAGIHAN+PPN',':','','','','','<b>"+TagihanPPn.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','','','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','<b>"+Deposit.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Perawatan','','','','','<b>"+Valid.SetAngka(uangMuka)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Obat RI','','','','','<b>"+Valid.SetAngka(uangLunasObat)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
                     Sequel.menyimpan("temporary_bayar_ranap","'0','BAYAR',':','','','','','<b>"+Valid.SetAngka(bayar)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','KEMBALI',':','','','','','<b>"+TKembali.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                 }else if(ChkPiutang.isSelected()==true){                                            
@@ -3351,7 +3355,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     Sequel.menyimpan("temporary_bayar_ranap","'0','PPN',':','','','','','<b>"+Valid.SetAngka(besarppn)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','TAGIHAN + PPN',':','','','','','<b>"+TagihanPPn.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','','','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','<b>"+Deposit.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Perawatan','','','','','<b>"+Valid.SetAngka(uangMuka)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Obat RI','','','','','<b>"+Valid.SetAngka(uangLunasObat)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
                     Sequel.menyimpan("temporary_bayar_ranap","'0','EKSES',':','','','','','<b>"+Valid.SetAngka(bayar)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','SISA PIUTANG',':','','','','','<b>"+Valid.SetAngka(piutang)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");                                      
                 }                
@@ -4017,6 +4023,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             if(i<=0){
                 uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
+                uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
                 Deposit.setText(Valid.SetAngka(uangdeposit));
                 prosesCariReg();                     
                 prosesCariKamar();  
@@ -4052,6 +4060,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 status="belum";
             }else if(i>0){
                 uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+                uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
                 Deposit.setText(Valid.SetAngka(uangdeposit));
                 Valid.SetTgl2(DTPTgl,Sequel.cariIsi("select concat(tanggal,' ',jam) from nota_inap where no_rawat='"+TNoRw.getText()+"'"));
                 Valid.tabelKosong(tabModeRwJlDr);  
