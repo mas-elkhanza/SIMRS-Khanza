@@ -1,0 +1,50 @@
+RewriteEngine On # Turn on the rewriting engine
+# closed access folder
+Options All -Indexes
+#RewriteRule ^([a-z]+)\/?$ $1.php [NC]
+#no akses ext
+IndexIgnore *.gif *.zip *.txt
+<ifModule mod_deflate.c>
+  <filesMatch ".(css|js|html|php)$">
+    SetOutputFilter DEFLATE
+  </filesMatch>
+</ifModule>
+
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf|pdf)$">
+  Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+RewriteEngine On # Turn on the rewriting engine
+# closed access folder
+Options All -Indexes
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+#RewriteRule ^([a-z]+)\/?$ $1.php [NC]
+
+#no akses ext
+IndexIgnore *.gif *.zip *.txt
+
+#no access conf.php
+<Files conf.php>
+    order allow,deny
+    deny from all
+</Files>
+
+#no access hta
+<Files ~"^.*\.([Hh][Tt][Aa])">
+    order allow,deny
+    deny from all
+    satisfy all
+</Files>
+
+# closed ext .php
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^([^/]+)/$ $1.php 
+
+# alias
+RewriteRule ^token?$ index?act=token
+RewriteRule ^antrean?$ index?act=no-antrian
+RewriteRule ^rekap-antrean?$ index?act=rekap-antrian
