@@ -105,7 +105,6 @@ public final class DlgPembayaranRanap extends javax.swing.JDialog {
                 if(bangsal.getTable().getSelectedRow()!= -1){
                     kdbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
                     nmbangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    tampil();
                 }      
                 kdbangsal.requestFocus();
             }

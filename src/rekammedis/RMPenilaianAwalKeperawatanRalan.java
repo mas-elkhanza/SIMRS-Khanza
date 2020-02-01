@@ -1034,7 +1034,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         jLabel50.setText("Prothesa :");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
-        jLabel50.setBounds(276, 340, 60, 23);
+        jLabel50.setBounds(274, 340, 60, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel52.setText("IV. FUNGSIONAL");
@@ -1169,7 +1169,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(KetBantu);
-        KetBantu.setBounds(184, 340, 90, 23);
+        KetBantu.setBounds(183, 340, 90, 23);
 
         jLabel54.setText("A. Hubungan Pasien Dengan Anggota Keluarga :");
         jLabel54.setName("jLabel54"); // NOI18N
@@ -1189,7 +1189,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prothesa);
-        Prothesa.setBounds(340, 340, 77, 23);
+        Prothesa.setBounds(338, 340, 77, 23);
 
         KetPro.setFocusTraversalPolicyProvider(true);
         KetPro.setName("KetPro"); // NOI18N
@@ -1199,7 +1199,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(KetPro);
-        KetPro.setBounds(440, 340, 90, 23);
+        KetPro.setBounds(417, 340, 90, 23);
 
         jLabel55.setText("Alat Bantu :");
         jLabel55.setName("jLabel55"); // NOI18N
@@ -1219,12 +1219,12 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(ADL);
-        ADL.setBounds(830, 340, 90, 23);
+        ADL.setBounds(764, 340, 90, 23);
 
         jLabel57.setText("ADL :");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(780, 340, 40, 23);
+        jLabel57.setBounds(725, 340, 35, 23);
 
         StatusPsiko.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenang", "Takut", "Cemas", "Depresi", "Lain-Lain" }));
         StatusPsiko.setName("StatusPsiko"); // NOI18N
@@ -1871,7 +1871,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         TotalHasil.setBounds(680, 590, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-02-2020 04:48:49" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-02-2020 08:51:18" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1910,10 +1910,10 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         FormInput.add(jLabel94);
         jLabel94.setBounds(15, 170, 180, 23);
 
-        jLabel51.setText("Cacat Fisik :");
+        jLabel51.setText("Cacat :");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(540, 340, 70, 23);
+        jLabel51.setBounds(507, 340, 45, 23);
 
         Prothesa1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Prothesa1.setName("Prothesa1"); // NOI18N
@@ -1928,7 +1928,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(Prothesa1);
-        Prothesa1.setBounds(610, 340, 77, 23);
+        Prothesa1.setBounds(556, 340, 77, 23);
 
         KetPro1.setFocusTraversalPolicyProvider(true);
         KetPro1.setName("KetPro1"); // NOI18N
@@ -1938,7 +1938,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(KetPro1);
-        KetPro1.setBounds(690, 340, 90, 23);
+        KetPro1.setBounds(635, 340, 90, 23);
 
         scrollInput.setViewportView(FormInput);
 
