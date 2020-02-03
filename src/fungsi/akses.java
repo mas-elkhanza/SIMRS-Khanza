@@ -127,7 +127,7 @@ public final class akses {
             inhealth_mapping_tindakan_ranap=false,inhealth_mapping_tindakan_radiologi=false,inhealth_mapping_tindakan_laborat=false,
             inhealth_mapping_tindakan_operasi=false,hibah_obat_bhp=false,asal_hibah=false,asuhan_gizi=false,inhealth_kirim_tagihan=false,
             sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false,penerimaan_obat_perbulan=false,
-            rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false;
+            rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -733,6 +733,7 @@ public final class akses {
                         akses.surat_sakit=true;
                         akses.penilaian_awal_keperawatan_ralan=true;
                         akses.permintaan_diet=true;
+                        akses.master_masalah_keperawatan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1322,6 +1323,7 @@ public final class akses {
                         akses.surat_sakit=rs2.getBoolean("surat_sakit");
                         akses.penilaian_awal_keperawatan_ralan=rs2.getBoolean("penilaian_awal_keperawatan_ralan");
                         akses.permintaan_diet=rs2.getBoolean("permintaan_diet");
+                        akses.master_masalah_keperawatan=rs2.getBoolean("master_masalah_keperawatan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1909,6 +1911,7 @@ public final class akses {
                         akses.surat_sakit=false;
                         akses.penilaian_awal_keperawatan_ralan=false;
                         akses.permintaan_diet=false;
+                        akses.master_masalah_keperawatan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2550,4 +2553,5 @@ public final class akses {
     public static boolean getsurat_sakit(){return akses.surat_sakit;}
     public static boolean getpenilaian_awal_keperawatan_ralan(){return akses.penilaian_awal_keperawatan_ralan;}
     public static boolean getpermintaan_diet(){return akses.permintaan_diet;}
+    public static boolean getmaster_masalah_keperawatan(){return akses.master_masalah_keperawatan;}
 }   
