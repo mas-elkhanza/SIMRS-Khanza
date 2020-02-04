@@ -15711,6 +15711,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         RMPenilaianAwalKeperawatanRalan aplikasi=new RMPenilaianAwalKeperawatanRalan(this,false);
         aplikasi.isCek();
         aplikasi.emptTeks();
+        aplikasi.setTampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
