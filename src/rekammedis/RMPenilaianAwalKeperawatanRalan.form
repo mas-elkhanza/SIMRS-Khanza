@@ -2962,6 +2962,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="TNoRM1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2970,12 +2971,10 @@
                               <Dimension value="[100, 23]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TNoRM1ActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="widget.TextBox" name="TPasien1">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="f0" green="fa" red="f5" type="rgb"/>
                             </Property>
