@@ -1034,7 +1034,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         jLabel50.setBounds(476, 340, 60, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel52.setText("VIII. PENILIAIAN TINGKAT NYERI");
+        jLabel52.setText("VIII. PENILAIAN TINGKAT NYERI");
         jLabel52.setName("jLabel52"); // NOI18N
         FormInput.add(jLabel52);
         jLabel52.setBounds(10, 800, 380, 23);
@@ -1303,10 +1303,10 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         FormInput.add(KetEdukasi);
         KetEdukasi.setBounds(484, 530, 370, 23);
 
-        jLabel64.setText("Jam dilaporkan :");
+        jLabel64.setText("Jam  :");
         jLabel64.setName("jLabel64"); // NOI18N
         FormInput.add(jLabel64);
-        jLabel64.setBounds(680, 970, 90, 23);
+        jLabel64.setBounds(720, 970, 50, 23);
 
         jLabel65.setText("1. Tidak seimbang / sempoyongan / limbung :");
         jLabel65.setName("jLabel65"); // NOI18N
@@ -1590,7 +1590,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         jLabel86.setText("Diberitahukan pada dokter ?");
         jLabel86.setName("jLabel86"); // NOI18N
         FormInput.add(jLabel86);
-        jLabel86.setBounds(440, 970, 150, 23);
+        jLabel86.setBounds(480, 970, 150, 23);
 
         Durasi.setFocusTraversalPolicyProvider(true);
         Durasi.setName("Durasi"); // NOI18N
@@ -1645,7 +1645,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(PadaDokter);
-        PadaDokter.setBounds(594, 970, 80, 23);
+        PadaDokter.setBounds(634, 970, 80, 23);
 
         KetDokter.setFocusTraversalPolicyProvider(true);
         KetDokter.setName("KetDokter"); // NOI18N
@@ -1692,7 +1692,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         TotalHasil.setBounds(774, 770, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2020 07:09:04" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2020 10:41:28" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
