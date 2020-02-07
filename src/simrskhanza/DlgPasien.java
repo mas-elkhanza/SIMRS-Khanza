@@ -157,7 +157,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }else if(z==3){
                 column.setPreferredWidth(100);
             }else if(z==4){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(25);
             }else if(z==5){
                 column.setPreferredWidth(100);
             }else if(z==6){
@@ -167,7 +167,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }else if(z==8){
                 column.setPreferredWidth(190);
             }else if(z==9){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(30);
             }else if(z==10){
                 column.setPreferredWidth(100);
             }else if(z==11){
