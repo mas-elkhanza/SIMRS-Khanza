@@ -1631,6 +1631,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_formWindowOpened
 
     private void TabRawatJalanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatJalanMouseClicked
+        TeksKosong();
         pilihRalan();
     }//GEN-LAST:event_TabRawatJalanMouseClicked
 
@@ -1999,6 +2000,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_BtnSeek6ActionPerformed
 
     private void TabPilihRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabPilihRawatMouseClicked
+        TeksKosong();
         pilihTab();
     }//GEN-LAST:event_TabPilihRawatMouseClicked
 
@@ -2031,6 +2033,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_tbLabRanap2KeyPressed
 
     private void TabRawatInapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatInapMouseClicked
+        TeksKosong();
         pilihRanap();
     }//GEN-LAST:event_TabRawatInapMouseClicked
 

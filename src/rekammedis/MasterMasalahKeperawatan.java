@@ -70,8 +70,8 @@ public class MasterMasalahKeperawatan extends javax.swing.JDialog {
         tbSpesialis.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)3).getKata(TKd));
-        TNm.setDocument(new batasInput((int)00).getKata(TNm));
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        TNm.setDocument(new batasInput((int)100).getKata(TNm));
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
