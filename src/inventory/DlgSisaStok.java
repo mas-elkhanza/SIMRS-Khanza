@@ -426,7 +426,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(akses.getrl4bsebab());
+        BtnPrint.setEnabled(akses.getsisa_stok());
     }
     
 }

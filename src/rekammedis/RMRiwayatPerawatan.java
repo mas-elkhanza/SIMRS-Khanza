@@ -37,7 +37,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
         
-        TKd.setDocument(new batasInput((byte)20).getKata(TKd));
+        KdRw.setDocument(new batasInput((byte)20).getKata(TKd));
         
         pasien.addWindowListener(new WindowListener() {
             @Override

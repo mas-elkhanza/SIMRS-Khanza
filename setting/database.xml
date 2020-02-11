@@ -68,4 +68,9 @@
     <entry key="AKTIFKANTRACKSQL">yes</entry>
     <entry key="HOSTWSLICA">http://localhost/bridging-lica/public</entry>
     <entry key="KEYWSLICA">yLT3/8b0KAb5QK1ueFkW7g==</entry>
+    <entry key="HOSTBRIDGINGRADIOLOGI">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="DATABASEBRIDGINGRADIOLOGI">278SCM7uDvhfdwppyMpg5OAy0jN9F3pCdgukirLsgKA=</entry>
+    <entry key="PORTBRIDGINGRADIOLOGI">nioxtijcpDaKSUiUiP5FAg==</entry>
+    <entry key="USERBRIDGINGRADIOLOGI">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PASBRIDGINGRADIOLOGI">l4nh5eVYrLAER/I2A4b3Tw==</entry>
 </properties>

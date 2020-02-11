@@ -1909,7 +1909,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass12.setPreferredSize(new java.awt.Dimension(44, 134));
         panelGlass12.setLayout(null);
 
-        jLabel7.setText("Suhu (C) :");
+        jLabel7.setText("Suhu (°C) :");
         jLabel7.setName("jLabel7"); // NOI18N
         panelGlass12.add(jLabel7);
         jLabel7.setBounds(0, 100, 85, 23);
