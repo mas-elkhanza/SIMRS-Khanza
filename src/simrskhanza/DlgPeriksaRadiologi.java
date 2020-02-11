@@ -55,6 +55,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private Connection koneksiradiologi;
     private Jurnal jur=new Jurnal();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
@@ -2026,7 +2027,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     
     public void tampilbridging(String order) {         
         try{
-            Connection koneksiradiologi=koneksiDBRadiologi.condb();
+            koneksiradiologi=koneksiDBRadiologi.condb();
             pspemeriksaan=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
                     "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
@@ -2093,9 +2094,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
                 if(pspemeriksaan!=null){
                     pspemeriksaan.close();
-                }
-                if(koneksiradiologi!=null){
-                    koneksiradiologi.close();
                 }
             }
         }catch(Exception e){

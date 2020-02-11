@@ -39,6 +39,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private Connection koneksiradiologi;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
@@ -1902,7 +1903,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                 Valid.textKosong(TCari,"No.Permintaan");
             }else{   
                 try {
-                    Connection koneksiradiologi=koneksiDBRadiologi.condb();
+                    koneksiradiologi=koneksiDBRadiologi.condb();
                     ps=koneksi.prepareStatement(
                             "select permintaan_pemeriksaan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.bagian_rs,"+
                             "jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,jns_perawatan_radiologi.tarif_tindakan_dokter,"+
@@ -1935,9 +1936,6 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
                         }
                         if(ps!=null){
                             ps.close();
-                        }
-                        if(koneksiradiologi!=null){
-                            koneksiradiologi.close();
                         }
                     }
                 } catch (Exception e) {
