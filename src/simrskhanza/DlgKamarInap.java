@@ -4857,6 +4857,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             TCari.requestFocus();
       }else{
           if(tbKamIn.getSelectedRow()>-1){
+             
                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
                              JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
                              tbKamIn.requestFocus();
@@ -9973,6 +9974,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
         tampil();
     }
+    
 
     public void setCariKosong() {
       TCari.setText("");

@@ -44,7 +44,7 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
     private double obat=0,obatlangsung=0,laborat=0,radiologi=0,jm=0,jm2=0,ttlbiaya=0,detailobat=0,detailobatlangsung=0,ttlobat=0,ttlobatlangsung=0,ttllaborat=0,ttljm=0,
             detailtindakan=0,detailtindakan2=0,detaillaborat=0,tambahan,potongan,detailtambahan,detailpotongan,registrasi=0,detailregistrasi,ttlpotongan=0,ttltambahan=0,
             ttlregistrasi=0,itemlaborat=0,detailitemlaborat=0,detailradiologi=0,ttlradiologi=0;
-    private String carabayar="",pilihancarabayar="";
+    private String carabayar="",pilihancarabayar="",jenisbayar="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -111,7 +111,8 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(penjab.getTable().getSelectedRow()!= -1){
                     pilihancarabayar=(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
-                }     
+                    prosesCari();
+                }
                 prosesCari3();
             }
             @Override
@@ -138,92 +139,102 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
         });
         
         try {
+           String where_kd_pj = jenisbayar.equals("") ? "" : "and reg_periksa.kd_pj='" + jenisbayar+"'";
+           String where_kd_pj2 = pilihancarabayar.equals("") ? "" : "and reg_periksa.kd_pj='" + pilihancarabayar+"'";
+            
+            
             psdokter=koneksi.prepareStatement(
                     "select dokter.kd_dokter,dokter.nm_dokter,count(dokter.kd_dokter) as jumlah from dokter inner join reg_periksa "+
                     "on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? group by dokter.kd_dokter");
+                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2 +" group by dokter.kd_dokter");
             pstindakan=koneksi.prepareStatement(
                     "select sum(rawat_jl_dr.biaya_rawat) from rawat_jl_dr inner join reg_periksa "+
                     "on reg_periksa.no_rawat=rawat_jl_dr.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "rawat_jl_dr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ?");
+                    "rawat_jl_dr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? "+where_kd_pj + " "+ where_kd_pj2);
             pstindakan2=koneksi.prepareStatement(
                     "select sum(rawat_jl_drpr.biaya_rawat) from rawat_jl_drpr inner join reg_periksa "+
                     "on reg_periksa.no_rawat=rawat_jl_drpr.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "rawat_jl_drpr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ?");
+                    "rawat_jl_drpr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);
             psobat=koneksi.prepareStatement(
                     "select sum(detail_pemberian_obat.total) from detail_pemberian_obat inner join reg_periksa "+
                     "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");  
+                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);  
             psobatlangsung=koneksi.prepareStatement(
                     "select sum(tagihan_obat_langsung.besar_tagihan) from tagihan_obat_langsung inner join reg_periksa "+
                     "on tagihan_obat_langsung.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");  
+                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);  
             pstambahan=koneksi.prepareStatement(
                     "select sum(tambahan_biaya.besar_biaya) from tambahan_biaya inner join reg_periksa "+
                     "on tambahan_biaya.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "); 
+                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2); 
             pspotongan=koneksi.prepareStatement(
                     "select sum(pengurangan_biaya.besar_pengurangan) from pengurangan_biaya inner join reg_periksa "+
                     "on pengurangan_biaya.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "); 
+                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2); 
             pslaborat=koneksi.prepareStatement(
                     "select sum(periksa_lab.biaya) from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
-                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");
+                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.kd_dokter like ? "
+                    + "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);
             psitemlaborat=koneksi.prepareStatement(
                     "select sum(detail_periksa_lab.biaya_item) as total from detail_periksa_lab "+
                     "inner join periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat  "+
                     "and detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
                     "and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa and detail_periksa_lab.jam=periksa_lab.jam "+
-                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");  
+                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.kd_dokter like ? "
+                    + "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);  
             psradiologi=koneksi.prepareStatement(
                     "select sum(periksa_radiologi.biaya) from periksa_radiologi inner join reg_periksa "+
                     "on periksa_radiologi.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");                    
+                    "reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);                    
             psdetaillaborat=koneksi.prepareStatement(
                     "select sum(periksa_lab.biaya) from periksa_lab inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat "+
-                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and periksa_lab.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ?  ");
+                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and periksa_lab.no_rawat=? and reg_periksa.kd_dokter like ? "
+                    + "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);
             psdetailradiologi=koneksi.prepareStatement(
                     "select sum(periksa_radiologi.biaya) from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat "+
-                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and periksa_radiologi.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ?  ");
+                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and periksa_radiologi.no_rawat=? and reg_periksa.kd_dokter like ? "
+                    + "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);
             psdetailitemlaborat=koneksi.prepareStatement("select sum(detail_periksa_lab.biaya_item) as total from detail_periksa_lab inner join periksa_lab "+
                     "inner join reg_periksa on periksa_lab.no_rawat=reg_periksa.no_rawat and detail_periksa_lab.no_rawat=periksa_lab.no_rawat "+
                     "and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw  and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa and detail_periksa_lab.jam=periksa_lab.jam "+
-                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and periksa_lab.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");
+                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and periksa_lab.no_rawat=? and reg_periksa.kd_dokter like ? "
+                    + "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);
             pspasien=koneksi.prepareStatement(
                     "select reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.no_rawat,reg_periksa.kd_pj "+
                     "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_dokter like ?  order by reg_periksa.kd_pj,reg_periksa.tgl_registrasi");
+                    "where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.tgl_registrasi between ? and ? "
+                    + "and reg_periksa.kd_dokter like ? "+ where_kd_pj + " "+ where_kd_pj2 +" order by reg_periksa.kd_pj,reg_periksa.tgl_registrasi");
             psdetailtindakan=koneksi.prepareStatement(
                     "select sum(rawat_jl_dr.biaya_rawat) from rawat_jl_dr inner join reg_periksa "+
                     "on reg_periksa.no_rawat=rawat_jl_dr.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.no_rawat=? and reg_periksa.kd_dokter like ? "+
-                    "and reg_periksa.tgl_registrasi between ? and ? ");
+                    "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);
             psdetailtindakan2=koneksi.prepareStatement(
                     "select sum(rawat_jl_drpr.biaya_rawat) from rawat_jl_drpr inner join reg_periksa "+
                     "on reg_periksa.no_rawat=rawat_jl_drpr.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.no_rawat=? and reg_periksa.kd_dokter like ? "+
-                    "and reg_periksa.tgl_registrasi between ? and ? ");
+                    "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj + " "+ where_kd_pj2);
             psdetailobat=koneksi.prepareStatement(
                     "select sum(detail_pemberian_obat.total) from detail_pemberian_obat inner join reg_periksa "+
                     "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) "+
                     "and reg_periksa.no_rawat=? and reg_periksa.kd_dokter like ? "+
-                    "and reg_periksa.tgl_registrasi between ? and ? ");
+                    "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj +" "+ where_kd_pj2);
             psdetailobatlangsung=koneksi.prepareStatement(
                     "select sum(tagihan_obat_langsung.besar_tagihan) from tagihan_obat_langsung inner join reg_periksa "+
                     "on tagihan_obat_langsung.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "tagihan_obat_langsung.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ?  ");            
+                    "tagihan_obat_langsung.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj +" "+ where_kd_pj2);            
             psdetailtambahan=koneksi.prepareStatement(
                     "select sum(tambahan_biaya.besar_biaya) from tambahan_biaya inner join reg_periksa "+
                     "on tambahan_biaya.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "tambahan_biaya.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");
+                    "tambahan_biaya.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj +" "+ where_kd_pj2);
             psdetailpotongan=koneksi.prepareStatement(
                     "select sum(pengurangan_biaya.besar_pengurangan) from pengurangan_biaya inner join reg_periksa "+
                     "on pengurangan_biaya.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                    "pengurangan_biaya.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? ");
+                    "pengurangan_biaya.no_rawat=? and reg_periksa.kd_dokter like ? and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj +" "+ where_kd_pj2);
             psregistrasi=koneksi.prepareStatement(
                     "select sum(reg_periksa.biaya_reg) from reg_periksa where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.kd_dokter like ? "+
-                    "and reg_periksa.tgl_registrasi between ? and ? ");
+                    "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj +" "+ where_kd_pj2);
             psdetailregistrasi=koneksi.prepareStatement(
                     "select sum(reg_periksa.biaya_reg) from reg_periksa where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and reg_periksa.no_rawat=? and reg_periksa.kd_dokter like ? "+
-                    "and reg_periksa.tgl_registrasi between ? and ? ");
+                    "and reg_periksa.tgl_registrasi between ? and ? "+ where_kd_pj +" "+ where_kd_pj2);
             pscarabayar=koneksi.prepareStatement("select png_jawab from penjab where kd_pj=?");
         } catch (SQLException e) {
             System.out.println(e);
@@ -591,7 +602,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnSeek2KeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        prosesCari();
+    System.out.println(pilihancarabayar);    
+    prosesCari();
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -603,7 +615,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 }//GEN-LAST:event_BtnCariKeyPressed
 
 private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanPasienBtnPrintActionPerformed
-     prosesCari2();
+    prosesCari();
+    prosesCari2();
 }//GEN-LAST:event_ppTampilkanPasienBtnPrintActionPerformed
 
     private void ppTampilkanSeleksiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanSeleksiBtnPrintActionPerformed
@@ -812,7 +825,6 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
            ttlregistrasi=0;
            ttltambahan=0;
            ttlradiologi=0;
-           
            
                psdokter.setString(1,"%"+kddokter.getText()+"%");
                psdokter.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
